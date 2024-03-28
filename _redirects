@@ -1,0 +1,4 @@
+/:version/docs/slint/ /:version/docs/rust/slint/
+/1.0.2/docs/nodejs/* /1.0.2/docs/node/:splat
+/latest/* /1.5.1/:splat
+/master/* https://snapshots.slint.dev/master/:splat
