@@ -1,4 +1,14 @@
 /:version/docs/slint/ /:version/docs/rust/slint/
 /1.0.2/docs/nodejs/* /1.0.2/docs/node/:splat
 /latest/* /1.5.1/:splat
+/demos/* /releases/1.5.1/demos/:splat
+/docs/* /releases/1.5.1/docs/:splat
+/editor/* /releases/1.5.1/editor/:splat
 /master/* https://snapshots.slint.dev/master/:splat
+/docs/rust/sixtyfps/* /docs/rust/slint/:splat
+/docs/rust/sixtyfps_interpreter/* /docs/rust/slint/:splat
+/docs/rust/sixtyfps_build/* /docs/rust/slint/:splat
+/docs/rust/sixtyfps/ /docs/rust/slint
+/docs/rust/sixtyfps_interpreter/ /docs/rust/slint
+/docs/rust/sixtyfps_build/ /docs/rust/slint
+/docs/slint/src/builtins/* /docs/slint/src/language/builtins/:splat
