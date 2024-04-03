@@ -1,0 +1,3 @@
+# snapshots
+
+snapshots.slint.dev
