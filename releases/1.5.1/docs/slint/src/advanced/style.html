@@ -353,7 +353,7 @@
 </section>
 <section id="selecting-a-widget-style-when-using-node-js">
 <h2>Selecting a Widget Style when using Node.js:<a class="headerlink" href="#selecting-a-widget-style-when-using-node-js" title="Permalink to this heading">#</a></h2>
-<p>You can select the style by setting the <code class="docutils literal notranslate"><span class="pre">style</span></code> property in <a class="reference external" href="https://slint.dev/releases/1.5.1/docs/node/interfaces/LoadFileOptions"><code class="docutils literal notranslate"><span class="pre">LoadFileOptions</span></code></a> passed to <a class="reference external" href="https://slint.dev/releases/1.5.1/docs/node/functions/loadFile"><code class="docutils literal notranslate"><span class="pre">loadFile</span></code></a>:</p>
+<p>You can select the style by setting the <code class="docutils literal notranslate"><span class="pre">style</span></code> property in <a class="reference external" href="https://releases.slint.dev/1.5.1/docs/node/interfaces/LoadFileOptions"><code class="docutils literal notranslate"><span class="pre">LoadFileOptions</span></code></a> passed to <a class="reference external" href="https://releases.slint.dev/1.5.1/docs/node/functions/loadFile"><code class="docutils literal notranslate"><span class="pre">loadFile</span></code></a>:</p>
 <div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">slint</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;slint-ui&quot;</span><span class="p">;</span>
 <span class="kd">let</span><span class="w"> </span><span class="nx">ui</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">slint</span><span class="p">.</span><span class="nx">loadFile</span><span class="p">(</span><span class="s2">&quot;main.slint&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;fluent&quot;</span><span class="w"> </span><span class="p">});</span>
 <span class="kd">let</span><span class="w"> </span><span class="nx">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ui</span><span class="p">.</span><span class="nx">Main</span><span class="p">();</span>
@@ -478,8 +478,8 @@ Alternatively, if your IDE integration allows for command line parameters, you c
 -->
 <script type="module">
     "use strict";
-    //import * as slint from 'https://slint.dev/releases/0.x.0/wasm-interpreter/slint_wasm_interpreter.js';
-    //const editor_url = "https://slint.dev/releases/0.x.0/editor/";
+    //import * as slint from 'https://releases.slint.dev/0.x.0/wasm-interpreter/slint_wasm_interpreter.js';
+    //const editor_url = "https://releases.slint.dev/0.x.0/editor/";
     import * as slint from 'https://slint.dev/snapshots/master/wasm-interpreter/slint_wasm_interpreter.js';
     const editor_url = "https://slint.dev/snapshots/master/editor/";
     // keep them alive

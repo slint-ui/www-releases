@@ -419,13 +419,13 @@
 This crate is the main entry point for embedding user interfaces designed with
 [Slint](https://slint.rs/) in Rust programs.
 */
-</span><span class="attr">#![doc = <span class="macro">concat!</span>(<span class="string">&quot;If you are new to Slint, start with the [Walk-through **tutorial**](https://slint.dev/releases/&quot;</span>, <span class="macro">env!</span>(<span class="string">&quot;CARGO_PKG_VERSION&quot;</span>), <span class="string">&quot;/docs/tutorial/rust)&quot;</span>)]
+</span><span class="attr">#![doc = <span class="macro">concat!</span>(<span class="string">&quot;If you are new to Slint, start with the [Walk-through **tutorial**](https://releases.slint.dev/&quot;</span>, <span class="macro">env!</span>(<span class="string">&quot;CARGO_PKG_VERSION&quot;</span>), <span class="string">&quot;/docs/tutorial/rust)&quot;</span>)]
 </span><span class="doccomment">/*! If you are already familiar with Slint, the following topics provide related information.
 
 ## Topics
 
 */
-</span><span class="attr">#![doc = <span class="macro">concat!</span>(<span class="string">&quot;- [The Slint Language Documentation](https://slint.dev/releases/&quot;</span>, <span class="macro">env!</span>(<span class="string">&quot;CARGO_PKG_VERSION&quot;</span>), <span class="string">&quot;/docs/slint)&quot;</span>)]
+</span><span class="attr">#![doc = <span class="macro">concat!</span>(<span class="string">&quot;- [The Slint Language Documentation](https://releases.slint.dev/&quot;</span>, <span class="macro">env!</span>(<span class="string">&quot;CARGO_PKG_VERSION&quot;</span>), <span class="string">&quot;/docs/slint)&quot;</span>)]
 </span><span class="doccomment">/*! - [Type mappings between .slint and Rust](docs::type_mappings)
  - [Feature flags and backend selection](docs::cargo_features)
  - [Slint on Microcontrollers](docs::mcu)
@@ -438,7 +438,7 @@ of including them in Rust:
  - The `.slint` code is [inline in a macro](#the-slint-code-in-a-macro).
  - The `.slint` code in [external files compiled with `build.rs`](#the-slint-code-in-external-files-is-compiled-with-buildrs)
 */
-</span><span class="attr">#![doc = <span class="macro">concat!</span>(<span class="string">&quot; - The `.slint` code is loaded dynamically at run-time from the file system, by using the [interpreter API](https://slint.dev/releases/&quot;</span>, <span class="macro">env!</span>(<span class="string">&quot;CARGO_PKG_VERSION&quot;</span>), <span class="string">&quot;/docs/rust/slint_interpreter/).&quot;</span>)]
+</span><span class="attr">#![doc = <span class="macro">concat!</span>(<span class="string">&quot; - The `.slint` code is loaded dynamically at run-time from the file system, by using the [interpreter API](https://releases.slint.dev/&quot;</span>, <span class="macro">env!</span>(<span class="string">&quot;CARGO_PKG_VERSION&quot;</span>), <span class="string">&quot;/docs/rust/slint_interpreter/).&quot;</span>)]
 </span><span class="doccomment">/*!
 
 With the first two methods, the markup code is translated to Rust code and each component is turned into a Rust
@@ -468,7 +468,7 @@ fn main() {
 ### The .slint code in external files is compiled with `build.rs`
 
 When your design becomes bigger in terms of markup code, you may want move it to a dedicated*/
-</span><span class="attr">#![doc = <span class="macro">concat!</span>(<span class="string">&quot;`.slint` file. It&#39;s also possible to split a `.slint` file into multiple files using [modules](https://slint.dev/releases/&quot;</span>, <span class="macro">env!</span>(<span class="string">&quot;CARGO_PKG_VERSION&quot;</span>), <span class="string">&quot;/docs/slint/src/language/syntax/modules.html).&quot;</span>)]
+</span><span class="attr">#![doc = <span class="macro">concat!</span>(<span class="string">&quot;`.slint` file. It&#39;s also possible to split a `.slint` file into multiple files using [modules](https://releases.slint.dev/&quot;</span>, <span class="macro">env!</span>(<span class="string">&quot;CARGO_PKG_VERSION&quot;</span>), <span class="string">&quot;/docs/slint/src/language/syntax/modules.html).&quot;</span>)]
 </span><span class="doccomment">/*!Use a [build script](https://doc.rust-lang.org/cargo/reference/build-scripts.html) to compile
 your main `.slint` file:
 
@@ -578,7 +578,7 @@ To run a function with a delay or with an interval use a [`Timer`].
 ## Exported Global singletons
 
 */
-</span><span class="attr">#![doc = <span class="macro">concat!</span>(<span class="string">&quot;When you export a [global singleton](https://slint.dev/releases/&quot;</span>, <span class="macro">env!</span>(<span class="string">&quot;CARGO_PKG_VERSION&quot;</span>), <span class="string">&quot;/docs/slint/src/reference/globals.html) from the main file,&quot;</span>)]
+</span><span class="attr">#![doc = <span class="macro">concat!</span>(<span class="string">&quot;When you export a [global singleton](https://releases.slint.dev/&quot;</span>, <span class="macro">env!</span>(<span class="string">&quot;CARGO_PKG_VERSION&quot;</span>), <span class="string">&quot;/docs/slint/src/reference/globals.html) from the main file,&quot;</span>)]
 </span><span class="doccomment">/*! it is also generated with the exported name. Like the main component, the generated struct have
 inherent method to access the properties and callback:
 

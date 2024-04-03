@@ -130,7 +130,7 @@ app.global::&lt;Palette&gt;().set_background_color(slint::Color::from_rgb_u8(<sp
 
 <span class="comment">// alternate way to access the global singleton:
 </span>Palette::get(<span class="kw-2">&amp;</span>app).set_foreground_color(slint::Color::from_rgb_u8(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>));</code></pre></div>
-<p>See also the <a href="https://slint.dev/releases/1.3.1/docs/slint/src/reference/globals.html">language documentation for global singletons</a> for more information.</p>
+<p>See also the <a href="https://releases.slint.dev/1.3.1/docs/slint/src/reference/globals.html">language documentation for global singletons</a> for more information.</p>
 <p><strong>Note:</strong> Only globals that are exported or re-exported from the main .slint file will
 be exposed in the API</p>
 </div></details><h2 id="required-methods" class="small-section-header">Required Methods<a href="#required-methods" class="anchor">§</a></h2><div class="methods"><details class="toggle method-toggle" open><summary><section id="tymethod.get" class="method"><h4 class="code-header">fn <a href="#tymethod.get" class="fn">get</a>(component: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;'a Component</a>) -&gt; Self</h4></section></summary><div class="docblock"><p>Returns a reference that’s tied to the life time of the provided component.</p>
