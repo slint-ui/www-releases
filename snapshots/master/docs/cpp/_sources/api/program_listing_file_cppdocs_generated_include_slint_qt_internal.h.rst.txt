@@ -138,6 +138,7 @@ Program Listing for File slint_qt_internal.h
        Property<bool> has_focus;
        private_api::CallbackHelper<void> toggled;
        Property<SharedString> text;
+       Property<bool> has_hover;
        Property<bool> checked;
        SlintTypeErasedWidgetPtr widget_ptr;
        Property<int32_t> animation_tracker;
@@ -245,6 +246,7 @@ Program Listing for File slint_qt_internal.h
    struct NativeComboBox {
        Property<bool> enabled;
        Property<bool> pressed;
+       Property<bool> has_hover;
        Property<bool> is_open;
        Property<SharedString> current_value;
        SlintTypeErasedWidgetPtr widget_ptr;
