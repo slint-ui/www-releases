@@ -1,4 +1,5 @@
 /releases/* /:splat
+/:version/docs/quickstart/* qs=:qs /:version/docs/:qs/:splat
 /:version/docs/slint/ /:version/docs/rust/slint/
 /1.0.2/docs/nodejs/* /1.0.2/docs/node/:splat
 /latest/* /1.5.1/:splat
@@ -13,4 +14,3 @@
 /docs/rust/sixtyfps_interpreter/ /docs/rust/slint
 /docs/rust/sixtyfps_build/ /docs/rust/slint
 /docs/slint/src/builtins/* /docs/slint/src/language/builtins/:splat
-/:version/docs/quickstart/* qs=:qs /:version/docs/:qs/:splat
