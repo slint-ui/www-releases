@@ -1,1 +1,2 @@
 /snapshots/* /:splat
+/:version/docs/quickstart/:language qs=:qs /:version/docs/:qs/:language
