@@ -347,6 +347,7 @@
 #include &quot;slint.h&quot;
 
 #include &lt;cassert&gt;
+#include &lt;cstdint&gt;
 #include &lt;utility&gt;
 
 struct xcb_connection_t;
@@ -720,6 +721,30 @@ public:
     }
 
 #    ifdef SLINT_FEATURE_EXPERIMENTAL
+    template&lt;typename Callback&gt;
+    requires requires(Callback callback)
+    {
+        callback(size_t(0), size_t(0), size_t(0), [&amp;callback](std::span&lt;Rgb565Pixel&gt;) {});
+    }
+    PhysicalRegion render_by_line(Callback process_line_callback) const
+    {
+        auto r = cbindgen_private::slint_software_renderer_render_by_line_rgb565(
+                inner,
+                [](void *process_line_callback_ptr, uintptr_t line, uintptr_t line_start,
+                   uintptr_t line_end, void (*render_fn)(const void *, uint16_t *, std::size_t),
+                   const void *render_fn_data) {
+                    (*reinterpret_cast&lt;Callback *&gt;(process_line_callback_ptr))(
+                            std::size_t(line), std::size_t(line_start), std::size_t(line_end),
+                            [render_fn, render_fn_data](std::span&lt;Rgb565Pixel&gt; line_span) {
+                                render_fn(render_fn_data,
+                                          reinterpret_cast&lt;uint16_t *&gt;(line_span.data()),
+                                          line_span.size());
+                            });
+                },
+                &amp;process_line_callback);
+        return PhysicalRegion { r };
+    }
+
     enum class RenderingRotation {
         NoRotation = 0,
         Rotate90 = 90,

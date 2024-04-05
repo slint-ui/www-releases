@@ -143,6 +143,17 @@ Program Listing for File slint_platform_internal.h
                                                  uintptr_t buffer_len,
                                                  uintptr_t pixel_stride);
    
+   IntRect slint_software_renderer_render_by_line_rgb565(SoftwareRendererOpaque r,
+                                                         void (*process_line_fn)(void*,
+                                                                                 uintptr_t,
+                                                                                 uintptr_t,
+                                                                                 uintptr_t,
+                                                                                 void(*)(const void*,
+                                                                                         uint16_t*,
+                                                                                         uintptr_t),
+                                                                                 const void*),
+                                                         void *user_data);
+   
    void slint_software_renderer_set_rendering_rotation(SoftwareRendererOpaque r, int32_t rotation);
    
    RendererPtr slint_software_renderer_handle(SoftwareRendererOpaque r);
