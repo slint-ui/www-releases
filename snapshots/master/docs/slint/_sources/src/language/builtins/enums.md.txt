@@ -21,6 +21,7 @@
 * **`progress-indicator`**: The element is a [`ProgressIndicator`](../widgets/progressindicator.md) or behaves like one.
 * **`text-input`**: The role for widget with editable text such as a
     [`LineEdit`](../widgets/lineedit.md) or a [`TextEdit`](../widgets/textedit.md)
+* **`switch`**: The element is a [`Switch`](../widgets/switch.md) or behaves like one.
 
 ## `ColorScheme`
 

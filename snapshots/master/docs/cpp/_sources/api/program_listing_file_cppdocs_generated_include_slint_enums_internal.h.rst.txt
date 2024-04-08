@@ -162,6 +162,7 @@ Program Listing for File slint_enums_internal.h
        Tree,
        ProgressIndicator,
        TextInput,
+       Switch,
    };
    enum class SortOrder {
        Unsorted,
