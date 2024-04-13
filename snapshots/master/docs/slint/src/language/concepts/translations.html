@@ -424,8 +424,8 @@ the translations API and activate run-time translation support.</p>
 <p>To do so, add this in your CMakeLists.txt</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">find_package</span><span class="p">(</span><span class="s">Intl</span><span class="p">)</span>
 <span class="nb">if</span><span class="p">(</span><span class="s">Intl_FOUND</span><span class="p">)</span>
-<span class="w">    </span><span class="nb">target_compile_definitions</span><span class="p">(</span><span class="s">gallery</span><span class="w"> </span><span class="s">PRIVATE</span><span class="w"> </span><span class="s">HAVE_GETTEXT</span><span class="w"> </span><span class="s">SRC_DIR=</span><span class="s2">&quot;${CMAKE_CURRENT_SOURCE_DIR}&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">gallery</span><span class="w"> </span><span class="s">PRIVATE</span><span class="w"> </span><span class="s">Intl::Intl</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">target_compile_definitions</span><span class="p">(</span><span class="s">my_application</span><span class="w"> </span><span class="s">PRIVATE</span><span class="w"> </span><span class="s">HAVE_GETTEXT</span><span class="w"> </span><span class="s">SRC_DIR=</span><span class="s2">&quot;${CMAKE_CURRENT_SOURCE_DIR}&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">my_application</span><span class="w"> </span><span class="s">PRIVATE</span><span class="w"> </span><span class="s">Intl::Intl</span><span class="p">)</span>
 <span class="nb">endif</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -446,7 +446,7 @@ the translations API and activate run-time translation support.</p>
 </pre></div>
 </div>
 <p>Suppose you’re using the above and the user’s locale is set to <code class="docutils literal notranslate"><span class="pre">fr</span></code>,
-Slint will look for <code class="docutils literal notranslate"><span class="pre">gallery.mo</span></code> in the <code class="docutils literal notranslate"><span class="pre">lang/fr/LC_MESSAGES/gallery.mo</span></code>.</p>
+Slint will look for <code class="docutils literal notranslate"><span class="pre">my_application.mo</span></code> in the <code class="docutils literal notranslate"><span class="pre">lang/fr/LC_MESSAGES/</span></code> directory.</p>
 </section>
 </section>
 <section id="previewing-translations-with-slint-viewer">

@@ -430,7 +430,18 @@ flags that your build environment also passes to the C++ compiler.</p>
 <p>The Skia build requires the use of Microsoft Visual Studio 2022 as compiler. Make sure to have the latest patches
 to the compiler installed.</p>
 </li>
+<li><p>Compilation error on macOS:</p></li>
 </ul>
+<p>The build fails and somewhere in the log output you see this message:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cargo</span><span class="p">:</span><span class="n">warning</span><span class="o">=</span><span class="n">xcrun</span><span class="p">:</span> <span class="n">error</span><span class="p">:</span> <span class="n">unable</span> <span class="n">to</span> <span class="n">lookup</span> <span class="n">item</span> <span class="s1">&#39;PlatformVersion&#39;</span> <span class="kn">from</span> <span class="nn">command</span> <span class="n">line</span> <span class="n">tools</span> <span class="n">installation</span>
+<span class="n">cargo</span><span class="p">:</span><span class="n">warning</span><span class="o">=</span><span class="n">xcrun</span><span class="p">:</span> <span class="n">error</span><span class="p">:</span> <span class="n">unable</span> <span class="n">to</span> <span class="n">lookup</span> <span class="n">item</span> <span class="s1">&#39;PlatformVersion&#39;</span> <span class="ow">in</span> <span class="n">SDK</span> <span class="s1">&#39;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk&#39;</span>
+</pre></div>
+</div>
+<p>This is due the build process calling <code class="docutils literal notranslate"><span class="pre">xcrun</span> <span class="pre">--show-sdk-platform-version</span></code> to determine the SDK version, and that’s unfortunately not
+supported by the Xcode command line tools. To solve this issue, run the following command once:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">xcode</span><span class="o">-</span><span class="n">select</span> <span class="o">-</span><span class="n">switch</span> <span class="o">/</span><span class="n">Applications</span><span class="o">/</span><span class="n">Xcode</span><span class="o">.</span><span class="n">app</span><span class="o">/</span><span class="n">Contents</span><span class="o">/</span><span class="n">Developer</span>
+</pre></div>
+</div>
 </section>
 </section>
 </section>
