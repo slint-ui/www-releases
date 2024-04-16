@@ -38,8 +38,6 @@ Program Listing for File slint_qt_internal.h
    namespace slint {
    namespace cbindgen_private {
    
-   struct IntArg;
-   
    struct NativeStyleMetrics {
        Property<LogicalLength> layout_spacing;
        Property<LogicalLength> layout_padding;
@@ -127,7 +125,7 @@ Program Listing for File slint_qt_internal.h
        Property<int32_t> minimum;
        Property<int32_t> maximum;
        CachedRenderingData cached_rendering_data;
-       private_api::CallbackHelper<IntArg> edited;
+       private_api::CallbackHelper<int> edited;
        Property<NativeSpinBoxData> data;
        SlintTypeErasedWidgetPtr widget_ptr;
        Property<int32_t> animation_tracker;

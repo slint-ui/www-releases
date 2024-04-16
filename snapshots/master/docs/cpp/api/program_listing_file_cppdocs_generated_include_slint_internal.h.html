@@ -618,6 +618,39 @@
 <span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">index</span><span class="p">;</span>
 <span class="p">};</span>
 
+<span class="k">union</span><span class="w"> </span><span class="nc">AccessibilityAction</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Tag</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Default</span><span class="p">,</span>
+<span class="w">        </span><span class="n">Decrement</span><span class="p">,</span>
+<span class="w">        </span><span class="n">Increment</span><span class="p">,</span>
+<span class="w">        </span><span class="n">ReplaceSelectedText</span><span class="p">,</span>
+<span class="w">        </span><span class="n">SetValue</span><span class="p">,</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">ReplaceSelectedText_Body</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Tag</span><span class="w"> </span><span class="n">tag</span><span class="p">;</span>
+<span class="w">        </span><span class="n">SharedString</span><span class="w"> </span><span class="n">_0</span><span class="p">;</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">SetValue_Body</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Tag</span><span class="w"> </span><span class="n">tag</span><span class="p">;</span>
+<span class="w">        </span><span class="n">SharedString</span><span class="w"> </span><span class="n">_0</span><span class="p">;</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Tag</span><span class="w"> </span><span class="n">tag</span><span class="p">;</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">    </span><span class="n">ReplaceSelectedText_Body</span><span class="w"> </span><span class="n">replace_selected_text</span><span class="p">;</span>
+<span class="w">    </span><span class="n">SetValue_Body</span><span class="w"> </span><span class="n">set_value</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">using</span><span class="w"> </span><span class="n">SupportedAccessibilityAction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">uint32_t</span><span class="p">;</span>
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">SupportedAccessibilityAction</span><span class="w"> </span><span class="n">SupportedAccessibilityAction_Default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">uint32_t</span><span class="p">)</span><span class="mi">1</span><span class="p">;</span>
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">SupportedAccessibilityAction</span><span class="w"> </span><span class="n">SupportedAccessibilityAction_Decrement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">uint32_t</span><span class="p">)(</span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">SupportedAccessibilityAction</span><span class="w"> </span><span class="n">SupportedAccessibilityAction_Increment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">uint32_t</span><span class="p">)(</span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">SupportedAccessibilityAction</span><span class="w"> </span><span class="n">SupportedAccessibilityAction_ReplaceSelectedText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">uint32_t</span><span class="p">)(</span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">SupportedAccessibilityAction</span><span class="w"> </span><span class="n">SupportedAccessibilityAction_SetValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">uint32_t</span><span class="p">)(</span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">4</span><span class="p">);</span>
+
 <span class="k">struct</span><span class="w"> </span><span class="nc">ItemTreeVTable</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">VisitChildrenResult</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">visit_children_item</span><span class="p">)(</span><span class="n">Pin</span><span class="o">&lt;</span><span class="n">VRef</span><span class="o">&lt;</span><span class="n">ItemTreeVTable</span><span class="o">&gt;&gt;</span><span class="p">,</span>
 <span class="w">                                               </span><span class="kt">intptr_t</span><span class="w"> </span><span class="n">index</span><span class="p">,</span>
@@ -642,6 +675,11 @@
 <span class="w">                                       </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">item_index</span><span class="p">,</span>
 <span class="w">                                       </span><span class="n">AccessibleStringProperty</span><span class="w"> </span><span class="n">what</span><span class="p">,</span>
 <span class="w">                                       </span><span class="n">SharedString</span><span class="w"> </span><span class="o">*</span><span class="n">result</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">accessibility_action</span><span class="p">)(</span><span class="n">Pin</span><span class="o">&lt;</span><span class="n">VRef</span><span class="o">&lt;</span><span class="n">ItemTreeVTable</span><span class="o">&gt;&gt;</span><span class="p">,</span>
+<span class="w">                                 </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">item_index</span><span class="p">,</span>
+<span class="w">                                 </span><span class="k">const</span><span class="w"> </span><span class="n">AccessibilityAction</span><span class="w"> </span><span class="o">*</span><span class="n">action</span><span class="p">);</span>
+<span class="w">    </span><span class="n">SupportedAccessibilityAction</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">supported_accessibility_actions</span><span class="p">)(</span><span class="n">Pin</span><span class="o">&lt;</span><span class="n">VRef</span><span class="o">&lt;</span><span class="n">ItemTreeVTable</span><span class="o">&gt;&gt;</span><span class="p">,</span>
+<span class="w">                                                                    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">item_index</span><span class="p">);</span>
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">window_adapter</span><span class="p">)(</span><span class="n">Pin</span><span class="o">&lt;</span><span class="n">VRef</span><span class="o">&lt;</span><span class="n">ItemTreeVTable</span><span class="o">&gt;&gt;</span><span class="p">,</span>
 <span class="w">                           </span><span class="kt">bool</span><span class="w"> </span><span class="n">do_create</span><span class="p">,</span>
 <span class="w">                           </span><span class="n">Option</span><span class="o">&lt;</span><span class="n">WindowAdapterRc</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">result</span><span class="p">);</span>

@@ -319,6 +319,8 @@
 <a href="#217" id="217">217</a>
 <a href="#218" id="218">218</a>
 <a href="#219" id="219">219</a>
+<a href="#220" id="220">220</a>
+<a href="#221" id="221">221</a>
 </pre></div><pre class="rust"><code><span class="comment">// Copyright © SixtyFPS GmbH &lt;info@slint.dev&gt;
 // SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Slint-Royalty-free-1.2 OR LicenseRef-Slint-commercial
 
@@ -500,7 +502,9 @@
     <span class="comment">// This one is empty when Qt is not available, which triggers a warning
     </span><span class="attr">#[allow(unused_imports)]
     </span><span class="kw">pub use </span>i_slint_backend_selector::native_widgets::<span class="kw-2">*</span>;
-    <span class="kw">pub use </span>i_slint_core::accessibility::AccessibleStringProperty;
+    <span class="kw">pub use </span>i_slint_core::accessibility::{
+        AccessibilityAction, AccessibleStringProperty, SupportedAccessibilityAction,
+    };
     <span class="kw">pub use </span>i_slint_core::animations::{animation_tick, EasingCurve};
     <span class="kw">pub use </span>i_slint_core::callbacks::Callback;
     <span class="kw">pub use </span>i_slint_core::graphics::<span class="kw-2">*</span>;

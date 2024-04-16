@@ -288,6 +288,39 @@ Program Listing for File slint_internal.h
        uint32_t index;
    };
    
+   union AccessibilityAction {
+       enum class Tag : uint32_t {
+           Default,
+           Decrement,
+           Increment,
+           ReplaceSelectedText,
+           SetValue,
+       };
+   
+       struct ReplaceSelectedText_Body {
+           Tag tag;
+           SharedString _0;
+       };
+   
+       struct SetValue_Body {
+           Tag tag;
+           SharedString _0;
+       };
+   
+       struct {
+           Tag tag;
+       };
+       ReplaceSelectedText_Body replace_selected_text;
+       SetValue_Body set_value;
+   };
+   
+   using SupportedAccessibilityAction = uint32_t;
+   constexpr static const SupportedAccessibilityAction SupportedAccessibilityAction_Default = (uint32_t)1;
+   constexpr static const SupportedAccessibilityAction SupportedAccessibilityAction_Decrement = (uint32_t)(1 << 1);
+   constexpr static const SupportedAccessibilityAction SupportedAccessibilityAction_Increment = (uint32_t)(1 << 2);
+   constexpr static const SupportedAccessibilityAction SupportedAccessibilityAction_ReplaceSelectedText = (uint32_t)(1 << 3);
+   constexpr static const SupportedAccessibilityAction SupportedAccessibilityAction_SetValue = (uint32_t)(1 << 4);
+   
    struct ItemTreeVTable {
        VisitChildrenResult (*visit_children_item)(Pin<VRef<ItemTreeVTable>>,
                                                   intptr_t index,
@@ -312,6 +345,11 @@ Program Listing for File slint_internal.h
                                           uint32_t item_index,
                                           AccessibleStringProperty what,
                                           SharedString *result);
+       void (*accessibility_action)(Pin<VRef<ItemTreeVTable>>,
+                                    uint32_t item_index,
+                                    const AccessibilityAction *action);
+       SupportedAccessibilityAction (*supported_accessibility_actions)(Pin<VRef<ItemTreeVTable>>,
+                                                                       uint32_t item_index);
        void (*window_adapter)(Pin<VRef<ItemTreeVTable>>,
                               bool do_create,
                               Option<WindowAdapterRc> *result);

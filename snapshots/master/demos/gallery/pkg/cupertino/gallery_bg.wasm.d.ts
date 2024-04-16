@@ -12,7 +12,7 @@ export function __wbindgen_realloc(a: number, b: number, c: number, d: number): 
 export const __wbindgen_export_2: WebAssembly.Table;
 export function wasm_bindgen__convert__closures__invoke1_mut__h2e0540aaf007a2a5(a: number, b: number, c: number): void;
 export function wasm_bindgen__convert__closures__invoke2_mut__h2767ed493b4e3251(a: number, b: number, c: number, d: number): void;
-export function wasm_bindgen__convert__closures__invoke1__h1f616703752be0ef(a: number, b: number, c: number): void;
-export function wasm_bindgen__convert__closures__invoke0_mut__h16087c8a02b32cb3(a: number, b: number): void;
+export function wasm_bindgen__convert__closures__invoke1__h1c01d2c72b73792f(a: number, b: number, c: number): void;
+export function wasm_bindgen__convert__closures__invoke0_mut__h8780d27d12dfa2e1(a: number, b: number): void;
 export function __wbindgen_exn_store(a: number): void;
 export function __wbindgen_start(): void;

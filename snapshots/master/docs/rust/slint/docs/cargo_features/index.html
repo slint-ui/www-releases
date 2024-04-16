@@ -104,7 +104,7 @@
 <p>Use the following feature flags in your Cargo.toml to enable additional features.</p>
 <ul>
 <li>
-<p><strong><code>compat-1-6</code></strong> —  Mandatory feature:
+<p><strong><code>compat-1-2</code></strong> <em>(enabled by default)</em> —  Mandatory feature:
 This feature is required to keep the compatibility with Slint 1.2
 Newer patch version may put current functionality behind a new feature
 that would be enabled by default only if this feature was added.
@@ -151,10 +151,6 @@ APIs to support screen readers and other assistive technologies.</p>
 <a href="../../struct.Window.html#method.window_handle" title="method slint::Window::window_handle"><code>Window::window_handle()</code></a> function that returns a struct that implements
 <a href="https://docs.rs/raw_window_handle/0.6/raw_window_handle/borrowed/trait.HasWindowHandle.html" title="trait raw_window_handle::borrowed::HasWindowHandle">HasWindowHandle</a> and
 <a href="https://docs.rs/raw_window_handle/0.6/raw_window_handle/borrowed/trait.HasDisplayHandle.html" title="trait raw_window_handle::borrowed::HasDisplayHandle">HasDisplayHandle</a> implementation.</p>
-</li>
-<li>
-<p><strong><code>image-default-formats</code></strong> <em>(enabled by default)</em> —  Enable all formats from the <code>image</code> crate. To increase what is supported from <a href="../../struct.Image.html#method.load_from_path" title="associated function slint::Image::load_from_path"><code>Image::load_from_path</code></a>
-or in <code>@image-url</code>.</p>
 </li>
 </ul>
 <h4 id="backends"><a class="doc-anchor" href="#backends">§</a>Backends</h4>
