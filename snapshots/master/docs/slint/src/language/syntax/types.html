@@ -435,7 +435,7 @@ colors from the <code class="docutils literal notranslate"><span class="pre">Col
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">blue</span></code></strong></p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">alpha</span></code></strong></p></li>
 </ul>
-<p>All properties are in the range 0-255.</p>
+<p>These properties are in the range 0-255.</p>
 </section>
 <section id="methods">
 <h3>Methods<a class="headerlink" href="#methods" title="Permalink to this heading">#</a></h3>
@@ -452,8 +452,10 @@ For example if the factor is .5 (or for example 50%) the returned color is 50% d
 increase the brightness.</p>
 </li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">mix(other:</span> <span class="pre">brush,</span> <span class="pre">factor:</span> <span class="pre">float)</span> <span class="pre">-&gt;</span> <span class="pre">brush</span></code></strong></p>
-<p>Returns a new color that is a mix of this color and <code class="docutils literal notranslate"><span class="pre">other</span></code>, with a proportion
-factor given by \a factor (which will be clamped to be between <code class="docutils literal notranslate"><span class="pre">0.0</span></code> and <code class="docutils literal notranslate"><span class="pre">1.0</span></code>).</p>
+<p>Returns a new color that is a mix of this color and <code class="docutils literal notranslate"><span class="pre">other</span></code>. The specified factor is
+clamped to be between <code class="docutils literal notranslate"><span class="pre">0.0</span></code> and <code class="docutils literal notranslate"><span class="pre">1.0</span></code> and then applied to this color, while <code class="docutils literal notranslate"><span class="pre">1.0</span> <span class="pre">-</span> <span class="pre">factor</span></code>
+is applied to <code class="docutils literal notranslate"><span class="pre">other</span></code>. For example <code class="docutils literal notranslate"><span class="pre">red.mix(green,</span> <span class="pre">70%)</span></code> will have a stronger tone of red, while
+<code class="docutils literal notranslate"><span class="pre">red.mix(green,</span> <span class="pre">30%)</span></code> will have a stronger tone of green.</p>
 </li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">transparentize(factor:</span> <span class="pre">float)</span> <span class="pre">-&gt;</span> <span class="pre">brush</span></code></strong></p>
 <p>Returns a new color with the opacity decreased by <code class="docutils literal notranslate"><span class="pre">factor</span></code>.
@@ -461,6 +463,10 @@ The transparency is obtained by multiplying the alpha channel by <code class="do
 </li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">with_alpha(alpha:</span> <span class="pre">float)</span> <span class="pre">-&gt;</span> <span class="pre">brush</span></code></strong></p>
 <p>Returns a new color with the alpha value set to <code class="docutils literal notranslate"><span class="pre">alpha</span></code> (between 0 and 1)</p>
+</li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">to-hsv()-&gt;{hue:</span> <span class="pre">float,</span> <span class="pre">saturation:</span> <span class="pre">float,</span> <span class="pre">value:</span> <span class="pre">float,</span> <span class="pre">alpha:</span> <span class="pre">float}</span></code></strong></p>
+<p>Converts this color to the HSV color space and returns a struct with the <code class="docutils literal notranslate"><span class="pre">hue</span></code>, <code class="docutils literal notranslate"><span class="pre">saturation</span></code>, <code class="docutils literal notranslate"><span class="pre">value</span></code>,
+and <code class="docutils literal notranslate"><span class="pre">alpha</span></code> fields. <code class="docutils literal notranslate"><span class="pre">hue</span></code> is between 0 and 360 while <code class="docutils literal notranslate"><span class="pre">saturation</span></code>, <code class="docutils literal notranslate"><span class="pre">value</span></code>, and <code class="docutils literal notranslate"><span class="pre">alpha</span></code> are between 0 and 1.</p>
 </li>
 </ul>
 </section>

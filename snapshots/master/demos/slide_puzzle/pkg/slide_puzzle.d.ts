@@ -3,6 +3,27 @@
 /**
 */
 export function main(): void;
+/**
+* Chroma subsampling format
+*/
+export enum ChromaSampling {
+/**
+* Both vertically and horizontally subsampled.
+*/
+  Cs420 = 0,
+/**
+* Horizontally subsampled.
+*/
+  Cs422 = 1,
+/**
+* Not subsampled.
+*/
+  Cs444 = 2,
+/**
+* Monochrome.
+*/
+  Cs400 = 3,
+}
 
 export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembly.Module;
 
@@ -17,9 +38,9 @@ export interface InitOutput {
   readonly __wbindgen_malloc: (a: number, b: number) => number;
   readonly __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;
   readonly __wbindgen_export_2: WebAssembly.Table;
-  readonly wasm_bindgen__convert__closures__invoke1_mut__h67d56c5a1b0f3d53: (a: number, b: number, c: number) => void;
+  readonly wasm_bindgen__convert__closures__invoke1_mut__h058453d439ec2f5a: (a: number, b: number, c: number) => void;
   readonly wasm_bindgen__convert__closures__invoke2_mut__h2767ed493b4e3251: (a: number, b: number, c: number, d: number) => void;
-  readonly wasm_bindgen__convert__closures__invoke1__h58ce625409ba5650: (a: number, b: number, c: number) => void;
+  readonly wasm_bindgen__convert__closures__invoke1__h37d93f2c91214820: (a: number, b: number, c: number) => void;
   readonly wasm_bindgen__convert__closures__invoke0_mut__h0fa3b1440d8ffdfa: (a: number, b: number) => void;
   readonly __wbindgen_exn_store: (a: number) => void;
   readonly __wbindgen_start: () => void;

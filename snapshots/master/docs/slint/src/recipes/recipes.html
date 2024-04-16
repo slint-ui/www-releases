@@ -1103,7 +1103,7 @@ export component Example inherits Window {
 width is smaller than the given break-point. When clicking the Button, the
 SideBar expands again. Use the blue Splitter to resize the container and
 test the responsive behavior.</p>
-<div class="highlight-slint,no-auto-preview notranslate"><div class="highlight"><pre><span></span>import { Button, StyleMetrics } from &quot;std-widgets.slint&quot;;
+<div class="highlight-slint,no-auto-preview notranslate"><div class="highlight"><pre><span></span>import { Button, Palette } from &quot;std-widgets.slint&quot;;
 
 export component SideBar inherits Rectangle {
     private property &lt;bool&gt; collapsed: root.reference-width &lt; root.break-point;
@@ -1123,7 +1123,7 @@ export component SideBar inherits Rectangle {
         private property &lt;bool&gt; expaned;
 
         width: parent.width;
-        background: StyleMetrics.window-background.darker(0.2);
+        background: Palette.background.darker(0.2);
 
         VerticalLayout {
             padding: 2px;

@@ -11,7 +11,7 @@ Program Listing for File slint_color.h
 .. code-block:: cpp
 
    // Copyright © SixtyFPS GmbH <info@slint.dev>
-   // SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Slint-Royalty-free-1.1 OR LicenseRef-Slint-commercial
+   // SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Slint-Royalty-free-1.2 OR LicenseRef-Slint-commercial
    
    #pragma once
    
@@ -37,6 +37,14 @@ Program Listing for File slint_color.h
        T blue;
    
        RgbaColor(const Color &col);
+   };
+   
+   struct HsvaColor
+   {
+       float hue;
+       float saturation;
+       float value;
+       float alpha;
    };
    
    class Color
@@ -105,17 +113,32 @@ Program Listing for File slint_color.h
            return Color::from_argb_float(1.0, red, green, blue);
        }
    
-       inline RgbaColor<uint8_t> to_argb_uint() const;
+       [[nodiscard]] inline RgbaColor<uint8_t> to_argb_uint() const;
    
-       inline RgbaColor<float> to_argb_float() const;
+       [[nodiscard]] inline RgbaColor<float> to_argb_float() const;
    
-       uint8_t red() const { return inner.red; }
+       [[nodiscard]] static Color from_hsva(float h, float s, float v, float a)
+       {
+           Color ret;
+           ret.inner = cbindgen_private::types::slint_color_from_hsva(h, s, v, a);
+           return ret;
+       }
    
-       uint8_t green() const { return inner.green; }
+       [[nodiscard]] HsvaColor to_hsva() const
+       {
+           HsvaColor hsv {};
+           cbindgen_private::types::slint_color_to_hsva(&inner, &hsv.hue, &hsv.saturation, &hsv.value,
+                                                        &hsv.alpha);
+           return hsv;
+       }
    
-       uint8_t blue() const { return inner.blue; }
+       [[nodiscard]] uint8_t red() const { return inner.red; }
    
-       uint8_t alpha() const { return inner.alpha; }
+       [[nodiscard]] uint8_t green() const { return inner.green; }
+   
+       [[nodiscard]] uint8_t blue() const { return inner.blue; }
+   
+       [[nodiscard]] uint8_t alpha() const { return inner.alpha; }
    
        [[nodiscard]] inline Color brighter(float factor) const;
        [[nodiscard]] inline Color darker(float factor) const;

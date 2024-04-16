@@ -177,6 +177,7 @@
 <li class="toctree-l2"><a class="reference internal" href="namespace_slint__interpreter.html">Namespace slint::interpreter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="namespace_slint__platform.html">Namespace slint::platform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="namespace_slint__platform__key_codes.html">Namespace slint::platform::key_codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="structslint_1_1HsvaColor.html">Struct HsvaColor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1Image.html">Struct Image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1interpreter_1_1Diagnostic.html">Struct Diagnostic</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1interpreter_1_1PropertyDescriptor.html">Struct PropertyDescriptor</a></li>
@@ -386,6 +387,17 @@
 </dd></dl>
 
 <dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5slint5Color7to_hsvaEv">
+<span id="_CPPv3NK5slint5Color7to_hsvaEv"></span><span id="_CPPv2NK5slint5Color7to_hsvaEv"></span><span id="slint::Color::to_hsvaC"></span><span class="target" id="classslint_1_1Color_1a8759ab0b232856bbdf57a52d287412ea"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><a class="reference internal" href="structslint_1_1HsvaColor.html#_CPPv4N5slint9HsvaColorE" title="slint::HsvaColor"><span class="n"><span class="pre">HsvaColor</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">to_hsva</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5slint5Color7to_hsvaEv" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Convert this color to the HSV color space. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>a new <a class="reference internal" href="structslint_1_1HsvaColor.html#structslint_1_1HsvaColor"><span class="std std-ref">HsvaColor</span></a>. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4NK5slint5Color3redEv">
 <span id="_CPPv3NK5slint5Color3redEv"></span><span id="_CPPv2NK5slint5Color3redEv"></span><span id="slint::Color::redC"></span><span class="target" id="classslint_1_1Color_1a7c1dbc3c0c9af7cf570e5f8f840ebec6"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">red</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5slint5Color3redEv" title="Permalink to this definition">#</a><br /></dt>
 <dd><p>Returns the red channel of the color as u8 in the range 0..255. </p>
@@ -431,7 +443,7 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4NK5slint5Color3mixERK5Colorf">
 <span id="_CPPv3NK5slint5Color3mixERK5Colorf"></span><span id="_CPPv2NK5slint5Color3mixERK5Colorf"></span><span id="slint::Color::mix__ColorCR.floatC"></span><span class="target" id="classslint_1_1Color_1ac008506da8640dfabbe9d6b155d0d6ee"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5slint5ColorE" title="slint::Color"><span class="n"><span class="pre">Color</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mix</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5slint5ColorE" title="slint::Color"><span class="n"><span class="pre">Color</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">other</span></span>, <span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">factor</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5slint5Color3mixERK5Colorf" title="Permalink to this definition">#</a><br /></dt>
-<dd><p>Returns a new color that is a mix of <em>this</em> and <em>other</em>, with a proportion factor given by <em>factor</em> (which will be clamped to be between <code class="docutils literal notranslate"><span class="pre">0.0</span></code> and <code class="docutils literal notranslate"><span class="pre">1.0</span></code>). </p>
+<dd><p>Returns a new color that is a mix of <em>this</em> color and <em>other</em>. The specified <em>factor</em> is clamped to be between <code class="docutils literal notranslate"><span class="pre">0.0</span></code> and <code class="docutils literal notranslate"><span class="pre">1.0</span></code> and then applied to <em>this</em> color, while <code class="docutils literal notranslate"><span class="pre">1.0</span> <span class="pre">-</span> <span class="pre">factor</span></code> is applied to <em>other</em>. </p>
 </dd></dl>
 
 <dl class="cpp function">
@@ -471,6 +483,12 @@
 <dt class="sig sig-object cpp" id="_CPPv4N5slint5Color14from_rgb_floatEfff">
 <span id="_CPPv3N5slint5Color14from_rgb_floatEfff"></span><span id="_CPPv2N5slint5Color14from_rgb_floatEfff"></span><span id="slint::Color::from_rgb_float__float.float.float"></span><span class="target" id="classslint_1_1Color_1a598e9ca780b36b7155f5027640f874f0"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5slint5ColorE" title="slint::Color"><span class="n"><span class="pre">Color</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">from_rgb_float</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">red</span></span>, <span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">green</span></span>, <span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">blue</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5slint5Color14from_rgb_floatEfff" title="Permalink to this definition">#</a><br /></dt>
 <dd><p>Construct a color from the red, green and blue color channel parameters. The alpha channel will have the value 255. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5slint5Color9from_hsvaEffff">
+<span id="_CPPv3N5slint5Color9from_hsvaEffff"></span><span id="_CPPv2N5slint5Color9from_hsvaEffff"></span><span id="slint::Color::from_hsva__float.float.float.float"></span><span class="target" id="classslint_1_1Color_1a83c20a225fc2ec2c348c4acc9b60c373"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5slint5ColorE" title="slint::Color"><span class="n"><span class="pre">Color</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">from_hsva</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">h</span></span>, <span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">s</span></span>, <span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">v</span></span>, <span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">a</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5slint5Color9from_hsvaEffff" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Construct a color from the HSV color space components. The hue is expected to be in the range between 0 and 360, and the other parameters between 0 and 1. </p>
 </dd></dl>
 
 </div>

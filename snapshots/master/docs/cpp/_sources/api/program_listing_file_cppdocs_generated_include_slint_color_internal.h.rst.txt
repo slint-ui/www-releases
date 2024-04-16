@@ -57,6 +57,10 @@ Program Listing for File slint_color_internal.h
    
    void slint_color_with_alpha(const Color *col, float alpha, Color *out);
    
+   void slint_color_to_hsva(const Color *col, float *h, float *s, float *v, float *a);
+   
+   Color slint_color_from_hsva(float h, float s, float v, float a);
+   
    } // extern "C"
    
    } // namespace types

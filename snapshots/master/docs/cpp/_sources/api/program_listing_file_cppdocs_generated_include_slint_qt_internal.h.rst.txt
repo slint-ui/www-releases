@@ -245,6 +245,7 @@ Program Listing for File slint_qt_internal.h
    
    struct NativeComboBox {
        Property<bool> enabled;
+       Property<bool> has_focus;
        Property<bool> pressed;
        Property<bool> has_hover;
        Property<bool> is_open;
