@@ -1162,6 +1162,13 @@ Program Listing for File slint.h
    
    } // namespace private_api
    
+   #ifdef SLINT_FEATURE_GETTEXT
+   inline void update_all_translations()
+   {
+       cbindgen_private::slint_translations_mark_dirty();
+   }
+   #endif
+   
    #if !defined(DOXYGEN)
    cbindgen_private::Flickable::Flickable()
    {

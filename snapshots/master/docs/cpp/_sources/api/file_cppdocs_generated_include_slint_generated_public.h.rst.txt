@@ -83,6 +83,8 @@ Defines
 -------
 
 
+- :ref:`exhale_define_slint__generated__public_8h_1a24b3d3a9cd474a66ac86ee4ee9315ce9`
+
 - :ref:`exhale_define_slint__generated__public_8h_1a45557b46bf1159e97c4ace494d67a53f`
 
 - :ref:`exhale_define_slint__generated__public_8h_1a84ab6227b0f7c83d1d55702c8c406ee0`

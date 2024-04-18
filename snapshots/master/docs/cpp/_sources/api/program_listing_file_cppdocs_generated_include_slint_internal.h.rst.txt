@@ -1017,6 +1017,8 @@ Program Listing for File slint_internal.h
                         int32_t n,
                         const SharedString *plural);
    
+   void slint_translations_mark_dirty();
+   
    void slint_windowrc_drop(WindowAdapterRcOpaque *handle);
    
    void slint_windowrc_clone(const WindowAdapterRcOpaque *source, WindowAdapterRcOpaque *target);

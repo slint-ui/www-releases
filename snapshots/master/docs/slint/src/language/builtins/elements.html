@@ -347,7 +347,8 @@ were first drawn into an intermediate layer, and then the whole layer is rendere
 </section>
 <section id="accessibility">
 <h3>Accessibility<a class="headerlink" href="#accessibility" title="Permalink to this heading">#</a></h3>
-<p>Use the following <code class="docutils literal notranslate"><span class="pre">accessible-</span></code> properties to make your items interact well with software like screen readers, braille terminals and other software to make your application accessible.</p>
+<p>Use the following <code class="docutils literal notranslate"><span class="pre">accessible-</span></code> properties to make your items interact well with software like screen readers, braille terminals and other software to make your application accessible.
+<code class="docutils literal notranslate"><span class="pre">accessible-role</span></code> must be set in order to be able to set any other accessible property or callback.</p>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">accessible-role</span></code></strong> (<em>in</em> <em>enum <a class="reference internal" href="enums.html#accessiblerole"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">AccessibleRole</span></code></span></a></em>): The role of the element. This property is mandatory to be able to use any other accessible properties. It should be set to a constant value. (default value: <code class="docutils literal notranslate"><span class="pre">none</span></code> for most elements, but <code class="docutils literal notranslate"><span class="pre">text</span></code> for the Text element)</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">accessible-checkable</span></code></strong> (<em>in</em> <em>bool</em>): Whether the element is can be checked or not.</p></li>
@@ -358,6 +359,13 @@ were first drawn into an intermediate layer, and then the whole layer is rendere
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">accessible-value-minimum</span></code></strong> (<em>in</em> <em>float</em>): The minimum value of the item.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">accessible-value-step</span></code></strong> (<em>in</em> <em>float</em>) The smallest increment or decrement by which the current value can change. This corresponds to the step by which a handle on a slider can be dragged.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">accessible-value</span></code></strong> (<em>in</em> <em>string</em>): The current value of the item.</p></li>
+</ul>
+<p>You can also use the following callbacks that are going to be called by the accessibility framework:</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">accessible-action-default()</span></code></strong>: Invoked when the default action for this widget is requested (eg: pressed for a button).</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">accessible-action-set-value(string)</span></code></strong>: Invoked when the user wants to change the accessible value.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">accessible-action-increment()</span></code></strong>: Invoked when the user requests to increment the value.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">accessible-action-decrement()</span></code></strong>: Invoked when the user requests to decrement the value.</p></li>
 </ul>
 </section>
 <section id="drop-shadows">

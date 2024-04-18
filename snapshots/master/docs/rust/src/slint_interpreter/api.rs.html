@@ -2828,7 +2828,7 @@
     /// ## Examples
     ///
     /// ```
-    /// # i_slint_backend_testing::init();
+    /// # i_slint_backend_testing::init_no_event_loop();
     /// use slint_interpreter::{ComponentDefinition, ComponentCompiler, Value, SharedString};
     /// let code = r#"
     ///     export component MyWin inherits Window {
@@ -2895,7 +2895,7 @@
     /// ## Examples
     ///
     /// ```
-    /// # i_slint_backend_testing::init();
+    /// # i_slint_backend_testing::init_no_event_loop();
     /// use slint_interpreter::{ComponentDefinition, ComponentCompiler, Value, SharedString, ComponentHandle};
     /// use core::convert::TryInto;
     /// let code = r#"
@@ -2951,7 +2951,7 @@
     /// ## Examples
     ///
     /// ```
-    /// # i_slint_backend_testing::init();
+    /// # i_slint_backend_testing::init_no_event_loop();
     /// use slint_interpreter::{ComponentDefinition, ComponentCompiler, Value, SharedString};
     /// let code = r#"
     ///     global Glob {
@@ -3006,7 +3006,7 @@
     /// ## Examples
     ///
     /// ```
-    /// # i_slint_backend_testing::init();
+    /// # i_slint_backend_testing::init_no_event_loop();
     /// use slint_interpreter::{ComponentDefinition, ComponentCompiler, Value, SharedString};
     /// use core::convert::TryInto;
     /// let code = r#"
@@ -3278,7 +3278,7 @@
 
 <span class="attr">#[test]
 </span><span class="kw">fn </span>component_definition_properties() {
-    i_slint_backend_testing::init();
+    i_slint_backend_testing::init_no_event_loop();
     <span class="kw">let </span><span class="kw-2">mut </span>compiler = ComponentCompiler::default();
     compiler.set_style(<span class="string">"fluent"</span>.into());
     <span class="kw">let </span>comp_def = spin_on::spin_on(
@@ -3326,7 +3326,7 @@
 
 <span class="attr">#[test]
 </span><span class="kw">fn </span>component_definition_properties2() {
-    i_slint_backend_testing::init();
+    i_slint_backend_testing::init_no_event_loop();
     <span class="kw">let </span><span class="kw-2">mut </span>compiler = ComponentCompiler::default();
     compiler.set_style(<span class="string">"fluent"</span>.into());
     <span class="kw">let </span>comp_def = spin_on::spin_on(
@@ -3377,7 +3377,7 @@
 
 <span class="attr">#[test]
 </span><span class="kw">fn </span>globals() {
-    i_slint_backend_testing::init();
+    i_slint_backend_testing::init_no_event_loop();
     <span class="kw">let </span><span class="kw-2">mut </span>compiler = ComponentCompiler::default();
     compiler.set_style(<span class="string">"fluent"</span>.into());
     <span class="kw">let </span>definition = spin_on::spin_on(
@@ -3495,7 +3495,7 @@
 
 <span class="attr">#[test]
 </span><span class="kw">fn </span>call_functions() {
-    i_slint_backend_testing::init();
+    i_slint_backend_testing::init_no_event_loop();
     <span class="kw">let </span><span class="kw-2">mut </span>compiler = ComponentCompiler::default();
     compiler.set_style(<span class="string">"fluent"</span>.into());
     <span class="kw">let </span>definition = spin_on::spin_on(
@@ -3541,7 +3541,7 @@
 
 <span class="attr">#[test]
 </span><span class="kw">fn </span>component_definition_struct_properties() {
-    i_slint_backend_testing::init();
+    i_slint_backend_testing::init_no_event_loop();
     <span class="kw">let </span><span class="kw-2">mut </span>compiler = ComponentCompiler::default();
     compiler.set_style(<span class="string">"fluent"</span>.into());
     <span class="kw">let </span>comp_def = spin_on::spin_on(
@@ -3592,7 +3592,7 @@
 <span class="attr">#[test]
 </span><span class="kw">fn </span>component_definition_model_properties() {
     <span class="kw">use </span>i_slint_core::model::<span class="kw-2">*</span>;
-    i_slint_backend_testing::init();
+    i_slint_backend_testing::init_no_event_loop();
     <span class="kw">let </span><span class="kw-2">mut </span>compiler = ComponentCompiler::default();
     compiler.set_style(<span class="string">"fluent"</span>.into());
     <span class="kw">let </span>comp_def = spin_on::spin_on(compiler.build_from_source(
