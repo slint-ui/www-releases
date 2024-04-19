@@ -1,6 +1,5 @@
 /releases/* /:splat
 /:version/docs/quickstart/:language qs=:qs /:version/docs/:qs/:language
-/:version/docs/slint/ /:version/docs/rust/slint/
 /1.0.2/docs/nodejs/* /1.0.2/docs/node/:splat
 /latest/* /1.5.1/:splat
 /demos/* /1.5.1/demos/:splat
