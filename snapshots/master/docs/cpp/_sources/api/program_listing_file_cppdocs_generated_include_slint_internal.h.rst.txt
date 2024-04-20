@@ -341,7 +341,7 @@ Program Listing for File slint_internal.h
        LayoutInfo (*layout_info)(Pin<VRef<ItemTreeVTable>>, Orientation);
        LogicalRect (*item_geometry)(Pin<VRef<ItemTreeVTable>>, uint32_t item_index);
        AccessibleRole (*accessible_role)(Pin<VRef<ItemTreeVTable>>, uint32_t item_index);
-       void (*accessible_string_property)(Pin<VRef<ItemTreeVTable>>,
+       bool (*accessible_string_property)(Pin<VRef<ItemTreeVTable>>,
                                           uint32_t item_index,
                                           AccessibleStringProperty what,
                                           SharedString *result);
