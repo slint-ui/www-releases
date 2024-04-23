@@ -1,2 +1,2 @@
 /snapshots/* /:splat
-/versions.txt https://releases.slint.dev/versions.txt
+/versions.txt https://releases.slint.dev/versions.txt 200!
