@@ -33,6 +33,7 @@ Files
 - :ref:`file_cppdocs_generated_include_slint_qt_internal.h`
 - :ref:`file_cppdocs_generated_include_slint_sharedvector_internal.h`
 - :ref:`file_cppdocs_generated_include_slint_string_internal.h`
+- :ref:`file_cppdocs_generated_include_slint_testing_internal.h`
 - :ref:`file_cppdocs_generated_include_slint_timer_internal.h`
 
 

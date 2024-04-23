@@ -1,0 +1,14 @@
+.. _exhale_function_slint-interpreter_8h_1ae4591f864ace8bafb89d62efceb08cb2:
+
+Function slint::testing::send_keyboard_string_sequence
+======================================================
+
+- Defined in :ref:`file__home_runner_work_slint_slint_api_cpp_include_slint-interpreter.h`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: slint::testing::send_keyboard_string_sequence(const slint::interpreter::ComponentInstance *, const slint::SharedString&)
+   :project: Slint

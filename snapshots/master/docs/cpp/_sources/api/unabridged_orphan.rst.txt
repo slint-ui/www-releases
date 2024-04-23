@@ -50,6 +50,11 @@ Files
 .. toctree::
    :maxdepth: 5
 
+   file__home_runner_work_slint_slint_api_cpp_include_slint-testing.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file__home_runner_work_slint_slint_api_cpp_include_slint.h.rst
 
 .. toctree::
@@ -196,6 +201,16 @@ Files
    :maxdepth: 5
 
    file_cppdocs_generated_include_slint_string_internal.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_cppdocs_generated_include_slint_testing_internal.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file__home_runner_work_slint_slint_api_cpp_include_slint_tests_helpers.h.rst
 
 .. toctree::
    :maxdepth: 5

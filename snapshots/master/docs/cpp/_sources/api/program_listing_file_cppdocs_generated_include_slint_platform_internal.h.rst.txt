@@ -80,8 +80,6 @@ Program Listing for File slint_platform_internal.h
    
    void slint_register_bitmap_font(const WindowAdapterRcOpaque *win, const BitmapFont *font_data);
    
-   void slint_testing_init_backend();
-   
    void slint_window_properties_get_title(const WindowProperties *wp, SharedString *out);
    
    void slint_window_properties_get_background(const WindowProperties *wp, Brush *out);

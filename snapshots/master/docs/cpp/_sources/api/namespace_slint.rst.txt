@@ -27,6 +27,8 @@ Namespaces
 
 - :ref:`namespace_slint__platform`
 
+- :ref:`namespace_slint__testing`
+
 
 Classes
 -------

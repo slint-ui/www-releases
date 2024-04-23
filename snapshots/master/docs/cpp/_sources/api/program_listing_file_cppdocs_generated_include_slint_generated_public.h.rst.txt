@@ -30,6 +30,7 @@ Program Listing for File slint_generated_public.h
    #define SLINT_FEATURE_RENDERER_SOFTWARE
    #define SLINT_FEATURE_RENDERER_SKIA
    #define SLINT_FEATURE_GETTEXT
+   #define SLINT_FEATURE_TESTING
    
    
    
