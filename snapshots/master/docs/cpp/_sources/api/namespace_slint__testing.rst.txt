@@ -18,7 +18,3 @@ Functions
 
 
 - :ref:`exhale_function_slint-testing_8h_1afcc3fa8289264ede59668796cf0341b4`
-
-- :ref:`exhale_function_slint-interpreter_8h_1a1c18f5503ae0c7ff73b5b6e29de52272`
-
-- :ref:`exhale_function_slint-interpreter_8h_1ae4591f864ace8bafb89d62efceb08cb2`

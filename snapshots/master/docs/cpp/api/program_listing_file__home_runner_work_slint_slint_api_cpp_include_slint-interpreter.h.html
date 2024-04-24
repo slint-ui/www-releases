@@ -241,8 +241,6 @@
 <li class="toctree-l2"><a class="reference internal" href="function_namespaceslint_1a14298dd1f4c7ab8c553e047e3704d6d0.html">Function slint::quit_event_loop</a></li>
 <li class="toctree-l2"><a class="reference internal" href="function_namespaceslint_1ad900fe1e670815101871442dc17aa74b.html">Function slint::run_event_loop</a></li>
 <li class="toctree-l2"><a class="reference internal" href="function_slint-testing_8h_1afcc3fa8289264ede59668796cf0341b4.html">Function slint::testing::init</a></li>
-<li class="toctree-l2"><a class="reference internal" href="function_slint-interpreter_8h_1a1c18f5503ae0c7ff73b5b6e29de52272.html">Function slint::testing::send_keyboard_char</a></li>
-<li class="toctree-l2"><a class="reference internal" href="function_slint-interpreter_8h_1ae4591f864ace8bafb89d62efceb08cb2.html">Function slint::testing::send_keyboard_string_sequence</a></li>
 <li class="toctree-l2"><a class="reference internal" href="function_namespaceslint_1aefd8612f7c509003040eddfaf7a38505.html">Function slint::update_all_translations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="variable_namespaceslint_1_1platform_1_1key__codes_1a569d5973c36441dd8fb3c88a61c48b7d.html">Variable slint::platform::key_codes::Alt</a></li>
 <li class="toctree-l2"><a class="reference internal" href="variable_namespaceslint_1_1platform_1_1key__codes_1a4c83e50d2ba5a7d2f9399053f84e064f.html">Variable slint::platform::key_codes::AltGr</a></li>
@@ -1107,20 +1105,7 @@
 <span class="p">};</span>
 <span class="p">}</span>
 
-<span class="k">namespace</span><span class="w"> </span><span class="nn">slint</span><span class="o">::</span><span class="nn">testing</span><span class="w"> </span><span class="p">{</span>
-
-<span class="k">using</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">KeyboardModifiers</span><span class="p">;</span>
-
-<span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">send_keyboard_char</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">slint</span><span class="o">::</span><span class="n">interpreter</span><span class="o">::</span><span class="n">ComponentInstance</span><span class="w"> </span><span class="o">*</span><span class="n">component</span><span class="p">,</span>
-<span class="w">                               </span><span class="k">const</span><span class="w"> </span><span class="n">slint</span><span class="o">::</span><span class="n">SharedString</span><span class="w"> </span><span class="o">&amp;</span><span class="n">str</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">pressed</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">WindowAdapterRcOpaque</span><span class="w"> </span><span class="o">*</span><span class="n">win_ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
-<span class="w">    </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_interpreter_component_instance_window</span><span class="p">(</span>
-<span class="w">            </span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="k">const</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">ErasedItemTreeBox</span><span class="w"> </span><span class="o">*&gt;</span><span class="p">(</span><span class="n">component</span><span class="p">),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">win_ptr</span><span class="p">);</span>
-<span class="w">    </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_send_keyboard_char</span><span class="p">(</span>
-<span class="w">            </span><span class="o">&amp;</span><span class="n">str</span><span class="p">,</span><span class="w"> </span><span class="n">pressed</span><span class="p">,</span><span class="w"> </span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="k">const</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">WindowAdapterRc</span><span class="w"> </span><span class="o">*&gt;</span><span class="p">(</span><span class="n">win_ptr</span><span class="p">));</span>
-<span class="p">}</span>
-
+<span class="k">namespace</span><span class="w"> </span><span class="nn">slint</span><span class="o">::</span><span class="nn">private_api</span><span class="o">::</span><span class="nn">testing</span><span class="w"> </span><span class="p">{</span>
 <span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">send_keyboard_string_sequence</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">slint</span><span class="o">::</span><span class="n">interpreter</span><span class="o">::</span><span class="n">ComponentInstance</span><span class="w"> </span><span class="o">*</span><span class="n">component</span><span class="p">,</span>
 <span class="w">                                          </span><span class="k">const</span><span class="w"> </span><span class="n">slint</span><span class="o">::</span><span class="n">SharedString</span><span class="w"> </span><span class="o">&amp;</span><span class="n">str</span><span class="p">)</span>
 <span class="p">{</span>

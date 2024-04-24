@@ -50,8 +50,6 @@ Namespaces
 
 - :ref:`namespace_slint__interpreter`
 
-- :ref:`namespace_slint__testing`
-
 
 Classes
 -------
@@ -68,13 +66,4 @@ Classes
 - :ref:`exhale_class_classslint_1_1interpreter_1_1ComponentInstance`
 
 - :ref:`exhale_class_classslint_1_1interpreter_1_1Value`
-
-
-Functions
----------
-
-
-- :ref:`exhale_function_slint-interpreter_8h_1a1c18f5503ae0c7ff73b5b6e29de52272`
-
-- :ref:`exhale_function_slint-interpreter_8h_1ae4591f864ace8bafb89d62efceb08cb2`
 
