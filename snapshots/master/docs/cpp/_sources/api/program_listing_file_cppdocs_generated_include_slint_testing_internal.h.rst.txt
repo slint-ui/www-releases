@@ -30,7 +30,7 @@ Program Listing for File slint_testing_internal.h
    
    void slint_testing_element_find_by_accessible_label(const ItemTreeRc *root,
                                                        const Slice<uint8_t> *label,
-                                                       SharedVector<ItemRc> *out);
+                                                       SharedVector<ItemWeak> *out);
    
    } // extern "C"
    
