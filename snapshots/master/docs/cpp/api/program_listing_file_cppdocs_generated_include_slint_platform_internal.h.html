@@ -190,6 +190,7 @@
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1PhysicalSize.html">Struct PhysicalSize</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1platform_1_1Rgb565Pixel.html">Struct Rgb565Pixel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1platform_1_1SoftwareRenderer_1_1PhysicalRegion.html">Struct SoftwareRenderer::PhysicalRegion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="structslint_1_1platform_1_1SoftwareRenderer_1_1PhysicalRegion_1_1Rect.html">Struct PhysicalRegion::Rect</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1platform_1_1WindowAdapter_1_1WindowProperties.html">Struct WindowAdapter::WindowProperties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1platform_1_1WindowAdapter_1_1WindowProperties_1_1LayoutConstraints.html">Struct WindowProperties::LayoutConstraints</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1Point.html">Template Struct Point</a></li>
@@ -468,26 +469,26 @@
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">slint_software_renderer_drop</span><span class="p">(</span><span class="n">SoftwareRendererOpaque</span><span class="w"> </span><span class="n">r</span><span class="p">);</span>
 
-<span class="n">IntRect</span><span class="w"> </span><span class="nf">slint_software_renderer_render_rgb8</span><span class="p">(</span><span class="n">SoftwareRendererOpaque</span><span class="w"> </span><span class="n">r</span><span class="p">,</span>
-<span class="w">                                            </span><span class="n">Rgb8Pixel</span><span class="w"> </span><span class="o">*</span><span class="n">buffer</span><span class="p">,</span>
-<span class="w">                                            </span><span class="kt">uintptr_t</span><span class="w"> </span><span class="n">buffer_len</span><span class="p">,</span>
-<span class="w">                                            </span><span class="kt">uintptr_t</span><span class="w"> </span><span class="n">pixel_stride</span><span class="p">);</span>
+<span class="n">PhysicalRegion</span><span class="w"> </span><span class="nf">slint_software_renderer_render_rgb8</span><span class="p">(</span><span class="n">SoftwareRendererOpaque</span><span class="w"> </span><span class="n">r</span><span class="p">,</span>
+<span class="w">                                                   </span><span class="n">Rgb8Pixel</span><span class="w"> </span><span class="o">*</span><span class="n">buffer</span><span class="p">,</span>
+<span class="w">                                                   </span><span class="kt">uintptr_t</span><span class="w"> </span><span class="n">buffer_len</span><span class="p">,</span>
+<span class="w">                                                   </span><span class="kt">uintptr_t</span><span class="w"> </span><span class="n">pixel_stride</span><span class="p">);</span>
 
-<span class="n">IntRect</span><span class="w"> </span><span class="nf">slint_software_renderer_render_rgb565</span><span class="p">(</span><span class="n">SoftwareRendererOpaque</span><span class="w"> </span><span class="n">r</span><span class="p">,</span>
-<span class="w">                                              </span><span class="kt">uint16_t</span><span class="w"> </span><span class="o">*</span><span class="n">buffer</span><span class="p">,</span>
-<span class="w">                                              </span><span class="kt">uintptr_t</span><span class="w"> </span><span class="n">buffer_len</span><span class="p">,</span>
-<span class="w">                                              </span><span class="kt">uintptr_t</span><span class="w"> </span><span class="n">pixel_stride</span><span class="p">);</span>
+<span class="n">PhysicalRegion</span><span class="w"> </span><span class="nf">slint_software_renderer_render_rgb565</span><span class="p">(</span><span class="n">SoftwareRendererOpaque</span><span class="w"> </span><span class="n">r</span><span class="p">,</span>
+<span class="w">                                                     </span><span class="kt">uint16_t</span><span class="w"> </span><span class="o">*</span><span class="n">buffer</span><span class="p">,</span>
+<span class="w">                                                     </span><span class="kt">uintptr_t</span><span class="w"> </span><span class="n">buffer_len</span><span class="p">,</span>
+<span class="w">                                                     </span><span class="kt">uintptr_t</span><span class="w"> </span><span class="n">pixel_stride</span><span class="p">);</span>
 
-<span class="n">IntRect</span><span class="w"> </span><span class="nf">slint_software_renderer_render_by_line_rgb565</span><span class="p">(</span><span class="n">SoftwareRendererOpaque</span><span class="w"> </span><span class="n">r</span><span class="p">,</span>
-<span class="w">                                                      </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">process_line_fn</span><span class="p">)(</span><span class="kt">void</span><span class="o">*</span><span class="p">,</span>
-<span class="w">                                                                              </span><span class="kt">uintptr_t</span><span class="p">,</span>
-<span class="w">                                                                              </span><span class="kt">uintptr_t</span><span class="p">,</span>
-<span class="w">                                                                              </span><span class="kt">uintptr_t</span><span class="p">,</span>
-<span class="w">                                                                              </span><span class="kt">void</span><span class="p">(</span><span class="o">*</span><span class="p">)(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="p">,</span>
-<span class="w">                                                                                      </span><span class="kt">uint16_t</span><span class="o">*</span><span class="p">,</span>
-<span class="w">                                                                                      </span><span class="kt">uintptr_t</span><span class="p">),</span>
-<span class="w">                                                                              </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="p">),</span>
-<span class="w">                                                      </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">user_data</span><span class="p">);</span>
+<span class="n">PhysicalRegion</span><span class="w"> </span><span class="nf">slint_software_renderer_render_by_line_rgb565</span><span class="p">(</span><span class="n">SoftwareRendererOpaque</span><span class="w"> </span><span class="n">r</span><span class="p">,</span>
+<span class="w">                                                             </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">process_line_fn</span><span class="p">)(</span><span class="kt">void</span><span class="o">*</span><span class="p">,</span>
+<span class="w">                                                                                     </span><span class="kt">uintptr_t</span><span class="p">,</span>
+<span class="w">                                                                                     </span><span class="kt">uintptr_t</span><span class="p">,</span>
+<span class="w">                                                                                     </span><span class="kt">uintptr_t</span><span class="p">,</span>
+<span class="w">                                                                                     </span><span class="kt">void</span><span class="p">(</span><span class="o">*</span><span class="p">)(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="p">,</span>
+<span class="w">                                                                                             </span><span class="kt">uint16_t</span><span class="o">*</span><span class="p">,</span>
+<span class="w">                                                                                             </span><span class="kt">uintptr_t</span><span class="p">),</span>
+<span class="w">                                                                                     </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="p">),</span>
+<span class="w">                                                             </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">user_data</span><span class="p">);</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">slint_software_renderer_set_rendering_rotation</span><span class="p">(</span><span class="n">SoftwareRendererOpaque</span><span class="w"> </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="kt">int32_t</span><span class="w"> </span><span class="n">rotation</span><span class="p">);</span>
 

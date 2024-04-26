@@ -14,6 +14,7 @@ Nested Types
 ************
 
 - :ref:`exhale_struct_structslint_1_1platform_1_1SoftwareRenderer_1_1PhysicalRegion`
+- :ref:`exhale_struct_structslint_1_1platform_1_1SoftwareRenderer_1_1PhysicalRegion_1_1Rect`
 
 
 Inheritance Relationships

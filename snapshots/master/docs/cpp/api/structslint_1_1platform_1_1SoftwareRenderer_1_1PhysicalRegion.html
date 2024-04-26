@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Struct WindowAdapter::WindowProperties" href="structslint_1_1platform_1_1WindowAdapter_1_1WindowProperties.html" /><link rel="prev" title="Struct Rgb565Pixel" href="structslint_1_1platform_1_1Rgb565Pixel.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Struct PhysicalRegion::Rect" href="structslint_1_1platform_1_1SoftwareRenderer_1_1PhysicalRegion_1_1Rect.html" /><link rel="prev" title="Struct Rgb565Pixel" href="structslint_1_1platform_1_1Rgb565Pixel.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
         <title>Struct SoftwareRenderer::PhysicalRegion - Slint 1.6.0 C++ API documentation</title>
@@ -190,6 +190,7 @@
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1PhysicalSize.html">Struct PhysicalSize</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1platform_1_1Rgb565Pixel.html">Struct Rgb565Pixel</a></li>
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Struct SoftwareRenderer::PhysicalRegion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="structslint_1_1platform_1_1SoftwareRenderer_1_1PhysicalRegion_1_1Rect.html">Struct PhysicalRegion::Rect</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1platform_1_1WindowAdapter_1_1WindowProperties.html">Struct WindowAdapter::WindowProperties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1platform_1_1WindowAdapter_1_1WindowProperties_1_1LayoutConstraints.html">Struct WindowProperties::LayoutConstraints</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1Point.html">Template Struct Point</a></li>
@@ -352,6 +353,12 @@
 <section id="nested-relationships">
 <h2>Nested Relationships<a class="headerlink" href="#nested-relationships" title="Permalink to this heading">#</a></h2>
 <p>This struct is a nested type of <a class="reference internal" href="classslint_1_1platform_1_1SoftwareRenderer.html#exhale-class-classslint-1-1platform-1-1softwarerenderer"><span class="std std-ref">Class SoftwareRenderer</span></a>.</p>
+<section id="nested-types">
+<h3>Nested Types<a class="headerlink" href="#nested-types" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="structslint_1_1platform_1_1SoftwareRenderer_1_1PhysicalRegion_1_1Rect.html#exhale-struct-structslint-1-1platform-1-1softwarerenderer-1-1physicalregion-1-1rect"><span class="std std-ref">Struct PhysicalRegion::Rect</span></a></p></li>
+</ul>
+</section>
 </section>
 <section id="struct-documentation">
 <h2>Struct Documentation<a class="headerlink" href="#struct-documentation" title="Permalink to this heading">#</a></h2>
@@ -374,7 +381,40 @@
 <dd><p>Returns the origin of the bounding box of this region. </p>
 </dd></dl>
 
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5slint8platform16SoftwareRenderer14PhysicalRegion10rectanglesEv">
+<span id="_CPPv3NK5slint8platform16SoftwareRenderer14PhysicalRegion10rectanglesEv"></span><span id="_CPPv2NK5slint8platform16SoftwareRenderer14PhysicalRegion10rectanglesEv"></span><span id="slint::platform::SoftwareRenderer::PhysicalRegion::rectanglesC"></span><span class="target" id="structslint_1_1platform_1_1SoftwareRenderer_1_1PhysicalRegion_1a634821c889553bdf25c1eb1a5a7e4074"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">auto</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rectangles</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><br /></dt>
+<dd><p>Returns a view on all the rectangles in this region. The returned type is a C++ view over <a class="reference internal" href="structslint_1_1platform_1_1SoftwareRenderer_1_1PhysicalRegion_1_1Rect.html#structslint_1_1platform_1_1SoftwareRenderer_1_1PhysicalRegion_1_1Rect"><span class="std std-ref">PhysicalRegion::Rect</span></a> structs.</p>
+<p>It can be used like so: <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">origin</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">]</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">region</span><span class="p">.</span><span class="n">rectangles</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Do something with the rect</span>
+<span class="p">}</span>
+</pre></div>
 </div>
+</p>
+</dd></dl>
+
+</div>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N5slint8platform16SoftwareRenderer14PhysicalRegion4RectE">
+<span id="_CPPv3N5slint8platform16SoftwareRenderer14PhysicalRegion4RectE"></span><span id="_CPPv2N5slint8platform16SoftwareRenderer14PhysicalRegion4RectE"></span><span id="slint::platform::SoftwareRenderer::PhysicalRegion::Rect"></span><span class="target" id="structslint_1_1platform_1_1SoftwareRenderer_1_1PhysicalRegion_1_1Rect"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Rect</span></span></span><br /></dt>
+<dd><p>A Rectangle defined with an origin and a size. The <a class="reference internal" href="#structslint_1_1platform_1_1SoftwareRenderer_1_1PhysicalRegion_1a634821c889553bdf25c1eb1a5a7e4074"><span class="std std-ref">PhysicalRegion::rectangles()</span></a> function returns a view over them </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5slint8platform16SoftwareRenderer14PhysicalRegion4Rect6originE">
+<span id="_CPPv3N5slint8platform16SoftwareRenderer14PhysicalRegion4Rect6originE"></span><span id="_CPPv2N5slint8platform16SoftwareRenderer14PhysicalRegion4Rect6originE"></span><span id="slint::platform::SoftwareRenderer::PhysicalRegion::Rect::origin__PhysicalPosition"></span><span class="target" id="structslint_1_1platform_1_1SoftwareRenderer_1_1PhysicalRegion_1_1Rect_1a3789a5fa6c3dbe013fed38f67ce140e7"></span><a class="reference internal" href="structslint_1_1PhysicalPosition.html#_CPPv4N5slint16PhysicalPositionE" title="slint::PhysicalPosition"><span class="n"><span class="pre">PhysicalPosition</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">origin</span></span></span><br /></dt>
+<dd><p>The origin of the rectangle. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5slint8platform16SoftwareRenderer14PhysicalRegion4Rect4sizeE">
+<span id="_CPPv3N5slint8platform16SoftwareRenderer14PhysicalRegion4Rect4sizeE"></span><span id="_CPPv2N5slint8platform16SoftwareRenderer14PhysicalRegion4Rect4sizeE"></span><span id="slint::platform::SoftwareRenderer::PhysicalRegion::Rect::size__PhysicalSize"></span><span class="target" id="structslint_1_1platform_1_1SoftwareRenderer_1_1PhysicalRegion_1_1Rect_1ac03e1063638719ef30818d2a5bf5a9c4"></span><a class="reference internal" href="structslint_1_1PhysicalSize.html#_CPPv4N5slint12PhysicalSizeE" title="slint::PhysicalSize"><span class="n"><span class="pre">PhysicalSize</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">size</span></span></span><br /></dt>
+<dd><p>The size of the rectangle. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -385,12 +425,12 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="structslint_1_1platform_1_1WindowAdapter_1_1WindowProperties.html">
+          <a class="next-page" href="structslint_1_1platform_1_1SoftwareRenderer_1_1PhysicalRegion_1_1Rect.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Struct WindowAdapter::WindowProperties</div>
+                <div class="title">Struct PhysicalRegion::Rect</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -436,7 +476,10 @@
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Struct SoftwareRenderer::PhysicalRegion</a><ul>
-<li><a class="reference internal" href="#nested-relationships">Nested Relationships</a></li>
+<li><a class="reference internal" href="#nested-relationships">Nested Relationships</a><ul>
+<li><a class="reference internal" href="#nested-types">Nested Types</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#struct-documentation">Struct Documentation</a></li>
 </ul>
 </li>

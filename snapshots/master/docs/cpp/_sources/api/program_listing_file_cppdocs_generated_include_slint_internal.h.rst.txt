@@ -57,6 +57,8 @@ Program Listing for File slint_internal.h
    namespace slint {
    namespace cbindgen_private {
    
+   constexpr static const uintptr_t PHYSICAL_REGION_MAX_SIZE = 3;
+   
    enum class AccessibleStringProperty : uint32_t {
        Checkable,
        Checked,
@@ -125,6 +127,8 @@ Program Listing for File slint_internal.h
    
    template<typename T = void>
    struct Option;
+   
+   struct PhysicalPx;
    
    using VisitChildrenResult = uint64_t;
    constexpr static const VisitChildrenResult VisitChildrenResult_CONTINUE = UINT64_MAX;
@@ -622,6 +626,17 @@ Program Listing for File slint_internal.h
        bool italic;
    };
    
+   template<typename T, typename U>
+   struct Box2D {
+       Point2D<T> min;
+       Point2D<T> max;
+   };
+   
+   struct PhysicalRegion {
+       Box2D<int16_t, PhysicalPx> rectangles[PHYSICAL_REGION_MAX_SIZE];
+       uintptr_t count;
+   };
+   
    struct Empty {
        CachedRenderingData cached_rendering_data;
    };
@@ -730,6 +745,9 @@ Program Listing for File slint_internal.h
        Property<TextWrap> wrap;
        Property<TextOverflow> overflow;
        Property<LogicalLength> letter_spacing;
+       Property<Brush> stroke;
+       Property<LogicalLength> stroke_width;
+       Property<TextStrokeStyle> stroke_style;
        Property<LogicalLength> width;
        Property<LogicalLength> height;
        CachedRenderingData cached_rendering_data;
@@ -1037,7 +1055,9 @@ Program Listing for File slint_internal.h
    
    void slint_windowrc_set_text_input_focused(const WindowAdapterRcOpaque *handle, bool value);
    
-   void slint_windowrc_set_focus_item(const WindowAdapterRcOpaque *handle, const ItemRc *focus_item);
+   void slint_windowrc_set_focus_item(const WindowAdapterRcOpaque *handle,
+                                      const ItemRc *focus_item,
+                                      bool set_focus);
    
    void slint_windowrc_set_component(const WindowAdapterRcOpaque *handle, const ItemTreeRc *component);
    

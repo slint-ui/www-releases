@@ -190,6 +190,7 @@
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1PhysicalSize.html">Struct PhysicalSize</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1platform_1_1Rgb565Pixel.html">Struct Rgb565Pixel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1platform_1_1SoftwareRenderer_1_1PhysicalRegion.html">Struct SoftwareRenderer::PhysicalRegion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="structslint_1_1platform_1_1SoftwareRenderer_1_1PhysicalRegion_1_1Rect.html">Struct PhysicalRegion::Rect</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1platform_1_1WindowAdapter_1_1WindowProperties.html">Struct WindowAdapter::WindowProperties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1platform_1_1WindowAdapter_1_1WindowProperties_1_1LayoutConstraints.html">Struct WindowProperties::LayoutConstraints</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1Point.html">Template Struct Point</a></li>
@@ -357,6 +358,7 @@
 #include &lt;cassert&gt;
 #include &lt;cstdint&gt;
 #include &lt;utility&gt;
+#include &lt;ranges&gt;
 
 struct xcb_connection_t;
 struct wl_surface;
@@ -686,17 +688,54 @@ public:
     {
         PhysicalSize bounding_box_size() const
         {
-            return PhysicalSize({ uint32_t(inner.width), uint32_t(inner.height) });
+            if (inner.count == 0) {
+                return PhysicalSize();
+            }
+            auto origin = bounding_box_origin();
+            PhysicalSize size({ .width = uint32_t(inner.rectangles[0].max.x - origin.x),
+                                .height = uint32_t(inner.rectangles[0].max.y - origin.y) });
+            for (size_t i = 1; i &lt; inner.count; ++i) {
+                size.width = std::max(size.width, uint32_t(inner.rectangles[i].max.x - origin.x));
+                size.height = std::max(size.height, uint32_t(inner.rectangles[i].max.y - origin.y));
+            }
+            return size;
         }
         PhysicalPosition bounding_box_origin() const
         {
-            return PhysicalPosition({ inner.x, inner.y });
+            if (inner.count == 0) {
+                return PhysicalPosition();
+            }
+            PhysicalPosition origin(
+                    { .x = inner.rectangles[0].min.x, .y = inner.rectangles[0].min.y });
+            for (size_t i = 1; i &lt; inner.count; ++i) {
+                origin.x = std::min&lt;int&gt;(origin.x, inner.rectangles[i].min.x);
+                origin.y = std::min&lt;int&gt;(origin.y, inner.rectangles[i].min.y);
+            }
+            return origin;
         }
 
+        auto rectangles() const
+        {
+            return std::views::counted(inner.rectangles, inner.count)
+                    | std::views::transform([](const auto &amp;box) {
+                          return Rect {
+                              .origin = PhysicalPosition({ .x = box.min.x, .y = box.min.y }),
+                              .size = PhysicalSize({ .width = uint32_t(box.max.x - box.min.x),
+                                                     .height = uint32_t(box.max.y - box.min.y) })
+                          };
+                      });
+        }
+
+        struct Rect
+        {
+            PhysicalPosition origin;
+            PhysicalSize size;
+        };
+
     private:
-        cbindgen_private::types::IntRect inner;
+        cbindgen_private::PhysicalRegion inner;
         friend class SoftwareRenderer;
-        PhysicalRegion(cbindgen_private::types::IntRect inner) : inner(inner) { }
+        PhysicalRegion(cbindgen_private::PhysicalRegion inner) : inner(std::move(inner)) { }
     };
 
     enum class RepaintBufferType : uint32_t {

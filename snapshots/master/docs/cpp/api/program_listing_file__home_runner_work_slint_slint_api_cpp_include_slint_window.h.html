@@ -190,6 +190,7 @@
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1PhysicalSize.html">Struct PhysicalSize</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1platform_1_1Rgb565Pixel.html">Struct Rgb565Pixel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1platform_1_1SoftwareRenderer_1_1PhysicalRegion.html">Struct SoftwareRenderer::PhysicalRegion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="structslint_1_1platform_1_1SoftwareRenderer_1_1PhysicalRegion_1_1Rect.html">Struct PhysicalRegion::Rect</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1platform_1_1WindowAdapter_1_1WindowProperties.html">Struct WindowAdapter::WindowProperties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1platform_1_1WindowAdapter_1_1WindowProperties_1_1LayoutConstraints.html">Struct WindowProperties::LayoutConstraints</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1Point.html">Template Struct Point</a></li>
@@ -437,10 +438,10 @@
 <span class="w">                </span><span class="n">items</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">inner</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">set_focus_item</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">ItemTreeRc</span><span class="w"> </span><span class="o">&amp;</span><span class="n">component_rc</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">item_index</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">set_focus_item</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">ItemTreeRc</span><span class="w"> </span><span class="o">&amp;</span><span class="n">component_rc</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">item_index</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">set_focus</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">ItemRc</span><span class="w"> </span><span class="n">item_rc</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">component_rc</span><span class="p">,</span><span class="w"> </span><span class="n">item_index</span><span class="w"> </span><span class="p">};</span>
-<span class="w">        </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_windowrc_set_focus_item</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inner</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">item_rc</span><span class="p">);</span>
+<span class="w">        </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_windowrc_set_focus_item</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inner</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">item_rc</span><span class="p">,</span><span class="w"> </span><span class="n">set_focus</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">Component</span><span class="o">&gt;</span>

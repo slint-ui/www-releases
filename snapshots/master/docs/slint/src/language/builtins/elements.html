@@ -514,6 +514,7 @@ child <code class="docutils literal notranslate"><span class="pre">FocusScope</s
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">focus()</span></code></strong> Call this function to transfer keyboard focus to this <code class="docutils literal notranslate"><span class="pre">FocusScope</span></code>,
 to receive future <a class="reference internal" href="structs.html#keyevent"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">KeyEvent</span></code></span></a>s.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">clear-focus()</span></code></strong> Call this function to remove keyboard focus from this <code class="docutils literal notranslate"><span class="pre">FocusScope</span></code> if it currently has the focus. See also <a class="reference internal" href="../concepts/focus.html"><span class="std std-doc">Focus Handling</span></a>.</p></li>
 </ul>
 </section>
 <section id="id4">
@@ -1008,6 +1009,7 @@ it’s then possible to draw a rectangle on the screen.</p>
 <h3>Functions<a class="headerlink" href="#id20" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">focus()</span></code></strong> Call this function to focus the text input and make it receive future keyboard events.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">clear-focus()</span></code></strong> Call this function to remove keyboard focus from this <code class="docutils literal notranslate"><span class="pre">TextInput</span></code> if it currently has the focus. See also <a class="reference internal" href="../concepts/focus.html"><span class="std std-doc">Focus Handling</span></a>.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">set-selection-offsets(int,</span> <span class="pre">int)</span></code></strong> Selects the text between two UTF-8 offsets.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">select-all()</span></code></strong> Selects all text.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">clear-selection()</span></code></strong> Clears the selection.</p></li>
@@ -1042,7 +1044,8 @@ described by the <a class="reference internal" href="structs.html#point"><span c
 <section id="text">
 <h2><code class="docutils literal notranslate"><span class="pre">Text</span></code><a class="headerlink" href="#text" title="Permalink to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">Text</span></code> element is responsible for rendering text. Besides the <code class="docutils literal notranslate"><span class="pre">text</span></code> property, that specifies which text to render,
-it also allows configuring different visual aspects through the <code class="docutils literal notranslate"><span class="pre">font-family</span></code>, <code class="docutils literal notranslate"><span class="pre">font-size</span></code>, <code class="docutils literal notranslate"><span class="pre">font-weight</span></code> and <code class="docutils literal notranslate"><span class="pre">color</span></code> properties.</p>
+it also allows configuring different visual aspects through the <code class="docutils literal notranslate"><span class="pre">font-family</span></code>, <code class="docutils literal notranslate"><span class="pre">font-size</span></code>, <code class="docutils literal notranslate"><span class="pre">font-weight</span></code>, <code class="docutils literal notranslate"><span class="pre">color</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">stroke</span></code> properties.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">Text</span></code> element can break long text into multiple lines of text. A line feed character (<code class="docutils literal notranslate"><span class="pre">\n</span></code>) in the string of the <code class="docutils literal notranslate"><span class="pre">text</span></code>
 property will trigger a manual line break. For automatic line breaking you need to set the <code class="docutils literal notranslate"><span class="pre">wrap</span></code> property to a value other than
 <code class="docutils literal notranslate"><span class="pre">no-wrap</span></code>, and it’s important to specify a <code class="docutils literal notranslate"><span class="pre">width</span></code> and <code class="docutils literal notranslate"><span class="pre">height</span></code> for the <code class="docutils literal notranslate"><span class="pre">Text</span></code> element, in order to know where to break. It’s
@@ -1062,6 +1065,9 @@ and the text itself.</p>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">text</span></code></strong> (<em>in</em> <em><a class="reference internal" href="../syntax/types.html#strings"><span class="std std-ref">string</span></a></em>): The text rendered.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">vertical-alignment</span></code></strong> (<em>in</em> <em>enum <a class="reference internal" href="enums.html#textverticalalignment"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">TextVerticalAlignment</span></code></span></a></em>): The vertical alignment of the text.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">wrap</span></code></strong> (<em>in</em> <em>enum <a class="reference internal" href="enums.html#textwrap"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">TextWrap</span></code></span></a></em>): The way the text wraps (default value: <code class="docutils literal notranslate"><span class="pre">no-wrap</span></code>).</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">stroke</span></code></strong> (<em>in</em> <em>brush</em>): The brush used for the text outline (default value: <code class="docutils literal notranslate"><span class="pre">transparent</span></code>).</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">stroke-width</span></code></strong> (<em>in</em> <em>length</em>): The width of the text outline. If the width is zero, then a hairline stroke (1 physical pixel) will be rendered.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">stroke-style</span></code></strong> (<em>in</em> <em>enum <a class="reference internal" href="enums.html#textstrokestyle"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">TextStrokeStyle</span></code></span></a></em>): The style/alignment of the text outline (default value: <code class="docutils literal notranslate"><span class="pre">outside</span></code>).</p></li>
 </ul>
 </section>
 <section id="id24">

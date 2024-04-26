@@ -32,6 +32,10 @@ Program Listing for File slint_enums_internal.h
        Clip,
        Elide,
    };
+   enum class TextStrokeStyle {
+       Outside,
+       Center,
+   };
    enum class EventResult {
        Reject,
        Accept,

@@ -75,6 +75,35 @@ Program Listing for File slint-testing.h
            return std::nullopt;
        }
    
+       std::optional<SharedString> accessible_description() const
+       {
+           if (auto item = private_api::upgrade_item_weak(inner)) {
+               SharedString result;
+               if (item->item_tree.vtable()->accessible_string_property(
+                           item->item_tree.borrow(), item->index,
+                           cbindgen_private::AccessibleStringProperty::Description, &result)) {
+                   return result;
+               }
+           }
+           return std::nullopt;
+       }
+   
+       std::optional<bool> accessible_checked() const
+       {
+           if (auto item = private_api::upgrade_item_weak(inner)) {
+               SharedString result;
+               if (item->item_tree.vtable()->accessible_string_property(
+                           item->item_tree.borrow(), item->index,
+                           cbindgen_private::AccessibleStringProperty::Checked, &result)) {
+                   if (result == "true")
+                       return true;
+                   else if (result == "false")
+                       return false;
+               }
+           }
+           return std::nullopt;
+       }
+   
        void set_accessible_value(SharedString value) const
        {
            if (auto item = private_api::upgrade_item_weak(inner)) {
@@ -94,7 +123,7 @@ Program Listing for File slint-testing.h
            }
        }
    
-       void invoke_default_action() const
+       void invoke_accessible_default_action() const
        {
            if (auto item = private_api::upgrade_item_weak(inner)) {
                union DefaultActionHelper {

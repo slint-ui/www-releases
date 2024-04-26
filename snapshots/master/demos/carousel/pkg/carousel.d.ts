@@ -19,8 +19,8 @@ export interface InitOutput {
   readonly __wbindgen_export_2: WebAssembly.Table;
   readonly wasm_bindgen__convert__closures__invoke1_mut__h2a81513798b7e70e: (a: number, b: number, c: number) => void;
   readonly wasm_bindgen__convert__closures__invoke2_mut__h0b5b60acfd222c99: (a: number, b: number, c: number, d: number) => void;
-  readonly wasm_bindgen__convert__closures__invoke1__h1c39e0a962211036: (a: number, b: number, c: number) => void;
-  readonly wasm_bindgen__convert__closures__invoke0_mut__hb4debd7428e8353e: (a: number, b: number) => void;
+  readonly wasm_bindgen__convert__closures__invoke1__h2685927869f30bfe: (a: number, b: number, c: number) => void;
+  readonly wasm_bindgen__convert__closures__invoke0_mut__hd574c6684f5ae4c3: (a: number, b: number) => void;
   readonly __wbindgen_exn_store: (a: number) => void;
   readonly __wbindgen_start: () => void;
 }

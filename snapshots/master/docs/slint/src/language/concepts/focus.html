@@ -305,6 +305,26 @@ export component App inherits Window {
 }
 </pre></div>
 </div>
+<p>Similarly, you can manually clear the focus on an element that’s currently focused, by calling <code class="docutils literal notranslate"><span class="pre">clear-focus()</span></code>:</p>
+<div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>import { Button } from &quot;std-widgets.slint&quot;;
+
+export component App inherits Window {
+    VerticalLayout {
+        alignment: start;
+        Button {
+            text: &quot;press me&quot;;
+            clicked =&gt; { input.clear-focus(); }
+        }
+        input := TextInput {
+            text: &quot;I am a text input field&quot;;
+        }
+    }
+}
+</pre></div>
+</div>
+<p>After the focus is cleared, keyboard input to the window is discarded, until another element is explicitly
+focused. For example by calling <code class="docutils literal notranslate"><span class="pre">focus()</span></code>, an element acquiring focus when the user clicks on it, or when
+pressing tab and the first focusable element is found.</p>
 <p>If you have wrapped the <code class="docutils literal notranslate"><span class="pre">TextInput</span></code> in a component, then you can forward such a focus activation
 using the <code class="docutils literal notranslate"><span class="pre">forward-focus</span></code> property to refer to the element that should receive it:</p>
 <div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>import { Button } from &quot;std-widgets.slint&quot;;

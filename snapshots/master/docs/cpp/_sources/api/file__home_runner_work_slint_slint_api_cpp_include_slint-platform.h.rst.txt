@@ -29,6 +29,8 @@ Includes
 
 - ``cstdint``
 
+- ``ranges``
+
 - ``slint.h`` (:ref:`file__home_runner_work_slint_slint_api_cpp_include_slint.h`)
 
 - ``utility``
@@ -54,6 +56,8 @@ Classes
 - :ref:`exhale_struct_structslint_1_1platform_1_1Rgb565Pixel`
 
 - :ref:`exhale_struct_structslint_1_1platform_1_1SoftwareRenderer_1_1PhysicalRegion`
+
+- :ref:`exhale_struct_structslint_1_1platform_1_1SoftwareRenderer_1_1PhysicalRegion_1_1Rect`
 
 - :ref:`exhale_struct_structslint_1_1platform_1_1WindowAdapter_1_1WindowProperties`
 

@@ -249,6 +249,13 @@
 * **`clip`**: The text will simply be clipped.
 * **`elide`**: The text will be elided with `…`.
 
+## `TextStrokeStyle`
+
+ This enum describes the positioning of a text stroke relative to the border of the glyphs in a [`Text`](elements.md#text).
+
+* **`outside`**: The inside edge of the stroke is at the outer edge of the text.
+* **`center`**: The center line of the stroke is at the outer edge of the text, like in Adobe Illustrator.
+
 ## `TextVerticalAlignment`
 
  This enum describes the different types of alignment of text along the vertical axis of a [`Text`](elements.md#text) element.
