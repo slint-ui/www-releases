@@ -5,10 +5,10 @@
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Selecting a Widget Style" href="style.html" /><link rel="prev" title="Custom Control Introduction" href="../recipes/recipes.html" />
 
-    <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
+    <!-- Generated with Sphinx 7.1.2 and Furo 2024.04.27 -->
         <title>Debugging Techniques - Slint 1.6.0 Reference</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=437aa6ec" />
     <link rel="stylesheet" type="text/css" href="../../_static/theme_tweak.css?v=6873ab5b" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=36a5483c" />
     
@@ -112,6 +112,8 @@
 <label class="overlay toc-overlay" for="__toc">
   <div class="visually-hidden">Hide table of contents sidebar</div>
 </label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
 
 
 
@@ -281,27 +283,27 @@
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
-        <article role="main">
+        <article role="main" id="furo-main-content">
           <!-- Copyright © SixtyFPS GmbH <info@slint.dev> ; SPDX-License-Identifier: MIT -->
 <section id="debugging-techniques">
-<h1>Debugging Techniques<a class="headerlink" href="#debugging-techniques" title="Permalink to this heading">#</a></h1>
+<h1>Debugging Techniques<a class="headerlink" href="#debugging-techniques" title="Permalink to this heading">¶</a></h1>
 <p>On this page we share different techniques and tools we’ve built into Slint that help you track down different issues you may be running into, during the design and development.</p>
 <section id="debugging-property-values">
-<h2>Debugging Property Values<a class="headerlink" href="#debugging-property-values" title="Permalink to this heading">#</a></h2>
+<h2>Debugging Property Values<a class="headerlink" href="#debugging-property-values" title="Permalink to this heading">¶</a></h2>
 <p>Use the <a class="reference internal" href="../language/builtins/functions.html#debug"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">debug()</span></code></span></a> function to print the values of properties to stderr.</p>
 </section>
 <section id="slow-motion-animations">
-<h2>Slow Motion Animations<a class="headerlink" href="#slow-motion-animations" title="Permalink to this heading">#</a></h2>
+<h2>Slow Motion Animations<a class="headerlink" href="#slow-motion-animations" title="Permalink to this heading">¶</a></h2>
 <p>Animations in the user interface need to be carefully designed to have the correct duration and changes in element positioning or size need to follow an easing curve.</p>
 <p>To inspect the animations in your application, set the <code class="docutils literal notranslate"><span class="pre">SLINT_SLOW_ANIMATIONS</span></code> environment variable before running the program. This variable accepts an unsigned integer value that is the factor by which to globally slow down the steps of all animations, automatically. This means that you don’t have to make any manual changes to the <code class="docutils literal notranslate"><span class="pre">.slint</span></code> markup and recompile. For example,<code class="docutils literal notranslate"><span class="pre">SLINT_SLOW_ANIMATIONS=4</span></code> slows down animations by a factor of four.</p>
 </section>
 <section id="user-interface-scaling">
-<h2>User Interface Scaling<a class="headerlink" href="#user-interface-scaling" title="Permalink to this heading">#</a></h2>
+<h2>User Interface Scaling<a class="headerlink" href="#user-interface-scaling" title="Permalink to this heading">¶</a></h2>
 <p>The use of logical pixel lengths throughout <code class="docutils literal notranslate"><span class="pre">.slint</span></code> files lets Slint compute the number of physical pixels, dynamically, depending on the device-pixel ratio of the screen. To get an impression of how the individual elements look like when rendered on a screen with a different device-pixel ratio, set the <code class="docutils literal notranslate"><span class="pre">SLINT_SCALE_FACTOR</span></code> environment variable before running the program. This variable accepts a floating pointer number that is used to convert logical pixel lengths to physical pixel lengths. For example, <code class="docutils literal notranslate"><span class="pre">SLINT_SCALE_FACTOR=2</span></code> renders the user interface in a way where every logical pixel has twice the width and height.</p>
 <p><em>Note</em>: Currently, only the FemtoVG and Skia renderers support this environment variable.</p>
 </section>
 <section id="debugging-for-performance-improvements">
-<h2>Debugging for Performance Improvements<a class="headerlink" href="#debugging-for-performance-improvements" title="Permalink to this heading">#</a></h2>
+<h2>Debugging for Performance Improvements<a class="headerlink" href="#debugging-for-performance-improvements" title="Permalink to this heading">¶</a></h2>
 <p>Slint attempts to use hardware-acceleration to ensure that rendering the user interface consumes a minimal amount of CPU resources while maintaining smooth animations. However, depending on the complexity of the user interface, quality of the graphics drivers, or the power of the GPU in your system, you may hit limits and experience slowness. To address this
 issue, set the <code class="docutils literal notranslate"><span class="pre">SLINT_DEBUG_PERFORMANCE</span></code> environment variable before running the program, to inspect the frame rate. The following options affect the frame rate inspection and reporting:</p>
 <ul class="simple">
@@ -315,7 +317,7 @@ there is no change, a low frame rate is reported. Use this option to verify that
 <p>The environment variable must be set before running the program. If the application runs on a microcontroller without the standard library, the environment variable must be set during compilation.</p>
 </section>
 <section id="tuning-rendering-performance">
-<h2>Tuning Rendering Performance<a class="headerlink" href="#tuning-rendering-performance" title="Permalink to this heading">#</a></h2>
+<h2>Tuning Rendering Performance<a class="headerlink" href="#tuning-rendering-performance" title="Permalink to this heading">¶</a></h2>
 <p>If you’re not satisfied with the performance, it might be worthwhile to descend into a low-level investigation. Tools such as <a class="reference external" href="https://renderdoc.org">RenderDoc</a> permit recording the rendering output
 of your application and can give you detailed insight into the OpenGL/Vulkan commands Slint’s renderers produce for your user interface.</p>
 <p>As a general rule of thumb, it’s best to minimize the number of commands per frame. With OpenGL you’ll see <code class="docutils literal notranslate"><span class="pre">glDrawArrays()</span></code> and <code class="docutils literal notranslate"><span class="pre">glDrawElementsInstanced*</span></code> calls filling the color buffers. Reducing
@@ -430,7 +432,7 @@ might be worthwhile to render the entire chart once into a texture and therefore
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=b3ba4146"></script>
     <script src="../../_static/doctools.js?v=888ff710"></script>
     <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
-    <script src="../../_static/scripts/furo.js?v=32e29ea5"></script>
+    <script src="../../_static/scripts/furo.js?v=4e2eecee"></script>
     
 <!--
     This file is used to add preview of the `.slint` snippets in the generated rustdoc documentation.

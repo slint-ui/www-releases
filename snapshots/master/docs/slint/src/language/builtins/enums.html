@@ -5,10 +5,10 @@
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" /><link rel="next" title="Builtin Functions" href="functions.html" /><link rel="prev" title="Builtin Elements" href="elements.html" />
 
-    <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
+    <!-- Generated with Sphinx 7.1.2 and Furo 2024.04.27 -->
         <title>Builtin Enumerations - Slint 1.6.0 Reference</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=437aa6ec" />
     <link rel="stylesheet" type="text/css" href="../../../_static/theme_tweak.css?v=6873ab5b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?v=36a5483c" />
     
@@ -112,6 +112,8 @@
 <label class="overlay toc-overlay" for="__toc">
   <div class="visually-hidden">Hide table of contents sidebar</div>
 </label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
 
 
 
@@ -281,12 +283,12 @@
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
-        <article role="main">
+        <article role="main" id="furo-main-content">
           <!-- Generated with `cargo xtask slintdocs` from internal/commons/enums.rs -->
 <section id="builtin-enumerations">
-<h1>Builtin Enumerations<a class="headerlink" href="#builtin-enumerations" title="Permalink to this heading">#</a></h1>
+<h1>Builtin Enumerations<a class="headerlink" href="#builtin-enumerations" title="Permalink to this heading">¶</a></h1>
 <section id="accessiblerole">
-<h2><code class="docutils literal notranslate"><span class="pre">AccessibleRole</span></code><a class="headerlink" href="#accessiblerole" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">AccessibleRole</span></code><a class="headerlink" href="#accessiblerole" title="Permalink to this heading">¶</a></h2>
 <p>This enum represents the different values for the <code class="docutils literal notranslate"><span class="pre">accessible-role</span></code> property, used to describe the
 role of an element in the context of assistive technology such as screen readers.</p>
 <ul class="simple">
@@ -309,7 +311,7 @@ role of an element in the context of assistive technology such as screen readers
 </ul>
 </section>
 <section id="colorscheme">
-<h2><code class="docutils literal notranslate"><span class="pre">ColorScheme</span></code><a class="headerlink" href="#colorscheme" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">ColorScheme</span></code><a class="headerlink" href="#colorscheme" title="Permalink to this heading">¶</a></h2>
 <p>This enum indicates the color scheme used by the widget style. Use this to explicitly switch
 between dark and light schemes, or choose Unknown to fall back to the system default.</p>
 <ul class="simple">
@@ -320,7 +322,7 @@ the widgets are shown in a dark or light scheme, but it could also be a custom c
 </ul>
 </section>
 <section id="dialogbuttonrole">
-<h2><code class="docutils literal notranslate"><span class="pre">DialogButtonRole</span></code><a class="headerlink" href="#dialogbuttonrole" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">DialogButtonRole</span></code><a class="headerlink" href="#dialogbuttonrole" title="Permalink to this heading">¶</a></h2>
 <p>This enum represents the value of the <code class="docutils literal notranslate"><span class="pre">dialog-button-role</span></code> property which can be added to
 any element within a <a class="reference internal" href="elements.html#dialog"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">Dialog</span></code></span></a> to put that item in the button row, and its exact position
 depends on the role and the platform.</p>
@@ -335,7 +337,7 @@ depends on the role and the platform.</p>
 </ul>
 </section>
 <section id="eventresult">
-<h2><code class="docutils literal notranslate"><span class="pre">EventResult</span></code><a class="headerlink" href="#eventresult" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">EventResult</span></code><a class="headerlink" href="#eventresult" title="Permalink to this heading">¶</a></h2>
 <p>This enum describes whether an event was rejected or accepted by an event handler.</p>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">reject</span></code></strong>: The event is rejected by this event handler and may then be handled by the parent item</p></li>
@@ -343,7 +345,7 @@ depends on the role and the platform.</p>
 </ul>
 </section>
 <section id="fillrule">
-<h2><code class="docutils literal notranslate"><span class="pre">FillRule</span></code><a class="headerlink" href="#fillrule" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">FillRule</span></code><a class="headerlink" href="#fillrule" title="Permalink to this heading">¶</a></h2>
 <p>This enum describes the different ways of deciding what the inside of a shape described by a path shall be.</p>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">nonzero</span></code></strong>: The <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/fill-rule#nonzero">“nonzero” fill rule as defined in SVG</a>.</p></li>
@@ -351,7 +353,7 @@ depends on the role and the platform.</p>
 </ul>
 </section>
 <section id="imagefit">
-<h2><code class="docutils literal notranslate"><span class="pre">ImageFit</span></code><a class="headerlink" href="#imagefit" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">ImageFit</span></code><a class="headerlink" href="#imagefit" title="Permalink to this heading">¶</a></h2>
 <p>This enum defines how the source image shall fit into an <a class="reference internal" href="elements.html#image"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">Image</span></code></span></a> element.</p>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">fill</span></code></strong>: Scales and stretches the source image to fit the width and height of the <a class="reference internal" href="elements.html#image"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">Image</span></code></span></a> element.</p></li>
@@ -364,7 +366,7 @@ Any extra space will be left blank.</p></li>
 </ul>
 </section>
 <section id="imagehorizontalalignment">
-<h2><code class="docutils literal notranslate"><span class="pre">ImageHorizontalAlignment</span></code><a class="headerlink" href="#imagehorizontalalignment" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">ImageHorizontalAlignment</span></code><a class="headerlink" href="#imagehorizontalalignment" title="Permalink to this heading">¶</a></h2>
 <p>This enum specifies the horizontal alignment of the source image.</p>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">center</span></code></strong>: Aligns the source image at the center of the <a class="reference internal" href="elements.html#image"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">Image</span></code></span></a> element.</p></li>
@@ -373,7 +375,7 @@ Any extra space will be left blank.</p></li>
 </ul>
 </section>
 <section id="imagerendering">
-<h2><code class="docutils literal notranslate"><span class="pre">ImageRendering</span></code><a class="headerlink" href="#imagerendering" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">ImageRendering</span></code><a class="headerlink" href="#imagerendering" title="Permalink to this heading">¶</a></h2>
 <p>This enum specifies how the source image will be scaled.</p>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">smooth</span></code></strong>: The image is scaled with a linear interpolation algorithm.</p></li>
@@ -381,7 +383,7 @@ Any extra space will be left blank.</p></li>
 </ul>
 </section>
 <section id="imagetiling">
-<h2><code class="docutils literal notranslate"><span class="pre">ImageTiling</span></code><a class="headerlink" href="#imagetiling" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">ImageTiling</span></code><a class="headerlink" href="#imagetiling" title="Permalink to this heading">¶</a></h2>
 <p>This enum specifies how the source image will be tiled.</p>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">none</span></code></strong>: The source image will not be tiled.</p></li>
@@ -390,7 +392,7 @@ Any extra space will be left blank.</p></li>
 </ul>
 </section>
 <section id="imageverticalalignment">
-<h2><code class="docutils literal notranslate"><span class="pre">ImageVerticalAlignment</span></code><a class="headerlink" href="#imageverticalalignment" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">ImageVerticalAlignment</span></code><a class="headerlink" href="#imageverticalalignment" title="Permalink to this heading">¶</a></h2>
 <p>This enum specifies the vertical alignment of the source image.</p>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">center</span></code></strong>: Aligns the source image at the center of the <a class="reference internal" href="elements.html#image"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">Image</span></code></span></a> element.</p></li>
@@ -399,7 +401,7 @@ Any extra space will be left blank.</p></li>
 </ul>
 </section>
 <section id="inputtype">
-<h2><code class="docutils literal notranslate"><span class="pre">InputType</span></code><a class="headerlink" href="#inputtype" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">InputType</span></code><a class="headerlink" href="#inputtype" title="Permalink to this heading">¶</a></h2>
 <p>This enum is used to define the type of the input field.</p>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">text</span></code></strong>: The default value. This will render all characters normally</p></li>
@@ -409,7 +411,7 @@ Any extra space will be left blank.</p></li>
 </ul>
 </section>
 <section id="layoutalignment">
-<h2><code class="docutils literal notranslate"><span class="pre">LayoutAlignment</span></code><a class="headerlink" href="#layoutalignment" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">LayoutAlignment</span></code><a class="headerlink" href="#layoutalignment" title="Permalink to this heading">¶</a></h2>
 <p>Enum representing the <a class="reference internal" href="../concepts/layouting.html#alignment"><span class="std std-ref">alignment</span></a> property of a
 <a class="reference internal" href="../widgets/horizontalbox.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">HorizontalBox</span></code></span></a>, a <a class="reference internal" href="../widgets/verticalbox.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">VerticalBox</span></code></span></a>,
 a <a class="reference internal" href="elements.html#verticallayout-and-horizontallayout"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">HorizontalLayout</span></code>, or <code class="docutils literal notranslate"><span class="pre">VerticalLayout</span></code></span></a>.</p>
@@ -428,7 +430,7 @@ first element, after the last element and between elements.</p></li>
 </ul>
 </section>
 <section id="mousecursor">
-<h2><code class="docutils literal notranslate"><span class="pre">MouseCursor</span></code><a class="headerlink" href="#mousecursor" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">MouseCursor</span></code><a class="headerlink" href="#mousecursor" title="Permalink to this heading">¶</a></h2>
 <p>This enum represents different types of mouse cursors. It’s a subset of the mouse cursors available in CSS.
 For details and pictograms see the <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/cursor#values">MDN Documentation for cursor</a>.
 Depending on the backend and used OS unidirectional resize cursors may be replaced with bidirectional ones.</p>
@@ -465,7 +467,7 @@ Depending on the backend and used OS unidirectional resize cursors may be replac
 </ul>
 </section>
 <section id="orientation">
-<h2><code class="docutils literal notranslate"><span class="pre">Orientation</span></code><a class="headerlink" href="#orientation" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">Orientation</span></code><a class="headerlink" href="#orientation" title="Permalink to this heading">¶</a></h2>
 <p>Represents the orientation of an element or widget such as the <a class="reference internal" href="../widgets/slider.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">Slider</span></code></span></a>.</p>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">horizontal</span></code></strong>: Element is oriented horizontally.</p></li>
@@ -473,7 +475,7 @@ Depending on the backend and used OS unidirectional resize cursors may be replac
 </ul>
 </section>
 <section id="pathevent">
-<h2><code class="docutils literal notranslate"><span class="pre">PathEvent</span></code><a class="headerlink" href="#pathevent" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">PathEvent</span></code><a class="headerlink" href="#pathevent" title="Permalink to this heading">¶</a></h2>
 <p>PathEvent is a low-level data structure describing the composition of a path. Typically it is
 generated at compile time from a higher-level description, such as SVG commands.</p>
 <ul class="simple">
@@ -486,7 +488,7 @@ generated at compile time from a higher-level description, such as SVG commands.
 </ul>
 </section>
 <section id="pointereventbutton">
-<h2><code class="docutils literal notranslate"><span class="pre">PointerEventButton</span></code><a class="headerlink" href="#pointereventbutton" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">PointerEventButton</span></code><a class="headerlink" href="#pointereventbutton" title="Permalink to this heading">¶</a></h2>
 <p>This enum describes the different types of buttons for a pointer event,
 typically on a mouse or a pencil.</p>
 <ul class="simple">
@@ -498,7 +500,7 @@ this is used for a fourth button on a mouse with many buttons.</p></li>
 </ul>
 </section>
 <section id="pointereventkind">
-<h2><code class="docutils literal notranslate"><span class="pre">PointerEventKind</span></code><a class="headerlink" href="#pointereventkind" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">PointerEventKind</span></code><a class="headerlink" href="#pointereventkind" title="Permalink to this heading">¶</a></h2>
 <p>The enum reports what happened to the <code class="docutils literal notranslate"><span class="pre">PointerEventButton</span></code> in the event</p>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">cancel</span></code></strong>: The action was cancelled.</p></li>
@@ -508,7 +510,7 @@ this is used for a fourth button on a mouse with many buttons.</p></li>
 </ul>
 </section>
 <section id="sortorder">
-<h2><code class="docutils literal notranslate"><span class="pre">SortOrder</span></code><a class="headerlink" href="#sortorder" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">SortOrder</span></code><a class="headerlink" href="#sortorder" title="Permalink to this heading">¶</a></h2>
 <p>This enum represents the different values of the <code class="docutils literal notranslate"><span class="pre">sort-order</span></code> property.
 It’s used to sort a <a class="reference internal" href="../widgets/standardtableview.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">StandardTableView</span></code></span></a> by a column.</p>
 <ul class="simple">
@@ -518,7 +520,7 @@ It’s used to sort a <a class="reference internal" href="../widgets/standardtab
 </ul>
 </section>
 <section id="standardbuttonkind">
-<h2><code class="docutils literal notranslate"><span class="pre">StandardButtonKind</span></code><a class="headerlink" href="#standardbuttonkind" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">StandardButtonKind</span></code><a class="headerlink" href="#standardbuttonkind" title="Permalink to this heading">¶</a></h2>
 <p>Use this enum to add standard buttons to a <a class="reference internal" href="elements.html#dialog"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">Dialog</span></code></span></a>. The look and positioning
 of these <a class="reference internal" href="../widgets/standardbutton.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">StandardButton</span></code></span></a>s depends on the environment
 (OS, UI environment, etc.) the application runs in.</p>
@@ -538,7 +540,7 @@ of these <a class="reference internal" href="../widgets/standardbutton.html"><sp
 </ul>
 </section>
 <section id="texthorizontalalignment">
-<h2><code class="docutils literal notranslate"><span class="pre">TextHorizontalAlignment</span></code><a class="headerlink" href="#texthorizontalalignment" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">TextHorizontalAlignment</span></code><a class="headerlink" href="#texthorizontalalignment" title="Permalink to this heading">¶</a></h2>
 <p>This enum describes the different types of alignment of text along the horizontal axis of a <a class="reference internal" href="elements.html#text"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">Text</span></code></span></a> element.</p>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">left</span></code></strong>: The text will be aligned with the left edge of the containing box.</p></li>
@@ -547,7 +549,7 @@ of these <a class="reference internal" href="../widgets/standardbutton.html"><sp
 </ul>
 </section>
 <section id="textoverflow">
-<h2><code class="docutils literal notranslate"><span class="pre">TextOverflow</span></code><a class="headerlink" href="#textoverflow" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">TextOverflow</span></code><a class="headerlink" href="#textoverflow" title="Permalink to this heading">¶</a></h2>
 <p>This enum describes the how the text appear if it is too wide to fit in the <a class="reference internal" href="elements.html#text"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">Text</span></code></span></a> width.</p>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">clip</span></code></strong>: The text will simply be clipped.</p></li>
@@ -555,7 +557,7 @@ of these <a class="reference internal" href="../widgets/standardbutton.html"><sp
 </ul>
 </section>
 <section id="textstrokestyle">
-<h2><code class="docutils literal notranslate"><span class="pre">TextStrokeStyle</span></code><a class="headerlink" href="#textstrokestyle" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">TextStrokeStyle</span></code><a class="headerlink" href="#textstrokestyle" title="Permalink to this heading">¶</a></h2>
 <p>This enum describes the positioning of a text stroke relative to the border of the glyphs in a <a class="reference internal" href="elements.html#text"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">Text</span></code></span></a>.</p>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">outside</span></code></strong>: The inside edge of the stroke is at the outer edge of the text.</p></li>
@@ -563,7 +565,7 @@ of these <a class="reference internal" href="../widgets/standardbutton.html"><sp
 </ul>
 </section>
 <section id="textverticalalignment">
-<h2><code class="docutils literal notranslate"><span class="pre">TextVerticalAlignment</span></code><a class="headerlink" href="#textverticalalignment" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">TextVerticalAlignment</span></code><a class="headerlink" href="#textverticalalignment" title="Permalink to this heading">¶</a></h2>
 <p>This enum describes the different types of alignment of text along the vertical axis of a <a class="reference internal" href="elements.html#text"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">Text</span></code></span></a> element.</p>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">top</span></code></strong>: The text will be aligned to the top of the containing box.</p></li>
@@ -572,7 +574,7 @@ of these <a class="reference internal" href="../widgets/standardbutton.html"><sp
 </ul>
 </section>
 <section id="textwrap">
-<h2><code class="docutils literal notranslate"><span class="pre">TextWrap</span></code><a class="headerlink" href="#textwrap" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">TextWrap</span></code><a class="headerlink" href="#textwrap" title="Permalink to this heading">¶</a></h2>
 <p>This enum describes the how the text wrap if it is too wide to fit in the <a class="reference internal" href="elements.html#text"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">Text</span></code></span></a> width.</p>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">no-wrap</span></code></strong>: The text won’t wrap, but instead will overflow.</p></li>
@@ -687,7 +689,7 @@ of these <a class="reference internal" href="../widgets/standardbutton.html"><sp
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=b3ba4146"></script>
     <script src="../../../_static/doctools.js?v=888ff710"></script>
     <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
-    <script src="../../../_static/scripts/furo.js?v=32e29ea5"></script>
+    <script src="../../../_static/scripts/furo.js?v=4e2eecee"></script>
     
 <!--
     This file is used to add preview of the `.slint` snippets in the generated rustdoc documentation.

@@ -5,10 +5,10 @@
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" /><link rel="next" title="Builtin Structures" href="structs.html" /><link rel="prev" title="Builtin Global Singletons" href="globals.html" />
 
-    <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
+    <!-- Generated with Sphinx 7.1.2 and Furo 2024.04.27 -->
         <title>Builtin Namespaces - Slint 1.6.0 Reference</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=437aa6ec" />
     <link rel="stylesheet" type="text/css" href="../../../_static/theme_tweak.css?v=6873ab5b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?v=36a5483c" />
     
@@ -112,6 +112,8 @@
 <label class="overlay toc-overlay" for="__toc">
   <div class="visually-hidden">Hide table of contents sidebar</div>
 </label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
 
 
 
@@ -281,13 +283,13 @@
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
-        <article role="main">
+        <article role="main" id="furo-main-content">
           <!-- Copyright © SixtyFPS GmbH <info@slint.dev> ; SPDX-License-Identifier: MIT -->
 <section id="builtin-namespaces">
-<h1>Builtin Namespaces<a class="headerlink" href="#builtin-namespaces" title="Permalink to this heading">#</a></h1>
+<h1>Builtin Namespaces<a class="headerlink" href="#builtin-namespaces" title="Permalink to this heading">¶</a></h1>
 <p>The following namespaces provide access to common constants such as special keys or named colors.</p>
 <section id="colors">
-<h2><code class="docutils literal notranslate"><span class="pre">Colors</span></code><a class="headerlink" href="#colors" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">Colors</span></code><a class="headerlink" href="#colors" title="Permalink to this heading">¶</a></h2>
 <p>Use the colors namespace to select colors by their name. For example you can use <code class="docutils literal notranslate"><span class="pre">Colors.aquamarine</span></code> or <code class="docutils literal notranslate"><span class="pre">Colors.bisque</span></code>.
 The entire list of names is very long. You can find a complete list in the <a class="reference external" href="https://www.w3.org/TR/css-color-3/#svg-color">CSS Specification</a>.</p>
 <p>These functions are available both in the global scope, and in the <code class="docutils literal notranslate"><span class="pre">Colors</span></code> namespace.</p>
@@ -306,7 +308,7 @@ The fourth value, if present, is an alpha value between 0 and 1.</p>
 The saturation, value, and optional alpha parameter are expected to be within the range of 0 and 1.</p>
 </section>
 <section id="key">
-<h2><code class="docutils literal notranslate"><span class="pre">Key</span></code><a class="headerlink" href="#key" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">Key</span></code><a class="headerlink" href="#key" title="Permalink to this heading">¶</a></h2>
 <p>Use the constants in the <code class="docutils literal notranslate"><span class="pre">Key</span></code> namespace to handle pressing of keys that don’t have a printable character. Check the value of <a class="reference internal" href="structs.html#keyevent"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">KeyEvent</span></code></span></a>’s <code class="docutils literal notranslate"><span class="pre">text</span></code> property
 against the constants below.</p>
 <ul class="simple">
@@ -367,48 +369,48 @@ against the constants below.</p>
 </ul>
 </section>
 <section id="math">
-<h2><code class="docutils literal notranslate"><span class="pre">Math</span></code><a class="headerlink" href="#math" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">Math</span></code><a class="headerlink" href="#math" title="Permalink to this heading">¶</a></h2>
 <p>These functions are available both in the global scope and in the <code class="docutils literal notranslate"><span class="pre">Math</span></code> namespace.</p>
 <section id="abs-float-float">
-<h3><code class="docutils literal notranslate"><span class="pre">abs(float)</span> <span class="pre">-&gt;</span> <span class="pre">float</span></code><a class="headerlink" href="#abs-float-float" title="Permalink to this heading">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">abs(float)</span> <span class="pre">-&gt;</span> <span class="pre">float</span></code><a class="headerlink" href="#abs-float-float" title="Permalink to this heading">¶</a></h3>
 <p>Return the absolute value.</p>
 </section>
 <section id="acos-float-angle-asin-float-angle-atan-float-angle-cos-angle-float-sin-angle-float-tan-angle-float">
-<h3><code class="docutils literal notranslate"><span class="pre">acos(float)</span> <span class="pre">-&gt;</span> <span class="pre">angle</span></code>, <code class="docutils literal notranslate"><span class="pre">asin(float)</span> <span class="pre">-&gt;</span> <span class="pre">angle</span></code>, <code class="docutils literal notranslate"><span class="pre">atan(float)</span> <span class="pre">-&gt;</span> <span class="pre">angle</span></code>, <code class="docutils literal notranslate"><span class="pre">cos(angle)</span> <span class="pre">-&gt;</span> <span class="pre">float</span></code>, <code class="docutils literal notranslate"><span class="pre">sin(angle)</span> <span class="pre">-&gt;</span> <span class="pre">float</span></code>, <code class="docutils literal notranslate"><span class="pre">tan(angle)</span> <span class="pre">-&gt;</span> <span class="pre">float</span></code><a class="headerlink" href="#acos-float-angle-asin-float-angle-atan-float-angle-cos-angle-float-sin-angle-float-tan-angle-float" title="Permalink to this heading">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">acos(float)</span> <span class="pre">-&gt;</span> <span class="pre">angle</span></code>, <code class="docutils literal notranslate"><span class="pre">asin(float)</span> <span class="pre">-&gt;</span> <span class="pre">angle</span></code>, <code class="docutils literal notranslate"><span class="pre">atan(float)</span> <span class="pre">-&gt;</span> <span class="pre">angle</span></code>, <code class="docutils literal notranslate"><span class="pre">cos(angle)</span> <span class="pre">-&gt;</span> <span class="pre">float</span></code>, <code class="docutils literal notranslate"><span class="pre">sin(angle)</span> <span class="pre">-&gt;</span> <span class="pre">float</span></code>, <code class="docutils literal notranslate"><span class="pre">tan(angle)</span> <span class="pre">-&gt;</span> <span class="pre">float</span></code><a class="headerlink" href="#acos-float-angle-asin-float-angle-atan-float-angle-cos-angle-float-sin-angle-float-tan-angle-float" title="Permalink to this heading">¶</a></h3>
 <p>The trigonometry function. Note that the should be typed with <code class="docutils literal notranslate"><span class="pre">deg</span></code> or <code class="docutils literal notranslate"><span class="pre">rad</span></code> unit
 (for example <code class="docutils literal notranslate"><span class="pre">cos(90deg)</span></code> or <code class="docutils literal notranslate"><span class="pre">sin(slider.value</span> <span class="pre">*</span> <span class="pre">1deg)</span></code>).</p>
 </section>
 <section id="ceil-float-int-and-floor-float-int">
-<h3><code class="docutils literal notranslate"><span class="pre">ceil(float)</span> <span class="pre">-&gt;</span> <span class="pre">int</span></code> and <code class="docutils literal notranslate"><span class="pre">floor(float)</span> <span class="pre">-&gt;</span> <span class="pre">int</span></code><a class="headerlink" href="#ceil-float-int-and-floor-float-int" title="Permalink to this heading">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">ceil(float)</span> <span class="pre">-&gt;</span> <span class="pre">int</span></code> and <code class="docutils literal notranslate"><span class="pre">floor(float)</span> <span class="pre">-&gt;</span> <span class="pre">int</span></code><a class="headerlink" href="#ceil-float-int-and-floor-float-int" title="Permalink to this heading">¶</a></h3>
 <p>Return the ceiling or floor</p>
 </section>
 <section id="clamp-t-t-t-t">
-<h3><code class="docutils literal notranslate"><span class="pre">clamp(T,</span> <span class="pre">T,</span> <span class="pre">T)</span> <span class="pre">-&gt;</span> <span class="pre">T</span></code><a class="headerlink" href="#clamp-t-t-t-t" title="Permalink to this heading">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">clamp(T,</span> <span class="pre">T,</span> <span class="pre">T)</span> <span class="pre">-&gt;</span> <span class="pre">T</span></code><a class="headerlink" href="#clamp-t-t-t-t" title="Permalink to this heading">¶</a></h3>
 <p>Takes a <code class="docutils literal notranslate"><span class="pre">value</span></code>, <code class="docutils literal notranslate"><span class="pre">minimum</span></code> and <code class="docutils literal notranslate"><span class="pre">maximum</span></code> and returns <code class="docutils literal notranslate"><span class="pre">maximum</span></code> if
 <code class="docutils literal notranslate"><span class="pre">value</span> <span class="pre">&gt;</span> <span class="pre">maximum</span></code>, <code class="docutils literal notranslate"><span class="pre">minimum</span></code> if <code class="docutils literal notranslate"><span class="pre">value</span> <span class="pre">&lt;</span> <span class="pre">minimum</span></code>, or <code class="docutils literal notranslate"><span class="pre">value</span></code> in all other cases.</p>
 </section>
 <section id="log-float-float-float">
-<h3><code class="docutils literal notranslate"><span class="pre">log(float,</span> <span class="pre">float)</span> <span class="pre">-&gt;</span> <span class="pre">float</span></code><a class="headerlink" href="#log-float-float-float" title="Permalink to this heading">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">log(float,</span> <span class="pre">float)</span> <span class="pre">-&gt;</span> <span class="pre">float</span></code><a class="headerlink" href="#log-float-float-float" title="Permalink to this heading">¶</a></h3>
 <p>Return the log of the first value with a base of the second value</p>
 </section>
 <section id="max-t-t-t-and-min-t-t-t">
-<h3><code class="docutils literal notranslate"><span class="pre">max(T,</span> <span class="pre">T)</span> <span class="pre">-&gt;</span> <span class="pre">T</span></code> and <code class="docutils literal notranslate"><span class="pre">min(T,</span> <span class="pre">T)</span> <span class="pre">-&gt;</span> <span class="pre">T</span></code><a class="headerlink" href="#max-t-t-t-and-min-t-t-t" title="Permalink to this heading">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">max(T,</span> <span class="pre">T)</span> <span class="pre">-&gt;</span> <span class="pre">T</span></code> and <code class="docutils literal notranslate"><span class="pre">min(T,</span> <span class="pre">T)</span> <span class="pre">-&gt;</span> <span class="pre">T</span></code><a class="headerlink" href="#max-t-t-t-and-min-t-t-t" title="Permalink to this heading">¶</a></h3>
 <p>Return the arguments with the minimum (or maximum) value. All arguments must be of the same numeric type</p>
 </section>
 <section id="mod-t-t-t">
-<h3><code class="docutils literal notranslate"><span class="pre">mod(T,</span> <span class="pre">T)</span> <span class="pre">-&gt;</span> <span class="pre">T</span></code><a class="headerlink" href="#mod-t-t-t" title="Permalink to this heading">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">mod(T,</span> <span class="pre">T)</span> <span class="pre">-&gt;</span> <span class="pre">T</span></code><a class="headerlink" href="#mod-t-t-t" title="Permalink to this heading">¶</a></h3>
 <p>Perform a modulo operation, where T is some numeric type.</p>
 </section>
 <section id="round-float-int">
-<h3><code class="docutils literal notranslate"><span class="pre">round(float)</span> <span class="pre">-&gt;</span> <span class="pre">int</span></code><a class="headerlink" href="#round-float-int" title="Permalink to this heading">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">round(float)</span> <span class="pre">-&gt;</span> <span class="pre">int</span></code><a class="headerlink" href="#round-float-int" title="Permalink to this heading">¶</a></h3>
 <p>Return the value rounded to the nearest integer</p>
 </section>
 <section id="sqrt-float-float">
-<h3><code class="docutils literal notranslate"><span class="pre">sqrt(float)</span> <span class="pre">-&gt;</span> <span class="pre">float</span></code><a class="headerlink" href="#sqrt-float-float" title="Permalink to this heading">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">sqrt(float)</span> <span class="pre">-&gt;</span> <span class="pre">float</span></code><a class="headerlink" href="#sqrt-float-float" title="Permalink to this heading">¶</a></h3>
 <p>Square root</p>
 </section>
 <section id="pow-float-float-float">
-<h3><code class="docutils literal notranslate"><span class="pre">pow(float,</span> <span class="pre">float)</span> <span class="pre">-&gt;</span> <span class="pre">float</span></code><a class="headerlink" href="#pow-float-float-float" title="Permalink to this heading">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">pow(float,</span> <span class="pre">float)</span> <span class="pre">-&gt;</span> <span class="pre">float</span></code><a class="headerlink" href="#pow-float-float-float" title="Permalink to this heading">¶</a></h3>
 <p>Return the value of the first value raised to the second</p>
 </section>
 </section>
@@ -511,7 +513,7 @@ against the constants below.</p>
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=b3ba4146"></script>
     <script src="../../../_static/doctools.js?v=888ff710"></script>
     <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
-    <script src="../../../_static/scripts/furo.js?v=32e29ea5"></script>
+    <script src="../../../_static/scripts/furo.js?v=4e2eecee"></script>
     
 <!--
     This file is used to add preview of the `.slint` snippets in the generated rustdoc documentation.

@@ -5,10 +5,10 @@
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="prev" title="Winit Backend" href="backend_winit.html" />
 
-    <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
+    <!-- Generated with Sphinx 7.1.2 and Furo 2024.04.27 -->
         <title>LinuxKMS Backend - Slint 1.6.0 Reference</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=437aa6ec" />
     <link rel="stylesheet" type="text/css" href="../../_static/theme_tweak.css?v=6873ab5b" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=36a5483c" />
     
@@ -112,6 +112,8 @@
 <label class="overlay toc-overlay" for="__toc">
   <div class="visually-hidden">Hide table of contents sidebar</div>
 </label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
 
 
 
@@ -281,10 +283,10 @@
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
-        <article role="main">
+        <article role="main" id="furo-main-content">
           <!-- Copyright © SixtyFPS GmbH <info@slint.dev> ; SPDX-License-Identifier: MIT -->
 <section id="linuxkms-backend">
-<h1>LinuxKMS Backend<a class="headerlink" href="#linuxkms-backend" title="Permalink to this heading">#</a></h1>
+<h1>LinuxKMS Backend<a class="headerlink" href="#linuxkms-backend" title="Permalink to this heading">¶</a></h1>
 <p>The LinuxKMS backend runs only on Linux and eliminates the need for a windowing system such as Wayland or X11.
 Instead it uses the following libraries and interface to render directly to the screen and react to touch, mouse,
 and keyboard input.</p>
@@ -358,7 +360,7 @@ files; typically that’s the root user.</p>
 and there are <a class="reference external" href="https://github.com/slint-ui/slint/labels/a%3Abackend-linuxkms">known issues</a>.</p>
 </div>
 <section id="display-selection-with-opengl-or-skia-software">
-<h2>Display Selection with OpenGL or Skia Software<a class="headerlink" href="#display-selection-with-opengl-or-skia-software" title="Permalink to this heading">#</a></h2>
+<h2>Display Selection with OpenGL or Skia Software<a class="headerlink" href="#display-selection-with-opengl-or-skia-software" title="Permalink to this heading">¶</a></h2>
 <p>FemtoVG uses OpenGL, and Skia - unless Vulkan is enabled - uses OpenGL, too. Linux’s direct rendering manager
 (DRM) subsystem is used to configure display outputs. Slint defaults to selecting the first connected
 display and configures it at either its preferred resolution (if available) or its highest. Set the <code class="docutils literal notranslate"><span class="pre">SLINT_DRM_OUTPUT</span></code>
@@ -390,7 +392,7 @@ run your program to get a list of available modes. For example the program outpu
 <p>Set <code class="docutils literal notranslate"><span class="pre">SLINT_DRM_MODE</span></code> to <code class="docutils literal notranslate"><span class="pre">4</span></code> to select 1920x1080&#64;60.</p>
 </section>
 <section id="display-selection-with-vulkan">
-<h2>Display Selection with Vulkan<a class="headerlink" href="#display-selection-with-vulkan" title="Permalink to this heading">#</a></h2>
+<h2>Display Selection with Vulkan<a class="headerlink" href="#display-selection-with-vulkan" title="Permalink to this heading">¶</a></h2>
 <p>When Skia’s Vulkan feature is enabled, Skia will attempt use Vulkan’s KHR Display extension to render
 directly to a connected screen. Slint defaults to selecting the first connected display and configures it at
 its highest available resolution and refresh rate. Set the <code class="docutils literal notranslate"><span class="pre">SLINT_VULKAN_DISPLAY</span></code> environment variable
@@ -419,7 +421,7 @@ to <code class="docutils literal notranslate"><span class="pre">list</span></cod
 <p>Set <code class="docutils literal notranslate"><span class="pre">SLINT_VULKAN_MODE</span></code> to <code class="docutils literal notranslate"><span class="pre">4</span></code> to select 1920x1080&#64;60.</p>
 </section>
 <section id="configuring-the-keyboard">
-<h2>Configuring the Keyboard<a class="headerlink" href="#configuring-the-keyboard" title="Permalink to this heading">#</a></h2>
+<h2>Configuring the Keyboard<a class="headerlink" href="#configuring-the-keyboard" title="Permalink to this heading">¶</a></h2>
 <p>By default the keyboard layout and model is assumed to be a US model and layout. Set the following
 environment variables to configure support for different keyboards:</p>
 <ul class="simple">
@@ -435,7 +437,7 @@ options section in
 </ul>
 </section>
 <section id="display-rotation">
-<h2>Display Rotation<a class="headerlink" href="#display-rotation" title="Permalink to this heading">#</a></h2>
+<h2>Display Rotation<a class="headerlink" href="#display-rotation" title="Permalink to this heading">¶</a></h2>
 <p>If your display’s default orientation does not match the desired orientation of your user interface, then you can
 set the <code class="docutils literal notranslate"><span class="pre">SLINT_KMS_ROTATION</span></code> environment variable to instruct Slint to rotate at rendering time. Supported values
 are the rotation in degrees: <code class="docutils literal notranslate"><span class="pre">0</span></code>, <code class="docutils literal notranslate"><span class="pre">90</span></code>, <code class="docutils literal notranslate"><span class="pre">180</span></code>, and <code class="docutils literal notranslate"><span class="pre">270</span></code>.</p>
@@ -530,7 +532,7 @@ udevadm<span class="w"> </span>trigger
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=b3ba4146"></script>
     <script src="../../_static/doctools.js?v=888ff710"></script>
     <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
-    <script src="../../_static/scripts/furo.js?v=32e29ea5"></script>
+    <script src="../../_static/scripts/furo.js?v=4e2eecee"></script>
     
 <!--
     This file is used to add preview of the `.slint` snippets in the generated rustdoc documentation.

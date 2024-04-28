@@ -5,10 +5,10 @@
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Type Mappings" href="types.html" /><link rel="prev" title="Getting Started" href="getting_started.html" />
 
-    <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
+    <!-- Generated with Sphinx 7.1.2 and Furo 2024.04.27 -->
         <title>Overview - Slint 1.6.0 C++ API documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=437aa6ec" />
     <link rel="stylesheet" type="text/css" href="_static/theme_tweak.css?v=ca455ff5" />
     <link rel="stylesheet" type="text/css" href="_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=36a5483c" />
@@ -113,6 +113,8 @@
 <label class="overlay toc-overlay" for="__toc">
   <div class="visually-hidden">Hide table of contents sidebar</div>
 </label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
 
 
 
@@ -344,10 +346,10 @@
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
-        <article role="main">
+        <article role="main" id="furo-main-content">
           <!-- Copyright © SixtyFPS GmbH <info@slint.dev> ; SPDX-License-Identifier: MIT -->
 <section id="overview">
-<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h1>
+<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">¶</a></h1>
 <p>The following sections explain how to integrate your <code class="docutils literal notranslate"><span class="pre">.slint</span></code> designs into your
 C++ application. The entry point is the <code class="docutils literal notranslate"><span class="pre">.slint</span></code> file containing the primary
 component you need to instantiate from C++.</p>
@@ -363,7 +365,7 @@ optimizations.</p>
 for example by setting properties, populating data models or setting up and
 handling callbacks to react to events triggered by the user.</p>
 <section id="compiled-slint-designs">
-<h2>Compiled <code class="docutils literal notranslate"><span class="pre">.slint</span></code> Designs<a class="headerlink" href="#compiled-slint-designs" title="Permalink to this heading">#</a></h2>
+<h2>Compiled <code class="docutils literal notranslate"><span class="pre">.slint</span></code> Designs<a class="headerlink" href="#compiled-slint-designs" title="Permalink to this heading">¶</a></h2>
 <p>The provided CMake integration makes it easy to compile your Slint sources:
 The <a class="reference internal" href="cmake_reference.html#slint-target-sources"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">slint_target_sources</span></code> CMake command</span></a> makes the translation automatic. The
 <a class="reference internal" href="generated_code.html"><span class="std std-doc">generated code</span></a> has an API to set and get property values,
@@ -371,7 +373,7 @@ etc. This API uses types from the <a class="reference internal" href="api/namesp
 example <a class="reference internal" href="api/structslint_1_1SharedString.html#_CPPv4N5slint12SharedStringE" title="slint::SharedString"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">slint::SharedString</span></code></a> or <a class="reference internal" href="api/classslint_1_1Color.html#_CPPv4N5slint5ColorE" title="slint::Color"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">slint::Color</span></code></a>.</p>
 </section>
 <section id="run-time-interpreted-slint-designs">
-<h2>Run-Time Interpreted <code class="docutils literal notranslate"><span class="pre">.slint</span></code> Designs<a class="headerlink" href="#run-time-interpreted-slint-designs" title="Permalink to this heading">#</a></h2>
+<h2>Run-Time Interpreted <code class="docutils literal notranslate"><span class="pre">.slint</span></code> Designs<a class="headerlink" href="#run-time-interpreted-slint-designs" title="Permalink to this heading">¶</a></h2>
 <p>Instead of compiling <code class="docutils literal notranslate"><span class="pre">.slint</span></code> designs to C++, you can dynamically load <code class="docutils literal notranslate"><span class="pre">.slint</span></code>
 files at run-time. This is slower than compiling them ahead of time and requires
 more memory, however it provides more flexibility in your application design.</p>
@@ -486,7 +488,7 @@ callbacks:</p>
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=b3ba4146"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=4825356b"></script>
-    <script src="_static/scripts/furo.js?v=32e29ea5"></script>
+    <script src="_static/scripts/furo.js?v=4e2eecee"></script>
     <script src="_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
     <script src="_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
     

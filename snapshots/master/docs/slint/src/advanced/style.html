@@ -5,10 +5,10 @@
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Backends &amp; Renderers" href="backends_and_renderers.html" /><link rel="prev" title="Debugging Techniques" href="debugging_techniques.html" />
 
-    <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
+    <!-- Generated with Sphinx 7.1.2 and Furo 2024.04.27 -->
         <title>Selecting a Widget Style - Slint 1.6.0 Reference</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=437aa6ec" />
     <link rel="stylesheet" type="text/css" href="../../_static/theme_tweak.css?v=6873ab5b" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=36a5483c" />
     
@@ -112,6 +112,8 @@
 <label class="overlay toc-overlay" for="__toc">
   <div class="visually-hidden">Hide table of contents sidebar</div>
 </label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
 
 
 
@@ -281,10 +283,10 @@
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
-        <article role="main">
+        <article role="main" id="furo-main-content">
           <!-- Copyright © SixtyFPS GmbH <info@slint.dev> ; SPDX-License-Identifier: MIT -->
 <section id="selecting-a-widget-style">
-<h1>Selecting a Widget Style<a class="headerlink" href="#selecting-a-widget-style" title="Permalink to this heading">#</a></h1>
+<h1>Selecting a Widget Style<a class="headerlink" href="#selecting-a-widget-style" title="Permalink to this heading">¶</a></h1>
 <p>Slint offers a variety of <a class="reference internal" href="../language/widgets/widgets.html"><span class="std std-doc">built-in widgets</span></a> which can be imported from <code class="docutils literal notranslate"><span class="pre">&quot;std-widgets.slint&quot;</span></code>. You can modify the look of these widgets by choosing a style.</p>
 <p>The styles available include:</p>
 <table border="1" class="docutils">
@@ -339,20 +341,20 @@
 <p>The widget style is determined at your project’s compile time. The method to select a style depends on how you use Slint.</p>
 <p>If no style is selected, <code class="docutils literal notranslate"><span class="pre">native</span></code> is the default.</p>
 <section id="selecting-a-widget-style-with-rust">
-<h2>Selecting a Widget Style with Rust:<a class="headerlink" href="#selecting-a-widget-style-with-rust" title="Permalink to this heading">#</a></h2>
+<h2>Selecting a Widget Style with Rust:<a class="headerlink" href="#selecting-a-widget-style-with-rust" title="Permalink to this heading">¶</a></h2>
 <p>You can select the style before starting your compilation by setting the <code class="docutils literal notranslate"><span class="pre">SLINT_STYLE</span></code> environment variable to the name of your chosen style.</p>
 <p>When using the <code class="docutils literal notranslate"><span class="pre">slint_build</span></code> API, call the <a class="reference external" href="https://docs.rs/slint-build/newest/slint_build/fn.compile_with_config.html"><code class="docutils literal notranslate"><span class="pre">slint_build::compile_with_config()</span></code></a> function.</p>
 <p>When using the <code class="docutils literal notranslate"><span class="pre">slint_interpeter</span></code> API, call the <a class="reference external" href="https://docs.rs/slint-interpreter/newest/slint_interpreter/struct.ComponentCompiler.html#method.set_style"><code class="docutils literal notranslate"><span class="pre">slint_interpreter::ComponentCompiler::set_style()</span></code></a> function.</p>
 </section>
 <section id="selecting-a-widget-style-when-using-c">
-<h2>Selecting a Widget Style when using C++:<a class="headerlink" href="#selecting-a-widget-style-when-using-c" title="Permalink to this heading">#</a></h2>
+<h2>Selecting a Widget Style when using C++:<a class="headerlink" href="#selecting-a-widget-style-when-using-c" title="Permalink to this heading">¶</a></h2>
 <p>Define a <code class="docutils literal notranslate"><span class="pre">SLINT_STYLE</span></code> CMake cache variable to contain the style name as a string. This can be done, for instance, on the command line:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>cmake<span class="w"> </span>-DSLINT_STYLE<span class="o">=</span><span class="s2">&quot;material&quot;</span><span class="w"> </span>/path/to/source
 </pre></div>
 </div>
 </section>
 <section id="selecting-a-widget-style-when-using-node-js">
-<h2>Selecting a Widget Style when using Node.js:<a class="headerlink" href="#selecting-a-widget-style-when-using-node-js" title="Permalink to this heading">#</a></h2>
+<h2>Selecting a Widget Style when using Node.js:<a class="headerlink" href="#selecting-a-widget-style-when-using-node-js" title="Permalink to this heading">¶</a></h2>
 <p>You can select the style by setting the <code class="docutils literal notranslate"><span class="pre">style</span></code> property in <a class="reference external" href="https://slint.dev/releases/1.6.0/docs/node/interfaces/LoadFileOptions"><code class="docutils literal notranslate"><span class="pre">LoadFileOptions</span></code></a> passed to <a class="reference external" href="https://slint.dev/releases/1.6.0/docs/node/functions/loadFile"><code class="docutils literal notranslate"><span class="pre">loadFile</span></code></a>:</p>
 <div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">slint</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;slint-ui&quot;</span><span class="p">;</span>
 <span class="kd">let</span><span class="w"> </span><span class="nx">ui</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">slint</span><span class="p">.</span><span class="nx">loadFile</span><span class="p">(</span><span class="s2">&quot;main.slint&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;fluent&quot;</span><span class="w"> </span><span class="p">});</span>
@@ -362,12 +364,12 @@
 </div>
 </section>
 <section id="previewing-designs-with-slint-viewer">
-<h2>Previewing Designs With <code class="docutils literal notranslate"><span class="pre">slint-viewer</span></code><a class="headerlink" href="#previewing-designs-with-slint-viewer" title="Permalink to this heading">#</a></h2>
+<h2>Previewing Designs With <code class="docutils literal notranslate"><span class="pre">slint-viewer</span></code><a class="headerlink" href="#previewing-designs-with-slint-viewer" title="Permalink to this heading">¶</a></h2>
 <p>Select the style either by setting the <code class="docutils literal notranslate"><span class="pre">SLINT_STYLE</span></code> environment variable, or by passing the style name with the <code class="docutils literal notranslate"><span class="pre">--style</span></code> argument:</p>
 <p>slint-viewer –style material /path/to/design.slint</p>
 </section>
 <section id="previewing-designs-with-the-slint-visual-studio-code-extension">
-<h2>Previewing Designs With The Slint Visual Studio Code Extension<a class="headerlink" href="#previewing-designs-with-the-slint-visual-studio-code-extension" title="Permalink to this heading">#</a></h2>
+<h2>Previewing Designs With The Slint Visual Studio Code Extension<a class="headerlink" href="#previewing-designs-with-the-slint-visual-studio-code-extension" title="Permalink to this heading">¶</a></h2>
 <p>To select the style, first open the Visual Studio Code settings editor:</p>
 <ul class="simple">
 <li><p>On Windows/Linux - File &gt; Preferences &gt; Settings</p></li>
@@ -376,7 +378,7 @@
 <p>Then enter the style name in Extensions &gt; Slint &gt; Preview:Style</p>
 </section>
 <section id="previewing-designs-with-the-generic-lsp-process">
-<h2>Previewing Designs With The Generic LSP Process<a class="headerlink" href="#previewing-designs-with-the-generic-lsp-process" title="Permalink to this heading">#</a></h2>
+<h2>Previewing Designs With The Generic LSP Process<a class="headerlink" href="#previewing-designs-with-the-generic-lsp-process" title="Permalink to this heading">¶</a></h2>
 <p>Choose the style by setting the <code class="docutils literal notranslate"><span class="pre">SLINT_STYLE</span></code> environment variable before launching the process.
 Alternatively, if your IDE integration allows for command line parameters, you can specify the style using <code class="docutils literal notranslate"><span class="pre">--style</span></code>.</p>
 </section>
@@ -470,7 +472,7 @@ Alternatively, if your IDE integration allows for command line parameters, you c
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=b3ba4146"></script>
     <script src="../../_static/doctools.js?v=888ff710"></script>
     <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
-    <script src="../../_static/scripts/furo.js?v=32e29ea5"></script>
+    <script src="../../_static/scripts/furo.js?v=4e2eecee"></script>
     
 <!--
     This file is used to add preview of the `.slint` snippets in the generated rustdoc documentation.

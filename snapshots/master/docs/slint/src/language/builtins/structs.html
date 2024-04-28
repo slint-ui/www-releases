@@ -5,10 +5,10 @@
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" /><link rel="next" title="Widgets" href="../widgets/index.html" /><link rel="prev" title="Builtin Namespaces" href="namespaces.html" />
 
-    <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
+    <!-- Generated with Sphinx 7.1.2 and Furo 2024.04.27 -->
         <title>Builtin Structures - Slint 1.6.0 Reference</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=437aa6ec" />
     <link rel="stylesheet" type="text/css" href="../../../_static/theme_tweak.css?v=6873ab5b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?v=36a5483c" />
     
@@ -112,6 +112,8 @@
 <label class="overlay toc-overlay" for="__toc">
   <div class="visually-hidden">Hide table of contents sidebar</div>
 </label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
 
 
 
@@ -281,15 +283,15 @@
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
-        <article role="main">
+        <article role="main" id="furo-main-content">
           <!-- Generated with `cargo xtask slintdocs` from internal/common/builtin_structs.rs -->
 <section id="builtin-structures">
-<h1>Builtin Structures<a class="headerlink" href="#builtin-structures" title="Permalink to this heading">#</a></h1>
+<h1>Builtin Structures<a class="headerlink" href="#builtin-structures" title="Permalink to this heading">¶</a></h1>
 <section id="keyevent">
-<h2><code class="docutils literal notranslate"><span class="pre">KeyEvent</span></code><a class="headerlink" href="#keyevent" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">KeyEvent</span></code><a class="headerlink" href="#keyevent" title="Permalink to this heading">¶</a></h2>
 <p>This structure is generated and passed to the key press and release callbacks of the <code class="docutils literal notranslate"><span class="pre">FocusScope</span></code> element.</p>
 <section id="fields">
-<h3>Fields<a class="headerlink" href="#fields" title="Permalink to this heading">#</a></h3>
+<h3>Fields<a class="headerlink" href="#fields" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">text</span></code></strong> (<em>string</em>): The unicode representation of the key pressed.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">modifiers</span></code></strong> (<em>KeyboardModifiers</em>): The keyboard modifiers active at the time of the key press event.</p></li>
@@ -298,7 +300,7 @@
 </section>
 </section>
 <section id="keyboardmodifiers">
-<h2><code class="docutils literal notranslate"><span class="pre">KeyboardModifiers</span></code><a class="headerlink" href="#keyboardmodifiers" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">KeyboardModifiers</span></code><a class="headerlink" href="#keyboardmodifiers" title="Permalink to this heading">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">KeyboardModifiers</span></code> struct provides booleans to indicate possible modifier keys on a keyboard, such as Shift, Control, etc.
 It is provided as part of <code class="docutils literal notranslate"><span class="pre">KeyEvent</span></code>’s <code class="docutils literal notranslate"><span class="pre">modifiers</span></code> field.</p>
 <p>Keyboard shortcuts on Apple platforms typically use the Command key (⌘), such as Command+C for “Copy”. On other platforms
@@ -306,7 +308,7 @@ the same shortcut is typically represented using Control+C. To make it easier to
 Slint maps the Command key to the control modifier, and the Control key to the meta modifier.</p>
 <p>On Windows, the Windows key is mapped to the meta modifier.</p>
 <section id="id1">
-<h3>Fields<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<h3>Fields<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">alt</span></code></strong> (<em>bool</em>): Indicates the Alt key on a keyboard.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">control</span></code></strong> (<em>bool</em>): Indicates the Control key on a keyboard, except on macOS, where it is the Command key (⌘).</p></li>
@@ -316,10 +318,10 @@ Slint maps the Command key to the control modifier, and the Control key to the m
 </section>
 </section>
 <section id="point">
-<h2><code class="docutils literal notranslate"><span class="pre">Point</span></code><a class="headerlink" href="#point" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">Point</span></code><a class="headerlink" href="#point" title="Permalink to this heading">¶</a></h2>
 <p>This structure represents a point with x and y coordinate</p>
 <section id="id2">
-<h3>Fields<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<h3>Fields<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">x</span></code></strong> (<em>length</em>)</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">y</span></code></strong> (<em>length</em>)</p></li>
@@ -327,11 +329,11 @@ Slint maps the Command key to the control modifier, and the Control key to the m
 </section>
 </section>
 <section id="pointerevent">
-<h2><code class="docutils literal notranslate"><span class="pre">PointerEvent</span></code><a class="headerlink" href="#pointerevent" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">PointerEvent</span></code><a class="headerlink" href="#pointerevent" title="Permalink to this heading">¶</a></h2>
 <p>Represents a Pointer event sent by the windowing system.
 This structure is passed to the <code class="docutils literal notranslate"><span class="pre">pointer-event</span></code> callback of the <code class="docutils literal notranslate"><span class="pre">TouchArea</span></code> element.</p>
 <section id="id3">
-<h3>Fields<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<h3>Fields<a class="headerlink" href="#id3" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">button</span></code></strong> (<em>PointerEventButton</em>): The button that was pressed or released</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">kind</span></code></strong> (<em>PointerEventKind</em>): The kind of the event</p></li>
@@ -340,11 +342,11 @@ This structure is passed to the <code class="docutils literal notranslate"><span
 </section>
 </section>
 <section id="pointerscrollevent">
-<h2><code class="docutils literal notranslate"><span class="pre">PointerScrollEvent</span></code><a class="headerlink" href="#pointerscrollevent" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">PointerScrollEvent</span></code><a class="headerlink" href="#pointerscrollevent" title="Permalink to this heading">¶</a></h2>
 <p>Represents a Pointer scroll (or wheel) event sent by the windowing system.
 This structure is passed to the <code class="docutils literal notranslate"><span class="pre">scroll-event</span></code> callback of the <code class="docutils literal notranslate"><span class="pre">TouchArea</span></code> element.</p>
 <section id="id4">
-<h3>Fields<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<h3>Fields<a class="headerlink" href="#id4" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">delta_x</span></code></strong> (<em>length</em>): The amount of pixel in the horizontal direction</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">delta_y</span></code></strong> (<em>length</em>): The amount of pixel in the vertical direction</p></li>
@@ -353,20 +355,20 @@ This structure is passed to the <code class="docutils literal notranslate"><span
 </section>
 </section>
 <section id="standardlistviewitem">
-<h2><code class="docutils literal notranslate"><span class="pre">StandardListViewItem</span></code><a class="headerlink" href="#standardlistviewitem" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">StandardListViewItem</span></code><a class="headerlink" href="#standardlistviewitem" title="Permalink to this heading">¶</a></h2>
 <p>Represents an item in a StandardListView and a StandardTableView.</p>
 <section id="id5">
-<h3>Fields<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<h3>Fields<a class="headerlink" href="#id5" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">text</span></code></strong> (<em>string</em>): The text content of the item</p></li>
 </ul>
 </section>
 </section>
 <section id="tablecolumn">
-<h2><code class="docutils literal notranslate"><span class="pre">TableColumn</span></code><a class="headerlink" href="#tablecolumn" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">TableColumn</span></code><a class="headerlink" href="#tablecolumn" title="Permalink to this heading">¶</a></h2>
 <p>This is used to define the column and the column header of a TableView</p>
 <section id="id6">
-<h3>Fields<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<h3>Fields<a class="headerlink" href="#id6" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">title</span></code></strong> (<em>string</em>): The title of the column header</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">min_width</span></code></strong> (<em>length</em>): The minimum column width (logical length)</p></li>
@@ -488,7 +490,7 @@ This structure is passed to the <code class="docutils literal notranslate"><span
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=b3ba4146"></script>
     <script src="../../../_static/doctools.js?v=888ff710"></script>
     <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
-    <script src="../../../_static/scripts/furo.js?v=32e29ea5"></script>
+    <script src="../../../_static/scripts/furo.js?v=4e2eecee"></script>
     
 <!--
     This file is used to add preview of the `.slint` snippets in the generated rustdoc documentation.

@@ -5,10 +5,10 @@
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" /><link rel="next" title="Switch" href="switch.html" /><link rel="prev" title="StandardListView" href="standardlistview.html" />
 
-    <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
+    <!-- Generated with Sphinx 7.1.2 and Furo 2024.04.27 -->
         <title>StandardTableView - Slint 1.6.0 Reference</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=437aa6ec" />
     <link rel="stylesheet" type="text/css" href="../../../_static/theme_tweak.css?v=6873ab5b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?v=36a5483c" />
     
@@ -112,6 +112,8 @@
 <label class="overlay toc-overlay" for="__toc">
   <div class="visually-hidden">Hide table of contents sidebar</div>
 </label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
 
 
 
@@ -281,15 +283,15 @@
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
-        <article role="main">
+        <article role="main" id="furo-main-content">
           <!-- Copyright © SixtyFPS GmbH <info@slint.dev> ; SPDX-License-Identifier: MIT -->
 <section id="standardtableview">
-<h1><code class="docutils literal notranslate"><span class="pre">StandardTableView</span></code><a class="headerlink" href="#standardtableview" title="Permalink to this heading">#</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">StandardTableView</span></code><a class="headerlink" href="#standardtableview" title="Permalink to this heading">¶</a></h1>
 <p>The <code class="docutils literal notranslate"><span class="pre">StandardTableView</span></code> represents a table of data with columns and rows. Cells
 are organized in a model where each row is a model of
 [<a class="reference internal" href="../builtins/structs.html#standardlistviewitem"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">StandardListViewItem</span></code></span></a>].</p>
 <section id="properties">
-<h2>Properties<a class="headerlink" href="#properties" title="Permalink to this heading">#</a></h2>
+<h2>Properties<a class="headerlink" href="#properties" title="Permalink to this heading">¶</a></h2>
 <p>Same as <a class="reference internal" href="listview.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">ListView</span></code></span></a>, and in addition:</p>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">current-sort-column</span></code></strong> (<em>out</em> <em>int</em>): Indicates the sorted column. -1 mean no column is sorted.</p></li>
@@ -299,7 +301,7 @@ are organized in a model where each row is a model of
 </ul>
 </section>
 <section id="callbacks">
-<h2>Callbacks<a class="headerlink" href="#callbacks" title="Permalink to this heading">#</a></h2>
+<h2>Callbacks<a class="headerlink" href="#callbacks" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">sort-ascending(int)</span></code></strong>: Emitted if the model should be sorted by the given column in ascending order.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">sort-descending(int)</span></code></strong>: Emitted if the model should be sorted by the given column in descending order.</p></li>
@@ -308,13 +310,13 @@ are organized in a model where each row is a model of
 </ul>
 </section>
 <section id="functions">
-<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">#</a></h2>
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">set-current-row(int)</span></code></strong>: Sets the current row by index and brings it into view.</p></li>
 </ul>
 </section>
 <section id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading">#</a></h2>
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>import { StandardTableView } from &quot;std-widgets.slint&quot;;
 export component Example inherits Window {
     width: 230px;
@@ -430,7 +432,7 @@ export component Example inherits Window {
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=b3ba4146"></script>
     <script src="../../../_static/doctools.js?v=888ff710"></script>
     <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
-    <script src="../../../_static/scripts/furo.js?v=32e29ea5"></script>
+    <script src="../../../_static/scripts/furo.js?v=4e2eecee"></script>
     
 <!--
     This file is used to add preview of the `.slint` snippets in the generated rustdoc documentation.

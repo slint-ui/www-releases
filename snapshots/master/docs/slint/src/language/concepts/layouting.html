@@ -5,10 +5,10 @@
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" /><link rel="next" title="Container Components" href="container.html" /><link rel="prev" title="The .slint File" href="file.html" />
 
-    <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
+    <!-- Generated with Sphinx 7.1.2 and Furo 2024.04.27 -->
         <title>Positioning and Layout of Elements - Slint 1.6.0 Reference</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=437aa6ec" />
     <link rel="stylesheet" type="text/css" href="../../../_static/theme_tweak.css?v=6873ab5b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?v=36a5483c" />
     
@@ -112,6 +112,8 @@
 <label class="overlay toc-overlay" for="__toc">
   <div class="visually-hidden">Hide table of contents sidebar</div>
 </label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
 
 
 
@@ -281,10 +283,10 @@
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
-        <article role="main">
+        <article role="main" id="furo-main-content">
           <!-- Copyright © SixtyFPS GmbH <info@slint.dev> ; SPDX-License-Identifier: MIT -->
 <section id="positioning-and-layout-of-elements">
-<h1>Positioning and Layout of Elements<a class="headerlink" href="#positioning-and-layout-of-elements" title="Permalink to this heading">#</a></h1>
+<h1>Positioning and Layout of Elements<a class="headerlink" href="#positioning-and-layout-of-elements" title="Permalink to this heading">¶</a></h1>
 <p>All visual elements are shown in a window. The <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> properties store
 the elements coordinates relative to their parent element. Slint determines the
 absolute position of an element by adding the parent’s position to
@@ -302,7 +304,7 @@ two ways:</p>
 suitable for complex user interfaces and help create scalable user interfaces.
 Layout elements express geometric relationships between elements.</p>
 <section id="explicit-placement">
-<h2>Explicit Placement<a class="headerlink" href="#explicit-placement" title="Permalink to this heading">#</a></h2>
+<h2>Explicit Placement<a class="headerlink" href="#explicit-placement" title="Permalink to this heading">¶</a></h2>
 <p>The following example places two rectangles into a window, a blue one and
 a green one. The green rectangle is a child of the blue:</p>
 <div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>// Explicit positioning
@@ -358,7 +360,7 @@ don’t have content and default to fill their parent element when they do not h
 <p>Layouts are also defaulting to fill the parent, regardless of their own preferred size.</p>
 <p>Other elements (including custom ones without base) default to using their preferred size.</p>
 <section id="preferred-size">
-<h3>Preferred size<a class="headerlink" href="#preferred-size" title="Permalink to this heading">#</a></h3>
+<h3>Preferred size<a class="headerlink" href="#preferred-size" title="Permalink to this heading">¶</a></h3>
 <p>The preferred size of elements can be specified with the <code class="docutils literal notranslate"><span class="pre">preferred-width</span></code> and <code class="docutils literal notranslate"><span class="pre">preferred-height</span></code> properties.</p>
 <p>When not explicitly set, the preferred size depends on the children, and is the preferred size of the
 child that has the bigger preferred size, whose <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> property are not set.
@@ -375,7 +377,7 @@ For example,this component will use the size of the parent by default:</p>
 </section>
 </section>
 <section id="automatic-placement-using-layouts">
-<h2>Automatic Placement Using Layouts<a class="headerlink" href="#automatic-placement-using-layouts" title="Permalink to this heading">#</a></h2>
+<h2>Automatic Placement Using Layouts<a class="headerlink" href="#automatic-placement-using-layouts" title="Permalink to this heading">¶</a></h2>
 <p>Slint comes with different layout elements that automatically calculate the position and size of their children:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">VerticalLayout</span></code> / <code class="docutils literal notranslate"><span class="pre">HorizontalLayout</span></code>: The children are placed along the vertical or horizontal axis.</p></li>
@@ -407,7 +409,7 @@ If the element’s <code class="docutils literal notranslate"><span class="pre">
 applied to the parent element.</p>
 </section>
 <section id="common-properties-on-layout-elements">
-<h2>Common Properties on Layout Elements<a class="headerlink" href="#common-properties-on-layout-elements" title="Permalink to this heading">#</a></h2>
+<h2>Common Properties on Layout Elements<a class="headerlink" href="#common-properties-on-layout-elements" title="Permalink to this heading">¶</a></h2>
 <p>All layout elements have the following properties in common:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">spacing</span></code>: This controls the spacing between the children.</p></li>
@@ -423,7 +425,7 @@ layout.</p></li>
 </ul>
 </section>
 <section id="verticallayout-and-horizontallayout">
-<h2><code class="docutils literal notranslate"><span class="pre">VerticalLayout</span></code> and <code class="docutils literal notranslate"><span class="pre">HorizontalLayout</span></code><a class="headerlink" href="#verticallayout-and-horizontallayout" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">VerticalLayout</span></code> and <code class="docutils literal notranslate"><span class="pre">HorizontalLayout</span></code><a class="headerlink" href="#verticallayout-and-horizontallayout" title="Permalink to this heading">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">VerticalLayout</span></code> and <code class="docutils literal notranslate"><span class="pre">HorizontalLayout</span></code> elements place their children in a
 column or a row. By default, they stretch or shrink to take the whole space. You
 can adjust the element’s alignment as needed.</p>
@@ -488,7 +490,7 @@ export component Example inherits Window {
 </pre></div>
 </div>
 <section id="alignment">
-<h3>Alignment<a class="headerlink" href="#alignment" title="Permalink to this heading">#</a></h3>
+<h3>Alignment<a class="headerlink" href="#alignment" title="Permalink to this heading">¶</a></h3>
 <p>Each element is sized according to their <code class="docutils literal notranslate"><span class="pre">width</span></code> or <code class="docutils literal notranslate"><span class="pre">height</span></code> if specified, otherwise it’s
 set to the minimum size which is set with the min-width or min-height property, or
 the minimum size of an inner layout, whatever is bigger.</p>
@@ -547,7 +549,7 @@ is bigger than the minimum size only if the <code class="docutils literal notran
 </div>
 </section>
 <section id="stretch-algorithm">
-<h3>Stretch algorithm<a class="headerlink" href="#stretch-algorithm" title="Permalink to this heading">#</a></h3>
+<h3>Stretch algorithm<a class="headerlink" href="#stretch-algorithm" title="Permalink to this heading">¶</a></h3>
 <p>When the <code class="docutils literal notranslate"><span class="pre">alignment</span></code> is set to stretch (the default), the elements are sized to their minimum size,
 then the extra space is shared amongst element proportional to their stretch factor set with the
 <code class="docutils literal notranslate"><span class="pre">horizontal-stretch</span></code> and <code class="docutils literal notranslate"><span class="pre">vertical-stretch</span></code> properties. The stretched size won’t exceed the maximum size.
@@ -589,7 +591,7 @@ factor of 0 or reached their maximum size.</p>
 </div>
 </section>
 <section id="for">
-<h3><code class="docutils literal notranslate"><span class="pre">for</span></code><a class="headerlink" href="#for" title="Permalink to this heading">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">for</span></code><a class="headerlink" href="#for" title="Permalink to this heading">¶</a></h3>
 <p>The VerticalLayout and Horizontal layout may also contain <code class="docutils literal notranslate"><span class="pre">for</span></code> or <code class="docutils literal notranslate"><span class="pre">if</span></code> expressions:</p>
 <div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>export component Example inherits Window {
     width: 200px;
@@ -607,7 +609,7 @@ factor of 0 or reached their maximum size.</p>
 </section>
 </section>
 <section id="gridlayout">
-<h2>GridLayout<a class="headerlink" href="#gridlayout" title="Permalink to this heading">#</a></h2>
+<h2>GridLayout<a class="headerlink" href="#gridlayout" title="Permalink to this heading">¶</a></h2>
 <p>The GridLayout lays the element in a grid.
 Each element gains the properties <code class="docutils literal notranslate"><span class="pre">row</span></code>, <code class="docutils literal notranslate"><span class="pre">col</span></code>, <code class="docutils literal notranslate"><span class="pre">rowspan</span></code>, and <code class="docutils literal notranslate"><span class="pre">colspan</span></code>.
 One can either use a <code class="docutils literal notranslate"><span class="pre">Row</span></code> sub-element, or set the <code class="docutils literal notranslate"><span class="pre">row</span></code> property explicitly.
@@ -745,7 +747,7 @@ isn’t allowed in a grid layout.</p>
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=b3ba4146"></script>
     <script src="../../../_static/doctools.js?v=888ff710"></script>
     <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
-    <script src="../../../_static/scripts/furo.js?v=32e29ea5"></script>
+    <script src="../../../_static/scripts/furo.js?v=4e2eecee"></script>
     
 <!--
     This file is used to add preview of the `.slint` snippets in the generated rustdoc documentation.

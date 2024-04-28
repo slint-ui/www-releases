@@ -5,10 +5,10 @@
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" /><link rel="next" title="Builtin Namespaces" href="namespaces.html" /><link rel="prev" title="Builtin Functions" href="functions.html" />
 
-    <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
+    <!-- Generated with Sphinx 7.1.2 and Furo 2024.04.27 -->
         <title>Builtin Global Singletons - Slint 1.6.0 Reference</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=437aa6ec" />
     <link rel="stylesheet" type="text/css" href="../../../_static/theme_tweak.css?v=6873ab5b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?v=36a5483c" />
     
@@ -112,6 +112,8 @@
 <label class="overlay toc-overlay" for="__toc">
   <div class="visually-hidden">Hide table of contents sidebar</div>
 </label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
 
 
 
@@ -281,16 +283,16 @@
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
-        <article role="main">
+        <article role="main" id="furo-main-content">
           <!-- Copyright © SixtyFPS GmbH <info@slint.dev> ; SPDX-License-Identifier: MIT -->
 <section id="builtin-global-singletons">
-<h1>Builtin Global Singletons<a class="headerlink" href="#builtin-global-singletons" title="Permalink to this heading">#</a></h1>
+<h1>Builtin Global Singletons<a class="headerlink" href="#builtin-global-singletons" title="Permalink to this heading">¶</a></h1>
 <section id="palette">
-<h2><code class="docutils literal notranslate"><span class="pre">Palette</span></code><a class="headerlink" href="#palette" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">Palette</span></code><a class="headerlink" href="#palette" title="Permalink to this heading">¶</a></h2>
 <p>Use <code class="docutils literal notranslate"><span class="pre">Palette</span></code> to create custom widgets that match the colors of
 the selected style e.g. fluent, cupertino, material, or qt.</p>
 <section id="properties">
-<h3>Properties<a class="headerlink" href="#properties" title="Permalink to this heading">#</a></h3>
+<h3>Properties<a class="headerlink" href="#properties" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">background</span></code></strong> (<em>out</em> <em>brush</em>): Defines the default background brush. Use this if none of the more specialised background brushes apply.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">foreground</span></code></strong> (<em>out</em> <em>brush</em>): Defines the foreground brush that is used for content that is displayed on <code class="docutils literal notranslate"><span class="pre">background</span></code> brush.</p></li>
@@ -308,7 +310,7 @@ Set this property to force a dark or light color scheme. All styles except for t
 </ul>
 </section>
 <section id="example">
-<h3>Example<a class="headerlink" href="#example" title="Permalink to this heading">#</a></h3>
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>import { Palette, HorizontalBox } from &quot;std-widgets.slint&quot;;
 
 export component MyCustomWidget {
@@ -329,17 +331,17 @@ export component MyCustomWidget {
 </section>
 </section>
 <section id="textinputinterface">
-<h2><code class="docutils literal notranslate"><span class="pre">TextInputInterface</span></code><a class="headerlink" href="#textinputinterface" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">TextInputInterface</span></code><a class="headerlink" href="#textinputinterface" title="Permalink to this heading">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">TextInputInterface.text-input-focused</span></code> property can be used to find out if a <code class="docutils literal notranslate"><span class="pre">TextInput</span></code> element has the focus.
 If you’re implementing your own virtual keyboard, this property is an indicator whether the virtual keyboard should be shown or hidden.</p>
 <section id="id1">
-<h3>Properties<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<h3>Properties<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">text-input-focused</span></code></strong> (<em>bool</em>): True if an <code class="docutils literal notranslate"><span class="pre">TextInput</span></code> element has the focus; false otherwise.</p></li>
 </ul>
 </section>
 <section id="id2">
-<h3>Example<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<h3>Example<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>import { LineEdit } from &quot;std-widgets.slint&quot;;
 
 component VKB {
@@ -453,7 +455,7 @@ export component Example inherits Window {
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=b3ba4146"></script>
     <script src="../../../_static/doctools.js?v=888ff710"></script>
     <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
-    <script src="../../../_static/scripts/furo.js?v=32e29ea5"></script>
+    <script src="../../../_static/scripts/furo.js?v=4e2eecee"></script>
     
 <!--
     This file is used to add preview of the `.slint` snippets in the generated rustdoc documentation.

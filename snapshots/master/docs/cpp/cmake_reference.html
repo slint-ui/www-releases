@@ -5,10 +5,10 @@
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Index (C++)" href="genindex.html" /><link rel="prev" title="Define SLINT_VERSION_STRING" href="api/define_slint__generated__public_8h_1a6b7f049a8c7176edc87c4cffddfc1bbd.html" />
 
-    <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
+    <!-- Generated with Sphinx 7.1.2 and Furo 2024.04.27 -->
         <title>CMake Reference - Slint 1.6.0 C++ API documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=437aa6ec" />
     <link rel="stylesheet" type="text/css" href="_static/theme_tweak.css?v=ca455ff5" />
     <link rel="stylesheet" type="text/css" href="_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=36a5483c" />
@@ -113,6 +113,8 @@
 <label class="overlay toc-overlay" for="__toc">
   <div class="visually-hidden">Hide table of contents sidebar</div>
 </label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
 
 
 
@@ -344,12 +346,12 @@
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
-        <article role="main">
+        <article role="main" id="furo-main-content">
           <section id="cmake-reference">
-<h1>CMake Reference<a class="headerlink" href="#cmake-reference" title="Permalink to this heading">#</a></h1>
+<h1>CMake Reference<a class="headerlink" href="#cmake-reference" title="Permalink to this heading">¶</a></h1>
 <!-- Copyright © SixtyFPS GmbH <info@slint.dev> ; SPDX-License-Identifier: MIT -->
 <section id="slint-target-sources">
-<h2><code class="docutils literal notranslate"><span class="pre">slint_target_sources</span></code><a class="headerlink" href="#slint-target-sources" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">slint_target_sources</span></code><a class="headerlink" href="#slint-target-sources" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">slint_target_sources</span><span class="p">(</span><span class="o">&lt;</span><span class="n">target</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">files</span><span class="o">&gt;....</span> <span class="p">[</span><span class="n">NAMESPACE</span> <span class="n">namespace</span><span class="p">])</span>
 </pre></div>
 </div>
@@ -367,7 +369,7 @@ C++ class will be put in the namespace <code class="docutils literal notranslate
 </div>
 </section>
 <section id="resource-embedding">
-<h2>Resource Embedding<a class="headerlink" href="#resource-embedding" title="Permalink to this heading">#</a></h2>
+<h2>Resource Embedding<a class="headerlink" href="#resource-embedding" title="Permalink to this heading">¶</a></h2>
 <p>By default, images from <a class="reference external" href="https://slint.dev/releases/1.6.0/docs/slint/src/language/syntax/types"><code class="docutils literal notranslate"><span class="pre">&#64;image-url()</span></code></a> or fonts that your Slint files reference are loaded from disk at run-time. This minimises build times, but requires that the directory structure with the files remains stable. If you want to build a program that runs anywhere, then you can configure the Slint compiler to embed such sources into the binary.</p>
 <p>Set the <code class="docutils literal notranslate"><span class="pre">SLINT_EMBED_RESOURCES</span></code> target property on your CMake target to one of the following values:</p>
 <ul class="simple">
@@ -458,7 +460,7 @@ C++ class will be put in the namespace <code class="docutils literal notranslate
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=b3ba4146"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=4825356b"></script>
-    <script src="_static/scripts/furo.js?v=32e29ea5"></script>
+    <script src="_static/scripts/furo.js?v=4e2eecee"></script>
     <script src="_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
     <script src="_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
     

@@ -5,10 +5,10 @@
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" /><link rel="next" title="Builtin Enumerations" href="enums.html" /><link rel="prev" title="Builtin Callbacks" href="callbacks.html" />
 
-    <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
+    <!-- Generated with Sphinx 7.1.2 and Furo 2024.04.27 -->
         <title>Builtin Elements - Slint 1.6.0 Reference</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=437aa6ec" />
     <link rel="stylesheet" type="text/css" href="../../../_static/theme_tweak.css?v=6873ab5b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?v=36a5483c" />
     
@@ -112,6 +112,8 @@
 <label class="overlay toc-overlay" for="__toc">
   <div class="visually-hidden">Hide table of contents sidebar</div>
 </label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
 
 
 
@@ -281,14 +283,14 @@
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
-        <article role="main">
+        <article role="main" id="furo-main-content">
           <!-- Copyright © SixtyFPS GmbH <info@slint.dev> ; SPDX-License-Identifier: MIT -->
 <section id="builtin-elements">
-<h1>Builtin Elements<a class="headerlink" href="#builtin-elements" title="Permalink to this heading">#</a></h1>
+<h1>Builtin Elements<a class="headerlink" href="#builtin-elements" title="Permalink to this heading">¶</a></h1>
 <section id="common-properties">
-<h2>Common properties<a class="headerlink" href="#common-properties" title="Permalink to this heading">#</a></h2>
+<h2>Common properties<a class="headerlink" href="#common-properties" title="Permalink to this heading">¶</a></h2>
 <section id="geometry">
-<h3>Geometry<a class="headerlink" href="#geometry" title="Permalink to this heading">#</a></h3>
+<h3>Geometry<a class="headerlink" href="#geometry" title="Permalink to this heading">¶</a></h3>
 <p>These properties are valid on all visible items:</p>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">width</span></code></strong> and <strong><code class="docutils literal notranslate"><span class="pre">height</span></code></strong> (<em>in</em> <em>length</em>): The size of the element. When set, this overrides the default size.</p></li>
@@ -298,7 +300,7 @@
 </ul>
 </section>
 <section id="layout">
-<h3>Layout<a class="headerlink" href="#layout" title="Permalink to this heading">#</a></h3>
+<h3>Layout<a class="headerlink" href="#layout" title="Permalink to this heading">¶</a></h3>
 <p>These properties are valid on all visible items and can be used to specify constraints when used in layouts:</p>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">col</span></code></strong>, <strong><code class="docutils literal notranslate"><span class="pre">row</span></code></strong>, <strong><code class="docutils literal notranslate"><span class="pre">colspan</span></code></strong>, <strong><code class="docutils literal notranslate"><span class="pre">rowspan</span></code></strong> (<em>in</em> <em>int</em>): See <a class="reference internal" href="#gridlayout"><code class="docutils literal notranslate"><span class="pre">GridLayout</span></code></a>.</p></li>
@@ -309,7 +311,7 @@
 </ul>
 </section>
 <section id="miscellaneous">
-<h3>Miscellaneous<a class="headerlink" href="#miscellaneous" title="Permalink to this heading">#</a></h3>
+<h3>Miscellaneous<a class="headerlink" href="#miscellaneous" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">cache-rendering-hint</span></code></strong> (<em>in</em> <em>bool</em>): When set to <code class="docutils literal notranslate"><span class="pre">true</span></code>, this provides a hint to the renderer to cache the contents of the element and all the children into an intermediate cached layer. For complex sub-trees that rarely change this may speed up the rendering, at the expense of increased memory consumption. Not all rendering backends support this, so this is merely a hint. (default value: <code class="docutils literal notranslate"><span class="pre">false</span></code>)</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">dialog-button-role</span></code></strong> (<em>in</em> <em>enum <a class="reference internal" href="enums.html#dialogbuttonrole"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">DialogButtonRole</span></code></span></a></em>): Specify that this is a button in a <code class="docutils literal notranslate"><span class="pre">Dialog</span></code>.</p></li>
@@ -346,7 +348,7 @@ were first drawn into an intermediate layer, and then the whole layer is rendere
 </div>
 </section>
 <section id="accessibility">
-<h3>Accessibility<a class="headerlink" href="#accessibility" title="Permalink to this heading">#</a></h3>
+<h3>Accessibility<a class="headerlink" href="#accessibility" title="Permalink to this heading">¶</a></h3>
 <p>Use the following <code class="docutils literal notranslate"><span class="pre">accessible-</span></code> properties to make your items interact well with software like screen readers, braille terminals and other software to make your application accessible.
 <code class="docutils literal notranslate"><span class="pre">accessible-role</span></code> must be set in order to be able to set any other accessible property or callback.</p>
 <ul class="simple">
@@ -369,7 +371,7 @@ were first drawn into an intermediate layer, and then the whole layer is rendere
 </ul>
 </section>
 <section id="drop-shadows">
-<h3>Drop Shadows<a class="headerlink" href="#drop-shadows" title="Permalink to this heading">#</a></h3>
+<h3>Drop Shadows<a class="headerlink" href="#drop-shadows" title="Permalink to this heading">¶</a></h3>
 <p>To achieve the graphical effect of a visually elevated shape that shows a shadow effect underneath the frame of
 an element, it’s possible to set the following <code class="docutils literal notranslate"><span class="pre">drop-shadow</span></code> properties:</p>
 <ul class="simple">
@@ -381,7 +383,7 @@ an element, it’s possible to set the following <code class="docutils literal n
 </section>
 </section>
 <section id="dialog">
-<h2><code class="docutils literal notranslate"><span class="pre">Dialog</span></code><a class="headerlink" href="#dialog" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">Dialog</span></code><a class="headerlink" href="#dialog" title="Permalink to this heading">¶</a></h2>
 <p>Dialog is like a window, but it has buttons that are automatically laid out.</p>
 <p>A Dialog should have one main element as child, that isn’t a button.
 The dialog can have any number of <code class="docutils literal notranslate"><span class="pre">StandardButton</span></code> widgets or other buttons
@@ -393,14 +395,14 @@ There can’t be several <code class="docutils literal notranslate"><span class=
 callback handler, so it can be handled from the native code: For example if there is a button of kind <code class="docutils literal notranslate"><span class="pre">cancel</span></code>,
 a <code class="docutils literal notranslate"><span class="pre">cancel_clicked</span></code> callback will be added.</p>
 <section id="properties">
-<h3>Properties<a class="headerlink" href="#properties" title="Permalink to this heading">#</a></h3>
+<h3>Properties<a class="headerlink" href="#properties" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">icon</span></code></strong> (<em>in</em> <em>image</em>): The window icon shown in the title bar or the task bar on window managers supporting it.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">title</span></code></strong> (<em>in</em> <em>string</em>): The window title that is shown in the title bar.</p></li>
 </ul>
 </section>
 <section id="example">
-<h3>Example<a class="headerlink" href="#example" title="Permalink to this heading">#</a></h3>
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>import { StandardButton, Button } from &quot;std-widgets.slint&quot;;
 export component Example inherits Dialog {
     Text {
@@ -418,7 +420,7 @@ export component Example inherits Dialog {
 </section>
 </section>
 <section id="flickable">
-<h2><code class="docutils literal notranslate"><span class="pre">Flickable</span></code><a class="headerlink" href="#flickable" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">Flickable</span></code><a class="headerlink" href="#flickable" title="Permalink to this heading">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">Flickable</span></code> is a low-level element that is the base for scrollable
 widgets, such as the <a class="reference internal" href="../widgets/scrollview.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">ScrollView</span></code></span></a>. When the <code class="docutils literal notranslate"><span class="pre">viewport-width</span></code> or the
 <code class="docutils literal notranslate"><span class="pre">viewport-height</span></code> is greater than the parent’s <code class="docutils literal notranslate"><span class="pre">width</span></code> or <code class="docutils literal notranslate"><span class="pre">height</span></code>
@@ -431,7 +433,7 @@ The maximum and preferred size of the <code class="docutils literal notranslate"
 <p>When not part of a layout, its width or height defaults to 100% of the parent
 element when not specified.</p>
 <section id="pointer-event-interaction">
-<h3>Pointer Event Interaction<a class="headerlink" href="#pointer-event-interaction" title="Permalink to this heading">#</a></h3>
+<h3>Pointer Event Interaction<a class="headerlink" href="#pointer-event-interaction" title="Permalink to this heading">¶</a></h3>
 <p>If the <code class="docutils literal notranslate"><span class="pre">Flickable</span></code>’s area contains elements that use <code class="docutils literal notranslate"><span class="pre">TouchArea</span></code> to act on clicking, such as <code class="docutils literal notranslate"><span class="pre">Button</span></code>
 widgets, then the following algorithm is used to distinguish between the user’s intent of scrolling or
 interacting with <code class="docutils literal notranslate"><span class="pre">TouchArea</span></code> elements:</p>
@@ -460,7 +462,7 @@ to the coordinates of the press event exceeds 8 logical pixels.</p></li>
 </ol>
 </section>
 <section id="id1">
-<h3>Properties<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<h3>Properties<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">interactive</span></code></strong> (<em>in</em> <em>bool</em>): When true, the viewport can be scrolled by clicking on it and dragging it with the cursor. (default value: true)</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">viewport-height</span></code></strong>, <strong><code class="docutils literal notranslate"><span class="pre">viewport-width</span></code></strong> (<em>in</em> <em>length</em>): The total size of the scrollable element.</p></li>
@@ -468,13 +470,13 @@ to the coordinates of the press event exceeds 8 logical pixels.</p></li>
 </ul>
 </section>
 <section id="callbacks">
-<h3>Callbacks<a class="headerlink" href="#callbacks" title="Permalink to this heading">#</a></h3>
+<h3>Callbacks<a class="headerlink" href="#callbacks" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">flicked()</span></code></strong>: Invoked when <code class="docutils literal notranslate"><span class="pre">viewport-x</span></code> or <code class="docutils literal notranslate"><span class="pre">viewport-y</span></code> is changed by a user action (dragging, scrolling).</p></li>
 </ul>
 </section>
 <section id="id2">
-<h3>Example<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<h3>Example<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>export component Example inherits Window {
     width: 270px;
     height: 100px;
@@ -493,14 +495,14 @@ to the coordinates of the press event exceeds 8 logical pixels.</p></li>
 </section>
 </section>
 <section id="focusscope">
-<h2><code class="docutils literal notranslate"><span class="pre">FocusScope</span></code><a class="headerlink" href="#focusscope" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">FocusScope</span></code><a class="headerlink" href="#focusscope" title="Permalink to this heading">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">FocusScope</span></code> exposes callbacks to intercept key events. Note that <code class="docutils literal notranslate"><span class="pre">FocusScope</span></code>
 will only invoke them when it <code class="docutils literal notranslate"><span class="pre">has-focus</span></code>.</p>
 <p>The <a class="reference internal" href="structs.html#keyevent"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">KeyEvent</span></code></span></a> has a text property, which is a character of the key entered.
 When a non-printable key is pressed, the character will be either a control character,
 or it will be mapped to a private unicode character. The mapping of these non-printable, special characters is available in the <a class="reference internal" href="namespaces.html#key"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">Key</span></code></span></a> namespace</p>
 <section id="id3">
-<h3>Properties<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<h3>Properties<a class="headerlink" href="#id3" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">has-focus</span></code></strong> (<em>out</em> <em>bool</em>): Is <code class="docutils literal notranslate"><span class="pre">true</span></code> when the element has keyboard
 focus.</p></li>
@@ -510,7 +512,7 @@ child <code class="docutils literal notranslate"><span class="pre">FocusScope</s
 </ul>
 </section>
 <section id="functions">
-<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">#</a></h3>
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">focus()</span></code></strong> Call this function to transfer keyboard focus to this <code class="docutils literal notranslate"><span class="pre">FocusScope</span></code>,
 to receive future <a class="reference internal" href="structs.html#keyevent"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">KeyEvent</span></code></span></a>s.</p></li>
@@ -518,7 +520,7 @@ to receive future <a class="reference internal" href="structs.html#keyevent"><sp
 </ul>
 </section>
 <section id="id4">
-<h3>Callbacks<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<h3>Callbacks<a class="headerlink" href="#id4" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">key-pressed(KeyEvent)</span> <span class="pre">-&gt;</span> <span class="pre">EventResult</span></code></strong>: Invoked when a key is pressed, the argument is a <a class="reference internal" href="structs.html#keyevent"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">KeyEvent</span></code></span></a> struct. The returned <a class="reference internal" href="enums.html#eventresult"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">EventResult</span></code></span></a> indicates whether to accept or ignore the event. Ignored events are
 forwarded to the parent element.</p></li>
@@ -528,7 +530,7 @@ forwarded to the parent element.</p></li>
 </ul>
 </section>
 <section id="id5">
-<h3>Example<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<h3>Example<a class="headerlink" href="#id5" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>export component Example inherits Window {
     width: 100px;
     height: 100px;
@@ -551,13 +553,13 @@ forwarded to the parent element.</p></li>
 </section>
 </section>
 <section id="gridlayout">
-<h2><code class="docutils literal notranslate"><span class="pre">GridLayout</span></code><a class="headerlink" href="#gridlayout" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">GridLayout</span></code><a class="headerlink" href="#gridlayout" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">GridLayout</span></code> places its children in a grid. <code class="docutils literal notranslate"><span class="pre">GridLayout</span></code> adds properties to each child: <code class="docutils literal notranslate"><span class="pre">col</span></code>, <code class="docutils literal notranslate"><span class="pre">row</span></code>, <code class="docutils literal notranslate"><span class="pre">colspan</span></code>, <code class="docutils literal notranslate"><span class="pre">rowspan</span></code>.
 You can control the position of children with <code class="docutils literal notranslate"><span class="pre">col</span></code> and <code class="docutils literal notranslate"><span class="pre">row</span></code>.
 If <code class="docutils literal notranslate"><span class="pre">col</span></code> or <code class="docutils literal notranslate"><span class="pre">row</span></code> aren’t specified, they are automatically computed such that the item is next to the previous item, in the same row.
 Alternatively, the item can be put in a <code class="docutils literal notranslate"><span class="pre">Row</span></code> element.</p>
 <section id="id6">
-<h3>Properties<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<h3>Properties<a class="headerlink" href="#id6" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">spacing</span></code></strong> (<em>in</em> <em>length</em>): The distance between the elements in the layout.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">spacing-horizontal</span></code></strong>, <strong><code class="docutils literal notranslate"><span class="pre">spacing-vertical</span></code></strong> (<em>in</em> <em>length</em>):
@@ -568,7 +570,7 @@ Set these properties to override the padding on specific sides.</p></li>
 </ul>
 </section>
 <section id="examples">
-<h3>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">#</a></h3>
+<h3>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h3>
 <p>This example uses the <code class="docutils literal notranslate"><span class="pre">Row</span></code> element:</p>
 <div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>export component Foo inherits Window {
     width: 200px;
@@ -604,10 +606,10 @@ Set these properties to override the padding on specific sides.</p></li>
 </section>
 </section>
 <section id="image">
-<h2><code class="docutils literal notranslate"><span class="pre">Image</span></code><a class="headerlink" href="#image" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">Image</span></code><a class="headerlink" href="#image" title="Permalink to this heading">¶</a></h2>
 <p>An <code class="docutils literal notranslate"><span class="pre">Image</span></code> can be used to represent an image loaded from a file.</p>
 <section id="id7">
-<h3>Properties<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<h3>Properties<a class="headerlink" href="#id7" title="Permalink to this heading">¶</a></h3>
 <ul>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">colorize</span></code></strong> (<em>in</em> <em>brush</em>): When set, the image is used as an alpha mask and is drawn in the given color (or with the gradient).</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">horizontal-alignment</span></code></strong> (<em>in</em> <em>enum <a class="reference internal" href="enums.html#imagehorizontalalignment"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">ImageHorizontalAlignment</span></code></span></a></em>): The horizontal alignment of the image within the element.</p></li>
@@ -654,7 +656,7 @@ specified, then the other defaults to the specified value scaled according to th
 </ul>
 </section>
 <section id="id8">
-<h3>Example<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
+<h3>Example<a class="headerlink" href="#id8" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>export component Example inherits Window {
     width: 100px;
     height: 100px;
@@ -701,7 +703,7 @@ specified, then the other defaults to the specified value scaled according to th
 </section>
 </section>
 <section id="path">
-<h2><code class="docutils literal notranslate"><span class="pre">Path</span></code><a class="headerlink" href="#path" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">Path</span></code><a class="headerlink" href="#path" title="Permalink to this heading">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">Path</span></code> element allows rendering a generic shape, composed of different geometric commands. A path
 shape can be filled and outlined.</p>
 <p>When not part of a layout, its width or height defaults to 100% of the parent element when not specified.</p>
@@ -715,7 +717,7 @@ When rendering on the screen, the shape is drawn relative to the <code class="do
 and <code class="docutils literal notranslate"><span class="pre">height</span></code> properties are non-zero, then the entire shape is fit into these bounds - by scaling
 accordingly.</p>
 <section id="common-path-properties">
-<h3>Common Path Properties<a class="headerlink" href="#common-path-properties" title="Permalink to this heading">#</a></h3>
+<h3>Common Path Properties<a class="headerlink" href="#common-path-properties" title="Permalink to this heading">¶</a></h3>
 <ul>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">fill</span></code></strong> (<em>in</em> <em>brush</em>): The color for filling the shape of the path.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">fill-rule</span></code></strong> (<em>in</em> <em>enum <a class="reference internal" href="enums.html#fillrule"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">FillRule</span></code></span></a></em>): The fill rule to use for the path. (default value: <code class="docutils literal notranslate"><span class="pre">nonzero</span></code>)</p></li>
@@ -734,7 +736,7 @@ clipped at the boundaries of the view box.
 This property must be a literal <code class="docutils literal notranslate"><span class="pre">true</span></code> or <code class="docutils literal notranslate"><span class="pre">false</span></code> (default value: <code class="docutils literal notranslate"><span class="pre">false</span></code>)</p></li>
 </ul>
 <section id="path-using-svg-commands">
-<h4>Path Using SVG commands<a class="headerlink" href="#path-using-svg-commands" title="Permalink to this heading">#</a></h4>
+<h4>Path Using SVG commands<a class="headerlink" href="#path-using-svg-commands" title="Permalink to this heading">¶</a></h4>
 <p>SVG is a popular file format for defining scalable graphics, which are often composed of paths. In SVG
 paths are composed using <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d#path_commands">commands</a>,
 which in turn are written in a string. In <code class="docutils literal notranslate"><span class="pre">.slint</span></code> the path commands are provided to the <code class="docutils literal notranslate"><span class="pre">commands</span></code>
@@ -755,7 +757,7 @@ property. The following example renders a shape consists of an arc and a rectang
 </ul>
 </section>
 <section id="path-using-svg-path-elements">
-<h4>Path Using SVG Path Elements<a class="headerlink" href="#path-using-svg-path-elements" title="Permalink to this heading">#</a></h4>
+<h4>Path Using SVG Path Elements<a class="headerlink" href="#path-using-svg-path-elements" title="Permalink to this heading">¶</a></h4>
 <p>The shape of the path can also be described using elements that resemble the SVG path commands but use the
 <code class="docutils literal notranslate"><span class="pre">.slint</span></code> markup syntax. The earlier example using SVG commands can also be written like that:</p>
 <div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>export component Example inherits Path {
@@ -790,12 +792,12 @@ property. The following example renders a shape consists of an arc and a rectang
 <p>Note how the coordinates of the path elements don’t use units - they operate within the imaginary
 coordinate system of the scalable path.</p>
 <section id="moveto-sub-element-for-path">
-<h5><code class="docutils literal notranslate"><span class="pre">MoveTo</span></code> Sub-element for <code class="docutils literal notranslate"><span class="pre">Path</span></code><a class="headerlink" href="#moveto-sub-element-for-path" title="Permalink to this heading">#</a></h5>
+<h5><code class="docutils literal notranslate"><span class="pre">MoveTo</span></code> Sub-element for <code class="docutils literal notranslate"><span class="pre">Path</span></code><a class="headerlink" href="#moveto-sub-element-for-path" title="Permalink to this heading">¶</a></h5>
 <p>The <code class="docutils literal notranslate"><span class="pre">MoveTo</span></code> sub-element closes the current sub-path, if present, and moves the current point
 to the location specified by the <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> properties. Subsequent elements such as <code class="docutils literal notranslate"><span class="pre">LineTo</span></code>
 will use this new position as their starting point, therefore this starts a new sub-path.</p>
 <section id="id9">
-<h6>Properties<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h6>
+<h6>Properties<a class="headerlink" href="#id9" title="Permalink to this heading">¶</a></h6>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">x</span></code></strong> (<em>in</em> <em>float</em>): The x position of the new current point.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">y</span></code></strong> (<em>in</em> <em>float</em>): The y position of the new current point.</p></li>
@@ -803,11 +805,11 @@ will use this new position as their starting point, therefore this starts a new 
 </section>
 </section>
 <section id="lineto-sub-element-for-path">
-<h5><code class="docutils literal notranslate"><span class="pre">LineTo</span></code> Sub-element for <code class="docutils literal notranslate"><span class="pre">Path</span></code><a class="headerlink" href="#lineto-sub-element-for-path" title="Permalink to this heading">#</a></h5>
+<h5><code class="docutils literal notranslate"><span class="pre">LineTo</span></code> Sub-element for <code class="docutils literal notranslate"><span class="pre">Path</span></code><a class="headerlink" href="#lineto-sub-element-for-path" title="Permalink to this heading">¶</a></h5>
 <p>The <code class="docutils literal notranslate"><span class="pre">LineTo</span></code> sub-element describes a line from the path’s current position to the
 location specified by the <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> properties.</p>
 <section id="id10">
-<h6>Properties<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h6>
+<h6>Properties<a class="headerlink" href="#id10" title="Permalink to this heading">¶</a></h6>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">x</span></code></strong> (<em>in</em> <em>float</em>): The target x position of the line.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">y</span></code></strong> (<em>in</em> <em>float</em>): The target y position of the line.</p></li>
@@ -815,13 +817,13 @@ location specified by the <code class="docutils literal notranslate"><span class
 </section>
 </section>
 <section id="arcto-sub-element-for-path">
-<h5><code class="docutils literal notranslate"><span class="pre">ArcTo</span></code> Sub-element for <code class="docutils literal notranslate"><span class="pre">Path</span></code><a class="headerlink" href="#arcto-sub-element-for-path" title="Permalink to this heading">#</a></h5>
+<h5><code class="docutils literal notranslate"><span class="pre">ArcTo</span></code> Sub-element for <code class="docutils literal notranslate"><span class="pre">Path</span></code><a class="headerlink" href="#arcto-sub-element-for-path" title="Permalink to this heading">¶</a></h5>
 <p>The <code class="docutils literal notranslate"><span class="pre">ArcTo</span></code> sub-element describes the portion of an ellipse. The arc is drawn from the path’s
 current position to the location specified by the <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> properties. The remaining properties
 are modelled after the SVG specification and allow tuning visual features such as the direction
 or angle.</p>
 <section id="id11">
-<h6>Properties<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h6>
+<h6>Properties<a class="headerlink" href="#id11" title="Permalink to this heading">¶</a></h6>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">large-arc</span></code></strong> (<em>in</em> <em>bool</em>): Out of the two arcs of a closed ellipse, this flag selects that the larger arc is to be rendered. If the property is <code class="docutils literal notranslate"><span class="pre">false</span></code>, the shorter arc is rendered instead.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">radius-x</span></code></strong> (<em>in</em> <em>float</em>): The x-radius of the ellipse.</p></li>
@@ -834,12 +836,12 @@ or angle.</p>
 </section>
 </section>
 <section id="cubicto-sub-element-for-path">
-<h5><code class="docutils literal notranslate"><span class="pre">CubicTo</span></code> Sub-element for <code class="docutils literal notranslate"><span class="pre">Path</span></code><a class="headerlink" href="#cubicto-sub-element-for-path" title="Permalink to this heading">#</a></h5>
+<h5><code class="docutils literal notranslate"><span class="pre">CubicTo</span></code> Sub-element for <code class="docutils literal notranslate"><span class="pre">Path</span></code><a class="headerlink" href="#cubicto-sub-element-for-path" title="Permalink to this heading">¶</a></h5>
 <p>The <code class="docutils literal notranslate"><span class="pre">CubicTo</span></code> sub-element describes a smooth Bézier from the path’s current position to the
 location specified by the <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> properties, using two control points specified by their
 respective properties.</p>
 <section id="id12">
-<h6>Properties<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h6>
+<h6>Properties<a class="headerlink" href="#id12" title="Permalink to this heading">¶</a></h6>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">control-1-x</span></code></strong> (<em>in</em> <em>float</em>): The x coordinate of the curve’s first control point.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">control-1-y</span></code></strong> (<em>in</em> <em>float</em>): The y coordinate of the curve’s first control point.</p></li>
@@ -851,12 +853,12 @@ respective properties.</p>
 </section>
 </section>
 <section id="quadraticto-sub-element-for-path">
-<h5><code class="docutils literal notranslate"><span class="pre">QuadraticTo</span></code> Sub-element for <code class="docutils literal notranslate"><span class="pre">Path</span></code><a class="headerlink" href="#quadraticto-sub-element-for-path" title="Permalink to this heading">#</a></h5>
+<h5><code class="docutils literal notranslate"><span class="pre">QuadraticTo</span></code> Sub-element for <code class="docutils literal notranslate"><span class="pre">Path</span></code><a class="headerlink" href="#quadraticto-sub-element-for-path" title="Permalink to this heading">¶</a></h5>
 <p>The <code class="docutils literal notranslate"><span class="pre">QuadraticTo</span></code> sub-element describes a smooth Bézier from the path’s current position to the
 location specified by the <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> properties, using the control points specified by the
 <code class="docutils literal notranslate"><span class="pre">control-x</span></code> and <code class="docutils literal notranslate"><span class="pre">control-y</span></code> properties.</p>
 <section id="id13">
-<h6>Properties<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h6>
+<h6>Properties<a class="headerlink" href="#id13" title="Permalink to this heading">¶</a></h6>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">control-x</span></code></strong> (<em>in</em> <em>float</em>): The x coordinate of the curve’s control point.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">control-y</span></code></strong> (<em>in</em> <em>float</em>): The y coordinate of the curve’s control point.</p></li>
@@ -866,7 +868,7 @@ location specified by the <code class="docutils literal notranslate"><span class
 </section>
 </section>
 <section id="close-sub-element-for-path">
-<h5><code class="docutils literal notranslate"><span class="pre">Close</span></code> Sub-element for <code class="docutils literal notranslate"><span class="pre">Path</span></code><a class="headerlink" href="#close-sub-element-for-path" title="Permalink to this heading">#</a></h5>
+<h5><code class="docutils literal notranslate"><span class="pre">Close</span></code> Sub-element for <code class="docutils literal notranslate"><span class="pre">Path</span></code><a class="headerlink" href="#close-sub-element-for-path" title="Permalink to this heading">¶</a></h5>
 <p>The <code class="docutils literal notranslate"><span class="pre">Close</span></code> element closes the current sub-path and draws a straight line from the current
 position to the beginning of the path.</p>
 </section>
@@ -874,25 +876,25 @@ position to the beginning of the path.</p>
 </section>
 </section>
 <section id="popupwindow">
-<h2><code class="docutils literal notranslate"><span class="pre">PopupWindow</span></code><a class="headerlink" href="#popupwindow" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">PopupWindow</span></code><a class="headerlink" href="#popupwindow" title="Permalink to this heading">¶</a></h2>
 <p>Use this element to show a popup window like a tooltip or a popup menu.</p>
 <p>Note: It isn’t allowed to access properties of elements within the popup from outside of the <code class="docutils literal notranslate"><span class="pre">PopupWindow</span></code>.</p>
 <section id="id14">
-<h3>Properties<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h3>
+<h3>Properties<a class="headerlink" href="#id14" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">close-on-click</span></code></strong> (<em>in</em> <em>bool</em>): By default, a PopupWindow closes when the user clicks. Set this
 to false to prevent that behavior and close it manually using the <code class="docutils literal notranslate"><span class="pre">close()</span></code> function. (default value: true)</p></li>
 </ul>
 </section>
 <section id="id15">
-<h3>Functions<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h3>
+<h3>Functions<a class="headerlink" href="#id15" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">show()</span></code></strong> Show the popup on the screen.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">close()</span></code></strong> Closes the popup. Use this if you set the <code class="docutils literal notranslate"><span class="pre">close-on-click</span></code> property to false.</p></li>
 </ul>
 </section>
 <section id="id16">
-<h3>Example<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h3>
+<h3>Example<a class="headerlink" href="#id16" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>export component Example inherits Window {
     width: 100px;
     height: 100px;
@@ -912,12 +914,12 @@ to false to prevent that behavior and close it manually using the <code class="d
 </section>
 </section>
 <section id="rectangle">
-<h2><code class="docutils literal notranslate"><span class="pre">Rectangle</span></code><a class="headerlink" href="#rectangle" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">Rectangle</span></code><a class="headerlink" href="#rectangle" title="Permalink to this heading">¶</a></h2>
 <p>By default, a <code class="docutils literal notranslate"><span class="pre">Rectangle</span></code> is just an empty item that shows nothing. By setting a color or configuring a border,
 it’s then possible to draw a rectangle on the screen.</p>
 <p>When not part of a layout, its width and height default to 100% of the parent element.</p>
 <section id="id17">
-<h3>Properties<a class="headerlink" href="#id17" title="Permalink to this heading">#</a></h3>
+<h3>Properties<a class="headerlink" href="#id17" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">background</span></code></strong> (<em>in</em> <em>brush</em>): The background brush of this <code class="docutils literal notranslate"><span class="pre">Rectangle</span></code>, typically a color. (default value: <code class="docutils literal notranslate"><span class="pre">transparent</span></code>)</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">border-color</span></code></strong> (<em>in</em> <em>brush</em>): The color of the border. (default value: <code class="docutils literal notranslate"><span class="pre">transparent</span></code>)</p></li>
@@ -928,7 +930,7 @@ it’s then possible to draw a rectangle on the screen.</p>
 </ul>
 </section>
 <section id="id18">
-<h3>Example<a class="headerlink" href="#id18" title="Permalink to this heading">#</a></h3>
+<h3>Example<a class="headerlink" href="#id18" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>export component Example inherits Window {
     width: 270px;
     height: 100px;
@@ -980,11 +982,11 @@ it’s then possible to draw a rectangle on the screen.</p>
 </section>
 </section>
 <section id="textinput">
-<h2><code class="docutils literal notranslate"><span class="pre">TextInput</span></code><a class="headerlink" href="#textinput" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">TextInput</span></code><a class="headerlink" href="#textinput" title="Permalink to this heading">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">TextInput</span></code> is a lower-level item that shows text and allows entering text.</p>
 <p>When not part of a layout, its width or height defaults to 100% of the parent element when not specified.</p>
 <section id="id19">
-<h3>Properties<a class="headerlink" href="#id19" title="Permalink to this heading">#</a></h3>
+<h3>Properties<a class="headerlink" href="#id19" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">color</span></code></strong> (<em>in</em> <em>brush</em>): The color of the text (default value: depends on the style)</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">font-family</span></code></strong> (<em>in</em> <em>string</em>): The name of the font family selected for rendering the text.</p></li>
@@ -1006,7 +1008,7 @@ it’s then possible to draw a rectangle on the screen.</p>
 </ul>
 </section>
 <section id="id20">
-<h3>Functions<a class="headerlink" href="#id20" title="Permalink to this heading">#</a></h3>
+<h3>Functions<a class="headerlink" href="#id20" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">focus()</span></code></strong> Call this function to focus the text input and make it receive future keyboard events.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">clear-focus()</span></code></strong> Call this function to remove keyboard focus from this <code class="docutils literal notranslate"><span class="pre">TextInput</span></code> if it currently has the focus. See also <a class="reference internal" href="../concepts/focus.html"><span class="std std-doc">Focus Handling</span></a>.</p></li>
@@ -1019,7 +1021,7 @@ it’s then possible to draw a rectangle on the screen.</p>
 </ul>
 </section>
 <section id="id21">
-<h3>Callbacks<a class="headerlink" href="#id21" title="Permalink to this heading">#</a></h3>
+<h3>Callbacks<a class="headerlink" href="#id21" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">accepted()</span></code></strong>: Invoked when enter key is pressed.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">cursor-position-changed(Point)</span></code></strong>: The cursor was moved to the new (x, y) position
@@ -1028,7 +1030,7 @@ described by the <a class="reference internal" href="structs.html#point"><span c
 </ul>
 </section>
 <section id="id22">
-<h3>Example<a class="headerlink" href="#id22" title="Permalink to this heading">#</a></h3>
+<h3>Example<a class="headerlink" href="#id22" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>export component Example inherits Window {
     width: 270px;
     height: 100px;
@@ -1042,7 +1044,7 @@ described by the <a class="reference internal" href="structs.html#point"><span c
 </section>
 </section>
 <section id="text">
-<h2><code class="docutils literal notranslate"><span class="pre">Text</span></code><a class="headerlink" href="#text" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">Text</span></code><a class="headerlink" href="#text" title="Permalink to this heading">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">Text</span></code> element is responsible for rendering text. Besides the <code class="docutils literal notranslate"><span class="pre">text</span></code> property, that specifies which text to render,
 it also allows configuring different visual aspects through the <code class="docutils literal notranslate"><span class="pre">font-family</span></code>, <code class="docutils literal notranslate"><span class="pre">font-size</span></code>, <code class="docutils literal notranslate"><span class="pre">font-weight</span></code>, <code class="docutils literal notranslate"><span class="pre">color</span></code>, and
 <code class="docutils literal notranslate"><span class="pre">stroke</span></code> properties.</p>
@@ -1052,7 +1054,7 @@ property will trigger a manual line break. For automatic line breaking you need 
 recommended to place the <code class="docutils literal notranslate"><span class="pre">Text</span></code> element in a layout and let it set the <code class="docutils literal notranslate"><span class="pre">width</span></code> and <code class="docutils literal notranslate"><span class="pre">height</span></code> based on the available screen space
 and the text itself.</p>
 <section id="id23">
-<h3>Properties<a class="headerlink" href="#id23" title="Permalink to this heading">#</a></h3>
+<h3>Properties<a class="headerlink" href="#id23" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">color</span></code></strong> (<em>in</em> <em>brush</em>): The color of the text. (default value: depends on the style)</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">font-family</span></code></strong> (<em>in</em> <em>string</em>): The name of the font family selected for rendering the text.</p></li>
@@ -1071,7 +1073,7 @@ and the text itself.</p>
 </ul>
 </section>
 <section id="id24">
-<h3>Example<a class="headerlink" href="#id24" title="Permalink to this heading">#</a></h3>
+<h3>Example<a class="headerlink" href="#id24" title="Permalink to this heading">¶</a></h3>
 <p>This example shows the text “Hello World” in red, using the default font:</p>
 <div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>export component Example inherits Window {
     width: 270px;
@@ -1104,12 +1106,12 @@ policy and assigning a limited <code class="docutils literal notranslate"><span 
 </section>
 </section>
 <section id="toucharea">
-<h2><code class="docutils literal notranslate"><span class="pre">TouchArea</span></code><a class="headerlink" href="#toucharea" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">TouchArea</span></code><a class="headerlink" href="#toucharea" title="Permalink to this heading">¶</a></h2>
 <p>Use <code class="docutils literal notranslate"><span class="pre">TouchArea</span></code> to control what happens when the region it covers is touched or interacted with
 using the mouse.</p>
 <p>When not part of a layout, its width or height default to 100% of the parent element.</p>
 <section id="id25">
-<h3>Properties<a class="headerlink" href="#id25" title="Permalink to this heading">#</a></h3>
+<h3>Properties<a class="headerlink" href="#id25" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">has-hover</span></code></strong> (<em>out</em> <em>bool</em>): <code class="docutils literal notranslate"><span class="pre">TouchArea</span></code> sets this to <code class="docutils literal notranslate"><span class="pre">true</span></code> when the mouse is over it.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">mouse-cursor</span></code></strong> (<em>in</em> <em>enum <a class="reference internal" href="enums.html#mousecursor"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">MouseCursor</span></code></span></a></em>): The mouse cursor type when the mouse is hovering the <code class="docutils literal notranslate"><span class="pre">TouchArea</span></code>.</p></li>
@@ -1119,7 +1121,7 @@ using the mouse.</p>
 </ul>
 </section>
 <section id="id26">
-<h3>Callbacks<a class="headerlink" href="#id26" title="Permalink to this heading">#</a></h3>
+<h3>Callbacks<a class="headerlink" href="#id26" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">clicked()</span></code></strong>: Invoked when clicked: A finger or the left mouse button is pressed, then released on this element.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">double-clicked()</span></code></strong>: Invoked when double-clicked. The left mouse button is pressed and released twice on this element in a short
@@ -1138,7 +1140,7 @@ forwarded to the parent element.</p></li>
 </ul>
 </section>
 <section id="id27">
-<h3>Example<a class="headerlink" href="#id27" title="Permalink to this heading">#</a></h3>
+<h3>Example<a class="headerlink" href="#id27" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>export component Example inherits Window {
     width: 200px;
     height: 100px;
@@ -1166,12 +1168,12 @@ forwarded to the parent element.</p></li>
 </section>
 </section>
 <section id="verticallayout-and-horizontallayout">
-<h2><code class="docutils literal notranslate"><span class="pre">VerticalLayout</span></code> and <code class="docutils literal notranslate"><span class="pre">HorizontalLayout</span></code><a class="headerlink" href="#verticallayout-and-horizontallayout" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">VerticalLayout</span></code> and <code class="docutils literal notranslate"><span class="pre">HorizontalLayout</span></code><a class="headerlink" href="#verticallayout-and-horizontallayout" title="Permalink to this heading">¶</a></h2>
 <p>These layouts place their children next to each other vertically or horizontally.
 The size of elements can either be fixed with the <code class="docutils literal notranslate"><span class="pre">width</span></code> or <code class="docutils literal notranslate"><span class="pre">height</span></code> property, or if they aren’t set
 they will be computed by the layout respecting the minimum and maximum sizes and the stretch factor.</p>
 <section id="id28">
-<h3>Properties<a class="headerlink" href="#id28" title="Permalink to this heading">#</a></h3>
+<h3>Properties<a class="headerlink" href="#id28" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">spacing</span></code></strong> (<em>in</em> <em>length</em>): The distance between the elements in the layout.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">padding</span></code></strong> (<em>in</em> <em>length</em>): the padding within the layout.</p></li>
@@ -1180,7 +1182,7 @@ they will be computed by the layout respecting the minimum and maximum sizes and
 </ul>
 </section>
 <section id="id29">
-<h3>Example<a class="headerlink" href="#id29" title="Permalink to this heading">#</a></h3>
+<h3>Example<a class="headerlink" href="#id29" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>export component Foo inherits Window {
     width: 200px;
     height: 100px;
@@ -1197,13 +1199,13 @@ they will be computed by the layout respecting the minimum and maximum sizes and
 </section>
 </section>
 <section id="window">
-<h2><code class="docutils literal notranslate"><span class="pre">Window</span></code><a class="headerlink" href="#window" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">Window</span></code><a class="headerlink" href="#window" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">Window</span></code> is the root of the tree of elements that are visible on the screen.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">Window</span></code> geometry will be restricted by its layout constraints: Setting the <code class="docutils literal notranslate"><span class="pre">width</span></code> will result in a fixed width,
 and the window manager will respect the <code class="docutils literal notranslate"><span class="pre">min-width</span></code> and <code class="docutils literal notranslate"><span class="pre">max-width</span></code> so the window can’t be resized bigger
 or smaller. The initial width can be controlled with the <code class="docutils literal notranslate"><span class="pre">preferred-width</span></code> property. The same applies to the <code class="docutils literal notranslate"><span class="pre">Window</span></code>s height.</p>
 <section id="id30">
-<h3>Properties<a class="headerlink" href="#id30" title="Permalink to this heading">#</a></h3>
+<h3>Properties<a class="headerlink" href="#id30" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">always-on-top</span></code></strong> (<em>in</em> <em>bool</em>): Whether the window should be placed above all other windows on window managers supporting it.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">background</span></code></strong> (<em>in</em> <em>brush</em>): The background brush of the <code class="docutils literal notranslate"><span class="pre">Window</span></code>. (default value: depends on the style)</p></li>
@@ -1406,7 +1408,7 @@ or smaller. The initial width can be controlled with the <code class="docutils l
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=b3ba4146"></script>
     <script src="../../../_static/doctools.js?v=888ff710"></script>
     <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
-    <script src="../../../_static/scripts/furo.js?v=32e29ea5"></script>
+    <script src="../../../_static/scripts/furo.js?v=4e2eecee"></script>
     
 <!--
     This file is used to add preview of the `.slint` snippets in the generated rustdoc documentation.

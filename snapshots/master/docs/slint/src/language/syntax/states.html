@@ -5,10 +5,10 @@
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" /><link rel="next" title="Global Singletons" href="globals.html" /><link rel="prev" title="Animations" href="animations.html" />
 
-    <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
+    <!-- Generated with Sphinx 7.1.2 and Furo 2024.04.27 -->
         <title>States - Slint 1.6.0 Reference</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=437aa6ec" />
     <link rel="stylesheet" type="text/css" href="../../../_static/theme_tweak.css?v=6873ab5b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?v=36a5483c" />
     
@@ -112,6 +112,8 @@
 <label class="overlay toc-overlay" for="__toc">
   <div class="visually-hidden">Hide table of contents sidebar</div>
 </label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
 
 
 
@@ -281,10 +283,10 @@
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
-        <article role="main">
+        <article role="main" id="furo-main-content">
           <!-- Copyright © SixtyFPS GmbH <info@slint.dev> ; SPDX-License-Identifier: MIT -->
 <section id="states">
-<h1>States<a class="headerlink" href="#states" title="Permalink to this heading">#</a></h1>
+<h1>States<a class="headerlink" href="#states" title="Permalink to this heading">¶</a></h1>
 <p>The <code class="docutils literal notranslate"><span class="pre">states</span></code> statement allows to declare states and set properties of multiple elements in one go:</p>
 <div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>export component Example inherits Window {
     preferred-width: 100px;
@@ -319,7 +321,7 @@
 boolean property and the <code class="docutils literal notranslate"><span class="pre">TouchArea</span></code>’s <code class="docutils literal notranslate"><span class="pre">has-hover</span></code>. When the user hovers the example with the mouse, it will toggle between a blue and a green background,
 and adjust the text label accordingly. Clicking toggles the <code class="docutils literal notranslate"><span class="pre">active</span></code> property and thus enters the <code class="docutils literal notranslate"><span class="pre">inactive</span></code> state.</p>
 <section id="transitions">
-<h2>Transitions<a class="headerlink" href="#transitions" title="Permalink to this heading">#</a></h2>
+<h2>Transitions<a class="headerlink" href="#transitions" title="Permalink to this heading">¶</a></h2>
 <p>Transitions bind animations to state changes.</p>
 <p>This example defines two transitions. First the <code class="docutils literal notranslate"><span class="pre">out</span></code> keyword is used to animate
 all properties for 800ms when leaving the <code class="docutils literal notranslate"><span class="pre">disabled</span></code> state. The second
@@ -437,7 +439,7 @@ into the <code class="docutils literal notranslate"><span class="pre">down</span
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=b3ba4146"></script>
     <script src="../../../_static/doctools.js?v=888ff710"></script>
     <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
-    <script src="../../../_static/scripts/furo.js?v=32e29ea5"></script>
+    <script src="../../../_static/scripts/furo.js?v=4e2eecee"></script>
     
 <!--
     This file is used to add preview of the `.slint` snippets in the generated rustdoc documentation.

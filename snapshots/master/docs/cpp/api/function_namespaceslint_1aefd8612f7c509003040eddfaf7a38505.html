@@ -5,10 +5,10 @@
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Variable slint::platform::key_codes::Alt" href="variable_namespaceslint_1_1platform_1_1key__codes_1a569d5973c36441dd8fb3c88a61c48b7d.html" /><link rel="prev" title="Function slint::testing::init" href="function_slint-testing_8h_1afcc3fa8289264ede59668796cf0341b4.html" />
 
-    <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
+    <!-- Generated with Sphinx 7.1.2 and Furo 2024.04.27 -->
         <title>Function slint::update_all_translations - Slint 1.6.0 C++ API documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=437aa6ec" />
     <link rel="stylesheet" type="text/css" href="../_static/theme_tweak.css?v=ca455ff5" />
     <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
@@ -113,6 +113,8 @@
 <label class="overlay toc-overlay" for="__toc">
   <div class="visually-hidden">Hide table of contents sidebar</div>
 </label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
 
 
 
@@ -344,17 +346,17 @@
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
-        <article role="main">
+        <article role="main" id="furo-main-content">
           <section id="function-slint-update-all-translations">
-<span id="exhale-function-namespaceslint-1aefd8612f7c509003040eddfaf7a38505"></span><h1>Function slint::update_all_translations<a class="headerlink" href="#function-slint-update-all-translations" title="Permalink to this heading">#</a></h1>
+<span id="exhale-function-namespaceslint-1aefd8612f7c509003040eddfaf7a38505"></span><h1>Function slint::update_all_translations<a class="headerlink" href="#function-slint-update-all-translations" title="Permalink to this heading">¶</a></h1>
 <ul class="simple">
 <li><p>Defined in <a class="reference internal" href="file__home_runner_work_slint_slint_api_cpp_include_slint.h.html#file-home-runner-work-slint-slint-api-cpp-include-slint-h"><span class="std std-ref">File slint.h</span></a></p></li>
 </ul>
 <section id="function-documentation">
-<h2>Function Documentation<a class="headerlink" href="#function-documentation" title="Permalink to this heading">#</a></h2>
+<h2>Function Documentation<a class="headerlink" href="#function-documentation" title="Permalink to this heading">¶</a></h2>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N5slint23update_all_translationsEv">
-<span id="_CPPv3N5slint23update_all_translationsEv"></span><span id="_CPPv2N5slint23update_all_translationsEv"></span><span id="slint::update_all_translations"></span><span class="target" id="namespaceslint_1aefd8612f7c509003040eddfaf7a38505"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">slint</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">update_all_translations</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5slint23update_all_translationsEv" title="Permalink to this definition">#</a><br /></dt>
+<span id="_CPPv3N5slint23update_all_translationsEv"></span><span id="_CPPv2N5slint23update_all_translationsEv"></span><span id="slint::update_all_translations"></span><span class="target" id="namespaceslint_1aefd8612f7c509003040eddfaf7a38505"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">slint</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">update_all_translations</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5slint23update_all_translationsEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Forces all the strings that are translated with <code class="docutils literal notranslate"><span class="pre">&#64;tr(...)</span></code> to be re-evaluated. This is useful if the language is changed at runtime. The function is only available when Slint is compiled with <code class="docutils literal notranslate"><span class="pre">SLINT_FEATURE_GETTEXT</span></code>.</p>
 <p>Example <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="w"> </span><span class="n">my_ui</span><span class="o">-&gt;</span><span class="n">global</span><span class="o">&lt;</span><span class="n">LanguageSettings</span><span class="o">&gt;</span><span class="p">().</span><span class="n">on_french_selected</span><span class="p">([]</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// trick from https://www.gnu.org/software/gettext/manual/html_node/gettext-grok.html</span>
@@ -445,7 +447,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
     <script src="../_static/doctools.js?v=888ff710"></script>
     <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
-    <script src="../_static/scripts/furo.js?v=32e29ea5"></script>
+    <script src="../_static/scripts/furo.js?v=4e2eecee"></script>
     <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
     <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
     

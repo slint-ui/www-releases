@@ -5,10 +5,10 @@
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Function slint::run_event_loop" href="function_namespaceslint_1ad900fe1e670815101871442dc17aa74b.html" /><link rel="prev" title="Function slint::platform::update_timers_and_animations" href="function_namespaceslint_1_1platform_1a71af3a3240e18b74b5e0c3b646db90c3.html" />
 
-    <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
+    <!-- Generated with Sphinx 7.1.2 and Furo 2024.04.27 -->
         <title>Function slint::quit_event_loop - Slint 1.6.0 C++ API documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=437aa6ec" />
     <link rel="stylesheet" type="text/css" href="../_static/theme_tweak.css?v=ca455ff5" />
     <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
@@ -113,6 +113,8 @@
 <label class="overlay toc-overlay" for="__toc">
   <div class="visually-hidden">Hide table of contents sidebar</div>
 </label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
 
 
 
@@ -344,17 +346,17 @@
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
-        <article role="main">
+        <article role="main" id="furo-main-content">
           <section id="function-slint-quit-event-loop">
-<span id="exhale-function-namespaceslint-1a14298dd1f4c7ab8c553e047e3704d6d0"></span><h1>Function slint::quit_event_loop<a class="headerlink" href="#function-slint-quit-event-loop" title="Permalink to this heading">#</a></h1>
+<span id="exhale-function-namespaceslint-1a14298dd1f4c7ab8c553e047e3704d6d0"></span><h1>Function slint::quit_event_loop<a class="headerlink" href="#function-slint-quit-event-loop" title="Permalink to this heading">¶</a></h1>
 <ul class="simple">
 <li><p>Defined in <a class="reference internal" href="file__home_runner_work_slint_slint_api_cpp_include_slint.h.html#file-home-runner-work-slint-slint-api-cpp-include-slint-h"><span class="std std-ref">File slint.h</span></a></p></li>
 </ul>
 <section id="function-documentation">
-<h2>Function Documentation<a class="headerlink" href="#function-documentation" title="Permalink to this heading">#</a></h2>
+<h2>Function Documentation<a class="headerlink" href="#function-documentation" title="Permalink to this heading">¶</a></h2>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N5slint15quit_event_loopEv">
-<span id="_CPPv3N5slint15quit_event_loopEv"></span><span id="_CPPv2N5slint15quit_event_loopEv"></span><span id="slint::quit_event_loop"></span><span class="target" id="namespaceslint_1a14298dd1f4c7ab8c553e047e3704d6d0"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">slint</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">quit_event_loop</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5slint15quit_event_loopEv" title="Permalink to this definition">#</a><br /></dt>
+<span id="_CPPv3N5slint15quit_event_loopEv"></span><span id="_CPPv2N5slint15quit_event_loopEv"></span><span id="slint::quit_event_loop"></span><span class="target" id="namespaceslint_1a14298dd1f4c7ab8c553e047e3704d6d0"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">slint</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">quit_event_loop</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5slint15quit_event_loopEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Schedules the main event loop for termination. This function is meant to be called from callbacks triggered by the UI. After calling the function, it will return immediately and once control is passed back to the event loop, the initial call to <a class="reference internal" href="function_namespaceslint_1ad900fe1e670815101871442dc17aa74b.html#namespaceslint_1ad900fe1e670815101871442dc17aa74b"><span class="std std-ref">slint::run_event_loop()</span></a> will return. </p>
 </dd></dl>
 
@@ -435,7 +437,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
     <script src="../_static/doctools.js?v=888ff710"></script>
     <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
-    <script src="../_static/scripts/furo.js?v=32e29ea5"></script>
+    <script src="../_static/scripts/furo.js?v=4e2eecee"></script>
     <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
     <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
     

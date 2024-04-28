@@ -5,10 +5,10 @@
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Debugging Techniques" href="../advanced/debugging_techniques.html" /><link rel="prev" title="VerticalBox" href="../language/widgets/verticalbox.html" />
 
-    <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
+    <!-- Generated with Sphinx 7.1.2 and Furo 2024.04.27 -->
         <title>Custom Control Introduction - Slint 1.6.0 Reference</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=437aa6ec" />
     <link rel="stylesheet" type="text/css" href="../../_static/theme_tweak.css?v=6873ab5b" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=36a5483c" />
     
@@ -112,6 +112,8 @@
 <label class="overlay toc-overlay" for="__toc">
   <div class="visually-hidden">Hide table of contents sidebar</div>
 </label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
 
 
 
@@ -281,13 +283,13 @@
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
-        <article role="main">
+        <article role="main" id="furo-main-content">
           <!-- Copyright © SixtyFPS GmbH <info@slint.dev> ; SPDX-License-Identifier: MIT -->
 <!-- cSpell: ignore dgettext ngettext xgettext -->
 <section id="custom-control-introduction">
-<h1>Custom Control Introduction<a class="headerlink" href="#custom-control-introduction" title="Permalink to this heading">#</a></h1>
+<h1>Custom Control Introduction<a class="headerlink" href="#custom-control-introduction" title="Permalink to this heading">¶</a></h1>
 <section id="a-clickable-button">
-<h2>A Clickable Button<a class="headerlink" href="#a-clickable-button" title="Permalink to this heading">#</a></h2>
+<h2>A Clickable Button<a class="headerlink" href="#a-clickable-button" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-slint,no-auto-preview notranslate"><div class="highlight"><pre><span></span>import { VerticalBox, Button } from &quot;std-widgets.slint&quot;;
 export component Recipe inherits Window {
     in-out property &lt;int&gt; counter: 0;
@@ -328,7 +330,7 @@ automatically re-computed whenever the <code class="docutils literal notranslate
 </ul>
 </section>
 <section id="react-to-a-button-click-in-native-code">
-<h2>React to a Button Click in Native Code<a class="headerlink" href="#react-to-a-button-click-in-native-code" title="Permalink to this heading">#</a></h2>
+<h2>React to a Button Click in Native Code<a class="headerlink" href="#react-to-a-button-click-in-native-code" title="Permalink to this heading">¶</a></h2>
 <p>This example increments the <code class="docutils literal notranslate"><span class="pre">counter</span></code> using native code:</p>
 <div class="highlight-slint,no-preview notranslate"><div class="highlight"><pre><span></span>import { VerticalBox, Button } from &quot;std-widgets.slint&quot;;
 export component Recipe inherits Window {
@@ -408,7 +410,7 @@ set up the callback.</p>
 </details>
 </section>
 <section id="use-property-bindings-to-synchronize-controls">
-<h2>Use Property Bindings to Synchronize Controls<a class="headerlink" href="#use-property-bindings-to-synchronize-controls" title="Permalink to this heading">#</a></h2>
+<h2>Use Property Bindings to Synchronize Controls<a class="headerlink" href="#use-property-bindings-to-synchronize-controls" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-slint,no-auto-preview notranslate"><div class="highlight"><pre><span></span>import { VerticalBox, Slider } from &quot;std-widgets.slint&quot;;
 export component Recipe inherits Window {
     VerticalBox {
@@ -428,9 +430,9 @@ the result of code between the curly braces as a string.</p>
 </section>
 </section>
 <section id="animation-examples">
-<h1>Animation Examples<a class="headerlink" href="#animation-examples" title="Permalink to this heading">#</a></h1>
+<h1>Animation Examples<a class="headerlink" href="#animation-examples" title="Permalink to this heading">¶</a></h1>
 <section id="animate-the-position-of-an-element">
-<h2>Animate the Position of an Element<a class="headerlink" href="#animate-the-position-of-an-element" title="Permalink to this heading">#</a></h2>
+<h2>Animate the Position of an Element<a class="headerlink" href="#animate-the-position-of-an-element" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-slint,no-auto-preview notranslate"><div class="highlight"><pre><span></span>import { CheckBox } from &quot;std-widgets.slint&quot;;
 export component Recipe inherits Window {
     width: 200px;
@@ -470,7 +472,7 @@ property changes: Either because a callback sets the property, or because
 its binding value changes.</p>
 </section>
 <section id="animation-sequence">
-<h2>Animation Sequence<a class="headerlink" href="#animation-sequence" title="Permalink to this heading">#</a></h2>
+<h2>Animation Sequence<a class="headerlink" href="#animation-sequence" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-slint,no-auto-preview notranslate"><div class="highlight"><pre><span></span>import { CheckBox } from &quot;std-widgets.slint&quot;;
 export component Recipe inherits Window {
     width: 200px;
@@ -514,9 +516,9 @@ export component Recipe inherits Window {
 </section>
 </section>
 <section id="states-examples">
-<h1>States Examples<a class="headerlink" href="#states-examples" title="Permalink to this heading">#</a></h1>
+<h1>States Examples<a class="headerlink" href="#states-examples" title="Permalink to this heading">¶</a></h1>
 <section id="associate-property-values-with-states">
-<h2>Associate Property Values With States<a class="headerlink" href="#associate-property-values-with-states" title="Permalink to this heading">#</a></h2>
+<h2>Associate Property Values With States<a class="headerlink" href="#associate-property-values-with-states" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-slint,no-auto-preview notranslate"><div class="highlight"><pre><span></span>import { HorizontalBox, VerticalBox, Button } from &quot;std-widgets.slint&quot;;
 
 component Circle inherits Rectangle {
@@ -564,7 +566,7 @@ export component Recipe inherits Window {
 </div>
 </section>
 <section id="transitions">
-<h2>Transitions<a class="headerlink" href="#transitions" title="Permalink to this heading">#</a></h2>
+<h2>Transitions<a class="headerlink" href="#transitions" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-slint,no-auto-preview notranslate"><div class="highlight"><pre><span></span>import { HorizontalBox, VerticalBox, Button } from &quot;std-widgets.slint&quot;;
 
 component Circle inherits Rectangle {
@@ -613,9 +615,9 @@ export component Recipe inherits Window {
 </section>
 </section>
 <section id="layout-examples">
-<h1>Layout Examples<a class="headerlink" href="#layout-examples" title="Permalink to this heading">#</a></h1>
+<h1>Layout Examples<a class="headerlink" href="#layout-examples" title="Permalink to this heading">¶</a></h1>
 <section id="vertical">
-<h2>Vertical<a class="headerlink" href="#vertical" title="Permalink to this heading">#</a></h2>
+<h2>Vertical<a class="headerlink" href="#vertical" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-slint,no-auto-preview notranslate"><div class="highlight"><pre><span></span>import { VerticalBox, Button } from &quot;std-widgets.slint&quot;;
 export component Recipe inherits Window {
     VerticalBox {
@@ -628,7 +630,7 @@ export component Recipe inherits Window {
 </div>
 </section>
 <section id="horizontal">
-<h2>Horizontal<a class="headerlink" href="#horizontal" title="Permalink to this heading">#</a></h2>
+<h2>Horizontal<a class="headerlink" href="#horizontal" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-slint,no-auto-preview notranslate"><div class="highlight"><pre><span></span>import { HorizontalBox, Button } from &quot;std-widgets.slint&quot;;
 export component Recipe inherits Window {
     HorizontalBox {
@@ -641,7 +643,7 @@ export component Recipe inherits Window {
 </div>
 </section>
 <section id="grid">
-<h2>Grid<a class="headerlink" href="#grid" title="Permalink to this heading">#</a></h2>
+<h2>Grid<a class="headerlink" href="#grid" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-slint,no-auto-preview notranslate"><div class="highlight"><pre><span></span>import { GridBox, Button, Slider } from &quot;std-widgets.slint&quot;;
 export component Recipe inherits Window {
     GridBox {
@@ -665,9 +667,9 @@ export component Recipe inherits Window {
 </section>
 </section>
 <section id="global-callbacks">
-<h1>Global Callbacks<a class="headerlink" href="#global-callbacks" title="Permalink to this heading">#</a></h1>
+<h1>Global Callbacks<a class="headerlink" href="#global-callbacks" title="Permalink to this heading">¶</a></h1>
 <section id="invoke-a-globally-registered-native-callback-from-slint">
-<h2>Invoke a Globally Registered Native Callback from Slint<a class="headerlink" href="#invoke-a-globally-registered-native-callback-from-slint" title="Permalink to this heading">#</a></h2>
+<h2>Invoke a Globally Registered Native Callback from Slint<a class="headerlink" href="#invoke-a-globally-registered-native-callback-from-slint" title="Permalink to this heading">¶</a></h2>
 <p>This example uses a global singleton to implement common logic in native code.
 This singleton may also store properties that are accessible to native code.</p>
 <p>Note: The preview visualize the Slint code only. It’s not connected to the native code.</p>
@@ -767,9 +769,9 @@ In JavaScript you can set the callback like this:
 </section>
 </section>
 <section id="custom-widgets">
-<h1>Custom Widgets<a class="headerlink" href="#custom-widgets" title="Permalink to this heading">#</a></h1>
+<h1>Custom Widgets<a class="headerlink" href="#custom-widgets" title="Permalink to this heading">¶</a></h1>
 <section id="custom-button">
-<h2>Custom Button<a class="headerlink" href="#custom-button" title="Permalink to this heading">#</a></h2>
+<h2>Custom Button<a class="headerlink" href="#custom-button" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-slint,no-auto-preview notranslate"><div class="highlight"><pre><span></span>component Button inherits Rectangle {
     in-out property text &lt;=&gt; txt.text;
     callback clicked &lt;=&gt; touch.clicked;
@@ -797,7 +799,7 @@ export component Recipe inherits Window {
 </div>
 </section>
 <section id="toggleswitch">
-<h2>ToggleSwitch<a class="headerlink" href="#toggleswitch" title="Permalink to this heading">#</a></h2>
+<h2>ToggleSwitch<a class="headerlink" href="#toggleswitch" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-slint,no-auto-preview notranslate"><div class="highlight"><pre><span></span>export component ToggleSwitch inherits Rectangle {
     callback toggled;
     in-out property &lt;string&gt; text;
@@ -861,7 +863,7 @@ export component Recipe inherits Window {
 </div>
 </section>
 <section id="customslider">
-<h2>CustomSlider<a class="headerlink" href="#customslider" title="Permalink to this heading">#</a></h2>
+<h2>CustomSlider<a class="headerlink" href="#customslider" title="Permalink to this heading">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">TouchArea</span></code> is covering the entire widget, so you can drag this slider from
 any point within itself.</p>
 <div class="highlight-slint,no-auto-preview notranslate"><div class="highlight"><pre><span></span>import { VerticalBox } from &quot;std-widgets.slint&quot;;
@@ -975,7 +977,7 @@ export component Recipe inherits Window {
 </div>
 </section>
 <section id="custom-tabs">
-<h2>Custom Tabs<a class="headerlink" href="#custom-tabs" title="Permalink to this heading">#</a></h2>
+<h2>Custom Tabs<a class="headerlink" href="#custom-tabs" title="Permalink to this heading">¶</a></h2>
 <p>Use this recipe as a basis to when you want to create your own custom tab widget.</p>
 <div class="highlight-slint,no-auto-preview notranslate"><div class="highlight"><pre><span></span>import { Button } from &quot;std-widgets.slint&quot;;
 
@@ -1022,7 +1024,7 @@ export component Recipe inherits Window {
 </div>
 </section>
 <section id="custom-table-view">
-<h2>Custom Table View<a class="headerlink" href="#custom-table-view" title="Permalink to this heading">#</a></h2>
+<h2>Custom Table View<a class="headerlink" href="#custom-table-view" title="Permalink to this heading">¶</a></h2>
 <p>Slint provides a table widget, but you can also do something custom based on a
 <code class="docutils literal notranslate"><span class="pre">ListView</span></code>.</p>
 <div class="highlight-slint,no-auto-preview notranslate"><div class="highlight"><pre><span></span>import { VerticalBox, ListView } from &quot;std-widgets.slint&quot;;
@@ -1098,7 +1100,7 @@ export component Example inherits Window {
 </div>
 </section>
 <section id="breakpoints-for-responsive-user-interfaces">
-<h2>Breakpoints for Responsive User Interfaces<a class="headerlink" href="#breakpoints-for-responsive-user-interfaces" title="Permalink to this heading">#</a></h2>
+<h2>Breakpoints for Responsive User Interfaces<a class="headerlink" href="#breakpoints-for-responsive-user-interfaces" title="Permalink to this heading">¶</a></h2>
 <p>Use recipe implements a responsive SideBar that collapses when the parent
 width is smaller than the given break-point. When clicking the Button, the
 SideBar expands again. Use the blue Splitter to resize the container and
@@ -1356,7 +1358,7 @@ Receive key events, pass them to native code
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=b3ba4146"></script>
     <script src="../../_static/doctools.js?v=888ff710"></script>
     <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
-    <script src="../../_static/scripts/furo.js?v=32e29ea5"></script>
+    <script src="../../_static/scripts/furo.js?v=4e2eecee"></script>
     
 <!--
     This file is used to add preview of the `.slint` snippets in the generated rustdoc documentation.

@@ -5,10 +5,10 @@
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Qt Backend" href="backend_qt.html" /><link rel="prev" title="Selecting a Widget Style" href="style.html" />
 
-    <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
+    <!-- Generated with Sphinx 7.1.2 and Furo 2024.04.27 -->
         <title>Backends &amp; Renderers - Slint 1.6.0 Reference</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=437aa6ec" />
     <link rel="stylesheet" type="text/css" href="../../_static/theme_tweak.css?v=6873ab5b" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=36a5483c" />
     
@@ -112,6 +112,8 @@
 <label class="overlay toc-overlay" for="__toc">
   <div class="visually-hidden">Hide table of contents sidebar</div>
 </label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
 
 
 
@@ -281,10 +283,10 @@
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
-        <article role="main">
+        <article role="main" id="furo-main-content">
           <!-- Copyright © SixtyFPS GmbH <info@slint.dev> ; SPDX-License-Identifier: MIT -->
 <section id="backends-renderers">
-<h1>Backends &amp; Renderers<a class="headerlink" href="#backends-renderers" title="Permalink to this heading">#</a></h1>
+<h1>Backends &amp; Renderers<a class="headerlink" href="#backends-renderers" title="Permalink to this heading">¶</a></h1>
 <p>In Slint, a backend is the module that encapsulates the interaction with the operating system,
 in particular the windowing sub-system. Multiple backends can be compiled into Slint and one
 backend is selected for use at run-time on application start-up. You can configure Slint without
@@ -337,12 +339,12 @@ Similarly, <code class="docutils literal notranslate"><span class="pre">SLINT_BA
 <div class="toctree-wrapper compound">
 </div>
 <section id="renderers">
-<h2>Renderers<a class="headerlink" href="#renderers" title="Permalink to this heading">#</a></h2>
+<h2>Renderers<a class="headerlink" href="#renderers" title="Permalink to this heading">¶</a></h2>
 <p>Slint comes with different renderers that use different techniques and libraries to turn
 your scene of elements into pixels. Slint picks a renderer backend on your choice of Backend
 as well as the features you’ve selected at Slint compilation time.</p>
 <section id="qt-renderer">
-<h3>Qt Renderer<a class="headerlink" href="#qt-renderer" title="Permalink to this heading">#</a></h3>
+<h3>Qt Renderer<a class="headerlink" href="#qt-renderer" title="Permalink to this heading">¶</a></h3>
 <p>The Qt renderer comes with the <a class="reference internal" href="backend_qt.html"><span class="std std-doc">Qt backend</span></a> and renders using QPainter:</p>
 <ul class="simple">
 <li><p>Software rendering, no GPU acceleration.</p></li>
@@ -350,7 +352,7 @@ as well as the features you’ve selected at Slint compilation time.</p>
 </ul>
 </section>
 <section id="software-renderer">
-<h3>Software Renderer<a class="headerlink" href="#software-renderer" title="Permalink to this heading">#</a></h3>
+<h3>Software Renderer<a class="headerlink" href="#software-renderer" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Runs anywhere, highly portable, and lightweight.</p></li>
 <li><p>Software rendering, no GPU acceleration.</p></li>
@@ -373,7 +375,7 @@ as well as the features you’ve selected at Slint compilation time.</p>
 </ul>
 </section>
 <section id="femtovg-renderer">
-<h3>FemtoVG Renderer<a class="headerlink" href="#femtovg-renderer" title="Permalink to this heading">#</a></h3>
+<h3>FemtoVG Renderer<a class="headerlink" href="#femtovg-renderer" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Highly portable.</p></li>
 <li><p>GPU acceleration with OpenGL (required).</p></li>
@@ -383,7 +385,7 @@ as well as the features you’ve selected at Slint compilation time.</p>
 </ul>
 </section>
 <section id="skia-renderer">
-<h3>Skia Renderer<a class="headerlink" href="#skia-renderer" title="Permalink to this heading">#</a></h3>
+<h3>Skia Renderer<a class="headerlink" href="#skia-renderer" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Sophisticated GPU acceleration with OpenGL, Metal, Vulkan, and Direct3D.</p></li>
 <li><p>Heavy disk-footprint compared to other renderers.</p></li>
@@ -391,7 +393,7 @@ as well as the features you’ve selected at Slint compilation time.</p>
 <li><p>Public <a class="reference external" href="https://slint.dev/releases/1.6.0/docs/cpp/api/classslint_1_1platform_1_1SkiaRenderer">C++</a> API.</p></li>
 </ul>
 <section id="troubleshooting">
-<h4>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this heading">#</a></h4>
+<h4>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this heading">¶</a></h4>
 <p>You may run into compile issues when enabling the Skia renderer. The following sections track
 issues we’re aware of and how to resolve them.</p>
 <ul>
@@ -540,7 +542,7 @@ supported by the Xcode command line tools. To solve this issue, run the followin
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=b3ba4146"></script>
     <script src="../../_static/doctools.js?v=888ff710"></script>
     <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
-    <script src="../../_static/scripts/furo.js?v=32e29ea5"></script>
+    <script src="../../_static/scripts/furo.js?v=4e2eecee"></script>
     
 <!--
     This file is used to add preview of the `.slint` snippets in the generated rustdoc documentation.

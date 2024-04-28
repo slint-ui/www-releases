@@ -5,10 +5,10 @@
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" /><link rel="next" title="VerticalBox" href="verticalbox.html" /><link rel="prev" title="TabWidget" href="tabwidget.html" />
 
-    <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
+    <!-- Generated with Sphinx 7.1.2 and Furo 2024.04.27 -->
         <title>TextEdit - Slint 1.6.0 Reference</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=437aa6ec" />
     <link rel="stylesheet" type="text/css" href="../../../_static/theme_tweak.css?v=6873ab5b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?v=36a5483c" />
     
@@ -112,6 +112,8 @@
 <label class="overlay toc-overlay" for="__toc">
   <div class="visually-hidden">Hide table of contents sidebar</div>
 </label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
 
 
 
@@ -281,15 +283,15 @@
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
-        <article role="main">
+        <article role="main" id="furo-main-content">
           <!-- Copyright © SixtyFPS GmbH <info@slint.dev> ; SPDX-License-Identifier: MIT -->
 <section id="textedit">
-<h1><code class="docutils literal notranslate"><span class="pre">TextEdit</span></code><a class="headerlink" href="#textedit" title="Permalink to this heading">#</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">TextEdit</span></code><a class="headerlink" href="#textedit" title="Permalink to this heading">¶</a></h1>
 <p>Similar to <a class="reference internal" href="lineedit.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">LineEdit</span></code></span></a>, but can be used to enter several lines of text</p>
 <p><em>Note:</em> The current implementation only implement very few basic shortcut. More
 shortcut will be implemented in a future version: <a class="reference external" href="https://github.com/slint-ui/slint/issues/474">https://github.com/slint-ui/slint/issues/474</a></p>
 <section id="properties">
-<h2>Properties<a class="headerlink" href="#properties" title="Permalink to this heading">#</a></h2>
+<h2>Properties<a class="headerlink" href="#properties" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">font-size</span></code></strong> (<em>in</em> <em>length</em>): the size of the font of the input text</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">text</span></code></strong> (<em>in-out</em> <em>string</em>): The text being edited</p></li>
@@ -301,7 +303,7 @@ shortcut will be implemented in a future version: <a class="reference external" 
 </ul>
 </section>
 <section id="functions">
-<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">#</a></h2>
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">focus()</span></code></strong> Call this function to focus the TextEdit and make it receive future keyboard events.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">clear-focus()</span></code></strong> Call this function to remove keyboard focus from this <code class="docutils literal notranslate"><span class="pre">TextEdit</span></code> if it currently has the focus. See also <a class="reference internal" href="../concepts/focus.html"><span class="std std-doc">Focus Handling</span></a>.</p></li>
@@ -314,13 +316,13 @@ shortcut will be implemented in a future version: <a class="reference external" 
 </ul>
 </section>
 <section id="callbacks">
-<h2>Callbacks<a class="headerlink" href="#callbacks" title="Permalink to this heading">#</a></h2>
+<h2>Callbacks<a class="headerlink" href="#callbacks" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">edited(string)</span></code></strong>: Emitted when the text has changed because the user modified it</p></li>
 </ul>
 </section>
 <section id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading">#</a></h2>
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>import { TextEdit } from &quot;std-widgets.slint&quot;;
 export component Example inherits Window {
     width: 200px;
@@ -423,7 +425,7 @@ export component Example inherits Window {
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=b3ba4146"></script>
     <script src="../../../_static/doctools.js?v=888ff710"></script>
     <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
-    <script src="../../../_static/scripts/furo.js?v=32e29ea5"></script>
+    <script src="../../../_static/scripts/furo.js?v=4e2eecee"></script>
     
 <!--
     This file is used to add preview of the `.slint` snippets in the generated rustdoc documentation.

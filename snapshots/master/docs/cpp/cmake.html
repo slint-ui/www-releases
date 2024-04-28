@@ -5,10 +5,10 @@
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Getting Started" href="getting_started.html" /><link rel="prev" title="Slint C++ documentation" href="index.html" />
 
-    <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
+    <!-- Generated with Sphinx 7.1.2 and Furo 2024.04.27 -->
         <title>Set Up Development Environment - Slint 1.6.0 C++ API documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=437aa6ec" />
     <link rel="stylesheet" type="text/css" href="_static/theme_tweak.css?v=ca455ff5" />
     <link rel="stylesheet" type="text/css" href="_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=36a5483c" />
@@ -113,6 +113,8 @@
 <label class="overlay toc-overlay" for="__toc">
   <div class="visually-hidden">Hide table of contents sidebar</div>
 </label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
 
 
 
@@ -344,13 +346,13 @@
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
-        <article role="main">
+        <article role="main" id="furo-main-content">
           <!-- Copyright © SixtyFPS GmbH <info@slint.dev> ; SPDX-License-Identifier: MIT -->
 <!-- cSpell: ignore ccmake dslint femtovg -->
 <section id="set-up-development-environment">
-<h1>Set Up Development Environment<a class="headerlink" href="#set-up-development-environment" title="Permalink to this heading">#</a></h1>
+<h1>Set Up Development Environment<a class="headerlink" href="#set-up-development-environment" title="Permalink to this heading">¶</a></h1>
 <section id="prerequisites">
-<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading">#</a></h2>
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>A C++ compiler that supports C++20 (e.g., <strong>MSVC 2019 16.6</strong> on Windows)</p></li>
 <li><p><strong><a class="reference external" href="https://cmake.org/download/">cmake</a></strong> (3.21 or newer)</p>
@@ -362,11 +364,11 @@
 </ul>
 </section>
 <section id="install-slint">
-<h2>Install Slint<a class="headerlink" href="#install-slint" title="Permalink to this heading">#</a></h2>
+<h2>Install Slint<a class="headerlink" href="#install-slint" title="Permalink to this heading">¶</a></h2>
 <p>To install Slint, either download the <a class="reference internal" href="#install-binary-packages"><span class="xref myst">binary packages</span></a> or <a class="reference internal" href="#build-from-sources"><span class="xref myst">build from sources</span></a>.</p>
 <p><em>Note</em>: Binary packages are available for only Linux and Windows on x86-64 architecture. The recommended and most flexible way to use the C++ API is to build Slint from sources.</p>
 <section id="install-binary-packages">
-<h3>Install Binary Packages<a class="headerlink" href="#install-binary-packages" title="Permalink to this heading">#</a></h3>
+<h3>Install Binary Packages<a class="headerlink" href="#install-binary-packages" title="Permalink to this heading">¶</a></h3>
 <p>The Slint binary packages work without any Rust development environment.</p>
 <p>Steps:</p>
 <ol class="arabic simple">
@@ -389,7 +391,7 @@
 <p>In the next section you will learn how to use the installed library in your application and how to work with <code class="docutils literal notranslate"><span class="pre">.slint</span></code> UI files.</p>
 </section>
 <section id="build-from-sources">
-<h3>Build From Sources<a class="headerlink" href="#build-from-sources" title="Permalink to this heading">#</a></h3>
+<h3>Build From Sources<a class="headerlink" href="#build-from-sources" title="Permalink to this heading">¶</a></h3>
 <p>First you need to install the prerequisites:</p>
 <ul class="simple">
 <li><p>Install Rust by following the <a class="reference external" href="https://www.rust-lang.org/learn/get-started">Rust Getting Started Guide</a>. If you already
@@ -418,7 +420,7 @@ integration available:</p></li>
 </ul>
 </section>
 <section id="features">
-<h3>Features<a class="headerlink" href="#features" title="Permalink to this heading">#</a></h3>
+<h3>Features<a class="headerlink" href="#features" title="Permalink to this heading">¶</a></h3>
 <p>The Slint library supports a set of features, not all of them enabled by default.
 You might want to adapt the set of enabled features to optimize your binary
 size. For example you might want to support only the wayland stack on Linux.
@@ -434,12 +436,12 @@ to discover and toggle features.</p>
 <code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">--install</span></code>, or when including Slint using <code class="docutils literal notranslate"><span class="pre">FetchContent</span></code>.</p>
 </section>
 <section id="rust-flags">
-<h3>Rust Flags<a class="headerlink" href="#rust-flags" title="Permalink to this heading">#</a></h3>
+<h3>Rust Flags<a class="headerlink" href="#rust-flags" title="Permalink to this heading">¶</a></h3>
 <p>Slint uses <a class="reference external" href="https://github.com/corrosion-rs/corrosion">Corrosion</a> to build Slint, which is developed in Rust. You can utilize <a class="reference external" href="https://corrosion-rs.github.io/corrosion/usage.html#global-corrosion-options">Corrosion’s global CMake variables</a> to control certain aspects of the Rust build process.</p>
 <p>Furthermore, you can set the <code class="docutils literal notranslate"><span class="pre">SLINT_LIBRARY_CARGO_FLAGS</span></code> cache variable to specify additional flags for the Slint runtime during the build.</p>
 </section>
 <section id="platform-backends">
-<h3>Platform Backends<a class="headerlink" href="#platform-backends" title="Permalink to this heading">#</a></h3>
+<h3>Platform Backends<a class="headerlink" href="#platform-backends" title="Permalink to this heading">¶</a></h3>
 <p>In Slint, a backend is the module that encapsulates the interaction with the operating system,
 in particular the windowing sub-system. Multiple backends can be compiled into Slint and one
 backend is selected for use at run-time on application start-up. You can configure Slint without
@@ -458,7 +460,7 @@ project configuration.</p>
 experimental.</p>
 </section>
 <section id="cross-compiling">
-<h3>Cross-compiling<a class="headerlink" href="#cross-compiling" title="Permalink to this heading">#</a></h3>
+<h3>Cross-compiling<a class="headerlink" href="#cross-compiling" title="Permalink to this heading">¶</a></h3>
 <p>It’s possible to cross-compile Slint to a different target architecture when
 building with CMake. You need to make sure your CMake setup is ready for
 cross-compilation, as documented in the <a class="reference external" href="https://cmake.org/cmake/help/latest/manual/cmake-toolchains.7.html#cross-compiling">upstream CMake documentation</a>.</p>
@@ -492,7 +494,7 @@ cmake<span class="w"> </span>--install<span class="w"> </span>.
 </pre></div>
 </div>
 <section id="microcontrollers">
-<h4>Microcontrollers<a class="headerlink" href="#microcontrollers" title="Permalink to this heading">#</a></h4>
+<h4>Microcontrollers<a class="headerlink" href="#microcontrollers" title="Permalink to this heading">¶</a></h4>
 <p>To target a Microcontroller environment, all of the following additional CMake configuration options must be set when compiling Slint:</p>
 <table border="1" class="docutils">
 <thead>
@@ -618,7 +620,7 @@ cmake<span class="w"> </span>--install<span class="w"> </span>.
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=b3ba4146"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=4825356b"></script>
-    <script src="_static/scripts/furo.js?v=32e29ea5"></script>
+    <script src="_static/scripts/furo.js?v=4e2eecee"></script>
     <script src="_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
     <script src="_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
     

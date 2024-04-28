@@ -5,10 +5,10 @@
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Class NativeWindowHandle" href="classslint_1_1platform_1_1NativeWindowHandle.html" /><link rel="prev" title="Template Class Model" href="classslint_1_1Model.html" />
 
-    <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
+    <!-- Generated with Sphinx 7.1.2 and Furo 2024.04.27 -->
         <title>Class AbstractRenderer - Slint 1.6.0 C++ API documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=437aa6ec" />
     <link rel="stylesheet" type="text/css" href="../_static/theme_tweak.css?v=ca455ff5" />
     <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
@@ -113,6 +113,8 @@
 <label class="overlay toc-overlay" for="__toc">
   <div class="visually-hidden">Hide table of contents sidebar</div>
 </label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
 
 
 
@@ -344,16 +346,16 @@
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
-        <article role="main">
+        <article role="main" id="furo-main-content">
           <section id="class-abstractrenderer">
-<span id="exhale-class-classslint-1-1platform-1-1abstractrenderer"></span><h1>Class AbstractRenderer<a class="headerlink" href="#class-abstractrenderer" title="Permalink to this heading">#</a></h1>
+<span id="exhale-class-classslint-1-1platform-1-1abstractrenderer"></span><h1>Class AbstractRenderer<a class="headerlink" href="#class-abstractrenderer" title="Permalink to this heading">¶</a></h1>
 <ul class="simple">
 <li><p>Defined in <a class="reference internal" href="file__home_runner_work_slint_slint_api_cpp_include_slint-platform.h.html#file-home-runner-work-slint-slint-api-cpp-include-slint-platform-h"><span class="std std-ref">File slint-platform.h</span></a></p></li>
 </ul>
 <section id="inheritance-relationships">
-<h2>Inheritance Relationships<a class="headerlink" href="#inheritance-relationships" title="Permalink to this heading">#</a></h2>
+<h2>Inheritance Relationships<a class="headerlink" href="#inheritance-relationships" title="Permalink to this heading">¶</a></h2>
 <section id="derived-types">
-<h3>Derived Types<a class="headerlink" href="#derived-types" title="Permalink to this heading">#</a></h3>
+<h3>Derived Types<a class="headerlink" href="#derived-types" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">public</span> <span class="pre">slint::platform::SkiaRenderer</span></code> (<a class="reference internal" href="classslint_1_1platform_1_1SkiaRenderer.html#exhale-class-classslint-1-1platform-1-1skiarenderer"><span class="std std-ref">Class SkiaRenderer</span></a>)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">public</span> <span class="pre">slint::platform::SoftwareRenderer</span></code> (<a class="reference internal" href="classslint_1_1platform_1_1SoftwareRenderer.html#exhale-class-classslint-1-1platform-1-1softwarerenderer"><span class="std std-ref">Class SoftwareRenderer</span></a>)</p></li>
@@ -361,10 +363,10 @@
 </section>
 </section>
 <section id="class-documentation">
-<h2>Class Documentation<a class="headerlink" href="#class-documentation" title="Permalink to this heading">#</a></h2>
+<h2>Class Documentation<a class="headerlink" href="#class-documentation" title="Permalink to this heading">¶</a></h2>
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4N5slint8platform16AbstractRendererE">
-<span id="_CPPv3N5slint8platform16AbstractRendererE"></span><span id="_CPPv2N5slint8platform16AbstractRendererE"></span><span id="slint::platform::AbstractRenderer"></span><span class="target" id="classslint_1_1platform_1_1AbstractRenderer"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AbstractRenderer</span></span></span><a class="headerlink" href="#_CPPv4N5slint8platform16AbstractRendererE" title="Permalink to this definition">#</a><br /></dt>
+<span id="_CPPv3N5slint8platform16AbstractRendererE"></span><span id="_CPPv2N5slint8platform16AbstractRendererE"></span><span id="slint::platform::AbstractRenderer"></span><span class="target" id="classslint_1_1platform_1_1AbstractRenderer"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AbstractRenderer</span></span></span><a class="headerlink" href="#_CPPv4N5slint8platform16AbstractRendererE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Internal interface for a renderer for use with the <a class="reference internal" href="classslint_1_1platform_1_1WindowAdapter.html#classslint_1_1platform_1_1WindowAdapter"><span class="std std-ref">WindowAdapter</span></a>.</p>
 <p>This class is not intended to be re-implemented. In places where this class is required, use of one the existing implementations such as <a class="reference internal" href="classslint_1_1platform_1_1SoftwareRenderer.html#classslint_1_1platform_1_1SoftwareRenderer"><span class="std std-ref">SoftwareRenderer</span></a> or <a class="reference internal" href="classslint_1_1platform_1_1SkiaRenderer.html#classslint_1_1platform_1_1SkiaRenderer"><span class="std std-ref">SkiaRenderer</span></a>. </p>
 <p>Subclassed by <a class="reference internal" href="classslint_1_1platform_1_1SkiaRenderer.html#classslint_1_1platform_1_1SkiaRenderer"><span class="std std-ref">slint::platform::SkiaRenderer</span></a>, <a class="reference internal" href="classslint_1_1platform_1_1SoftwareRenderer.html#classslint_1_1platform_1_1SoftwareRenderer"><span class="std std-ref">slint::platform::SoftwareRenderer</span></a></p>
@@ -451,7 +453,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
     <script src="../_static/doctools.js?v=888ff710"></script>
     <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
-    <script src="../_static/scripts/furo.js?v=32e29ea5"></script>
+    <script src="../_static/scripts/furo.js?v=4e2eecee"></script>
     <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
     <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
     

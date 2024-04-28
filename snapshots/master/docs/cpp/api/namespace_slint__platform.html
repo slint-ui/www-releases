@@ -5,10 +5,10 @@
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Namespace slint::platform::key_codes" href="namespace_slint__platform__key_codes.html" /><link rel="prev" title="Namespace slint::interpreter" href="namespace_slint__interpreter.html" />
 
-    <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
+    <!-- Generated with Sphinx 7.1.2 and Furo 2024.04.27 -->
         <title>Namespace slint::platform - Slint 1.6.0 C++ API documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=437aa6ec" />
     <link rel="stylesheet" type="text/css" href="../_static/theme_tweak.css?v=ca455ff5" />
     <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
@@ -113,6 +113,8 @@
 <label class="overlay toc-overlay" for="__toc">
   <div class="visually-hidden">Hide table of contents sidebar</div>
 </label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
 
 
 
@@ -344,11 +346,11 @@
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
-        <article role="main">
+        <article role="main" id="furo-main-content">
           <section id="namespace-slint-platform">
-<span id="id1"></span><h1>Namespace slint::platform<a class="headerlink" href="#namespace-slint-platform" title="Permalink to this heading">#</a></h1>
+<span id="id1"></span><h1>Namespace slint::platform<a class="headerlink" href="#namespace-slint-platform" title="Permalink to this heading">¶</a></h1>
 <section id="detailed-description">
-<h2>Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this heading">#</a></h2>
+<h2>Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this heading">¶</a></h2>
 <p>Use the types in this namespace when implementing a custom Slint platform.</p>
 <p>Slint comes with built-in support for different windowing systems, called backends. A backend is a module that implements the <a class="reference internal" href="classslint_1_1platform_1_1Platform.html#exhale-class-classslint-1-1platform-1-1platform"><span class="std std-ref">Class Platform</span></a> interface in this namespace, interacts with a windowing system, and uses one of Slint’s renderers to display a scene to the windowing system. A typical Slint application uses one of the built-in backends. Implement your own <a class="reference internal" href="classslint_1_1platform_1_1Platform.html#exhale-class-classslint-1-1platform-1-1platform"><span class="std std-ref">Class Platform</span></a> if you’re using Slint in an environment without a windowing system, such as with microcontrollers, or you’re embedding a Slint UI as plugin in other applications.</p>
 <p>Examples of custom platform implementation can be found in the Slint repository:</p>
@@ -361,13 +363,13 @@
 <p>Another important class to subclass is the <a class="reference internal" href="classslint_1_1platform_1_1WindowAdapter.html#exhale-class-classslint-1-1platform-1-1windowadapter"><span class="std std-ref">Class WindowAdapter</span></a>.</p>
 </section>
 <section id="namespaces">
-<h2>Namespaces<a class="headerlink" href="#namespaces" title="Permalink to this heading">#</a></h2>
+<h2>Namespaces<a class="headerlink" href="#namespaces" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="namespace_slint__platform__key_codes.html#namespace-slint-platform-key-codes"><span class="std std-ref">Namespace slint::platform::key_codes</span></a></p></li>
 </ul>
 </section>
 <section id="classes">
-<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">#</a></h2>
+<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="structslint_1_1platform_1_1Rgb565Pixel.html#exhale-struct-structslint-1-1platform-1-1rgb565pixel"><span class="std std-ref">Struct Rgb565Pixel</span></a></p></li>
 <li><p><a class="reference internal" href="structslint_1_1platform_1_1SoftwareRenderer_1_1PhysicalRegion.html#exhale-struct-structslint-1-1platform-1-1softwarerenderer-1-1physicalregion"><span class="std std-ref">Struct SoftwareRenderer::PhysicalRegion</span></a></p></li>
@@ -384,7 +386,7 @@
 </ul>
 </section>
 <section id="functions">
-<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">#</a></h2>
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="function_namespaceslint_1_1platform_1a66e865fa8aaea9bb401549294186273a.html#exhale-function-namespaceslint-1-1platform-1a66e865fa8aaea9bb401549294186273a"><span class="std std-ref">Function slint::platform::duration_until_next_timer_update</span></a></p></li>
 <li><p><a class="reference internal" href="function_namespaceslint_1_1platform_1a78d943b2302a68af7e187ea4154d4a64.html#exhale-function-namespaceslint-1-1platform-1a78d943b2302a68af7e187ea4154d4a64"><span class="std std-ref">Function slint::platform::set_platform</span></a></p></li>
@@ -470,7 +472,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
     <script src="../_static/doctools.js?v=888ff710"></script>
     <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
-    <script src="../_static/scripts/furo.js?v=32e29ea5"></script>
+    <script src="../_static/scripts/furo.js?v=4e2eecee"></script>
     <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
     <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
     

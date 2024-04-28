@@ -5,10 +5,10 @@
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" /><link rel="next" title="Expressions" href="expressions.html" /><link rel="prev" title="Types" href="types.html" />
 
-    <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
+    <!-- Generated with Sphinx 7.1.2 and Furo 2024.04.27 -->
         <title>Properties - Slint 1.6.0 Reference</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=437aa6ec" />
     <link rel="stylesheet" type="text/css" href="../../../_static/theme_tweak.css?v=6873ab5b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?v=36a5483c" />
     
@@ -112,6 +112,8 @@
 <label class="overlay toc-overlay" for="__toc">
   <div class="visually-hidden">Hide table of contents sidebar</div>
 </label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
 
 
 
@@ -281,10 +283,10 @@
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
-        <article role="main">
+        <article role="main" id="furo-main-content">
           <!-- Copyright © SixtyFPS GmbH <info@slint.dev> ; SPDX-License-Identifier: MIT -->
 <section id="properties">
-<h1>Properties<a class="headerlink" href="#properties" title="Permalink to this heading">#</a></h1>
+<h1>Properties<a class="headerlink" href="#properties" title="Permalink to this heading">¶</a></h1>
 <p>All elements have properties. Built-in elements come with common properties such
 as color or dimensional properties. You can assign values or entire
 <a class="reference internal" href="expressions.html"><span class="std std-doc">expressions</span></a> to them:</p>
@@ -337,7 +339,7 @@ users of the components.</p></li>
 <p>All properties declared at the top level of a component that aren’t <code class="docutils literal notranslate"><span class="pre">private</span></code> are accessible from the outside when using a component as an element, or via the
 language bindings from the business logic.</p>
 <section id="bindings">
-<h2>Bindings<a class="headerlink" href="#bindings" title="Permalink to this heading">#</a></h2>
+<h2>Bindings<a class="headerlink" href="#bindings" title="Permalink to this heading">¶</a></h2>
 <p>The binding expression is automatically re-evaluated when properties accessed in the expression change.</p>
 <p>In the following example, the text of the button automatically changes when
 the user presses the button. Incrementing the <code class="docutils literal notranslate"><span class="pre">counter</span></code> property automatically
@@ -361,7 +363,7 @@ are marked as dirty.</p>
 <p>Callbacks in native code by default don’t depend on any properties unless they query a property in the native code.</p>
 </section>
 <section id="two-way-bindings">
-<h2>Two-way Bindings<a class="headerlink" href="#two-way-bindings" title="Permalink to this heading">#</a></h2>
+<h2>Two-way Bindings<a class="headerlink" href="#two-way-bindings" title="Permalink to this heading">¶</a></h2>
 <p>Create two-way bindings between properties with the <code class="docutils literal notranslate"><span class="pre">&lt;=&gt;</span></code> syntax. These properties will be linked
 together and always contain the same value.</p>
 <p>The right hand side of the <code class="docutils literal notranslate"><span class="pre">&lt;=&gt;</span></code> must be a reference to a property of the same type.
@@ -380,7 +382,7 @@ The property type is optional with two-way bindings, it will be inferred if not 
 </div>
 </section>
 <section id="relative-lengths">
-<h2>Relative Lengths<a class="headerlink" href="#relative-lengths" title="Permalink to this heading">#</a></h2>
+<h2>Relative Lengths<a class="headerlink" href="#relative-lengths" title="Permalink to this heading">¶</a></h2>
 <p>Sometimes it’s convenient to express the relationships of length properties in terms of relative percentages.
 For example the following inner blue rectangle has half the size of the outer green window:</p>
 <div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>export component Example inherits Window {
@@ -505,7 +507,7 @@ use the percentage. The earlier example then looks like this:</p>
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=b3ba4146"></script>
     <script src="../../../_static/doctools.js?v=888ff710"></script>
     <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
-    <script src="../../../_static/scripts/furo.js?v=32e29ea5"></script>
+    <script src="../../../_static/scripts/furo.js?v=4e2eecee"></script>
     
 <!--
     This file is used to add preview of the `.slint` snippets in the generated rustdoc documentation.

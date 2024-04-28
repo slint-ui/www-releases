@@ -5,10 +5,10 @@
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" /><link rel="next" title="Properties" href="properties.html" /><link rel="prev" title="Identifiers" href="identifiers.html" />
 
-    <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
+    <!-- Generated with Sphinx 7.1.2 and Furo 2024.04.27 -->
         <title>Types - Slint 1.6.0 Reference</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=437aa6ec" />
     <link rel="stylesheet" type="text/css" href="../../../_static/theme_tweak.css?v=6873ab5b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?v=36a5483c" />
     
@@ -112,6 +112,8 @@
 <label class="overlay toc-overlay" for="__toc">
   <div class="visually-hidden">Hide table of contents sidebar</div>
 </label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
 
 
 
@@ -281,10 +283,10 @@
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
-        <article role="main">
+        <article role="main" id="furo-main-content">
           <!-- Copyright © SixtyFPS GmbH <info@slint.dev> ; SPDX-License-Identifier: MIT -->
 <section id="types">
-<h1>Types<a class="headerlink" href="#types" title="Permalink to this heading">#</a></h1>
+<h1>Types<a class="headerlink" href="#types" title="Permalink to this heading">¶</a></h1>
 <p>All properties in Slint have a type. Slint knows these basic types:</p>
 <table border="1" class="docutils">
 <thead>
@@ -369,7 +371,7 @@
 </table>
 <p>Please see the language specific API references how these types are mapped to the APIs of the different programming languages.</p>
 <section id="strings">
-<h2>Strings<a class="headerlink" href="#strings" title="Permalink to this heading">#</a></h2>
+<h2>Strings<a class="headerlink" href="#strings" title="Permalink to this heading">¶</a></h2>
 <p>Any sequence of utf-8 encoded characters surrounded by quotes is a <code class="docutils literal notranslate"><span class="pre">string</span></code>: <code class="docutils literal notranslate"><span class="pre">&quot;foo&quot;</span></code>.</p>
 <p>Escape sequences may be embedded into strings to insert characters that would
 be hard to insert otherwise:</p>
@@ -412,7 +414,7 @@ be hard to insert otherwise:</p>
 <p>Note: The <code class="docutils literal notranslate"><span class="pre">\{...}</span></code> syntax is not valid within the <code class="docutils literal notranslate"><span class="pre">slint!</span></code> macro in Rust.</p>
 </section>
 <section id="colors-and-brushes">
-<h2>Colors and Brushes<a class="headerlink" href="#colors-and-brushes" title="Permalink to this heading">#</a></h2>
+<h2>Colors and Brushes<a class="headerlink" href="#colors-and-brushes" title="Permalink to this heading">¶</a></h2>
 <p>Color literals follow the syntax of CSS:</p>
 <div class="highlight-slint,no-preview notranslate"><div class="highlight"><pre><span></span>export component Example inherits Window {
     background: blue;
@@ -427,7 +429,7 @@ draw the outline.</p>
 <p>CSS Color names are only in scope in expressions of type <code class="docutils literal notranslate"><span class="pre">color</span></code> or <code class="docutils literal notranslate"><span class="pre">brush</span></code>. Otherwise, you can access
 colors from the <code class="docutils literal notranslate"><span class="pre">Colors</span></code> namespace.</p>
 <section id="properties">
-<h3>Properties<a class="headerlink" href="#properties" title="Permalink to this heading">#</a></h3>
+<h3>Properties<a class="headerlink" href="#properties" title="Permalink to this heading">¶</a></h3>
 <p>The following properties are exposed:</p>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">red</span></code></strong></p></li>
@@ -438,7 +440,7 @@ colors from the <code class="docutils literal notranslate"><span class="pre">Col
 <p>These properties are in the range 0-255.</p>
 </section>
 <section id="methods">
-<h3>Methods<a class="headerlink" href="#methods" title="Permalink to this heading">#</a></h3>
+<h3>Methods<a class="headerlink" href="#methods" title="Permalink to this heading">¶</a></h3>
 <p>All colors and brushes define the following methods:</p>
 <ul>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">brighter(factor:</span> <span class="pre">float)</span> <span class="pre">-&gt;</span> <span class="pre">brush</span></code></strong></p>
@@ -471,7 +473,7 @@ and <code class="docutils literal notranslate"><span class="pre">alpha</span></c
 </ul>
 </section>
 <section id="linear-gradients">
-<h3>Linear Gradients<a class="headerlink" href="#linear-gradients" title="Permalink to this heading">#</a></h3>
+<h3>Linear Gradients<a class="headerlink" href="#linear-gradients" title="Permalink to this heading">¶</a></h3>
 <p>Linear gradients describe smooth, colorful surfaces. They’re specified using an angle and a series of
 color stops. The colors will be linearly interpolated between the stops, aligned to an imaginary line
 that is rotated by the specified angle. This is called a linear gradient and is specified using the
@@ -496,7 +498,7 @@ color, interpolates to a very light shade in the center and finishes with an ora
 </div>
 </section>
 <section id="radial-gradients">
-<h3>Radial Gradients<a class="headerlink" href="#radial-gradients" title="Permalink to this heading">#</a></h3>
+<h3>Radial Gradients<a class="headerlink" href="#radial-gradients" title="Permalink to this heading">¶</a></h3>
 <p>Linear gradiants are like real gradiant but the colors is interpolated in a circle instead of
 along a line. To describe a readial gradiant, use the <code class="docutils literal notranslate"><span class="pre">&#64;radial-gradient</span></code> macro with the following signature:</p>
 <p><strong><code class="docutils literal notranslate"><span class="pre">&#64;radial-gradient(circle,</span> <span class="pre">color</span> <span class="pre">percentage,</span> <span class="pre">color</span> <span class="pre">percentage,</span> <span class="pre">...)</span></code></strong></p>
@@ -515,7 +517,7 @@ The syntax is otherwise based on the CSS <code class="docutils literal notransla
 </section>
 </section>
 <section id="images">
-<h2>Images<a class="headerlink" href="#images" title="Permalink to this heading">#</a></h2>
+<h2>Images<a class="headerlink" href="#images" title="Permalink to this heading">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">image</span></code> type is a reference to an image. It’s defined using the <code class="docutils literal notranslate"><span class="pre">&#64;image-url(&quot;...&quot;)</span></code> construct.
 The address within the <code class="docutils literal notranslate"><span class="pre">&#64;image-url</span></code> function must be known at compile time.</p>
 <p>Slint looks for images in the following places:</p>
@@ -541,7 +543,7 @@ by adding a  <code class="docutils literal notranslate"><span class="pre">nine-s
 The numbers are either <code class="docutils literal notranslate"><span class="pre">top</span> <span class="pre">right</span> <span class="pre">bottom</span> <span class="pre">left</span></code> or <code class="docutils literal notranslate"><span class="pre">vertical</span> <span class="pre">horizontal</span></code>, or one number for everything</p>
 </section>
 <section id="structs">
-<h2>Structs<a class="headerlink" href="#structs" title="Permalink to this heading">#</a></h2>
+<h2>Structs<a class="headerlink" href="#structs" title="Permalink to this heading">¶</a></h2>
 <p>Define named structures using the <code class="docutils literal notranslate"><span class="pre">struct</span></code> keyword:</p>
 <div class="highlight-slint,no-preview notranslate"><div class="highlight"><pre><span></span>export struct Player  {
     name: string,
@@ -555,7 +557,7 @@ export component Example {
 </div>
 <p>The default value of a struct, is initialized with all its fields set to their default value.</p>
 <section id="anonymous-structures">
-<h3>Anonymous Structures<a class="headerlink" href="#anonymous-structures" title="Permalink to this heading">#</a></h3>
+<h3>Anonymous Structures<a class="headerlink" href="#anonymous-structures" title="Permalink to this heading">¶</a></h3>
 <p>Declare anonymous structures using <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">identifier1:</span> <span class="pre">type2,</span> <span class="pre">identifier1:</span> <span class="pre">type2</span> <span class="pre">}</span></code>
 syntax, and initialize them using
 <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">identifier1:</span> <span class="pre">expression1,</span> <span class="pre">identifier2:</span> <span class="pre">expression2</span>&#160; <span class="pre">}</span></code>.</p>
@@ -569,7 +571,7 @@ syntax, and initialize them using
 </section>
 </section>
 <section id="enumerations">
-<h2>Enumerations<a class="headerlink" href="#enumerations" title="Permalink to this heading">#</a></h2>
+<h2>Enumerations<a class="headerlink" href="#enumerations" title="Permalink to this heading">¶</a></h2>
 <p>Define an enumeration with the <code class="docutils literal notranslate"><span class="pre">enum</span></code> keyword:</p>
 <div class="highlight-slint,no-preview notranslate"><div class="highlight"><pre><span></span>export enum CardSuit { clubs, diamonds, hearts, spade }
 
@@ -586,7 +588,7 @@ return value of a callback is of that enum.</p>
 <p>The default value of each enum type is always the first value.</p>
 </section>
 <section id="arrays-and-models">
-<h2>Arrays and Models<a class="headerlink" href="#arrays-and-models" title="Permalink to this heading">#</a></h2>
+<h2>Arrays and Models<a class="headerlink" href="#arrays-and-models" title="Permalink to this heading">¶</a></h2>
 <p>Arrays are declared by wrapping <code class="docutils literal notranslate"><span class="pre">[</span></code> and <code class="docutils literal notranslate"><span class="pre">]</span></code> square brackets around the type of the array elements.</p>
 <p>Array literals as well as properties holding arrays act as models in <code class="docutils literal notranslate"><span class="pre">for</span></code> expressions.</p>
 <div class="highlight-slint,no-preview notranslate"><div class="highlight"><pre><span></span>export component Example {
@@ -612,7 +614,7 @@ return value of a callback is of that enum.</p>
 </div>
 </section>
 <section id="conversions">
-<h2>Conversions<a class="headerlink" href="#conversions" title="Permalink to this heading">#</a></h2>
+<h2>Conversions<a class="headerlink" href="#conversions" title="Permalink to this heading">¶</a></h2>
 <p>Slint supports conversions between different types. Explicit
 conversions are required to make the UI description more robust, but implicit
 conversions are allowed between some types for convenience.</p>
@@ -749,7 +751,7 @@ a valid number. You can check with <code class="docutils literal notranslate"><s
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=b3ba4146"></script>
     <script src="../../../_static/doctools.js?v=888ff710"></script>
     <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
-    <script src="../../../_static/scripts/furo.js?v=32e29ea5"></script>
+    <script src="../../../_static/scripts/furo.js?v=4e2eecee"></script>
     
 <!--
     This file is used to add preview of the `.slint` snippets in the generated rustdoc documentation.
