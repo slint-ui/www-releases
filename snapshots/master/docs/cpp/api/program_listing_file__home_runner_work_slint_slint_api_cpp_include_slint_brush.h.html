@@ -463,6 +463,7 @@
 <span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="n">Tag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">types</span><span class="o">::</span><span class="n">Brush</span><span class="o">::</span><span class="n">Tag</span><span class="p">;</span>
 <span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="n">Inner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">types</span><span class="o">::</span><span class="n">Brush</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Inner</span><span class="w"> </span><span class="n">data</span><span class="p">;</span>
+<span class="w">    </span><span class="k">friend</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">private_api</span><span class="o">::</span><span class="n">Property</span><span class="o">&lt;</span><span class="n">Brush</span><span class="o">&gt;</span><span class="p">;</span>
 <span class="p">};</span>
 
 <span class="n">Color</span><span class="w"> </span><span class="nf">Brush::color</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
@@ -585,7 +586,21 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
 <span class="p">}</span>
+
+<span class="k">namespace</span><span class="w"> </span><span class="nn">private_api</span><span class="w"> </span><span class="p">{</span>
+
+<span class="k">template</span><span class="o">&lt;&gt;</span>
+<span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">slint</span><span class="o">::</span><span class="n">Brush</span><span class="o">&gt;::</span><span class="n">set_animated_value</span><span class="p">(</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">slint</span><span class="o">::</span><span class="n">Brush</span><span class="w"> </span><span class="o">&amp;</span><span class="n">new_value</span><span class="p">,</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">PropertyAnimation</span><span class="w"> </span><span class="o">&amp;</span><span class="n">animation_data</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_property_set_animated_value_brush</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inner</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">new_value</span><span class="p">,</span>
+<span class="w">                                                              </span><span class="o">&amp;</span><span class="n">animation_data</span><span class="p">);</span>
 <span class="p">}</span>
+
+<span class="p">}</span><span class="w"> </span><span class="c1">// namespace private_api</span>
+
+<span class="p">}</span><span class="w"> </span><span class="c1">// namespace slint</span>
 </pre></div>
 </div>
 </section>

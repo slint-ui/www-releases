@@ -941,6 +941,11 @@ Program Listing for File slint_internal.h
                                                 Color to,
                                                 const PropertyAnimation *animation_data);
    
+   void slint_property_set_animated_value_brush(const PropertyHandleOpaque *handle,
+                                                const Brush *from,
+                                                const Brush *to,
+                                                const PropertyAnimation *animation_data);
+   
    void slint_property_set_animated_binding_int(const PropertyHandleOpaque *handle,
                                                 void (*binding)(void*, int*),
                                                 void *user_data,
