@@ -359,6 +359,10 @@
 
 <span class="k">namespace</span><span class="w"> </span><span class="nn">slint</span><span class="o">::</span><span class="nn">cbindgen_private</span><span class="w"> </span><span class="p">{</span>
 <span class="k">struct</span><span class="w"> </span><span class="nc">PropertyAnimation</span><span class="p">;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">ChangeTracker</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">inner</span><span class="p">;</span>
+<span class="p">};</span>
 <span class="p">}</span>
 
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;slint_properties_internal.h&quot;</span>
@@ -608,6 +612,43 @@
 
 <span class="k">private</span><span class="o">:</span>
 <span class="w">    </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">PropertyTrackerOpaque</span><span class="w"> </span><span class="n">inner</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">ChangeTracker</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">ChangeTracker</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_change_tracker_construct</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inner</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="o">~</span><span class="n">ChangeTracker</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_change_tracker_drop</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inner</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">Data</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">FnEval</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">FnNotify</span><span class="o">&gt;</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">init</span><span class="p">(</span><span class="n">Data</span><span class="w"> </span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">FnEval</span><span class="w"> </span><span class="n">fn_eval</span><span class="p">,</span><span class="w"> </span><span class="n">FnNotify</span><span class="w"> </span><span class="n">fn_notify</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">using</span><span class="w"> </span><span class="n">Value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">invoke_result_t</span><span class="o">&lt;</span><span class="n">FnEval</span><span class="p">,</span><span class="w"> </span><span class="n">Data</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="w">        </span><span class="k">struct</span><span class="w"> </span><span class="nc">Inner</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Data</span><span class="w"> </span><span class="n">data</span><span class="p">;</span>
+<span class="w">            </span><span class="n">FnEval</span><span class="w"> </span><span class="n">fn_eval</span><span class="p">;</span>
+<span class="w">            </span><span class="n">FnNotify</span><span class="w"> </span><span class="n">fn_notify</span><span class="p">;</span>
+<span class="w">            </span><span class="n">Value</span><span class="w"> </span><span class="n">value</span><span class="p">;</span>
+<span class="w">        </span><span class="p">};</span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">data_ptr</span><span class="w"> </span><span class="o">=</span>
+<span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="n">Inner</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">data</span><span class="p">),</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">fn_eval</span><span class="p">),</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">fn_notify</span><span class="p">),</span><span class="w"> </span><span class="n">Value</span><span class="p">()</span><span class="w"> </span><span class="p">};</span>
+<span class="w">        </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_change_tracker_init</span><span class="p">(</span>
+<span class="w">                </span><span class="o">&amp;</span><span class="n">inner</span><span class="p">,</span><span class="w"> </span><span class="n">data_ptr</span><span class="p">,</span><span class="w"> </span><span class="p">[](</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">d</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">delete</span><span class="w"> </span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="n">Inner</span><span class="w"> </span><span class="o">*&gt;</span><span class="p">(</span><span class="n">d</span><span class="p">);</span><span class="w"> </span><span class="p">},</span>
+<span class="w">                </span><span class="p">[](</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">d</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="k">auto</span><span class="w"> </span><span class="n">inner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="n">Inner</span><span class="w"> </span><span class="o">*&gt;</span><span class="p">(</span><span class="n">d</span><span class="p">);</span>
+<span class="w">                    </span><span class="k">auto</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">inner</span><span class="o">-&gt;</span><span class="n">fn_eval</span><span class="p">(</span><span class="n">inner</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">);</span>
+<span class="w">                    </span><span class="kt">bool</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">inner</span><span class="o">-&gt;</span><span class="n">value</span><span class="p">;</span>
+<span class="w">                    </span><span class="n">inner</span><span class="o">-&gt;</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v</span><span class="p">;</span>
+<span class="w">                    </span><span class="k">return</span><span class="w"> </span><span class="n">r</span><span class="p">;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">[](</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">d</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="k">auto</span><span class="w"> </span><span class="n">inner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="n">Inner</span><span class="w"> </span><span class="o">*&gt;</span><span class="p">(</span><span class="n">d</span><span class="p">);</span>
+<span class="w">                    </span><span class="n">inner</span><span class="o">-&gt;</span><span class="n">fn_notify</span><span class="p">(</span><span class="n">inner</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">inner</span><span class="o">-&gt;</span><span class="n">value</span><span class="p">);</span>
+<span class="w">                </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">ChangeTracker</span><span class="w"> </span><span class="n">inner</span><span class="p">;</span>
 <span class="p">};</span>
 
 <span class="p">}</span><span class="w"> </span><span class="c1">// namespace slint::private_api</span>

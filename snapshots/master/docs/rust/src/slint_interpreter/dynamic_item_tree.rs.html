@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/dynamic_item_tree.rs`."><title>dynamic_item_tree.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-46f98efaafac5295.ttf.woff2,FiraSans-Regular-018c141bf0843ffd.woff2,FiraSans-Medium-8f9a781e4970d388.woff2,SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2,SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-b21aa549bf6d91ff.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.80.0-nightly (c987ad527 2024-05-01)" data-channel="nightly" data-search-js="search-bf21c90c8c1d92b1.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../static.files/storage-e32f0c247825364d.js"></script><script defer src="../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-20a3ad099b048cf2.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-09095024cf37855e.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/dynamic_item_tree.rs`."><title>dynamic_item_tree.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-46f98efaafac5295.ttf.woff2,FiraSans-Regular-018c141bf0843ffd.woff2,FiraSans-Medium-8f9a781e4970d388.woff2,SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2,SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-b21aa549bf6d91ff.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.80.0-nightly (79734f1db 2024-05-02)" data-channel="nightly" data-search-js="search-bf21c90c8c1d92b1.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../static.files/storage-e32f0c247825364d.js"></script><script defer src="../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-20a3ad099b048cf2.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-09095024cf37855e.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -2270,6 +2270,64 @@
 <a href="#2168" id="2168">2168</a>
 <a href="#2169" id="2169">2169</a>
 <a href="#2170" id="2170">2170</a>
+<a href="#2171" id="2171">2171</a>
+<a href="#2172" id="2172">2172</a>
+<a href="#2173" id="2173">2173</a>
+<a href="#2174" id="2174">2174</a>
+<a href="#2175" id="2175">2175</a>
+<a href="#2176" id="2176">2176</a>
+<a href="#2177" id="2177">2177</a>
+<a href="#2178" id="2178">2178</a>
+<a href="#2179" id="2179">2179</a>
+<a href="#2180" id="2180">2180</a>
+<a href="#2181" id="2181">2181</a>
+<a href="#2182" id="2182">2182</a>
+<a href="#2183" id="2183">2183</a>
+<a href="#2184" id="2184">2184</a>
+<a href="#2185" id="2185">2185</a>
+<a href="#2186" id="2186">2186</a>
+<a href="#2187" id="2187">2187</a>
+<a href="#2188" id="2188">2188</a>
+<a href="#2189" id="2189">2189</a>
+<a href="#2190" id="2190">2190</a>
+<a href="#2191" id="2191">2191</a>
+<a href="#2192" id="2192">2192</a>
+<a href="#2193" id="2193">2193</a>
+<a href="#2194" id="2194">2194</a>
+<a href="#2195" id="2195">2195</a>
+<a href="#2196" id="2196">2196</a>
+<a href="#2197" id="2197">2197</a>
+<a href="#2198" id="2198">2198</a>
+<a href="#2199" id="2199">2199</a>
+<a href="#2200" id="2200">2200</a>
+<a href="#2201" id="2201">2201</a>
+<a href="#2202" id="2202">2202</a>
+<a href="#2203" id="2203">2203</a>
+<a href="#2204" id="2204">2204</a>
+<a href="#2205" id="2205">2205</a>
+<a href="#2206" id="2206">2206</a>
+<a href="#2207" id="2207">2207</a>
+<a href="#2208" id="2208">2208</a>
+<a href="#2209" id="2209">2209</a>
+<a href="#2210" id="2210">2210</a>
+<a href="#2211" id="2211">2211</a>
+<a href="#2212" id="2212">2212</a>
+<a href="#2213" id="2213">2213</a>
+<a href="#2214" id="2214">2214</a>
+<a href="#2215" id="2215">2215</a>
+<a href="#2216" id="2216">2216</a>
+<a href="#2217" id="2217">2217</a>
+<a href="#2218" id="2218">2218</a>
+<a href="#2219" id="2219">2219</a>
+<a href="#2220" id="2220">2220</a>
+<a href="#2221" id="2221">2221</a>
+<a href="#2222" id="2222">2222</a>
+<a href="#2223" id="2223">2223</a>
+<a href="#2224" id="2224">2224</a>
+<a href="#2225" id="2225">2225</a>
+<a href="#2226" id="2226">2226</a>
+<a href="#2227" id="2227">2227</a>
+<a href="#2228" id="2228">2228</a>
 </pre></div><pre class="rust"><code><span class="comment">// Copyright © SixtyFPS GmbH &lt;info@slint.dev&gt;
 // SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Slint-Royalty-free-1.2 OR LicenseRef-Slint-commercial
 
@@ -2300,7 +2358,7 @@
 <span class="kw">use </span>i_slint_core::model::RepeatedItemTree;
 <span class="kw">use </span>i_slint_core::model::Repeater;
 <span class="kw">use </span>i_slint_core::platform::PlatformError;
-<span class="kw">use </span>i_slint_core::properties::InterpolatedPropertyValue;
+<span class="kw">use </span>i_slint_core::properties::{ChangeTracker, InterpolatedPropertyValue};
 <span class="kw">use </span>i_slint_core::rtti::{<span class="self">self</span>, AnimatedBindingKind, FieldOffset, PropertyInfo};
 <span class="kw">use </span>i_slint_core::slice::Slice;
 <span class="kw">use </span>i_slint_core::window::{WindowAdapterRc, WindowInner};
@@ -2661,6 +2719,10 @@
     </span><span class="kw">pub</span>(<span class="kw">crate</span>) original_elements: Vec&lt;ElementRc&gt;,
     <span class="doccomment">/// Copy of original.root_element.property_declarations, without a guarded refcell
     </span>public_properties: BTreeMap&lt;String, PropertyDeclaration&gt;,
+    change_trackers: <span class="prelude-ty">Option</span>&lt;(
+        FieldOffset&lt;Instance&lt;<span class="lifetime">'id</span>&gt;, OnceCell&lt;Vec&lt;ChangeTracker&gt;&gt;&gt;,
+        Vec&lt;(NamedReference, Expression)&gt;,
+    )&gt;,
 
     <span class="doccomment">/// compiled globals
     </span>compiled_globals: Vec&lt;<span class="kw">crate</span>::global_component::CompiledGlobal&gt;,
@@ -3172,6 +3234,7 @@
         repeater: Vec&lt;ErasedRepeaterWithinComponent&lt;<span class="lifetime">'id</span>&gt;&gt;,
         repeater_names: HashMap&lt;String, usize&gt;,
         rtti: Rc&lt;HashMap&lt;<span class="kw-2">&amp;</span><span class="lifetime">'static </span>str, Rc&lt;ItemRTTI&gt;&gt;&gt;,
+        change_callbacks: Vec&lt;(NamedReference, Expression)&gt;,
     }
     <span class="kw">impl</span>&lt;<span class="lifetime">'id</span>&gt; generator::ItemTreeBuilder <span class="kw">for </span>TreeBuilder&lt;<span class="lifetime">'id</span>&gt; {
         <span class="kw">type </span>SubComponentState = ();
@@ -3239,6 +3302,12 @@
                 item.id.clone(),
                 ItemWithinItemTree { offset, rtti: rt.clone(), elem: rc_item.clone() },
             );
+            <span class="kw">for </span>(prop, expr) <span class="kw">in </span><span class="kw-2">&amp;</span>item.change_callbacks {
+                <span class="self">self</span>.change_callbacks.push((
+                    NamedReference::new(<span class="kw-2">&amp;</span>rc_item, prop),
+                    Expression::CodeBlock(expr.borrow().clone()),
+                ));
+            }
         }
 
         <span class="kw">fn </span>enter_component(
@@ -3271,6 +3340,7 @@
         repeater: <span class="macro">vec!</span>[],
         repeater_names: HashMap::new(),
         rtti: Rc::new(rtti),
+        change_callbacks: <span class="macro">vec!</span>[],
     };
 
     <span class="kw">if </span>!component.is_global() {
@@ -3400,6 +3470,13 @@
 
     <span class="kw">let </span>extra_data_offset = builder.type_builder.add_field_type::&lt;ComponentExtraData&gt;();
 
+    <span class="kw">let </span>change_trackers = (!builder.change_callbacks.is_empty()).then(|| {
+        (
+            builder.type_builder.add_field_type::&lt;OnceCell&lt;Vec&lt;ChangeTracker&gt;&gt;&gt;(),
+            builder.change_callbacks,
+        )
+    });
+
     <span class="kw">let </span>public_properties = component.root_element.borrow().property_declarations.clone();
 
     <span class="kw">let </span><span class="kw-2">mut </span>exported_globals_by_name: BTreeMap&lt;String, usize&gt; = Default::default();
@@ -3469,6 +3546,7 @@
         public_properties,
         compiled_globals,
         exported_globals_by_name,
+        change_trackers,
         <span class="attr">#[cfg(feature = <span class="string">"highlight"</span>)]
         </span>type_loader: std::cell::OnceCell::new(),
     };
@@ -3879,6 +3957,44 @@
                 extra_init_code,
                 <span class="kw-2">&amp;mut </span>eval::EvalLocalContext::from_component_instance(instance_ref),
             );
+        }
+        <span class="kw">if let </span><span class="prelude-val">Some</span>(cts) = instance_ref.description.change_trackers.as_ref() {
+            <span class="kw">let </span>self_weak = instance_ref.self_weak().get().unwrap();
+            <span class="kw">let </span>v = cts
+                .<span class="number">1
+                </span>.iter()
+                .enumerate()
+                .map(|(idx, <span class="kw">_</span>)| {
+                    <span class="kw">let </span>ct = ChangeTracker::default();
+                    ct.init(
+                        self_weak.clone(),
+                        <span class="kw">move </span>|self_weak| {
+                            <span class="kw">let </span>s = self_weak.upgrade().unwrap();
+                            <span class="macro">generativity::make_guard!</span>(guard);
+                            <span class="kw">let </span>compo_box = s.unerase(guard);
+                            <span class="kw">let </span>instance_ref = compo_box.borrow_instance();
+                            <span class="kw">let </span>nr = <span class="kw-2">&amp;</span>s.<span class="number">0</span>.description.change_trackers.as_ref().unwrap().<span class="number">1</span>[idx].<span class="number">0</span>;
+                            eval::load_property(instance_ref, <span class="kw-2">&amp;</span>nr.element(), nr.name()).unwrap()
+                        },
+                        <span class="kw">move </span>|self_weak, <span class="kw">_</span>| {
+                            <span class="kw">let </span>s = self_weak.upgrade().unwrap();
+                            <span class="macro">generativity::make_guard!</span>(guard);
+                            <span class="kw">let </span>compo_box = s.unerase(guard);
+                            <span class="kw">let </span>instance_ref = compo_box.borrow_instance();
+                            <span class="kw">let </span>e = <span class="kw-2">&amp;</span>s.<span class="number">0</span>.description.change_trackers.as_ref().unwrap().<span class="number">1</span>[idx].<span class="number">1</span>;
+                            eval::eval_expression(
+                                e,
+                                <span class="kw-2">&amp;mut </span>eval::EvalLocalContext::from_component_instance(instance_ref),
+                            );
+                        },
+                    );
+                    ct
+                })
+                .collect::&lt;Vec&lt;<span class="kw">_</span>&gt;&gt;();
+            cts.<span class="number">0
+                </span>.apply_pin(instance_ref.instance)
+                .set(v)
+                .unwrap_or_else(|<span class="kw">_</span>| <span class="macro">panic!</span>(<span class="string">"run_setup_code called twice?"</span>));
         }
     }
 }

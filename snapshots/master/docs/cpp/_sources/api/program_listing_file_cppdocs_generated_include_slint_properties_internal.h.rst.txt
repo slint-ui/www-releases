@@ -165,6 +165,16 @@ Program Listing for File slint_properties_internal.h
    
    void slint_property_tracker_drop(PropertyTrackerOpaque *handle);
    
+   void slint_change_tracker_construct(ChangeTracker *ct);
+   
+   void slint_change_tracker_drop(ChangeTracker *ct);
+   
+   void slint_change_tracker_init(const ChangeTracker *ct,
+                                  void *user_data,
+                                  void (*drop_user_data)(void *user_data),
+                                  bool (*eval_fn)(void *user_data),
+                                  void (*notify_fn)(void *user_data));
+   
    uint64_t slint_animation_tick();
    
    void slint_callback_init(CallbackOpaque *out);

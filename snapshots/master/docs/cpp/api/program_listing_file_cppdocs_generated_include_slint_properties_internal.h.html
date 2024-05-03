@@ -505,6 +505,16 @@
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">slint_property_tracker_drop</span><span class="p">(</span><span class="n">PropertyTrackerOpaque</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">);</span>
 
+<span class="kt">void</span><span class="w"> </span><span class="nf">slint_change_tracker_construct</span><span class="p">(</span><span class="n">ChangeTracker</span><span class="w"> </span><span class="o">*</span><span class="n">ct</span><span class="p">);</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">slint_change_tracker_drop</span><span class="p">(</span><span class="n">ChangeTracker</span><span class="w"> </span><span class="o">*</span><span class="n">ct</span><span class="p">);</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">slint_change_tracker_init</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">ChangeTracker</span><span class="w"> </span><span class="o">*</span><span class="n">ct</span><span class="p">,</span>
+<span class="w">                               </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">user_data</span><span class="p">,</span>
+<span class="w">                               </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">drop_user_data</span><span class="p">)(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">user_data</span><span class="p">),</span>
+<span class="w">                               </span><span class="kt">bool</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">eval_fn</span><span class="p">)(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">user_data</span><span class="p">),</span>
+<span class="w">                               </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">notify_fn</span><span class="p">)(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">user_data</span><span class="p">));</span>
+
 <span class="kt">uint64_t</span><span class="w"> </span><span class="nf">slint_animation_tick</span><span class="p">();</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">slint_callback_init</span><span class="p">(</span><span class="n">CallbackOpaque</span><span class="w"> </span><span class="o">*</span><span class="n">out</span><span class="p">);</span>
