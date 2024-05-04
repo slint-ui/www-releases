@@ -19,6 +19,7 @@ Program Listing for File slint-testing.h
    #include <string_view>
    
    #ifdef SLINT_FEATURE_TESTING
+   #    ifdef SLINT_FEATURE_EXPERIMENTAL
    
    namespace slint::testing {
    inline void init()
@@ -166,4 +167,5 @@ Program Listing for File slint-testing.h
    
    }
    
+   #    endif // SLINT_FEATURE_EXPERIMENTAL
    #endif // SLINT_FEATURE_TESTING
