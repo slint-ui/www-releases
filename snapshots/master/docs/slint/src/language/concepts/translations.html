@@ -407,7 +407,7 @@ the <code class="docutils literal notranslate"><span class="pre">dir_name</span>
 corresponding sub-directories and their file name - <code class="docutils literal notranslate"><span class="pre">domain_name</span></code> - must match the package name
 in your <code class="docutils literal notranslate"><span class="pre">Cargo.toml</span></code>. This is often the same as the crate name.</p>
 <p>For example:</p>
-<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="n">slint</span>::<span class="n">init_translations</span><span class="o">!</span><span class="p">(</span><span class="fm">concat!</span><span class="p">(</span><span class="fm">env!</span><span class="p">(</span><span class="s">&quot;CARGO_MANIFEST_DIR&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;/lang/&quot;</span><span class="p">));</span>
+<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="n">slint</span><span class="p">::</span><span class="n">init_translations</span><span class="o">!</span><span class="p">(</span><span class="fm">concat!</span><span class="p">(</span><span class="fm">env!</span><span class="p">(</span><span class="s">&quot;CARGO_MANIFEST_DIR&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;/lang/&quot;</span><span class="p">));</span>
 </pre></div>
 </div>
 <p>Suppose your <code class="docutils literal notranslate"><span class="pre">Cargo.toml</span></code> contains the following lines and the user’s locale is <code class="docutils literal notranslate"><span class="pre">fr</span></code>:</p>

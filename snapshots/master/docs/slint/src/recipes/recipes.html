@@ -701,24 +701,24 @@ export component Recipe inherits Window {
 <details  data-snippet-language="rust">
 <summary>Rust code</summary>
 In Rust you can set the callback like this:
-<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="n">slint</span>::<span class="n">slint</span><span class="o">!</span><span class="p">{</span>
+<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="n">slint</span><span class="p">::</span><span class="n">slint</span><span class="o">!</span><span class="p">{</span>
 <span class="n">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">HorizontalBox</span><span class="p">,</span><span class="w"> </span><span class="n">VerticalBox</span><span class="p">,</span><span class="w"> </span><span class="n">LineEdit</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="s">&quot;std-widgets.slint&quot;</span><span class="p">;</span>
 
 <span class="n">export</span><span class="w"> </span><span class="n">global</span><span class="w"> </span><span class="n">Logic</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">pure</span><span class="w"> </span><span class="n">callback</span><span class="w"> </span><span class="n">to</span><span class="o">-</span><span class="n">upper</span><span class="o">-</span><span class="n">case</span><span class="p">(</span><span class="n">string</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">string</span><span class="p">;</span>
+<span class="w">    </span><span class="n">pure</span><span class="w"> </span><span class="n">callback</span><span class="w"> </span><span class="n">to</span><span class="o">-</span><span class="n">upper</span><span class="o">-</span><span class="n">case</span><span class="p">(</span><span class="n">string</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">;</span>
 <span class="w">    </span><span class="c1">// You can collect other global properties here</span>
 <span class="p">}</span>
 
-<span class="n">export</span><span class="w"> </span><span class="n">Recipe</span><span class="w"> </span>:<span class="o">=</span><span class="w"> </span><span class="n">Window</span><span class="w"> </span><span class="p">{</span>
+<span class="n">export</span><span class="w"> </span><span class="n">Recipe</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="n">Window</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">VerticalBox</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">input</span><span class="w"> </span>:<span class="o">=</span><span class="w"> </span><span class="n">LineEdit</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">text</span>: <span class="s">&quot;Text to be transformed&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="n">input</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="n">LineEdit</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">text</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Text to be transformed&quot;</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">        </span><span class="n">HorizontalBox</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">Text</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">text</span>: <span class="s">&quot;Transformed:&quot;</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">            </span><span class="n">Text</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">text</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Transformed:&quot;</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 <span class="w">            </span><span class="c1">// Callback invoked in binding expression</span>
 <span class="w">            </span><span class="n">Text</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="n">text</span>: <span class="p">{</span>
+<span class="w">                </span><span class="n">text</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                    </span><span class="n">Logic</span><span class="p">.</span><span class="n">to</span><span class="o">-</span><span class="n">upper</span><span class="o">-</span><span class="n">case</span><span class="p">(</span><span class="n">input</span><span class="p">.</span><span class="n">text</span><span class="p">);</span>
 <span class="w">                </span><span class="p">}</span>
 <span class="w">            </span><span class="p">}</span>
@@ -727,9 +727,9 @@ In Rust you can set the callback like this:
 <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">recipe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Recipe</span>::<span class="n">new</span><span class="p">().</span><span class="n">unwrap</span><span class="p">();</span>
-<span class="w">    </span><span class="n">recipe</span><span class="p">.</span><span class="n">global</span>::<span class="o">&lt;</span><span class="n">Logic</span><span class="o">&gt;</span><span class="p">().</span><span class="n">on_to_upper_case</span><span class="p">(</span><span class="o">|</span><span class="n">string</span><span class="o">|</span><span class="w"> </span><span class="p">{</span>
+<span class="k">fn</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">recipe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Recipe</span><span class="p">::</span><span class="n">new</span><span class="p">().</span><span class="n">unwrap</span><span class="p">();</span>
+<span class="w">    </span><span class="n">recipe</span><span class="p">.</span><span class="n">global</span><span class="p">::</span><span class="o">&lt;</span><span class="n">Logic</span><span class="o">&gt;</span><span class="p">().</span><span class="n">on_to_upper_case</span><span class="p">(</span><span class="o">|</span><span class="n">string</span><span class="o">|</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">string</span><span class="p">.</span><span class="n">as_str</span><span class="p">().</span><span class="n">to_uppercase</span><span class="p">().</span><span class="n">into</span><span class="p">()</span>
 <span class="w">    </span><span class="p">});</span>
 <span class="w">    </span><span class="c1">// ...</span>
