@@ -105,6 +105,22 @@ Program Listing for File slint-testing.h
            return std::nullopt;
        }
    
+       std::optional<bool> accessible_checkable() const
+       {
+           if (auto item = private_api::upgrade_item_weak(inner)) {
+               SharedString result;
+               if (item->item_tree.vtable()->accessible_string_property(
+                           item->item_tree.borrow(), item->index,
+                           cbindgen_private::AccessibleStringProperty::Checkable, &result)) {
+                   if (result == "true")
+                       return true;
+                   else if (result == "false")
+                       return false;
+               }
+           }
+           return std::nullopt;
+       }
+   
        void set_accessible_value(SharedString value) const
        {
            if (auto item = private_api::upgrade_item_weak(inner)) {

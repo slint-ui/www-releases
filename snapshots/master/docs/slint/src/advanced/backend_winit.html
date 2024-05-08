@@ -386,6 +386,8 @@ macOS, Windows, Linux with Wayland and X11.</p>
 </tr>
 </tbody>
 </table>
+<p>If no renderer is explicitly set, the backend will first try to use the Skia renderer, if it was enabled at compile time.
+If that fails, it will fall back to the FemtoVG renderer, and if that also fails, it will use the software renderer.</p>
 <section id="configuration-options">
 <h2>Configuration Options<a class="headerlink" href="#configuration-options" title="Permalink to this heading">¶</a></h2>
 <p>The Winit backend reads and interprets the following environment variables:</p>
