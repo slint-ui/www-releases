@@ -1,11 +1,3 @@
-_redirects
-_headers
-script.js
-netlify.toml
-index.html
-README.md
-LICENSE.md
-404.html
 1.6.0
 1.5.1
 1.5.0
