@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Slint on Microcontrollers"><title>slint::docs::mcu - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-46f98efaafac5295.ttf.woff2,FiraSans-Regular-018c141bf0843ffd.woff2,FiraSans-Medium-8f9a781e4970d388.woff2,SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2,SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-dd39b87e5fcfba68.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="slint" data-themes="" data-resource-suffix="" data-rustdoc-version="1.80.0-nightly (ef0027897 2024-05-12)" data-channel="nightly" data-search-js="search-d52510db62a78183.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../../static.files/storage-118b08c4c78b968e.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-20a3ad099b048cf2.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-df360f571f6edeae.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Slint on Microcontrollers"><title>slint::docs::mcu - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-46f98efaafac5295.ttf.woff2,FiraSans-Regular-018c141bf0843ffd.woff2,FiraSans-Medium-8f9a781e4970d388.woff2,SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2,SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-dd39b87e5fcfba68.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="slint" data-themes="" data-resource-suffix="" data-rustdoc-version="1.80.0-nightly (8387315ab 2024-05-14)" data-channel="nightly" data-search-js="search-d52510db62a78183.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../../static.files/storage-118b08c4c78b968e.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-20a3ad099b048cf2.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-df360f571f6edeae.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -120,7 +120,7 @@ to get started with your device.</p>
 <h3 id="changes-to-cargotoml"><a class="doc-anchor" href="#changes-to-cargotoml">§</a>Changes to <code>Cargo.toml</code></h3>
 <p>Start by adding a dependency to the <code>slint</code> and the <code>slint-build</code> crates to your <code>Cargo.toml</code> using the <code>cargo</code> command:</p>
 <p>Start with the <code>slint</code> crate like this:</p>
-<div class="example-wrap"><pre class="language-sh"><code>cargo add slint@1.5.0 --no-default-features --features &quot;compat-1-2 unsafe-single-threaded libm&quot;
+<div class="example-wrap"><pre class="language-sh"><code>cargo add slint@1.6.0 --no-default-features --features &quot;compat-1-2 unsafe-single-threaded libm&quot;
 </code></pre></div>
 <p>The default features of the <code>slint</code> crate are tailored towards hosted environments and includes the “std” feature. In bare metal environments,
 you need to disable the default features.</p>
@@ -137,7 +137,7 @@ They’re typically provided by the Rust Standard Library (std), but that’s no
 in your Cargo.toml if you notice that your dependencies are attempting to build with <code>std</code> support even when disabled.
 This is the default when using the Rust 2021 Edition, but not if you use a workspace.</p>
 <p>Then add the <code>slint-build</code> crate as a build dependency:</p>
-<div class="example-wrap"><pre class="language-sh"><code>cargo add --build slint-build@1.5.0
+<div class="example-wrap"><pre class="language-sh"><code>cargo add --build slint-build@1.6.0
 </code></pre></div>
 <p>For reference: These are the relevant parts of your <code>Cargo.toml</code> file,
 ready to use Slint:</p>
@@ -150,11 +150,11 @@ edition = &quot;2021&quot;
 ## ... your other dependencies
 
 [dependencies.slint]
-version = &quot;1.5.0&quot;
+version = &quot;1.6.0&quot;
 default-features = false
 features = [&quot;compat-1-2&quot;, &quot;unsafe-single-threaded&quot;, &quot;libm&quot;]
 [build-dependencies]
-slint-build = &quot;1.5.0&quot;
+slint-build = &quot;1.6.0&quot;
 </code></pre></div><h3 id="changes-to-buildrs"><a class="doc-anchor" href="#changes-to-buildrs">§</a>Changes to <code>build.rs</code></h3>
 <p>Next, write a build script to compile the <code>.slint</code> files to Rust code for embedding into the program binary, using the <code>slint-build</code> crate:</p>
 

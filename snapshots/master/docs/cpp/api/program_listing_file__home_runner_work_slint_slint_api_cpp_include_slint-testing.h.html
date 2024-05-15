@@ -582,6 +582,40 @@
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">invoke_accessible_increment_action</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">private_api</span><span class="o">::</span><span class="n">upgrade_item_weak</span><span class="p">(</span><span class="n">inner</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">union</span><span class="w"> </span><span class="nc">IncreaseActionHelper</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">AccessibilityAction</span><span class="w"> </span><span class="n">action</span><span class="p">;</span>
+<span class="w">                </span><span class="n">IncreaseActionHelper</span><span class="p">()</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">action</span><span class="p">.</span><span class="n">tag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">AccessibilityAction</span><span class="o">::</span><span class="n">Tag</span><span class="o">::</span><span class="n">Increment</span><span class="p">;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">                </span><span class="o">~</span><span class="n">IncreaseActionHelper</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="n">action</span><span class="p">;</span>
+<span class="w">            </span><span class="n">item</span><span class="o">-&gt;</span><span class="n">item_tree</span><span class="p">.</span><span class="n">vtable</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">accessibility_action</span><span class="p">(</span><span class="n">item</span><span class="o">-&gt;</span><span class="n">item_tree</span><span class="p">.</span><span class="n">borrow</span><span class="p">(),</span><span class="w"> </span><span class="n">item</span><span class="o">-&gt;</span><span class="n">index</span><span class="p">,</span>
+<span class="w">                                                           </span><span class="o">&amp;</span><span class="n">action</span><span class="p">.</span><span class="n">action</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">invoke_accessible_decrement_action</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">private_api</span><span class="o">::</span><span class="n">upgrade_item_weak</span><span class="p">(</span><span class="n">inner</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">union</span><span class="w"> </span><span class="nc">DecreaseActionHelper</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">AccessibilityAction</span><span class="w"> </span><span class="n">action</span><span class="p">;</span>
+<span class="w">                </span><span class="n">DecreaseActionHelper</span><span class="p">()</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">action</span><span class="p">.</span><span class="n">tag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">AccessibilityAction</span><span class="o">::</span><span class="n">Tag</span><span class="o">::</span><span class="n">Decrement</span><span class="p">;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">                </span><span class="o">~</span><span class="n">DecreaseActionHelper</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="n">action</span><span class="p">;</span>
+<span class="w">            </span><span class="n">item</span><span class="o">-&gt;</span><span class="n">item_tree</span><span class="p">.</span><span class="n">vtable</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">accessibility_action</span><span class="p">(</span><span class="n">item</span><span class="o">-&gt;</span><span class="n">item_tree</span><span class="p">.</span><span class="n">borrow</span><span class="p">(),</span><span class="w"> </span><span class="n">item</span><span class="o">-&gt;</span><span class="n">index</span><span class="p">,</span>
+<span class="w">                                                           </span><span class="o">&amp;</span><span class="n">action</span><span class="p">.</span><span class="n">action</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">invoke_accessible_default_action</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">private_api</span><span class="o">::</span><span class="n">upgrade_item_weak</span><span class="p">(</span><span class="n">inner</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
