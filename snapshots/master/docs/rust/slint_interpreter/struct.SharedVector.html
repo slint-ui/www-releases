@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="(Re-export from corelib.) SharedVector holds a reference-counted read-only copy of `[T]`."><title>SharedVector in slint_interpreter - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-46f98efaafac5295.ttf.woff2,FiraSans-Regular-018c141bf0843ffd.woff2,FiraSans-Medium-8f9a781e4970d388.woff2,SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2,SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../static.files/rustdoc-dd39b87e5fcfba68.css"><meta name="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.80.0-nightly (84b40fc90 2024-05-27)" data-channel="nightly" data-search-js="search-d52510db62a78183.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../static.files/storage-118b08c4c78b968e.js"></script><script defer src="sidebar-items.js"></script><script defer src="../static.files/main-20a3ad099b048cf2.js"></script><noscript><link rel="stylesheet" href="../static.files/noscript-df360f571f6edeae.css"></noscript><link rel="alternate icon" type="image/png" href="../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../static.files/favicon-2c020d218678b618.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="(Re-export from corelib.) SharedVector holds a reference-counted read-only copy of `[T]`."><title>SharedVector in slint_interpreter - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-46f98efaafac5295.ttf.woff2,FiraSans-Regular-018c141bf0843ffd.woff2,FiraSans-Medium-8f9a781e4970d388.woff2,SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2,SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../static.files/rustdoc-dd39b87e5fcfba68.css"><meta name="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.80.0-nightly (da159eb33 2024-05-28)" data-channel="nightly" data-search-js="search-d52510db62a78183.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../static.files/storage-118b08c4c78b968e.js"></script><script defer src="sidebar-items.js"></script><script defer src="../static.files/main-20a3ad099b048cf2.js"></script><noscript><link rel="stylesheet" href="../static.files/noscript-df360f571f6edeae.css"></noscript><link rel="alternate icon" type="image/png" href="../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../static.files/favicon-2c020d218678b618.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -123,35 +123,25 @@ shared_vector.resize(<span class="number">5</span>, <span class="number">8</span
 shared_vector.resize(<span class="number">2</span>, <span class="number">0</span>);
 <span class="macro">assert_eq!</span>(shared_vector.as_slice(), <span class="kw-2">&amp;</span>[<span class="number">1</span>, <span class="number">2</span>]);</code></pre></div>
 </div></details><details class="toggle method-toggle" open><summary><section id="method.clear" class="method"><h4 class="code-header">pub fn <a href="#method.clear" class="fn">clear</a>(&amp;mut self)</h4></section></summary><div class="docblock"><p>Clears the vector and removes all elements.</p>
-</div></details></div></details></div><h2 id="deref-methods-%5BT%5D" class="section-header"><span>Methods from <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/deref/trait.Deref.html" title="trait core::ops::deref::Deref">Deref</a>&lt;Target = <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">[T]</a>&gt;</span><a href="#deref-methods-%5BT%5D" class="anchor">§</a></h2><div id="deref-methods-%5BT%5D-1" class="impl-items"><details class="toggle method-toggle" open><summary><section id="method.utf8_chunks" class="method"><span class="rightside"><span class="since" title="Stable since Rust version 1.79.0">1.79.0</span> · <a class="src" href="https://doc.rust-lang.org/nightly/src/core/str/lossy.rs.html#44">source</a></span><h4 class="code-header">pub fn <a href="#method.utf8_chunks" class="fn">utf8_chunks</a>(&amp;self) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/core/str/lossy/struct.Utf8Chunks.html" title="struct core::str::lossy::Utf8Chunks">Utf8Chunks</a>&lt;'_&gt;</h4></section></summary><div class="docblock"><p>Creates an iterator over the contiguous valid UTF-8 ranges of this
-slice, and the non-UTF-8 fragments in between.</p>
+</div></details></div></details></div><h2 id="deref-methods-%5BT%5D" class="section-header"><span>Methods from <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/deref/trait.Deref.html" title="trait core::ops::deref::Deref">Deref</a>&lt;Target = <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">[T]</a>&gt;</span><a href="#deref-methods-%5BT%5D" class="anchor">§</a></h2><div id="deref-methods-%5BT%5D-1" class="impl-items"><details class="toggle method-toggle" open><summary><section id="method.as_flattened" class="method"><span class="rightside"><span class="since" title="Stable since Rust version 1.80.0">1.80.0</span> · <a class="src" href="https://doc.rust-lang.org/nightly/src/core/slice/mod.rs.html#4549">source</a></span><h4 class="code-header">pub fn <a href="#method.as_flattened" class="fn">as_flattened</a>(&amp;self) -&gt; &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">[T]</a></h4></section></summary><div class="docblock"><p>Takes a <code>&amp;[[T; N]]</code>, and flattens it to a <code>&amp;[T]</code>.</p>
+<h5 id="panics"><a class="doc-anchor" href="#panics">§</a>Panics</h5>
+<p>This panics if the length of the resulting slice would overflow a <code>usize</code>.</p>
+<p>This is only possible when flattening a slice of arrays of zero-sized
+types, and thus tends to be irrelevant in practice. If
+<code>size_of::&lt;T&gt;() &gt; 0</code>, this will never panic.</p>
 <h5 id="examples"><a class="doc-anchor" href="#examples">§</a>Examples</h5>
-<p>This function formats arbitrary but mostly-UTF-8 bytes into Rust source
-code in the form of a C-string literal (<code>c&quot;...&quot;</code>).</p>
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="macro">assert_eq!</span>([[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]].as_flattened(), <span class="kw-2">&amp;</span>[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]);
 
-<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>std::fmt::Write <span class="kw">as _</span>;
+<span class="macro">assert_eq!</span>(
+    [[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]].as_flattened(),
+    [[<span class="number">1</span>, <span class="number">2</span>], [<span class="number">3</span>, <span class="number">4</span>], [<span class="number">5</span>, <span class="number">6</span>]].as_flattened(),
+);
 
-<span class="kw">pub fn </span>cstr_literal(bytes: <span class="kw-2">&amp;</span>[u8]) -&gt; String {
-    <span class="kw">let </span><span class="kw-2">mut </span>repr = String::new();
-    repr.push_str(<span class="string">"c\""</span>);
-    <span class="kw">for </span>chunk <span class="kw">in </span>bytes.utf8_chunks() {
-        <span class="kw">for </span>ch <span class="kw">in </span>chunk.valid().chars() {
-            <span class="comment">// Escapes \0, \t, \r, \n, \\, \', \", and uses \u{...} for non-printable characters.
-            </span><span class="macro">write!</span>(repr, <span class="string">"{}"</span>, ch.escape_debug()).unwrap();
-        }
-        <span class="kw">for </span>byte <span class="kw">in </span>chunk.invalid() {
-            <span class="macro">write!</span>(repr, <span class="string">"\\x{:02X}"</span>, byte).unwrap();
-        }
-    }
-    repr.push(<span class="string">'"'</span>);
-    repr
-}
+<span class="kw">let </span>slice_of_empty_arrays: <span class="kw-2">&amp;</span>[[i32; <span class="number">0</span>]] = <span class="kw-2">&amp;</span>[[], [], [], [], []];
+<span class="macro">assert!</span>(slice_of_empty_arrays.as_flattened().is_empty());
 
-<span class="kw">fn </span>main() {
-    <span class="kw">let </span>lit = cstr_literal(<span class="string">b"\xferris the \xf0\x9f\xa6\x80\x07"</span>);
-    <span class="kw">let </span>expected = <span class="macro">stringify!</span>(<span class="string">c"\xFErris the 🦀\u{7}"</span>);
-    <span class="macro">assert_eq!</span>(lit, expected);
-}</code></pre></div>
+<span class="kw">let </span>empty_slice_of_arrays: <span class="kw-2">&amp;</span>[[u32; <span class="number">10</span>]] = <span class="kw-2">&amp;</span>[];
+<span class="macro">assert!</span>(empty_slice_of_arrays.as_flattened().is_empty());</code></pre></div>
 </div></details><details class="toggle method-toggle" open><summary><section id="method.is_ascii" class="method"><span class="rightside"><span class="since" title="Stable since Rust version 1.23.0">1.23.0</span> · <a class="src" href="https://doc.rust-lang.org/nightly/src/core/slice/ascii.rs.html#17">source</a></span><h4 class="code-header">pub fn <a href="#method.is_ascii" class="fn">is_ascii</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></h4></section></summary><div class="docblock"><p>Checks if all bytes in this slice are within the ASCII range.</p>
 </div></details><details class="toggle method-toggle" open><summary><section id="method.as_ascii" class="method"><a class="src rightside" href="https://doc.rust-lang.org/nightly/src/core/slice/ascii.rs.html#26">source</a><h4 class="code-header">pub fn <a href="#method.as_ascii" class="fn">as_ascii</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;[<a class="enum" href="https://doc.rust-lang.org/nightly/core/ascii/ascii_char/enum.AsciiChar.html" title="enum core::ascii::ascii_char::AsciiChar">AsciiChar</a>]&gt;</h4></section><span class="item-info"><div class="stab unstable"><span class="emoji">🔬</span><span>This is a nightly-only experimental API. (<code>ascii_char</code>)</span></div></span></summary><div class="docblock"><p>If this slice <a href="https://doc.rust-lang.org/nightly/std/primitive.slice.html#method.is_ascii" title="method slice::is_ascii"><code>is_ascii</code></a>, returns it as a slice of
 <a href="https://doc.rust-lang.org/nightly/core/ascii/ascii_char/enum.AsciiChar.html" title="enum core::ascii::ascii_char::AsciiChar">ASCII characters</a>, otherwise returns <code>None</code>.</p>
@@ -193,25 +183,35 @@ removed.</p>
 <span class="macro">assert_eq!</span>(<span class="string">b""</span>.trim_ascii(), <span class="string">b""</span>);</code></pre></div>
 </div></details><details class="toggle method-toggle" open><summary><section id="method.as_str" class="method"><a class="src rightside" href="https://doc.rust-lang.org/nightly/src/core/ascii/ascii_char.rs.html#560">source</a><h4 class="code-header">pub fn <a href="#method.as_str" class="fn">as_str</a>(&amp;self) -&gt; &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a></h4></section><span class="item-info"><div class="stab unstable"><span class="emoji">🔬</span><span>This is a nightly-only experimental API. (<code>ascii_char</code>)</span></div></span></summary><div class="docblock"><p>Views this slice of ASCII characters as a UTF-8 <code>str</code>.</p>
 </div></details><details class="toggle method-toggle" open><summary><section id="method.as_bytes" class="method"><a class="src rightside" href="https://doc.rust-lang.org/nightly/src/core/ascii/ascii_char.rs.html#571">source</a><h4 class="code-header">pub fn <a href="#method.as_bytes" class="fn">as_bytes</a>(&amp;self) -&gt; &amp;[<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>] <a href="#" class="tooltip" data-notable-ty="&amp;[u8]">ⓘ</a></h4></section><span class="item-info"><div class="stab unstable"><span class="emoji">🔬</span><span>This is a nightly-only experimental API. (<code>ascii_char</code>)</span></div></span></summary><div class="docblock"><p>Views this slice of ASCII characters as a slice of <code>u8</code> bytes.</p>
-</div></details><details class="toggle method-toggle" open><summary><section id="method.as_flattened" class="method"><span class="rightside"><span class="since" title="Stable since Rust version 1.80.0">1.80.0</span> · <a class="src" href="https://doc.rust-lang.org/nightly/src/core/slice/mod.rs.html#4549">source</a></span><h4 class="code-header">pub fn <a href="#method.as_flattened" class="fn">as_flattened</a>(&amp;self) -&gt; &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">[T]</a></h4></section></summary><div class="docblock"><p>Takes a <code>&amp;[[T; N]]</code>, and flattens it to a <code>&amp;[T]</code>.</p>
-<h5 id="panics"><a class="doc-anchor" href="#panics">§</a>Panics</h5>
-<p>This panics if the length of the resulting slice would overflow a <code>usize</code>.</p>
-<p>This is only possible when flattening a slice of arrays of zero-sized
-types, and thus tends to be irrelevant in practice. If
-<code>size_of::&lt;T&gt;() &gt; 0</code>, this will never panic.</p>
+</div></details><details class="toggle method-toggle" open><summary><section id="method.utf8_chunks" class="method"><span class="rightside"><span class="since" title="Stable since Rust version 1.79.0">1.79.0</span> · <a class="src" href="https://doc.rust-lang.org/nightly/src/core/str/lossy.rs.html#44">source</a></span><h4 class="code-header">pub fn <a href="#method.utf8_chunks" class="fn">utf8_chunks</a>(&amp;self) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/core/str/lossy/struct.Utf8Chunks.html" title="struct core::str::lossy::Utf8Chunks">Utf8Chunks</a>&lt;'_&gt;</h4></section></summary><div class="docblock"><p>Creates an iterator over the contiguous valid UTF-8 ranges of this
+slice, and the non-UTF-8 fragments in between.</p>
 <h5 id="examples-5"><a class="doc-anchor" href="#examples-5">§</a>Examples</h5>
-<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="macro">assert_eq!</span>([[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]].as_flattened(), <span class="kw-2">&amp;</span>[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]);
+<p>This function formats arbitrary but mostly-UTF-8 bytes into Rust source
+code in the form of a C-string literal (<code>c&quot;...&quot;</code>).</p>
 
-<span class="macro">assert_eq!</span>(
-    [[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]].as_flattened(),
-    [[<span class="number">1</span>, <span class="number">2</span>], [<span class="number">3</span>, <span class="number">4</span>], [<span class="number">5</span>, <span class="number">6</span>]].as_flattened(),
-);
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>std::fmt::Write <span class="kw">as _</span>;
 
-<span class="kw">let </span>slice_of_empty_arrays: <span class="kw-2">&amp;</span>[[i32; <span class="number">0</span>]] = <span class="kw-2">&amp;</span>[[], [], [], [], []];
-<span class="macro">assert!</span>(slice_of_empty_arrays.as_flattened().is_empty());
+<span class="kw">pub fn </span>cstr_literal(bytes: <span class="kw-2">&amp;</span>[u8]) -&gt; String {
+    <span class="kw">let </span><span class="kw-2">mut </span>repr = String::new();
+    repr.push_str(<span class="string">"c\""</span>);
+    <span class="kw">for </span>chunk <span class="kw">in </span>bytes.utf8_chunks() {
+        <span class="kw">for </span>ch <span class="kw">in </span>chunk.valid().chars() {
+            <span class="comment">// Escapes \0, \t, \r, \n, \\, \', \", and uses \u{...} for non-printable characters.
+            </span><span class="macro">write!</span>(repr, <span class="string">"{}"</span>, ch.escape_debug()).unwrap();
+        }
+        <span class="kw">for </span>byte <span class="kw">in </span>chunk.invalid() {
+            <span class="macro">write!</span>(repr, <span class="string">"\\x{:02X}"</span>, byte).unwrap();
+        }
+    }
+    repr.push(<span class="string">'"'</span>);
+    repr
+}
 
-<span class="kw">let </span>empty_slice_of_arrays: <span class="kw-2">&amp;</span>[[u32; <span class="number">10</span>]] = <span class="kw-2">&amp;</span>[];
-<span class="macro">assert!</span>(empty_slice_of_arrays.as_flattened().is_empty());</code></pre></div>
+<span class="kw">fn </span>main() {
+    <span class="kw">let </span>lit = cstr_literal(<span class="string">b"\xferris the \xf0\x9f\xa6\x80\x07"</span>);
+    <span class="kw">let </span>expected = <span class="macro">stringify!</span>(<span class="string">c"\xFErris the 🦀\u{7}"</span>);
+    <span class="macro">assert_eq!</span>(lit, expected);
+}</code></pre></div>
 </div></details><details class="toggle method-toggle" open><summary><section id="method.len-1" class="method"><span class="rightside"><span class="since" title="Stable since Rust version 1.0.0">1.0.0</span> · <a class="src" href="https://doc.rust-lang.org/nightly/src/core/slice/mod.rs.html#138">source</a></span><h4 class="code-header">pub fn <a href="#method.len-1" class="fn">len</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a></h4></section></summary><div class="docblock"><p>Returns the number of elements in the slice.</p>
 <h5 id="examples-6"><a class="doc-anchor" href="#examples-6">§</a>Examples</h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span>a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];
