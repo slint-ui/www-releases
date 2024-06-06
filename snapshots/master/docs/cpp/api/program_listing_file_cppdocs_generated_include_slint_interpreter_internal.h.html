@@ -648,6 +648,9 @@
 <span class="kt">void</span><span class="w"> </span><span class="nf">slint_interpreter_component_definition_callbacks</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">ComponentDefinitionOpaque</span><span class="w"> </span><span class="o">*</span><span class="n">def</span><span class="p">,</span>
 <span class="w">                                                      </span><span class="n">SharedVector</span><span class="o">&lt;</span><span class="n">SharedString</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">callbacks</span><span class="p">);</span>
 
+<span class="kt">void</span><span class="w"> </span><span class="nf">slint_interpreter_component_definition_functions</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">ComponentDefinitionOpaque</span><span class="w"> </span><span class="o">*</span><span class="n">def</span><span class="p">,</span>
+<span class="w">                                                      </span><span class="n">SharedVector</span><span class="o">&lt;</span><span class="n">SharedString</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">functions</span><span class="p">);</span>
+
 <span class="kt">void</span><span class="w"> </span><span class="nf">slint_interpreter_component_definition_name</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">ComponentDefinitionOpaque</span><span class="w"> </span><span class="o">*</span><span class="n">def</span><span class="p">,</span>
 <span class="w">                                                 </span><span class="n">SharedString</span><span class="w"> </span><span class="o">*</span><span class="n">name</span><span class="p">);</span>
 
@@ -659,6 +662,10 @@
 <span class="w">                                                              </span><span class="n">SharedVector</span><span class="o">&lt;</span><span class="n">PropertyDescriptor</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">properties</span><span class="p">);</span>
 
 <span class="kt">bool</span><span class="w"> </span><span class="nf">slint_interpreter_component_definition_global_callbacks</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">ComponentDefinitionOpaque</span><span class="w"> </span><span class="o">*</span><span class="n">def</span><span class="p">,</span>
+<span class="w">                                                             </span><span class="n">Slice</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">global_name</span><span class="p">,</span>
+<span class="w">                                                             </span><span class="n">SharedVector</span><span class="o">&lt;</span><span class="n">SharedString</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">names</span><span class="p">);</span>
+
+<span class="kt">bool</span><span class="w"> </span><span class="nf">slint_interpreter_component_definition_global_functions</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">ComponentDefinitionOpaque</span><span class="w"> </span><span class="o">*</span><span class="n">def</span><span class="p">,</span>
 <span class="w">                                                             </span><span class="n">Slice</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">global_name</span><span class="p">,</span>
 <span class="w">                                                             </span><span class="n">SharedVector</span><span class="o">&lt;</span><span class="n">SharedString</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">names</span><span class="p">);</span>
 

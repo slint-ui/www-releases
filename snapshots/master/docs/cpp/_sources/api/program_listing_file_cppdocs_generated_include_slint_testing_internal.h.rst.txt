@@ -24,13 +24,32 @@ Program Listing for File slint_testing_internal.h
    namespace slint {
    namespace cbindgen_private {
    
+   struct ElementHandle {
+       ItemWeak item;
+       uintptr_t element_index;
+   };
+   
    extern "C" {
    
    void slint_testing_init_backend();
    
    void slint_testing_element_find_by_accessible_label(const ItemTreeRc *root,
                                                        const Slice<uint8_t> *label,
-                                                       SharedVector<ItemWeak> *out);
+                                                       SharedVector<ElementHandle> *out);
+   
+   void slint_testing_element_find_by_element_id(const ItemTreeRc *root,
+                                                 const Slice<uint8_t> *element_id,
+                                                 SharedVector<ElementHandle> *out);
+   
+   void slint_testing_element_find_by_element_type_name(const ItemTreeRc *root,
+                                                        const Slice<uint8_t> *type_name,
+                                                        SharedVector<ElementHandle> *out);
+   
+   bool slint_testing_element_id(const ElementHandle *element, SharedString *out);
+   
+   bool slint_testing_element_type_name(const ElementHandle *element, SharedString *out);
+   
+   bool slint_testing_element_bases(const ElementHandle *element, SharedVector<SharedString> *out);
    
    } // extern "C"
    

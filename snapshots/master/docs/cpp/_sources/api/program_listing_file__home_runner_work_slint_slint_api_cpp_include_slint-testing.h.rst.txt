@@ -29,7 +29,7 @@ Program Listing for File slint-testing.h
    
    class ElementHandle
    {
-       cbindgen_private::ItemWeak inner;
+       cbindgen_private::ElementHandle inner;
    
    public:
        template<typename T>
@@ -44,15 +44,77 @@ Program Listing for File slint-testing.h
            SharedVector<ElementHandle> result;
            cbindgen_private::slint_testing_element_find_by_accessible_label(
                    &vrc, &label_view,
-                   reinterpret_cast<SharedVector<cbindgen_private::ItemWeak> *>(&result));
+                   reinterpret_cast<SharedVector<cbindgen_private::ElementHandle> *>(&result));
            return result;
        }
    
-       bool is_valid() const { return private_api::upgrade_item_weak(inner).has_value(); }
+       template<typename T>
+       static SharedVector<ElementHandle> find_by_element_id(const ComponentHandle<T> &component,
+                                                             std::string_view element_id)
+       {
+           cbindgen_private::Slice<uint8_t> element_id_view {
+               const_cast<unsigned char *>(reinterpret_cast<const unsigned char *>(element_id.data())),
+               element_id.size()
+           };
+           auto vrc = component.into_dyn();
+           SharedVector<ElementHandle> result;
+           cbindgen_private::slint_testing_element_find_by_element_id(
+                   &vrc, &element_id_view,
+                   reinterpret_cast<SharedVector<cbindgen_private::ElementHandle> *>(&result));
+           return result;
+       }
+   
+       template<typename T>
+       static SharedVector<ElementHandle>
+       find_by_element_type_name(const ComponentHandle<T> &component, std::string_view type_name)
+       {
+           cbindgen_private::Slice<uint8_t> element_type_name_view {
+               const_cast<unsigned char *>(reinterpret_cast<const unsigned char *>(type_name.data())),
+               type_name.size()
+           };
+           auto vrc = component.into_dyn();
+           SharedVector<ElementHandle> result;
+           cbindgen_private::slint_testing_element_find_by_element_type_name(
+                   &vrc, &element_type_name_view,
+                   reinterpret_cast<SharedVector<cbindgen_private::ElementHandle> *>(&result));
+           return result;
+       }
+   
+       bool is_valid() const { return private_api::upgrade_item_weak(inner.item).has_value(); }
+   
+       std::optional<SharedString> id() const
+       {
+           SharedString id;
+           if (cbindgen_private::slint_testing_element_id(&inner, &id)) {
+               return id;
+           } else {
+               return std::nullopt;
+           }
+       }
+   
+       std::optional<SharedString> type_name() const
+       {
+           SharedString type_name;
+           if (cbindgen_private::slint_testing_element_type_name(&inner, &type_name)) {
+               return type_name;
+           } else {
+               return std::nullopt;
+           }
+       }
+   
+       std::optional<SharedVector<SharedString>> bases() const
+       {
+           SharedVector<SharedString> bases;
+           if (cbindgen_private::slint_testing_element_bases(&inner, &bases)) {
+               return bases;
+           } else {
+               return std::nullopt;
+           }
+       }
    
        std::optional<SharedString> accessible_label() const
        {
-           if (auto item = private_api::upgrade_item_weak(inner)) {
+           if (auto item = private_api::upgrade_item_weak(inner.item)) {
                SharedString result;
                if (item->item_tree.vtable()->accessible_string_property(
                            item->item_tree.borrow(), item->index,
@@ -65,7 +127,7 @@ Program Listing for File slint-testing.h
    
        std::optional<SharedString> accessible_value() const
        {
-           if (auto item = private_api::upgrade_item_weak(inner)) {
+           if (auto item = private_api::upgrade_item_weak(inner.item)) {
                SharedString result;
                if (item->item_tree.vtable()->accessible_string_property(
                            item->item_tree.borrow(), item->index,
@@ -78,7 +140,7 @@ Program Listing for File slint-testing.h
    
        std::optional<SharedString> accessible_description() const
        {
-           if (auto item = private_api::upgrade_item_weak(inner)) {
+           if (auto item = private_api::upgrade_item_weak(inner.item)) {
                SharedString result;
                if (item->item_tree.vtable()->accessible_string_property(
                            item->item_tree.borrow(), item->index,
@@ -91,7 +153,7 @@ Program Listing for File slint-testing.h
    
        std::optional<float> accessible_value_maximum() const
        {
-           if (auto item = private_api::upgrade_item_weak(inner)) {
+           if (auto item = private_api::upgrade_item_weak(inner.item)) {
                SharedString result;
                if (item->item_tree.vtable()->accessible_string_property(
                            item->item_tree.borrow(), item->index,
@@ -107,7 +169,7 @@ Program Listing for File slint-testing.h
    
        std::optional<float> accessible_value_minimum() const
        {
-           if (auto item = private_api::upgrade_item_weak(inner)) {
+           if (auto item = private_api::upgrade_item_weak(inner.item)) {
                SharedString result;
                if (item->item_tree.vtable()->accessible_string_property(
                            item->item_tree.borrow(), item->index,
@@ -123,7 +185,7 @@ Program Listing for File slint-testing.h
    
        std::optional<float> accessible_value_step() const
        {
-           if (auto item = private_api::upgrade_item_weak(inner)) {
+           if (auto item = private_api::upgrade_item_weak(inner.item)) {
                SharedString result;
                if (item->item_tree.vtable()->accessible_string_property(
                            item->item_tree.borrow(), item->index,
@@ -139,7 +201,7 @@ Program Listing for File slint-testing.h
    
        std::optional<bool> accessible_checked() const
        {
-           if (auto item = private_api::upgrade_item_weak(inner)) {
+           if (auto item = private_api::upgrade_item_weak(inner.item)) {
                SharedString result;
                if (item->item_tree.vtable()->accessible_string_property(
                            item->item_tree.borrow(), item->index,
@@ -155,7 +217,7 @@ Program Listing for File slint-testing.h
    
        std::optional<bool> accessible_checkable() const
        {
-           if (auto item = private_api::upgrade_item_weak(inner)) {
+           if (auto item = private_api::upgrade_item_weak(inner.item)) {
                SharedString result;
                if (item->item_tree.vtable()->accessible_string_property(
                            item->item_tree.borrow(), item->index,
@@ -171,7 +233,7 @@ Program Listing for File slint-testing.h
    
        void set_accessible_value(SharedString value) const
        {
-           if (auto item = private_api::upgrade_item_weak(inner)) {
+           if (auto item = private_api::upgrade_item_weak(inner.item)) {
                union SetValueHelper {
                    cbindgen_private::AccessibilityAction action;
                    SetValueHelper(SharedString value)
@@ -190,7 +252,7 @@ Program Listing for File slint-testing.h
    
        void invoke_accessible_increment_action() const
        {
-           if (auto item = private_api::upgrade_item_weak(inner)) {
+           if (auto item = private_api::upgrade_item_weak(inner.item)) {
                union IncreaseActionHelper {
                    cbindgen_private::AccessibilityAction action;
                    IncreaseActionHelper()
@@ -207,7 +269,7 @@ Program Listing for File slint-testing.h
    
        void invoke_accessible_decrement_action() const
        {
-           if (auto item = private_api::upgrade_item_weak(inner)) {
+           if (auto item = private_api::upgrade_item_weak(inner.item)) {
                union DecreaseActionHelper {
                    cbindgen_private::AccessibilityAction action;
                    DecreaseActionHelper()
@@ -224,7 +286,7 @@ Program Listing for File slint-testing.h
    
        void invoke_accessible_default_action() const
        {
-           if (auto item = private_api::upgrade_item_weak(inner)) {
+           if (auto item = private_api::upgrade_item_weak(inner.item)) {
                union DefaultActionHelper {
                    cbindgen_private::AccessibilityAction action;
                    DefaultActionHelper()
@@ -241,7 +303,7 @@ Program Listing for File slint-testing.h
    
        LogicalSize size() const
        {
-           if (auto item = private_api::upgrade_item_weak(inner)) {
+           if (auto item = private_api::upgrade_item_weak(inner.item)) {
                auto rect =
                        item->item_tree.vtable()->item_geometry(item->item_tree.borrow(), item->index);
                return LogicalSize({ rect.width, rect.height });
@@ -251,7 +313,7 @@ Program Listing for File slint-testing.h
    
        LogicalPosition absolute_position() const
        {
-           if (auto item = private_api::upgrade_item_weak(inner)) {
+           if (auto item = private_api::upgrade_item_weak(inner.item)) {
                cbindgen_private::LogicalRect rect =
                        item->item_tree.vtable()->item_geometry(item->item_tree.borrow(), item->index);
                cbindgen_private::LogicalPoint abs =

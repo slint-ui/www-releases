@@ -297,6 +297,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../widgets/tabwidget.html"><code class="docutils literal notranslate"><span class="pre">TabWidget</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../widgets/textedit.html"><code class="docutils literal notranslate"><span class="pre">TextEdit</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../widgets/verticalbox.html"><code class="docutils literal notranslate"><span class="pre">VerticalBox</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../widgets/timepicker.html">struct <code class="docutils literal notranslate"><span class="pre">Time</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../widgets/timepicker.html#timepicker"><code class="docutils literal notranslate"><span class="pre">TimePicker</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -412,7 +414,7 @@ to the <code class="docutils literal notranslate"><span class="pre">&#64;tr(...)
 <p>The context must be a plain string literal and it appears as <code class="docutils literal notranslate"><span class="pre">msgctx</span></code> in the <code class="docutils literal notranslate"><span class="pre">.pot</span></code> files. If not specified, the context defaults
 to the name of the surrounding component.</p>
 <div class="highlight-slint,no-preview notranslate"><div class="highlight"><pre><span></span>export component MenuItem {
-    property &lt;string&gt; name : @tr(&quot;Name&quot; =&gt; &quot;Default Name&quot;); // Default: `MenuItem` will be the context.
+    property &lt;string&gt; name : @tr(&quot;Default Name&quot;); // Default: `MenuItem` will be the context.
     property &lt;string&gt; tooltip : @tr(&quot;ToolTip&quot; =&gt; &quot;ToolTip for {}&quot;, name); // Specified: The context will be `ToolTip`.
 }
 </pre></div>

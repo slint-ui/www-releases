@@ -418,13 +418,32 @@
 <span class="k">namespace</span><span class="w"> </span><span class="nn">slint</span><span class="w"> </span><span class="p">{</span>
 <span class="k">namespace</span><span class="w"> </span><span class="nn">cbindgen_private</span><span class="w"> </span><span class="p">{</span>
 
+<span class="k">struct</span><span class="w"> </span><span class="nc">ElementHandle</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">ItemWeak</span><span class="w"> </span><span class="n">item</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uintptr_t</span><span class="w"> </span><span class="n">element_index</span><span class="p">;</span>
+<span class="p">};</span>
+
 <span class="k">extern</span><span class="w"> </span><span class="s">&quot;C&quot;</span><span class="w"> </span><span class="p">{</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">slint_testing_init_backend</span><span class="p">();</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">slint_testing_element_find_by_accessible_label</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">ItemTreeRc</span><span class="w"> </span><span class="o">*</span><span class="n">root</span><span class="p">,</span>
 <span class="w">                                                    </span><span class="k">const</span><span class="w"> </span><span class="n">Slice</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">label</span><span class="p">,</span>
-<span class="w">                                                    </span><span class="n">SharedVector</span><span class="o">&lt;</span><span class="n">ItemWeak</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">out</span><span class="p">);</span>
+<span class="w">                                                    </span><span class="n">SharedVector</span><span class="o">&lt;</span><span class="n">ElementHandle</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">out</span><span class="p">);</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">slint_testing_element_find_by_element_id</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">ItemTreeRc</span><span class="w"> </span><span class="o">*</span><span class="n">root</span><span class="p">,</span>
+<span class="w">                                              </span><span class="k">const</span><span class="w"> </span><span class="n">Slice</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">element_id</span><span class="p">,</span>
+<span class="w">                                              </span><span class="n">SharedVector</span><span class="o">&lt;</span><span class="n">ElementHandle</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">out</span><span class="p">);</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">slint_testing_element_find_by_element_type_name</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">ItemTreeRc</span><span class="w"> </span><span class="o">*</span><span class="n">root</span><span class="p">,</span>
+<span class="w">                                                     </span><span class="k">const</span><span class="w"> </span><span class="n">Slice</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">type_name</span><span class="p">,</span>
+<span class="w">                                                     </span><span class="n">SharedVector</span><span class="o">&lt;</span><span class="n">ElementHandle</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">out</span><span class="p">);</span>
+
+<span class="kt">bool</span><span class="w"> </span><span class="nf">slint_testing_element_id</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">ElementHandle</span><span class="w"> </span><span class="o">*</span><span class="n">element</span><span class="p">,</span><span class="w"> </span><span class="n">SharedString</span><span class="w"> </span><span class="o">*</span><span class="n">out</span><span class="p">);</span>
+
+<span class="kt">bool</span><span class="w"> </span><span class="nf">slint_testing_element_type_name</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">ElementHandle</span><span class="w"> </span><span class="o">*</span><span class="n">element</span><span class="p">,</span><span class="w"> </span><span class="n">SharedString</span><span class="w"> </span><span class="o">*</span><span class="n">out</span><span class="p">);</span>
+
+<span class="kt">bool</span><span class="w"> </span><span class="nf">slint_testing_element_bases</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">ElementHandle</span><span class="w"> </span><span class="o">*</span><span class="n">element</span><span class="p">,</span><span class="w"> </span><span class="n">SharedVector</span><span class="o">&lt;</span><span class="n">SharedString</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">out</span><span class="p">);</span>
 
 <span class="p">}</span><span class="w"> </span><span class="c1">// extern &quot;C&quot;</span>
 

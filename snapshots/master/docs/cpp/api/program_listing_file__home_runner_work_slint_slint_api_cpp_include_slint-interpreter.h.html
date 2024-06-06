@@ -1037,6 +1037,13 @@
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">callbacks</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
+<span class="w">    </span><span class="n">slint</span><span class="o">::</span><span class="n">SharedVector</span><span class="o">&lt;</span><span class="n">slint</span><span class="o">::</span><span class="n">SharedString</span><span class="o">&gt;</span><span class="w"> </span><span class="n">functions</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">slint</span><span class="o">::</span><span class="n">SharedVector</span><span class="o">&lt;</span><span class="n">slint</span><span class="o">::</span><span class="n">SharedString</span><span class="o">&gt;</span><span class="w"> </span><span class="n">functions</span><span class="p">;</span>
+<span class="w">        </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_interpreter_component_definition_functions</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inner</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">functions</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">functions</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
 <span class="w">    </span><span class="n">slint</span><span class="o">::</span><span class="n">SharedString</span><span class="w"> </span><span class="n">name</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="n">slint</span><span class="o">::</span><span class="n">SharedString</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
@@ -1067,6 +1074,17 @@
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="n">slint</span><span class="o">::</span><span class="n">SharedVector</span><span class="o">&lt;</span><span class="n">slint</span><span class="o">::</span><span class="n">SharedString</span><span class="o">&gt;</span><span class="w"> </span><span class="n">names</span><span class="p">;</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_interpreter_component_definition_global_callbacks</span><span class="p">(</span>
+<span class="w">                    </span><span class="o">&amp;</span><span class="n">inner</span><span class="p">,</span><span class="w"> </span><span class="n">slint</span><span class="o">::</span><span class="n">private_api</span><span class="o">::</span><span class="n">string_to_slice</span><span class="p">(</span><span class="n">global_name</span><span class="p">),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">names</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">names</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">{};</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">slint</span><span class="o">::</span><span class="n">SharedVector</span><span class="o">&lt;</span><span class="n">slint</span><span class="o">::</span><span class="n">SharedString</span><span class="o">&gt;&gt;</span>
+<span class="w">    </span><span class="n">global_functions</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">global_name</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">slint</span><span class="o">::</span><span class="n">SharedVector</span><span class="o">&lt;</span><span class="n">slint</span><span class="o">::</span><span class="n">SharedString</span><span class="o">&gt;</span><span class="w"> </span><span class="n">names</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_interpreter_component_definition_global_functions</span><span class="p">(</span>
 <span class="w">                    </span><span class="o">&amp;</span><span class="n">inner</span><span class="p">,</span><span class="w"> </span><span class="n">slint</span><span class="o">::</span><span class="n">private_api</span><span class="o">::</span><span class="n">string_to_slice</span><span class="p">(</span><span class="n">global_name</span><span class="p">),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">names</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">names</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>

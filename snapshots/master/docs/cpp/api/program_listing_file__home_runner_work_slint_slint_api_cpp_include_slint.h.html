@@ -1564,6 +1564,11 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
 <span class="p">}</span>
 
+<span class="kr">inline</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">use_24_hour_format</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_use_24_hour_format</span><span class="p">();</span>
+<span class="p">}</span>
+
 <span class="p">}</span><span class="w"> </span><span class="c1">// namespace private_api</span>
 
 <span class="cp">#ifdef SLINT_FEATURE_GETTEXT</span>

@@ -254,6 +254,9 @@ Program Listing for File slint_interpreter_internal.h
    void slint_interpreter_component_definition_callbacks(const ComponentDefinitionOpaque *def,
                                                          SharedVector<SharedString> *callbacks);
    
+   void slint_interpreter_component_definition_functions(const ComponentDefinitionOpaque *def,
+                                                         SharedVector<SharedString> *functions);
+   
    void slint_interpreter_component_definition_name(const ComponentDefinitionOpaque *def,
                                                     SharedString *name);
    
@@ -265,6 +268,10 @@ Program Listing for File slint_interpreter_internal.h
                                                                  SharedVector<PropertyDescriptor> *properties);
    
    bool slint_interpreter_component_definition_global_callbacks(const ComponentDefinitionOpaque *def,
+                                                                Slice<uint8_t> global_name,
+                                                                SharedVector<SharedString> *names);
+   
+   bool slint_interpreter_component_definition_global_functions(const ComponentDefinitionOpaque *def,
                                                                 Slice<uint8_t> global_name,
                                                                 SharedVector<SharedString> *names);
    

@@ -643,6 +643,13 @@ Program Listing for File slint-interpreter.h
            return callbacks;
        }
    
+       slint::SharedVector<slint::SharedString> functions() const
+       {
+           slint::SharedVector<slint::SharedString> functions;
+           cbindgen_private::slint_interpreter_component_definition_functions(&inner, &functions);
+           return functions;
+       }
+   
        slint::SharedString name() const
        {
            slint::SharedString name;
@@ -673,6 +680,17 @@ Program Listing for File slint-interpreter.h
        {
            slint::SharedVector<slint::SharedString> names;
            if (cbindgen_private::slint_interpreter_component_definition_global_callbacks(
+                       &inner, slint::private_api::string_to_slice(global_name), &names)) {
+               return names;
+           }
+           return {};
+       }
+   
+       std::optional<slint::SharedVector<slint::SharedString>>
+       global_functions(std::string_view global_name) const
+       {
+           slint::SharedVector<slint::SharedString> names;
+           if (cbindgen_private::slint_interpreter_component_definition_global_functions(
                        &inner, slint::private_api::string_to_slice(global_name), &names)) {
                return names;
            }

@@ -406,19 +406,25 @@
 <!-- Copyright © SixtyFPS GmbH <info@slint.dev> ; SPDX-License-Identifier: MIT -->
 <section id="slint-target-sources">
 <h2><code class="docutils literal notranslate"><span class="pre">slint_target_sources</span></code><a class="headerlink" href="#slint-target-sources" title="Permalink to this heading">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">slint_target_sources</span><span class="p">(</span><span class="o">&lt;</span><span class="n">target</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">files</span><span class="o">&gt;....</span> <span class="p">[</span><span class="n">NAMESPACE</span> <span class="n">namespace</span><span class="p">])</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">slint_target_sources</span><span class="p">(</span><span class="o">&lt;</span><span class="n">target</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">files</span><span class="o">&gt;....</span> <span class="p">[</span><span class="n">NAMESPACE</span> <span class="n">namespace</span><span class="p">]</span> <span class="p">[</span><span class="n">LIBRARY_PATHS</span> <span class="n">name1</span><span class="o">=</span><span class="n">lib1</span> <span class="n">name2</span><span class="o">=</span><span class="n">lib2</span> <span class="o">...</span><span class="p">])</span>
 </pre></div>
 </div>
 <p>Use this function to tell cmake about the .slint files of your application, similar to the builtin cmake <a class="reference external" href="https://cmake.org/cmake/help/latest/command/target_sources.html">target_sources</a> function.
 The function takes care of running the slint-compiler to convert <code class="docutils literal notranslate"><span class="pre">.slint</span></code> files to <code class="docutils literal notranslate"><span class="pre">.h</span></code> files in the build directory,
 and extend  the include directories of your target so that the generated file is found when including it in your application.</p>
-<p>The optional NAMESPACE argument will put the generated components in the given C++ namespace.</p>
+<p>The optional <code class="docutils literal notranslate"><span class="pre">NAMESPACE</span></code> argument will put the generated components in the given C++ namespace.</p>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">LIBRARY_PATHS</span></code> argument to specify the name and paths to <a class="reference external" href="https://slint.dev/releases/1.7.0/docs/slint/src/language/syntax/modules">component libraries</a>,
+separated by an equals sign (<code class="docutils literal notranslate"><span class="pre">=</span></code>).</p>
 <p>Given a file called <code class="docutils literal notranslate"><span class="pre">the_window.slint</span></code>, the following example will create a file called <code class="docutils literal notranslate"><span class="pre">the_window.h</span></code> that can
 be included from your .cpp file. Assuming the <code class="docutils literal notranslate"><span class="pre">the_window.slint</span></code> contains a component <code class="docutils literal notranslate"><span class="pre">TheWindow</span></code>, the output
-C++ class will be put in the namespace <code class="docutils literal notranslate"><span class="pre">ui</span></code>, resulting to <code class="docutils literal notranslate"><span class="pre">ui::TheWindow</span></code>.</p>
+C++ class will be put in the namespace <code class="docutils literal notranslate"><span class="pre">ui</span></code>, resulting to <code class="docutils literal notranslate"><span class="pre">ui::TheWindow</span></code>. Any import from <code class="docutils literal notranslate"><span class="pre">&#64;mycomponentlib/</span></code> will
+be redirected to the specified path.</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">add_executable</span><span class="p">(</span><span class="s">my_application</span><span class="w"> </span><span class="s">main.cpp</span><span class="p">)</span>
 <span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">my_application</span><span class="w"> </span><span class="s">PRIVATE</span><span class="w"> </span><span class="s">Slint::Slint</span><span class="p">)</span>
-<span class="nb">slint_target_sources</span><span class="p">(</span><span class="s">my_application</span><span class="w"> </span><span class="s">the_window.slint</span><span class="w"> </span><span class="s">NAMESPACE</span><span class="w"> </span><span class="s">ui</span><span class="p">)</span>
+<span class="nb">slint_target_sources</span><span class="p">(</span><span class="s">my_application</span><span class="w"> </span><span class="s">the_window.slint</span><span class="w"> </span>
+<span class="w">    </span><span class="s">NAMESPACE</span><span class="w"> </span><span class="s">ui</span>
+<span class="w">    </span><span class="s">LIBRARY_PATHS</span><span class="w"> </span><span class="s">mycomponentlib=/path/to/customcomponents</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </section>
