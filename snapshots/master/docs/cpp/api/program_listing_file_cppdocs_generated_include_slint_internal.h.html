@@ -1170,6 +1170,7 @@
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">Brush</span><span class="o">&gt;</span><span class="w"> </span><span class="n">background</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">SharedString</span><span class="o">&gt;</span><span class="w"> </span><span class="n">title</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="w"> </span><span class="n">no_frame</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">resize_border</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="w"> </span><span class="n">always_on_top</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">Image</span><span class="o">&gt;</span><span class="w"> </span><span class="n">icon</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">SharedString</span><span class="o">&gt;</span><span class="w"> </span><span class="n">default_font_family</span><span class="p">;</span>
@@ -1227,7 +1228,25 @@
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">slint_callback_drop</span><span class="p">(</span><span class="n">CallbackOpaque</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">);</span>
 
-<span class="kt">bool</span><span class="w"> </span><span class="nf">slint_use_24_hour_format</span><span class="p">();</span>
+<span class="kt">bool</span><span class="w"> </span><span class="nf">slint_date_time_use_24_hour_format</span><span class="p">();</span>
+
+<span class="kt">int32_t</span><span class="w"> </span><span class="nf">slint_date_time_month_day_count</span><span class="p">(</span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">month</span><span class="p">,</span><span class="w"> </span><span class="kt">int32_t</span><span class="w"> </span><span class="n">year</span><span class="p">);</span>
+
+<span class="kt">int32_t</span><span class="w"> </span><span class="nf">slint_date_time_month_offset</span><span class="p">(</span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">month</span><span class="p">,</span><span class="w"> </span><span class="kt">int32_t</span><span class="w"> </span><span class="n">year</span><span class="p">);</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">slint_date_time_format_date</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">SharedString</span><span class="w"> </span><span class="o">*</span><span class="n">format</span><span class="p">,</span>
+<span class="w">                                 </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">day</span><span class="p">,</span>
+<span class="w">                                 </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">month</span><span class="p">,</span>
+<span class="w">                                 </span><span class="kt">int32_t</span><span class="w"> </span><span class="n">year</span><span class="p">,</span>
+<span class="w">                                 </span><span class="n">SharedString</span><span class="w"> </span><span class="o">*</span><span class="n">out</span><span class="p">);</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">slint_date_time_date_now</span><span class="p">(</span><span class="kt">int32_t</span><span class="w"> </span><span class="o">*</span><span class="n">d</span><span class="p">,</span><span class="w"> </span><span class="kt">int32_t</span><span class="w"> </span><span class="o">*</span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="kt">int32_t</span><span class="w"> </span><span class="o">*</span><span class="n">y</span><span class="p">);</span>
+
+<span class="kt">bool</span><span class="w"> </span><span class="nf">slint_date_time_parse_date</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">SharedString</span><span class="w"> </span><span class="o">*</span><span class="n">date</span><span class="p">,</span>
+<span class="w">                                </span><span class="k">const</span><span class="w"> </span><span class="n">SharedString</span><span class="w"> </span><span class="o">*</span><span class="n">format</span><span class="p">,</span>
+<span class="w">                                </span><span class="kt">int32_t</span><span class="w"> </span><span class="o">*</span><span class="n">d</span><span class="p">,</span>
+<span class="w">                                </span><span class="kt">int32_t</span><span class="w"> </span><span class="o">*</span><span class="n">m</span><span class="p">,</span>
+<span class="w">                                </span><span class="kt">int32_t</span><span class="w"> </span><span class="o">*</span><span class="n">y</span><span class="p">);</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">slint_register_item_tree</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">ItemTreeRc</span><span class="w"> </span><span class="o">*</span><span class="n">item_tree_rc</span><span class="p">,</span>
 <span class="w">                              </span><span class="k">const</span><span class="w"> </span><span class="n">WindowAdapterRcOpaque</span><span class="w"> </span><span class="o">*</span><span class="n">window_handle</span><span class="p">);</span>

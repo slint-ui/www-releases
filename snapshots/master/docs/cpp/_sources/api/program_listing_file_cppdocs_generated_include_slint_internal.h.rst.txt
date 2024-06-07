@@ -776,6 +776,7 @@ Program Listing for File slint_internal.h
        Property<Brush> background;
        Property<SharedString> title;
        Property<bool> no_frame;
+       Property<LogicalLength> resize_border;
        Property<bool> always_on_top;
        Property<Image> icon;
        Property<SharedString> default_font_family;
@@ -833,7 +834,25 @@ Program Listing for File slint_internal.h
    
    void slint_callback_drop(CallbackOpaque *handle);
    
-   bool slint_use_24_hour_format();
+   bool slint_date_time_use_24_hour_format();
+   
+   int32_t slint_date_time_month_day_count(uint32_t month, int32_t year);
+   
+   int32_t slint_date_time_month_offset(uint32_t month, int32_t year);
+   
+   void slint_date_time_format_date(const SharedString *format,
+                                    uint32_t day,
+                                    uint32_t month,
+                                    int32_t year,
+                                    SharedString *out);
+   
+   void slint_date_time_date_now(int32_t *d, int32_t *m, int32_t *y);
+   
+   bool slint_date_time_parse_date(const SharedString *date,
+                                   const SharedString *format,
+                                   int32_t *d,
+                                   int32_t *m,
+                                   int32_t *y);
    
    void slint_register_item_tree(const ItemTreeRc *item_tree_rc,
                                  const WindowAdapterRcOpaque *window_handle);
