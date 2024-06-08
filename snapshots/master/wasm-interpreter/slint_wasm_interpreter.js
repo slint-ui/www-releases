@@ -1936,11 +1936,11 @@ function __wbg_get_imports() {
         const ret = makeMutClosure(arg0, arg1, 138, __wbg_adapter_55);
         return addHeapObject(ret);
     };
-    imports.wbg.__wbindgen_closure_wrapper3219 = function(arg0, arg1, arg2) {
+    imports.wbg.__wbindgen_closure_wrapper3220 = function(arg0, arg1, arg2) {
         const ret = makeMutClosure(arg0, arg1, 138, __wbg_adapter_55);
         return addHeapObject(ret);
     };
-    imports.wbg.__wbindgen_closure_wrapper6292 = function(arg0, arg1, arg2) {
+    imports.wbg.__wbindgen_closure_wrapper6293 = function(arg0, arg1, arg2) {
         const ret = makeMutClosure(arg0, arg1, 138, __wbg_adapter_29);
         return addHeapObject(ret);
     };
