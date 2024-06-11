@@ -161,10 +161,7 @@ Program Listing for File slint_color.h
    
    #if !defined(DOXYGEN)
        // FIXME: we need this to create GradientStop
-       operator const cbindgen_private::types::Color &() const
-       {
-           return inner;
-       }
+       operator const cbindgen_private::types::Color &() const { return inner; }
    #endif
    
    private:

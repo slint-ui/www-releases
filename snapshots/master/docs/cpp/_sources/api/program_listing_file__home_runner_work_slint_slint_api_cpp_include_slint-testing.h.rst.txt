@@ -17,6 +17,7 @@ Program Listing for File slint-testing.h
    #include "slint_testing_internal.h"
    #include <optional>
    #include <string_view>
+   #include <type_traits>
    
    #ifdef SLINT_FEATURE_TESTING
    #    ifdef SLINT_FEATURE_EXPERIMENTAL
@@ -31,7 +32,46 @@ Program Listing for File slint-testing.h
    {
        cbindgen_private::ElementHandle inner;
    
+       explicit ElementHandle(const cbindgen_private::ElementHandle *inner) : inner(*inner) { }
+   
    public:
+       template<typename T, std::invocable<ElementHandle> Visitor,
+                typename R = std::invoke_result_t<Visitor, ElementHandle>>
+           requires((std::is_constructible_v<bool, R> && std::is_default_constructible_v<R>)
+                    || std::is_void_v<R>)
+       static auto visit_elements(const ComponentHandle<T> &component,
+                                  Visitor visitor) -> std::invoke_result_t<Visitor, ElementHandle>
+       {
+           // using R = std::invoke_result_t<Visitor, ElementHandle>;
+           auto vrc = component.into_dyn();
+           if constexpr (std::is_void_v<R>) {
+               cbindgen_private::slint_testing_element_visit_elements(
+                       &vrc, &visitor,
+                       [](void *visitor, const cbindgen_private::ElementHandle *element) {
+                           (*reinterpret_cast<Visitor *>(visitor))(ElementHandle(element));
+                           return false;
+                       });
+               return;
+           } else {
+               struct VisitorAndResult
+               {
+                   Visitor &visitor;
+                   R result;
+               } visitor_and_result { visitor, R {} };
+               cbindgen_private::slint_testing_element_visit_elements(
+                       &vrc, &visitor_and_result,
+                       [](void *user_data, const cbindgen_private::ElementHandle *element) {
+                           auto visitor_and_result = reinterpret_cast<VisitorAndResult *>(user_data);
+                           if (auto r = visitor_and_result->visitor(ElementHandle(element))) {
+                               visitor_and_result->result = std::move(r);
+                               return true;
+                           };
+                           return false;
+                       });
+               return visitor_and_result.result;
+           }
+       }
+   
        template<typename T>
        static SharedVector<ElementHandle> find_by_accessible_label(const ComponentHandle<T> &component,
                                                                    std::string_view label)

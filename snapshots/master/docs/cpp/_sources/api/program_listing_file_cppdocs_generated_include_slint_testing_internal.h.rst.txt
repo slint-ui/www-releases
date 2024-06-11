@@ -33,6 +33,10 @@ Program Listing for File slint_testing_internal.h
    
    void slint_testing_init_backend();
    
+   bool slint_testing_element_visit_elements(const ItemTreeRc *root,
+                                             void *user_data,
+                                             bool (*visitor)(void*, const ElementHandle*));
+   
    void slint_testing_element_find_by_accessible_label(const ItemTreeRc *root,
                                                        const Slice<uint8_t> *label,
                                                        SharedVector<ElementHandle> *out);

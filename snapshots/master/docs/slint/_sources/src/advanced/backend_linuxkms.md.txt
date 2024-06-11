@@ -34,10 +34,16 @@ The LinuxKMS backend supports different renderers. They can be explicitly select
 |---------------|------------------------|-----------------------------------------------------------------------------|
 | FemtoVG       | OpenGL ES 2.0          | `linuxkms-femtovg`                                                          |
 | Skia          | OpenGL ES 2.0, Vulkan  | `linuxkms-skia-opengl`, `linuxkms-skia-vulkan`, or `linuxkms-skia-software` |
+| software      | None                   | `linuxkms-software`                                                         |
 
 :::{note}
 This backend is still experimental. The backend has not undergone a great variety of testing on different devices
 and there are [known issues](https://github.com/slint-ui/slint/labels/a%3Abackend-linuxkms).
+:::
+
+:::{note}
+A mouse is supported as input device, but rendering of the mouse cursor only works with the Skia and FemtoVG renderers,
+not with the Slint software renderer.
 :::
 
 ## Display Selection with OpenGL or Skia Software

@@ -70,7 +70,7 @@ Functions
 ---------
 
 
-- :ref:`exhale_function_namespaceslint_1_1platform_1a66e865fa8aaea9bb401549294186273a`
+- :ref:`exhale_function_namespaceslint_1_1platform_1a4c4cb5b3db64f28314951c81c7f69658`
 
 - :ref:`exhale_function_namespaceslint_1_1platform_1a78d943b2302a68af7e187ea4154d4a64`
 

@@ -97,30 +97,27 @@ Program Listing for File slint_image.h
    
        Image(SharedPixelBuffer<Rgb8Pixel> buffer)
            : data(Data::ImageInner_EmbeddedImage(
-                   cbindgen_private::types::ImageCacheKey::Invalid(),
-                   cbindgen_private::types::SharedImageBuffer::RGB8(
-                           cbindgen_private::types::SharedPixelBuffer<Rgb8Pixel> {
-                                   .width = buffer.width(),
-                                   .height = buffer.height(),
-                                   .data = buffer.m_data })))
+                     cbindgen_private::types::ImageCacheKey::Invalid(),
+                     cbindgen_private::types::SharedImageBuffer::RGB8(
+                             cbindgen_private::types::SharedPixelBuffer<Rgb8Pixel> {
+                                     .width = buffer.width(),
+                                     .height = buffer.height(),
+                                     .data = buffer.m_data })))
        {
        }
    
        Image(SharedPixelBuffer<Rgba8Pixel> buffer)
            : data(Data::ImageInner_EmbeddedImage(
-                   cbindgen_private::types::ImageCacheKey::Invalid(),
-                   cbindgen_private::types::SharedImageBuffer::RGBA8(
-                           cbindgen_private::types::SharedPixelBuffer<Rgba8Pixel> {
-                                   .width = buffer.width(),
-                                   .height = buffer.height(),
-                                   .data = buffer.m_data })))
+                     cbindgen_private::types::ImageCacheKey::Invalid(),
+                     cbindgen_private::types::SharedImageBuffer::RGBA8(
+                             cbindgen_private::types::SharedPixelBuffer<Rgba8Pixel> {
+                                     .width = buffer.width(),
+                                     .height = buffer.height(),
+                                     .data = buffer.m_data })))
        {
        }
    
-       Size<uint32_t> size() const
-       {
-           return cbindgen_private::types::slint_image_size(&data);
-       }
+       Size<uint32_t> size() const { return cbindgen_private::types::slint_image_size(&data); }
    
        std::optional<slint::SharedString> path() const
        {
@@ -141,10 +138,7 @@ Program Listing for File slint_image.h
        {
            return cbindgen_private::types::slint_image_compare_equal(&a.data, &b.data);
        }
-       friend bool operator!=(const Image &a, const Image &b)
-       {
-           return !(a == b);
-       }
+       friend bool operator!=(const Image &a, const Image &b) { return !(a == b); }
    
        explicit Image(cbindgen_private::types::Image inner) : data(inner) { }
    

@@ -37,10 +37,7 @@ Program Listing for File slint_string.h
        {
            cbindgen_private::slint_shared_string_clone(this, &other);
        }
-       ~SharedString()
-       {
-           cbindgen_private::slint_shared_string_drop(this);
-       }
+       ~SharedString() { cbindgen_private::slint_shared_string_drop(this); }
        SharedString &operator=(const SharedString &other)
        {
            cbindgen_private::slint_shared_string_drop(this);
@@ -53,10 +50,7 @@ Program Listing for File slint_string.h
            cbindgen_private::slint_shared_string_from_bytes(this, s.data(), s.size());
            return *this;
        }
-       SharedString &operator=(const char *s)
-       {
-           return *this = std::string_view(s);
-       }
+       SharedString &operator=(const char *s) { return *this = std::string_view(s); }
    
        SharedString &operator=(SharedString &&other)
        {
@@ -64,29 +58,17 @@ Program Listing for File slint_string.h
            return *this;
        }
    
-       operator std::string_view() const
-       {
-           return cbindgen_private::slint_shared_string_bytes(this);
-       }
-       auto data() const -> const char *
-       {
-           return cbindgen_private::slint_shared_string_bytes(this);
-       }
+       operator std::string_view() const { return cbindgen_private::slint_shared_string_bytes(this); }
+       auto data() const -> const char * { return cbindgen_private::slint_shared_string_bytes(this); }
    
-       const char *begin() const
-       {
-           return data();
-       }
+       const char *begin() const { return data(); }
        const char *end() const
        {
            std::string_view view(*this);
            return view.data() + view.size();
        }
    
-       bool empty() const
-       {
-           return std::string_view(*this).empty();
-       }
+       bool empty() const { return std::string_view(*this).empty(); }
    
        bool starts_with(std::string_view prefix) const
        {
@@ -102,10 +84,7 @@ Program Listing for File slint_string.h
                    == 0;
        }
    
-       static SharedString from_number(double n)
-       {
-           return SharedString(n);
-       }
+       static SharedString from_number(double n) { return SharedString(n); }
    
        friend bool operator==(const SharedString &a, const SharedString &b)
        {
@@ -155,10 +134,7 @@ Program Listing for File slint_string.h
        }
    
    private:
-       explicit SharedString(double n)
-       {
-           cbindgen_private::slint_shared_string_from_number(this, n);
-       }
+       explicit SharedString(double n) { cbindgen_private::slint_shared_string_from_number(this, n); }
        void *inner; // opaque
    };
    

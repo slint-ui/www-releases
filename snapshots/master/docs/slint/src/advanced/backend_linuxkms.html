@@ -427,12 +427,22 @@ files; typically that’s the root user.</p>
 <td>OpenGL ES 2.0, Vulkan</td>
 <td><code>linuxkms-skia-opengl</code>, <code>linuxkms-skia-vulkan</code>, or <code>linuxkms-skia-software</code></td>
 </tr>
+<tr>
+<td>software</td>
+<td>None</td>
+<td><code>linuxkms-software</code></td>
+</tr>
 </tbody>
 </table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This backend is still experimental. The backend has not undergone a great variety of testing on different devices
 and there are <a class="reference external" href="https://github.com/slint-ui/slint/labels/a%3Abackend-linuxkms">known issues</a>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A mouse is supported as input device, but rendering of the mouse cursor only works with the Skia and FemtoVG renderers,
+not with the Slint software renderer.</p>
 </div>
 <section id="display-selection-with-opengl-or-skia-software">
 <h2>Display Selection with OpenGL or Skia Software<a class="headerlink" href="#display-selection-with-opengl-or-skia-software" title="Permalink to this heading">¶</a></h2>

@@ -228,10 +228,7 @@ Program Listing for File slint-platform.h
    
        virtual void set_clipboard_text(const SharedString &, Clipboard) { }
    
-       virtual std::optional<SharedString> clipboard_text(Clipboard)
-       {
-           return {};
-       }
+       virtual std::optional<SharedString> clipboard_text(Clipboard) { return {}; }
    
        virtual void run_event_loop() { }
    
@@ -431,10 +428,9 @@ Program Listing for File slint-platform.h
    
    #    ifdef SLINT_FEATURE_EXPERIMENTAL
        template<typename Callback>
-       requires requires(Callback callback)
-       {
-           callback(size_t(0), size_t(0), size_t(0), [&callback](std::span<Rgb565Pixel>) {});
-       }
+           requires requires(Callback callback) {
+               callback(size_t(0), size_t(0), size_t(0), [&callback](std::span<Rgb565Pixel>) {});
+           }
        PhysicalRegion render_by_line(Callback process_line_callback) const
        {
            auto r = cbindgen_private::slint_software_renderer_render_by_line_rgb565(
@@ -453,6 +449,7 @@ Program Listing for File slint-platform.h
                    &process_line_callback);
            return PhysicalRegion { r };
        }
+   #    endif
    
        enum class RenderingRotation {
            NoRotation = 0,
@@ -466,7 +463,6 @@ Program Listing for File slint-platform.h
            cbindgen_private::slint_software_renderer_set_rendering_rotation(
                    inner, static_cast<int>(rotation));
        }
-   #    endif
    };
    #endif
    

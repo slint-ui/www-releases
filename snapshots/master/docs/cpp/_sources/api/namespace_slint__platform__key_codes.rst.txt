@@ -12,7 +12,7 @@ This namespace contains constants for each special non-printable key.
 
 Each constant can be converted to :ref:`exhale_struct_structslint_1_1SharedString`. The constants are meant to be used with the slint::Window::dispatch_key_press_event() and slint::Window::dispatch_key_release_event() functions.
 
-Example: window.dispatch_key_press_event(slint::platform::key_codes::Tab);
+Example: window.dispatch_key_press_event(:ref:`exhale_variable_namespaceslint_1_1platform_1_1key__codes_1adf1a443c827c42391ffbb0cbbf1da3f8`);
  
 
 
