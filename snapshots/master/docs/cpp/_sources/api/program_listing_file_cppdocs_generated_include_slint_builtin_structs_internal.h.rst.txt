@@ -43,11 +43,11 @@ Program Listing for File slint_builtin_structs_internal.h
        KeyboardModifiers modifiers;
        bool repeat;
        KeyEventType event_type;
-       std::tuple<int32_t, int32_t, int32_t> replacement_range;
+       Option < core :: ops :: Range < i32 >> replacement_range;
        SharedString preedit_text;
-       std::tuple<int32_t, int32_t, int32_t> preedit_selection;
-       std::pair<int32_t, int32_t> cursor_position;
-       std::pair<int32_t, int32_t> anchor_position;
+       Option < core :: ops :: Range < i32 >> preedit_selection;
+       Option < i32 > cursor_position;
+       Option < i32 > anchor_position;
        friend bool operator==(const KeyEvent&, const KeyEvent&) = default;
        friend bool operator!=(const KeyEvent&, const KeyEvent&) = default;
    };
@@ -64,7 +64,7 @@ Program Listing for File slint_builtin_structs_internal.h
    struct StateInfo {
        int32_t current_state;
        int32_t previous_state;
-       uint64_t change_time;
+       crate :: animations :: Instant change_time;
        friend bool operator==(const StateInfo&, const StateInfo&) = default;
        friend bool operator!=(const StateInfo&, const StateInfo&) = default;
    };
