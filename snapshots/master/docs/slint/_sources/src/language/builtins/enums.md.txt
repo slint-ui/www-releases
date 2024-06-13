@@ -7,21 +7,21 @@
  role of an element in the context of assistive technology such as screen readers.
 
 * **`none`**: The element isn't accessible.
-* **`button`**: The element is a [`Button`](../widgets/button.md) or behaves like one.
-* **`checkbox`**: The element is a [`CheckBox`](../widgets/checkbox.md) or behaves like one.
-* **`combobox`**: The element is a [`ComboBox`](../widgets/combobox.md) or behaves like one.
-* **`list`**: The element is a [`ListView`](../widgets/listview.md) or behaves like one.
-* **`slider`**: The element is a [`Slider`](../widgets/slider.md) or behaves like one.
-* **`spinbox`**: The element is a [`SpinBox`](../widgets/spinbox.md) or behaves like one.
-* **`tab`**: The element is a [`Tab`](../widgets/tabwidget.md) or behaves like one.
-* **`tab-list`**: The element is similar to the tab bar in a [`TabWidget`](../widgets/tabwidget.md).
-* **`text`**: The role for a [`Text`](elements.md#text) element. It's automatically applied.
-* **`table`**: The role for a [`TableView`](../widgets/standardtableview.md ) or behaves like one.
+* **`button`**: The element is a [`Button`](slint-reference:src/language/widgets/button) or behaves like one.
+* **`checkbox`**: The element is a [`CheckBox`](slint-reference:src/language/widgets/checkbox) or behaves like one.
+* **`combobox`**: The element is a [`ComboBox`](slint-reference:src/language/widgets/combobox) or behaves like one.
+* **`list`**: The element is a [`ListView`](slint-reference:src/language/widgets/listview) or behaves like one.
+* **`slider`**: The element is a [`Slider`](slint-reference:src/language/widgets/slider) or behaves like one.
+* **`spinbox`**: The element is a [`SpinBox`](slint-reference:src/language/widgets/spinbox) or behaves like one.
+* **`tab`**: The element is a [`Tab`](slint-reference:src/language/widgets/tabwidget) or behaves like one.
+* **`tab-list`**: The element is similar to the tab bar in a [`TabWidget`](slint-reference:src/language/widgets/tabwidget).
+* **`text`**: The role for a [`Text`](slint-reference:src/language/builtins/elements#text) element. It's automatically applied.
+* **`table`**: The role for a [`TableView`](slint-reference:src/language/widgets/standardtableview ) or behaves like one.
 * **`tree`**: The role for a TreeView or behaves like one. (Not provided yet)
-* **`progress-indicator`**: The element is a [`ProgressIndicator`](../widgets/progressindicator.md) or behaves like one.
+* **`progress-indicator`**: The element is a [`ProgressIndicator`](slint-reference:src/language/widgets/progressindicator) or behaves like one.
 * **`text-input`**: The role for widget with editable text such as a
-    [`LineEdit`](../widgets/lineedit.md) or a [`TextEdit`](../widgets/textedit.md)
-* **`switch`**: The element is a [`Switch`](../widgets/switch.md) or behaves like one.
+    [`LineEdit`](slint-reference:src/language/widgets/lineedit) or a [`TextEdit`](slint-reference:src/language/widgets/textedit)
+* **`switch`**: The element is a [`Switch`](slint-reference:src/language/widgets/switch) or behaves like one.
 
 ## `ColorScheme`
 

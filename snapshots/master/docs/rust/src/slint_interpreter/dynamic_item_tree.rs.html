@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/dynamic_item_tree.rs`."><title>dynamic_item_tree.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-46f98efaafac5295.ttf.woff2,FiraSans-Regular-018c141bf0843ffd.woff2,FiraSans-Medium-8f9a781e4970d388.woff2,SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2,SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-dd39b87e5fcfba68.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.81.0-nightly (d0227c6a1 2024-06-11)" data-channel="nightly" data-search-js="search-0fe7219eb170c82e.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../static.files/storage-118b08c4c78b968e.js"></script><script defer src="../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-20a3ad099b048cf2.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-df360f571f6edeae.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/dynamic_item_tree.rs`."><title>dynamic_item_tree.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-46f98efaafac5295.ttf.woff2,FiraSans-Regular-018c141bf0843ffd.woff2,FiraSans-Medium-8f9a781e4970d388.woff2,SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2,SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-dd39b87e5fcfba68.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.81.0-nightly (8337ba918 2024-06-12)" data-channel="nightly" data-search-js="search-0fe7219eb170c82e.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../static.files/storage-118b08c4c78b968e.js"></script><script defer src="../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-20a3ad099b048cf2.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-df360f571f6edeae.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -95,6 +95,25 @@
       // default selector "pre code" doesn't match. Let's do it by hand:
       for (block of document.querySelectorAll("div[class*=highlight-slint] div.highlight pre")) {
         hljs.highlightElement(block)
+      }
+    }
+
+    // Fix up links that sphinx handles but for rustdoc we need to resolve manually:
+    {
+      let target_url = null;
+      if (document.location.hostname == "snapshots.slint.dev") {
+        target_url = `https://snapshots.slint.dev/master/docs/slint/`;
+      } else {
+        let version = document.querySelector("span.version");
+        if (version !== null) {
+          target_url = `https://slint.dev/releases/${version.innerText}/docs/slint/`;
+        }
+      }
+
+      if (target_url !== null) {
+        for (let link of document.querySelectorAll("a[href^='slint-reference:']")) {
+          link.href = link.href.replace("slint-reference:", target_url);
+        }
       }
     }
   });
@@ -2353,6 +2372,30 @@
 <a href="#2251" id="2251">2251</a>
 <a href="#2252" id="2252">2252</a>
 <a href="#2253" id="2253">2253</a>
+<a href="#2254" id="2254">2254</a>
+<a href="#2255" id="2255">2255</a>
+<a href="#2256" id="2256">2256</a>
+<a href="#2257" id="2257">2257</a>
+<a href="#2258" id="2258">2258</a>
+<a href="#2259" id="2259">2259</a>
+<a href="#2260" id="2260">2260</a>
+<a href="#2261" id="2261">2261</a>
+<a href="#2262" id="2262">2262</a>
+<a href="#2263" id="2263">2263</a>
+<a href="#2264" id="2264">2264</a>
+<a href="#2265" id="2265">2265</a>
+<a href="#2266" id="2266">2266</a>
+<a href="#2267" id="2267">2267</a>
+<a href="#2268" id="2268">2268</a>
+<a href="#2269" id="2269">2269</a>
+<a href="#2270" id="2270">2270</a>
+<a href="#2271" id="2271">2271</a>
+<a href="#2272" id="2272">2272</a>
+<a href="#2273" id="2273">2273</a>
+<a href="#2274" id="2274">2274</a>
+<a href="#2275" id="2275">2275</a>
+<a href="#2276" id="2276">2276</a>
+<a href="#2277" id="2277">2277</a>
 </pre></div><pre class="rust"><code><span class="comment">// Copyright © SixtyFPS GmbH &lt;info@slint.dev&gt;
 // SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0
 
@@ -2768,6 +2811,11 @@
     </span><span class="attr">#[cfg(feature = <span class="string">"highlight"</span>)]
     </span><span class="kw">pub</span>(<span class="kw">crate</span>) type_loader:
         std::cell::OnceCell&lt;std::rc::Rc&lt;i_slint_compiler::typeloader::TypeLoader&gt;&gt;,
+    <span class="doccomment">/// The type loader, which will be available only on the top-most `ItemTreeDescription`.
+    /// All other `ItemTreeDescription`s have `None` here.
+    </span><span class="attr">#[cfg(feature = <span class="string">"highlight"</span>)]
+    </span><span class="kw">pub</span>(<span class="kw">crate</span>) raw_type_loader:
+        std::cell::OnceCell&lt;<span class="prelude-ty">Option</span>&lt;std::rc::Rc&lt;i_slint_compiler::typeloader::TypeLoader&gt;&gt;&gt;,
 }
 
 <span class="kw">fn </span>internal_properties_to_public&lt;<span class="lifetime">'a</span>&gt;(
@@ -3171,7 +3219,19 @@
     }
 
     <span class="kw">let </span>diag = BuildDiagnostics::default();
-    <span class="kw">let </span>(path, <span class="kw-2">mut </span>diag, loader) =
+    <span class="attr">#[cfg(feature = <span class="string">"highlight"</span>)]
+    </span><span class="kw">let </span>(path, <span class="kw-2">mut </span>diag, loader, raw_type_loader) =
+        i_slint_compiler::load_root_file_with_raw_type_loader(
+            <span class="kw-2">&amp;</span>path,
+            version,
+            <span class="kw-2">&amp;</span>path,
+            source,
+            diag,
+            compiler_config,
+        )
+        .<span class="kw">await</span>;
+    <span class="attr">#[cfg(not(feature = <span class="string">"highlight"</span>))]
+    </span><span class="kw">let </span>(path, <span class="kw-2">mut </span>diag, loader) =
         i_slint_compiler::load_root_file(<span class="kw-2">&amp;</span>path, version, <span class="kw-2">&amp;</span>path, source, diag, compiler_config)
             .<span class="kw">await</span>;
     <span class="kw">if </span>diag.has_error() {
@@ -3196,6 +3256,11 @@
         <span class="attr">#[cfg(feature = <span class="string">"highlight"</span>)]
         </span>{
             <span class="kw">let _ </span>= it.type_loader.set(Rc::new(loader));
+            <span class="kw">if let </span><span class="prelude-val">Some</span>(ul) = raw_type_loader {
+                <span class="kw">let _ </span>= it.raw_type_loader.set(<span class="prelude-val">Some</span>(Rc::new(ul)));
+            } <span class="kw">else </span>{
+                <span class="kw">let _ </span>= it.raw_type_loader.set(<span class="prelude-val">None</span>);
+            }
         }
         it
     };
@@ -3583,6 +3648,8 @@
         change_trackers,
         <span class="attr">#[cfg(feature = <span class="string">"highlight"</span>)]
         </span>type_loader: std::cell::OnceCell::new(),
+        <span class="attr">#[cfg(feature = <span class="string">"highlight"</span>)]
+        </span>raw_type_loader: std::cell::OnceCell::new(),
     };
 
     Rc::new(t)
@@ -4270,7 +4337,7 @@
     }
 }
 
-<span class="comment">// silent the warning despite `AccessibleRole` is a `#[non_exhaustive]` enum from another crate.
+<span class="comment">// silence the warning despite `AccessibleRole` is a `#[non_exhaustive]` enum from another crate.
 </span><span class="attr">#[allow(improper_ctypes_definitions)]
 </span><span class="kw">extern </span><span class="string">"C" </span><span class="kw">fn </span>accessible_role(component: ItemTreeRefPin, item_index: u32) -&gt; AccessibleRole {
     <span class="macro">generativity::make_guard!</span>(guard);
