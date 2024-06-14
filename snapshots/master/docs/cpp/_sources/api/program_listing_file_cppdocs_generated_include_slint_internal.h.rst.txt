@@ -1139,6 +1139,8 @@ Program Listing for File slint_internal.h
    
    ColorScheme slint_windowrc_color_scheme(const WindowAdapterRcOpaque *handle);
    
+   float slint_windowrc_default_font_size(const WindowAdapterRcOpaque *handle);
+   
    void slint_windowrc_dispatch_key_event(const WindowAdapterRcOpaque *handle,
                                           KeyEventType event_type,
                                           const SharedString *text,

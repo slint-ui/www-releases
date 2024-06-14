@@ -23,6 +23,9 @@ Program Listing for File slint-testing.h
    #    ifdef SLINT_FEATURE_EXPERIMENTAL
    
    namespace slint::testing {
+   
+   using slint::cbindgen_private::AccessibleRole;
+   
    inline void init()
    {
        cbindgen_private::slint_testing_init_backend();
@@ -150,6 +153,16 @@ Program Listing for File slint-testing.h
            } else {
                return std::nullopt;
            }
+       }
+   
+       std::optional<slint::testing::AccessibleRole> accessible_role() const
+       {
+           if (inner.element_index != 0)
+               return std::nullopt;
+           if (auto item = private_api::upgrade_item_weak(inner.item)) {
+               return item->item_tree.vtable()->accessible_role(item->item_tree.borrow(), item->index);
+           }
+           return std::nullopt;
        }
    
        std::optional<SharedString> accessible_label() const

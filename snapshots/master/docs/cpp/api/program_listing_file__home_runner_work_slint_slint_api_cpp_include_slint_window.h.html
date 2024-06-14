@@ -615,6 +615,11 @@
 <span class="w">        </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_register_bitmap_font</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inner</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">font</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 
+<span class="w">    </span><span class="kr">inline</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">default_font_size</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_windowrc_default_font_size</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inner</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">WindowAdapterRcOpaque</span><span class="w"> </span><span class="o">&amp;</span><span class="n">handle</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">inner</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 
 <span class="k">private</span><span class="o">:</span>
