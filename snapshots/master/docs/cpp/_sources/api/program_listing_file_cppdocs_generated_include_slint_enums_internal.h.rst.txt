@@ -27,6 +27,7 @@ Program Listing for File slint_enums_internal.h
    enum class TextWrap {
        NoWrap,
        WordWrap,
+       CharWrap,
    };
    enum class TextOverflow {
        Clip,

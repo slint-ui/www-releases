@@ -552,7 +552,7 @@
 
 <span class="n">RendererPtr</span><span class="w"> </span><span class="nf">slint_software_renderer_handle</span><span class="p">(</span><span class="n">SoftwareRendererOpaque</span><span class="w"> </span><span class="n">r</span><span class="p">);</span>
 
-<span class="n">CppRawHandleOpaque</span><span class="w"> </span><span class="nf">slint_new_raw_window_handle_win32</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">hwnd</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">hinstance</span><span class="p">);</span>
+<span class="n">CppRawHandleOpaque</span><span class="w"> </span><span class="nf">slint_new_raw_window_handle_win32</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">hwnd</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">_hinstance</span><span class="p">);</span>
 
 <span class="n">CppRawHandleOpaque</span><span class="w"> </span><span class="nf">slint_new_raw_window_handle_x11_xcb</span><span class="p">(</span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">window</span><span class="p">,</span>
 <span class="w">                                                       </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">visual_id</span><span class="p">,</span>
@@ -566,7 +566,7 @@
 
 <span class="n">CppRawHandleOpaque</span><span class="w"> </span><span class="nf">slint_new_raw_window_handle_wayland</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">surface</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">display</span><span class="p">);</span>
 
-<span class="n">CppRawHandleOpaque</span><span class="w"> </span><span class="nf">slint_new_raw_window_handle_appkit</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">ns_view</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">ns_window</span><span class="p">);</span>
+<span class="n">CppRawHandleOpaque</span><span class="w"> </span><span class="nf">slint_new_raw_window_handle_appkit</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">ns_view</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">_ns_window</span><span class="p">);</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">slint_raw_window_handle_drop</span><span class="p">(</span><span class="n">CppRawHandleOpaque</span><span class="w"> </span><span class="n">handle</span><span class="p">);</span>
 

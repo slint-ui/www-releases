@@ -270,4 +270,5 @@
 
 * **`no-wrap`**: The text won't wrap, but instead will overflow.
 * **`word-wrap`**: The text will be wrapped at word boundaries.
+* **`char-wrap`**: The text will be wrapped at any character. Currently only supported by the Qt and Software renderers.
 

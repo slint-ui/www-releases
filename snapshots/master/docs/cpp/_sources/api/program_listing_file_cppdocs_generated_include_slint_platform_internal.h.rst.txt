@@ -158,7 +158,7 @@ Program Listing for File slint_platform_internal.h
    
    RendererPtr slint_software_renderer_handle(SoftwareRendererOpaque r);
    
-   CppRawHandleOpaque slint_new_raw_window_handle_win32(void *hwnd, void *hinstance);
+   CppRawHandleOpaque slint_new_raw_window_handle_win32(void *hwnd, void *_hinstance);
    
    CppRawHandleOpaque slint_new_raw_window_handle_x11_xcb(uint32_t window,
                                                           uint32_t visual_id,
@@ -172,7 +172,7 @@ Program Listing for File slint_platform_internal.h
    
    CppRawHandleOpaque slint_new_raw_window_handle_wayland(void *surface, void *display);
    
-   CppRawHandleOpaque slint_new_raw_window_handle_appkit(void *ns_view, void *ns_window);
+   CppRawHandleOpaque slint_new_raw_window_handle_appkit(void *ns_view, void *_ns_window);
    
    void slint_raw_window_handle_drop(CppRawHandleOpaque handle);
    
