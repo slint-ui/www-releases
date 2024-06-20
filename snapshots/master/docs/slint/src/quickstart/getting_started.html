@@ -467,14 +467,10 @@ NodeJS</label><div class="sd-tab-content docutils">
 <label class="sd-tab-label" data-sync-group="tab" data-sync-id="rust" for="sd-tab-item-2">
 Rust</label><div class="sd-tab-content docutils">
 <p>We recommend using <a class="reference external" href="https://rust-analyzer.github.io">rust-analyzer</a> and <a class="reference external" href="https://github.com/slint-ui/slint/tree/master/editors">our editor integrations for Slint</a> for following this tutorial.</p>
-<p>Slint has an application template you can use to create a project with dependencies already set up that follows recommended best practices.</p>
-<p>Before using the template, install <a class="reference external" href="https://github.com/cargo-generate/cargo-generate"><code class="docutils literal notranslate"><span class="pre">cargo-generate</span></code></a>:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>cargo<span class="w"> </span>install<span class="w"> </span>cargo-generate
-</pre></div>
-</div>
-<p>Use the template to create a new project with the following command:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>cargo<span class="w"> </span>generate<span class="w"> </span>--git<span class="w"> </span>https://github.com/slint-ui/slint-rust-template<span class="w"> </span>--name<span class="w"> </span>memory
+<p>Let’s create a new Rust application and add <code class="docutils literal notranslate"><span class="pre">slint</span></code> ad a dependency</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>cargo<span class="w"> </span>new<span class="w"> </span>memory
 <span class="nb">cd</span><span class="w"> </span>memory
+cargo<span class="w"> </span>add<span class="w"> </span>slint
 </pre></div>
 </div>
 <h3 class="rubric" id="id3">Configure the project</h3>
