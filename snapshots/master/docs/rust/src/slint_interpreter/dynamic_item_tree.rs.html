@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/dynamic_item_tree.rs`."><title>dynamic_item_tree.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-46f98efaafac5295.ttf.woff2,FiraSans-Regular-018c141bf0843ffd.woff2,FiraSans-Medium-8f9a781e4970d388.woff2,SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2,SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-dd39b87e5fcfba68.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.81.0-nightly (d8a38b000 2024-06-19)" data-channel="nightly" data-search-js="search-0fe7219eb170c82e.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../static.files/storage-118b08c4c78b968e.js"></script><script defer src="../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-20a3ad099b048cf2.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-df360f571f6edeae.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/dynamic_item_tree.rs`."><title>dynamic_item_tree.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-46f98efaafac5295.ttf.woff2,FiraSans-Regular-018c141bf0843ffd.woff2,FiraSans-Medium-8f9a781e4970d388.woff2,SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2,SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-dd39b87e5fcfba68.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.81.0-nightly (684b3553f 2024-06-20)" data-channel="nightly" data-search-js="search-0fe7219eb170c82e.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../static.files/storage-118b08c4c78b968e.js"></script><script defer src="../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-20a3ad099b048cf2.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-df360f571f6edeae.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -2357,50 +2357,12 @@
 <a href="#2236" id="2236">2236</a>
 <a href="#2237" id="2237">2237</a>
 <a href="#2238" id="2238">2238</a>
-<a href="#2239" id="2239">2239</a>
-<a href="#2240" id="2240">2240</a>
-<a href="#2241" id="2241">2241</a>
-<a href="#2242" id="2242">2242</a>
-<a href="#2243" id="2243">2243</a>
-<a href="#2244" id="2244">2244</a>
-<a href="#2245" id="2245">2245</a>
-<a href="#2246" id="2246">2246</a>
-<a href="#2247" id="2247">2247</a>
-<a href="#2248" id="2248">2248</a>
-<a href="#2249" id="2249">2249</a>
-<a href="#2250" id="2250">2250</a>
-<a href="#2251" id="2251">2251</a>
-<a href="#2252" id="2252">2252</a>
-<a href="#2253" id="2253">2253</a>
-<a href="#2254" id="2254">2254</a>
-<a href="#2255" id="2255">2255</a>
-<a href="#2256" id="2256">2256</a>
-<a href="#2257" id="2257">2257</a>
-<a href="#2258" id="2258">2258</a>
-<a href="#2259" id="2259">2259</a>
-<a href="#2260" id="2260">2260</a>
-<a href="#2261" id="2261">2261</a>
-<a href="#2262" id="2262">2262</a>
-<a href="#2263" id="2263">2263</a>
-<a href="#2264" id="2264">2264</a>
-<a href="#2265" id="2265">2265</a>
-<a href="#2266" id="2266">2266</a>
-<a href="#2267" id="2267">2267</a>
-<a href="#2268" id="2268">2268</a>
-<a href="#2269" id="2269">2269</a>
-<a href="#2270" id="2270">2270</a>
-<a href="#2271" id="2271">2271</a>
-<a href="#2272" id="2272">2272</a>
-<a href="#2273" id="2273">2273</a>
-<a href="#2274" id="2274">2274</a>
-<a href="#2275" id="2275">2275</a>
-<a href="#2276" id="2276">2276</a>
-<a href="#2277" id="2277">2277</a>
 </pre></div><pre class="rust"><code><span class="comment">// Copyright © SixtyFPS GmbH &lt;info@slint.dev&gt;
 // SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0
 
 </span><span class="kw">use crate</span>::{api::Value, dynamic_type, eval};
 
+<span class="kw">use </span><span class="kw">crate</span>::global_component::CompiledGlobalCollection;
 <span class="kw">use </span>core::ptr::NonNull;
 <span class="kw">use </span>dynamic_type::{Instance, InstanceBox};
 <span class="kw">use </span>i_slint_compiler::diagnostics::SourceFileVersion;
@@ -2689,8 +2651,6 @@
     <span class="kw">pub</span>(<span class="kw">crate</span>) globals: OnceCell&lt;<span class="kw">crate</span>::global_component::GlobalStorage&gt;,
     <span class="kw">pub</span>(<span class="kw">crate</span>) self_weak: OnceCell&lt;ErasedItemTreeBoxWeak&gt;,
     <span class="kw">pub</span>(<span class="kw">crate</span>) embedding_position: OnceCell&lt;(ItemTreeWeak, u32)&gt;,
-    <span class="comment">// resource id -&gt; file path
-    </span><span class="kw">pub</span>(<span class="kw">crate</span>) embedded_file_resources: OnceCell&lt;HashMap&lt;usize, String&gt;&gt;,
     <span class="attr">#[cfg(target_arch = <span class="string">"wasm32"</span>)]
     </span><span class="kw">pub</span>(<span class="kw">crate</span>) canvas_id: OnceCell&lt;String&gt;,
 }
@@ -2800,11 +2760,8 @@
         Vec&lt;(NamedReference, Expression)&gt;,
     )&gt;,
 
-    <span class="doccomment">/// compiled globals
-    </span>compiled_globals: Vec&lt;<span class="kw">crate</span>::global_component::CompiledGlobal&gt;,
-    <span class="doccomment">/// Map of all exported global singletons and their index in the compiled_globals vector. The key
-    /// is the normalized name of the global.
-    </span>exported_globals_by_name: BTreeMap&lt;String, usize&gt;,
+    <span class="doccomment">/// The collection of compiled globals
+    </span>compiled_globals: <span class="prelude-ty">Option</span>&lt;CompiledGlobalCollection&gt;,
 
     <span class="doccomment">/// The type loader, which will be available only on the top-most `ItemTreeDescription`.
     /// All other `ItemTreeDescription`s have `None` here.
@@ -2866,6 +2823,9 @@
     <span class="doccomment">/// List names of exported global singletons
     </span><span class="kw">pub fn </span>global_names(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw">impl </span>Iterator&lt;Item = String&gt; + <span class="lifetime">'_ </span>{
         <span class="self">self</span>.compiled_globals
+            .as_ref()
+            .expect(<span class="string">"Root component should have globals"</span>)
+            .compiled_globals
             .iter()
             .filter(|g| g.visible_in_public_api())
             .flat_map(|g| g.names().into_iter())
@@ -2875,9 +2835,10 @@
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         name: <span class="kw-2">&amp;</span>str,
     ) -&gt; <span class="prelude-ty">Option</span>&lt;<span class="kw">impl </span>Iterator&lt;Item = (String, i_slint_compiler::langtype::Type)&gt; + <span class="lifetime">'_</span>&gt; {
-        <span class="self">self</span>.exported_globals_by_name
+        <span class="kw">let </span>g = <span class="self">self</span>.compiled_globals.as_ref().expect(<span class="string">"Root component should have globals"</span>);
+        g.exported_globals_by_name
             .get(<span class="kw">crate</span>::normalize_identifier(name).as_ref())
-            .and_then(|global_idx| <span class="self">self</span>.compiled_globals.get(<span class="kw-2">*</span>global_idx))
+            .and_then(|global_idx| g.compiled_globals.get(<span class="kw-2">*</span>global_idx))
             .map(|global| internal_properties_to_public(global.public_properties()))
     }
 
@@ -3250,7 +3211,9 @@
                 <span class="kw">return </span>(<span class="prelude-val">Err</span>(()), diag);
             }
 
-            generate_item_tree(<span class="kw-2">&amp;</span>doc.root_component, guard)
+            <span class="kw">let </span>compiled_globals = CompiledGlobalCollection::compile(<span class="kw-2">&amp;</span>doc);
+
+            generate_item_tree(<span class="kw-2">&amp;</span>doc.root_component, <span class="prelude-val">Some</span>(compiled_globals), guard)
         };
 
         <span class="attr">#[cfg(feature = <span class="string">"highlight"</span>)]
@@ -3270,6 +3233,7 @@
 
 <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>generate_item_tree&lt;<span class="lifetime">'id</span>&gt;(
     component: <span class="kw-2">&amp;</span>Rc&lt;object_tree::Component&gt;,
+    compiled_globals: <span class="prelude-ty">Option</span>&lt;CompiledGlobalCollection&gt;,
     guard: generativity::Guard&lt;<span class="lifetime">'id</span>&gt;,
 ) -&gt; Rc&lt;ItemTreeDescription&lt;<span class="lifetime">'id</span>&gt;&gt; {
     <span class="comment">//dbg!(&amp;*component.root_element.borrow());
@@ -3352,7 +3316,7 @@
             <span class="macro">generativity::make_guard!</span>(guard);
             <span class="self">self</span>.repeater.push(
                 RepeaterWithinItemTree {
-                    item_tree_to_repeat: generate_item_tree(base_component, guard),
+                    item_tree_to_repeat: generate_item_tree(base_component, <span class="prelude-val">None</span>, guard),
                     offset: <span class="self">self</span>.type_builder.add_field_type::&lt;Repeater&lt;ErasedItemTreeBox&gt;&gt;(),
                     model: item.repeated.as_ref().unwrap().model.clone(),
                 }
@@ -3577,35 +3541,6 @@
 
     <span class="kw">let </span>public_properties = component.root_element.borrow().property_declarations.clone();
 
-    <span class="kw">let </span><span class="kw-2">mut </span>exported_globals_by_name: BTreeMap&lt;String, usize&gt; = Default::default();
-
-    <span class="kw">let </span>compiled_globals = component
-        .used_types
-        .borrow()
-        .globals
-        .iter()
-        .enumerate()
-        .map(|(index, component)| {
-            <span class="kw">let </span><span class="kw-2">mut </span>global = <span class="kw">crate</span>::global_component::generate(component);
-
-            <span class="kw">if </span>component.visible_in_public_api() {
-                global.extend_public_properties(
-                    component.root_element.borrow().property_declarations.clone(),
-                );
-
-                exported_globals_by_name.extend(
-                    component
-                        .exported_global_names
-                        .borrow()
-                        .iter()
-                        .map(|exported_name| (exported_name.name.clone(), index)),
-                )
-            }
-
-            global
-        })
-        .collect();
-
     <span class="kw">let </span>t = ItemTreeVTable {
         visit_children_item,
         layout_info,
@@ -3644,7 +3579,6 @@
         extra_data_offset,
         public_properties,
         compiled_globals,
-        exported_globals_by_name,
         change_trackers,
         <span class="attr">#[cfg(feature = <span class="string">"highlight"</span>)]
         </span>type_loader: std::cell::OnceCell::new(),
@@ -3801,25 +3735,13 @@
             .ok()
             .unwrap();
     } <span class="kw">else </span>{
-        <span class="kw">for </span>g <span class="kw">in </span><span class="kw-2">&amp;</span>description.compiled_globals {
-            <span class="kw">crate</span>::global_component::instantiate(g, <span class="kw-2">&amp;mut </span>globals, self_weak.clone());
+        <span class="kw">if let </span><span class="prelude-val">Some</span>(g) = description.compiled_globals.as_ref() {
+            <span class="kw">for </span>g <span class="kw">in </span>g.compiled_globals.iter() {
+                <span class="kw">crate</span>::global_component::instantiate(g, <span class="kw-2">&amp;mut </span>globals, self_weak.clone());
+            }
         }
         <span class="kw">let </span>extra_data = description.extra_data_offset.apply(instance_ref.as_ref());
         extra_data.globals.set(globals).ok().unwrap();
-
-        extra_data
-            .embedded_file_resources
-            .set(
-                description
-                    .original
-                    .embedded_file_resources
-                    .borrow()
-                    .iter()
-                    .map(|(path, er)| (er.id, path.clone()))
-                    .collect(),
-            )
-            .ok()
-            .unwrap();
 
         <span class="attr">#[cfg(target_arch = <span class="string">"wasm32"</span>)]
         </span><span class="kw">if let </span><span class="prelude-val">Some</span>(WindowOptions::CreateWithCanvasId(canvas_id)) = window_options {
@@ -4657,7 +4579,7 @@
 ) {
     <span class="macro">generativity::make_guard!</span>(guard);
     <span class="comment">// FIXME: we should compile once and keep the cached compiled component
-    </span><span class="kw">let </span>compiled = generate_item_tree(<span class="kw-2">&amp;</span>popup.component, guard);
+    </span><span class="kw">let </span>compiled = generate_item_tree(<span class="kw-2">&amp;</span>popup.component, <span class="prelude-val">None</span>, guard);
     <span class="kw">let </span>inst = instantiate(
         compiled,
         <span class="prelude-val">Some</span>(parent_comp),
