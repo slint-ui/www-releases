@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/dynamic_item_tree.rs`."><title>dynamic_item_tree.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-46f98efaafac5295.ttf.woff2,FiraSans-Regular-018c141bf0843ffd.woff2,FiraSans-Medium-8f9a781e4970d388.woff2,SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2,SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-dd39b87e5fcfba68.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.81.0-nightly (bcf94dec5 2024-06-23)" data-channel="nightly" data-search-js="search-0fe7219eb170c82e.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../static.files/storage-118b08c4c78b968e.js"></script><script defer src="../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-20a3ad099b048cf2.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-df360f571f6edeae.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/dynamic_item_tree.rs`."><title>dynamic_item_tree.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-46f98efaafac5295.ttf.woff2,FiraSans-Regular-018c141bf0843ffd.woff2,FiraSans-Medium-8f9a781e4970d388.woff2,SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2,SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-dd39b87e5fcfba68.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.81.0-nightly (6b0f4b5ec 2024-06-24)" data-channel="nightly" data-search-js="search-0fe7219eb170c82e.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../static.files/storage-118b08c4c78b968e.js"></script><script defer src="../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-20a3ad099b048cf2.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-df360f571f6edeae.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -2357,6 +2357,7 @@
 <a href="#2236" id="2236">2236</a>
 <a href="#2237" id="2237">2237</a>
 <a href="#2238" id="2238">2238</a>
+<a href="#2239" id="2239">2239</a>
 </pre></div><pre class="rust"><code><span class="comment">// Copyright © SixtyFPS GmbH &lt;info@slint.dev&gt;
 // SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0
 
@@ -2367,7 +2368,7 @@
 <span class="kw">use </span>dynamic_type::{Instance, InstanceBox};
 <span class="kw">use </span>i_slint_compiler::diagnostics::SourceFileVersion;
 <span class="kw">use </span>i_slint_compiler::expression_tree::{Expression, NamedReference};
-<span class="kw">use </span>i_slint_compiler::langtype::{ElementType, Type};
+<span class="kw">use </span>i_slint_compiler::langtype::Type;
 <span class="kw">use </span>i_slint_compiler::object_tree::ElementRc;
 <span class="kw">use </span>i_slint_compiler::{diagnostics::BuildDiagnostics, object_tree::PropertyDeclaration};
 <span class="kw">use </span>i_slint_compiler::{generator, object_tree, parser, CompilerConfiguration};
@@ -2627,7 +2628,7 @@
 
 <span class="macro">i_slint_core::ItemTreeVTable_static!</span>(<span class="kw">static </span>COMPONENT_BOX_VT <span class="kw">for </span>ErasedItemTreeBox);
 
-<span class="kw">impl</span>&lt;<span class="lifetime">'id</span>&gt; Drop <span class="kw">for </span>ErasedItemTreeBox {
+<span class="kw">impl </span>Drop <span class="kw">for </span>ErasedItemTreeBox {
     <span class="kw">fn </span>drop(<span class="kw-2">&amp;mut </span><span class="self">self</span>) {
         <span class="macro">generativity::make_guard!</span>(guard);
         <span class="kw">let </span>unerase = <span class="self">self</span>.unerase(guard);
@@ -3203,17 +3204,21 @@
         <span class="attr">#[allow(unused_mut)]
         </span><span class="kw">let </span><span class="kw-2">mut </span>it = {
             <span class="kw">let </span>doc = loader.get_document(<span class="kw-2">&amp;</span>path).unwrap();
-            <span class="kw">if </span><span class="macro">matches!</span>(
-                doc.root_component.root_element.borrow().base_type,
-                ElementType::Global | ElementType::Error
-            ) {
+            <span class="kw">let </span>root_component = doc
+                .exports
+                .iter()
+                .filter_map(|e| <span class="prelude-val">Some</span>((<span class="kw-2">&amp;</span>e.<span class="number">0</span>.name_ident, e.<span class="number">1</span>.as_ref().left()<span class="question-mark">?</span>)))
+                .max_by_key(|(n, <span class="kw">_</span>)| n.text_range().end())
+                .map(|(<span class="kw">_</span>, c)| c.clone());
+            <span class="kw">let </span><span class="prelude-val">Some</span>(root_component) = root_component.or_else(|| doc.exported_roots().last())
+            <span class="kw">else </span>{
                 diag.push_error_with_span(<span class="string">"No component found"</span>.into(), Default::default());
                 <span class="kw">return </span>(<span class="prelude-val">Err</span>(()), diag);
-            }
+            };
 
-            <span class="kw">let </span>compiled_globals = CompiledGlobalCollection::compile(<span class="kw-2">&amp;</span>doc);
+            <span class="kw">let </span>compiled_globals = CompiledGlobalCollection::compile(doc);
 
-            generate_item_tree(<span class="kw-2">&amp;</span>doc.root_component, <span class="prelude-val">Some</span>(compiled_globals), guard)
+            generate_item_tree(<span class="kw-2">&amp;</span>root_component, <span class="prelude-val">Some</span>(compiled_globals), guard)
         };
 
         <span class="attr">#[cfg(feature = <span class="string">"highlight"</span>)]
@@ -3749,16 +3754,13 @@
         }
     }
 
-    <span class="kw">match </span><span class="kw-2">&amp;</span>window_options {
-        <span class="prelude-val">Some</span>(WindowOptions::UseExistingWindow(existing_adapter)) =&gt; {
-            description
-                .window_adapter_offset
-                .apply(instance_ref.as_ref())
-                .set(existing_adapter.clone())
-                .ok()
-                .unwrap();
-        }
-        <span class="kw">_ </span>=&gt; {}
+    <span class="kw">if let </span><span class="prelude-val">Some</span>(WindowOptions::UseExistingWindow(existing_adapter)) = <span class="kw-2">&amp;</span>window_options {
+        description
+            .window_adapter_offset
+            .apply(instance_ref.as_ref())
+            .set(existing_adapter.clone())
+            .ok()
+            .unwrap();
     }
 
     <span class="comment">// Some properties are generated as Value, but for which the default constructed Value must be initialized
