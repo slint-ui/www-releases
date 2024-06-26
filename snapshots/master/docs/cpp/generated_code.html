@@ -405,10 +405,9 @@
 <section id="generated-code">
 <h1>Generated Code<a class="headerlink" href="#generated-code" title="Permalink to this heading">¶</a></h1>
 <p>The Slint compiler <a class="reference internal" href="cmake_reference.html#slint-target-sources"><span class="std std-ref">called by the build system</span></a>
-will generate a header file for the root <code class="docutils literal notranslate"><span class="pre">.slint</span></code> file.
-This header file will contain a <code class="docutils literal notranslate"><span class="pre">class</span></code> with the same name as the root
-component.</p>
-<p>This class will have the following public member functions:</p>
+will generate a header file for the root <code class="docutils literal notranslate"><span class="pre">.slint</span></code> file.</p>
+<p>This header file will contain a <code class="docutils literal notranslate"><span class="pre">class</span></code> for every exported component from the main file that inherits from <code class="docutils literal notranslate"><span class="pre">Window</span></code> or <code class="docutils literal notranslate"><span class="pre">Dialog</span></code>.</p>
+<p>These classes have the same name as the component will have the following public member functions:</p>
 <ul class="simple">
 <li><p>A <code class="docutils literal notranslate"><span class="pre">create</span></code> constructor function and a destructor.</p></li>
 <li><p>A <code class="docutils literal notranslate"><span class="pre">show</span></code> function, which will show the component on the screen.
