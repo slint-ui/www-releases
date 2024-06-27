@@ -362,38 +362,174 @@
           <!-- Copyright © SixtyFPS GmbH <info@slint.dev> ; SPDX-License-Identifier: MIT -->
 <section id="functions">
 <h1>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">¶</a></h1>
-<p>Functions in Slint are declared using the <code class="docutils literal notranslate"><span class="pre">function</span></code> keyword.</p>
-<p>Each function can have parameters which are declared within parentheses, following the format <code class="docutils literal notranslate"><span class="pre">name</span> <span class="pre">:</span> <span class="pre">type</span></code>.
-These parameters can be referenced by their names within the function body.</p>
+<p>Similar to other programming languages, functions in Slint are way to name, organize and reuse
+a piece of logic/code.</p>
+<p>Functions can be defined as part of a component, or as part of an element within a component.
+It is not possible to declare global (top-level) functions, or to declare them as part of a
+struct or enum. It is also not possible to nest functions within other functions.</p>
+<section id="declaring-functions">
+<h2>Declaring functions<a class="headerlink" href="#declaring-functions" title="Permalink to this heading">¶</a></h2>
+<p>Functions in Slint are declared using the <code class="docutils literal notranslate"><span class="pre">function</span></code> keyword. For example:</p>
+<div class="highlight-slint,no-preview notranslate"><div class="highlight"><pre><span></span>export component Example {
+    // ...
+    function my-function(parameter: int) -&gt; string {
+        // Function code goes here
+        return &quot;result&quot;;
+    }
+}
+</pre></div>
+</div>
+<p>Functions can have parameters which are declared within parentheses, following the format <code class="docutils literal notranslate"><span class="pre">name:</span> <span class="pre">type</span></code>.
+These parameters can be referenced by their names within the function body. Parameters are passed by
+value.</p>
 <p>Functions can also return a value. The return type is specified after <code class="docutils literal notranslate"><span class="pre">-&gt;</span></code> in the function signature.
 The <code class="docutils literal notranslate"><span class="pre">return</span></code> keyword is used within the function body to return an expression of the declared type.
 If a function does not explicitly return a value, the value of the last statement is returned by default.</p>
 <p>Functions can be annotated with the <code class="docutils literal notranslate"><span class="pre">pure</span></code> keyword.
 This indicates that the function does not cause any side effects.
 More details can be found in the <a class="reference internal" href="../concepts/purity.html"><span class="std std-doc">Purity</span></a> chapter.</p>
-<p>By default, functions are private and cannot be accessed from external components.
-However, their accessibility can be modified using the <code class="docutils literal notranslate"><span class="pre">public</span></code> or <code class="docutils literal notranslate"><span class="pre">protected</span></code> keywords.</p>
-<ul class="simple">
-<li><p>A function annotated with <code class="docutils literal notranslate"><span class="pre">public</span></code> can be accessed by any component.</p></li>
-<li><p>A function annotated with <code class="docutils literal notranslate"><span class="pre">protected</span></code> can only be accessed by components that directly inherit from it.</p></li>
-</ul>
-<section id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h2>
-<div class="highlight-slint,no-preview notranslate"><div class="highlight"><pre><span></span>export component Example {
-    in-out property &lt;int&gt; min;
-    in-out property &lt;int&gt; max;
-    protected function set-bounds(min: int, max: int) {
-        root.min = min;
-        root.max = max
+</section>
+<section id="calling-a-function">
+<h2>Calling a function<a class="headerlink" href="#calling-a-function" title="Permalink to this heading">¶</a></h2>
+<p>A function can be called without an element name (like a function call in other languages) or with
+an element name (like a method call in other languages):</p>
+<div class="highlight-slint,no-preview notranslate"><div class="highlight"><pre><span></span>import { Button } from &quot;std-widgets.slint&quot;; 
+
+export component Example {
+    // Call without an element name:
+    property &lt;string&gt; my-property: my-function();
+    // Call with an element name:
+    property &lt;int&gt; my-other-property: my_button.my-other-function();
+
+    pure function my-function() -&gt; string {
+        return &quot;result&quot;;
     }
-    public pure function inbound(x: int) -&gt; int {
-        return Math.min(root.max, Math.max(root.min, x));
+
+    Text {
+        // Called with a pre-defined element:
+        text: root.my-function();
+    }
+
+    my_button := Button {
+        pure function my-other-function() -&gt; int {
+            return 42;
+        }
     }
 }
 </pre></div>
 </div>
-<p>In the example above, <code class="docutils literal notranslate"><span class="pre">set-bounds</span></code> is a protected function that updates the <code class="docutils literal notranslate"><span class="pre">min</span></code> and <code class="docutils literal notranslate"><span class="pre">max</span></code> properties of the root component.
-The <code class="docutils literal notranslate"><span class="pre">inbound</span></code> function is a public, pure function that takes an integer <code class="docutils literal notranslate"><span class="pre">x</span></code> and returns the value constrained within the <code class="docutils literal notranslate"><span class="pre">min</span></code> and <code class="docutils literal notranslate"><span class="pre">max</span></code> bounds.</p>
+</section>
+<section id="name-resolution">
+<h2>Name resolution<a class="headerlink" href="#name-resolution" title="Permalink to this heading">¶</a></h2>
+<p>Function calls have the same name resolution rules as properties and callbacks. When called without
+an element name:</p>
+<ul class="simple">
+<li><p>If the element that the function is called in (<code class="docutils literal notranslate"><span class="pre">self</span></code>) defines a function with that name, it is chosen.</p></li>
+<li><p>If not, name resolution continues to its parent element, and so on, until the root component.</p></li>
+</ul>
+<p>When called with an element name (or <code class="docutils literal notranslate"><span class="pre">self</span></code>, <code class="docutils literal notranslate"><span class="pre">parent</span></code> or <code class="docutils literal notranslate"><span class="pre">root</span></code>), the function must be defined on that
+element. Name resolution does not look at ancestor elements in this case. Note that this means
+calling a function without an element name is <em>not</em> equivalent to calling it with <code class="docutils literal notranslate"><span class="pre">self</span></code> (which is how methods work in many languages).</p>
+<p>Multiple functions with the same name are allowed in the same component, as long as they are defined
+on different elements. Therefore it is possible for a function to shadow another function from an ancestor
+element.</p>
+<div class="highlight-slint,no-preview notranslate"><div class="highlight"><pre><span></span>export component Example {
+    property &lt;int&gt; secret_number: my-function();
+    public pure function my-function() -&gt; int {
+        return 1;
+    }
+
+    VerticalLayout {
+        public pure function my-function() -&gt; int {
+            return 2;
+        }
+
+        Text {
+            text: &quot;The secret number is &quot; + my-function();
+            public pure function my-function() -&gt; int {
+                return 3;
+            }
+        }
+
+        Text {
+            text: &quot;The other secret number is &quot; + my-function();
+        }
+    }
+}
+</pre></div>
+</div>
+<p>In the example above, the property <code class="docutils literal notranslate"><span class="pre">secret_number</span></code> will be set to 1, and the text labels will say “The
+secret number is 3” and “The other secret number is 2”.</p>
+</section>
+<section id="function-visibility">
+<h2>Function visibility<a class="headerlink" href="#function-visibility" title="Permalink to this heading">¶</a></h2>
+<p>By default, functions are private and cannot be accessed from other components.</p>
+<p>However, their accessibility can be modified using the <code class="docutils literal notranslate"><span class="pre">public</span></code> or <code class="docutils literal notranslate"><span class="pre">protected</span></code> keywords.</p>
+<ul class="simple">
+<li><p>A root-level function annotated with <code class="docutils literal notranslate"><span class="pre">public</span></code> can be accessed by any component.</p></li>
+</ul>
+<p>To access such a function from a different component, you always need a target, which in practice
+means the calling component must declare the called component as one of its child elements.</p>
+<div class="highlight-slint,no-preview notranslate"><div class="highlight"><pre><span></span>export component HasFunction {
+    public pure function double(x: int) -&gt; int {
+        return x * 2;
+    }
+}
+
+export component CallsFunction {
+    property &lt;int&gt; test: my-friend.double(1);
+
+    my-friend := HasFunction {
+    }
+}
+</pre></div>
+</div>
+<p>If a function is declared in a child element, even if marked public, it is not possible to call it
+from another component, as the child elements themselves are not public and a valid target for the
+function does not exist:</p>
+<div class="highlight-slint,no-preview notranslate"><div class="highlight"><pre><span></span>export component HasFunction {
+    t := Text {
+        public pure function double(x: int) -&gt; int {
+            return x * 2;
+        }
+    }
+}
+
+export component CallsFunction {
+    // Compiler error!
+    // property &lt;int&gt; test: my-friend.t.double(1);
+
+    my-friend := HasFunction {
+    }
+}
+</pre></div>
+</div>
+<p>Functions marked <code class="docutils literal notranslate"><span class="pre">public</span></code> in an exported component can also be invoked from backend code (Rust, C++, JS).
+See the language-specific documentation for the generated code to use.</p>
+<ul class="simple">
+<li><p>A function annotated with <code class="docutils literal notranslate"><span class="pre">protected</span></code> can only be accessed by components that directly inherit from it.</p></li>
+</ul>
+</section>
+<section id="functions-vs-callbacks">
+<h2>Functions vs. callbacks<a class="headerlink" href="#functions-vs-callbacks" title="Permalink to this heading">¶</a></h2>
+<p>There are a lot of similarities between functions and <a class="reference internal" href="callbacks.html"><span class="std std-doc">callbacks</span></a>:</p>
+<ul class="simple">
+<li><p>They are both callable blocks of logic/code</p></li>
+<li><p>They are invoked in the same way</p></li>
+<li><p>They can both have parameters and return values</p></li>
+<li><p>They can both be declared <code class="docutils literal notranslate"><span class="pre">pure</span></code></p></li>
+</ul>
+<p>But there are also differences:</p>
+<ul class="simple">
+<li><p>The code/logic in the callback can be set in the backend code and implemented in the backend language
+(Rust, C++, JS), while functions must be defined entirely in slint</p></li>
+<li><p>The syntax for defining a callback is different</p></li>
+<li><p>Callbacks can be declared without assigning a block of code to them</p></li>
+<li><p>Callbacks have a special syntax for declaring aliases using the two-way binding operator <code class="docutils literal notranslate"><span class="pre">&lt;=&gt;</span></code></p></li>
+<li><p>Callback visiblity is always similar to <code class="docutils literal notranslate"><span class="pre">public</span></code> functions</p></li>
+</ul>
+<p>In general, the biggest reason to use callbacks is to be able to handle them from the backend code. Use
+a function if that is not needed.</p>
 </section>
 </section>
 
@@ -463,7 +599,11 @@ The <code class="docutils literal notranslate"><span class="pre">inbound</span><
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Functions</a><ul>
-<li><a class="reference internal" href="#example">Example</a></li>
+<li><a class="reference internal" href="#declaring-functions">Declaring functions</a></li>
+<li><a class="reference internal" href="#calling-a-function">Calling a function</a></li>
+<li><a class="reference internal" href="#name-resolution">Name resolution</a></li>
+<li><a class="reference internal" href="#function-visibility">Function visibility</a></li>
+<li><a class="reference internal" href="#functions-vs-callbacks">Functions vs. callbacks</a></li>
 </ul>
 </li>
 </ul>

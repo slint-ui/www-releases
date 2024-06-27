@@ -569,6 +569,12 @@
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">get_accessible_string_property</span><span class="p">(</span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">AccessibleStringProperty</span><span class="o">::</span><span class="n">Value</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">SharedString</span><span class="o">&gt;</span><span class="w"> </span><span class="n">accessible_placeholder_text</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">get_accessible_string_property</span><span class="p">(</span>
+<span class="w">                </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">AccessibleStringProperty</span><span class="o">::</span><span class="n">PlaceholderText</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">SharedString</span><span class="o">&gt;</span><span class="w"> </span><span class="n">accessible_description</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">get_accessible_string_property</span><span class="p">(</span>
