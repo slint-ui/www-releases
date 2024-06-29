@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/dynamic_item_tree.rs`."><title>dynamic_item_tree.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-46f98efaafac5295.ttf.woff2,FiraSans-Regular-018c141bf0843ffd.woff2,FiraSans-Medium-8f9a781e4970d388.woff2,SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2,SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-dd39b87e5fcfba68.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.81.0-nightly (9c3bc805d 2024-06-27)" data-channel="nightly" data-search-js="search-0fe7219eb170c82e.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../static.files/storage-118b08c4c78b968e.js"></script><script defer src="../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-20a3ad099b048cf2.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-df360f571f6edeae.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/dynamic_item_tree.rs`."><title>dynamic_item_tree.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-46f98efaafac5295.ttf.woff2,FiraSans-Regular-018c141bf0843ffd.woff2,FiraSans-Medium-8f9a781e4970d388.woff2,SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2,SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-dd39b87e5fcfba68.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.81.0-nightly (e9e6e2e44 2024-06-28)" data-channel="nightly" data-search-js="search-0fe7219eb170c82e.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../static.files/storage-118b08c4c78b968e.js"></script><script defer src="../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-20a3ad099b048cf2.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-df360f571f6edeae.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -2351,6 +2351,31 @@
 <a href="#2230" id="2230">2230</a>
 <a href="#2231" id="2231">2231</a>
 <a href="#2232" id="2232">2232</a>
+<a href="#2233" id="2233">2233</a>
+<a href="#2234" id="2234">2234</a>
+<a href="#2235" id="2235">2235</a>
+<a href="#2236" id="2236">2236</a>
+<a href="#2237" id="2237">2237</a>
+<a href="#2238" id="2238">2238</a>
+<a href="#2239" id="2239">2239</a>
+<a href="#2240" id="2240">2240</a>
+<a href="#2241" id="2241">2241</a>
+<a href="#2242" id="2242">2242</a>
+<a href="#2243" id="2243">2243</a>
+<a href="#2244" id="2244">2244</a>
+<a href="#2245" id="2245">2245</a>
+<a href="#2246" id="2246">2246</a>
+<a href="#2247" id="2247">2247</a>
+<a href="#2248" id="2248">2248</a>
+<a href="#2249" id="2249">2249</a>
+<a href="#2250" id="2250">2250</a>
+<a href="#2251" id="2251">2251</a>
+<a href="#2252" id="2252">2252</a>
+<a href="#2253" id="2253">2253</a>
+<a href="#2254" id="2254">2254</a>
+<a href="#2255" id="2255">2255</a>
+<a href="#2256" id="2256">2256</a>
+<a href="#2257" id="2257">2257</a>
 </pre></div><pre class="rust"><code><span class="comment">// Copyright © SixtyFPS GmbH &lt;info@slint.dev&gt;
 // SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0
 
@@ -2471,8 +2496,13 @@
     <span class="kw">fn </span>update(<span class="kw-2">&amp;</span><span class="self">self</span>, index: usize, data: <span class="self">Self</span>::Data) {
         <span class="macro">generativity::make_guard!</span>(guard);
         <span class="kw">let </span>s = <span class="self">self</span>.unerase(guard);
-        s.description.set_property(s.borrow(), SPECIAL_PROPERTY_INDEX, index.into()).unwrap();
-        s.description.set_property(s.borrow(), SPECIAL_PROPERTY_MODEL_DATA, data).unwrap();
+        <span class="kw">let </span>is_repeated = s.description.original.parent_element.upgrade().is_some_and(|p| {
+            p.borrow().repeated.as_ref().is_some_and(|r| !r.is_conditional_element)
+        });
+        <span class="kw">if </span>is_repeated {
+            s.description.set_property(s.borrow(), SPECIAL_PROPERTY_INDEX, index.into()).unwrap();
+            s.description.set_property(s.borrow(), SPECIAL_PROPERTY_MODEL_DATA, data).unwrap();
+        }
     }
 
     <span class="kw">fn </span>init(<span class="kw-2">&amp;</span><span class="self">self</span>) {
@@ -3432,11 +3462,10 @@
         )
     }
 
-    <span class="kw">for </span>(name, decl) <span class="kw">in </span><span class="kw-2">&amp;</span>component.root_element.borrow().property_declarations {
-        <span class="kw">if </span>decl.is_alias.is_some() {
-            <span class="kw">continue</span>;
-        }
-        <span class="kw">let </span>(prop, type_info) = <span class="kw">match </span><span class="kw-2">&amp;</span>decl.property_type {
+    <span class="kw">fn </span>property_info_for_type(
+        ty: <span class="kw-2">&amp;</span>Type,
+    ) -&gt; <span class="prelude-ty">Option</span>&lt;(Box&lt;<span class="kw">dyn </span>PropertyInfo&lt;u8, Value&gt;&gt;, dynamic_type::StaticTypeInfo)&gt; {
+        <span class="prelude-val">Some</span>(<span class="kw">match </span>ty {
             Type::Float32 =&gt; animated_property_info::&lt;f32&gt;(),
             Type::Int32 =&gt; animated_property_info::&lt;i32&gt;(),
             Type::String =&gt; property_info::&lt;SharedString&gt;(),
@@ -3449,11 +3478,6 @@
             Type::Rem =&gt; animated_property_info::&lt;f32&gt;(),
             Type::Image =&gt; property_info::&lt;i_slint_core::graphics::Image&gt;(),
             Type::Bool =&gt; property_info::&lt;bool&gt;(),
-            Type::Callback { .. } =&gt; {
-                custom_callbacks
-                    .insert(name.clone(), builder.type_builder.add_field_type::&lt;Callback&gt;());
-                <span class="kw">continue</span>;
-            }
             Type::ComponentFactory =&gt; property_info::&lt;ComponentFactory&gt;(),
             Type::Struct { name: <span class="prelude-val">Some</span>(name), .. } <span class="kw">if </span>name.ends_with(<span class="string">"::StateInfo"</span>) =&gt; {
                 property_info::&lt;i_slint_core::properties::StateInfo&gt;()
@@ -3480,7 +3504,7 @@
                 }
             }
             Type::LayoutCache =&gt; property_info::&lt;SharedVector&lt;f32&gt;&gt;(),
-            Type::Function { .. } =&gt; <span class="kw">continue</span>,
+            Type::Function { .. } | Type::Callback { .. } =&gt; <span class="kw">return </span><span class="prelude-val">None</span>,
 
             <span class="comment">// These can't be used in properties
             </span>Type::Invalid
@@ -3490,25 +3514,51 @@
             | Type::Model
             | Type::PathData
             | Type::UnitProduct(<span class="kw">_</span>)
-            | Type::ElementReference =&gt; <span class="macro">panic!</span>(<span class="string">"bad type {:?}"</span>, <span class="kw-2">&amp;</span>decl.property_type),
-        };
+            | Type::ElementReference =&gt; <span class="macro">panic!</span>(<span class="string">"bad type {:?}"</span>, ty),
+        })
+    }
+
+    <span class="kw">for </span>(name, decl) <span class="kw">in </span><span class="kw-2">&amp;</span>component.root_element.borrow().property_declarations {
+        <span class="kw">if </span>decl.is_alias.is_some() {
+            <span class="kw">continue</span>;
+        }
+        <span class="kw">if </span><span class="macro">matches!</span>(<span class="kw-2">&amp;</span>decl.property_type, Type::Callback { .. }) {
+            custom_callbacks
+                .insert(name.clone(), builder.type_builder.add_field_type::&lt;Callback&gt;());
+            <span class="kw">continue</span>;
+        }
+        <span class="kw">let </span><span class="prelude-val">Some</span>((prop, type_info)) = property_info_for_type(<span class="kw-2">&amp;</span>decl.property_type) <span class="kw">else </span>{ <span class="kw">continue </span>};
         custom_properties.insert(
             name.clone(),
             PropertiesWithinComponent { offset: builder.type_builder.add_field(type_info), prop },
         );
     }
-    <span class="kw">if </span>component.parent_element.upgrade().is_some() {
-        <span class="kw">let </span>(prop, type_info) = property_info::&lt;u32&gt;();
-        custom_properties.insert(
-            SPECIAL_PROPERTY_INDEX.into(),
-            PropertiesWithinComponent { offset: builder.type_builder.add_field(type_info), prop },
-        );
-        <span class="comment">// FIXME: make it a property for the correct type instead of being generic
-        </span><span class="kw">let </span>(prop, type_info) = property_info::&lt;Value&gt;();
-        custom_properties.insert(
-            SPECIAL_PROPERTY_MODEL_DATA.into(),
-            PropertiesWithinComponent { offset: builder.type_builder.add_field(type_info), prop },
-        );
+    <span class="kw">if let </span><span class="prelude-val">Some</span>(parent_element) = component.parent_element.upgrade() {
+        <span class="kw">if let </span><span class="prelude-val">Some</span>(r) = <span class="kw-2">&amp;</span>parent_element.borrow().repeated {
+            <span class="kw">if </span>!r.is_conditional_element {
+                <span class="kw">let </span>(prop, type_info) = property_info::&lt;u32&gt;();
+                custom_properties.insert(
+                    SPECIAL_PROPERTY_INDEX.into(),
+                    PropertiesWithinComponent {
+                        offset: builder.type_builder.add_field(type_info),
+                        prop,
+                    },
+                );
+
+                <span class="kw">let </span>model_ty = Expression::RepeaterModelReference {
+                    element: component.parent_element.clone(),
+                }
+                .ty();
+                <span class="kw">let </span>(prop, type_info) = property_info_for_type(<span class="kw-2">&amp;</span>model_ty).unwrap();
+                custom_properties.insert(
+                    SPECIAL_PROPERTY_MODEL_DATA.into(),
+                    PropertiesWithinComponent {
+                        offset: builder.type_builder.add_field(type_info),
+                        prop,
+                    },
+                );
+            }
+        }
     }
 
     <span class="kw">let </span>parent_item_tree_offset = <span class="kw">if </span>component.parent_element.upgrade().is_some() {
