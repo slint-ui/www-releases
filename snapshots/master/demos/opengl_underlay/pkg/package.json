@@ -1,5 +1,6 @@
 {
   "name": "opengl_underlay",
+  "type": "module",
   "collaborators": [
     "Slint Developers <info@slint.dev>"
   ],
@@ -10,7 +11,7 @@
     "opengl_underlay.js",
     "opengl_underlay.d.ts"
   ],
-  "module": "opengl_underlay.js",
+  "main": "opengl_underlay.js",
   "types": "opengl_underlay.d.ts",
   "sideEffects": [
     "./snippets/*"

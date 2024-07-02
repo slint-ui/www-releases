@@ -1,5 +1,6 @@
 {
   "name": "carousel",
+  "type": "module",
   "collaborators": [
     "Slint Developers <info@slint.dev>"
   ],
@@ -10,7 +11,7 @@
     "carousel.js",
     "carousel.d.ts"
   ],
-  "module": "carousel.js",
+  "main": "carousel.js",
   "types": "carousel.d.ts",
   "sideEffects": [
     "./snippets/*"

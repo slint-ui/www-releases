@@ -1,5 +1,6 @@
 {
   "name": "slint-wasm-interpreter",
+  "type": "module",
   "collaborators": [
     "Slint Developers <info@slint.dev>"
   ],
@@ -15,7 +16,7 @@
     "slint_wasm_interpreter.js",
     "slint_wasm_interpreter.d.ts"
   ],
-  "module": "slint_wasm_interpreter.js",
+  "main": "slint_wasm_interpreter.js",
   "homepage": "https://slint.dev",
   "types": "slint_wasm_interpreter.d.ts",
   "sideEffects": [

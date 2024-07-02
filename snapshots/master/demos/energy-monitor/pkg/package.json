@@ -1,5 +1,6 @@
 {
   "name": "energy-monitor",
+  "type": "module",
   "collaborators": [
     "Slint Developers <info@slint.dev>"
   ],
@@ -10,7 +11,7 @@
     "energy_monitor.js",
     "energy_monitor.d.ts"
   ],
-  "module": "energy_monitor.js",
+  "main": "energy_monitor.js",
   "types": "energy_monitor.d.ts",
   "sideEffects": [
     "./snippets/*"

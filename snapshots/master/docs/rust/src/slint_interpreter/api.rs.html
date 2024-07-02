@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/api.rs`."><title>api.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-46f98efaafac5295.ttf.woff2,FiraSans-Regular-018c141bf0843ffd.woff2,FiraSans-Medium-8f9a781e4970d388.woff2,SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2,SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-dd39b87e5fcfba68.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.81.0-nightly (6868c831a 2024-06-30)" data-channel="nightly" data-search-js="search-0fe7219eb170c82e.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../static.files/storage-118b08c4c78b968e.js"></script><script defer src="../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-20a3ad099b048cf2.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-df360f571f6edeae.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/api.rs`."><title>api.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-46f98efaafac5295.ttf.woff2,FiraSans-Regular-018c141bf0843ffd.woff2,FiraSans-Medium-8f9a781e4970d388.woff2,SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2,SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-dd39b87e5fcfba68.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.81.0-nightly (cf2df68d1 2024-07-01)" data-channel="nightly" data-search-js="search-0fe7219eb170c82e.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../static.files/storage-118b08c4c78b968e.js"></script><script defer src="../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-20a3ad099b048cf2.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-df360f571f6edeae.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -1962,6 +1962,233 @@
 <a href="#1841" id="1841">1841</a>
 <a href="#1842" id="1842">1842</a>
 <a href="#1843" id="1843">1843</a>
+<a href="#1844" id="1844">1844</a>
+<a href="#1845" id="1845">1845</a>
+<a href="#1846" id="1846">1846</a>
+<a href="#1847" id="1847">1847</a>
+<a href="#1848" id="1848">1848</a>
+<a href="#1849" id="1849">1849</a>
+<a href="#1850" id="1850">1850</a>
+<a href="#1851" id="1851">1851</a>
+<a href="#1852" id="1852">1852</a>
+<a href="#1853" id="1853">1853</a>
+<a href="#1854" id="1854">1854</a>
+<a href="#1855" id="1855">1855</a>
+<a href="#1856" id="1856">1856</a>
+<a href="#1857" id="1857">1857</a>
+<a href="#1858" id="1858">1858</a>
+<a href="#1859" id="1859">1859</a>
+<a href="#1860" id="1860">1860</a>
+<a href="#1861" id="1861">1861</a>
+<a href="#1862" id="1862">1862</a>
+<a href="#1863" id="1863">1863</a>
+<a href="#1864" id="1864">1864</a>
+<a href="#1865" id="1865">1865</a>
+<a href="#1866" id="1866">1866</a>
+<a href="#1867" id="1867">1867</a>
+<a href="#1868" id="1868">1868</a>
+<a href="#1869" id="1869">1869</a>
+<a href="#1870" id="1870">1870</a>
+<a href="#1871" id="1871">1871</a>
+<a href="#1872" id="1872">1872</a>
+<a href="#1873" id="1873">1873</a>
+<a href="#1874" id="1874">1874</a>
+<a href="#1875" id="1875">1875</a>
+<a href="#1876" id="1876">1876</a>
+<a href="#1877" id="1877">1877</a>
+<a href="#1878" id="1878">1878</a>
+<a href="#1879" id="1879">1879</a>
+<a href="#1880" id="1880">1880</a>
+<a href="#1881" id="1881">1881</a>
+<a href="#1882" id="1882">1882</a>
+<a href="#1883" id="1883">1883</a>
+<a href="#1884" id="1884">1884</a>
+<a href="#1885" id="1885">1885</a>
+<a href="#1886" id="1886">1886</a>
+<a href="#1887" id="1887">1887</a>
+<a href="#1888" id="1888">1888</a>
+<a href="#1889" id="1889">1889</a>
+<a href="#1890" id="1890">1890</a>
+<a href="#1891" id="1891">1891</a>
+<a href="#1892" id="1892">1892</a>
+<a href="#1893" id="1893">1893</a>
+<a href="#1894" id="1894">1894</a>
+<a href="#1895" id="1895">1895</a>
+<a href="#1896" id="1896">1896</a>
+<a href="#1897" id="1897">1897</a>
+<a href="#1898" id="1898">1898</a>
+<a href="#1899" id="1899">1899</a>
+<a href="#1900" id="1900">1900</a>
+<a href="#1901" id="1901">1901</a>
+<a href="#1902" id="1902">1902</a>
+<a href="#1903" id="1903">1903</a>
+<a href="#1904" id="1904">1904</a>
+<a href="#1905" id="1905">1905</a>
+<a href="#1906" id="1906">1906</a>
+<a href="#1907" id="1907">1907</a>
+<a href="#1908" id="1908">1908</a>
+<a href="#1909" id="1909">1909</a>
+<a href="#1910" id="1910">1910</a>
+<a href="#1911" id="1911">1911</a>
+<a href="#1912" id="1912">1912</a>
+<a href="#1913" id="1913">1913</a>
+<a href="#1914" id="1914">1914</a>
+<a href="#1915" id="1915">1915</a>
+<a href="#1916" id="1916">1916</a>
+<a href="#1917" id="1917">1917</a>
+<a href="#1918" id="1918">1918</a>
+<a href="#1919" id="1919">1919</a>
+<a href="#1920" id="1920">1920</a>
+<a href="#1921" id="1921">1921</a>
+<a href="#1922" id="1922">1922</a>
+<a href="#1923" id="1923">1923</a>
+<a href="#1924" id="1924">1924</a>
+<a href="#1925" id="1925">1925</a>
+<a href="#1926" id="1926">1926</a>
+<a href="#1927" id="1927">1927</a>
+<a href="#1928" id="1928">1928</a>
+<a href="#1929" id="1929">1929</a>
+<a href="#1930" id="1930">1930</a>
+<a href="#1931" id="1931">1931</a>
+<a href="#1932" id="1932">1932</a>
+<a href="#1933" id="1933">1933</a>
+<a href="#1934" id="1934">1934</a>
+<a href="#1935" id="1935">1935</a>
+<a href="#1936" id="1936">1936</a>
+<a href="#1937" id="1937">1937</a>
+<a href="#1938" id="1938">1938</a>
+<a href="#1939" id="1939">1939</a>
+<a href="#1940" id="1940">1940</a>
+<a href="#1941" id="1941">1941</a>
+<a href="#1942" id="1942">1942</a>
+<a href="#1943" id="1943">1943</a>
+<a href="#1944" id="1944">1944</a>
+<a href="#1945" id="1945">1945</a>
+<a href="#1946" id="1946">1946</a>
+<a href="#1947" id="1947">1947</a>
+<a href="#1948" id="1948">1948</a>
+<a href="#1949" id="1949">1949</a>
+<a href="#1950" id="1950">1950</a>
+<a href="#1951" id="1951">1951</a>
+<a href="#1952" id="1952">1952</a>
+<a href="#1953" id="1953">1953</a>
+<a href="#1954" id="1954">1954</a>
+<a href="#1955" id="1955">1955</a>
+<a href="#1956" id="1956">1956</a>
+<a href="#1957" id="1957">1957</a>
+<a href="#1958" id="1958">1958</a>
+<a href="#1959" id="1959">1959</a>
+<a href="#1960" id="1960">1960</a>
+<a href="#1961" id="1961">1961</a>
+<a href="#1962" id="1962">1962</a>
+<a href="#1963" id="1963">1963</a>
+<a href="#1964" id="1964">1964</a>
+<a href="#1965" id="1965">1965</a>
+<a href="#1966" id="1966">1966</a>
+<a href="#1967" id="1967">1967</a>
+<a href="#1968" id="1968">1968</a>
+<a href="#1969" id="1969">1969</a>
+<a href="#1970" id="1970">1970</a>
+<a href="#1971" id="1971">1971</a>
+<a href="#1972" id="1972">1972</a>
+<a href="#1973" id="1973">1973</a>
+<a href="#1974" id="1974">1974</a>
+<a href="#1975" id="1975">1975</a>
+<a href="#1976" id="1976">1976</a>
+<a href="#1977" id="1977">1977</a>
+<a href="#1978" id="1978">1978</a>
+<a href="#1979" id="1979">1979</a>
+<a href="#1980" id="1980">1980</a>
+<a href="#1981" id="1981">1981</a>
+<a href="#1982" id="1982">1982</a>
+<a href="#1983" id="1983">1983</a>
+<a href="#1984" id="1984">1984</a>
+<a href="#1985" id="1985">1985</a>
+<a href="#1986" id="1986">1986</a>
+<a href="#1987" id="1987">1987</a>
+<a href="#1988" id="1988">1988</a>
+<a href="#1989" id="1989">1989</a>
+<a href="#1990" id="1990">1990</a>
+<a href="#1991" id="1991">1991</a>
+<a href="#1992" id="1992">1992</a>
+<a href="#1993" id="1993">1993</a>
+<a href="#1994" id="1994">1994</a>
+<a href="#1995" id="1995">1995</a>
+<a href="#1996" id="1996">1996</a>
+<a href="#1997" id="1997">1997</a>
+<a href="#1998" id="1998">1998</a>
+<a href="#1999" id="1999">1999</a>
+<a href="#2000" id="2000">2000</a>
+<a href="#2001" id="2001">2001</a>
+<a href="#2002" id="2002">2002</a>
+<a href="#2003" id="2003">2003</a>
+<a href="#2004" id="2004">2004</a>
+<a href="#2005" id="2005">2005</a>
+<a href="#2006" id="2006">2006</a>
+<a href="#2007" id="2007">2007</a>
+<a href="#2008" id="2008">2008</a>
+<a href="#2009" id="2009">2009</a>
+<a href="#2010" id="2010">2010</a>
+<a href="#2011" id="2011">2011</a>
+<a href="#2012" id="2012">2012</a>
+<a href="#2013" id="2013">2013</a>
+<a href="#2014" id="2014">2014</a>
+<a href="#2015" id="2015">2015</a>
+<a href="#2016" id="2016">2016</a>
+<a href="#2017" id="2017">2017</a>
+<a href="#2018" id="2018">2018</a>
+<a href="#2019" id="2019">2019</a>
+<a href="#2020" id="2020">2020</a>
+<a href="#2021" id="2021">2021</a>
+<a href="#2022" id="2022">2022</a>
+<a href="#2023" id="2023">2023</a>
+<a href="#2024" id="2024">2024</a>
+<a href="#2025" id="2025">2025</a>
+<a href="#2026" id="2026">2026</a>
+<a href="#2027" id="2027">2027</a>
+<a href="#2028" id="2028">2028</a>
+<a href="#2029" id="2029">2029</a>
+<a href="#2030" id="2030">2030</a>
+<a href="#2031" id="2031">2031</a>
+<a href="#2032" id="2032">2032</a>
+<a href="#2033" id="2033">2033</a>
+<a href="#2034" id="2034">2034</a>
+<a href="#2035" id="2035">2035</a>
+<a href="#2036" id="2036">2036</a>
+<a href="#2037" id="2037">2037</a>
+<a href="#2038" id="2038">2038</a>
+<a href="#2039" id="2039">2039</a>
+<a href="#2040" id="2040">2040</a>
+<a href="#2041" id="2041">2041</a>
+<a href="#2042" id="2042">2042</a>
+<a href="#2043" id="2043">2043</a>
+<a href="#2044" id="2044">2044</a>
+<a href="#2045" id="2045">2045</a>
+<a href="#2046" id="2046">2046</a>
+<a href="#2047" id="2047">2047</a>
+<a href="#2048" id="2048">2048</a>
+<a href="#2049" id="2049">2049</a>
+<a href="#2050" id="2050">2050</a>
+<a href="#2051" id="2051">2051</a>
+<a href="#2052" id="2052">2052</a>
+<a href="#2053" id="2053">2053</a>
+<a href="#2054" id="2054">2054</a>
+<a href="#2055" id="2055">2055</a>
+<a href="#2056" id="2056">2056</a>
+<a href="#2057" id="2057">2057</a>
+<a href="#2058" id="2058">2058</a>
+<a href="#2059" id="2059">2059</a>
+<a href="#2060" id="2060">2060</a>
+<a href="#2061" id="2061">2061</a>
+<a href="#2062" id="2062">2062</a>
+<a href="#2063" id="2063">2063</a>
+<a href="#2064" id="2064">2064</a>
+<a href="#2065" id="2065">2065</a>
+<a href="#2066" id="2066">2066</a>
+<a href="#2067" id="2067">2067</a>
+<a href="#2068" id="2068">2068</a>
+<a href="#2069" id="2069">2069</a>
+<a href="#2070" id="2070">2070</a>
 </pre></div><pre class="rust"><code><span class="comment">// Copyright © SixtyFPS GmbH &lt;info@slint.dev&gt;
 // SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0
 
@@ -2457,14 +2684,15 @@
     }
 }
 
-<span class="doccomment">/// ComponentCompiler is the entry point to the Slint interpreter that can be used
-/// to load .slint files or compile them on-the-fly from a string.
+<span class="doccomment">/// ComponentCompiler is deprecated, use `Compiler` instead
+</span><span class="comment">//#[deprecated(note = "Use Complier instead")]
 </span><span class="kw">pub struct </span>ComponentCompiler {
     config: i_slint_compiler::CompilerConfiguration,
     diagnostics: Vec&lt;Diagnostic&gt;,
 }
 
-<span class="kw">impl </span>Default <span class="kw">for </span>ComponentCompiler {
+<span class="attr">#[allow(deprecated)]
+</span><span class="kw">impl </span>Default <span class="kw">for </span>ComponentCompiler {
     <span class="kw">fn </span>default() -&gt; <span class="self">Self </span>{
         <span class="self">Self </span>{
             config: i_slint_compiler::CompilerConfiguration::new(
@@ -2475,7 +2703,8 @@
     }
 }
 
-<span class="kw">impl </span>ComponentCompiler {
+<span class="attr">#[allow(deprecated)]
+</span><span class="kw">impl </span>ComponentCompiler {
     <span class="doccomment">/// Returns a new ComponentCompiler.
     </span><span class="kw">pub fn </span>new() -&gt; <span class="self">Self </span>{
         <span class="self">Self</span>::default()
@@ -2593,12 +2822,10 @@
             }
         };
 
-        <span class="macro">generativity::make_guard!</span>(guard);
-        <span class="kw">let </span>(c, diag) =
-            <span class="kw">crate</span>::dynamic_item_tree::load(source, path.into(), <span class="prelude-val">None</span>, <span class="self">self</span>.config.clone(), guard)
-                .<span class="kw">await</span>;
-        <span class="self">self</span>.diagnostics = diag.into_iter().collect();
-        c.ok().map(|inner| ComponentDefinition { inner: inner.into() })
+        <span class="kw">let </span>r =
+            <span class="kw">crate</span>::dynamic_item_tree::load(source, path.into(), <span class="prelude-val">None</span>, <span class="self">self</span>.config.clone()).<span class="kw">await</span>;
+        <span class="self">self</span>.diagnostics = r.diagnostics.into_iter().collect();
+        r.components.into_values().next()
     }
 
     <span class="doccomment">/// Compile some .slint code into a ComponentDefinition
@@ -2659,25 +2886,190 @@
         path: PathBuf,
         version: SourceFileVersion,
     ) -&gt; <span class="prelude-ty">Option</span>&lt;ComponentDefinition&gt; {
-        <span class="macro">generativity::make_guard!</span>(guard);
-        <span class="kw">let </span>(c, diag) =
-            <span class="kw">crate</span>::dynamic_item_tree::load(source_code, path, version, <span class="self">self</span>.config.clone(), guard)
-                .<span class="kw">await</span>;
-        <span class="self">self</span>.diagnostics = diag.into_iter().collect();
-        c.ok().map(|inner| ComponentDefinition { inner: inner.into() })
+        <span class="kw">let </span>r =
+            <span class="kw">crate</span>::dynamic_item_tree::load(source_code, path, version, <span class="self">self</span>.config.clone()).<span class="kw">await</span>;
+        <span class="self">self</span>.diagnostics = r.diagnostics.into_iter().collect();
+        r.components.into_values().next()
+    }
+}
+
+<span class="doccomment">/// This is the entry point of the crate, it can be used to load a `.slint` file and
+/// compile it into a [`CompilationResult`].
+</span><span class="kw">pub struct </span>Compiler {
+    config: i_slint_compiler::CompilerConfiguration,
+}
+
+<span class="kw">impl </span>Default <span class="kw">for </span>Compiler {
+    <span class="kw">fn </span>default() -&gt; <span class="self">Self </span>{
+        <span class="kw">let </span><span class="kw-2">mut </span>config = i_slint_compiler::CompilerConfiguration::new(
+            i_slint_compiler::generator::OutputFormat::Interpreter,
+        );
+        config.generate_all_exported_windows = <span class="bool-val">true</span>;
+        <span class="self">Self </span>{ config }
+    }
+}
+
+<span class="kw">impl </span>Compiler {
+    <span class="doccomment">/// Sets the include paths used for looking up `.slint` imports to the specified vector of paths.
+    </span><span class="kw">pub fn </span>set_include_paths(<span class="kw-2">&amp;mut </span><span class="self">self</span>, include_paths: Vec&lt;std::path::PathBuf&gt;) {
+        <span class="self">self</span>.config.include_paths = include_paths;
+    }
+
+    <span class="doccomment">/// Returns the include paths the component compiler is currently configured with.
+    </span><span class="kw">pub fn </span>include_paths(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>Vec&lt;std::path::PathBuf&gt; {
+        <span class="kw-2">&amp;</span><span class="self">self</span>.config.include_paths
+    }
+
+    <span class="doccomment">/// Sets the library paths used for looking up `@library` imports to the specified map of library names to paths.
+    </span><span class="kw">pub fn </span>set_library_paths(<span class="kw-2">&amp;mut </span><span class="self">self</span>, library_paths: HashMap&lt;String, PathBuf&gt;) {
+        <span class="self">self</span>.config.library_paths = library_paths;
+    }
+
+    <span class="doccomment">/// Returns the library paths the component compiler is currently configured with.
+    </span><span class="kw">pub fn </span>library_paths(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>HashMap&lt;String, PathBuf&gt; {
+        <span class="kw-2">&amp;</span><span class="self">self</span>.config.library_paths
+    }
+
+    <span class="doccomment">/// Sets the style to be used for widgets.
+    ///
+    /// Use the "material" style as widget style when compiling:
+    /// ```rust
+    /// use slint_interpreter::{ComponentDefinition, Compiler, ComponentHandle};
+    ///
+    /// let mut compiler = Compiler::default();
+    /// compiler.set_style("material".into());
+    /// let result = spin_on::spin_on(compiler.build_from_path("hello.slint"));
+    /// ```
+    </span><span class="kw">pub fn </span>set_style(<span class="kw-2">&amp;mut </span><span class="self">self</span>, style: String) {
+        <span class="self">self</span>.config.style = <span class="prelude-val">Some</span>(style);
+    }
+
+    <span class="doccomment">/// Returns the widget style the compiler is currently using when compiling .slint files.
+    </span><span class="kw">pub fn </span>style(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>String&gt; {
+        <span class="self">self</span>.config.style.as_ref()
+    }
+
+    <span class="doccomment">/// The domain used for translations
+    </span><span class="kw">pub fn </span>set_translation_domain(<span class="kw-2">&amp;mut </span><span class="self">self</span>, domain: String) {
+        <span class="self">self</span>.config.translation_domain = <span class="prelude-val">Some</span>(domain);
+    }
+
+    <span class="doccomment">/// Sets the callback that will be invoked when loading imported .slint files. The specified
+    /// `file_loader_callback` parameter will be called with a canonical file path as argument
+    /// and is expected to return a future that, when resolved, provides the source code of the
+    /// .slint file to be imported as a string.
+    /// If an error is returned, then the build will abort with that error.
+    /// If None is returned, it means the normal resolution algorithm will proceed as if the hook
+    /// was not in place (i.e: load from the file system following the include paths)
+    </span><span class="kw">pub fn </span>set_file_loader(
+        <span class="kw-2">&amp;mut </span><span class="self">self</span>,
+        file_loader_fallback: <span class="kw">impl </span>Fn(
+                <span class="kw-2">&amp;</span>Path,
+            ) -&gt; core::pin::Pin&lt;
+                Box&lt;<span class="kw">dyn </span>core::future::Future&lt;Output = <span class="prelude-ty">Option</span>&lt;std::io::Result&lt;String&gt;&gt;&gt;&gt;,
+            &gt; + <span class="lifetime">'static</span>,
+    ) {
+        <span class="self">self</span>.config.open_import_fallback =
+            <span class="prelude-val">Some</span>(Rc::new(<span class="kw">move </span>|path| file_loader_fallback(Path::new(path.as_str()))));
+    }
+
+    <span class="doccomment">/// Compile a .slint file
+    ///
+    /// Returns a structure that holds the diagnostics and the compiled components.
+    ///
+    /// Any diagnostics produced during the compilation, such as warnings or errors, can be retrieved
+    /// after the call using [`CompilationResult::diagnostics()`].
+    /// The [`print_diagnostics`] function can be used to display the diagnostics to the users.
+    ///
+    /// If the file was compiled without error, the list of component names can be obtained with
+    /// [`CompilationResult::component_names`], and the compiled components themselves with
+    /// [`CompilationResult::component()`].
+    ///
+    /// If the path is `"-"`, the file will be read from stdin.
+    /// If the extension of the file .rs, the first `slint!` macro from a rust file will be extracted
+    ///
+    /// This function is `async` but in practice, this is only asynchronous if
+    /// [`Self::set_file_loader`] was called and its future is actually asynchronous.
+    /// If that is not used, then it is fine to use a very simple executor, such as the one
+    /// provided by the `spin_on` crate
+    </span><span class="kw">pub async fn </span>build_from_path&lt;P: AsRef&lt;Path&gt;&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, path: P) -&gt; CompilationResult {
+        <span class="kw">let </span>path = path.as_ref();
+        <span class="kw">let </span>source = <span class="kw">match </span>i_slint_compiler::diagnostics::load_from_path(path) {
+            <span class="prelude-val">Ok</span>(s) =&gt; s,
+            <span class="prelude-val">Err</span>(d) =&gt; {
+                <span class="kw">let </span><span class="kw-2">mut </span>diagnostics = i_slint_compiler::diagnostics::BuildDiagnostics::default();
+                diagnostics.push_compiler_error(d);
+                <span class="kw">return </span>CompilationResult { components: HashMap::new(), diagnostics };
+            }
+        };
+
+        <span class="kw">crate</span>::dynamic_item_tree::load(source, path.into(), <span class="prelude-val">None</span>, <span class="self">self</span>.config.clone()).<span class="kw">await
+    </span>}
+
+    <span class="doccomment">/// Compile some .slint code
+    ///
+    /// The `path` argument will be used for diagnostics and to compute relative
+    /// paths while importing.
+    ///
+    /// Any diagnostics produced during the compilation, such as warnings or errors, can be retrieved
+    /// after the call using [`CompilationResult::diagnostics()`].
+    /// The [`print_diagnostics`] function can be used to display the diagnostics to the users.
+    ///
+    /// This function is `async` but in practice, this is only asynchronous if
+    /// [`Self::set_file_loader`] is set and its future is actually asynchronous.
+    /// If that is not used, then it is fine to use a very simple executor, such as the one
+    /// provided by the `spin_on` crate
+    </span><span class="kw">pub async fn </span>build_from_source(<span class="kw-2">&amp;</span><span class="self">self</span>, source_code: String, path: PathBuf) -&gt; CompilationResult {
+        <span class="kw">crate</span>::dynamic_item_tree::load(source_code, path, <span class="prelude-val">None</span>, <span class="self">self</span>.config.clone()).<span class="kw">await
+    </span>}
+}
+
+<span class="doccomment">/// The result of a compilation
+///
+/// If [`Self::has_error``] is true, then the compilation failed.
+/// The [`Self::diagnostics`] function can be used to retrieve the diagnostics (errors and/or warnings).
+/// The components names and their definitions can be retrieved using the [`Self::component_names`]
+/// and [`Self::component`] functions.
+</span><span class="kw">pub struct </span>CompilationResult {
+    <span class="kw">pub</span>(<span class="kw">crate</span>) components: HashMap&lt;String, ComponentDefinition&gt;,
+    <span class="kw">pub</span>(<span class="kw">crate</span>) diagnostics: i_slint_compiler::diagnostics::BuildDiagnostics,
+}
+
+<span class="kw">impl </span>CompilationResult {
+    <span class="doccomment">/// Returns true if the compilation failed.
+    /// The errors can be retrieved using the [`Self::diagnostics`] function.
+    /// And printed to the console using the [`print_diagnostics`] function.
+    </span><span class="kw">pub fn </span>has_error(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        <span class="self">self</span>.diagnostics.has_error()
+    }
+
+    <span class="doccomment">/// Return an iterator over the diagnostics.
+    </span><span class="kw">pub fn </span>diagnostics(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw">impl </span>Iterator&lt;Item = Diagnostic&gt; + <span class="lifetime">'_ </span>{
+        <span class="self">self</span>.diagnostics.iter().cloned()
+    }
+
+    <span class="doccomment">/// Returns the names of the components that were compiled.
+    </span><span class="kw">pub fn </span>component_names(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw">impl </span>Iterator&lt;Item = <span class="kw-2">&amp;</span>str&gt; + <span class="lifetime">'_ </span>{
+        <span class="self">self</span>.components.keys().map(|s| s.as_str())
+    }
+
+    <span class="doccomment">/// Return the component definition for the given name.
+    /// If the component does not exist, then `None` is returned.
+    </span><span class="kw">pub fn </span>component(<span class="kw-2">&amp;</span><span class="self">self</span>, name: <span class="kw-2">&amp;</span>str) -&gt; <span class="prelude-ty">Option</span>&lt;ComponentDefinition&gt; {
+        <span class="self">self</span>.components.get(name).cloned()
     }
 }
 
 <span class="doccomment">/// ComponentDefinition is a representation of a compiled component from .slint markup.
 ///
-/// It can be constructed from a .slint file using the [`ComponentCompiler::build_from_path`] or [`ComponentCompiler::build_from_source`] functions.
+/// It can be constructed from a .slint file using the [`Compiler::build_from_path`] or [`Compiler::build_from_source`] functions.
 /// And then it can be instantiated with the [`Self::create`] function.
 ///
 /// The ComponentDefinition acts as a factory to create new instances. When you've finished
 /// creating the instances it is safe to drop the ComponentDefinition.
 </span><span class="attr">#[derive(Clone)]
 </span><span class="kw">pub struct </span>ComponentDefinition {
-    inner: <span class="kw">crate</span>::dynamic_item_tree::ErasedItemTreeDescription,
+    <span class="kw">pub</span>(<span class="kw">crate</span>) inner: <span class="kw">crate</span>::dynamic_item_tree::ErasedItemTreeDescription,
 }
 
 <span class="kw">impl </span>ComponentDefinition {
@@ -2951,17 +3343,17 @@
     ///
     /// ```
     /// # i_slint_backend_testing::init_no_event_loop();
-    /// use slint_interpreter::{ComponentDefinition, ComponentCompiler, Value, SharedString};
+    /// use slint_interpreter::{ComponentDefinition, Compiler, Value, SharedString};
     /// let code = r#"
     ///     export component MyWin inherits Window {
     ///         in-out property &lt;int&gt; my_property: 42;
     ///     }
     /// "#;
-    /// let mut compiler = ComponentCompiler::default();
-    /// let definition = spin_on::spin_on(
+    /// let mut compiler = Compiler::default();
+    /// let result = spin_on::spin_on(
     ///     compiler.build_from_source(code.into(), Default::default()));
-    /// assert!(compiler.diagnostics().is_empty(), "{:?}", compiler.diagnostics());
-    /// let instance = definition.unwrap().create().unwrap();
+    /// assert_eq!(result.diagnostics().count(), 0, "{:?}", result.diagnostics().collect::&lt;Vec&lt;_&gt;&gt;());
+    /// let instance = result.component("MyWin").unwrap().create().unwrap();
     /// assert_eq!(instance.get_property("my_property").unwrap(), Value::from(42));
     /// ```
     </span><span class="kw">pub fn </span>get_property(<span class="kw-2">&amp;</span><span class="self">self</span>, name: <span class="kw-2">&amp;</span>str) -&gt; <span class="prelude-ty">Result</span>&lt;Value, GetPropertyError&gt; {
@@ -3018,7 +3410,7 @@
     ///
     /// ```
     /// # i_slint_backend_testing::init_no_event_loop();
-    /// use slint_interpreter::{ComponentDefinition, ComponentCompiler, Value, SharedString, ComponentHandle};
+    /// use slint_interpreter::{Compiler, Value, SharedString, ComponentHandle};
     /// use core::convert::TryInto;
     /// let code = r#"
     ///     export component MyWin inherits Window {
@@ -3026,10 +3418,10 @@
     ///         in-out property &lt;int&gt; my_prop: 12;
     ///     }
     /// "#;
-    /// let definition = spin_on::spin_on(
-    ///     ComponentCompiler::default().build_from_source(code.into(), Default::default()));
-    /// let instance = definition.unwrap().create().unwrap();
-    ///
+    /// let result = spin_on::spin_on(
+    ///     Compiler::default().build_from_source(code.into(), Default::default()));
+    /// assert_eq!(result.diagnostics().count(), 0, "{:?}", result.diagnostics().collect::&lt;Vec&lt;_&gt;&gt;());
+    /// let instance = result.component("MyWin").unwrap().create().unwrap();
     /// let instance_weak = instance.as_weak();
     /// instance.set_callback("foo", move |args: &amp;[Value]| -&gt; Value {
     ///     let arg: u32 = args[0].clone().try_into().unwrap();
@@ -3074,7 +3466,7 @@
     ///
     /// ```
     /// # i_slint_backend_testing::init_no_event_loop();
-    /// use slint_interpreter::{ComponentDefinition, ComponentCompiler, Value, SharedString};
+    /// use slint_interpreter::{Compiler, Value, SharedString};
     /// let code = r#"
     ///     global Glob {
     ///         in-out property &lt;int&gt; my_property: 42;
@@ -3083,11 +3475,10 @@
     ///     export component MyWin inherits Window {
     ///     }
     /// "#;
-    /// let mut compiler = ComponentCompiler::default();
-    /// let definition = spin_on::spin_on(
-    ///     compiler.build_from_source(code.into(), Default::default()));
-    /// assert!(compiler.diagnostics().is_empty(), "{:?}", compiler.diagnostics());
-    /// let instance = definition.unwrap().create().unwrap();
+    /// let mut compiler = Compiler::default();
+    /// let result = spin_on::spin_on(compiler.build_from_source(code.into(), Default::default()));
+    /// assert_eq!(result.diagnostics().count(), 0, "{:?}", result.diagnostics().collect::&lt;Vec&lt;_&gt;&gt;());
+    /// let instance = result.component("MyWin").unwrap().create().unwrap();
     /// assert_eq!(instance.get_global_property("TheGlobal", "my_property").unwrap(), Value::from(42));
     /// ```
     </span><span class="kw">pub fn </span>get_global_property(
@@ -3129,7 +3520,7 @@
     ///
     /// ```
     /// # i_slint_backend_testing::init_no_event_loop();
-    /// use slint_interpreter::{ComponentDefinition, ComponentCompiler, Value, SharedString};
+    /// use slint_interpreter::{Compiler, Value, SharedString};
     /// use core::convert::TryInto;
     /// let code = r#"
     ///     export global Logic {
@@ -3139,9 +3530,9 @@
     ///         out property &lt;string&gt; hello: Logic.to_uppercase("world");
     ///     }
     /// "#;
-    /// let definition = spin_on::spin_on(
-    ///     ComponentCompiler::default().build_from_source(code.into(), Default::default()));
-    /// let instance = definition.unwrap().create().unwrap();
+    /// let result = spin_on::spin_on(
+    ///     Compiler::default().build_from_source(code.into(), Default::default()));
+    /// let instance = result.component("MyWin").unwrap().create().unwrap();
     /// instance.set_global_callback("Logic", "to_uppercase", |args: &amp;[Value]| -&gt; Value {
     ///     let arg: SharedString = args[0].clone().try_into().unwrap();
     ///     Value::from(SharedString::from(arg.to_uppercase()))
@@ -3799,6 +4190,69 @@
         ValueType::Struct
     );
     <span class="macro">assert_eq!</span>(ValueType::from(LangType::Image), ValueType::Image);
+}
+
+<span class="attr">#[test]
+</span><span class="kw">fn </span>test_multi_components() {
+    <span class="kw">let </span>result = spin_on::spin_on(
+        Compiler::default().build_from_source(
+            <span class="string">r#"
+        export struct Settings {
+            string_value: string,
+        }
+        export global ExpGlo { in-out property &lt;int&gt; test: 42; }
+        component Common {
+            in-out property &lt;Settings&gt; settings: { string_value: "Hello", };
+        }
+        export component Xyz inherits Window {
+            in-out property &lt;int&gt; aaa: 8;
+        }
+        export component Foo {
+
+            in-out property &lt;int&gt; test: 42;
+            c := Common {}
+        }
+        export component Bar inherits Window {
+            in-out property &lt;int&gt; blah: 78;
+            c := Common {}
+        }
+        "#
+            </span>.into(),
+            PathBuf::from(<span class="string">"hello.slint"</span>),
+        ),
+    );
+
+    <span class="macro">assert!</span>(!result.has_error(), <span class="string">"Error {:?}"</span>, result.diagnostics().collect::&lt;Vec&lt;<span class="kw">_</span>&gt;&gt;());
+    <span class="kw">let </span><span class="kw-2">mut </span>components = result.component_names().collect::&lt;Vec&lt;<span class="kw">_</span>&gt;&gt;();
+    components.sort();
+    <span class="macro">assert_eq!</span>(components, <span class="macro">vec!</span>[<span class="string">"Bar"</span>, <span class="string">"Xyz"</span>]);
+    <span class="kw">let </span>diag = result.diagnostics().collect::&lt;Vec&lt;<span class="kw">_</span>&gt;&gt;();
+    <span class="macro">assert_eq!</span>(diag.len(), <span class="number">1</span>);
+    <span class="macro">assert_eq!</span>(diag[<span class="number">0</span>].level(), DiagnosticLevel::Warning);
+    <span class="macro">assert_eq!</span>(
+        diag[<span class="number">0</span>].message(),
+        <span class="string">"Exported component 'Foo' doesn't inherit Window. No code will be generated for it"
+    </span>);
+
+    <span class="kw">let </span>comp1 = result.component(<span class="string">"Xyz"</span>).unwrap();
+    <span class="macro">assert_eq!</span>(comp1.name(), <span class="string">"Xyz"</span>);
+    <span class="kw">let </span>instance1a = comp1.create().unwrap();
+    <span class="kw">let </span>comp2 = result.component(<span class="string">"Bar"</span>).unwrap();
+    <span class="kw">let </span>instance2 = comp2.create().unwrap();
+    <span class="kw">let </span>instance1b = comp1.create().unwrap();
+
+    <span class="comment">// globals are not shared between instances
+    </span><span class="macro">assert_eq!</span>(instance1a.get_global_property(<span class="string">"ExpGlo"</span>, <span class="string">"test"</span>), <span class="prelude-val">Ok</span>(Value::Number(<span class="number">42.0</span>)));
+    <span class="macro">assert_eq!</span>(instance1a.set_global_property(<span class="string">"ExpGlo"</span>, <span class="string">"test"</span>, Value::Number(<span class="number">88.0</span>)), <span class="prelude-val">Ok</span>(()));
+    <span class="macro">assert_eq!</span>(instance2.get_global_property(<span class="string">"ExpGlo"</span>, <span class="string">"test"</span>), <span class="prelude-val">Ok</span>(Value::Number(<span class="number">42.0</span>)));
+    <span class="macro">assert_eq!</span>(instance1b.get_global_property(<span class="string">"ExpGlo"</span>, <span class="string">"test"</span>), <span class="prelude-val">Ok</span>(Value::Number(<span class="number">42.0</span>)));
+    <span class="macro">assert_eq!</span>(instance1a.get_global_property(<span class="string">"ExpGlo"</span>, <span class="string">"test"</span>), <span class="prelude-val">Ok</span>(Value::Number(<span class="number">88.0</span>)));
+
+    <span class="macro">assert!</span>(result.component(<span class="string">"Settings"</span>).is_none());
+    <span class="macro">assert!</span>(result.component(<span class="string">"Foo"</span>).is_none());
+    <span class="macro">assert!</span>(result.component(<span class="string">"Common"</span>).is_none());
+    <span class="macro">assert!</span>(result.component(<span class="string">"ExpGlo"</span>).is_none());
+    <span class="macro">assert!</span>(result.component(<span class="string">"xyz"</span>).is_none());
 }
 
 <span class="attr">#[cfg(feature = <span class="string">"ffi"</span>)]

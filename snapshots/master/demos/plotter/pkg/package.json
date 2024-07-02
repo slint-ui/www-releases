@@ -1,5 +1,6 @@
 {
   "name": "plotter",
+  "type": "module",
   "collaborators": [
     "Slint Developers <info@slint.dev>"
   ],
@@ -10,7 +11,7 @@
     "plotter.js",
     "plotter.d.ts"
   ],
-  "module": "plotter.js",
+  "main": "plotter.js",
   "types": "plotter.d.ts",
   "sideEffects": [
     "./snippets/*"

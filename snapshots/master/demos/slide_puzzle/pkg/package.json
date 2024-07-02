@@ -1,5 +1,6 @@
 {
   "name": "slide_puzzle",
+  "type": "module",
   "collaborators": [
     "Slint Developers <info@slint.dev>"
   ],
@@ -10,7 +11,7 @@
     "slide_puzzle.js",
     "slide_puzzle.d.ts"
   ],
-  "module": "slide_puzzle.js",
+  "main": "slide_puzzle.js",
   "types": "slide_puzzle.d.ts",
   "sideEffects": [
     "./snippets/*"

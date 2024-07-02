@@ -1,5 +1,6 @@
 {
   "name": "printerdemo_old",
+  "type": "module",
   "collaborators": [
     "Slint Developers <info@slint.dev>"
   ],
@@ -10,7 +11,7 @@
     "printerdemo_old.js",
     "printerdemo_old.d.ts"
   ],
-  "module": "printerdemo_old.js",
+  "main": "printerdemo_old.js",
   "types": "printerdemo_old.d.ts",
   "sideEffects": [
     "./snippets/*"

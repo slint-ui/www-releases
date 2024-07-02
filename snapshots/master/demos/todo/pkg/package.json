@@ -1,5 +1,6 @@
 {
   "name": "todo",
+  "type": "module",
   "collaborators": [
     "Slint Developers <info@slint.dev>"
   ],
@@ -10,7 +11,7 @@
     "todo_lib.js",
     "todo_lib.d.ts"
   ],
-  "module": "todo_lib.js",
+  "main": "todo_lib.js",
   "types": "todo_lib.d.ts",
   "sideEffects": [
     "./snippets/*"

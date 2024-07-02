@@ -1,5 +1,6 @@
 {
   "name": "memory",
+  "type": "module",
   "collaborators": [
     "Slint Developers <info@slint.dev>"
   ],
@@ -10,7 +11,7 @@
     "memory.js",
     "memory.d.ts"
   ],
-  "module": "memory.js",
+  "main": "memory.js",
   "types": "memory.d.ts",
   "sideEffects": [
     "./snippets/*"

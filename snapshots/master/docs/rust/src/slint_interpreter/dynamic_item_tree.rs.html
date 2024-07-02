@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/dynamic_item_tree.rs`."><title>dynamic_item_tree.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-46f98efaafac5295.ttf.woff2,FiraSans-Regular-018c141bf0843ffd.woff2,FiraSans-Medium-8f9a781e4970d388.woff2,SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2,SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-dd39b87e5fcfba68.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.81.0-nightly (6868c831a 2024-06-30)" data-channel="nightly" data-search-js="search-0fe7219eb170c82e.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../static.files/storage-118b08c4c78b968e.js"></script><script defer src="../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-20a3ad099b048cf2.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-df360f571f6edeae.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/dynamic_item_tree.rs`."><title>dynamic_item_tree.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-46f98efaafac5295.ttf.woff2,FiraSans-Regular-018c141bf0843ffd.woff2,FiraSans-Medium-8f9a781e4970d388.woff2,SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2,SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-dd39b87e5fcfba68.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.81.0-nightly (cf2df68d1 2024-07-01)" data-channel="nightly" data-search-js="search-0fe7219eb170c82e.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../static.files/storage-118b08c4c78b968e.js"></script><script defer src="../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-20a3ad099b048cf2.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-df360f571f6edeae.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -2375,13 +2375,12 @@
 <a href="#2254" id="2254">2254</a>
 <a href="#2255" id="2255">2255</a>
 <a href="#2256" id="2256">2256</a>
-<a href="#2257" id="2257">2257</a>
 </pre></div><pre class="rust"><code><span class="comment">// Copyright © SixtyFPS GmbH &lt;info@slint.dev&gt;
 // SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0
 
-</span><span class="kw">use crate</span>::{api::Value, dynamic_type, eval};
-
+</span><span class="kw">use </span><span class="kw">crate</span>::api::{CompilationResult, ComponentDefinition, Value};
 <span class="kw">use </span><span class="kw">crate</span>::global_component::CompiledGlobalCollection;
+<span class="kw">use crate</span>::{dynamic_type, eval};
 <span class="kw">use </span>core::ptr::NonNull;
 <span class="kw">use </span>dynamic_type::{Instance, InstanceBox};
 <span class="kw">use </span>i_slint_compiler::diagnostics::SourceFileVersion;
@@ -2785,7 +2784,7 @@
     )&gt;,
 
     <span class="doccomment">/// The collection of compiled globals
-    </span>compiled_globals: <span class="prelude-ty">Option</span>&lt;CompiledGlobalCollection&gt;,
+    </span>compiled_globals: <span class="prelude-ty">Option</span>&lt;Rc&lt;CompiledGlobalCollection&gt;&gt;,
 
     <span class="doccomment">/// The type loader, which will be available only on the top-most `ItemTreeDescription`.
     /// All other `ItemTreeDescription`s have `None` here.
@@ -3188,19 +3187,18 @@
     source: String,
     path: std::path::PathBuf,
     version: SourceFileVersion,
-    <span class="attr">#[allow(unused_mut)] </span><span class="kw-2">mut </span>compiler_config: CompilerConfiguration,
-    guard: generativity::Guard&lt;<span class="lifetime">'_</span>&gt;,
-) -&gt; (<span class="prelude-ty">Result</span>&lt;Rc&lt;ItemTreeDescription&lt;<span class="lifetime">'_</span>&gt;&gt;, ()&gt;, i_slint_compiler::diagnostics::BuildDiagnostics) {
-    <span class="comment">// If the native style should be Qt, resolve it here as we have the knowledge of the native style
-    </span><span class="attr">#[cfg(all(unix, not(target_os = <span class="string">"macos"</span>)))]
-    </span><span class="kw">if </span>i_slint_backend_selector::HAS_NATIVE_STYLE {
-        <span class="kw">let </span>is_native = <span class="kw">match </span><span class="kw-2">&amp;</span>compiler_config.style {
-            <span class="prelude-val">Some</span>(s) =&gt; s == <span class="string">"native"</span>,
-            <span class="prelude-val">None </span>=&gt; std::env::var(<span class="string">"SLINT_STYLE"</span>).map_or(<span class="bool-val">true</span>, |s| s == <span class="string">"native"</span>),
-        };
-        <span class="kw">if </span>is_native {
-            compiler_config.style = <span class="prelude-val">Some</span>(<span class="string">"qt"</span>.into());
-        }
+    <span class="kw-2">mut </span>compiler_config: CompilerConfiguration,
+) -&gt; CompilationResult {
+    <span class="comment">// If the native style should be Qt, resolve it here as we know that we have it
+    </span><span class="kw">let </span>is_native = <span class="kw">match </span><span class="kw-2">&amp;</span>compiler_config.style {
+        <span class="prelude-val">Some</span>(s) =&gt; s == <span class="string">"native"</span>,
+        <span class="prelude-val">None </span>=&gt; std::env::var(<span class="string">"SLINT_STYLE"</span>).map_or(<span class="bool-val">true</span>, |s| s == <span class="string">"native"</span>),
+    };
+    <span class="kw">if </span>is_native {
+        compiler_config.style = <span class="prelude-val">Some</span>(
+            i_slint_common::get_native_style(i_slint_backend_selector::HAS_NATIVE_STYLE, <span class="string">""</span>)
+                .to_string(),
+        );
     }
 
     <span class="kw">let </span>diag = BuildDiagnostics::default();
@@ -3220,41 +3218,41 @@
         i_slint_compiler::load_root_file(<span class="kw-2">&amp;</span>path, version, <span class="kw-2">&amp;</span>path, source, diag, compiler_config)
             .<span class="kw">await</span>;
     <span class="kw">if </span>diag.has_error() {
-        <span class="kw">return </span>(<span class="prelude-val">Err</span>(()), diag);
+        <span class="kw">return </span>CompilationResult { components: HashMap::new(), diagnostics: diag };
     }
 
-    <span class="kw">let </span>item_tree = {
+    <span class="attr">#[cfg(feature = <span class="string">"highlight"</span>)]
+    </span><span class="kw">let </span>loader = Rc::new(loader);
+    <span class="attr">#[cfg(feature = <span class="string">"highlight"</span>)]
+    </span><span class="kw">let </span>raw_type_loader = raw_type_loader.map(Rc::new);
+
+    <span class="kw">let </span>doc = loader.get_document(<span class="kw-2">&amp;</span>path).unwrap();
+
+    <span class="kw">let </span>compiled_globals = Rc::new(CompiledGlobalCollection::compile(doc));
+    <span class="kw">let </span><span class="kw-2">mut </span>components = HashMap::new();
+
+    <span class="kw">for </span>c <span class="kw">in </span>doc.exported_roots() {
+        <span class="macro">generativity::make_guard!</span>(guard);
         <span class="attr">#[allow(unused_mut)]
-        </span><span class="kw">let </span><span class="kw-2">mut </span>it = {
-            <span class="kw">let </span>doc = loader.get_document(<span class="kw-2">&amp;</span>path).unwrap();
-            <span class="kw">let </span><span class="prelude-val">Some</span>(root_component) = doc.last_exported_component() <span class="kw">else </span>{
-                diag.push_error_with_span(<span class="string">"No component found"</span>.into(), Default::default());
-                <span class="kw">return </span>(<span class="prelude-val">Err</span>(()), diag);
-            };
-
-            <span class="kw">let </span>compiled_globals = CompiledGlobalCollection::compile(doc);
-
-            generate_item_tree(<span class="kw-2">&amp;</span>root_component, <span class="prelude-val">Some</span>(compiled_globals), guard)
-        };
-
+        </span><span class="kw">let </span><span class="kw-2">mut </span>it = generate_item_tree(<span class="kw-2">&amp;</span>c, <span class="prelude-val">Some</span>(compiled_globals.clone()), guard);
         <span class="attr">#[cfg(feature = <span class="string">"highlight"</span>)]
         </span>{
-            <span class="kw">let _ </span>= it.type_loader.set(Rc::new(loader));
-            <span class="kw">if let </span><span class="prelude-val">Some</span>(ul) = raw_type_loader {
-                <span class="kw">let _ </span>= it.raw_type_loader.set(<span class="prelude-val">Some</span>(Rc::new(ul)));
-            } <span class="kw">else </span>{
-                <span class="kw">let _ </span>= it.raw_type_loader.set(<span class="prelude-val">None</span>);
-            }
+            <span class="kw">let _ </span>= it.type_loader.set(loader.clone());
+            <span class="kw">let _ </span>= it.raw_type_loader.set(raw_type_loader.clone());
         }
-        it
+        components.insert(c.id.clone(), ComponentDefinition { inner: it.into() });
+    }
+
+    <span class="kw">if </span>components.is_empty() {
+        diag.push_error_with_span(<span class="string">"No component found"</span>.into(), Default::default());
     };
 
-    (<span class="prelude-val">Ok</span>(item_tree), diag)
+    CompilationResult { diagnostics: diag, components }
 }
 
 <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>generate_item_tree&lt;<span class="lifetime">'id</span>&gt;(
     component: <span class="kw-2">&amp;</span>Rc&lt;object_tree::Component&gt;,
-    compiled_globals: <span class="prelude-ty">Option</span>&lt;CompiledGlobalCollection&gt;,
+    compiled_globals: <span class="prelude-ty">Option</span>&lt;Rc&lt;CompiledGlobalCollection&gt;&gt;,
     guard: generativity::Guard&lt;<span class="lifetime">'id</span>&gt;,
 ) -&gt; Rc&lt;ItemTreeDescription&lt;<span class="lifetime">'id</span>&gt;&gt; {
     <span class="comment">//dbg!(&amp;*component.root_element.borrow());

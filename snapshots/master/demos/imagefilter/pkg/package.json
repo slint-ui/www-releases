@@ -1,5 +1,6 @@
 {
   "name": "imagefilter",
+  "type": "module",
   "collaborators": [
     "Slint Developers <info@slint.dev>"
   ],
@@ -10,7 +11,7 @@
     "imagefilter.js",
     "imagefilter.d.ts"
   ],
-  "module": "imagefilter.js",
+  "main": "imagefilter.js",
   "types": "imagefilter.d.ts",
   "sideEffects": [
     "./snippets/*"

@@ -1,5 +1,6 @@
 {
   "name": "gallery",
+  "type": "module",
   "collaborators": [
     "Slint Developers <info@slint.dev>"
   ],
@@ -11,7 +12,7 @@
     "gallery.js",
     "gallery.d.ts"
   ],
-  "module": "gallery.js",
+  "main": "gallery.js",
   "types": "gallery.d.ts",
   "sideEffects": [
     "./snippets/*"
