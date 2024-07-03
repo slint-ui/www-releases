@@ -280,6 +280,16 @@
 <a href="#159" id="159">159</a>
 <a href="#160" id="160">160</a>
 <a href="#161" id="161">161</a>
+<a href="#162" id="162">162</a>
+<a href="#163" id="163">163</a>
+<a href="#164" id="164">164</a>
+<a href="#165" id="165">165</a>
+<a href="#166" id="166">166</a>
+<a href="#167" id="167">167</a>
+<a href="#168" id="168">168</a>
+<a href="#169" id="169">169</a>
+<a href="#170" id="170">170</a>
+<a href="#171" id="171">171</a>
 </pre></div><pre class="rust"><code><span class="comment">// Copyright © SixtyFPS GmbH &lt;info@slint.dev&gt;
 // SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0
 
@@ -305,13 +315,16 @@
 
     <span class="doccomment">/// This an example of the API that is generated for a component in `.slint` design markup. This may help you understand
     /// what functions you can call and how you can pass data in and out.
+    ///
     /// This is the source code:
+    ///
     /// ```slint,no-preview
     /// export component SampleComponent inherits Window {
     ///     in-out property&lt;int&gt; counter;
     ///     // note that dashes will be replaced by underscores in the generated code
     ///     in-out property&lt;string&gt; user-name;
-    ///     callback hello();
+    ///     callback hello;
+    ///     public function do-something(x: int) -&gt; bool { return x &gt; 0; }
     ///     // ... maybe more elements here
     /// }
     /// ```
@@ -359,6 +372,13 @@
         ///     });
         /// ```
         </span><span class="kw">pub fn </span>on_hello(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw">impl </span>Fn() + <span class="lifetime">'static</span>) {}
+
+        <span class="doccomment">/// For each public function declared at the root of the component, a function to call
+        /// that function is generated. This is the function that calls the `do-something` function
+        /// declared in the `.slint` design markup.
+        </span><span class="kw">pub fn </span>invoke_do_something(<span class="kw-2">&amp;</span><span class="self">self</span>, d: i32) -&gt; bool {
+            <span class="macro">unimplemented!</span>()
+        }
     }
 
     <span class="kw">impl </span>ComponentHandle <span class="kw">for </span>SampleComponent {

@@ -2187,8 +2187,6 @@
 <a href="#2066" id="2066">2066</a>
 <a href="#2067" id="2067">2067</a>
 <a href="#2068" id="2068">2068</a>
-<a href="#2069" id="2069">2069</a>
-<a href="#2070" id="2070">2070</a>
 </pre></div><pre class="rust"><code><span class="comment">// Copyright © SixtyFPS GmbH &lt;info@slint.dev&gt;
 // SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0
 
@@ -2694,12 +2692,11 @@
 <span class="attr">#[allow(deprecated)]
 </span><span class="kw">impl </span>Default <span class="kw">for </span>ComponentCompiler {
     <span class="kw">fn </span>default() -&gt; <span class="self">Self </span>{
-        <span class="self">Self </span>{
-            config: i_slint_compiler::CompilerConfiguration::new(
-                i_slint_compiler::generator::OutputFormat::Interpreter,
-            ),
-            diagnostics: <span class="macro">vec!</span>[],
-        }
+        <span class="kw">let </span><span class="kw-2">mut </span>config = i_slint_compiler::CompilerConfiguration::new(
+            i_slint_compiler::generator::OutputFormat::Interpreter,
+        );
+        config.components_to_generate = i_slint_compiler::ComponentsToGenerate::LastComponent;
+        <span class="self">Self </span>{ config, diagnostics: <span class="macro">vec!</span>[] }
     }
 }
 
@@ -2708,18 +2705,6 @@
     <span class="doccomment">/// Returns a new ComponentCompiler.
     </span><span class="kw">pub fn </span>new() -&gt; <span class="self">Self </span>{
         <span class="self">Self</span>::default()
-    }
-
-    <span class="doccomment">/// Allow access to the underlying `CompilerConfiguration`
-    ///
-    /// This is an internal function without and ABI or API stability guarantees.
-    </span><span class="attr">#[doc(hidden)]
-    #[cfg(feature = <span class="string">"internal"</span>)]
-    </span><span class="kw">pub fn </span>compiler_configuration(
-        <span class="kw-2">&amp;mut </span><span class="self">self</span>,
-        <span class="kw">_</span>: i_slint_core::InternalToken,
-    ) -&gt; <span class="kw-2">&amp;mut </span>i_slint_compiler::CompilerConfiguration {
-        <span class="kw-2">&amp;mut </span><span class="self">self</span>.config
     }
 
     <span class="doccomment">/// Sets the include paths used for looking up `.slint` imports to the specified vector of paths.
@@ -2901,15 +2886,26 @@
 
 <span class="kw">impl </span>Default <span class="kw">for </span>Compiler {
     <span class="kw">fn </span>default() -&gt; <span class="self">Self </span>{
-        <span class="kw">let </span><span class="kw-2">mut </span>config = i_slint_compiler::CompilerConfiguration::new(
+        <span class="kw">let </span>config = i_slint_compiler::CompilerConfiguration::new(
             i_slint_compiler::generator::OutputFormat::Interpreter,
         );
-        config.generate_all_exported_windows = <span class="bool-val">true</span>;
         <span class="self">Self </span>{ config }
     }
 }
 
 <span class="kw">impl </span>Compiler {
+    <span class="doccomment">/// Allow access to the underlying `CompilerConfiguration`
+    ///
+    /// This is an internal function without and ABI or API stability guarantees.
+    </span><span class="attr">#[doc(hidden)]
+    #[cfg(feature = <span class="string">"internal"</span>)]
+    </span><span class="kw">pub fn </span>compiler_configuration(
+        <span class="kw-2">&amp;mut </span><span class="self">self</span>,
+        <span class="kw">_</span>: i_slint_core::InternalToken,
+    ) -&gt; <span class="kw-2">&amp;mut </span>i_slint_compiler::CompilerConfiguration {
+        <span class="kw-2">&amp;mut </span><span class="self">self</span>.config
+    }
+
     <span class="doccomment">/// Sets the include paths used for looking up `.slint` imports to the specified vector of paths.
     </span><span class="kw">pub fn </span>set_include_paths(<span class="kw-2">&amp;mut </span><span class="self">self</span>, include_paths: Vec&lt;std::path::PathBuf&gt;) {
         <span class="self">self</span>.config.include_paths = include_paths;

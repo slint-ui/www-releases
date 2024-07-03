@@ -433,6 +433,7 @@ const reference</p></li>
 for this callback. the functor must accept the type parameter of the callback</p></li>
 </ul>
 </li>
+<li><p>For each public function declared in the root component, an <code class="docutils literal notranslate"><span class="pre">invoke_&lt;function_name&gt;</span></code> function to call the function.</p></li>
 <li><p>A <code class="docutils literal notranslate"><span class="pre">global</span></code> function to access exported global singletons.</p></li>
 </ul>
 <p>The <code class="docutils literal notranslate"><span class="pre">create</span></code> function creates a new instance of the component, which is wrapped
@@ -451,10 +452,13 @@ by a <code class="docutils literal notranslate"><span class="pre">std::vector&lt
 <p>Let’s assume we’ve this code in our <code class="docutils literal notranslate"><span class="pre">.slint</span></code> file:</p>
 <div class="highlight-slint,no-preview notranslate"><div class="highlight"><pre><span></span>export component SampleComponent inherits Window {
     in-out property&lt;int&gt; counter;
+    // note that dashes will be replaced by underscores in the generated code
     in-out property&lt;string&gt; user_name;
     callback hello;
+    public function do-something(x: int) -&gt; bool { return x &gt; 0; } 
     // ... maybe more elements here
 }
+
 </pre></div>
 </div>
 <p>This generates a header with the following contents (edited for documentation purpose)</p>
@@ -494,6 +498,9 @@ by a <code class="docutils literal notranslate"><span class="pre">std::vector&lt
 <span class="w">    </span><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">invoke_hello</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
 <span class="w">    </span><span class="c1">/// Sets the callback handler for the `hello` callback.</span>
 <span class="w">    </span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">Functor</span><span class="o">&gt;</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">on_hello</span><span class="w"> </span><span class="p">(</span><span class="n">Functor</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">callback_handler</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">/// Call this function to call the `do-something` function.</span>
+<span class="w">    </span><span class="kr">inline</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">invoke_do_something</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
 
 <span class="w">    </span><span class="c1">/// Returns a reference to a global singleton that&#39;s exported.</span>
 <span class="w">    </span><span class="c1">///</span>

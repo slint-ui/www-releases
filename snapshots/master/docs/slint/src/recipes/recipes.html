@@ -428,10 +428,10 @@ This is different in native code: Most programming languages forbid <code class=
 identifiers, so <code class="docutils literal notranslate"><span class="pre">-</span></code> is replaced with <code class="docutils literal notranslate"><span class="pre">_</span></code>.</p>
 <details data-snippet-language="rust">
 <summary>Rust code</summary>
-<p>For technical reasons, this example uses <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">{Recipe}</span></code> in the <code class="docutils literal notranslate"><span class="pre">slint!</span></code> macro.
+<p>For technical reasons, this example uses <code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">{Recipe}</span></code> in the <code class="docutils literal notranslate"><span class="pre">slint!</span></code> macro.
 In real code, you can put the whole Slint code in the <code class="docutils literal notranslate"><span class="pre">slint!</span></code> macro, or use
 an external <code class="docutils literal notranslate"><span class="pre">.slint</span></code> file together with a build script.</p>
-<div class="highlight-rust,no_run notranslate"><div class="highlight"><pre><span></span>slint::slint!(import { Recipe } from &quot;docs/reference/src/recipes/button_native.slint&quot;;);
+<div class="highlight-rust,no_run notranslate"><div class="highlight"><pre><span></span>slint::slint!(export { Recipe } from &quot;docs/reference/src/recipes/button_native.slint&quot;;);
 
 fn main() {
     let recipe = Recipe::new().unwrap();
