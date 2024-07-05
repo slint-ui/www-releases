@@ -352,8 +352,11 @@
 <li class="toctree-l2"><a class="reference internal" href="api/variable_namespaceslint_1_1platform_1_1key__codes_1adf1a443c827c42391ffbb0cbbf1da3f8.html">Variable slint::platform::key_codes::Tab</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/variable_namespaceslint_1_1platform_1_1key__codes_1a8bd8df35acb6a08504e955d18b85b4fe.html">Variable slint::platform::key_codes::UpArrow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/define_slint__tests__helpers_8h_1af0a649b4b7b90dc4c9e531d459371b95.html">Define assert_eq</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/define_slint__generated__public_8h_1a9aa08b9d77373aeed64c2f2507e28552.html">Define SLINT_FEATURE_ACCESSIBILITY</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/define_slint__generated__public_8h_1af7931a7cf2a1073d5f0174b38af28364.html">Define SLINT_FEATURE_BACKEND_WINIT</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/define_slint__generated__public_8h_1a24b3d3a9cd474a66ac86ee4ee9315ce9.html">Define SLINT_FEATURE_GETTEXT</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/define_slint__generated__public_8h_1a45557b46bf1159e97c4ace494d67a53f.html">Define SLINT_FEATURE_INTERPRETER</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/define_slint__generated__public_8h_1a7cafd723338e5b25a8d69039ce408cf9.html">Define SLINT_FEATURE_RENDERER_FEMTOVG</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/define_slint__generated__public_8h_1a84ab6227b0f7c83d1d55702c8c406ee0.html">Define SLINT_FEATURE_RENDERER_SKIA</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/define_slint__generated__public_8h_1aac4320248b71bd21ac65d833974b5cb5.html">Define SLINT_FEATURE_RENDERER_SOFTWARE</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/define_slint__generated__public_8h_1acf78b72a3c7b65dfc2d13f4e698cc01a.html">Define SLINT_FEATURE_TESTING</a></li>
@@ -488,6 +491,24 @@ the CMake setup you would for example use:</p>
 to discover and toggle features.</p>
 <p>This works when compiling Slint as a package, using <code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">--build</span></code> and
 <code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">--install</span></code>, or when including Slint using <code class="docutils literal notranslate"><span class="pre">FetchContent</span></code>.</p>
+<p>If you need to check in your application’s <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> whether a feature is enabled
+or disabled, read the <code class="docutils literal notranslate"><span class="pre">SLINT_ENABLED_FEATURES</span></code> and <code class="docutils literal notranslate"><span class="pre">SLINT_DISABLED_FEATURES</span></code> target
+properties from the <code class="docutils literal notranslate"><span class="pre">Slint::Slint</span></code> cmake target:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span>get_target_property(slint_enabled_features Slint::Slint SLINT_ENABLED_FEATURES)
+if (&quot;BACKEND_WINIT&quot; IN_LIST slint_enabled_features)
+    ...
+endif()
+</pre></div>
+</div>
+<p>Similarly, if you need to check for features at compile-time, check for the existence
+of <code class="docutils literal notranslate"><span class="pre">SLINT_FEATURE_&lt;NAME&gt;</span></code> pre-processor macros:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include &lt;slint.h&gt;</span>
+
+<span class="c1">#if defined(SLINT_FEATURE_BACKEND_WINIT)</span>
+<span class="o">//</span> <span class="o">...</span>
+<span class="c1">#endif</span>
+</pre></div>
+</div>
 </section>
 <section id="rust-flags">
 <h3>Rust Flags<a class="headerlink" href="#rust-flags" title="Permalink to this heading">¶</a></h3>

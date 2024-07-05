@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/api.rs`."><title>api.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-46f98efaafac5295.ttf.woff2,FiraSans-Regular-018c141bf0843ffd.woff2,FiraSans-Medium-8f9a781e4970d388.woff2,SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2,SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-dd39b87e5fcfba68.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.81.0-nightly (aa1d4f682 2024-07-03)" data-channel="nightly" data-search-js="search-0fe7219eb170c82e.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../static.files/storage-118b08c4c78b968e.js"></script><script defer src="../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-20a3ad099b048cf2.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-df360f571f6edeae.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/api.rs`."><title>api.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-46f98efaafac5295.ttf.woff2,FiraSans-Regular-018c141bf0843ffd.woff2,FiraSans-Medium-8f9a781e4970d388.woff2,SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2,SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-dd39b87e5fcfba68.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.81.0-nightly (cc8da78a0 2024-07-04)" data-channel="nightly" data-search-js="search-0fe7219eb170c82e.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../static.files/storage-118b08c4c78b968e.js"></script><script defer src="../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-20a3ad099b048cf2.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-df360f571f6edeae.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -2192,6 +2192,12 @@
 <a href="#2071" id="2071">2071</a>
 <a href="#2072" id="2072">2072</a>
 <a href="#2073" id="2073">2073</a>
+<a href="#2074" id="2074">2074</a>
+<a href="#2075" id="2075">2075</a>
+<a href="#2076" id="2076">2076</a>
+<a href="#2077" id="2077">2077</a>
+<a href="#2078" id="2078">2078</a>
+<a href="#2079" id="2079">2079</a>
 </pre></div><pre class="rust"><code><span class="comment">// Copyright © SixtyFPS GmbH &lt;info@slint.dev&gt;
 // SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0
 
@@ -2688,7 +2694,7 @@
 }
 
 <span class="doccomment">/// ComponentCompiler is deprecated, use [`Compiler`] instead
-</span><span class="comment">// #[deprecated(note = "Use slint_interpreter::Complier instead")]
+</span><span class="attr">#[deprecated(note = <span class="string">"Use slint_interpreter::Complier instead"</span>)]
 </span><span class="kw">pub struct </span>ComponentCompiler {
     config: i_slint_compiler::CompilerConfiguration,
     diagnostics: Vec&lt;Diagnostic&gt;,
@@ -3798,7 +3804,7 @@
 <span class="attr">#[test]
 </span><span class="kw">fn </span>component_definition_properties() {
     i_slint_backend_testing::init_no_event_loop();
-    <span class="kw">let </span><span class="kw-2">mut </span>compiler = ComponentCompiler::default();
+    <span class="kw">let </span><span class="kw-2">mut </span>compiler = Compiler::default();
     compiler.set_style(<span class="string">"fluent"</span>.into());
     <span class="kw">let </span>comp_def = spin_on::spin_on(
         compiler.build_from_source(
@@ -3812,6 +3818,7 @@
             <span class="string">""</span>.into(),
         ),
     )
+    .component(<span class="string">"Dummy"</span>)
     .unwrap();
 
     <span class="kw">let </span>props = comp_def.properties().collect::&lt;Vec&lt;(<span class="kw">_</span>, <span class="kw">_</span>)&gt;&gt;();
@@ -3846,7 +3853,7 @@
 <span class="attr">#[test]
 </span><span class="kw">fn </span>component_definition_properties2() {
     i_slint_backend_testing::init_no_event_loop();
-    <span class="kw">let </span><span class="kw-2">mut </span>compiler = ComponentCompiler::default();
+    <span class="kw">let </span><span class="kw-2">mut </span>compiler = Compiler::default();
     compiler.set_style(<span class="string">"fluent"</span>.into());
     <span class="kw">let </span>comp_def = spin_on::spin_on(
         compiler.build_from_source(
@@ -3862,6 +3869,7 @@
             <span class="string">""</span>.into(),
         ),
     )
+    .component(<span class="string">"Dummy"</span>)
     .unwrap();
 
     <span class="kw">let </span>props = comp_def.properties().collect::&lt;Vec&lt;(<span class="kw">_</span>, <span class="kw">_</span>)&gt;&gt;();
@@ -3897,7 +3905,7 @@
 <span class="attr">#[test]
 </span><span class="kw">fn </span>globals() {
     i_slint_backend_testing::init_no_event_loop();
-    <span class="kw">let </span><span class="kw-2">mut </span>compiler = ComponentCompiler::default();
+    <span class="kw">let </span><span class="kw-2">mut </span>compiler = Compiler::default();
     compiler.set_style(<span class="string">"fluent"</span>.into());
     <span class="kw">let </span>definition = spin_on::spin_on(
         compiler.build_from_source(
@@ -3913,6 +3921,7 @@
             <span class="string">""</span>.into(),
         ),
     )
+    .component(<span class="string">"Dummy"</span>)
     .unwrap();
 
     <span class="macro">assert_eq!</span>(definition.globals().collect::&lt;Vec&lt;<span class="kw">_</span>&gt;&gt;(), <span class="macro">vec!</span>[<span class="string">"My-Super_Global"</span>, <span class="string">"AliasedGlobal"</span>]);
@@ -4015,7 +4024,7 @@
 <span class="attr">#[test]
 </span><span class="kw">fn </span>call_functions() {
     i_slint_backend_testing::init_no_event_loop();
-    <span class="kw">let </span><span class="kw-2">mut </span>compiler = ComponentCompiler::default();
+    <span class="kw">let </span><span class="kw-2">mut </span>compiler = Compiler::default();
     compiler.set_style(<span class="string">"fluent"</span>.into());
     <span class="kw">let </span>definition = spin_on::spin_on(
         compiler.build_from_source(
@@ -4038,6 +4047,7 @@
             <span class="string">""</span>.into(),
         ),
     )
+    .component(<span class="string">"Test"</span>)
     .unwrap();
 
     <span class="macro">assert_eq!</span>(definition.functions().collect::&lt;Vec&lt;<span class="kw">_</span>&gt;&gt;(), [<span class="string">"foo-bar"</span>]);
@@ -4066,7 +4076,7 @@
 <span class="attr">#[test]
 </span><span class="kw">fn </span>component_definition_struct_properties() {
     i_slint_backend_testing::init_no_event_loop();
-    <span class="kw">let </span><span class="kw-2">mut </span>compiler = ComponentCompiler::default();
+    <span class="kw">let </span><span class="kw-2">mut </span>compiler = Compiler::default();
     compiler.set_style(<span class="string">"fluent"</span>.into());
     <span class="kw">let </span>comp_def = spin_on::spin_on(
         compiler.build_from_source(
@@ -4081,6 +4091,7 @@
             <span class="string">""</span>.into(),
         ),
     )
+    .component(<span class="string">"Dummy"</span>)
     .unwrap();
 
     <span class="kw">let </span>props = comp_def.properties().collect::&lt;Vec&lt;(<span class="kw">_</span>, <span class="kw">_</span>)&gt;&gt;();
@@ -4117,12 +4128,13 @@
 </span><span class="kw">fn </span>component_definition_model_properties() {
     <span class="kw">use </span>i_slint_core::model::<span class="kw-2">*</span>;
     i_slint_backend_testing::init_no_event_loop();
-    <span class="kw">let </span><span class="kw-2">mut </span>compiler = ComponentCompiler::default();
+    <span class="kw">let </span><span class="kw-2">mut </span>compiler = Compiler::default();
     compiler.set_style(<span class="string">"fluent"</span>.into());
     <span class="kw">let </span>comp_def = spin_on::spin_on(compiler.build_from_source(
         <span class="string">"export component Dummy { in-out property &lt;[int]&gt; prop: [42, 12]; }"</span>.into(),
         <span class="string">""</span>.into(),
     ))
+    .component(<span class="string">"Dummy"</span>)
     .unwrap();
 
     <span class="kw">let </span>props = comp_def.properties().collect::&lt;Vec&lt;(<span class="kw">_</span>, <span class="kw">_</span>)&gt;&gt;();
