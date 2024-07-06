@@ -1134,23 +1134,35 @@
 <span class="w">    </span><span class="kr">inline</span><span class="w"> </span><span class="n">Flickable</span><span class="p">();</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="o">~</span><span class="n">Flickable</span><span class="p">();</span>
 <span class="p">};</span>
 
-<span class="k">struct</span><span class="w"> </span><span class="nc">Text</span><span class="w"> </span><span class="p">{</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">SimpleText</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">width</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">height</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">SharedString</span><span class="o">&gt;</span><span class="w"> </span><span class="n">text</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">SharedString</span><span class="o">&gt;</span><span class="w"> </span><span class="n">font_family</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">font_size</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="kt">int32_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">font_weight</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="w"> </span><span class="n">font_italic</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">Brush</span><span class="o">&gt;</span><span class="w"> </span><span class="n">color</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">TextHorizontalAlignment</span><span class="o">&gt;</span><span class="w"> </span><span class="n">horizontal_alignment</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">TextVerticalAlignment</span><span class="o">&gt;</span><span class="w"> </span><span class="n">vertical_alignment</span><span class="p">;</span>
+<span class="w">    </span><span class="n">CachedRenderingData</span><span class="w"> </span><span class="n">cached_rendering_data</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">ComplexText</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">width</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">height</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">SharedString</span><span class="o">&gt;</span><span class="w"> </span><span class="n">text</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">font_size</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="kt">int32_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">font_weight</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">Brush</span><span class="o">&gt;</span><span class="w"> </span><span class="n">color</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">TextHorizontalAlignment</span><span class="o">&gt;</span><span class="w"> </span><span class="n">horizontal_alignment</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">TextVerticalAlignment</span><span class="o">&gt;</span><span class="w"> </span><span class="n">vertical_alignment</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">SharedString</span><span class="o">&gt;</span><span class="w"> </span><span class="n">font_family</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="w"> </span><span class="n">font_italic</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">TextWrap</span><span class="o">&gt;</span><span class="w"> </span><span class="n">wrap</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">TextOverflow</span><span class="o">&gt;</span><span class="w"> </span><span class="n">overflow</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">letter_spacing</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">Brush</span><span class="o">&gt;</span><span class="w"> </span><span class="n">stroke</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">stroke_width</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">TextStrokeStyle</span><span class="o">&gt;</span><span class="w"> </span><span class="n">stroke_style</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">width</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">height</span><span class="p">;</span>
 <span class="w">    </span><span class="n">CachedRenderingData</span><span class="w"> </span><span class="n">cached_rendering_data</span><span class="p">;</span>
 <span class="p">};</span>
 
@@ -1174,7 +1186,7 @@
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">Brush</span><span class="o">&gt;</span><span class="w"> </span><span class="n">background</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">SharedString</span><span class="o">&gt;</span><span class="w"> </span><span class="n">title</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="w"> </span><span class="n">no_frame</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">resize_border</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">resize_border_width</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="w"> </span><span class="n">always_on_top</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">Image</span><span class="o">&gt;</span><span class="w"> </span><span class="n">icon</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">SharedString</span><span class="o">&gt;</span><span class="w"> </span><span class="n">default_font_family</span><span class="p">;</span>
@@ -1581,7 +1593,8 @@
 <span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">TouchArea</span><span class="p">);</span>
 <span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">FocusScope</span><span class="p">);</span>
 <span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">Flickable</span><span class="p">);</span>
-<span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">Text</span><span class="p">);</span>
+<span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">SimpleText</span><span class="p">);</span>
+<span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">ComplexText</span><span class="p">);</span>
 <span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">Path</span><span class="p">);</span>
 <span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">WindowItem</span><span class="p">);</span>
 <span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">TextInput</span><span class="p">);</span>

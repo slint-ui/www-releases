@@ -737,23 +737,35 @@ Program Listing for File slint_internal.h
        inline Flickable(); inline ~Flickable();
    };
    
-   struct Text {
+   struct SimpleText {
+       Property<LogicalLength> width;
+       Property<LogicalLength> height;
        Property<SharedString> text;
-       Property<SharedString> font_family;
        Property<LogicalLength> font_size;
        Property<int32_t> font_weight;
-       Property<bool> font_italic;
        Property<Brush> color;
        Property<TextHorizontalAlignment> horizontal_alignment;
        Property<TextVerticalAlignment> vertical_alignment;
+       CachedRenderingData cached_rendering_data;
+   };
+   
+   struct ComplexText {
+       Property<LogicalLength> width;
+       Property<LogicalLength> height;
+       Property<SharedString> text;
+       Property<LogicalLength> font_size;
+       Property<int32_t> font_weight;
+       Property<Brush> color;
+       Property<TextHorizontalAlignment> horizontal_alignment;
+       Property<TextVerticalAlignment> vertical_alignment;
+       Property<SharedString> font_family;
+       Property<bool> font_italic;
        Property<TextWrap> wrap;
        Property<TextOverflow> overflow;
        Property<LogicalLength> letter_spacing;
        Property<Brush> stroke;
        Property<LogicalLength> stroke_width;
        Property<TextStrokeStyle> stroke_style;
-       Property<LogicalLength> width;
-       Property<LogicalLength> height;
        CachedRenderingData cached_rendering_data;
    };
    
@@ -777,7 +789,7 @@ Program Listing for File slint_internal.h
        Property<Brush> background;
        Property<SharedString> title;
        Property<bool> no_frame;
-       Property<LogicalLength> resize_border;
+       Property<LogicalLength> resize_border_width;
        Property<bool> always_on_top;
        Property<Image> icon;
        Property<SharedString> default_font_family;
@@ -1184,7 +1196,8 @@ Program Listing for File slint_internal.h
    SLINT_DECL_ITEM(TouchArea);
    SLINT_DECL_ITEM(FocusScope);
    SLINT_DECL_ITEM(Flickable);
-   SLINT_DECL_ITEM(Text);
+   SLINT_DECL_ITEM(SimpleText);
+   SLINT_DECL_ITEM(ComplexText);
    SLINT_DECL_ITEM(Path);
    SLINT_DECL_ITEM(WindowItem);
    SLINT_DECL_ITEM(TextInput);

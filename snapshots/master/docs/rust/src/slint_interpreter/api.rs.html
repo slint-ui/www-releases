@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/api.rs`."><title>api.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-46f98efaafac5295.ttf.woff2,FiraSans-Regular-018c141bf0843ffd.woff2,FiraSans-Medium-8f9a781e4970d388.woff2,SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2,SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-dd39b87e5fcfba68.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.81.0-nightly (cc8da78a0 2024-07-04)" data-channel="nightly" data-search-js="search-0fe7219eb170c82e.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../static.files/storage-118b08c4c78b968e.js"></script><script defer src="../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-20a3ad099b048cf2.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-df360f571f6edeae.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/api.rs`."><title>api.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-46f98efaafac5295.ttf.woff2,FiraSans-Regular-018c141bf0843ffd.woff2,FiraSans-Medium-8f9a781e4970d388.woff2,SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2,SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-dd39b87e5fcfba68.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.81.0-nightly (524d806c6 2024-07-05)" data-channel="nightly" data-search-js="search-0fe7219eb170c82e.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../static.files/storage-118b08c4c78b968e.js"></script><script defer src="../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-20a3ad099b048cf2.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-df360f571f6edeae.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -2198,6 +2198,33 @@
 <a href="#2077" id="2077">2077</a>
 <a href="#2078" id="2078">2078</a>
 <a href="#2079" id="2079">2079</a>
+<a href="#2080" id="2080">2080</a>
+<a href="#2081" id="2081">2081</a>
+<a href="#2082" id="2082">2082</a>
+<a href="#2083" id="2083">2083</a>
+<a href="#2084" id="2084">2084</a>
+<a href="#2085" id="2085">2085</a>
+<a href="#2086" id="2086">2086</a>
+<a href="#2087" id="2087">2087</a>
+<a href="#2088" id="2088">2088</a>
+<a href="#2089" id="2089">2089</a>
+<a href="#2090" id="2090">2090</a>
+<a href="#2091" id="2091">2091</a>
+<a href="#2092" id="2092">2092</a>
+<a href="#2093" id="2093">2093</a>
+<a href="#2094" id="2094">2094</a>
+<a href="#2095" id="2095">2095</a>
+<a href="#2096" id="2096">2096</a>
+<a href="#2097" id="2097">2097</a>
+<a href="#2098" id="2098">2098</a>
+<a href="#2099" id="2099">2099</a>
+<a href="#2100" id="2100">2100</a>
+<a href="#2101" id="2101">2101</a>
+<a href="#2102" id="2102">2102</a>
+<a href="#2103" id="2103">2103</a>
+<a href="#2104" id="2104">2104</a>
+<a href="#2105" id="2105">2105</a>
+<a href="#2106" id="2106">2106</a>
 </pre></div><pre class="rust"><code><span class="comment">// Copyright © SixtyFPS GmbH &lt;info@slint.dev&gt;
 // SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0
 
@@ -2706,7 +2733,7 @@
         <span class="kw">let </span><span class="kw-2">mut </span>config = i_slint_compiler::CompilerConfiguration::new(
             i_slint_compiler::generator::OutputFormat::Interpreter,
         );
-        config.components_to_generate = i_slint_compiler::ComponentsToGenerate::LastComponent;
+        config.components_to_generate = i_slint_compiler::ComponentSelection::LastExported;
         <span class="self">Self </span>{ config, diagnostics: <span class="macro">vec!</span>[] }
     }
 }
@@ -2991,7 +3018,6 @@
     ///
     /// Any diagnostics produced during the compilation, such as warnings or errors, can be retrieved
     /// after the call using [`CompilationResult::diagnostics()`].
-    /// The [`print_diagnostics`] function can be used to display the diagnostics to the users.
     ///
     /// If the file was compiled without error, the list of component names can be obtained with
     /// [`CompilationResult::component_names`], and the compiled components themselves with
@@ -3011,7 +3037,10 @@
             <span class="prelude-val">Err</span>(d) =&gt; {
                 <span class="kw">let </span><span class="kw-2">mut </span>diagnostics = i_slint_compiler::diagnostics::BuildDiagnostics::default();
                 diagnostics.push_compiler_error(d);
-                <span class="kw">return </span>CompilationResult { components: HashMap::new(), diagnostics };
+                <span class="kw">return </span>CompilationResult {
+                    components: HashMap::new(),
+                    diagnostics: diagnostics.into_iter().collect(),
+                };
             }
         };
 
@@ -3025,7 +3054,6 @@
     ///
     /// Any diagnostics produced during the compilation, such as warnings or errors, can be retrieved
     /// after the call using [`CompilationResult::diagnostics()`].
-    /// The [`print_diagnostics`] function can be used to display the diagnostics to the users.
     ///
     /// This function is `async` but in practice, this is only asynchronous if
     /// [`Self::set_file_loader`] is set and its future is actually asynchronous.
@@ -3038,26 +3066,52 @@
 
 <span class="doccomment">/// The result of a compilation
 ///
-/// If [`Self::has_error``] is true, then the compilation failed.
-/// The [`Self::diagnostics`] function can be used to retrieve the diagnostics (errors and/or warnings).
-/// The components names and their definitions can be retrieved using the [`Self::component_names`]
-/// and [`Self::component`] functions.
+/// If [`Self::has_errors()`] is true, then the compilation failed.
+/// The [`Self::diagnostics()`] function can be used to retrieve the diagnostics (errors and/or warnings)
+/// or [`Self::print_diagnostics()`] can be used to print them to stderr.
+/// The components can be retrieved using [`Self::components()`]
+</span><span class="attr">#[derive(Clone)]
 </span><span class="kw">pub struct </span>CompilationResult {
     <span class="kw">pub</span>(<span class="kw">crate</span>) components: HashMap&lt;String, ComponentDefinition&gt;,
-    <span class="kw">pub</span>(<span class="kw">crate</span>) diagnostics: i_slint_compiler::diagnostics::BuildDiagnostics,
+    <span class="kw">pub</span>(<span class="kw">crate</span>) diagnostics: Vec&lt;Diagnostic&gt;,
+}
+
+<span class="kw">impl </span>core::fmt::Debug <span class="kw">for </span>CompilationResult {
+    <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>std::fmt::Formatter&lt;<span class="lifetime">'_</span>&gt;) -&gt; std::fmt::Result {
+        f.debug_struct(<span class="string">"CompilationResult"</span>)
+            .field(<span class="string">"components"</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.components.keys())
+            .field(<span class="string">"diagnostics"</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.diagnostics)
+            .finish()
+    }
 }
 
 <span class="kw">impl </span>CompilationResult {
     <span class="doccomment">/// Returns true if the compilation failed.
-    /// The errors can be retrieved using the [`Self::diagnostics`] function.
-    /// And printed to the console using the [`print_diagnostics`] function.
-    </span><span class="kw">pub fn </span>has_error(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
-        <span class="self">self</span>.diagnostics.has_error()
+    /// The errors can be retrieved using the [`Self::diagnostics()`] function.
+    </span><span class="kw">pub fn </span>has_errors(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        <span class="self">self</span>.diagnostics().any(|diag| diag.level() == DiagnosticLevel::Error)
     }
 
     <span class="doccomment">/// Return an iterator over the diagnostics.
+    ///
+    /// You can also call [`Self::print_diagnostics()`] to output the diagnostics to stderr
     </span><span class="kw">pub fn </span>diagnostics(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw">impl </span>Iterator&lt;Item = Diagnostic&gt; + <span class="lifetime">'_ </span>{
         <span class="self">self</span>.diagnostics.iter().cloned()
+    }
+
+    <span class="doccomment">/// Print the diagnostics to stderr
+    ///
+    /// The diagnostics are printed in the same style as rustc errors
+    ///
+    /// This function is available when the `display-diagnostics` is enabled.
+    </span><span class="attr">#[cfg(feature = <span class="string">"display-diagnostics"</span>)]
+    </span><span class="kw">pub fn </span>print_diagnostics(<span class="kw-2">&amp;</span><span class="self">self</span>) {
+        print_diagnostics(<span class="kw-2">&amp;</span><span class="self">self</span>.diagnostics)
+    }
+
+    <span class="doccomment">/// Returns an iterator over the compiled components.
+    </span><span class="kw">pub fn </span>components(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw">impl </span>Iterator&lt;Item = ComponentDefinition&gt; + <span class="lifetime">'_ </span>{
+        <span class="self">self</span>.components.values().cloned()
     }
 
     <span class="doccomment">/// Returns the names of the components that were compiled.
@@ -4240,7 +4294,7 @@
         ),
     );
 
-    <span class="macro">assert!</span>(!result.has_error(), <span class="string">"Error {:?}"</span>, result.diagnostics().collect::&lt;Vec&lt;<span class="kw">_</span>&gt;&gt;());
+    <span class="macro">assert!</span>(!result.has_errors(), <span class="string">"Error {:?}"</span>, result.diagnostics().collect::&lt;Vec&lt;<span class="kw">_</span>&gt;&gt;());
     <span class="kw">let </span><span class="kw-2">mut </span>components = result.component_names().collect::&lt;Vec&lt;<span class="kw">_</span>&gt;&gt;();
     components.sort();
     <span class="macro">assert_eq!</span>(components, <span class="macro">vec!</span>[<span class="string">"Bar"</span>, <span class="string">"Xyz"</span>]);

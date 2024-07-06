@@ -269,6 +269,6 @@
  This enum describes the how the text wrap if it is too wide to fit in the [`Text`](elements.md#text) width.
 
 * **`no-wrap`**: The text won't wrap, but instead will overflow.
-* **`word-wrap`**: The text will be wrapped at word boundaries.
+* **`word-wrap`**: The text will be wrapped at word boundaries if possible, or at any location for very long words.
 * **`char-wrap`**: The text will be wrapped at any character. Currently only supported by the Qt and Software renderers.
 
