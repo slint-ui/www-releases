@@ -379,12 +379,7 @@
 <h2>Properties<a class="headerlink" href="#properties" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">title</span></code></strong> (<em>in</em> <em>string</em>): The text that is displayed at the top of the picker.</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">cancel-label</span></code></strong> (<em>in</em> <em>string</em>): The text written in the cancel button.</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">ok-label</span></code></strong> (<em>in</em> <em>string</em>): The text written in the ok button.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">date</span></code></strong>: (<em>in</em> <em>Date</em>): Set the initial displayed date.</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">input-title</span></code></strong>: (<em>in</em> <em>string</em>): Title that displayed on the date input <code class="docutils literal notranslate"><span class="pre">LineEdit</span></code>.</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">input-placeholder</span></code></strong>: (<em>in</em> <em>string</em>): Placeholder text that is displayed on the date input <code class="docutils literal notranslate"><span class="pre">LineEdit</span></code>.</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">input-format</span></code></strong>: (<em>in</em> <em>string</em>): Defines the format that is used to parse the text of <code class="docutils literal notranslate"><span class="pre">LineEdit</span></code>. For more details check the <a class="reference external" href="https://docs.rs/chrono/latest/chrono/format/strftime/index.html">https://docs.rs/chrono/latest/chrono/format/strftime/index.html</a>. (default <code class="docutils literal notranslate"><span class="pre">&quot;%m/%d/%Y&quot;</span></code>)</p></li>
 </ul>
 </section>
 <section id="callbacks">
@@ -396,7 +391,7 @@
 </section>
 <section id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h2>
-<div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>import { DatePicker, Button } from &quot;std-widgets.slint&quot;;
+<div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>import { DatePickerPopup, Button } from &quot;std-widgets.slint&quot;;
 export component Example inherits Window {
     width: 600px;
     height: 600px;
@@ -409,20 +404,13 @@ export component Example inherits Window {
         }
     }
 
-    date-picker := PopupWindow {
+    date-picker := DatePickerPopup {
         width: 360px;
         height: 524px;
         close-on-click: false;
 
-        DatePicker {
-            canceled =&gt; {
-                date-picker.close();
-            }
-
-            accepted(date) =&gt; {
-                debug(date);
-                date-picker.close();
-            }
+        accepted(date) =&gt; {
+            date-picker.close();
         }
     }
 }
