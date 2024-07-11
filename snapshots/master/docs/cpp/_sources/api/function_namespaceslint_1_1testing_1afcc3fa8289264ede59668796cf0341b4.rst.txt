@@ -1,0 +1,14 @@
+.. _exhale_function_namespaceslint_1_1testing_1afcc3fa8289264ede59668796cf0341b4:
+
+Function slint::testing::init
+=============================
+
+- Defined in :ref:`file__home_runner_work_slint_slint_api_cpp_include_slint-testing.h`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: slint::testing::init()
+   :project: Slint

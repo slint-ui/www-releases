@@ -152,23 +152,7 @@ Program Listing for File slint_enums_internal.h
        EndOpen,
        EndClosed,
    };
-   enum class AccessibleRole {
-       None,
-       Button,
-       Checkbox,
-       Combobox,
-       List,
-       Slider,
-       Spinbox,
-       Tab,
-       TabList,
-       Text,
-       Table,
-       Tree,
-       ProgressIndicator,
-       TextInput,
-       Switch,
-   };
+   using slint::testing::AccessibleRole;
    enum class SortOrder {
        Unsorted,
        Ascending,

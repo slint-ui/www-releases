@@ -1,0 +1,14 @@
+.. _exhale_define_slint__generated__public_8h_1a56612ce4cec4904836a5caf33bedba79:
+
+Define SLINT_FEATURE_EXPERIMENTAL
+=================================
+
+- Defined in :ref:`file_cppdocs_generated_include_slint_generated_public.h`
+
+
+Define Documentation
+--------------------
+
+
+.. doxygendefine:: SLINT_FEATURE_EXPERIMENTAL
+   :project: Slint

@@ -19,6 +19,25 @@ Program Listing for File slint_enums.h
        Right,
        Middle,
    };
+   namespace testing {
+   enum class AccessibleRole {
+       None,
+       Button,
+       Checkbox,
+       Combobox,
+       List,
+       Slider,
+       Spinbox,
+       Tab,
+       TabList,
+       Text,
+       Table,
+       Tree,
+       ProgressIndicator,
+       TextInput,
+       Switch,
+   };
+   }
    }
    
    namespace slint::platform::key_codes {

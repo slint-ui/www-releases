@@ -68,7 +68,7 @@ Program Listing for File slint_image.h
    
        Image() : data(Data::ImageInner_None()) { }
    
-   #ifndef SLINT_FEATURE_FREESTANDING
+   #if !defined(SLINT_FEATURE_FREESTANDING) || defined(DOXYGEN)
        [[nodiscard]] static Image load_from_path(const SharedString &file_path)
        {
            Image img;

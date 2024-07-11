@@ -1,0 +1,14 @@
+.. _exhale_enum_namespaceslint_1_1testing_1a4de74a3a436a7a3fd9a228930f69274d:
+
+Enum AccessibleRole
+===================
+
+- Defined in :ref:`file_cppdocs_generated_include_slint_enums.h`
+
+
+Enum Documentation
+------------------
+
+
+.. doxygenenum:: slint::testing::AccessibleRole
+   :project: Slint

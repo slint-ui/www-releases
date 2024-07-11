@@ -1,0 +1,37 @@
+
+.. _namespace_slint__testing:
+
+Namespace slint::testing
+========================
+
+
+Detailed Description
+--------------------
+
+Use the functions and classes in this namespace for in-process UI testing.
+
+This module is still experimental - it's API is subject to changes and not stabilized yet. To use the module, you must enable the ``SLINT_FEATURE_EXPERIMENTAL=ON`` and ``SLINT_FEATURE_TESTING`` CMake options. 
+
+
+
+
+
+Classes
+-------
+
+
+- :ref:`exhale_class_classslint_1_1testing_1_1ElementHandle`
+
+
+Enums
+-----
+
+
+- :ref:`exhale_enum_namespaceslint_1_1testing_1a4de74a3a436a7a3fd9a228930f69274d`
+
+
+Functions
+---------
+
+
+- :ref:`exhale_function_namespaceslint_1_1testing_1afcc3fa8289264ede59668796cf0341b4`

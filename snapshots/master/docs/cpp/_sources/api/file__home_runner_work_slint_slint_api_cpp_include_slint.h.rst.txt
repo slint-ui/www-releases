@@ -31,13 +31,9 @@ Includes
 
 - ``concepts``
 
-- ``condition_variable``
-
 - ``functional``
 
 - ``memory``
-
-- ``mutex``
 
 - ``optional``
 
