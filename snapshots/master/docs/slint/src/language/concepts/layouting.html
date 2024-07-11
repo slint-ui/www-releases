@@ -297,10 +297,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../widgets/tabwidget.html"><code class="docutils literal notranslate"><span class="pre">TabWidget</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../widgets/textedit.html"><code class="docutils literal notranslate"><span class="pre">TextEdit</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../widgets/verticalbox.html"><code class="docutils literal notranslate"><span class="pre">VerticalBox</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../widgets/timepicker.html">struct <code class="docutils literal notranslate"><span class="pre">Time</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../widgets/timepicker.html#timepicker"><code class="docutils literal notranslate"><span class="pre">TimePicker</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../widgets/datepicker.html">struct <code class="docutils literal notranslate"><span class="pre">Date</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../widgets/datepicker.html#datepicker"><code class="docutils literal notranslate"><span class="pre">DatePicker</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../widgets/timepicker.html"><code class="docutils literal notranslate"><span class="pre">TimePickerPopup</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../widgets/datepicker.html"><code class="docutils literal notranslate"><span class="pre">DatePickerPopup</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -418,10 +416,10 @@ you to attach a unit to the number. You can choose between two different units:<
 configured with. For example, on a modern High-DPI display the device pixel ratio can be 2,
 so every logical pixel occupies 2 physical pixels. On an older screen the user
 interface scales without any adaptations.</p>
-<p>Additionally, the <code class="docutils literal notranslate"><span class="pre">width</span></code> and <code class="docutils literal notranslate"><span class="pre">height</span></code> properties can also be specified as a <code class="docutils literal notranslate"><span class="pre">%</span></code> percentage
+<p>You can also specify the <code class="docutils literal notranslate"><span class="pre">width</span></code> and <code class="docutils literal notranslate"><span class="pre">height</span></code> properties as a <code class="docutils literal notranslate"><span class="pre">%</span></code> percentage
 unit, which applies relative to the parent element. For example a <code class="docutils literal notranslate"><span class="pre">width:</span> <span class="pre">50%</span></code> means half
 of the parent’s <code class="docutils literal notranslate"><span class="pre">width</span></code>.</p>
-<p>The default values for <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> properties are such that elements are centered within their
+<p>The default values for <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> properties center elements within their
 parent.</p>
 <p>The default values for <code class="docutils literal notranslate"><span class="pre">width</span></code> and <code class="docutils literal notranslate"><span class="pre">height</span></code> depend on the type of element. Some elements are sized
 automatically based on their content, such as <code class="docutils literal notranslate"><span class="pre">Image</span></code>, <code class="docutils literal notranslate"><span class="pre">Text</span></code>, and most widgets. The following elements
@@ -433,15 +431,16 @@ don’t have content and default to fill their parent element when they do not h
 <li><p><code class="docutils literal notranslate"><span class="pre">Flickable</span></code></p></li>
 </ul>
 <p>Layouts are also defaulting to fill the parent, regardless of their own preferred size.</p>
+<!-- Without base? -->
 <p>Other elements (including custom ones without base) default to using their preferred size.</p>
 <section id="preferred-size">
 <h3>Preferred size<a class="headerlink" href="#preferred-size" title="Permalink to this heading">¶</a></h3>
-<p>The preferred size of elements can be specified with the <code class="docutils literal notranslate"><span class="pre">preferred-width</span></code> and <code class="docutils literal notranslate"><span class="pre">preferred-height</span></code> properties.</p>
+<p>You can specify the preferred size of elements with the <code class="docutils literal notranslate"><span class="pre">preferred-width</span></code> and <code class="docutils literal notranslate"><span class="pre">preferred-height</span></code> properties.</p>
 <p>When not explicitly set, the preferred size depends on the children, and is the preferred size of the
 child that has the bigger preferred size, whose <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> property are not set.
 The preferred size is therefore computed from the child to the parent, just like other constraints (maximum and minimum size), unless explicitly overwritten.</p>
 <p>A special case is to set the preferred size to be the size of the parent using <code class="docutils literal notranslate"><span class="pre">100%</span></code> as value.
-For example,this component will use the size of the parent by default:</p>
+For example, this component uses the size of the parent by default:</p>
 <div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>export component MyComponent {
     preferred-width: 100%;
     preferred-height: 100%;
@@ -491,7 +490,7 @@ applied to the parent element.</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">padding</span></code>: This specifies the padding within the layout, the space between the elements and the border of the
 layout.</p></li>
 </ul>
-<p>For more fine grained control, the <code class="docutils literal notranslate"><span class="pre">padding</span></code> property can be split into properties for each side of the layout:</p>
+<p>For more fine grained control, you can split the <code class="docutils literal notranslate"><span class="pre">padding</span></code> property into properties for each side of the layout:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">padding-left</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">padding-right</span></code></p></li>
@@ -517,7 +516,7 @@ export component Example inherits Window {
 }
 </pre></div>
 </div>
-<p>The example below, on the other hand, specifies that the rectangles shall align
+<p>The example below, on the other hand, specifies that the rectangles align
 to the start of the layout (the visual left). That results in no stretching but instead
 the rectangles retain their specified minimum width:</p>
 <div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>// Unless an alignment is specified
@@ -571,7 +570,7 @@ set to the minimum size which is set with the min-width or min-height property, 
 the minimum size of an inner layout, whatever is bigger.</p>
 <p>The elements are placed according to the alignment. The size of elements
 is bigger than the minimum size only if the <code class="docutils literal notranslate"><span class="pre">alignment</span></code> property of the layout is <code class="docutils literal notranslate"><span class="pre">LayoutAlignment.stretch</span></code> (the default)</p>
-<p>This example show the different alignment possibilities</p>
+<p>This example show the different alignment possibilities:</p>
 <div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>export component Example inherits Window {
     width: 300px;
     height: 200px;
@@ -630,7 +629,7 @@ then the extra space is shared amongst element proportional to their stretch fac
 <code class="docutils literal notranslate"><span class="pre">horizontal-stretch</span></code> and <code class="docutils literal notranslate"><span class="pre">vertical-stretch</span></code> properties. The stretched size won’t exceed the maximum size.
 The stretch factor is a floating point number. The elements that have a default content size usually defaults to 0
 while elements that default to the size of their parents defaults to 1.
-An element of a stretch factor of 0 will keep its minimum size, unless all the other elements also have a stretch
+An element of a stretch factor of 0 keep its minimum size, unless all the other elements also have a stretch
 factor of 0 or reached their maximum size.</p>
 <p>Examples:</p>
 <div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>export component Example inherits Window {
@@ -667,7 +666,7 @@ factor of 0 or reached their maximum size.</p>
 </section>
 <section id="for">
 <h3><code class="docutils literal notranslate"><span class="pre">for</span></code><a class="headerlink" href="#for" title="Permalink to this heading">¶</a></h3>
-<p>The VerticalLayout and Horizontal layout may also contain <code class="docutils literal notranslate"><span class="pre">for</span></code> or <code class="docutils literal notranslate"><span class="pre">if</span></code> expressions:</p>
+<p>The VerticalLayout and HorizontalLayout can also contain <code class="docutils literal notranslate"><span class="pre">for</span></code> or <code class="docutils literal notranslate"><span class="pre">if</span></code> expressions:</p>
 <div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>export component Example inherits Window {
     width: 200px;
     height: 50px;
@@ -687,7 +686,7 @@ factor of 0 or reached their maximum size.</p>
 <h2>GridLayout<a class="headerlink" href="#gridlayout" title="Permalink to this heading">¶</a></h2>
 <p>The GridLayout lays the element in a grid.
 Each element gains the properties <code class="docutils literal notranslate"><span class="pre">row</span></code>, <code class="docutils literal notranslate"><span class="pre">col</span></code>, <code class="docutils literal notranslate"><span class="pre">rowspan</span></code>, and <code class="docutils literal notranslate"><span class="pre">colspan</span></code>.
-One can either use a <code class="docutils literal notranslate"><span class="pre">Row</span></code> sub-element, or set the <code class="docutils literal notranslate"><span class="pre">row</span></code> property explicitly.
+You can either use a <code class="docutils literal notranslate"><span class="pre">Row</span></code> sub-element, or set the <code class="docutils literal notranslate"><span class="pre">row</span></code> property explicitly.
 These properties must be statically known at compile time, so it’s impossible
 to use arithmetic or depend on properties. As of now, the use of <code class="docutils literal notranslate"><span class="pre">for</span></code> or <code class="docutils literal notranslate"><span class="pre">if</span></code>
 isn’t allowed in a grid layout.</p>
@@ -709,7 +708,7 @@ isn’t allowed in a grid layout.</p>
 }
 </pre></div>
 </div>
-<p>This example use the <code class="docutils literal notranslate"><span class="pre">col</span></code> and <code class="docutils literal notranslate"><span class="pre">row</span></code> property</p>
+<p>This example use the <code class="docutils literal notranslate"><span class="pre">col</span></code> and <code class="docutils literal notranslate"><span class="pre">row</span></code> property:</p>
 <div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>export component Foo inherits Window {
     width: 200px;
     height: 150px;

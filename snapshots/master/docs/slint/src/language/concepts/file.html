@@ -297,10 +297,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../widgets/tabwidget.html"><code class="docutils literal notranslate"><span class="pre">TabWidget</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../widgets/textedit.html"><code class="docutils literal notranslate"><span class="pre">TextEdit</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../widgets/verticalbox.html"><code class="docutils literal notranslate"><span class="pre">VerticalBox</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../widgets/timepicker.html">struct <code class="docutils literal notranslate"><span class="pre">Time</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../widgets/timepicker.html#timepicker"><code class="docutils literal notranslate"><span class="pre">TimePicker</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../widgets/datepicker.html">struct <code class="docutils literal notranslate"><span class="pre">Date</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../widgets/datepicker.html#datepicker"><code class="docutils literal notranslate"><span class="pre">DatePicker</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../widgets/timepicker.html"><code class="docutils literal notranslate"><span class="pre">TimePickerPopup</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../widgets/datepicker.html"><code class="docutils literal notranslate"><span class="pre">DatePickerPopup</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -362,7 +360,7 @@
           <!-- Copyright © SixtyFPS GmbH <info@slint.dev> ; SPDX-License-Identifier: MIT -->
 <section id="the-slint-file">
 <h1>The <code class="docutils literal notranslate"><span class="pre">.slint</span></code> File<a class="headerlink" href="#the-slint-file" title="Permalink to this heading">¶</a></h1>
-<p>User interfaces are written in the Slint language and saved in files with the <code class="docutils literal notranslate"><span class="pre">.slint</span></code> extension.</p>
+<p>You write user interfaces in the Slint language and saved in files with the <code class="docutils literal notranslate"><span class="pre">.slint</span></code> extension.</p>
 <p>Each <code class="docutils literal notranslate"><span class="pre">.slint</span></code> file defines one or several components. These components declare
 a tree of elements. Components form the basis of composition in Slint. Use them
 to build your own re-usable set of UI controls. You can use each declared
@@ -392,14 +390,13 @@ export component MyApp inherits Window {
         text: &quot;world&quot;;
     }
 }
-
 </pre></div>
 </div>
 <p>Both <code class="docutils literal notranslate"><span class="pre">MyButton</span></code> and <code class="docutils literal notranslate"><span class="pre">MyApp</span></code> are components. <code class="docutils literal notranslate"><span class="pre">Window</span></code> and <code class="docutils literal notranslate"><span class="pre">Rectangle</span></code> are built-in elements
 used by <code class="docutils literal notranslate"><span class="pre">MyApp</span></code>. <code class="docutils literal notranslate"><span class="pre">MyApp</span></code> also re-uses the <code class="docutils literal notranslate"><span class="pre">MyButton</span></code> component as two separate elements.</p>
-<p>Elements have properties, which you can assign values to. Here we assign a string
+<p>Elements have properties, which you can assign values to. The example above assigns a string
 constant “hello” to the first <code class="docutils literal notranslate"><span class="pre">MyButton</span></code>’s <code class="docutils literal notranslate"><span class="pre">text</span></code> property. You
-can also assign entire expressions. Slint will re-evaluate the expressions when any
+can also assign entire expressions. Slint re-evaluates the expressions when any
 of the properties they depend on change, which makes the user-interface reactive.</p>
 <p>You can name elements using the <code class="docutils literal notranslate"><span class="pre">:=</span></code> syntax:</p>
 <div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>component MyButton inherits Text {
@@ -422,7 +419,9 @@ export component MyApp inherits Window {
 }
 </pre></div>
 </div>
+<div class="note docutils">
 <p>Names have to be valid <a class="reference internal" href="../syntax/identifiers.html"><span class="std std-doc">identifiers</span></a>.</p>
+</div>
 <p>Some elements are also accessible under pre-defined names:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">root</span></code> refers to the outermost element of a component.</p></li>

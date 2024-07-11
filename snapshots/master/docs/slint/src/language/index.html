@@ -297,10 +297,8 @@
 <li class="toctree-l2"><a class="reference internal" href="widgets/tabwidget.html"><code class="docutils literal notranslate"><span class="pre">TabWidget</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="widgets/textedit.html"><code class="docutils literal notranslate"><span class="pre">TextEdit</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="widgets/verticalbox.html"><code class="docutils literal notranslate"><span class="pre">VerticalBox</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="widgets/timepicker.html">struct <code class="docutils literal notranslate"><span class="pre">Time</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="widgets/timepicker.html#timepicker"><code class="docutils literal notranslate"><span class="pre">TimePicker</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="widgets/datepicker.html">struct <code class="docutils literal notranslate"><span class="pre">Date</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="widgets/datepicker.html#datepicker"><code class="docutils literal notranslate"><span class="pre">DatePicker</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="widgets/timepicker.html"><code class="docutils literal notranslate"><span class="pre">TimePickerPopup</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="widgets/datepicker.html"><code class="docutils literal notranslate"><span class="pre">DatePickerPopup</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -361,19 +359,19 @@
         <article role="main" id="furo-main-content">
           <section id="introduction">
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h1>
-<p><a class="reference external" href="https://slint.dev">Slint</a> comes with an easy to learn and use language for you to describe user
-interfaces with. It is readable to both humans and machines.</p>
+<p>Slint is an easy to learn and use language to describe user
+interfaces. It is readable to both humans and machines.</p>
 <p>This way, we have excellent tooling on one side, while also enabling
 designers and developers to know exactly what happens, by reading the code
 their machine uses to display the user interfaces.</p>
-<p>This Slint language is either interpreted at run-time or compiled to native
-code, which gets built into your application together with the code in the same
+<p>This Slint code is either interpreted at run-time or compiled to native
+code, which gets built into your application together with the code in the
 programming language providing the business logic. The Slint compiler can
 optimize the user interface and any resources it uses at compile time, so
 that user interfaces written in Slint use few resources, with regards to
 performance and storage.</p>
 <p>The Slint language enforces a separation of user interface from business logic,
-using interfaces you can define for your project. This enables a fearless
+using interfaces you can define for your project. This enables
 cooperation between design-focused team members and those concentrating on the programming
 side of the project.</p>
 <p>The Slint language describes extensible graphical user interfaces using the
@@ -390,8 +388,6 @@ property, while a <cite>Rectangle</cite> element has a <cite>background</cite> c
 <li><p>Build highly customized user interfaces with the <a class="reference internal" href="builtins/elements.html#builtin-elements"><span class="std std-ref">builtin elements</span></a>
 and pre-built <a class="reference internal" href="widgets/index.html#widgets"><span class="std std-ref">widgets</span></a> provided.</p></li>
 </ul>
-<p>It only describes the user interface and it is not a programming language. The business
-logic is written in a different programming language using the Slint API.</p>
 </section>
 
         </article>

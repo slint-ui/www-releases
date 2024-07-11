@@ -158,6 +158,9 @@ Program Listing for File slint_platform_internal.h
    
    RendererPtr slint_software_renderer_handle(SoftwareRendererOpaque r);
    
+   void slint_software_renderer_region_to_rects(const PhysicalRegion *region,
+                                                SharedVector<IntRect> *out);
+   
    CppRawHandleOpaque slint_new_raw_window_handle_win32(void *hwnd, void *_hinstance);
    
    CppRawHandleOpaque slint_new_raw_window_handle_x11_xcb(uint32_t window,

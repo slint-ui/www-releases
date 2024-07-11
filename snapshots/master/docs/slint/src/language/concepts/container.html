@@ -297,10 +297,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../widgets/tabwidget.html"><code class="docutils literal notranslate"><span class="pre">TabWidget</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../widgets/textedit.html"><code class="docutils literal notranslate"><span class="pre">TextEdit</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../widgets/verticalbox.html"><code class="docutils literal notranslate"><span class="pre">VerticalBox</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../widgets/timepicker.html">struct <code class="docutils literal notranslate"><span class="pre">Time</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../widgets/timepicker.html#timepicker"><code class="docutils literal notranslate"><span class="pre">TimePicker</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../widgets/datepicker.html">struct <code class="docutils literal notranslate"><span class="pre">Date</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../widgets/datepicker.html#datepicker"><code class="docutils literal notranslate"><span class="pre">DatePicker</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../widgets/timepicker.html"><code class="docutils literal notranslate"><span class="pre">TimePickerPopup</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../widgets/datepicker.html"><code class="docutils literal notranslate"><span class="pre">DatePickerPopup</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -363,8 +361,8 @@
 <section id="container-components">
 <h1>Container Components<a class="headerlink" href="#container-components" title="Permalink to this heading">¶</a></h1>
 <p>When creating components, it’s sometimes useful to influence where child
-elements are placed when used. For example, imagine a component that draws
-a label above whatever element the user places inside:</p>
+elements are placed when used. For example, a component that draws
+a label above an element inside:</p>
 <div class="highlight-slint,ignore notranslate"><div class="highlight"><pre><span></span>export component MyApp inherits Window {
 
     BoxWithLabel {
@@ -378,8 +376,8 @@ a label above whatever element the user places inside:</p>
 </pre></div>
 </div>
 <p>You can implement such a <code class="docutils literal notranslate"><span class="pre">BoxWithLabel</span></code> using a layout. By default child elements like
-the <code class="docutils literal notranslate"><span class="pre">Text</span></code> element become direct children of the <code class="docutils literal notranslate"><span class="pre">BoxWithLabel</span></code>, but we need them to become
-children of our layout instead. For this purpose, you can change the default child placement by using
+the <code class="docutils literal notranslate"><span class="pre">Text</span></code> element become direct children of the <code class="docutils literal notranslate"><span class="pre">BoxWithLabel</span></code>, but for this example they need to become
+children of the layout instead. To do this can change the default child placement by using
 the <code class="docutils literal notranslate"><span class="pre">&#64;children</span></code> expression inside the element hierarchy of a component:</p>
 <div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>component BoxWithLabel inherits GridLayout {
     Row {

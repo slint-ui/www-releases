@@ -555,6 +555,9 @@
 
 <span class="n">RendererPtr</span><span class="w"> </span><span class="nf">slint_software_renderer_handle</span><span class="p">(</span><span class="n">SoftwareRendererOpaque</span><span class="w"> </span><span class="n">r</span><span class="p">);</span>
 
+<span class="kt">void</span><span class="w"> </span><span class="nf">slint_software_renderer_region_to_rects</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">PhysicalRegion</span><span class="w"> </span><span class="o">*</span><span class="n">region</span><span class="p">,</span>
+<span class="w">                                             </span><span class="n">SharedVector</span><span class="o">&lt;</span><span class="n">IntRect</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">out</span><span class="p">);</span>
+
 <span class="n">CppRawHandleOpaque</span><span class="w"> </span><span class="nf">slint_new_raw_window_handle_win32</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">hwnd</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">_hinstance</span><span class="p">);</span>
 
 <span class="n">CppRawHandleOpaque</span><span class="w"> </span><span class="nf">slint_new_raw_window_handle_x11_xcb</span><span class="p">(</span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">window</span><span class="p">,</span>

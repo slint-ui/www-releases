@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" /><link rel="next" title="Custom Control Introduction" href="../../recipes/recipes.html" /><link rel="prev" title="struct Time" href="timepicker.html" />
+<link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" /><link rel="next" title="Custom Control Introduction" href="../../recipes/recipes.html" /><link rel="prev" title="TimePickerPopup" href="timepicker.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.05.06 -->
-        <title>struct Date - Slint 1.7.0 Reference</title>
+        <title>DatePickerPopup - Slint 1.7.0 Reference</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=387cc868" />
     <link rel="stylesheet" type="text/css" href="../../../_static/theme_tweak.css?v=6873ab5b" />
@@ -297,10 +297,8 @@
 <li class="toctree-l2"><a class="reference internal" href="tabwidget.html"><code class="docutils literal notranslate"><span class="pre">TabWidget</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="textedit.html"><code class="docutils literal notranslate"><span class="pre">TextEdit</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="verticalbox.html"><code class="docutils literal notranslate"><span class="pre">VerticalBox</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="timepicker.html">struct <code class="docutils literal notranslate"><span class="pre">Time</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="timepicker.html#timepicker"><code class="docutils literal notranslate"><span class="pre">TimePicker</span></code></a></li>
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">struct <code class="docutils literal notranslate"><span class="pre">Date</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#datepicker"><code class="docutils literal notranslate"><span class="pre">DatePicker</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="timepicker.html"><code class="docutils literal notranslate"><span class="pre">TimePickerPopup</span></code></a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">DatePickerPopup</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -360,26 +358,14 @@
         </div>
         <article role="main" id="furo-main-content">
           <!-- Copyright © SixtyFPS GmbH <info@slint.dev> ; SPDX-License-Identifier: MIT -->
-<section id="struct-date">
-<h1>struct <code class="docutils literal notranslate"><span class="pre">Date</span></code><a class="headerlink" href="#struct-date" title="Permalink to this heading">¶</a></h1>
-<p>Defines a date with day, month, and year</p>
-<section id="fields">
-<h2>Fields<a class="headerlink" href="#fields" title="Permalink to this heading">¶</a></h2>
-<ul class="simple">
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">day</span></code>(int)</strong>: The day value (range from 1 to 31).</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">month</span></code>(int)</strong>: The month value (range from 1 to 12).</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">year</span></code>(int)</strong>: The year value.</p></li>
-</ul>
-</section>
-</section>
-<section id="datepicker">
-<h1><code class="docutils literal notranslate"><span class="pre">DatePicker</span></code><a class="headerlink" href="#datepicker" title="Permalink to this heading">¶</a></h1>
+<section id="datepickerpopup">
+<h1><code class="docutils literal notranslate"><span class="pre">DatePickerPopup</span></code><a class="headerlink" href="#datepickerpopup" title="Permalink to this heading">¶</a></h1>
 <p>Use a date picker to let the user select a date.</p>
 <section id="properties">
 <h2>Properties<a class="headerlink" href="#properties" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">title</span></code></strong> (<em>in</em> <em>string</em>): The text that is displayed at the top of the picker.</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">date</span></code></strong>: (<em>in</em> <em>Date</em>): Set the initial displayed date.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">date</span></code></strong>: (<em>in</em> <em>struct <a class="reference internal" href="#struct-date"><code class="docutils literal notranslate"><span class="pre">Date</span></code></a></em>): Set the initial displayed date.</p></li>
 </ul>
 </section>
 <section id="callbacks">
@@ -417,6 +403,18 @@ export component Example inherits Window {
 </pre></div>
 </div>
 </section>
+<section id="struct-date">
+<h2>Struct <code class="docutils literal notranslate"><span class="pre">Date</span></code><a class="headerlink" href="#struct-date" title="Permalink to this heading">¶</a></h2>
+<p>Defines a date with day, month, and year.</p>
+<section id="fields">
+<h3>Fields<a class="headerlink" href="#fields" title="Permalink to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">day</span></code>(int)</strong>: The day value (range from 1 to 31).</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">month</span></code>(int)</strong>: The month value (range from 1 to 12).</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">year</span></code>(int)</strong>: The year value.</p></li>
+</ul>
+</section>
+</section>
 </section>
 
         </article>
@@ -440,7 +438,7 @@ export component Example inherits Window {
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">struct <code class="docutils literal notranslate"><span class="pre">Time</span></code></div>
+                <div class="title"><code class="docutils literal notranslate"><span class="pre">TimePickerPopup</span></code></div>
                 
               </div>
             </a>
@@ -484,14 +482,14 @@ export component Example inherits Window {
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">struct <code class="docutils literal notranslate"><span class="pre">Date</span></code></a><ul>
-<li><a class="reference internal" href="#fields">Fields</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#datepicker"><code class="docutils literal notranslate"><span class="pre">DatePicker</span></code></a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">DatePickerPopup</span></code></a><ul>
 <li><a class="reference internal" href="#properties">Properties</a></li>
 <li><a class="reference internal" href="#callbacks">Callbacks</a></li>
 <li><a class="reference internal" href="#example">Example</a></li>
+<li><a class="reference internal" href="#struct-date">Struct <code class="docutils literal notranslate"><span class="pre">Date</span></code></a><ul>
+<li><a class="reference internal" href="#fields">Fields</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

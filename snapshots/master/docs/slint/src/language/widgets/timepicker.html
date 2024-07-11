@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" /><link rel="next" title="struct Date" href="datepicker.html" /><link rel="prev" title="VerticalBox" href="verticalbox.html" />
+<link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" /><link rel="next" title="DatePickerPopup" href="datepicker.html" /><link rel="prev" title="VerticalBox" href="verticalbox.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.05.06 -->
-        <title>struct Time - Slint 1.7.0 Reference</title>
+        <title>TimePickerPopup - Slint 1.7.0 Reference</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=387cc868" />
     <link rel="stylesheet" type="text/css" href="../../../_static/theme_tweak.css?v=6873ab5b" />
@@ -297,10 +297,8 @@
 <li class="toctree-l2"><a class="reference internal" href="tabwidget.html"><code class="docutils literal notranslate"><span class="pre">TabWidget</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="textedit.html"><code class="docutils literal notranslate"><span class="pre">TextEdit</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="verticalbox.html"><code class="docutils literal notranslate"><span class="pre">VerticalBox</span></code></a></li>
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">struct <code class="docutils literal notranslate"><span class="pre">Time</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#timepicker"><code class="docutils literal notranslate"><span class="pre">TimePicker</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="datepicker.html">struct <code class="docutils literal notranslate"><span class="pre">Date</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="datepicker.html#datepicker"><code class="docutils literal notranslate"><span class="pre">DatePicker</span></code></a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">TimePickerPopup</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="datepicker.html"><code class="docutils literal notranslate"><span class="pre">DatePickerPopup</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -360,27 +358,15 @@
         </div>
         <article role="main" id="furo-main-content">
           <!-- Copyright © SixtyFPS GmbH <info@slint.dev> ; SPDX-License-Identifier: MIT -->
-<section id="struct-time">
-<h1>struct <code class="docutils literal notranslate"><span class="pre">Time</span></code><a class="headerlink" href="#struct-time" title="Permalink to this heading">¶</a></h1>
-<p>Defines a time with hours, minutes, and seconds.</p>
-<section id="fields">
-<h2>Fields<a class="headerlink" href="#fields" title="Permalink to this heading">¶</a></h2>
-<ul class="simple">
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">hour</span></code>(int)</strong>: The hour value (range from 0 to 23).</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">minute</span></code>(int)</strong>: The minute value (range from 1 to 59).</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">second</span></code>(int)</strong>: The second value (range form 1 to 59).</p></li>
-</ul>
-</section>
-</section>
-<section id="timepicker">
-<h1><code class="docutils literal notranslate"><span class="pre">TimePicker</span></code><a class="headerlink" href="#timepicker" title="Permalink to this heading">¶</a></h1>
+<section id="timepickerpopup">
+<h1><code class="docutils literal notranslate"><span class="pre">TimePickerPopup</span></code><a class="headerlink" href="#timepickerpopup" title="Permalink to this heading">¶</a></h1>
 <p>Use the timer picker to select the time, in either 24-hour or 12-hour mode (AM/PM).</p>
 <section id="properties">
 <h2>Properties<a class="headerlink" href="#properties" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">use-24-hour-format</span></code></strong>: (<em>in</em> <em>bool</em>): If set to <code class="docutils literal notranslate"><span class="pre">true</span></code> 24 hours are displayed otherwise it is displayed in AM/PM mode. (default: system default, if cannot be determined then <code class="docutils literal notranslate"><span class="pre">true</span></code>)</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">title</span></code></strong> (<em>in</em> <em>string</em>): The text that is displayed at the top of the picker.</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">time</span></code></strong>: (<em>in</em> <em>Time</em>): Set the initial displayed time.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">time</span></code></strong>: (<em>in</em> struct <em><a class="reference internal" href="#struct-time"><code class="docutils literal notranslate"><span class="pre">Time</span></code></a></em>): Set the initial displayed time.</p></li>
 </ul>
 </section>
 <section id="callbacks">
@@ -419,6 +405,18 @@ export component Example inherits Window {
 </pre></div>
 </div>
 </section>
+<section id="struct-time">
+<h2>Struct <code class="docutils literal notranslate"><span class="pre">Time</span></code><a class="headerlink" href="#struct-time" title="Permalink to this heading">¶</a></h2>
+<p>Defines a time with hours, minutes, and seconds.</p>
+<section id="fields">
+<h3>Fields<a class="headerlink" href="#fields" title="Permalink to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">hour</span></code>(int)</strong>: The hour value (range from 0 to 23).</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">minute</span></code>(int)</strong>: The minute value (range from 1 to 59).</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">second</span></code>(int)</strong>: The second value (range form 1 to 59).</p></li>
+</ul>
+</section>
+</section>
 </section>
 
         </article>
@@ -431,7 +429,7 @@ export component Example inherits Window {
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">struct <code class="docutils literal notranslate"><span class="pre">Date</span></code></div>
+                <div class="title"><code class="docutils literal notranslate"><span class="pre">DatePickerPopup</span></code></div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -486,14 +484,14 @@ export component Example inherits Window {
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">struct <code class="docutils literal notranslate"><span class="pre">Time</span></code></a><ul>
-<li><a class="reference internal" href="#fields">Fields</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#timepicker"><code class="docutils literal notranslate"><span class="pre">TimePicker</span></code></a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">TimePickerPopup</span></code></a><ul>
 <li><a class="reference internal" href="#properties">Properties</a></li>
 <li><a class="reference internal" href="#callbacks">Callbacks</a></li>
 <li><a class="reference internal" href="#example">Example</a></li>
+<li><a class="reference internal" href="#struct-time">Struct <code class="docutils literal notranslate"><span class="pre">Time</span></code></a><ul>
+<li><a class="reference internal" href="#fields">Fields</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

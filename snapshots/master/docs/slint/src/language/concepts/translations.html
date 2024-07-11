@@ -297,10 +297,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../widgets/tabwidget.html"><code class="docutils literal notranslate"><span class="pre">TabWidget</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../widgets/textedit.html"><code class="docutils literal notranslate"><span class="pre">TextEdit</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../widgets/verticalbox.html"><code class="docutils literal notranslate"><span class="pre">VerticalBox</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../widgets/timepicker.html">struct <code class="docutils literal notranslate"><span class="pre">Time</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../widgets/timepicker.html#timepicker"><code class="docutils literal notranslate"><span class="pre">TimePicker</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../widgets/datepicker.html">struct <code class="docutils literal notranslate"><span class="pre">Date</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../widgets/datepicker.html#datepicker"><code class="docutils literal notranslate"><span class="pre">DatePicker</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../widgets/timepicker.html"><code class="docutils literal notranslate"><span class="pre">TimePickerPopup</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../widgets/datepicker.html"><code class="docutils literal notranslate"><span class="pre">DatePickerPopup</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -362,20 +360,29 @@
           <!-- Copyright © SixtyFPS GmbH <info@slint.dev> ; SPDX-License-Identifier: MIT -->
 <section id="translations">
 <h1>Translations<a class="headerlink" href="#translations" title="Permalink to this heading">¶</a></h1>
-<p>Use Slint’s translation infrastructure to make your application available in different languages.</p>
+<p>Slint’s translation infrastructure makes your application available in different languages.</p>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">¶</a></h2>
+<div class="tip docutils">
+<p>Install the <code class="docutils literal notranslate"><span class="pre">slint-tr-extractor</span></code> tool to extract translatable strings from <code class="docutils literal notranslate"><span class="pre">.slint</span></code> files:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>cargo<span class="w"> </span>install<span class="w"> </span>slint-tr-extractor
+</pre></div>
+</div>
+</div>
 <p>Complete the following steps to translate your application:</p>
 <ol class="arabic simple">
-<li><p>Identify all user visible strings that need to be translated and annotate them with the <code class="docutils literal notranslate"><span class="pre">&#64;tr()</span></code> macro.</p></li>
-<li><p>Extract annotated strings using the <code class="docutils literal notranslate"><span class="pre">slint-tr-extractor</span></code> tool and generate <code class="docutils literal notranslate"><span class="pre">.pot</span></code> files.</p></li>
+<li><p>Identify all user visible strings that need translation and annotate them with the <code class="docutils literal notranslate"><span class="pre">&#64;tr()</span></code> macro.</p></li>
+<li><p>Extract annotated strings by running the <code class="docutils literal notranslate"><span class="pre">slint-tr-extractor</span></code> tool and generate <code class="docutils literal notranslate"><span class="pre">.pot</span></code> files.</p></li>
 <li><p>Use a third-party tool to translate the strings into a target language, as <code class="docutils literal notranslate"><span class="pre">.po</span></code> files.</p></li>
-<li><p>Use gettext’s <code class="docutils literal notranslate"><span class="pre">msgfmt</span></code> tool to convert <code class="docutils literal notranslate"><span class="pre">.po</span></code> files into run-time loadable <code class="docutils literal notranslate"><span class="pre">.mo</span></code> files.</p></li>
-<li><p>Use Slint’s API to select and load <code class="docutils literal notranslate"><span class="pre">.mo</span></code> files at run-time, based on the user’s locale settings.
-At this point, all strings marked for translation will automatically be rendered in the target language.</p></li>
+<li><p>Use <a class="reference external" href="https://www.gnu.org/software/gettext/manual/gettext.html">gettext’s <code class="docutils literal notranslate"><span class="pre">msgfmt</span></code></a> tool to convert <code class="docutils literal notranslate"><span class="pre">.po</span></code> files into run-time loadable <code class="docutils literal notranslate"><span class="pre">.mo</span></code> files.</p></li>
+<li><p>Use Slint’s API to select and load <code class="docutils literal notranslate"><span class="pre">.mo</span></code> files at run-time, based on the user’s locale settings.</p></li>
 </ol>
+<p>At this point, all strings marked for translation are automatically rendered in the target language.</p>
+</section>
 <section id="annotating-translatable-strings">
 <h2>Annotating Translatable Strings<a class="headerlink" href="#annotating-translatable-strings" title="Permalink to this heading">¶</a></h2>
-<p>Use the <code class="docutils literal notranslate"><span class="pre">&#64;tr</span></code> macro in <code class="docutils literal notranslate"><span class="pre">.slint</span></code> files to mark that a string is meant to be translated. This macro
-will take care of both the translation and the formatting, by replacing <code class="docutils literal notranslate"><span class="pre">{}</span></code> placeholders.</p>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">&#64;tr</span></code> macro in <code class="docutils literal notranslate"><span class="pre">.slint</span></code> files to mark that a string for translation. This macro
+takes care of both the translation and the formatting by replacing <code class="docutils literal notranslate"><span class="pre">{}</span></code> placeholders.</p>
 <p>The first argument must be a plain string literal, followed by the arguments:</p>
 <div class="highlight-slint,no-preview notranslate"><div class="highlight"><pre><span></span>export component Example {
     property &lt;string&gt; name;
@@ -390,8 +397,8 @@ will take care of both the translation and the formatting, by replacing <code cl
 <p>The <code class="docutils literal notranslate"><span class="pre">&#64;tr</span></code> macro replaces each <code class="docutils literal notranslate"><span class="pre">{}</span></code> placeholder in the string marked for translation with the corresponding argument.
 It’s also possible to re-order the arguments using <code class="docutils literal notranslate"><span class="pre">{0}</span></code>, <code class="docutils literal notranslate"><span class="pre">{1}</span></code>, and so on. Translators can use ordered
 placeholders even if the original string did not.</p>
-<p>The literal characters <code class="docutils literal notranslate"><span class="pre">{</span></code> and <code class="docutils literal notranslate"><span class="pre">}</span></code> may be included in a string by preceding them with the same character.
-For example, the <code class="docutils literal notranslate"><span class="pre">{</span></code> character is escaped with <code class="docutils literal notranslate"><span class="pre">{{</span></code> and the <code class="docutils literal notranslate"><span class="pre">}</span></code> character is escaped with <code class="docutils literal notranslate"><span class="pre">}}</span></code>.</p>
+<p>You can include the literal characters <code class="docutils literal notranslate"><span class="pre">{</span></code> and <code class="docutils literal notranslate"><span class="pre">}</span></code> in a string by preceding them with the same character.
+For example, escaping the <code class="docutils literal notranslate"><span class="pre">{</span></code> character with <code class="docutils literal notranslate"><span class="pre">{{</span></code> and the <code class="docutils literal notranslate"><span class="pre">}</span></code> character with <code class="docutils literal notranslate"><span class="pre">}}</span></code>.</p>
 </section>
 <section id="plurals">
 <h3>Plurals<a class="headerlink" href="#plurals" title="Permalink to this heading">¶</a></h3>
@@ -430,16 +437,18 @@ You can run it like so:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>find<span class="w"> </span>-name<span class="w"> </span><span class="se">\*</span>.slint<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>slint-tr-extractor<span class="w"> </span>-o<span class="w"> </span>MY_PROJECT.pot
 </pre></div>
 </div>
-<p>This will create a file called <code class="docutils literal notranslate"><span class="pre">MY_PROJECT.pot</span></code>. Replace MY_PROJECT with your actual project name.
-To learn how the project name affects the lookup of translations, see the sections below.</p>
+<p>This creates a file called <code class="docutils literal notranslate"><span class="pre">MY_PROJECT.pot</span></code>. Replace “MY_PROJECT” with your actual project name.
+To learn how the project name affects the lookup of translations, read the sections below.</p>
+<div class="info docutils">
 <p><code class="docutils literal notranslate"><span class="pre">.pot</span></code> files are <a class="reference external" href="https://www.gnu.org/software/gettext/">Gettext</a> template files.</p>
+</div>
 </section>
 <section id="translate-the-strings">
 <h2>Translate the Strings<a class="headerlink" href="#translate-the-strings" title="Permalink to this heading">¶</a></h2>
 <p>Start a new translation by creating a <code class="docutils literal notranslate"><span class="pre">.po</span></code> file from a <code class="docutils literal notranslate"><span class="pre">.pot</span></code> file. Both file formats are identical.
 You can either copy the file manually or use a tool like Gettext’s <code class="docutils literal notranslate"><span class="pre">msginit</span></code> to start a new <code class="docutils literal notranslate"><span class="pre">.po</span></code> file.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">.po</span></code> file will contain the strings in a target language.</p>
-<p><code class="docutils literal notranslate"><span class="pre">.po</span></code> and <code class="docutils literal notranslate"><span class="pre">.pot</span></code> files are plain text files, that you can edit with a text editor. We recommend
+<p>The <code class="docutils literal notranslate"><span class="pre">.po</span></code> file contains the strings in a target language.</p>
+<p><code class="docutils literal notranslate"><span class="pre">.po</span></code> and <code class="docutils literal notranslate"><span class="pre">.pot</span></code> files are plain text files that you can edit with a text editor. We recommend
 using a dedicated translation tool for working with them, such as the following:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://poedit.net/">poedit</a></p></li>
@@ -450,55 +459,57 @@ using a dedicated translation tool for working with them, such as the following:
 </section>
 <section id="convert-po-files-to-mo-files">
 <h2>Convert <code class="docutils literal notranslate"><span class="pre">.po</span></code> Files to <code class="docutils literal notranslate"><span class="pre">.mo</span></code> Files<a class="headerlink" href="#convert-po-files-to-mo-files" title="Permalink to this heading">¶</a></h2>
-<p>The human readable <code class="docutils literal notranslate"><span class="pre">.po</span></code> files need to be converted into machine-friendly <code class="docutils literal notranslate"><span class="pre">.mo</span></code> files, a binary representation
-that is very efficient to read.</p>
+<p>Convert the human readable <code class="docutils literal notranslate"><span class="pre">.po</span></code> files into machine-friendly <code class="docutils literal notranslate"><span class="pre">.mo</span></code> files, which are a binary representation
+that is more efficient to read by code.</p>
 <p>Use <a class="reference external" href="https://www.gnu.org/software/gettext/">Gettext</a>’s <code class="docutils literal notranslate"><span class="pre">msgfmt</span></code> command line tool to convert <code class="docutils literal notranslate"><span class="pre">.po</span></code> files to <code class="docutils literal notranslate"><span class="pre">.mo</span></code>
 files:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msgfmt</span> <span class="n">translation</span><span class="o">.</span><span class="n">po</span> <span class="o">-</span><span class="n">o</span> <span class="n">translation</span><span class="o">.</span><span class="n">mo</span>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>msgfmt<span class="w"> </span>translation.po<span class="w"> </span>-o<span class="w"> </span>translation.mo
 </pre></div>
 </div>
 </section>
 <section id="select-and-load-mo-files-at-run-time">
 <h2>Select and Load <code class="docutils literal notranslate"><span class="pre">.mo</span></code> Files at Run-Time<a class="headerlink" href="#select-and-load-mo-files-at-run-time" title="Permalink to this heading">¶</a></h2>
 <p>Slint uses the <a class="reference external" href="https://www.gnu.org/software/gettext/">Gettext</a> library to load translations at run-time.
-Gettext locates the translation file in the following location:
-Gettext expects translation files - called message catalogs - to be placed in following directory hierarchy:</p>
+Gettext expects translation files - called message catalogs - in following directory hierarchy:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dir_name</span><span class="o">/</span><span class="n">locale</span><span class="o">/</span><span class="n">LC_MESSAGES</span><span class="o">/</span><span class="n">domain_name</span><span class="o">.</span><span class="n">mo</span>
 </pre></div>
 </div>
-<ul class="simple">
+<ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">dir_name</span></code>: the base directory that you can choose freely.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">locale</span></code>: The name of the user’s locale for a given target language, such as <code class="docutils literal notranslate"><span class="pre">fr</span></code> for French, or <code class="docutils literal notranslate"><span class="pre">de</span></code> for German.
-The locale is typically determined using environment variables that your operating system sets.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">locale</span></code>: The name of the user’s locale for a given target language, such as <code class="docutils literal notranslate"><span class="pre">fr</span></code> for French, or <code class="docutils literal notranslate"><span class="pre">de</span></code> for German.</p>
+<p>The locale is typically determined using environment variables that your operating system sets.</p>
+</li>
 <li><p><code class="docutils literal notranslate"><span class="pre">domain_name</span></code>: Selected based on the programming language you’re using Slint with.</p></li>
 </ul>
-<p>For more info, see the <a class="reference external" href="https://www.gnu.org/software/gettext/manual/gettext.html#Locating-Catalogs">Gettext documentation</a>.</p>
+<div class="info docutils">
+<p>Read the <a class="reference external" href="https://www.gnu.org/software/gettext/manual/gettext.html#Locating-Catalogs">Gettext documentation</a> for more information.</p>
+</div>
 <section id="select-and-load-translations-with-rust">
 <h3>Select and Load Translations with Rust<a class="headerlink" href="#select-and-load-translations-with-rust" title="Permalink to this heading">¶</a></h3>
-<p>First, enable the <code class="docutils literal notranslate"><span class="pre">gettext</span></code> feature of the <code class="docutils literal notranslate"><span class="pre">slint</span></code> create to gain access to the translations API
+<p>First, enable the <code class="docutils literal notranslate"><span class="pre">gettext</span></code> feature of the <code class="docutils literal notranslate"><span class="pre">slint</span></code> crate in the <code class="docutils literal notranslate"><span class="pre">features</span></code> section to gain access to the translations API
 and activate run-time translation support.</p>
-<p>Next, use the <code class="docutils literal notranslate"><span class="pre">slint::init_translations!</span></code> to specify the base location of your <code class="docutils literal notranslate"><span class="pre">.mo</span></code> files. This is
-the <code class="docutils literal notranslate"><span class="pre">dir_name</span></code> in the scheme of the previous section. The <code class="docutils literal notranslate"><span class="pre">.mo</span></code> files are expected to be in the
+<p>Next, use the <code class="docutils literal notranslate"><span class="pre">slint::init_translations!</span></code> macro to specify the base location of your <code class="docutils literal notranslate"><span class="pre">.mo</span></code> files. This is
+the <code class="docutils literal notranslate"><span class="pre">dir_name</span></code> in the scheme of the previous section. Slint expects the <code class="docutils literal notranslate"><span class="pre">.mo</span></code> files to be in the
 corresponding sub-directories and their file name - <code class="docutils literal notranslate"><span class="pre">domain_name</span></code> - must match the package name
 in your <code class="docutils literal notranslate"><span class="pre">Cargo.toml</span></code>. This is often the same as the crate name.</p>
 <p>For example:</p>
 <div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="n">slint</span><span class="p">::</span><span class="n">init_translations</span><span class="o">!</span><span class="p">(</span><span class="fm">concat!</span><span class="p">(</span><span class="fm">env!</span><span class="p">(</span><span class="s">&quot;CARGO_MANIFEST_DIR&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;/lang/&quot;</span><span class="p">));</span>
 </pre></div>
 </div>
-<p>Suppose your <code class="docutils literal notranslate"><span class="pre">Cargo.toml</span></code> contains the following lines and the user’s locale is <code class="docutils literal notranslate"><span class="pre">fr</span></code>:</p>
+<p>For example, if your <code class="docutils literal notranslate"><span class="pre">Cargo.toml</span></code> contains the following lines and the user’s locale is <code class="docutils literal notranslate"><span class="pre">fr</span></code>:</p>
 <div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[package]</span>
 <span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;gallery&quot;</span>
 </pre></div>
 </div>
-<p>With these settings, Slint will look for <code class="docutils literal notranslate"><span class="pre">gallery.mo</span></code> in the <code class="docutils literal notranslate"><span class="pre">lang/fr/LC_MESSAGES/gallery.mo</span></code>.</p>
+<p>With these settings, Slint looks for <code class="docutils literal notranslate"><span class="pre">gallery.mo</span></code> in the <code class="docutils literal notranslate"><span class="pre">lang/fr/LC_MESSAGES/gallery.mo</span></code>.</p>
 </section>
 <section id="select-and-load-translations-with-c">
 <h3>Select and Load Translations with C++<a class="headerlink" href="#select-and-load-translations-with-c" title="Permalink to this heading">¶</a></h3>
-<p>First, enable the <code class="docutils literal notranslate"><span class="pre">SLINT_FEATURE_GETTEXT</span></code> cmake option when compiling Slint, to gain access to
+<p>First, enable the <code class="docutils literal notranslate"><span class="pre">SLINT_FEATURE_GETTEXT</span></code> cmake option when compiling Slint to gain access to
 the translations API and activate run-time translation support.</p>
 <p>In C++ applications using cmake, the <code class="docutils literal notranslate"><span class="pre">domain_name</span></code> is the CMake target name.</p>
 <p>Next, bind the text domain to a path using the standard gettext library.</p>
-<p>To do so, add this in your CMakeLists.txt</p>
+<p>To do so, add this in your <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">find_package</span><span class="p">(</span><span class="s">Intl</span><span class="p">)</span>
 <span class="nb">if</span><span class="p">(</span><span class="s">Intl_FOUND</span><span class="p">)</span>
 <span class="w">    </span><span class="nb">target_compile_definitions</span><span class="p">(</span><span class="s">my_application</span><span class="w"> </span><span class="s">PRIVATE</span><span class="w"> </span><span class="s">HAVE_GETTEXT</span><span class="w"> </span><span class="s">SRC_DIR=</span><span class="s2">&quot;${CMAKE_CURRENT_SOURCE_DIR}&quot;</span><span class="p">)</span>
@@ -522,13 +533,18 @@ the translations API and activate run-time translation support.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Suppose you’re using the above and the user’s locale is set to <code class="docutils literal notranslate"><span class="pre">fr</span></code>,
-Slint will look for <code class="docutils literal notranslate"><span class="pre">my_application.mo</span></code> in the <code class="docutils literal notranslate"><span class="pre">lang/fr/LC_MESSAGES/</span></code> directory.</p>
+<p>For example, if you’re using the above and the user’s locale is <code class="docutils literal notranslate"><span class="pre">fr</span></code>,
+Slint looks for <code class="docutils literal notranslate"><span class="pre">my_application.mo</span></code> in the <code class="docutils literal notranslate"><span class="pre">lang/fr/LC_MESSAGES/</span></code> directory.</p>
 </section>
 </section>
 <section id="previewing-translations-with-slint-viewer">
 <h2>Previewing Translations with <code class="docutils literal notranslate"><span class="pre">slint-viewer</span></code><a class="headerlink" href="#previewing-translations-with-slint-viewer" title="Permalink to this heading">¶</a></h2>
+<div class="tip docutils">
 <p>Use <code class="docutils literal notranslate"><span class="pre">slint-viewer</span></code> to preview translations when previewing <code class="docutils literal notranslate"><span class="pre">.slint</span></code> files:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>cargo<span class="w"> </span>install<span class="w"> </span>slint-viewer
+</pre></div>
+</div>
+</div>
 <ol class="arabic simple">
 <li><p>Enable the <code class="docutils literal notranslate"><span class="pre">gettext</span></code> feature when compiling <code class="docutils literal notranslate"><span class="pre">slint-viewer</span></code>.</p></li>
 <li><p>Use the <code class="docutils literal notranslate"><span class="pre">--translation-domain</span></code> and <code class="docutils literal notranslate"><span class="pre">translation-dir</span></code> command line options to
@@ -603,6 +619,7 @@ load translations and display them based on the current locale.</p></li>
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Translations</a><ul>
+<li><a class="reference internal" href="#overview">Overview</a></li>
 <li><a class="reference internal" href="#annotating-translatable-strings">Annotating Translatable Strings</a><ul>
 <li><a class="reference internal" href="#formatting">Formatting</a></li>
 <li><a class="reference internal" href="#plurals">Plurals</a></li>
