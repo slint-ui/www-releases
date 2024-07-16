@@ -1,9 +1,9 @@
 
 name: Deploy to snapshots.slint.dev
 
-on: workflow_dispatch
-#   push:
-#     paths: 'snapshots/**'
+on:
+  push:
+    paths: 'snapshots/**'
 
 jobs:
   build-and-deploy:
