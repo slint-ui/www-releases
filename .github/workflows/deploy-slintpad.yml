@@ -1,9 +1,9 @@
 
 name: Deploy to slintpad.com
 
-on: workflow_dispatch
-#   push:
-#     paths: 'slintpad/**'
+on:
+  push:
+    paths: 'slintpad/**'
 
 jobs:
   build-and-deploy:
