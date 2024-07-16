@@ -14,7 +14,7 @@ jobs:
 
       - name: npm install
         run: |
-          npm install
+          cd releases && npm install
 
       - name: Clone website directory
         run: |
@@ -24,8 +24,8 @@ jobs:
 
       - name: Copy index.html and 404.html
         run: |
-          cp website/docs.html releases/index.html
-          cp website/404.html releases/404.html
+          cp website/docs.html index.html
+          cp website/404.html 404.html
           rm -rf website
 
       - name: Install Netlify
@@ -44,7 +44,7 @@ jobs:
         id: netlify_deploy
         run: |
           netlify deploy \
-            --dir releases \
+            --dir . \
             --site ${{ secrets.NETLIFY_RELEASES_SITE_ID }} \
             --auth ${{ secrets.NETLIFY_API_TOKEN }} \
             --prod

@@ -1,0 +1,23 @@
+{
+  "name": "snapshots",
+  "version": "1.0.0",
+  "description": "Collection of Slint nightly builds",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/slint-ui/www-releases.git"
+  },
+  "keywords": [
+    "Slint",
+    "nightly"
+  ],
+  "author": "The Slint Team",
+  "license": "SEE LICENSE IN https://github.com/slint-ui/www-releases/blob/master/LICENSE.md",
+  "bugs": {
+    "url": "https://github.com/slint-ui/slint/issues"
+  },
+  "homepage": "https://snapshots.slint.dev"
+}

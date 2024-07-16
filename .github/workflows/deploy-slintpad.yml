@@ -14,7 +14,7 @@ jobs:
 
       - name: npm install
         run: |
-          npm install
+          cd slintpad && npm install
 
       - name: Clone website directory
         run: |
@@ -24,8 +24,8 @@ jobs:
 
       - name: Copy index.html and 404.html
         run: |
-          cp website/docs.html slintpad/index.html
-          cp website/404.html slintpad/404.html
+          cp website/docs.html index.html
+          cp website/404.html 404.html
           rm -rf website
 
       - name: Set environment variables
@@ -35,4 +35,4 @@ jobs:
 
       - name: Publish to staging-slint from staging-dist
         run: |
-            npx wrangler@3 pages deploy slintpad --project-name=slintpad  --commit-dirty=true
+            npx wrangler@3 pages deploy . --project-name=slintpad  --commit-dirty=true
