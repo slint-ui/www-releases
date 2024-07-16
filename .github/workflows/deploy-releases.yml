@@ -26,7 +26,7 @@ jobs:
         run: |
           mkdir -p website/output
           cd website
-          go run generator/generator.go
+          go run generator/generator.go -skip-agreements
           cp output/docs.html ../index.html
           cp output/404.html ../404.html
           cd ..
