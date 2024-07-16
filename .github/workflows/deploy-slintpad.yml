@@ -8,13 +8,16 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./slintpad
     steps:
       - name: Repository Checkout
         uses: actions/checkout@v4
 
       - name: npm install
         run: |
-          cd slintpad && npm install
+          npm install
 
       - name: Clone website directory
         run: |
@@ -22,14 +25,15 @@ jobs:
           git config --global user.name "${GITHUB_ACTOR}"
           ssh-agent sh -c 'echo "${{ secrets.WEBSITE_READ_SSH_KEY }}" | ssh-add - && git clone git@github.com:slint-ui/website.git  --depth 1'
 
-      - name: Copy index.html and 404.html
+      - name: Generate docs.html and 404.html
         run: |
           mkdir -p website/output
-          cd website
-          go run generator/generator.go -skip-agreements
-          cp output/docs.html ../index.html
-          cp output/404.html ../404.html
-          cd ..
+          cd website && go run generator/generator.go -skip-agreements
+  
+      - name: Copy docs.html and 404.html
+        run: |
+          cp website/output/docs.html index.html
+          cp website/output/404.html 404.html
           rm -rf website
 
       - name: Set environment variables
