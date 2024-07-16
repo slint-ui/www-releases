@@ -1,9 +1,9 @@
 
 name: Deploy to snapshots.slint.dev
 
-on:
-  push:
-    paths: 'snapshots/**'
+on: workflow_dispatch
+#   push:
+#     paths: 'snapshots/**'
 
 jobs:
   build-and-deploy:
@@ -24,8 +24,12 @@ jobs:
 
       - name: Copy index.html and 404.html
         run: |
-          cp website/docs.html index.html
-          cp website/404.html 404.html
+          mkdir -p website/output
+          cd website
+          go run generator/generator.go
+          cp output/docs.html ../index.html
+          cp output/404.html ../404.html
+          cd ..
           rm -rf website
 
       - name: Install Netlify
