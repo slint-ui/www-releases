@@ -19,9 +19,22 @@ jobs:
         run: |
           npm install
 
+      - name: Generate a token
+        id: app-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ vars.READ_WRITE_APP_ID }}
+          private-key: ${{ secrets.READ_WRITE_PRIVATE_KEY }}
+          repositories: website
+    
       - name: Clone website directory
-        run: |
-          git clone -b prod --single-branch https://user:${{ secrets.GITHUB_TOKEN }}@github.com/slint-ui/website.git --depth 1
+        uses: actions/checkout@v4
+        with:
+          repository: slint-ui/website
+          ref: prod
+          path: website
+          token: ${{ steps.app-token.outputs.token }}
+          persist-credentials: false
 
       - name: Generate 404.html
         run: |
