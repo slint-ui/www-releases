@@ -21,9 +21,7 @@ jobs:
 
       - name: Clone website directory
         run: |
-          git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-          git config --global user.name "${GITHUB_ACTOR}"
-          ssh-agent sh -c 'echo "${{ secrets.WEBSITE_READ_SSH_KEY }}" | ssh-add - && git clone -b prod --single-branch git@github.com:slint-ui/website.git  --depth 1'
+          git clone -b prod --single-branch https://user:${{ secrets.GITHUB_TOKEN }}@github.com/slint-ui/website.git --depth 1
 
       - name: Generate 404.html
         run: |
