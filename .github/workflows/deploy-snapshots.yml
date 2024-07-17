@@ -12,19 +12,19 @@ jobs:
       run:
         working-directory: ./snapshots
     steps:
-      - name: Repository Checkout
-        uses: actions/checkout@v4
+      # - name: Repository Checkout
+      #   uses: actions/checkout@v4
 
-      - name: npm install
-        run: |
-          npm install
+      # - name: npm install
+      #   run: |
+      #     npm install
 
-      - name: Generate a token
-        id: generate-token
-        uses: actions/create-github-app-token@v1
-        with:
-          app-id: ${{ vars.READ_WRITE_APP_ID }}
-          private-key: ${{ secrets.READ_WRITE_PRIVATE_KEY }}
+      # - name: Generate a token
+      #   id: generate-token
+      #   uses: actions/create-github-app-token@v1
+      #   with:
+      #     app-id: ${{ vars.READ_WRITE_APP_ID }}
+      #     private-key: ${{ secrets.READ_WRITE_PRIVATE_KEY }}
 
       - name: Clone website directory
         uses: actions/checkout@v4
@@ -32,33 +32,33 @@ jobs:
           repository: slint-ui/website
           ref: prod
           path: website
-          token: ${{ steps.generate-token.outputs.token }}
+          token: ${{ secrets.WEBSITE_PAT_KEY }}
           persist-credentials: false
 
-      - name: Generate docs.html and 404.html
-        run: |
-          mkdir -p website/output
-          cd website && go run generator/generator.go -skip-agreements
+      # - name: Generate docs.html and 404.html
+      #   run: |
+      #     mkdir -p website/output
+      #     cd website && go run generator/generator.go -skip-agreements
   
-      - name: Copy docs.html and 404.html
-        run: |
-          cp website/output/docs.html index.html
-          cp website/output/404.html 404.html
-          rm -rf website
+      # - name: Copy docs.html and 404.html
+      #   run: |
+      #     cp website/output/docs.html index.html
+      #     cp website/output/404.html 404.html
+      #     rm -rf website
 
-      - name: Install Netlify
-        run: |
-          npm install netlify-cli --save-dev
+      # - name: Install Netlify
+      #   run: |
+      #     npm install netlify-cli --save-dev
 
-      - name: Install Dependencies
-        run: |
-          npm ci
+      # - name: Install Dependencies
+      #   run: |
+      #     npm ci
 
-      - name: Deploy to Netlify
-        id: netlify_deploy
-        run: |
-          netlify deploy \
-            --dir . \
-            --site ${{ secrets.NETLIFY_SNAPSHOTS_SITE_ID }} \
-            --auth ${{ secrets.NETLIFY_API_TOKEN }} \
-            --prod
+      # - name: Deploy to Netlify
+      #   id: netlify_deploy
+      #   run: |
+      #     netlify deploy \
+      #       --dir . \
+      #       --site ${{ secrets.NETLIFY_SNAPSHOTS_SITE_ID }} \
+      #       --auth ${{ secrets.NETLIFY_API_TOKEN }} \
+      #       --prod
