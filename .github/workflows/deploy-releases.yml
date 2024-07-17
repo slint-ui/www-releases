@@ -32,9 +32,8 @@ jobs:
         with:
           repository: slint-ui/website
           ref: prod
-          path: website
+          path: releases/website
           token: ${{ steps.app-token.outputs.token }}
-          persist-credentials: false
 
       - name: Generate docs.html and 404.html
         run: |
