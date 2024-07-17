@@ -25,7 +25,7 @@ jobs:
         with:
           app-id: ${{ vars.READ_WRITE_APP_ID }}
           private-key: ${{ secrets.READ_WRITE_PRIVATE_KEY }}
-          repositories: slint-ui/website
+          repositories: website
 
       - name: Clone website directory
         uses: actions/checkout@v4
