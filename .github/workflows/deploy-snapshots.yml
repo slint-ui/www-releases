@@ -20,8 +20,11 @@ jobs:
           npm install
 
       - name: Clone website directory
-        run: |
-          git clone -b prod --single-branch https://user:${{ secrets.GITHUB_TOKEN }}@github.com/slint-ui/website.git --depth 1
+        uses: actions/checkout@v4
+        with:
+          repository: slint-ui/website
+          ref: prod
+          path: website
 
       - name: Generate docs.html and 404.html
         run: |
