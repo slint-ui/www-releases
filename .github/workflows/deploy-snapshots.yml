@@ -19,12 +19,13 @@ jobs:
       #   run: |
       #     npm install
 
-      # - name: Generate a token
-      #   id: generate-token
-      #   uses: actions/create-github-app-token@v1
-      #   with:
-      #     app-id: ${{ vars.READ_WRITE_APP_ID }}
-      #     private-key: ${{ secrets.READ_WRITE_PRIVATE_KEY }}
+      - name: Generate a token
+        id: app-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ vars.READ_WRITE_APP_ID }}
+          private-key: ${{ secrets.READ_WRITE_PRIVATE_KEY }}
+          repositories: slint-ui/website
 
       - name: Clone website directory
         uses: actions/checkout@v4
@@ -32,7 +33,7 @@ jobs:
           repository: slint-ui/website
           ref: prod
           path: website
-          token: ${{ secrets.WEBSITE_PAT_KEY }}
+          token: ${{ steps.app-token.outputs.token }}
           persist-credentials: false
 
       # - name: Generate docs.html and 404.html
