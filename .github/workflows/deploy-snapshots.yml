@@ -8,9 +8,6 @@ on: workflow_dispatch
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./snapshots
     steps:
       - name: Repository Checkout
         uses: actions/checkout@v4
@@ -47,8 +44,8 @@ jobs:
   
       - name: Copy docs.html and 404.html
         run: |
-          cp website/output/docs.html index.html
-          cp website/output/404.html 404.html
+          cp website/output/docs.html snapshots/index.html
+          cp website/output/404.html snapshots/404.html
           rm -rf website
 
       - name: Install Netlify
@@ -63,7 +60,7 @@ jobs:
         id: netlify_deploy
         run: |
           netlify deploy \
-            --dir . \
+            --dir snapshots \
             --site ${{ secrets.NETLIFY_SNAPSHOTS_SITE_ID }} \
             --auth ${{ secrets.NETLIFY_API_TOKEN }} \
             --prod
