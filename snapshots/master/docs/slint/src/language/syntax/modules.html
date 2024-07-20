@@ -448,22 +448,29 @@ improves encapsulation by allow you to hide helper components. This works
 well within a project’s own directory structure. To share libraries of
 components between projects without hardcoding their relative paths, use
 the component library syntax:</p>
-<div class="highlight-slint,ignore notranslate"><div class="highlight"><pre><span></span>import { MySwitch } from &quot;@mylibrary&quot;;
+<div class="highlight-slint,ignore notranslate"><div class="highlight"><pre><span></span>import { MySwitch } from &quot;@mylibrary/switch.slint&quot;;
+import { MyButton } from &quot;@otherlibrary&quot;;
 </pre></div>
 </div>
 <p>In the above example, the <code class="docutils literal notranslate"><span class="pre">MySwitch</span></code> component will be imported from a component
-library called “mylibrary”. The path to this library must be defined separately at compilation time.
-Use one of the following methods to help the Slint compiler resolve “mylibrary” to the correct
+library called <code class="docutils literal notranslate"><span class="pre">mylibrary</span></code>, in which Slint looks for the <code class="docutils literal notranslate"><span class="pre">switch.slint</span></code> file. Therefore <code class="docutils literal notranslate"><span class="pre">mylibrary</span></code> must be
+declared to refer to a directory, so that the subsequent search for <code class="docutils literal notranslate"><span class="pre">switch.slint</span></code>
+succeeds. <code class="docutils literal notranslate"><span class="pre">MyButton</span></code> will be imported from <code class="docutils literal notranslate"><span class="pre">otherlibrary</span></code>. Therefore <code class="docutils literal notranslate"><span class="pre">otherlibrary</span></code>
+must be declared to refer to a <code class="docutils literal notranslate"><span class="pre">.slint</span></code> file that exports <code class="docutils literal notranslate"><span class="pre">MyButton</span></code>.</p>
+<p>The path to each library, as file or directory, must be defined separately at compilation time.
+Use one of the following methods to help the Slint compiler resolve libraries to the correct
 path on disk:</p>
 <ul>
 <li><p>When using Rust and <code class="docutils literal notranslate"><span class="pre">build.rs</span></code>, call <a class="reference external" href="https://slint.dev/releases/1.7.0/docs/rust/slint_build/struct.CompilerConfiguration"><code class="docutils literal notranslate"><span class="pre">with_library_paths</span></code></a>
 to provide a mapping from library name to path.</p></li>
+<li><p>When using C++, use <code class="docutils literal notranslate"><span class="pre">LIBRARY_PATHS</span></code> with <a class="reference external" href="https://slint.dev/releases/1.7.0/docs/cpp/cmake_reference"><code class="docutils literal notranslate"><span class="pre">slint_target_sources</span></code></a>.</p></li>
 <li><p>When invoking the <code class="docutils literal notranslate"><span class="pre">slint-viewer</span></code> from the command line, pass <code class="docutils literal notranslate"><span class="pre">-Lmylibrary=/path/to/my/library</span></code> for each component
 library.</p></li>
 <li><p>When using the VS Code extension, configure the Slint extension’s library path
 using the <code class="docutils literal notranslate"><span class="pre">Slint:</span> <span class="pre">Library</span> <span class="pre">Paths</span></code> setting. Example below:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;slint.libraryPaths&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;mylibrary&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/path/to/my/library&quot;</span>
+<span class="w">    </span><span class="nt">&quot;mylibrary&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/path/to/my/library&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;otherlibrary&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/path/to/otherlib/index.slint&quot;</span><span class="p">,</span>
 <span class="p">},</span>
 </pre></div>
 </div>
