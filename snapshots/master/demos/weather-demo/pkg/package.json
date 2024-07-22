@@ -1,0 +1,19 @@
+{
+  "name": "rusty-weather",
+  "type": "module",
+  "collaborators": [
+    "FELGO GmbH <contact@felgo.com>"
+  ],
+  "version": "1.7.0",
+  "license": "MIT",
+  "files": [
+    "rusty_weather_lib_bg.wasm",
+    "rusty_weather_lib.js",
+    "rusty_weather_lib.d.ts"
+  ],
+  "main": "rusty_weather_lib.js",
+  "types": "rusty_weather_lib.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}
