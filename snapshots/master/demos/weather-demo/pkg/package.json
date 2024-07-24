@@ -4,7 +4,7 @@
   "collaborators": [
     "FELGO GmbH <contact@felgo.com>"
   ],
-  "version": "1.7.0",
+  "version": "1.7.1",
   "license": "MIT",
   "files": [
     "rusty_weather_lib_bg.wasm",

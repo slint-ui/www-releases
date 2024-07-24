@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Index (C++)" href="genindex.html" /><link rel="prev" title="Define SLINT_VERSION_STRING" href="api/define_slint__generated__public_8h_1a6b7f049a8c7176edc87c4cffddfc1bbd.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.07.18 -->
-        <title>CMake Reference - Slint 1.7.0 C++ API documentation</title>
+        <title>CMake Reference - Slint 1.7.1 C++ API documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=613ab9ff" />
     <link rel="stylesheet" type="text/css" href="_static/theme_tweak.css?v=ca455ff5" />
@@ -168,7 +168,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">Slint 1.7.0 C++ API  documentation</div></a>
+      <a href="index.html"><div class="brand">Slint 1.7.1 C++ API  documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -195,7 +195,7 @@
     <img class="sidebar-logo" src="https://slint.dev/logo/slint-logo-small-light.svg" alt="Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">Slint 1.7.0 C++ API  documentation</span>
+  <span class="sidebar-brand-text">Slint 1.7.1 C++ API  documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -412,7 +412,7 @@
 The function takes care of running the slint-compiler to convert <code class="docutils literal notranslate"><span class="pre">.slint</span></code> files to <code class="docutils literal notranslate"><span class="pre">.h</span></code> files in the build directory,
 and extend  the include directories of your target so that the generated file is found when including it in your application.</p>
 <p>The optional <code class="docutils literal notranslate"><span class="pre">NAMESPACE</span></code> argument will put the generated components in the given C++ namespace.</p>
-<p>Use the <code class="docutils literal notranslate"><span class="pre">LIBRARY_PATHS</span></code> argument to specify the name and paths to <a class="reference external" href="https://slint.dev/releases/1.7.0/docs/slint/src/language/syntax/modules">component libraries</a>,
+<p>Use the <code class="docutils literal notranslate"><span class="pre">LIBRARY_PATHS</span></code> argument to specify the name and paths to <a class="reference external" href="https://slint.dev/releases/1.7.1/docs/slint/src/language/syntax/modules">component libraries</a>,
 separated by an equals sign (<code class="docutils literal notranslate"><span class="pre">=</span></code>).</p>
 <p>Given a file called <code class="docutils literal notranslate"><span class="pre">the_window.slint</span></code>, the following example will create a file called <code class="docutils literal notranslate"><span class="pre">the_window.h</span></code> that can
 be included from your .cpp file. Assuming the <code class="docutils literal notranslate"><span class="pre">the_window.slint</span></code> contains a component <code class="docutils literal notranslate"><span class="pre">TheWindow</span></code>, the output
@@ -429,7 +429,7 @@ be redirected to the specified path.</p>
 </section>
 <section id="resource-embedding">
 <h2>Resource Embedding<a class="headerlink" href="#resource-embedding" title="Permalink to this heading">¶</a></h2>
-<p>By default, images from <a class="reference external" href="https://slint.dev/releases/1.7.0/docs/slint/src/language/syntax/types"><code class="docutils literal notranslate"><span class="pre">&#64;image-url()</span></code></a> or fonts that your Slint files reference are loaded from disk at run-time. This minimises build times, but requires that the directory structure with the files remains stable. If you want to build a program that runs anywhere, then you can configure the Slint compiler to embed such sources into the binary.</p>
+<p>By default, images from <a class="reference external" href="https://slint.dev/releases/1.7.1/docs/slint/src/language/syntax/types"><code class="docutils literal notranslate"><span class="pre">&#64;image-url()</span></code></a> or fonts that your Slint files reference are loaded from disk at run-time. This minimises build times, but requires that the directory structure with the files remains stable. If you want to build a program that runs anywhere, then you can configure the Slint compiler to embed such sources into the binary.</p>
 <p>Set the <code class="docutils literal notranslate"><span class="pre">SLINT_EMBED_RESOURCES</span></code> target property on your CMake target to one of the following values:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">embed-files</span></code>: The raw files are embedded in the application binary.</p></li>
