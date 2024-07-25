@@ -1,7 +1,7 @@
 {
-  "name": "slintpad",
+  "name": "releases",
   "version": "1.0.0",
-  "description": "Online Editor for Slint applications",
+  "description": "Collection of Slint releases",
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,14 +12,12 @@
   },
   "keywords": [
     "Slint",
-    "Editor",
-    "Live-Preview",
-    "Design"
+    "Releases"
   ],
   "author": "The Slint Team",
   "license": "SEE LICENSE IN https://github.com/slint-ui/www-releases/blob/master/LICENSE.md",
   "bugs": {
-    "url": "https://github.com/slint-ui/www-releases/issues"
+    "url": "https://github.com/slint-ui/slint/issues"
   },
-  "homepage": "https://slintpad.com"
+  "homepage": "https://releases.slint.dev"
 }
