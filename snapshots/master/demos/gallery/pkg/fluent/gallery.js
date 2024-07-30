@@ -1627,10 +1627,6 @@ function __wbg_get_imports() {
         const ret = Object.getOwnPropertyDescriptor(getObject(arg0), getObject(arg1));
         return addHeapObject(ret);
     };
-    imports.wbg.__wbindgen_closure_wrapper5754 = function(arg0, arg1, arg2) {
-        const ret = makeClosure(arg0, arg1, 2698, __wbg_adapter_26);
-        return addHeapObject(ret);
-    };
     imports.wbg.__wbindgen_closure_wrapper5755 = function(arg0, arg1, arg2) {
         const ret = makeClosure(arg0, arg1, 2698, __wbg_adapter_26);
         return addHeapObject(ret);
@@ -1644,6 +1640,10 @@ function __wbg_get_imports() {
         return addHeapObject(ret);
     };
     imports.wbg.__wbindgen_closure_wrapper5758 = function(arg0, arg1, arg2) {
+        const ret = makeClosure(arg0, arg1, 2698, __wbg_adapter_26);
+        return addHeapObject(ret);
+    };
+    imports.wbg.__wbindgen_closure_wrapper5759 = function(arg0, arg1, arg2) {
         const ret = makeClosure(arg0, arg1, 2698, __wbg_adapter_26);
         return addHeapObject(ret);
     };
