@@ -454,7 +454,8 @@ The buttons will be placed in an order that depends on the target platform at ru
 There can’t be several <code class="docutils literal notranslate"><span class="pre">StandardButton</span></code>s of the same kind.</p>
 <p>A callback <code class="docutils literal notranslate"><span class="pre">&lt;kind&gt;_clicked</span></code> is automatically added for each <code class="docutils literal notranslate"><span class="pre">StandardButton</span></code> which doesn’t have an explicit
 callback handler, so it can be handled from the native code: For example if there is a button of kind <code class="docutils literal notranslate"><span class="pre">cancel</span></code>,
-a <code class="docutils literal notranslate"><span class="pre">cancel_clicked</span></code> callback will be added.</p>
+a <code class="docutils literal notranslate"><span class="pre">cancel_clicked</span></code> callback will be added.
+Each of these automatically-generated callbacks is an alias for the <code class="docutils literal notranslate"><span class="pre">clicked</span></code> callback of the associated <code class="docutils literal notranslate"><span class="pre">StandardButton</span></code>.</p>
 <section id="properties">
 <h3>Properties<a class="headerlink" href="#properties" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
