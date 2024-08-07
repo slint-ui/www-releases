@@ -247,14 +247,27 @@ Program Listing for File slint_window.h
        Window &operator=(Window &&other) = delete;
        ~Window() = default;
    
-       void show() { inner.show(); }
-       void hide() { inner.hide(); }
+       void show()
+       {
+           private_api::assert_main_thread();
+           inner.show();
+       }
+       void hide()
+       {
+           private_api::assert_main_thread();
+           inner.hide();
+       }
    
-       bool is_visible() const { return inner.is_visible(); }
+       bool is_visible() const
+       {
+           private_api::assert_main_thread();
+           return inner.is_visible();
+       }
    
        template<std::invocable<RenderingState, GraphicsAPI> F>
        std::optional<SetRenderingNotifierError> set_rendering_notifier(F &&callback) const
        {
+           private_api::assert_main_thread();
            return inner.set_rendering_notifier(std::forward<F>(callback));
        }
    
@@ -264,47 +277,86 @@ Program Listing for File slint_window.h
        void on_close_requested(F &&callback) const
        // clang-format on
        {
+           private_api::assert_main_thread();
            return inner.on_close_requested(std::forward<F>(callback));
        }
    
-       void request_redraw() const { inner.request_redraw(); }
+       void request_redraw() const
+       {
+           private_api::assert_main_thread();
+           inner.request_redraw();
+       }
    
-       slint::PhysicalPosition position() const { return inner.position(); }
+       slint::PhysicalPosition position() const
+       {
+           private_api::assert_main_thread();
+           return inner.position();
+       }
    
-       void set_position(const slint::LogicalPosition &pos) { inner.set_logical_position(pos); }
-       void set_position(const slint::PhysicalPosition &pos) { inner.set_physical_position(pos); }
+       void set_position(const slint::LogicalPosition &pos)
+       {
+           private_api::assert_main_thread();
+           inner.set_logical_position(pos);
+       }
+       void set_position(const slint::PhysicalPosition &pos)
+       {
+           private_api::assert_main_thread();
+           inner.set_physical_position(pos);
+       }
    
-       slint::PhysicalSize size() const { return inner.size(); }
+       slint::PhysicalSize size() const
+       {
+           private_api::assert_main_thread();
+           return inner.size();
+       }
    
-       void set_size(const slint::LogicalSize &size) { inner.set_logical_size(size); }
-       void set_size(const slint::PhysicalSize &size) { inner.set_physical_size(size); }
+       void set_size(const slint::LogicalSize &size)
+       {
+           private_api::assert_main_thread();
+           inner.set_logical_size(size);
+       }
+       void set_size(const slint::PhysicalSize &size)
+       {
+           private_api::assert_main_thread();
+           inner.set_physical_size(size);
+       }
    
-       float scale_factor() const { return inner.scale_factor(); }
+       float scale_factor() const
+       {
+           private_api::assert_main_thread();
+           return inner.scale_factor();
+       }
    
        bool is_fullscreen() const
        {
+           private_api::assert_main_thread();
            return cbindgen_private::slint_windowrc_is_fullscreen(&inner.handle());
        }
        void set_fullscreen(bool fullscreen)
        {
+           private_api::assert_main_thread();
            cbindgen_private::slint_windowrc_set_fullscreen(&inner.handle(), fullscreen);
        }
    
        bool is_maximized() const
        {
+           private_api::assert_main_thread();
            return cbindgen_private::slint_windowrc_is_maximized(&inner.handle());
        }
        void set_maximized(bool maximized)
        {
+           private_api::assert_main_thread();
            cbindgen_private::slint_windowrc_set_maximized(&inner.handle(), maximized);
        }
    
        bool is_minimized() const
        {
+           private_api::assert_main_thread();
            return cbindgen_private::slint_windowrc_is_minimized(&inner.handle());
        }
        void set_minimized(bool minimized)
        {
+           private_api::assert_main_thread();
            cbindgen_private::slint_windowrc_set_minimized(&inner.handle(), minimized);
        }
    
@@ -331,6 +383,7 @@ Program Listing for File slint_window.h
    
        void dispatch_pointer_press_event(LogicalPosition pos, PointerEventButton button)
        {
+           private_api::assert_main_thread();
            using slint::cbindgen_private::MouseEvent;
            MouseEvent event { .tag = MouseEvent::Tag::Pressed,
                               .pressed = MouseEvent::Pressed_Body { .position = { pos.x, pos.y },
@@ -340,6 +393,7 @@ Program Listing for File slint_window.h
        }
        void dispatch_pointer_release_event(LogicalPosition pos, PointerEventButton button)
        {
+           private_api::assert_main_thread();
            using slint::cbindgen_private::MouseEvent;
            MouseEvent event { .tag = MouseEvent::Tag::Released,
                               .released = MouseEvent::Released_Body { .position = { pos.x, pos.y },
@@ -349,6 +403,7 @@ Program Listing for File slint_window.h
        }
        void dispatch_pointer_exit_event()
        {
+           private_api::assert_main_thread();
            using slint::cbindgen_private::MouseEvent;
            MouseEvent event { .tag = MouseEvent::Tag::Exit, .moved = {} };
            inner.dispatch_pointer_event(event);
@@ -356,6 +411,7 @@ Program Listing for File slint_window.h
    
        void dispatch_pointer_move_event(LogicalPosition pos)
        {
+           private_api::assert_main_thread();
            using slint::cbindgen_private::MouseEvent;
            MouseEvent event { .tag = MouseEvent::Tag::Moved,
                               .moved = MouseEvent::Moved_Body { .position = { pos.x, pos.y } } };
@@ -364,6 +420,7 @@ Program Listing for File slint_window.h
    
        void dispatch_pointer_scroll_event(LogicalPosition pos, float delta_x, float delta_y)
        {
+           private_api::assert_main_thread();
            using slint::cbindgen_private::MouseEvent;
            MouseEvent event { .tag = MouseEvent::Tag::Wheel,
                               .wheel = MouseEvent::Wheel_Body { .position = { pos.x, pos.y },

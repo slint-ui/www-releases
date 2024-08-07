@@ -5,10 +5,10 @@
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" />
 
-    <!-- Generated with Sphinx 7.1.2 and Furo 2024.07.18 -->
+    <!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
         <title>Program Listing for File slint_window.h - Slint 1.7.1 C++ API documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=613ab9ff" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../_static/theme_tweak.css?v=ca455ff5" />
     <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=302659d7" />
@@ -640,14 +640,27 @@
 <span class="w">    </span><span class="n">Window</span><span class="w"> </span><span class="o">&amp;</span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="n">Window</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="n">other</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span><span class="p">;</span>
 <span class="w">    </span><span class="o">~</span><span class="n">Window</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span>
 
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">show</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">inner</span><span class="p">.</span><span class="n">show</span><span class="p">();</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">hide</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">inner</span><span class="p">.</span><span class="n">hide</span><span class="p">();</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">show</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
+<span class="w">        </span><span class="n">inner</span><span class="p">.</span><span class="n">show</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">hide</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
+<span class="w">        </span><span class="n">inner</span><span class="p">.</span><span class="n">hide</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">is_visible</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">inner</span><span class="p">.</span><span class="n">is_visible</span><span class="p">();</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">is_visible</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">inner</span><span class="p">.</span><span class="n">is_visible</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="k">template</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">invocable</span><span class="o">&lt;</span><span class="n">RenderingState</span><span class="p">,</span><span class="w"> </span><span class="n">GraphicsAPI</span><span class="o">&gt;</span><span class="w"> </span><span class="n">F</span><span class="o">&gt;</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">SetRenderingNotifierError</span><span class="o">&gt;</span><span class="w"> </span><span class="n">set_rendering_notifier</span><span class="p">(</span><span class="n">F</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="n">callback</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
 <span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">inner</span><span class="p">.</span><span class="n">set_rendering_notifier</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">forward</span><span class="o">&lt;</span><span class="n">F</span><span class="o">&gt;</span><span class="p">(</span><span class="n">callback</span><span class="p">));</span>
 <span class="w">    </span><span class="p">}</span>
 
@@ -657,47 +670,86 @@
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">on_close_requested</span><span class="p">(</span><span class="n">F</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="n">callback</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
 <span class="w">    </span><span class="c1">// clang-format on</span>
 <span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">inner</span><span class="p">.</span><span class="n">on_close_requested</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">forward</span><span class="o">&lt;</span><span class="n">F</span><span class="o">&gt;</span><span class="p">(</span><span class="n">callback</span><span class="p">));</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">request_redraw</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">inner</span><span class="p">.</span><span class="n">request_redraw</span><span class="p">();</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">request_redraw</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
+<span class="w">        </span><span class="n">inner</span><span class="p">.</span><span class="n">request_redraw</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="n">slint</span><span class="o">::</span><span class="n">PhysicalPosition</span><span class="w"> </span><span class="n">position</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">inner</span><span class="p">.</span><span class="n">position</span><span class="p">();</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="n">slint</span><span class="o">::</span><span class="n">PhysicalPosition</span><span class="w"> </span><span class="n">position</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">inner</span><span class="p">.</span><span class="n">position</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">set_position</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">slint</span><span class="o">::</span><span class="n">LogicalPosition</span><span class="w"> </span><span class="o">&amp;</span><span class="n">pos</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">inner</span><span class="p">.</span><span class="n">set_logical_position</span><span class="p">(</span><span class="n">pos</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">set_position</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">slint</span><span class="o">::</span><span class="n">PhysicalPosition</span><span class="w"> </span><span class="o">&amp;</span><span class="n">pos</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">inner</span><span class="p">.</span><span class="n">set_physical_position</span><span class="p">(</span><span class="n">pos</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">set_position</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">slint</span><span class="o">::</span><span class="n">LogicalPosition</span><span class="w"> </span><span class="o">&amp;</span><span class="n">pos</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
+<span class="w">        </span><span class="n">inner</span><span class="p">.</span><span class="n">set_logical_position</span><span class="p">(</span><span class="n">pos</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">set_position</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">slint</span><span class="o">::</span><span class="n">PhysicalPosition</span><span class="w"> </span><span class="o">&amp;</span><span class="n">pos</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
+<span class="w">        </span><span class="n">inner</span><span class="p">.</span><span class="n">set_physical_position</span><span class="p">(</span><span class="n">pos</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="n">slint</span><span class="o">::</span><span class="n">PhysicalSize</span><span class="w"> </span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">inner</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="n">slint</span><span class="o">::</span><span class="n">PhysicalSize</span><span class="w"> </span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">inner</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">set_size</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">slint</span><span class="o">::</span><span class="n">LogicalSize</span><span class="w"> </span><span class="o">&amp;</span><span class="n">size</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">inner</span><span class="p">.</span><span class="n">set_logical_size</span><span class="p">(</span><span class="n">size</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">set_size</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">slint</span><span class="o">::</span><span class="n">PhysicalSize</span><span class="w"> </span><span class="o">&amp;</span><span class="n">size</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">inner</span><span class="p">.</span><span class="n">set_physical_size</span><span class="p">(</span><span class="n">size</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">set_size</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">slint</span><span class="o">::</span><span class="n">LogicalSize</span><span class="w"> </span><span class="o">&amp;</span><span class="n">size</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
+<span class="w">        </span><span class="n">inner</span><span class="p">.</span><span class="n">set_logical_size</span><span class="p">(</span><span class="n">size</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">set_size</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">slint</span><span class="o">::</span><span class="n">PhysicalSize</span><span class="w"> </span><span class="o">&amp;</span><span class="n">size</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
+<span class="w">        </span><span class="n">inner</span><span class="p">.</span><span class="n">set_physical_size</span><span class="p">(</span><span class="n">size</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">scale_factor</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">inner</span><span class="p">.</span><span class="n">scale_factor</span><span class="p">();</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">scale_factor</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">inner</span><span class="p">.</span><span class="n">scale_factor</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">is_fullscreen</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 <span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_windowrc_is_fullscreen</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inner</span><span class="p">.</span><span class="n">handle</span><span class="p">());</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">set_fullscreen</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">fullscreen</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
 <span class="w">        </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_windowrc_set_fullscreen</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inner</span><span class="p">.</span><span class="n">handle</span><span class="p">(),</span><span class="w"> </span><span class="n">fullscreen</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">is_maximized</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 <span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_windowrc_is_maximized</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inner</span><span class="p">.</span><span class="n">handle</span><span class="p">());</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">set_maximized</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">maximized</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
 <span class="w">        </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_windowrc_set_maximized</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inner</span><span class="p">.</span><span class="n">handle</span><span class="p">(),</span><span class="w"> </span><span class="n">maximized</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">is_minimized</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 <span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_windowrc_is_minimized</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inner</span><span class="p">.</span><span class="n">handle</span><span class="p">());</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">set_minimized</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">minimized</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
 <span class="w">        </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_windowrc_set_minimized</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inner</span><span class="p">.</span><span class="n">handle</span><span class="p">(),</span><span class="w"> </span><span class="n">minimized</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 
@@ -724,6 +776,7 @@
 
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">dispatch_pointer_press_event</span><span class="p">(</span><span class="n">LogicalPosition</span><span class="w"> </span><span class="n">pos</span><span class="p">,</span><span class="w"> </span><span class="n">PointerEventButton</span><span class="w"> </span><span class="n">button</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
 <span class="w">        </span><span class="k">using</span><span class="w"> </span><span class="n">slint</span><span class="o">::</span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">MouseEvent</span><span class="p">;</span>
 <span class="w">        </span><span class="n">MouseEvent</span><span class="w"> </span><span class="n">event</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">.</span><span class="n">tag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MouseEvent</span><span class="o">::</span><span class="n">Tag</span><span class="o">::</span><span class="n">Pressed</span><span class="p">,</span>
 <span class="w">                           </span><span class="p">.</span><span class="n">pressed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MouseEvent</span><span class="o">::</span><span class="n">Pressed_Body</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">.</span><span class="n">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">pos</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">pos</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="p">},</span>
@@ -733,6 +786,7 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">dispatch_pointer_release_event</span><span class="p">(</span><span class="n">LogicalPosition</span><span class="w"> </span><span class="n">pos</span><span class="p">,</span><span class="w"> </span><span class="n">PointerEventButton</span><span class="w"> </span><span class="n">button</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
 <span class="w">        </span><span class="k">using</span><span class="w"> </span><span class="n">slint</span><span class="o">::</span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">MouseEvent</span><span class="p">;</span>
 <span class="w">        </span><span class="n">MouseEvent</span><span class="w"> </span><span class="n">event</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">.</span><span class="n">tag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MouseEvent</span><span class="o">::</span><span class="n">Tag</span><span class="o">::</span><span class="n">Released</span><span class="p">,</span>
 <span class="w">                           </span><span class="p">.</span><span class="n">released</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MouseEvent</span><span class="o">::</span><span class="n">Released_Body</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">.</span><span class="n">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">pos</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">pos</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="p">},</span>
@@ -742,6 +796,7 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">dispatch_pointer_exit_event</span><span class="p">()</span>
 <span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
 <span class="w">        </span><span class="k">using</span><span class="w"> </span><span class="n">slint</span><span class="o">::</span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">MouseEvent</span><span class="p">;</span>
 <span class="w">        </span><span class="n">MouseEvent</span><span class="w"> </span><span class="n">event</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">.</span><span class="n">tag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MouseEvent</span><span class="o">::</span><span class="n">Tag</span><span class="o">::</span><span class="n">Exit</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="n">moved</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span><span class="w"> </span><span class="p">};</span>
 <span class="w">        </span><span class="n">inner</span><span class="p">.</span><span class="n">dispatch_pointer_event</span><span class="p">(</span><span class="n">event</span><span class="p">);</span>
@@ -749,6 +804,7 @@
 
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">dispatch_pointer_move_event</span><span class="p">(</span><span class="n">LogicalPosition</span><span class="w"> </span><span class="n">pos</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
 <span class="w">        </span><span class="k">using</span><span class="w"> </span><span class="n">slint</span><span class="o">::</span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">MouseEvent</span><span class="p">;</span>
 <span class="w">        </span><span class="n">MouseEvent</span><span class="w"> </span><span class="n">event</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">.</span><span class="n">tag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MouseEvent</span><span class="o">::</span><span class="n">Tag</span><span class="o">::</span><span class="n">Moved</span><span class="p">,</span>
 <span class="w">                           </span><span class="p">.</span><span class="n">moved</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MouseEvent</span><span class="o">::</span><span class="n">Moved_Body</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">.</span><span class="n">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">pos</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">pos</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">};</span>
@@ -757,6 +813,7 @@
 
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">dispatch_pointer_scroll_event</span><span class="p">(</span><span class="n">LogicalPosition</span><span class="w"> </span><span class="n">pos</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">delta_x</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">delta_y</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
 <span class="w">        </span><span class="k">using</span><span class="w"> </span><span class="n">slint</span><span class="o">::</span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">MouseEvent</span><span class="p">;</span>
 <span class="w">        </span><span class="n">MouseEvent</span><span class="w"> </span><span class="n">event</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">.</span><span class="n">tag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MouseEvent</span><span class="o">::</span><span class="n">Tag</span><span class="o">::</span><span class="n">Wheel</span><span class="p">,</span>
 <span class="w">                           </span><span class="p">.</span><span class="n">wheel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MouseEvent</span><span class="o">::</span><span class="n">Wheel_Body</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">.</span><span class="n">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">pos</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">pos</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="p">},</span>
