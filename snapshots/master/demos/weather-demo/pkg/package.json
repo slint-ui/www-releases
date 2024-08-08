@@ -7,12 +7,12 @@
   "version": "1.7.1",
   "license": "MIT",
   "files": [
-    "weather_demo_lib_bg.wasm",
-    "weather_demo_lib.js",
-    "weather_demo_lib.d.ts"
+    "weather_demo_bg.wasm",
+    "weather_demo.js",
+    "weather_demo.d.ts"
   ],
-  "main": "weather_demo_lib.js",
-  "types": "weather_demo_lib.d.ts",
+  "main": "weather_demo.js",
+  "types": "weather_demo.d.ts",
   "sideEffects": [
     "./snippets/*"
   ]
