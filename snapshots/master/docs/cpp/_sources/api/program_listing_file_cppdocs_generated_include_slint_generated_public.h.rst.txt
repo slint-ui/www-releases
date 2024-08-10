@@ -23,8 +23,8 @@ Program Listing for File slint_generated_public.h
    
    #define SLINT_VERSION_MAJOR 1
    #define SLINT_VERSION_MINOR 7
-   #define SLINT_VERSION_PATCH 1
-   #define SLINT_VERSION_STRING "1.7.1"
+   #define SLINT_VERSION_PATCH 2
+   #define SLINT_VERSION_STRING "1.7.2"
    
    #define SLINT_FEATURE_INTERPRETER
    #define SLINT_FEATURE_TESTING

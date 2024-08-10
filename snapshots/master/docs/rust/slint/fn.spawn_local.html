@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Spawns a Future to execute in the Slint event loop."><title>spawn_local in slint - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-46f98efaafac5295.ttf.woff2,FiraSans-Regular-018c141bf0843ffd.woff2,FiraSans-Medium-8f9a781e4970d388.woff2,SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2,SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../static.files/rustdoc-d10b2a06af903387.css"><meta name="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="slint" data-themes="" data-resource-suffix="" data-rustdoc-version="1.82.0-nightly (3e9bd8b56 2024-08-08)" data-channel="nightly" data-search-js="search-ef54e092fea9c776.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../static.files/storage-118b08c4c78b968e.js"></script><script defer src="sidebar-items.js"></script><script defer src="../static.files/main-04a29ac50d05d0b1.js"></script><noscript><link rel="stylesheet" href="../static.files/noscript-df360f571f6edeae.css"></noscript><link rel="alternate icon" type="image/png" href="../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../static.files/favicon-2c020d218678b618.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Spawns a `Future` to execute in the Slint event loop."><title>spawn_local in slint - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-46f98efaafac5295.ttf.woff2,FiraSans-Regular-018c141bf0843ffd.woff2,FiraSans-Medium-8f9a781e4970d388.woff2,SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2,SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../static.files/rustdoc-d10b2a06af903387.css"><meta name="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="slint" data-themes="" data-resource-suffix="" data-rustdoc-version="1.82.0-nightly (ca5d25e2c 2024-08-09)" data-channel="nightly" data-search-js="search-ef54e092fea9c776.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../static.files/storage-118b08c4c78b968e.js"></script><script defer src="sidebar-items.js"></script><script defer src="../static.files/main-04a29ac50d05d0b1.js"></script><noscript><link rel="stylesheet" href="../static.files/noscript-df360f571f6edeae.css"></noscript><link rel="alternate icon" type="image/png" href="../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../static.files/favicon-2c020d218678b618.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -119,10 +119,10 @@
   });
 </script>
 
-</head><body class="rustdoc fn"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle" title="show sidebar"></button><a class="logo-container" href="../slint/index.html"><img src="https://slint.dev/logo/slint-logo-square-light.svg" alt=""></a></nav><nav class="sidebar"><div class="sidebar-crate"><a class="logo-container" href="../slint/index.html"><img src="https://slint.dev/logo/slint-logo-square-light.svg" alt="logo"></a><h2><a href="../slint/index.html">slint</a><span class="version">1.7.1</span></h2></div><div class="sidebar-elems"></div></nav><div class="sidebar-resizer"></div><main><div class="width-limiter"><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><h1>Function <a href="index.html">slint</a>::<wbr><a class="fn" href="#">spawn_local</a><button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><span class="out-of-band"><button id="toggle-all-docs" title="collapse all docs">[<span>&#x2212;</span>]</button></span></div><pre class="rust item-decl"><code>pub fn spawn_local&lt;F&gt;(
+</head><body class="rustdoc fn"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle" title="show sidebar"></button><a class="logo-container" href="../slint/index.html"><img src="https://slint.dev/logo/slint-logo-square-light.svg" alt=""></a></nav><nav class="sidebar"><div class="sidebar-crate"><a class="logo-container" href="../slint/index.html"><img src="https://slint.dev/logo/slint-logo-square-light.svg" alt="logo"></a><h2><a href="../slint/index.html">slint</a><span class="version">1.7.2</span></h2></div><div class="sidebar-elems"></div></nav><div class="sidebar-resizer"></div><main><div class="width-limiter"><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><h1>Function <a href="index.html">slint</a>::<wbr><a class="fn" href="#">spawn_local</a><button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><span class="out-of-band"><button id="toggle-all-docs" title="collapse all docs">[<span>&#x2212;</span>]</button></span></div><pre class="rust item-decl"><code>pub fn spawn_local&lt;F&gt;(
     fut: F,
 ) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="struct.JoinHandle.html" title="struct slint::JoinHandle">JoinHandle</a>&lt;&lt;F as <a class="trait" href="https://doc.rust-lang.org/nightly/core/future/future/trait.Future.html" title="trait core::future::future::Future">Future</a>&gt;::<a class="associatedtype" href="https://doc.rust-lang.org/nightly/core/future/future/trait.Future.html#associatedtype.Output" title="type core::future::future::Future::Output">Output</a>&gt;, <a class="enum" href="enum.EventLoopError.html" title="enum slint::EventLoopError">EventLoopError</a>&gt;<div class="where">where
-    F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/future/future/trait.Future.html" title="trait core::future::future::Future">Future</a> + 'static,</div></code></pre><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Spawns a Future to execute in the Slint event loop.</p>
+    F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/future/future/trait.Future.html" title="trait core::future::future::Future">Future</a> + 'static,</div></code></pre><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Spawns a <a href="https://doc.rust-lang.org/nightly/core/future/future/trait.Future.html" title="trait core::future::future::Future"><code>Future</code></a> to execute in the Slint event loop.</p>
 <p>This function is intended to be invoked only from the main Slint thread that runs the event loop.
 The event loop must be initialized prior to calling this function.</p>
 <p>For spawning a <code>Send</code> future from a different thread, this function should be called from a closure
@@ -135,22 +135,53 @@ passed to <a href="fn.invoke_from_event_loop.html" title="fn slint::invoke_from_
 <h2 id="compatibility-with-tokio-and-other-runtimes"><a class="doc-anchor" href="#compatibility-with-tokio-and-other-runtimes">§</a>Compatibility with Tokio and other runtimes</h2>
 <p>The runtime used to execute the future on the main thread is platform-dependent,
 for instance, it could be the winit event loop. Therefore, futures that assume a specific runtime
-may not work. To overcome this, these futures should be executed in a thread where the specific
-runtime is running.</p>
-<p>For Tokio, this can be achieved by awaiting <a href="https://docs.rs/tokio/latest/tokio/task/fn.spawn.html">tokio::spawn</a>
-in the future passed to slint::spawn_local.</p>
+may not work. This may be an issue if you call <code>.await</code> on a future created by another
+runtime, or pass the future directly to <code>spawn_local</code>.</p>
+<p>Futures from the <a href="https://docs.rs/smol/latest/smol/">smol</a> runtime always hand off their work to
+separate I/O threads that run in parallel to the Slint event loop.</p>
+<p>The <a href="https://docs.rs/tokio/latest/tokio/index.html">Tokio</a> runtime is to the following constraints:</p>
+<ul>
+<li>Tokio futures require entering the context of a global Tokio runtime.</li>
+<li>Tokio futures aren’t guaranteed to hand off their work to separate threads and may therefore not complete, because
+the Slint runtime can’t drive the Tokio runtime.</li>
+<li>Tokio futures require regular yielding to the Tokio runtime for fairness, a constraint that also can’t be met by Slint.</li>
+<li>Tokio’s <a href="https://docs.rs/tokio/latest/tokio/runtime/index.html#current-thread-scheduler">current-thread schedule</a>
+cannot be used in Slint main thread, because Slint cannot yield to it.</li>
+</ul>
+<p>To addresse these constraints, use <a href="https://docs.rs/async-compat/latest/async_compat/index.html">async_compat</a>’s <a href="https://docs.rs/async-compat/latest/async_compat/struct.Compat.html#method.new">Compat::new()</a>
+to implicitly allocate a shared, multi-threaded Tokio runtime that will be used for Tokio futures.</p>
+<p>The following little example demonstrates the use of Tokio’s <a href="https://docs.rs/tokio/latest/tokio/net/struct.TcpStream.html"><code>TcpStream</code></a> to
+read from a network socket. The entire future passed to <code>spawn_local()</code> is wrapped in <code>Compat::new()</code> to make it run:</p>
 
-<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="comment">// In your main function, create a runtime that runs on the other threads
-</span><span class="kw">let </span>tokio_runtime = tokio::runtime::Runtime::new().unwrap();
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="comment">// A dummy TCP server that once reports "Hello World"
+</span><span class="kw">use </span>std::io::Write;
 
-<span class="comment">// ...
-// Within the UI thread (for example in a callback handler)
-</span>slint::spawn_local(<span class="kw">async move </span>{
-    <span class="kw">let </span>result = tokio_runtime.spawn(<span class="kw">async move </span>{
-        <span class="comment">// This code is running on the Tokio runtime's thread, you can await futures that depends on Tokio here.
-        </span><span class="number">42
-    </span>}).<span class="kw">await</span>.unwrap();
-    <span class="comment">// now we are back on the UI thread so we can do something with the result on the UI thread
-    </span><span class="macro">assert_eq!</span>(result, <span class="number">42</span>);
-}).unwrap();</code></pre></div>
+<span class="kw">let </span>listener = std::net::TcpListener::bind(<span class="string">"127.0.0.1:0"</span>).unwrap();
+<span class="kw">let </span>local_addr = listener.local_addr().unwrap();
+<span class="kw">let </span>server = std::thread::spawn(<span class="kw">move </span>|| {
+    <span class="kw">let </span><span class="kw-2">mut </span>stream = listener.incoming().next().unwrap().unwrap();
+    stream.write(<span class="string">"Hello World"</span>.as_bytes()).unwrap();
+});
+
+<span class="kw">let </span>slint_future = <span class="kw">async move </span>{
+    <span class="kw">use </span>tokio::io::AsyncReadExt;
+    <span class="kw">let </span><span class="kw-2">mut </span>stream = tokio::net::TcpStream::connect(local_addr).<span class="kw">await</span>.unwrap();
+    <span class="kw">let </span><span class="kw-2">mut </span>data = Vec::new();
+    stream.read_to_end(<span class="kw-2">&amp;mut </span>data).<span class="kw">await</span>.unwrap();        
+    <span class="macro">assert_eq!</span>(data, <span class="string">"Hello World"</span>.as_bytes());
+    slint::quit_event_loop().unwrap();
+};
+
+<span class="comment">// Wrap the future that includes Tokio futures in async_compat's `Compat` to ensure
+// presence of a Tokio run-time.
+</span>slint::spawn_local(async_compat::Compat::new(slint_future)).unwrap();
+
+slint::run_event_loop_until_quit().unwrap();
+
+server.join().unwrap();</code></pre></div>
+<p>The use of <code>#[tokio::main]</code> is <strong>not recommended</strong>. If it’s necessary to use though, wrap the call to enter the Slint
+event loop  in a call to <a href="https://docs.rs/tokio/latest/tokio/task/fn.block_in_place.html"><code>tokio::task::block_in_place</code></a>:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="comment">// Wrap the call to run_event_loop to ensure presence of a Tokio run-time.
+</span>tokio::task::block_in_place(slint::run_event_loop).unwrap();</code></pre></div>
 </div></details></section></div></main></body></html>

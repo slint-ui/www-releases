@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Backends &amp; Renderers" href="backends_and_renderers.html" /><link rel="prev" title="Debugging Techniques" href="debugging_techniques.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
-        <title>Selecting a Widget Style - Slint 1.7.1 Reference</title>
+        <title>Selecting a Widget Style - Slint 1.7.2 Reference</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../../_static/theme_tweak.css?v=6873ab5b" />
@@ -169,7 +169,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../../index.html"><div class="brand">Slint 1.7.1 Reference</div></a>
+      <a href="../../index.html"><div class="brand">Slint 1.7.2 Reference</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -196,7 +196,7 @@
     <img class="sidebar-logo" src="https://slint.dev/logo/slint-logo-small-light.svg" alt="Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">Slint 1.7.1 Reference</span>
+  <span class="sidebar-brand-text">Slint 1.7.2 Reference</span>
   
 </a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -415,7 +415,7 @@
 </section>
 <section id="selecting-a-widget-style-when-using-node-js">
 <h2>Selecting a Widget Style when using Node.js:<a class="headerlink" href="#selecting-a-widget-style-when-using-node-js" title="Permalink to this heading">¶</a></h2>
-<p>You can select the style by setting the <code class="docutils literal notranslate"><span class="pre">style</span></code> property in <a class="reference external" href="https://slint.dev/releases/1.7.1/docs/node/interfaces/LoadFileOptions"><code class="docutils literal notranslate"><span class="pre">LoadFileOptions</span></code></a> passed to <a class="reference external" href="https://slint.dev/releases/1.7.1/docs/node/functions/loadFile"><code class="docutils literal notranslate"><span class="pre">loadFile</span></code></a>:</p>
+<p>You can select the style by setting the <code class="docutils literal notranslate"><span class="pre">style</span></code> property in <a class="reference external" href="https://slint.dev/releases/1.7.2/docs/node/interfaces/LoadFileOptions"><code class="docutils literal notranslate"><span class="pre">LoadFileOptions</span></code></a> passed to <a class="reference external" href="https://slint.dev/releases/1.7.2/docs/node/functions/loadFile"><code class="docutils literal notranslate"><span class="pre">loadFile</span></code></a>:</p>
 <div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">slint</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;slint-ui&quot;</span><span class="p">;</span>
 <span class="kd">let</span><span class="w"> </span><span class="nx">ui</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">slint</span><span class="p">.</span><span class="nx">loadFile</span><span class="p">(</span><span class="s2">&quot;main.slint&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;fluent&quot;</span><span class="w"> </span><span class="p">});</span>
 <span class="kd">let</span><span class="w"> </span><span class="nx">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ui</span><span class="p">.</span><span class="nx">Main</span><span class="p">();</span>
