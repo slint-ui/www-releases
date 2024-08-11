@@ -682,9 +682,10 @@ conversions are required to make the UI description more robust, but implicit
 conversions are allowed between some types for convenience.</p>
 <p>The following conversions are possible:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">int</span></code> can be converted implicitly to <code class="docutils literal notranslate"><span class="pre">float</span></code> and vice-versa</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">int</span></code> can be converted implicitly to <code class="docutils literal notranslate"><span class="pre">float</span></code> and vice-versa.
+When converting from <code class="docutils literal notranslate"><span class="pre">float</span></code> to <code class="docutils literal notranslate"><span class="pre">int</span></code>, the value is truncated.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">int</span></code> and <code class="docutils literal notranslate"><span class="pre">float</span></code> can be converted implicitly to <code class="docutils literal notranslate"><span class="pre">string</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">physical-length</span></code> and <code class="docutils literal notranslate"><span class="pre">length</span></code> can be converted implicitly to each other only in
+<li><p><code class="docutils literal notranslate"><span class="pre">physical-length</span></code>, <code class="docutils literal notranslate"><span class="pre">relative-font-size</span></code>, and <code class="docutils literal notranslate"><span class="pre">length</span></code> can be converted implicitly to each other only in
 context where the pixel ratio is known.</p></li>
 <li><p>the units type (<code class="docutils literal notranslate"><span class="pre">length</span></code>, <code class="docutils literal notranslate"><span class="pre">physical-length</span></code>, <code class="docutils literal notranslate"><span class="pre">duration</span></code>, …) can’t be converted to numbers (<code class="docutils literal notranslate"><span class="pre">float</span></code> or <code class="docutils literal notranslate"><span class="pre">int</span></code>)
 but they can be divided by themselves to result in a number. Similarly, a number can be multiplied by one of
@@ -693,7 +694,7 @@ these unit. The idea is that one would multiply by <code class="docutils literal
 <li><p>Struct types convert with another struct type if they have the same property names and their types can be converted.
 The source struct can have either missing properties, or extra properties. But not both.</p></li>
 <li><p>Arrays generally don’t convert between each other. Array literals can be converted if the element types are convertible.</p></li>
-<li><p>String can be converted to float by using the <code class="docutils literal notranslate"><span class="pre">to-float</span></code> function. That function returns 0 if the string isen’t
+<li><p>String can be converted to float by using the <code class="docutils literal notranslate"><span class="pre">to-float</span></code> function. That function returns 0 if the string isn’t
 a valid number. You can check with <code class="docutils literal notranslate"><span class="pre">is-float()</span></code> if the string contains a valid number</p></li>
 </ul>
 <div class="highlight-slint,no-preview notranslate"><div class="highlight"><pre><span></span>export component Example {
@@ -709,6 +710,7 @@ a valid number. You can check with <code class="docutils literal notranslate"><s
     property&lt;string&gt; xxx: &quot;42.1&quot;;
     property&lt;float&gt; xxx1: xxx.to-float(); // 42.1
     property&lt;bool&gt; xxx2: xxx.is-float(); // true
+    property&lt;int&gt; xxx3: 45.8; // 45
 }
 </pre></div>
 </div>
