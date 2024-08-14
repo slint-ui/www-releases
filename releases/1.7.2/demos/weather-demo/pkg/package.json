@@ -1,0 +1,19 @@
+{
+  "name": "weather-demo",
+  "type": "module",
+  "collaborators": [
+    "FELGO GmbH <contact@felgo.com>"
+  ],
+  "version": "1.7.2",
+  "license": "MIT",
+  "files": [
+    "weather_demo_bg.wasm",
+    "weather_demo.js",
+    "weather_demo.d.ts"
+  ],
+  "main": "weather_demo.js",
+  "types": "weather_demo.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "opengl_underlay",
+  "type": "module",
+  "collaborators": [
+    "Slint Developers <info@slint.dev>"
+  ],
+  "version": "1.7.2",
+  "license": "MIT",
+  "files": [
+    "opengl_underlay_bg.wasm",
+    "opengl_underlay.js",
+    "opengl_underlay.d.ts"
+  ],
+  "main": "opengl_underlay.js",
+  "types": "opengl_underlay.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}

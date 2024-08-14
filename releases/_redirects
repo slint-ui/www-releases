@@ -1,10 +1,10 @@
 /releases/* /:splat
 /:version/docs/quickstart/:language qs=:qs /:version/docs/:qs/:language
 /1.0.2/docs/nodejs/* /1.0.2/docs/node/:splat
-/latest/* /1.7.1/:splat
-/demos/* /1.7.1/demos/:splat
-/docs/* /1.7.1/docs/:splat
-/editor/* /1.7.1/editor/:splat
+/latest/* /1.7.2/:splat
+/demos/* /1.7.2/demos/:splat
+/docs/* /1.7.2/docs/:splat
+/editor/* /1.7.2/editor/:splat
 /master/* https://snapshots.slint.dev/master/:splat
 /docs/rust/sixtyfps/* /docs/rust/slint/:splat
 /docs/rust/sixtyfps_interpreter/* /docs/rust/slint/:splat
