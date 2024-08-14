@@ -354,23 +354,7 @@ filled with a soothing tone of blue.</p>
 <p>Lengths in Slint have a unit, here, the <code class="docutils literal notranslate"><span class="pre">px</span></code> suffix.
 This makes the code easier to read and the compiler can detect when you accidentally
 mix values with different units attached to them.</p>
-<div class="sd-tab-set docutils">
-<input id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
-<label class="sd-tab-label" data-sync-group="tab" data-sync-id="cpp" for="sd-tab-item-0">
-C++</label><div class="sd-tab-content docutils">
 <p>Copy the following code into <code class="docutils literal notranslate"><span class="pre">ui/appwindow.slint</span></code> file, replacing the current content:</p>
-</div>
-<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
-<label class="sd-tab-label" data-sync-group="tab" data-sync-id="nodejs" for="sd-tab-item-1">
-NodeJS</label><div class="sd-tab-content docutils">
-<p>Copy the following code into <code class="docutils literal notranslate"><span class="pre">ui/appwindow.slint</span></code> file, replacing the current content:</p>
-</div>
-<input checked="checked" id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
-<label class="sd-tab-label" data-sync-group="tab" data-sync-id="rust" for="sd-tab-item-2">
-Rust</label><div class="sd-tab-content docutils">
-<p>Copy the following code inside of the <code class="docutils literal notranslate"><span class="pre">slint!</span></code> macro, replacing the current content:</p>
-</div>
-</div>
 <div class="highlight-slint,no-preview notranslate"><div class="highlight"><pre><span></span>component MemoryTile inherits Rectangle {
     width: 64px;
     height: 64px;
@@ -389,28 +373,8 @@ export component MainWindow inherits Window {
 </pre></div>
 </div>
 <p>This exports the <span class="hljs-title">MainWindow</span> component so that the game logic code can access it later.</p>
-<div class="sd-tab-set docutils">
-<input id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
-<label class="sd-tab-label" data-sync-group="tab" data-sync-id="cpp" for="sd-tab-item-3">
-C++</label><div class="sd-tab-content docutils">
 <p>Inside the <span class="hljs-built_in">Rectangle</span> place an <span class="hljs-built_in">Image</span> element that
 loads an icon with the <span class="hljs-built_in">&#64;image-url()</span> macro. The path is relative to the location of <code class="docutils literal notranslate"><span class="pre">ui/appwindow.slint</span></code>.</p>
-</div>
-<input id="sd-tab-item-4" name="sd-tab-set-1" type="radio">
-<label class="sd-tab-label" data-sync-group="tab" data-sync-id="nodejs" for="sd-tab-item-4">
-NodeJS</label><div class="sd-tab-content docutils">
-<p>Inside the <span class="hljs-built_in">Rectangle</span> place an <span class="hljs-built_in">Image</span> element that
-loads an icon with the <span class="hljs-built_in">&#64;image-url()</span> macro. The path is relative to the location of <code class="docutils literal notranslate"><span class="pre">ui/appwindow.slint</span></code>.</p>
-</div>
-<input checked="checked" id="sd-tab-item-5" name="sd-tab-set-1" type="radio">
-<label class="sd-tab-label" data-sync-group="tab" data-sync-id="rust" for="sd-tab-item-5">
-Rust</label><div class="sd-tab-content docutils">
-<p>Inside the <span class="hljs-built_in">Rectangle</span> place an <span class="hljs-built_in">Image</span> element that
-loads an icon with the <span class="hljs-built_in">&#64;image-url()</span> macro.
-When using the <code class="docutils literal notranslate"><span class="pre">slint!</span></code> macro, the path is relative to the folder that contains the <code class="docutils literal notranslate"><span class="pre">Cargo.toml</span></code> file.
-When using Slint files, it’s relative to the folder of the Slint file containing it.</p>
-</div>
-</div>
 <p>You need to install this icon and others you use later first. You can download a pre-prepared
 <a class="reference external" href="https://slint.dev/blog/memory-game-tutorial/icons.zip">Zip archive</a> to the <code class="docutils literal notranslate"><span class="pre">ui</span></code> folder,</p>
 <p>If you are on Linux or macOS, download and extract it with the following commands:</p>
@@ -429,18 +393,18 @@ powershell<span class="w"> </span>Expand-Archive<span class="w"> </span>-Path<sp
 </div>
 <p>This unpacks an <code class="docutils literal notranslate"><span class="pre">icons</span></code> directory containing several icons.</p>
 <div class="sd-tab-set docutils">
-<input id="sd-tab-item-6" name="sd-tab-set-2" type="radio">
-<label class="sd-tab-label" data-sync-group="tab" data-sync-id="cpp" for="sd-tab-item-6">
+<input id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" data-sync-group="tab" data-sync-id="cpp" for="sd-tab-item-0">
 C++</label><div class="sd-tab-content docutils">
 <p>Compiling the program with <code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">--build</span> <span class="pre">build</span></code> and running with the <code class="docutils literal notranslate"><span class="pre">./build/my_application</span></code> opens a window that shows the icon of a bus on a blue background.</p>
 </div>
-<input id="sd-tab-item-7" name="sd-tab-set-2" type="radio">
-<label class="sd-tab-label" data-sync-group="tab" data-sync-id="nodejs" for="sd-tab-item-7">
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" data-sync-group="tab" data-sync-id="nodejs" for="sd-tab-item-1">
 NodeJS</label><div class="sd-tab-content docutils">
 <p>Running the program with <code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">start</span></code> opens a window that shows the icon of a bus on a blue background.</p>
 </div>
-<input checked="checked" id="sd-tab-item-8" name="sd-tab-set-2" type="radio">
-<label class="sd-tab-label" data-sync-group="tab" data-sync-id="rust" for="sd-tab-item-8">
+<input checked="checked" id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" data-sync-group="tab" data-sync-id="rust" for="sd-tab-item-2">
 Rust</label><div class="sd-tab-content docutils">
 <p>Running the program with <code class="docutils literal notranslate"><span class="pre">cargo</span> <span class="pre">run</span></code> opens a window that shows the icon of a bus on a blue background.</p>
 </div>

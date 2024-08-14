@@ -434,7 +434,7 @@ Rust</label><div class="sd-tab-content docutils">
 
     <span class="o">//</span> <span class="n">Assign</span> <span class="n">the</span> <span class="n">shuffled</span> <span class="n">Vec</span> <span class="n">to</span> <span class="n">the</span> <span class="n">model</span> <span class="nb">property</span>
     <span class="n">let</span> <span class="n">tiles_model</span> <span class="o">=</span> <span class="n">std</span><span class="p">::</span><span class="n">rc</span><span class="p">::</span><span class="n">Rc</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="n">slint</span><span class="p">::</span><span class="n">VecModel</span><span class="p">::</span><span class="n">from</span><span class="p">(</span><span class="n">tiles</span><span class="p">));</span>
-    <span class="n">main_window</span><span class="o">.</span><span class="n">set_memory_tiles</span><span class="p">(</span><span class="n">tiles_model</span><span class="o">.</span><span class="n">into</span><span class="p">());</span>
+    <span class="n">main_window</span><span class="o">.</span><span class="n">set_memory_tiles</span><span class="p">(</span><span class="n">tiles_model</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span><span class="o">.</span><span class="n">into</span><span class="p">());</span>
 
     <span class="n">main_window</span><span class="o">.</span><span class="n">run</span><span class="p">()</span><span class="o">.</span><span class="n">unwrap</span><span class="p">();</span>
 <span class="p">}</span>

@@ -364,7 +364,7 @@ C++</label><div class="sd-tab-content docutils">
 </div>
 <h3 class="rubric" id="configure-the-project">Configure the project</h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> uses the line <code class="docutils literal notranslate"><span class="pre">add_executable(my_application</span> <span class="pre">src/main.cpp)</span></code> to set <code class="docutils literal notranslate"><span class="pre">src/main.cpp</span></code> as the main C++ code file.</p>
-<p>Change the content of <code class="docutils literal notranslate"><span class="pre">src/main.cpp</span></code> to the following:</p>
+<p>Replace the content of <code class="docutils literal notranslate"><span class="pre">src/main.cpp</span></code> with the following:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span> <span class="n">main</span><span class="p">(</span><span class="nb">int</span> <span class="n">argc</span><span class="p">,</span> <span class="n">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="n">auto</span> <span class="n">main_window</span> <span class="o">=</span> <span class="n">MainWindow</span><span class="p">::</span><span class="n">create</span><span class="p">();</span>
@@ -375,7 +375,7 @@ C++</label><div class="sd-tab-content docutils">
 <p>Also in <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> the line
 <code class="docutils literal notranslate"><span class="pre">slint_target_sources(my_application</span> <span class="pre">ui/appwindow.slint)</span></code> is a Slint function used to
 add the <code class="docutils literal notranslate"><span class="pre">appwindow.slint</span></code> file to the target.</p>
-<p>Change the contents of <code class="docutils literal notranslate"><span class="pre">ui/appwindow.slint</span></code> to the following:</p>
+<p>Replace the contents of <code class="docutils literal notranslate"><span class="pre">ui/appwindow.slint</span></code> with the following:</p>
 <div class="highlight-slint,no-preview notranslate"><div class="highlight"><pre><span></span>export component MainWindow inherits Window {
     Text {
         text: &quot;hello world&quot;;
@@ -416,7 +416,7 @@ the Slint runtime and compiler.</p>
 <input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
 <label class="sd-tab-label" data-sync-group="tab" data-sync-id="nodejs" for="sd-tab-item-1">
 NodeJS</label><div class="sd-tab-content docutils">
-<p>Clone the template with the following command:</p>
+<p>Clone or download the template repository:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/slint-ui/slint-nodejs-template<span class="w"> </span>memory
 <span class="nb">cd</span><span class="w"> </span>memory
 </pre></div>
@@ -452,24 +452,28 @@ NodeJS</label><div class="sd-tab-content docutils">
 <label class="sd-tab-label" data-sync-group="tab" data-sync-id="rust" for="sd-tab-item-2">
 Rust</label><div class="sd-tab-content docutils">
 <p>We recommend using <a class="reference external" href="https://rust-analyzer.github.io">rust-analyzer</a> and <a class="reference external" href="https://github.com/slint-ui/slint/tree/master/editors">our editor integrations for Slint</a> for following this tutorial.</p>
-<p>Let’s create a new Rust application and add <code class="docutils literal notranslate"><span class="pre">slint</span></code> as a dependency</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>cargo<span class="w"> </span>new<span class="w"> </span>memory
+<p>Install the <a class="reference external" href="https://github.com/slint-ui/slint-rust-template">template</a> with the following commands:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>cargo<span class="w"> </span>install<span class="w"> </span>cargo-generate
+cargo<span class="w"> </span>generate<span class="w"> </span>--git<span class="w"> </span>https://github.com/slint-ui/slint-rust-template<span class="w"> </span>--name<span class="w"> </span>memory
 <span class="nb">cd</span><span class="w"> </span>memory
-cargo<span class="w"> </span>add<span class="w"> </span>slint
 </pre></div>
 </div>
 <h3 class="rubric" id="id3">Configure the project</h3>
 <p>Replace the contents of <code class="docutils literal notranslate"><span class="pre">src/main.rs</span></code> with the following:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>fn main() {
-    MainWindow::new().unwrap().run().unwrap();
-}
+<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="n">slint</span><span class="p">::</span><span class="n">include_modules</span><span class="o">!</span><span class="p">();</span>
 
-slint::slint! {
-    export component MainWindow inherits Window {
-        Text {
-            text: &quot;hello world&quot;;
-            color: green;
-        }
+<span class="k">fn</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="p">(),</span><span class="w"> </span><span class="n">slint</span><span class="p">::</span><span class="n">PlatformError</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">main_window</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MainWindow</span><span class="p">::</span><span class="n">new</span><span class="p">()</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">main_window</span><span class="p">.</span><span class="n">run</span><span class="p">()</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Replace the contents of <code class="docutils literal notranslate"><span class="pre">ui/appwindow.slint</span></code> with the following:</p>
+<div class="highlight-slint,no-preview notranslate"><div class="highlight"><pre><span></span>export component MainWindow inherits Window {
+    Text {
+        text: &quot;hello world&quot;;
+        color: green;
     }
 }
 </pre></div>

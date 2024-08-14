@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/dynamic_item_tree.rs`."><title>dynamic_item_tree.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-46f98efaafac5295.ttf.woff2,FiraSans-Regular-018c141bf0843ffd.woff2,FiraSans-Medium-8f9a781e4970d388.woff2,SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2,SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-d10b2a06af903387.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.82.0-nightly (41dd149fd 2024-08-11)" data-channel="nightly" data-search-js="search-ef54e092fea9c776.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../static.files/storage-118b08c4c78b968e.js"></script><script defer src="../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-04a29ac50d05d0b1.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-df360f571f6edeae.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/dynamic_item_tree.rs`."><title>dynamic_item_tree.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-46f98efaafac5295.ttf.woff2,FiraSans-Regular-018c141bf0843ffd.woff2,FiraSans-Medium-8f9a781e4970d388.woff2,SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2,SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-b25d77b18a16a9a4.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.82.0-nightly (80eb5a8e9 2024-08-13)" data-channel="nightly" data-search-js="search-ef54e092fea9c776.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../static.files/storage-118b08c4c78b968e.js"></script><script defer src="../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-cb0df477c2d67d00.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-3b12f09e550e0385.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -2386,6 +2386,43 @@
 <a href="#2265" id="2265">2265</a>
 <a href="#2266" id="2266">2266</a>
 <a href="#2267" id="2267">2267</a>
+<a href="#2268" id="2268">2268</a>
+<a href="#2269" id="2269">2269</a>
+<a href="#2270" id="2270">2270</a>
+<a href="#2271" id="2271">2271</a>
+<a href="#2272" id="2272">2272</a>
+<a href="#2273" id="2273">2273</a>
+<a href="#2274" id="2274">2274</a>
+<a href="#2275" id="2275">2275</a>
+<a href="#2276" id="2276">2276</a>
+<a href="#2277" id="2277">2277</a>
+<a href="#2278" id="2278">2278</a>
+<a href="#2279" id="2279">2279</a>
+<a href="#2280" id="2280">2280</a>
+<a href="#2281" id="2281">2281</a>
+<a href="#2282" id="2282">2282</a>
+<a href="#2283" id="2283">2283</a>
+<a href="#2284" id="2284">2284</a>
+<a href="#2285" id="2285">2285</a>
+<a href="#2286" id="2286">2286</a>
+<a href="#2287" id="2287">2287</a>
+<a href="#2288" id="2288">2288</a>
+<a href="#2289" id="2289">2289</a>
+<a href="#2290" id="2290">2290</a>
+<a href="#2291" id="2291">2291</a>
+<a href="#2292" id="2292">2292</a>
+<a href="#2293" id="2293">2293</a>
+<a href="#2294" id="2294">2294</a>
+<a href="#2295" id="2295">2295</a>
+<a href="#2296" id="2296">2296</a>
+<a href="#2297" id="2297">2297</a>
+<a href="#2298" id="2298">2298</a>
+<a href="#2299" id="2299">2299</a>
+<a href="#2300" id="2300">2300</a>
+<a href="#2301" id="2301">2301</a>
+<a href="#2302" id="2302">2302</a>
+<a href="#2303" id="2303">2303</a>
+<a href="#2304" id="2304">2304</a>
 </pre></div><pre class="rust"><code><span class="comment">// Copyright © SixtyFPS GmbH &lt;info@slint.dev&gt;
 // SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0
 
@@ -2422,6 +2459,8 @@
 <span class="kw">use </span>i_slint_core::slice::Slice;
 <span class="kw">use </span>i_slint_core::window::{WindowAdapterRc, WindowInner};
 <span class="kw">use </span>i_slint_core::{Brush, Color, Property, SharedString, SharedVector};
+<span class="attr">#[cfg(feature = <span class="string">"internal"</span>)]
+</span><span class="kw">use </span>itertools::Either;
 <span class="kw">use </span>once_cell::unsync::OnceCell;
 <span class="kw">use </span>std::collections::BTreeMap;
 <span class="kw">use </span>std::collections::HashMap;
@@ -3232,6 +3271,10 @@
         <span class="kw">return </span>CompilationResult {
             components: HashMap::new(),
             diagnostics: diag.into_iter().collect(),
+            <span class="attr">#[cfg(feature = <span class="string">"internal"</span>)]
+            </span>structs_and_enums: Vec::new(),
+            <span class="attr">#[cfg(feature = <span class="string">"internal"</span>)]
+            </span>named_exports: Vec::new(),
         };
     }
 
@@ -3261,7 +3304,38 @@
         diag.push_error_with_span(<span class="string">"No component found"</span>.into(), Default::default());
     };
 
-    CompilationResult { diagnostics: diag.into_iter().collect(), components }
+    <span class="attr">#[cfg(feature = <span class="string">"internal"</span>)]
+    </span><span class="kw">let </span>structs_and_enums = doc.used_types.borrow().structs_and_enums.clone();
+
+    <span class="attr">#[cfg(feature = <span class="string">"internal"</span>)]
+    </span><span class="kw">let </span>named_exports = doc
+        .exports
+        .iter()
+        .filter_map(|export| <span class="kw">match </span><span class="kw-2">&amp;</span>export.<span class="number">1 </span>{
+            Either::Left(component) <span class="kw">if </span>!component.is_global() =&gt; {
+                <span class="prelude-val">Some</span>((<span class="kw-2">&amp;</span>export.<span class="number">0</span>.name, <span class="kw-2">&amp;</span>component.id))
+            }
+            Either::Right(ty) =&gt; <span class="kw">match </span><span class="kw-2">&amp;</span>ty {
+                Type::Struct { name: <span class="prelude-val">Some</span>(name), node: <span class="prelude-val">Some</span>(<span class="kw">_</span>), .. } =&gt; {
+                    <span class="prelude-val">Some</span>((<span class="kw-2">&amp;</span>export.<span class="number">0</span>.name, name))
+                }
+                Type::Enumeration(en) =&gt; <span class="prelude-val">Some</span>((<span class="kw-2">&amp;</span>export.<span class="number">0</span>.name, <span class="kw-2">&amp;</span>en.name)),
+                <span class="kw">_ </span>=&gt; <span class="prelude-val">None</span>,
+            },
+            <span class="kw">_ </span>=&gt; <span class="prelude-val">None</span>,
+        })
+        .filter(|(export_name, type_name)| <span class="kw-2">*</span>export_name != <span class="kw-2">*</span>type_name)
+        .map(|(export_name, type_name)| (type_name.clone(), export_name.clone()))
+        .collect::&lt;Vec&lt;<span class="kw">_</span>&gt;&gt;();
+
+    CompilationResult {
+        diagnostics: diag.into_iter().collect(),
+        components,
+        <span class="attr">#[cfg(feature = <span class="string">"internal"</span>)]
+        </span>structs_and_enums,
+        <span class="attr">#[cfg(feature = <span class="string">"internal"</span>)]
+        </span>named_exports,
+    }
 }
 
 <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>generate_item_tree&lt;<span class="lifetime">'id</span>&gt;(

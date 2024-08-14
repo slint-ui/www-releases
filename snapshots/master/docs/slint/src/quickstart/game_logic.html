@@ -387,7 +387,7 @@ tile interaction, to prevent the player from opening more tiles than allowed. No
                 // old: tile.image_visible = !tile.image_visible;
                 // new:
                 if (!root.disable_tiles) {
-                    tile.image_visible = !tile.image_visible;
+                    tile.image_visible = true;
                     root.check_if_pair_solved();
                 }
             }
@@ -476,7 +476,7 @@ tile interaction, to prevent the player from opening more tiles than allowed. No
                 // old: tile.image_visible = !tile.image_visible;
                 // new:
                 if (!root.disable_tiles) {
-                    tile.image_visible = !tile.image_visible;
+                    tile.image_visible = true;
                     root.check_if_pair_solved();
                 }
             }
@@ -564,7 +564,7 @@ tile interaction, to prevent the player from opening more tiles than allowed. No
                 // old: tile.image_visible = !tile.image_visible;
                 // new:
                 if (!root.disable_tiles) {
-                    tile.image_visible = !tile.image_visible;
+                    tile.image_visible = true;
                     root.check_if_pair_solved();
                 }
             }
@@ -576,11 +576,7 @@ If they match, the code sets the <code class="docutils literal notranslate"><spa
 match, start a timer that closes the tiles after one second. While the timer is running, disable every tile so
 a player can’t click anything during this time.</p>
 <p>Add this code before the <code class="docutils literal notranslate"><span class="pre">main_window.run().unwrap();</span></code> call:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    // Assign the shuffled Vec to the model property
-    let tiles_model = std::rc::Rc::new(slint::VecModel::from(tiles));
-    main_window.set_memory_tiles(tiles_model.clone().into());
-
-    let main_window_weak = main_window.as_weak();
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    let main_window_weak = main_window.as_weak();
     main_window.on_check_if_pair_solved(move || {
         let mut flipped_tiles =
             tiles_model.iter().enumerate().filter(|(_, tile)| tile.image_visible &amp;&amp; !tile.solved);

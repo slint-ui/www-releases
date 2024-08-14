@@ -363,23 +363,7 @@ to create multiple instances of the same element.</p>
 <p>The <span class="hljs-keyword">for</span> loop is declarative and automatically updates when
 the model changes. The loop instantiates all the <span class="hljs-title">MemoryTile</span> elements and places them on a grid based on their
 index with spacing between the tiles.</p>
-<div class="sd-tab-set docutils">
-<input id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
-<label class="sd-tab-label" data-sync-group="tab" data-sync-id="cpp" for="sd-tab-item-0">
-C++</label><div class="sd-tab-content docutils">
 <p>First, add the tile data structure definition at the top of the <code class="docutils literal notranslate"><span class="pre">ui/appwindow.slint</span></code> file:</p>
-</div>
-<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
-<label class="sd-tab-label" data-sync-group="tab" data-sync-id="nodejs" for="sd-tab-item-1">
-NodeJS</label><div class="sd-tab-content docutils">
-<p>First, add the tile data structure definition at the top of the <code class="docutils literal notranslate"><span class="pre">ui/appwindow.slint</span></code> file:</p>
-</div>
-<input checked="checked" id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
-<label class="sd-tab-label" data-sync-group="tab" data-sync-id="rust" for="sd-tab-item-2">
-Rust</label><div class="sd-tab-content docutils">
-<p>First, add the tile data structure definition at the top of the <code class="docutils literal notranslate"><span class="pre">slint!</span></code> macro:</p>
-</div>
-</div>
 <div class="highlight-slint,no-preview notranslate"><div class="highlight"><pre><span></span>struct TileData {
     image: image,
     image_visible: bool,
@@ -387,23 +371,7 @@ Rust</label><div class="sd-tab-content docutils">
 }
 </pre></div>
 </div>
-<div class="sd-tab-set docutils">
-<input id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
-<label class="sd-tab-label" data-sync-group="tab" data-sync-id="cpp" for="sd-tab-item-3">
-C++</label><div class="sd-tab-content docutils">
 <p>Next, replace the <em>export component <span class="hljs-title">MainWindow</span> inherits Window { … }</em> section at the bottom of the <code class="docutils literal notranslate"><span class="pre">ui/appwindow.slint</span></code> file with the following:</p>
-</div>
-<input id="sd-tab-item-4" name="sd-tab-set-1" type="radio">
-<label class="sd-tab-label" data-sync-group="tab" data-sync-id="nodejs" for="sd-tab-item-4">
-NodeJS</label><div class="sd-tab-content docutils">
-<p>Next, replace the <em>export component <span class="hljs-title">MainWindow</span> inherits Window { … }</em> section at the bottom of the <code class="docutils literal notranslate"><span class="pre">ui/appwindow.slint</span></code> file with the following:</p>
-</div>
-<input checked="checked" id="sd-tab-item-5" name="sd-tab-set-1" type="radio">
-<label class="sd-tab-label" data-sync-group="tab" data-sync-id="rust" for="sd-tab-item-5">
-Rust</label><div class="sd-tab-content docutils">
-<p>Next, replace the <em>export component <span class="hljs-title">MainWindow</span> inherits Window { … }</em> section at the bottom of the <code class="docutils literal notranslate"><span class="pre">slint!</span></code> macro with the following:</p>
-</div>
-</div>
 <div class="highlight-slint,no-preview notranslate"><div class="highlight"><pre><span></span>export component MainWindow inherits Window {
     width: 326px;
     height: 326px;
