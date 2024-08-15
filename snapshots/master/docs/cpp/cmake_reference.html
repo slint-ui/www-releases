@@ -442,6 +442,18 @@ be redirected to the specified path.</p>
 </pre></div>
 </div>
 </section>
+<section id="scale-factor-for-microcontrollers">
+<h2>Scale Factor for Microcontrollers<a class="headerlink" href="#scale-factor-for-microcontrollers" title="Permalink to this heading">¶</a></h2>
+<p>When targeting a Microcontroller, there exists no windowing system that provides a device pixel ratio to
+map logical lengths in Slint (<code class="docutils literal notranslate"><span class="pre">px</span></code>) to physical pixels (<code class="docutils literal notranslate"><span class="pre">phx</span></code>). If desired, you can provide this ratio at
+compile time by setting the <code class="docutils literal notranslate"><span class="pre">SLINT_SCALE_FACTOR</span></code> target property on your CMake target.</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Example: when building my_application, specify that the scale factor shall be 2</span>
+<span class="nb">set_property</span><span class="p">(</span><span class="s">TARGET</span><span class="w"> </span><span class="s">my_application</span><span class="w"> </span><span class="s">PROPERTY</span><span class="w"> </span><span class="s">SLINT_SCALE_FACTOR</span><span class="w"> </span><span class="s">2.0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A scale factor specified this way will also be used to pre-scale images and glyphs when used in combination
+with <a class="reference internal" href="#resource-embedding">Resource Embedding</a>.</p>
+</section>
 </section>
 
         </article>
@@ -502,6 +514,7 @@ be redirected to the specified path.</p>
 <li><a class="reference internal" href="#">CMake Reference</a><ul>
 <li><a class="reference internal" href="#slint-target-sources"><code class="docutils literal notranslate"><span class="pre">slint_target_sources</span></code></a></li>
 <li><a class="reference internal" href="#resource-embedding">Resource Embedding</a></li>
+<li><a class="reference internal" href="#scale-factor-for-microcontrollers">Scale Factor for Microcontrollers</a></li>
 </ul>
 </li>
 </ul>
