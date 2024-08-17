@@ -50,6 +50,8 @@ Program Listing for File slint_timer_internal.h
    
    bool slint_timer_running(uintptr_t id);
    
+   int64_t slint_timer_interval(uintptr_t id);
+   
    } // extern "C"
    
    } // namespace cbindgen_private

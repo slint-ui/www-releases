@@ -1080,6 +1080,8 @@ Program Listing for File slint_internal.h
    void send_keyboard_string_sequence(const SharedString *sequence,
                                       const WindowAdapterRc *window_adapter);
    
+   int64_t slint_timer_interval(uintptr_t id);
+   
    void slint_translate(SharedString *to_translate,
                         const SharedString *context,
                         const SharedString *domain,

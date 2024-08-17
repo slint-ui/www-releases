@@ -412,6 +412,7 @@
 
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;chrono&gt;</span>
 
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;optional&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;slint_timer_internal.h&gt;</span>
 
 <span class="k">namespace</span><span class="w"> </span><span class="nn">slint</span><span class="w"> </span><span class="p">{</span>
@@ -443,6 +444,14 @@
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">stop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_timer_stop</span><span class="p">(</span><span class="n">id</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">restart</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_timer_restart</span><span class="p">(</span><span class="n">id</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
 <span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">running</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_timer_running</span><span class="p">(</span><span class="n">id</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">milliseconds</span><span class="o">&gt;</span><span class="w"> </span><span class="n">interval</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">int64_t</span><span class="w"> </span><span class="n">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_timer_interval</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">val</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">nullopt</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">milliseconds</span><span class="p">(</span><span class="n">val</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="k">template</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">invocable</span><span class="w"> </span><span class="n">F</span><span class="o">&gt;</span>
 <span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">single_shot</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">milliseconds</span><span class="w"> </span><span class="n">duration</span><span class="p">,</span><span class="w"> </span><span class="n">F</span><span class="w"> </span><span class="n">callback</span><span class="p">)</span>

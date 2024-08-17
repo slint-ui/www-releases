@@ -1170,13 +1170,69 @@ policy and assigning a limited <code class="docutils literal notranslate"><span 
 </div>
 </section>
 </section>
+<section id="timer">
+<h2><code class="docutils literal notranslate"><span class="pre">Timer</span></code><a class="headerlink" href="#timer" title="Permalink to this heading">¶</a></h2>
+<!-- FIXME: Timer is not really an element so it doesn't really belong in the `Builtin Elements` section. -->
+<p>Use the Timer pseudo-element to schedule a callback at a given interval.
+The timer is only running when the <code class="docutils literal notranslate"><span class="pre">running</span></code> property is set to <code class="docutils literal notranslate"><span class="pre">true</span></code>. To stop or start the timer, set that property to <code class="docutils literal notranslate"><span class="pre">true</span></code> or <code class="docutils literal notranslate"><span class="pre">false</span></code>.
+It can be also set to a binding expression.
+When already running, the timer will be restarted if the <code class="docutils literal notranslate"><span class="pre">interval</span></code> property is changed.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The default value for <code class="docutils literal notranslate"><span class="pre">running</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, so if you don’t specify it, it will be running.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Timer is not an actual element visible in the tree, therefore it doesn’t have the common properties such as <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code>, <code class="docutils literal notranslate"><span class="pre">width</span></code>, <code class="docutils literal notranslate"><span class="pre">height</span></code>, etc. It also doesn’t take room in a layout and cannot have any children or be inherited from.</p>
+</div>
+<section id="id25">
+<h3>Properties<a class="headerlink" href="#id25" title="Permalink to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">interval</span></code></strong> (<em>in</em> <em>duration</em>): The interval between timer ticks. (default value: <code class="docutils literal notranslate"><span class="pre">0ms</span></code>)</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">running</span></code></strong> (<em>in</em> <em>bool</em>): <code class="docutils literal notranslate"><span class="pre">true</span></code> if the timer is running. (default value: <code class="docutils literal notranslate"><span class="pre">true</span></code>)</p></li>
+</ul>
+</section>
+<section id="id26">
+<h3>Callbacks<a class="headerlink" href="#id26" title="Permalink to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">triggered()</span></code></strong>: Invoked every time the timer ticks (every <code class="docutils literal notranslate"><span class="pre">interval</span></code>).</p></li>
+</ul>
+</section>
+<section id="id27">
+<h3>Example<a class="headerlink" href="#id27" title="Permalink to this heading">¶</a></h3>
+<p>This example shows a timer that counts down from 10 to 0 every second:</p>
+<div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>import { Button } from &quot;std-widgets.slint&quot;;
+export component Example inherits Window {
+    property &lt;int&gt; value: 10;
+    timer := Timer {
+        interval: 1s;
+        running: true;
+        triggered() =&gt; {
+            value -= 1;
+            if (value == 0) {
+                self.running = false;
+            }
+        }
+    }
+    HorizontalLayout {
+        Text { text: value; }
+        Button {
+            text: &quot;Reset&quot;;
+            clicked() =&gt; { value = 10; timer.running = true; }
+        }
+    }
+}
+</pre></div>
+</div>
+</section>
+</section>
 <section id="toucharea">
 <h2><code class="docutils literal notranslate"><span class="pre">TouchArea</span></code><a class="headerlink" href="#toucharea" title="Permalink to this heading">¶</a></h2>
 <p>Use <code class="docutils literal notranslate"><span class="pre">TouchArea</span></code> to control what happens when the region it covers is touched or interacted with
 using the mouse.</p>
 <p>When not part of a layout, its width or height default to 100% of the parent element.</p>
-<section id="id25">
-<h3>Properties<a class="headerlink" href="#id25" title="Permalink to this heading">¶</a></h3>
+<section id="id28">
+<h3>Properties<a class="headerlink" href="#id28" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">has-hover</span></code></strong> (<em>out</em> <em>bool</em>): <code class="docutils literal notranslate"><span class="pre">TouchArea</span></code> sets this to <code class="docutils literal notranslate"><span class="pre">true</span></code> when the mouse is over it.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">mouse-cursor</span></code></strong> (<em>in</em> <em>enum <a class="reference internal" href="enums.html#mousecursor"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">MouseCursor</span></code></span></a></em>): The mouse cursor type when the mouse is hovering the <code class="docutils literal notranslate"><span class="pre">TouchArea</span></code>.</p></li>
@@ -1185,8 +1241,8 @@ using the mouse.</p>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">pressed</span></code></strong> (<em>out</em> <em>bool</em>): Set to <code class="docutils literal notranslate"><span class="pre">true</span></code> by the <code class="docutils literal notranslate"><span class="pre">TouchArea</span></code> when the mouse is pressed over it.</p></li>
 </ul>
 </section>
-<section id="id26">
-<h3>Callbacks<a class="headerlink" href="#id26" title="Permalink to this heading">¶</a></h3>
+<section id="id29">
+<h3>Callbacks<a class="headerlink" href="#id29" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">clicked()</span></code></strong>: Invoked when clicked: A finger or the left mouse button is pressed, then released on this element.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">double-clicked()</span></code></strong>: Invoked when double-clicked. The left mouse button is pressed and released twice on this element in a short
@@ -1204,8 +1260,8 @@ The returned <a class="reference internal" href="enums.html#eventresult"><span c
 forwarded to the parent element.</p></li>
 </ul>
 </section>
-<section id="id27">
-<h3>Example<a class="headerlink" href="#id27" title="Permalink to this heading">¶</a></h3>
+<section id="id30">
+<h3>Example<a class="headerlink" href="#id30" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>export component Example inherits Window {
     width: 200px;
     height: 100px;
@@ -1237,8 +1293,8 @@ forwarded to the parent element.</p></li>
 <p>These layouts place their children next to each other vertically or horizontally.
 The size of elements can either be fixed with the <code class="docutils literal notranslate"><span class="pre">width</span></code> or <code class="docutils literal notranslate"><span class="pre">height</span></code> property, or if they aren’t set
 they will be computed by the layout respecting the minimum and maximum sizes and the stretch factor.</p>
-<section id="id28">
-<h3>Properties<a class="headerlink" href="#id28" title="Permalink to this heading">¶</a></h3>
+<section id="id31">
+<h3>Properties<a class="headerlink" href="#id31" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">spacing</span></code></strong> (<em>in</em> <em>length</em>): The distance between the elements in the layout.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">padding</span></code></strong> (<em>in</em> <em>length</em>): the padding within the layout.</p></li>
@@ -1246,8 +1302,8 @@ they will be computed by the layout respecting the minimum and maximum sizes and
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">alignment</span></code></strong> (<em>in</em> <em>enum <a class="reference internal" href="enums.html#layoutalignment"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">LayoutAlignment</span></code></span></a></em>): Set the alignment. Matches the CSS flex box.</p></li>
 </ul>
 </section>
-<section id="id29">
-<h3>Example<a class="headerlink" href="#id29" title="Permalink to this heading">¶</a></h3>
+<section id="id32">
+<h3>Example<a class="headerlink" href="#id32" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>export component Foo inherits Window {
     width: 200px;
     height: 100px;
@@ -1269,8 +1325,8 @@ they will be computed by the layout respecting the minimum and maximum sizes and
 <p>The <code class="docutils literal notranslate"><span class="pre">Window</span></code> geometry will be restricted by its layout constraints: Setting the <code class="docutils literal notranslate"><span class="pre">width</span></code> will result in a fixed width,
 and the window manager will respect the <code class="docutils literal notranslate"><span class="pre">min-width</span></code> and <code class="docutils literal notranslate"><span class="pre">max-width</span></code> so the window can’t be resized bigger
 or smaller. The initial width can be controlled with the <code class="docutils literal notranslate"><span class="pre">preferred-width</span></code> property. The same applies to the <code class="docutils literal notranslate"><span class="pre">Window</span></code>s height.</p>
-<section id="id30">
-<h3>Properties<a class="headerlink" href="#id30" title="Permalink to this heading">¶</a></h3>
+<section id="id33">
+<h3>Properties<a class="headerlink" href="#id33" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">always-on-top</span></code></strong> (<em>in</em> <em>bool</em>): Whether the window should be placed above all other windows on window managers supporting it.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">background</span></code></strong> (<em>in</em> <em>brush</em>): The background brush of the <code class="docutils literal notranslate"><span class="pre">Window</span></code>. (default value: depends on the style)</p></li>
@@ -1443,19 +1499,25 @@ or smaller. The initial width can be controlled with the <code class="docutils l
 <li><a class="reference internal" href="#id24">Example</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#toucharea"><code class="docutils literal notranslate"><span class="pre">TouchArea</span></code></a><ul>
+<li><a class="reference internal" href="#timer"><code class="docutils literal notranslate"><span class="pre">Timer</span></code></a><ul>
 <li><a class="reference internal" href="#id25">Properties</a></li>
 <li><a class="reference internal" href="#id26">Callbacks</a></li>
 <li><a class="reference internal" href="#id27">Example</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#verticallayout-and-horizontallayout"><code class="docutils literal notranslate"><span class="pre">VerticalLayout</span></code> and <code class="docutils literal notranslate"><span class="pre">HorizontalLayout</span></code></a><ul>
+<li><a class="reference internal" href="#toucharea"><code class="docutils literal notranslate"><span class="pre">TouchArea</span></code></a><ul>
 <li><a class="reference internal" href="#id28">Properties</a></li>
-<li><a class="reference internal" href="#id29">Example</a></li>
+<li><a class="reference internal" href="#id29">Callbacks</a></li>
+<li><a class="reference internal" href="#id30">Example</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#verticallayout-and-horizontallayout"><code class="docutils literal notranslate"><span class="pre">VerticalLayout</span></code> and <code class="docutils literal notranslate"><span class="pre">HorizontalLayout</span></code></a><ul>
+<li><a class="reference internal" href="#id31">Properties</a></li>
+<li><a class="reference internal" href="#id32">Example</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#window"><code class="docutils literal notranslate"><span class="pre">Window</span></code></a><ul>
-<li><a class="reference internal" href="#id30">Properties</a></li>
+<li><a class="reference internal" href="#id33">Properties</a></li>
 </ul>
 </li>
 </ul>

@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/dynamic_item_tree.rs`."><title>dynamic_item_tree.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-46f98efaafac5295.ttf.woff2,FiraSans-Regular-018c141bf0843ffd.woff2,FiraSans-Medium-8f9a781e4970d388.woff2,SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2,SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-b25d77b18a16a9a4.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.82.0-nightly (2c93fabd9 2024-08-15)" data-channel="nightly" data-search-js="search-ef54e092fea9c776.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../static.files/storage-118b08c4c78b968e.js"></script><script defer src="../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-cb0df477c2d67d00.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-3b12f09e550e0385.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/dynamic_item_tree.rs`."><title>dynamic_item_tree.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-46f98efaafac5295.ttf.woff2,FiraSans-Regular-018c141bf0843ffd.woff2,FiraSans-Medium-8f9a781e4970d388.woff2,SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2,SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-b25d77b18a16a9a4.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.82.0-nightly (506052d49 2024-08-16)" data-channel="nightly" data-search-js="search-ef54e092fea9c776.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../static.files/storage-118b08c4c78b968e.js"></script><script defer src="../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-cb0df477c2d67d00.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-3b12f09e550e0385.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -2423,6 +2423,55 @@
 <a href="#2302" id="2302">2302</a>
 <a href="#2303" id="2303">2303</a>
 <a href="#2304" id="2304">2304</a>
+<a href="#2305" id="2305">2305</a>
+<a href="#2306" id="2306">2306</a>
+<a href="#2307" id="2307">2307</a>
+<a href="#2308" id="2308">2308</a>
+<a href="#2309" id="2309">2309</a>
+<a href="#2310" id="2310">2310</a>
+<a href="#2311" id="2311">2311</a>
+<a href="#2312" id="2312">2312</a>
+<a href="#2313" id="2313">2313</a>
+<a href="#2314" id="2314">2314</a>
+<a href="#2315" id="2315">2315</a>
+<a href="#2316" id="2316">2316</a>
+<a href="#2317" id="2317">2317</a>
+<a href="#2318" id="2318">2318</a>
+<a href="#2319" id="2319">2319</a>
+<a href="#2320" id="2320">2320</a>
+<a href="#2321" id="2321">2321</a>
+<a href="#2322" id="2322">2322</a>
+<a href="#2323" id="2323">2323</a>
+<a href="#2324" id="2324">2324</a>
+<a href="#2325" id="2325">2325</a>
+<a href="#2326" id="2326">2326</a>
+<a href="#2327" id="2327">2327</a>
+<a href="#2328" id="2328">2328</a>
+<a href="#2329" id="2329">2329</a>
+<a href="#2330" id="2330">2330</a>
+<a href="#2331" id="2331">2331</a>
+<a href="#2332" id="2332">2332</a>
+<a href="#2333" id="2333">2333</a>
+<a href="#2334" id="2334">2334</a>
+<a href="#2335" id="2335">2335</a>
+<a href="#2336" id="2336">2336</a>
+<a href="#2337" id="2337">2337</a>
+<a href="#2338" id="2338">2338</a>
+<a href="#2339" id="2339">2339</a>
+<a href="#2340" id="2340">2340</a>
+<a href="#2341" id="2341">2341</a>
+<a href="#2342" id="2342">2342</a>
+<a href="#2343" id="2343">2343</a>
+<a href="#2344" id="2344">2344</a>
+<a href="#2345" id="2345">2345</a>
+<a href="#2346" id="2346">2346</a>
+<a href="#2347" id="2347">2347</a>
+<a href="#2348" id="2348">2348</a>
+<a href="#2349" id="2349">2349</a>
+<a href="#2350" id="2350">2350</a>
+<a href="#2351" id="2351">2351</a>
+<a href="#2352" id="2352">2352</a>
+<a href="#2353" id="2353">2353</a>
 </pre></div><pre class="rust"><code><span class="comment">// Copyright © SixtyFPS GmbH &lt;info@slint.dev&gt;
 // SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0
 
@@ -2457,6 +2506,7 @@
 <span class="kw">use </span>i_slint_core::properties::{ChangeTracker, InterpolatedPropertyValue};
 <span class="kw">use </span>i_slint_core::rtti::{<span class="self">self</span>, AnimatedBindingKind, FieldOffset, PropertyInfo};
 <span class="kw">use </span>i_slint_core::slice::Slice;
+<span class="kw">use </span>i_slint_core::timers::Timer;
 <span class="kw">use </span>i_slint_core::window::{WindowAdapterRc, WindowInner};
 <span class="kw">use </span>i_slint_core::{Brush, Color, Property, SharedString, SharedVector};
 <span class="attr">#[cfg(feature = <span class="string">"internal"</span>)]
@@ -2832,6 +2882,7 @@
         FieldOffset&lt;Instance&lt;<span class="lifetime">'id</span>&gt;, OnceCell&lt;Vec&lt;ChangeTracker&gt;&gt;&gt;,
         Vec&lt;(NamedReference, Expression)&gt;,
     )&gt;,
+    timers: Vec&lt;FieldOffset&lt;Instance&lt;<span class="lifetime">'id</span>&gt;, Timer&gt;&gt;,
 
     <span class="doccomment">/// The collection of compiled globals
     </span>compiled_globals: <span class="prelude-ty">Option</span>&lt;Rc&lt;CompiledGlobalCollection&gt;&gt;,
@@ -3666,6 +3717,12 @@
             builder.change_callbacks,
         )
     });
+    <span class="kw">let </span>timers = component
+        .timers
+        .borrow()
+        .iter()
+        .map(|<span class="kw">_</span>| builder.type_builder.add_field_type::&lt;Timer&gt;())
+        .collect();
 
     <span class="kw">let </span>public_properties = component.root_element.borrow().property_declarations.clone();
 
@@ -3708,6 +3765,7 @@
         public_properties,
         compiled_globals,
         change_trackers,
+        timers,
         <span class="attr">#[cfg(feature = <span class="string">"highlight"</span>)]
         </span>type_loader: std::cell::OnceCell::new(),
         <span class="attr">#[cfg(feature = <span class="string">"highlight"</span>)]
@@ -4036,6 +4094,8 @@
             i_slint_core::model::ModelRc::new(<span class="kw">crate</span>::value_model::ValueModel::new(m))
         });
     }
+
+    update_timers(instance_ref);
 
     self_rc
 }
@@ -4726,5 +4786,43 @@
         close_on_click,
         parent_item,
     );
+}
+
+<span class="kw">pub fn </span>update_timers(instance: InstanceRef) {
+    <span class="kw">let </span>ts = instance.description.original.timers.borrow();
+    <span class="kw">for </span>(desc, offset) <span class="kw">in </span>ts.iter().zip(<span class="kw-2">&amp;</span>instance.description.timers) {
+        <span class="kw">let </span>timer = offset.apply(instance.as_ref());
+        <span class="kw">let </span>running =
+            eval::load_property(instance, <span class="kw-2">&amp;</span>desc.running.element(), desc.running.name()).unwrap();
+        <span class="kw">if </span><span class="macro">matches!</span>(running, Value::Bool(<span class="bool-val">true</span>)) {
+            <span class="kw">let </span>millis: i64 =
+                eval::load_property(instance, <span class="kw-2">&amp;</span>desc.interval.element(), desc.interval.name())
+                    .unwrap()
+                    .try_into()
+                    .expect(<span class="string">"interval must be a duration"</span>);
+            <span class="kw">if </span>millis &lt; <span class="number">0 </span>{
+                timer.stop();
+                <span class="kw">continue</span>;
+            }
+            <span class="kw">let </span>interval = core::time::Duration::from_millis(millis <span class="kw">as _</span>);
+            <span class="kw">let </span>old_interval = timer.interval();
+            <span class="kw">if </span>old_interval != <span class="prelude-val">Some</span>(interval) || !timer.running() {
+                <span class="kw">let </span>callback = desc.triggered.clone();
+                <span class="kw">let </span>self_weak = instance.self_weak().get().unwrap().clone();
+                timer.start(i_slint_core::timers::TimerMode::Repeated, interval, <span class="kw">move </span>|| {
+                    <span class="kw">if let </span><span class="prelude-val">Some</span>(instance) = self_weak.upgrade() {
+                        <span class="macro">generativity::make_guard!</span>(guard);
+                        <span class="kw">let </span>c = instance.unerase(guard);
+                        <span class="kw">let </span>c = c.borrow_instance();
+                        <span class="kw">let </span>inst = eval::ComponentInstance::InstanceRef(c);
+                        eval::invoke_callback(inst, <span class="kw-2">&amp;</span>callback.element(), callback.name(), <span class="kw-2">&amp;</span>[])
+                            .unwrap();
+                    }
+                });
+            }
+        } <span class="kw">else </span>{
+            timer.stop();
+        }
+    }
 }
 </code></pre></div></section></main></body></html>
