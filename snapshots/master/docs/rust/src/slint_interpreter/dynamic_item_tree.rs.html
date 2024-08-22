@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/dynamic_item_tree.rs`."><title>dynamic_item_tree.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-46f98efaafac5295.ttf.woff2,FiraSans-Regular-018c141bf0843ffd.woff2,FiraSans-Medium-8f9a781e4970d388.woff2,SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2,SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-b25d77b18a16a9a4.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.82.0-nightly (5aea14073 2024-08-20)" data-channel="nightly" data-search-js="search-ef54e092fea9c776.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../static.files/storage-118b08c4c78b968e.js"></script><script defer src="../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-cb0df477c2d67d00.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-3b12f09e550e0385.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/dynamic_item_tree.rs`."><title>dynamic_item_tree.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-46f98efaafac5295.ttf.woff2,FiraSans-Regular-018c141bf0843ffd.woff2,FiraSans-Medium-8f9a781e4970d388.woff2,SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2,SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-b25d77b18a16a9a4.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.82.0-nightly (a32d4a0e8 2024-08-21)" data-channel="nightly" data-search-js="search-ef54e092fea9c776.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../static.files/storage-118b08c4c78b968e.js"></script><script defer src="../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-cb0df477c2d67d00.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-3b12f09e550e0385.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -2469,10 +2469,6 @@
 <a href="#2347" id="2347">2347</a>
 <a href="#2348" id="2348">2348</a>
 <a href="#2349" id="2349">2349</a>
-<a href="#2350" id="2350">2350</a>
-<a href="#2351" id="2351">2351</a>
-<a href="#2352" id="2352">2352</a>
-<a href="#2353" id="2353">2353</a>
 </pre></div><pre class="rust"><code><span class="comment">// Copyright © SixtyFPS GmbH &lt;info@slint.dev&gt;
 // SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0
 
@@ -2481,7 +2477,6 @@
 <span class="kw">use crate</span>::{dynamic_type, eval};
 <span class="kw">use </span>core::ptr::NonNull;
 <span class="kw">use </span>dynamic_type::{Instance, InstanceBox};
-<span class="kw">use </span>i_slint_compiler::diagnostics::SourceFileVersion;
 <span class="kw">use </span>i_slint_compiler::expression_tree::{Expression, NamedReference};
 <span class="kw">use </span>i_slint_compiler::langtype::Type;
 <span class="kw">use </span>i_slint_compiler::object_tree::ElementRc;
@@ -3288,7 +3283,6 @@
 </span><span class="kw">pub async fn </span>load(
     source: String,
     path: std::path::PathBuf,
-    version: SourceFileVersion,
     <span class="kw-2">mut </span>compiler_config: CompilerConfiguration,
 ) -&gt; CompilationResult {
     <span class="comment">// If the native style should be Qt, resolve it here as we know that we have it
@@ -3308,7 +3302,6 @@
     </span><span class="kw">let </span>(path, <span class="kw-2">mut </span>diag, loader, raw_type_loader) =
         i_slint_compiler::load_root_file_with_raw_type_loader(
             <span class="kw-2">&amp;</span>path,
-            version,
             <span class="kw-2">&amp;</span>path,
             source,
             diag,
@@ -3317,8 +3310,7 @@
         .<span class="kw">await</span>;
     <span class="attr">#[cfg(not(feature = <span class="string">"highlight"</span>))]
     </span><span class="kw">let </span>(path, <span class="kw-2">mut </span>diag, loader) =
-        i_slint_compiler::load_root_file(<span class="kw-2">&amp;</span>path, version, <span class="kw-2">&amp;</span>path, source, diag, compiler_config)
-            .<span class="kw">await</span>;
+        i_slint_compiler::load_root_file(<span class="kw-2">&amp;</span>path, <span class="kw-2">&amp;</span>path, source, diag, compiler_config).<span class="kw">await</span>;
     <span class="kw">if </span>diag.has_errors() {
         <span class="kw">return </span>CompilationResult {
             components: HashMap::new(),
