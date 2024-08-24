@@ -355,7 +355,8 @@
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">width</span></code></strong> and <strong><code class="docutils literal notranslate"><span class="pre">height</span></code></strong> (<em>in</em> <em>length</em>): The size of the element. When set, this overrides the default size.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">x</span></code></strong> and <strong><code class="docutils literal notranslate"><span class="pre">y</span></code></strong> (<em>in</em> <em>length</em>): The position of the element relative to its parent.</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">z</span></code></strong> (<em>in</em> <em>float</em>): Allows to specify a different order to stack the items with its siblings. (default value: 0)</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">z</span></code></strong> (<em>in</em> <em>float</em>): Allows to specify a different order to stack the items with its siblings.
+The value must be a compile time constant. (default value: 0)</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">absolute-position</span></code></strong> (<em>in</em> <em>Point</em>): The position of the element within the contained window.</p></li>
 </ul>
 </section>
@@ -617,6 +618,7 @@ forwarded to the parent element.</p></li>
 <section id="gridlayout">
 <h2><code class="docutils literal notranslate"><span class="pre">GridLayout</span></code><a class="headerlink" href="#gridlayout" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">GridLayout</span></code> places its children in a grid. <code class="docutils literal notranslate"><span class="pre">GridLayout</span></code> adds properties to each child: <code class="docutils literal notranslate"><span class="pre">col</span></code>, <code class="docutils literal notranslate"><span class="pre">row</span></code>, <code class="docutils literal notranslate"><span class="pre">colspan</span></code>, <code class="docutils literal notranslate"><span class="pre">rowspan</span></code>.
+These properties must be compile time constants.
 You can control the position of children with <code class="docutils literal notranslate"><span class="pre">col</span></code> and <code class="docutils literal notranslate"><span class="pre">row</span></code>.
 If <code class="docutils literal notranslate"><span class="pre">col</span></code> or <code class="docutils literal notranslate"><span class="pre">row</span></code> aren’t specified, they are automatically computed such that the item is next to the previous item, in the same row.
 Alternatively, the item can be put in a <code class="docutils literal notranslate"><span class="pre">Row</span></code> element.</p>
