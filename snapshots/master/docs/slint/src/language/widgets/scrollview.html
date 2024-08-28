@@ -365,6 +365,12 @@ using for loops may be added in the future and is tracked in issue #407.</p>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">visible-width</span></code></strong> and <strong><code class="docutils literal notranslate"><span class="pre">visible-height</span></code></strong> (<em>out</em> <em>length</em>): The size of the visible area of the ScrollView (not including the scrollbar)</p></li>
 </ul>
 </section>
+<section id="callbacks">
+<h2>Callbacks<a class="headerlink" href="#callbacks" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">scrolled()</span></code></strong>: Invoked when <code class="docutils literal notranslate"><span class="pre">viewport-x</span></code> or <code class="docutils literal notranslate"><span class="pre">viewport-y</span></code> is changed by a user action (dragging, scrolling).</p></li>
+</ul>
+</section>
 <section id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>import { ScrollView } from &quot;std-widgets.slint&quot;;
@@ -454,6 +460,7 @@ export component Example inherits Window {
             <ul>
 <li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">ScrollView</span></code></a><ul>
 <li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#callbacks">Callbacks</a></li>
 <li><a class="reference internal" href="#example">Example</a></li>
 </ul>
 </li>
