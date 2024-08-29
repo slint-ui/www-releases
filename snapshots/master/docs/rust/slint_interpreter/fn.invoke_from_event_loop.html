@@ -129,7 +129,9 @@ running the event loop. The provided functors will only be invoked from the thre
 that started the event loop.</p>
 <p>You can use this to set properties or use any other Slint APIs from other threads,
 by collecting the code in a functor and queuing it up for invocation within the event loop.</p>
-<p>See also <a href="struct.Weak.html#method.upgrade_in_event_loop" title="method slint_interpreter::Weak::upgrade_in_event_loop"><code>Weak::upgrade_in_event_loop</code></a></p>
+<p>If you want to capture non-Send types to run in the next event loop iteration,
+you can use the <code>slint::spawn_local</code> function instead.</p>
+<p>See also <a href="struct.Weak.html#method.upgrade_in_event_loop" title="method slint_interpreter::Weak::upgrade_in_event_loop"><code>Weak::upgrade_in_event_loop</code></a>.</p>
 <h2 id="example"><a class="doc-anchor" href="#example">§</a>Example</h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="macro">slint::slint!</span> { export component MyApp inherits Window { <span class="kw">in </span>property &lt;int&gt; foo; <span class="comment">/* ... */ </span>} }
 <span class="kw">let </span>handle = MyApp::new().unwrap();
