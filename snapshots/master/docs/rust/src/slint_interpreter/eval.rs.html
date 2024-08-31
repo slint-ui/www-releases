@@ -1781,6 +1781,11 @@
 <a href="#1659" id="1659">1659</a>
 <a href="#1660" id="1660">1660</a>
 <a href="#1661" id="1661">1661</a>
+<a href="#1662" id="1662">1662</a>
+<a href="#1663" id="1663">1663</a>
+<a href="#1664" id="1664">1664</a>
+<a href="#1665" id="1665">1665</a>
+<a href="#1666" id="1666">1666</a>
 </pre></div><pre class="rust"><code><span class="comment">// Copyright © SixtyFPS GmbH &lt;info@slint.dev&gt;
 // SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0
 
@@ -2261,6 +2266,11 @@
         BuiltinFunction::ATan =&gt; {
             <span class="kw">let </span>x: f64 = eval_expression(<span class="kw-2">&amp;</span>arguments[<span class="number">0</span>], local_context).try_into().unwrap();
             Value::Number(x.atan().to_degrees())
+        }
+        BuiltinFunction::ATan2 =&gt; {
+            <span class="kw">let </span>x: f64 = eval_expression(<span class="kw-2">&amp;</span>arguments[<span class="number">0</span>], local_context).try_into().unwrap();
+            <span class="kw">let </span>y: f64 = eval_expression(<span class="kw-2">&amp;</span>arguments[<span class="number">1</span>], local_context).try_into().unwrap();
+            Value::Number(x.atan2(y).to_degrees())
         }
         BuiltinFunction::Log =&gt; {
             <span class="kw">let </span>x: f64 = eval_expression(<span class="kw-2">&amp;</span>arguments[<span class="number">0</span>], local_context).try_into().unwrap();
