@@ -40,6 +40,20 @@ Program Listing for File slint_image_internal.h
    
    struct NineSliceImage;
    
+   struct CachedPath {
+       SharedString path;
+       uint64_t last_modified;
+   
+       bool operator==(const CachedPath& other) const {
+           return path == other.path &&
+                  last_modified == other.last_modified;
+       }
+       bool operator!=(const CachedPath& other) const {
+           return path != other.path ||
+                  last_modified != other.last_modified;
+       }
+   };
+   
    union ImageCacheKey {
        enum class Tag : uint8_t {
            Invalid = 0,
@@ -52,7 +66,7 @@ Program Listing for File slint_image_internal.h
    
        struct Path_Body {
            Tag tag;
-           SharedString _0;
+           CachedPath _0;
    
            bool operator==(const Path_Body& other) const {
                return _0 == other._0;
@@ -107,9 +121,9 @@ Program Listing for File slint_image_internal.h
            return tag == Tag::Invalid;
        }
    
-       static ImageCacheKey Path(const SharedString &_0) {
+       static ImageCacheKey Path(const CachedPath &_0) {
            ImageCacheKey result;
-           ::new (&result.path._0) (SharedString)(_0);
+           ::new (&result.path._0) (CachedPath)(_0);
            result.tag = Tag::Path;
            return result;
        }

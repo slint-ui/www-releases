@@ -433,6 +433,20 @@
 
 <span class="k">struct</span><span class="w"> </span><span class="nc">NineSliceImage</span><span class="p">;</span>
 
+<span class="k">struct</span><span class="w"> </span><span class="nc">CachedPath</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">SharedString</span><span class="w"> </span><span class="n">path</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">last_modified</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="k">operator</span><span class="o">==</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">CachedPath</span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">path</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="n">path</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">               </span><span class="n">last_modified</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="n">last_modified</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="k">operator</span><span class="o">!=</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">CachedPath</span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">path</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="n">path</span><span class="w"> </span><span class="o">||</span>
+<span class="w">               </span><span class="n">last_modified</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="n">last_modified</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+
 <span class="k">union</span><span class="w"> </span><span class="nc">ImageCacheKey</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Tag</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">Invalid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
@@ -445,7 +459,7 @@
 
 <span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">Path_Body</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">Tag</span><span class="w"> </span><span class="n">tag</span><span class="p">;</span>
-<span class="w">        </span><span class="n">SharedString</span><span class="w"> </span><span class="n">_0</span><span class="p">;</span>
+<span class="w">        </span><span class="n">CachedPath</span><span class="w"> </span><span class="n">_0</span><span class="p">;</span>
 
 <span class="w">        </span><span class="kt">bool</span><span class="w"> </span><span class="k">operator</span><span class="o">==</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Path_Body</span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">_0</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="n">_0</span><span class="p">;</span>
@@ -500,9 +514,9 @@
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">tag</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">Tag</span><span class="o">::</span><span class="n">Invalid</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">ImageCacheKey</span><span class="w"> </span><span class="nf">Path</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">SharedString</span><span class="w"> </span><span class="o">&amp;</span><span class="n">_0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">ImageCacheKey</span><span class="w"> </span><span class="nf">Path</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">CachedPath</span><span class="w"> </span><span class="o">&amp;</span><span class="n">_0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">ImageCacheKey</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
-<span class="w">        </span><span class="o">::</span><span class="k">new</span><span class="w"> </span><span class="p">(</span><span class="o">&amp;</span><span class="n">result</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">_0</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">SharedString</span><span class="p">)(</span><span class="n">_0</span><span class="p">);</span>
+<span class="w">        </span><span class="o">::</span><span class="k">new</span><span class="w"> </span><span class="p">(</span><span class="o">&amp;</span><span class="n">result</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">_0</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">CachedPath</span><span class="p">)(</span><span class="n">_0</span><span class="p">);</span>
 <span class="w">        </span><span class="n">result</span><span class="p">.</span><span class="n">tag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Tag</span><span class="o">::</span><span class="n">Path</span><span class="p">;</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
