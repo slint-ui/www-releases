@@ -1045,12 +1045,89 @@ it’s then possible to draw a rectangle on the screen.</p>
 </div>
 </section>
 </section>
+<section id="swipegesturerecognizer">
+<h2><code class="docutils literal notranslate"><span class="pre">SwipeGestureRecognizer</span></code><a class="headerlink" href="#swipegesturerecognizer" title="Permalink to this heading">¶</a></h2>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">SwipeGestureRecognizer</span></code> to react to swipes gesture in some particular direction. Recognition is limited to the element’s geometry.</p>
+<p>Specify the different swipe directions you’d like to recognise by setting the <code class="docutils literal notranslate"><span class="pre">swipe-left/right/up/down</span></code> properties and react to the gesture in the <code class="docutils literal notranslate"><span class="pre">swiped</span></code> callback.</p>
+<p>Pointer press events on the recognizer’s area are forwarded to the children with a small delay.
+If the pointer moves by more than 8 logical pixels in one of the enabled swipe directions, the gesture is recognized, and events are no longer forwarded to the children.</p>
+<section id="id19">
+<h3>Properties<a class="headerlink" href="#id19" title="Permalink to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">enabled</span></code></strong> (<em>in</em> <em>bool</em>): When disabled, the <code class="docutils literal notranslate"><span class="pre">SwipeGestureRecognizer</span></code> doesn’t recognize any gestures.
+(default value: <code class="docutils literal notranslate"><span class="pre">true</span></code>)</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">swipe-left</span></code></strong>, <strong><code class="docutils literal notranslate"><span class="pre">swipe-right</span></code></strong>, <strong><code class="docutils literal notranslate"><span class="pre">swipe-up</span></code></strong>, <strong><code class="docutils literal notranslate"><span class="pre">swipe-down</span></code></strong> (<em>out</em> <em>bool</em>): Enable recognition of  swipes in
+the corresponding direction. (default value: <code class="docutils literal notranslate"><span class="pre">false</span></code>)</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">pressed-position</span></code></strong> (<em>out</em> <em>Point</em>): The position of the pointer when the swipe started.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">current-position</span></code></strong> (<em>out</em> <em>Point</em>): The current pointer position.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">swiping</span></code></strong> (<em>out</em> <em>bool</em>): <code class="docutils literal notranslate"><span class="pre">true</span></code> while the gesture is recognized, false otherwise.</p></li>
+</ul>
+</section>
+<section id="id20">
+<h3>Callbacks<a class="headerlink" href="#id20" title="Permalink to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">moved()</span></code></strong>: Invoked when the pointer is moved.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">swiped()</span></code></strong>: Invoked after the swipe gesture was recognised and the pointer was released.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">cancelled()</span></code></strong>: Invoked when the swipe is cancelled programatically or if the window loses focus.</p></li>
+</ul>
+</section>
+<section id="id21">
+<h3>Functions<a class="headerlink" href="#id21" title="Permalink to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">cancel()</span></code></strong>: Cancel any on-going swipe gesture recognition.</p></li>
+</ul>
+</section>
+<section id="id22">
+<h3>Example<a class="headerlink" href="#id22" title="Permalink to this heading">¶</a></h3>
+<p>This example implements swiping between pages of different colors.</p>
+<div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>export component Example inherits Window {
+    width: 270px;
+    height: 100px;
+
+    property &lt;int&gt; current-page: 0;
+
+    sgr := SwipeGestureRecognizer {
+        swipe-right: current-page &gt; 0;
+        swipe-left: current-page &lt; 5;
+        swiped =&gt; {
+            if self.current-position.x &gt; self.pressed-position.x + self.width / 4 {
+                current-page -= 1;
+            } else if self.current-position.x &lt; self.pressed-position.x - self.width / 4 {
+                current-page += 1;
+            }
+        }
+
+        HorizontalLayout {
+            property &lt;length&gt; position: - current-page * root.width;
+            animate position { duration: 200ms; easing: ease-in-out; }
+            property &lt;length&gt; swipe-offset;
+            x: position + swipe-offset;
+            states [
+                swiping when sgr.swiping : {
+                    swipe-offset: sgr.current-position.x - sgr.pressed-position.x;
+                    out { animate swipe-offset { duration: 200ms; easing: ease-in-out; }  }
+                }
+            ]
+
+            Rectangle { width: root.width; background: green; }
+            Rectangle { width: root.width; background: limegreen; }
+            Rectangle { width: root.width; background: yellow; }
+            Rectangle { width: root.width; background: orange; }
+            Rectangle { width: root.width; background: red; }
+            Rectangle { width: root.width; background: violet; }
+        }
+    }
+}
+</pre></div>
+</div>
+</section>
+</section>
 <section id="textinput">
 <h2><code class="docutils literal notranslate"><span class="pre">TextInput</span></code><a class="headerlink" href="#textinput" title="Permalink to this heading">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">TextInput</span></code> is a lower-level item that shows text and allows entering text.</p>
 <p>When not part of a layout, its width or height defaults to 100% of the parent element when not specified.</p>
-<section id="id19">
-<h3>Properties<a class="headerlink" href="#id19" title="Permalink to this heading">¶</a></h3>
+<section id="id23">
+<h3>Properties<a class="headerlink" href="#id23" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">color</span></code></strong> (<em>in</em> <em>brush</em>): The color of the text (default value: depends on the style)</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">font-family</span></code></strong> (<em>in</em> <em>string</em>): The name of the font family selected for rendering the text.</p></li>
@@ -1071,8 +1148,8 @@ it’s then possible to draw a rectangle on the screen.</p>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">wrap</span></code></strong> (<em>in</em> <em>enum <a class="reference internal" href="enums.html#textwrap"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">TextWrap</span></code></span></a></em>): The way the text input wraps. Only makes sense when <code class="docutils literal notranslate"><span class="pre">single-line</span></code> is false. (default value: no-wrap)</p></li>
 </ul>
 </section>
-<section id="id20">
-<h3>Functions<a class="headerlink" href="#id20" title="Permalink to this heading">¶</a></h3>
+<section id="id24">
+<h3>Functions<a class="headerlink" href="#id24" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">focus()</span></code></strong> Call this function to focus the text input and make it receive future keyboard events.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">clear-focus()</span></code></strong> Call this function to remove keyboard focus from this <code class="docutils literal notranslate"><span class="pre">TextInput</span></code> if it currently has the focus. See also <a class="reference internal" href="../concepts/focus.html"><span class="std std-doc">Focus Handling</span></a>.</p></li>
@@ -1084,8 +1161,8 @@ it’s then possible to draw a rectangle on the screen.</p>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">paste()</span></code></strong> Pastes the text content of the clipboard at the cursor position.</p></li>
 </ul>
 </section>
-<section id="id21">
-<h3>Callbacks<a class="headerlink" href="#id21" title="Permalink to this heading">¶</a></h3>
+<section id="id25">
+<h3>Callbacks<a class="headerlink" href="#id25" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">accepted()</span></code></strong>: Invoked when enter key is pressed.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">cursor-position-changed(Point)</span></code></strong>: The cursor was moved to the new (x, y) position
@@ -1093,8 +1170,8 @@ described by the <a class="reference internal" href="structs.html#point"><span c
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">edited()</span></code></strong>: Invoked when the text has changed because the user modified it.</p></li>
 </ul>
 </section>
-<section id="id22">
-<h3>Example<a class="headerlink" href="#id22" title="Permalink to this heading">¶</a></h3>
+<section id="id26">
+<h3>Example<a class="headerlink" href="#id26" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>export component Example inherits Window {
     width: 270px;
     height: 100px;
@@ -1117,8 +1194,8 @@ property will trigger a manual line break. For automatic line breaking you need 
 <code class="docutils literal notranslate"><span class="pre">no-wrap</span></code>, and it’s important to specify a <code class="docutils literal notranslate"><span class="pre">width</span></code> and <code class="docutils literal notranslate"><span class="pre">height</span></code> for the <code class="docutils literal notranslate"><span class="pre">Text</span></code> element, in order to know where to break. It’s
 recommended to place the <code class="docutils literal notranslate"><span class="pre">Text</span></code> element in a layout and let it set the <code class="docutils literal notranslate"><span class="pre">width</span></code> and <code class="docutils literal notranslate"><span class="pre">height</span></code> based on the available screen space
 and the text itself.</p>
-<section id="id23">
-<h3>Properties<a class="headerlink" href="#id23" title="Permalink to this heading">¶</a></h3>
+<section id="id27">
+<h3>Properties<a class="headerlink" href="#id27" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">color</span></code></strong> (<em>in</em> <em>brush</em>): The color of the text. (default value: depends on the style)</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">font-family</span></code></strong> (<em>in</em> <em>string</em>): The name of the font family selected for rendering the text.</p></li>
@@ -1139,8 +1216,8 @@ Rotates the text by the given angle around the specified origin point. The defau
 When these properties are set, the <code class="docutils literal notranslate"><span class="pre">Text</span></code> can’t have children.</p></li>
 </ul>
 </section>
-<section id="id24">
-<h3>Example<a class="headerlink" href="#id24" title="Permalink to this heading">¶</a></h3>
+<section id="id28">
+<h3>Example<a class="headerlink" href="#id28" title="Permalink to this heading">¶</a></h3>
 <p>This example shows the text “Hello World” in red, using the default font:</p>
 <div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>export component Example inherits Window {
     width: 270px;
@@ -1187,21 +1264,21 @@ When already running, the timer will be restarted if the <code class="docutils l
 <p class="admonition-title">Note</p>
 <p>Timer is not an actual element visible in the tree, therefore it doesn’t have the common properties such as <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code>, <code class="docutils literal notranslate"><span class="pre">width</span></code>, <code class="docutils literal notranslate"><span class="pre">height</span></code>, etc. It also doesn’t take room in a layout and cannot have any children or be inherited from.</p>
 </div>
-<section id="id25">
-<h3>Properties<a class="headerlink" href="#id25" title="Permalink to this heading">¶</a></h3>
+<section id="id29">
+<h3>Properties<a class="headerlink" href="#id29" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">interval</span></code></strong> (<em>in</em> <em>duration</em>): The interval between timer ticks. (default value: <code class="docutils literal notranslate"><span class="pre">0ms</span></code>)</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">running</span></code></strong> (<em>in</em> <em>bool</em>): <code class="docutils literal notranslate"><span class="pre">true</span></code> if the timer is running. (default value: <code class="docutils literal notranslate"><span class="pre">true</span></code>)</p></li>
 </ul>
 </section>
-<section id="id26">
-<h3>Callbacks<a class="headerlink" href="#id26" title="Permalink to this heading">¶</a></h3>
+<section id="id30">
+<h3>Callbacks<a class="headerlink" href="#id30" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">triggered()</span></code></strong>: Invoked every time the timer ticks (every <code class="docutils literal notranslate"><span class="pre">interval</span></code>).</p></li>
 </ul>
 </section>
-<section id="id27">
-<h3>Example<a class="headerlink" href="#id27" title="Permalink to this heading">¶</a></h3>
+<section id="id31">
+<h3>Example<a class="headerlink" href="#id31" title="Permalink to this heading">¶</a></h3>
 <p>This example shows a timer that counts down from 10 to 0 every second:</p>
 <div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>import { Button } from &quot;std-widgets.slint&quot;;
 export component Example inherits Window {
@@ -1233,8 +1310,8 @@ export component Example inherits Window {
 <p>Use <code class="docutils literal notranslate"><span class="pre">TouchArea</span></code> to control what happens when the region it covers is touched or interacted with
 using the mouse.</p>
 <p>When not part of a layout, its width or height default to 100% of the parent element.</p>
-<section id="id28">
-<h3>Properties<a class="headerlink" href="#id28" title="Permalink to this heading">¶</a></h3>
+<section id="id32">
+<h3>Properties<a class="headerlink" href="#id32" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">has-hover</span></code></strong> (<em>out</em> <em>bool</em>): <code class="docutils literal notranslate"><span class="pre">TouchArea</span></code> sets this to <code class="docutils literal notranslate"><span class="pre">true</span></code> when the mouse is over it.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">mouse-cursor</span></code></strong> (<em>in</em> <em>enum <a class="reference internal" href="enums.html#mousecursor"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">MouseCursor</span></code></span></a></em>): The mouse cursor type when the mouse is hovering the <code class="docutils literal notranslate"><span class="pre">TouchArea</span></code>.</p></li>
@@ -1243,8 +1320,8 @@ using the mouse.</p>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">pressed</span></code></strong> (<em>out</em> <em>bool</em>): Set to <code class="docutils literal notranslate"><span class="pre">true</span></code> by the <code class="docutils literal notranslate"><span class="pre">TouchArea</span></code> when the mouse is pressed over it.</p></li>
 </ul>
 </section>
-<section id="id29">
-<h3>Callbacks<a class="headerlink" href="#id29" title="Permalink to this heading">¶</a></h3>
+<section id="id33">
+<h3>Callbacks<a class="headerlink" href="#id33" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">clicked()</span></code></strong>: Invoked when clicked: A finger or the left mouse button is pressed, then released on this element.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">double-clicked()</span></code></strong>: Invoked when double-clicked. The left mouse button is pressed and released twice on this element in a short
@@ -1262,8 +1339,8 @@ The returned <a class="reference internal" href="enums.html#eventresult"><span c
 forwarded to the parent element.</p></li>
 </ul>
 </section>
-<section id="id30">
-<h3>Example<a class="headerlink" href="#id30" title="Permalink to this heading">¶</a></h3>
+<section id="id34">
+<h3>Example<a class="headerlink" href="#id34" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>export component Example inherits Window {
     width: 200px;
     height: 100px;
@@ -1295,8 +1372,8 @@ forwarded to the parent element.</p></li>
 <p>These layouts place their children next to each other vertically or horizontally.
 The size of elements can either be fixed with the <code class="docutils literal notranslate"><span class="pre">width</span></code> or <code class="docutils literal notranslate"><span class="pre">height</span></code> property, or if they aren’t set
 they will be computed by the layout respecting the minimum and maximum sizes and the stretch factor.</p>
-<section id="id31">
-<h3>Properties<a class="headerlink" href="#id31" title="Permalink to this heading">¶</a></h3>
+<section id="id35">
+<h3>Properties<a class="headerlink" href="#id35" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">spacing</span></code></strong> (<em>in</em> <em>length</em>): The distance between the elements in the layout.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">padding</span></code></strong> (<em>in</em> <em>length</em>): the padding within the layout.</p></li>
@@ -1304,8 +1381,8 @@ they will be computed by the layout respecting the minimum and maximum sizes and
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">alignment</span></code></strong> (<em>in</em> <em>enum <a class="reference internal" href="enums.html#layoutalignment"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">LayoutAlignment</span></code></span></a></em>): Set the alignment. Matches the CSS flex box.</p></li>
 </ul>
 </section>
-<section id="id32">
-<h3>Example<a class="headerlink" href="#id32" title="Permalink to this heading">¶</a></h3>
+<section id="id36">
+<h3>Example<a class="headerlink" href="#id36" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>export component Foo inherits Window {
     width: 200px;
     height: 100px;
@@ -1327,8 +1404,8 @@ they will be computed by the layout respecting the minimum and maximum sizes and
 <p>The <code class="docutils literal notranslate"><span class="pre">Window</span></code> geometry will be restricted by its layout constraints: Setting the <code class="docutils literal notranslate"><span class="pre">width</span></code> will result in a fixed width,
 and the window manager will respect the <code class="docutils literal notranslate"><span class="pre">min-width</span></code> and <code class="docutils literal notranslate"><span class="pre">max-width</span></code> so the window can’t be resized bigger
 or smaller. The initial width can be controlled with the <code class="docutils literal notranslate"><span class="pre">preferred-width</span></code> property. The same applies to the <code class="docutils literal notranslate"><span class="pre">Window</span></code>s height.</p>
-<section id="id33">
-<h3>Properties<a class="headerlink" href="#id33" title="Permalink to this heading">¶</a></h3>
+<section id="id37">
+<h3>Properties<a class="headerlink" href="#id37" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">always-on-top</span></code></strong> (<em>in</em> <em>bool</em>): Whether the window should be placed above all other windows on window managers supporting it.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">background</span></code></strong> (<em>in</em> <em>brush</em>): The background brush of the <code class="docutils literal notranslate"><span class="pre">Window</span></code>. (default value: depends on the style)</p></li>
@@ -1489,37 +1566,44 @@ or smaller. The initial width can be controlled with the <code class="docutils l
 <li><a class="reference internal" href="#id18">Example</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#textinput"><code class="docutils literal notranslate"><span class="pre">TextInput</span></code></a><ul>
+<li><a class="reference internal" href="#swipegesturerecognizer"><code class="docutils literal notranslate"><span class="pre">SwipeGestureRecognizer</span></code></a><ul>
 <li><a class="reference internal" href="#id19">Properties</a></li>
-<li><a class="reference internal" href="#id20">Functions</a></li>
-<li><a class="reference internal" href="#id21">Callbacks</a></li>
+<li><a class="reference internal" href="#id20">Callbacks</a></li>
+<li><a class="reference internal" href="#id21">Functions</a></li>
 <li><a class="reference internal" href="#id22">Example</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#text"><code class="docutils literal notranslate"><span class="pre">Text</span></code></a><ul>
+<li><a class="reference internal" href="#textinput"><code class="docutils literal notranslate"><span class="pre">TextInput</span></code></a><ul>
 <li><a class="reference internal" href="#id23">Properties</a></li>
-<li><a class="reference internal" href="#id24">Example</a></li>
+<li><a class="reference internal" href="#id24">Functions</a></li>
+<li><a class="reference internal" href="#id25">Callbacks</a></li>
+<li><a class="reference internal" href="#id26">Example</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#text"><code class="docutils literal notranslate"><span class="pre">Text</span></code></a><ul>
+<li><a class="reference internal" href="#id27">Properties</a></li>
+<li><a class="reference internal" href="#id28">Example</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#timer"><code class="docutils literal notranslate"><span class="pre">Timer</span></code></a><ul>
-<li><a class="reference internal" href="#id25">Properties</a></li>
-<li><a class="reference internal" href="#id26">Callbacks</a></li>
-<li><a class="reference internal" href="#id27">Example</a></li>
+<li><a class="reference internal" href="#id29">Properties</a></li>
+<li><a class="reference internal" href="#id30">Callbacks</a></li>
+<li><a class="reference internal" href="#id31">Example</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#toucharea"><code class="docutils literal notranslate"><span class="pre">TouchArea</span></code></a><ul>
-<li><a class="reference internal" href="#id28">Properties</a></li>
-<li><a class="reference internal" href="#id29">Callbacks</a></li>
-<li><a class="reference internal" href="#id30">Example</a></li>
+<li><a class="reference internal" href="#id32">Properties</a></li>
+<li><a class="reference internal" href="#id33">Callbacks</a></li>
+<li><a class="reference internal" href="#id34">Example</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#verticallayout-and-horizontallayout"><code class="docutils literal notranslate"><span class="pre">VerticalLayout</span></code> and <code class="docutils literal notranslate"><span class="pre">HorizontalLayout</span></code></a><ul>
-<li><a class="reference internal" href="#id31">Properties</a></li>
-<li><a class="reference internal" href="#id32">Example</a></li>
+<li><a class="reference internal" href="#id35">Properties</a></li>
+<li><a class="reference internal" href="#id36">Example</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#window"><code class="docutils literal notranslate"><span class="pre">Window</span></code></a><ul>
-<li><a class="reference internal" href="#id33">Properties</a></li>
+<li><a class="reference internal" href="#id37">Properties</a></li>
 </ul>
 </li>
 </ul>

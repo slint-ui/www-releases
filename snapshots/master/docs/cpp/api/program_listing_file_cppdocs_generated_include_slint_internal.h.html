@@ -894,11 +894,6 @@
 
 <span class="k">using</span><span class="w"> </span><span class="n">Size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Size2D</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">;</span>
 
-<span class="k">struct</span><span class="w"> </span><span class="nc">LogicalPosition</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
-<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
-<span class="p">};</span>
-
 <span class="k">union</span><span class="w"> </span><span class="nc">WindowEvent</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Tag</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">PointerPressed</span><span class="p">,</span>
@@ -1115,6 +1110,25 @@
 <span class="w">    </span><span class="n">private_api</span><span class="o">::</span><span class="n">CallbackHelper</span><span class="o">&lt;</span><span class="n">KeyEvent</span><span class="p">,</span><span class="w"> </span><span class="n">EventResult</span><span class="o">&gt;</span><span class="w"> </span><span class="n">key_pressed</span><span class="p">;</span>
 <span class="w">    </span><span class="n">private_api</span><span class="o">::</span><span class="n">CallbackHelper</span><span class="o">&lt;</span><span class="n">KeyEvent</span><span class="p">,</span><span class="w"> </span><span class="n">EventResult</span><span class="o">&gt;</span><span class="w"> </span><span class="n">key_released</span><span class="p">;</span>
 <span class="w">    </span><span class="n">private_api</span><span class="o">::</span><span class="n">CallbackHelper</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;</span><span class="w"> </span><span class="n">focus_changed_event</span><span class="p">;</span>
+<span class="w">    </span><span class="n">CachedRenderingData</span><span class="w"> </span><span class="n">cached_rendering_data</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">using</span><span class="w"> </span><span class="n">Instant</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">uint64_t</span><span class="p">;</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">SwipeGestureRecognizer</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="w"> </span><span class="n">enabled</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="w"> </span><span class="n">swipe_left</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="w"> </span><span class="n">swipe_right</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="w"> </span><span class="n">swipe_up</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="w"> </span><span class="n">swipe_down</span><span class="p">;</span>
+<span class="w">    </span><span class="n">private_api</span><span class="o">::</span><span class="n">CallbackHelper</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;</span><span class="w"> </span><span class="n">moved</span><span class="p">;</span>
+<span class="w">    </span><span class="n">private_api</span><span class="o">::</span><span class="n">CallbackHelper</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;</span><span class="w"> </span><span class="n">swiped</span><span class="p">;</span>
+<span class="w">    </span><span class="n">private_api</span><span class="o">::</span><span class="n">CallbackHelper</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cancelled</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalPosition</span><span class="o">&gt;</span><span class="w"> </span><span class="n">pressed_position</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalPosition</span><span class="o">&gt;</span><span class="w"> </span><span class="n">current_position</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="w"> </span><span class="n">swiping</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Instant</span><span class="w"> </span><span class="n">pressed_time</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">pressed</span><span class="p">;</span>
 <span class="w">    </span><span class="n">CachedRenderingData</span><span class="w"> </span><span class="n">cached_rendering_data</span><span class="p">;</span>
 <span class="p">};</span>
 
@@ -1590,6 +1604,7 @@
 <span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">ClippedImage</span><span class="p">);</span>
 <span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">TouchArea</span><span class="p">);</span>
 <span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">FocusScope</span><span class="p">);</span>
+<span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">SwipeGestureRecognizer</span><span class="p">);</span>
 <span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">Flickable</span><span class="p">);</span>
 <span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">SimpleText</span><span class="p">);</span>
 <span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">ComplexText</span><span class="p">);</span>

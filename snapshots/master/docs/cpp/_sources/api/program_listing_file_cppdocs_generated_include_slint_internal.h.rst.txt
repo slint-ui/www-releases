@@ -501,11 +501,6 @@ Program Listing for File slint_internal.h
    
    using Size = Size2D<float>;
    
-   struct LogicalPosition {
-       float x;
-       float y;
-   };
-   
    union WindowEvent {
        enum class Tag : uint32_t {
            PointerPressed,
@@ -722,6 +717,25 @@ Program Listing for File slint_internal.h
        private_api::CallbackHelper<KeyEvent, EventResult> key_pressed;
        private_api::CallbackHelper<KeyEvent, EventResult> key_released;
        private_api::CallbackHelper<void> focus_changed_event;
+       CachedRenderingData cached_rendering_data;
+   };
+   
+   using Instant = uint64_t;
+   
+   struct SwipeGestureRecognizer {
+       Property<bool> enabled;
+       Property<bool> swipe_left;
+       Property<bool> swipe_right;
+       Property<bool> swipe_up;
+       Property<bool> swipe_down;
+       private_api::CallbackHelper<void> moved;
+       private_api::CallbackHelper<void> swiped;
+       private_api::CallbackHelper<void> cancelled;
+       Property<LogicalPosition> pressed_position;
+       Property<LogicalPosition> current_position;
+       Property<bool> swiping;
+       Instant pressed_time;
+       bool pressed;
        CachedRenderingData cached_rendering_data;
    };
    
@@ -1197,6 +1211,7 @@ Program Listing for File slint_internal.h
    SLINT_DECL_ITEM(ClippedImage);
    SLINT_DECL_ITEM(TouchArea);
    SLINT_DECL_ITEM(FocusScope);
+   SLINT_DECL_ITEM(SwipeGestureRecognizer);
    SLINT_DECL_ITEM(Flickable);
    SLINT_DECL_ITEM(SimpleText);
    SLINT_DECL_ITEM(ComplexText);
