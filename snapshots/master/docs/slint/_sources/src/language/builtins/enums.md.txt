@@ -22,6 +22,7 @@
 * **`text-input`**: The role for widget with editable text such as a
     [`LineEdit`](slint-reference:src/language/widgets/lineedit) or a [`TextEdit`](slint-reference:src/language/widgets/textedit)
 * **`switch`**: The element is a [`Switch`](slint-reference:src/language/widgets/switch) or behaves like one.
+* **`list-item`**: The element is an item in a [`ListView`](slint-reference:src/language/widgets/listview).
 
 ## `ColorScheme`
 
