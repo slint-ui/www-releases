@@ -1623,11 +1623,7 @@ function __wbg_get_imports() {
         const ret = getObject(arg0).visibilityState;
         return {"hidden":0,"visible":1,}[ret] ?? 2;
     };
-    imports.wbg.__wbindgen_closure_wrapper1143 = function(arg0, arg1, arg2) {
-        const ret = makeClosure(arg0, arg1, 137, __wbg_adapter_26);
-        return addHeapObject(ret);
-    };
-    imports.wbg.__wbindgen_closure_wrapper1145 = function(arg0, arg1, arg2) {
+    imports.wbg.__wbindgen_closure_wrapper1144 = function(arg0, arg1, arg2) {
         const ret = makeClosure(arg0, arg1, 137, __wbg_adapter_26);
         return addHeapObject(ret);
     };
@@ -1640,6 +1636,10 @@ function __wbg_get_imports() {
         return addHeapObject(ret);
     };
     imports.wbg.__wbindgen_closure_wrapper1148 = function(arg0, arg1, arg2) {
+        const ret = makeClosure(arg0, arg1, 137, __wbg_adapter_26);
+        return addHeapObject(ret);
+    };
+    imports.wbg.__wbindgen_closure_wrapper1149 = function(arg0, arg1, arg2) {
         const ret = makeClosure(arg0, arg1, 137, __wbg_adapter_26);
         return addHeapObject(ret);
     };

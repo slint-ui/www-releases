@@ -431,6 +431,7 @@ against the constants below.</p>
 <section id="math">
 <h2><code class="docutils literal notranslate"><span class="pre">Math</span></code><a class="headerlink" href="#math" title="Permalink to this heading">¶</a></h2>
 <p>These functions are available both in the global scope and in the <code class="docutils literal notranslate"><span class="pre">Math</span></code> namespace.</p>
+<p>They can also be called directly as member function of numeric types. (For example <code class="docutils literal notranslate"><span class="pre">angle.sin()</span></code> or <code class="docutils literal notranslate"><span class="pre">foo.mod(10)</span></code>).</p>
 <section id="abs-t-t">
 <h3><code class="docutils literal notranslate"><span class="pre">abs(T)</span> <span class="pre">-&gt;</span> <span class="pre">T</span></code><a class="headerlink" href="#abs-t-t" title="Permalink to this heading">¶</a></h3>
 <p>Return the absolute value, where T is a numeric type.</p>
@@ -459,7 +460,9 @@ against the constants below.</p>
 </section>
 <section id="mod-t-t-t">
 <h3><code class="docutils literal notranslate"><span class="pre">mod(T,</span> <span class="pre">T)</span> <span class="pre">-&gt;</span> <span class="pre">T</span></code><a class="headerlink" href="#mod-t-t-t" title="Permalink to this heading">¶</a></h3>
-<p>Perform a modulo operation, where T is some numeric type.</p>
+<p>Perform a modulo operation, where T is some numeric type.
+Returns the remainder of the euclidean division of the arguments.
+This always returns a positive number between 0 and the absolute value of the second value.</p>
 </section>
 <section id="round-float-int">
 <h3><code class="docutils literal notranslate"><span class="pre">round(float)</span> <span class="pre">-&gt;</span> <span class="pre">int</span></code><a class="headerlink" href="#round-float-int" title="Permalink to this heading">¶</a></h3>
