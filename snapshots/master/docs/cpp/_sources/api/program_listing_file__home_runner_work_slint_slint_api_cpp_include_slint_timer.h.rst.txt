@@ -18,8 +18,6 @@ Program Listing for File slint_timer.h
    #pragma once
    
    #include <chrono>
-   
-   #include <optional>
    #include <slint_timer_internal.h>
    
    namespace slint {
@@ -51,13 +49,9 @@ Program Listing for File slint_timer.h
        void stop() { cbindgen_private::slint_timer_stop(id); }
        void restart() { cbindgen_private::slint_timer_restart(id); }
        bool running() const { return cbindgen_private::slint_timer_running(id); }
-       std::optional<std::chrono::milliseconds> interval() const
+       std::chrono::milliseconds interval() const
        {
-           int64_t val = cbindgen_private::slint_timer_interval(id);
-           if (val < 0) {
-               return std::nullopt;
-           }
-           return std::chrono::milliseconds(val);
+           return std::chrono::milliseconds(cbindgen_private::slint_timer_interval(id));
        }
    
        template<std::invocable F>

@@ -18,6 +18,8 @@ Program Listing for File slint_enums.h
        Left,
        Right,
        Middle,
+       Back,
+       Forward,
    };
    namespace testing {
    enum class AccessibleRole {

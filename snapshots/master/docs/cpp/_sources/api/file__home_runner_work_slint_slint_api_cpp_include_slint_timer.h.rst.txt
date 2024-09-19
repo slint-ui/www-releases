@@ -27,8 +27,6 @@ Includes
 
 - ``chrono``
 
-- ``optional``
-
 - ``slint_timer_internal.h`` (:ref:`file_cppdocs_generated_include_slint_timer_internal.h`)
 
 

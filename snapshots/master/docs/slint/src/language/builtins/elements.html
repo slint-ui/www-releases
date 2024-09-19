@@ -1046,19 +1046,18 @@ it’s then possible to draw a rectangle on the screen.</p>
 </div>
 </section>
 </section>
-<section id="swipegesturerecognizer">
-<h2><code class="docutils literal notranslate"><span class="pre">SwipeGestureRecognizer</span></code><a class="headerlink" href="#swipegesturerecognizer" title="Permalink to this heading">¶</a></h2>
-<p>Use the <code class="docutils literal notranslate"><span class="pre">SwipeGestureRecognizer</span></code> to react to swipes gesture in some particular direction. Recognition is limited to the element’s geometry.</p>
-<p>Specify the different swipe directions you’d like to recognise by setting the <code class="docutils literal notranslate"><span class="pre">swipe-left/right/up/down</span></code> properties and react to the gesture in the <code class="docutils literal notranslate"><span class="pre">swiped</span></code> callback.</p>
+<section id="swipegesturehandler">
+<h2><code class="docutils literal notranslate"><span class="pre">SwipeGestureHandler</span></code><a class="headerlink" href="#swipegesturehandler" title="Permalink to this heading">¶</a></h2>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">SwipeGestureHandler</span></code> to handle swipe gesture in some particular direction. Recognition is limited to the element’s geometry.</p>
+<p>Specify the different swipe directions you’d like to handle by setting the <code class="docutils literal notranslate"><span class="pre">handle-swipe-left/right/up/down</span></code> properties and react to the gesture in the <code class="docutils literal notranslate"><span class="pre">swiped</span></code> callback.</p>
 <p>Pointer press events on the recognizer’s area are forwarded to the children with a small delay.
 If the pointer moves by more than 8 logical pixels in one of the enabled swipe directions, the gesture is recognized, and events are no longer forwarded to the children.</p>
 <section id="id19">
 <h3>Properties<a class="headerlink" href="#id19" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">enabled</span></code></strong> (<em>in</em> <em>bool</em>): When disabled, the <code class="docutils literal notranslate"><span class="pre">SwipeGestureRecognizer</span></code> doesn’t recognize any gestures.
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">enabled</span></code></strong> (<em>in</em> <em>bool</em>): When disabled, the <code class="docutils literal notranslate"><span class="pre">SwipeGestureHandler</span></code> doesn’t recognize any gestures.
 (default value: <code class="docutils literal notranslate"><span class="pre">true</span></code>)</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">swipe-left</span></code></strong>, <strong><code class="docutils literal notranslate"><span class="pre">swipe-right</span></code></strong>, <strong><code class="docutils literal notranslate"><span class="pre">swipe-up</span></code></strong>, <strong><code class="docutils literal notranslate"><span class="pre">swipe-down</span></code></strong> (<em>out</em> <em>bool</em>): Enable recognition of  swipes in
-the corresponding direction. (default value: <code class="docutils literal notranslate"><span class="pre">false</span></code>)</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">handle-swipe-left</span></code></strong>, <strong><code class="docutils literal notranslate"><span class="pre">handle-swipe-right</span></code></strong>, <strong><code class="docutils literal notranslate"><span class="pre">handle-swipe-up</span></code></strong>, <strong><code class="docutils literal notranslate"><span class="pre">handle-swipe-down</span></code></strong> (<em>out</em> <em>bool</em>): Enable handling of swipes in the corresponding direction. (default value: <code class="docutils literal notranslate"><span class="pre">false</span></code>)</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">pressed-position</span></code></strong> (<em>out</em> <em>Point</em>): The position of the pointer when the swipe started.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">current-position</span></code></strong> (<em>out</em> <em>Point</em>): The current pointer position.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">swiping</span></code></strong> (<em>out</em> <em>bool</em>): <code class="docutils literal notranslate"><span class="pre">true</span></code> while the gesture is recognized, false otherwise.</p></li>
@@ -1087,9 +1086,9 @@ the corresponding direction. (default value: <code class="docutils literal notra
 
     property &lt;int&gt; current-page: 0;
 
-    sgr := SwipeGestureRecognizer {
-        swipe-right: current-page &gt; 0;
-        swipe-left: current-page &lt; 5;
+    sgr := SwipeGestureHandler {
+        handle-swipe-right: current-page &gt; 0;
+        handle-swipe-left: current-page &lt; 5;
         swiped =&gt; {
             if self.current-position.x &gt; self.pressed-position.x + self.width / 4 {
                 current-page -= 1;
@@ -1268,7 +1267,7 @@ When already running, the timer will be restarted if the <code class="docutils l
 <section id="id29">
 <h3>Properties<a class="headerlink" href="#id29" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">interval</span></code></strong> (<em>in</em> <em>duration</em>): The interval between timer ticks. (default value: <code class="docutils literal notranslate"><span class="pre">0ms</span></code>)</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">interval</span></code></strong> (<em>in</em> <em>duration</em>): The interval between timer ticks. This property is mandatory.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">running</span></code></strong> (<em>in</em> <em>bool</em>): <code class="docutils literal notranslate"><span class="pre">true</span></code> if the timer is running. (default value: <code class="docutils literal notranslate"><span class="pre">true</span></code>)</p></li>
 </ul>
 </section>
@@ -1567,7 +1566,7 @@ or smaller. The initial width can be controlled with the <code class="docutils l
 <li><a class="reference internal" href="#id18">Example</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#swipegesturerecognizer"><code class="docutils literal notranslate"><span class="pre">SwipeGestureRecognizer</span></code></a><ul>
+<li><a class="reference internal" href="#swipegesturehandler"><code class="docutils literal notranslate"><span class="pre">SwipeGestureHandler</span></code></a><ul>
 <li><a class="reference internal" href="#id19">Properties</a></li>
 <li><a class="reference internal" href="#id20">Callbacks</a></li>
 <li><a class="reference internal" href="#id21">Functions</a></li>

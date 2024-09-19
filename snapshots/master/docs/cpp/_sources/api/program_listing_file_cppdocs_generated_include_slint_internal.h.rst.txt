@@ -722,12 +722,12 @@ Program Listing for File slint_internal.h
    
    using Instant = uint64_t;
    
-   struct SwipeGestureRecognizer {
+   struct SwipeGestureHandler {
        Property<bool> enabled;
-       Property<bool> swipe_left;
-       Property<bool> swipe_right;
-       Property<bool> swipe_up;
-       Property<bool> swipe_down;
+       Property<bool> handle_swipe_left;
+       Property<bool> handle_swipe_right;
+       Property<bool> handle_swipe_up;
+       Property<bool> handle_swipe_down;
        private_api::CallbackHelper<void> moved;
        private_api::CallbackHelper<void> swiped;
        private_api::CallbackHelper<void> cancelled;
@@ -1094,7 +1094,7 @@ Program Listing for File slint_internal.h
    void send_keyboard_string_sequence(const SharedString *sequence,
                                       const WindowAdapterRc *window_adapter);
    
-   int64_t slint_timer_interval(uintptr_t id);
+   uint64_t slint_timer_interval(uintptr_t id);
    
    void slint_translate(SharedString *to_translate,
                         const SharedString *context,
@@ -1211,7 +1211,7 @@ Program Listing for File slint_internal.h
    SLINT_DECL_ITEM(ClippedImage);
    SLINT_DECL_ITEM(TouchArea);
    SLINT_DECL_ITEM(FocusScope);
-   SLINT_DECL_ITEM(SwipeGestureRecognizer);
+   SLINT_DECL_ITEM(SwipeGestureHandler);
    SLINT_DECL_ITEM(Flickable);
    SLINT_DECL_ITEM(SimpleText);
    SLINT_DECL_ITEM(ComplexText);
