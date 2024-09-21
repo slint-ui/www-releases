@@ -419,7 +419,7 @@
 <p>The following instructions outline a rough, general path how to get started on an STM32 MCU
 with STM32 Cube tooling and Slint. Successful completion requires experience with STM32CubeMX
 as well as the peripherals of our board.</p>
-<ol class="arabic simple">
+<ol class="arabic">
 <li><p>Make sure to install all the <a class="reference internal" href="../stm32.html#prerequisites"><span class="std std-ref">Prerequisites</span></a>.</p></li>
 <li><p>Start a new project with STM32CubeMX:</p>
 <ul class="simple">
@@ -429,33 +429,98 @@ to place the framebuffers in RAM.</p></li>
 <li><p>Select CMake in the code generator options.</p></li>
 </ul>
 </li>
-<li><p>General the CMake project and skeleton code.</p></li>
+<li><p>Generate the CMake project and skeleton code.</p></li>
 <li><p>In the STM32 VS Code Extension, choose the command to import a CMake project.</p></li>
 <li><p>In STM32CubeMX select the STM32Cube BSP that matches your board and install it.</p></li>
 <li><p>Copy the BSP drivers into your project’s source tree and modify <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> to
 add them to the build.</p></li>
 <li><p>Add C++ support to the generated CMake project by adding <code class="docutils literal notranslate"><span class="pre">CXX</span></code> to the <code class="docutils literal notranslate"><span class="pre">LANGUAGES</span></code> option
 of the <code class="docutils literal notranslate"><span class="pre">project</span></code> command.</p></li>
-<li><p>Download and extract <a class="reference external" href="https://github.com/slint-ui/slint/releases/latest/download/Slint-cpp-nightly-thumbv7em-none-eabihf.tar.gz">https://github.com/slint-ui/slint/releases/latest/download/Slint-cpp-nightly-thumbv7em-none-eabihf.tar.gz</a></p></li>
+<li><p>Open a web browser, navigate to <a class="reference external" href="https://github.com/slint-ui/slint/releases/latest">https://github.com/slint-ui/slint/releases/latest</a>, and download
+and extract <code class="docutils literal notranslate"><span class="pre">Slint-cpp-VERSION-thumbv7em-none-eabihf.tar.gz</span></code>, replace <code class="docutils literal notranslate"><span class="pre">VERSION</span></code> with the version you see.</p></li>
 <li><p>Set <code class="docutils literal notranslate"><span class="pre">CMAKE_PREFIX_PATH</span></code> to the extracted directory.</p></li>
-<li><p>Adjust your <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> for Slint use:</p>
-<ol class="arabic simple">
-<li><p>Add a <code class="docutils literal notranslate"><span class="pre">find_package(Slint)</span></code> call.</p></li>
-<li><p>Enable resource embedding by adding <code class="docutils literal notranslate"><span class="pre">set(DEFAULT_SLINT_EMBED_RESOURCES</span> <span class="pre">embed-for-software-renderer)</span></code>.</p></li>
-<li><p>Set the default style to <code class="docutils literal notranslate"><span class="pre">Fluent</span></code> with <code class="docutils literal notranslate"><span class="pre">set(SLINT_STYLE</span> <span class="pre">&quot;fluent-light&quot;)</span></code>.</p></li>
-<li><p>Add <code class="docutils literal notranslate"><span class="pre">SLINT_STM32_BSP_NAME=&lt;name&gt;</span></code> to your <code class="docutils literal notranslate"><span class="pre">target_compile_definitions</span></code> and replace <code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code> with the
-name of your BSP (for example <code class="docutils literal notranslate"><span class="pre">stm32h735g_discovery</span></code> or <code class="docutils literal notranslate"><span class="pre">stm32h747i_discovery</span></code>).</p></li>
-<li><p>Add <code class="docutils literal notranslate"><span class="pre">Slint::Slint</span></code> to your <code class="docutils literal notranslate"><span class="pre">target_link_libraries</span></code>.</p></li>
-</ol>
-</li>
 <li><p>Add a C++ source file to your project, for example <code class="docutils literal notranslate"><span class="pre">appmain.cpp</span></code>, with an <code class="docutils literal notranslate"><span class="pre">appmain</span></code> function and call it
 from the generated <code class="docutils literal notranslate"><span class="pre">main.c</span></code>.</p></li>
-<li><p>Add a <code class="docutils literal notranslate"><span class="pre">.slint</span></code> file to your project and include it in your project by calling <code class="docutils literal notranslate"><span class="pre">slint_target_sources</span></code>.</p></li>
-<li><p>In your <code class="docutils literal notranslate"><span class="pre">appmain</span></code> function, initialize the screen via <code class="docutils literal notranslate"><span class="pre">BSP_LCD_InitEx</span></code> as well as the touch screen via <code class="docutils literal notranslate"><span class="pre">BSP_TS_Init</span></code>.</p></li>
-<li><p>Include <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&lt;slint-stm32.h&gt;</span></code> and call <code class="docutils literal notranslate"><span class="pre">slint_stm32_init(SlintPlatformConfiguration());</span></code> to initialize the
-Slint platform integration for STM32.</p></li>
-<li><p>Finally, include the header file for your <code class="docutils literal notranslate"><span class="pre">.slint</span></code> file, instantiate the generated class, and invoke the event loop by
-calling <code class="docutils literal notranslate"><span class="pre">-&gt;run()</span></code> on the instance.</p></li>
+<li><p>Create <code class="docutils literal notranslate"><span class="pre">app-window.slint</span></code> with the following contents:</p>
+<div class="highlight-slint,no-preview notranslate"><div class="highlight"><pre><span></span>import { VerticalBox, AboutSlint } from &quot;std-widgets.slint&quot;;
+export component AppWindow inherits Window {
+    VerticalBox {
+        AboutSlint {}
+        Text {
+            text: &quot;Hello World&quot;;
+            font-size: 18px;
+            horizontal-alignment: center;
+        }
+    }
+}
+</pre></div>
+</div>
+</li>
+<li><p>Adjust your <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> for use of Slint. Copy the follow snippets and adjust the target names as needed:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span># Locate Slint
+find_package(Slint)
+
+# Compile app-window.slint to app-window.h and app-window.cpp
+slint_target_sources(your-target app-window.slint)
+
+# Embed images and fonts in the binary  
+set_target_properties(your-target PROPERTIES SLINT_EMBED_RESOURCES embed-for-software-renderer)
+
+# Replace $BSP_NAME with the name of your concrete BSP,
+# for example stm32h735g_discovery.
+target_compile_definitions(your-target PRIVATE
+    SLINT_STM32_BSP_NAME=$BSP_NAME
+)
+
+# Link Slint run-time library
+target_link_libraries(your-target PRIVATE
+    Slint::Slint
+)
+</pre></div>
+</div>
+</li>
+<li><p>In your <code class="docutils literal notranslate"><span class="pre">appmain</span></code> function, initialize the screen via <code class="docutils literal notranslate"><span class="pre">BSP_LCD_InitEx</span></code> as well as the touch screen via <code class="docutils literal notranslate"><span class="pre">BSP_TS_Init</span></code>,
+include <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&lt;slint-stm32.h&gt;</span></code> and call <code class="docutils literal notranslate"><span class="pre">slint_stm32_init(SlintPlatformConfiguration());</span></code> to initialize the
+Slint platform integration for STM32. Finally, include the header file for your <code class="docutils literal notranslate"><span class="pre">.slint</span></code> file, instantiate the generated class, and invoke the event loop by calling <code class="docutils literal notranslate"><span class="pre">-&gt;run()</span></code> on the instance. Use the following example as reference:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;slint-stm32.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stm32h735g_discovery.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stm32h735g_discovery_lcd.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stm32h735g_discovery_ts.h&gt;</span><span class="c1">    </span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;app-window.h&quot;</span>
+
+<span class="c1">// Called from main()</span>
+<span class="k">extern</span><span class="w"> </span><span class="s">&quot;C&quot;</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">appmain</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">BSP_LCD_InitEx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">LCD_ORIENTATION_LANDSCAPE</span><span class="p">,</span><span class="w"> </span><span class="n">LCD_PIXEL_FORMAT_RGB565</span><span class="p">,</span>
+<span class="w">                        </span><span class="n">LCD_DEFAULT_WIDTH</span><span class="p">,</span><span class="w"> </span><span class="n">LCD_DEFAULT_HEIGHT</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Error_Handler</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">BSP_LCD_DisplayOn</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="w">    </span><span class="n">BSP_LCD_SetActiveLayer</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">TS_Init_t</span><span class="w"> </span><span class="n">hTS</span><span class="p">;</span>
+<span class="w">    </span><span class="n">hTS</span><span class="p">.</span><span class="n">Width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LCD_DEFAULT_WIDTH</span><span class="p">;</span>
+<span class="w">    </span><span class="n">hTS</span><span class="p">.</span><span class="n">Height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LCD_DEFAULT_HEIGHT</span><span class="p">;</span>
+<span class="w">    </span><span class="n">hTS</span><span class="p">.</span><span class="n">Orientation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TS_SWAP_XY</span><span class="p">;</span>
+<span class="w">    </span><span class="n">hTS</span><span class="p">.</span><span class="n">Accuracy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="cm">/* Touchscreen initialization */</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">BSP_TS_Init</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">hTS</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Error_Handler</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">slint_stm32_init</span><span class="p">(</span><span class="n">SlintPlatformConfiguration</span><span class="p">());</span>
+
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">app_window</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AppWindow</span><span class="o">::</span><span class="n">create</span><span class="p">();</span>
+
+<span class="w">    </span><span class="n">app_window</span><span class="o">-&gt;</span><span class="n">run</span><span class="p">();</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
 </ol>
 </section>
 

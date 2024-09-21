@@ -354,7 +354,7 @@ filled with a soothing tone of blue.</p>
 <p>Lengths in Slint have a unit, here, the <code class="docutils literal notranslate"><span class="pre">px</span></code> suffix.
 This makes the code easier to read and the compiler can detect when you accidentally
 mix values with different units attached to them.</p>
-<p>Copy the following code into <code class="docutils literal notranslate"><span class="pre">ui/appwindow.slint</span></code> file, replacing the current content:</p>
+<p>Copy the following code into <code class="docutils literal notranslate"><span class="pre">ui/app-window.slint</span></code> file, replacing the current content:</p>
 <div class="highlight-slint,no-preview notranslate"><div class="highlight"><pre><span></span>component MemoryTile inherits Rectangle {
     width: 64px;
     height: 64px;
@@ -374,7 +374,7 @@ export component MainWindow inherits Window {
 </div>
 <p>This exports the <span class="hljs-title">MainWindow</span> component so that the game logic code can access it later.</p>
 <p>Inside the <span class="hljs-built_in">Rectangle</span> place an <span class="hljs-built_in">Image</span> element that
-loads an icon with the <span class="hljs-built_in">&#64;image-url()</span> macro. The path is relative to the location of <code class="docutils literal notranslate"><span class="pre">ui/appwindow.slint</span></code>.</p>
+loads an icon with the <span class="hljs-built_in">&#64;image-url()</span> macro. The path is relative to the location of <code class="docutils literal notranslate"><span class="pre">ui/app-window.slint</span></code>.</p>
 <p>You need to install this icon and others you use later first. You can download a pre-prepared
 <a class="reference external" href="https://slint.dev/blog/memory-game-tutorial/icons.zip">Zip archive</a> to the <code class="docutils literal notranslate"><span class="pre">ui</span></code> folder,</p>
 <p>If you are on Linux or macOS, download and extract it with the following commands:</p>
