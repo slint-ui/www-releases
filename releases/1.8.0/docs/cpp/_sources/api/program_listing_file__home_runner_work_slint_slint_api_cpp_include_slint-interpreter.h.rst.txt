@@ -1,0 +1,798 @@
+
+.. _program_listing_file__home_runner_work_slint_slint_api_cpp_include_slint-interpreter.h:
+
+Program Listing for File slint-interpreter.h
+============================================
+
+|exhale_lsh| :ref:`Return to documentation for file <file__home_runner_work_slint_slint_api_cpp_include_slint-interpreter.h>` (``/home/runner/work/slint/slint/api/cpp/include/slint-interpreter.h``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   // Copyright © SixtyFPS GmbH <info@slint.dev>
+   // SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0
+   
+   #pragma once
+   
+   #include "slint.h"
+   
+   #ifndef SLINT_FEATURE_INTERPRETER
+   #    warning "slint-interpreter.h API only available when SLINT_FEATURE_INTERPRETER is activated"
+   #else
+   
+   #    include "slint_interpreter_internal.h"
+   
+   #    include <optional>
+   
+   #    ifdef SLINT_FEATURE_BACKEND_QT
+   class QWidget;
+   #    endif
+   
+   namespace slint::cbindgen_private {
+   //  This has to stay opaque, but VRc don't compile if it is just forward declared
+   struct ErasedItemTreeBox : vtable::Dyn
+   {
+       ~ErasedItemTreeBox() = delete;
+       ErasedItemTreeBox() = delete;
+       ErasedItemTreeBox(ErasedItemTreeBox &) = delete;
+   };
+   }
+   
+   namespace slint::interpreter {
+   
+   class Value;
+   
+   struct Struct
+   {
+   public:
+       Struct() { cbindgen_private::slint_interpreter_struct_new(&inner); }
+   
+       Struct(const Struct &other)
+       {
+           cbindgen_private::slint_interpreter_struct_clone(&other.inner, &inner);
+       }
+       Struct(Struct &&other)
+       {
+           inner = other.inner;
+           cbindgen_private::slint_interpreter_struct_new(&other.inner);
+       }
+       Struct &operator=(const Struct &other)
+       {
+           if (this == &other)
+               return *this;
+           cbindgen_private::slint_interpreter_struct_destructor(&inner);
+           slint_interpreter_struct_clone(&other.inner, &inner);
+           return *this;
+       }
+       Struct &operator=(Struct &&other)
+       {
+           if (this == &other)
+               return *this;
+           cbindgen_private::slint_interpreter_struct_destructor(&inner);
+           inner = other.inner;
+           cbindgen_private::slint_interpreter_struct_new(&other.inner);
+           return *this;
+       }
+       ~Struct() { cbindgen_private::slint_interpreter_struct_destructor(&inner); }
+   
+       inline Struct(std::initializer_list<std::pair<std::string_view, Value>> args);
+   
+       template<typename InputIterator
+   // Doxygen doesn't understand this template wizardry
+   #    if !defined(DOXYGEN)
+                ,
+                typename std::enable_if_t<
+                        std::is_convertible<decltype(std::get<0>(*std::declval<InputIterator>())),
+                                            std::string_view>::value
+                        && std::is_convertible<decltype(std::get<1>(*std::declval<InputIterator>())),
+                                               Value>::value
+   
+                        > * = nullptr
+   #    endif
+                >
+       Struct(InputIterator it, InputIterator end) : Struct()
+       {
+           for (; it != end; ++it) {
+               auto [key, value] = *it;
+               set_field(key, value);
+           }
+       }
+   
+       // FIXME: this probably miss a lot of iterator api
+       struct iterator
+       {
+           using value_type = std::pair<std::string_view, const Value &>;
+   
+       private:
+           cbindgen_private::StructIteratorOpaque inner;
+           Value *v = nullptr;
+           std::string_view k;
+           friend Struct;
+           explicit iterator(cbindgen_private::StructIteratorOpaque inner) : inner(inner) { next(); }
+           // construct a end iterator
+           iterator() = default;
+           inline void next();
+   
+       public:
+           inline ~iterator();
+           // FIXME I believe iterators are supposed to be copy constructible
+           iterator(const iterator &) = delete;
+           iterator &operator=(const iterator &) = delete;
+           iterator(iterator &&other) = default;
+           iterator &operator=(iterator &&other) = default;
+           iterator &operator++()
+           {
+               if (v)
+                   next();
+               return *this;
+           }
+           value_type operator*() const { return { k, *v }; }
+           friend bool operator==(const iterator &a, const iterator &b) { return a.v == b.v; }
+           friend bool operator!=(const iterator &a, const iterator &b) { return a.v != b.v; }
+       };
+   
+       iterator begin() const
+       {
+           return iterator(cbindgen_private::slint_interpreter_struct_make_iter(&inner));
+       }
+       iterator end() const { return iterator(); }
+   
+       inline std::optional<Value> get_field(std::string_view name) const;
+       inline void set_field(std::string_view name, const Value &value);
+   
+       Struct(const slint::cbindgen_private::StructOpaque &other)
+       {
+           cbindgen_private::slint_interpreter_struct_clone(&other, &inner);
+       }
+   
+   private:
+       using StructOpaque = slint::cbindgen_private::StructOpaque;
+       StructOpaque inner;
+       friend class Value;
+   };
+   
+   class Value
+   {
+   public:
+       Value() : inner(cbindgen_private::slint_interpreter_value_new()) { }
+   
+       Value(const Value &other) : inner(slint_interpreter_value_clone(other.inner)) { }
+       Value(Value &&other)
+       {
+           inner = other.inner;
+           other.inner = cbindgen_private::slint_interpreter_value_new();
+       }
+       Value &operator=(const Value &other)
+       {
+           if (this == &other)
+               return *this;
+           cbindgen_private::slint_interpreter_value_destructor(inner);
+           inner = slint_interpreter_value_clone(other.inner);
+           return *this;
+       }
+       Value &operator=(Value &&other)
+       {
+           if (this == &other)
+               return *this;
+           cbindgen_private::slint_interpreter_value_destructor(inner);
+           inner = other.inner;
+           other.inner = cbindgen_private::slint_interpreter_value_new();
+           return *this;
+       }
+       ~Value() { cbindgen_private::slint_interpreter_value_destructor(inner); }
+   
+       using Type = ValueType;
+   
+       // optional<int> to_int() const;
+       // optional<float> to_float() const;
+       std::optional<double> to_number() const
+       {
+           if (auto *number = cbindgen_private::slint_interpreter_value_to_number(inner)) {
+               return *number;
+           } else {
+               return {};
+           }
+       }
+   
+       std::optional<slint::SharedString> to_string() const
+       {
+           if (auto *str = cbindgen_private::slint_interpreter_value_to_string(inner)) {
+               return *str;
+           } else {
+               return {};
+           }
+       }
+   
+       std::optional<bool> to_bool() const
+       {
+           if (auto *b = cbindgen_private::slint_interpreter_value_to_bool(inner)) {
+               return *b;
+           } else {
+               return {};
+           }
+       }
+   
+       inline std::optional<slint::SharedVector<Value>> to_array() const;
+   
+       std::optional<slint::Brush> to_brush() const
+       {
+           if (auto *brush = cbindgen_private::slint_interpreter_value_to_brush(inner)) {
+               return *brush;
+           } else {
+               return {};
+           }
+       }
+   
+       std::optional<Struct> to_struct() const
+       {
+           if (auto *opaque_struct = cbindgen_private::slint_interpreter_value_to_struct(inner)) {
+               return Struct(*opaque_struct);
+           } else {
+               return {};
+           }
+       }
+   
+       std::optional<Image> to_image() const
+       {
+           if (auto *img = cbindgen_private::slint_interpreter_value_to_image(inner)) {
+               return *reinterpret_cast<const Image *>(img);
+           } else {
+               return {};
+           }
+       }
+   
+       // template<typename T> std::optional<T> get() const;
+   
+       Value(double value) : inner(cbindgen_private::slint_interpreter_value_new_double(value)) { }
+       Value(int value) : Value(static_cast<double>(value)) { }
+       Value(const SharedString &str)
+           : inner(cbindgen_private::slint_interpreter_value_new_string(&str))
+       {
+       }
+       Value(bool b) : inner(cbindgen_private::slint_interpreter_value_new_bool(b)) { }
+       inline Value(const SharedVector<Value> &v);
+       Value(const std::shared_ptr<slint::Model<Value>> &m);
+       Value(const slint::Brush &brush)
+           : inner(cbindgen_private::slint_interpreter_value_new_brush(&brush))
+       {
+       }
+       Value(const Struct &struc)
+           : inner(cbindgen_private::slint_interpreter_value_new_struct(&struc.inner))
+       {
+       }
+   
+       Value(const Image &img) : inner(cbindgen_private::slint_interpreter_value_new_image(&img)) { }
+   
+       Type type() const { return cbindgen_private::slint_interpreter_value_type(inner); }
+   
+       friend bool operator==(const Value &a, const Value &b)
+       {
+           return cbindgen_private::slint_interpreter_value_eq(a.inner, b.inner);
+       }
+   
+   private:
+       inline Value(const void *) = delete; // Avoid that for example Value("foo") turns to Value(bool)
+       slint::cbindgen_private::Value *inner;
+       friend struct Struct;
+       friend class ComponentInstance;
+       // Internal constructor that takes ownership of the value
+       explicit Value(slint::cbindgen_private::Value *&&inner) : inner(inner) { }
+   };
+   
+   inline Value::Value(const slint::SharedVector<Value> &array)
+       : inner(cbindgen_private::slint_interpreter_value_new_array_model(
+                 reinterpret_cast<const slint::SharedVector<slint::cbindgen_private::Value *> *>(
+                         &array)))
+   {
+   }
+   
+   inline std::optional<slint::SharedVector<Value>> Value::to_array() const
+   {
+       slint::SharedVector<Value> array;
+       if (cbindgen_private::slint_interpreter_value_to_array(
+                   &inner,
+                   reinterpret_cast<slint::SharedVector<slint::cbindgen_private::Value *> *>(
+                           &array))) {
+           return array;
+       } else {
+           return {};
+       }
+   }
+   inline Value::Value(const std::shared_ptr<slint::Model<Value>> &model)
+   {
+       using cbindgen_private::ModelAdaptorVTable;
+       using vtable::VRef;
+       struct ModelWrapper : private_api::ModelChangeListener
+       {
+           std::shared_ptr<slint::Model<Value>> model;
+           cbindgen_private::ModelNotifyOpaque notify;
+           // This kind of mean that the rust code has ownership of "this" until the drop function is
+           // called
+           std::shared_ptr<ModelChangeListener> self;
+           ~ModelWrapper() { cbindgen_private::slint_interpreter_model_notify_destructor(&notify); }
+   
+           void row_added(size_t index, size_t count) override
+           {
+               cbindgen_private::slint_interpreter_model_notify_row_added(&notify, index, count);
+           }
+           void row_changed(size_t index) override
+           {
+               cbindgen_private::slint_interpreter_model_notify_row_changed(&notify, index);
+           }
+           void row_removed(size_t index, size_t count) override
+           {
+               cbindgen_private::slint_interpreter_model_notify_row_removed(&notify, index, count);
+           }
+           void reset() override { cbindgen_private::slint_interpreter_model_notify_reset(&notify); }
+       };
+   
+       auto wrapper = std::make_shared<ModelWrapper>();
+       wrapper->model = model;
+       wrapper->self = wrapper;
+       cbindgen_private::slint_interpreter_model_notify_new(&wrapper->notify);
+       model->attach_peer(wrapper);
+   
+       auto row_count = [](VRef<ModelAdaptorVTable> self) -> uintptr_t {
+           return reinterpret_cast<ModelWrapper *>(self.instance)->model->row_count();
+       };
+       auto row_data = [](VRef<ModelAdaptorVTable> self,
+                          uintptr_t row) -> slint::cbindgen_private::Value * {
+           std::optional<Value> v =
+                   reinterpret_cast<ModelWrapper *>(self.instance)->model->row_data(int(row));
+           if (v.has_value()) {
+               slint::cbindgen_private::Value *rval = v->inner;
+               v->inner = cbindgen_private::slint_interpreter_value_new();
+               return rval;
+           } else {
+               return nullptr;
+           }
+       };
+       auto set_row_data = [](VRef<ModelAdaptorVTable> self, uintptr_t row,
+                              slint::cbindgen_private::Value *value) {
+           Value v(std::move(value));
+           reinterpret_cast<ModelWrapper *>(self.instance)->model->set_row_data(int(row), v);
+       };
+       auto get_notify =
+               [](VRef<ModelAdaptorVTable> self) -> const cbindgen_private::ModelNotifyOpaque * {
+           return &reinterpret_cast<ModelWrapper *>(self.instance)->notify;
+       };
+       auto drop = [](vtable::VRefMut<ModelAdaptorVTable> self) {
+           reinterpret_cast<ModelWrapper *>(self.instance)->self = nullptr;
+       };
+   
+       static const ModelAdaptorVTable vt { row_count, row_data, set_row_data, get_notify, drop };
+       inner = cbindgen_private::slint_interpreter_value_new_model(
+               reinterpret_cast<uint8_t *>(wrapper.get()), &vt);
+   }
+   
+   inline Struct::Struct(std::initializer_list<std::pair<std::string_view, Value>> args)
+       : Struct(args.begin(), args.end())
+   {
+   }
+   
+   inline std::optional<Value> Struct::get_field(std::string_view name) const
+   {
+       using namespace cbindgen_private;
+       cbindgen_private::Slice<uint8_t> name_view {
+           const_cast<unsigned char *>(reinterpret_cast<const unsigned char *>(name.data())),
+           name.size()
+       };
+       if (cbindgen_private::Value *field_val =
+                   cbindgen_private::slint_interpreter_struct_get_field(&inner, name_view)) {
+           return Value(std::move(field_val));
+       } else {
+           return {};
+       }
+   }
+   inline void Struct::set_field(std::string_view name, const Value &value)
+   {
+       cbindgen_private::Slice<uint8_t> name_view {
+           const_cast<unsigned char *>(reinterpret_cast<const unsigned char *>(name.data())),
+           name.size()
+       };
+       cbindgen_private::slint_interpreter_struct_set_field(&inner, name_view, value.inner);
+   }
+   
+   inline void Struct::iterator::next()
+   {
+       cbindgen_private::Slice<uint8_t> name_slice;
+   
+       if (cbindgen_private::Value *nextval_inner =
+                   cbindgen_private::slint_interpreter_struct_iterator_next(&inner, &name_slice)) {
+           k = std::string_view(reinterpret_cast<char *>(name_slice.ptr), name_slice.len);
+           if (!v)
+               v = new Value();
+           *v = Value(std::move(nextval_inner));
+       } else {
+           cbindgen_private::slint_interpreter_struct_iterator_destructor(&inner);
+           delete v;
+           v = nullptr;
+       }
+   }
+   
+   inline Struct::iterator::~iterator()
+   {
+       if (v) {
+           cbindgen_private::slint_interpreter_struct_iterator_destructor(&inner);
+           delete v;
+       }
+   }
+   
+   class ComponentDefinition;
+   
+   class ComponentInstance : vtable::Dyn
+   {
+       ComponentInstance() = delete;
+       ComponentInstance(ComponentInstance &) = delete;
+       ComponentInstance &operator=(ComponentInstance &) = delete;
+       friend class ComponentDefinition;
+   
+       // ComponentHandle<ComponentInstance>  is in fact a VRc<ItemTreeVTable, ErasedItemTreeBox>
+       const cbindgen_private::ErasedItemTreeBox *inner() const
+       {
+           slint::private_api::assert_main_thread();
+           return reinterpret_cast<const cbindgen_private::ErasedItemTreeBox *>(this);
+       }
+   
+   public:
+       void show() const
+       {
+           cbindgen_private::slint_interpreter_component_instance_show(inner(), true);
+       }
+       void hide() const
+       {
+           cbindgen_private::slint_interpreter_component_instance_show(inner(), false);
+       }
+       const slint::Window &window()
+       {
+           const cbindgen_private::WindowAdapterRcOpaque *win_ptr = nullptr;
+           cbindgen_private::slint_interpreter_component_instance_window(inner(), &win_ptr);
+           return *reinterpret_cast<const slint::Window *>(win_ptr);
+       }
+       void run() const
+       {
+           show();
+           slint::run_event_loop();
+           hide();
+       }
+   #    if defined(SLINT_FEATURE_BACKEND_QT) || defined(DOXYGEN)
+       QWidget *qwidget() const
+       {
+           const cbindgen_private::WindowAdapterRcOpaque *win_ptr = nullptr;
+           cbindgen_private::slint_interpreter_component_instance_window(inner(), &win_ptr);
+           auto wid = reinterpret_cast<QWidget *>(cbindgen_private::slint_qt_get_widget(
+                   reinterpret_cast<const cbindgen_private::WindowAdapterRc *>(win_ptr)));
+           return wid;
+       }
+   #    endif
+   
+       bool set_property(std::string_view name, const Value &value) const
+       {
+           using namespace cbindgen_private;
+           return slint_interpreter_component_instance_set_property(
+                   inner(), slint::private_api::string_to_slice(name), value.inner);
+       }
+       std::optional<Value> get_property(std::string_view name) const
+       {
+           using namespace cbindgen_private;
+           if (cbindgen_private::Value *prop_inner = slint_interpreter_component_instance_get_property(
+                       inner(), slint::private_api::string_to_slice(name))) {
+               return Value(std::move(prop_inner));
+           } else {
+               return {};
+           }
+       }
+       std::optional<Value> invoke(std::string_view name, std::span<const Value> args) const
+       {
+           using namespace cbindgen_private;
+           Slice<Box<cbindgen_private::Value>> args_view {
+               const_cast<Box<cbindgen_private::Value> *>(
+                       reinterpret_cast<const Box<cbindgen_private::Value> *>(args.data())),
+               args.size()
+           };
+           if (cbindgen_private::Value *rval_inner = slint_interpreter_component_instance_invoke(
+                       inner(), slint::private_api::string_to_slice(name), args_view)) {
+               return Value(std::move(rval_inner));
+           } else {
+               return {};
+           }
+       }
+   
+       template<std::invocable<std::span<const Value>> F>
+           requires(std::is_convertible_v<std::invoke_result_t<F, std::span<const Value>>, Value>)
+       auto set_callback(std::string_view name, F callback) const -> bool
+       {
+           using namespace cbindgen_private;
+           auto actual_cb =
+                   [](void *data,
+                      cbindgen_private::Slice<cbindgen_private::Box<cbindgen_private::Value>> arg) {
+                       std::span<const Value> args_view { reinterpret_cast<const Value *>(arg.ptr),
+                                                          arg.len };
+                       Value r = (*reinterpret_cast<F *>(data))(args_view);
+                       auto inner = r.inner;
+                       r.inner = cbindgen_private::slint_interpreter_value_new();
+                       return inner;
+                   };
+           return cbindgen_private::slint_interpreter_component_instance_set_callback(
+                   inner(), slint::private_api::string_to_slice(name), actual_cb,
+                   new F(std::move(callback)), [](void *data) { delete reinterpret_cast<F *>(data); });
+       }
+   
+       bool set_global_property(std::string_view global, std::string_view prop_name,
+                                const Value &value) const
+       {
+           using namespace cbindgen_private;
+           return slint_interpreter_component_instance_set_global_property(
+                   inner(), slint::private_api::string_to_slice(global),
+                   slint::private_api::string_to_slice(prop_name), value.inner);
+       }
+       std::optional<Value> get_global_property(std::string_view global,
+                                                std::string_view prop_name) const
+       {
+           using namespace cbindgen_private;
+           if (cbindgen_private::Value *rval_inner =
+                       slint_interpreter_component_instance_get_global_property(
+                               inner(), slint::private_api::string_to_slice(global),
+                               slint::private_api::string_to_slice(prop_name))) {
+               return Value(std::move(rval_inner));
+           } else {
+               return {};
+           }
+       }
+   
+       template<std::invocable<std::span<const Value>> F>
+       bool set_global_callback(std::string_view global, std::string_view name, F callback) const
+       {
+           using namespace cbindgen_private;
+           auto actual_cb =
+                   [](void *data,
+                      cbindgen_private::Slice<cbindgen_private::Box<cbindgen_private::Value>> arg) {
+                       std::span<const Value> args_view { reinterpret_cast<const Value *>(arg.ptr),
+                                                          arg.len };
+                       Value r = (*reinterpret_cast<F *>(data))(args_view);
+                       auto inner = r.inner;
+                       r.inner = cbindgen_private::slint_interpreter_value_new();
+                       return inner;
+                   };
+           return cbindgen_private::slint_interpreter_component_instance_set_global_callback(
+                   inner(), slint::private_api::string_to_slice(global),
+                   slint::private_api::string_to_slice(name), actual_cb, new F(std::move(callback)),
+                   [](void *data) { delete reinterpret_cast<F *>(data); });
+       }
+   
+       std::optional<Value> invoke_global(std::string_view global, std::string_view callable_name,
+                                          std::span<const Value> args) const
+       {
+           using namespace cbindgen_private;
+           Slice<cbindgen_private::Box<cbindgen_private::Value>> args_view {
+               const_cast<cbindgen_private::Box<cbindgen_private::Value> *>(
+                       reinterpret_cast<const cbindgen_private::Box<cbindgen_private::Value> *>(
+                               args.data())),
+               args.size()
+           };
+           if (cbindgen_private::Value *rval_inner =
+                       slint_interpreter_component_instance_invoke_global(
+                               inner(), slint::private_api::string_to_slice(global),
+                               slint::private_api::string_to_slice(callable_name), args_view)) {
+               return Value(std::move(rval_inner));
+           } else {
+               return {};
+           }
+       }
+   
+       inline ComponentDefinition definition() const;
+   };
+   
+   class ComponentDefinition
+   {
+       friend class ComponentCompiler;
+       friend class ComponentInstance;
+   
+       using ComponentDefinitionOpaque = slint::cbindgen_private::ComponentDefinitionOpaque;
+       ComponentDefinitionOpaque inner;
+   
+       ComponentDefinition() = delete;
+       // Internal constructor that takes ownership of the component definition
+       explicit ComponentDefinition(ComponentDefinitionOpaque &inner) : inner(inner) { }
+   
+   public:
+       ComponentDefinition(const ComponentDefinition &other)
+       {
+           slint_interpreter_component_definition_clone(&other.inner, &inner);
+       }
+       ComponentDefinition &operator=(const ComponentDefinition &other)
+       {
+           using namespace slint::cbindgen_private;
+   
+           if (this == &other)
+               return *this;
+   
+           slint_interpreter_component_definition_destructor(&inner);
+           slint_interpreter_component_definition_clone(&other.inner, &inner);
+   
+           return *this;
+       }
+       ~ComponentDefinition() { slint_interpreter_component_definition_destructor(&inner); }
+       ComponentHandle<ComponentInstance> create() const
+       {
+           union CI {
+               cbindgen_private::ComponentInstance i;
+               ComponentHandle<ComponentInstance> result;
+               ~CI() { result.~ComponentHandle(); }
+               CI() { }
+           } u;
+           cbindgen_private::slint_interpreter_component_instance_create(&inner, &u.i);
+           return u.result;
+       }
+   
+       slint::SharedVector<PropertyDescriptor> properties() const
+       {
+           slint::SharedVector<PropertyDescriptor> props;
+           cbindgen_private::slint_interpreter_component_definition_properties(&inner, &props);
+           return props;
+       }
+   
+       slint::SharedVector<slint::SharedString> callbacks() const
+       {
+           slint::SharedVector<slint::SharedString> callbacks;
+           cbindgen_private::slint_interpreter_component_definition_callbacks(&inner, &callbacks);
+           return callbacks;
+       }
+   
+       slint::SharedVector<slint::SharedString> functions() const
+       {
+           slint::SharedVector<slint::SharedString> functions;
+           cbindgen_private::slint_interpreter_component_definition_functions(&inner, &functions);
+           return functions;
+       }
+   
+       slint::SharedString name() const
+       {
+           slint::SharedString name;
+           cbindgen_private::slint_interpreter_component_definition_name(&inner, &name);
+           return name;
+       }
+   
+       slint::SharedVector<slint::SharedString> globals() const
+       {
+           slint::SharedVector<slint::SharedString> names;
+           cbindgen_private::slint_interpreter_component_definition_globals(&inner, &names);
+           return names;
+       }
+   
+       std::optional<slint::SharedVector<PropertyDescriptor>>
+       global_properties(std::string_view global_name) const
+       {
+           slint::SharedVector<PropertyDescriptor> properties;
+           if (cbindgen_private::slint_interpreter_component_definition_global_properties(
+                       &inner, slint::private_api::string_to_slice(global_name), &properties)) {
+               return properties;
+           }
+           return {};
+       }
+   
+       std::optional<slint::SharedVector<slint::SharedString>>
+       global_callbacks(std::string_view global_name) const
+       {
+           slint::SharedVector<slint::SharedString> names;
+           if (cbindgen_private::slint_interpreter_component_definition_global_callbacks(
+                       &inner, slint::private_api::string_to_slice(global_name), &names)) {
+               return names;
+           }
+           return {};
+       }
+   
+       std::optional<slint::SharedVector<slint::SharedString>>
+       global_functions(std::string_view global_name) const
+       {
+           slint::SharedVector<slint::SharedString> names;
+           if (cbindgen_private::slint_interpreter_component_definition_global_functions(
+                       &inner, slint::private_api::string_to_slice(global_name), &names)) {
+               return names;
+           }
+           return {};
+       }
+   };
+   
+   inline ComponentDefinition ComponentInstance::definition() const
+   {
+       cbindgen_private::ComponentDefinitionOpaque result;
+       cbindgen_private::slint_interpreter_component_instance_component_definition(inner(), &result);
+       return ComponentDefinition(result);
+   }
+   
+   class ComponentCompiler
+   {
+       cbindgen_private::ComponentCompilerOpaque inner;
+   
+       ComponentCompiler(ComponentCompiler &) = delete;
+       ComponentCompiler &operator=(ComponentCompiler &) = delete;
+   
+   public:
+       ComponentCompiler() { cbindgen_private::slint_interpreter_component_compiler_new(&inner); }
+   
+       ~ComponentCompiler()
+       {
+           cbindgen_private::slint_interpreter_component_compiler_destructor(&inner);
+       }
+   
+       void set_include_paths(const slint::SharedVector<slint::SharedString> &paths)
+       {
+           cbindgen_private::slint_interpreter_component_compiler_set_include_paths(&inner, &paths);
+       }
+   
+       void set_style(std::string_view style)
+       {
+           cbindgen_private::slint_interpreter_component_compiler_set_style(
+                   &inner, slint::private_api::string_to_slice(style));
+       }
+   
+       slint::SharedString style() const
+       {
+           slint::SharedString s;
+           cbindgen_private::slint_interpreter_component_compiler_get_style(&inner, &s);
+           return s;
+       }
+   
+       void set_translation_domain(std::string_view domain)
+       {
+           cbindgen_private::slint_interpreter_component_compiler_set_translation_domain(
+                   &inner, slint::private_api::string_to_slice(domain));
+       }
+   
+       slint::SharedVector<slint::SharedString> include_paths() const
+       {
+           slint::SharedVector<slint::SharedString> paths;
+           cbindgen_private::slint_interpreter_component_compiler_get_include_paths(&inner, &paths);
+           return paths;
+       }
+   
+       slint::SharedVector<Diagnostic> diagnostics() const
+       {
+           slint::SharedVector<Diagnostic> result;
+           cbindgen_private::slint_interpreter_component_compiler_get_diagnostics(&inner, &result);
+           return result;
+       }
+   
+       std::optional<ComponentDefinition> build_from_source(std::string_view source_code,
+                                                            std::string_view path)
+       {
+           cbindgen_private::ComponentDefinitionOpaque result;
+           if (cbindgen_private::slint_interpreter_component_compiler_build_from_source(
+                       &inner, slint::private_api::string_to_slice(source_code),
+                       slint::private_api::string_to_slice(path), &result)) {
+   
+               return ComponentDefinition(result);
+           } else {
+               return {};
+           }
+       }
+   
+       std::optional<ComponentDefinition> build_from_path(std::string_view path)
+       {
+           cbindgen_private::ComponentDefinitionOpaque result;
+           if (cbindgen_private::slint_interpreter_component_compiler_build_from_path(
+                       &inner, slint::private_api::string_to_slice(path), &result)) {
+   
+               return ComponentDefinition(result);
+           } else {
+               return {};
+           }
+       }
+   };
+   }
+   
+   namespace slint::private_api::testing {
+   inline void send_keyboard_string_sequence(const slint::interpreter::ComponentInstance *component,
+                                             const slint::SharedString &str)
+   {
+       const cbindgen_private::WindowAdapterRcOpaque *win_ptr = nullptr;
+       cbindgen_private::slint_interpreter_component_instance_window(
+               reinterpret_cast<const cbindgen_private::ErasedItemTreeBox *>(component), &win_ptr);
+       cbindgen_private::send_keyboard_string_sequence(
+               &str, reinterpret_cast<const cbindgen_private::WindowAdapterRc *>(win_ptr));
+   }
+   }
+   
+   #endif
