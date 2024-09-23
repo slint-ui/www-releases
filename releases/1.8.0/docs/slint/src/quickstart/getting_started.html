@@ -368,7 +368,9 @@ C++</label><div class="sd-tab-content docutils">
 <h3 class="rubric" id="configure-the-project">Configure the project</h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> uses the line <code class="docutils literal notranslate"><span class="pre">add_executable(my_application</span> <span class="pre">src/main.cpp)</span></code> to set <code class="docutils literal notranslate"><span class="pre">src/main.cpp</span></code> as the main C++ code file.</p>
 <p>Replace the content of <code class="docutils literal notranslate"><span class="pre">src/main.cpp</span></code> with the following:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span> <span class="n">main</span><span class="p">(</span><span class="nb">int</span> <span class="n">argc</span><span class="p">,</span> <span class="n">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include &quot;app-window.h&quot; // generated header from memory.slint</span>
+
+<span class="nb">int</span> <span class="n">main</span><span class="p">(</span><span class="nb">int</span> <span class="n">argc</span><span class="p">,</span> <span class="n">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="n">auto</span> <span class="n">main_window</span> <span class="o">=</span> <span class="n">MainWindow</span><span class="p">::</span><span class="n">create</span><span class="p">();</span>
     <span class="n">main_window</span><span class="o">-&gt;</span><span class="n">run</span><span class="p">();</span>
