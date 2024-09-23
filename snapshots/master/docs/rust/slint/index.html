@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Slint"><title>slint - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-46f98efaafac5295.ttf.woff2,FiraSans-Regular-018c141bf0843ffd.woff2,FiraSans-Medium-8f9a781e4970d388.woff2,SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2,SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../static.files/rustdoc-9d5ec5f3536319c6.css"><meta name="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="slint" data-themes="" data-resource-suffix="" data-rustdoc-version="1.83.0-nightly (1d68e6dd1 2024-09-21)" data-channel="nightly" data-search-js="search-0cfde64e8ad3a7fe.js" data-settings-js="settings-7e3bb6c46e92e77c.js" ><script src="../static.files/storage-29b1d5a9048d38fe.js"></script><script defer src="../crates.js"></script><script defer src="../static.files/main-59a36e46ca746814.js"></script><noscript><link rel="stylesheet" href="../static.files/noscript-40f72c9259523cb3.css"></noscript><link rel="alternate icon" type="image/png" href="../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../static.files/favicon-2c020d218678b618.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Slint"><title>slint - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-46f98efaafac5295.ttf.woff2,FiraSans-Regular-018c141bf0843ffd.woff2,FiraSans-Medium-8f9a781e4970d388.woff2,SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2,SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../static.files/rustdoc-9d5ec5f3536319c6.css"><meta name="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="slint" data-themes="" data-resource-suffix="" data-rustdoc-version="1.83.0-nightly (6c6d21008 2024-09-22)" data-channel="nightly" data-search-js="search-0cfde64e8ad3a7fe.js" data-settings-js="settings-7e3bb6c46e92e77c.js" ><script src="../static.files/storage-29b1d5a9048d38fe.js"></script><script defer src="../crates.js"></script><script defer src="../static.files/main-2a73ac97dd39bfde.js"></script><noscript><link rel="stylesheet" href="../static.files/noscript-40f72c9259523cb3.css"></noscript><link rel="alternate icon" type="image/png" href="../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../static.files/favicon-2c020d218678b618.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -174,8 +174,7 @@ slint = &quot;1.7.0&quot;
 ...
 
 [build-dependencies]
-slint-build = &quot;1.7.0&quot;
-</code></pre></div>
+slint-build = &quot;1.7.0&quot;</code></pre></div>
 <p>Use the API of the slint-build crate in the <code>build.rs</code> file:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">fn </span>main() {
@@ -194,14 +193,12 @@ hierarchy that uses this method:</p>
 <li>Rename the extracted directory and change into it:</li>
 </ol>
 <div class="example-wrap"><pre class="language-bash"><code>mv slint-rust-template-main my-project
-cd my-project
-</code></pre></div><h3 id="generated-components"><a class="doc-anchor" href="#generated-components">§</a>Generated components</h3>
+cd my-project</code></pre></div><h3 id="generated-components"><a class="doc-anchor" href="#generated-components">§</a>Generated components</h3>
 <p>Exported component from the macro or the main file that inherit <code>Window</code> or <code>Dialog</code> is mapped to a Rust structure.</p>
 <p>The components are generated and re-exported to the location of the <a href="macro.include_modules.html" title="macro slint::include_modules"><code>include_modules!</code></a> or <a href="macro.slint.html" title="macro slint::slint"><code>slint!</code></a> macro.
 It is represented as a struct with the same name as the component.</p>
 <p>For example, if you have</p>
-<div class="example-wrap"><pre class="language-slint"><code>export component MyComponent inherits Window { /*...*/ }
-</code></pre></div>
+<div class="example-wrap"><pre class="language-slint"><code>export component MyComponent inherits Window { /*...*/ }</code></pre></div>
 <p>in the .slint file, it will create a</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">struct </span>MyComponent{ <span class="comment">/*...*/ </span>}</code></pre></div>
