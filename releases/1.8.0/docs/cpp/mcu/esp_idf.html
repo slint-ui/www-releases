@@ -453,13 +453,6 @@ On Windows, follow the <a class="reference external" href="https://docs.espressi
 </pre></div>
 </div>
 <ol class="arabic simple" start="5">
-<li><p>Ensure that Espressif’s Rust toolchain is selected for building. Either set the <code class="docutils literal notranslate"><span class="pre">RUSTUP_TOOLCHAIN</span></code> environment variable to the value <code class="docutils literal notranslate"><span class="pre">esp</span></code> or create a file called <code class="docutils literal notranslate"><span class="pre">rust-toolchain.toml</span></code> in your project directory with the following contents:</p></li>
-</ol>
-<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[toolchain]</span>
-<span class="n">channel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;esp&quot;</span>
-</pre></div>
-</div>
-<ol class="arabic simple" start="6">
 <li><p>Remove <code class="docutils literal notranslate"><span class="pre">main/slint-hello-world.c</span></code>.</p></li>
 <li><p>Create a new file <code class="docutils literal notranslate"><span class="pre">main/slint-hello-world.cpp</span></code> with the following contents:</p></li>
 </ol>
@@ -514,7 +507,7 @@ On Windows, follow the <a class="reference external" href="https://docs.espressi
 <span class="p">}</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="8">
+<ol class="arabic simple" start="7">
 <li><p>Create <code class="docutils literal notranslate"><span class="pre">main/app-window.slint</span></code> with the following contents:</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="p">{</span> <span class="n">VerticalBox</span><span class="p">,</span> <span class="n">AboutSlint</span> <span class="p">}</span> <span class="kn">from</span> <span class="s2">&quot;std-widgets.slint&quot;</span><span class="p">;</span>
@@ -530,7 +523,7 @@ On Windows, follow the <a class="reference external" href="https://docs.espressi
 <span class="p">}</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="9">
+<ol class="arabic simple" start="8">
 <li><p>Edit <code class="docutils literal notranslate"><span class="pre">main/CMakeLists.txt</span></code> to adjust for the new <code class="docutils literal notranslate"><span class="pre">slint-hello-world.cpp</span></code>, add <code class="docutils literal notranslate"><span class="pre">slint</span></code> as required component,
 and instruction the build system to compile <code class="docutils literal notranslate"><span class="pre">app-window.slint</span></code> to <code class="docutils literal notranslate"><span class="pre">app-window.h</span></code>. The file should look like this:</p></li>
 </ol>
@@ -538,7 +531,7 @@ and instruction the build system to compile <code class="docutils literal notran
 <span class="nb">slint_target_sources</span><span class="p">(</span><span class="o">${</span><span class="nv">COMPONENT_LIB</span><span class="o">}</span><span class="w"> </span><span class="s">app-window.slint</span><span class="p">)</span>
 </pre></div>
 </div>
-<ol class="arabic" start="10">
+<ol class="arabic" start="9">
 <li><p>Open the configuration editor with <code class="docutils literal notranslate"><span class="pre">idf.py</span> <span class="pre">menuconfig</span></code>:</p>
 <ul class="simple">
 <li><p>Change the stack size under <code class="docutils literal notranslate"><span class="pre">Component</span> <span class="pre">config</span> <span class="pre">--&gt;</span> <span class="pre">ESP</span> <span class="pre">System</span> <span class="pre">Settings</span> <span class="pre">--&gt;</span> <span class="pre">Main</span> <span class="pre">task</span> <span class="pre">stack</span> <span class="pre">size</span></code> to at least <code class="docutils literal notranslate"><span class="pre">8192</span></code>. You may need to tweak this value in the future if you run into stack overflows.</p></li>
