@@ -54,11 +54,6 @@ jobs:
         run: |
           npm ci
 
-      - name: Build website
-        id: netlify_build
-        run: |
-          netlify build
-
       - name: Deploy to Netlify
         id: netlify_deploy
         run: |
