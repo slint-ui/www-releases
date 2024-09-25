@@ -494,6 +494,7 @@ Program Listing for File slint_internal.h
        int32_t delay;
        int32_t duration;
        float iteration_count;
+       AnimationDirection direction;
        EasingCurve easing;
    };
    

@@ -167,4 +167,10 @@ Program Listing for File slint_enums_internal.h
        Dark,
        Light,
    };
+   enum class AnimationDirection {
+       Normal,
+       Reverse,
+       Alternate,
+       AlternateReverse,
+   };
    }
