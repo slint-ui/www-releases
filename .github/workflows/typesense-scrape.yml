@@ -11,7 +11,7 @@ jobs:
             image: python:3
             volumes:
                 - ${{ github.workspace }}/:/data
-            options: python -m http.server --directory /data
+            options: --entrypoint "python -m http.server --directory /data"
             ports:
                 - 8000:8000    
     runs-on: ubuntu-latest
