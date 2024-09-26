@@ -10,13 +10,15 @@ jobs:
         site:
             image: nginx
             volumes:
-                - ${{ github.workspace }}/:/usr/share/nginx/html:ro
+                - ${{ github.workspace }}/snapshots/master/docs/slint/:/usr/share/nginx/html:ro
             ports:
                 - 80:80
     runs-on: ubuntu-latest
     steps:
       - name: Repository Checkout
         uses: actions/checkout@v4
+        with:
+            path: snapshots/master  
       - name: test
         run: |
             curl http://localhost:80 > test.html
