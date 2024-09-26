@@ -4,7 +4,7 @@
   "collaborators": [
     "FELGO GmbH <contact@felgo.com>"
   ],
-  "version": "1.8.0",
+  "version": "1.9.0",
   "license": "MIT",
   "files": [
     "weather_demo_bg.wasm",
