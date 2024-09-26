@@ -1,0 +1,24 @@
+
+name: Scrape a release with typesense
+
+on:
+  workflow_dispatch:
+
+jobs:
+  scrape:
+    services:
+        site:
+            image: python:3
+            volumes:
+                - ${{ github.workspace }}/:/data
+            options: python -m http.server --directory /data
+            ports:
+                - 8000:8000    
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository Checkout
+        uses: actions/checkout@v4
+      - name: test
+        run: |
+            curl http://localhost:8000 > test.html
+            cat test.html
