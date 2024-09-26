@@ -10,8 +10,6 @@ jobs:
     steps:
       - name: Repository Checkout
         uses: actions/checkout@v4
-        with:
-            path: snapshots
       - name: Run
         uses: tj-actions/docker-run@v2
         id: docker-run
