@@ -6,21 +6,21 @@ on:
 
 jobs:
   scrape:
-    services:
-        site:
-            image: nginx
-#            volumes:
-#                - ${{ github.workspace }}/snapshots/master/docs/slint/:/usr/share/nginx/html:ro
-            ports:
-                - 80:80
     runs-on: ubuntu-latest
     steps:
       - name: Repository Checkout
         uses: actions/checkout@v4
         with:
             path: snapshots
+      - name: Run
+        uses: tj-actions/docker-run@v2
+        id: docker-run
+        with:
+          name: nginx
+          image: nginx:latest
+          options: "-p 80:80"
       - name: Populate web server
-        run: docker cp snapshots site:/usr/share/ngnix/html
+        run: docker cp snapshots nginx:/usr/share/ngnix/html
       - name: test
         run: |
             curl http://localhost:80 > test.html
