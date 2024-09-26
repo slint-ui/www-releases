@@ -8,17 +8,16 @@ jobs:
   scrape:
     services:
         site:
-            image: python:3
+            image: nginx
             volumes:
-                - ${{ github.workspace }}/:/data
-            options: --entrypoint "python -m http.server --directory /data"
+                - ${{ github.workspace }}/:/usr/share/nginx/html:ro
             ports:
-                - 8000:8000    
+                - 80:80
     runs-on: ubuntu-latest
     steps:
       - name: Repository Checkout
         uses: actions/checkout@v4
       - name: test
         run: |
-            curl http://localhost:8000 > test.html
+            curl http://localhost:80 > test.html
             cat test.html
