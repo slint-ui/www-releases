@@ -20,7 +20,7 @@ jobs:
           image: nginx:latest
           options: "-d -p 80:80"
       - name: Populate web server
-        run: docker cp snapshots nginx:/usr/share/ngnix/html
+        run: docker cp snapshots/master/docs/slint nginx:/usr/share/nginx/html
       - name: test
         run: |
             curl http://localhost:80 > test.html
