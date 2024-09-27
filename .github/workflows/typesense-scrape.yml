@@ -69,7 +69,7 @@ jobs:
             docker run -i \
                 --add-host=host.docker.internal:host-gateway \
                 -e TYPESENSE_API_KEY=${{ secrets.TYPESENSE_API_KEY }} \
-                -e TYPESENSE_HOST="062ykax5pgwon3q7p-1.a1.typesense.net" \
+                -e TYPESENSE_HOST="typesense.slint.dev" \
                 -e TYPESENSE_PORT="443" \
                 -e TYPESENSE_PROTOCOL="https" \
                 -e CONFIG="$(cat slint/docs/search/scraper-config.json | jq -r tostring)" \
@@ -80,7 +80,7 @@ jobs:
 
             # Retrieve documents from typesense server
             curl -H "X-TYPESENSE-API-KEY: ${{ secrets.TYPESENSE_API_KEY }}" \
-            "https://062ykax5pgwon3q7p-1.a1.typesense.net/collections/$collection_name/documents/export" > temp_docs.jsonl
+            "https://typesense.slint.dev/collections/$collection_name/documents/export" > temp_docs.jsonl
 
             # Replace 'http://host.docker.internal' in temp_docs.jsonl
             sed -i "s/http:\/\/host.docker.internal/https:\/\/releases.slint.dev\/${{ inputs.version }}\/docs\/slint/g" temp_docs.jsonl
@@ -89,10 +89,10 @@ jobs:
             curl -H "X-TYPESENSE-API-KEY: ${{ secrets.TYPESENSE_API_KEY }}" \
             -X POST \
             -T temp_docs.jsonl \
-            "https://062ykax5pgwon3q7p-1.a1.typesense.net/collections/$collection_name/documents/import?action=update"
+            "https://typesense.slint.dev/collections/$collection_name/documents/import?action=update"
 
             # Set alias to the collection
-            curl "https://062ykax5pgwon3q7p-1.a1.typesense.net/aliases/$index" -X PUT \
+            curl "https://typesense.slint.dev/aliases/$index" -X PUT \
             -H "Content-Type: application/json" \
             -H "X-TYPESENSE-API-KEY: ${{ secrets.TYPESENSE_API_KEY }}" -d '{
             "collection_name": "'"$collection_name"'"
