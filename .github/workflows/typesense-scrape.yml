@@ -62,7 +62,7 @@ jobs:
                 typesense/docsearch-scraper:0.10.0 2>&1 | tee scraper_output.txt
 
             # Retrieve the collection name
-            collection_name=$(sed -n 's/.*POST \/collections\/\(master_[0-9]*\)\/.*/\1/p' scraper_output.txt)
+            collection_name=$(sed -n 's/.*POST \/collections\/\(master_[0-9]*\)\/.*/\1/p' scraper_output.txt | sed -n '1p')
             echo "COLLECTION_NAME: $collection_name";
 
             # Retrieve documents from typesense server
