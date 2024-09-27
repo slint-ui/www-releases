@@ -11,10 +11,19 @@ jobs:
     defaults:
       run:
         working-directory: ./releases
+    outputs:
+      version: ${{ steps.identify-version.outputs.version }}
     steps:
       - name: Repository Checkout
         uses: actions/checkout@v4
-
+        with:
+          sparse-checkout: |
+            releases
+     
+      - name: Identify Version
+        id: identify-version
+        run: |
+          echo "version=$(sed -n '1p' ./releases/versions.txt)" >> "$GITHUB_OUTPUT"
       - name: npm install
         run: |
           npm install
@@ -62,3 +71,9 @@ jobs:
             --site ${{ secrets.NETLIFY_RELEASES_SITE_ID }} \
             --auth ${{ secrets.NETLIFY_API_TOKEN }} \
             --prod
+
+  scrape-docs:
+    uses: ./.github/workflows/typesense-scrape.yml
+    needs: build-and-deploy
+    with:
+      version: ${{ needs.build-and-deploy.outputs.version }}

@@ -15,6 +15,9 @@ jobs:
     steps:
       - name: Repository Checkout
         uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            snapshots
 
       - name: npm install
         run: |
@@ -63,3 +66,9 @@ jobs:
             --site ${{ secrets.NETLIFY_SNAPSHOTS_SITE_ID }} \
             --auth ${{ secrets.NETLIFY_API_TOKEN }} \
             --prod
+
+  scrape-docs:
+    uses: ./.github/workflows/typesense-scrape.yml
+    needs: build-and-deploy
+    with:
+      version: master
