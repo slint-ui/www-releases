@@ -65,7 +65,7 @@ jobs:
             cat temp_scraper_output.txt
 
             # Retrieve the collection name
-            collection_name=$(grep -o -m 1 ${{ inputs.version }}'_[0-9]\+' temp_scraper_output.txt)
+            collection_name=$(grep -o -m 1 'POST /collections/'${{ inputs.version }}'_[0-9]\+' temp_scraper_output.txt)
 
             # Retrieve documents from typesense server
             curl -H "X-TYPESENSE-API-KEY: ${{ secrets.TYPESENSE_API_KEY }}" \
