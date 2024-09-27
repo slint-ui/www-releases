@@ -21,6 +21,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           sparse-checkout: |
+            config
             snapshots
       - name: Run
         uses: tj-actions/docker-run@v2
