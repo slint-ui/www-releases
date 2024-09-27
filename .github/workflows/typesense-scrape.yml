@@ -2,6 +2,12 @@
 name: Scrape a release with typesense
 
 on:
+  workflow_call:
+    inputs:
+        version:
+            type: string
+            default: "master"
+            description: Slint version (used as typesense index name, for example "master")
   workflow_dispatch:
     inputs:
         version:
@@ -71,8 +77,7 @@ jobs:
                 typesense/docsearch-scraper:0.10.0 2>&1 | tee scraper_output.txt
 
             # Retrieve the collection name
-            collection_name=$(sed -n 's/.*POST \/collections\/\(master_[0-9]*\)\/.*/\1/p' scraper_output.txt | sed -n '1p')
-            echo "COLLECTION_NAME: $collection_name";
+            collection_name=$(sed -n 's/.*POST \/collections\/\(${{ inputs.version }}_[0-9]*\)\/.*/\1/p' scraper_output.txt | sed -n '1p')
 
             # Retrieve documents from typesense server
             curl -H "X-TYPESENSE-API-KEY: ${{ secrets.TYPESENSE_API_KEY }}" \
