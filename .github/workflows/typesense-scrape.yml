@@ -29,7 +29,9 @@ jobs:
       - name: Populate web server
         run: docker cp ${{ inputs.relative_path }} nginx:/usr/share/nginx/html
       - name: test web server
-        run: curl http://localhost:80/index.html
+        run: |
+            curl http://localhost:80/index.html > test.html
+            cat test.html
       - name: Prepare config
         run: |
             sed -i "s/\$TYPESENSE_INDEX_NAME/${{ inputs.version }}/g" config/typesense-scraper-config.json
