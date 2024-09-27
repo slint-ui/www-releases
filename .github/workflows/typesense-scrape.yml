@@ -3,6 +3,13 @@ name: Scrape a release with typesense
 
 on:
   workflow_dispatch:
+    inputs:
+        relative_path:
+            type: string
+            description: relative path to site root to scrape (like snapshots/master/docs/slint)
+        version:
+            type: string
+            description: Slint version (used as typesense index name, for example "master")
 
 jobs:
   scrape:
@@ -18,8 +25,16 @@ jobs:
           image: nginx:latest
           options: "-d -p 80:80"
       - name: Populate web server
-        run: docker cp snapshots/master/docs/slint nginx:/usr/share/nginx/html
-      - name: test
+        run: docker cp ${{ inputs.relative_path }} nginx:/usr/share/nginx/html
+      - name: Prepare config
         run: |
-            curl http://localhost:80 > test.html
-            cat test.html
+            sed -i "s/\$TYPESENSE_INDEX_NAME/${{ inputs.version }}/g" config/typesense-scraper-config.json
+      - name: run scraper
+        run: |
+            docker run \
+                -e TYPESENSE_API_KEY=${{ secrets.TYPESENSE_API_KEY }} \
+                -e TYPESENSE_HOST="typesense.slint.dev" \
+                -e TYPESENSE_PORT="8101" \
+                -e TYPESENSE_PROTOCOL="http" \
+                -e CONFIG="$(cat config/typesense-scraper-config.json | jq -r tostring)" \
+                typesense/docsearch-scraper
