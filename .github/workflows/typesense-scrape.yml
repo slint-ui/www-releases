@@ -31,10 +31,10 @@ jobs:
             sed -i "s/\$TYPESENSE_INDEX_NAME/${{ inputs.version }}/g" config/typesense-scraper-config.json
       - name: run scraper
         run: |
-            docker run \
+            docker run -i \
                 -e TYPESENSE_API_KEY=${{ secrets.TYPESENSE_API_KEY }} \
                 -e TYPESENSE_HOST="typesense.slint.dev" \
                 -e TYPESENSE_PORT="8101" \
                 -e TYPESENSE_PROTOCOL="http" \
                 -e CONFIG="$(cat config/typesense-scraper-config.json | jq -r tostring)" \
-                typesense/docsearch-scraper
+                typesense/docsearch-scraper:0.10.0
