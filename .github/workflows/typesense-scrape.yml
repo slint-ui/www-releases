@@ -40,6 +40,7 @@ jobs:
       - name: run scraper
         run: |
             docker run -i \
+                --add-host=host.docker.internal:host-gateway \
                 -e TYPESENSE_API_KEY=${{ secrets.TYPESENSE_API_KEY }} \
                 -e TYPESENSE_HOST="062ykax5pgwon3q7p-1.a1.typesense.net" \
                 -e TYPESENSE_PORT="443" \
