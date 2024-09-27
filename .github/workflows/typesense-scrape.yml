@@ -27,7 +27,9 @@ jobs:
           image: nginx:latest
           options: "-d -p 80:80"
       - name: Populate web server
-        run: docker cp ${{ inputs.relative_path }} nginx:/usr/share/nginx/html
+        run: |
+            docker exec nginx rm -rf /usr/share/nginx/html
+            docker cp ${{ inputs.relative_path }} nginx:/usr/share/nginx/html
       - name: test web server
         run: |
             curl http://localhost:80/index.html > test.html
