@@ -43,7 +43,7 @@ jobs:
             persist-credentials: false
       - name: Prepare config
         run: |
-            sed -i "s/\$TYPESENSE_INDEX_NAME/${{ inputs.version }}/g" slint/docs/search/scraper-config.json
+            sed -i "s/\$TYPESENSE_INDEX_NAME/${{ inputs.version }}/g" config/typesense-scraper-config.json
       - name: run scraper
         run: |
             docker run -i \
@@ -52,7 +52,7 @@ jobs:
                 -e TYPESENSE_HOST="062ykax5pgwon3q7p-1.a1.typesense.net" \
                 -e TYPESENSE_PORT="443" \
                 -e TYPESENSE_PROTOCOL="https" \
-                -e CONFIG="$(cat slint/docs/search/scraper-config.json | jq -r tostring)" \
+                -e CONFIG="$(cat config/typesense-scraper-config.json | jq -r tostring)" \
                 typesense/docsearch-scraper:0.10.0 2>&1 | tee temp_scraper_output.txt
 
             # Retrieve the collection name
