@@ -6,9 +6,11 @@ on:
     inputs:
         relative_path:
             type: string
+            default: "snapshots/master/docs/slint"
             description: relative path to site root to scrape (like snapshots/master/docs/slint)
         version:
             type: string
+            default: "master"
             description: Slint version (used as typesense index name, for example "master")
 
 jobs:
