@@ -32,7 +32,7 @@ jobs:
         with:
           sparse-checkout: |
             config
-            snapshots
+            releases
       - name: Run
         uses: tj-actions/docker-run@v2
         id: docker-run
