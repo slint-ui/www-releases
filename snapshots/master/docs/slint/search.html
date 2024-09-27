@@ -29,10 +29,10 @@
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/theme_tweak.css?v=e8391cbe" />
+    <link rel="stylesheet" type="text/css" href="_static/theme_tweak.css?v=7d3d2481" />
     <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=a5c4661c" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="_static/css/theme_tweak.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/typesense-docsearch-css@0.3.0" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -339,16 +339,22 @@ document.write(`
     <div class="header-article-items__end">
       
         <div class="header-article-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+   <div id="searchbar"></div>
+   <script src="https://cdn.jsdelivr.net/npm/typesense-docsearch.js@3.4"></script>
+   <script>
+     docsearch({
+       container: '#searchbar',
+       typesenseCollectionName: '1.9.0',
+       typesenseServerConfig: { 
+         nodes: [{
+           host: 'typesense.slint.dev',
+           port: '443',
+           protocol: 'https'
+         }],
+         apiKey: 'U3KZjcTSsG5rY3gsMed2TCDtzitpJaVa',
+       }
+     });
+   </script></div>
       
         <div class="header-article-item">
 

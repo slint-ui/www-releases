@@ -345,7 +345,11 @@
 <a href="#222" id="222">222</a>
 <a href="#223" id="223">223</a>
 <a href="#224" id="224">224</a>
-<a href="#225" id="225">225</a></pre></div><pre class="rust"><code><span class="comment">// Copyright © SixtyFPS GmbH &lt;info@slint.dev&gt;
+<a href="#225" id="225">225</a>
+<a href="#226" id="226">226</a>
+<a href="#227" id="227">227</a>
+<a href="#228" id="228">228</a>
+<a href="#229" id="229">229</a></pre></div><pre class="rust"><code><span class="comment">// Copyright © SixtyFPS GmbH &lt;info@slint.dev&gt;
 // SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0
 
 </span><span class="doccomment">//! Module containing the private api that is used by the generated code.
@@ -397,14 +401,18 @@
     }
 }
 
-<span class="kw">pub fn </span>set_property_binding&lt;T: Clone + <span class="lifetime">'static</span>, StrongRef: StrongItemTreeRef + <span class="lifetime">'static</span>&gt;(
+<span class="kw">pub fn </span>set_property_binding&lt;
+    T: Clone + Default + <span class="lifetime">'static</span>,
+    StrongRef: StrongItemTreeRef + <span class="lifetime">'static</span>,
+&gt;(
     property: Pin&lt;<span class="kw-2">&amp;</span>Property&lt;T&gt;&gt;,
     component_strong: <span class="kw-2">&amp;</span>StrongRef,
     binding: <span class="kw">fn</span>(StrongRef) -&gt; T,
 ) {
     <span class="kw">let </span>weak = component_strong.to_weak();
-    property
-        .set_binding(<span class="kw">move </span>|| binding(&lt;StrongRef <span class="kw">as </span>StrongItemTreeRef&gt;::from_weak(<span class="kw-2">&amp;</span>weak).unwrap()))
+    property.set_binding(<span class="kw">move </span>|| {
+        &lt;StrongRef <span class="kw">as </span>StrongItemTreeRef&gt;::from_weak(<span class="kw-2">&amp;</span>weak).map(binding).unwrap_or_default()
+    })
 }
 
 <span class="kw">pub fn </span>set_animated_property_binding&lt;
