@@ -21,8 +21,7 @@ in detail.</p>
 <a id="md:building-from-source" class="tsd-anchor"></a><h3><a href="#md:building-from-source">Building from Source</a></h3><p>Slint-node comes with pre-built binaries for macOS, Linux, and Windows. If you&#39;d like to use Slint-node on a system
 without pre-built binaries, you need to additional software:</p>
 <ul>
-<li><strong><a href="https://www.rust-lang.org/tools/install">Rust compiler</a></strong> (1.73 or newer)</li>
-<li>Depending on your operating system, you may need additional components. For a list of required system libraries,
+<li><strong><a href="https://www.rust-lang.org/tools/install">Rust compiler</a></strong> (1.77 or newer) * Depending on your operating system, you may need additional components. For a list of required system libraries,
 see <a href="https://github.com/slint-ui/slint/blob/master/docs/building.md#prerequisites">https://github.com/slint-ui/slint/blob/master/docs/building.md#prerequisites</a>.</li>
 </ul>
 <a id="md:getting-started-nodejs" class="tsd-anchor"></a><h2><a href="#md:getting-started-nodejs">Getting Started (Node.js)</a></h2><ol>
@@ -188,7 +187,7 @@ as function to invoke the callback, and assign JavaScript functions to set the c
 </tbody></table>
 <a id="md:arrays-and-models" class="tsd-anchor"></a><h3><a href="#md:arrays-and-models">Arrays and Models</a></h3><p><a href="../slint/src/language/syntax/types#arrays-and-models">Array properties</a> can be set from JavaScript by passing
 either <code>Array</code> objects or implementations of the <a href="classes/Model.html" class="tsd-kind-class">Model</a> interface.</p>
-<p>When passing a JavaScript <code>Array</code> object, the contents of the array are copied. Any changes to the JavaScript afterwards will not be visible on the Slint side. </p>
+<p>When passing a JavaScript <code>Array</code> object, the contents of the array are copied. Any changes to the JavaScript afterwards will not be visible on the Slint side.</p>
 <p>Reading a Slint array property from JavaScript will always return a @{link Model}.</p>
 <pre><code class="language-js"><span class="hl-2">component</span><span class="hl-1">.</span><span class="hl-2">model</span><span class="hl-1"> = [</span><span class="hl-9">1</span><span class="hl-1">, </span><span class="hl-9">2</span><span class="hl-1">, </span><span class="hl-9">3</span><span class="hl-1">];</span><br/><span class="hl-8">// component.model.push(4); // does not work, because assignment creates a copy.</span><br/><span class="hl-8">// Use re-assignment instead.</span><br/><span class="hl-2">component</span><span class="hl-1">.</span><span class="hl-2">model</span><span class="hl-1"> = </span><span class="hl-2">component</span><span class="hl-1">.</span><span class="hl-2">model</span><span class="hl-1">.</span><span class="hl-6">concat</span><span class="hl-1">(</span><span class="hl-9">4</span><span class="hl-1">);</span>
 </code><button>Copy</button></pre>
