@@ -37,10 +37,10 @@ jobs:
       - name: Populate web server
         run: |
             docker exec nginx rm -rf /usr/share/nginx/html
-            if [ ${{ inputs.version  == 'master' }} ]
-              path=snapshots/master/docs/slint
+            if [ "${{ inputs.version }}" == "master" ]; then
+              path="snapshots/master/docs/slint"
             else
-              path=releases/${{ inputs.version }}/docs/slint
+              path="releases/${{ inputs.version }}/docs/slint"
             fi
             docker cp $path nginx:/usr/share/nginx/html
       - name: test web server
