@@ -52,20 +52,18 @@ jobs:
             sed -i "s/\$TYPESENSE_INDEX_NAME/${{ inputs.version }}/g" config/typesense-scraper-config.json
       - name: run scraper
         run: |
-            docker run -i \
+            docker run -d \
                 --add-host=host.docker.internal:host-gateway \
                 -e TYPESENSE_API_KEY=${{ secrets.TYPESENSE_API_KEY }} \
                 -e TYPESENSE_HOST="062ykax5pgwon3q7p-1.a1.typesense.net" \
                 -e TYPESENSE_PORT="443" \
                 -e TYPESENSE_PROTOCOL="https" \
                 -e CONFIG="$(cat config/typesense-scraper-config.json | jq -r tostring)" \
-                typesense/docsearch-scraper:0.10.0 2>&1 | tee temp_scraper_output.txt
-
-            echo "temp_scraper_output.txt"
-            cat temp_scraper_output.txt
+                typesense/docsearch-scraper:0.10.0 2>&1 | tee scraper_output.txt
 
             # Retrieve the collection name
-            collection_name=$(sed -n 's/.*POST \/collections\/\(master_[0-9]*\)\/.*/\1/p' temp_scraper_output.txt)
+            collection_name=$(sed -n 's/.*POST \/collections\/\(master_[0-9]*\)\/.*/\1/p' scraper_output.txt)
+            echo "COLLECTION_NAME: $collection_name";
 
             # Retrieve documents from typesense server
             curl -H "X-TYPESENSE-API-KEY: ${{ secrets.TYPESENSE_API_KEY }}" \
