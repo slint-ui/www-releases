@@ -19,6 +19,9 @@ jobs:
     steps:
       - name: Repository Checkout
         uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            snapshots
       - name: Run
         uses: tj-actions/docker-run@v2
         id: docker-run
@@ -40,6 +43,8 @@ jobs:
             repository: slint-ui/slint
             ref: master
             path: slint
+            sparse-checkout: |
+              docs
             persist-credentials: false
       - name: Prepare config
         run: |
@@ -54,6 +59,9 @@ jobs:
                 -e TYPESENSE_PROTOCOL="https" \
                 -e CONFIG="$(cat config/typesense-scraper-config.json | jq -r tostring)" \
                 typesense/docsearch-scraper:0.10.0 2>&1 | tee temp_scraper_output.txt
+
+            echo "temp_scraper_output.txt"
+            cat temp_scraper_output.txt
 
             # Retrieve the collection name
             collection_name=$(grep -o -m 1 ${{ inputs.version }}'_[0-9]\+' temp_scraper_output.txt)
