@@ -79,7 +79,7 @@ jobs:
             "https://062ykax5pgwon3q7p-1.a1.typesense.net/collections/$collection_name/documents/export" > temp_docs.jsonl
 
             # Replace 'http://host.docker.internal' in temp_docs.jsonl
-            $sed -i "s/http:\/\/host.docker.internal/https:\/\/releases.slint.dev\/${{ inputs.version }}\/docs\/slint/g" temp_docs.jsonl
+            sed -i "s/http:\/\/host.docker.internal/https:\/\/releases.slint.dev\/${{ inputs.version }}\/docs\/slint/g" temp_docs.jsonl
 
             # Update documents in typesense server
             curl -H "X-TYPESENSE-API-KEY: ${{ secrets.TYPESENSE_API_KEY }}" \
