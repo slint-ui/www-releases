@@ -68,7 +68,7 @@ jobs:
             --prod
 
   scrape-docs:
-    uses: ./.github/workflows/typesense-scrape.yml
+    uses: ./.github/workflows/docsearch-scrape.yml
     needs: build-and-deploy
     with:
       version: master
