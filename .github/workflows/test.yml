@@ -22,16 +22,7 @@ jobs:
 
       - name: Update version in versions.json
         run: |
-            sed -i '/"name": "development snapshot"/,/"preferred": true,/c\
-                    "name": "development snapshot",\
-                    "url": "https://snapshots.slint.dev/master/docs"\
-                },\
-                {\
-                    "preferred": true,\
-                    "version": "${{ inputs.version }}",\
-                    "url": "https://releases.slint.dev/${{ inputs.version }}/docs/slint"\
-                },\
-                {' releases/versions.json
+            sed -i '0,/"version": "[0-9]\+\.[0-9]\+\.[0-9]\+"/s//"version": "${{ inputs.version }}"/' releases/versions.json
 
       - name: Print contents before update
         run: cat releases/versions.json
