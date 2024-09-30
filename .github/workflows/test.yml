@@ -15,20 +15,23 @@ jobs:
         uses: actions/checkout@v4
         with:
           sparse-checkout: |
-            releases/versions.json      
+            releases/versions.json
+
+      - name: Print contents before update
+        run: cat releases/versions.json
+
       - name: Update version in versions.json
         run: |
-            sed -i '/"name": "development snapshot"/,/"url": "https:\/\/snapshots\.slint\.dev\/master\/docs"\
-            },\
-            {\
-            "preferred": true,/c\
+            sed i '/"name": "development snapshot"/,/"preferred": true,/c\
             "name": "development snapshot",\
             "url": "https://snapshots.slint.dev/master/docs"\
             },\
             {\
             "preferred": true,\
-            "version": "${{ inputs.version }}",\
-            "url": "https://releases.slint.dev/?v=${{ inputs.version }}"\
+            "version": "'${{ inputs.version }}'",\
+            "url": "https://releases.slint.dev/'${{ inputs.version }}'/docs/slint"\
             },\
-            {\' releases/versions.json
-            cat releases/versions.json
+            {' releases/versions.json
+            
+      - name: Print contents before update
+        run: cat releases/versions.json
