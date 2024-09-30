@@ -31,3 +31,4 @@ jobs:
             "url": "https://releases.slint.dev/?v=${{ inputs.version }}"\
             },\
             {\' versions.json
+            cat versions.json
