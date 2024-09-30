@@ -1,0 +1,33 @@
+
+name: Test updation of versions.json
+
+on:
+  workflow_dispatch:
+    inputs:
+        version:
+            type: string
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository Checkout
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            releases/versions.json      
+      - name: Update version in versions.json
+        run: |
+            sed -i '/"name": "development snapshot"/,/"url": "https:\/\/snapshots\.slint\.dev\/master\/docs"\
+            },\
+            {\
+            "preferred": true,/c\
+            "name": "development snapshot",\
+            "url": "https://snapshots.slint.dev/master/docs"\
+            },\
+            {\
+            "preferred": true,\
+            "version": "${{ inputs.version }}",\
+            "url": "https://releases.slint.dev/?v=${{ inputs.version }}"\
+            },\
+            {\' versions.json

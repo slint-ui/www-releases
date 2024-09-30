@@ -5,6 +5,7 @@
         "url": "https://snapshots.slint.dev/master/docs"
     },
     {
+        "preferred": true,
         "version": "1.8.0",
         "url": "https://releases.slint.dev/1.8.0/docs/slint"
     },
