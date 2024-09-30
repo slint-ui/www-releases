@@ -12,7 +12,7 @@ jobs:
       run:
         working-directory: ./releases
     outputs:
-      version: ${{ steps.identify-version.outputs.version }}
+      version: ${{ steps.identify-version.outputs.VERSION }}
     steps:
       - name: Repository Checkout
         uses: actions/checkout@v4
@@ -23,11 +23,12 @@ jobs:
       - name: Identify Version
         id: identify-version
         run: |
-          echo "version=$(sed -n '1p' ./releases/versions.txt)" >> "$GITHUB_OUTPUT"
+          version=$(sed -n '1p' versions.txt)
+          echo "VERSION=$version" >> "$GITHUB_OUTPUT"
 
       - name: Copy latest release to docs
         run: |
-            rsync -ua ${{ steps.identify-version.outputs.version }} docs
+            rsync -ua ${{ steps.identify-version.outputs.VERSION }} docs
             cp versions.txt docs
 
       - name: npm install
