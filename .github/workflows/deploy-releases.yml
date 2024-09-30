@@ -24,6 +24,7 @@ jobs:
         id: identify-version
         run: |
           echo "version=$(sed -n '1p' ./releases/versions.txt)" >> "$GITHUB_OUTPUT"
+
       - name: npm install
         run: |
           npm install
@@ -71,6 +72,11 @@ jobs:
             --site ${{ secrets.NETLIFY_RELEASES_SITE_ID }} \
             --auth ${{ secrets.NETLIFY_API_TOKEN }} \
             --prod
+
+      - name: Update website
+        uses: slint-ui/www/.github/actions/prod-deployment.yml
+        env:
+          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
 
   scrape-docs:
     uses: ./.github/workflows/typesense-scrape.yml

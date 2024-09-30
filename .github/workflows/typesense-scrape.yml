@@ -24,15 +24,13 @@ jobs:
         if: ${{ inputs.version  == 'master' }}
         with:
           sparse-checkout: |
-            config
-            snapshots          
+            snapshots/master/docs/slint          
       - name: Repository Checkout
         uses: actions/checkout@v4
         if: ${{ inputs.version  != 'master' }}
         with:
           sparse-checkout: |
-            config
-            releases
+            releases/${{ inputs.version }}/docs/slint
       - name: Run
         uses: tj-actions/docker-run@v2
         id: docker-run
@@ -60,7 +58,7 @@ jobs:
             ref: master
             path: slint
             sparse-checkout: |
-              docs/search
+              docs/search/scraper-config.json
       - name: Prepare config
         run: |
             sed -i "s/\$TYPESENSE_INDEX_NAME/${{ inputs.version }}/g" slint/docs/search/scraper-config.json
