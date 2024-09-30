@@ -19,11 +19,16 @@ jobs:
         with:
           sparse-checkout: |
             releases
-     
+
       - name: Identify Version
         id: identify-version
         run: |
           echo "version=$(sed -n '1p' ./releases/versions.txt)" >> "$GITHUB_OUTPUT"
+
+      - name: Copy latest release to docs
+        run: |
+            rsync -ua ${{ steps.identify-version.outputs.version }} docs
+            cp versions.txt docs
 
       - name: npm install
         run: |
@@ -53,7 +58,9 @@ jobs:
       - name: Copy docs.html and 404.html
         run: |
           cp website/output/docs.html index.html
+          cp website/output/docs.html docs/index.html
           cp website/output/404.html 404.html
+          cp website/output/404.html docs/404.html
           rm -rf website
 
       - name: Install Netlify
@@ -80,7 +87,6 @@ jobs:
 
       - name: Publish latest release to docs
         run: |
-            rsync -ua ${{ steps.identify-version.outputs.version }} docs
             cd docs && npx wrangler@3 pages deploy . --project-name=docs  --commit-dirty=true
 
   scrape-docs:
