@@ -70,5 +70,6 @@ jobs:
   scrape-docs:
     uses: ./.github/workflows/docsearch-scrape.yml
     needs: build-and-deploy
+    secrets: inherit
     with:
       version: master

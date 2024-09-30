@@ -5,7 +5,7 @@ on:
   push:
     paths: 'releases/**'
   workflow_dispatch:
-    
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -94,5 +94,6 @@ jobs:
   scrape-docs:
     uses: ./.github/workflows/docsearch-scrape.yml
     needs: build-and-deploy
+    secrets: inherit
     with:
       version: ${{ needs.build-and-deploy.outputs.version }}
