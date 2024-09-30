@@ -4,7 +4,8 @@ name: Deploy to releases.slint.dev
 on:
   push:
     paths: 'releases/**'
-
+  workflow_dispatch:
+    
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
