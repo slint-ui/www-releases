@@ -4,7 +4,8 @@ name: Deploy to releases.slint.dev
 on:
   push:
     paths: 'releases/**'
-
+  workflow_dispatch:
+    
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -12,18 +13,24 @@ jobs:
       run:
         working-directory: ./releases
     outputs:
-      version: ${{ steps.identify-version.outputs.version }}
+      version: ${{ steps.identify-version.outputs.VERSION }}
     steps:
       - name: Repository Checkout
         uses: actions/checkout@v4
         with:
           sparse-checkout: |
             releases
-     
+
       - name: Identify Version
         id: identify-version
         run: |
-          echo "version=$(sed -n '1p' ./releases/versions.txt)" >> "$GITHUB_OUTPUT"
+          version=$(sed -n '1p' versions.txt)
+          echo "VERSION=$version" >> "$GITHUB_OUTPUT"
+
+      - name: Copy latest release to docs
+        run: |
+            rsync -ua ${{ steps.identify-version.outputs.VERSION }} docs
+            cp versions.txt docs
 
       - name: npm install
         run: |
@@ -53,7 +60,9 @@ jobs:
       - name: Copy docs.html and 404.html
         run: |
           cp website/output/docs.html index.html
+          cp website/output/docs.html docs/index.html
           cp website/output/404.html 404.html
+          cp website/output/404.html docs/404.html
           rm -rf website
 
       - name: Install Netlify
@@ -80,7 +89,6 @@ jobs:
 
       - name: Publish latest release to docs
         run: |
-            rsync -ua ${{ steps.identify-version.outputs.version }} docs
             cd docs && npx wrangler@3 pages deploy . --project-name=docs  --commit-dirty=true
 
   scrape-docs:
