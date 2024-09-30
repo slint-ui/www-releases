@@ -74,7 +74,7 @@ jobs:
             --prod
 
       - name: Update website
-        uses: slint-ui/www/.github/actions/prod-deployment.yml
+        uses: slint-ui/www@master/.github/actions/prod-deployment.yml
         env:
           GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
 
