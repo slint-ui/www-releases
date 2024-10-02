@@ -546,7 +546,9 @@ are marked as dirty.</p>
 <p>Create two-way bindings between properties with the <code class="docutils literal notranslate"><span class="pre">&lt;=&gt;</span></code> syntax. These properties will be linked
 together and always contain the same value.</p>
 <p>The right hand side of the <code class="docutils literal notranslate"><span class="pre">&lt;=&gt;</span></code> must be a reference to a property of the same type.
-The property type is optional with two-way bindings, it will be inferred if not specified.</p>
+The property type is optional with two-way bindings, it will be inferred if not specified.
+The initial value of a linked property will be the value of the right hand side of the binding.
+The two linked properties must be compatible in terms of input/output.</p>
 <div class="highlight-slint,no-preview notranslate"><div class="highlight"><pre><span></span>export component Example  {
     in property&lt;brush&gt; rect-color &lt;=&gt; r.background;
     // It&#39;s allowed to omit the type to have it automatically inferred

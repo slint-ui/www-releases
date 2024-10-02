@@ -1183,6 +1183,21 @@
 <span class="w">                                      </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">bottom</span><span class="p">,</span>
 <span class="w">                                      </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">left</span><span class="p">);</span>
 
+<span class="kt">bool</span><span class="w"> </span><span class="nf">slint_image_to_rgb8</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Image</span><span class="w"> </span><span class="o">*</span><span class="n">image</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">SharedVector</span><span class="o">&lt;</span><span class="n">Rgb8Pixel</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">data</span><span class="p">,</span>
+<span class="w">                         </span><span class="kt">uint32_t</span><span class="w"> </span><span class="o">*</span><span class="n">width</span><span class="p">,</span>
+<span class="w">                         </span><span class="kt">uint32_t</span><span class="w"> </span><span class="o">*</span><span class="n">height</span><span class="p">);</span>
+
+<span class="kt">bool</span><span class="w"> </span><span class="nf">slint_image_to_rgba8</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Image</span><span class="w"> </span><span class="o">*</span><span class="n">image</span><span class="p">,</span>
+<span class="w">                          </span><span class="n">SharedVector</span><span class="o">&lt;</span><span class="n">Rgba8Pixel</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">data</span><span class="p">,</span>
+<span class="w">                          </span><span class="kt">uint32_t</span><span class="w"> </span><span class="o">*</span><span class="n">width</span><span class="p">,</span>
+<span class="w">                          </span><span class="kt">uint32_t</span><span class="w"> </span><span class="o">*</span><span class="n">height</span><span class="p">);</span>
+
+<span class="kt">bool</span><span class="w"> </span><span class="nf">slint_image_to_rgba8_premultiplied</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Image</span><span class="w"> </span><span class="o">*</span><span class="n">image</span><span class="p">,</span>
+<span class="w">                                        </span><span class="n">SharedVector</span><span class="o">&lt;</span><span class="n">Rgba8Pixel</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">data</span><span class="p">,</span>
+<span class="w">                                        </span><span class="kt">uint32_t</span><span class="w"> </span><span class="o">*</span><span class="n">width</span><span class="p">,</span>
+<span class="w">                                        </span><span class="kt">uint32_t</span><span class="w"> </span><span class="o">*</span><span class="n">height</span><span class="p">);</span>
+
 <span class="p">}</span><span class="w"> </span><span class="c1">// extern &quot;C&quot;</span>
 
 <span class="p">}</span><span class="w"> </span><span class="c1">// namespace types</span>

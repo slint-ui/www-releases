@@ -60,6 +60,7 @@ Program Listing for File slint_string.h
    
        operator std::string_view() const { return cbindgen_private::slint_shared_string_bytes(this); }
        auto data() const -> const char * { return cbindgen_private::slint_shared_string_bytes(this); }
+       std::size_t size() const { return std::string_view(*this).size(); }
    
        const char *begin() const { return data(); }
        const char *end() const

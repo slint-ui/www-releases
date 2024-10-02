@@ -721,8 +721,6 @@ Program Listing for File slint_internal.h
        CachedRenderingData cached_rendering_data;
    };
    
-   using Instant = uint64_t;
-   
    struct SwipeGestureHandler {
        Property<bool> enabled;
        Property<bool> handle_swipe_left;
@@ -735,7 +733,6 @@ Program Listing for File slint_internal.h
        Property<LogicalPosition> pressed_position;
        Property<LogicalPosition> current_position;
        Property<bool> swiping;
-       Instant pressed_time;
        bool pressed;
        CachedRenderingData cached_rendering_data;
    };

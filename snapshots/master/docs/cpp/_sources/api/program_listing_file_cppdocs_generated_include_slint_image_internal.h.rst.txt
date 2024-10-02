@@ -777,6 +777,21 @@ Program Listing for File slint_image_internal.h
                                          uint16_t bottom,
                                          uint16_t left);
    
+   bool slint_image_to_rgb8(const Image *image,
+                            SharedVector<Rgb8Pixel> *data,
+                            uint32_t *width,
+                            uint32_t *height);
+   
+   bool slint_image_to_rgba8(const Image *image,
+                             SharedVector<Rgba8Pixel> *data,
+                             uint32_t *width,
+                             uint32_t *height);
+   
+   bool slint_image_to_rgba8_premultiplied(const Image *image,
+                                           SharedVector<Rgba8Pixel> *data,
+                                           uint32_t *width,
+                                           uint32_t *height);
+   
    } // extern "C"
    
    } // namespace types
