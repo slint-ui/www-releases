@@ -851,18 +851,53 @@ forwarded to the parent element.</p></li>
 </section>
 <section id="gridlayout">
 <h2><code class="docutils literal notranslate"><span class="pre">GridLayout</span></code><a class="headerlink" href="#gridlayout" title="Permalink to this heading">#</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">GridLayout</span></code> places its children in a grid. <code class="docutils literal notranslate"><span class="pre">GridLayout</span></code> adds properties to each child: <code class="docutils literal notranslate"><span class="pre">col</span></code>, <code class="docutils literal notranslate"><span class="pre">row</span></code>, <code class="docutils literal notranslate"><span class="pre">colspan</span></code>, <code class="docutils literal notranslate"><span class="pre">rowspan</span></code>.
-These properties must be compile time constants.
-You can control the position of children with <code class="docutils literal notranslate"><span class="pre">col</span></code> and <code class="docutils literal notranslate"><span class="pre">row</span></code>.
-If <code class="docutils literal notranslate"><span class="pre">col</span></code> or <code class="docutils literal notranslate"><span class="pre">row</span></code> aren’t specified, they are automatically computed such that the item is next to the previous item, in the same row.
-Alternatively, the item can be put in a <code class="docutils literal notranslate"><span class="pre">Row</span></code> element.</p>
+<p><code class="docutils literal notranslate"><span class="pre">GridLayout</span></code> places elements on a grid.</p>
+<p>Cell elements inside a <code class="docutils literal notranslate"><span class="pre">GridLayout</span></code> obtain the following new properties. Any bindings to these properties must be compile-time constants:</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">row</span></code></strong> (<em>in</em> <em>int</em>): The index of the element’s row within the grid. Setting this property resets the element’s column to zero, unless explicitly set.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">col</span></code></strong> (<em>in</em> <em>int</em>): The index of the element’s column within the grid. Set this property to override the sequential column assignment (e.g., to skip a column).</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">rowspan</span></code></strong> (<em>in</em> <em>int</em>): The number of rows this element should span. (default value: <code class="docutils literal notranslate"><span class="pre">1</span></code>)</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">colspan</span></code></strong> (<em>in</em> <em>int</em>): The number of columns this element should span. (default value: <code class="docutils literal notranslate"><span class="pre">1</span></code>)</p></li>
+</ul>
+<p>To implicitly sequentially assign row indices—just like with <code class="docutils literal notranslate"><span class="pre">col</span></code>—wrap cell elements in <code class="docutils literal notranslate"><span class="pre">Row</span></code> elements.</p>
+<p>The following example creates a 2-by-2 grid with <code class="docutils literal notranslate"><span class="pre">Row</span></code> elements, omitting one cell:</p>
+<div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>import { Button } from &quot;std-widgets.slint&quot;;
+export component Foo inherits Window {
+    width: 200px;
+    height: 100px;
+    GridLayout {
+        Row { // children implicitly on row 0
+            Button { col: 1; text: &quot;Top Right&quot;; } // implicit column after this would be 2
+        }
+        Row { // children implicitly on row 1
+            Button { text: &quot;Bottom Left&quot;; }  // implicitly in column 0...
+            Button { text: &quot;Bottom Right&quot;; } // ...and 1
+        }
+    }
+}
+</pre></div>
+</div>
+<p>The following example creates the same grid using the <code class="docutils literal notranslate"><span class="pre">row</span></code> property. Row indices must be taken care of manually:</p>
+<div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>import { Button } from &quot;std-widgets.slint&quot;;
+export component Foo inherits Window {
+    width: 200px;
+    height: 100px;
+    GridLayout {
+        Button { row: 0; col: 1; text: &quot;Top Right&quot;; } // `row: 0;` could even be left out at the start
+        Button { row: 1; text: &quot;Bottom Left&quot;; } // new row, implicitly resets column to 0
+        Button { text: &quot;Bottom Right&quot;; } // same row, sequentially assigned column 1
+    }
+}
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">GridLayout</span></code> covers its entire surface with cells. Cells are not aligned. The elements constituting the cells will be stretched inside their allocated space, unless their size constraints—like, e.g., <code class="docutils literal notranslate"><span class="pre">min-height</span></code> or <code class="docutils literal notranslate"><span class="pre">max-width</span></code>—work against this.</p>
 <section id="id6">
 <h3>Properties<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">spacing</span></code></strong> (<em>in</em> <em>length</em>): The distance between the elements in the layout.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">spacing-horizontal</span></code></strong>, <strong><code class="docutils literal notranslate"><span class="pre">spacing-vertical</span></code></strong> (<em>in</em> <em>length</em>):
-Set these properties to override the spacing on specific directions.</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">padding</span></code></strong> (<em>in</em> <em>length</em>): The padding within the layout.</p></li>
+Set these properties to override the spacing on specific axes.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">padding</span></code></strong> (<em>in</em> <em>length</em>): The padding around the grid structure as a whole.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">padding-left</span></code></strong>, <strong><code class="docutils literal notranslate"><span class="pre">padding-right</span></code></strong>, <strong><code class="docutils literal notranslate"><span class="pre">padding-top</span></code></strong> and <strong><code class="docutils literal notranslate"><span class="pre">padding-bottom</span></code></strong> (<em>in</em> <em>length</em>):
 Set these properties to override the padding on specific sides.</p></li>
 </ul>
