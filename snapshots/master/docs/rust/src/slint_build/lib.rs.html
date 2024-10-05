@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `api/rs/build/lib.rs`."><title>lib.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-46f98efaafac5295.ttf.woff2,FiraSans-Regular-018c141bf0843ffd.woff2,FiraSans-Medium-8f9a781e4970d388.woff2,SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2,SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-d5c83a227aeda803.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_build" data-themes="" data-resource-suffix="" data-rustdoc-version="1.83.0-nightly (9ff5fc4ff 2024-10-03)" data-channel="nightly" data-search-js="search-e056c65ede92db13.js" data-settings-js="settings-805db61a62df4bd2.js" ><script src="../../static.files/storage-1d39b6787ed640ff.js"></script><script defer src="../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-f070b9041d14864c.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-0111fcff984fae8f.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `api/rs/build/lib.rs`."><title>lib.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-46f98efaafac5295.ttf.woff2,FiraSans-Regular-018c141bf0843ffd.woff2,FiraSans-Medium-8f9a781e4970d388.woff2,SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2,SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-d5c83a227aeda803.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_build" data-themes="" data-resource-suffix="" data-rustdoc-version="1.83.0-nightly (14f303bc1 2024-10-04)" data-channel="nightly" data-search-js="search-e056c65ede92db13.js" data-settings-js="settings-805db61a62df4bd2.js" ><script src="../../static.files/storage-1d39b6787ed640ff.js"></script><script defer src="../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-f070b9041d14864c.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-0111fcff984fae8f.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -594,7 +594,40 @@
 <a href="#471" id="471">471</a>
 <a href="#472" id="472">472</a>
 <a href="#473" id="473">473</a>
-<a href="#474" id="474">474</a></pre></div><pre class="rust"><code><span class="comment">// Copyright © SixtyFPS GmbH &lt;info@slint.dev&gt;
+<a href="#474" id="474">474</a>
+<a href="#475" id="475">475</a>
+<a href="#476" id="476">476</a>
+<a href="#477" id="477">477</a>
+<a href="#478" id="478">478</a>
+<a href="#479" id="479">479</a>
+<a href="#480" id="480">480</a>
+<a href="#481" id="481">481</a>
+<a href="#482" id="482">482</a>
+<a href="#483" id="483">483</a>
+<a href="#484" id="484">484</a>
+<a href="#485" id="485">485</a>
+<a href="#486" id="486">486</a>
+<a href="#487" id="487">487</a>
+<a href="#488" id="488">488</a>
+<a href="#489" id="489">489</a>
+<a href="#490" id="490">490</a>
+<a href="#491" id="491">491</a>
+<a href="#492" id="492">492</a>
+<a href="#493" id="493">493</a>
+<a href="#494" id="494">494</a>
+<a href="#495" id="495">495</a>
+<a href="#496" id="496">496</a>
+<a href="#497" id="497">497</a>
+<a href="#498" id="498">498</a>
+<a href="#499" id="499">499</a>
+<a href="#500" id="500">500</a>
+<a href="#501" id="501">501</a>
+<a href="#502" id="502">502</a>
+<a href="#503" id="503">503</a>
+<a href="#504" id="504">504</a>
+<a href="#505" id="505">505</a>
+<a href="#506" id="506">506</a>
+<a href="#507" id="507">507</a></pre></div><pre class="rust"><code><span class="comment">// Copyright © SixtyFPS GmbH &lt;info@slint.dev&gt;
 // SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0
 
 </span><span class="doccomment">/*!
@@ -946,6 +979,8 @@ fn main() {
 ///
 /// Please check out the documentation of the `slint` crate for more information
 /// about how to use the generated code.
+///
+/// This function can only be called within a build script run by cargo.
 </span><span class="kw">pub fn </span>compile(path: <span class="kw">impl </span>AsRef&lt;std::path::Path&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;(), CompileError&gt; {
     compile_with_config(path, CompilerConfiguration::default())
 }
@@ -960,14 +995,58 @@ fn main() {
 /// slint_build::compile_with_config("ui/hello.slint", config).unwrap();
 /// ```
 </span><span class="kw">pub fn </span>compile_with_config(
-    path: <span class="kw">impl </span>AsRef&lt;std::path::Path&gt;,
+    relative_slint_file_path: <span class="kw">impl </span>AsRef&lt;std::path::Path&gt;,
     config: CompilerConfiguration,
 ) -&gt; <span class="prelude-ty">Result</span>&lt;(), CompileError&gt; {
     <span class="kw">let </span>path = Path::new(<span class="kw-2">&amp;</span>env::var_os(<span class="string">"CARGO_MANIFEST_DIR"</span>).ok_or(CompileError::NotRunViaCargo)<span class="question-mark">?</span>)
-        .join(path.as_ref());
+        .join(relative_slint_file_path.as_ref());
 
+    <span class="kw">let </span>absolute_rust_output_file_path =
+        Path::new(<span class="kw-2">&amp;</span>env::var_os(<span class="string">"OUT_DIR"</span>).ok_or(CompileError::NotRunViaCargo)<span class="question-mark">?</span>).join(
+            path.file_stem()
+                .map(Path::new)
+                .unwrap_or_else(|| Path::new(<span class="string">"slint_out"</span>))
+                .with_extension(<span class="string">"rs"</span>),
+        );
+
+    <span class="kw">let </span>paths_dependencies =
+        compile_with_output(path, absolute_rust_output_file_path.clone(), config)<span class="question-mark">?</span>;
+
+    <span class="kw">for </span>path_dependency <span class="kw">in </span>paths_dependencies {
+        <span class="macro">println!</span>(<span class="string">"cargo:rerun-if-changed={}"</span>, path_dependency.display());
+    }
+
+    <span class="macro">println!</span>(<span class="string">"cargo:rerun-if-env-changed=SLINT_STYLE"</span>);
+    <span class="macro">println!</span>(<span class="string">"cargo:rerun-if-env-changed=SLINT_FONT_SIZES"</span>);
+    <span class="macro">println!</span>(<span class="string">"cargo:rerun-if-env-changed=SLINT_SCALE_FACTOR"</span>);
+    <span class="macro">println!</span>(<span class="string">"cargo:rerun-if-env-changed=SLINT_ASSET_SECTION"</span>);
+    <span class="macro">println!</span>(<span class="string">"cargo:rerun-if-env-changed=SLINT_EMBED_RESOURCES"</span>);
+    <span class="macro">println!</span>(<span class="string">"cargo:rerun-if-env-changed=SLINT_EMIT_DEBUG_INFO"</span>);
+
+    <span class="macro">println!</span>(
+        <span class="string">"cargo:rustc-env=SLINT_INCLUDE_GENERATED={}"</span>,
+        absolute_rust_output_file_path.display()
+    );
+
+    <span class="prelude-val">Ok</span>(())
+}
+
+<span class="doccomment">/// Similar to [`compile_with_config`], but meant to be used independently of cargo.
+///
+/// Will compile the input file and write the result in the given output file.
+///
+/// Both input_slint_file_path and output_rust_file_path should be absolute paths.
+///
+/// Doesn't print any cargo messages.
+///
+/// Returns a list of all input files that were used to generate the output file. (dependencies)
+</span><span class="kw">pub fn </span>compile_with_output(
+    input_slint_file_path: <span class="kw">impl </span>AsRef&lt;std::path::Path&gt;,
+    output_rust_file_path: <span class="kw">impl </span>AsRef&lt;std::path::Path&gt;,
+    config: CompilerConfiguration,
+) -&gt; <span class="prelude-ty">Result</span>&lt;Vec&lt;std::path::PathBuf&gt;, CompileError&gt; {
     <span class="kw">let </span><span class="kw-2">mut </span>diag = BuildDiagnostics::default();
-    <span class="kw">let </span>syntax_node = i_slint_compiler::parser::parse_file(<span class="kw-2">&amp;</span>path, <span class="kw-2">&amp;mut </span>diag);
+    <span class="kw">let </span>syntax_node = i_slint_compiler::parser::parse_file(<span class="kw-2">&amp;</span>input_slint_file_path, <span class="kw-2">&amp;mut </span>diag);
 
     <span class="kw">if </span>diag.has_errors() {
         <span class="kw">let </span>vec = diag.to_string_vec();
@@ -990,21 +1069,16 @@ fn main() {
         <span class="kw">return </span><span class="prelude-val">Err</span>(CompileError::CompileError(vec));
     }
 
-    <span class="kw">let </span>output_file_path = Path::new(<span class="kw-2">&amp;</span>env::var_os(<span class="string">"OUT_DIR"</span>).ok_or(CompileError::NotRunViaCargo)<span class="question-mark">?</span>)
-        .join(
-            path.file_stem()
-                .map(Path::new)
-                .unwrap_or_else(|| Path::new(<span class="string">"slint_out"</span>))
-                .with_extension(<span class="string">"rs"</span>),
-        );
-
-    <span class="kw">let </span>file = std::fs::File::create(<span class="kw-2">&amp;</span>output_file_path).map_err(CompileError::SaveError)<span class="question-mark">?</span>;
-    <span class="kw">let </span><span class="kw-2">mut </span>code_formatter = CodeFormatter::new(BufWriter::new(file));
+    <span class="kw">let </span>output_file =
+        std::fs::File::create(<span class="kw-2">&amp;</span>output_rust_file_path).map_err(CompileError::SaveError)<span class="question-mark">?</span>;
+    <span class="kw">let </span><span class="kw-2">mut </span>code_formatter = CodeFormatter::new(BufWriter::new(output_file));
     <span class="kw">let </span>generated = i_slint_compiler::generator::rust::generate(<span class="kw-2">&amp;</span>doc, <span class="kw-2">&amp;</span>loader.compiler_config);
+
+    <span class="kw">let </span><span class="kw-2">mut </span>dependencies: Vec&lt;std::path::PathBuf&gt; = Vec::new();
 
     <span class="kw">for </span>x <span class="kw">in </span><span class="kw-2">&amp;</span>diag.all_loaded_files {
         <span class="kw">if </span>x.is_absolute() {
-            <span class="macro">println!</span>(<span class="string">"cargo:rerun-if-changed={}"</span>, x.display());
+            dependencies.push(x.clone());
         }
     }
 
@@ -1016,23 +1090,15 @@ fn main() {
     });
 
     <span class="macro">write!</span>(code_formatter, <span class="string">"{}"</span>, generated).map_err(CompileError::SaveError)<span class="question-mark">?</span>;
-    <span class="macro">println!</span>(<span class="string">"cargo:rerun-if-changed={}"</span>, path.display());
+    dependencies.push(input_slint_file_path.as_ref().to_path_buf());
 
     <span class="kw">for </span>resource <span class="kw">in </span>doc.embedded_file_resources.borrow().keys() {
         <span class="kw">if </span>!resource.starts_with(<span class="string">"builtin:"</span>) {
-            <span class="macro">println!</span>(<span class="string">"cargo:rerun-if-changed={}"</span>, resource);
+            dependencies.push(Path::new(resource).to_path_buf());
         }
     }
-    <span class="macro">println!</span>(<span class="string">"cargo:rerun-if-env-changed=SLINT_STYLE"</span>);
-    <span class="macro">println!</span>(<span class="string">"cargo:rerun-if-env-changed=SLINT_FONT_SIZES"</span>);
-    <span class="macro">println!</span>(<span class="string">"cargo:rerun-if-env-changed=SLINT_SCALE_FACTOR"</span>);
-    <span class="macro">println!</span>(<span class="string">"cargo:rerun-if-env-changed=SLINT_ASSET_SECTION"</span>);
-    <span class="macro">println!</span>(<span class="string">"cargo:rerun-if-env-changed=SLINT_EMBED_RESOURCES"</span>);
-    <span class="macro">println!</span>(<span class="string">"cargo:rerun-if-env-changed=SLINT_EMIT_DEBUG_INFO"</span>);
 
-    <span class="macro">println!</span>(<span class="string">"cargo:rustc-env=SLINT_INCLUDE_GENERATED={}"</span>, output_file_path.display());
-
-    <span class="prelude-val">Ok</span>(())
+    <span class="prelude-val">Ok</span>(dependencies)
 }
 
 <span class="doccomment">/// This function is for use the application's build script, in order to print any device specific
