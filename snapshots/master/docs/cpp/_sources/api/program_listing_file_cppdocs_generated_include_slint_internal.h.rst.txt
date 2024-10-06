@@ -621,6 +621,8 @@ Program Listing for File slint_internal.h
        float units_per_em;
        float ascent;
        float descent;
+       float x_height;
+       float cap_height;
        Slice<BitmapGlyphs> glyphs;
        uint16_t weight;
        bool italic;
@@ -934,6 +936,10 @@ Program Listing for File slint_internal.h
                               const WindowAdapterRcOpaque *window_adapter,
                               const VRc<ItemTreeVTable> *self_component,
                               uint32_t self_index);
+   
+   FontMetrics slint_cpp_text_item_fontmetrics(const WindowAdapterRcOpaque *window_adapter,
+                                               const VRc<ItemTreeVTable> *self_component,
+                                               uint32_t self_index);
    
    void slint_solve_grid_layout(const GridLayoutData *data, SharedVector<float> *result);
    

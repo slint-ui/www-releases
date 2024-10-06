@@ -68,4 +68,12 @@ Program Listing for File slint_builtin_structs_internal.h
        friend bool operator==(const StateInfo&, const StateInfo&) = default;
        friend bool operator!=(const StateInfo&, const StateInfo&) = default;
    };
+   struct FontMetrics {
+       float ascent;
+       float descent;
+       float x_height;
+       float cap_height;
+       friend bool operator==(const FontMetrics&, const FontMetrics&) = default;
+       friend bool operator!=(const FontMetrics&, const FontMetrics&) = default;
+   };
    }

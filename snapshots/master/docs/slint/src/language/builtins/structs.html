@@ -448,32 +448,36 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keyevent"><code class="docutils literal notranslate"><span class="pre">KeyEvent</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fontmetrics"><code class="docutils literal notranslate"><span class="pre">FontMetrics</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fields">Fields</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keyboardmodifiers"><code class="docutils literal notranslate"><span class="pre">KeyboardModifiers</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keyevent"><code class="docutils literal notranslate"><span class="pre">KeyEvent</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Fields</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#point"><code class="docutils literal notranslate"><span class="pre">Point</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keyboardmodifiers"><code class="docutils literal notranslate"><span class="pre">KeyboardModifiers</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Fields</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pointerevent"><code class="docutils literal notranslate"><span class="pre">PointerEvent</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#point"><code class="docutils literal notranslate"><span class="pre">Point</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Fields</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pointerscrollevent"><code class="docutils literal notranslate"><span class="pre">PointerScrollEvent</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pointerevent"><code class="docutils literal notranslate"><span class="pre">PointerEvent</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Fields</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standardlistviewitem"><code class="docutils literal notranslate"><span class="pre">StandardListViewItem</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pointerscrollevent"><code class="docutils literal notranslate"><span class="pre">PointerScrollEvent</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Fields</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tablecolumn"><code class="docutils literal notranslate"><span class="pre">TableColumn</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standardlistviewitem"><code class="docutils literal notranslate"><span class="pre">StandardListViewItem</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Fields</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tablecolumn"><code class="docutils literal notranslate"><span class="pre">TableColumn</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Fields</a></li>
 </ul>
 </li>
 </ul>
@@ -490,11 +494,24 @@ document.write(`
   <!-- Generated with `cargo xtask slintdocs` from internal/common/builtin_structs.rs -->
 <section id="builtin-structures">
 <h1>Builtin Structures<a class="headerlink" href="#builtin-structures" title="Permalink to this heading">#</a></h1>
+<section id="fontmetrics">
+<h2><code class="docutils literal notranslate"><span class="pre">FontMetrics</span></code><a class="headerlink" href="#fontmetrics" title="Permalink to this heading">#</a></h2>
+<p>A structure to hold metrics of a font for a specified pixel size.</p>
+<section id="fields">
+<h3>Fields<a class="headerlink" href="#fields" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">ascent</span></code></strong> (<em>length</em>): The distance between the baseline and the top of the tallest glyph in the font.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">descent</span></code></strong> (<em>length</em>): The distance between the baseline and the bottom of the tallest glyph in the font. This is usually negative.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">x_height</span></code></strong> (<em>length</em>): The distance between the baseline and the horizontal midpoint of the tallest glyph in the font, or zero if not specified by the font.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">cap_height</span></code></strong> (<em>length</em>): The distance between the baseline and the top of a regular upper-case glyph in the font, or zero if not specified by the font.</p></li>
+</ul>
+</section>
+</section>
 <section id="keyevent">
 <h2><code class="docutils literal notranslate"><span class="pre">KeyEvent</span></code><a class="headerlink" href="#keyevent" title="Permalink to this heading">#</a></h2>
 <p>This structure is generated and passed to the key press and release callbacks of the <code class="docutils literal notranslate"><span class="pre">FocusScope</span></code> element.</p>
-<section id="fields">
-<h3>Fields<a class="headerlink" href="#fields" title="Permalink to this heading">#</a></h3>
+<section id="id1">
+<h3>Fields<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">text</span></code></strong> (<em>string</em>): The unicode representation of the key pressed.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">modifiers</span></code></strong> (<em>KeyboardModifiers</em>): The keyboard modifiers active at the time of the key press event.</p></li>
@@ -510,8 +527,8 @@ It is provided as part of <code class="docutils literal notranslate"><span class
 the same shortcut is typically represented using Control+C. To make it easier to develop cross-platform applications, on macOS,
 Slint maps the Command key to the control modifier, and the Control key to the meta modifier.</p>
 <p>On Windows, the Windows key is mapped to the meta modifier.</p>
-<section id="id1">
-<h3>Fields<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<section id="id2">
+<h3>Fields<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">alt</span></code></strong> (<em>bool</em>): Indicates the Alt key on a keyboard.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">control</span></code></strong> (<em>bool</em>): Indicates the Control key on a keyboard, except on macOS, where it is the Command key (⌘).</p></li>
@@ -523,8 +540,8 @@ Slint maps the Command key to the control modifier, and the Control key to the m
 <section id="point">
 <h2><code class="docutils literal notranslate"><span class="pre">Point</span></code><a class="headerlink" href="#point" title="Permalink to this heading">#</a></h2>
 <p>This structure represents a point with x and y coordinate</p>
-<section id="id2">
-<h3>Fields<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<section id="id3">
+<h3>Fields<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">x</span></code></strong> (<em>length</em>)</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">y</span></code></strong> (<em>length</em>)</p></li>
@@ -535,8 +552,8 @@ Slint maps the Command key to the control modifier, and the Control key to the m
 <h2><code class="docutils literal notranslate"><span class="pre">PointerEvent</span></code><a class="headerlink" href="#pointerevent" title="Permalink to this heading">#</a></h2>
 <p>Represents a Pointer event sent by the windowing system.
 This structure is passed to the <code class="docutils literal notranslate"><span class="pre">pointer-event</span></code> callback of the <code class="docutils literal notranslate"><span class="pre">TouchArea</span></code> element.</p>
-<section id="id3">
-<h3>Fields<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<section id="id4">
+<h3>Fields<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">button</span></code></strong> (<em>PointerEventButton</em>): The button that was pressed or released</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">kind</span></code></strong> (<em>PointerEventKind</em>): The kind of the event</p></li>
@@ -548,8 +565,8 @@ This structure is passed to the <code class="docutils literal notranslate"><span
 <h2><code class="docutils literal notranslate"><span class="pre">PointerScrollEvent</span></code><a class="headerlink" href="#pointerscrollevent" title="Permalink to this heading">#</a></h2>
 <p>Represents a Pointer scroll (or wheel) event sent by the windowing system.
 This structure is passed to the <code class="docutils literal notranslate"><span class="pre">scroll-event</span></code> callback of the <code class="docutils literal notranslate"><span class="pre">TouchArea</span></code> element.</p>
-<section id="id4">
-<h3>Fields<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<section id="id5">
+<h3>Fields<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">delta_x</span></code></strong> (<em>length</em>): The amount of pixel in the horizontal direction</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">delta_y</span></code></strong> (<em>length</em>): The amount of pixel in the vertical direction</p></li>
@@ -560,8 +577,8 @@ This structure is passed to the <code class="docutils literal notranslate"><span
 <section id="standardlistviewitem">
 <h2><code class="docutils literal notranslate"><span class="pre">StandardListViewItem</span></code><a class="headerlink" href="#standardlistviewitem" title="Permalink to this heading">#</a></h2>
 <p>Represents an item in a StandardListView and a StandardTableView.</p>
-<section id="id5">
-<h3>Fields<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<section id="id6">
+<h3>Fields<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">text</span></code></strong> (<em>string</em>): The text content of the item</p></li>
 </ul>
@@ -570,8 +587,8 @@ This structure is passed to the <code class="docutils literal notranslate"><span
 <section id="tablecolumn">
 <h2><code class="docutils literal notranslate"><span class="pre">TableColumn</span></code><a class="headerlink" href="#tablecolumn" title="Permalink to this heading">#</a></h2>
 <p>This is used to define the column and the column header of a TableView</p>
-<section id="id6">
-<h3>Fields<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<section id="id7">
+<h3>Fields<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">title</span></code></strong> (<em>string</em>): The title of the column header</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">min_width</span></code></strong> (<em>length</em>): The minimum column width (logical length)</p></li>
@@ -628,32 +645,36 @@ This structure is passed to the <code class="docutils literal notranslate"><span
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keyevent"><code class="docutils literal notranslate"><span class="pre">KeyEvent</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fontmetrics"><code class="docutils literal notranslate"><span class="pre">FontMetrics</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fields">Fields</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keyboardmodifiers"><code class="docutils literal notranslate"><span class="pre">KeyboardModifiers</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keyevent"><code class="docutils literal notranslate"><span class="pre">KeyEvent</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Fields</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#point"><code class="docutils literal notranslate"><span class="pre">Point</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keyboardmodifiers"><code class="docutils literal notranslate"><span class="pre">KeyboardModifiers</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Fields</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pointerevent"><code class="docutils literal notranslate"><span class="pre">PointerEvent</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#point"><code class="docutils literal notranslate"><span class="pre">Point</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Fields</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pointerscrollevent"><code class="docutils literal notranslate"><span class="pre">PointerScrollEvent</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pointerevent"><code class="docutils literal notranslate"><span class="pre">PointerEvent</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Fields</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standardlistviewitem"><code class="docutils literal notranslate"><span class="pre">StandardListViewItem</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pointerscrollevent"><code class="docutils literal notranslate"><span class="pre">PointerScrollEvent</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Fields</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tablecolumn"><code class="docutils literal notranslate"><span class="pre">TableColumn</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standardlistviewitem"><code class="docutils literal notranslate"><span class="pre">StandardListViewItem</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Fields</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tablecolumn"><code class="docutils literal notranslate"><span class="pre">TableColumn</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Fields</a></li>
 </ul>
 </li>
 </ul>

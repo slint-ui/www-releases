@@ -1027,6 +1027,8 @@
 <span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">units_per_em</span><span class="p">;</span>
 <span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">ascent</span><span class="p">;</span>
 <span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">descent</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">x_height</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">cap_height</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Slice</span><span class="o">&lt;</span><span class="n">BitmapGlyphs</span><span class="o">&gt;</span><span class="w"> </span><span class="n">glyphs</span><span class="p">;</span>
 <span class="w">    </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">weight</span><span class="p">;</span>
 <span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">italic</span><span class="p">;</span>
@@ -1340,6 +1342,10 @@
 <span class="w">                           </span><span class="k">const</span><span class="w"> </span><span class="n">WindowAdapterRcOpaque</span><span class="w"> </span><span class="o">*</span><span class="n">window_adapter</span><span class="p">,</span>
 <span class="w">                           </span><span class="k">const</span><span class="w"> </span><span class="n">VRc</span><span class="o">&lt;</span><span class="n">ItemTreeVTable</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">self_component</span><span class="p">,</span>
 <span class="w">                           </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">self_index</span><span class="p">);</span>
+
+<span class="n">FontMetrics</span><span class="w"> </span><span class="nf">slint_cpp_text_item_fontmetrics</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">WindowAdapterRcOpaque</span><span class="w"> </span><span class="o">*</span><span class="n">window_adapter</span><span class="p">,</span>
+<span class="w">                                            </span><span class="k">const</span><span class="w"> </span><span class="n">VRc</span><span class="o">&lt;</span><span class="n">ItemTreeVTable</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">self_component</span><span class="p">,</span>
+<span class="w">                                            </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">self_index</span><span class="p">);</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">slint_solve_grid_layout</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">GridLayoutData</span><span class="w"> </span><span class="o">*</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">SharedVector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">result</span><span class="p">);</span>
 
