@@ -1,11 +1,12 @@
 /releases/* /:splat
 /:version/docs/quickstart/:language qs=:qs /:version/docs/:qs/:language
 /1.0.2/docs/nodejs/* /1.0.2/docs/node/:splat
-/1.8.0/* https://docs.slint.dev/1.8.0/:splat
+/1.8.0/* https://docs.slint.dev/1.8.0/:splat 200!
 /latest/* https://docs.slint.dev/1.8.0/:splat
 /demos/* https://docs.slint.dev/1.8.0/demos/:splat
 /docs/* https://docs.slint.dev/1.8.0/docs/:splat
 /editor/* https://docs.slint.dev/1.8.0/editor/:splat
+/1.9.0/* https://snapshots.slint.dev/master/:splat
 /master/* https://snapshots.slint.dev/master/:splat
 /docs/rust/sixtyfps/* /docs/rust/slint/:splat
 /docs/rust/sixtyfps_interpreter/* /docs/rust/slint/:splat
