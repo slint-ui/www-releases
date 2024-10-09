@@ -218,6 +218,14 @@
 * **`up`**: The button was released.
 * **`move`**: The pointer has moved,
 
+## `ScrollBarPolicy`
+
+ This enum describes the scrollbar visibility
+
+* **`as-needed`**: Scrolbar will be visible only when needed
+* **`always-off`**: Scrollbar never shown
+* **`always-on`**: Scrollbar always visible
+
 ## `SortOrder`
 
  This enum represents the different values of the `sort-order` property.

@@ -173,4 +173,9 @@ Program Listing for File slint_enums_internal.h
        Alternate,
        AlternateReverse,
    };
+   enum class ScrollBarPolicy {
+       AsNeeded,
+       AlwaysOff,
+       AlwaysOn,
+   };
    }
