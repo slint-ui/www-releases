@@ -95,7 +95,7 @@ jobs:
         run: |
             curl -X PATCH "https://api.cloudflare.com/client/v4/zones/${{ vars.CLOUDFLARE_ZONE_ID }}/rulesets/${{ vars.CLOUDFLARE_RULESET_ID }}/rules/${{ vars.CLOUDFLARE_RULE_ID }}" \
             -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}" \
-            -H "Content-Type: application/json"
+            -H "Content-Type: application/json" \
             -d '{
               "action": "redirect",
               "action_parameters": {
