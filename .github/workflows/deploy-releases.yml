@@ -91,28 +91,28 @@ jobs:
         run: |
             cd docs && npx wrangler@3 pages deploy . --project-name=docs  --commit-dirty=true
 
-      - name: Update Cloudflare redirects to prefer docs.slint.dev
-        run: |
-            curl -X PATCH "https://api.cloudflare.com/client/v4/zones/${{ vars.CLOUDFLARE_ZONE_ID }}/rulesets/${{ vars.CLOUDFLARE_RULESET_ID }}/rules/${{ vars.CLOUDFLARE_RULE_ID }}" \
-            -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}" \
-            -H "Content-Type: application/json" \
-            -d '{
-              "action": "redirect",
-              "action_parameters": {
-                "from_value": {
-                  "preserve_query_string": false,
-                  "status_code": 301,
-                  "target_url": {
-                    "value": "concat(\"https://releases.slint.dev\", http.request.uri.path)"
-                  }
-                }
-              },
-              "description": "docs.slint.dev to releases subdomain",
-              "enabled": true,
-              "expression": "(http.host eq \"docs.slint.dev\" and not starts_with(http.request.uri.path, \"/${{ steps.identify-version.outputs.VERSION }}\"))",
-              "id": "${{ vars.CLOUDFLARE_RULE_ID }}",
-              "ref": "${{ vars.CLOUDFLARE_RULE_ID }}"
-            }'
+      # - name: Update Cloudflare redirects to prefer docs.slint.dev
+      #   run: |
+      #       curl -X PATCH "https://api.cloudflare.com/client/v4/zones/${{ vars.CLOUDFLARE_ZONE_ID }}/rulesets/${{ vars.CLOUDFLARE_RULESET_ID }}/rules/${{ vars.CLOUDFLARE_RULE_ID }}" \
+      #       -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}" \
+      #       -H "Content-Type: application/json" \
+      #       -d '{
+      #         "action": "redirect",
+      #         "action_parameters": {
+      #           "from_value": {
+      #             "preserve_query_string": false,
+      #             "status_code": 301,
+      #             "target_url": {
+      #               "value": "concat(\"https://releases.slint.dev\", http.request.uri.path)"
+      #             }
+      #           }
+      #         },
+      #         "description": "docs.slint.dev to releases subdomain",
+      #         "enabled": true,
+      #         "expression": "(http.host eq \"docs.slint.dev\" and not starts_with(http.request.uri.path, \"/${{ steps.identify-version.outputs.VERSION }}\"))",
+      #         "id": "${{ vars.CLOUDFLARE_RULE_ID }}",
+      #         "ref": "${{ vars.CLOUDFLARE_RULE_ID }}"
+      #       }'
 
   scrape-docs:
     uses: ./.github/workflows/docsearch-scrape.yml
