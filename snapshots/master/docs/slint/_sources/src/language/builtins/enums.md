@@ -222,7 +222,7 @@
 
  This enum describes the scrollbar visibility
 
-* **`as-needed`**: Scrolbar will be visible only when needed
+* **`as-needed`**: Scrollbar will be visible only when needed
 * **`always-off`**: Scrollbar never shown
 * **`always-on`**: Scrollbar always visible
 

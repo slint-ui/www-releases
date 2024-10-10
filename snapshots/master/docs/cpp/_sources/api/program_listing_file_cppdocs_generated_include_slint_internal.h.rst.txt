@@ -437,6 +437,22 @@ Program Listing for File slint_internal.h
        SharedVector<UndoItem> redo_items;
    };
    
+   struct SwipeGestureHandler {
+       Property<bool> enabled;
+       Property<bool> handle_swipe_left;
+       Property<bool> handle_swipe_right;
+       Property<bool> handle_swipe_up;
+       Property<bool> handle_swipe_down;
+       private_api::CallbackHelper<void> moved;
+       private_api::CallbackHelper<void> swiped;
+       private_api::CallbackHelper<void> cancelled;
+       Property<LogicalPosition> pressed_position;
+       Property<LogicalPosition> current_position;
+       Property<bool> swiping;
+       bool pressed;
+       CachedRenderingData cached_rendering_data;
+   };
+   
    struct Padding {
        float begin;
        float end;
@@ -723,22 +739,6 @@ Program Listing for File slint_internal.h
        CachedRenderingData cached_rendering_data;
    };
    
-   struct SwipeGestureHandler {
-       Property<bool> enabled;
-       Property<bool> handle_swipe_left;
-       Property<bool> handle_swipe_right;
-       Property<bool> handle_swipe_up;
-       Property<bool> handle_swipe_down;
-       private_api::CallbackHelper<void> moved;
-       private_api::CallbackHelper<void> swiped;
-       private_api::CallbackHelper<void> cancelled;
-       Property<LogicalPosition> pressed_position;
-       Property<LogicalPosition> current_position;
-       Property<bool> swiping;
-       bool pressed;
-       CachedRenderingData cached_rendering_data;
-   };
-   
    struct Flickable {
        Property<LogicalLength> viewport_x;
        Property<LogicalLength> viewport_y;
@@ -940,6 +940,11 @@ Program Listing for File slint_internal.h
    FontMetrics slint_cpp_text_item_fontmetrics(const WindowAdapterRcOpaque *window_adapter,
                                                const VRc<ItemTreeVTable> *self_component,
                                                uint32_t self_index);
+   
+   void slint_swipegesturehandler_cancel(Pin<const SwipeGestureHandler*> s,
+                                         const WindowAdapterRcOpaque *window_adapter,
+                                         const VRc<ItemTreeVTable> *self_component,
+                                         uint32_t self_index);
    
    void slint_solve_grid_layout(const GridLayoutData *data, SharedVector<float> *result);
    
