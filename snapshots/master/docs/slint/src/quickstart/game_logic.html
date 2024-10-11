@@ -593,28 +593,22 @@ match, start a timer that closes the tiles after one second. While the timer is 
 a player can’t click anything during this time.</p>
 <p>Insert this code before the <code class="docutils literal notranslate"><span class="pre">mainWindow.run()</span></code> call:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>mainWindow.check_if_pair_solved = function () {
-    let flipped_tiles = [];
+    const flipped_tiles = [];
     tiles.forEach((tile, index) =&gt; {
         if (tile.image_visible &amp;&amp; !tile.solved) {
             flipped_tiles.push({
                 index,
-                tile
+                tile,
             });
         }
     });
 
-    if (flipped_tiles.length == 2) {
-        let {
-            tile: tile1,
-            index: tile1_index
-        } = flipped_tiles[0];
+    if (flipped_tiles.length === 2) {
+        const { tile: tile1, index: tile1_index } = flipped_tiles[0];
 
-        let {
-            tile: tile2,
-            index: tile2_index
-        } = flipped_tiles[1];
+        const { tile: tile2, index: tile2_index } = flipped_tiles[1];
 
-        let is_pair_solved = tile1.image.path === tile2.image.path;
+        const is_pair_solved = tile1.image.path === tile2.image.path;
         if (is_pair_solved) {
             tile1.solved = true;
             model.setRowData(tile1_index, tile1);
@@ -628,8 +622,7 @@ a player can’t click anything during this time.</p>
                 model.setRowData(tile1_index, tile1);
                 tile2.image_visible = false;
                 model.setRowData(tile2_index, tile2);
-            }, 1000)
-
+            }, 1000);
         }
     }
 };

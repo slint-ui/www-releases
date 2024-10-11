@@ -25,30 +25,6 @@ export function compile_from_string_with_style(source: string, base_url: string,
  * to ignore.
  */
 export function run_event_loop(): void;
-/**
- *The `PremultiplyAlpha` enum.
- *
- **This API requires the following crate features to be activated: `PremultiplyAlpha`*
- */
-export type PremultiplyAlpha = "none" | "premultiply" | "default";
-/**
- *The `RequestMode` enum.
- *
- **This API requires the following crate features to be activated: `RequestMode`*
- */
-export type RequestMode = "same-origin" | "no-cors" | "cors" | "navigate";
-/**
- *The `ResizeObserverBoxOptions` enum.
- *
- **This API requires the following crate features to be activated: `ResizeObserverBoxOptions`*
- */
-export type ResizeObserverBoxOptions = "border-box" | "content-box" | "device-pixel-content-box";
-/**
- *The `VisibilityState` enum.
- *
- **This API requires the following crate features to be activated: `VisibilityState`*
- */
-export type VisibilityState = "hidden" | "visible";
 
 type ImportCallbackFunction = (url: string) => Promise<string>;
 type CurrentElementInformationCallbackFunction = (url: string, start_line: number, start_column: number, end_line: number, end_column: number) => void;
@@ -136,10 +112,10 @@ export interface InitOutput {
   readonly __wbindgen_malloc: (a: number, b: number) => number;
   readonly __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;
   readonly __wbindgen_export_2: WebAssembly.Table;
-  readonly _dyn_core__ops__function__Fn__A____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__h1e3e823c74c2f179: (a: number, b: number, c: number) => void;
-  readonly _dyn_core__ops__function__FnMut_____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__h8fc7da5927647c28: (a: number, b: number) => void;
-  readonly _dyn_core__ops__function__FnMut__A____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__h034312887bca20d2: (a: number, b: number, c: number) => void;
-  readonly _dyn_core__ops__function__FnMut__A_B___Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__h6f8cbc5245d3227e: (a: number, b: number, c: number, d: number) => void;
+  readonly _dyn_core__ops__function__Fn__A____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__h1f53a37db141801a: (a: number, b: number, c: number) => void;
+  readonly _dyn_core__ops__function__FnMut_____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__h2ea1309c1c1f20bb: (a: number, b: number) => void;
+  readonly _dyn_core__ops__function__FnMut__A____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__h3efe909db7109985: (a: number, b: number, c: number) => void;
+  readonly _dyn_core__ops__function__FnMut__A_B___Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__hfe4b19f16ec6f16d: (a: number, b: number, c: number, d: number) => void;
   readonly __wbindgen_free: (a: number, b: number, c: number) => void;
   readonly __wbindgen_exn_store: (a: number) => void;
   readonly __wbindgen_add_to_stack_pointer: (a: number) => number;

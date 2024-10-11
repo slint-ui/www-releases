@@ -1,24 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
 export function main(): void;
-/**
- *The `PremultiplyAlpha` enum.
- *
- **This API requires the following crate features to be activated: `PremultiplyAlpha`*
- */
-export type PremultiplyAlpha = "none" | "premultiply" | "default";
-/**
- *The `ResizeObserverBoxOptions` enum.
- *
- **This API requires the following crate features to be activated: `ResizeObserverBoxOptions`*
- */
-export type ResizeObserverBoxOptions = "border-box" | "content-box" | "device-pixel-content-box";
-/**
- *The `VisibilityState` enum.
- *
- **This API requires the following crate features to be activated: `VisibilityState`*
- */
-export type VisibilityState = "hidden" | "visible";
 
 export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembly.Module;
 
@@ -33,10 +15,10 @@ export interface InitOutput {
   readonly __wbindgen_malloc: (a: number, b: number) => number;
   readonly __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;
   readonly __wbindgen_export_2: WebAssembly.Table;
-  readonly _dyn_core__ops__function__Fn__A____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__h00d0ca1182d1e863: (a: number, b: number, c: number) => void;
-  readonly _dyn_core__ops__function__FnMut__A____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__h2628d9fd2e38d3e4: (a: number, b: number, c: number) => void;
-  readonly _dyn_core__ops__function__FnMut_____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__h3e0151889e9419dd: (a: number, b: number) => void;
-  readonly _dyn_core__ops__function__FnMut__A_B___Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__h16aa9cac2f7c8b03: (a: number, b: number, c: number, d: number) => void;
+  readonly _dyn_core__ops__function__Fn__A____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__h120f60d53488dece: (a: number, b: number, c: number) => void;
+  readonly _dyn_core__ops__function__FnMut__A____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__h175cfeae202d12ee: (a: number, b: number, c: number) => void;
+  readonly _dyn_core__ops__function__FnMut_____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__h412cfb8cf290f183: (a: number, b: number) => void;
+  readonly _dyn_core__ops__function__FnMut__A_B___Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__hc7e306d688a62390: (a: number, b: number, c: number, d: number) => void;
   readonly __wbindgen_exn_store: (a: number) => void;
   readonly __wbindgen_start: () => void;
 }
