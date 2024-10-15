@@ -31,8 +31,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/theme_tweak.css?v=a03aae7b" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/theme_tweak.css?v=e5538edb" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/typesense-docsearch-css@0.3.0" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -56,6 +56,7 @@
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.9.0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
         </script>
+    <script src="../../_static/cm6.bundle.js?v=663fcec5"></script>
     <script src="../../_static/expand_tabs.js?v=acb398a4"></script>
     <link rel="canonical" href="https://docs.slint.dev/src/advanced/backends_and_renderers.html" />
     <link rel="icon" href="https://slint.dev/favicon.svg"/>
@@ -63,8 +64,21 @@
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Qt Backend" href="backend_qt.html" />
     <link rel="prev" title="Selecting a Widget Style" href="style.html" />
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+    <!-- Custom styles and script to prevent FOUC -->
+    <style>
+        body {
+            visibility: hidden;  /* Hide body until the theme is applied */
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme') || 'light';  // Default to light theme
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            document.body.style.visibility = 'visible';  // Make visible once theme is applied
+        });
+    </script>
+
   </head>
   
   
@@ -583,21 +597,17 @@ issues we’re aware of and how to resolve them.</p>
 <ul>
 <li><p>Compilation error on Windows with messages about multiple source files and unused linker input</p>
 <p>You may see compile errors that contain this error and warning from clang-cl:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">clang</span><span class="o">-</span><span class="n">cl</span><span class="p">:</span> <span class="n">error</span><span class="p">:</span> <span class="n">cannot</span> <span class="n">specify</span> <span class="s1">&#39;/Foobj/src/fonts/fontmgr_win.SkFontMgr_indirect.obj&#39;</span> <span class="n">when</span> <span class="n">compiling</span> <span class="n">multiple</span> <span class="n">source</span> <span class="n">files</span>
- <span class="n">clang</span><span class="o">-</span><span class="n">cl</span><span class="p">:</span> <span class="n">warning</span><span class="p">:</span> <span class="n">Hausmann</span><span class="o">/.</span><span class="n">cargo</span><span class="o">/</span><span class="n">registry</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">crates</span><span class="o">.</span><span class="n">io</span><span class="o">-</span><span class="mi">6</span><span class="n">f17d22bba15001f</span><span class="o">/</span><span class="n">skia</span><span class="o">-</span><span class="n">bindings</span><span class="o">-</span><span class="mf">0.66.0</span><span class="o">/</span><span class="n">skia</span><span class="p">:</span> <span class="s1">&#39;linker&#39;</span> <span class="nb">input</span> <span class="n">unused</span> <span class="p">[</span><span class="o">-</span><span class="n">Wunused</span><span class="o">-</span><span class="n">command</span><span class="o">-</span><span class="n">line</span><span class="o">-</span><span class="n">argument</span><span class="p">]</span>
-</pre></div>
-</div>
-<p>The Skia sources are checked out in a path that’s managed by Cargo, the Rust package manager.
+<div id="editor-src-advanced-backends_and_renderers-119" class="codemirror-editor" data-lang="default" data-ignore="true"><div class="codemirror-content" style="display:none"> clang-cl: error: cannot specify '/Foobj/src/fonts/fontmgr_win.SkFontMgr_indirect.obj' when compiling multiple source files
+ clang-cl: warning: Hausmann/.cargo/registry/src/index.crates.io-6f17d22bba15001f/skia-bindings-0.66.0/skia: 'linker' input unused [-Wunused-command-line-argument]
+</div></div><p>The Skia sources are checked out in a path that’s managed by Cargo, the Rust package manager.
 The error happens when that path contains spaces. By default that’s in <code class="docutils literal notranslate"><span class="pre">%HOMEPATH%\.cargo</span></code>,
 which contains spaces if the login name contains spaces. To resolve this issue, set the <code class="docutils literal notranslate"><span class="pre">CARGO_HOME</span></code>
 environment variable to a path without spaces, such as <code class="docutils literal notranslate"><span class="pre">c:\cargo_home</span></code>.</p>
 </li>
 <li><p>Compilation error when compiling for ARMv7 with hardware floating-pointer support</p>
 <p>You may see compiler errors that contain this message:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">Unable</span> <span class="n">to</span> <span class="n">generate</span> <span class="n">bindings</span><span class="p">:</span> <span class="n">ClangDiagnostic</span><span class="p">(</span><span class="s2">&quot;/home/runner/work/slint/yocto-sdk/sysroots/cortexa15t2hf-neon-poky-linux-gnueabi/usr/include/gnu/stubs-32.h:7:11: fatal error: &#39;gnu/stubs-soft.h&#39; file not found</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>The Skia build invokes clang in multiple occasions and is sensitive to compiler flags
+<div id="editor-src-advanced-backends_and_renderers-133" class="codemirror-editor" data-lang="default" data-ignore="true"><div class="codemirror-content" style="display:none"> Unable to generate bindings: ClangDiagnostic(&quot;/home/runner/work/slint/yocto-sdk/sysroots/cortexa15t2hf-neon-poky-linux-gnueabi/usr/include/gnu/stubs-32.h:7:11: fatal error: 'gnu/stubs-soft.h' file not found\n&quot;)
+</div></div><p>The Skia build invokes clang in multiple occasions and is sensitive to compiler flags
 that affect the floating point abi (such as <code class="docutils literal notranslate"><span class="pre">-mfloat-abi=hard</span></code>), as they affect header file lookups.</p>
 <p>The solve this, set the <code class="docutils literal notranslate"><span class="pre">BINDGEN_EXTRA_CLANG_ARGS</span></code> environment variable to contain the same
 flags that your build environment also passes to the C++ compiler.</p>
@@ -606,30 +616,24 @@ flags that your build environment also passes to the C++ compiler.</p>
 </li>
 <li><p>Compilation error when linking on Windows</p>
 <p>You may see compiler errors that contain this message:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> error: linking with `link.exe` failed: exit code: 1120
+<div id="editor-src-advanced-backends_and_renderers-150" class="codemirror-editor" data-lang="default" data-ignore="true"><div class="codemirror-content" style="display:none"> error: linking with `link.exe` failed: exit code: 1120
  |
  ...
-= note: skunicode.lib(icu.SkLoadICU.obj) : error LNK2019: unresolved external symbol __std_init_once_begin_initialize_clr referenced in function &quot;bool __cdecl SkLoadICU(void)&quot; (?SkLoadICU@@YA_NXZ)
+= note: skunicode.lib(icu.SkLoadICU.obj) : error LNK2019: unresolved external symbol __std_init_once_begin_initialize_clr referenced in function &quot;bool __cdecl SkLoadICU(void)&quot; (?SkLoadICU&#64;&#64;YA_NXZ)
  ...
   skia.lib(skia.SkNWayCanvas.obj) : error LNK2001: unresolved external symbol __std_find_trivial_8
-</pre></div>
-</div>
-<p>The Skia build requires the use of Microsoft Visual Studio 2022 as compiler. Make sure to have the latest patches
+</div></div><p>The Skia build requires the use of Microsoft Visual Studio 2022 as compiler. Make sure to have the latest patches
 to the compiler installed.</p>
 </li>
 <li><p>Compilation error on macOS:</p></li>
 </ul>
 <p>The build fails and somewhere in the log output you see this message:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cargo</span><span class="p">:</span><span class="n">warning</span><span class="o">=</span><span class="n">xcrun</span><span class="p">:</span> <span class="n">error</span><span class="p">:</span> <span class="n">unable</span> <span class="n">to</span> <span class="n">lookup</span> <span class="n">item</span> <span class="s1">&#39;PlatformVersion&#39;</span> <span class="kn">from</span> <span class="nn">command</span> <span class="n">line</span> <span class="n">tools</span> <span class="n">installation</span>
-<span class="n">cargo</span><span class="p">:</span><span class="n">warning</span><span class="o">=</span><span class="n">xcrun</span><span class="p">:</span> <span class="n">error</span><span class="p">:</span> <span class="n">unable</span> <span class="n">to</span> <span class="n">lookup</span> <span class="n">item</span> <span class="s1">&#39;PlatformVersion&#39;</span> <span class="ow">in</span> <span class="n">SDK</span> <span class="s1">&#39;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk&#39;</span>
-</pre></div>
-</div>
-<p>This is due the build process calling <code class="docutils literal notranslate"><span class="pre">xcrun</span> <span class="pre">--show-sdk-platform-version</span></code> to determine the SDK version, and that’s unfortunately not
+<div id="editor-src-advanced-backends_and_renderers-166" class="codemirror-editor" data-lang="default" data-ignore="true"><div class="codemirror-content" style="display:none">cargo:warning=xcrun: error: unable to lookup item 'PlatformVersion' from command line tools installation
+cargo:warning=xcrun: error: unable to lookup item 'PlatformVersion' in SDK '/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk'
+</div></div><p>This is due the build process calling <code class="docutils literal notranslate"><span class="pre">xcrun</span> <span class="pre">--show-sdk-platform-version</span></code> to determine the SDK version, and that’s unfortunately not
 supported by the Xcode command line tools. To solve this issue, run the following command once:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">xcode</span><span class="o">-</span><span class="n">select</span> <span class="o">-</span><span class="n">switch</span> <span class="o">/</span><span class="n">Applications</span><span class="o">/</span><span class="n">Xcode</span><span class="o">.</span><span class="n">app</span><span class="o">/</span><span class="n">Contents</span><span class="o">/</span><span class="n">Developer</span>
-</pre></div>
-</div>
-</section>
+<div id="editor-src-advanced-backends_and_renderers-174" class="codemirror-editor" data-lang="default" data-ignore="true"><div class="codemirror-content" style="display:none">sudo xcode-select -switch /Applications/Xcode.app/Contents/Developer
+</div></div></section>
 </section>
 </section>
 </section>
@@ -738,253 +742,12 @@ By Slint Developers <info@slint.dev>
       </main>
     </div>
   </div>
-   
+  
+    
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
   <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
 <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-<!--
-    This file is used to add preview of the `.slint` snippets in the generated rustdoc documentation.
-    It can be injected via the `--html-in-header slint-docs-preview.html` option of rustdoc.
--->
-<script type="module">
-    "use strict";
-    //import * as slint from 'https://releases.slint.dev/0.x.0/wasm-interpreter/slint_wasm_interpreter.js';
-    //const editor_url = "https://releases.slint.dev/0.x.0/editor/";
-    import * as slint from 'https://snapshots.slint.dev/master/wasm-interpreter/slint_wasm_interpreter.js';
-    const editor_url = "https://snapshots.slint.dev/master/editor/";
-    // keep them alive
-    var all_instances = new Array;
-
-    async function render_or_error(source, div) {
-        let canvas_id = 'canvas_' + Math.random().toString(36).substr(2, 9);
-        let canvas = document.createElement("canvas");
-        canvas.id = canvas_id;
-        div.appendChild(canvas);
-
-        let { component, error_string } = await slint.compile_from_string(source, "");
-        if (error_string != "") {
-            var text = document.createTextNode(error_string);
-            var p = document.createElement('pre');
-            p.appendChild(text);
-            div.innerHTML = "<pre style='color: red; background-color:#fee; margin:0'>" + p.innerHTML + "</pre>";
-        }
-        if (component !== undefined) {
-            let instance = await component.create(canvas_id);
-            await instance.show();
-            all_instances.push(instance);
-        }
-    }
-
-    async function create_preview(element, source_code) {
-        // Style the preview such that a flexbox lays out the source code box
-        // (which should take up any spare space), followed by the preview canvas.
-        // The latter may wrap into a new row on mobile. The edit/play buttons are
-        // placed last by flexbox order attribute.
-        let div = document.createElement("div");
-        let sourceCodeBox = element.firstElementChild;
-        element.style = "display: flex; flex-wrap: wrap;";
-        sourceCodeBox.style = "flex-grow: 2";
-        element.append(div);
-        await render_or_error(source_code, div);
-    }
-
-    function should_show_automatic_preview(element) {
-        // The `no-auto-preview` doesn't map directly to a dedicated class but it's mangled differently
-        // between rustdoc and sphinx, so match fuzzy on the entire class list:
-        return !element.className.includes("no-auto-preview");
-    }
-
-    async function create_click_to_play_and_edit_buttons(element) {
-        let source = element.innerText;
-
-        let link_section = document.createElement("div");
-        // Ensure the link section is always last and on a row of its own in the flexbox.
-        link_section.style = "order: 100; flex-basis: 100%;";
-        element.append(link_section);
-
-        let button_style = "text-decoration: none;"
-
-        let edit_button = document.createElement("a");
-        edit_button.style = button_style;
-        edit_button.href = `${editor_url}?snippet=${encodeURIComponent(source)}`;
-        edit_button.target = "_blank";
-        edit_button.innerText = "Edit 📝";
-        link_section.append(edit_button);
-
-        if (should_show_automatic_preview(element)) {
-            create_preview(element, source);
-        } else {
-            let play_button = document.createElement("a");
-            play_button.style = button_style;
-            play_button.innerText = "Preview ▶️";
-            play_button.onclick = async () => {
-                play_button.remove();
-                create_preview(element, source);
-            };
-
-            link_section.prepend(play_button);
-        }
-    }
-
-    async function run() {
-        await slint.default();
-
-        try {
-            slint.run_event_loop();
-            // this will trigger a JS exception, so this line will never be reached!
-        } catch (e) {
-            // The winit event loop, when targeting wasm, throws a JavaScript exception to break out of
-            // Rust without running any destructors. Don't rethrow the exception but swallow it, as
-            // this is no error and we truly want to resolve the promise of this function by returning
-            // the model markers.
-        }
-
-        let selector = ["code.language-slint", ".rustdoc pre.language-slint", "div.highlight-slint div.highlight", "div.highlight-slint\\,no-auto-preview div.highlight"]
-            .map((sel) => `${sel}:not([class*=slint\\,ignore]):not([class*=slint\\,no-preview])`).join(",");
-        var elements = document.querySelectorAll(selector);
-        for (var i = 0; i < elements.length; ++i) {
-            await create_click_to_play_and_edit_buttons(elements[i]);
-        }
-    }
-    run();
-
-    // Included markdown files may have links to other markdown files, which may not have been
-    // resolved by rustdoc. This helper locates such links and resolves them, assuming that each
-    // .md file gets its own sub-directory with an index.html.
-    function fix_markdown_links() {
-        for (let anchor of document.querySelectorAll('a[href$=".md"], a[href*=".md#"]')) {
-            let url = new URL(anchor.href);
-            let dir_separator = Math.max(url.pathname.lastIndexOf("/"), 0);
-            let base_name = url.pathname.slice(dir_separator + 1, -3);
-            let base_path = url.pathname.slice(0, dir_separator);
-            url.pathname = base_path + "/../" + base_name + "/index.html";
-            anchor.setAttribute("href", url);
-        }
-    }
-    fix_markdown_links()
-</script>
-<!--
-    This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
-    It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
-    in sphinx and via head.hbs in mdbook.
--->
-<link rel="stylesheet" href="https://slint.dev/resources/highlightjs/11.0.1/default.min.css">
-<script src="https://slint.dev/resources/highlightjs/11.0.1/highlight.min.js"></script>
-<script>
-  function highlight_slint(hljs) {
-    const KEYWORDS = {
-      keyword:
-        "animate callback changed component enum export for function global if import in in-out inherits out parent private property public pure root self states struct",
-      literal: "false true",
-      built_in:
-        "ArcTo Clip Close Colors CubicTo Flickable FocusScope GridLayout HorizontalLayout Image LineTo Math MoveTo Path PopupWindow QuadraticTo Rectangle Row Text TextInput TouchArea VerticalLayout Window animation-tick debug",
-      type: "bool duration easing float int length logical-length relative-font-size string",
-    };
-
-    return {
-      name: 'slint',
-      case_insensitive: false,
-      keywords: KEYWORDS,
-      contains: [
-        hljs.QUOTE_STRING_MODE,
-        hljs.C_LINE_COMMENT_MODE,
-        hljs.C_BLOCK_COMMENT_MODE,
-        hljs.COMMENT('/\\*', '\\*/', {
-          contains: ['self']
-        }),
-        {
-          className: 'number',
-          begin: '\\b\\d+(\\.\\d+)?(\\w+)?',
-          relevance: 0
-        },
-        {
-          className: 'title',
-          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]* *:=',
-        },
-        {
-          className: 'symbol',
-          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]*(:| *=>)',
-        },
-        {
-          className: 'built_in',
-          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]*!',
-        },
-      ],
-      illegal: /@/
-    };
-  };
-
-  // Tags used in fenced code blocks
-  for (let tag of ["slint", "slint,no-preview", "slint,no-auto-preview", "slint,ignore"]) {
-    hljs.registerLanguage(tag, highlight_slint);
-  }
-
-
-  window.addEventListener("DOMContentLoaded", () => {
-    const rustDoc = document.querySelector('meta[name="generator"]')?.content == "rustdoc";
-    if (rustDoc) {
-      // Only highlight .slint blocks, leave the others to rustdoc
-      for (slintBlock of document.querySelectorAll("[class*=language-slint]")) {
-        hljs.highlightElement(slintBlock)
-      }
-
-      // Some of the rustdoc selectors require the pre element to have the rust class
-      for (codeBlock of document.querySelectorAll(".language-slint.hljs")) {
-        codeBlock.classList.add("rust");
-        codeBlock.classList.remove("hljs");
-      }
-
-      // Change the hljs generated classes to the rustdoc
-      // ones, so that the highlighting adjusts to the theme correctly.
-      const highlightJSToRustDoc = [
-        ["comment", "comment"],
-        ["number", "number"],
-        ["symbol", "struct"], // width:
-        ["keyword", "kw"],
-        ["built_in", "primitive"],
-        ["string", "string"],
-        ["title", "fnname"], // Foo :=
-        ["type", "type"]
-      ];
-
-      for ([hljs_class, rustdoc_class] of highlightJSToRustDoc) {
-        for (titleElement of document.querySelectorAll(`.hljs-${hljs_class}`)) {
-          titleElement.classList.remove(`hljs-${hljs_class}`);
-          titleElement.classList.add(rustdoc_class);
-        }
-      }
-    } else {
-      // For use with the mdbook Tutorial
-      hljs.highlightAll();
-
-      // The Sphinx/my_st generated HTML for code blocks doesn't use <code> tags, so highlight.js'
-      // default selector "pre code" doesn't match. Let's do it by hand:
-      for (block of document.querySelectorAll("div[class*=highlight-slint] div.highlight pre")) {
-        hljs.highlightElement(block)
-      }
-    }
-
-    // Fix up links that sphinx handles but for rustdoc we need to resolve manually:
-    {
-      let target_url = null;
-      if (document.location.hostname == "snapshots.slint.dev") {
-        target_url = `https://snapshots.slint.dev/master/docs/slint/`;
-      } else {
-        let version = document.querySelector("span.version");
-        if (version !== null) {
-          target_url = `https://slint.dev/releases/${version.innerText}/docs/slint/`;
-        }
-      }
-
-      if (target_url !== null) {
-        for (let link of document.querySelectorAll("a[href^='slint-reference:']")) {
-          link.href = link.href.replace("slint-reference:", target_url);
-        }
-      }
-    }
-  });
-</script>
 
   <footer class="bd-footer">
   </footer>

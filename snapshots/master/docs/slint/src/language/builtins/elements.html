@@ -31,8 +31,8 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/theme_tweak.css?v=a03aae7b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/theme_tweak.css?v=e5538edb" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/typesense-docsearch-css@0.3.0" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -56,6 +56,7 @@
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.9.0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
         </script>
+    <script src="../../../_static/cm6.bundle.js?v=663fcec5"></script>
     <script src="../../../_static/expand_tabs.js?v=acb398a4"></script>
     <link rel="canonical" href="https://docs.slint.dev/src/language/builtins/elements.html" />
     <link rel="icon" href="https://slint.dev/favicon.svg"/>
@@ -63,8 +64,21 @@
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Builtin Enumerations" href="enums.html" />
     <link rel="prev" title="Builtin Callbacks" href="callbacks.html" />
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+    <!-- Custom styles and script to prevent FOUC -->
+    <style>
+        body {
+            visibility: hidden;  /* Hide body until the theme is applied */
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme') || 'light';  // Default to light theme
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            document.body.style.visibility = 'visible';  // Make visible once theme is applied
+        });
+    </script>
+
   </head>
   
   
@@ -618,10 +632,10 @@ were first drawn into an intermediate layer, and then the whole layer is rendere
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">visible</span></code></strong> (<em>in</em> <em>bool</em>): When set to <code class="docutils literal notranslate"><span class="pre">false</span></code>, the element and all his children won’t be drawn and not react to mouse input (default value: <code class="docutils literal notranslate"><span class="pre">true</span></code>)</p></li>
 </ul>
 <p>The following example demonstrates the <code class="docutils literal notranslate"><span class="pre">opacity</span></code> property with children. An opacity is applied to the red rectangle. Since the green rectangle is a child of the red one, you can see the gradient underneath it, but you can’t see the red rectangle through the green one.</p>
-<div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>export component Example inherits Window {
+<div id="editor-src-language-builtins-elements-40" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Window {
     width: 100px;
     height: 100px;
-    background: @radial-gradient(circle, black, white, black, white);
+    background: &#64;radial-gradient(circle, black, white, black, white);
     Rectangle {
         opacity: 0.5;
         background: red;
@@ -638,9 +652,7 @@ were first drawn into an intermediate layer, and then the whole layer is rendere
         }
     }
 }
-</pre></div>
-</div>
-</section>
+</div></div></section>
 <section id="accessibility">
 <h3>Accessibility<a class="headerlink" href="#accessibility" title="Permalink to this heading">#</a></h3>
 <p>Use the following <code class="docutils literal notranslate"><span class="pre">accessible-</span></code> properties to make your items interact well with software like screen readers, braille terminals and other software to make your application accessible.
@@ -699,7 +711,7 @@ Each of these automatically-generated callbacks is an alias for the <code class=
 </section>
 <section id="example">
 <h3>Example<a class="headerlink" href="#example" title="Permalink to this heading">#</a></h3>
-<div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>import { StandardButton, Button } from &quot;std-widgets.slint&quot;;
+<div id="editor-src-language-builtins-elements-121" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">import { StandardButton, Button } from &quot;std-widgets.slint&quot;;
 export component Example inherits Dialog {
     Text {
       text: &quot;This is a dialog box&quot;;
@@ -711,9 +723,7 @@ export component Example inherits Dialog {
       dialog-button-role: action;
     }
 }
-</pre></div>
-</div>
-</section>
+</div></div></section>
 </section>
 <section id="flickable">
 <h2><code class="docutils literal notranslate"><span class="pre">Flickable</span></code><a class="headerlink" href="#flickable" title="Permalink to this heading">#</a></h2>
@@ -773,7 +783,7 @@ to the coordinates of the press event exceeds 8 logical pixels.</p></li>
 </section>
 <section id="id2">
 <h3>Example<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
-<div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>export component Example inherits Window {
+<div id="editor-src-language-builtins-elements-185" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Window {
     width: 270px;
     height: 100px;
 
@@ -786,9 +796,7 @@ to the coordinates of the press event exceeds 8 logical pixels.</p></li>
         }
     }
 }
-</pre></div>
-</div>
-</section>
+</div></div></section>
 </section>
 <section id="focusscope">
 <h2><code class="docutils literal notranslate"><span class="pre">FocusScope</span></code><a class="headerlink" href="#focusscope" title="Permalink to this heading">#</a></h2>
@@ -827,7 +835,7 @@ forwarded to the parent element.</p></li>
 </section>
 <section id="id5">
 <h3>Example<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
-<div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>export component Example inherits Window {
+<div id="editor-src-language-builtins-elements-234" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Window {
     width: 100px;
     height: 100px;
     forward-focus: my-key-handler;
@@ -844,9 +852,7 @@ forwarded to the parent element.</p></li>
         }
     }
 }
-</pre></div>
-</div>
-</section>
+</div></div></section>
 </section>
 <section id="gridlayout">
 <h2><code class="docutils literal notranslate"><span class="pre">GridLayout</span></code><a class="headerlink" href="#gridlayout" title="Permalink to this heading">#</a></h2>
@@ -860,7 +866,7 @@ forwarded to the parent element.</p></li>
 </ul>
 <p>To implicitly sequentially assign row indices—just like with <code class="docutils literal notranslate"><span class="pre">col</span></code>—wrap cell elements in <code class="docutils literal notranslate"><span class="pre">Row</span></code> elements.</p>
 <p>The following example creates a 2-by-2 grid with <code class="docutils literal notranslate"><span class="pre">Row</span></code> elements, omitting one cell:</p>
-<div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>import { Button } from &quot;std-widgets.slint&quot;;
+<div id="editor-src-language-builtins-elements-269" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">import { Button } from &quot;std-widgets.slint&quot;;
 export component Foo inherits Window {
     width: 200px;
     height: 100px;
@@ -874,10 +880,8 @@ export component Foo inherits Window {
         }
     }
 }
-</pre></div>
-</div>
-<p>The following example creates the same grid using the <code class="docutils literal notranslate"><span class="pre">row</span></code> property. Row indices must be taken care of manually:</p>
-<div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>import { Button } from &quot;std-widgets.slint&quot;;
+</div></div><p>The following example creates the same grid using the <code class="docutils literal notranslate"><span class="pre">row</span></code> property. Row indices must be taken care of manually:</p>
+<div id="editor-src-language-builtins-elements-288" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">import { Button } from &quot;std-widgets.slint&quot;;
 export component Foo inherits Window {
     width: 200px;
     height: 100px;
@@ -887,9 +891,7 @@ export component Foo inherits Window {
         Button { text: &quot;Bottom Right&quot;; } // same row, sequentially assigned column 1
     }
 }
-</pre></div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">GridLayout</span></code> covers its entire surface with cells. Cells are not aligned. The elements constituting the cells will be stretched inside their allocated space, unless their size constraints—like, e.g., <code class="docutils literal notranslate"><span class="pre">min-height</span></code> or <code class="docutils literal notranslate"><span class="pre">max-width</span></code>—work against this.</p>
+</div></div><p><code class="docutils literal notranslate"><span class="pre">GridLayout</span></code> covers its entire surface with cells. Cells are not aligned. The elements constituting the cells will be stretched inside their allocated space, unless their size constraints—like, e.g., <code class="docutils literal notranslate"><span class="pre">min-height</span></code> or <code class="docutils literal notranslate"><span class="pre">max-width</span></code>—work against this.</p>
 <section id="id6">
 <h3>Properties<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
@@ -904,7 +906,7 @@ Set these properties to override the padding on specific sides.</p></li>
 <section id="examples">
 <h3>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">#</a></h3>
 <p>This example uses the <code class="docutils literal notranslate"><span class="pre">Row</span></code> element:</p>
-<div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>export component Foo inherits Window {
+<div id="editor-src-language-builtins-elements-316" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Foo inherits Window {
     width: 200px;
     height: 200px;
     GridLayout {
@@ -919,10 +921,8 @@ Set these properties to override the padding on specific sides.</p></li>
         }
     }
 }
-</pre></div>
-</div>
-<p>This example uses the <code class="docutils literal notranslate"><span class="pre">col</span></code> and <code class="docutils literal notranslate"><span class="pre">row</span></code> properties</p>
-<div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>export component Foo inherits Window {
+</div></div><p>This example uses the <code class="docutils literal notranslate"><span class="pre">col</span></code> and <code class="docutils literal notranslate"><span class="pre">row</span></code> properties</p>
+<div id="editor-src-language-builtins-elements-336" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Foo inherits Window {
     width: 200px;
     height: 150px;
     GridLayout {
@@ -933,9 +933,7 @@ Set these properties to override the padding on specific sides.</p></li>
         Rectangle { background: black; col: 2; row: 0; }
     }
 }
-</pre></div>
-</div>
-</section>
+</div></div></section>
 </section>
 <section id="image">
 <h2><code class="docutils literal notranslate"><span class="pre">Image</span></code><a class="headerlink" href="#image" title="Permalink to this heading">#</a></h2>
@@ -988,50 +986,44 @@ specified, then the other defaults to the specified value scaled according to th
 </section>
 <section id="id8">
 <h3>Example<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
-<div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>export component Example inherits Window {
+<div id="editor-src-language-builtins-elements-383" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Window {
     width: 100px;
     height: 100px;
     VerticalLayout {
         Image {
-            source: @image-url(&quot;https://slint.dev/logo/slint-logo-full-light.svg&quot;);
+            source: &#64;image-url(&quot;https://slint.dev/logo/slint-logo-full-light.svg&quot;);
             // image-fit default is `contain` when in layout, preserving aspect ratio
         }
         Image {
-            source: @image-url(&quot;https://slint.dev/logo/slint-logo-full-light.svg&quot;);
+            source: &#64;image-url(&quot;https://slint.dev/logo/slint-logo-full-light.svg&quot;);
             colorize: red;
         }
     }
 }
-</pre></div>
-</div>
-<p>Scaled while preserving the aspect ratio:</p>
-<div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>export component Example inherits Window {
+</div></div><p>Scaled while preserving the aspect ratio:</p>
+<div id="editor-src-language-builtins-elements-402" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Window {
     width: 100px;
     height: 150px;
     VerticalLayout {
         Image {
-            source: @image-url(&quot;https://slint.dev/logo/slint-logo-full-light.svg&quot;);
+            source: &#64;image-url(&quot;https://slint.dev/logo/slint-logo-full-light.svg&quot;);
             width: 100px;
             // implicit default, preserving aspect ratio:
             // height: self.width * natural_height / natural_width;
         }
     }
 }
-</pre></div>
-</div>
-<p>Example using nine-slice:</p>
-<div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>export component Example inherits Window {
+</div></div><p>Example using nine-slice:</p>
+<div id="editor-src-language-builtins-elements-419" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Window {
     width: 100px;
     height: 150px;
     VerticalLayout {
         Image {
-            source: @image-url(&quot;https://interactive-examples.mdn.mozilla.net/media/examples/border-diamonds.png&quot;, nine-slice(30));
+            source: &#64;image-url(&quot;https://interactive-examples.mdn.mozilla.net/media/examples/border-diamonds.png&quot;, nine-slice(30));
         }
     }
 }
-</pre></div>
-</div>
-</section>
+</div></div></section>
 </section>
 <section id="path">
 <h2><code class="docutils literal notranslate"><span class="pre">Path</span></code><a class="headerlink" href="#path" title="Permalink to this heading">#</a></h2>
@@ -1073,16 +1065,14 @@ paths are composed using <a class="reference external" href="https://developer.m
 which in turn are written in a string. In <code class="docutils literal notranslate"><span class="pre">.slint</span></code> the path commands are provided to the <code class="docutils literal notranslate"><span class="pre">commands</span></code>
 property. The following example renders a shape consists of an arc and a rectangle, composed of <code class="docutils literal notranslate"><span class="pre">line-to</span></code>,
 <code class="docutils literal notranslate"><span class="pre">move-to</span></code> and <code class="docutils literal notranslate"><span class="pre">arc</span></code> commands:</p>
-<div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>export component Example inherits Path {
+<div id="editor-src-language-builtins-elements-475" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Path {
     width: 100px;
     height: 100px;
     commands: &quot;M 0 0 L 0 100 A 1 1 0 0 0 100 100 L 100 0 Z&quot;;
     stroke: red;
     stroke-width: 1px;
 }
-</pre></div>
-</div>
-<p>The commands are provided in a property:</p>
+</div></div><p>The commands are provided in a property:</p>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">commands</span></code></strong> (<em>in</em> <em>string</em>): A string providing the commands according to the SVG path specification.
 This property can only be set in a binding and cannot be accessed in an expression.</p></li>
@@ -1092,7 +1082,7 @@ This property can only be set in a binding and cannot be accessed in an expressi
 <h4>Path Using SVG Path Elements<a class="headerlink" href="#path-using-svg-path-elements" title="Permalink to this heading">#</a></h4>
 <p>The shape of the path can also be described using elements that resemble the SVG path commands but use the
 <code class="docutils literal notranslate"><span class="pre">.slint</span></code> markup syntax. The earlier example using SVG commands can also be written like that:</p>
-<div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>export component Example inherits Path {
+<div id="editor-src-language-builtins-elements-495" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Path {
     width: 100px;
     height: 100px;
     stroke: blue;
@@ -1119,9 +1109,7 @@ This property can only be set in a binding and cannot be accessed in an expressi
     Close {
     }
 }
-</pre></div>
-</div>
-<p>Note how the coordinates of the path elements don’t use units - they operate within the imaginary
+</div></div><p>Note how the coordinates of the path elements don’t use units - they operate within the imaginary
 coordinate system of the scalable path.</p>
 <section id="moveto-sub-element-for-path">
 <h5><code class="docutils literal notranslate"><span class="pre">MoveTo</span></code> Sub-element for <code class="docutils literal notranslate"><span class="pre">Path</span></code><a class="headerlink" href="#moveto-sub-element-for-path" title="Permalink to this heading">#</a></h5>
@@ -1227,7 +1215,7 @@ to false to prevent that behavior and close it manually using the <code class="d
 </section>
 <section id="id16">
 <h3>Example<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h3>
-<div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>export component Example inherits Window {
+<div id="editor-src-language-builtins-elements-617" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Window {
     width: 100px;
     height: 100px;
 
@@ -1241,9 +1229,7 @@ to false to prevent that behavior and close it manually using the <code class="d
         clicked =&gt; { popup.show(); }
     }
 }
-</pre></div>
-</div>
-</section>
+</div></div></section>
 </section>
 <section id="rectangle">
 <h2><code class="docutils literal notranslate"><span class="pre">Rectangle</span></code><a class="headerlink" href="#rectangle" title="Permalink to this heading">#</a></h2>
@@ -1263,7 +1249,7 @@ it’s then possible to draw a rectangle on the screen.</p>
 </section>
 <section id="id18">
 <h3>Example<a class="headerlink" href="#id18" title="Permalink to this heading">#</a></h3>
-<div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>export component Example inherits Window {
+<div id="editor-src-language-builtins-elements-652" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Window {
     width: 270px;
     height: 100px;
 
@@ -1309,9 +1295,7 @@ it’s then possible to draw a rectangle on the screen.</p>
         border-radius: self.width/2;
     }
 }
-</pre></div>
-</div>
-</section>
+</div></div></section>
 </section>
 <section id="swipegesturehandler">
 <h2><code class="docutils literal notranslate"><span class="pre">SwipeGestureHandler</span></code><a class="headerlink" href="#swipegesturehandler" title="Permalink to this heading">#</a></h2>
@@ -1347,7 +1331,7 @@ If the pointer moves by more than 8 logical pixels in one of the enabled swipe d
 <section id="id22">
 <h3>Example<a class="headerlink" href="#id22" title="Permalink to this heading">#</a></h3>
 <p>This example implements swiping between pages of different colors.</p>
-<div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>export component Example inherits Window {
+<div id="editor-src-language-builtins-elements-733" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Window {
     width: 270px;
     height: 100px;
 
@@ -1385,9 +1369,7 @@ If the pointer moves by more than 8 logical pixels in one of the enabled swipe d
         }
     }
 }
-</pre></div>
-</div>
-</section>
+</div></div></section>
 </section>
 <section id="textinput">
 <h2><code class="docutils literal notranslate"><span class="pre">TextInput</span></code><a class="headerlink" href="#textinput" title="Permalink to this heading">#</a></h2>
@@ -1440,7 +1422,7 @@ described by the <a class="reference internal" href="structs.html#point"><span c
 </section>
 <section id="id26">
 <h3>Example<a class="headerlink" href="#id26" title="Permalink to this heading">#</a></h3>
-<div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>export component Example inherits Window {
+<div id="editor-src-language-builtins-elements-821" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Window {
     width: 270px;
     height: 100px;
 
@@ -1448,9 +1430,7 @@ described by the <a class="reference internal" href="structs.html#point"><span c
         text: &quot;Replace me with a name&quot;;
     }
 }
-</pre></div>
-</div>
-</section>
+</div></div></section>
 </section>
 <section id="text">
 <h2><code class="docutils literal notranslate"><span class="pre">Text</span></code><a class="headerlink" href="#text" title="Permalink to this heading">#</a></h2>
@@ -1488,7 +1468,7 @@ When these properties are set, the <code class="docutils literal notranslate"><s
 <section id="id28">
 <h3>Example<a class="headerlink" href="#id28" title="Permalink to this heading">#</a></h3>
 <p>This example shows the text “Hello World” in red, using the default font:</p>
-<div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>export component Example inherits Window {
+<div id="editor-src-language-builtins-elements-869" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Window {
     width: 270px;
     height: 100px;
 
@@ -1498,11 +1478,9 @@ When these properties are set, the <code class="docutils literal notranslate"><s
         color: red;
     }
 }
-</pre></div>
-</div>
-<p>This example breaks a longer paragraph of text into multiple lines, by setting a <code class="docutils literal notranslate"><span class="pre">wrap</span></code>
+</div></div><p>This example breaks a longer paragraph of text into multiple lines, by setting a <code class="docutils literal notranslate"><span class="pre">wrap</span></code>
 policy and assigning a limited <code class="docutils literal notranslate"><span class="pre">width</span></code> and enough <code class="docutils literal notranslate"><span class="pre">height</span></code> for the text to flow down:</p>
-<div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>export component Example inherits Window {
+<div id="editor-src-language-builtins-elements-885" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Window {
     width: 270px;
     height: 300px;
 
@@ -1514,9 +1492,7 @@ policy and assigning a limited <code class="docutils literal notranslate"><span 
         height: 100%;
     }
 }
-</pre></div>
-</div>
-</section>
+</div></div></section>
 </section>
 <section id="timer">
 <h2><code class="docutils literal notranslate"><span class="pre">Timer</span></code><a class="headerlink" href="#timer" title="Permalink to this heading">#</a></h2>
@@ -1549,7 +1525,7 @@ When already running, the timer will be restarted if the <code class="docutils l
 <section id="id31">
 <h3>Example<a class="headerlink" href="#id31" title="Permalink to this heading">#</a></h3>
 <p>This example shows a timer that counts down from 10 to 0 every second:</p>
-<div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>import { Button } from &quot;std-widgets.slint&quot;;
+<div id="editor-src-language-builtins-elements-929" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">import { Button } from &quot;std-widgets.slint&quot;;
 export component Example inherits Window {
     property &lt;int&gt; value: 10;
     timer := Timer {
@@ -1570,9 +1546,7 @@ export component Example inherits Window {
         }
     }
 }
-</pre></div>
-</div>
-</section>
+</div></div></section>
 </section>
 <section id="toucharea">
 <h2><code class="docutils literal notranslate"><span class="pre">TouchArea</span></code><a class="headerlink" href="#toucharea" title="Permalink to this heading">#</a></h2>
@@ -1610,7 +1584,7 @@ forwarded to the parent element.</p></li>
 </section>
 <section id="id34">
 <h3>Example<a class="headerlink" href="#id34" title="Permalink to this heading">#</a></h3>
-<div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>export component Example inherits Window {
+<div id="editor-src-language-builtins-elements-988" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Window {
     width: 200px;
     height: 100px;
     area := TouchArea {
@@ -1632,9 +1606,7 @@ forwarded to the parent element.</p></li>
         height: parent.height;
     }
 }
-</pre></div>
-</div>
-</section>
+</div></div></section>
 </section>
 <section id="verticallayout-and-horizontallayout">
 <h2><code class="docutils literal notranslate"><span class="pre">VerticalLayout</span></code> and <code class="docutils literal notranslate"><span class="pre">HorizontalLayout</span></code><a class="headerlink" href="#verticallayout-and-horizontallayout" title="Permalink to this heading">#</a></h2>
@@ -1652,7 +1624,7 @@ they will be computed by the layout respecting the minimum and maximum sizes and
 </section>
 <section id="id36">
 <h3>Example<a class="headerlink" href="#id36" title="Permalink to this heading">#</a></h3>
-<div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>export component Foo inherits Window {
+<div id="editor-src-language-builtins-elements-1028" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Foo inherits Window {
     width: 200px;
     height: 100px;
     HorizontalLayout {
@@ -1663,9 +1635,7 @@ they will be computed by the layout respecting the minimum and maximum sizes and
         Rectangle { background: green; horizontal-stretch: 2; }
     }
 }
-</pre></div>
-</div>
-</section>
+</div></div></section>
 </section>
 <section id="window">
 <h2><code class="docutils literal notranslate"><span class="pre">Window</span></code><a class="headerlink" href="#window" title="Permalink to this heading">#</a></h2>
@@ -1903,253 +1873,12 @@ By Slint Developers <info@slint.dev>
       </main>
     </div>
   </div>
-   
+  
+    
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
   <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
 <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-<!--
-    This file is used to add preview of the `.slint` snippets in the generated rustdoc documentation.
-    It can be injected via the `--html-in-header slint-docs-preview.html` option of rustdoc.
--->
-<script type="module">
-    "use strict";
-    //import * as slint from 'https://releases.slint.dev/0.x.0/wasm-interpreter/slint_wasm_interpreter.js';
-    //const editor_url = "https://releases.slint.dev/0.x.0/editor/";
-    import * as slint from 'https://snapshots.slint.dev/master/wasm-interpreter/slint_wasm_interpreter.js';
-    const editor_url = "https://snapshots.slint.dev/master/editor/";
-    // keep them alive
-    var all_instances = new Array;
-
-    async function render_or_error(source, div) {
-        let canvas_id = 'canvas_' + Math.random().toString(36).substr(2, 9);
-        let canvas = document.createElement("canvas");
-        canvas.id = canvas_id;
-        div.appendChild(canvas);
-
-        let { component, error_string } = await slint.compile_from_string(source, "");
-        if (error_string != "") {
-            var text = document.createTextNode(error_string);
-            var p = document.createElement('pre');
-            p.appendChild(text);
-            div.innerHTML = "<pre style='color: red; background-color:#fee; margin:0'>" + p.innerHTML + "</pre>";
-        }
-        if (component !== undefined) {
-            let instance = await component.create(canvas_id);
-            await instance.show();
-            all_instances.push(instance);
-        }
-    }
-
-    async function create_preview(element, source_code) {
-        // Style the preview such that a flexbox lays out the source code box
-        // (which should take up any spare space), followed by the preview canvas.
-        // The latter may wrap into a new row on mobile. The edit/play buttons are
-        // placed last by flexbox order attribute.
-        let div = document.createElement("div");
-        let sourceCodeBox = element.firstElementChild;
-        element.style = "display: flex; flex-wrap: wrap;";
-        sourceCodeBox.style = "flex-grow: 2";
-        element.append(div);
-        await render_or_error(source_code, div);
-    }
-
-    function should_show_automatic_preview(element) {
-        // The `no-auto-preview` doesn't map directly to a dedicated class but it's mangled differently
-        // between rustdoc and sphinx, so match fuzzy on the entire class list:
-        return !element.className.includes("no-auto-preview");
-    }
-
-    async function create_click_to_play_and_edit_buttons(element) {
-        let source = element.innerText;
-
-        let link_section = document.createElement("div");
-        // Ensure the link section is always last and on a row of its own in the flexbox.
-        link_section.style = "order: 100; flex-basis: 100%;";
-        element.append(link_section);
-
-        let button_style = "text-decoration: none;"
-
-        let edit_button = document.createElement("a");
-        edit_button.style = button_style;
-        edit_button.href = `${editor_url}?snippet=${encodeURIComponent(source)}`;
-        edit_button.target = "_blank";
-        edit_button.innerText = "Edit 📝";
-        link_section.append(edit_button);
-
-        if (should_show_automatic_preview(element)) {
-            create_preview(element, source);
-        } else {
-            let play_button = document.createElement("a");
-            play_button.style = button_style;
-            play_button.innerText = "Preview ▶️";
-            play_button.onclick = async () => {
-                play_button.remove();
-                create_preview(element, source);
-            };
-
-            link_section.prepend(play_button);
-        }
-    }
-
-    async function run() {
-        await slint.default();
-
-        try {
-            slint.run_event_loop();
-            // this will trigger a JS exception, so this line will never be reached!
-        } catch (e) {
-            // The winit event loop, when targeting wasm, throws a JavaScript exception to break out of
-            // Rust without running any destructors. Don't rethrow the exception but swallow it, as
-            // this is no error and we truly want to resolve the promise of this function by returning
-            // the model markers.
-        }
-
-        let selector = ["code.language-slint", ".rustdoc pre.language-slint", "div.highlight-slint div.highlight", "div.highlight-slint\\,no-auto-preview div.highlight"]
-            .map((sel) => `${sel}:not([class*=slint\\,ignore]):not([class*=slint\\,no-preview])`).join(",");
-        var elements = document.querySelectorAll(selector);
-        for (var i = 0; i < elements.length; ++i) {
-            await create_click_to_play_and_edit_buttons(elements[i]);
-        }
-    }
-    run();
-
-    // Included markdown files may have links to other markdown files, which may not have been
-    // resolved by rustdoc. This helper locates such links and resolves them, assuming that each
-    // .md file gets its own sub-directory with an index.html.
-    function fix_markdown_links() {
-        for (let anchor of document.querySelectorAll('a[href$=".md"], a[href*=".md#"]')) {
-            let url = new URL(anchor.href);
-            let dir_separator = Math.max(url.pathname.lastIndexOf("/"), 0);
-            let base_name = url.pathname.slice(dir_separator + 1, -3);
-            let base_path = url.pathname.slice(0, dir_separator);
-            url.pathname = base_path + "/../" + base_name + "/index.html";
-            anchor.setAttribute("href", url);
-        }
-    }
-    fix_markdown_links()
-</script>
-<!--
-    This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
-    It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
-    in sphinx and via head.hbs in mdbook.
--->
-<link rel="stylesheet" href="https://slint.dev/resources/highlightjs/11.0.1/default.min.css">
-<script src="https://slint.dev/resources/highlightjs/11.0.1/highlight.min.js"></script>
-<script>
-  function highlight_slint(hljs) {
-    const KEYWORDS = {
-      keyword:
-        "animate callback changed component enum export for function global if import in in-out inherits out parent private property public pure root self states struct",
-      literal: "false true",
-      built_in:
-        "ArcTo Clip Close Colors CubicTo Flickable FocusScope GridLayout HorizontalLayout Image LineTo Math MoveTo Path PopupWindow QuadraticTo Rectangle Row Text TextInput TouchArea VerticalLayout Window animation-tick debug",
-      type: "bool duration easing float int length logical-length relative-font-size string",
-    };
-
-    return {
-      name: 'slint',
-      case_insensitive: false,
-      keywords: KEYWORDS,
-      contains: [
-        hljs.QUOTE_STRING_MODE,
-        hljs.C_LINE_COMMENT_MODE,
-        hljs.C_BLOCK_COMMENT_MODE,
-        hljs.COMMENT('/\\*', '\\*/', {
-          contains: ['self']
-        }),
-        {
-          className: 'number',
-          begin: '\\b\\d+(\\.\\d+)?(\\w+)?',
-          relevance: 0
-        },
-        {
-          className: 'title',
-          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]* *:=',
-        },
-        {
-          className: 'symbol',
-          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]*(:| *=>)',
-        },
-        {
-          className: 'built_in',
-          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]*!',
-        },
-      ],
-      illegal: /@/
-    };
-  };
-
-  // Tags used in fenced code blocks
-  for (let tag of ["slint", "slint,no-preview", "slint,no-auto-preview", "slint,ignore"]) {
-    hljs.registerLanguage(tag, highlight_slint);
-  }
-
-
-  window.addEventListener("DOMContentLoaded", () => {
-    const rustDoc = document.querySelector('meta[name="generator"]')?.content == "rustdoc";
-    if (rustDoc) {
-      // Only highlight .slint blocks, leave the others to rustdoc
-      for (slintBlock of document.querySelectorAll("[class*=language-slint]")) {
-        hljs.highlightElement(slintBlock)
-      }
-
-      // Some of the rustdoc selectors require the pre element to have the rust class
-      for (codeBlock of document.querySelectorAll(".language-slint.hljs")) {
-        codeBlock.classList.add("rust");
-        codeBlock.classList.remove("hljs");
-      }
-
-      // Change the hljs generated classes to the rustdoc
-      // ones, so that the highlighting adjusts to the theme correctly.
-      const highlightJSToRustDoc = [
-        ["comment", "comment"],
-        ["number", "number"],
-        ["symbol", "struct"], // width:
-        ["keyword", "kw"],
-        ["built_in", "primitive"],
-        ["string", "string"],
-        ["title", "fnname"], // Foo :=
-        ["type", "type"]
-      ];
-
-      for ([hljs_class, rustdoc_class] of highlightJSToRustDoc) {
-        for (titleElement of document.querySelectorAll(`.hljs-${hljs_class}`)) {
-          titleElement.classList.remove(`hljs-${hljs_class}`);
-          titleElement.classList.add(rustdoc_class);
-        }
-      }
-    } else {
-      // For use with the mdbook Tutorial
-      hljs.highlightAll();
-
-      // The Sphinx/my_st generated HTML for code blocks doesn't use <code> tags, so highlight.js'
-      // default selector "pre code" doesn't match. Let's do it by hand:
-      for (block of document.querySelectorAll("div[class*=highlight-slint] div.highlight pre")) {
-        hljs.highlightElement(block)
-      }
-    }
-
-    // Fix up links that sphinx handles but for rustdoc we need to resolve manually:
-    {
-      let target_url = null;
-      if (document.location.hostname == "snapshots.slint.dev") {
-        target_url = `https://snapshots.slint.dev/master/docs/slint/`;
-      } else {
-        let version = document.querySelector("span.version");
-        if (version !== null) {
-          target_url = `https://slint.dev/releases/${version.innerText}/docs/slint/`;
-        }
-      }
-
-      if (target_url !== null) {
-        for (let link of document.querySelectorAll("a[href^='slint-reference:']")) {
-          link.href = link.href.replace("slint-reference:", target_url);
-        }
-      }
-    }
-  });
-</script>
 
   <footer class="bd-footer">
   </footer>

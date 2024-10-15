@@ -31,8 +31,8 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/theme_tweak.css?v=a03aae7b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/theme_tweak.css?v=e5538edb" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/typesense-docsearch-css@0.3.0" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -56,6 +56,7 @@
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.9.0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
         </script>
+    <script src="../../../_static/cm6.bundle.js?v=663fcec5"></script>
     <script src="../../../_static/expand_tabs.js?v=acb398a4"></script>
     <link rel="canonical" href="https://docs.slint.dev/src/language/concepts/translations.html" />
     <link rel="icon" href="https://slint.dev/favicon.svg"/>
@@ -63,8 +64,21 @@
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Syntax" href="../syntax/index.html" />
     <link rel="prev" title="Purity" href="purity.html" />
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+    <!-- Custom styles and script to prevent FOUC -->
+    <style>
+        body {
+            visibility: hidden;  /* Hide body until the theme is applied */
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme') || 'light';  // Default to light theme
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            document.body.style.visibility = 'visible';  // Make visible once theme is applied
+        });
+    </script>
+
   </head>
   
   
@@ -482,10 +496,8 @@ document.write(`
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h2>
 <div class="tip docutils">
 <p>Install the <code class="docutils literal notranslate"><span class="pre">slint-tr-extractor</span></code> tool to extract translatable strings from <code class="docutils literal notranslate"><span class="pre">.slint</span></code> files:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>cargo<span class="w"> </span>install<span class="w"> </span>slint-tr-extractor
-</pre></div>
-</div>
-</div>
+<div id="editor-src-language-concepts-translations-13" class="codemirror-editor" data-lang="sh" data-ignore="true"><div class="codemirror-content" style="display:none">cargo install slint-tr-extractor
+</div></div></div>
 <p>Complete the following steps to translate your application:</p>
 <ol class="arabic simple">
 <li><p>Identify all user visible strings that need translation and annotate them with the <code class="docutils literal notranslate"><span class="pre">&#64;tr()</span></code> macro.</p></li>
@@ -505,15 +517,13 @@ document.write(`
 <p>Use the <code class="docutils literal notranslate"><span class="pre">&#64;tr</span></code> macro in <code class="docutils literal notranslate"><span class="pre">.slint</span></code> files to mark that a string for translation. This macro
 takes care of both the translation and the formatting by replacing <code class="docutils literal notranslate"><span class="pre">{}</span></code> placeholders.</p>
 <p>The first argument must be a plain string literal, followed by the arguments:</p>
-<div class="highlight-slint,no-preview notranslate"><div class="highlight"><pre><span></span>export component Example {
+<div id="editor-src-language-concepts-translations-43" class="codemirror-editor" data-lang="slint,no-preview" data-readonly="false" data-nopreview="true"><div class="codemirror-content" style="display:none">export component Example {
     property &lt;string&gt; name;
     Text {
-        text: @tr(&quot;Hello, {}&quot;, name);
+        text: &#64;tr(&quot;Hello, {}&quot;, name);
     }
 }
-</pre></div>
-</div>
-<section id="formatting">
+</div></div><section id="formatting">
 <h3>Formatting<a class="headerlink" href="#formatting" title="Permalink to this heading">#</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">&#64;tr</span></code> macro replaces each <code class="docutils literal notranslate"><span class="pre">{}</span></code> placeholder in the string marked for translation with the corresponding argument.
 It’s also possible to re-order the arguments using <code class="docutils literal notranslate"><span class="pre">{0}</span></code>, <code class="docutils literal notranslate"><span class="pre">{1}</span></code>, and so on. Translators can use ordered
@@ -528,14 +538,12 @@ depending on whether there is a single element or multiple.</p>
 <p>Given <code class="docutils literal notranslate"><span class="pre">count</span></code> and an expression that represents the count of something, form the plural with the <code class="docutils literal notranslate"><span class="pre">|</span></code> and <code class="docutils literal notranslate"><span class="pre">%</span></code> symbols like so:</p>
 <p><code class="docutils literal notranslate"><span class="pre">&#64;tr(&quot;I</span> <span class="pre">have</span> <span class="pre">{n}</span> <span class="pre">item&quot;</span> <span class="pre">|</span> <span class="pre">&quot;I</span> <span class="pre">have</span> <span class="pre">{n}</span> <span class="pre">items&quot;</span> <span class="pre">%</span> <span class="pre">count)</span></code>.</p>
 <p>Use <code class="docutils literal notranslate"><span class="pre">{n}</span></code> in the format string to access the expression after the <code class="docutils literal notranslate"><span class="pre">%</span></code>.</p>
-<div class="highlight-slint,no-preview notranslate"><div class="highlight"><pre><span></span>export component Example inherits Text {
+<div id="editor-src-language-concepts-translations-72" class="codemirror-editor" data-lang="slint,no-preview" data-readonly="false" data-nopreview="true"><div class="codemirror-content" style="display:none">export component Example inherits Text {
     in property &lt;int&gt; score;
     in property &lt;int&gt; name;
-    text: @tr(&quot;Hello {0}, you have one point&quot; | &quot;Hello {0}, you have {n} point&quot; % score, name);
+    text: &#64;tr(&quot;Hello {0}, you have one point&quot; | &quot;Hello {0}, you have {n} point&quot; % score, name);
 }
-</pre></div>
-</div>
-</section>
+</div></div></section>
 <section id="context">
 <h3>Context<a class="headerlink" href="#context" title="Permalink to this heading">#</a></h3>
 <p>Disambiguate translations for strings with the same source text but different contextual meanings by adding a context
@@ -543,22 +551,18 @@ to the <code class="docutils literal notranslate"><span class="pre">&#64;tr(...)
 <p>Use the context to provide additional context information to translators, ensuring accurate and contextually appropriate translations.</p>
 <p>The context must be a plain string literal and it appears as <code class="docutils literal notranslate"><span class="pre">msgctx</span></code> in the <code class="docutils literal notranslate"><span class="pre">.pot</span></code> files. If not specified, the context defaults
 to the name of the surrounding component.</p>
-<div class="highlight-slint,no-preview notranslate"><div class="highlight"><pre><span></span>export component MenuItem {
-    property &lt;string&gt; name : @tr(&quot;Default Name&quot;); // Default: `MenuItem` will be the context.
-    property &lt;string&gt; tooltip : @tr(&quot;ToolTip&quot; =&gt; &quot;ToolTip for {}&quot;, name); // Specified: The context will be `ToolTip`.
+<div id="editor-src-language-concepts-translations-90" class="codemirror-editor" data-lang="slint,no-preview" data-readonly="false" data-nopreview="true"><div class="codemirror-content" style="display:none">export component MenuItem {
+    property &lt;string&gt; name : &#64;tr(&quot;Default Name&quot;); // Default: `MenuItem` will be the context.
+    property &lt;string&gt; tooltip : &#64;tr(&quot;ToolTip&quot; =&gt; &quot;ToolTip for {}&quot;, name); // Specified: The context will be `ToolTip`.
 }
-</pre></div>
-</div>
-</section>
+</div></div></section>
 </section>
 <section id="extract-translatable-strings">
 <h2>Extract Translatable Strings<a class="headerlink" href="#extract-translatable-strings" title="Permalink to this heading">#</a></h2>
 <p>Use the <code class="docutils literal notranslate"><span class="pre">slint-tr-extractor</span></code> tool to generate a <code class="docutils literal notranslate"><span class="pre">.pot</span></code> file from <code class="docutils literal notranslate"><span class="pre">.slint</span></code> files.
 You can run it like so:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>find<span class="w"> </span>-name<span class="w"> </span><span class="se">\*</span>.slint<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>slint-tr-extractor<span class="w"> </span>-o<span class="w"> </span>MY_PROJECT.pot
-</pre></div>
-</div>
-<p>This creates a file called <code class="docutils literal notranslate"><span class="pre">MY_PROJECT.pot</span></code>. Replace “MY_PROJECT” with your actual project name.
+<div id="editor-src-language-concepts-translations-102" class="codemirror-editor" data-lang="sh" data-ignore="true"><div class="codemirror-content" style="display:none">find -name \*.slint | xargs slint-tr-extractor -o MY_PROJECT.pot
+</div></div><p>This creates a file called <code class="docutils literal notranslate"><span class="pre">MY_PROJECT.pot</span></code>. Replace “MY_PROJECT” with your actual project name.
 To learn how the project name affects the lookup of translations, read the sections below.</p>
 <div class="info docutils">
 <p><code class="docutils literal notranslate"><span class="pre">.pot</span></code> files are <a class="reference external" href="https://www.gnu.org/software/gettext/">Gettext</a> template files.</p>
@@ -584,18 +588,14 @@ using a dedicated translation tool for working with them, such as the following:
 that is more efficient to read by code.</p>
 <p>Use <a class="reference external" href="https://www.gnu.org/software/gettext/">Gettext</a>’s <code class="docutils literal notranslate"><span class="pre">msgfmt</span></code> command line tool to convert <code class="docutils literal notranslate"><span class="pre">.po</span></code> files to <code class="docutils literal notranslate"><span class="pre">.mo</span></code>
 files:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>msgfmt<span class="w"> </span>translation.po<span class="w"> </span>-o<span class="w"> </span>translation.mo
-</pre></div>
-</div>
-</section>
+<div id="editor-src-language-concepts-translations-138" class="codemirror-editor" data-lang="sh" data-ignore="true"><div class="codemirror-content" style="display:none">msgfmt translation.po -o translation.mo
+</div></div></section>
 <section id="select-and-load-mo-files-at-run-time">
 <h2>Select and Load <code class="docutils literal notranslate"><span class="pre">.mo</span></code> Files at Run-Time<a class="headerlink" href="#select-and-load-mo-files-at-run-time" title="Permalink to this heading">#</a></h2>
 <p>Slint uses the <a class="reference external" href="https://www.gnu.org/software/gettext/">Gettext</a> library to load translations at run-time.
 Gettext expects translation files - called message catalogs - in following directory hierarchy:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dir_name</span><span class="o">/</span><span class="n">locale</span><span class="o">/</span><span class="n">LC_MESSAGES</span><span class="o">/</span><span class="n">domain_name</span><span class="o">.</span><span class="n">mo</span>
-</pre></div>
-</div>
-<ul>
+<div id="editor-src-language-concepts-translations-147" class="codemirror-editor" data-lang="default" data-ignore="true"><div class="codemirror-content" style="display:none">dir_name/locale/LC_MESSAGES/domain_name.mo
+</div></div><ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">dir_name</span></code>: the base directory that you can choose freely.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">locale</span></code>: The name of the user’s locale for a given target language, such as <code class="docutils literal notranslate"><span class="pre">fr</span></code> for French, or <code class="docutils literal notranslate"><span class="pre">de</span></code> for German.</p>
 <p>The locale is typically determined using environment variables that your operating system sets.</p>
@@ -614,15 +614,11 @@ the <code class="docutils literal notranslate"><span class="pre">dir_name</span>
 corresponding sub-directories and their file name - <code class="docutils literal notranslate"><span class="pre">domain_name</span></code> - must match the package name
 in your <code class="docutils literal notranslate"><span class="pre">Cargo.toml</span></code>. This is often the same as the crate name.</p>
 <p>For example:</p>
-<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="n">slint</span><span class="p">::</span><span class="n">init_translations</span><span class="o">!</span><span class="p">(</span><span class="fm">concat!</span><span class="p">(</span><span class="fm">env!</span><span class="p">(</span><span class="s">&quot;CARGO_MANIFEST_DIR&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;/lang/&quot;</span><span class="p">));</span>
-</pre></div>
-</div>
-<p>For example, if your <code class="docutils literal notranslate"><span class="pre">Cargo.toml</span></code> contains the following lines and the user’s locale is <code class="docutils literal notranslate"><span class="pre">fr</span></code>:</p>
-<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[package]</span>
-<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;gallery&quot;</span>
-</pre></div>
-</div>
-<p>With these settings, Slint looks for <code class="docutils literal notranslate"><span class="pre">gallery.mo</span></code> in the <code class="docutils literal notranslate"><span class="pre">lang/fr/LC_MESSAGES/gallery.mo</span></code>.</p>
+<div id="editor-src-language-concepts-translations-176" class="codemirror-editor" data-lang="rust" data-ignore="true"><div class="codemirror-content" style="display:none">slint::init_translations!(concat!(env!(&quot;CARGO_MANIFEST_DIR&quot;), &quot;/lang/&quot;));
+</div></div><p>For example, if your <code class="docutils literal notranslate"><span class="pre">Cargo.toml</span></code> contains the following lines and the user’s locale is <code class="docutils literal notranslate"><span class="pre">fr</span></code>:</p>
+<div id="editor-src-language-concepts-translations-182" class="codemirror-editor" data-lang="toml" data-ignore="true"><div class="codemirror-content" style="display:none">[package]
+name = &quot;gallery&quot;
+</div></div><p>With these settings, Slint looks for <code class="docutils literal notranslate"><span class="pre">gallery.mo</span></code> in the <code class="docutils literal notranslate"><span class="pre">lang/fr/LC_MESSAGES/gallery.mo</span></code>.</p>
 </section>
 <section id="select-and-load-translations-with-c">
 <h3>Select and Load Translations with C++<a class="headerlink" href="#select-and-load-translations-with-c" title="Permalink to this heading">#</a></h3>
@@ -631,30 +627,26 @@ the translations API and activate run-time translation support.</p>
 <p>In C++ applications using cmake, the <code class="docutils literal notranslate"><span class="pre">domain_name</span></code> is the CMake target name.</p>
 <p>Next, bind the text domain to a path using the standard gettext library.</p>
 <p>To do so, add this in your <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file:</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">find_package</span><span class="p">(</span><span class="s">Intl</span><span class="p">)</span>
-<span class="nb">if</span><span class="p">(</span><span class="s">Intl_FOUND</span><span class="p">)</span>
-<span class="w">    </span><span class="nb">target_compile_definitions</span><span class="p">(</span><span class="s">my_application</span><span class="w"> </span><span class="s">PRIVATE</span><span class="w"> </span><span class="s">HAVE_GETTEXT</span><span class="w"> </span><span class="s">SRC_DIR=</span><span class="s2">&quot;${CMAKE_CURRENT_SOURCE_DIR}&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">my_application</span><span class="w"> </span><span class="s">PRIVATE</span><span class="w"> </span><span class="s">Intl::Intl</span><span class="p">)</span>
-<span class="nb">endif</span><span class="p">()</span>
-</pre></div>
-</div>
-<p>You can then setup the locale and the text domain</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#ifdef HAVE_GETTEXT</span>
-<span class="cp">#</span><span class="w">    </span><span class="cp">include</span><span class="w"> </span><span class="cpf">&lt;locale&gt;</span>
-<span class="cp">#</span><span class="w">    </span><span class="cp">include</span><span class="w"> </span><span class="cpf">&lt;libintl.h&gt;</span>
-<span class="cp">#endif</span>
+<div id="editor-src-language-concepts-translations-200" class="codemirror-editor" data-lang="cmake" data-ignore="true"><div class="codemirror-content" style="display:none">find_package(Intl)
+if(Intl_FOUND)
+    target_compile_definitions(my_application PRIVATE HAVE_GETTEXT SRC_DIR=&quot;${CMAKE_CURRENT_SOURCE_DIR}&quot;)
+    target_link_libraries(my_application PRIVATE Intl::Intl)
+endif()
+</div></div><p>You can then setup the locale and the text domain</p>
+<div id="editor-src-language-concepts-translations-210" class="codemirror-editor" data-lang="c++" data-ignore="true"><div class="codemirror-content" style="display:none">#ifdef HAVE_GETTEXT
+#    include &lt;locale&gt;
+#    include &lt;libintl.h&gt;
+#endif
 
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
-<span class="p">{</span>
-<span class="cp">#ifdef HAVE_GETTEXT</span>
-<span class="w">    </span><span class="n">bindtextdomain</span><span class="p">(</span><span class="s">&quot;my_application&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">SRC_DIR</span><span class="w"> </span><span class="s">&quot;/lang/&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">locale</span><span class="o">::</span><span class="n">global</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">locale</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">));</span>
-<span class="cp">#endif</span>
-<span class="w">   </span><span class="c1">//...</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>For example, if you’re using the above and the user’s locale is <code class="docutils literal notranslate"><span class="pre">fr</span></code>,
+int main()
+{
+#ifdef HAVE_GETTEXT
+    bindtextdomain(&quot;my_application&quot;, SRC_DIR &quot;/lang/&quot;);
+    std::locale::global(std::locale(&quot;&quot;));
+#endif
+   //...
+}
+</div></div><p>For example, if you’re using the above and the user’s locale is <code class="docutils literal notranslate"><span class="pre">fr</span></code>,
 Slint looks for <code class="docutils literal notranslate"><span class="pre">my_application.mo</span></code> in the <code class="docutils literal notranslate"><span class="pre">lang/fr/LC_MESSAGES/</span></code> directory.</p>
 </section>
 </section>
@@ -662,10 +654,8 @@ Slint looks for <code class="docutils literal notranslate"><span class="pre">my_
 <h2>Previewing Translations with <code class="docutils literal notranslate"><span class="pre">slint-viewer</span></code><a class="headerlink" href="#previewing-translations-with-slint-viewer" title="Permalink to this heading">#</a></h2>
 <div class="tip docutils">
 <p>Use <code class="docutils literal notranslate"><span class="pre">slint-viewer</span></code> to preview translations when previewing <code class="docutils literal notranslate"><span class="pre">.slint</span></code> files:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>cargo<span class="w"> </span>install<span class="w"> </span>slint-viewer
-</pre></div>
-</div>
-</div>
+<div id="editor-src-language-concepts-translations-235" class="codemirror-editor" data-lang="sh" data-ignore="true"><div class="codemirror-content" style="display:none">cargo install slint-viewer
+</div></div></div>
 <ol class="arabic simple">
 <li><p>Enable the <code class="docutils literal notranslate"><span class="pre">gettext</span></code> feature when compiling <code class="docutils literal notranslate"><span class="pre">slint-viewer</span></code>.</p></li>
 <li><p>Use the <code class="docutils literal notranslate"><span class="pre">--translation-domain</span></code> and <code class="docutils literal notranslate"><span class="pre">translation-dir</span></code> command line options to
@@ -784,253 +774,12 @@ By Slint Developers <info@slint.dev>
       </main>
     </div>
   </div>
-   
+  
+    
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
   <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
 <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-<!--
-    This file is used to add preview of the `.slint` snippets in the generated rustdoc documentation.
-    It can be injected via the `--html-in-header slint-docs-preview.html` option of rustdoc.
--->
-<script type="module">
-    "use strict";
-    //import * as slint from 'https://releases.slint.dev/0.x.0/wasm-interpreter/slint_wasm_interpreter.js';
-    //const editor_url = "https://releases.slint.dev/0.x.0/editor/";
-    import * as slint from 'https://snapshots.slint.dev/master/wasm-interpreter/slint_wasm_interpreter.js';
-    const editor_url = "https://snapshots.slint.dev/master/editor/";
-    // keep them alive
-    var all_instances = new Array;
-
-    async function render_or_error(source, div) {
-        let canvas_id = 'canvas_' + Math.random().toString(36).substr(2, 9);
-        let canvas = document.createElement("canvas");
-        canvas.id = canvas_id;
-        div.appendChild(canvas);
-
-        let { component, error_string } = await slint.compile_from_string(source, "");
-        if (error_string != "") {
-            var text = document.createTextNode(error_string);
-            var p = document.createElement('pre');
-            p.appendChild(text);
-            div.innerHTML = "<pre style='color: red; background-color:#fee; margin:0'>" + p.innerHTML + "</pre>";
-        }
-        if (component !== undefined) {
-            let instance = await component.create(canvas_id);
-            await instance.show();
-            all_instances.push(instance);
-        }
-    }
-
-    async function create_preview(element, source_code) {
-        // Style the preview such that a flexbox lays out the source code box
-        // (which should take up any spare space), followed by the preview canvas.
-        // The latter may wrap into a new row on mobile. The edit/play buttons are
-        // placed last by flexbox order attribute.
-        let div = document.createElement("div");
-        let sourceCodeBox = element.firstElementChild;
-        element.style = "display: flex; flex-wrap: wrap;";
-        sourceCodeBox.style = "flex-grow: 2";
-        element.append(div);
-        await render_or_error(source_code, div);
-    }
-
-    function should_show_automatic_preview(element) {
-        // The `no-auto-preview` doesn't map directly to a dedicated class but it's mangled differently
-        // between rustdoc and sphinx, so match fuzzy on the entire class list:
-        return !element.className.includes("no-auto-preview");
-    }
-
-    async function create_click_to_play_and_edit_buttons(element) {
-        let source = element.innerText;
-
-        let link_section = document.createElement("div");
-        // Ensure the link section is always last and on a row of its own in the flexbox.
-        link_section.style = "order: 100; flex-basis: 100%;";
-        element.append(link_section);
-
-        let button_style = "text-decoration: none;"
-
-        let edit_button = document.createElement("a");
-        edit_button.style = button_style;
-        edit_button.href = `${editor_url}?snippet=${encodeURIComponent(source)}`;
-        edit_button.target = "_blank";
-        edit_button.innerText = "Edit 📝";
-        link_section.append(edit_button);
-
-        if (should_show_automatic_preview(element)) {
-            create_preview(element, source);
-        } else {
-            let play_button = document.createElement("a");
-            play_button.style = button_style;
-            play_button.innerText = "Preview ▶️";
-            play_button.onclick = async () => {
-                play_button.remove();
-                create_preview(element, source);
-            };
-
-            link_section.prepend(play_button);
-        }
-    }
-
-    async function run() {
-        await slint.default();
-
-        try {
-            slint.run_event_loop();
-            // this will trigger a JS exception, so this line will never be reached!
-        } catch (e) {
-            // The winit event loop, when targeting wasm, throws a JavaScript exception to break out of
-            // Rust without running any destructors. Don't rethrow the exception but swallow it, as
-            // this is no error and we truly want to resolve the promise of this function by returning
-            // the model markers.
-        }
-
-        let selector = ["code.language-slint", ".rustdoc pre.language-slint", "div.highlight-slint div.highlight", "div.highlight-slint\\,no-auto-preview div.highlight"]
-            .map((sel) => `${sel}:not([class*=slint\\,ignore]):not([class*=slint\\,no-preview])`).join(",");
-        var elements = document.querySelectorAll(selector);
-        for (var i = 0; i < elements.length; ++i) {
-            await create_click_to_play_and_edit_buttons(elements[i]);
-        }
-    }
-    run();
-
-    // Included markdown files may have links to other markdown files, which may not have been
-    // resolved by rustdoc. This helper locates such links and resolves them, assuming that each
-    // .md file gets its own sub-directory with an index.html.
-    function fix_markdown_links() {
-        for (let anchor of document.querySelectorAll('a[href$=".md"], a[href*=".md#"]')) {
-            let url = new URL(anchor.href);
-            let dir_separator = Math.max(url.pathname.lastIndexOf("/"), 0);
-            let base_name = url.pathname.slice(dir_separator + 1, -3);
-            let base_path = url.pathname.slice(0, dir_separator);
-            url.pathname = base_path + "/../" + base_name + "/index.html";
-            anchor.setAttribute("href", url);
-        }
-    }
-    fix_markdown_links()
-</script>
-<!--
-    This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
-    It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
-    in sphinx and via head.hbs in mdbook.
--->
-<link rel="stylesheet" href="https://slint.dev/resources/highlightjs/11.0.1/default.min.css">
-<script src="https://slint.dev/resources/highlightjs/11.0.1/highlight.min.js"></script>
-<script>
-  function highlight_slint(hljs) {
-    const KEYWORDS = {
-      keyword:
-        "animate callback changed component enum export for function global if import in in-out inherits out parent private property public pure root self states struct",
-      literal: "false true",
-      built_in:
-        "ArcTo Clip Close Colors CubicTo Flickable FocusScope GridLayout HorizontalLayout Image LineTo Math MoveTo Path PopupWindow QuadraticTo Rectangle Row Text TextInput TouchArea VerticalLayout Window animation-tick debug",
-      type: "bool duration easing float int length logical-length relative-font-size string",
-    };
-
-    return {
-      name: 'slint',
-      case_insensitive: false,
-      keywords: KEYWORDS,
-      contains: [
-        hljs.QUOTE_STRING_MODE,
-        hljs.C_LINE_COMMENT_MODE,
-        hljs.C_BLOCK_COMMENT_MODE,
-        hljs.COMMENT('/\\*', '\\*/', {
-          contains: ['self']
-        }),
-        {
-          className: 'number',
-          begin: '\\b\\d+(\\.\\d+)?(\\w+)?',
-          relevance: 0
-        },
-        {
-          className: 'title',
-          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]* *:=',
-        },
-        {
-          className: 'symbol',
-          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]*(:| *=>)',
-        },
-        {
-          className: 'built_in',
-          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]*!',
-        },
-      ],
-      illegal: /@/
-    };
-  };
-
-  // Tags used in fenced code blocks
-  for (let tag of ["slint", "slint,no-preview", "slint,no-auto-preview", "slint,ignore"]) {
-    hljs.registerLanguage(tag, highlight_slint);
-  }
-
-
-  window.addEventListener("DOMContentLoaded", () => {
-    const rustDoc = document.querySelector('meta[name="generator"]')?.content == "rustdoc";
-    if (rustDoc) {
-      // Only highlight .slint blocks, leave the others to rustdoc
-      for (slintBlock of document.querySelectorAll("[class*=language-slint]")) {
-        hljs.highlightElement(slintBlock)
-      }
-
-      // Some of the rustdoc selectors require the pre element to have the rust class
-      for (codeBlock of document.querySelectorAll(".language-slint.hljs")) {
-        codeBlock.classList.add("rust");
-        codeBlock.classList.remove("hljs");
-      }
-
-      // Change the hljs generated classes to the rustdoc
-      // ones, so that the highlighting adjusts to the theme correctly.
-      const highlightJSToRustDoc = [
-        ["comment", "comment"],
-        ["number", "number"],
-        ["symbol", "struct"], // width:
-        ["keyword", "kw"],
-        ["built_in", "primitive"],
-        ["string", "string"],
-        ["title", "fnname"], // Foo :=
-        ["type", "type"]
-      ];
-
-      for ([hljs_class, rustdoc_class] of highlightJSToRustDoc) {
-        for (titleElement of document.querySelectorAll(`.hljs-${hljs_class}`)) {
-          titleElement.classList.remove(`hljs-${hljs_class}`);
-          titleElement.classList.add(rustdoc_class);
-        }
-      }
-    } else {
-      // For use with the mdbook Tutorial
-      hljs.highlightAll();
-
-      // The Sphinx/my_st generated HTML for code blocks doesn't use <code> tags, so highlight.js'
-      // default selector "pre code" doesn't match. Let's do it by hand:
-      for (block of document.querySelectorAll("div[class*=highlight-slint] div.highlight pre")) {
-        hljs.highlightElement(block)
-      }
-    }
-
-    // Fix up links that sphinx handles but for rustdoc we need to resolve manually:
-    {
-      let target_url = null;
-      if (document.location.hostname == "snapshots.slint.dev") {
-        target_url = `https://snapshots.slint.dev/master/docs/slint/`;
-      } else {
-        let version = document.querySelector("span.version");
-        if (version !== null) {
-          target_url = `https://slint.dev/releases/${version.innerText}/docs/slint/`;
-        }
-      }
-
-      if (target_url !== null) {
-        for (let link of document.querySelectorAll("a[href^='slint-reference:']")) {
-          link.href = link.href.replace("slint-reference:", target_url);
-        }
-      }
-    }
-  });
-</script>
 
   <footer class="bd-footer">
   </footer>

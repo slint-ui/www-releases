@@ -31,8 +31,8 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/theme_tweak.css?v=a03aae7b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/theme_tweak.css?v=e5538edb" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/typesense-docsearch-css@0.3.0" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -56,6 +56,7 @@
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.9.0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
         </script>
+    <script src="../../../_static/cm6.bundle.js?v=663fcec5"></script>
     <script src="../../../_static/expand_tabs.js?v=acb398a4"></script>
     <link rel="canonical" href="https://docs.slint.dev/src/language/syntax/types.html" />
     <link rel="icon" href="https://slint.dev/favicon.svg"/>
@@ -63,8 +64,21 @@
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Properties" href="properties.html" />
     <link rel="prev" title="Identifiers" href="identifiers.html" />
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+    <!-- Custom styles and script to prevent FOUC -->
+    <style>
+        body {
+            visibility: hidden;  /* Hide body until the theme is applied */
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme') || 'light';  // Default to light theme
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            document.body.style.visibility = 'visible';  // Make visible once theme is applied
+        });
+    </script>
+
   </head>
   
   
@@ -601,24 +615,20 @@ be hard to insert otherwise:</p>
 </tbody>
 </table>
 <p>Anything else following an unescaped <code class="docutils literal notranslate"><span class="pre">\</span></code> is an error.</p>
-<div class="highlight-slint,no-preview notranslate"><div class="highlight"><pre><span></span>export component Example inherits Text {
+<div id="editor-src-language-syntax-types-135" class="codemirror-editor" data-lang="slint,no-preview" data-readonly="false" data-nopreview="true"><div class="codemirror-content" style="display:none">export component Example inherits Text {
     text: &quot;hello&quot;;
 }
-</pre></div>
-</div>
-<p>Note: The <code class="docutils literal notranslate"><span class="pre">\{...}</span></code> syntax is not valid within the <code class="docutils literal notranslate"><span class="pre">slint!</span></code> macro in Rust.</p>
+</div></div><p>Note: The <code class="docutils literal notranslate"><span class="pre">\{...}</span></code> syntax is not valid within the <code class="docutils literal notranslate"><span class="pre">slint!</span></code> macro in Rust.</p>
 </section>
 <section id="colors-and-brushes">
 <h2>Colors and Brushes<a class="headerlink" href="#colors-and-brushes" title="Permalink to this heading">#</a></h2>
 <p>Color literals follow the syntax of CSS:</p>
-<div class="highlight-slint,no-preview notranslate"><div class="highlight"><pre><span></span>export component Example inherits Window {
+<div id="editor-src-language-syntax-types-147" class="codemirror-editor" data-lang="slint,no-preview" data-readonly="false" data-nopreview="true"><div class="codemirror-content" style="display:none">export component Example inherits Window {
     background: blue;
     property&lt;color&gt; c1: #ffaaff;
     property&lt;brush&gt; b2: Colors.red;
 }
-</pre></div>
-</div>
-<p>In addition to plain colors, many elements have properties that are of type <code class="docutils literal notranslate"><span class="pre">brush</span></code> instead of <code class="docutils literal notranslate"><span class="pre">color</span></code>.
+</div></div><p>In addition to plain colors, many elements have properties that are of type <code class="docutils literal notranslate"><span class="pre">brush</span></code> instead of <code class="docutils literal notranslate"><span class="pre">color</span></code>.
 A brush is a type that can be either a color or gradient. The brush is then used to fill an element or
 draw the outline.</p>
 <p>CSS Color names are only in scope in expressions of type <code class="docutils literal notranslate"><span class="pre">color</span></code> or <code class="docutils literal notranslate"><span class="pre">brush</span></code>. Otherwise, you can access
@@ -683,17 +693,15 @@ will be rotated by the specified value.</p>
 reach at the specified percentage along the axis of the gradient.</p>
 <p>The following example shows a rectangle that’s filled with a linear gradient that starts with a light blue
 color, interpolates to a very light shade in the center and finishes with an orange tone:</p>
-<div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>export component Example inherits Window {
+<div id="editor-src-language-syntax-types-231" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Window {
     preferred-width: 100px;
     preferred-height: 100px;
 
     Rectangle {
-        background: @linear-gradient(90deg, #3f87a6 0%, #ebf8e1 50%, #f69d3c 100%);
+        background: &#64;linear-gradient(90deg, #3f87a6 0%, #ebf8e1 50%, #f69d3c 100%);
     }
 }
-</pre></div>
-</div>
-</section>
+</div></div></section>
 <section id="radial-gradients">
 <h3>Radial Gradients<a class="headerlink" href="#radial-gradients" title="Permalink to this heading">#</a></h3>
 <p>Radial gradients are like linear gradients but the colors are interpolated circularly instead of
@@ -702,16 +710,14 @@ along a line. To describe a radial gradient, use the <code class="docutils liter
 <p>The first parameter to the macro is always <code class="docutils literal notranslate"><span class="pre">circle</span></code> because only circular gradients are supported.
 The syntax is otherwise based on the CSS <code class="docutils literal notranslate"><span class="pre">radial-gradient</span></code> function.</p>
 <p>Example:</p>
-<div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>export component Example inherits Window {
+<div id="editor-src-language-syntax-types-254" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Window {
     preferred-width: 100px;
     preferred-height: 100px;
     Rectangle {
-        background: @radial-gradient(circle, #f00 0%, #0f0 50%, #00f 100%);
+        background: &#64;radial-gradient(circle, #f00 0%, #0f0 50%, #00f 100%);
     }
 }
-</pre></div>
-</div>
-</section>
+</div></div></section>
 </section>
 <section id="images">
 <h2>Images<a class="headerlink" href="#images" title="Permalink to this heading">#</a></h2>
@@ -723,26 +729,24 @@ The address within the <code class="docutils literal notranslate"><span class="p
 <li><p>The include path used by the compiler to look up <code class="docutils literal notranslate"><span class="pre">.slint</span></code> files.</p></li>
 </ol>
 <p>Access an <code class="docutils literal notranslate"><span class="pre">image</span></code>’s dimension using its <code class="docutils literal notranslate"><span class="pre">width</span></code> and <code class="docutils literal notranslate"><span class="pre">height</span></code> properties.</p>
-<div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>export component Example inherits Window {
+<div id="editor-src-language-syntax-types-276" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Window {
     preferred-width: 150px;
     preferred-height: 50px;
 
-    in property &lt;image&gt; some_image: @image-url(&quot;https://slint.dev/logo/slint-logo-full-light.svg&quot;);
+    in property &lt;image&gt; some_image: &#64;image-url(&quot;https://slint.dev/logo/slint-logo-full-light.svg&quot;);
 
     Text {
         text: &quot;The image is &quot; + some_image.width + &quot;x&quot; + some_image.height;
     }
 }
-</pre></div>
-</div>
-<p>It is also possible to load images supporting <a class="reference external" href="https://en.wikipedia.org/wiki/9-slice_scaling">9 slice scaling</a> (also called nine patch or border images)
+</div></div><p>It is also possible to load images supporting <a class="reference external" href="https://en.wikipedia.org/wiki/9-slice_scaling">9 slice scaling</a> (also called nine patch or border images)
 by adding a  <code class="docutils literal notranslate"><span class="pre">nine-slice(...)</span></code> argument. The argument can have either one, two, or four numbers that specifies the size of the edges.
 The numbers are either <code class="docutils literal notranslate"><span class="pre">top</span> <span class="pre">right</span> <span class="pre">bottom</span> <span class="pre">left</span></code> or <code class="docutils literal notranslate"><span class="pre">vertical</span> <span class="pre">horizontal</span></code>, or one number for everything</p>
 </section>
 <section id="structs">
 <h2>Structs<a class="headerlink" href="#structs" title="Permalink to this heading">#</a></h2>
 <p>Define named structures using the <code class="docutils literal notranslate"><span class="pre">struct</span></code> keyword:</p>
-<div class="highlight-slint,no-preview notranslate"><div class="highlight"><pre><span></span>export struct Player  {
+<div id="editor-src-language-syntax-types-297" class="codemirror-editor" data-lang="slint,no-preview" data-readonly="false" data-nopreview="true"><div class="codemirror-content" style="display:none">export struct Player  {
     name: string,
     score: int,
 }
@@ -750,35 +754,29 @@ The numbers are either <code class="docutils literal notranslate"><span class="p
 export component Example {
     in-out property&lt;Player&gt; player: { name: &quot;Foo&quot;, score: 100 };
 }
-</pre></div>
-</div>
-<p>The default value of a struct, is initialized with all its fields set to their default value.</p>
+</div></div><p>The default value of a struct, is initialized with all its fields set to their default value.</p>
 <section id="anonymous-structures">
 <h3>Anonymous Structures<a class="headerlink" href="#anonymous-structures" title="Permalink to this heading">#</a></h3>
 <p>Declare anonymous structures using <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">identifier1:</span> <span class="pre">type1,</span> <span class="pre">identifier2:</span> <span class="pre">type2</span> <span class="pre">}</span></code>
 syntax, and initialize them using
 <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">identifier1:</span> <span class="pre">expression1,</span> <span class="pre">identifier2:</span> <span class="pre">expression2</span>&#160; <span class="pre">}</span></code>.</p>
 <p>You may have a trailing <code class="docutils literal notranslate"><span class="pre">,</span></code> after the last expression or type.</p>
-<div class="highlight-slint,no-preview notranslate"><div class="highlight"><pre><span></span>export component Example {
+<div id="editor-src-language-syntax-types-318" class="codemirror-editor" data-lang="slint,no-preview" data-readonly="false" data-nopreview="true"><div class="codemirror-content" style="display:none">export component Example {
     in-out property&lt;{name: string, score: int}&gt; player: { name: &quot;Foo&quot;, score: 100 };
     in-out property&lt;{a: int, }&gt; foo: { a: 3 };
 }
-</pre></div>
-</div>
-</section>
+</div></div></section>
 </section>
 <section id="enumerations">
 <h2>Enumerations<a class="headerlink" href="#enumerations" title="Permalink to this heading">#</a></h2>
 <p>Define an enumeration with the <code class="docutils literal notranslate"><span class="pre">enum</span></code> keyword:</p>
-<div class="highlight-slint,no-preview notranslate"><div class="highlight"><pre><span></span>export enum CardSuit { clubs, diamonds, hearts, spade }
+<div id="editor-src-language-syntax-types-329" class="codemirror-editor" data-lang="slint,no-preview" data-readonly="false" data-nopreview="true"><div class="codemirror-content" style="display:none">export enum CardSuit { clubs, diamonds, hearts, spade }
 
 export component Example {
     in-out property&lt;CardSuit&gt; card: spade;
     out property&lt;bool&gt; is-clubs: card == CardSuit.clubs;
 }
-</pre></div>
-</div>
-<p>Enum values can be referenced by using the name of the enum and the name of the value
+</div></div><p>Enum values can be referenced by using the name of the enum and the name of the value
 separated by a dot. (eg: <code class="docutils literal notranslate"><span class="pre">CardSuit.spade</span></code>)</p>
 <p>The name of the enum can be omitted in bindings of the type of that enum, or if the
 return value of a callback is of that enum.</p>
@@ -788,28 +786,24 @@ return value of a callback is of that enum.</p>
 <h2>Arrays and Models<a class="headerlink" href="#arrays-and-models" title="Permalink to this heading">#</a></h2>
 <p>Arrays are declared by wrapping <code class="docutils literal notranslate"><span class="pre">[</span></code> and <code class="docutils literal notranslate"><span class="pre">]</span></code> square brackets around the type of the array elements.</p>
 <p>Array literals as well as properties holding arrays act as models in <code class="docutils literal notranslate"><span class="pre">for</span></code> expressions.</p>
-<div class="highlight-slint,no-preview notranslate"><div class="highlight"><pre><span></span>export component Example {
+<div id="editor-src-language-syntax-types-352" class="codemirror-editor" data-lang="slint,no-preview" data-readonly="false" data-nopreview="true"><div class="codemirror-content" style="display:none">export component Example {
     in-out property&lt;[int]&gt; list-of-int: [1,2,3];
     in-out property&lt;[{a: int, b: string}]&gt; list-of-structs: [{ a: 1, b: &quot;hello&quot; }, {a: 2, b: &quot;world&quot;}];
 }
-</pre></div>
-</div>
-<p>Arrays define the following operations:</p>
+</div></div><p>Arrays define the following operations:</p>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">array.length</span></code></strong>: One can query the length of an array and model using the builtin <code class="docutils literal notranslate"><span class="pre">.length</span></code> property.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">array[index]</span></code></strong>: The index operator retrieves individual elements of an array.</p></li>
 </ul>
 <p>Out of bound access into an array will return default-constructed values.</p>
-<div class="highlight-slint,no-preview notranslate"><div class="highlight"><pre><span></span>export component Example {
+<div id="editor-src-language-syntax-types-366" class="codemirror-editor" data-lang="slint,no-preview" data-readonly="false" data-nopreview="true"><div class="codemirror-content" style="display:none">export component Example {
     in-out property&lt;[int]&gt; list-of-int: [1,2,3];
 
     out property &lt;int&gt; list-len: list-of-int.length;
     out property &lt;int&gt; first-int: list-of-int[0];
 }
 
-</pre></div>
-</div>
-</section>
+</div></div></section>
 <section id="conversions">
 <h2>Conversions<a class="headerlink" href="#conversions" title="Permalink to this heading">#</a></h2>
 <p>Slint supports conversions between different types. Explicit
@@ -832,14 +826,14 @@ The source struct can have either missing properties, or extra properties. But n
 <li><p>String can be converted to float by using the <code class="docutils literal notranslate"><span class="pre">to-float</span></code> function. That function returns 0 if the string isn’t
 a valid number. You can check with <code class="docutils literal notranslate"><span class="pre">is-float()</span></code> if the string contains a valid number</p></li>
 </ul>
-<div class="highlight-slint,no-preview notranslate"><div class="highlight"><pre><span></span>export component Example {
+<div id="editor-src-language-syntax-types-399" class="codemirror-editor" data-lang="slint,no-preview" data-readonly="false" data-nopreview="true"><div class="codemirror-content" style="display:none">export component Example {
     // OK: int converts to string
     property&lt;{a: string, b: int}&gt; prop1: {a: 12, b: 12 };
     // OK: even if a is missing, it will just have the default value (&quot;&quot;)
     property&lt;{a: string, b: int}&gt; prop2: { b: 12 };
     // OK: even if c is too many, it will be discarded
     property&lt;{a: string, b: int}&gt; prop3: { a: &quot;x&quot;, b: 12, c: 42 };
-    // ERROR: b is missing and c is extra, this doesn&#39;t compile, because it could be a typo.
+    // ERROR: b is missing and c is extra, this doesn't compile, because it could be a typo.
     // property&lt;{a: string, b: int}&gt; prop4: { a: &quot;x&quot;, c: 42 };
 
     property&lt;string&gt; xxx: &quot;42.1&quot;;
@@ -847,9 +841,7 @@ a valid number. You can check with <code class="docutils literal notranslate"><s
     property&lt;bool&gt; xxx2: xxx.is-float(); // true
     property&lt;int&gt; xxx3: 45.8; // 45
 }
-</pre></div>
-</div>
-</section>
+</div></div></section>
 </section>
 
 
@@ -962,253 +954,12 @@ By Slint Developers <info@slint.dev>
       </main>
     </div>
   </div>
-   
+  
+    
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
   <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
 <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-<!--
-    This file is used to add preview of the `.slint` snippets in the generated rustdoc documentation.
-    It can be injected via the `--html-in-header slint-docs-preview.html` option of rustdoc.
--->
-<script type="module">
-    "use strict";
-    //import * as slint from 'https://releases.slint.dev/0.x.0/wasm-interpreter/slint_wasm_interpreter.js';
-    //const editor_url = "https://releases.slint.dev/0.x.0/editor/";
-    import * as slint from 'https://snapshots.slint.dev/master/wasm-interpreter/slint_wasm_interpreter.js';
-    const editor_url = "https://snapshots.slint.dev/master/editor/";
-    // keep them alive
-    var all_instances = new Array;
-
-    async function render_or_error(source, div) {
-        let canvas_id = 'canvas_' + Math.random().toString(36).substr(2, 9);
-        let canvas = document.createElement("canvas");
-        canvas.id = canvas_id;
-        div.appendChild(canvas);
-
-        let { component, error_string } = await slint.compile_from_string(source, "");
-        if (error_string != "") {
-            var text = document.createTextNode(error_string);
-            var p = document.createElement('pre');
-            p.appendChild(text);
-            div.innerHTML = "<pre style='color: red; background-color:#fee; margin:0'>" + p.innerHTML + "</pre>";
-        }
-        if (component !== undefined) {
-            let instance = await component.create(canvas_id);
-            await instance.show();
-            all_instances.push(instance);
-        }
-    }
-
-    async function create_preview(element, source_code) {
-        // Style the preview such that a flexbox lays out the source code box
-        // (which should take up any spare space), followed by the preview canvas.
-        // The latter may wrap into a new row on mobile. The edit/play buttons are
-        // placed last by flexbox order attribute.
-        let div = document.createElement("div");
-        let sourceCodeBox = element.firstElementChild;
-        element.style = "display: flex; flex-wrap: wrap;";
-        sourceCodeBox.style = "flex-grow: 2";
-        element.append(div);
-        await render_or_error(source_code, div);
-    }
-
-    function should_show_automatic_preview(element) {
-        // The `no-auto-preview` doesn't map directly to a dedicated class but it's mangled differently
-        // between rustdoc and sphinx, so match fuzzy on the entire class list:
-        return !element.className.includes("no-auto-preview");
-    }
-
-    async function create_click_to_play_and_edit_buttons(element) {
-        let source = element.innerText;
-
-        let link_section = document.createElement("div");
-        // Ensure the link section is always last and on a row of its own in the flexbox.
-        link_section.style = "order: 100; flex-basis: 100%;";
-        element.append(link_section);
-
-        let button_style = "text-decoration: none;"
-
-        let edit_button = document.createElement("a");
-        edit_button.style = button_style;
-        edit_button.href = `${editor_url}?snippet=${encodeURIComponent(source)}`;
-        edit_button.target = "_blank";
-        edit_button.innerText = "Edit 📝";
-        link_section.append(edit_button);
-
-        if (should_show_automatic_preview(element)) {
-            create_preview(element, source);
-        } else {
-            let play_button = document.createElement("a");
-            play_button.style = button_style;
-            play_button.innerText = "Preview ▶️";
-            play_button.onclick = async () => {
-                play_button.remove();
-                create_preview(element, source);
-            };
-
-            link_section.prepend(play_button);
-        }
-    }
-
-    async function run() {
-        await slint.default();
-
-        try {
-            slint.run_event_loop();
-            // this will trigger a JS exception, so this line will never be reached!
-        } catch (e) {
-            // The winit event loop, when targeting wasm, throws a JavaScript exception to break out of
-            // Rust without running any destructors. Don't rethrow the exception but swallow it, as
-            // this is no error and we truly want to resolve the promise of this function by returning
-            // the model markers.
-        }
-
-        let selector = ["code.language-slint", ".rustdoc pre.language-slint", "div.highlight-slint div.highlight", "div.highlight-slint\\,no-auto-preview div.highlight"]
-            .map((sel) => `${sel}:not([class*=slint\\,ignore]):not([class*=slint\\,no-preview])`).join(",");
-        var elements = document.querySelectorAll(selector);
-        for (var i = 0; i < elements.length; ++i) {
-            await create_click_to_play_and_edit_buttons(elements[i]);
-        }
-    }
-    run();
-
-    // Included markdown files may have links to other markdown files, which may not have been
-    // resolved by rustdoc. This helper locates such links and resolves them, assuming that each
-    // .md file gets its own sub-directory with an index.html.
-    function fix_markdown_links() {
-        for (let anchor of document.querySelectorAll('a[href$=".md"], a[href*=".md#"]')) {
-            let url = new URL(anchor.href);
-            let dir_separator = Math.max(url.pathname.lastIndexOf("/"), 0);
-            let base_name = url.pathname.slice(dir_separator + 1, -3);
-            let base_path = url.pathname.slice(0, dir_separator);
-            url.pathname = base_path + "/../" + base_name + "/index.html";
-            anchor.setAttribute("href", url);
-        }
-    }
-    fix_markdown_links()
-</script>
-<!--
-    This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
-    It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
-    in sphinx and via head.hbs in mdbook.
--->
-<link rel="stylesheet" href="https://slint.dev/resources/highlightjs/11.0.1/default.min.css">
-<script src="https://slint.dev/resources/highlightjs/11.0.1/highlight.min.js"></script>
-<script>
-  function highlight_slint(hljs) {
-    const KEYWORDS = {
-      keyword:
-        "animate callback changed component enum export for function global if import in in-out inherits out parent private property public pure root self states struct",
-      literal: "false true",
-      built_in:
-        "ArcTo Clip Close Colors CubicTo Flickable FocusScope GridLayout HorizontalLayout Image LineTo Math MoveTo Path PopupWindow QuadraticTo Rectangle Row Text TextInput TouchArea VerticalLayout Window animation-tick debug",
-      type: "bool duration easing float int length logical-length relative-font-size string",
-    };
-
-    return {
-      name: 'slint',
-      case_insensitive: false,
-      keywords: KEYWORDS,
-      contains: [
-        hljs.QUOTE_STRING_MODE,
-        hljs.C_LINE_COMMENT_MODE,
-        hljs.C_BLOCK_COMMENT_MODE,
-        hljs.COMMENT('/\\*', '\\*/', {
-          contains: ['self']
-        }),
-        {
-          className: 'number',
-          begin: '\\b\\d+(\\.\\d+)?(\\w+)?',
-          relevance: 0
-        },
-        {
-          className: 'title',
-          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]* *:=',
-        },
-        {
-          className: 'symbol',
-          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]*(:| *=>)',
-        },
-        {
-          className: 'built_in',
-          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]*!',
-        },
-      ],
-      illegal: /@/
-    };
-  };
-
-  // Tags used in fenced code blocks
-  for (let tag of ["slint", "slint,no-preview", "slint,no-auto-preview", "slint,ignore"]) {
-    hljs.registerLanguage(tag, highlight_slint);
-  }
-
-
-  window.addEventListener("DOMContentLoaded", () => {
-    const rustDoc = document.querySelector('meta[name="generator"]')?.content == "rustdoc";
-    if (rustDoc) {
-      // Only highlight .slint blocks, leave the others to rustdoc
-      for (slintBlock of document.querySelectorAll("[class*=language-slint]")) {
-        hljs.highlightElement(slintBlock)
-      }
-
-      // Some of the rustdoc selectors require the pre element to have the rust class
-      for (codeBlock of document.querySelectorAll(".language-slint.hljs")) {
-        codeBlock.classList.add("rust");
-        codeBlock.classList.remove("hljs");
-      }
-
-      // Change the hljs generated classes to the rustdoc
-      // ones, so that the highlighting adjusts to the theme correctly.
-      const highlightJSToRustDoc = [
-        ["comment", "comment"],
-        ["number", "number"],
-        ["symbol", "struct"], // width:
-        ["keyword", "kw"],
-        ["built_in", "primitive"],
-        ["string", "string"],
-        ["title", "fnname"], // Foo :=
-        ["type", "type"]
-      ];
-
-      for ([hljs_class, rustdoc_class] of highlightJSToRustDoc) {
-        for (titleElement of document.querySelectorAll(`.hljs-${hljs_class}`)) {
-          titleElement.classList.remove(`hljs-${hljs_class}`);
-          titleElement.classList.add(rustdoc_class);
-        }
-      }
-    } else {
-      // For use with the mdbook Tutorial
-      hljs.highlightAll();
-
-      // The Sphinx/my_st generated HTML for code blocks doesn't use <code> tags, so highlight.js'
-      // default selector "pre code" doesn't match. Let's do it by hand:
-      for (block of document.querySelectorAll("div[class*=highlight-slint] div.highlight pre")) {
-        hljs.highlightElement(block)
-      }
-    }
-
-    // Fix up links that sphinx handles but for rustdoc we need to resolve manually:
-    {
-      let target_url = null;
-      if (document.location.hostname == "snapshots.slint.dev") {
-        target_url = `https://snapshots.slint.dev/master/docs/slint/`;
-      } else {
-        let version = document.querySelector("span.version");
-        if (version !== null) {
-          target_url = `https://slint.dev/releases/${version.innerText}/docs/slint/`;
-        }
-      }
-
-      if (target_url !== null) {
-        for (let link of document.querySelectorAll("a[href^='slint-reference:']")) {
-          link.href = link.href.replace("slint-reference:", target_url);
-        }
-      }
-    }
-  });
-</script>
 
   <footer class="bd-footer">
   </footer>

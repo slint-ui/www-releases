@@ -31,8 +31,8 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/theme_tweak.css?v=a03aae7b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/theme_tweak.css?v=e5538edb" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/typesense-docsearch-css@0.3.0" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -56,6 +56,7 @@
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.9.0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
         </script>
+    <script src="../../../_static/cm6.bundle.js?v=663fcec5"></script>
     <script src="../../../_static/expand_tabs.js?v=acb398a4"></script>
     <link rel="canonical" href="https://docs.slint.dev/src/language/concepts/layouting.html" />
     <link rel="icon" href="https://slint.dev/favicon.svg"/>
@@ -63,8 +64,21 @@
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Container Components" href="container.html" />
     <link rel="prev" title="The .slint File" href="file.html" />
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+    <!-- Custom styles and script to prevent FOUC -->
+    <style>
+        body {
+            visibility: hidden;  /* Hide body until the theme is applied */
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme') || 'light';  // Default to light theme
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            document.body.style.visibility = 'visible';  // Make visible once theme is applied
+        });
+    </script>
+
   </head>
   
   
@@ -494,7 +508,7 @@ Layout elements express geometric relationships between elements.</p>
 <h2>Explicit Placement<a class="headerlink" href="#explicit-placement" title="Permalink to this heading">#</a></h2>
 <p>The following example places two rectangles into a window, a blue one and
 a green one. The green rectangle is a child of the blue:</p>
-<div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>// Explicit positioning
+<div id="editor-src-language-concepts-layouting-29" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">// Explicit positioning
 export component Example inherits Window {
     width: 200px;
     height: 200px;
@@ -513,9 +527,7 @@ export component Example inherits Window {
         }
     }
 }
-</pre></div>
-</div>
-<p>The positions of both rectangles and the size of the inner green one are fixed.
+</div></div><p>The positions of both rectangles and the size of the inner green one are fixed.
 The outer blue rectangle has a size that’s automatically calculated using binding
 expressions for the <code class="docutils literal notranslate"><span class="pre">width</span></code> and <code class="docutils literal notranslate"><span class="pre">height</span></code> properties. The calculation results in the
 bottom left corner aligning with the corner of the window - it updates whenever
@@ -555,14 +567,12 @@ child that has the bigger preferred size, whose <code class="docutils literal no
 The preferred size is therefore computed from the child to the parent, just like other constraints (maximum and minimum size), unless explicitly overwritten.</p>
 <p>A special case is to set the preferred size to be the size of the parent using <code class="docutils literal notranslate"><span class="pre">100%</span></code> as value.
 For example, this component uses the size of the parent by default:</p>
-<div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>export component MyComponent {
+<div id="editor-src-language-concepts-layouting-99" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component MyComponent {
     preferred-width: 100%;
     preferred-height: 100%;
     // ...
 }
-</pre></div>
-</div>
-</section>
+</div></div></section>
 </section>
 <section id="automatic-placement-using-layouts">
 <h2>Automatic Placement Using Layouts<a class="headerlink" href="#automatic-placement-using-layouts" title="Permalink to this heading">#</a></h2>
@@ -619,7 +629,7 @@ column or a row. By default, they stretch or shrink to take the whole space. You
 can adjust the element’s alignment as needed.</p>
 <p>The following example places the blue and yellow rectangle in a row and evenly stretched
 across the 200 logical pixels of <code class="docutils literal notranslate"><span class="pre">width</span></code>:</p>
-<div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>// Stretch by default
+<div id="editor-src-language-concepts-layouting-166" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">// Stretch by default
 export component Example inherits Window {
     width: 200px;
     height: 200px;
@@ -628,12 +638,10 @@ export component Example inherits Window {
         Rectangle { background: yellow; min-width: 30px; }
     }
 }
-</pre></div>
-</div>
-<p>The example below, on the other hand, specifies that the rectangles align
+</div></div><p>The example below, on the other hand, specifies that the rectangles align
 to the start of the layout (the visual left). That results in no stretching but instead
 the rectangles retain their specified minimum width:</p>
-<div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>// Unless an alignment is specified
+<div id="editor-src-language-concepts-layouting-182" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">// Unless an alignment is specified
 export component Example inherits Window {
     width: 200px;
     height: 200px;
@@ -643,10 +651,8 @@ export component Example inherits Window {
         Rectangle { background: yellow; min-width: 30px; }
     }
 }
-</pre></div>
-</div>
-<p>The example below nests two layouts for a more complex scene:</p>
-<div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>export component Example inherits Window {
+</div></div><p>The example below nests two layouts for a more complex scene:</p>
+<div id="editor-src-language-concepts-layouting-197" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Window {
     width: 200px;
     height: 200px;
     HorizontalLayout {
@@ -675,9 +681,7 @@ export component Example inherits Window {
         }
     }
 }
-</pre></div>
-</div>
-<section id="alignment">
+</div></div><section id="alignment">
 <h3>Alignment<a class="headerlink" href="#alignment" title="Permalink to this heading">#</a></h3>
 <p>Each element is sized according to their <code class="docutils literal notranslate"><span class="pre">width</span></code> or <code class="docutils literal notranslate"><span class="pre">height</span></code> if specified, otherwise it’s
 set to the minimum size which is set with the min-width or min-height property, or
@@ -685,7 +689,7 @@ the minimum size of an inner layout, whatever is bigger.</p>
 <p>The elements are placed according to the alignment. The size of elements
 is bigger than the minimum size only if the <code class="docutils literal notranslate"><span class="pre">alignment</span></code> property of the layout is <code class="docutils literal notranslate"><span class="pre">LayoutAlignment.stretch</span></code> (the default)</p>
 <p>This example show the different alignment possibilities:</p>
-<div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>export component Example inherits Window {
+<div id="editor-src-language-concepts-layouting-240" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Window {
     width: 300px;
     height: 200px;
     VerticalLayout {
@@ -733,9 +737,7 @@ is bigger than the minimum size only if the <code class="docutils literal notran
         }
     }
 }
-</pre></div>
-</div>
-</section>
+</div></div></section>
 <section id="stretch-algorithm">
 <h3>Stretch algorithm<a class="headerlink" href="#stretch-algorithm" title="Permalink to this heading">#</a></h3>
 <p>When the <code class="docutils literal notranslate"><span class="pre">alignment</span></code> is set to stretch (the default), the elements are sized to their minimum size,
@@ -746,7 +748,7 @@ while elements that default to the size of their parents defaults to 1.
 An element of a stretch factor of 0 keep its minimum size, unless all the other elements also have a stretch
 factor of 0 or reached their maximum size.</p>
 <p>Examples:</p>
-<div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>export component Example inherits Window {
+<div id="editor-src-language-concepts-layouting-303" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Window {
     width: 300px;
     height: 200px;
     VerticalLayout {
@@ -775,13 +777,11 @@ factor of 0 or reached their maximum size.</p>
         }
     }
 }
-</pre></div>
-</div>
-</section>
+</div></div></section>
 <section id="for">
 <h3><code class="docutils literal notranslate"><span class="pre">for</span></code><a class="headerlink" href="#for" title="Permalink to this heading">#</a></h3>
 <p>The VerticalLayout and HorizontalLayout can also contain <code class="docutils literal notranslate"><span class="pre">for</span></code> or <code class="docutils literal notranslate"><span class="pre">if</span></code> expressions:</p>
-<div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>export component Example inherits Window {
+<div id="editor-src-language-concepts-layouting-339" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Window {
     width: 200px;
     height: 50px;
     HorizontalLayout {
@@ -792,9 +792,7 @@ factor of 0 or reached their maximum size.</p>
         Rectangle { background: blue; }
     }
 }
-</pre></div>
-</div>
-</section>
+</div></div></section>
 </section>
 <section id="gridlayout">
 <h2>GridLayout<a class="headerlink" href="#gridlayout" title="Permalink to this heading">#</a></h2>
@@ -805,7 +803,7 @@ These properties must be statically known at compile time, so it’s impossible
 to use arithmetic or depend on properties. As of now, the use of <code class="docutils literal notranslate"><span class="pre">for</span></code> or <code class="docutils literal notranslate"><span class="pre">if</span></code>
 isn’t allowed in a grid layout.</p>
 <p>This example use the <code class="docutils literal notranslate"><span class="pre">Row</span></code> element</p>
-<div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>export component Foo inherits Window {
+<div id="editor-src-language-concepts-layouting-364" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Foo inherits Window {
     width: 200px;
     height: 200px;
     GridLayout {
@@ -820,10 +818,8 @@ isn’t allowed in a grid layout.</p>
         }
     }
 }
-</pre></div>
-</div>
-<p>This example use the <code class="docutils literal notranslate"><span class="pre">col</span></code> and <code class="docutils literal notranslate"><span class="pre">row</span></code> property:</p>
-<div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>export component Foo inherits Window {
+</div></div><p>This example use the <code class="docutils literal notranslate"><span class="pre">col</span></code> and <code class="docutils literal notranslate"><span class="pre">row</span></code> property:</p>
+<div id="editor-src-language-concepts-layouting-384" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Foo inherits Window {
     width: 200px;
     height: 150px;
     GridLayout {
@@ -835,9 +831,7 @@ isn’t allowed in a grid layout.</p>
         Rectangle { background: black; col: 2; row: 0; }
     }
 }
-</pre></div>
-</div>
-</section>
+</div></div></section>
 </section>
 
 
@@ -947,253 +941,12 @@ By Slint Developers <info@slint.dev>
       </main>
     </div>
   </div>
-   
+  
+    
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
   <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
 <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-<!--
-    This file is used to add preview of the `.slint` snippets in the generated rustdoc documentation.
-    It can be injected via the `--html-in-header slint-docs-preview.html` option of rustdoc.
--->
-<script type="module">
-    "use strict";
-    //import * as slint from 'https://releases.slint.dev/0.x.0/wasm-interpreter/slint_wasm_interpreter.js';
-    //const editor_url = "https://releases.slint.dev/0.x.0/editor/";
-    import * as slint from 'https://snapshots.slint.dev/master/wasm-interpreter/slint_wasm_interpreter.js';
-    const editor_url = "https://snapshots.slint.dev/master/editor/";
-    // keep them alive
-    var all_instances = new Array;
-
-    async function render_or_error(source, div) {
-        let canvas_id = 'canvas_' + Math.random().toString(36).substr(2, 9);
-        let canvas = document.createElement("canvas");
-        canvas.id = canvas_id;
-        div.appendChild(canvas);
-
-        let { component, error_string } = await slint.compile_from_string(source, "");
-        if (error_string != "") {
-            var text = document.createTextNode(error_string);
-            var p = document.createElement('pre');
-            p.appendChild(text);
-            div.innerHTML = "<pre style='color: red; background-color:#fee; margin:0'>" + p.innerHTML + "</pre>";
-        }
-        if (component !== undefined) {
-            let instance = await component.create(canvas_id);
-            await instance.show();
-            all_instances.push(instance);
-        }
-    }
-
-    async function create_preview(element, source_code) {
-        // Style the preview such that a flexbox lays out the source code box
-        // (which should take up any spare space), followed by the preview canvas.
-        // The latter may wrap into a new row on mobile. The edit/play buttons are
-        // placed last by flexbox order attribute.
-        let div = document.createElement("div");
-        let sourceCodeBox = element.firstElementChild;
-        element.style = "display: flex; flex-wrap: wrap;";
-        sourceCodeBox.style = "flex-grow: 2";
-        element.append(div);
-        await render_or_error(source_code, div);
-    }
-
-    function should_show_automatic_preview(element) {
-        // The `no-auto-preview` doesn't map directly to a dedicated class but it's mangled differently
-        // between rustdoc and sphinx, so match fuzzy on the entire class list:
-        return !element.className.includes("no-auto-preview");
-    }
-
-    async function create_click_to_play_and_edit_buttons(element) {
-        let source = element.innerText;
-
-        let link_section = document.createElement("div");
-        // Ensure the link section is always last and on a row of its own in the flexbox.
-        link_section.style = "order: 100; flex-basis: 100%;";
-        element.append(link_section);
-
-        let button_style = "text-decoration: none;"
-
-        let edit_button = document.createElement("a");
-        edit_button.style = button_style;
-        edit_button.href = `${editor_url}?snippet=${encodeURIComponent(source)}`;
-        edit_button.target = "_blank";
-        edit_button.innerText = "Edit 📝";
-        link_section.append(edit_button);
-
-        if (should_show_automatic_preview(element)) {
-            create_preview(element, source);
-        } else {
-            let play_button = document.createElement("a");
-            play_button.style = button_style;
-            play_button.innerText = "Preview ▶️";
-            play_button.onclick = async () => {
-                play_button.remove();
-                create_preview(element, source);
-            };
-
-            link_section.prepend(play_button);
-        }
-    }
-
-    async function run() {
-        await slint.default();
-
-        try {
-            slint.run_event_loop();
-            // this will trigger a JS exception, so this line will never be reached!
-        } catch (e) {
-            // The winit event loop, when targeting wasm, throws a JavaScript exception to break out of
-            // Rust without running any destructors. Don't rethrow the exception but swallow it, as
-            // this is no error and we truly want to resolve the promise of this function by returning
-            // the model markers.
-        }
-
-        let selector = ["code.language-slint", ".rustdoc pre.language-slint", "div.highlight-slint div.highlight", "div.highlight-slint\\,no-auto-preview div.highlight"]
-            .map((sel) => `${sel}:not([class*=slint\\,ignore]):not([class*=slint\\,no-preview])`).join(",");
-        var elements = document.querySelectorAll(selector);
-        for (var i = 0; i < elements.length; ++i) {
-            await create_click_to_play_and_edit_buttons(elements[i]);
-        }
-    }
-    run();
-
-    // Included markdown files may have links to other markdown files, which may not have been
-    // resolved by rustdoc. This helper locates such links and resolves them, assuming that each
-    // .md file gets its own sub-directory with an index.html.
-    function fix_markdown_links() {
-        for (let anchor of document.querySelectorAll('a[href$=".md"], a[href*=".md#"]')) {
-            let url = new URL(anchor.href);
-            let dir_separator = Math.max(url.pathname.lastIndexOf("/"), 0);
-            let base_name = url.pathname.slice(dir_separator + 1, -3);
-            let base_path = url.pathname.slice(0, dir_separator);
-            url.pathname = base_path + "/../" + base_name + "/index.html";
-            anchor.setAttribute("href", url);
-        }
-    }
-    fix_markdown_links()
-</script>
-<!--
-    This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
-    It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
-    in sphinx and via head.hbs in mdbook.
--->
-<link rel="stylesheet" href="https://slint.dev/resources/highlightjs/11.0.1/default.min.css">
-<script src="https://slint.dev/resources/highlightjs/11.0.1/highlight.min.js"></script>
-<script>
-  function highlight_slint(hljs) {
-    const KEYWORDS = {
-      keyword:
-        "animate callback changed component enum export for function global if import in in-out inherits out parent private property public pure root self states struct",
-      literal: "false true",
-      built_in:
-        "ArcTo Clip Close Colors CubicTo Flickable FocusScope GridLayout HorizontalLayout Image LineTo Math MoveTo Path PopupWindow QuadraticTo Rectangle Row Text TextInput TouchArea VerticalLayout Window animation-tick debug",
-      type: "bool duration easing float int length logical-length relative-font-size string",
-    };
-
-    return {
-      name: 'slint',
-      case_insensitive: false,
-      keywords: KEYWORDS,
-      contains: [
-        hljs.QUOTE_STRING_MODE,
-        hljs.C_LINE_COMMENT_MODE,
-        hljs.C_BLOCK_COMMENT_MODE,
-        hljs.COMMENT('/\\*', '\\*/', {
-          contains: ['self']
-        }),
-        {
-          className: 'number',
-          begin: '\\b\\d+(\\.\\d+)?(\\w+)?',
-          relevance: 0
-        },
-        {
-          className: 'title',
-          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]* *:=',
-        },
-        {
-          className: 'symbol',
-          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]*(:| *=>)',
-        },
-        {
-          className: 'built_in',
-          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]*!',
-        },
-      ],
-      illegal: /@/
-    };
-  };
-
-  // Tags used in fenced code blocks
-  for (let tag of ["slint", "slint,no-preview", "slint,no-auto-preview", "slint,ignore"]) {
-    hljs.registerLanguage(tag, highlight_slint);
-  }
-
-
-  window.addEventListener("DOMContentLoaded", () => {
-    const rustDoc = document.querySelector('meta[name="generator"]')?.content == "rustdoc";
-    if (rustDoc) {
-      // Only highlight .slint blocks, leave the others to rustdoc
-      for (slintBlock of document.querySelectorAll("[class*=language-slint]")) {
-        hljs.highlightElement(slintBlock)
-      }
-
-      // Some of the rustdoc selectors require the pre element to have the rust class
-      for (codeBlock of document.querySelectorAll(".language-slint.hljs")) {
-        codeBlock.classList.add("rust");
-        codeBlock.classList.remove("hljs");
-      }
-
-      // Change the hljs generated classes to the rustdoc
-      // ones, so that the highlighting adjusts to the theme correctly.
-      const highlightJSToRustDoc = [
-        ["comment", "comment"],
-        ["number", "number"],
-        ["symbol", "struct"], // width:
-        ["keyword", "kw"],
-        ["built_in", "primitive"],
-        ["string", "string"],
-        ["title", "fnname"], // Foo :=
-        ["type", "type"]
-      ];
-
-      for ([hljs_class, rustdoc_class] of highlightJSToRustDoc) {
-        for (titleElement of document.querySelectorAll(`.hljs-${hljs_class}`)) {
-          titleElement.classList.remove(`hljs-${hljs_class}`);
-          titleElement.classList.add(rustdoc_class);
-        }
-      }
-    } else {
-      // For use with the mdbook Tutorial
-      hljs.highlightAll();
-
-      // The Sphinx/my_st generated HTML for code blocks doesn't use <code> tags, so highlight.js'
-      // default selector "pre code" doesn't match. Let's do it by hand:
-      for (block of document.querySelectorAll("div[class*=highlight-slint] div.highlight pre")) {
-        hljs.highlightElement(block)
-      }
-    }
-
-    // Fix up links that sphinx handles but for rustdoc we need to resolve manually:
-    {
-      let target_url = null;
-      if (document.location.hostname == "snapshots.slint.dev") {
-        target_url = `https://snapshots.slint.dev/master/docs/slint/`;
-      } else {
-        let version = document.querySelector("span.version");
-        if (version !== null) {
-          target_url = `https://slint.dev/releases/${version.innerText}/docs/slint/`;
-        }
-      }
-
-      if (target_url !== null) {
-        for (let link of document.querySelectorAll("a[href^='slint-reference:']")) {
-          link.href = link.href.replace("slint-reference:", target_url);
-        }
-      }
-    }
-  });
-</script>
 
   <footer class="bd-footer">
   </footer>

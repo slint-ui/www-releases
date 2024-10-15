@@ -31,8 +31,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/theme_tweak.css?v=a03aae7b" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/theme_tweak.css?v=e5538edb" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/typesense-docsearch-css@0.3.0" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -56,6 +56,7 @@
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.9.0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
         </script>
+    <script src="../../_static/cm6.bundle.js?v=663fcec5"></script>
     <script src="../../_static/expand_tabs.js?v=acb398a4"></script>
     <link rel="canonical" href="https://docs.slint.dev/src/quickstart/getting_started.html" />
     <link rel="icon" href="https://slint.dev/favicon.svg"/>
@@ -63,8 +64,21 @@
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Memory Tile" href="memory_tile.html" />
     <link rel="prev" title="Quickstart" href="index.html" />
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+    <!-- Custom styles and script to prevent FOUC -->
+    <style>
+        body {
+            visibility: hidden;  /* Hide body until the theme is applied */
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme') || 'light';  // Default to light theme
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            document.body.style.visibility = 'visible';  // Make visible once theme is applied
+        });
+    </script>
+
   </head>
   
   
@@ -476,63 +490,47 @@ C++</label><div class="sd-tab-content docutils">
 <li><p>Download and extract the <a class="reference external" href="https://github.com/slint-ui/slint-cpp-template/archive/refs/heads/main.zip">ZIP archive of the C++ Template</a>.</p></li>
 <li><p>Rename the extracted directory and change into it:</p></li>
 </ol>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>mv<span class="w"> </span>slint-cpp-template-main<span class="w"> </span>memory
-<span class="nb">cd</span><span class="w"> </span>memory
-</pre></div>
-</div>
-<h3 class="rubric" id="configure-the-project">Configure the project</h3>
+<div id="editor-src-quickstart-getting_started-25" class="codemirror-editor" data-lang="sh" data-ignore="true"><div class="codemirror-content" style="display:none">mv slint-cpp-template-main memory
+cd memory
+</div></div><h3 class="rubric" id="configure-the-project">Configure the project</h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> uses the line <code class="docutils literal notranslate"><span class="pre">add_executable(my_application</span> <span class="pre">src/main.cpp)</span></code> to set <code class="docutils literal notranslate"><span class="pre">src/main.cpp</span></code> as the main C++ code file.</p>
 <p>Replace the content of <code class="docutils literal notranslate"><span class="pre">src/main.cpp</span></code> with the following:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include &quot;app-window.h&quot; // generated header from ui/app-window.slint</span>
+<div id="editor-src-quickstart-getting_started-36" class="codemirror-editor" data-lang="default" data-ignore="true"><div class="codemirror-content" style="display:none">#include &quot;app-window.h&quot; // generated header from ui/app-window.slint
 
-<span class="nb">int</span> <span class="n">main</span><span class="p">(</span><span class="nb">int</span> <span class="n">argc</span><span class="p">,</span> <span class="n">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">auto</span> <span class="n">main_window</span> <span class="o">=</span> <span class="n">MainWindow</span><span class="p">::</span><span class="n">create</span><span class="p">();</span>
-    <span class="n">main_window</span><span class="o">-&gt;</span><span class="n">run</span><span class="p">();</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>Also in <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> the line
+int main(int argc, char **argv)
+{
+    auto main_window = MainWindow::create();
+    main_window-&gt;run();
+}
+</div></div><p>Also in <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> the line
 <code class="docutils literal notranslate"><span class="pre">slint_target_sources(my_application</span> <span class="pre">ui/app-window.slint)</span></code> is a Slint function used to
 add the <code class="docutils literal notranslate"><span class="pre">app-window.slint</span></code> file to the target.</p>
 <p>Replace the contents of <code class="docutils literal notranslate"><span class="pre">ui/app-window.slint</span></code> with the following:</p>
-<div class="highlight-slint,no-preview notranslate"><div class="highlight"><pre><span></span>export component MainWindow inherits Window {
+<div id="editor-src-quickstart-getting_started-46" class="codemirror-editor" data-lang="slint,no-preview" data-readonly="false" data-nopreview="true"><div class="codemirror-content" style="display:none">export component MainWindow inherits Window {
     Text {
         text: &quot;hello world&quot;;
         color: green;
     }
 }
-</pre></div>
-</div>
-<p>Configure with CMake:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>cmake<span class="w"> </span>-B<span class="w"> </span>build
-</pre></div>
-</div>
-<div class="admonition tip">
+</div></div><p>Configure with CMake:</p>
+<div id="editor-src-quickstart-getting_started-53" class="codemirror-editor" data-lang="sh" data-ignore="true"><div class="codemirror-content" style="display:none">cmake -B build
+</div></div><div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>When configuring with CMake, the FetchContent module fetches the source code of Slint via git.
 This may take some time when building for the first time, as the process needs to build
 the Slint runtime and compiler.</p>
 </div>
 <p>Build with CMake:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>cmake<span class="w"> </span>--build<span class="w"> </span>build
-</pre></div>
-</div>
-<h3 class="rubric" id="run-the-application">Run the application</h3>
+<div id="editor-src-quickstart-getting_started-65" class="codemirror-editor" data-lang="sh" data-ignore="true"><div class="codemirror-content" style="display:none">cmake --build build
+</div></div><h3 class="rubric" id="run-the-application">Run the application</h3>
 <p>Run the application binary on Linux or macOS:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>./build/my_application
-</pre></div>
-</div>
-<p>Or on Windows:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>build<span class="se">\m</span>y_application.exe
-</pre></div>
-</div>
-<p>This opens a window with a green “Hello World” greeting.</p>
+<div id="editor-src-quickstart-getting_started-73" class="codemirror-editor" data-lang="sh" data-ignore="true"><div class="codemirror-content" style="display:none">./build/my_application
+</div></div><p>Or on Windows:</p>
+<div id="editor-src-quickstart-getting_started-79" class="codemirror-editor" data-lang="sh" data-ignore="true"><div class="codemirror-content" style="display:none">build\my_application.exe
+</div></div><p>This opens a window with a green “Hello World” greeting.</p>
 <p>If you are stepping through this tutorial on a Windows machine, you can run the application at each step with:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>my_application
-</pre></div>
-</div>
-</div>
+<div id="editor-src-quickstart-getting_started-87" class="codemirror-editor" data-lang="sh" data-ignore="true"><div class="codemirror-content" style="display:none">my_application
+</div></div></div>
 <input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
 <label class="sd-tab-label" data-sync-group="tab" data-sync-id="nodejs" for="sd-tab-item-1">
 NodeJS</label><div class="sd-tab-content docutils">
@@ -540,37 +538,29 @@ NodeJS</label><div class="sd-tab-content docutils">
 <li><p>Download and extract the <a class="reference external" href="https://github.com/slint-ui/slint-nodejs-template/archive/refs/heads/main.zip">ZIP archive of the Node.js Template</a>.</p></li>
 <li><p>Rename the extracted directory and change into it:</p></li>
 </ol>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>mv<span class="w"> </span>slint-nodejs-template-main<span class="w"> </span>memory
-<span class="nb">cd</span><span class="w"> </span>memory
-</pre></div>
-</div>
-<ol class="arabic simple" start="3">
+<div id="editor-src-quickstart-getting_started-99" class="codemirror-editor" data-lang="sh" data-ignore="true"><div class="codemirror-content" style="display:none">mv slint-nodejs-template-main memory
+cd memory
+</div></div><ol class="arabic simple" start="3">
 <li><p>Install dependencies with npm:</p></li>
 </ol>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>npm<span class="w"> </span>install
-</pre></div>
-</div>
-<h3 class="rubric" id="id1">Configure the project</h3>
+<div id="editor-src-quickstart-getting_started-105" class="codemirror-editor" data-lang="sh" data-ignore="true"><div class="codemirror-content" style="display:none">npm install
+</div></div><h3 class="rubric" id="id1">Configure the project</h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">package.json</span></code> file references <code class="docutils literal notranslate"><span class="pre">src/main.js</span></code> as the entry point for the application and <code class="docutils literal notranslate"><span class="pre">src/main.js</span></code> references <code class="docutils literal notranslate"><span class="pre">memory.slint</span></code> as the UI file.</p>
 <p>Replace the contents of <code class="docutils literal notranslate"><span class="pre">src/main.js</span></code> with the following:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="o">*</span> <span class="k">as</span> <span class="n">slint</span> <span class="kn">from</span> <span class="s2">&quot;slint-ui&quot;</span><span class="p">;</span>
+<div id="editor-src-quickstart-getting_started-115" class="codemirror-editor" data-lang="default" data-ignore="true"><div class="codemirror-content" style="display:none">import * as slint from &quot;slint-ui&quot;;
 
-<span class="n">const</span> <span class="n">ui</span> <span class="o">=</span> <span class="n">slint</span><span class="o">.</span><span class="n">loadFile</span><span class="p">(</span><span class="n">new</span> <span class="n">URL</span><span class="p">(</span><span class="s2">&quot;./ui/app-window.slint&quot;</span><span class="p">,</span> <span class="n">import</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">url</span><span class="p">));</span>
-<span class="n">const</span> <span class="n">mainWindow</span> <span class="o">=</span> <span class="n">new</span> <span class="n">ui</span><span class="o">.</span><span class="n">MainWindow</span><span class="p">();</span>
-<span class="k">await</span> <span class="n">mainWindow</span><span class="o">.</span><span class="n">run</span><span class="p">();</span>
-</pre></div>
-</div>
-<p>The <code class="docutils literal notranslate"><span class="pre">slint.loadFile</span></code> method resolves files from the process’s current working directory, so from the <code class="docutils literal notranslate"><span class="pre">package.json</span></code> file’s location.</p>
+const ui = slint.loadFile(new URL(&quot;./ui/app-window.slint&quot;, import.meta.url));
+const mainWindow = new ui.MainWindow();
+await mainWindow.run();
+</div></div><p>The <code class="docutils literal notranslate"><span class="pre">slint.loadFile</span></code> method resolves files from the process’s current working directory, so from the <code class="docutils literal notranslate"><span class="pre">package.json</span></code> file’s location.</p>
 <p>Replace the contents of <code class="docutils literal notranslate"><span class="pre">ui/app-window.slint</span></code> with the following:</p>
-<div class="highlight-slint,no-preview notranslate"><div class="highlight"><pre><span></span>export component MainWindow inherits Window {
+<div id="editor-src-quickstart-getting_started-123" class="codemirror-editor" data-lang="slint,no-preview" data-readonly="false" data-nopreview="true"><div class="codemirror-content" style="display:none">export component MainWindow inherits Window {
     Text {
         text: &quot;hello world&quot;;
         color: green;
     }
 }
-</pre></div>
-</div>
-<h3 class="rubric" id="id2">Run the application</h3>
+</div></div><h3 class="rubric" id="id2">Run the application</h3>
 <p>Run the example with <code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">start</span></code> and a window appears with the green “Hello World” greeting.</p>
 </div>
 <input checked="checked" id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
@@ -581,31 +571,25 @@ Rust</label><div class="sd-tab-content docutils">
 <li><p>Download and extract the <a class="reference external" href="https://github.com/slint-ui/slint-rust-template/archive/refs/heads/main.zip">ZIP archive of the Rust Template</a>.</p></li>
 <li><p>Rename the extracted directory and change into it:</p></li>
 </ol>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>mv<span class="w"> </span>slint-rust-template-main<span class="w"> </span>memory
-<span class="nb">cd</span><span class="w"> </span>memory
-</pre></div>
-</div>
-<h3 class="rubric" id="id3">Configure the project</h3>
+<div id="editor-src-quickstart-getting_started-143" class="codemirror-editor" data-lang="sh" data-ignore="true"><div class="codemirror-content" style="display:none">mv slint-rust-template-main memory
+cd memory
+</div></div><h3 class="rubric" id="id3">Configure the project</h3>
 <p>Replace the contents of <code class="docutils literal notranslate"><span class="pre">src/main.rs</span></code> with the following:</p>
-<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="n">slint</span><span class="p">::</span><span class="n">include_modules</span><span class="o">!</span><span class="p">();</span>
+<div id="editor-src-quickstart-getting_started-152" class="codemirror-editor" data-lang="rust" data-ignore="true"><div class="codemirror-content" style="display:none">slint::include_modules!();
 
-<span class="k">fn</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="p">(),</span><span class="w"> </span><span class="n">slint</span><span class="p">::</span><span class="n">PlatformError</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">main_window</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MainWindow</span><span class="p">::</span><span class="n">new</span><span class="p">()</span><span class="o">?</span><span class="p">;</span>
+fn main() -&gt; Result&lt;(), slint::PlatformError&gt; {
+    let main_window = MainWindow::new()?;
 
-<span class="w">    </span><span class="n">main_window</span><span class="p">.</span><span class="n">run</span><span class="p">()</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>Replace the contents of <code class="docutils literal notranslate"><span class="pre">ui/app-window.slint</span></code> with the following:</p>
-<div class="highlight-slint,no-preview notranslate"><div class="highlight"><pre><span></span>export component MainWindow inherits Window {
+    main_window.run()
+}
+</div></div><p>Replace the contents of <code class="docutils literal notranslate"><span class="pre">ui/app-window.slint</span></code> with the following:</p>
+<div id="editor-src-quickstart-getting_started-164" class="codemirror-editor" data-lang="slint,no-preview" data-readonly="false" data-nopreview="true"><div class="codemirror-content" style="display:none">export component MainWindow inherits Window {
     Text {
         text: &quot;hello world&quot;;
         color: green;
     }
 }
-</pre></div>
-</div>
-<h3 class="rubric" id="id4">Run the application</h3>
+</div></div><h3 class="rubric" id="id4">Run the application</h3>
 <p>Run the example with <code class="docutils literal notranslate"><span class="pre">cargo</span> <span class="pre">run</span></code> and a window appears with the green “Hello World” greeting.</p>
 </div>
 </div>
@@ -708,253 +692,12 @@ By Slint Developers <info@slint.dev>
       </main>
     </div>
   </div>
-   
+  
+    
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
   <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
 <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-<!--
-    This file is used to add preview of the `.slint` snippets in the generated rustdoc documentation.
-    It can be injected via the `--html-in-header slint-docs-preview.html` option of rustdoc.
--->
-<script type="module">
-    "use strict";
-    //import * as slint from 'https://releases.slint.dev/0.x.0/wasm-interpreter/slint_wasm_interpreter.js';
-    //const editor_url = "https://releases.slint.dev/0.x.0/editor/";
-    import * as slint from 'https://snapshots.slint.dev/master/wasm-interpreter/slint_wasm_interpreter.js';
-    const editor_url = "https://snapshots.slint.dev/master/editor/";
-    // keep them alive
-    var all_instances = new Array;
-
-    async function render_or_error(source, div) {
-        let canvas_id = 'canvas_' + Math.random().toString(36).substr(2, 9);
-        let canvas = document.createElement("canvas");
-        canvas.id = canvas_id;
-        div.appendChild(canvas);
-
-        let { component, error_string } = await slint.compile_from_string(source, "");
-        if (error_string != "") {
-            var text = document.createTextNode(error_string);
-            var p = document.createElement('pre');
-            p.appendChild(text);
-            div.innerHTML = "<pre style='color: red; background-color:#fee; margin:0'>" + p.innerHTML + "</pre>";
-        }
-        if (component !== undefined) {
-            let instance = await component.create(canvas_id);
-            await instance.show();
-            all_instances.push(instance);
-        }
-    }
-
-    async function create_preview(element, source_code) {
-        // Style the preview such that a flexbox lays out the source code box
-        // (which should take up any spare space), followed by the preview canvas.
-        // The latter may wrap into a new row on mobile. The edit/play buttons are
-        // placed last by flexbox order attribute.
-        let div = document.createElement("div");
-        let sourceCodeBox = element.firstElementChild;
-        element.style = "display: flex; flex-wrap: wrap;";
-        sourceCodeBox.style = "flex-grow: 2";
-        element.append(div);
-        await render_or_error(source_code, div);
-    }
-
-    function should_show_automatic_preview(element) {
-        // The `no-auto-preview` doesn't map directly to a dedicated class but it's mangled differently
-        // between rustdoc and sphinx, so match fuzzy on the entire class list:
-        return !element.className.includes("no-auto-preview");
-    }
-
-    async function create_click_to_play_and_edit_buttons(element) {
-        let source = element.innerText;
-
-        let link_section = document.createElement("div");
-        // Ensure the link section is always last and on a row of its own in the flexbox.
-        link_section.style = "order: 100; flex-basis: 100%;";
-        element.append(link_section);
-
-        let button_style = "text-decoration: none;"
-
-        let edit_button = document.createElement("a");
-        edit_button.style = button_style;
-        edit_button.href = `${editor_url}?snippet=${encodeURIComponent(source)}`;
-        edit_button.target = "_blank";
-        edit_button.innerText = "Edit 📝";
-        link_section.append(edit_button);
-
-        if (should_show_automatic_preview(element)) {
-            create_preview(element, source);
-        } else {
-            let play_button = document.createElement("a");
-            play_button.style = button_style;
-            play_button.innerText = "Preview ▶️";
-            play_button.onclick = async () => {
-                play_button.remove();
-                create_preview(element, source);
-            };
-
-            link_section.prepend(play_button);
-        }
-    }
-
-    async function run() {
-        await slint.default();
-
-        try {
-            slint.run_event_loop();
-            // this will trigger a JS exception, so this line will never be reached!
-        } catch (e) {
-            // The winit event loop, when targeting wasm, throws a JavaScript exception to break out of
-            // Rust without running any destructors. Don't rethrow the exception but swallow it, as
-            // this is no error and we truly want to resolve the promise of this function by returning
-            // the model markers.
-        }
-
-        let selector = ["code.language-slint", ".rustdoc pre.language-slint", "div.highlight-slint div.highlight", "div.highlight-slint\\,no-auto-preview div.highlight"]
-            .map((sel) => `${sel}:not([class*=slint\\,ignore]):not([class*=slint\\,no-preview])`).join(",");
-        var elements = document.querySelectorAll(selector);
-        for (var i = 0; i < elements.length; ++i) {
-            await create_click_to_play_and_edit_buttons(elements[i]);
-        }
-    }
-    run();
-
-    // Included markdown files may have links to other markdown files, which may not have been
-    // resolved by rustdoc. This helper locates such links and resolves them, assuming that each
-    // .md file gets its own sub-directory with an index.html.
-    function fix_markdown_links() {
-        for (let anchor of document.querySelectorAll('a[href$=".md"], a[href*=".md#"]')) {
-            let url = new URL(anchor.href);
-            let dir_separator = Math.max(url.pathname.lastIndexOf("/"), 0);
-            let base_name = url.pathname.slice(dir_separator + 1, -3);
-            let base_path = url.pathname.slice(0, dir_separator);
-            url.pathname = base_path + "/../" + base_name + "/index.html";
-            anchor.setAttribute("href", url);
-        }
-    }
-    fix_markdown_links()
-</script>
-<!--
-    This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
-    It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
-    in sphinx and via head.hbs in mdbook.
--->
-<link rel="stylesheet" href="https://slint.dev/resources/highlightjs/11.0.1/default.min.css">
-<script src="https://slint.dev/resources/highlightjs/11.0.1/highlight.min.js"></script>
-<script>
-  function highlight_slint(hljs) {
-    const KEYWORDS = {
-      keyword:
-        "animate callback changed component enum export for function global if import in in-out inherits out parent private property public pure root self states struct",
-      literal: "false true",
-      built_in:
-        "ArcTo Clip Close Colors CubicTo Flickable FocusScope GridLayout HorizontalLayout Image LineTo Math MoveTo Path PopupWindow QuadraticTo Rectangle Row Text TextInput TouchArea VerticalLayout Window animation-tick debug",
-      type: "bool duration easing float int length logical-length relative-font-size string",
-    };
-
-    return {
-      name: 'slint',
-      case_insensitive: false,
-      keywords: KEYWORDS,
-      contains: [
-        hljs.QUOTE_STRING_MODE,
-        hljs.C_LINE_COMMENT_MODE,
-        hljs.C_BLOCK_COMMENT_MODE,
-        hljs.COMMENT('/\\*', '\\*/', {
-          contains: ['self']
-        }),
-        {
-          className: 'number',
-          begin: '\\b\\d+(\\.\\d+)?(\\w+)?',
-          relevance: 0
-        },
-        {
-          className: 'title',
-          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]* *:=',
-        },
-        {
-          className: 'symbol',
-          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]*(:| *=>)',
-        },
-        {
-          className: 'built_in',
-          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]*!',
-        },
-      ],
-      illegal: /@/
-    };
-  };
-
-  // Tags used in fenced code blocks
-  for (let tag of ["slint", "slint,no-preview", "slint,no-auto-preview", "slint,ignore"]) {
-    hljs.registerLanguage(tag, highlight_slint);
-  }
-
-
-  window.addEventListener("DOMContentLoaded", () => {
-    const rustDoc = document.querySelector('meta[name="generator"]')?.content == "rustdoc";
-    if (rustDoc) {
-      // Only highlight .slint blocks, leave the others to rustdoc
-      for (slintBlock of document.querySelectorAll("[class*=language-slint]")) {
-        hljs.highlightElement(slintBlock)
-      }
-
-      // Some of the rustdoc selectors require the pre element to have the rust class
-      for (codeBlock of document.querySelectorAll(".language-slint.hljs")) {
-        codeBlock.classList.add("rust");
-        codeBlock.classList.remove("hljs");
-      }
-
-      // Change the hljs generated classes to the rustdoc
-      // ones, so that the highlighting adjusts to the theme correctly.
-      const highlightJSToRustDoc = [
-        ["comment", "comment"],
-        ["number", "number"],
-        ["symbol", "struct"], // width:
-        ["keyword", "kw"],
-        ["built_in", "primitive"],
-        ["string", "string"],
-        ["title", "fnname"], // Foo :=
-        ["type", "type"]
-      ];
-
-      for ([hljs_class, rustdoc_class] of highlightJSToRustDoc) {
-        for (titleElement of document.querySelectorAll(`.hljs-${hljs_class}`)) {
-          titleElement.classList.remove(`hljs-${hljs_class}`);
-          titleElement.classList.add(rustdoc_class);
-        }
-      }
-    } else {
-      // For use with the mdbook Tutorial
-      hljs.highlightAll();
-
-      // The Sphinx/my_st generated HTML for code blocks doesn't use <code> tags, so highlight.js'
-      // default selector "pre code" doesn't match. Let's do it by hand:
-      for (block of document.querySelectorAll("div[class*=highlight-slint] div.highlight pre")) {
-        hljs.highlightElement(block)
-      }
-    }
-
-    // Fix up links that sphinx handles but for rustdoc we need to resolve manually:
-    {
-      let target_url = null;
-      if (document.location.hostname == "snapshots.slint.dev") {
-        target_url = `https://snapshots.slint.dev/master/docs/slint/`;
-      } else {
-        let version = document.querySelector("span.version");
-        if (version !== null) {
-          target_url = `https://slint.dev/releases/${version.innerText}/docs/slint/`;
-        }
-      }
-
-      if (target_url !== null) {
-        for (let link of document.querySelectorAll("a[href^='slint-reference:']")) {
-          link.href = link.href.replace("slint-reference:", target_url);
-        }
-      }
-    }
-  });
-</script>
 
   <footer class="bd-footer">
   </footer>

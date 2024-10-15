@@ -31,8 +31,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/theme_tweak.css?v=a03aae7b" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/theme_tweak.css?v=e5538edb" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/typesense-docsearch-css@0.3.0" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -56,6 +56,7 @@
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.9.0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
         </script>
+    <script src="../../_static/cm6.bundle.js?v=663fcec5"></script>
     <script src="../../_static/expand_tabs.js?v=acb398a4"></script>
     <link rel="canonical" href="https://docs.slint.dev/src/recipes/recipes.html" />
     <link rel="icon" href="https://slint.dev/favicon.svg"/>
@@ -63,8 +64,21 @@
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Debugging Techniques" href="../advanced/debugging_techniques.html" />
     <link rel="prev" title="DatePickerPopup" href="../language/widgets/datepicker.html" />
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+    <!-- Custom styles and script to prevent FOUC -->
+    <style>
+        body {
+            visibility: hidden;  /* Hide body until the theme is applied */
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme') || 'light';  // Default to light theme
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            document.body.style.visibility = 'visible';  // Make visible once theme is applied
+        });
+    </script>
+
   </head>
   
   
@@ -500,7 +514,7 @@ document.write(`
 <h1>Custom Control Introduction<a class="headerlink" href="#custom-control-introduction" title="Permalink to this heading">#</a></h1>
 <section id="a-clickable-button">
 <h2>A Clickable Button<a class="headerlink" href="#a-clickable-button" title="Permalink to this heading">#</a></h2>
-<div class="highlight-slint,no-auto-preview notranslate"><div class="highlight"><pre><span></span>import { VerticalBox, Button } from &quot;std-widgets.slint&quot;;
+<div id="editor-src-recipes-recipes-9" class="codemirror-editor" data-lang="slint,no-auto-preview" data-readonly="false"><div class="codemirror-content" style="display:none">import { VerticalBox, Button } from &quot;std-widgets.slint&quot;;
 export component Recipe inherits Window {
     in-out property &lt;int&gt; counter: 0;
     VerticalBox {
@@ -512,9 +526,7 @@ export component Recipe inherits Window {
         }
     }
 }
-</pre></div>
-</div>
-<p>In this first example, you see the basics of the Slint language:</p>
+</div></div><p>In this first example, you see the basics of the Slint language:</p>
 <ul class="simple">
 <li><p>We import the <code class="docutils literal notranslate"><span class="pre">VerticalBox</span></code> layout and the <code class="docutils literal notranslate"><span class="pre">Button</span></code> widget from the standard library
 using the <code class="docutils literal notranslate"><span class="pre">import</span></code> statement. This statement can import widgets or your own components
@@ -542,7 +554,7 @@ automatically re-computed whenever the <code class="docutils literal notranslate
 <section id="react-to-a-button-click-in-native-code">
 <h2>React to a Button Click in Native Code<a class="headerlink" href="#react-to-a-button-click-in-native-code" title="Permalink to this heading">#</a></h2>
 <p>This example increments the <code class="docutils literal notranslate"><span class="pre">counter</span></code> using native code:</p>
-<div class="highlight-slint,no-preview notranslate"><div class="highlight"><pre><span></span>import { VerticalBox, Button } from &quot;std-widgets.slint&quot;;
+<div id="editor-src-recipes-recipes-52" class="codemirror-editor" data-lang="slint,no-preview" data-readonly="false" data-nopreview="true"><div class="codemirror-content" style="display:none">import { VerticalBox, Button } from &quot;std-widgets.slint&quot;;
 export component Recipe inherits Window {
     in-out property &lt;int&gt; counter: 0;
     callback button-pressed &lt;=&gt; button.clicked;
@@ -552,9 +564,7 @@ export component Recipe inherits Window {
         }
     }
 }
-</pre></div>
-</div>
-<p>The <code class="docutils literal notranslate"><span class="pre">&lt;=&gt;</span></code> syntax binds two callbacks together. Here the new <code class="docutils literal notranslate"><span class="pre">button-pressed</span></code>
+</div></div><p>The <code class="docutils literal notranslate"><span class="pre">&lt;=&gt;</span></code> syntax binds two callbacks together. Here the new <code class="docutils literal notranslate"><span class="pre">button-pressed</span></code>
 callback binds to <code class="docutils literal notranslate"><span class="pre">button.clicked</span></code>.</p>
 <p>The root element of the main component exposes all non-<code class="docutils literal notranslate"><span class="pre">private</span></code> properties and
 callbacks to native code.</p>
@@ -566,7 +576,7 @@ identifiers, so <code class="docutils literal notranslate"><span class="pre">-</
 <p>For technical reasons, this example uses <code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">{Recipe}</span></code> in the <code class="docutils literal notranslate"><span class="pre">slint!</span></code> macro.
 In real code, you can put the whole Slint code in the <code class="docutils literal notranslate"><span class="pre">slint!</span></code> macro, or use
 an external <code class="docutils literal notranslate"><span class="pre">.slint</span></code> file together with a build script.</p>
-<div class="highlight-rust,no_run notranslate"><div class="highlight"><pre><span></span>slint::slint!(export { Recipe } from &quot;docs/reference/src/recipes/button_native.slint&quot;;);
+<div id="editor-src-recipes-recipes-83" class="codemirror-editor" data-lang="rust,no_run" data-ignore="true"><div class="codemirror-content" style="display:none">slint::slint!(export { Recipe } from &quot;docs/reference/src/recipes/button_native.slint&quot;;);
 
 fn main() {
     let recipe = Recipe::new().unwrap();
@@ -579,9 +589,7 @@ fn main() {
     });
     recipe.run().unwrap();
 }
-</pre></div>
-</div>
-<p>The Slint compiler generates a <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">Recipe</span></code> with a getter (<code class="docutils literal notranslate"><span class="pre">get_counter</span></code>) and
+</div></div><p>The Slint compiler generates a <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">Recipe</span></code> with a getter (<code class="docutils literal notranslate"><span class="pre">get_counter</span></code>) and
 a setter (<code class="docutils literal notranslate"><span class="pre">set_counter</span></code>) for each accessible property of the root element of the
 <code class="docutils literal notranslate"><span class="pre">Recipe</span></code> component. It also generates a function for each accessible callback,
 like in this case <code class="docutils literal notranslate"><span class="pre">on_button_pressed</span></code>.</p>
@@ -596,21 +604,19 @@ closure’s captured variables.</p>
 <details data-snippet-language="cpp">
 <summary>C++ code</summary>
 In C++ you can write
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;button_native.h&quot;</span>
+<div id="editor-src-recipes-recipes-118" class="codemirror-editor" data-lang="cpp" data-ignore="true"><div class="codemirror-content" style="display:none">#include &quot;button_native.h&quot;
 
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">argv</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">recipe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Recipe</span><span class="o">::</span><span class="n">create</span><span class="p">();</span>
-<span class="w">    </span><span class="n">recipe</span><span class="o">-&gt;</span><span class="n">on_button_pressed</span><span class="p">([</span><span class="o">&amp;</span><span class="p">]()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">recipe</span><span class="o">-&gt;</span><span class="n">get_counter</span><span class="p">();</span>
-<span class="w">        </span><span class="n">value</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">        </span><span class="n">recipe</span><span class="o">-&gt;</span><span class="n">set_counter</span><span class="p">(</span><span class="n">value</span><span class="p">);</span>
-<span class="w">    </span><span class="p">});</span>
-<span class="w">    </span><span class="n">recipe</span><span class="o">-&gt;</span><span class="n">run</span><span class="p">();</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>The CMake integration handles the Slint compiler invocations as needed,
+int main(int argc, char **argv)
+{
+    auto recipe = Recipe::create();
+    recipe-&gt;on_button_pressed([&amp;]() {
+        auto value = recipe-&gt;get_counter();
+        value += 1;
+        recipe-&gt;set_counter(value);
+    });
+    recipe-&gt;run();
+}
+</div></div><p>The CMake integration handles the Slint compiler invocations as needed,
 which will parse the <code class="docutils literal notranslate"><span class="pre">.slint</span></code> file and generate the <code class="docutils literal notranslate"><span class="pre">button_native.h</span></code> header.</p>
 <p>This header file contains a <code class="docutils literal notranslate"><span class="pre">Recipe</span></code> class with a getter and setter for each
 accessible property, as well as a function to set up a callback
@@ -621,7 +627,7 @@ set up the callback.</p>
 </section>
 <section id="use-property-bindings-to-synchronize-controls">
 <h2>Use Property Bindings to Synchronize Controls<a class="headerlink" href="#use-property-bindings-to-synchronize-controls" title="Permalink to this heading">#</a></h2>
-<div class="highlight-slint,no-auto-preview notranslate"><div class="highlight"><pre><span></span>import { VerticalBox, Slider } from &quot;std-widgets.slint&quot;;
+<div id="editor-src-recipes-recipes-146" class="codemirror-editor" data-lang="slint,no-auto-preview" data-readonly="false"><div class="codemirror-content" style="display:none">import { VerticalBox, Slider } from &quot;std-widgets.slint&quot;;
 export component Recipe inherits Window {
     VerticalBox {
         slider := Slider {
@@ -632,9 +638,7 @@ export component Recipe inherits Window {
         }
     }
 }
-</pre></div>
-</div>
-<p>This example introduces the <code class="docutils literal notranslate"><span class="pre">Slider</span></code> widget.</p>
+</div></div><p>This example introduces the <code class="docutils literal notranslate"><span class="pre">Slider</span></code> widget.</p>
 <p>It also introduces interpolation in string literals: Use <code class="docutils literal notranslate"><span class="pre">\{...}</span></code> to render
 the result of code between the curly braces as a string.</p>
 </section>
@@ -643,7 +647,7 @@ the result of code between the curly braces as a string.</p>
 <h1>Animation Examples<a class="headerlink" href="#animation-examples" title="Permalink to this heading">#</a></h1>
 <section id="animate-the-position-of-an-element">
 <h2>Animate the Position of an Element<a class="headerlink" href="#animate-the-position-of-an-element" title="Permalink to this heading">#</a></h2>
-<div class="highlight-slint,no-auto-preview notranslate"><div class="highlight"><pre><span></span>import { CheckBox } from &quot;std-widgets.slint&quot;;
+<div id="editor-src-recipes-recipes-169" class="codemirror-editor" data-lang="slint,no-auto-preview" data-readonly="false"><div class="codemirror-content" style="display:none">import { CheckBox } from &quot;std-widgets.slint&quot;;
 export component Recipe inherits Window {
     width: 200px;
     height: 100px;
@@ -673,9 +677,7 @@ export component Recipe inherits Window {
         }
     }
 }
-</pre></div>
-</div>
-<p>Layouts position elements automatically. In this example we manually position
+</div></div><p>Layouts position elements automatically. In this example we manually position
 elements instead, using the <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code>, <code class="docutils literal notranslate"><span class="pre">width</span></code>, <code class="docutils literal notranslate"><span class="pre">height</span></code> properties.</p>
 <p>Notice the <code class="docutils literal notranslate"><span class="pre">animate</span> <span class="pre">x</span></code> block that specifies an animation. It’s run whenever the
 property changes: Either because a callback sets the property, or because
@@ -683,7 +685,7 @@ its binding value changes.</p>
 </section>
 <section id="animation-sequence">
 <h2>Animation Sequence<a class="headerlink" href="#animation-sequence" title="Permalink to this heading">#</a></h2>
-<div class="highlight-slint,no-auto-preview notranslate"><div class="highlight"><pre><span></span>import { CheckBox } from &quot;std-widgets.slint&quot;;
+<div id="editor-src-recipes-recipes-211" class="codemirror-editor" data-lang="slint,no-auto-preview" data-readonly="false"><div class="codemirror-content" style="display:none">import { CheckBox } from &quot;std-widgets.slint&quot;;
 export component Recipe inherits Window {
     width: 200px;
     height: 100px;
@@ -720,16 +722,14 @@ export component Recipe inherits Window {
         }
     }
 }
-</pre></div>
-</div>
-<p>This example uses the <code class="docutils literal notranslate"><span class="pre">delay</span></code> property to make one animation run after another.</p>
+</div></div><p>This example uses the <code class="docutils literal notranslate"><span class="pre">delay</span></code> property to make one animation run after another.</p>
 </section>
 </section>
 <section id="states-examples">
 <h1>States Examples<a class="headerlink" href="#states-examples" title="Permalink to this heading">#</a></h1>
 <section id="associate-property-values-with-states">
 <h2>Associate Property Values With States<a class="headerlink" href="#associate-property-values-with-states" title="Permalink to this heading">#</a></h2>
-<div class="highlight-slint,no-auto-preview notranslate"><div class="highlight"><pre><span></span>import { HorizontalBox, VerticalBox, Button } from &quot;std-widgets.slint&quot;;
+<div id="editor-src-recipes-recipes-257" class="codemirror-editor" data-lang="slint,no-auto-preview" data-readonly="false"><div class="codemirror-content" style="display:none">import { HorizontalBox, VerticalBox, Button } from &quot;std-widgets.slint&quot;;
 
 component Circle inherits Rectangle {
     width: 30px;
@@ -772,12 +772,10 @@ export component Recipe inherits Window {
         }
     }
 }
-</pre></div>
-</div>
-</section>
+</div></div></section>
 <section id="transitions">
 <h2>Transitions<a class="headerlink" href="#transitions" title="Permalink to this heading">#</a></h2>
-<div class="highlight-slint,no-auto-preview notranslate"><div class="highlight"><pre><span></span>import { HorizontalBox, VerticalBox, Button } from &quot;std-widgets.slint&quot;;
+<div id="editor-src-recipes-recipes-305" class="codemirror-editor" data-lang="slint,no-auto-preview" data-readonly="false"><div class="codemirror-content" style="display:none">import { HorizontalBox, VerticalBox, Button } from &quot;std-widgets.slint&quot;;
 
 component Circle inherits Rectangle {
     width: 30px;
@@ -820,15 +818,13 @@ export component Recipe inherits Window {
         }
     }
 }
-</pre></div>
-</div>
-</section>
+</div></div></section>
 </section>
 <section id="layout-examples">
 <h1>Layout Examples<a class="headerlink" href="#layout-examples" title="Permalink to this heading">#</a></h1>
 <section id="vertical">
 <h2>Vertical<a class="headerlink" href="#vertical" title="Permalink to this heading">#</a></h2>
-<div class="highlight-slint,no-auto-preview notranslate"><div class="highlight"><pre><span></span>import { VerticalBox, Button } from &quot;std-widgets.slint&quot;;
+<div id="editor-src-recipes-recipes-355" class="codemirror-editor" data-lang="slint,no-auto-preview" data-readonly="false"><div class="codemirror-content" style="display:none">import { VerticalBox, Button } from &quot;std-widgets.slint&quot;;
 export component Recipe inherits Window {
     VerticalBox {
         Button { text: &quot;First&quot;; }
@@ -836,12 +832,10 @@ export component Recipe inherits Window {
         Button { text: &quot;Third&quot;; }
     }
 }
-</pre></div>
-</div>
-</section>
+</div></div></section>
 <section id="horizontal">
 <h2>Horizontal<a class="headerlink" href="#horizontal" title="Permalink to this heading">#</a></h2>
-<div class="highlight-slint,no-auto-preview notranslate"><div class="highlight"><pre><span></span>import { HorizontalBox, Button } from &quot;std-widgets.slint&quot;;
+<div id="editor-src-recipes-recipes-368" class="codemirror-editor" data-lang="slint,no-auto-preview" data-readonly="false"><div class="codemirror-content" style="display:none">import { HorizontalBox, Button } from &quot;std-widgets.slint&quot;;
 export component Recipe inherits Window {
     HorizontalBox {
         Button { text: &quot;First&quot;; }
@@ -849,12 +843,10 @@ export component Recipe inherits Window {
         Button { text: &quot;Third&quot;; }
     }
 }
-</pre></div>
-</div>
-</section>
+</div></div></section>
 <section id="grid">
 <h2>Grid<a class="headerlink" href="#grid" title="Permalink to this heading">#</a></h2>
-<div class="highlight-slint,no-auto-preview notranslate"><div class="highlight"><pre><span></span>import { GridBox, Button, Slider } from &quot;std-widgets.slint&quot;;
+<div id="editor-src-recipes-recipes-381" class="codemirror-editor" data-lang="slint,no-auto-preview" data-readonly="false"><div class="codemirror-content" style="display:none">import { GridBox, Button, Slider } from &quot;std-widgets.slint&quot;;
 export component Recipe inherits Window {
     GridBox {
         Row {
@@ -872,9 +864,7 @@ export component Recipe inherits Window {
         }
     }
 }
-</pre></div>
-</div>
-</section>
+</div></div></section>
 </section>
 <section id="global-callbacks">
 <h1>Global Callbacks<a class="headerlink" href="#global-callbacks" title="Permalink to this heading">#</a></h1>
@@ -883,7 +873,7 @@ export component Recipe inherits Window {
 <p>This example uses a global singleton to implement common logic in native code.
 This singleton may also store properties that are accessible to native code.</p>
 <p>Note: The preview visualize the Slint code only. It’s not connected to the native code.</p>
-<div class="highlight-slint,no-preview notranslate"><div class="highlight"><pre><span></span>import { HorizontalBox, VerticalBox, LineEdit } from &quot;std-widgets.slint&quot;;
+<div id="editor-src-recipes-recipes-411" class="codemirror-editor" data-lang="slint,no-preview" data-readonly="false" data-nopreview="true"><div class="codemirror-content" style="display:none">import { HorizontalBox, VerticalBox, LineEdit } from &quot;std-widgets.slint&quot;;
 
 export global Logic  {
     pure callback to-upper-case(string) -&gt; string;
@@ -906,83 +896,75 @@ export component Recipe inherits Window {
         }
     }
 }
-</pre></div>
-</div>
-<details  data-snippet-language="rust">
+</div></div><details  data-snippet-language="rust">
 <summary>Rust code</summary>
 In Rust you can set the callback like this:
-<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="n">slint</span><span class="p">::</span><span class="n">slint</span><span class="o">!</span><span class="p">{</span>
-<span class="n">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">HorizontalBox</span><span class="p">,</span><span class="w"> </span><span class="n">VerticalBox</span><span class="p">,</span><span class="w"> </span><span class="n">LineEdit</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="s">&quot;std-widgets.slint&quot;</span><span class="p">;</span>
+<div id="editor-src-recipes-recipes-441" class="codemirror-editor" data-lang="rust" data-ignore="true"><div class="codemirror-content" style="display:none">slint::slint!{
+import { HorizontalBox, VerticalBox, LineEdit } from &quot;std-widgets.slint&quot;;
 
-<span class="n">export</span><span class="w"> </span><span class="n">global</span><span class="w"> </span><span class="n">Logic</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">pure</span><span class="w"> </span><span class="n">callback</span><span class="w"> </span><span class="n">to</span><span class="o">-</span><span class="n">upper</span><span class="o">-</span><span class="n">case</span><span class="p">(</span><span class="n">string</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">;</span>
-<span class="w">    </span><span class="c1">// You can collect other global properties here</span>
-<span class="p">}</span>
+export global Logic {
+    pure callback to-upper-case(string) -&gt; string;
+    // You can collect other global properties here
+}
 
-<span class="n">export</span><span class="w"> </span><span class="n">component</span><span class="w"> </span><span class="n">Recipe</span><span class="w"> </span><span class="n">inherits</span><span class="w"> </span><span class="n">Window</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">VerticalBox</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">input</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="n">LineEdit</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">text</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Text to be transformed&quot;</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="n">HorizontalBox</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">Text</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">text</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Transformed:&quot;</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="w">            </span><span class="c1">// Callback invoked in binding expression</span>
-<span class="w">            </span><span class="n">Text</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="n">text</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="n">Logic</span><span class="p">.</span><span class="n">to</span><span class="o">-</span><span class="n">upper</span><span class="o">-</span><span class="n">case</span><span class="p">(</span><span class="n">input</span><span class="p">.</span><span class="n">text</span><span class="p">);</span>
-<span class="w">                </span><span class="p">}</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-<span class="p">}</span>
+export component Recipe inherits Window {
+    VerticalBox {
+        input := LineEdit {
+            text: &quot;Text to be transformed&quot;;
+        }
+        HorizontalBox {
+            Text { text: &quot;Transformed:&quot;; }
+            // Callback invoked in binding expression
+            Text {
+                text: {
+                    Logic.to-upper-case(input.text);
+                }
+            }
+        }
+    }
+}
+}
 
-<span class="k">fn</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">recipe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Recipe</span><span class="p">::</span><span class="n">new</span><span class="p">().</span><span class="n">unwrap</span><span class="p">();</span>
-<span class="w">    </span><span class="n">recipe</span><span class="p">.</span><span class="n">global</span><span class="p">::</span><span class="o">&lt;</span><span class="n">Logic</span><span class="o">&gt;</span><span class="p">().</span><span class="n">on_to_upper_case</span><span class="p">(</span><span class="o">|</span><span class="n">string</span><span class="o">|</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">string</span><span class="p">.</span><span class="n">as_str</span><span class="p">().</span><span class="n">to_uppercase</span><span class="p">().</span><span class="n">into</span><span class="p">()</span>
-<span class="w">    </span><span class="p">});</span>
-<span class="w">    </span><span class="c1">// ...</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</details>
+fn main() {
+    let recipe = Recipe::new().unwrap();
+    recipe.global::&lt;Logic&gt;().on_to_upper_case(|string| {
+        string.as_str().to_uppercase().into()
+    });
+    // ...
+}
+</div></div></details>
 <details  data-snippet-language="cpp">
 <summary>C++ code</summary>
 In C++ you can set the callback like this:
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">argv</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">recipe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Recipe</span><span class="o">::</span><span class="n">create</span><span class="p">();</span>
-<span class="w">    </span><span class="n">recipe</span><span class="o">-&gt;</span><span class="n">global</span><span class="o">&lt;</span><span class="n">Logic</span><span class="o">&gt;</span><span class="p">().</span><span class="n">on_to_upper_case</span><span class="p">([](</span><span class="n">slint</span><span class="o">::</span><span class="n">SharedString</span><span class="w"> </span><span class="n">str</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">slint</span><span class="o">::</span><span class="n">SharedString</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">arg</span><span class="p">(</span><span class="n">str</span><span class="p">);</span>
-<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">transform</span><span class="p">(</span><span class="n">arg</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">arg</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="n">arg</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">toupper</span><span class="p">);</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">slint</span><span class="o">::</span><span class="n">SharedString</span><span class="p">(</span><span class="n">arg</span><span class="p">);</span>
-<span class="w">    </span><span class="p">});</span>
-<span class="w">    </span><span class="c1">// ...</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</details>
+<div id="editor-src-recipes-recipes-482" class="codemirror-editor" data-lang="cpp" data-ignore="true"><div class="codemirror-content" style="display:none">int main(int argc, char **argv)
+{
+    auto recipe = Recipe::create();
+    recipe-&gt;global&lt;Logic&gt;().on_to_upper_case([](slint::SharedString str) -&gt; slint::SharedString {
+        std::string arg(str);
+        std::transform(arg.begin(), arg.end(), arg.begin(), toupper);
+        return slint::SharedString(arg);
+    });
+    // ...
+}
+</div></div></details>
 <details  data-snippet-language="javascript">
 <summary>JavaScript code</summary>
 In JavaScript you can set the callback like this:
-<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">let</span><span class="w"> </span><span class="nx">slint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;slint-ui&quot;</span><span class="p">);</span>
-<span class="kd">let</span><span class="w"> </span><span class="nx">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">slint</span><span class="p">.</span><span class="nx">loadFile</span><span class="p">(</span><span class="s2">&quot;recipe.slint&quot;</span><span class="p">);</span>
-<span class="kd">let</span><span class="w"> </span><span class="nx">recipe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">file</span><span class="p">.</span><span class="nx">Recipe</span><span class="p">();</span>
-<span class="nx">recipe</span><span class="p">.</span><span class="nx">Logic</span><span class="p">.</span><span class="nx">to_upper_case</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">str</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">str</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">();</span>
-<span class="p">};</span>
-<span class="c1">// ...</span>
-</pre></div>
-</div>
-</details>
+<div id="editor-src-recipes-recipes-500" class="codemirror-editor" data-lang="js" data-ignore="true"><div class="codemirror-content" style="display:none">let slint = require(&quot;slint-ui&quot;);
+let file = slint.loadFile(&quot;recipe.slint&quot;);
+let recipe = new file.Recipe();
+recipe.Logic.to_upper_case = (str) =&gt; {
+    return str.toUpperCase();
+};
+// ...
+</div></div></details>
 </section>
 </section>
 <section id="custom-widgets">
 <h1>Custom Widgets<a class="headerlink" href="#custom-widgets" title="Permalink to this heading">#</a></h1>
 <section id="custom-button">
 <h2>Custom Button<a class="headerlink" href="#custom-button" title="Permalink to this heading">#</a></h2>
-<div class="highlight-slint,no-auto-preview notranslate"><div class="highlight"><pre><span></span>component Button inherits Rectangle {
+<div id="editor-src-recipes-recipes-515" class="codemirror-editor" data-lang="slint,no-auto-preview" data-readonly="false"><div class="codemirror-content" style="display:none">component Button inherits Rectangle {
     in-out property text &lt;=&gt; txt.text;
     callback clicked &lt;=&gt; touch.clicked;
     border-radius: root.height / 2;
@@ -1005,12 +987,10 @@ export component Recipe inherits Window {
         Button { text: &quot;Button&quot;; }
     }
 }
-</pre></div>
-</div>
-</section>
+</div></div></section>
 <section id="toggleswitch">
 <h2>ToggleSwitch<a class="headerlink" href="#toggleswitch" title="Permalink to this heading">#</a></h2>
-<div class="highlight-slint,no-auto-preview notranslate"><div class="highlight"><pre><span></span>export component ToggleSwitch inherits Rectangle {
+<div id="editor-src-recipes-recipes-543" class="codemirror-editor" data-lang="slint,no-auto-preview" data-readonly="false"><div class="codemirror-content" style="display:none">export component ToggleSwitch inherits Rectangle {
     callback toggled;
     in-out property &lt;string&gt; text;
     in-out property &lt;bool&gt; checked;
@@ -1069,14 +1049,12 @@ export component Recipe inherits Window {
         ToggleSwitch { text: &quot;Disabled&quot;; enabled: false; }
     }
 }
-</pre></div>
-</div>
-</section>
+</div></div></section>
 <section id="customslider">
 <h2>CustomSlider<a class="headerlink" href="#customslider" title="Permalink to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">TouchArea</span></code> is covering the entire widget, so you can drag this slider from
 any point within itself.</p>
-<div class="highlight-slint,no-auto-preview notranslate"><div class="highlight"><pre><span></span>import { VerticalBox } from &quot;std-widgets.slint&quot;;
+<div id="editor-src-recipes-recipes-610" class="codemirror-editor" data-lang="slint,no-auto-preview" data-readonly="false"><div class="codemirror-content" style="display:none">import { VerticalBox } from &quot;std-widgets.slint&quot;;
 
 export component MySlider inherits Rectangle {
     in-out property&lt;float&gt; maximum: 100;
@@ -1130,12 +1108,10 @@ export component Recipe inherits Window {
         }
     }
 }
-</pre></div>
-</div>
-<p>This example show another implementation that has a drag-able handle:
+</div></div><p>This example show another implementation that has a drag-able handle:
 The handle only moves when we click on that handle.
 The TouchArea is within the handle and moves with the handle.</p>
-<div class="highlight-slint,no-auto-preview notranslate"><div class="highlight"><pre><span></span>import { VerticalBox } from &quot;std-widgets.slint&quot;;
+<div id="editor-src-recipes-recipes-671" class="codemirror-editor" data-lang="slint,no-auto-preview" data-readonly="false"><div class="codemirror-content" style="display:none">import { VerticalBox } from &quot;std-widgets.slint&quot;;
 
 export component MySlider inherits Rectangle {
     in-out property&lt;float&gt; maximum: 100;
@@ -1183,13 +1159,11 @@ export component Recipe inherits Window {
         }
     }
 }
-</pre></div>
-</div>
-</section>
+</div></div></section>
 <section id="custom-tabs">
 <h2>Custom Tabs<a class="headerlink" href="#custom-tabs" title="Permalink to this heading">#</a></h2>
 <p>Use this recipe as a basis to when you want to create your own custom tab widget.</p>
-<div class="highlight-slint,no-auto-preview notranslate"><div class="highlight"><pre><span></span>import { Button } from &quot;std-widgets.slint&quot;;
+<div id="editor-src-recipes-recipes-726" class="codemirror-editor" data-lang="slint,no-auto-preview" data-readonly="false"><div class="codemirror-content" style="display:none">import { Button } from &quot;std-widgets.slint&quot;;
 
 export component Recipe inherits Window {
     preferred-height: 200px;
@@ -1230,14 +1204,12 @@ export component Recipe inherits Window {
         }
     }
 }
-</pre></div>
-</div>
-</section>
+</div></div></section>
 <section id="custom-table-view">
 <h2>Custom Table View<a class="headerlink" href="#custom-table-view" title="Permalink to this heading">#</a></h2>
 <p>Slint provides a table widget, but you can also do something custom based on a
 <code class="docutils literal notranslate"><span class="pre">ListView</span></code>.</p>
-<div class="highlight-slint,no-auto-preview notranslate"><div class="highlight"><pre><span></span>import { VerticalBox, ListView } from &quot;std-widgets.slint&quot;;
+<div id="editor-src-recipes-recipes-775" class="codemirror-editor" data-lang="slint,no-auto-preview" data-readonly="false"><div class="codemirror-content" style="display:none">import { VerticalBox, ListView } from &quot;std-widgets.slint&quot;;
 
 component TableView inherits Rectangle {
     in property &lt;[string]&gt; columns;
@@ -1306,16 +1278,14 @@ export component Example inherits Window {
        ];
    }
 }
-</pre></div>
-</div>
-</section>
+</div></div></section>
 <section id="breakpoints-for-responsive-user-interfaces">
 <h2>Breakpoints for Responsive User Interfaces<a class="headerlink" href="#breakpoints-for-responsive-user-interfaces" title="Permalink to this heading">#</a></h2>
 <p>Use recipe implements a responsive SideBar that collapses when the parent
 width is smaller than the given break-point. When clicking the Button, the
 SideBar expands again. Use the blue Splitter to resize the container and
 test the responsive behavior.</p>
-<div class="highlight-slint,no-auto-preview notranslate"><div class="highlight"><pre><span></span>import { Button, Palette } from &quot;std-widgets.slint&quot;;
+<div id="editor-src-recipes-recipes-854" class="codemirror-editor" data-lang="slint,no-auto-preview" data-readonly="false"><div class="codemirror-content" style="display:none">import { Button, Palette } from &quot;std-widgets.slint&quot;;
 
 export component SideBar inherits Rectangle {
     private property &lt;bool&gt; collapsed: root.reference-width &lt; root.break-point;
@@ -1354,7 +1324,7 @@ export component SideBar inherits Rectangle {
                 }
             }
 
-            @children
+            &#64;children
         }
 
         states [
@@ -1434,9 +1404,7 @@ export component SideBarTest inherits Window {
         }
     }
 }
-</pre></div>
-</div>
-<!--
+</div></div><!--
 
 more content:
 
@@ -1584,253 +1552,12 @@ By Slint Developers <info@slint.dev>
       </main>
     </div>
   </div>
-   
+  
+    
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
   <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
 <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-<!--
-    This file is used to add preview of the `.slint` snippets in the generated rustdoc documentation.
-    It can be injected via the `--html-in-header slint-docs-preview.html` option of rustdoc.
--->
-<script type="module">
-    "use strict";
-    //import * as slint from 'https://releases.slint.dev/0.x.0/wasm-interpreter/slint_wasm_interpreter.js';
-    //const editor_url = "https://releases.slint.dev/0.x.0/editor/";
-    import * as slint from 'https://snapshots.slint.dev/master/wasm-interpreter/slint_wasm_interpreter.js';
-    const editor_url = "https://snapshots.slint.dev/master/editor/";
-    // keep them alive
-    var all_instances = new Array;
-
-    async function render_or_error(source, div) {
-        let canvas_id = 'canvas_' + Math.random().toString(36).substr(2, 9);
-        let canvas = document.createElement("canvas");
-        canvas.id = canvas_id;
-        div.appendChild(canvas);
-
-        let { component, error_string } = await slint.compile_from_string(source, "");
-        if (error_string != "") {
-            var text = document.createTextNode(error_string);
-            var p = document.createElement('pre');
-            p.appendChild(text);
-            div.innerHTML = "<pre style='color: red; background-color:#fee; margin:0'>" + p.innerHTML + "</pre>";
-        }
-        if (component !== undefined) {
-            let instance = await component.create(canvas_id);
-            await instance.show();
-            all_instances.push(instance);
-        }
-    }
-
-    async function create_preview(element, source_code) {
-        // Style the preview such that a flexbox lays out the source code box
-        // (which should take up any spare space), followed by the preview canvas.
-        // The latter may wrap into a new row on mobile. The edit/play buttons are
-        // placed last by flexbox order attribute.
-        let div = document.createElement("div");
-        let sourceCodeBox = element.firstElementChild;
-        element.style = "display: flex; flex-wrap: wrap;";
-        sourceCodeBox.style = "flex-grow: 2";
-        element.append(div);
-        await render_or_error(source_code, div);
-    }
-
-    function should_show_automatic_preview(element) {
-        // The `no-auto-preview` doesn't map directly to a dedicated class but it's mangled differently
-        // between rustdoc and sphinx, so match fuzzy on the entire class list:
-        return !element.className.includes("no-auto-preview");
-    }
-
-    async function create_click_to_play_and_edit_buttons(element) {
-        let source = element.innerText;
-
-        let link_section = document.createElement("div");
-        // Ensure the link section is always last and on a row of its own in the flexbox.
-        link_section.style = "order: 100; flex-basis: 100%;";
-        element.append(link_section);
-
-        let button_style = "text-decoration: none;"
-
-        let edit_button = document.createElement("a");
-        edit_button.style = button_style;
-        edit_button.href = `${editor_url}?snippet=${encodeURIComponent(source)}`;
-        edit_button.target = "_blank";
-        edit_button.innerText = "Edit 📝";
-        link_section.append(edit_button);
-
-        if (should_show_automatic_preview(element)) {
-            create_preview(element, source);
-        } else {
-            let play_button = document.createElement("a");
-            play_button.style = button_style;
-            play_button.innerText = "Preview ▶️";
-            play_button.onclick = async () => {
-                play_button.remove();
-                create_preview(element, source);
-            };
-
-            link_section.prepend(play_button);
-        }
-    }
-
-    async function run() {
-        await slint.default();
-
-        try {
-            slint.run_event_loop();
-            // this will trigger a JS exception, so this line will never be reached!
-        } catch (e) {
-            // The winit event loop, when targeting wasm, throws a JavaScript exception to break out of
-            // Rust without running any destructors. Don't rethrow the exception but swallow it, as
-            // this is no error and we truly want to resolve the promise of this function by returning
-            // the model markers.
-        }
-
-        let selector = ["code.language-slint", ".rustdoc pre.language-slint", "div.highlight-slint div.highlight", "div.highlight-slint\\,no-auto-preview div.highlight"]
-            .map((sel) => `${sel}:not([class*=slint\\,ignore]):not([class*=slint\\,no-preview])`).join(",");
-        var elements = document.querySelectorAll(selector);
-        for (var i = 0; i < elements.length; ++i) {
-            await create_click_to_play_and_edit_buttons(elements[i]);
-        }
-    }
-    run();
-
-    // Included markdown files may have links to other markdown files, which may not have been
-    // resolved by rustdoc. This helper locates such links and resolves them, assuming that each
-    // .md file gets its own sub-directory with an index.html.
-    function fix_markdown_links() {
-        for (let anchor of document.querySelectorAll('a[href$=".md"], a[href*=".md#"]')) {
-            let url = new URL(anchor.href);
-            let dir_separator = Math.max(url.pathname.lastIndexOf("/"), 0);
-            let base_name = url.pathname.slice(dir_separator + 1, -3);
-            let base_path = url.pathname.slice(0, dir_separator);
-            url.pathname = base_path + "/../" + base_name + "/index.html";
-            anchor.setAttribute("href", url);
-        }
-    }
-    fix_markdown_links()
-</script>
-<!--
-    This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
-    It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
-    in sphinx and via head.hbs in mdbook.
--->
-<link rel="stylesheet" href="https://slint.dev/resources/highlightjs/11.0.1/default.min.css">
-<script src="https://slint.dev/resources/highlightjs/11.0.1/highlight.min.js"></script>
-<script>
-  function highlight_slint(hljs) {
-    const KEYWORDS = {
-      keyword:
-        "animate callback changed component enum export for function global if import in in-out inherits out parent private property public pure root self states struct",
-      literal: "false true",
-      built_in:
-        "ArcTo Clip Close Colors CubicTo Flickable FocusScope GridLayout HorizontalLayout Image LineTo Math MoveTo Path PopupWindow QuadraticTo Rectangle Row Text TextInput TouchArea VerticalLayout Window animation-tick debug",
-      type: "bool duration easing float int length logical-length relative-font-size string",
-    };
-
-    return {
-      name: 'slint',
-      case_insensitive: false,
-      keywords: KEYWORDS,
-      contains: [
-        hljs.QUOTE_STRING_MODE,
-        hljs.C_LINE_COMMENT_MODE,
-        hljs.C_BLOCK_COMMENT_MODE,
-        hljs.COMMENT('/\\*', '\\*/', {
-          contains: ['self']
-        }),
-        {
-          className: 'number',
-          begin: '\\b\\d+(\\.\\d+)?(\\w+)?',
-          relevance: 0
-        },
-        {
-          className: 'title',
-          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]* *:=',
-        },
-        {
-          className: 'symbol',
-          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]*(:| *=>)',
-        },
-        {
-          className: 'built_in',
-          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]*!',
-        },
-      ],
-      illegal: /@/
-    };
-  };
-
-  // Tags used in fenced code blocks
-  for (let tag of ["slint", "slint,no-preview", "slint,no-auto-preview", "slint,ignore"]) {
-    hljs.registerLanguage(tag, highlight_slint);
-  }
-
-
-  window.addEventListener("DOMContentLoaded", () => {
-    const rustDoc = document.querySelector('meta[name="generator"]')?.content == "rustdoc";
-    if (rustDoc) {
-      // Only highlight .slint blocks, leave the others to rustdoc
-      for (slintBlock of document.querySelectorAll("[class*=language-slint]")) {
-        hljs.highlightElement(slintBlock)
-      }
-
-      // Some of the rustdoc selectors require the pre element to have the rust class
-      for (codeBlock of document.querySelectorAll(".language-slint.hljs")) {
-        codeBlock.classList.add("rust");
-        codeBlock.classList.remove("hljs");
-      }
-
-      // Change the hljs generated classes to the rustdoc
-      // ones, so that the highlighting adjusts to the theme correctly.
-      const highlightJSToRustDoc = [
-        ["comment", "comment"],
-        ["number", "number"],
-        ["symbol", "struct"], // width:
-        ["keyword", "kw"],
-        ["built_in", "primitive"],
-        ["string", "string"],
-        ["title", "fnname"], // Foo :=
-        ["type", "type"]
-      ];
-
-      for ([hljs_class, rustdoc_class] of highlightJSToRustDoc) {
-        for (titleElement of document.querySelectorAll(`.hljs-${hljs_class}`)) {
-          titleElement.classList.remove(`hljs-${hljs_class}`);
-          titleElement.classList.add(rustdoc_class);
-        }
-      }
-    } else {
-      // For use with the mdbook Tutorial
-      hljs.highlightAll();
-
-      // The Sphinx/my_st generated HTML for code blocks doesn't use <code> tags, so highlight.js'
-      // default selector "pre code" doesn't match. Let's do it by hand:
-      for (block of document.querySelectorAll("div[class*=highlight-slint] div.highlight pre")) {
-        hljs.highlightElement(block)
-      }
-    }
-
-    // Fix up links that sphinx handles but for rustdoc we need to resolve manually:
-    {
-      let target_url = null;
-      if (document.location.hostname == "snapshots.slint.dev") {
-        target_url = `https://snapshots.slint.dev/master/docs/slint/`;
-      } else {
-        let version = document.querySelector("span.version");
-        if (version !== null) {
-          target_url = `https://slint.dev/releases/${version.innerText}/docs/slint/`;
-        }
-      }
-
-      if (target_url !== null) {
-        for (let link of document.querySelectorAll("a[href^='slint-reference:']")) {
-          link.href = link.href.replace("slint-reference:", target_url);
-        }
-      }
-    }
-  });
-</script>
 
   <footer class="bd-footer">
   </footer>

@@ -31,8 +31,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/theme_tweak.css?v=a03aae7b" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/theme_tweak.css?v=e5538edb" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/typesense-docsearch-css@0.3.0" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -56,6 +56,7 @@
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.9.0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
         </script>
+    <script src="../../_static/cm6.bundle.js?v=663fcec5"></script>
     <script src="../../_static/expand_tabs.js?v=acb398a4"></script>
     <link rel="canonical" href="https://docs.slint.dev/src/quickstart/running_in_a_browser.html" />
     <link rel="icon" href="https://slint.dev/favicon.svg"/>
@@ -63,8 +64,21 @@
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Ideas For The Reader" href="ideas_for_the_reader.html" />
     <link rel="prev" title="Game Logic" href="game_logic.html" />
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+    <!-- Custom styles and script to prevent FOUC -->
+    <style>
+        body {
+            visibility: hidden;  /* Hide body until the theme is applied */
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme') || 'light';  // Default to light theme
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            document.body.style.visibility = 'visible';  // Make visible once theme is applied
+        });
+    </script>
+
   </head>
   
   
@@ -462,61 +476,49 @@ for demonstration purposes. This section uses the standard rust tool <code class
 <code class="docutils literal notranslate"><span class="pre">wasm-pack</span></code> to run the game in the browser. Read the <a class="reference external" href="https://rustwasm.github.io/docs/wasm-bindgen/examples/without-a-bundler.html">wasm-bindgen documentation</a>
 for more about using wasm and rust.</p>
 <p>Install <code class="docutils literal notranslate"><span class="pre">wasm-pack</span></code> using cargo:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>cargo<span class="w"> </span>install<span class="w"> </span>wasm-pack
-</pre></div>
-</div>
-<p>Edit the <code class="docutils literal notranslate"><span class="pre">Cargo.toml</span></code> file to add the dependencies.</p>
-<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[target.</span><span class="s1">&#39;cfg(target_arch = &quot;wasm32&quot;)&#39;</span><span class="k">.dependencies]</span>
-<span class="n">wasm-bindgen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;0.2&quot;</span><span class="w"> </span><span class="p">}</span>
-<span class="n">getrandom</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;0.2.2&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">features</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;js&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">}</span>
-</pre></div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">'cfg(target_arch</span> <span class="pre">=</span> <span class="pre">&quot;wasm32&quot;)'</span></code> ensures that these dependencies are only active
+<div id="editor-src-quickstart-running_in_a_browser-17" class="codemirror-editor" data-lang="sh" data-ignore="true"><div class="codemirror-content" style="display:none">cargo install wasm-pack
+</div></div><p>Edit the <code class="docutils literal notranslate"><span class="pre">Cargo.toml</span></code> file to add the dependencies.</p>
+<div id="editor-src-quickstart-running_in_a_browser-23" class="codemirror-editor" data-lang="toml" data-ignore="true"><div class="codemirror-content" style="display:none">[target.'cfg(target_arch = &quot;wasm32&quot;)'.dependencies]
+wasm-bindgen = { version = &quot;0.2&quot; }
+getrandom = { version = &quot;0.2.2&quot;, features = [&quot;js&quot;] }
+</div></div><p><code class="docutils literal notranslate"><span class="pre">'cfg(target_arch</span> <span class="pre">=</span> <span class="pre">&quot;wasm32&quot;)'</span></code> ensures that these dependencies are only active
 when compiling for the wasm32 architecture. Note that the <code class="docutils literal notranslate"><span class="pre">rand</span></code> dependency is now duplicated,
 to enable the <code class="docutils literal notranslate"><span class="pre">&quot;wasm-bindgen&quot;</span></code> feature.</p>
 <p>While you are editing the <code class="docutils literal notranslate"><span class="pre">Cargo.toml</span></code>, make one last change. To turn the binary into
 a library by adding the following:</p>
-<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[lib]</span>
-<span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;src/main.rs&quot;</span>
-<span class="n">crate-type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;cdylib&quot;</span><span class="p">]</span>
-</pre></div>
-</div>
-<p>This is because wasm-pack requires Rust to generate a <code class="docutils literal notranslate"><span class="pre">&quot;cdylib&quot;</span></code>.</p>
+<div id="editor-src-quickstart-running_in_a_browser-36" class="codemirror-editor" data-lang="toml" data-ignore="true"><div class="codemirror-content" style="display:none">[lib]
+path = &quot;src/main.rs&quot;
+crate-type = [&quot;cdylib&quot;]
+</div></div><p>This is because wasm-pack requires Rust to generate a <code class="docutils literal notranslate"><span class="pre">&quot;cdylib&quot;</span></code>.</p>
 <p>You also need to change <code class="docutils literal notranslate"><span class="pre">main.rs</span></code> by adding the <code class="docutils literal notranslate"><span class="pre">wasm_bindgen(start)</span></code>
 attribute to the <code class="docutils literal notranslate"><span class="pre">main</span></code> function and export it with the <code class="docutils literal notranslate"><span class="pre">pub</span></code> keyword:</p>
-<div class="highlight-rust,noplayground notranslate"><div class="highlight"><pre><span></span>#[cfg_attr(target_arch = &quot;wasm32&quot;,
+<div id="editor-src-quickstart-running_in_a_browser-47" class="codemirror-editor" data-lang="rust,noplayground" data-ignore="true"><div class="codemirror-content" style="display:none">#[cfg_attr(target_arch = &quot;wasm32&quot;,
            wasm_bindgen::prelude::wasm_bindgen(start))]
 pub fn main() {
     //...
 }
-</pre></div>
-</div>
-<p>Compile the program with <code class="docutils literal notranslate"><span class="pre">wasm-pack</span> <span class="pre">build</span> <span class="pre">--release</span> <span class="pre">--target</span> <span class="pre">web</span></code>. This
+</div></div><p>Compile the program with <code class="docutils literal notranslate"><span class="pre">wasm-pack</span> <span class="pre">build</span> <span class="pre">--release</span> <span class="pre">--target</span> <span class="pre">web</span></code>. This
 creates a <code class="docutils literal notranslate"><span class="pre">pkg</span></code> directory containing several files, including a <code class="docutils literal notranslate"><span class="pre">.js</span></code> file
 named after the program name that you need to import into an HTML file.</p>
 <p>Create a minimal <code class="docutils literal notranslate"><span class="pre">index.html</span></code> in the top level of the project that declares a <code class="docutils literal notranslate"><span class="pre">&lt;canvas&gt;</span></code> element for rendering and loads the generated wasm
 file. The Slint runtime expects the <code class="docutils literal notranslate"><span class="pre">&lt;canvas&gt;</span></code> element to have the id <code class="docutils literal notranslate"><span class="pre">id</span> <span class="pre">=</span> <span class="pre">&quot;canvas&quot;</span></code>.
 (Replace <code class="docutils literal notranslate"><span class="pre">memory.js</span></code> with the correct file name).</p>
-<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
-        <span class="cm">&lt;!-- canvas required by the Slint runtime --&gt;</span>
-        <span class="p">&lt;</span><span class="nt">canvas</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;canvas&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">canvas</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;module&quot;</span><span class="p">&gt;</span>
-<span class="w">            </span><span class="c1">// import the generated file.</span>
-<span class="w">            </span><span class="k">import</span><span class="w"> </span><span class="nx">init</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./pkg/memory.js&quot;</span><span class="p">;</span>
-<span class="w">            </span><span class="nx">init</span><span class="p">();</span>
-<span class="w">        </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-    <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
-</pre></div>
-</div>
-<p>Unfortunately, loading ES modules isn’t allowed for files on the file system when accessed from a
+<div id="editor-src-quickstart-running_in_a_browser-63" class="codemirror-editor" data-lang="html" data-ignore="true"><div class="codemirror-content" style="display:none">&lt;html&gt;
+    &lt;body&gt;
+        &lt;!-- canvas required by the Slint runtime --&gt;
+        &lt;canvas id=&quot;canvas&quot;&gt;&lt;/canvas&gt;
+        &lt;script type=&quot;module&quot;&gt;
+            // import the generated file.
+            import init from &quot;./pkg/memory.js&quot;;
+            init();
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</div></div><p>Unfortunately, loading ES modules isn’t allowed for files on the file system when accessed from a
 <code class="docutils literal notranslate"><span class="pre">file://</span></code> URL, so you can’t load the <code class="docutils literal notranslate"><span class="pre">index.html</span></code>. Instead, you need to serve it through a web server.
 For example, using Python, by running:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>http.server
-</pre></div>
-</div>
-<p>Now you can access the game at <a class="reference external" href="http://localhost:8000/">http://localhost:8000</a>.</p>
+<div id="editor-src-quickstart-running_in_a_browser-81" class="codemirror-editor" data-lang="sh" data-ignore="true"><div class="codemirror-content" style="display:none">python3 -m http.server
+</div></div><p>Now you can access the game at <a class="reference external" href="http://localhost:8000/">http://localhost:8000</a>.</p>
 </section>
 
 
@@ -599,253 +601,12 @@ By Slint Developers <info@slint.dev>
       </main>
     </div>
   </div>
-   
+  
+    
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
   <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
 <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-<!--
-    This file is used to add preview of the `.slint` snippets in the generated rustdoc documentation.
-    It can be injected via the `--html-in-header slint-docs-preview.html` option of rustdoc.
--->
-<script type="module">
-    "use strict";
-    //import * as slint from 'https://releases.slint.dev/0.x.0/wasm-interpreter/slint_wasm_interpreter.js';
-    //const editor_url = "https://releases.slint.dev/0.x.0/editor/";
-    import * as slint from 'https://snapshots.slint.dev/master/wasm-interpreter/slint_wasm_interpreter.js';
-    const editor_url = "https://snapshots.slint.dev/master/editor/";
-    // keep them alive
-    var all_instances = new Array;
-
-    async function render_or_error(source, div) {
-        let canvas_id = 'canvas_' + Math.random().toString(36).substr(2, 9);
-        let canvas = document.createElement("canvas");
-        canvas.id = canvas_id;
-        div.appendChild(canvas);
-
-        let { component, error_string } = await slint.compile_from_string(source, "");
-        if (error_string != "") {
-            var text = document.createTextNode(error_string);
-            var p = document.createElement('pre');
-            p.appendChild(text);
-            div.innerHTML = "<pre style='color: red; background-color:#fee; margin:0'>" + p.innerHTML + "</pre>";
-        }
-        if (component !== undefined) {
-            let instance = await component.create(canvas_id);
-            await instance.show();
-            all_instances.push(instance);
-        }
-    }
-
-    async function create_preview(element, source_code) {
-        // Style the preview such that a flexbox lays out the source code box
-        // (which should take up any spare space), followed by the preview canvas.
-        // The latter may wrap into a new row on mobile. The edit/play buttons are
-        // placed last by flexbox order attribute.
-        let div = document.createElement("div");
-        let sourceCodeBox = element.firstElementChild;
-        element.style = "display: flex; flex-wrap: wrap;";
-        sourceCodeBox.style = "flex-grow: 2";
-        element.append(div);
-        await render_or_error(source_code, div);
-    }
-
-    function should_show_automatic_preview(element) {
-        // The `no-auto-preview` doesn't map directly to a dedicated class but it's mangled differently
-        // between rustdoc and sphinx, so match fuzzy on the entire class list:
-        return !element.className.includes("no-auto-preview");
-    }
-
-    async function create_click_to_play_and_edit_buttons(element) {
-        let source = element.innerText;
-
-        let link_section = document.createElement("div");
-        // Ensure the link section is always last and on a row of its own in the flexbox.
-        link_section.style = "order: 100; flex-basis: 100%;";
-        element.append(link_section);
-
-        let button_style = "text-decoration: none;"
-
-        let edit_button = document.createElement("a");
-        edit_button.style = button_style;
-        edit_button.href = `${editor_url}?snippet=${encodeURIComponent(source)}`;
-        edit_button.target = "_blank";
-        edit_button.innerText = "Edit 📝";
-        link_section.append(edit_button);
-
-        if (should_show_automatic_preview(element)) {
-            create_preview(element, source);
-        } else {
-            let play_button = document.createElement("a");
-            play_button.style = button_style;
-            play_button.innerText = "Preview ▶️";
-            play_button.onclick = async () => {
-                play_button.remove();
-                create_preview(element, source);
-            };
-
-            link_section.prepend(play_button);
-        }
-    }
-
-    async function run() {
-        await slint.default();
-
-        try {
-            slint.run_event_loop();
-            // this will trigger a JS exception, so this line will never be reached!
-        } catch (e) {
-            // The winit event loop, when targeting wasm, throws a JavaScript exception to break out of
-            // Rust without running any destructors. Don't rethrow the exception but swallow it, as
-            // this is no error and we truly want to resolve the promise of this function by returning
-            // the model markers.
-        }
-
-        let selector = ["code.language-slint", ".rustdoc pre.language-slint", "div.highlight-slint div.highlight", "div.highlight-slint\\,no-auto-preview div.highlight"]
-            .map((sel) => `${sel}:not([class*=slint\\,ignore]):not([class*=slint\\,no-preview])`).join(",");
-        var elements = document.querySelectorAll(selector);
-        for (var i = 0; i < elements.length; ++i) {
-            await create_click_to_play_and_edit_buttons(elements[i]);
-        }
-    }
-    run();
-
-    // Included markdown files may have links to other markdown files, which may not have been
-    // resolved by rustdoc. This helper locates such links and resolves them, assuming that each
-    // .md file gets its own sub-directory with an index.html.
-    function fix_markdown_links() {
-        for (let anchor of document.querySelectorAll('a[href$=".md"], a[href*=".md#"]')) {
-            let url = new URL(anchor.href);
-            let dir_separator = Math.max(url.pathname.lastIndexOf("/"), 0);
-            let base_name = url.pathname.slice(dir_separator + 1, -3);
-            let base_path = url.pathname.slice(0, dir_separator);
-            url.pathname = base_path + "/../" + base_name + "/index.html";
-            anchor.setAttribute("href", url);
-        }
-    }
-    fix_markdown_links()
-</script>
-<!--
-    This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
-    It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
-    in sphinx and via head.hbs in mdbook.
--->
-<link rel="stylesheet" href="https://slint.dev/resources/highlightjs/11.0.1/default.min.css">
-<script src="https://slint.dev/resources/highlightjs/11.0.1/highlight.min.js"></script>
-<script>
-  function highlight_slint(hljs) {
-    const KEYWORDS = {
-      keyword:
-        "animate callback changed component enum export for function global if import in in-out inherits out parent private property public pure root self states struct",
-      literal: "false true",
-      built_in:
-        "ArcTo Clip Close Colors CubicTo Flickable FocusScope GridLayout HorizontalLayout Image LineTo Math MoveTo Path PopupWindow QuadraticTo Rectangle Row Text TextInput TouchArea VerticalLayout Window animation-tick debug",
-      type: "bool duration easing float int length logical-length relative-font-size string",
-    };
-
-    return {
-      name: 'slint',
-      case_insensitive: false,
-      keywords: KEYWORDS,
-      contains: [
-        hljs.QUOTE_STRING_MODE,
-        hljs.C_LINE_COMMENT_MODE,
-        hljs.C_BLOCK_COMMENT_MODE,
-        hljs.COMMENT('/\\*', '\\*/', {
-          contains: ['self']
-        }),
-        {
-          className: 'number',
-          begin: '\\b\\d+(\\.\\d+)?(\\w+)?',
-          relevance: 0
-        },
-        {
-          className: 'title',
-          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]* *:=',
-        },
-        {
-          className: 'symbol',
-          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]*(:| *=>)',
-        },
-        {
-          className: 'built_in',
-          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]*!',
-        },
-      ],
-      illegal: /@/
-    };
-  };
-
-  // Tags used in fenced code blocks
-  for (let tag of ["slint", "slint,no-preview", "slint,no-auto-preview", "slint,ignore"]) {
-    hljs.registerLanguage(tag, highlight_slint);
-  }
-
-
-  window.addEventListener("DOMContentLoaded", () => {
-    const rustDoc = document.querySelector('meta[name="generator"]')?.content == "rustdoc";
-    if (rustDoc) {
-      // Only highlight .slint blocks, leave the others to rustdoc
-      for (slintBlock of document.querySelectorAll("[class*=language-slint]")) {
-        hljs.highlightElement(slintBlock)
-      }
-
-      // Some of the rustdoc selectors require the pre element to have the rust class
-      for (codeBlock of document.querySelectorAll(".language-slint.hljs")) {
-        codeBlock.classList.add("rust");
-        codeBlock.classList.remove("hljs");
-      }
-
-      // Change the hljs generated classes to the rustdoc
-      // ones, so that the highlighting adjusts to the theme correctly.
-      const highlightJSToRustDoc = [
-        ["comment", "comment"],
-        ["number", "number"],
-        ["symbol", "struct"], // width:
-        ["keyword", "kw"],
-        ["built_in", "primitive"],
-        ["string", "string"],
-        ["title", "fnname"], // Foo :=
-        ["type", "type"]
-      ];
-
-      for ([hljs_class, rustdoc_class] of highlightJSToRustDoc) {
-        for (titleElement of document.querySelectorAll(`.hljs-${hljs_class}`)) {
-          titleElement.classList.remove(`hljs-${hljs_class}`);
-          titleElement.classList.add(rustdoc_class);
-        }
-      }
-    } else {
-      // For use with the mdbook Tutorial
-      hljs.highlightAll();
-
-      // The Sphinx/my_st generated HTML for code blocks doesn't use <code> tags, so highlight.js'
-      // default selector "pre code" doesn't match. Let's do it by hand:
-      for (block of document.querySelectorAll("div[class*=highlight-slint] div.highlight pre")) {
-        hljs.highlightElement(block)
-      }
-    }
-
-    // Fix up links that sphinx handles but for rustdoc we need to resolve manually:
-    {
-      let target_url = null;
-      if (document.location.hostname == "snapshots.slint.dev") {
-        target_url = `https://snapshots.slint.dev/master/docs/slint/`;
-      } else {
-        let version = document.querySelector("span.version");
-        if (version !== null) {
-          target_url = `https://slint.dev/releases/${version.innerText}/docs/slint/`;
-        }
-      }
-
-      if (target_url !== null) {
-        for (let link of document.querySelectorAll("a[href^='slint-reference:']")) {
-          link.href = link.href.replace("slint-reference:", target_url);
-        }
-      }
-    }
-  });
-</script>
 
   <footer class="bd-footer">
   </footer>

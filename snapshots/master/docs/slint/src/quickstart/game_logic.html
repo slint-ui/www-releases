@@ -31,8 +31,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/theme_tweak.css?v=a03aae7b" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/theme_tweak.css?v=e5538edb" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/typesense-docsearch-css@0.3.0" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -56,6 +56,7 @@
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.9.0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
         </script>
+    <script src="../../_static/cm6.bundle.js?v=663fcec5"></script>
     <script src="../../_static/expand_tabs.js?v=acb398a4"></script>
     <link rel="canonical" href="https://docs.slint.dev/src/quickstart/game_logic.html" />
     <link rel="icon" href="https://slint.dev/favicon.svg"/>
@@ -63,8 +64,21 @@
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Running In A Browser Using WebAssembly" href="running_in_a_browser.html" />
     <link rel="prev" title="Creating The Tiles From Code" href="creating_the_tiles.html" />
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+    <!-- Custom styles and script to prevent FOUC -->
+    <style>
+        body {
+            visibility: hidden;  /* Hide body until the theme is applied */
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme') || 'light';  // Default to light theme
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            document.body.style.visibility = 'visible';  // Make visible once theme is applied
+        });
+    </script>
+
   </head>
   
   
@@ -463,7 +477,7 @@ the location of the icons, and then closes the curtains again.</p>
 <label class="sd-tab-label" data-sync-group="tab" data-sync-id="cpp" for="sd-tab-item-0">
 C++</label><div class="sd-tab-content docutils">
 <p>Add the following code inside the <span class="hljs-title">MainWindow</span> component to signal to the C++ code when the user clicks on a tile.</p>
-<div class="highlight-slint,no-preview notranslate"><div class="highlight"><pre><span></span>    export component MainWindow inherits Window {
+<div id="editor-src-quickstart-game_logic-23" class="codemirror-editor" data-lang="slint,no-preview" data-readonly="false" data-nopreview="true"><div class="codemirror-content" style="display:none">    export component MainWindow inherits Window {
         width: 326px;
         height: 326px;
 
@@ -471,15 +485,13 @@ C++</label><div class="sd-tab-content docutils">
         in property &lt;bool&gt; disable_tiles; // Added
 
         in-out property &lt;[TileData]&gt; memory_tiles: [
-           { image: @image-url(&quot;icons/at.png&quot;) },
-</pre></div>
-</div>
-<p>This change adds a way for the <span class="hljs-title">MainWindow</span> to call to the C++ code that it should
+           { image: &#64;image-url(&quot;icons/at.png&quot;) },
+</div></div><p>This change adds a way for the <span class="hljs-title">MainWindow</span> to call to the C++ code that it should
 check if a player has solved a pair of tiles. The Rust code needs an additional property to toggle to disable further
 tile interaction, to prevent the player from opening more tiles than allowed. No cheating allowed!</p>
 <p>The last change to the code is to act when the <span class="hljs-title">MemoryTile</span> signals that a player clicked it.</p>
 <p>Add the following handler in the <span class="hljs-title">MainWindow</span> <code class="docutils literal notranslate"><span class="pre">for</span></code> loop <code class="docutils literal notranslate"><span class="pre">clicked</span></code> handler:</p>
-<div class="highlight-slint,no-preview notranslate"><div class="highlight"><pre><span></span>        for tile[i] in memory_tiles : MemoryTile {
+<div id="editor-src-quickstart-game_logic-36" class="codemirror-editor" data-lang="slint,no-preview" data-readonly="false" data-nopreview="true"><div class="codemirror-content" style="display:none">        for tile[i] in memory_tiles : MemoryTile {
             x: mod(i, 4) * 74px;
             y: floor(i / 4) * 74px;
             width: 64px;
@@ -497,14 +509,12 @@ tile interaction, to prevent the player from opening more tiles than allowed. No
                 }
             }
         }
-</pre></div>
-</div>
-<p>On the C++ side, you can now add a handler to the <code class="docutils literal notranslate"><span class="pre">check_if_pair_solved</span></code> callback, that checks if a player opened two tiles.
+</div></div><p>On the C++ side, you can now add a handler to the <code class="docutils literal notranslate"><span class="pre">check_if_pair_solved</span></code> callback, that checks if a player opened two tiles.
 If they match, the code sets the <code class="docutils literal notranslate"><span class="pre">solved</span></code> property to true in the model. If they don’t
 match, start a timer that closes the tiles after one second. While the timer is running, disable every tile so
 a player can’t click anything during this time.</p>
 <p>Insert this code before the <code class="docutils literal notranslate"><span class="pre">main_window-&gt;run()</span></code> call:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    main_window-&gt;on_check_if_pair_solved(
+<div id="editor-src-quickstart-game_logic-49" class="codemirror-editor" data-lang="default" data-ignore="true"><div class="codemirror-content" style="display:none">    main_window-&gt;on_check_if_pair_solved(
             [main_window_weak = slint::ComponentWeakHandle(main_window)] {
                 auto main_window = *main_window_weak.lock();
                 auto tiles_model = main_window-&gt;get_memory_tiles();
@@ -541,9 +551,7 @@ a player can’t click anything during this time.</p>
                         });
                 }
             });
-</pre></div>
-</div>
-<p>The code uses a <a class="reference external" href="https://slint.dev/docs/cpp/api/classslint_1_1ComponentWeakHandle">ComponentWeakHandle</a> pointer of the <code class="docutils literal notranslate"><span class="pre">main_window</span></code>. This is
+</div></div><p>The code uses a <a class="reference external" href="https://slint.dev/docs/cpp/api/classslint_1_1ComponentWeakHandle">ComponentWeakHandle</a> pointer of the <code class="docutils literal notranslate"><span class="pre">main_window</span></code>. This is
 important because capturing a copy of the <code class="docutils literal notranslate"><span class="pre">main_window</span></code> itself within the callback handler would result in circular ownership.
 The <code class="docutils literal notranslate"><span class="pre">MainWindow</span></code> owns the callback handler, which itself owns a reference to the <code class="docutils literal notranslate"><span class="pre">MainWindow</span></code>, which must be weak
 instead of strong to avoid a memory leak.</p>
@@ -552,7 +560,7 @@ instead of strong to avoid a memory leak.</p>
 <label class="sd-tab-label" data-sync-group="tab" data-sync-id="nodejs" for="sd-tab-item-1">
 NodeJS</label><div class="sd-tab-content docutils">
 <p>Change the contents of <code class="docutils literal notranslate"><span class="pre">memory.slint</span></code> to signal to the JavaScript code when the user clicks on a tile.</p>
-<div class="highlight-slint,no-preview notranslate"><div class="highlight"><pre><span></span>    export component MainWindow inherits Window {
+<div id="editor-src-quickstart-game_logic-65" class="codemirror-editor" data-lang="slint,no-preview" data-readonly="false" data-nopreview="true"><div class="codemirror-content" style="display:none">    export component MainWindow inherits Window {
         width: 326px;
         height: 326px;
 
@@ -560,15 +568,13 @@ NodeJS</label><div class="sd-tab-content docutils">
         in property &lt;bool&gt; disable_tiles; // Added
 
         in-out property &lt;[TileData]&gt; memory_tiles: [
-           { image: @image-url(&quot;icons/at.png&quot;) },
-</pre></div>
-</div>
-<p>This change adds a way for the <span class="hljs-title">MainWindow</span> to call to the JavaScript code that it should
+           { image: &#64;image-url(&quot;icons/at.png&quot;) },
+</div></div><p>This change adds a way for the <span class="hljs-title">MainWindow</span> to call to the JavaScript code that it should
 check if a player has solved a pair of tiles. The Rust code needs an additional property to toggle to disable further
 tile interaction, to prevent the player from opening more tiles than allowed. No cheating allowed!</p>
 <p>The last change to the code is to act when the <span class="hljs-title">MemoryTile</span> signals that a player clicked it.</p>
 <p>Add the following handler in the <span class="hljs-title">MainWindow</span> <code class="docutils literal notranslate"><span class="pre">for</span></code> loop <code class="docutils literal notranslate"><span class="pre">clicked</span></code> handler:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>        for tile[i] in memory_tiles : MemoryTile {
+<div id="editor-src-quickstart-game_logic-78" class="codemirror-editor" data-lang="default" data-ignore="true"><div class="codemirror-content" style="display:none">        for tile[i] in memory_tiles : MemoryTile {
             x: mod(i, 4) * 74px;
             y: floor(i / 4) * 74px;
             width: 64px;
@@ -586,13 +592,11 @@ tile interaction, to prevent the player from opening more tiles than allowed. No
                 }
             }
         }
-</pre></div>
-</div>
-<p>On the JavaScript side, now add a handler to the <code class="docutils literal notranslate"><span class="pre">check_if_pair_solved</span></code> callback, that checks if a player opened two tiles. If they match, the code sets the <code class="docutils literal notranslate"><span class="pre">solved</span></code> property to true in the model. If they don’t
+</div></div><p>On the JavaScript side, now add a handler to the <code class="docutils literal notranslate"><span class="pre">check_if_pair_solved</span></code> callback, that checks if a player opened two tiles. If they match, the code sets the <code class="docutils literal notranslate"><span class="pre">solved</span></code> property to true in the model. If they don’t
 match, start a timer that closes the tiles after one second. While the timer is running, disable every tile so
 a player can’t click anything during this time.</p>
 <p>Insert this code before the <code class="docutils literal notranslate"><span class="pre">mainWindow.run()</span></code> call:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>mainWindow.check_if_pair_solved = function () {
+<div id="editor-src-quickstart-game_logic-88" class="codemirror-editor" data-lang="default" data-ignore="true"><div class="codemirror-content" style="display:none">mainWindow.check_if_pair_solved = function () {
     const flipped_tiles = [];
     tiles.forEach((tile, index) =&gt; {
         if (tile.image_visible &amp;&amp; !tile.solved) {
@@ -626,30 +630,26 @@ a player can’t click anything during this time.</p>
         }
     }
 };
-</pre></div>
-</div>
-</div>
+</div></div></div>
 <input checked="checked" id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
 <label class="sd-tab-label" data-sync-group="tab" data-sync-id="rust" for="sd-tab-item-2">
 Rust</label><div class="sd-tab-content docutils">
 <p>Add the following code inside the <span class="hljs-title">MainWindow</span> component to signal to the Rust code when the user clicks on a tile.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">export</span> <span class="n">component</span> <span class="n">MainWindow</span> <span class="n">inherits</span> <span class="n">Window</span> <span class="p">{</span>
-        <span class="n">width</span><span class="p">:</span> <span class="mi">326</span><span class="n">px</span><span class="p">;</span>
-        <span class="n">height</span><span class="p">:</span> <span class="mi">326</span><span class="n">px</span><span class="p">;</span>
+<div id="editor-src-quickstart-game_logic-100" class="codemirror-editor" data-lang="default" data-ignore="true"><div class="codemirror-content" style="display:none">    export component MainWindow inherits Window {
+        width: 326px;
+        height: 326px;
 
-        <span class="n">callback</span> <span class="n">check_if_pair_solved</span><span class="p">();</span> <span class="o">//</span> <span class="n">Added</span>
-        <span class="ow">in</span> <span class="nb">property</span> <span class="o">&lt;</span><span class="nb">bool</span><span class="o">&gt;</span> <span class="n">disable_tiles</span><span class="p">;</span> <span class="o">//</span> <span class="n">Added</span>
+        callback check_if_pair_solved(); // Added
+        in property &lt;bool&gt; disable_tiles; // Added
 
-        <span class="ow">in</span><span class="o">-</span><span class="n">out</span> <span class="nb">property</span> <span class="o">&lt;</span><span class="p">[</span><span class="n">TileData</span><span class="p">]</span><span class="o">&gt;</span> <span class="n">memory_tiles</span><span class="p">:</span> <span class="p">[</span>
-           <span class="p">{</span> <span class="n">image</span><span class="p">:</span> <span class="nd">@image</span><span class="o">-</span><span class="n">url</span><span class="p">(</span><span class="s2">&quot;icons/at.png&quot;</span><span class="p">)</span> <span class="p">},</span>
-</pre></div>
-</div>
-<p>This change adds a way for the <span class="hljs-title">MainWindow</span> to call to the Rust code that it should
+        in-out property &lt;[TileData]&gt; memory_tiles: [
+           { image: &#64;image-url(&quot;icons/at.png&quot;) },
+</div></div><p>This change adds a way for the <span class="hljs-title">MainWindow</span> to call to the Rust code that it should
 check if a player has solved a pair of tiles. The Rust code needs an additional property to toggle to disable further
 tile interaction, to prevent the player from opening more tiles than allowed. No cheating allowed!</p>
 <p>The last change to the code is to act when the <span class="hljs-title">MemoryTile</span> signals that a player clicked it.</p>
 <p>Add the following handler in the <span class="hljs-title">MainWindow</span> <code class="docutils literal notranslate"><span class="pre">for</span></code> loop <code class="docutils literal notranslate"><span class="pre">clicked</span></code> handler:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>        for tile[i] in memory_tiles : MemoryTile {
+<div id="editor-src-quickstart-game_logic-112" class="codemirror-editor" data-lang="default" data-ignore="true"><div class="codemirror-content" style="display:none">        for tile[i] in memory_tiles : MemoryTile {
             x: mod(i, 4) * 74px;
             y: floor(i / 4) * 74px;
             width: 64px;
@@ -667,14 +667,12 @@ tile interaction, to prevent the player from opening more tiles than allowed. No
                 }
             }
         }
-</pre></div>
-</div>
-<p>On the Rust side, you can now add a handler to the <code class="docutils literal notranslate"><span class="pre">check_if_pair_solved</span></code> callback, that checks if a player opened two tiles.
+</div></div><p>On the Rust side, you can now add a handler to the <code class="docutils literal notranslate"><span class="pre">check_if_pair_solved</span></code> callback, that checks if a player opened two tiles.
 If they match, the code sets the <code class="docutils literal notranslate"><span class="pre">solved</span></code> property to true in the model. If they don’t
 match, start a timer that closes the tiles after one second. While the timer is running, disable every tile so
 a player can’t click anything during this time.</p>
 <p>Add this code before the <code class="docutils literal notranslate"><span class="pre">main_window.run().unwrap();</span></code> call:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    let main_window_weak = main_window.as_weak();
+<div id="editor-src-quickstart-game_logic-123" class="codemirror-editor" data-lang="default" data-ignore="true"><div class="codemirror-content" style="display:none">    let main_window_weak = main_window.as_weak();
     main_window.on_check_if_pair_solved(move || {
         let mut flipped_tiles =
             tiles_model.iter().enumerate().filter(|(_, tile)| tile.image_visible &amp;&amp; !tile.solved);
@@ -702,9 +700,7 @@ a player can’t click anything during this time.</p>
             }
         }
     });
-</pre></div>
-</div>
-<p>The code uses a <a class="reference external" href="https://slint.dev/docs/rust/slint/struct.Weak">Weak</a> pointer of the <code class="docutils literal notranslate"><span class="pre">main_window</span></code>. This is
+</div></div><p>The code uses a <a class="reference external" href="https://slint.dev/docs/rust/slint/struct.Weak">Weak</a> pointer of the <code class="docutils literal notranslate"><span class="pre">main_window</span></code>. This is
 important because capturing a copy of the <code class="docutils literal notranslate"><span class="pre">main_window</span></code> itself within the callback handler would result in circular ownership.
 The <code class="docutils literal notranslate"><span class="pre">MainWindow</span></code> owns the callback handler, which itself owns a reference to the <code class="docutils literal notranslate"><span class="pre">MainWindow</span></code>, which must be weak
 instead of strong to avoid a memory leak.</p>
@@ -793,253 +789,12 @@ By Slint Developers <info@slint.dev>
       </main>
     </div>
   </div>
-   
+  
+    
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
   <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
 <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-<!--
-    This file is used to add preview of the `.slint` snippets in the generated rustdoc documentation.
-    It can be injected via the `--html-in-header slint-docs-preview.html` option of rustdoc.
--->
-<script type="module">
-    "use strict";
-    //import * as slint from 'https://releases.slint.dev/0.x.0/wasm-interpreter/slint_wasm_interpreter.js';
-    //const editor_url = "https://releases.slint.dev/0.x.0/editor/";
-    import * as slint from 'https://snapshots.slint.dev/master/wasm-interpreter/slint_wasm_interpreter.js';
-    const editor_url = "https://snapshots.slint.dev/master/editor/";
-    // keep them alive
-    var all_instances = new Array;
-
-    async function render_or_error(source, div) {
-        let canvas_id = 'canvas_' + Math.random().toString(36).substr(2, 9);
-        let canvas = document.createElement("canvas");
-        canvas.id = canvas_id;
-        div.appendChild(canvas);
-
-        let { component, error_string } = await slint.compile_from_string(source, "");
-        if (error_string != "") {
-            var text = document.createTextNode(error_string);
-            var p = document.createElement('pre');
-            p.appendChild(text);
-            div.innerHTML = "<pre style='color: red; background-color:#fee; margin:0'>" + p.innerHTML + "</pre>";
-        }
-        if (component !== undefined) {
-            let instance = await component.create(canvas_id);
-            await instance.show();
-            all_instances.push(instance);
-        }
-    }
-
-    async function create_preview(element, source_code) {
-        // Style the preview such that a flexbox lays out the source code box
-        // (which should take up any spare space), followed by the preview canvas.
-        // The latter may wrap into a new row on mobile. The edit/play buttons are
-        // placed last by flexbox order attribute.
-        let div = document.createElement("div");
-        let sourceCodeBox = element.firstElementChild;
-        element.style = "display: flex; flex-wrap: wrap;";
-        sourceCodeBox.style = "flex-grow: 2";
-        element.append(div);
-        await render_or_error(source_code, div);
-    }
-
-    function should_show_automatic_preview(element) {
-        // The `no-auto-preview` doesn't map directly to a dedicated class but it's mangled differently
-        // between rustdoc and sphinx, so match fuzzy on the entire class list:
-        return !element.className.includes("no-auto-preview");
-    }
-
-    async function create_click_to_play_and_edit_buttons(element) {
-        let source = element.innerText;
-
-        let link_section = document.createElement("div");
-        // Ensure the link section is always last and on a row of its own in the flexbox.
-        link_section.style = "order: 100; flex-basis: 100%;";
-        element.append(link_section);
-
-        let button_style = "text-decoration: none;"
-
-        let edit_button = document.createElement("a");
-        edit_button.style = button_style;
-        edit_button.href = `${editor_url}?snippet=${encodeURIComponent(source)}`;
-        edit_button.target = "_blank";
-        edit_button.innerText = "Edit 📝";
-        link_section.append(edit_button);
-
-        if (should_show_automatic_preview(element)) {
-            create_preview(element, source);
-        } else {
-            let play_button = document.createElement("a");
-            play_button.style = button_style;
-            play_button.innerText = "Preview ▶️";
-            play_button.onclick = async () => {
-                play_button.remove();
-                create_preview(element, source);
-            };
-
-            link_section.prepend(play_button);
-        }
-    }
-
-    async function run() {
-        await slint.default();
-
-        try {
-            slint.run_event_loop();
-            // this will trigger a JS exception, so this line will never be reached!
-        } catch (e) {
-            // The winit event loop, when targeting wasm, throws a JavaScript exception to break out of
-            // Rust without running any destructors. Don't rethrow the exception but swallow it, as
-            // this is no error and we truly want to resolve the promise of this function by returning
-            // the model markers.
-        }
-
-        let selector = ["code.language-slint", ".rustdoc pre.language-slint", "div.highlight-slint div.highlight", "div.highlight-slint\\,no-auto-preview div.highlight"]
-            .map((sel) => `${sel}:not([class*=slint\\,ignore]):not([class*=slint\\,no-preview])`).join(",");
-        var elements = document.querySelectorAll(selector);
-        for (var i = 0; i < elements.length; ++i) {
-            await create_click_to_play_and_edit_buttons(elements[i]);
-        }
-    }
-    run();
-
-    // Included markdown files may have links to other markdown files, which may not have been
-    // resolved by rustdoc. This helper locates such links and resolves them, assuming that each
-    // .md file gets its own sub-directory with an index.html.
-    function fix_markdown_links() {
-        for (let anchor of document.querySelectorAll('a[href$=".md"], a[href*=".md#"]')) {
-            let url = new URL(anchor.href);
-            let dir_separator = Math.max(url.pathname.lastIndexOf("/"), 0);
-            let base_name = url.pathname.slice(dir_separator + 1, -3);
-            let base_path = url.pathname.slice(0, dir_separator);
-            url.pathname = base_path + "/../" + base_name + "/index.html";
-            anchor.setAttribute("href", url);
-        }
-    }
-    fix_markdown_links()
-</script>
-<!--
-    This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
-    It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
-    in sphinx and via head.hbs in mdbook.
--->
-<link rel="stylesheet" href="https://slint.dev/resources/highlightjs/11.0.1/default.min.css">
-<script src="https://slint.dev/resources/highlightjs/11.0.1/highlight.min.js"></script>
-<script>
-  function highlight_slint(hljs) {
-    const KEYWORDS = {
-      keyword:
-        "animate callback changed component enum export for function global if import in in-out inherits out parent private property public pure root self states struct",
-      literal: "false true",
-      built_in:
-        "ArcTo Clip Close Colors CubicTo Flickable FocusScope GridLayout HorizontalLayout Image LineTo Math MoveTo Path PopupWindow QuadraticTo Rectangle Row Text TextInput TouchArea VerticalLayout Window animation-tick debug",
-      type: "bool duration easing float int length logical-length relative-font-size string",
-    };
-
-    return {
-      name: 'slint',
-      case_insensitive: false,
-      keywords: KEYWORDS,
-      contains: [
-        hljs.QUOTE_STRING_MODE,
-        hljs.C_LINE_COMMENT_MODE,
-        hljs.C_BLOCK_COMMENT_MODE,
-        hljs.COMMENT('/\\*', '\\*/', {
-          contains: ['self']
-        }),
-        {
-          className: 'number',
-          begin: '\\b\\d+(\\.\\d+)?(\\w+)?',
-          relevance: 0
-        },
-        {
-          className: 'title',
-          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]* *:=',
-        },
-        {
-          className: 'symbol',
-          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]*(:| *=>)',
-        },
-        {
-          className: 'built_in',
-          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]*!',
-        },
-      ],
-      illegal: /@/
-    };
-  };
-
-  // Tags used in fenced code blocks
-  for (let tag of ["slint", "slint,no-preview", "slint,no-auto-preview", "slint,ignore"]) {
-    hljs.registerLanguage(tag, highlight_slint);
-  }
-
-
-  window.addEventListener("DOMContentLoaded", () => {
-    const rustDoc = document.querySelector('meta[name="generator"]')?.content == "rustdoc";
-    if (rustDoc) {
-      // Only highlight .slint blocks, leave the others to rustdoc
-      for (slintBlock of document.querySelectorAll("[class*=language-slint]")) {
-        hljs.highlightElement(slintBlock)
-      }
-
-      // Some of the rustdoc selectors require the pre element to have the rust class
-      for (codeBlock of document.querySelectorAll(".language-slint.hljs")) {
-        codeBlock.classList.add("rust");
-        codeBlock.classList.remove("hljs");
-      }
-
-      // Change the hljs generated classes to the rustdoc
-      // ones, so that the highlighting adjusts to the theme correctly.
-      const highlightJSToRustDoc = [
-        ["comment", "comment"],
-        ["number", "number"],
-        ["symbol", "struct"], // width:
-        ["keyword", "kw"],
-        ["built_in", "primitive"],
-        ["string", "string"],
-        ["title", "fnname"], // Foo :=
-        ["type", "type"]
-      ];
-
-      for ([hljs_class, rustdoc_class] of highlightJSToRustDoc) {
-        for (titleElement of document.querySelectorAll(`.hljs-${hljs_class}`)) {
-          titleElement.classList.remove(`hljs-${hljs_class}`);
-          titleElement.classList.add(rustdoc_class);
-        }
-      }
-    } else {
-      // For use with the mdbook Tutorial
-      hljs.highlightAll();
-
-      // The Sphinx/my_st generated HTML for code blocks doesn't use <code> tags, so highlight.js'
-      // default selector "pre code" doesn't match. Let's do it by hand:
-      for (block of document.querySelectorAll("div[class*=highlight-slint] div.highlight pre")) {
-        hljs.highlightElement(block)
-      }
-    }
-
-    // Fix up links that sphinx handles but for rustdoc we need to resolve manually:
-    {
-      let target_url = null;
-      if (document.location.hostname == "snapshots.slint.dev") {
-        target_url = `https://snapshots.slint.dev/master/docs/slint/`;
-      } else {
-        let version = document.querySelector("span.version");
-        if (version !== null) {
-          target_url = `https://slint.dev/releases/${version.innerText}/docs/slint/`;
-        }
-      }
-
-      if (target_url !== null) {
-        for (let link of document.querySelectorAll("a[href^='slint-reference:']")) {
-          link.href = link.href.replace("slint-reference:", target_url);
-        }
-      }
-    }
-  });
-</script>
 
   <footer class="bd-footer">
   </footer>

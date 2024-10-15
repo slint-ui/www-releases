@@ -31,8 +31,8 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/theme_tweak.css?v=a03aae7b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/theme_tweak.css?v=e5538edb" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/typesense-docsearch-css@0.3.0" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -56,6 +56,7 @@
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.9.0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
         </script>
+    <script src="../../../_static/cm6.bundle.js?v=663fcec5"></script>
     <script src="../../../_static/expand_tabs.js?v=acb398a4"></script>
     <link rel="canonical" href="https://docs.slint.dev/src/language/syntax/properties.html" />
     <link rel="icon" href="https://slint.dev/favicon.svg"/>
@@ -63,8 +64,21 @@
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Expressions" href="expressions.html" />
     <link rel="prev" title="Types" href="types.html" />
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+    <!-- Custom styles and script to prevent FOUC -->
+    <style>
+        body {
+            visibility: hidden;  /* Hide body until the theme is applied */
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme') || 'light';  // Default to light theme
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            document.body.style.visibility = 'visible';  // Make visible once theme is applied
+        });
+    </script>
+
   </head>
   
   
@@ -468,28 +482,24 @@ document.write(`
 <p>All elements have properties. Built-in elements come with common properties such
 as color or dimensional properties. You can assign values or entire
 <a class="reference internal" href="expressions.html"><span class="std std-doc">expressions</span></a> to them:</p>
-<div class="highlight-slint,no-preview notranslate"><div class="highlight"><pre><span></span>export component Example inherits Window {
+<div id="editor-src-language-syntax-properties-8" class="codemirror-editor" data-lang="slint,no-preview" data-readonly="false" data-nopreview="true"><div class="codemirror-content" style="display:none">export component Example inherits Window {
     // Simple expression: ends with a semi colon
     width: 42px;
     // or a code block (no semicolon needed)
     height: { 42px }
 }
-</pre></div>
-</div>
-<p>The default value of a property is the default value of the type.
+</div></div><p>The default value of a property is the default value of the type.
 For example a boolean property defaults to <code class="docutils literal notranslate"><span class="pre">false</span></code>, an <code class="docutils literal notranslate"><span class="pre">int</span></code> property to zero, etc.</p>
 <p>In addition to the existing properties, define extra properties by specifying the
 type, the name, and optionally a default value:</p>
-<div class="highlight-slint,no-preview notranslate"><div class="highlight"><pre><span></span>export component Example {
+<div id="editor-src-language-syntax-properties-23" class="codemirror-editor" data-lang="slint,no-preview" data-readonly="false" data-nopreview="true"><div class="codemirror-content" style="display:none">export component Example {
     // declare a property of type int with the name `my-property`
     property&lt;int&gt; my-property;
 
     // declare a property with a default value
     property&lt;int&gt; my-second-property: 42;
 }
-</pre></div>
-</div>
-<p>Annotate extra properties with a qualifier that specifies how the
+</div></div><p>Annotate extra properties with a qualifier that specifies how the
 property can be read and written:</p>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">private</span></code></strong> (the default): The property can only be accessed from within the component.</p></li>
@@ -501,7 +511,7 @@ assignment</p></li>
 users of the components.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">in-out</span></code></strong>: The property can be read and modified by everyone.</p></li>
 </ul>
-<div class="highlight-slint,no-preview notranslate"><div class="highlight"><pre><span></span>export component Button {
+<div id="editor-src-language-syntax-properties-45" class="codemirror-editor" data-lang="slint,no-preview" data-readonly="false" data-nopreview="true"><div class="codemirror-content" style="display:none">export component Button {
     // This is meant to be set by the user of the component.
     in property &lt;string&gt; text;
     // This property is meant to be read by the user of the component.
@@ -512,9 +522,7 @@ users of the components.</p></li>
     // This property is internal to this component.
     private property &lt;bool&gt; has-mouse;
 }
-</pre></div>
-</div>
-<p>All properties declared at the top level of a component that aren’t <code class="docutils literal notranslate"><span class="pre">private</span></code> are accessible from the outside when using a component as an element, or via the
+</div></div><p>All properties declared at the top level of a component that aren’t <code class="docutils literal notranslate"><span class="pre">private</span></code> are accessible from the outside when using a component as an element, or via the
 language bindings from the business logic.</p>
 <section id="bindings">
 <h2>Bindings<a class="headerlink" href="#bindings" title="Permalink to this heading">#</a></h2>
@@ -522,7 +530,7 @@ language bindings from the business logic.</p>
 <p>In the following example, the text of the button automatically changes when
 the user presses the button. Incrementing the <code class="docutils literal notranslate"><span class="pre">counter</span></code> property automatically
 invalidates the expression bound to <code class="docutils literal notranslate"><span class="pre">text</span></code> and triggers a re-evaluation.</p>
-<div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>import { Button } from &quot;std-widgets.slint&quot;;
+<div id="editor-src-language-syntax-properties-70" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">import { Button } from &quot;std-widgets.slint&quot;;
 export component Example inherits Window {
     preferred-width: 50px;
     preferred-height: 50px;
@@ -532,9 +540,7 @@ export component Example inherits Window {
         text: self.counter * 2;
     }
 }
-</pre></div>
-</div>
-<p>The re-evaluation happens lazily when the property is queried.</p>
+</div></div><p>The re-evaluation happens lazily when the property is queried.</p>
 <p>Internally, a dependency is registered for any property accessed while evaluating a binding.
 When a property changes, the dependencies are notified and all dependent bindings
 are marked as dirty.</p>
@@ -548,9 +554,9 @@ together and always contain the same value.</p>
 The property type is optional with two-way bindings, it will be inferred if not specified.
 The initial value of a linked property will be the value of the right hand side of the binding.
 The two linked properties must be compatible in terms of input/output.</p>
-<div class="highlight-slint,no-preview notranslate"><div class="highlight"><pre><span></span>export component Example  {
+<div id="editor-src-language-syntax-properties-101" class="codemirror-editor" data-lang="slint,no-preview" data-readonly="false" data-nopreview="true"><div class="codemirror-content" style="display:none">export component Example  {
     in property&lt;brush&gt; rect-color &lt;=&gt; r.background;
-    // It&#39;s allowed to omit the type to have it automatically inferred
+    // It's allowed to omit the type to have it automatically inferred
     in property rect-color2 &lt;=&gt; r.background;
     r:= Rectangle {
         width: parent.width;
@@ -558,14 +564,12 @@ The two linked properties must be compatible in terms of input/output.</p>
         background: blue;
     }
 }
-</pre></div>
-</div>
-</section>
+</div></div></section>
 <section id="relative-lengths">
 <h2>Relative Lengths<a class="headerlink" href="#relative-lengths" title="Permalink to this heading">#</a></h2>
 <p>Sometimes it’s convenient to express the relationships of length properties in terms of relative percentages.
 For example the following inner blue rectangle has half the size of the outer green window:</p>
-<div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>export component Example inherits Window {
+<div id="editor-src-language-syntax-properties-119" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Window {
     preferred-width: 100px;
     preferred-height: 100px;
 
@@ -576,9 +580,7 @@ For example the following inner blue rectangle has half the size of the outer gr
         height: parent.height * 50%;
     }
 }
-</pre></div>
-</div>
-<p>This pattern of expressing the <code class="docutils literal notranslate"><span class="pre">width</span></code> or <code class="docutils literal notranslate"><span class="pre">height</span></code> in percent of the parent’s property with the same name is
+</div></div><p>This pattern of expressing the <code class="docutils literal notranslate"><span class="pre">width</span></code> or <code class="docutils literal notranslate"><span class="pre">height</span></code> in percent of the parent’s property with the same name is
 common. For convenience, a short-hand syntax exists for this scenario:</p>
 <ul class="simple">
 <li><p>The property is <code class="docutils literal notranslate"><span class="pre">width</span></code> or <code class="docutils literal notranslate"><span class="pre">height</span></code></p></li>
@@ -586,7 +588,7 @@ common. For convenience, a short-hand syntax exists for this scenario:</p>
 </ul>
 <p>If these conditions are met, then it’s not necessary to specify the parent property, instead you can simply
 use the percentage. The earlier example then looks like this:</p>
-<div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>export component Example inherits Window {
+<div id="editor-src-language-syntax-properties-142" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Window {
     preferred-width: 100px;
     preferred-height: 100px;
 
@@ -597,13 +599,11 @@ use the percentage. The earlier example then looks like this:</p>
         height: 50%;
     }
 }
-</pre></div>
-</div>
-</section>
+</div></div></section>
 <section id="change-callbacks">
 <h2>Change Callbacks<a class="headerlink" href="#change-callbacks" title="Permalink to this heading">#</a></h2>
 <p>In Slint, it’s possible to define a callback that is invoked when a property’s value changes.</p>
-<div class="highlight-slint notranslate"><div class="highlight"><pre><span></span>import { LineEdit } from &quot;std-widgets.slint&quot;;
+<div id="editor-src-language-syntax-properties-160" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">import { LineEdit } from &quot;std-widgets.slint&quot;;
 export component Example inherits Window  {
     VerticalLayout {
         LineEdit {
@@ -613,36 +613,28 @@ export component Example inherits Window  {
         t := Text {}
     }
 }
-</pre></div>
-</div>
-<p>Note that these callbacks aren’t invoked immediately.
+</div></div><p>Note that these callbacks aren’t invoked immediately.
 Instead, they’re queued for invocation in the subsequent iteration of the event loop.
 A callback is invoked only if the property’s value has indeed changed.
 If a property’s value changes multiple times within the same event loop cycle, the callback is invoked only once.
 Additionally, if a property’s value changes and then reverts to its original state before the callback is executed, the callback won’t be invoked.</p>
 <p><strong>Warning:</strong> Altering properties during a change event in a way that could lead to the same property being affected is undefined behaviour.</p>
-<div class="highlight-slint,no_preview notranslate"><div class="highlight"><pre><span></span>export component Example {
+<div id="editor-src-language-syntax-properties-181" class="codemirror-editor" data-lang="slint,no_preview" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example {
     in-out property &lt;int&gt; foo;
     property bar: foo + 1;
     // This setup creates a potential loop between `foo` and `bar`, and the outcome is undefined.
     changed bar =&gt; { foo += 1; }
 }
-</pre></div>
-</div>
-<p>The above represents an infinite loop. Slint will break the loop after a few iterations.
+</div></div><p>The above represents an infinite loop. Slint will break the loop after a few iterations.
 Consequently, if there’s a sequence of changed callbacks where one callback triggers another change callback,
 this sequence might break, and further callbacks won’t be invoked.</p>
 <p>Therefore, it’s crucial not to overuse changed callbacks.</p>
 <p><strong>Warning:</strong> Utilize changed callbacks only when an alternative through binding isn’t feasible.</p>
 <p>For instance, avoid doing this:</p>
-<div class="highlight-slint,ignore notranslate"><div class="highlight"><pre><span></span>changed bar =&gt; { foo = bar + 1; }
-</pre></div>
-</div>
-<p>Instead, opt for:</p>
-<div class="highlight-slint,ignore notranslate"><div class="highlight"><pre><span></span>foo: bar + 1;
-</pre></div>
-</div>
-<p>Declarative bindings automatically manage dependencies.
+<div id="editor-src-language-syntax-properties-200" class="codemirror-editor" data-lang="slint,ignore" data-readonly="false" data-ignore="true"><div class="codemirror-content" style="display:none">changed bar =&gt; { foo = bar + 1; }
+</div></div><p>Instead, opt for:</p>
+<div id="editor-src-language-syntax-properties-206" class="codemirror-editor" data-lang="slint,ignore" data-readonly="false" data-ignore="true"><div class="codemirror-content" style="display:none">foo: bar + 1;
+</div></div><p>Declarative bindings automatically manage dependencies.
 Using a changed callback forces immediate evaluation of bindings, which are typically evaluated lazily.
 This practice also compromises the purity of bindings, complicating edits via graphical editors.
 Accumulating excessive changed events can introduce issues and bugs, especially in scenarios involving loops, where a change callback modifies a property, potentially triggering changes to the same property.</p>
@@ -747,253 +739,12 @@ By Slint Developers <info@slint.dev>
       </main>
     </div>
   </div>
-   
+  
+    
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
   <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
 <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-<!--
-    This file is used to add preview of the `.slint` snippets in the generated rustdoc documentation.
-    It can be injected via the `--html-in-header slint-docs-preview.html` option of rustdoc.
--->
-<script type="module">
-    "use strict";
-    //import * as slint from 'https://releases.slint.dev/0.x.0/wasm-interpreter/slint_wasm_interpreter.js';
-    //const editor_url = "https://releases.slint.dev/0.x.0/editor/";
-    import * as slint from 'https://snapshots.slint.dev/master/wasm-interpreter/slint_wasm_interpreter.js';
-    const editor_url = "https://snapshots.slint.dev/master/editor/";
-    // keep them alive
-    var all_instances = new Array;
-
-    async function render_or_error(source, div) {
-        let canvas_id = 'canvas_' + Math.random().toString(36).substr(2, 9);
-        let canvas = document.createElement("canvas");
-        canvas.id = canvas_id;
-        div.appendChild(canvas);
-
-        let { component, error_string } = await slint.compile_from_string(source, "");
-        if (error_string != "") {
-            var text = document.createTextNode(error_string);
-            var p = document.createElement('pre');
-            p.appendChild(text);
-            div.innerHTML = "<pre style='color: red; background-color:#fee; margin:0'>" + p.innerHTML + "</pre>";
-        }
-        if (component !== undefined) {
-            let instance = await component.create(canvas_id);
-            await instance.show();
-            all_instances.push(instance);
-        }
-    }
-
-    async function create_preview(element, source_code) {
-        // Style the preview such that a flexbox lays out the source code box
-        // (which should take up any spare space), followed by the preview canvas.
-        // The latter may wrap into a new row on mobile. The edit/play buttons are
-        // placed last by flexbox order attribute.
-        let div = document.createElement("div");
-        let sourceCodeBox = element.firstElementChild;
-        element.style = "display: flex; flex-wrap: wrap;";
-        sourceCodeBox.style = "flex-grow: 2";
-        element.append(div);
-        await render_or_error(source_code, div);
-    }
-
-    function should_show_automatic_preview(element) {
-        // The `no-auto-preview` doesn't map directly to a dedicated class but it's mangled differently
-        // between rustdoc and sphinx, so match fuzzy on the entire class list:
-        return !element.className.includes("no-auto-preview");
-    }
-
-    async function create_click_to_play_and_edit_buttons(element) {
-        let source = element.innerText;
-
-        let link_section = document.createElement("div");
-        // Ensure the link section is always last and on a row of its own in the flexbox.
-        link_section.style = "order: 100; flex-basis: 100%;";
-        element.append(link_section);
-
-        let button_style = "text-decoration: none;"
-
-        let edit_button = document.createElement("a");
-        edit_button.style = button_style;
-        edit_button.href = `${editor_url}?snippet=${encodeURIComponent(source)}`;
-        edit_button.target = "_blank";
-        edit_button.innerText = "Edit 📝";
-        link_section.append(edit_button);
-
-        if (should_show_automatic_preview(element)) {
-            create_preview(element, source);
-        } else {
-            let play_button = document.createElement("a");
-            play_button.style = button_style;
-            play_button.innerText = "Preview ▶️";
-            play_button.onclick = async () => {
-                play_button.remove();
-                create_preview(element, source);
-            };
-
-            link_section.prepend(play_button);
-        }
-    }
-
-    async function run() {
-        await slint.default();
-
-        try {
-            slint.run_event_loop();
-            // this will trigger a JS exception, so this line will never be reached!
-        } catch (e) {
-            // The winit event loop, when targeting wasm, throws a JavaScript exception to break out of
-            // Rust without running any destructors. Don't rethrow the exception but swallow it, as
-            // this is no error and we truly want to resolve the promise of this function by returning
-            // the model markers.
-        }
-
-        let selector = ["code.language-slint", ".rustdoc pre.language-slint", "div.highlight-slint div.highlight", "div.highlight-slint\\,no-auto-preview div.highlight"]
-            .map((sel) => `${sel}:not([class*=slint\\,ignore]):not([class*=slint\\,no-preview])`).join(",");
-        var elements = document.querySelectorAll(selector);
-        for (var i = 0; i < elements.length; ++i) {
-            await create_click_to_play_and_edit_buttons(elements[i]);
-        }
-    }
-    run();
-
-    // Included markdown files may have links to other markdown files, which may not have been
-    // resolved by rustdoc. This helper locates such links and resolves them, assuming that each
-    // .md file gets its own sub-directory with an index.html.
-    function fix_markdown_links() {
-        for (let anchor of document.querySelectorAll('a[href$=".md"], a[href*=".md#"]')) {
-            let url = new URL(anchor.href);
-            let dir_separator = Math.max(url.pathname.lastIndexOf("/"), 0);
-            let base_name = url.pathname.slice(dir_separator + 1, -3);
-            let base_path = url.pathname.slice(0, dir_separator);
-            url.pathname = base_path + "/../" + base_name + "/index.html";
-            anchor.setAttribute("href", url);
-        }
-    }
-    fix_markdown_links()
-</script>
-<!--
-    This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
-    It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
-    in sphinx and via head.hbs in mdbook.
--->
-<link rel="stylesheet" href="https://slint.dev/resources/highlightjs/11.0.1/default.min.css">
-<script src="https://slint.dev/resources/highlightjs/11.0.1/highlight.min.js"></script>
-<script>
-  function highlight_slint(hljs) {
-    const KEYWORDS = {
-      keyword:
-        "animate callback changed component enum export for function global if import in in-out inherits out parent private property public pure root self states struct",
-      literal: "false true",
-      built_in:
-        "ArcTo Clip Close Colors CubicTo Flickable FocusScope GridLayout HorizontalLayout Image LineTo Math MoveTo Path PopupWindow QuadraticTo Rectangle Row Text TextInput TouchArea VerticalLayout Window animation-tick debug",
-      type: "bool duration easing float int length logical-length relative-font-size string",
-    };
-
-    return {
-      name: 'slint',
-      case_insensitive: false,
-      keywords: KEYWORDS,
-      contains: [
-        hljs.QUOTE_STRING_MODE,
-        hljs.C_LINE_COMMENT_MODE,
-        hljs.C_BLOCK_COMMENT_MODE,
-        hljs.COMMENT('/\\*', '\\*/', {
-          contains: ['self']
-        }),
-        {
-          className: 'number',
-          begin: '\\b\\d+(\\.\\d+)?(\\w+)?',
-          relevance: 0
-        },
-        {
-          className: 'title',
-          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]* *:=',
-        },
-        {
-          className: 'symbol',
-          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]*(:| *=>)',
-        },
-        {
-          className: 'built_in',
-          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]*!',
-        },
-      ],
-      illegal: /@/
-    };
-  };
-
-  // Tags used in fenced code blocks
-  for (let tag of ["slint", "slint,no-preview", "slint,no-auto-preview", "slint,ignore"]) {
-    hljs.registerLanguage(tag, highlight_slint);
-  }
-
-
-  window.addEventListener("DOMContentLoaded", () => {
-    const rustDoc = document.querySelector('meta[name="generator"]')?.content == "rustdoc";
-    if (rustDoc) {
-      // Only highlight .slint blocks, leave the others to rustdoc
-      for (slintBlock of document.querySelectorAll("[class*=language-slint]")) {
-        hljs.highlightElement(slintBlock)
-      }
-
-      // Some of the rustdoc selectors require the pre element to have the rust class
-      for (codeBlock of document.querySelectorAll(".language-slint.hljs")) {
-        codeBlock.classList.add("rust");
-        codeBlock.classList.remove("hljs");
-      }
-
-      // Change the hljs generated classes to the rustdoc
-      // ones, so that the highlighting adjusts to the theme correctly.
-      const highlightJSToRustDoc = [
-        ["comment", "comment"],
-        ["number", "number"],
-        ["symbol", "struct"], // width:
-        ["keyword", "kw"],
-        ["built_in", "primitive"],
-        ["string", "string"],
-        ["title", "fnname"], // Foo :=
-        ["type", "type"]
-      ];
-
-      for ([hljs_class, rustdoc_class] of highlightJSToRustDoc) {
-        for (titleElement of document.querySelectorAll(`.hljs-${hljs_class}`)) {
-          titleElement.classList.remove(`hljs-${hljs_class}`);
-          titleElement.classList.add(rustdoc_class);
-        }
-      }
-    } else {
-      // For use with the mdbook Tutorial
-      hljs.highlightAll();
-
-      // The Sphinx/my_st generated HTML for code blocks doesn't use <code> tags, so highlight.js'
-      // default selector "pre code" doesn't match. Let's do it by hand:
-      for (block of document.querySelectorAll("div[class*=highlight-slint] div.highlight pre")) {
-        hljs.highlightElement(block)
-      }
-    }
-
-    // Fix up links that sphinx handles but for rustdoc we need to resolve manually:
-    {
-      let target_url = null;
-      if (document.location.hostname == "snapshots.slint.dev") {
-        target_url = `https://snapshots.slint.dev/master/docs/slint/`;
-      } else {
-        let version = document.querySelector("span.version");
-        if (version !== null) {
-          target_url = `https://slint.dev/releases/${version.innerText}/docs/slint/`;
-        }
-      }
-
-      if (target_url !== null) {
-        for (let link of document.querySelectorAll("a[href^='slint-reference:']")) {
-          link.href = link.href.replace("slint-reference:", target_url);
-        }
-      }
-    }
-  });
-</script>
 
   <footer class="bd-footer">
   </footer>
