@@ -26269,8 +26269,8 @@
    // Define a custom facet to hold the language name
    const languageNameFacet = Facet.define({
        combine(languages) {
-           return languages.length ? languages[0] : null;  // Combine to get the first language if set
-       }
+           return languages.length ? languages[0] : null; // Combine to get the first language if set
+       },
    });
 
    // Copyright © SixtyFPS GmbH <info@slint.dev>
@@ -26278,10 +26278,11 @@
 
 
    const editor_url = "https://snapshots.slint.dev/master/editor/";
-   const wasm_url = "https://snapshots.slint.dev/master/wasm-interpreter/slint_wasm_interpreter.js";
+   const wasm_url =
+       "https://snapshots.slint.dev/master/wasm-interpreter/slint_wasm_interpreter.js";
    let slint_wasm_module = null;
    // keep them alive
-   var all_instances = new Array;
+   var all_instances = new Array();
 
    // Function to create the Copy button and add it to the panel
    function createCopyButton(view) {
@@ -26296,11 +26297,14 @@
 
        button.onclick = () => {
            const content = view.state.doc.toString();
-           navigator.clipboard.writeText(content).then(() => {
-               alert("Content copied to clipboard!");
-           }, (err) => {
-               console.error('Could not copy text: ', err);
-           });
+           navigator.clipboard.writeText(content).then(
+               () => {
+                   alert("Content copied to clipboard!");
+               },
+               (err) => {
+                   console.error("Could not copy text: ", err);
+               },
+           );
        };
 
        return button;
@@ -26317,7 +26321,10 @@
 
        button.onclick = () => {
            const content = view.state.doc.toString();
-           window.open(`${editor_url}?snippet=${encodeURIComponent(content)}`, "_blank");
+           window.open(
+               `${editor_url}?snippet=${encodeURIComponent(content)}`,
+               "_blank",
+           );
        };
 
        return button;
@@ -26325,7 +26332,7 @@
 
    // Define the status panel with copy and run buttons
    function statusPanel(view) {
-       let dom = document.createElement("div");
+       const dom = document.createElement("div");
        dom.className = "cm-status-panel";
 
        // Add the buttons to the panel
@@ -26356,20 +26363,23 @@
    }
 
    async function updateWasmPreview(previewContainer, content) {
-
-       let { component, error_string } = await slint_wasm_module.compile_from_string(content, "");
+       const { component, error_string } =
+           await slint_wasm_module.compile_from_string(content, "");
        var error_div = previewContainer.parentNode.querySelector(".error-status");
-       if (error_string != "") {
+       if (error_string !== "") {
            var text = document.createTextNode(error_string);
-           var p = document.createElement('pre');
+           var p = document.createElement("pre");
            p.appendChild(text);
-           error_div.innerHTML = "<pre style='color: red; background-color:#fee; margin:0'>" + p.innerHTML + "</pre>";
+           error_div.innerHTML =
+               "<pre style='color: red; background-color:#fee; margin:0'>" +
+               p.innerHTML +
+               "</pre>";
        } else {
            error_div.innerHTML = "";
        }
        if (component !== undefined) {
            const canvas_id = previewContainer.getAttribute("data-canvas-id");
-           let instance = await component.create(canvas_id);
+           const instance = await component.create(canvas_id);
            await instance.show();
            all_instances.push(instance);
        }
@@ -26379,20 +26389,21 @@
    const debouncedUpdateWasmPreview = debounce(updateWasmPreview, 500);
 
    async function initializePreviewContainers(previewContainer, content) {
-       let canvas_id = 'canvas_' + Math.random().toString(36).substr(2, 9);
-       let canvas = document.createElement("canvas");
+       const canvas_id = "canvas_" + Math.random().toString(36).substr(2, 9);
+       const canvas = document.createElement("canvas");
        canvas.id = canvas_id;
        previewContainer.appendChild(canvas);
        previewContainer.setAttribute("data-canvas-id", `${canvas_id}`);
-       let error_div = document.createElement("div");
+       const error_div = document.createElement("div");
        error_div.classList.add("error-status");
        previewContainer.parentNode.appendChild(error_div);
    }
 
    async function loadSlintWasmInterpreter(editor) {
        try {
-           if (slint_wasm_module)
+           if (slint_wasm_module) {
                return;
+           }
 
            // Dynamically import the Slint WASM module
            slint_wasm_module = await import(wasm_url);
@@ -26406,17 +26417,19 @@
 
            return;
        } catch (error) {
-           console.error("Error during Slint WASM interpreter initialization:", error);
+           console.error(
+               "Error during Slint WASM interpreter initialization:",
+               error,
+           );
            throw error; // Re-throw error to handle it in the calling context
        }
    }
 
    // Initialize CodeMirror based on the language passed as a data attribute
    window.initCodeMirror = function (editorDiv, language, content) {
-
        editorDiv.getAttribute("id");
 
-       let extensions = [
+       const extensions = [
            lineNumbers(),
            highlightActiveLineGutter(),
            highlightSpecialChars(),
@@ -26444,7 +26457,7 @@
            syntaxHighlighting(defaultHighlightStyle, { fallback: true }),
            languageNameFacet.of(language),
            dracula,
-           showPanel.of(statusPanel)
+           showPanel.of(statusPanel),
        ];
 
        // Get the appropriate language extension
@@ -26452,33 +26465,41 @@
        let previewContainer;
 
        switch (language.toLowerCase()) {
-           case 'javascript':
+           case "javascript":
                extensions.push(javascript());
                break;
-           case 'python':
+           case "python":
                extensions.push(python());
                break;
-           case 'cpp':
+           case "cpp":
                extensions.push(cpp());
                break;
-           case 'rust':
+           case "rust":
                extensions.push(rust());
                break;
-           case 'slint':
+           case "slint":
                isReadOnly = false;
                extensions.push(javascript());
-               if (editorDiv.getAttribute("data-readonly") === 'true'
-                   || editorDiv.getAttribute("data-ignore") === 'true')
+               if (
+                   editorDiv.getAttribute("data-readonly") === "true" ||
+                   editorDiv.getAttribute("data-ignore") === "true"
+               ) {
                    break;
+               }
                previewContainer = document.createElement("div");
-               previewContainer.classList.add('preview-container');
-               editorDiv.classList.add('show-preview');
-               extensions.push(EditorView.updateListener.of(async (editor) => {
-                   if (editor.docChanged) {
-                       const newContent = editor.state.doc.toString();
-                       debouncedUpdateWasmPreview(previewContainer, newContent);
-                   }
-               }));
+               previewContainer.classList.add("preview-container");
+               editorDiv.classList.add("show-preview");
+               extensions.push(
+                   EditorView.updateListener.of(async (editor) => {
+                       if (editor.docChanged) {
+                           const newContent = editor.state.doc.toString();
+                           debouncedUpdateWasmPreview(
+                               previewContainer,
+                               newContent,
+                           );
+                       }
+                   }),
+               );
                break;
        }
 
@@ -26489,7 +26510,7 @@
                doc: content,
                extensions: extensions,
            }),
-           parent: editorDiv
+           parent: editorDiv,
        });
 
        if (previewContainer) {
@@ -26499,7 +26520,7 @@
                    initializePreviewContainers(previewContainer);
                    updateWasmPreview(previewContainer, content);
                })
-               .catch(error => {
+               .catch((error) => {
                    console.error("Error loading Slint WASM interpreter:", error);
                });
        }
@@ -26507,12 +26528,16 @@
 
    document.addEventListener("DOMContentLoaded", async function () {
        // Find all the divs that need a CodeMirror editor
-       document.querySelectorAll('.codemirror-editor').forEach(function (editorDiv) {
-           const editorContent = editorDiv.querySelector('.codemirror-content');
-           const language = editorDiv.getAttribute('data-lang');
-           const content = editorContent.textContent.trim();
-           window.initCodeMirror(editorDiv, language, content);
-       });
+       document
+           .querySelectorAll(".codemirror-editor")
+           .forEach(function (editorDiv) {
+               const editorContent = editorDiv.querySelector(
+                   ".codemirror-content",
+               );
+               const language = editorDiv.getAttribute("data-lang");
+               const content = editorContent.textContent.trim();
+               window.initCodeMirror(editorDiv, language, content);
+           });
    });
 
 })();
