@@ -108,35 +108,35 @@ jobs:
         run: |
           cd docs && npx wrangler@3 pages deploy . --project-name=docs  --commit-dirty=true
 
-      # - name: Update Cloudflare redirects to prefer docs.slint.dev
-      #   run: |
-      #     curl -X PATCH "https://api.cloudflare.com/client/v4/zones/${{ vars.CLOUDFLARE_ZONE_ID }}/rulesets/${{ vars.CLOUDFLARE_RULESET_ID }}/rules/${{ vars.CLOUDFLARE_RULE_ID }}" \
-      #     -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}" \
-      #     -H 'Content-Type: application/json' \
-      #     -d '{
-      #         "position": {
-      #             "before": "${{ vars.CLOUDFLARE_BEFORE_RULE_ID }}"
-      #         },
-      #         "action": "redirect",
-      #         "action_parameters": {
-      #             "from_value": {
-      #                 "status_code": 301,
-      #                 "target_url": {
-      #                     "expression": "concat(\"https://releases.slint.dev\", http.request.uri.path)"
-      #                 },
-      #                 "preserve_query_string": true
-      #             }
-      #         },
-      #         "description": "docs.slint.dev to releases subdomain",
-      #         "enabled": false,
-      #         "expression": "(http.host eq \"docs.slint.dev\" and not starts_with(http.request.uri.path, \"/${{ steps.identify-version.outputs.VERSION }}\") and http.request.uri ne \"/index.html\" and http.request.uri ne \"/\")",
-      #         "id": "${{ vars.CLOUDFLARE_RULE_ID }}",
-      #         "ref": "${{ vars.CLOUDFLARE_RULE_ID }}"
-      #     }'
+      - name: Update Cloudflare redirects to prefer docs.slint.dev
+        run: |
+          curl -X PATCH "https://api.cloudflare.com/client/v4/zones/${{ vars.CLOUDFLARE_ZONE_ID }}/rulesets/${{ vars.CLOUDFLARE_RULESET_ID }}/rules/${{ vars.CLOUDFLARE_RULE_ID }}" \
+          -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}" \
+          -H 'Content-Type: application/json' \
+          -d '{
+              "position": {
+                  "before": "${{ vars.CLOUDFLARE_BEFORE_RULE_ID }}"
+              },
+              "action": "redirect",
+              "action_parameters": {
+                  "from_value": {
+                      "status_code": 301,
+                      "target_url": {
+                          "expression": "concat(\"https://releases.slint.dev\", http.request.uri.path)"
+                      },
+                      "preserve_query_string": true
+                  }
+              },
+              "description": "docs.slint.dev to releases subdomain",
+              "enabled": false,
+              "expression": "(http.host eq \"docs.slint.dev\" and not starts_with(http.request.uri.path, \"/${{ steps.identify-version.outputs.VERSION }}\") and http.request.uri ne \"/index.html\" and http.request.uri ne \"/\") and not starts_with(http.request.uri.path, \"/latest\")",
+              "id": "${{ vars.CLOUDFLARE_RULE_ID }}",
+              "ref": "${{ vars.CLOUDFLARE_RULE_ID }}"
+          }'
 
-  # scrape-docs:
-  #   uses: ./.github/workflows/docsearch-scrape.yml
-  #   needs: build-and-deploy
-  #   secrets: inherit
-  #   with:
-  #     version: ${{ needs.build-and-deploy.outputs.version }}
+  scrape-docs:
+    uses: ./.github/workflows/docsearch-scrape.yml
+    needs: build-and-deploy
+    secrets: inherit
+    with:
+      version: ${{ needs.build-and-deploy.outputs.version }}
