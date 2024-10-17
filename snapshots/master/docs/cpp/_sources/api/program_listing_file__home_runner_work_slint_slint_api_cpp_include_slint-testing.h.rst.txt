@@ -247,6 +247,30 @@ Program Listing for File slint-testing.h
            return std::nullopt;
        }
    
+       std::optional<bool> accessible_selected() const
+       {
+           if (auto result = get_accessible_string_property(
+                       cbindgen_private::AccessibleStringProperty::Selected)) {
+               if (*result == "true")
+                   return true;
+               else if (*result == "false")
+                   return false;
+           }
+           return std::nullopt;
+       }
+   
+       std::optional<bool> accessible_selectable() const
+       {
+           if (auto result = get_accessible_string_property(
+                       cbindgen_private::AccessibleStringProperty::Selectable)) {
+               if (*result == "true")
+                   return true;
+               else if (*result == "false")
+                   return false;
+           }
+           return std::nullopt;
+       }
+   
        void set_accessible_value(SharedString value) const
        {
            if (inner.element_index != 0)

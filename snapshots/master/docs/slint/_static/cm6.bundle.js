@@ -16134,7 +16134,7 @@
        */
        next(enter = true) { return this.move(1, enter); }
        /**
-       Move to the next node in a last-to-first pre-order traveral. A
+       Move to the next node in a last-to-first pre-order traversal. A
        node is followed by its last child or, if it has none, its
        previous sibling or the previous sibling of the first parent
        node that has one.
@@ -16210,10 +16210,10 @@
                    if (mustLeave && leave)
                        leave(this);
                    mustLeave = this.type.isAnonymous;
-                   if (this.nextSibling())
-                       break;
                    if (!depth)
                        return;
+                   if (this.nextSibling())
+                       break;
                    this.parent();
                    depth--;
                    mustLeave = true;

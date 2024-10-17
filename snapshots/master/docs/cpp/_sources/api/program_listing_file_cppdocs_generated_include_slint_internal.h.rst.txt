@@ -66,6 +66,8 @@ Program Listing for File slint_internal.h
        Description,
        Label,
        PlaceholderText,
+       Selectable,
+       Selected,
        Value,
        ValueMaximum,
        ValueMinimum,
