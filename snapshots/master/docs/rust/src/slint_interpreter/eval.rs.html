@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/eval.rs`."><title>eval.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-46f98efaafac5295.ttf.woff2,FiraSans-Regular-018c141bf0843ffd.woff2,FiraSans-Medium-8f9a781e4970d388.woff2,SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2,SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-b0742ba02757f159.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (798fb83f7 2024-10-16)" data-channel="nightly" data-search-js="search-e056c65ede92db13.js" data-settings-js="settings-805db61a62df4bd2.js" ><script src="../../static.files/storage-1d39b6787ed640ff.js"></script><script defer src="../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-f070b9041d14864c.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-0111fcff984fae8f.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/eval.rs`."><title>eval.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-46f98efaafac5295.ttf.woff2,FiraSans-Regular-018c141bf0843ffd.woff2,FiraSans-Medium-8f9a781e4970d388.woff2,SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2,SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-b0742ba02757f159.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (3ed6e3cc6 2024-10-17)" data-channel="nightly" data-search-js="search-e056c65ede92db13.js" data-settings-js="settings-805db61a62df4bd2.js" ><script src="../../static.files/storage-1d39b6787ed640ff.js"></script><script defer src="../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-f070b9041d14864c.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-0111fcff984fae8f.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -1824,7 +1824,12 @@
 <a href="#1701" id="1701">1701</a>
 <a href="#1702" id="1702">1702</a>
 <a href="#1703" id="1703">1703</a>
-<a href="#1704" id="1704">1704</a></pre></div><pre class="rust"><code><span class="comment">// Copyright © SixtyFPS GmbH &lt;info@slint.dev&gt;
+<a href="#1704" id="1704">1704</a>
+<a href="#1705" id="1705">1705</a>
+<a href="#1706" id="1706">1706</a>
+<a href="#1707" id="1707">1707</a>
+<a href="#1708" id="1708">1708</a>
+<a href="#1709" id="1709">1709</a></pre></div><pre class="rust"><code><span class="comment">// Copyright © SixtyFPS GmbH &lt;info@slint.dev&gt;
 // SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0
 
 </span><span class="kw">use </span><span class="kw">crate</span>::api::{SetPropertyError, Struct, Value};
@@ -1842,6 +1847,7 @@
 <span class="kw">use </span>i_slint_compiler::langtype::Type;
 <span class="kw">use </span>i_slint_compiler::object_tree::ElementRc;
 <span class="kw">use </span>i_slint_core <span class="kw">as </span>corelib;
+<span class="kw">use </span>smol_str::SmolStr;
 <span class="kw">use </span>std::collections::HashMap;
 <span class="kw">use </span>std::rc::Rc;
 
@@ -1924,7 +1930,7 @@
 
 <span class="doccomment">/// The local variable needed for binding evaluation
 </span><span class="kw">pub struct </span>EvalLocalContext&lt;<span class="lifetime">'a</span>, <span class="lifetime">'id</span>&gt; {
-    local_variables: HashMap&lt;String, Value&gt;,
+    local_variables: HashMap&lt;SmolStr, Value&gt;,
     function_arguments: Vec&lt;Value&gt;,
     <span class="kw">pub</span>(<span class="kw">crate</span>) component_instance: ComponentInstance&lt;<span class="lifetime">'a</span>, <span class="lifetime">'id</span>&gt;,
     <span class="doccomment">/// When Some, a return statement was executed and one must stop evaluating
@@ -1963,7 +1969,7 @@
     <span class="kw">match </span>expression {
         Expression::Invalid =&gt; <span class="macro">panic!</span>(<span class="string">"invalid expression while evaluating"</span>),
         Expression::Uncompiled(<span class="kw">_</span>) =&gt; <span class="macro">panic!</span>(<span class="string">"uncompiled expression while evaluating"</span>),
-        Expression::StringLiteral(s) =&gt; Value::String(s.into()),
+        Expression::StringLiteral(s) =&gt; Value::String(s.as_str().into()),
         Expression::NumberLiteral(n, unit) =&gt; Value::Number(unit.normalize(<span class="kw-2">*</span>n)),
         Expression::BoolLiteral(b) =&gt; Value::Bool(<span class="kw-2">*</span>b),
         Expression::CallbackReference { .. } =&gt; <span class="macro">panic!</span>(<span class="string">"callback in expression"</span>),
@@ -2142,7 +2148,7 @@
         Expression::Struct { values, .. } =&gt; Value::Struct(
             values
                 .iter()
-                .map(|(k, v)| (k.clone(), eval_expression(v, local_context)))
+                .map(|(k, v)| (k.to_string(), eval_expression(v, local_context)))
                 .collect(),
         ),
         Expression::PathData(data)  =&gt; {
@@ -2184,7 +2190,7 @@
             }))))
         }
         Expression::EnumerationValue(value) =&gt; {
-            Value::EnumerationValue(value.enumeration.name.clone(), value.to_string())
+            Value::EnumerationValue(value.enumeration.name.to_string(), value.to_string())
         }
         Expression::ReturnStatement(x) =&gt; {
             <span class="kw">let </span>val = x.as_ref().map_or(Value::Void, |x| eval_expression(x, local_context));
@@ -3063,7 +3069,7 @@
             <span class="kw">if let </span>Value::Struct(<span class="kw-2">mut </span>o) = eval_expression(base, local_context) {
                 <span class="kw">let </span><span class="kw-2">mut </span>r = o.get_field(name).unwrap().clone();
                 r = <span class="kw">if </span>op == <span class="string">'=' </span>{ rhs } <span class="kw">else </span>{ eval(std::mem::take(<span class="kw-2">&amp;mut </span>r)) };
-                o.set_field(name.to_owned(), r);
+                o.set_field(name.to_string(), r);
                 eval_assignment(base, <span class="string">'='</span>, Value::Struct(o), local_context)
             }
         }
@@ -3507,13 +3513,17 @@
         Type::Bool =&gt; Value::Bool(<span class="bool-val">false</span>),
         Type::Callback { .. } =&gt; Value::Void,
         Type::Struct { fields, .. } =&gt; Value::Struct(
-            fields.iter().map(|(n, t)| (n.clone(), default_value_for_type(t))).collect::&lt;Struct&gt;(),
+            fields
+                .iter()
+                .map(|(n, t)| (n.to_string(), default_value_for_type(t)))
+                .collect::&lt;Struct&gt;(),
         ),
         Type::Array(<span class="kw">_</span>) | Type::Model =&gt; Value::Model(Default::default()),
         Type::Percent =&gt; Value::Number(<span class="number">0.</span>),
-        Type::Enumeration(e) =&gt; {
-            Value::EnumerationValue(e.name.clone(), e.values.get(e.default_value).unwrap().clone())
-        }
+        Type::Enumeration(e) =&gt; Value::EnumerationValue(
+            e.name.to_string(),
+            e.values.get(e.default_value).unwrap().to_string(),
+        ),
         Type::Easing =&gt; Value::EasingCurve(Default::default()),
         Type::Void | Type::Invalid =&gt; Value::Void,
         Type::UnitProduct(<span class="kw">_</span>) =&gt; Value::Number(<span class="number">0.</span>),

@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/global_component.rs`."><title>global_component.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-46f98efaafac5295.ttf.woff2,FiraSans-Regular-018c141bf0843ffd.woff2,FiraSans-Medium-8f9a781e4970d388.woff2,SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2,SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-b0742ba02757f159.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (798fb83f7 2024-10-16)" data-channel="nightly" data-search-js="search-e056c65ede92db13.js" data-settings-js="settings-805db61a62df4bd2.js" ><script src="../../static.files/storage-1d39b6787ed640ff.js"></script><script defer src="../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-f070b9041d14864c.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-0111fcff984fae8f.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/global_component.rs`."><title>global_component.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-46f98efaafac5295.ttf.woff2,FiraSans-Regular-018c141bf0843ffd.woff2,FiraSans-Medium-8f9a781e4970d388.woff2,SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2,SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-b0742ba02757f159.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (3ed6e3cc6 2024-10-17)" data-channel="nightly" data-search-js="search-e056c65ede92db13.js" data-settings-js="settings-805db61a62df4bd2.js" ><script src="../../static.files/storage-1d39b6787ed640ff.js"></script><script defer src="../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-f070b9041d14864c.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-0111fcff984fae8f.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -438,10 +438,12 @@
 <a href="#315" id="315">315</a>
 <a href="#316" id="316">316</a>
 <a href="#317" id="317">317</a>
-<a href="#318" id="318">318</a></pre></div><pre class="rust"><code><span class="comment">// Copyright © SixtyFPS GmbH &lt;info@slint.dev&gt;
+<a href="#318" id="318">318</a>
+<a href="#319" id="319">319</a></pre></div><pre class="rust"><code><span class="comment">// Copyright © SixtyFPS GmbH &lt;info@slint.dev&gt;
 // SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0
 
 </span><span class="kw">use </span>core::pin::Pin;
+<span class="kw">use </span>smol_str::SmolStr;
 <span class="kw">use </span>std::collections::{BTreeMap, HashMap};
 <span class="kw">use </span>std::rc::Rc;
 
@@ -459,7 +461,7 @@
     </span><span class="kw">pub </span>compiled_globals: Vec&lt;CompiledGlobal&gt;,
     <span class="doccomment">/// Map of all exported global singletons and their index in the compiled_globals vector. The key
     /// is the normalized name of the global.
-    </span><span class="kw">pub </span>exported_globals_by_name: BTreeMap&lt;String, usize&gt;,
+    </span><span class="kw">pub </span>exported_globals_by_name: BTreeMap&lt;SmolStr, usize&gt;,
 }
 
 <span class="kw">impl </span>CompiledGlobalCollection {
@@ -499,21 +501,21 @@
 
 <span class="kw">pub enum </span>CompiledGlobal {
     Builtin {
-        name: String,
+        name: SmolStr,
         element: Rc&lt;i_slint_compiler::langtype::BuiltinElement&gt;,
         <span class="comment">// dummy needed for iterator accessor
-        </span>public_properties: BTreeMap&lt;String, PropertyDeclaration&gt;,
+        </span>public_properties: BTreeMap&lt;SmolStr, PropertyDeclaration&gt;,
         <span class="doccomment">/// keep the Component alive as it is boing referenced by `NamedReference`s
         </span>_original: Rc&lt;Component&gt;,
     },
     Component {
         component: ErasedItemTreeDescription,
-        public_properties: BTreeMap&lt;String, PropertyDeclaration&gt;,
+        public_properties: BTreeMap&lt;SmolStr, PropertyDeclaration&gt;,
     },
 }
 
 <span class="kw">impl </span>CompiledGlobal {
-    <span class="kw">pub fn </span>names(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Vec&lt;String&gt; {
+    <span class="kw">pub fn </span>names(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Vec&lt;SmolStr&gt; {
         <span class="kw">match </span><span class="self">self </span>{
             CompiledGlobal::Builtin { name, .. } =&gt; <span class="macro">vec!</span>[name.clone()],
             CompiledGlobal::Component { component, .. } =&gt; {
@@ -538,7 +540,7 @@
         }
     }
 
-    <span class="kw">pub fn </span>public_properties(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw">impl </span>Iterator&lt;Item = (<span class="kw-2">&amp;</span>String, <span class="kw-2">&amp;</span>PropertyDeclaration)&gt; + <span class="lifetime">'_ </span>{
+    <span class="kw">pub fn </span>public_properties(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw">impl </span>Iterator&lt;Item = (<span class="kw-2">&amp;</span>SmolStr, <span class="kw-2">&amp;</span>PropertyDeclaration)&gt; + <span class="lifetime">'_ </span>{
         <span class="kw">match </span><span class="self">self </span>{
             CompiledGlobal::Builtin { public_properties, .. } =&gt; public_properties.iter(),
             CompiledGlobal::Component { public_properties, .. } =&gt; public_properties.iter(),
@@ -547,7 +549,7 @@
 
     <span class="kw">pub fn </span>extend_public_properties(
         <span class="kw-2">&amp;mut </span><span class="self">self</span>,
-        iter: <span class="kw">impl </span>IntoIterator&lt;Item = (String, PropertyDeclaration)&gt;,
+        iter: <span class="kw">impl </span>IntoIterator&lt;Item = (SmolStr, PropertyDeclaration)&gt;,
     ) {
         <span class="kw">match </span><span class="self">self </span>{
             CompiledGlobal::Builtin { public_properties, .. } =&gt; public_properties.extend(iter),
