@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/dynamic_item_tree.rs`."><title>dynamic_item_tree.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-a5dc3bae.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (439284741 2024-10-21)" data-channel="nightly" data-search-js="search-c5a66128.js" data-settings-js="settings-0f613d39.js" ><script src="../../static.files/storage-59e33391.js"></script><script defer src="../../static.files/src-script-56102188.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/dynamic_item_tree.rs`."><title>dynamic_item_tree.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-a5dc3bae.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (86d69c705 2024-10-22)" data-channel="nightly" data-search-js="search-c5a66128.js" data-settings-js="settings-0f613d39.js" ><script src="../../static.files/storage-59e33391.js"></script><script defer src="../../static.files/src-script-56102188.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -2493,7 +2493,26 @@
 <a href="#2370" id="2370">2370</a>
 <a href="#2371" id="2371">2371</a>
 <a href="#2372" id="2372">2372</a>
-<a href="#2373" id="2373">2373</a></pre></div><pre class="rust"><code><span class="comment">// Copyright © SixtyFPS GmbH &lt;info@slint.dev&gt;
+<a href="#2373" id="2373">2373</a>
+<a href="#2374" id="2374">2374</a>
+<a href="#2375" id="2375">2375</a>
+<a href="#2376" id="2376">2376</a>
+<a href="#2377" id="2377">2377</a>
+<a href="#2378" id="2378">2378</a>
+<a href="#2379" id="2379">2379</a>
+<a href="#2380" id="2380">2380</a>
+<a href="#2381" id="2381">2381</a>
+<a href="#2382" id="2382">2382</a>
+<a href="#2383" id="2383">2383</a>
+<a href="#2384" id="2384">2384</a>
+<a href="#2385" id="2385">2385</a>
+<a href="#2386" id="2386">2386</a>
+<a href="#2387" id="2387">2387</a>
+<a href="#2388" id="2388">2388</a>
+<a href="#2389" id="2389">2389</a>
+<a href="#2390" id="2390">2390</a>
+<a href="#2391" id="2391">2391</a>
+<a href="#2392" id="2392">2392</a></pre></div><pre class="rust"><code><span class="comment">// Copyright © SixtyFPS GmbH &lt;info@slint.dev&gt;
 // SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0
 
 </span><span class="kw">use </span><span class="kw">crate</span>::api::{CompilationResult, ComponentDefinition, Value};
@@ -2531,7 +2550,7 @@
 <span class="kw">use </span>i_slint_core::{Brush, Color, Property, SharedString, SharedVector};
 <span class="attr">#[cfg(feature = <span class="string">"internal"</span>)]
 </span><span class="kw">use </span>itertools::Either;
-<span class="kw">use </span>once_cell::unsync::OnceCell;
+<span class="kw">use </span>once_cell::unsync::{Lazy, OnceCell};
 <span class="kw">use </span>smol_str::{SmolStr, ToSmolStr};
 <span class="kw">use </span>std::collections::BTreeMap;
 <span class="kw">use </span>std::collections::HashMap;
@@ -3430,61 +3449,68 @@
     }
 }
 
+<span class="kw">fn </span>generate_rtti() -&gt; HashMap&lt;<span class="kw-2">&amp;</span><span class="lifetime">'static </span>str, Rc&lt;ItemRTTI&gt;&gt; {
+    <span class="kw">let </span><span class="kw-2">mut </span>rtti = HashMap::new();
+    <span class="kw">use </span>i_slint_core::items::<span class="kw-2">*</span>;
+    rtti.extend(
+        [
+            rtti_for::&lt;ComponentContainer&gt;(),
+            rtti_for::&lt;Empty&gt;(),
+            rtti_for::&lt;ImageItem&gt;(),
+            rtti_for::&lt;ClippedImage&gt;(),
+            rtti_for::&lt;ComplexText&gt;(),
+            rtti_for::&lt;SimpleText&gt;(),
+            rtti_for::&lt;Rectangle&gt;(),
+            rtti_for::&lt;BasicBorderRectangle&gt;(),
+            rtti_for::&lt;BorderRectangle&gt;(),
+            rtti_for::&lt;TouchArea&gt;(),
+            rtti_for::&lt;FocusScope&gt;(),
+            rtti_for::&lt;SwipeGestureHandler&gt;(),
+            rtti_for::&lt;Path&gt;(),
+            rtti_for::&lt;Flickable&gt;(),
+            rtti_for::&lt;WindowItem&gt;(),
+            rtti_for::&lt;TextInput&gt;(),
+            rtti_for::&lt;Clip&gt;(),
+            rtti_for::&lt;BoxShadow&gt;(),
+            rtti_for::&lt;Rotate&gt;(),
+            rtti_for::&lt;Opacity&gt;(),
+            rtti_for::&lt;Layer&gt;(),
+        ]
+        .iter()
+        .cloned(),
+    );
+
+    <span class="kw">trait </span>NativeHelper {
+        <span class="kw">fn </span>push(rtti: <span class="kw-2">&amp;mut </span>HashMap&lt;<span class="kw-2">&amp;</span>str, Rc&lt;ItemRTTI&gt;&gt;);
+    }
+    <span class="kw">impl </span>NativeHelper <span class="kw">for </span>() {
+        <span class="kw">fn </span>push(_rtti: <span class="kw-2">&amp;mut </span>HashMap&lt;<span class="kw-2">&amp;</span>str, Rc&lt;ItemRTTI&gt;&gt;) {}
+    }
+    <span class="kw">impl</span>&lt;
+            T: <span class="lifetime">'static </span>+ Default + rtti::BuiltinItem + vtable::HasStaticVTable&lt;ItemVTable&gt;,
+            Next: NativeHelper,
+        &gt; NativeHelper <span class="kw">for </span>(T, Next)
+    {
+        <span class="kw">fn </span>push(rtti: <span class="kw-2">&amp;mut </span>HashMap&lt;<span class="kw-2">&amp;</span>str, Rc&lt;ItemRTTI&gt;&gt;) {
+            <span class="kw">let </span>info = rtti_for::&lt;T&gt;();
+            rtti.insert(info.<span class="number">0</span>, info.<span class="number">1</span>);
+            Next::push(rtti);
+        }
+    }
+    i_slint_backend_selector::NativeWidgets::push(<span class="kw-2">&amp;mut </span>rtti);
+
+    rtti
+}
+
 <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>generate_item_tree&lt;<span class="lifetime">'id</span>&gt;(
     component: <span class="kw-2">&amp;</span>Rc&lt;object_tree::Component&gt;,
     compiled_globals: <span class="prelude-ty">Option</span>&lt;Rc&lt;CompiledGlobalCollection&gt;&gt;,
     guard: generativity::Guard&lt;<span class="lifetime">'id</span>&gt;,
 ) -&gt; Rc&lt;ItemTreeDescription&lt;<span class="lifetime">'id</span>&gt;&gt; {
     <span class="comment">//dbg!(&amp;*component.root_element.borrow());
-    </span><span class="kw">let </span><span class="kw-2">mut </span>rtti = HashMap::new();
-    {
-        <span class="kw">use </span>i_slint_core::items::<span class="kw-2">*</span>;
-        rtti.extend(
-            [
-                rtti_for::&lt;ComponentContainer&gt;(),
-                rtti_for::&lt;Empty&gt;(),
-                rtti_for::&lt;ImageItem&gt;(),
-                rtti_for::&lt;ClippedImage&gt;(),
-                rtti_for::&lt;ComplexText&gt;(),
-                rtti_for::&lt;SimpleText&gt;(),
-                rtti_for::&lt;Rectangle&gt;(),
-                rtti_for::&lt;BasicBorderRectangle&gt;(),
-                rtti_for::&lt;BorderRectangle&gt;(),
-                rtti_for::&lt;TouchArea&gt;(),
-                rtti_for::&lt;FocusScope&gt;(),
-                rtti_for::&lt;SwipeGestureHandler&gt;(),
-                rtti_for::&lt;Path&gt;(),
-                rtti_for::&lt;Flickable&gt;(),
-                rtti_for::&lt;WindowItem&gt;(),
-                rtti_for::&lt;TextInput&gt;(),
-                rtti_for::&lt;Clip&gt;(),
-                rtti_for::&lt;BoxShadow&gt;(),
-                rtti_for::&lt;Rotate&gt;(),
-                rtti_for::&lt;Opacity&gt;(),
-                rtti_for::&lt;Layer&gt;(),
-            ]
-            .iter()
-            .cloned(),
-        );
 
-        <span class="kw">trait </span>NativeHelper {
-            <span class="kw">fn </span>push(rtti: <span class="kw-2">&amp;mut </span>HashMap&lt;<span class="kw-2">&amp;</span>str, Rc&lt;ItemRTTI&gt;&gt;);
-        }
-        <span class="kw">impl </span>NativeHelper <span class="kw">for </span>() {
-            <span class="kw">fn </span>push(_rtti: <span class="kw-2">&amp;mut </span>HashMap&lt;<span class="kw-2">&amp;</span>str, Rc&lt;ItemRTTI&gt;&gt;) {}
-        }
-        <span class="kw">impl</span>&lt;
-                T: <span class="lifetime">'static </span>+ Default + rtti::BuiltinItem + vtable::HasStaticVTable&lt;ItemVTable&gt;,
-                Next: NativeHelper,
-            &gt; NativeHelper <span class="kw">for </span>(T, Next)
-        {
-            <span class="kw">fn </span>push(rtti: <span class="kw-2">&amp;mut </span>HashMap&lt;<span class="kw-2">&amp;</span>str, Rc&lt;ItemRTTI&gt;&gt;) {
-                <span class="kw">let </span>info = rtti_for::&lt;T&gt;();
-                rtti.insert(info.<span class="number">0</span>, info.<span class="number">1</span>);
-                Next::push(rtti);
-            }
-        }
-        i_slint_backend_selector::NativeWidgets::push(<span class="kw-2">&amp;mut </span>rtti);
+    </span><span class="macro">thread_local!</span> {
+        <span class="kw">static </span>RTTI: Lazy&lt;HashMap&lt;<span class="kw-2">&amp;</span><span class="lifetime">'static </span>str, Rc&lt;ItemRTTI&gt;&gt;&gt; = Lazy::new(|| generate_rtti());
     }
 
     <span class="kw">struct </span>TreeBuilder&lt;<span class="lifetime">'id</span>&gt; {
@@ -3496,7 +3522,6 @@
         type_builder: dynamic_type::TypeBuilder&lt;<span class="lifetime">'id</span>&gt;,
         repeater: Vec&lt;ErasedRepeaterWithinComponent&lt;<span class="lifetime">'id</span>&gt;&gt;,
         repeater_names: HashMap&lt;SmolStr, usize&gt;,
-        rtti: Rc&lt;HashMap&lt;<span class="kw-2">&amp;</span><span class="lifetime">'static </span>str, Rc&lt;ItemRTTI&gt;&gt;&gt;,
         change_callbacks: Vec&lt;(NamedReference, Expression)&gt;,
     }
     <span class="kw">impl</span>&lt;<span class="lifetime">'id</span>&gt; generator::ItemTreeBuilder <span class="kw">for </span>TreeBuilder&lt;<span class="lifetime">'id</span>&gt; {
@@ -3545,8 +3570,15 @@
             _component_state: <span class="kw-2">&amp;</span><span class="self">Self</span>::SubComponentState,
         ) {
             <span class="kw">let </span>item = rc_item.borrow();
-            <span class="kw">let </span>rt = <span class="self">self</span>.rtti.get(<span class="kw-2">&amp;*</span>item.base_type.as_native().class_name).unwrap_or_else(|| {
-                <span class="macro">panic!</span>(<span class="string">"Native type not registered: {}"</span>, item.base_type.as_native().class_name)
+            <span class="kw">let </span>rt = RTTI.with(|rtti| {
+                rtti.get(<span class="kw-2">&amp;*</span>item.base_type.as_native().class_name)
+                    .unwrap_or_else(|| {
+                        <span class="macro">panic!</span>(
+                            <span class="string">"Native type not registered: {}"</span>,
+                            item.base_type.as_native().class_name
+                        )
+                    })
+                    .clone()
             });
 
             <span class="kw">let </span>offset = <span class="self">self</span>.type_builder.add_field(rt.type_info);
@@ -3563,7 +3595,7 @@
             <span class="macro">debug_assert_eq!</span>(<span class="self">self</span>.original_elements.len(), <span class="self">self</span>.tree_array.len());
             <span class="self">self</span>.items_types.insert(
                 item.id.clone(),
-                ItemWithinItemTree { offset, rtti: rt.clone(), elem: rc_item.clone() },
+                ItemWithinItemTree { offset, rtti: rt, elem: rc_item.clone() },
             );
             <span class="kw">for </span>(prop, expr) <span class="kw">in </span><span class="kw-2">&amp;</span>item.change_callbacks {
                 <span class="self">self</span>.change_callbacks.push((
@@ -3602,12 +3634,18 @@
         type_builder: dynamic_type::TypeBuilder::new(guard),
         repeater: <span class="macro">vec!</span>[],
         repeater_names: HashMap::new(),
-        rtti: Rc::new(rtti),
         change_callbacks: <span class="macro">vec!</span>[],
     };
 
     <span class="kw">if </span>!component.is_global() {
         generator::build_item_tree(component, <span class="kw-2">&amp;</span>(), <span class="kw-2">&amp;mut </span>builder);
+    } <span class="kw">else </span>{
+        <span class="kw">for </span>(prop, expr) <span class="kw">in </span>component.root_element.borrow().change_callbacks.iter() {
+            builder.change_callbacks.push((
+                NamedReference::new(<span class="kw-2">&amp;</span>component.root_element, prop),
+                Expression::CodeBlock(expr.borrow().clone()),
+            ));
+        }
     }
 
     <span class="kw">let </span><span class="kw-2">mut </span>custom_properties = HashMap::new();
