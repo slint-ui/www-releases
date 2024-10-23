@@ -644,6 +644,7 @@ Program Listing for File slint_internal.h
        Slice<BitmapGlyphs> glyphs;
        uint16_t weight;
        bool italic;
+       bool sdf;
    };
    
    template<typename T, typename U>

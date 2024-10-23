@@ -36,6 +36,7 @@ Program Listing for File slint_image_internal.h
        Rgba,
        RgbaPremultiplied,
        AlphaMap,
+       SignedDistanceField,
    };
    
    struct NineSliceImage;
