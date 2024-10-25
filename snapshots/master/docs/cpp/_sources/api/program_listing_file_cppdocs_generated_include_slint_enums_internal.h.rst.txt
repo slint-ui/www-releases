@@ -178,4 +178,9 @@ Program Listing for File slint_enums_internal.h
        AlwaysOff,
        AlwaysOn,
    };
+   enum class PopupClosePolicy {
+       CloseOnClick,
+       CloseOnClickOutside,
+       NoAutoClose,
+   };
    }

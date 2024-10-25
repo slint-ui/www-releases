@@ -1144,7 +1144,7 @@ Program Listing for File slint_internal.h
    void slint_windowrc_show_popup(const WindowAdapterRcOpaque *handle,
                                   const ItemTreeRc *popup,
                                   Point position,
-                                  bool close_on_click,
+                                  PopupClosePolicy close_policy,
                                   const ItemRc *parent_item);
    
    void slint_windowrc_close_popup(const WindowAdapterRcOpaque *handle);

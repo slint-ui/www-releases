@@ -218,6 +218,13 @@
 * **`up`**: The button was released.
 * **`move`**: The pointer has moved,
 
+## `PopupClosePolicy`
+
+
+* **`close-on-click`**: Closes the `PopupWindow` when user clicks.
+* **`close-on-click-outside`**: Closed the `PopupWindow` when user clicks outside of the popup.
+* **`no-auto-close`**: Does not close the `PopupWindow` automatically when user clicks
+
 ## `ScrollBarPolicy`
 
  This enum describes the scrollbar visibility

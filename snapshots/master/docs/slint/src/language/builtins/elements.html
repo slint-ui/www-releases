@@ -1191,15 +1191,15 @@ position to the beginning of the path.</p>
 <section id="id14">
 <h3>Properties<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">close-on-click</span></code></strong> (<em>in</em> <em>bool</em>): By default, a PopupWindow closes when the user clicks. Set this
-to false to prevent that behavior and close it manually using the <code class="docutils literal notranslate"><span class="pre">close()</span></code> function. (default value: true)</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">close-policy</span></code></strong> (<em>in</em> <em>enum <a class="reference internal" href="enums.html#closepolicy"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">PopupClosePolicy</span></code></span></a></em>): By default, a PopupWindow closes when the user clicks (<code class="docutils literal notranslate"><span class="pre">close-on-click</span></code>). Set this
+to <code class="docutils literal notranslate"><span class="pre">off</span></code> to prevent that behavior and close it manually using the <code class="docutils literal notranslate"><span class="pre">close()</span></code> function. Set to <code class="docutils literal notranslate"><span class="pre">close-on-click-outside</span></code> to close the PopupWindow when the user clicks outside of the popup.</p></li>
 </ul>
 </section>
 <section id="id15">
 <h3>Functions<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">show()</span></code></strong> Show the popup on the screen.</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">close()</span></code></strong> Closes the popup. Use this if you set the <code class="docutils literal notranslate"><span class="pre">close-on-click</span></code> property to false.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">close()</span></code></strong> Closes the popup. Use this if you set the <code class="docutils literal notranslate"><span class="pre">close-policy</span></code> property to <code class="docutils literal notranslate"><span class="pre">no-auto-close</span></code>.</p></li>
 </ul>
 </section>
 <section id="id16">
