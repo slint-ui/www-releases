@@ -1143,6 +1143,21 @@ function __wbg_get_imports() {
         const ret = arg0.getTimezoneOffset();
         return ret;
     };
+    imports.wbg.__wbg_naturalWidth_0d51c4a40cefbf30 = function(arg0) {
+        const ret = arg0.naturalWidth;
+        return ret;
+    };
+    imports.wbg.__wbg_naturalHeight_c510873b8c64ff89 = function(arg0) {
+        const ret = arg0.naturalHeight;
+        return ret;
+    };
+    imports.wbg.__wbg_currentSrc_39f8535810de7173 = function(arg0, arg1) {
+        const ret = arg1.currentSrc;
+        const ptr1 = passStringToWasm0(ret, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+        const len1 = WASM_VECTOR_LEN;
+        getDataViewMemory0().setInt32(arg0 + 4 * 1, len1, true);
+        getDataViewMemory0().setInt32(arg0 + 4 * 0, ptr1, true);
+    };
     imports.wbg.__wbg_src_faab1e2fccebe5eb = function(arg0, arg1) {
         const ret = arg1.src;
         const ptr1 = passStringToWasm0(ret, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
@@ -1162,21 +1177,6 @@ function __wbg_get_imports() {
     };
     imports.wbg.__wbg_setsrc_feb07d9d5b693db7 = function(arg0, arg1, arg2) {
         arg0.src = getStringFromWasm0(arg1, arg2);
-    };
-    imports.wbg.__wbg_naturalWidth_0d51c4a40cefbf30 = function(arg0) {
-        const ret = arg0.naturalWidth;
-        return ret;
-    };
-    imports.wbg.__wbg_naturalHeight_c510873b8c64ff89 = function(arg0) {
-        const ret = arg0.naturalHeight;
-        return ret;
-    };
-    imports.wbg.__wbg_currentSrc_39f8535810de7173 = function(arg0, arg1) {
-        const ret = arg1.currentSrc;
-        const ptr1 = passStringToWasm0(ret, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
-        const len1 = WASM_VECTOR_LEN;
-        getDataViewMemory0().setInt32(arg0 + 4 * 1, len1, true);
-        getDataViewMemory0().setInt32(arg0 + 4 * 0, ptr1, true);
     };
     imports.wbg.__wbg_cullFace_e6b0b54ef3b7307c = function(arg0, arg1) {
         arg0.cullFace(arg1 >>> 0);

@@ -64,6 +64,7 @@ Program Listing for File slint_internal.h
        Checked,
        DelegateFocus,
        Description,
+       Enabled,
        Label,
        PlaceholderText,
        Selectable,
