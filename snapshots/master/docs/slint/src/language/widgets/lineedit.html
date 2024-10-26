@@ -499,12 +499,13 @@ selecting text is still enabled as well as editing text programatically (default
 <h2>Callbacks<a class="headerlink" href="#callbacks" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">accepted(string)</span></code></strong>: Enter was pressed</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">rejected(string)</span></code></strong>: Escape was pressed</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">edited(string)</span></code></strong>: Emitted when the text has changed because the user modified it</p></li>
 </ul>
 </section>
 <section id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this heading">#</a></h2>
-<div id="editor-src-language-widgets-lineedit-37" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">import { LineEdit } from &quot;std-widgets.slint&quot;;
+<div id="editor-src-language-widgets-lineedit-38" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">import { LineEdit } from &quot;std-widgets.slint&quot;;
 export component Example inherits Window {
     width: 200px;
     height: 25px;

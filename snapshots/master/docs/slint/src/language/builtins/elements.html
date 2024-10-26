@@ -1405,6 +1405,7 @@ If the pointer moves by more than 8 logical pixels in one of the enabled swipe d
 <h3>Callbacks<a class="headerlink" href="#id25" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">accepted()</span></code></strong>: Invoked when enter key is pressed.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">rejected()</span></code></strong>: Invoked when escape key is pressed.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">cursor-position-changed(Point)</span></code></strong>: The cursor was moved to the new (x, y) position
 described by the <a class="reference internal" href="structs.html#point"><span class="std std-ref"><em><code class="docutils literal notranslate"><span class="pre">Point</span></code></em></span></a> argument.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">edited()</span></code></strong>: Invoked when the text has changed because the user modified it.</p></li>
@@ -1412,7 +1413,7 @@ described by the <a class="reference internal" href="structs.html#point"><span c
 </section>
 <section id="id26">
 <h3>Example<a class="headerlink" href="#id26" title="Permalink to this heading">#</a></h3>
-<div id="editor-src-language-builtins-elements-824" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Window {
+<div id="editor-src-language-builtins-elements-825" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Window {
     width: 270px;
     height: 100px;
 
@@ -1458,7 +1459,7 @@ When these properties are set, the <code class="docutils literal notranslate"><s
 <section id="id28">
 <h3>Example<a class="headerlink" href="#id28" title="Permalink to this heading">#</a></h3>
 <p>This example shows the text “Hello World” in red, using the default font:</p>
-<div id="editor-src-language-builtins-elements-872" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Window {
+<div id="editor-src-language-builtins-elements-873" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Window {
     width: 270px;
     height: 100px;
 
@@ -1470,7 +1471,7 @@ When these properties are set, the <code class="docutils literal notranslate"><s
 }
 </div></div><p>This example breaks a longer paragraph of text into multiple lines, by setting a <code class="docutils literal notranslate"><span class="pre">wrap</span></code>
 policy and assigning a limited <code class="docutils literal notranslate"><span class="pre">width</span></code> and enough <code class="docutils literal notranslate"><span class="pre">height</span></code> for the text to flow down:</p>
-<div id="editor-src-language-builtins-elements-888" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Window {
+<div id="editor-src-language-builtins-elements-889" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Window {
     width: 270px;
     height: 300px;
 
@@ -1515,7 +1516,7 @@ When already running, the timer will be restarted if the <code class="docutils l
 <section id="id31">
 <h3>Example<a class="headerlink" href="#id31" title="Permalink to this heading">#</a></h3>
 <p>This example shows a timer that counts down from 10 to 0 every second:</p>
-<div id="editor-src-language-builtins-elements-932" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">import { Button } from &quot;std-widgets.slint&quot;;
+<div id="editor-src-language-builtins-elements-933" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">import { Button } from &quot;std-widgets.slint&quot;;
 export component Example inherits Window {
     property &lt;int&gt; value: 10;
     timer := Timer {
@@ -1574,7 +1575,7 @@ forwarded to the parent element.</p></li>
 </section>
 <section id="id34">
 <h3>Example<a class="headerlink" href="#id34" title="Permalink to this heading">#</a></h3>
-<div id="editor-src-language-builtins-elements-991" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Window {
+<div id="editor-src-language-builtins-elements-992" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Window {
     width: 200px;
     height: 100px;
     area := TouchArea {
@@ -1614,7 +1615,7 @@ they will be computed by the layout respecting the minimum and maximum sizes and
 </section>
 <section id="id36">
 <h3>Example<a class="headerlink" href="#id36" title="Permalink to this heading">#</a></h3>
-<div id="editor-src-language-builtins-elements-1031" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Foo inherits Window {
+<div id="editor-src-language-builtins-elements-1032" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Foo inherits Window {
     width: 200px;
     height: 100px;
     HorizontalLayout {
