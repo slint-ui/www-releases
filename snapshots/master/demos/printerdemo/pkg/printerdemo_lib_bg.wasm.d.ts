@@ -12,10 +12,10 @@ export function __wbindgen_realloc(a: number, b: number, c: number, d: number): 
 export const __wbindgen_export_2: WebAssembly.Table;
 export const __wbindgen_export_3: WebAssembly.Table;
 export function closure2168_externref_shim(a: number, b: number, c: number): void;
-export function closure2625_externref_shim(a: number, b: number, c: number): void;
+export function closure2624_externref_shim(a: number, b: number, c: number): void;
 export function _dyn_core__ops__function__FnMut_____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__h612e3d532c0c454d(a: number, b: number): void;
-export function closure2626_externref_shim(a: number, b: number, c: number, d: number): void;
-export function closure2681_externref_shim(a: number, b: number, c: number): void;
+export function closure2625_externref_shim(a: number, b: number, c: number, d: number): void;
+export function closure2680_externref_shim(a: number, b: number, c: number): void;
 export function __externref_table_alloc(): number;
 export function __wbindgen_exn_store(a: number): void;
 export function __wbindgen_start(): void;
