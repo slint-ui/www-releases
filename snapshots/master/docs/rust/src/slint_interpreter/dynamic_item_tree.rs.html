@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/dynamic_item_tree.rs`."><title>dynamic_item_tree.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-198729e5.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (df4ca44d3 2024-10-27)" data-channel="nightly" data-search-js="search-c5a66128.js" data-settings-js="settings-0f613d39.js" ><script src="../../static.files/storage-59e33391.js"></script><script defer src="../../static.files/src-script-56102188.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/dynamic_item_tree.rs`."><title>dynamic_item_tree.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-198729e5.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (3f1be1ec7 2024-10-28)" data-channel="nightly" data-search-js="search-c5a66128.js" data-settings-js="settings-0f613d39.js" ><script src="../../static.files/storage-59e33391.js"></script><script defer src="../../static.files/src-script-56102188.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -2519,7 +2519,9 @@
 <a href="#2396" id="2396">2396</a>
 <a href="#2397" id="2397">2397</a>
 <a href="#2398" id="2398">2398</a>
-<a href="#2399" id="2399">2399</a></pre></div><pre class="rust"><code><span class="comment">// Copyright © SixtyFPS GmbH &lt;info@slint.dev&gt;
+<a href="#2399" id="2399">2399</a>
+<a href="#2400" id="2400">2400</a>
+<a href="#2401" id="2401">2401</a></pre></div><pre class="rust"><code><span class="comment">// Copyright © SixtyFPS GmbH &lt;info@slint.dev&gt;
 // SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0
 
 </span><span class="kw">use </span><span class="kw">crate</span>::api::{CompilationResult, ComponentDefinition, Value};
@@ -3436,8 +3438,8 @@
                 <span class="prelude-val">Some</span>((<span class="kw-2">&amp;</span>export.<span class="number">0</span>.name, <span class="kw-2">&amp;</span>component.id))
             }
             Either::Right(ty) =&gt; <span class="kw">match </span><span class="kw-2">&amp;</span>ty {
-                Type::Struct { name: <span class="prelude-val">Some</span>(name), node: <span class="prelude-val">Some</span>(<span class="kw">_</span>), .. } =&gt; {
-                    <span class="prelude-val">Some</span>((<span class="kw-2">&amp;</span>export.<span class="number">0</span>.name, name))
+                Type::Struct(s) <span class="kw">if </span>s.name.is_some() &amp;&amp; s.node.is_some() =&gt; {
+                    <span class="prelude-val">Some</span>((<span class="kw-2">&amp;</span>export.<span class="number">0</span>.name, s.name.as_ref().unwrap()))
                 }
                 Type::Enumeration(en) =&gt; <span class="prelude-val">Some</span>((<span class="kw-2">&amp;</span>export.<span class="number">0</span>.name, <span class="kw-2">&amp;</span>en.name)),
                 <span class="kw">_ </span>=&gt; <span class="prelude-val">None</span>,
@@ -3706,10 +3708,12 @@
             Type::Image =&gt; property_info::&lt;i_slint_core::graphics::Image&gt;(),
             Type::Bool =&gt; property_info::&lt;bool&gt;(),
             Type::ComponentFactory =&gt; property_info::&lt;ComponentFactory&gt;(),
-            Type::Struct { name: <span class="prelude-val">Some</span>(name), .. } <span class="kw">if </span>name.ends_with(<span class="string">"::StateInfo"</span>) =&gt; {
+            Type::Struct(s)
+                <span class="kw">if </span>s.name.as_ref().map_or(<span class="bool-val">false</span>, |name| name.ends_with(<span class="string">"::StateInfo"</span>)) =&gt;
+            {
                 property_info::&lt;i_slint_core::properties::StateInfo&gt;()
             }
-            Type::Struct { .. } =&gt; property_info::&lt;Value&gt;(),
+            Type::Struct(<span class="kw">_</span>) =&gt; property_info::&lt;Value&gt;(),
             Type::Array(<span class="kw">_</span>) =&gt; property_info::&lt;Value&gt;(),
             Type::Easing =&gt; property_info::&lt;i_slint_core::animations::EasingCurve&gt;(),
             Type::Percent =&gt; property_info::&lt;f32&gt;(),
@@ -4098,7 +4102,7 @@
             } <span class="kw">else if let </span><span class="prelude-val">Some</span>(PropertiesWithinComponent { offset, prop: prop_info, .. }) =
                 description.custom_properties.get(prop_name).filter(|<span class="kw">_</span>| is_root)
             {
-                <span class="kw">let </span>is_state_info = <span class="macro">matches!</span>(property_type, Type::Struct { name: <span class="prelude-val">Some</span>(name), .. } <span class="kw">if </span>name.ends_with(<span class="string">"::StateInfo"</span>));
+                <span class="kw">let </span>is_state_info = <span class="macro">matches!</span>(property_type, Type::Struct (s) <span class="kw">if </span>s.name.as_ref().map_or(<span class="bool-val">false</span>, |name| name.ends_with(<span class="string">"::StateInfo"</span>)));
                 <span class="kw">if </span>is_state_info {
                     <span class="kw">let </span>prop = Pin::new_unchecked(
                         <span class="kw-2">&amp;*</span>(instance_ref.as_ptr().add(<span class="kw-2">*</span>offset)
