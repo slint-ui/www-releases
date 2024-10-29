@@ -85,48 +85,30 @@ starlight-tabs:where(.astro-lisrjliy){display:block}.tablist-wrapper:where(.astr
 <p>The <code dir="auto">TextInput</code> is a lower-level item that shows text and allows entering text.</p>
 <p>When not part of a layout, its width or height defaults to 100% of the parent element when not specified.</p>
 <h3 id="color"><code dir="auto">color</code></h3>
-<div class="sl-markdown-content"> <p> <strong>type:</strong> <a href="/guide/types/#colors-and-brushes" dir="auto"> <code>brush</code> </a>
-(<code>in</code>)
-<br> <strong>default:</strong> <code dir="auto">depends on the style</code><br>  </p> <p>The color of the text.</p> </div>
+<div class="sl-markdown-content"> <p> <strong>type:</strong> <a href="/tng/guide/types/#colors-and-brushes" dir="auto"> <code>brush</code> </a>  <br> <strong>default:</strong> <code dir="auto">depends on the style</code><br>   </p> <p>The color of the text.</p> </div>
 <h3 id="font-family"><code dir="auto">font-family</code></h3>
-<div class="sl-markdown-content"> <p> <strong>type:</strong> <a href="/guide/types/#string" dir="auto"> <code>string</code> </a>
-(<code>in</code>)
-<br> <strong>default:</strong> <code dir="auto">&quot;&quot;</code><br>  </p> <p>The name of the font family selected for rendering the text.</p> </div>
+<div class="sl-markdown-content"> <p> <strong>type:</strong> <a href="/tng/guide/types/#string" dir="auto"> <code>string</code> </a>  <br> <strong>default:</strong> <code dir="auto">&quot;&quot;</code><br>   </p> <p>The name of the font family selected for rendering the text.</p> </div>
 <h3 id="font-size"><code dir="auto">font-size</code></h3>
-<div class="sl-markdown-content"> <p> <strong>type:</strong> <a href="/guide/types/" dir="auto"> <code>length</code> </a>
-(<code>in</code>)
-<br> <strong>default:</strong> <code dir="auto">0px</code><br>  </p> <p>The font size of the text.</p> </div>
+<div class="sl-markdown-content"> <p> <strong>type:</strong> <a href="/tng/guide/types/" dir="auto"> <code>length</code> </a>  <br> <strong>default:</strong> <code dir="auto">0px</code><br>   </p> <p>The font size of the text.</p> </div>
 <h3 id="font-weight"><code dir="auto">font-weight</code></h3>
-<div class="sl-markdown-content"> <p> <strong>type:</strong> <a href="/guide/types/" dir="auto"> <code>int</code> </a>
-(<code>in</code>)
-<br> <strong>default:</strong> <code dir="auto">0</code><br>  </p> <p>The weight of the font. The values range from 100 (lightest) to 900 (thickest). 400 is the normal weight.</p> </div>
+<div class="sl-markdown-content"> <p> <strong>type:</strong> <a href="/tng/guide/types/" dir="auto"> <code>int</code> </a>  <br> <strong>default:</strong> <code dir="auto">0</code><br>   </p> <p>The weight of the font. The values range from 100 (lightest) to 900 (thickest). 400 is the normal weight.</p> </div>
 <h3 id="font-italic"><code dir="auto">font-italic</code></h3>
-<div class="sl-markdown-content"> <p> <strong>type:</strong> <a href="/guide/types/" dir="auto"> <code>bool</code> </a>
-(<code>in</code>)
-<br> <strong>default:</strong> <code dir="auto">false</code><br>  </p> <p>Whether or not the font face should be drawn italicized or not.</p> </div>
+<div class="sl-markdown-content"> <p> <strong>type:</strong> <a href="/tng/guide/types/" dir="auto"> <code>bool</code> </a>  <br> <strong>default:</strong> <code dir="auto">false</code><br>   </p> <p>Whether or not the font face should be drawn italicized or not.</p> </div>
 <h3 id="font-metrics"><code dir="auto">font-metrics</code></h3>
-<div class="sl-markdown-content"> <p> <strong>type:</strong> <a href="/guide/types/#structs" dir="auto"> <code>struct</code> </a>
-(<code>in</code>)
-<br> <strong>default:</strong> <code dir="auto">a struct with all default values</code><br>  </p> <p>The design metrics of the font scaled to the font pixel size used by the element.</p> </div>
+<div class="sl-markdown-content"> <p> <strong>type:</strong> <a href="/tng/guide/types/#structs" dir="auto"> <code>struct</code> </a>  <br> <strong>default:</strong> <code dir="auto">a struct with all default values</code><br>   </p> <p>The design metrics of the font scaled to the font pixel size used by the element.</p> </div>
 <h3 id="has-focus"><code dir="auto">has-focus</code></h3>
-<div class="sl-markdown-content"> <p> <strong>type:</strong> <a href="/guide/types/" dir="auto"> <code>bool</code> </a>
-(<code>in</code>)
-<br> <strong>default:</strong> <code dir="auto">false</code><br>  </p> <p><code dir="auto">TextInput</code> sets this to <code dir="auto">true</code> when it’s focused. Only then it receives <a href="../language/builtins/structs.md#keyevent"><code dir="auto">KeyEvent</code></a>s.</p> </div>
+<div class="sl-markdown-content"> <p> <strong>type:</strong> <a href="/tng/guide/types/" dir="auto"> <code>bool</code> </a> <code>(out)</code> <br> <strong>default:</strong> <code dir="auto">false</code><br>   </p> <p><code dir="auto">TextInput</code> sets this to <code dir="auto">true</code> when it’s focused. Only then it receives <a href="../language/builtins/structs.md#keyevent"><code dir="auto">KeyEvent</code></a>s.</p> </div>
 <h3 id="horizontal-alignment"><code dir="auto">horizontal-alignment</code></h3>
-<div class="sl-markdown-content"> <p> <strong>type:</strong> <code>enum</code>
-(<code>in</code>)
-<br> <strong>default:</strong> <code dir="auto">the first enum value</code><br> <!-- Generated with `cargo xtask slintdocs` from internal/commons/enums.rs -->
+<div class="sl-markdown-content"> <p> <strong>type:</strong> <code>enum TextHorizontalAlignment</code>  <br> <strong>default:</strong> <code dir="auto">the first enum value</code><br> <!-- Generated with `cargo xtask slintdocs` from internal/commons/enums.rs -->
 <p><code dir="auto">TextHorizontalAlignment</code></p>
 <p>This enum describes the different types of alignment of text along the horizontal axis of a <a href="elements.md#text"><code dir="auto">Text</code></a> element.</p>
 <ul>
 <li><strong><code dir="auto">left</code></strong>:  The text will be aligned with the left edge of the containing box.</li>
 <li><strong><code dir="auto">center</code></strong>:  The text will be horizontally centered within the containing box.</li>
 <li><strong><code dir="auto">right</code></strong>:  The text will be aligned to the right of the containing box.</li>
-</ul> </p> <p>The horizontal alignment of the text.</p> </div>
+</ul>  </p> <p>The horizontal alignment of the text.</p> </div>
 <h3 id="input-type"><code dir="auto">input-type</code></h3>
-<div class="sl-markdown-content"> <p> <strong>type:</strong> <code>enum</code>
-(<code>in</code>)
-<br> <strong>default:</strong> <code dir="auto">text</code><br> <!-- Generated with `cargo xtask slintdocs` from internal/commons/enums.rs -->
+<div class="sl-markdown-content"> <p> <strong>type:</strong> <code>enum InputType</code>  <br> <strong>default:</strong> <code dir="auto">text</code><br> <!-- Generated with `cargo xtask slintdocs` from internal/commons/enums.rs -->
 <p><code dir="auto">InputType</code></p>
 <p>This enum is used to define the type of the input field.</p>
 <ul>
@@ -134,57 +116,39 @@ starlight-tabs:where(.astro-lisrjliy){display:block}.tablist-wrapper:where(.astr
 <li><strong><code dir="auto">password</code></strong>:  This will render all characters with a character that defaults to ”*”</li>
 <li><strong><code dir="auto">number</code></strong>:  This will only accept and render number characters (0-9)</li>
 <li><strong><code dir="auto">decimal</code></strong>:  This will accept and render characters if it’s valid part of a decimal</li>
-</ul> </p> <p>Use this to configure <code dir="auto">TextInput</code> for editing special input, such as password fields.</p> </div>
+</ul>  </p> <p>Use this to configure <code dir="auto">TextInput</code> for editing special input, such as password fields.</p> </div>
 <h3 id="letter-spacing"><code dir="auto">letter-spacing</code></h3>
-<div class="sl-markdown-content"> <p> <strong>type:</strong> <a href="/guide/types/" dir="auto"> <code>length</code> </a>
-(<code>in</code>)
-<br> <strong>default:</strong> <code dir="auto">0</code><br>  </p> <p>The letter spacing allows changing the spacing between the glyphs. A positive value increases the spacing and a negative value decreases the distance.</p> </div>
+<div class="sl-markdown-content"> <p> <strong>type:</strong> <a href="/tng/guide/types/" dir="auto"> <code>length</code> </a>  <br> <strong>default:</strong> <code dir="auto">0</code><br>   </p> <p>The letter spacing allows changing the spacing between the glyphs. A positive value increases the spacing and a negative value decreases the distance.</p> </div>
 <h3 id="read-only"><code dir="auto">read-only</code></h3>
-<div class="sl-markdown-content"> <p> <strong>type:</strong> <a href="/guide/types/" dir="auto"> <code>bool</code> </a>
-(<code>in</code>)
-<br> <strong>default:</strong> <code dir="auto">false</code><br>  </p> <p>When set to <code dir="auto">true</code>, text editing via keyboard and mouse is disabled but selecting text is still enabled as well as editing text programmatically.</p> </div>
+<div class="sl-markdown-content"> <p> <strong>type:</strong> <a href="/tng/guide/types/" dir="auto"> <code>bool</code> </a>  <br> <strong>default:</strong> <code dir="auto">false</code><br>   </p> <p>When set to <code dir="auto">true</code>, text editing via keyboard and mouse is disabled but selecting text is still enabled as well as editing text programmatically.</p> </div>
 <h3 id="selection-background-color"><code dir="auto">selection-background-color</code></h3>
-<div class="sl-markdown-content"> <p> <strong>type:</strong> <a href="/guide/types/#colors-and-brushes" dir="auto"> <code>color</code> </a>
-(<code>in</code>)
-<br> <strong>default:</strong> <code dir="auto">a transparent color</code><br>  </p> <p>The background color of the selection.</p> </div>
+<div class="sl-markdown-content"> <p> <strong>type:</strong> <a href="/tng/guide/types/#colors-and-brushes" dir="auto"> <code>color</code> </a>  <br> <strong>default:</strong> <code dir="auto">a transparent color</code><br>   </p> <p>The background color of the selection.</p> </div>
 <h3 id="selection-foreground-color"><code dir="auto">selection-foreground-color</code></h3>
-<div class="sl-markdown-content"> <p> <strong>type:</strong> <a href="/guide/types/#colors-and-brushes" dir="auto"> <code>color</code> </a>
-(<code>in</code>)
-<br> <strong>default:</strong> <code dir="auto">a transparent color</code><br>  </p> <p>The foreground color of the selection.</p> </div>
+<div class="sl-markdown-content"> <p> <strong>type:</strong> <a href="/tng/guide/types/#colors-and-brushes" dir="auto"> <code>color</code> </a>  <br> <strong>default:</strong> <code dir="auto">a transparent color</code><br>   </p> <p>The foreground color of the selection.</p> </div>
 <h3 id="single-line"><code dir="auto">single-line</code></h3>
-<div class="sl-markdown-content"> <p> <strong>type:</strong> <a href="/guide/types/" dir="auto"> <code>bool</code> </a>
-(<code>in</code>)
-<br> <strong>default:</strong> <code dir="auto">true</code><br>  </p> <p>When set to <code dir="auto">true</code>, the text is always rendered as a single line, regardless of new line separators in the text.</p> </div>
+<div class="sl-markdown-content"> <p> <strong>type:</strong> <a href="/tng/guide/types/" dir="auto"> <code>bool</code> </a>  <br> <strong>default:</strong> <code dir="auto">true</code><br>   </p> <p>When set to <code dir="auto">true</code>, the text is always rendered as a single line, regardless of new line separators in the text.</p> </div>
 <h3 id="text-cursor-width"><code dir="auto">text-cursor-width</code></h3>
-<div class="sl-markdown-content"> <p> <strong>type:</strong> <a href="/guide/types/" dir="auto"> <code>length</code> </a>
-(<code>in</code>)
-<br> <strong>default:</strong> <code dir="auto">provided at run-time by the selected widget style</code><br>  </p> <p>The width of the text cursor.</p> </div>
+<div class="sl-markdown-content"> <p> <strong>type:</strong> <a href="/tng/guide/types/" dir="auto"> <code>length</code> </a>  <br> <strong>default:</strong> <code dir="auto">provided at run-time by the selected widget style</code><br>   </p> <p>The width of the text cursor.</p> </div>
 <h3 id="text"><code dir="auto">text</code></h3>
-<div class="sl-markdown-content"> <p> <strong>type:</strong> <a href="/guide/types/#string" dir="auto"> <code>string</code> </a>
-(<code>in</code>)
-<br> <strong>default:</strong> <code dir="auto">&quot;&quot;</code><br>  </p> <p>The text rendered and editable by the user.</p> </div>
+<div class="sl-markdown-content"> <p> <strong>type:</strong> <a href="/tng/guide/types/#string" dir="auto"> <code>string</code> </a>  <br> <strong>default:</strong> <code dir="auto">&quot;&quot;</code><br>   </p> <p>The text rendered and editable by the user.</p> </div>
 <h3 id="vertical-alignment"><code dir="auto">vertical-alignment</code></h3>
-<div class="sl-markdown-content"> <p> <strong>type:</strong> <code>enum</code>
-(<code>in</code>)
-<br> <strong>default:</strong> <code dir="auto">the first enum value</code><br> <!-- Generated with `cargo xtask slintdocs` from internal/commons/enums.rs -->
+<div class="sl-markdown-content"> <p> <strong>type:</strong> <code>enum TextVerticalAlignment</code>  <br> <strong>default:</strong> <code dir="auto">the first enum value</code><br> <!-- Generated with `cargo xtask slintdocs` from internal/commons/enums.rs -->
 <p><code dir="auto">TextVerticalAlignment</code></p>
 <p>This enum describes the different types of alignment of text along the vertical axis of a <a href="elements.md#text"><code dir="auto">Text</code></a> element.</p>
 <ul>
 <li><strong><code dir="auto">top</code></strong>:  The text will be aligned to the top of the containing box.</li>
 <li><strong><code dir="auto">center</code></strong>:  The text will be vertically centered within the containing box.</li>
 <li><strong><code dir="auto">bottom</code></strong>:  The text will be aligned to the bottom of the containing box.</li>
-</ul> </p> <p>The vertical alignment of the text.</p> </div>
+</ul>  </p> <p>The vertical alignment of the text.</p> </div>
 <h3 id="wrap"><code dir="auto">wrap</code></h3>
-<div class="sl-markdown-content"> <p> <strong>type:</strong> <code>enum</code>
-(<code>in</code>)
-<br> <strong>default:</strong> <code dir="auto">no-wrap</code><br> <!-- Generated with `cargo xtask slintdocs` from internal/commons/enums.rs -->
+<div class="sl-markdown-content"> <p> <strong>type:</strong> <code>enum TextWrap</code>  <br> <strong>default:</strong> <code dir="auto">no-wrap</code><br> <!-- Generated with `cargo xtask slintdocs` from internal/commons/enums.rs -->
 <p><code dir="auto">TextWrap</code></p>
 <p>This enum describes the how the text wrap if it is too wide to fit in the <a href="elements.md#text"><code dir="auto">Text</code></a> width.</p>
 <ul>
 <li><strong><code dir="auto">no-wrap</code></strong>:  The text won’t wrap, but instead will overflow.</li>
 <li><strong><code dir="auto">word-wrap</code></strong>:  The text will be wrapped at word boundaries if possible, or at any location for very long words.</li>
 <li><strong><code dir="auto">char-wrap</code></strong>:  The text will be wrapped at any character. Currently only supported by the Qt and Software renderers.</li>
-</ul> </p> <p>The way the text input wraps. Only makes sense when <code dir="auto">single-line</code> is false.</p> </div>
+</ul>  </p> <p>The way the text input wraps. Only makes sense when <code dir="auto">single-line</code> is false.</p> </div>
 <h2 id="functions">Functions</h2>
 <h3 id="focus"><code dir="auto">focus()</code></h3>
 <p>Call this function to focus the text input and make it receive future keyboard events.</p>

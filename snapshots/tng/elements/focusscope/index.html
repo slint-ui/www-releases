@@ -88,13 +88,9 @@ When a non-printable key is pressed, the character will be either a control char
 or it will be mapped to a private unicode character. The mapping of these non-printable, special characters is available in the <a href="namespaces.md#key"><code dir="auto">Key</code></a> namespace</p>
 <h2 id="properties">Properties</h2>
 <h3 id="has-focus"><code dir="auto">has-focus</code></h3>
-<div class="sl-markdown-content"> <p> <strong>type:</strong> <a href="/guide/types/" dir="auto"> <code>bool</code> </a>
-(<code>in</code>)
-<br> <strong>default:</strong> <code dir="auto">false</code><br>  </p> <p>Is <code dir="auto">true</code> when the element has keyboard focus.</p> </div>
+<div class="sl-markdown-content"> <p> <strong>type:</strong> <a href="/tng/guide/types/" dir="auto"> <code>bool</code> </a> <code>(out)</code> <br> <strong>default:</strong> <code dir="auto">false</code><br>   </p> <p>Is <code dir="auto">true</code> when the element has keyboard focus.</p> </div>
 <h3 id="enabled"><code dir="auto">enabled</code></h3>
-<div class="sl-markdown-content"> <p> <strong>type:</strong> <a href="/guide/types/" dir="auto"> <code>bool</code> </a>
-(<code>in</code>)
-<br> <strong>default:</strong> <code dir="auto">true</code><br>  </p> <p>When true, the <code dir="auto">FocusScope</code> will make itself the focused element when clicked. Set this to false if you don’t want the click-to-focus
+<div class="sl-markdown-content"> <p> <strong>type:</strong> <a href="/tng/guide/types/" dir="auto"> <code>bool</code> </a>  <br> <strong>default:</strong> <code dir="auto">true</code><br>   </p> <p>When true, the <code dir="auto">FocusScope</code> will make itself the focused element when clicked. Set this to false if you don’t want the click-to-focus
 behavior. Similarly, a disabled <code dir="auto">FocusScope</code> does not accept the focus via tab focus traversal. A parent <code dir="auto">FocusScope</code> will still receive key events from
 child <code dir="auto">FocusScope</code>s that were rejected, even if <code dir="auto">enabled</code> is set to false.</p> </div>
 <h2 id="functions">Functions</h2>

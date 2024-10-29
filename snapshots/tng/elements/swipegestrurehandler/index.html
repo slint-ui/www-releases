@@ -90,38 +90,34 @@ starlight-tabs:where(.astro-lisrjliy){display:block}.tablist-wrapper:where(.astr
 <p>Pointer press events on the recognizer’s area are forwarded to the children with a small delay.
 If the pointer moves by more than 8 logical pixels in one of the enabled swipe directions, the gesture is recognized, and events are no longer forwarded to the children.</p>
 <h3 id="enabled"><code dir="auto">enabled</code></h3>
-<div class="sl-markdown-content"> <p> <strong>type:</strong> <a href="/guide/types/" dir="auto"> <code>bool</code> </a>
-(<code>in</code>)
-<br> <strong>default:</strong> <code dir="auto">true</code><br>  </p> <p>When disabled, the <code dir="auto">SwipeGestureHandler</code> doesn’t recognize any gestures.</p> </div>
+<div class="sl-markdown-content"> <p> <strong>type:</strong> <a href="/tng/guide/types/" dir="auto"> <code>bool</code> </a>  <br> <strong>default:</strong> <code dir="auto">true</code><br>   </p> <p>When disabled, the <code dir="auto">SwipeGestureHandler</code> doesn’t recognize any gestures.</p> </div>
 <h3 id="pressed-position"><code dir="auto">pressed-position</code></h3>
-<div class="sl-markdown-content"> <p> <strong>type:</strong> <code>Point</code>
-(<code>in</code>)
-<br> <strong>default:</strong> <code dir="auto">&lt;???&gt;</code><br>  </p> <p>The position of the pointer when the swipe started.</p> </div>
+<div class="sl-markdown-content"> <p> <strong>type:</strong> <a href="/tng/guide/types/" dir="auto"> <code>Point</code> </a> <code>(out)</code> <br> <strong>default:</strong> <code dir="auto">(0px, 0px)</code><br>  <!-- Generated with `cargo xtask slintdocs` from internal/common/builtin_structs.rs -->
+<p><code dir="auto">Point</code></p>
+<p>This structure represents a point with x and y coordinate</p>
+<ul>
+<li><strong><code dir="auto">x</code></strong> (<em>length</em>):</li>
+<li><strong><code dir="auto">y</code></strong> (<em>length</em>):</li>
+</ul> </p> <p>The position of the pointer when the swipe started.</p> </div>
 <h3 id="current-position"><code dir="auto">current-position</code></h3>
-<div class="sl-markdown-content"> <p> <strong>type:</strong> <code>Point</code>
-(<code>in</code>)
-<br> <strong>default:</strong> <code dir="auto">&lt;???&gt;</code><br>  </p> <p>The current pointer position.</p> </div>
+<div class="sl-markdown-content"> <p> <strong>type:</strong> <a href="/tng/guide/types/" dir="auto"> <code>Point</code> </a> <code>(out)</code> <br> <strong>default:</strong> <code dir="auto">(0px, 0px)</code><br>  <!-- Generated with `cargo xtask slintdocs` from internal/common/builtin_structs.rs -->
+<p><code dir="auto">Point</code></p>
+<p>This structure represents a point with x and y coordinate</p>
+<ul>
+<li><strong><code dir="auto">x</code></strong> (<em>length</em>):</li>
+<li><strong><code dir="auto">y</code></strong> (<em>length</em>):</li>
+</ul> </p> <p>The current pointer position.</p> </div>
 <h3 id="swiping"><code dir="auto">swiping</code></h3>
-<div class="sl-markdown-content"> <p> <strong>type:</strong> <a href="/guide/types/" dir="auto"> <code>bool</code> </a>
-(<code>in</code>)
-<br> <strong>default:</strong> <code dir="auto">false</code><br>  </p> <p><code dir="auto">true</code> while the gesture is recognized, false otherwise.</p> </div>
+<div class="sl-markdown-content"> <p> <strong>type:</strong> <a href="/tng/guide/types/" dir="auto"> <code>bool</code> </a> <code>(out)</code> <br> <strong>default:</strong> <code dir="auto">false</code><br>   </p> <p><code dir="auto">true</code> while the gesture is recognized, false otherwise.</p> </div>
 <h2 id="handle-swipe-directions-properties">Handle swipe directions properties</h2>
 <h3 id="handle-swipe-left"><code dir="auto">handle-swipe-left</code></h3>
-<div class="sl-markdown-content"> <p> <strong>type:</strong> <a href="/guide/types/" dir="auto"> <code>bool</code> </a>
-(<code>in</code>)
-<br> <strong>default:</strong> <code dir="auto">false</code><br>  </p>  </div>
+<div class="sl-markdown-content"> <p> <strong>type:</strong> <a href="/tng/guide/types/" dir="auto"> <code>bool</code> </a>  <br> <strong>default:</strong> <code dir="auto">false</code><br>   </p>  </div>
 <h3 id="handle-swipe-right"><code dir="auto">handle-swipe-right</code></h3>
-<div class="sl-markdown-content"> <p> <strong>type:</strong> <a href="/guide/types/" dir="auto"> <code>bool</code> </a>
-(<code>in</code>)
-<br> <strong>default:</strong> <code dir="auto">false</code><br>  </p>  </div>
+<div class="sl-markdown-content"> <p> <strong>type:</strong> <a href="/tng/guide/types/" dir="auto"> <code>bool</code> </a>  <br> <strong>default:</strong> <code dir="auto">false</code><br>   </p>  </div>
 <h3 id="handle-swipe-up"><code dir="auto">handle-swipe-up</code></h3>
-<div class="sl-markdown-content"> <p> <strong>type:</strong> <a href="/guide/types/" dir="auto"> <code>bool</code> </a>
-(<code>in</code>)
-<br> <strong>default:</strong> <code dir="auto">false</code><br>  </p>  </div>
+<div class="sl-markdown-content"> <p> <strong>type:</strong> <a href="/tng/guide/types/" dir="auto"> <code>bool</code> </a>  <br> <strong>default:</strong> <code dir="auto">false</code><br>   </p>  </div>
 <h3 id="handle-swipe-down"><code dir="auto">handle-swipe-down</code></h3>
-<div class="sl-markdown-content"> <p> <strong>type:</strong> <a href="/guide/types/" dir="auto"> <code>bool</code> </a>
-(<code>in</code>)
-<br> <strong>default:</strong> <code dir="auto">false</code><br>  </p>  </div>
+<div class="sl-markdown-content"> <p> <strong>type:</strong> <a href="/tng/guide/types/" dir="auto"> <code>bool</code> </a>  <br> <strong>default:</strong> <code dir="auto">false</code><br>   </p>  </div>
 <h3 id="callbacks">Callbacks</h3>
 <ul>
 <li><strong><code dir="auto">moved()</code></strong>: Invoked when the pointer is moved.</li>
