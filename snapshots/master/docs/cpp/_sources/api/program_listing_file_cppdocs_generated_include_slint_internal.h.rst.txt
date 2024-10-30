@@ -1119,6 +1119,19 @@ Program Listing for File slint_internal.h
    
    void slint_translations_mark_dirty();
    
+   void slint_translate_from_bundle(Slice<const char*> strs,
+                                    Slice<SharedString> arguments,
+                                    SharedString *output);
+   
+   void slint_translate_from_bundle_with_plural(Slice<const char*> strs,
+                                                Slice<uint32_t> indices,
+                                                Slice<uintptr_t(*)(int32_t)> plural_rules,
+                                                Slice<SharedString> arguments,
+                                                int32_t n,
+                                                SharedString *output);
+   
+   bool slint_translate_set_language(Slice<uint8_t> lang, Slice<Slice<uint8_t>> languages);
+   
    void slint_windowrc_drop(WindowAdapterRcOpaque *handle);
    
    void slint_windowrc_clone(const WindowAdapterRcOpaque *source, WindowAdapterRcOpaque *target);
