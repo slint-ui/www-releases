@@ -82,6 +82,8 @@ Program Listing for File slint_platform_internal.h
    
    bool slint_string_to_float(const SharedString *string, float *value);
    
+   bool slint_string_to_usize(const SharedString *string, uintptr_t *value);
+   
    void slint_debug(const SharedString *string);
    
    void slint_window_properties_get_title(const WindowProperties *wp, SharedString *out);

@@ -223,6 +223,7 @@ Program Listing for File slint_qt_internal.h
    struct NativeStandardListViewItem {
        Property<StandardListViewItem> item;
        Property<int32_t> index;
+       Property<int32_t> total_items;
        Property<bool> is_selected;
        CachedRenderingData cached_rendering_data;
        Property<bool> has_hover;

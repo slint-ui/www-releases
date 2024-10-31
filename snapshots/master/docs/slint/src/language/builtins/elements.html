@@ -59,7 +59,7 @@
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.9.0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
         </script>
-    <script src="../../../_static/cm6.bundle.js?v=a416fdef"></script>
+    <script src="../../../_static/cm6.bundle.js?v=8c5ca91f"></script>
     <script src="../../../_static/expand_tabs.js?v=acb398a4"></script>
     <link rel="canonical" href="https://docs.slint.dev/src/language/builtins/elements.html" />
     <link rel="icon" href="https://slint.dev/favicon.svg"/>
@@ -658,6 +658,8 @@ were first drawn into an intermediate layer, and then the whole layer is rendere
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">accessible-placeholder-text</span></code></strong> (<em>in</em> <em>string</em>): A placeholder text to use when the item’s value is empty. Applies to text elements.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">accessible-selectable</span></code></strong> (<em>in</em> <em>bool</em>): Whether the element can be selected or not.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">accessible-selected</span></code></strong> (<em>in</em> <em>bool</em>): Whether the element is selected or not. This maps to the “is-selected” state of listview items.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">accessible-position-in-set</span></code></strong> (<em>in</em> <em>int</em>): The index (starting from 0) of this element in a group of similar elements. Applies to list items, radio buttons and other elements.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">accessible-size-of-set</span></code></strong> (<em>in</em> <em>int</em>): The total number of elements in a group. Applies to all elements of a group like list items, radio buttons and other elements, but not to their parent container like list views, radio button groups or other grouping elements.</p></li>
 </ul>
 <p>You can also use the following callbacks that are going to be called by the accessibility framework:</p>
 <ul class="simple">
@@ -701,7 +703,7 @@ Each of these automatically-generated callbacks is an alias for the <code class=
 </section>
 <section id="example">
 <h3>Example<a class="headerlink" href="#example" title="Permalink to this heading">#</a></h3>
-<div id="editor-src-language-builtins-elements-124" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">import { StandardButton, Button } from &quot;std-widgets.slint&quot;;
+<div id="editor-src-language-builtins-elements-126" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">import { StandardButton, Button } from &quot;std-widgets.slint&quot;;
 export component Example inherits Dialog {
     Text {
       text: &quot;This is a dialog box&quot;;
@@ -773,7 +775,7 @@ to the coordinates of the press event exceeds 8 logical pixels.</p></li>
 </section>
 <section id="id2">
 <h3>Example<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
-<div id="editor-src-language-builtins-elements-188" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Window {
+<div id="editor-src-language-builtins-elements-190" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Window {
     width: 270px;
     height: 100px;
 
@@ -825,7 +827,7 @@ forwarded to the parent element.</p></li>
 </section>
 <section id="id5">
 <h3>Example<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
-<div id="editor-src-language-builtins-elements-237" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Window {
+<div id="editor-src-language-builtins-elements-239" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Window {
     width: 100px;
     height: 100px;
     forward-focus: my-key-handler;
@@ -856,7 +858,7 @@ forwarded to the parent element.</p></li>
 </ul>
 <p>To implicitly sequentially assign row indices—just like with <code class="docutils literal notranslate"><span class="pre">col</span></code>—wrap cell elements in <code class="docutils literal notranslate"><span class="pre">Row</span></code> elements.</p>
 <p>The following example creates a 2-by-2 grid with <code class="docutils literal notranslate"><span class="pre">Row</span></code> elements, omitting one cell:</p>
-<div id="editor-src-language-builtins-elements-272" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">import { Button } from &quot;std-widgets.slint&quot;;
+<div id="editor-src-language-builtins-elements-274" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">import { Button } from &quot;std-widgets.slint&quot;;
 export component Foo inherits Window {
     width: 200px;
     height: 100px;
@@ -871,7 +873,7 @@ export component Foo inherits Window {
     }
 }
 </div></div><p>The following example creates the same grid using the <code class="docutils literal notranslate"><span class="pre">row</span></code> property. Row indices must be taken care of manually:</p>
-<div id="editor-src-language-builtins-elements-291" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">import { Button } from &quot;std-widgets.slint&quot;;
+<div id="editor-src-language-builtins-elements-293" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">import { Button } from &quot;std-widgets.slint&quot;;
 export component Foo inherits Window {
     width: 200px;
     height: 100px;
@@ -896,7 +898,7 @@ Set these properties to override the padding on specific sides.</p></li>
 <section id="examples">
 <h3>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">#</a></h3>
 <p>This example uses the <code class="docutils literal notranslate"><span class="pre">Row</span></code> element:</p>
-<div id="editor-src-language-builtins-elements-319" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Foo inherits Window {
+<div id="editor-src-language-builtins-elements-321" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Foo inherits Window {
     width: 200px;
     height: 200px;
     GridLayout {
@@ -912,7 +914,7 @@ Set these properties to override the padding on specific sides.</p></li>
     }
 }
 </div></div><p>This example uses the <code class="docutils literal notranslate"><span class="pre">col</span></code> and <code class="docutils literal notranslate"><span class="pre">row</span></code> properties</p>
-<div id="editor-src-language-builtins-elements-339" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Foo inherits Window {
+<div id="editor-src-language-builtins-elements-341" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Foo inherits Window {
     width: 200px;
     height: 150px;
     GridLayout {
@@ -976,7 +978,7 @@ specified, then the other defaults to the specified value scaled according to th
 </section>
 <section id="id8">
 <h3>Example<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
-<div id="editor-src-language-builtins-elements-386" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Window {
+<div id="editor-src-language-builtins-elements-388" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Window {
     width: 100px;
     height: 100px;
     VerticalLayout {
@@ -991,7 +993,7 @@ specified, then the other defaults to the specified value scaled according to th
     }
 }
 </div></div><p>Scaled while preserving the aspect ratio:</p>
-<div id="editor-src-language-builtins-elements-405" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Window {
+<div id="editor-src-language-builtins-elements-407" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Window {
     width: 100px;
     height: 150px;
     VerticalLayout {
@@ -1004,7 +1006,7 @@ specified, then the other defaults to the specified value scaled according to th
     }
 }
 </div></div><p>Example using nine-slice:</p>
-<div id="editor-src-language-builtins-elements-422" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Window {
+<div id="editor-src-language-builtins-elements-424" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Window {
     width: 100px;
     height: 150px;
     VerticalLayout {
@@ -1055,7 +1057,7 @@ paths are composed using <a class="reference external" href="https://developer.m
 which in turn are written in a string. In <code class="docutils literal notranslate"><span class="pre">.slint</span></code> the path commands are provided to the <code class="docutils literal notranslate"><span class="pre">commands</span></code>
 property. The following example renders a shape consists of an arc and a rectangle, composed of <code class="docutils literal notranslate"><span class="pre">line-to</span></code>,
 <code class="docutils literal notranslate"><span class="pre">move-to</span></code> and <code class="docutils literal notranslate"><span class="pre">arc</span></code> commands:</p>
-<div id="editor-src-language-builtins-elements-478" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Path {
+<div id="editor-src-language-builtins-elements-480" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Path {
     width: 100px;
     height: 100px;
     commands: &quot;M 0 0 L 0 100 A 1 1 0 0 0 100 100 L 100 0 Z&quot;;
@@ -1072,7 +1074,7 @@ This property can only be set in a binding and cannot be accessed in an expressi
 <h4>Path Using SVG Path Elements<a class="headerlink" href="#path-using-svg-path-elements" title="Permalink to this heading">#</a></h4>
 <p>The shape of the path can also be described using elements that resemble the SVG path commands but use the
 <code class="docutils literal notranslate"><span class="pre">.slint</span></code> markup syntax. The earlier example using SVG commands can also be written like that:</p>
-<div id="editor-src-language-builtins-elements-498" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Path {
+<div id="editor-src-language-builtins-elements-500" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Path {
     width: 100px;
     height: 100px;
     stroke: blue;
@@ -1205,7 +1207,7 @@ to <code class="docutils literal notranslate"><span class="pre">off</span></code
 </section>
 <section id="id16">
 <h3>Example<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h3>
-<div id="editor-src-language-builtins-elements-620" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Window {
+<div id="editor-src-language-builtins-elements-622" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Window {
     width: 100px;
     height: 100px;
 
@@ -1239,7 +1241,7 @@ it’s then possible to draw a rectangle on the screen.</p>
 </section>
 <section id="id18">
 <h3>Example<a class="headerlink" href="#id18" title="Permalink to this heading">#</a></h3>
-<div id="editor-src-language-builtins-elements-655" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Window {
+<div id="editor-src-language-builtins-elements-657" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Window {
     width: 270px;
     height: 100px;
 
@@ -1321,7 +1323,7 @@ If the pointer moves by more than 8 logical pixels in one of the enabled swipe d
 <section id="id22">
 <h3>Example<a class="headerlink" href="#id22" title="Permalink to this heading">#</a></h3>
 <p>This example implements swiping between pages of different colors.</p>
-<div id="editor-src-language-builtins-elements-736" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Window {
+<div id="editor-src-language-builtins-elements-738" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Window {
     width: 270px;
     height: 100px;
 
@@ -1413,7 +1415,7 @@ described by the <a class="reference internal" href="structs.html#point"><span c
 </section>
 <section id="id26">
 <h3>Example<a class="headerlink" href="#id26" title="Permalink to this heading">#</a></h3>
-<div id="editor-src-language-builtins-elements-825" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Window {
+<div id="editor-src-language-builtins-elements-827" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Window {
     width: 270px;
     height: 100px;
 
@@ -1459,7 +1461,7 @@ When these properties are set, the <code class="docutils literal notranslate"><s
 <section id="id28">
 <h3>Example<a class="headerlink" href="#id28" title="Permalink to this heading">#</a></h3>
 <p>This example shows the text “Hello World” in red, using the default font:</p>
-<div id="editor-src-language-builtins-elements-873" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Window {
+<div id="editor-src-language-builtins-elements-875" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Window {
     width: 270px;
     height: 100px;
 
@@ -1471,7 +1473,7 @@ When these properties are set, the <code class="docutils literal notranslate"><s
 }
 </div></div><p>This example breaks a longer paragraph of text into multiple lines, by setting a <code class="docutils literal notranslate"><span class="pre">wrap</span></code>
 policy and assigning a limited <code class="docutils literal notranslate"><span class="pre">width</span></code> and enough <code class="docutils literal notranslate"><span class="pre">height</span></code> for the text to flow down:</p>
-<div id="editor-src-language-builtins-elements-889" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Window {
+<div id="editor-src-language-builtins-elements-891" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Window {
     width: 270px;
     height: 300px;
 
@@ -1516,7 +1518,7 @@ When already running, the timer will be restarted if the <code class="docutils l
 <section id="id31">
 <h3>Example<a class="headerlink" href="#id31" title="Permalink to this heading">#</a></h3>
 <p>This example shows a timer that counts down from 10 to 0 every second:</p>
-<div id="editor-src-language-builtins-elements-933" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">import { Button } from &quot;std-widgets.slint&quot;;
+<div id="editor-src-language-builtins-elements-935" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">import { Button } from &quot;std-widgets.slint&quot;;
 export component Example inherits Window {
     property &lt;int&gt; value: 10;
     timer := Timer {
@@ -1575,7 +1577,7 @@ forwarded to the parent element.</p></li>
 </section>
 <section id="id34">
 <h3>Example<a class="headerlink" href="#id34" title="Permalink to this heading">#</a></h3>
-<div id="editor-src-language-builtins-elements-992" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Window {
+<div id="editor-src-language-builtins-elements-994" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Example inherits Window {
     width: 200px;
     height: 100px;
     area := TouchArea {
@@ -1615,7 +1617,7 @@ they will be computed by the layout respecting the minimum and maximum sizes and
 </section>
 <section id="id36">
 <h3>Example<a class="headerlink" href="#id36" title="Permalink to this heading">#</a></h3>
-<div id="editor-src-language-builtins-elements-1032" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Foo inherits Window {
+<div id="editor-src-language-builtins-elements-1034" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">export component Foo inherits Window {
     width: 200px;
     height: 100px;
     HorizontalLayout {

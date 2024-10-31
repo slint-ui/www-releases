@@ -21663,12 +21663,12 @@
            return selected == this.selected || selected >= this.options.length ? this
                : new CompletionDialog(this.options, makeAttrs(id, selected), this.tooltip, this.timestamp, selected, this.disabled);
        }
-       static build(active, state, id, prev, conf) {
+       static build(active, state, id, prev, conf, didSetActive) {
+           if (prev && !didSetActive && active.some(s => s.state == 1 /* State.Pending */))
+               return prev.setDisabled();
            let options = sortOptions(active, state);
-           if (!options.length) {
-               return prev && active.some(a => a.state == 1 /* State.Pending */) ?
-                   new CompletionDialog(prev.options, prev.attrs, prev.tooltip, prev.timestamp, prev.selected, true) : null;
-           }
+           if (!options.length)
+               return prev && active.some(a => a.state == 1 /* State.Pending */) ? prev.setDisabled() : null;
            let selected = state.facet(completionConfig).selectOnOpen ? 0 : -1;
            if (prev && prev.selected != selected && prev.selected != -1) {
                let selectedValue = prev.options[prev.selected].completion;
@@ -21686,6 +21686,9 @@
        }
        map(changes) {
            return new CompletionDialog(this.options, this.attrs, Object.assign(Object.assign({}, this.tooltip), { pos: changes.mapPos(this.tooltip.pos) }), this.timestamp, this.selected, this.disabled);
+       }
+       setDisabled() {
+           return new CompletionDialog(this.options, this.attrs, this.tooltip, this.timestamp, this.selected, true);
        }
    }
    class CompletionState {
@@ -21708,12 +21711,12 @@
            });
            if (active.length == this.active.length && active.every((a, i) => a == this.active[i]))
                active = this.active;
-           let open = this.open;
+           let open = this.open, didSet = tr.effects.some(e => e.is(setActiveEffect));
            if (open && tr.docChanged)
                open = open.map(tr.changes);
            if (tr.selection || active.some(a => a.hasResult() && tr.changes.touchesRange(a.from, a.to)) ||
-               !sameResults(active, this.active))
-               open = CompletionDialog.build(active, state, this.id, open, conf);
+               !sameResults(active, this.active) || didSet)
+               open = CompletionDialog.build(active, state, this.id, open, conf, didSet);
            else if (open && open.disabled && !active.some(a => a.state == 1 /* State.Pending */))
                open = null;
            if (!open && active.every(a => a.state != 1 /* State.Pending */) && active.some(a => a.hasResult()))
@@ -22005,6 +22008,8 @@
                if (active.state == 1 /* State.Pending */ && !this.running.some(r => r.active.source == active.source))
                    this.startQuery(active);
            }
+           if (this.running.length && cState.open && cState.open.disabled)
+               this.debounceAccept = setTimeout(() => this.accept(), this.view.state.facet(completionConfig).updateSyncTime);
        }
        startQuery(active) {
            let { state } = this.view, pos = cur(state);
@@ -22035,7 +22040,7 @@
                clearTimeout(this.debounceAccept);
            this.debounceAccept = -1;
            let updated = [];
-           let conf = this.view.state.facet(completionConfig);
+           let conf = this.view.state.facet(completionConfig), cState = this.view.state.field(completionState);
            for (let i = 0; i < this.running.length; i++) {
                let query = this.running[i];
                if (query.done === undefined)
@@ -22052,7 +22057,7 @@
                        continue;
                    }
                }
-               let current = this.view.state.field(completionState).active.find(a => a.source == query.active.source);
+               let current = cState.active.find(a => a.source == query.active.source);
                if (current && current.state == 1 /* State.Pending */) {
                    if (query.done == null) {
                        // Explicitly failed. Should clear the pending status if it
@@ -22069,7 +22074,7 @@
                    }
                }
            }
-           if (updated.length)
+           if (updated.length || cState.open && cState.open.disabled)
                this.view.dispatch({ effects: setActiveEffect.of(updated) });
        }
    }, {
