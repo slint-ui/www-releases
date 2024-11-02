@@ -14830,19 +14830,20 @@
                let str = fromCodePoint(next), start = this.bufferStart + this.bufferPos;
                this.bufferPos += codePointSize(next);
                let norm = this.normalize(str);
-               for (let i = 0, pos = start;; i++) {
-                   let code = norm.charCodeAt(i);
-                   let match = this.match(code, pos, this.bufferPos + this.bufferStart);
-                   if (i == norm.length - 1) {
-                       if (match) {
-                           this.value = match;
-                           return this;
+               if (norm.length)
+                   for (let i = 0, pos = start;; i++) {
+                       let code = norm.charCodeAt(i);
+                       let match = this.match(code, pos, this.bufferPos + this.bufferStart);
+                       if (i == norm.length - 1) {
+                           if (match) {
+                               this.value = match;
+                               return this;
+                           }
+                           break;
                        }
-                       break;
+                       if (pos == start && i < str.length && str.charCodeAt(i) == code)
+                           pos++;
                    }
-                   if (pos == start && i < str.length && str.charCodeAt(i) == code)
-                       pos++;
-               }
            }
        }
        match(code, pos, end) {
