@@ -16,7 +16,7 @@ export interface InitOutput {
   readonly __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;
   readonly __wbindgen_export_2: WebAssembly.Table;
   readonly __wbindgen_export_3: WebAssembly.Table;
-  readonly closure3505_externref_shim: (a: number, b: number, c: number) => void;
+  readonly closure3506_externref_shim: (a: number, b: number, c: number) => void;
   readonly closure3767_externref_shim: (a: number, b: number, c: number) => void;
   readonly _dyn_core__ops__function__FnMut_____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__h4c1cd91b2649cd67: (a: number, b: number) => void;
   readonly closure3781_externref_shim: (a: number, b: number, c: number, d: number) => void;
