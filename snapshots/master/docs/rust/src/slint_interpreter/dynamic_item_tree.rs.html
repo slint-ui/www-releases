@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/dynamic_item_tree.rs`."><title>dynamic_item_tree.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-590a400c.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (b8c8287a2 2024-11-03)" data-channel="nightly" data-search-js="search-c5a66128.js" data-settings-js="settings-0f613d39.js" ><script src="../../static.files/storage-59e33391.js"></script><script defer src="../../static.files/src-script-56102188.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/dynamic_item_tree.rs`."><title>dynamic_item_tree.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-590a400c.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (fbab78289 2024-11-04)" data-channel="nightly" data-search-js="search-c5a66128.js" data-settings-js="settings-0f613d39.js" ><script src="../../static.files/storage-59e33391.js"></script><script defer src="../../static.files/src-script-56102188.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -2521,7 +2521,29 @@
 <a href="#2398" id="2398">2398</a>
 <a href="#2399" id="2399">2399</a>
 <a href="#2400" id="2400">2400</a>
-<a href="#2401" id="2401">2401</a></pre></div><pre class="rust"><code><span class="comment">// Copyright © SixtyFPS GmbH &lt;info@slint.dev&gt;
+<a href="#2401" id="2401">2401</a>
+<a href="#2402" id="2402">2402</a>
+<a href="#2403" id="2403">2403</a>
+<a href="#2404" id="2404">2404</a>
+<a href="#2405" id="2405">2405</a>
+<a href="#2406" id="2406">2406</a>
+<a href="#2407" id="2407">2407</a>
+<a href="#2408" id="2408">2408</a>
+<a href="#2409" id="2409">2409</a>
+<a href="#2410" id="2410">2410</a>
+<a href="#2411" id="2411">2411</a>
+<a href="#2412" id="2412">2412</a>
+<a href="#2413" id="2413">2413</a>
+<a href="#2414" id="2414">2414</a>
+<a href="#2415" id="2415">2415</a>
+<a href="#2416" id="2416">2416</a>
+<a href="#2417" id="2417">2417</a>
+<a href="#2418" id="2418">2418</a>
+<a href="#2419" id="2419">2419</a>
+<a href="#2420" id="2420">2420</a>
+<a href="#2421" id="2421">2421</a>
+<a href="#2422" id="2422">2422</a>
+<a href="#2423" id="2423">2423</a></pre></div><pre class="rust"><code><span class="comment">// Copyright © SixtyFPS GmbH &lt;info@slint.dev&gt;
 // SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0
 
 </span><span class="kw">use </span><span class="kw">crate</span>::api::{CompilationResult, ComponentDefinition, Value};
@@ -2565,6 +2587,7 @@
 <span class="kw">use </span>smol_str::{SmolStr, ToSmolStr};
 <span class="kw">use </span>std::collections::BTreeMap;
 <span class="kw">use </span>std::collections::HashMap;
+<span class="kw">use </span>std::num::NonZeroU32;
 <span class="kw">use </span>std::{pin::Pin, rc::Rc};
 
 <span class="kw">pub const </span>SPECIAL_PROPERTY_INDEX: <span class="kw-2">&amp;</span>str = <span class="string">"$index"</span>;
@@ -2934,6 +2957,8 @@
         Vec&lt;(NamedReference, Expression)&gt;,
     )&gt;,
     timers: Vec&lt;FieldOffset&lt;Instance&lt;<span class="lifetime">'id</span>&gt;, Timer&gt;&gt;,
+    <span class="doccomment">/// Map of element IDs to their active popup's ID
+    </span>popup_ids: std::cell::RefCell&lt;HashMap&lt;SmolStr, NonZeroU32&gt;&gt;,
 
     <span class="doccomment">/// The collection of compiled globals
     </span>compiled_globals: <span class="prelude-ty">Option</span>&lt;Rc&lt;CompiledGlobalCollection&gt;&gt;,
@@ -3864,6 +3889,7 @@
         compiled_globals,
         change_trackers,
         timers,
+        popup_ids: std::cell::RefCell::new(HashMap::new()),
         <span class="attr">#[cfg(feature = <span class="string">"highlight"</span>)]
         </span>type_loader: std::cell::OnceCell::new(),
         <span class="attr">#[cfg(feature = <span class="string">"highlight"</span>)]
@@ -4853,6 +4879,8 @@
 
 <span class="doccomment">/// Show the popup at the given location
 </span><span class="kw">pub fn </span>show_popup(
+    element: ElementRc,
+    instance: InstanceRef,
     popup: <span class="kw-2">&amp;</span>object_tree::PopupWindow,
     pos_getter: <span class="kw">impl </span>FnOnce(InstanceRef&lt;<span class="lifetime">'_</span>, <span class="lifetime">'_</span>&gt;) -&gt; i_slint_core::graphics::Point,
     close_policy: PopupClosePolicy,
@@ -4878,12 +4906,28 @@
         <span class="kw">let </span>instance_ref = compo_box.borrow_instance();
         pos_getter(instance_ref)
     };
-    WindowInner::from_pub(parent_window_adapter.window()).show_popup(
-        <span class="kw-2">&amp;</span>vtable::VRc::into_dyn(inst),
-        pos,
-        close_policy,
-        parent_item,
+    close_popup(element.clone(), instance, parent_window_adapter.clone());
+    instance.description.popup_ids.borrow_mut().insert(
+        element.borrow().id.clone(),
+        WindowInner::from_pub(parent_window_adapter.window()).show_popup(
+            <span class="kw-2">&amp;</span>vtable::VRc::into_dyn(inst),
+            pos,
+            close_policy,
+            parent_item,
+        ),
     );
+}
+
+<span class="kw">pub fn </span>close_popup(
+    element: ElementRc,
+    instance: InstanceRef,
+    parent_window_adapter: WindowAdapterRc,
+) {
+    <span class="kw">if let </span><span class="prelude-val">Some</span>(current_id) =
+        instance.description.popup_ids.borrow_mut().remove(<span class="kw-2">&amp;</span>element.borrow().id)
+    {
+        WindowInner::from_pub(parent_window_adapter.window()).close_popup(current_id);
+    }
 }
 
 <span class="kw">pub fn </span>update_timers(instance: InstanceRef) {

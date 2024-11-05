@@ -1158,13 +1158,13 @@ Program Listing for File slint_internal.h
    
    void slint_windowrc_set_component(const WindowAdapterRcOpaque *handle, const ItemTreeRc *component);
    
-   void slint_windowrc_show_popup(const WindowAdapterRcOpaque *handle,
-                                  const ItemTreeRc *popup,
-                                  Point position,
-                                  PopupClosePolicy close_policy,
-                                  const ItemRc *parent_item);
+   uint32_t slint_windowrc_show_popup(const WindowAdapterRcOpaque *handle,
+                                      const ItemTreeRc *popup,
+                                      Point position,
+                                      PopupClosePolicy close_policy,
+                                      const ItemRc *parent_item);
    
-   void slint_windowrc_close_popup(const WindowAdapterRcOpaque *handle);
+   void slint_windowrc_close_popup(const WindowAdapterRcOpaque *handle, uint32_t popup_id);
    
    bool slint_windowrc_set_rendering_notifier(const WindowAdapterRcOpaque *handle,
                                               void (*callback)(RenderingState rendering_state,
