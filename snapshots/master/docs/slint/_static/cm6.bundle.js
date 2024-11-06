@@ -10702,7 +10702,7 @@
            display: "none"
        },
        "&dark .cm-cursor": {
-           borderLeftColor: "#444"
+           borderLeftColor: "#ddd"
        },
        ".cm-dropCursor": {
            position: "absolute"
