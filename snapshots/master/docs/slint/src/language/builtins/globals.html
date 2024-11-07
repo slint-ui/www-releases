@@ -453,9 +453,13 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#textinputinterface"><code class="docutils literal notranslate"><span class="pre">TextInputInterface</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#layoutspec"><code class="docutils literal notranslate"><span class="pre">LayoutSpec</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Properties</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#textinputinterface"><code class="docutils literal notranslate"><span class="pre">TextInputInterface</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Properties</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Example</a></li>
 </ul>
 </li>
 </ul>
@@ -513,19 +517,31 @@ export component MyCustomWidget {
 }
 </div></div></section>
 </section>
+<section id="layoutspec">
+<h2><code class="docutils literal notranslate"><span class="pre">LayoutSpec</span></code><a class="headerlink" href="#layoutspec" title="Permalink to this heading">#</a></h2>
+<p>Use <code class="docutils literal notranslate"><span class="pre">LayoutSpec</span></code> to create custom widgets that match the layout settings of
+the selected style e.g. fluent, cupertino, material, or qt.</p>
+<section id="id1">
+<h3>Properties<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">layout-spacing</span></code></strong> (<em>out</em> <em>length</em>): Defines the default layout spacing. This spacing is also used by <code class="docutils literal notranslate"><span class="pre">VerticalBox</span></code>, <code class="docutils literal notranslate"><span class="pre">HorizontalBox</span></code> and <code class="docutils literal notranslate"><span class="pre">GridBox</span></code>.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">layout-padding</span></code></strong> (<em>out</em> <em>length</em>): Defines the default layout padding. This padding is also used by <code class="docutils literal notranslate"><span class="pre">VerticalBox</span></code>, <code class="docutils literal notranslate"><span class="pre">HorizontalBox</span></code> and <code class="docutils literal notranslate"><span class="pre">GridBox</span></code>.</p></li>
+</ul>
+</section>
+</section>
 <section id="textinputinterface">
 <h2><code class="docutils literal notranslate"><span class="pre">TextInputInterface</span></code><a class="headerlink" href="#textinputinterface" title="Permalink to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">TextInputInterface.text-input-focused</span></code> property can be used to find out if a <code class="docutils literal notranslate"><span class="pre">TextInput</span></code> element has the focus.
 If you’re implementing your own virtual keyboard, this property is an indicator whether the virtual keyboard should be shown or hidden.</p>
-<section id="id1">
-<h3>Properties<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<section id="id2">
+<h3>Properties<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">text-input-focused</span></code></strong> (<em>bool</em>): True if an <code class="docutils literal notranslate"><span class="pre">TextInput</span></code> element has the focus; false otherwise.</p></li>
 </ul>
 </section>
-<section id="id2">
-<h3>Example<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
-<div id="editor-src-language-builtins-globals-56" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">import { LineEdit } from &quot;std-widgets.slint&quot;;
+<section id="id3">
+<h3>Example<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<div id="editor-src-language-builtins-globals-66" class="codemirror-editor" data-lang="slint" data-readonly="false"><div class="codemirror-content" style="display:none">import { LineEdit } from &quot;std-widgets.slint&quot;;
 
 component VKB {
     Rectangle { background: yellow; }
@@ -595,9 +611,13 @@ export component Example inherits Window {
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#textinputinterface"><code class="docutils literal notranslate"><span class="pre">TextInputInterface</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#layoutspec"><code class="docutils literal notranslate"><span class="pre">LayoutSpec</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Properties</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#textinputinterface"><code class="docutils literal notranslate"><span class="pre">TextInputInterface</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Properties</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Example</a></li>
 </ul>
 </li>
 </ul>
