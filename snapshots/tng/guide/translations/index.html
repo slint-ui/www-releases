@@ -90,12 +90,12 @@ starlight-file-tree:where(.astro-otdio46d){--x-space: 1.5rem;--y-space: .125rem;
 <li>Identify all user visible strings that need translation and annotate them with the <code dir="auto">@tr()</code> macro.</li>
 <li>Extract annotated strings by running the <code dir="auto">slint-tr-extractor</code> tool and generate <code dir="auto">.pot</code> files.</li>
 <li>Use a third-party tool to translate the strings into a target language, as <code dir="auto">.po</code> files.</li>
-<li>Use <a href="https://www.gnu.org/software/gettext/manual/gettext.html">gettext’s <code dir="auto">msgfmt</code></a> tool to convert <code dir="auto">.po</code> files into run-time loadable <code dir="auto">.mo</code> files.</li>
+<li>Use <a href="https://www.gnu.org/software/gettext/manual/gettext.html" target="_blank" rel="noopener">gettext’s <code dir="auto">msgfmt</code><span> ↗</span></a> tool to convert <code dir="auto">.po</code> files into run-time loadable <code dir="auto">.mo</code> files.</li>
 <li>Use Slint’s API to select and load <code dir="auto">.mo</code> files at run-time, based on the user’s locale settings.</li>
 </ol>
 <p>At this point, all strings marked for translation are automatically rendered in the target language.</p>
 <p>:::{note}</p>
-<p>Support for translations via gettext is currently not supported on Windows, see <a href="https://github.com/slint-ui/slint/issues/3307">Add support for translations on Windows #3307</a>.</p>
+<p>Support for translations via gettext is currently not supported on Windows, see <a href="https://github.com/slint-ui/slint/issues/3307" target="_blank" rel="noopener">Add support for translations on Windows #3307<span> ↗</span></a>.</p>
 <p>:::</p>
 <h2 id="annotating-translatable-strings">Annotating Translatable Strings</h2>
 <p>Use the <code dir="auto">@tr</code> macro in <code dir="auto">.slint</code> files to mark that a string for translation. This macro
@@ -128,7 +128,7 @@ You can run it like so:</p>
 <div class="expressive-code"><figure class="frame is-terminal not-content"><figcaption class="header"><span class="title"></span><span class="sr-only">Terminal window</span></figcaption><pre data-language="sh"><code><div class="ec-line"><div class="code"><span style="--0:#DCDCAA;--1:#795E26">find</span><span style="--0:#CCCCCC;--1:#3B3B3B"> </span><span style="--0:#569CD6;--1:#0000FF">-name</span><span style="--0:#CCCCCC;--1:#3B3B3B"> </span><span style="--0:#D7BA7D;--1:#D40000">\*</span><span style="--0:#CE9178;--1:#A31515">.slint</span><span style="--0:#CCCCCC;--1:#3B3B3B"> </span><span style="--0:#D4D4D4;--1:#000000">|</span><span style="--0:#CCCCCC;--1:#3B3B3B"> </span><span style="--0:#DCDCAA;--1:#795E26">xargs</span><span style="--0:#CCCCCC;--1:#3B3B3B"> </span><span style="--0:#CE9178;--1:#A31515">slint-tr-extractor</span><span style="--0:#CCCCCC;--1:#3B3B3B"> </span><span style="--0:#569CD6;--1:#0000FF">-o</span><span style="--0:#CCCCCC;--1:#3B3B3B"> </span><span style="--0:#CE9178;--1:#A31515">MY_PROJECT.pot</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="find -name \*.slint | xargs slint-tr-extractor -o MY_PROJECT.pot"><div></div></button></div></figure></div>
 <p>This creates a file called <code dir="auto">MY_PROJECT.pot</code>. Replace “MY_PROJECT” with your actual project name.
 To learn how the project name affects the lookup of translations, read the sections below.</p>
-<div><p><code dir="auto">.pot</code> files are <a href="https://www.gnu.org/software/gettext/">Gettext</a> template files.</p></div>
+<div><p><code dir="auto">.pot</code> files are <a href="https://www.gnu.org/software/gettext/" target="_blank" rel="noopener">Gettext<span> ↗</span></a> template files.</p></div>
 <h2 id="translate-the-strings">Translate the Strings</h2>
 <p>Start a new translation by creating a <code dir="auto">.po</code> file from a <code dir="auto">.pot</code> file. Both file formats are identical.
 You can either copy the file manually or use a tool like Gettext’s <code dir="auto">msginit</code> to start a new <code dir="auto">.po</code> file.</p>
@@ -136,19 +136,19 @@ You can either copy the file manually or use a tool like Gettext’s <code dir="
 <p><code dir="auto">.po</code> and <code dir="auto">.pot</code> files are plain text files that you can edit with a text editor. We recommend
 using a dedicated translation tool for working with them, such as the following:</p>
 <ul>
-<li><a href="https://poedit.net/">poedit</a></li>
-<li><a href="https://omegat.org/">OmegaT</a></li>
-<li><a href="https://userbase.kde.org/Lokalize">Lokalize</a></li>
-<li><a href="https://www.transifex.com/">Transifex</a> (web interface)</li>
+<li><a href="https://poedit.net/" target="_blank" rel="noopener">poedit<span> ↗</span></a></li>
+<li><a href="https://omegat.org/" target="_blank" rel="noopener">OmegaT<span> ↗</span></a></li>
+<li><a href="https://userbase.kde.org/Lokalize" target="_blank" rel="noopener">Lokalize<span> ↗</span></a></li>
+<li><a href="https://www.transifex.com/" target="_blank" rel="noopener">Transifex<span> ↗</span></a> (web interface)</li>
 </ul>
 <h2 id="convert-po-files-to-mo-files">Convert <code dir="auto">.po</code> Files to <code dir="auto">.mo</code> Files</h2>
 <p>Convert the human readable <code dir="auto">.po</code> files into machine-friendly <code dir="auto">.mo</code> files, which are a binary representation
 that is more efficient to read by code.</p>
-<p>Use <a href="https://www.gnu.org/software/gettext/">Gettext</a>’s <code dir="auto">msgfmt</code> command line tool to convert <code dir="auto">.po</code> files to <code dir="auto">.mo</code>
+<p>Use <a href="https://www.gnu.org/software/gettext/" target="_blank" rel="noopener">Gettext<span> ↗</span></a>’s <code dir="auto">msgfmt</code> command line tool to convert <code dir="auto">.po</code> files to <code dir="auto">.mo</code>
 files:</p>
 <div class="expressive-code"><figure class="frame is-terminal not-content"><figcaption class="header"><span class="title"></span><span class="sr-only">Terminal window</span></figcaption><pre data-language="sh"><code><div class="ec-line"><div class="code"><span style="--0:#DCDCAA;--1:#795E26">msgfmt</span><span style="--0:#CCCCCC;--1:#3B3B3B"> </span><span style="--0:#CE9178;--1:#A31515">translation.po</span><span style="--0:#CCCCCC;--1:#3B3B3B"> </span><span style="--0:#569CD6;--1:#0000FF">-o</span><span style="--0:#CCCCCC;--1:#3B3B3B"> </span><span style="--0:#CE9178;--1:#A31515">translation.mo</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="msgfmt translation.po -o translation.mo"><div></div></button></div></figure></div>
 <h2 id="select-and-load-mo-files-at-run-time">Select and Load <code dir="auto">.mo</code> Files at Run-Time</h2>
-<p>Slint uses the <a href="https://www.gnu.org/software/gettext/">Gettext</a> library to load translations at run-time.
+<p>Slint uses the <a href="https://www.gnu.org/software/gettext/" target="_blank" rel="noopener">Gettext<span> ↗</span></a> library to load translations at run-time.
 Gettext expects translation files - called message catalogs - in following directory hierarchy:</p>
 <div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#cccccc;--1:#3b3b3b">dir_name/locale/LC_MESSAGES/domain_name.mo</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="dir_name/locale/LC_MESSAGES/domain_name.mo"><div></div></button></div></figure></div>
 <ul>
@@ -163,7 +163,7 @@ Gettext expects translation files - called message catalogs - in following direc
 <p><code dir="auto">domain_name</code>: Selected based on the programming language you’re using Slint with.</p>
 </li>
 </ul>
-<div><p>Read the <a href="https://www.gnu.org/software/gettext/manual/gettext.html#Locating-Catalogs">Gettext documentation</a> for more information.</p></div>
+<div><p>Read the <a href="https://www.gnu.org/software/gettext/manual/gettext.html#Locating-Catalogs" target="_blank" rel="noopener">Gettext documentation<span> ↗</span></a> for more information.</p></div>
 <h3 id="select-and-load-translations-with-rust">Select and Load Translations with Rust</h3>
 <p>First, enable the <code dir="auto">gettext</code> feature of the <code dir="auto">slint</code> crate in the <code dir="auto">features</code> section to gain access to the translations API
 and activate run-time translation support.</p>

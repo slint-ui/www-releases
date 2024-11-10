@@ -123,7 +123,7 @@ capabilities and their configuration options, see the respective sub-pages.</p>
 
 
 
-<table><thead><tr><th>Backend Name</th><th>Description</th><th>Built-in by Default</th></tr></thead><tbody><tr><td>qt</td><td>The Qt library is used for windowing system integration, rendering, and native widget styling.</td><td>On Linux if Qt is installed</td></tr><tr><td>winit</td><td>The <a href="https://docs.rs/winit/latest/winit/">winit</a> library is used to interact with the windowing system.</td><td>Yes</td></tr><tr><td>linuxkms</td><td>Linux’s KMS/DRI infrastructure is used for rendering. No windowing system or compositor is required.</td><td>No</td></tr></tbody></table>
+<table><thead><tr><th>Backend Name</th><th>Description</th><th>Built-in by Default</th></tr></thead><tbody><tr><td>qt</td><td>The Qt library is used for windowing system integration, rendering, and native widget styling.</td><td>On Linux if Qt is installed</td></tr><tr><td>winit</td><td>The <a href="https://docs.rs/winit/latest/winit/" target="_blank" rel="noopener">winit<span> ↗</span></a> library is used to interact with the windowing system.</td><td>Yes</td></tr><tr><td>linuxkms</td><td>Linux’s KMS/DRI infrastructure is used for rendering. No windowing system or compositor is required.</td><td>No</td></tr></tbody></table>
 <p>A backend is also responsible for selecting a renderer. See the <a href="#renderers">Renderers</a> section
 for an overview. Override the choice of renderer by adding the name to the <code dir="auto">SLINT_BACKEND</code> environment variable, separated by a dash.
 For example if you want to choose the <code dir="auto">winit</code> backend in combination with the <code dir="auto">software</code> renderer, set <code dir="auto">SLINT_BACKEND=winit-software</code>.
