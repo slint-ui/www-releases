@@ -478,6 +478,17 @@ Program Listing for File slint_window.h
            return cbindgen_private::slint_windowrc_has_active_animations(&inner.handle());
        }
    
+       std::optional<SharedPixelBuffer<Rgba8Pixel>> take_snapshot() const
+       {
+           SharedPixelBuffer<Rgba8Pixel> result;
+           if (cbindgen_private::slint_windowrc_take_snapshot(&inner.handle(), &result.m_data,
+                                                              &result.m_width, &result.m_height)) {
+               return result;
+           } else {
+               return {};
+           }
+       }
+   
        private_api::WindowAdapterRc &window_handle() { return inner; }
        const private_api::WindowAdapterRc &window_handle() const { return inner; }
    

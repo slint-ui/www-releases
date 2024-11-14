@@ -1626,6 +1626,11 @@
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">slint_windowrc_set_maximized</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">WindowAdapterRcOpaque</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">value</span><span class="p">);</span>
 
+<span class="kt">bool</span><span class="w"> </span><span class="nf">slint_windowrc_take_snapshot</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">WindowAdapterRcOpaque</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">,</span>
+<span class="w">                                  </span><span class="n">SharedVector</span><span class="o">&lt;</span><span class="n">Rgba8Pixel</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">data</span><span class="p">,</span>
+<span class="w">                                  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="o">*</span><span class="n">width</span><span class="p">,</span>
+<span class="w">                                  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="o">*</span><span class="n">height</span><span class="p">);</span>
+
 <span class="p">}</span><span class="w"> </span><span class="c1">// extern &quot;C&quot;</span>
 
 <span class="p">}</span><span class="w"> </span><span class="c1">// namespace cbindgen_private</span>

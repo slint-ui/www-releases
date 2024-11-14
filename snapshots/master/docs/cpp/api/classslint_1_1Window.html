@@ -667,6 +667,13 @@
 <dd><p>Returns true if there is an animation currently active on any property in the <a class="reference internal" href="#classslint_1_1Window"><span class="std std-ref">Window</span></a>. </p>
 </dd></dl>
 
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5slint6Window13take_snapshotEv">
+<span id="_CPPv3NK5slint6Window13take_snapshotEv"></span><span id="_CPPv2NK5slint6Window13take_snapshotEv"></span><span id="slint::Window::take_snapshotC"></span><span class="target" id="classslint_1_1Window_1ab37b453fc69ea8880e5a0526d6d1c058"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">optional</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="structslint_1_1SharedPixelBuffer.html#_CPPv4I0EN5slint17SharedPixelBufferE" title="slint::SharedPixelBuffer"><span class="n"><span class="pre">SharedPixelBuffer</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="structslint_1_1Rgba8Pixel.html#_CPPv4N5slint10Rgba8PixelE" title="slint::Rgba8Pixel"><span class="n"><span class="pre">Rgba8Pixel</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">take_snapshot</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5slint6Window13take_snapshotEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Takes a snapshot of the window contents and returns it as RGBA8 encoded pixel buffer.</p>
+<p>Note that this function may be slow to call. Reading from the framebuffer previously rendered, too, may take a long time. </p>
+</dd></dl>
+
 </div>
 </dd></dl>
 

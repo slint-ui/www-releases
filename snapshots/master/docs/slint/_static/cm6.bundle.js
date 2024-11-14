@@ -21665,11 +21665,11 @@
                : new CompletionDialog(this.options, makeAttrs(id, selected), this.tooltip, this.timestamp, selected, this.disabled);
        }
        static build(active, state, id, prev, conf, didSetActive) {
-           if (prev && !didSetActive && active.some(s => s.state == 1 /* State.Pending */))
+           if (prev && !didSetActive && active.some(s => s.isPending))
                return prev.setDisabled();
            let options = sortOptions(active, state);
            if (!options.length)
-               return prev && active.some(a => a.state == 1 /* State.Pending */) ? prev.setDisabled() : null;
+               return prev && active.some(a => a.isPending) ? prev.setDisabled() : null;
            let selected = state.facet(completionConfig).selectOnOpen ? 0 : -1;
            if (prev && prev.selected != selected && prev.selected != -1) {
                let selectedValue = prev.options[prev.selected].completion;
@@ -21718,9 +21718,9 @@
            if (tr.selection || active.some(a => a.hasResult() && tr.changes.touchesRange(a.from, a.to)) ||
                !sameResults(active, this.active) || didSet)
                open = CompletionDialog.build(active, state, this.id, open, conf, didSet);
-           else if (open && open.disabled && !active.some(a => a.state == 1 /* State.Pending */))
+           else if (open && open.disabled && !active.some(a => a.isPending))
                open = null;
-           if (!open && active.every(a => a.state != 1 /* State.Pending */) && active.some(a => a.hasResult()))
+           if (!open && active.every(a => !a.isPending) && active.some(a => a.hasResult()))
                active = active.map(a => a.hasResult() ? new ActiveSource(a.source, 0 /* State.Inactive */) : a);
            for (let effect of tr.effects)
                if (effect.is(setSelectedEffect))
@@ -21734,9 +21734,9 @@
        if (a == b)
            return true;
        for (let iA = 0, iB = 0;;) {
-           while (iA < a.length && !a[iA].hasResult)
+           while (iA < a.length && !a[iA].hasResult())
                iA++;
-           while (iB < b.length && !b[iB].hasResult)
+           while (iB < b.length && !b[iB].hasResult())
                iB++;
            let endA = iA == a.length, endB = iB == b.length;
            if (endA || endB)
@@ -21774,12 +21774,13 @@
                        : tr.docChanged ? 16 /* UpdateType.ResetIfTouching */ : 0 /* UpdateType.None */;
    }
    class ActiveSource {
-       constructor(source, state, explicitPos = -1) {
+       constructor(source, state, explicit = false) {
            this.source = source;
            this.state = state;
-           this.explicitPos = explicitPos;
+           this.explicit = explicit;
        }
        hasResult() { return false; }
+       get isPending() { return this.state == 1 /* State.Pending */; }
        update(tr, conf) {
            let type = getUpdateType(tr, conf), value = this;
            if ((type & 8 /* UpdateType.Reset */) || (type & 16 /* UpdateType.ResetIfTouching */) && this.touches(tr))
@@ -21789,7 +21790,7 @@
            value = value.updateFor(tr, type);
            for (let effect of tr.effects) {
                if (effect.is(startCompletionEffect))
-                   value = new ActiveSource(value.source, 1 /* State.Pending */, effect.value ? cur(tr.state) : -1);
+                   value = new ActiveSource(value.source, 1 /* State.Pending */, effect.value);
                else if (effect.is(closeCompletionEffect))
                    value = new ActiveSource(value.source, 0 /* State.Inactive */);
                else if (effect.is(setActiveEffect))
@@ -21800,16 +21801,15 @@
            return value;
        }
        updateFor(tr, type) { return this.map(tr.changes); }
-       map(changes) {
-           return changes.empty || this.explicitPos < 0 ? this : new ActiveSource(this.source, this.state, changes.mapPos(this.explicitPos));
-       }
+       map(changes) { return this; }
        touches(tr) {
            return tr.changes.touchesRange(cur(tr.state));
        }
    }
    class ActiveResult extends ActiveSource {
-       constructor(source, explicitPos, result, from, to) {
-           super(source, 2 /* State.Result */, explicitPos);
+       constructor(source, explicit, limit, result, from, to) {
+           super(source, 3 /* State.Result */, explicit);
+           this.limit = limit;
            this.result = result;
            this.from = from;
            this.to = to;
@@ -21824,17 +21824,16 @@
                result = result.map(result, tr.changes);
            let from = tr.changes.mapPos(this.from), to = tr.changes.mapPos(this.to, 1);
            let pos = cur(tr.state);
-           if ((this.explicitPos < 0 ? pos <= from : pos < this.from) ||
-               pos > to || !result ||
-               (type & 2 /* UpdateType.Backspacing */) && cur(tr.startState) == this.from)
+           if (pos > to || !result ||
+               (type & 2 /* UpdateType.Backspacing */) && (cur(tr.startState) == this.from || pos < this.limit))
                return new ActiveSource(this.source, type & 4 /* UpdateType.Activate */ ? 1 /* State.Pending */ : 0 /* State.Inactive */);
-           let explicitPos = this.explicitPos < 0 ? -1 : tr.changes.mapPos(this.explicitPos);
+           let limit = tr.changes.mapPos(this.limit);
            if (checkValid(result.validFor, tr.state, from, to))
-               return new ActiveResult(this.source, explicitPos, result, from, to);
+               return new ActiveResult(this.source, this.explicit, limit, result, from, to);
            if (result.update &&
-               (result = result.update(result, from, to, new CompletionContext(tr.state, pos, explicitPos >= 0))))
-               return new ActiveResult(this.source, explicitPos, result, result.from, (_a = result.to) !== null && _a !== void 0 ? _a : cur(tr.state));
-           return new ActiveSource(this.source, 1 /* State.Pending */, explicitPos);
+               (result = result.update(result, from, to, new CompletionContext(tr.state, pos, false))))
+               return new ActiveResult(this.source, this.explicit, limit, result, result.from, (_a = result.to) !== null && _a !== void 0 ? _a : cur(tr.state));
+           return new ActiveSource(this.source, 1 /* State.Pending */, this.explicit);
        }
        map(mapping) {
            if (mapping.empty)
@@ -21842,7 +21841,7 @@
            let result = this.result.map ? this.result.map(this.result, mapping) : this.result;
            if (!result)
                return new ActiveSource(this.source, 0 /* State.Inactive */);
-           return new ActiveResult(this.source, this.explicitPos < 0 ? -1 : mapping.mapPos(this.explicitPos), this.result, mapping.mapPos(this.from), mapping.mapPos(this.to, 1));
+           return new ActiveResult(this.source, this.explicit, mapping.mapPos(this.limit), this.result, mapping.mapPos(this.from), mapping.mapPos(this.to, 1));
        }
        touches(tr) {
            return tr.changes.touchesRange(this.from, this.to);
@@ -21954,7 +21953,7 @@
            this.pendingStart = false;
            this.composing = 0 /* CompositionState.None */;
            for (let active of view.state.field(completionState).active)
-               if (active.state == 1 /* State.Pending */)
+               if (active.isPending)
                    this.startQuery(active);
        }
        update(update) {
@@ -21991,7 +21990,7 @@
            if (update.transactions.some(tr => tr.effects.some(e => e.is(startCompletionEffect))))
                this.pendingStart = true;
            let delay = this.pendingStart ? 50 : conf.activateOnTypingDelay;
-           this.debounceUpdate = cState.active.some(a => a.state == 1 /* State.Pending */ && !this.running.some(q => q.active.source == a.source))
+           this.debounceUpdate = cState.active.some(a => a.isPending && !this.running.some(q => q.active.source == a.source))
                ? setTimeout(() => this.startUpdate(), delay) : -1;
            if (this.composing != 0 /* CompositionState.None */)
                for (let tr of update.transactions) {
@@ -22006,7 +22005,7 @@
            this.pendingStart = false;
            let { state } = this.view, cState = state.field(completionState);
            for (let active of cState.active) {
-               if (active.state == 1 /* State.Pending */ && !this.running.some(r => r.active.source == active.source))
+               if (active.isPending && !this.running.some(r => r.active.source == active.source))
                    this.startQuery(active);
            }
            if (this.running.length && cState.open && cState.open.disabled)
@@ -22014,7 +22013,7 @@
        }
        startQuery(active) {
            let { state } = this.view, pos = cur(state);
-           let context = new CompletionContext(state, pos, active.explicitPos == pos, this.view);
+           let context = new CompletionContext(state, pos, active.explicit, this.view);
            let pending = new RunningQuery(active, context);
            this.running.push(pending);
            Promise.resolve(active.source(context)).then(result => {
@@ -22048,7 +22047,9 @@
                    continue;
                this.running.splice(i--, 1);
                if (query.done) {
-                   let active = new ActiveResult(query.active.source, query.active.explicitPos, query.done, query.done.from, (_a = query.done.to) !== null && _a !== void 0 ? _a : cur(query.updates.length ? query.updates[0].startState : this.view.state));
+                   let pos = cur(query.updates.length ? query.updates[0].startState : this.view.state);
+                   let limit = Math.min(pos, query.done.from + (query.active.explicit ? 0 : 1));
+                   let active = new ActiveResult(query.active.source, query.active.explicit, limit, query.done, query.done.from, (_a = query.done.to) !== null && _a !== void 0 ? _a : pos);
                    // Replay the transactions that happened since the start of
                    // the request and see if that preserves the result
                    for (let tr of query.updates)
@@ -22059,14 +22060,14 @@
                    }
                }
                let current = cState.active.find(a => a.source == query.active.source);
-               if (current && current.state == 1 /* State.Pending */) {
+               if (current && current.isPending) {
                    if (query.done == null) {
                        // Explicitly failed. Should clear the pending status if it
                        // hasn't been re-set in the meantime.
                        let active = new ActiveSource(query.active.source, 0 /* State.Inactive */);
                        for (let tr of query.updates)
                            active = active.update(tr, conf);
-                       if (active.state != 1 /* State.Pending */)
+                       if (!active.isPending)
                            updated.push(active);
                    }
                    else {

@@ -180,7 +180,7 @@ function makeClosure(arg0, arg1, dtor, f) {
     return real;
 }
 function __wbg_adapter_28(arg0, arg1, arg2) {
-    wasm.closure2364_externref_shim(arg0, arg1, arg2);
+    wasm.closure2263_externref_shim(arg0, arg1, arg2);
 }
 
 function makeMutClosure(arg0, arg1, dtor, f) {
@@ -1655,24 +1655,24 @@ function __wbg_get_imports() {
         const ret = wasm.memory;
         return ret;
     };
-    imports.wbg.__wbindgen_closure_wrapper5249 = function(arg0, arg1, arg2) {
-        const ret = makeClosure(arg0, arg1, 2365, __wbg_adapter_28);
+    imports.wbg.__wbindgen_closure_wrapper5401 = function(arg0, arg1, arg2) {
+        const ret = makeClosure(arg0, arg1, 2264, __wbg_adapter_28);
         return ret;
     };
-    imports.wbg.__wbindgen_closure_wrapper5251 = function(arg0, arg1, arg2) {
-        const ret = makeClosure(arg0, arg1, 2365, __wbg_adapter_28);
+    imports.wbg.__wbindgen_closure_wrapper5403 = function(arg0, arg1, arg2) {
+        const ret = makeClosure(arg0, arg1, 2264, __wbg_adapter_28);
         return ret;
     };
-    imports.wbg.__wbindgen_closure_wrapper5253 = function(arg0, arg1, arg2) {
-        const ret = makeClosure(arg0, arg1, 2365, __wbg_adapter_28);
+    imports.wbg.__wbindgen_closure_wrapper5405 = function(arg0, arg1, arg2) {
+        const ret = makeClosure(arg0, arg1, 2264, __wbg_adapter_28);
         return ret;
     };
-    imports.wbg.__wbindgen_closure_wrapper5255 = function(arg0, arg1, arg2) {
-        const ret = makeClosure(arg0, arg1, 2365, __wbg_adapter_28);
+    imports.wbg.__wbindgen_closure_wrapper5407 = function(arg0, arg1, arg2) {
+        const ret = makeClosure(arg0, arg1, 2264, __wbg_adapter_28);
         return ret;
     };
-    imports.wbg.__wbindgen_closure_wrapper5257 = function(arg0, arg1, arg2) {
-        const ret = makeClosure(arg0, arg1, 2365, __wbg_adapter_28);
+    imports.wbg.__wbindgen_closure_wrapper5409 = function(arg0, arg1, arg2) {
+        const ret = makeClosure(arg0, arg1, 2264, __wbg_adapter_28);
         return ret;
     };
     imports.wbg.__wbindgen_closure_wrapper6632 = function(arg0, arg1, arg2) {

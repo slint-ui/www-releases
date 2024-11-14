@@ -1220,6 +1220,11 @@ Program Listing for File slint_internal.h
    
    void slint_windowrc_set_maximized(const WindowAdapterRcOpaque *handle, bool value);
    
+   bool slint_windowrc_take_snapshot(const WindowAdapterRcOpaque *handle,
+                                     SharedVector<Rgba8Pixel> *data,
+                                     uint32_t *width,
+                                     uint32_t *height);
+   
    } // extern "C"
    
    } // namespace cbindgen_private

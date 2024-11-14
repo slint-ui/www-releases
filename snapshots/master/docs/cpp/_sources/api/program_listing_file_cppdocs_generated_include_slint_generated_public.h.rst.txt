@@ -65,19 +65,19 @@ Program Listing for File slint_generated_public.h
        AlreadySet,
    };
    
-   struct Rgb8Pixel {
-       uint8_t r;
-       uint8_t g;
-       uint8_t b;
-   friend bool operator==(const Rgb8Pixel&, const Rgb8Pixel&) = default;
-   };
-   
    struct Rgba8Pixel {
        uint8_t r;
        uint8_t g;
        uint8_t b;
        uint8_t a;
    friend bool operator==(const Rgba8Pixel&, const Rgba8Pixel&) = default;
+   };
+   
+   struct Rgb8Pixel {
+       uint8_t r;
+       uint8_t g;
+       uint8_t b;
+   friend bool operator==(const Rgb8Pixel&, const Rgb8Pixel&) = default;
    };
    
    } // namespace slint
