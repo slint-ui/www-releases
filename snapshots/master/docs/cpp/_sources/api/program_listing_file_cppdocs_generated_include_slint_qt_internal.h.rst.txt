@@ -125,6 +125,7 @@ Program Listing for File slint_qt_internal.h
        Property<int32_t> minimum;
        Property<int32_t> maximum;
        Property<int32_t> step_size;
+       Property<TextHorizontalAlignment> horizontal_alignment;
        CachedRenderingData cached_rendering_data;
        private_api::CallbackHelper<int> edited;
        Property<NativeSpinBoxData> data;
