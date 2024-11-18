@@ -1132,7 +1132,9 @@ Program Listing for File slint_internal.h
                                                 int32_t n,
                                                 SharedString *output);
    
-   bool slint_translate_set_language(Slice<uint8_t> lang, Slice<Slice<uint8_t>> languages);
+   void slint_translate_set_bundled_languages(Slice<Slice<uint8_t>> languages);
+   
+   bool slint_translate_select_bundled_translation(Slice<uint8_t> locale);
    
    void slint_windowrc_drop(WindowAdapterRcOpaque *handle);
    

@@ -1211,6 +1211,12 @@ Program Listing for File slint.h
    }
    #endif
    
+   inline bool select_bundled_translation(std::string_view locale)
+   {
+       return cbindgen_private::slint_translate_select_bundled_translation(
+               slint::private_api::string_to_slice(locale));
+   }
+   
    #if !defined(DOXYGEN)
    cbindgen_private::Flickable::Flickable()
    {
