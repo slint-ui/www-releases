@@ -2,4 +2,4 @@
 /versions.txt https://releases.slint.dev/versions.txt 200!
 /1.* https://releases.slint.dev/1.:splat
 /0.* https://releases.slint.dev/0.:splat
-/ /master/docs/slint
+/ /master/docs/slint/
