@@ -141,10 +141,10 @@ jobs:
               "ref": "${{ vars.CLOUDFLARE_RULE_ID }}"
           }'
 
-  scrape-docs:
-    if: ${{ github.event.inputs.new_release == 'true' }}
-    uses: ./.github/workflows/docsearch-scrape.yml
-    needs: build-and-deploy
-    secrets: inherit
-    with:
-      version: ${{ needs.build-and-deploy.outputs.version }}
+  # scrape-docs:
+  #   if: ${{ github.event.inputs.new_release == 'true' }}
+  #   uses: ./.github/workflows/docsearch-scrape.yml
+  #   needs: build-and-deploy
+  #   secrets: inherit
+  #   with:
+  #     version: ${{ needs.build-and-deploy.outputs.version }}
