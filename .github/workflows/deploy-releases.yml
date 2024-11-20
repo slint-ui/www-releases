@@ -98,8 +98,8 @@ jobs:
           echo "/docs/* /latest/docs/:splat" >> docs/_redirects
           echo "/editor/* /latest/editor/:splat" >> docs/_redirects
           echo "/${{ steps.identify-version.outputs.VERSION }}/* /latest/:splat" >> docs/_redirects
-          echo "/ /latest/docs/slint/" >> docs/_redirects
-          echo "/latest/docs/ /latest/docs/slint/" >> docs/_redirects
+          # echo "/ /latest/docs/slint/" >> docs/_redirects
+          # echo "/latest/docs/ /latest/docs/slint/" >> docs/_redirects
 
       - name: Verify _redirects file
         run: cat docs/_redirects
