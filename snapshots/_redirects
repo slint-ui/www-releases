@@ -3,3 +3,4 @@
 /1.* https://releases.slint.dev/1.:splat
 /0.* https://releases.slint.dev/0.:splat
 / /master/docs/slint/ 301!
+/master/docs/ /master/docs/slint/ 301!
