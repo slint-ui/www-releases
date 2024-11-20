@@ -1,2 +1,5 @@
 /*
     Access-Control-Allow-Origin: *
+
+/0.*
+  X-Include: /banner.html
