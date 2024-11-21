@@ -52,6 +52,7 @@ Program Listing for File slint_internal.h
            struct ItemVTable;
            using types::IntRect;
        }
+       template<typename ModelData> class Model;
    }
    
    namespace slint {
@@ -855,6 +856,12 @@ Program Listing for File slint_internal.h
        CachedRenderingData cached_rendering_data;
    };
    
+   struct ContextMenu {
+       private_api::CallbackHelper<MenuEntry, std::shared_ptr<slint::Model<MenuEntry>>> sub_menu;
+       private_api::CallbackHelper<MenuEntry> activated;
+       CachedRenderingData cached_rendering_data;
+   };
+   
    extern "C" {
    
    void slint_callback_init(CallbackOpaque *out);
@@ -1162,7 +1169,7 @@ Program Listing for File slint_internal.h
    
    uint32_t slint_windowrc_show_popup(const WindowAdapterRcOpaque *handle,
                                       const ItemTreeRc *popup,
-                                      Point position,
+                                      LogicalPosition position,
                                       PopupClosePolicy close_policy,
                                       const ItemRc *parent_item);
    
@@ -1259,6 +1266,7 @@ Program Listing for File slint_internal.h
    SLINT_DECL_ITEM(Rotate);
    SLINT_DECL_ITEM(Opacity);
    SLINT_DECL_ITEM(Layer);
+   SLINT_DECL_ITEM(ContextMenu);
    }
    
    #undef SLINT_DECL_ITEM

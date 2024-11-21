@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/dynamic_item_tree.rs`."><title>dynamic_item_tree.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-42caa33d.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (03ee48451 2024-11-18)" data-channel="nightly" data-search-js="search-53f21e11.js" data-settings-js="settings-0f613d39.js" ><script src="../../static.files/storage-59e33391.js"></script><script defer src="../../static.files/src-script-56102188.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/dynamic_item_tree.rs`."><title>dynamic_item_tree.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-42caa33d.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.84.0-nightly (3fee0f12e 2024-11-20)" data-channel="nightly" data-search-js="search-92e6798f.js" data-settings-js="settings-0f613d39.js" ><script src="../../static.files/storage-59e33391.js"></script><script defer src="../../static.files/src-script-56102188.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -2543,7 +2543,68 @@
 <a href="#2420" id="2420">2420</a>
 <a href="#2421" id="2421">2421</a>
 <a href="#2422" id="2422">2422</a>
-<a href="#2423" id="2423">2423</a></pre></div><pre class="rust"><code><span class="comment">// Copyright © SixtyFPS GmbH &lt;info@slint.dev&gt;
+<a href="#2423" id="2423">2423</a>
+<a href="#2424" id="2424">2424</a>
+<a href="#2425" id="2425">2425</a>
+<a href="#2426" id="2426">2426</a>
+<a href="#2427" id="2427">2427</a>
+<a href="#2428" id="2428">2428</a>
+<a href="#2429" id="2429">2429</a>
+<a href="#2430" id="2430">2430</a>
+<a href="#2431" id="2431">2431</a>
+<a href="#2432" id="2432">2432</a>
+<a href="#2433" id="2433">2433</a>
+<a href="#2434" id="2434">2434</a>
+<a href="#2435" id="2435">2435</a>
+<a href="#2436" id="2436">2436</a>
+<a href="#2437" id="2437">2437</a>
+<a href="#2438" id="2438">2438</a>
+<a href="#2439" id="2439">2439</a>
+<a href="#2440" id="2440">2440</a>
+<a href="#2441" id="2441">2441</a>
+<a href="#2442" id="2442">2442</a>
+<a href="#2443" id="2443">2443</a>
+<a href="#2444" id="2444">2444</a>
+<a href="#2445" id="2445">2445</a>
+<a href="#2446" id="2446">2446</a>
+<a href="#2447" id="2447">2447</a>
+<a href="#2448" id="2448">2448</a>
+<a href="#2449" id="2449">2449</a>
+<a href="#2450" id="2450">2450</a>
+<a href="#2451" id="2451">2451</a>
+<a href="#2452" id="2452">2452</a>
+<a href="#2453" id="2453">2453</a>
+<a href="#2454" id="2454">2454</a>
+<a href="#2455" id="2455">2455</a>
+<a href="#2456" id="2456">2456</a>
+<a href="#2457" id="2457">2457</a>
+<a href="#2458" id="2458">2458</a>
+<a href="#2459" id="2459">2459</a>
+<a href="#2460" id="2460">2460</a>
+<a href="#2461" id="2461">2461</a>
+<a href="#2462" id="2462">2462</a>
+<a href="#2463" id="2463">2463</a>
+<a href="#2464" id="2464">2464</a>
+<a href="#2465" id="2465">2465</a>
+<a href="#2466" id="2466">2466</a>
+<a href="#2467" id="2467">2467</a>
+<a href="#2468" id="2468">2468</a>
+<a href="#2469" id="2469">2469</a>
+<a href="#2470" id="2470">2470</a>
+<a href="#2471" id="2471">2471</a>
+<a href="#2472" id="2472">2472</a>
+<a href="#2473" id="2473">2473</a>
+<a href="#2474" id="2474">2474</a>
+<a href="#2475" id="2475">2475</a>
+<a href="#2476" id="2476">2476</a>
+<a href="#2477" id="2477">2477</a>
+<a href="#2478" id="2478">2478</a>
+<a href="#2479" id="2479">2479</a>
+<a href="#2480" id="2480">2480</a>
+<a href="#2481" id="2481">2481</a>
+<a href="#2482" id="2482">2482</a>
+<a href="#2483" id="2483">2483</a>
+<a href="#2484" id="2484">2484</a></pre></div><pre class="rust"><code><span class="comment">// Copyright © SixtyFPS GmbH &lt;info@slint.dev&gt;
 // SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0
 
 </span><span class="kw">use </span><span class="kw">crate</span>::api::{CompilationResult, ComponentDefinition, Value};
@@ -2559,6 +2620,7 @@
 <span class="kw">use </span>i_slint_core::accessibility::{
     AccessibilityAction, AccessibleStringProperty, SupportedAccessibilityAction,
 };
+<span class="kw">use </span>i_slint_core::api::LogicalPosition;
 <span class="kw">use </span>i_slint_core::component_factory::ComponentFactory;
 <span class="kw">use </span>i_slint_core::item_tree::{
     IndexRange, ItemTree, ItemTreeRef, ItemTreeRefPin, ItemTreeVTable, ItemTreeWeak,
@@ -2588,6 +2650,7 @@
 <span class="kw">use </span>std::collections::BTreeMap;
 <span class="kw">use </span>std::collections::HashMap;
 <span class="kw">use </span>std::num::NonZeroU32;
+<span class="kw">use </span>std::rc::Weak;
 <span class="kw">use </span>std::{pin::Pin, rc::Rc};
 
 <span class="kw">pub const </span>SPECIAL_PROPERTY_INDEX: <span class="kw-2">&amp;</span>str = <span class="string">"$index"</span>;
@@ -2960,6 +3023,8 @@
     <span class="doccomment">/// Map of element IDs to their active popup's ID
     </span>popup_ids: std::cell::RefCell&lt;HashMap&lt;SmolStr, NonZeroU32&gt;&gt;,
 
+    <span class="kw">pub</span>(<span class="kw">crate</span>) popup_menu_description: PopupMenuDescription,
+
     <span class="doccomment">/// The collection of compiled globals
     </span>compiled_globals: <span class="prelude-ty">Option</span>&lt;Rc&lt;CompiledGlobalCollection&gt;&gt;,
 
@@ -2973,6 +3038,20 @@
     </span><span class="attr">#[cfg(feature = <span class="string">"highlight"</span>)]
     </span><span class="kw">pub</span>(<span class="kw">crate</span>) raw_type_loader:
         std::cell::OnceCell&lt;<span class="prelude-ty">Option</span>&lt;std::rc::Rc&lt;i_slint_compiler::typeloader::TypeLoader&gt;&gt;&gt;,
+}
+
+<span class="attr">#[derive(Clone, derive_more::From)]
+</span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">enum </span>PopupMenuDescription {
+    Rc(Rc&lt;ErasedItemTreeDescription&gt;),
+    Weak(Weak&lt;ErasedItemTreeDescription&gt;),
+}
+<span class="kw">impl </span>PopupMenuDescription {
+    <span class="kw">pub fn </span>unerase&lt;<span class="lifetime">'id</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, guard: generativity::Guard&lt;<span class="lifetime">'id</span>&gt;) -&gt; Rc&lt;ItemTreeDescription&lt;<span class="lifetime">'id</span>&gt;&gt; {
+        <span class="kw">match </span><span class="self">self </span>{
+            PopupMenuDescription::Rc(rc) =&gt; rc.unerase(guard).clone(),
+            PopupMenuDescription::Weak(weak) =&gt; weak.upgrade().unwrap().unerase(guard).clone(),
+        }
+    }
 }
 
 <span class="kw">fn </span>internal_properties_to_public&lt;<span class="lifetime">'a</span>&gt;(
@@ -3179,7 +3258,7 @@
                     <span class="kw">let </span>item_info = <span class="kw-2">&amp;</span>description.items[element.borrow().id.as_str()];
                     <span class="kw">let </span>item =
                         <span class="kw">unsafe </span>{ item_info.item_from_item_tree(enclosing_component.as_ptr()) };
-                    <span class="kw">if let </span><span class="prelude-val">Some</span>(callback) = item_info.rtti.callbacks.get(alias.name()) {
+                    <span class="kw">if let </span><span class="prelude-val">Some</span>(callback) = item_info.rtti.callbacks.get(alias.name().as_str()) {
                         callback.set_handler(item, handler)
                     } <span class="kw">else if let </span><span class="prelude-val">Some</span>(callback_offset) =
                         description.custom_callbacks.get(alias.name())
@@ -3209,7 +3288,7 @@
     </span><span class="kw">pub fn </span>invoke(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         component: ItemTreeRefPin,
-        name: <span class="kw-2">&amp;</span>str,
+        name: <span class="kw-2">&amp;</span>SmolStr,
         args: <span class="kw-2">&amp;</span>[Value],
     ) -&gt; <span class="prelude-ty">Result</span>&lt;Value, ()&gt; {
         <span class="kw">if </span>!core::ptr::eq((<span class="kw-2">&amp;</span><span class="self">self</span>.ct) <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>, component.get_vtable() <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>) {
@@ -3435,10 +3514,31 @@
     <span class="kw">let </span>compiled_globals = Rc::new(CompiledGlobalCollection::compile(doc));
     <span class="kw">let </span><span class="kw-2">mut </span>components = HashMap::new();
 
+    <span class="kw">let </span>popup_menu_description = <span class="kw">if let </span><span class="prelude-val">Some</span>(popup_menu_impl) = <span class="kw-2">&amp;</span>doc.popup_menu_impl {
+        PopupMenuDescription::Rc(Rc::new_cyclic(|weak| {
+            <span class="macro">generativity::make_guard!</span>(guard);
+            ErasedItemTreeDescription::from(generate_item_tree(
+                popup_menu_impl,
+                <span class="prelude-val">Some</span>(compiled_globals.clone()),
+                PopupMenuDescription::Weak(weak.clone()),
+                <span class="bool-val">true</span>,
+                guard,
+            ))
+        }))
+    } <span class="kw">else </span>{
+        PopupMenuDescription::Weak(Default::default())
+    };
+
     <span class="kw">for </span>c <span class="kw">in </span>doc.exported_roots() {
         <span class="macro">generativity::make_guard!</span>(guard);
         <span class="attr">#[allow(unused_mut)]
-        </span><span class="kw">let </span><span class="kw-2">mut </span>it = generate_item_tree(<span class="kw-2">&amp;</span>c, <span class="prelude-val">Some</span>(compiled_globals.clone()), guard);
+        </span><span class="kw">let </span><span class="kw-2">mut </span>it = generate_item_tree(
+            <span class="kw-2">&amp;</span>c,
+            <span class="prelude-val">Some</span>(compiled_globals.clone()),
+            popup_menu_description.clone(),
+            <span class="bool-val">false</span>,
+            guard,
+        );
         <span class="attr">#[cfg(feature = <span class="string">"highlight"</span>)]
         </span>{
             <span class="kw">let _ </span>= it.type_loader.set(loader.clone());
@@ -3511,6 +3611,7 @@
             rtti_for::&lt;Rotate&gt;(),
             rtti_for::&lt;Opacity&gt;(),
             rtti_for::&lt;Layer&gt;(),
+            rtti_for::&lt;ContextMenu&gt;(),
         ]
         .iter()
         .cloned(),
@@ -3541,6 +3642,8 @@
 <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>generate_item_tree&lt;<span class="lifetime">'id</span>&gt;(
     component: <span class="kw-2">&amp;</span>Rc&lt;object_tree::Component&gt;,
     compiled_globals: <span class="prelude-ty">Option</span>&lt;Rc&lt;CompiledGlobalCollection&gt;&gt;,
+    popup_menu_description: PopupMenuDescription,
+    is_popup_menu_impl: bool,
     guard: generativity::Guard&lt;<span class="lifetime">'id</span>&gt;,
 ) -&gt; Rc&lt;ItemTreeDescription&lt;<span class="lifetime">'id</span>&gt;&gt; {
     <span class="comment">//dbg!(&amp;*component.root_element.borrow());
@@ -3559,6 +3662,7 @@
         repeater: Vec&lt;ErasedRepeaterWithinComponent&lt;<span class="lifetime">'id</span>&gt;&gt;,
         repeater_names: HashMap&lt;SmolStr, usize&gt;,
         change_callbacks: Vec&lt;(NamedReference, Expression)&gt;,
+        popup_menu_description: PopupMenuDescription,
     }
     <span class="kw">impl</span>&lt;<span class="lifetime">'id</span>&gt; generator::ItemTreeBuilder <span class="kw">for </span>TreeBuilder&lt;<span class="lifetime">'id</span>&gt; {
         <span class="kw">type </span>SubComponentState = ();
@@ -3578,7 +3682,13 @@
             <span class="macro">generativity::make_guard!</span>(guard);
             <span class="self">self</span>.repeater.push(
                 RepeaterWithinItemTree {
-                    item_tree_to_repeat: generate_item_tree(base_component, <span class="prelude-val">None</span>, guard),
+                    item_tree_to_repeat: generate_item_tree(
+                        base_component,
+                        <span class="prelude-val">None</span>,
+                        <span class="self">self</span>.popup_menu_description.clone(),
+                        <span class="bool-val">false</span>,
+                        guard,
+                    ),
                     offset: <span class="self">self</span>.type_builder.add_field_type::&lt;Repeater&lt;ErasedItemTreeBox&gt;&gt;(),
                     model: item.repeated.as_ref().unwrap().model.clone(),
                 }
@@ -3635,7 +3745,7 @@
             );
             <span class="kw">for </span>(prop, expr) <span class="kw">in </span><span class="kw-2">&amp;</span>item.change_callbacks {
                 <span class="self">self</span>.change_callbacks.push((
-                    NamedReference::new(rc_item, prop),
+                    NamedReference::new(rc_item, prop.clone()),
                     Expression::CodeBlock(expr.borrow().clone()),
                 ));
             }
@@ -3671,6 +3781,7 @@
         repeater: <span class="macro">vec!</span>[],
         repeater_names: HashMap::new(),
         change_callbacks: <span class="macro">vec!</span>[],
+        popup_menu_description,
     };
 
     <span class="kw">if </span>!component.is_global() {
@@ -3678,7 +3789,7 @@
     } <span class="kw">else </span>{
         <span class="kw">for </span>(prop, expr) <span class="kw">in </span>component.root_element.borrow().change_callbacks.iter() {
             builder.change_callbacks.push((
-                NamedReference::new(<span class="kw-2">&amp;</span>component.root_element, prop),
+                NamedReference::new(<span class="kw-2">&amp;</span>component.root_element, prop.clone()),
                 Expression::CodeBlock(expr.borrow().clone()),
             ));
         }
@@ -3817,11 +3928,12 @@
         }
     }
 
-    <span class="kw">let </span>parent_item_tree_offset = <span class="kw">if </span>component.parent_element.upgrade().is_some() {
-        <span class="prelude-val">Some</span>(builder.type_builder.add_field_type::&lt;OnceCell&lt;ErasedItemTreeBoxWeak&gt;&gt;())
-    } <span class="kw">else </span>{
-        <span class="prelude-val">None
-    </span>};
+    <span class="kw">let </span>parent_item_tree_offset =
+        <span class="kw">if </span>component.parent_element.upgrade().is_some() || is_popup_menu_impl {
+            <span class="prelude-val">Some</span>(builder.type_builder.add_field_type::&lt;OnceCell&lt;ErasedItemTreeBoxWeak&gt;&gt;())
+        } <span class="kw">else </span>{
+            <span class="prelude-val">None
+        </span>};
 
     <span class="kw">let </span>root_offset = builder.type_builder.add_field_type::&lt;OnceCell&lt;ErasedItemTreeBoxWeak&gt;&gt;();
 
@@ -3890,6 +4002,7 @@
         change_trackers,
         timers,
         popup_ids: std::cell::RefCell::new(HashMap::new()),
+        popup_menu_description: builder.popup_menu_description,
         <span class="attr">#[cfg(feature = <span class="string">"highlight"</span>)]
         </span>type_loader: std::cell::OnceCell::new(),
         <span class="attr">#[cfg(feature = <span class="string">"highlight"</span>)]
@@ -4114,7 +4227,8 @@
                     } <span class="kw">else </span>{
                         <span class="kw">let </span>item_within_component = <span class="kw-2">&amp;</span>description.items[<span class="kw-2">&amp;</span>elem.id];
                         <span class="kw">let </span>item = item_within_component.item_from_item_tree(instance_ref.as_ptr());
-                        <span class="kw">if let </span><span class="prelude-val">Some</span>(callback) = item_within_component.rtti.callbacks.get(prop_name)
+                        <span class="kw">if let </span><span class="prelude-val">Some</span>(callback) =
+                            item_within_component.rtti.callbacks.get(prop_name.as_str())
                         {
                             callback.set_handler(
                                 item,
@@ -4170,7 +4284,9 @@
             } <span class="kw">else </span>{
                 <span class="kw">let </span>item_within_component = <span class="kw-2">&amp;</span>description.items[<span class="kw-2">&amp;</span>elem.id];
                 <span class="kw">let </span>item = item_within_component.item_from_item_tree(instance_ref.as_ptr());
-                <span class="kw">if let </span><span class="prelude-val">Some</span>(prop_rtti) = item_within_component.rtti.properties.get(prop_name) {
+                <span class="kw">if let </span><span class="prelude-val">Some</span>(prop_rtti) =
+                    item_within_component.rtti.properties.get(prop_name.as_str())
+                {
                     <span class="kw">let </span>maybe_animation = animation_for_property(instance_ref, <span class="kw-2">&amp;</span>binding.animation);
                     <span class="kw">for </span>nr <span class="kw">in </span><span class="kw-2">&amp;</span>binding.two_way_bindings {
                         <span class="comment">// Safety: The compiler must have ensured that the properties exist and are of the same type
@@ -4249,7 +4365,7 @@
             <span class="kw">let </span>prop_info = item_info
                 .rtti
                 .properties
-                .get(nr.name())
+                .get(nr.name().as_str())
                 .unwrap_or_else(|| <span class="macro">panic!</span>(<span class="string">"Property {} not in {}"</span>, nr.name(), element.id));
             core::mem::drop(element);
             <span class="kw">let </span>item = <span class="kw">unsafe </span>{ item_info.item_from_item_tree(enclosing_component.as_ptr()) };
@@ -4882,7 +4998,7 @@
     element: ElementRc,
     instance: InstanceRef,
     popup: <span class="kw-2">&amp;</span>object_tree::PopupWindow,
-    pos_getter: <span class="kw">impl </span>FnOnce(InstanceRef&lt;<span class="lifetime">'_</span>, <span class="lifetime">'_</span>&gt;) -&gt; i_slint_core::graphics::Point,
+    pos_getter: <span class="kw">impl </span>FnOnce(InstanceRef&lt;<span class="lifetime">'_</span>, <span class="lifetime">'_</span>&gt;) -&gt; LogicalPosition,
     close_policy: PopupClosePolicy,
     parent_comp: ErasedItemTreeBoxWeak,
     parent_window_adapter: WindowAdapterRc,
@@ -4890,7 +5006,13 @@
 ) {
     <span class="macro">generativity::make_guard!</span>(guard);
     <span class="comment">// FIXME: we should compile once and keep the cached compiled component
-    </span><span class="kw">let </span>compiled = generate_item_tree(<span class="kw-2">&amp;</span>popup.component, <span class="prelude-val">None</span>, guard);
+    </span><span class="kw">let </span>compiled = generate_item_tree(
+        <span class="kw-2">&amp;</span>popup.component,
+        <span class="prelude-val">None</span>,
+        parent_comp.upgrade().unwrap().<span class="number">0</span>.description().popup_menu_description.clone(),
+        <span class="bool-val">false</span>,
+        guard,
+    );
     <span class="kw">let </span>inst = instantiate(
         compiled,
         <span class="prelude-val">Some</span>(parent_comp),

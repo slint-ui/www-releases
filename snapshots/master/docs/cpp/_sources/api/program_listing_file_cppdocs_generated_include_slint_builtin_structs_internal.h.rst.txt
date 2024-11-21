@@ -76,4 +76,11 @@ Program Listing for File slint_builtin_structs_internal.h
        friend bool operator==(const FontMetrics&, const FontMetrics&) = default;
        friend bool operator!=(const FontMetrics&, const FontMetrics&) = default;
    };
+   struct MenuEntry {
+       SharedString title;
+       SharedString id;
+       bool has_sub_menu;
+       friend bool operator==(const MenuEntry&, const MenuEntry&) = default;
+       friend bool operator!=(const MenuEntry&, const MenuEntry&) = default;
+   };
    }
