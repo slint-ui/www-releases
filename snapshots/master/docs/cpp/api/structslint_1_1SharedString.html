@@ -558,6 +558,28 @@
 </dd></dl>
 
 <dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5slint12SharedString12to_lowercaseEv">
+<span id="_CPPv3NK5slint12SharedString12to_lowercaseEv"></span><span id="_CPPv2NK5slint12SharedString12to_lowercaseEv"></span><span id="slint::SharedString::to_lowercaseC"></span><span class="target" id="structslint_1_1SharedString_1ad43e0d2162c8774eedf4516e006b38a7"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5slint12SharedStringE" title="slint::SharedString"><span class="n"><span class="pre">SharedString</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">to_lowercase</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5slint12SharedString12to_lowercaseEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns the lowercase equivalent of this string, as a new <a class="reference internal" href="#structslint_1_1SharedString"><span class="std std-ref">SharedString</span></a>.</p>
+<p>For example: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">auto</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">slint</span><span class="p">::</span><span class="n">SharedString</span><span class="p">(</span><span class="s2">&quot;Hello&quot;</span><span class="p">);</span>
+<span class="n">auto</span> <span class="n">str2</span> <span class="o">=</span> <span class="nb">str</span><span class="o">.</span><span class="n">to_lowercase</span><span class="p">();</span> <span class="o">//</span> <span class="n">creates</span> <span class="s2">&quot;hello&quot;</span>
+</pre></div>
+</div>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5slint12SharedString12to_uppercaseEv">
+<span id="_CPPv3NK5slint12SharedString12to_uppercaseEv"></span><span id="_CPPv2NK5slint12SharedString12to_uppercaseEv"></span><span id="slint::SharedString::to_uppercaseC"></span><span class="target" id="structslint_1_1SharedString_1a0ecac8a0a6ec3b5eb94b4f92254edee2"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5slint12SharedStringE" title="slint::SharedString"><span class="n"><span class="pre">SharedString</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">to_uppercase</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5slint12SharedString12to_uppercaseEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns the uppercase equivalent of this string, as a new <a class="reference internal" href="#structslint_1_1SharedString"><span class="std std-ref">SharedString</span></a>.</p>
+<p>For example: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">auto</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">slint</span><span class="p">::</span><span class="n">SharedString</span><span class="p">(</span><span class="s2">&quot;Hello&quot;</span><span class="p">);</span>
+<span class="n">auto</span> <span class="n">str2</span> <span class="o">=</span> <span class="nb">str</span><span class="o">.</span><span class="n">to_uppercase</span><span class="p">();</span> <span class="o">//</span> <span class="n">creates</span> <span class="s2">&quot;HELLO&quot;</span>
+</pre></div>
+</div>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N5slint12SharedStringpLENSt11string_viewE">
 <span id="_CPPv3N5slint12SharedStringpLENSt11string_viewE"></span><span id="_CPPv2N5slint12SharedStringpLENSt11string_viewE"></span><span id="slint::SharedString::add-assign-operator__std::string_view"></span><span class="target" id="structslint_1_1SharedString_1a4e72d318506c4aa84de0194baaad31ac"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5slint12SharedStringE" title="slint::SharedString"><span class="n"><span class="pre">SharedString</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">+=</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string_view</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">other</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5slint12SharedStringpLENSt11string_viewE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Appends <em>other</em> to this string and returns a reference to this. </p>

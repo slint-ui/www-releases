@@ -1104,6 +1104,10 @@ Program Listing for File slint_internal.h
    
    void slint_shared_string_append(SharedString *self_, const char *bytes, uintptr_t len);
    
+   void slint_shared_string_to_lowercase(SharedString *out, const SharedString *ss);
+   
+   void slint_shared_string_to_uppercase(SharedString *out, const SharedString *ss);
+   
    void slint_mock_elapsed_time(uint64_t time_in_ms);
    
    uint64_t slint_get_mocked_time();

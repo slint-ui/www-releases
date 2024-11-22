@@ -48,6 +48,10 @@ Program Listing for File slint_string_internal.h
    
    void slint_shared_string_append(SharedString *self_, const char *bytes, uintptr_t len);
    
+   void slint_shared_string_to_lowercase(SharedString *out, const SharedString *ss);
+   
+   void slint_shared_string_to_uppercase(SharedString *out, const SharedString *ss);
+   
    } // extern "C"
    
    } // namespace cbindgen_private

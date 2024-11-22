@@ -87,6 +87,20 @@ Program Listing for File slint_string.h
    
        static SharedString from_number(double n) { return SharedString(n); }
    
+       SharedString to_lowercase() const
+       {
+           auto out = SharedString();
+           cbindgen_private::slint_shared_string_to_lowercase(&out, this);
+           return out;
+       }
+   
+       SharedString to_uppercase() const
+       {
+           auto out = SharedString();
+           cbindgen_private::slint_shared_string_to_uppercase(&out, this);
+           return out;
+       }
+   
        friend bool operator==(const SharedString &a, const SharedString &b)
        {
            return std::string_view(a) == std::string_view(b);
