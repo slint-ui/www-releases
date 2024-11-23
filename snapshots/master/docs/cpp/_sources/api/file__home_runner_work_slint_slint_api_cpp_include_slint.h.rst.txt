@@ -107,5 +107,7 @@ Functions
 
 - :ref:`exhale_function_namespaceslint_1af3b30e12b066e5a94a91a1166d7c36be`
 
+- :ref:`exhale_function_namespaceslint_1affd681d74b0d19a8c09b5c2aeeb25a1a`
+
 - :ref:`exhale_function_namespaceslint_1aefd8612f7c509003040eddfaf7a38505`
 

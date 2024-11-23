@@ -86,6 +86,8 @@ Program Listing for File slint_platform_internal.h
    
    void slint_debug(const SharedString *string);
    
+   void slint_set_xdg_app_id(const SharedString *_app_id);
+   
    void slint_window_properties_get_title(const WindowProperties *wp, SharedString *out);
    
    void slint_window_properties_get_background(const WindowProperties *wp, Brush *out);

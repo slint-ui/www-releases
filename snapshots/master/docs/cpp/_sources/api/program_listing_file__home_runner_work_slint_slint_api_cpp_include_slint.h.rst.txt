@@ -1322,4 +1322,10 @@ Program Listing for File slint.h
    #    endif
    #endif
    
+   inline void set_xdg_app_id(const SharedString &xdg_app_id)
+   {
+       private_api::assert_main_thread();
+       cbindgen_private::slint_set_xdg_app_id(&xdg_app_id);
+   }
+   
    } // namespace slint
