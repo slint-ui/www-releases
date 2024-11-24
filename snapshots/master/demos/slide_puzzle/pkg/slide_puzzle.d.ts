@@ -18,8 +18,8 @@ export interface InitOutput {
   readonly __wbindgen_export_3: WebAssembly.Table;
   readonly closure298_externref_shim: (a: number, b: number, c: number) => void;
   readonly closure562_externref_shim: (a: number, b: number, c: number) => void;
-  readonly _dyn_core__ops__function__FnMut_____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__hdc0c1c4ec6cff3f0: (a: number, b: number) => void;
-  readonly closure575_externref_shim: (a: number, b: number, c: number, d: number) => void;
+  readonly _dyn_core__ops__function__FnMut_____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__hb86cba18957c6ebd: (a: number, b: number) => void;
+  readonly closure574_externref_shim: (a: number, b: number, c: number, d: number) => void;
   readonly __wbindgen_exn_store: (a: number) => void;
   readonly __externref_table_alloc: () => number;
   readonly __wbindgen_start: () => void;
