@@ -1617,11 +1617,7 @@ function __wbg_get_imports() {
         const ret = arg0.getCoalescedEvents();
         return ret;
     };
-    imports.wbg.__wbindgen_closure_wrapper5410 = function(arg0, arg1, arg2) {
-        const ret = makeClosure(arg0, arg1, 2653, __wbg_adapter_28);
-        return ret;
-    };
-    imports.wbg.__wbindgen_closure_wrapper5412 = function(arg0, arg1, arg2) {
+    imports.wbg.__wbindgen_closure_wrapper5411 = function(arg0, arg1, arg2) {
         const ret = makeClosure(arg0, arg1, 2653, __wbg_adapter_28);
         return ret;
     };
@@ -1634,6 +1630,10 @@ function __wbg_get_imports() {
         return ret;
     };
     imports.wbg.__wbindgen_closure_wrapper5415 = function(arg0, arg1, arg2) {
+        const ret = makeClosure(arg0, arg1, 2653, __wbg_adapter_28);
+        return ret;
+    };
+    imports.wbg.__wbindgen_closure_wrapper5416 = function(arg0, arg1, arg2) {
         const ret = makeClosure(arg0, arg1, 2653, __wbg_adapter_28);
         return ret;
     };
