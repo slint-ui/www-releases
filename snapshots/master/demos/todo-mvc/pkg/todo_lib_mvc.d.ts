@@ -7,22 +7,22 @@ export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembl
 export interface InitOutput {
   readonly memory: WebAssembly.Memory;
   readonly main: () => void;
-  readonly slint_mock_elapsed_time: (a: number) => void;
-  readonly slint_get_mocked_time: () => number;
+  readonly slint_mock_elapsed_time: (a: bigint) => void;
+  readonly slint_get_mocked_time: () => bigint;
   readonly slint_send_mouse_click: (a: number, b: number, c: number) => void;
   readonly slint_send_keyboard_char: (a: number, b: number, c: number) => void;
   readonly send_keyboard_string_sequence: (a: number, b: number) => void;
+  readonly __externref_table_alloc: () => number;
+  readonly __wbindgen_export_1: WebAssembly.Table;
+  readonly __wbindgen_exn_store: (a: number) => void;
   readonly __wbindgen_malloc: (a: number, b: number) => number;
   readonly __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;
-  readonly __wbindgen_export_2: WebAssembly.Table;
-  readonly __wbindgen_export_3: WebAssembly.Table;
-  readonly closure2355_externref_shim: (a: number, b: number, c: number) => void;
-  readonly closure2805_externref_shim: (a: number, b: number, c: number) => void;
-  readonly _dyn_core__ops__function__FnMut_____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__h31d604552adeda56: (a: number, b: number) => void;
-  readonly closure2806_externref_shim: (a: number, b: number, c: number, d: number) => void;
-  readonly closure2850_externref_shim: (a: number, b: number, c: number) => void;
-  readonly __externref_table_alloc: () => number;
-  readonly __wbindgen_exn_store: (a: number) => void;
+  readonly __wbindgen_export_5: WebAssembly.Table;
+  readonly closure2304_externref_shim: (a: number, b: number, c: any) => void;
+  readonly closure2809_externref_shim: (a: number, b: number, c: any) => void;
+  readonly _dyn_core__ops__function__FnMut_____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__h2a633f5f709a286e: (a: number, b: number) => void;
+  readonly closure2810_externref_shim: (a: number, b: number, c: any, d: any) => void;
+  readonly closure2854_externref_shim: (a: number, b: number, c: any) => void;
   readonly __wbindgen_start: () => void;
 }
 

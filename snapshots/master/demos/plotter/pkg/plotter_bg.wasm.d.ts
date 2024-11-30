@@ -1,20 +1,20 @@
 /* tslint:disable */
 /* eslint-disable */
 export const memory: WebAssembly.Memory;
-export function slint_mock_elapsed_time(a: number): void;
-export function slint_get_mocked_time(): number;
-export function slint_send_mouse_click(a: number, b: number, c: number): void;
-export function slint_send_keyboard_char(a: number, b: number, c: number): void;
-export function send_keyboard_string_sequence(a: number, b: number): void;
-export function main(): void;
-export function __wbindgen_malloc(a: number, b: number): number;
-export function __wbindgen_realloc(a: number, b: number, c: number, d: number): number;
-export const __wbindgen_export_2: WebAssembly.Table;
-export const __wbindgen_export_3: WebAssembly.Table;
-export function closure141_externref_shim(a: number, b: number, c: number): void;
-export function closure329_externref_shim(a: number, b: number, c: number): void;
-export function _dyn_core__ops__function__FnMut_____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__h31dbfae44efabe59(a: number, b: number): void;
-export function closure342_externref_shim(a: number, b: number, c: number, d: number): void;
-export function __wbindgen_exn_store(a: number): void;
-export function __externref_table_alloc(): number;
-export function __wbindgen_start(): void;
+export const slint_mock_elapsed_time: (a: bigint) => void;
+export const slint_get_mocked_time: () => bigint;
+export const slint_send_mouse_click: (a: number, b: number, c: number) => void;
+export const slint_send_keyboard_char: (a: number, b: number, c: number) => void;
+export const send_keyboard_string_sequence: (a: number, b: number) => void;
+export const main: () => void;
+export const __externref_table_alloc: () => number;
+export const __wbindgen_export_1: WebAssembly.Table;
+export const __wbindgen_exn_store: (a: number) => void;
+export const __wbindgen_malloc: (a: number, b: number) => number;
+export const __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;
+export const __wbindgen_export_5: WebAssembly.Table;
+export const closure139_externref_shim: (a: number, b: number, c: any) => void;
+export const closure329_externref_shim: (a: number, b: number, c: any) => void;
+export const _dyn_core__ops__function__FnMut_____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__h5a15fd5190267278: (a: number, b: number) => void;
+export const closure343_externref_shim: (a: number, b: number, c: any, d: any) => void;
+export const __wbindgen_start: () => void;

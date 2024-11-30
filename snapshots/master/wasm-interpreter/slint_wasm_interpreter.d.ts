@@ -4,19 +4,10 @@
  * Compile the content of a string.
  *
  * Returns a promise to a compiled component which can be run with ".run()"
- * @param {string} source
- * @param {string} base_url
- * @param {ImportCallbackFunction | undefined} [optional_import_callback]
- * @returns {Promise<CompilationResult>}
  */
 export function compile_from_string(source: string, base_url: string, optional_import_callback?: ImportCallbackFunction): Promise<CompilationResult>;
 /**
  * Same as [`compile_from_string`], but also takes a style parameter
- * @param {string} source
- * @param {string} base_url
- * @param {string} style
- * @param {ImportCallbackFunction | undefined} [optional_import_callback]
- * @returns {Promise<CompilationResult>}
  */
 export function compile_from_string_with_style(source: string, base_url: string, style: string, optional_import_callback?: ImportCallbackFunction): Promise<CompilationResult>;
 /**
@@ -31,18 +22,19 @@ type CurrentElementInformationCallbackFunction = (url: string, start_line: numbe
 
 
 export class CompilationResult {
+  private constructor();
   free(): void;
   readonly component: WrappedCompiledComp | undefined;
   readonly diagnostics: Array<any>;
   readonly error_string: string;
 }
 export class WrappedCompiledComp {
+  private constructor();
   free(): void;
   /**
    * Run this compiled component in a canvas.
    * The HTML must contains a <canvas> element with the given `canvas_id`
    * where the result is gonna be rendered
-   * @param {string} canvas_id
    */
   run(canvas_id: string): void;
   /**
@@ -52,8 +44,6 @@ export class WrappedCompiledComp {
    * You need to call `show()` on the returned instance for rendering.
    *
    * Note that the promise will only be resolved after calling `slint.run_event_loop()`.
-   * @param {string} canvas_id
-   * @returns {Promise<WrappedInstance>}
    */
   create(canvas_id: string): Promise<WrappedInstance>;
   /**
@@ -63,25 +53,22 @@ export class WrappedCompiledComp {
    * call the provided instance is not rendered anymore and can be discarded.
    *
    * Note that the promise will only be resolved after calling `slint.run_event_loop()`.
-   * @param {WrappedInstance} instance
-   * @returns {Promise<WrappedInstance>}
    */
   create_with_existing_window(instance: WrappedInstance): Promise<WrappedInstance>;
 }
 export class WrappedInstance {
+  private constructor();
   free(): void;
   /**
    * Marks this instance for rendering and input handling.
    *
    * Note that the promise will only be resolved after calling `slint.run_event_loop()`.
-   * @returns {Promise<any>}
    */
   show(): Promise<any>;
   /**
    * Hides this instance and prevents further updates of the canvas element.
    *
    * Note that the promise will only be resolved after calling `slint.run_event_loop()`.
-   * @returns {Promise<any>}
    */
   hide(): Promise<any>;
 }
@@ -90,37 +77,37 @@ export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembl
 
 export interface InitOutput {
   readonly memory: WebAssembly.Memory;
-  readonly slint_mock_elapsed_time: (a: number) => void;
-  readonly slint_get_mocked_time: () => number;
+  readonly slint_mock_elapsed_time: (a: bigint) => void;
+  readonly slint_get_mocked_time: () => bigint;
   readonly slint_send_mouse_click: (a: number, b: number, c: number) => void;
   readonly slint_send_keyboard_char: (a: number, b: number, c: number) => void;
   readonly send_keyboard_string_sequence: (a: number, b: number) => void;
   readonly __wbg_compilationresult_free: (a: number, b: number) => void;
   readonly compilationresult_component: (a: number) => number;
-  readonly compilationresult_diagnostics: (a: number) => number;
-  readonly compilationresult_error_string: (a: number) => Array;
-  readonly compile_from_string: (a: number, b: number, c: number, d: number, e: number) => number;
-  readonly compile_from_string_with_style: (a: number, b: number, c: number, d: number, e: number, f: number, g: number) => number;
+  readonly compilationresult_diagnostics: (a: number) => any;
+  readonly compilationresult_error_string: (a: number) => [number, number];
+  readonly compile_from_string: (a: number, b: number, c: number, d: number, e: number) => any;
+  readonly compile_from_string_with_style: (a: number, b: number, c: number, d: number, e: number, f: number, g: number) => any;
   readonly __wbg_wrappedcompiledcomp_free: (a: number, b: number) => void;
   readonly wrappedcompiledcomp_run: (a: number, b: number, c: number) => void;
-  readonly wrappedcompiledcomp_create: (a: number, b: number, c: number) => Array;
-  readonly wrappedcompiledcomp_create_with_existing_window: (a: number, b: number) => Array;
+  readonly wrappedcompiledcomp_create: (a: number, b: number, c: number) => [number, number, number];
+  readonly wrappedcompiledcomp_create_with_existing_window: (a: number, b: number) => [number, number, number];
   readonly __wbg_wrappedinstance_free: (a: number, b: number) => void;
-  readonly wrappedinstance_show: (a: number) => Array;
-  readonly wrappedinstance_hide: (a: number) => Array;
-  readonly run_event_loop: () => Array;
+  readonly wrappedinstance_show: (a: number) => [number, number, number];
+  readonly wrappedinstance_hide: (a: number) => [number, number, number];
+  readonly run_event_loop: () => [number, number];
+  readonly __externref_table_alloc: () => number;
+  readonly __wbindgen_export_1: WebAssembly.Table;
+  readonly __wbindgen_exn_store: (a: number) => void;
   readonly __wbindgen_malloc: (a: number, b: number) => number;
   readonly __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;
-  readonly __wbindgen_export_2: WebAssembly.Table;
-  readonly __wbindgen_export_3: WebAssembly.Table;
-  readonly closure134_externref_shim: (a: number, b: number, c: number) => void;
-  readonly _dyn_core__ops__function__FnMut_____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__h86025c7f02960722: (a: number, b: number) => void;
-  readonly closure667_externref_shim: (a: number, b: number, c: number) => void;
-  readonly closure678_externref_shim: (a: number, b: number, c: number, d: number) => void;
   readonly __wbindgen_free: (a: number, b: number, c: number) => void;
-  readonly __wbindgen_exn_store: (a: number) => void;
-  readonly __externref_table_alloc: () => number;
+  readonly __wbindgen_export_6: WebAssembly.Table;
   readonly __externref_table_dealloc: (a: number) => void;
+  readonly closure134_externref_shim: (a: number, b: number, c: any) => void;
+  readonly _dyn_core__ops__function__FnMut_____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__h11703574f130a342: (a: number, b: number) => void;
+  readonly closure667_externref_shim: (a: number, b: number, c: any) => void;
+  readonly closure675_externref_shim: (a: number, b: number, c: any, d: any) => void;
   readonly __wbindgen_start: () => void;
 }
 
