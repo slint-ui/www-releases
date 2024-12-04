@@ -811,7 +811,6 @@ Program Listing for File slint_internal.h
        Property<Brush> background;
        Property<SharedString> title;
        Property<bool> no_frame;
-       Property<bool> skip_taskbar;
        Property<LogicalLength> resize_border_width;
        Property<bool> always_on_top;
        Property<Image> icon;
