@@ -159,6 +159,7 @@ Program Listing for File slint_qt_internal.h
        Property<float> value;
        Property<float> minimum;
        Property<float> maximum;
+       Property<float> step;
        CachedRenderingData cached_rendering_data;
        Property<NativeSliderData> data;
        private_api::CallbackHelper<float> changed;
