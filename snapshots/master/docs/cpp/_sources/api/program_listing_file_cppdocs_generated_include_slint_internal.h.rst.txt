@@ -66,12 +66,12 @@ Program Listing for File slint_internal.h
        DelegateFocus,
        Description,
        Enabled,
+       ItemCount,
+       ItemIndex,
+       ItemSelectable,
+       ItemSelected,
        Label,
        PlaceholderText,
-       PositionInSet,
-       Selectable,
-       Selected,
-       SizeOfSet,
        Value,
        ValueMaximum,
        ValueMinimum,
@@ -1145,7 +1145,7 @@ Program Listing for File slint_internal.h
    
    void slint_translate_set_bundled_languages(Slice<Slice<uint8_t>> languages);
    
-   bool slint_translate_select_bundled_translation(Slice<uint8_t> locale);
+   bool slint_translate_select_bundled_translation(Slice<uint8_t> language);
    
    void slint_windowrc_drop(WindowAdapterRcOpaque *handle);
    

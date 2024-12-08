@@ -260,10 +260,10 @@ Program Listing for File slint-testing.h
            return std::nullopt;
        }
    
-       std::optional<bool> accessible_selected() const
+       std::optional<bool> accessible_item_selected() const
        {
            if (auto result = get_accessible_string_property(
-                       cbindgen_private::AccessibleStringProperty::Selected)) {
+                       cbindgen_private::AccessibleStringProperty::ItemSelected)) {
                if (*result == "true")
                    return true;
                else if (*result == "false")
@@ -272,10 +272,10 @@ Program Listing for File slint-testing.h
            return std::nullopt;
        }
    
-       std::optional<bool> accessible_selectable() const
+       std::optional<bool> accessible_item_selectable() const
        {
            if (auto result = get_accessible_string_property(
-                       cbindgen_private::AccessibleStringProperty::Selectable)) {
+                       cbindgen_private::AccessibleStringProperty::ItemSelectable)) {
                if (*result == "true")
                    return true;
                else if (*result == "false")
@@ -284,10 +284,10 @@ Program Listing for File slint-testing.h
            return std::nullopt;
        }
    
-       std::optional<uintptr_t> accessible_position_in_set() const
+       std::optional<size_t> accessible_item_index() const
        {
            if (auto result = get_accessible_string_property(
-                       cbindgen_private::AccessibleStringProperty::PositionInSet)) {
+                       cbindgen_private::AccessibleStringProperty::ItemIndex)) {
                uintptr_t value = 0;
                if (cbindgen_private::slint_string_to_usize(&*result, &value)) {
                    return value;
@@ -296,10 +296,10 @@ Program Listing for File slint-testing.h
            return std::nullopt;
        }
    
-       std::optional<uintptr_t> accessible_size_of_set() const
+       std::optional<size_t> accessible_item_count() const
        {
            if (auto result = get_accessible_string_property(
-                       cbindgen_private::AccessibleStringProperty::SizeOfSet)) {
+                       cbindgen_private::AccessibleStringProperty::ItemCount)) {
                uintptr_t value = 0;
                if (cbindgen_private::slint_string_to_usize(&*result, &value)) {
                    return value;

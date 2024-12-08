@@ -181,10 +181,10 @@ depends on the role and the platform.</p>
 <li><strong><code dir="auto">accessible-value-step</code></strong> (<em>in</em> <em>float</em>) The smallest increment or decrement by which the current value can change. This corresponds to the step by which a handle on a slider can be dragged.</li>
 <li><strong><code dir="auto">accessible-value</code></strong> (<em>in</em> <em>string</em>): The current value of the item.</li>
 <li><strong><code dir="auto">accessible-placeholder-text</code></strong> (<em>in</em> <em>string</em>): A placeholder text to use when the item’s value is empty. Applies to text elements.</li>
-<li><strong><code dir="auto">accessible-selectable</code></strong> (<em>in</em> <em>bool</em>): Whether the element can be selected or not.</li>
-<li><strong><code dir="auto">accessible-selected</code></strong> (<em>in</em> <em>bool</em>): Whether the element is selected or not. This maps to the “is-selected” state of listview items.</li>
-<li><strong><code dir="auto">accessible-position-in-set</code></strong> (<em>in</em> <em>int</em>): The index (starting from 0) of this element in a group of similar elements. Applies to list items, radio buttons and other elements.</li>
-<li><strong><code dir="auto">accessible-size-of-set</code></strong> (<em>in</em> <em>int</em>): The total number of elements in a group. Applies to all elements of a group like list items, radio buttons and other elements, but not to their parent container like list views, radio button groups or other grouping elements.</li>
+<li><strong><code dir="auto">accessible-item-selectable</code></strong> (<em>in</em> <em>bool</em>): Whether the element can be selected or not.</li>
+<li><strong><code dir="auto">accessible-item-selected</code></strong> (<em>in</em> <em>bool</em>): Whether the element is selected or not. This maps to the “is-selected” state of listview items.</li>
+<li><strong><code dir="auto">accessible-item-index</code></strong> (<em>in</em> <em>int</em>): The index (starting from 0) of this element in a group of similar elements. Applies to list items, radio buttons and other elements.</li>
+<li><strong><code dir="auto">accessible-item-count</code></strong> (<em>in</em> <em>int</em>): The total number of elements in a group. Applies to the parent container of a group of element such as list views, radio button groups or other grouping elements.</li>
 </ul>
 <p>You can also use the following callbacks that are going to be called by the accessibility framework:</p>
 <ul>

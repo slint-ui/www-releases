@@ -1211,10 +1211,10 @@ Program Listing for File slint.h
    }
    #endif
    
-   inline bool select_bundled_translation(std::string_view locale)
+   inline bool select_bundled_translation(std::string_view language)
    {
        return cbindgen_private::slint_translate_select_bundled_translation(
-               slint::private_api::string_to_slice(locale));
+               slint::private_api::string_to_slice(language));
    }
    
    #if !defined(DOXYGEN)
@@ -1322,10 +1322,11 @@ Program Listing for File slint.h
    #    endif
    #endif
    
-   inline void set_xdg_app_id(const SharedString &xdg_app_id)
+   inline void set_xdg_app_id(std::string_view xdg_app_id)
    {
        private_api::assert_main_thread();
-       cbindgen_private::slint_set_xdg_app_id(&xdg_app_id);
+       SharedString s = xdg_app_id;
+       cbindgen_private::slint_set_xdg_app_id(&s);
    }
    
    } // namespace slint
