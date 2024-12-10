@@ -98,6 +98,8 @@ jobs:
           echo "/docs/* /latest/docs/:splat" >> docs/_redirects
           echo "/editor/* /latest/editor/:splat" >> docs/_redirects
           echo "/${{ steps.identify-version.outputs.VERSION }}/* /latest/:splat" >> docs/_redirects
+          echo "/ /latest/docs/slint/" >> docs/_redirects
+          echo "/latest/docs/ /latest/docs/slint/" >> docs/_redirects
 
       - name: Verify _redirects file
         run: cat docs/_redirects
@@ -113,6 +115,33 @@ jobs:
       - name: Publish latest release to docs
         run: |
           cd docs && npx wrangler@3 pages deploy . --project-name=docs  --commit-dirty=true
+
+      - name: Update Cloudflare redirects to prefer docs.slint.dev
+        if: ${{ github.event.inputs.new_release == 'true' }}
+        run: |
+          curl -X PATCH "https://api.cloudflare.com/client/v4/zones/${{ vars.CLOUDFLARE_ZONE_ID }}/rulesets/${{ vars.CLOUDFLARE_RULESET_ID }}/rules/${{ vars.CLOUDFLARE_RULE_ID }}" \
+          -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}" \
+          -H 'Content-Type: application/json' \
+          -d '{
+              "position": {
+                  "before": "${{ vars.CLOUDFLARE_BEFORE_RULE_ID }}"
+              },
+              "action": "redirect",
+              "action_parameters": {
+                  "from_value": {
+                      "status_code": 301,
+                      "target_url": {
+                          "expression": "concat(\"https://releases.slint.dev\", http.request.uri.path)"
+                      },
+                      "preserve_query_string": true
+                  }
+              },
+              "description": "docs.slint.dev to releases subdomain",
+              "enabled": false,
+              "expression": "(http.host eq \"docs.slint.dev\" and not starts_with(http.request.uri.path, \"/${{ steps.identify-version.outputs.VERSION }}\") and http.request.uri ne \"/index.html\" and http.request.uri ne \"/\") and not starts_with(http.request.uri.path, \"/latest\") and not starts_with(http.request.uri.path, \"/cdn-cgi\")",
+              "id": "${{ vars.CLOUDFLARE_RULE_ID }}",
+              "ref": "${{ vars.CLOUDFLARE_RULE_ID }}"
+          }'
 
   # scrape-docs:
   #   if: ${{ github.event.inputs.new_release == 'true' }}
