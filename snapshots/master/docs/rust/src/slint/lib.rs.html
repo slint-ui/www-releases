@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `api/rs/slint/lib.rs`."><title>lib.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-46132b98.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint" data-themes="" data-resource-suffix="" data-rustdoc-version="1.85.0-nightly (21fe748be 2024-12-11)" data-channel="nightly" data-search-js="search-92e6798f.js" data-settings-js="settings-0f613d39.js" ><script src="../../static.files/storage-59e33391.js"></script><script defer src="../../static.files/src-script-56102188.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `api/rs/slint/lib.rs`."><title>lib.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-46132b98.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint" data-themes="" data-resource-suffix="" data-rustdoc-version="1.85.0-nightly (d4025ee45 2024-12-12)" data-channel="nightly" data-search-js="search-92e6798f.js" data-settings-js="settings-0f613d39.js" ><script src="../../static.files/storage-59e33391.js"></script><script defer src="../../static.files/src-script-56102188.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -558,7 +558,11 @@
 <a href="#435" id="435">435</a>
 <a href="#436" id="436">436</a>
 <a href="#437" id="437">437</a>
-<a href="#438" id="438">438</a></pre></div><pre class="rust"><code><span class="comment">// Copyright © SixtyFPS GmbH &lt;info@slint.dev&gt;
+<a href="#438" id="438">438</a>
+<a href="#439" id="439">439</a>
+<a href="#440" id="440">440</a>
+<a href="#441" id="441">441</a>
+<a href="#442" id="442">442</a></pre></div><pre class="rust"><code><span class="comment">// Copyright © SixtyFPS GmbH &lt;info@slint.dev&gt;
 // SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0
 
 // cSpell: ignore buildrs
@@ -571,13 +575,13 @@
 This crate is the main entry point for embedding user interfaces designed with
 [Slint](https://slint.rs/) in Rust programs.
 */
-</span><span class="attr">#![doc = <span class="macro">concat!</span>(<span class="string">"If you are new to Slint, start with the [Walk-through **tutorial**](https://slint.dev/releases/"</span>, <span class="macro">env!</span>(<span class="string">"CARGO_PKG_VERSION"</span>), <span class="string">"/docs/slint/src/quickstart)"</span>)]
+</span><span class="attr">#![doc = <span class="macro">i_slint_core_macros::slint_doc_str!</span>(<span class="string">"If you are new to Slint, start with the [Walk-through **tutorial**](slint:quickstart)"</span>)]
 </span><span class="doccomment">/*! If you are already familiar with Slint, the following topics provide related information.
 
 ## Topics
 
 */
-</span><span class="attr">#![doc = <span class="macro">concat!</span>(<span class="string">"- [The Slint Language Documentation](https://slint.dev/releases/"</span>, <span class="macro">env!</span>(<span class="string">"CARGO_PKG_VERSION"</span>), <span class="string">"/docs/slint)"</span>)]
+</span><span class="attr">#![doc = <span class="macro">i_slint_core_macros::slint_doc_str!</span>(<span class="string">"- [The Slint Language Documentation](slint:index)"</span>)]
 </span><span class="doccomment">/*! - [Type mappings between .slint and Rust](docs::type_mappings)
  - [Feature flags and backend selection](docs::cargo_features)
  - [Slint on Microcontrollers](docs::mcu)
@@ -590,7 +594,7 @@ of including them in Rust:
  - The `.slint` code is [inline in a macro](#the-slint-code-in-a-macro).
  - The `.slint` code in [external files compiled with `build.rs`](#the-slint-code-in-external-files-is-compiled-with-buildrs)
 */
-</span><span class="attr">#![doc = <span class="macro">concat!</span>(<span class="string">" - The `.slint` code is loaded dynamically at run-time from the file system, by using the [interpreter API](https://slint.dev/releases/"</span>, <span class="macro">env!</span>(<span class="string">"CARGO_PKG_VERSION"</span>), <span class="string">"/docs/rust/slint_interpreter/)."</span>)]
+</span><span class="attr">#![doc = <span class="macro">i_slint_core_macros::slint_doc_str!</span>(<span class="string">" - The `.slint` code is loaded dynamically at run-time from the file system, by using the [interpreter API](slint:rust:slint_interpreter/)."</span>)]
 </span><span class="doccomment">/*!
 
 With the first two methods, the markup code is translated to Rust code and each component is turned into a Rust
@@ -619,8 +623,9 @@ fn main() {
 
 ### The .slint code in external files is compiled with `build.rs`
 
-When your design becomes bigger in terms of markup code, you may want move it to a dedicated*/
-</span><span class="attr">#![doc = <span class="macro">concat!</span>(<span class="string">"`.slint` file. It's also possible to split a `.slint` file into multiple files using [modules](https://slint.dev/releases/"</span>, <span class="macro">env!</span>(<span class="string">"CARGO_PKG_VERSION"</span>), <span class="string">"/docs/slint/src/language/syntax/modules.html)."</span>)]
+When your design becomes bigger in terms of markup code, you may want move it to a dedicated
+`.slint` file. */
+</span><span class="attr">#![doc = <span class="macro">i_slint_core_macros::slint_doc_str!</span>(<span class="string">"It's also possible to split a `.slint` file into multiple files using [modules](slint:modules)."</span>)]
 </span><span class="doccomment">/*!Use a [build script](https://doc.rust-lang.org/cargo/reference/build-scripts.html) to compile
 your main `.slint` file:
 
@@ -733,7 +738,7 @@ To run an async function or a future, use [`spawn_local()`].
 ## Exported Global singletons
 
 */
-</span><span class="attr">#![doc = <span class="macro">concat!</span>(<span class="string">"When you export a [global singleton](https://slint.dev/releases/"</span>, <span class="macro">env!</span>(<span class="string">"CARGO_PKG_VERSION"</span>), <span class="string">"/docs/slint/src/language/syntax/globals.html) from the main file,"</span>)]
+</span><span class="attr">#![doc = <span class="macro">i_slint_core_macros::slint_doc_str!</span>(<span class="string">"When you export a [global singleton](slint:globals) from the main file,"</span>)]
 </span><span class="doccomment">/*! it is also generated with the exported name. Like the main component, the generated struct have
 inherent method to access the properties and callback:
 
@@ -918,7 +923,8 @@ each instance will have their own instance of associated globals singletons.
     };
 }
 
-<span class="doccomment">/// Initialize translations when using the `gettext` feature.
+<span class="attr">#[i_slint_core_macros::slint_doc]
+</span><span class="doccomment">/// Initialize translations when using the `gettext` feature.
 ///
 /// Call this in your main function with the path where translations are located.
 /// This macro internally calls the [`bindtextdomain`](https://man7.org/linux/man-pages/man3/bindtextdomain.3.html) function from gettext.
@@ -930,6 +936,8 @@ each instance will have their own instance of associated globals singletons.
 /// where `dirname` is the directory passed as an argument to this macro,
 /// `locale` is a locale name (e.g., `en`, `en_GB`, `fr`), and
 /// `crate` is the package name obtained from the `CARGO_PKG_NAME` environment variable.
+///
+/// See also the [Translation documentation](slint:translations).
 ///
 /// ### Example
 /// ```rust

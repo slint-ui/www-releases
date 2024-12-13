@@ -430,9 +430,10 @@ Program Listing for File slint_internal.h
        Property<bool> has_focus;
        Property<bool> enabled;
        private_api::CallbackHelper<void> accepted;
-       private_api::CallbackHelper<void> rejected;
        private_api::CallbackHelper<slint::LogicalPosition> cursor_position_changed;
        private_api::CallbackHelper<void> edited;
+       private_api::CallbackHelper<KeyEvent, EventResult> key_pressed;
+       private_api::CallbackHelper<KeyEvent, EventResult> key_released;
        Property<bool> single_line;
        Property<bool> read_only;
        Property<SharedString> preedit_text;
