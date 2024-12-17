@@ -814,6 +814,7 @@ Program Listing for File slint_internal.h
        Property<bool> no_frame;
        Property<LogicalLength> resize_border_width;
        Property<bool> always_on_top;
+       Property<bool> full_screen;
        Property<Image> icon;
        Property<SharedString> default_font_family;
        Property<LogicalLength> default_font_size;

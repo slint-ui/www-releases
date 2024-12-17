@@ -7,6 +7,7 @@ export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembl
 export interface InitOutput {
   readonly memory: WebAssembly.Memory;
   readonly main: () => void;
+  readonly slint_qt_get_widget: (a: number) => number;
   readonly slint_mock_elapsed_time: (a: bigint) => void;
   readonly slint_get_mocked_time: () => bigint;
   readonly slint_send_mouse_click: (a: number, b: number, c: number) => void;
@@ -18,11 +19,11 @@ export interface InitOutput {
   readonly __wbindgen_malloc: (a: number, b: number) => number;
   readonly __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;
   readonly __wbindgen_export_5: WebAssembly.Table;
-  readonly closure2091_externref_shim: (a: number, b: number, c: any) => void;
+  readonly closure1918_externref_shim: (a: number, b: number, c: any) => void;
   readonly _dyn_core__ops__function__FnMut_____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__h9472f4cf68c52744: (a: number, b: number) => void;
-  readonly closure2470_externref_shim: (a: number, b: number, c: any) => void;
-  readonly closure2471_externref_shim: (a: number, b: number, c: any, d: any) => void;
-  readonly closure2515_externref_shim: (a: number, b: number, c: any) => void;
+  readonly closure2469_externref_shim: (a: number, b: number, c: any) => void;
+  readonly closure2470_externref_shim: (a: number, b: number, c: any, d: any) => void;
+  readonly closure2514_externref_shim: (a: number, b: number, c: any) => void;
   readonly __wbindgen_start: () => void;
 }
 

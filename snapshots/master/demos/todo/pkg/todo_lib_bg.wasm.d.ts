@@ -2,6 +2,7 @@
 /* eslint-disable */
 export const memory: WebAssembly.Memory;
 export const main: () => void;
+export const slint_qt_get_widget: (a: number) => number;
 export const slint_mock_elapsed_time: (a: bigint) => void;
 export const slint_get_mocked_time: () => bigint;
 export const slint_send_mouse_click: (a: number, b: number, c: number) => void;
@@ -13,9 +14,9 @@ export const __wbindgen_exn_store: (a: number) => void;
 export const __wbindgen_malloc: (a: number, b: number) => number;
 export const __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;
 export const __wbindgen_export_5: WebAssembly.Table;
-export const closure1112_externref_shim: (a: number, b: number, c: any) => void;
+export const closure939_externref_shim: (a: number, b: number, c: any) => void;
 export const _dyn_core__ops__function__FnMut_____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__h9472f4cf68c52744: (a: number, b: number) => void;
-export const closure1493_externref_shim: (a: number, b: number, c: any) => void;
-export const closure1494_externref_shim: (a: number, b: number, c: any, d: any) => void;
-export const closure1538_externref_shim: (a: number, b: number, c: any) => void;
+export const closure1492_externref_shim: (a: number, b: number, c: any) => void;
+export const closure1493_externref_shim: (a: number, b: number, c: any, d: any) => void;
+export const closure1537_externref_shim: (a: number, b: number, c: any) => void;
 export const __wbindgen_start: () => void;

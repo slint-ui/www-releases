@@ -6,6 +6,7 @@ export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembl
 
 export interface InitOutput {
   readonly memory: WebAssembly.Memory;
+  readonly slint_qt_get_widget: (a: number) => number;
   readonly slint_mock_elapsed_time: (a: bigint) => void;
   readonly slint_get_mocked_time: () => bigint;
   readonly slint_send_mouse_click: (a: number, b: number, c: number) => void;
@@ -18,7 +19,7 @@ export interface InitOutput {
   readonly __wbindgen_malloc: (a: number, b: number) => number;
   readonly __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;
   readonly __wbindgen_export_5: WebAssembly.Table;
-  readonly closure175_externref_shim: (a: number, b: number, c: any) => void;
+  readonly closure170_externref_shim: (a: number, b: number, c: any) => void;
   readonly closure444_externref_shim: (a: number, b: number, c: any) => void;
   readonly _dyn_core__ops__function__FnMut_____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__hffabb1685ad27ea8: (a: number, b: number) => void;
   readonly closure453_externref_shim: (a: number, b: number, c: any, d: any) => void;
