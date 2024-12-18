@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"enum":["RenderingRotation","RepaintBufferType"],"struct":["MinimalSoftwareWindow","PhysicalRegion","PremultipliedRgbaColor","Rgb565Pixel","SoftwareRenderer"],"trait":["LineBufferProvider","TargetPixel"]};
