@@ -6,7 +6,6 @@
 /demos/* https://docs.slint.dev/latest/demos/:splat
 /docs/* https://docs.slint.dev/latest/docs/:splat
 /editor/* https://docs.slint.dev/latest/editor/:splat
-/1.9.0/* https://snapshots.slint.dev/master/:splat
 /master/* https://snapshots.slint.dev/master/:splat
 /docs/rust/sixtyfps/* /docs/rust/slint/:splat
 /docs/rust/sixtyfps_interpreter/* /docs/rust/slint/:splat
