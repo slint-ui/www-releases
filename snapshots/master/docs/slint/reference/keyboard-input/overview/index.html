@@ -83,7 +83,10 @@ starlight-file-tree:where(.astro-25yaqiub){--x-space: 1.5rem;--y-space: .125rem;
 This is the unreleased documentation for the <strong>next</strong> version of Slint.
 <br>
 For up-to-date documentation, see <a href="https://docs.slint.dev">here</a>.
-</div>   <div class="content-panel astro-4r574wmc"> <div class="sl-container astro-4r574wmc"> <h1 id="_top" class="astro-7wrulwsq">Key Handling Overview</h1>  </div> </div>  <div class="content-panel astro-4r574wmc"> <div class="sl-container astro-4r574wmc"> <div class="sl-markdown-content"> <h2 id="keyevent">KeyEvent</h2>
+</div>   <div class="content-panel astro-4r574wmc"> <div class="sl-container astro-4r574wmc"> <h1 id="_top" class="astro-7wrulwsq">Key Handling Overview</h1>  </div> </div>  <div class="content-panel astro-4r574wmc"> <div class="sl-container astro-4r574wmc"> <div class="sl-markdown-content"> <p>To handle keyboard input in Slint, use the <code dir="auto">FocusScope</code> or individual <code dir="auto">key-pressed</code> and <code dir="auto">key-released</code> callbacks in various elements. Keyboard
+input is delivered via <a href="#keyevent"><code dir="auto">KeyEvent</code></a> data structures. The primary field of this data structure is the <code dir="auto">text</code> property, which holds all affected keys
+encoded in a string. Use the <a href="#key-namespace"><code dir="auto">Key</code> namespace</a> to identify known named keys.</p>
+<h2 id="keyevent">KeyEvent</h2>
 <p>This structure is generated and passed to the key press and release callbacks of the <code dir="auto">FocusScope</code> element.</p>
 <ul>
 <li><strong><code dir="auto">text</code></strong> (<em>string</em>):  The unicode representation of the key pressed.</li>

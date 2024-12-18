@@ -253,7 +253,7 @@ export function main() {
 }
 
 function __wbg_adapter_28(arg0, arg1, arg2) {
-    wasm.closure939_externref_shim(arg0, arg1, arg2);
+    wasm.closure1065_externref_shim(arg0, arg1, arg2);
 }
 
 function __wbg_adapter_39(arg0, arg1) {
@@ -1605,24 +1605,24 @@ function __wbg_get_imports() {
         const ret = false;
         return ret;
     };
-    imports.wbg.__wbindgen_closure_wrapper2401 = function(arg0, arg1, arg2) {
-        const ret = makeClosure(arg0, arg1, 940, __wbg_adapter_28);
+    imports.wbg.__wbindgen_closure_wrapper2620 = function(arg0, arg1, arg2) {
+        const ret = makeClosure(arg0, arg1, 1066, __wbg_adapter_28);
         return ret;
     };
-    imports.wbg.__wbindgen_closure_wrapper2403 = function(arg0, arg1, arg2) {
-        const ret = makeClosure(arg0, arg1, 940, __wbg_adapter_28);
+    imports.wbg.__wbindgen_closure_wrapper2622 = function(arg0, arg1, arg2) {
+        const ret = makeClosure(arg0, arg1, 1066, __wbg_adapter_28);
         return ret;
     };
-    imports.wbg.__wbindgen_closure_wrapper2405 = function(arg0, arg1, arg2) {
-        const ret = makeClosure(arg0, arg1, 940, __wbg_adapter_28);
+    imports.wbg.__wbindgen_closure_wrapper2624 = function(arg0, arg1, arg2) {
+        const ret = makeClosure(arg0, arg1, 1066, __wbg_adapter_28);
         return ret;
     };
-    imports.wbg.__wbindgen_closure_wrapper2407 = function(arg0, arg1, arg2) {
-        const ret = makeClosure(arg0, arg1, 940, __wbg_adapter_28);
+    imports.wbg.__wbindgen_closure_wrapper2626 = function(arg0, arg1, arg2) {
+        const ret = makeClosure(arg0, arg1, 1066, __wbg_adapter_28);
         return ret;
     };
-    imports.wbg.__wbindgen_closure_wrapper2409 = function(arg0, arg1, arg2) {
-        const ret = makeClosure(arg0, arg1, 940, __wbg_adapter_28);
+    imports.wbg.__wbindgen_closure_wrapper2628 = function(arg0, arg1, arg2) {
+        const ret = makeClosure(arg0, arg1, 1066, __wbg_adapter_28);
         return ret;
     };
     imports.wbg.__wbindgen_closure_wrapper3824 = function(arg0, arg1, arg2) {
