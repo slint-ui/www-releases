@@ -1,0 +1,61 @@
+
+.. _program_listing_file_cppdocs_generated_include_slint_testing_internal.h:
+
+Program Listing for File slint_testing_internal.h
+=================================================
+
+|exhale_lsh| :ref:`Return to documentation for file <file_cppdocs_generated_include_slint_testing_internal.h>` (``cppdocs/generated_include/slint_testing_internal.h``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   #pragma once
+   
+   /* Generated with cbindgen:0.26.0 */
+   
+   #include <cstdarg>
+   #include <cstdint>
+   #include <cstdlib>
+   #include <ostream>
+   #include <new>
+   #include "slint_testing_internal.h"
+   
+   namespace slint {
+   namespace cbindgen_private {
+   
+   struct ElementHandle {
+       ItemWeak item;
+       uintptr_t element_index;
+   };
+   
+   extern "C" {
+   
+   void slint_testing_init_backend();
+   
+   bool slint_testing_element_visit_elements(const ItemTreeRc *root,
+                                             void *user_data,
+                                             bool (*visitor)(void*, const ElementHandle*));
+   
+   void slint_testing_element_find_by_accessible_label(const ItemTreeRc *root,
+                                                       const Slice<uint8_t> *label,
+                                                       SharedVector<ElementHandle> *out);
+   
+   void slint_testing_element_find_by_element_id(const ItemTreeRc *root,
+                                                 const Slice<uint8_t> *element_id,
+                                                 SharedVector<ElementHandle> *out);
+   
+   void slint_testing_element_find_by_element_type_name(const ItemTreeRc *root,
+                                                        const Slice<uint8_t> *type_name,
+                                                        SharedVector<ElementHandle> *out);
+   
+   bool slint_testing_element_id(const ElementHandle *element, SharedString *out);
+   
+   bool slint_testing_element_type_name(const ElementHandle *element, SharedString *out);
+   
+   bool slint_testing_element_bases(const ElementHandle *element, SharedVector<SharedString> *out);
+   
+   } // extern "C"
+   
+   } // namespace cbindgen_private
+   } // namespace slint
