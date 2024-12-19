@@ -117,7 +117,6 @@ jobs:
           cd docs && npx wrangler@3 pages deploy . --project-name=docs  --commit-dirty=true
 
       - name: Update Cloudflare redirects to prefer docs.slint.dev
-        if: ${{ github.event.inputs.new_release == 'true' }}
         run: |
           curl -X PATCH "https://api.cloudflare.com/client/v4/zones/${{ vars.CLOUDFLARE_ZONE_ID }}/rulesets/${{ vars.CLOUDFLARE_RULESET_ID }}/rules/${{ vars.CLOUDFLARE_RULE_ID }}" \
           -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}" \
