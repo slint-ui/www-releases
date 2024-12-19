@@ -5,7 +5,7 @@ This page lists the licenses of the dependencies used by Slint.
 
 ## Overview of licenses
 
-- [MIT License](#MIT) (315)
+- [MIT License](#MIT) (316)
 - [Unicode License v3](#Unicode-3.0) (20)
 - [Apache License 2.0](#Apache-2.0) (15)
 - [BSD 3-Clause &quot;New&quot; or &quot;Revised&quot; License](#BSD-3-Clause) (4)
@@ -2077,7 +2077,7 @@ DEALINGS IN THE SOFTWARE.
 
 #### Used by:
 
-- [cc 1.2.4]( https://github.com/rust-lang/cc-rs )
+- [cc 1.1.31]( https://github.com/rust-lang/cc-rs )
 - [cfg-if 1.0.0]( https://github.com/alexcrichton/cfg-if )
 - [flate2 1.0.35]( https://github.com/rust-lang/flate2-rs )
 - [pkg-config 0.3.31]( https://github.com/rust-lang/pkg-config-rs )
@@ -4564,6 +4564,7 @@ according to those terms.
 
 #### Used by:
 
+- [cgl 0.3.2]( https://github.com/servo/cgl-rs )
 - [core-graphics 0.23.2]( https://github.com/servo/core-foundation-rs )
 - [core-text 20.1.0]( https://github.com/servo/core-foundation-rs )
 - [euclid 0.22.11]( https://github.com/servo/euclid )
@@ -5134,8 +5135,8 @@ SOFTWARE.
 
 - [const-field-offset 0.1.5]( https://github.com/slint-ui/slint )
 - [const-field-offset-macro 0.1.5]( https://github.com/slint-ui/slint )
-- [vtable 0.2.0]( https://github.com/slint-ui/slint )
-- [vtable-macro 0.2.0]( https://github.com/slint-ui/slint )
+- [vtable 0.2.1]( https://github.com/slint-ui/slint )
+- [vtable-macro 0.2.1]( https://github.com/slint-ui/slint )
 - [block2 0.5.1]( https://github.com/madsmtm/objc2 )
 - [block 0.1.6]( http://github.com/SSheldon/rust-block )
 - [chrono 0.4.39]( https://github.com/chronotope/chrono )
