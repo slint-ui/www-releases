@@ -91,6 +91,7 @@ jobs:
             rsync -ua ${{ steps.identify-version.outputs.VERSION }} docs
             cp versions.txt 404.html index.html docs
             mv docs/${{ steps.identify-version.outputs.VERSION }} docs/latest
+            find docs/latest -type f -exec sed -i "s@/${{ steps.identify-version.outputs.VERSION }}/docs@/latest/docs@g" {} \;
 
       - name: Create _redirects file
         run: |
