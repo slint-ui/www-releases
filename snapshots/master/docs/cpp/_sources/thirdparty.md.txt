@@ -2077,7 +2077,7 @@ DEALINGS IN THE SOFTWARE.
 
 #### Used by:
 
-- [cc 1.1.31]( https://github.com/rust-lang/cc-rs )
+- [cc 1.2.5]( https://github.com/rust-lang/cc-rs )
 - [cfg-if 1.0.0]( https://github.com/alexcrichton/cfg-if )
 - [flate2 1.0.35]( https://github.com/rust-lang/flate2-rs )
 - [pkg-config 0.3.31]( https://github.com/rust-lang/pkg-config-rs )
@@ -2230,7 +2230,7 @@ IN THE SOFTWARE.
 
 #### Used by:
 
-- [libc 0.2.168]( https://github.com/rust-lang/libc )
+- [libc 0.2.169]( https://github.com/rust-lang/libc )
 
 #### License Text
 
