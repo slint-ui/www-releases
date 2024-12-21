@@ -1,0 +1,19 @@
+{
+  "name": "todo",
+  "type": "module",
+  "collaborators": [
+    "Slint Developers <info@slint.dev>"
+  ],
+  "version": "1.9.1",
+  "license": "MIT",
+  "files": [
+    "todo_lib_bg.wasm",
+    "todo_lib.js",
+    "todo_lib.d.ts"
+  ],
+  "main": "todo_lib.js",
+  "types": "todo_lib.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}
