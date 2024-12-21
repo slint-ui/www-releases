@@ -5,7 +5,7 @@ This page lists the licenses of the dependencies used by Slint.
 
 ## Overview of licenses
 
-- [MIT License](#MIT) (316)
+- [MIT License](#MIT) (317)
 - [Unicode License v3](#Unicode-3.0) (20)
 - [Apache License 2.0](#Apache-2.0) (15)
 - [BSD 3-Clause &quot;New&quot; or &quot;Revised&quot; License](#BSD-3-Clause) (4)
@@ -2482,7 +2482,7 @@ THE SOFTWARE.
 
 #### Used by:
 
-- [png 0.17.15]( https://github.com/image-rs/image-png )
+- [png 0.17.16]( https://github.com/image-rs/image-png )
 
 #### License Text
 
@@ -4683,6 +4683,7 @@ SOFTWARE.
 #### Used by:
 
 - [miniz_oxide 0.8.2]( https://github.com/Frommi/miniz_oxide/tree/master/miniz_oxide )
+- [miniz_oxide 0.8.2]( https://github.com/Frommi/miniz_oxide/tree/master/miniz_oxide )
 
 #### License Text
 
@@ -5344,8 +5345,8 @@ SOFTWARE.
 
 #### Used by:
 
-- [bytemuck 1.20.0]( https://github.com/Lokathor/bytemuck )
-- [bytemuck_derive 1.8.0]( https://github.com/Lokathor/bytemuck )
+- [bytemuck 1.21.0]( https://github.com/Lokathor/bytemuck )
+- [bytemuck_derive 1.8.1]( https://github.com/Lokathor/bytemuck )
 
 #### License Text
 
@@ -5648,7 +5649,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #### Used by:
 
-- [tinyvec 1.8.0]( https://github.com/Lokathor/tinyvec )
+- [tinyvec 1.8.1]( https://github.com/Lokathor/tinyvec )
 
 #### License Text
 
