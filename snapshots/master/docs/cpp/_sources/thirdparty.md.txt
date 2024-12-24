@@ -6211,7 +6211,7 @@ SOFTWARE.
 
 #### Used by:
 
-- [async-broadcast 0.7.1]( https://github.com/smol-rs/async-broadcast )
+- [async-broadcast 0.7.2]( https://github.com/smol-rs/async-broadcast )
 
 #### License Text
 
