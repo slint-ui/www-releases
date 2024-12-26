@@ -5,7 +5,7 @@ This page lists the licenses of the dependencies used by Slint.
 
 ## Overview of licenses
 
-- [MIT License](#MIT) (307)
+- [MIT License](#MIT) (298)
 - [Unicode License v3](#Unicode-3.0) (20)
 - [Apache License 2.0](#Apache-2.0) (15)
 - [BSD 3-Clause &quot;New&quot; or &quot;Revised&quot; License](#BSD-3-Clause) (4)
@@ -1449,23 +1449,6 @@ THIS SOFTWARE.
     LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE
-
-```
-
-### <a id="MIT"></a> MIT License
-
-#### Used by:
-
-- [winapi 0.3.9]( https://github.com/retep998/winapi-rs )
-
-#### License Text
-
-```
-// Licensed under the Apache License, Version 2.0
-// &lt;LICENSE-APACHE or http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license
-// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your option.
-// All files in the project carrying such notice may not be copied, modified, or distributed
-// except according to those terms.
 
 ```
 
@@ -4061,7 +4044,6 @@ DEALINGS IN THE SOFTWARE.
 #### Used by:
 
 - [zerocopy-derive 0.7.35]( https://github.com/google/zerocopy )
-- [zerocopy 0.7.35]( https://github.com/google/zerocopy )
 
 #### License Text
 
@@ -4162,27 +4144,6 @@ THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
-```
-
-### <a id="MIT"></a> MIT License
-
-#### Used by:
-
-- [unicode-properties 0.1.3]( https://github.com/unicode-rs/unicode-properties )
-- [unicode-segmentation 1.12.0]( https://github.com/unicode-rs/unicode-segmentation )
-- [unicode-xid 0.2.6]( https://github.com/unicode-rs/unicode-xid )
-
-#### License Text
-
-```
-Licensed under the Apache License, Version 2.0
-&lt;LICENSE-APACHE or
-http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT
-license &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;,
-at your option. All files in the project carrying such
-notice may not be copied, modified, or distributed except
-according to those terms.
 
 ```
 
@@ -5011,49 +4972,6 @@ DEALINGS IN THE SOFTWARE.
 
 #### Used by:
 
-- [wayland-protocols-plasma 0.3.5]( https://github.com/smithay/wayland-rs )
-
-#### License Text
-
-```
-MIT License Copyright (c) &lt;year&gt; &lt;copyright holders&gt;
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the &quot;Software&quot;), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is furnished
-to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice (including the next
-paragraph) shall be included in all copies or substantial portions of the
-Software.
-
-THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
-FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS
-OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF
-OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-```
-
-### <a id="MIT"></a> MIT License
-
-#### Used by:
-
-- [typenum 1.17.0]( https://github.com/paholg/typenum )
-
-#### License Text
-
-```
-MIT OR Apache-2.0
-```
-
-### <a id="MIT"></a> MIT License
-
-#### Used by:
-
 - [async-recursion 1.1.1]( https://github.com/dcchut/async-recursion )
 
 #### License Text
@@ -5251,39 +5169,6 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-```
-
-### <a id="MIT"></a> MIT License
-
-#### Used by:
-
-- [tracing-core 0.1.33]( https://github.com/tokio-rs/tracing )
-
-#### License Text
-
-```
-The MIT License (MIT)
-
-Copyright (c) 2014 Mathijs van de Nes
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the &quot;Software&quot;), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
 
 ```
 
@@ -5995,90 +5880,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
-```
-
-### <a id="MIT"></a> MIT License
-
-#### Used by:
-
-- [uds_windows 1.1.0]( https://github.com/haraldh/rust_uds_windows )
-
-#### License Text
-
-```
-Third Party Notices
-
-***
-
-rust
-Copyright 2016 The Rust Project Developers
-Permission is hereby granted, free of charge, to any
-person obtaining a copy of this software and associated
-documentation files (the &quot;Software&quot;), to deal in the
-Software without restriction, including without
-limitation the rights to use, copy, modify, merge,
-publish, distribute, sublicense, and/or sell copies of
-the Software, and to permit persons to whom the Software
-is furnished to do so, subject to the following
-conditions:
-The above copyright notice and this permission notice
-shall be included in all copies or substantial portions
-of the Software.
-THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF
-ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
-TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
-PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
-SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
-IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-DEALINGS IN THE SOFTWARE.
-
-***
-
-mio
-Copyright (c) 2014 Carl Lerche and other MIO contributors
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the &quot;Software&quot;), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-
-***
-
-miow
-Copyright (c) 2014 Alex Crichton
-Permission is hereby granted, free of charge, to any
-person obtaining a copy of this software and associated
-documentation files (the &quot;Software&quot;), to deal in the
-Software without restriction, including without
-limitation the rights to use, copy, modify, merge,
-publish, distribute, sublicense, and/or sell copies of
-the Software, and to permit persons to whom the Software
-is furnished to do so, subject to the following
-conditions:
-The above copyright notice and this permission notice
-shall be included in all copies or substantial portions
-of the Software.
-THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF
-ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
-TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
-PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
-SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
-IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-DEALINGS IN THE SOFTWARE.
 ```
 
 ### <a id="MPL-2.0"></a> Mozilla Public License 2.0
@@ -7241,15 +7042,7 @@ Exhibit B - &quot;Incompatible With Secondary Licenses&quot; Notice
 
 #### Used by:
 
-- [tinystr 0.7.6]( https://github.com/unicode-org/icu4x )
 - [unicode-ident 1.0.14]( https://github.com/dtolnay/unicode-ident )
-- [writeable 0.5.5]( https://github.com/unicode-org/icu4x )
-- [yoke-derive 0.7.5]( https://github.com/unicode-org/icu4x )
-- [yoke 0.7.5]( https://github.com/unicode-org/icu4x )
-- [zerofrom-derive 0.1.5]( https://github.com/unicode-org/icu4x )
-- [zerofrom 0.1.5]( https://github.com/unicode-org/icu4x )
-- [zerovec-derive 0.10.3]( https://github.com/unicode-org/icu4x )
-- [zerovec 0.10.4]( https://github.com/unicode-org/icu4x )
 
 #### License Text
 
@@ -7311,6 +7104,14 @@ authorization of the copyright holder.
 - [icu_provider 1.5.0]( https://github.com/unicode-org/icu4x )
 - [icu_provider_macros 1.5.0]( https://github.com/unicode-org/icu4x )
 - [litemap 0.7.4]( https://github.com/unicode-org/icu4x )
+- [tinystr 0.7.6]( https://github.com/unicode-org/icu4x )
+- [writeable 0.5.5]( https://github.com/unicode-org/icu4x )
+- [yoke-derive 0.7.5]( https://github.com/unicode-org/icu4x )
+- [yoke 0.7.5]( https://github.com/unicode-org/icu4x )
+- [zerofrom-derive 0.1.5]( https://github.com/unicode-org/icu4x )
+- [zerofrom 0.1.5]( https://github.com/unicode-org/icu4x )
+- [zerovec-derive 0.10.3]( https://github.com/unicode-org/icu4x )
+- [zerovec 0.10.4]( https://github.com/unicode-org/icu4x )
 
 #### License Text
 
