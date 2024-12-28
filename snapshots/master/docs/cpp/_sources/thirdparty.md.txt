@@ -2077,7 +2077,7 @@ DEALINGS IN THE SOFTWARE.
 
 #### Used by:
 
-- [cc 1.2.5]( https://github.com/rust-lang/cc-rs )
+- [cc 1.2.6]( https://github.com/rust-lang/cc-rs )
 - [cfg-if 1.0.0]( https://github.com/alexcrichton/cfg-if )
 - [flate2 1.0.35]( https://github.com/rust-lang/flate2-rs )
 - [pkg-config 0.3.31]( https://github.com/rust-lang/pkg-config-rs )
@@ -5536,8 +5536,8 @@ DEALINGS IN THE SOFTWARE.
 - [rustix 0.38.42]( https://github.com/bytecodealliance/rustix )
 - [rustversion 1.0.19]( https://github.com/dtolnay/rustversion )
 - [semver 1.0.24]( https://github.com/dtolnay/semver )
-- [serde 1.0.216]( https://github.com/serde-rs/serde )
-- [serde_derive 1.0.216]( https://github.com/serde-rs/serde )
+- [serde 1.0.217]( https://github.com/serde-rs/serde )
+- [serde_derive 1.0.217]( https://github.com/serde-rs/serde )
 - [serde_json 1.0.134]( https://github.com/serde-rs/json )
 - [serde_repr 0.1.19]( https://github.com/dtolnay/serde-repr )
 - [smol_str 0.2.2]( https://github.com/rust-analyzer/smol_str )
