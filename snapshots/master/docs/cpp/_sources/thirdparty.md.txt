@@ -5542,7 +5542,7 @@ DEALINGS IN THE SOFTWARE.
 - [serde_repr 0.1.19]( https://github.com/dtolnay/serde-repr )
 - [smol_str 0.2.2]( https://github.com/rust-analyzer/smol_str )
 - [syn 1.0.109]( https://github.com/dtolnay/syn )
-- [syn 2.0.92]( https://github.com/dtolnay/syn )
+- [syn 2.0.93]( https://github.com/dtolnay/syn )
 - [thiserror-impl 1.0.69]( https://github.com/dtolnay/thiserror )
 - [thiserror 1.0.69]( https://github.com/dtolnay/thiserror )
 - [unicode-ident 1.0.14]( https://github.com/dtolnay/unicode-ident )
