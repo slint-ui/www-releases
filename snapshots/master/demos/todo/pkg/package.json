@@ -4,7 +4,7 @@
   "collaborators": [
     "Slint Developers <info@slint.dev>"
   ],
-  "version": "1.9.1",
+  "version": "1.9.2",
   "license": "MIT",
   "files": [
     "todo_lib_bg.wasm",
