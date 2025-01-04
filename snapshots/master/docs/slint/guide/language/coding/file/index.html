@@ -201,9 +201,9 @@ must be declared to refer to a <code dir="auto">.slint</code> file that exports 
 Use one of the following methods to help the Slint compiler resolve libraries to the correct
 path on disk:</p>
 <ul>
-<li>When using Rust and <code dir="auto">build.rs</code>, call <a href="slint-build-rust:struct.CompilerConfiguration#method.with_library_paths"><code dir="auto">with_library_paths</code></a>
+<li>When using Rust and <code dir="auto">build.rs</code>, call <a href="https://slint.dev/docs/rust/slint_build/struct.CompilerConfiguration#method.with_library_paths" target="_blank" rel="noopener"><code dir="auto">with_library_paths</code><span> ↗</span></a>
 to provide a mapping from library name to path.</li>
-<li>When using C++, use <code dir="auto">LIBRARY_PATHS</code> with <a href="slint-cpp:cmake_reference#slint-target-sources"><code dir="auto">slint_target_sources</code></a>.</li>
+<li>When using C++, use <code dir="auto">LIBRARY_PATHS</code> with <a href="https://slint.dev/docs/cpp/cmake_reference#slint-target-sources" target="_blank" rel="noopener"><code dir="auto">slint_target_sources</code><span> ↗</span></a>.</li>
 <li>When invoking the <code dir="auto">slint-viewer</code> from the command line, pass <code dir="auto">-Lmylibrary=/path/to/my/library</code> for each component
 library.</li>
 <li>When using the VS Code extension, configure the Slint extension’s library path

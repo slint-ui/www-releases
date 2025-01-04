@@ -2077,7 +2077,7 @@ DEALINGS IN THE SOFTWARE.
 
 #### Used by:
 
-- [cc 1.2.6]( https://github.com/rust-lang/cc-rs )
+- [cc 1.2.7]( https://github.com/rust-lang/cc-rs )
 - [cfg-if 1.0.0]( https://github.com/alexcrichton/cfg-if )
 - [flate2 1.0.35]( https://github.com/rust-lang/flate2-rs )
 - [pkg-config 0.3.31]( https://github.com/rust-lang/pkg-config-rs )
@@ -5507,7 +5507,7 @@ DEALINGS IN THE SOFTWARE.
 - [async-process 2.3.0]( https://github.com/smol-rs/async-process )
 - [async-signal 0.2.10]( https://github.com/smol-rs/async-signal )
 - [async-task 4.7.1]( https://github.com/smol-rs/async-task )
-- [async-trait 0.1.83]( https://github.com/dtolnay/async-trait )
+- [async-trait 0.1.84]( https://github.com/dtolnay/async-trait )
 - [atomic-waker 1.1.2]( https://github.com/smol-rs/atomic-waker )
 - [auto_enums 0.8.6]( https://github.com/taiki-e/auto_enums )
 - [blocking 1.6.1]( https://github.com/smol-rs/blocking )
@@ -5619,7 +5619,7 @@ DEALINGS IN THE SOFTWARE.
 
 #### Used by:
 
-- [winnow 0.6.21]( https://github.com/winnow-rs/winnow )
+- [winnow 0.6.22]( https://github.com/winnow-rs/winnow )
 
 #### License Text
 
