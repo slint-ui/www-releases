@@ -32,6 +32,7 @@ Program Listing for File slint_enums.h
        Spinbox,
        Tab,
        TabList,
+       TabPanel,
        Text,
        Table,
        Tree,
