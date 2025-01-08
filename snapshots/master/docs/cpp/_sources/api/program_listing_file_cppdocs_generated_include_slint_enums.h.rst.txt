@@ -27,6 +27,7 @@ Program Listing for File slint_enums.h
        Button,
        Checkbox,
        Combobox,
+       GroupBox,
        List,
        Slider,
        Spinbox,
