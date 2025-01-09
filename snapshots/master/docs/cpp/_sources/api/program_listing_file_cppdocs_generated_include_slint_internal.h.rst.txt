@@ -526,6 +526,12 @@ Program Listing for File slint_internal.h
    
    using Size = Size2D<float>;
    
+   struct MenuVTable {
+       void (*drop)(VRefMut<MenuVTable>);
+       void (*sub_menu)(VRef<MenuVTable>, const MenuEntry*, SharedVector<MenuEntry>*);
+       void (*activate)(VRef<MenuVTable>, const MenuEntry*);
+   };
+   
    union WindowEvent {
        enum class Tag : uint32_t {
            PointerPressed,
@@ -1211,6 +1217,12 @@ Program Listing for File slint_internal.h
    void slint_windowrc_set_logical_size(const WindowAdapterRcOpaque *handle, const Size *size);
    
    ColorScheme slint_windowrc_color_scheme(const WindowAdapterRcOpaque *handle);
+   
+   bool slint_windowrc_supports_native_menu_bar(const WindowAdapterRcOpaque *handle);
+   
+   void slint_windowrc_setup_native_menu_bar(const WindowAdapterRcOpaque *handle,
+                                             MenuVTable *vtable,
+                                             void *menu_instance);
    
    float slint_windowrc_default_font_size(const WindowAdapterRcOpaque *handle);
    

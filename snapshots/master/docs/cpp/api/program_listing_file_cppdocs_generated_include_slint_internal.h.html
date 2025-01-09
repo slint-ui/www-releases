@@ -938,6 +938,12 @@
 
 <span class="k">using</span><span class="w"> </span><span class="n">Size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Size2D</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">;</span>
 
+<span class="k">struct</span><span class="w"> </span><span class="nc">MenuVTable</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">drop</span><span class="p">)(</span><span class="n">VRefMut</span><span class="o">&lt;</span><span class="n">MenuVTable</span><span class="o">&gt;</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">sub_menu</span><span class="p">)(</span><span class="n">VRef</span><span class="o">&lt;</span><span class="n">MenuVTable</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">MenuEntry</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">SharedVector</span><span class="o">&lt;</span><span class="n">MenuEntry</span><span class="o">&gt;*</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">activate</span><span class="p">)(</span><span class="n">VRef</span><span class="o">&lt;</span><span class="n">MenuVTable</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">MenuEntry</span><span class="o">*</span><span class="p">);</span>
+<span class="p">};</span>
+
 <span class="k">union</span><span class="w"> </span><span class="nc">WindowEvent</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Tag</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">PointerPressed</span><span class="p">,</span>
@@ -1623,6 +1629,12 @@
 <span class="kt">void</span><span class="w"> </span><span class="nf">slint_windowrc_set_logical_size</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">WindowAdapterRcOpaque</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Size</span><span class="w"> </span><span class="o">*</span><span class="n">size</span><span class="p">);</span>
 
 <span class="n">ColorScheme</span><span class="w"> </span><span class="nf">slint_windowrc_color_scheme</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">WindowAdapterRcOpaque</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">);</span>
+
+<span class="kt">bool</span><span class="w"> </span><span class="nf">slint_windowrc_supports_native_menu_bar</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">WindowAdapterRcOpaque</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">);</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">slint_windowrc_setup_native_menu_bar</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">WindowAdapterRcOpaque</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">,</span>
+<span class="w">                                          </span><span class="n">MenuVTable</span><span class="w"> </span><span class="o">*</span><span class="n">vtable</span><span class="p">,</span>
+<span class="w">                                          </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">menu_instance</span><span class="p">);</span>
 
 <span class="kt">float</span><span class="w"> </span><span class="nf">slint_windowrc_default_font_size</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">WindowAdapterRcOpaque</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">);</span>
 
