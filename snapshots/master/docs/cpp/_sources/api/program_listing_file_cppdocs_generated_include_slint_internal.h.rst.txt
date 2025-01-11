@@ -809,6 +809,7 @@ Program Listing for File slint_internal.h
        Property<float> viewbox_width;
        Property<float> viewbox_height;
        Property<bool> clip;
+       Property<bool> anti_alias;
        CachedRenderingData cached_rendering_data;
    };
    

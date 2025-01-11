@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/eval.rs`."><title>eval.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-46132b98.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0-nightly (824759493 2025-01-09)" data-channel="nightly" data-search-js="search-75f5ac3e.js" data-settings-js="settings-0f613d39.js" ><script src="../../static.files/storage-59e33391.js"></script><script defer src="../../static.files/src-script-56102188.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/eval.rs`."><title>eval.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-46132b98.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0-nightly (b1a7dfb91 2025-01-10)" data-channel="nightly" data-search-js="search-75f5ac3e.js" data-settings-js="settings-0f613d39.js" ><script src="../../static.files/storage-59e33391.js"></script><script defer src="../../static.files/src-script-56102188.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -2020,7 +2020,23 @@
 <a href="#1897" id="1897">1897</a>
 <a href="#1898" id="1898">1898</a>
 <a href="#1899" id="1899">1899</a>
-<a href="#1900" id="1900">1900</a></pre></div><pre class="rust"><code><span class="comment">// Copyright © SixtyFPS GmbH &lt;info@slint.dev&gt;
+<a href="#1900" id="1900">1900</a>
+<a href="#1901" id="1901">1901</a>
+<a href="#1902" id="1902">1902</a>
+<a href="#1903" id="1903">1903</a>
+<a href="#1904" id="1904">1904</a>
+<a href="#1905" id="1905">1905</a>
+<a href="#1906" id="1906">1906</a>
+<a href="#1907" id="1907">1907</a>
+<a href="#1908" id="1908">1908</a>
+<a href="#1909" id="1909">1909</a>
+<a href="#1910" id="1910">1910</a>
+<a href="#1911" id="1911">1911</a>
+<a href="#1912" id="1912">1912</a>
+<a href="#1913" id="1913">1913</a>
+<a href="#1914" id="1914">1914</a>
+<a href="#1915" id="1915">1915</a>
+<a href="#1916" id="1916">1916</a></pre></div><pre class="rust"><code><span class="comment">// Copyright © SixtyFPS GmbH &lt;info@slint.dev&gt;
 // SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0
 
 </span><span class="kw">use </span><span class="kw">crate</span>::api::{SetPropertyError, Struct, Value};
@@ -2672,10 +2688,26 @@
 
             <span class="kw">if let </span>Expression::ElementReference(popup_window) = <span class="kw-2">&amp;</span>arguments[<span class="number">0</span>] {
                 <span class="kw">let </span>popup_window = popup_window.upgrade().unwrap();
+                <span class="kw">let </span>pop_comp = popup_window.borrow().enclosing_component.upgrade().unwrap();
+                <span class="kw">let </span>parent_component = pop_comp
+                    .parent_element
+                    .upgrade()
+                    .unwrap()
+                    .borrow()
+                    .enclosing_component
+                    .upgrade()
+                    .unwrap();
+                <span class="kw">let </span>popup_list = parent_component.popup_windows.borrow();
+                <span class="kw">let </span>popup =
+                    popup_list.iter().find(|p| Rc::ptr_eq(<span class="kw-2">&amp;</span>p.component, <span class="kw-2">&amp;</span>pop_comp)).unwrap();
+
+                <span class="macro">generativity::make_guard!</span>(guard);
+                <span class="kw">let </span>enclosing_component =
+                    enclosing_component_for_element(<span class="kw-2">&amp;</span>popup.parent_element, component, guard);
                 <span class="kw">crate</span>::dynamic_item_tree::close_popup(
                     popup_window,
-                    component,
-                    component.window_adapter(),
+                    enclosing_component,
+                    enclosing_component.window_adapter(),
                 );
 
                 Value::Void

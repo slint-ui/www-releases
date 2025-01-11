@@ -469,7 +469,7 @@ find_package(Slint)
 # Compile app-window.slint to app-window.h and app-window.cpp
 slint_target_sources(your-target app-window.slint)
 
-# Embed images and fonts in the binary  
+# Embed images and fonts in the binary
 set_target_properties(your-target PROPERTIES SLINT_EMBED_RESOURCES embed-for-software-renderer)
 
 # Replace $BSP_NAME with the name of your concrete BSP,
@@ -492,7 +492,7 @@ Slint platform integration for STM32. Finally, include the header file for your 
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stm32h735g_discovery.h&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stm32h735g_discovery_lcd.h&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stm32h735g_discovery_ts.h&gt;</span><span class="c1">    </span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stm32h735g_discovery_ts.h&gt;</span>
 
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;app-window.h&quot;</span>
 
