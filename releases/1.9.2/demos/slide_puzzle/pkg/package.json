@@ -1,0 +1,19 @@
+{
+  "name": "slide_puzzle",
+  "type": "module",
+  "collaborators": [
+    "Slint Developers <info@slint.dev>"
+  ],
+  "version": "1.9.2",
+  "license": "MIT",
+  "files": [
+    "slide_puzzle_bg.wasm",
+    "slide_puzzle.js",
+    "slide_puzzle.d.ts"
+  ],
+  "main": "slide_puzzle.js",
+  "types": "slide_puzzle.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}
