@@ -1,6 +1,6 @@
 [
     {
-        "version": "1.9.2",
+        "version": "1.10.0",
         "name": "development snapshot",
         "url": "https://snapshots.slint.dev/master/docs/slint"
     },
