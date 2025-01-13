@@ -1038,10 +1038,10 @@ limitations under the License.
 
 #### Used by:
 
-- [glutin 0.32.1]( https://github.com/rust-windowing/glutin )
-- [glutin_egl_sys 0.7.0]( https://github.com/rust-windowing/glutin )
-- [glutin_glx_sys 0.6.0]( https://github.com/rust-windowing/glutin )
-- [glutin_wgl_sys 0.6.0]( https://github.com/rust-windowing/glutin )
+- [glutin 0.32.2]( https://github.com/rust-windowing/glutin )
+- [glutin_egl_sys 0.7.1]( https://github.com/rust-windowing/glutin )
+- [glutin_glx_sys 0.6.1]( https://github.com/rust-windowing/glutin )
+- [glutin_wgl_sys 0.6.1]( https://github.com/rust-windowing/glutin )
 
 #### License Text
 
@@ -2077,7 +2077,7 @@ DEALINGS IN THE SOFTWARE.
 
 #### Used by:
 
-- [cc 1.2.8]( https://github.com/rust-lang/cc-rs )
+- [cc 1.2.9]( https://github.com/rust-lang/cc-rs )
 - [cfg-if 1.0.0]( https://github.com/alexcrichton/cfg-if )
 - [flate2 1.0.35]( https://github.com/rust-lang/flate2-rs )
 - [pkg-config 0.3.31]( https://github.com/rust-lang/pkg-config-rs )

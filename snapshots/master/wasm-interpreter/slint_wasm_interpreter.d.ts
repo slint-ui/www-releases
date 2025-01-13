@@ -5,11 +5,11 @@
  *
  * Returns a promise to a compiled component which can be run with ".run()"
  */
-export function compile_from_string(source: string, base_url: string, optional_import_callback?: ImportCallbackFunction): Promise<CompilationResult>;
+export function compile_from_string(source: string, base_url: string, optional_import_callback?: ImportCallbackFunction | null): Promise<CompilationResult>;
 /**
  * Same as [`compile_from_string`], but also takes a style parameter
  */
-export function compile_from_string_with_style(source: string, base_url: string, style: string, optional_import_callback?: ImportCallbackFunction): Promise<CompilationResult>;
+export function compile_from_string_with_style(source: string, base_url: string, style: string, optional_import_callback?: ImportCallbackFunction | null): Promise<CompilationResult>;
 /**
  * Register DOM event handlers on all instance and set up the event loop for that.
  * You can call this function only once. It will throw an exception but that is safe
@@ -105,9 +105,9 @@ export interface InitOutput {
   readonly __wbindgen_export_6: WebAssembly.Table;
   readonly __externref_table_dealloc: (a: number) => void;
   readonly closure132_externref_shim: (a: number, b: number, c: any) => void;
-  readonly _dyn_core__ops__function__FnMut_____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__h4cc41129bb5b51b8: (a: number, b: number) => void;
+  readonly _dyn_core__ops__function__FnMut_____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__h089e5a09ce11412e: (a: number, b: number) => void;
   readonly closure667_externref_shim: (a: number, b: number, c: any) => void;
-  readonly closure677_externref_shim: (a: number, b: number, c: any, d: any) => void;
+  readonly closure678_externref_shim: (a: number, b: number, c: any, d: any) => void;
   readonly __wbindgen_start: () => void;
 }
 
