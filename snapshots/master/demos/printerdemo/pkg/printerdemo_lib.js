@@ -1033,7 +1033,7 @@ function __wbg_get_imports() {
         const ret = arg0.location;
         return ret;
     };
-    imports.wbg.__wbg_log_3f51b2ab2e8c6cf6 = function(arg0, arg1) {
+    imports.wbg.__wbg_log_5b673079b594d00d = function(arg0, arg1) {
         console.log(getStringFromWasm0(arg0, arg1));
     };
     imports.wbg.__wbg_matchMedia_bf8807a841d930c1 = function() { return handleError(function (arg0, arg1, arg2) {

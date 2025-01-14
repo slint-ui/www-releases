@@ -22,9 +22,9 @@ Program Listing for File slint_generated_public.h
    #include "slint_string.h"
    
    #define SLINT_VERSION_MAJOR 1
-   #define SLINT_VERSION_MINOR 9
-   #define SLINT_VERSION_PATCH 2
-   #define SLINT_VERSION_STRING "1.9.2"
+   #define SLINT_VERSION_MINOR 10
+   #define SLINT_VERSION_PATCH 0
+   #define SLINT_VERSION_STRING "1.10.0"
    
    #define SLINT_FEATURE_INTERPRETER
    #define SLINT_FEATURE_TESTING
