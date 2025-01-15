@@ -82,6 +82,8 @@ Program Listing for File slint_platform_internal.h
    
    bool slint_string_to_float(const SharedString *string, float *value);
    
+   uintptr_t slint_string_character_count(const SharedString *string);
+   
    bool slint_string_to_usize(const SharedString *string, uintptr_t *value);
    
    void slint_debug(const SharedString *string);
