@@ -868,6 +868,7 @@ Program Listing for File slint_internal.h
    struct ContextMenu {
        private_api::CallbackHelper<MenuEntry, std::shared_ptr<slint::Model<MenuEntry>>> sub_menu;
        private_api::CallbackHelper<MenuEntry> activated;
+       private_api::CallbackHelper<slint::LogicalPosition> show;
        CachedRenderingData cached_rendering_data;
    };
    

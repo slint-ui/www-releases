@@ -5,7 +5,7 @@ This page lists the licenses of the dependencies used by Slint.
 
 ## Overview of licenses
 
-- [MIT License](#MIT) (317)
+- [MIT License](#MIT) (326)
 - [Apache License 2.0](#Apache-2.0) (15)
 - [BSD 3-Clause &quot;New&quot; or &quot;Revised&quot; License](#BSD-3-Clause) (6)
 - [BSD 2-Clause &quot;Simplified&quot; License](#BSD-2-Clause) (4)
@@ -21,6 +21,7 @@ This page lists the licenses of the dependencies used by Slint.
 
 #### Used by:
 
+- [ab_glyph 0.2.29]( https://github.com/alexheretic/ab-glyph )
 - [owned_ttf_parser 0.25.0]( https://github.com/alexheretic/owned-ttf-parser )
 
 #### License Text
@@ -1466,7 +1467,6 @@ Apache License
 
 #### Used by:
 
-- [ab_glyph 0.2.29]( https://github.com/alexheretic/ab-glyph )
 - [gl_generator 0.14.0]( https://github.com/brendanzab/gl-rs/ )
 - [khronos_api 3.1.0]( https://github.com/brendanzab/gl-rs/ )
 
@@ -1949,6 +1949,15 @@ THIS SOFTWARE.
 
 - [rustybuzz 0.18.0]( https://github.com/RazrFalcon/rustybuzz )
 - [rustybuzz 0.20.1]( https://github.com/harfbuzz/rustybuzz )
+- [windows-core 0.52.0]( https://github.com/microsoft/windows-rs )
+- [windows-sys 0.52.0]( https://github.com/microsoft/windows-rs )
+- [windows-sys 0.59.0]( https://github.com/microsoft/windows-rs )
+- [windows-targets 0.48.5]( https://github.com/microsoft/windows-rs )
+- [windows-targets 0.52.6]( https://github.com/microsoft/windows-rs )
+- [windows_x86_64_gnu 0.48.5]( https://github.com/microsoft/windows-rs )
+- [windows_x86_64_gnu 0.52.6]( https://github.com/microsoft/windows-rs )
+- [windows_x86_64_msvc 0.48.5]( https://github.com/microsoft/windows-rs )
+- [windows_x86_64_msvc 0.52.6]( https://github.com/microsoft/windows-rs )
 
 #### License Text
 
@@ -2007,6 +2016,23 @@ THIS SOFTWARE.
     LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE
+
+```
+
+### <a id="MIT"></a> MIT License
+
+#### Used by:
+
+- [winapi 0.3.9]( https://github.com/retep998/winapi-rs )
+
+#### License Text
+
+```
+// Licensed under the Apache License, Version 2.0
+// &lt;LICENSE-APACHE or http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license
+// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your option.
+// All files in the project carrying such notice may not be copied, modified, or distributed
+// except according to those terms.
 
 ```
 
@@ -4739,6 +4765,8 @@ according to those terms.
 #### Used by:
 
 - [cgl 0.3.2]( https://github.com/servo/cgl-rs )
+- [core-graphics 0.23.2]( https://github.com/servo/core-foundation-rs )
+- [core-text 20.1.0]( https://github.com/servo/core-foundation-rs )
 - [euclid 0.22.11]( https://github.com/servo/euclid )
 
 #### License Text
@@ -5438,15 +5466,6 @@ SOFTWARE.
 - [qttypes 0.2.12]( https://github.com/woboq/qmetaobject-rs )
 - [simd_helpers 0.1.0]( https://github.com/lu-zero/simd_helpers )
 - [siphasher 1.0.1]( https://github.com/jedisct1/rust-siphash )
-- [windows-core 0.52.0]( https://github.com/microsoft/windows-rs )
-- [windows-sys 0.52.0]( https://github.com/microsoft/windows-rs )
-- [windows-sys 0.59.0]( https://github.com/microsoft/windows-rs )
-- [windows-targets 0.48.5]( https://github.com/microsoft/windows-rs )
-- [windows-targets 0.52.6]( https://github.com/microsoft/windows-rs )
-- [windows_x86_64_gnu 0.48.5]( https://github.com/microsoft/windows-rs )
-- [windows_x86_64_gnu 0.52.6]( https://github.com/microsoft/windows-rs )
-- [windows_x86_64_msvc 0.48.5]( https://github.com/microsoft/windows-rs )
-- [windows_x86_64_msvc 0.52.6]( https://github.com/microsoft/windows-rs )
 - [zune-core 0.4.12](
 https://crates.io/crates/zune-core )
 - [zune-inflate 0.2.54](
@@ -5758,6 +5777,31 @@ OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #### Used by:
 
+- [typenum 1.17.0]( https://github.com/paholg/typenum )
+
+#### License Text
+
+```
+MIT OR Apache-2.0
+```
+
+### <a id="MIT"></a> MIT License
+
+#### Used by:
+
+- [half 2.4.1]( https://github.com/starkat99/half-rs )
+
+#### License Text
+
+```
+MIT OR Apache-2.0
+
+```
+
+### <a id="MIT"></a> MIT License
+
+#### Used by:
+
 - [async-recursion 1.1.1]( https://github.com/dcchut/async-recursion )
 
 #### License Text
@@ -5804,10 +5848,10 @@ DEALINGS IN THE SOFTWARE.
 - [async-task 4.7.1]( https://github.com/smol-rs/async-task )
 - [async-trait 0.1.85]( https://github.com/dtolnay/async-trait )
 - [atomic-waker 1.1.2]( https://github.com/smol-rs/atomic-waker )
-- [auto_enums 0.8.6]( https://github.com/taiki-e/auto_enums )
+- [auto_enums 0.8.7]( https://github.com/taiki-e/auto_enums )
 - [blocking 1.6.1]( https://github.com/smol-rs/blocking )
 - [concurrent-queue 2.5.0]( https://github.com/smol-rs/concurrent-queue )
-- [derive_utils 0.14.2]( https://github.com/taiki-e/derive_utils )
+- [derive_utils 0.15.0]( https://github.com/taiki-e/derive_utils )
 - [endi 1.1.0]( https://github.com/zeenix/endi )
 - [event-listener-strategy 0.5.3]( https://github.com/smol-rs/event-listener-strategy )
 - [event-listener 5.4.0]( https://github.com/smol-rs/event-listener )
@@ -5955,6 +5999,39 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+```
+
+### <a id="MIT"></a> MIT License
+
+#### Used by:
+
+- [tracing-core 0.1.33]( https://github.com/tokio-rs/tracing )
+
+#### License Text
+
+```
+The MIT License (MIT)
+
+Copyright (c) 2014 Mathijs van de Nes
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the &quot;Software&quot;), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
 ```
 
@@ -6706,6 +6783,92 @@ THE SOFTWARE.
 
 #### Used by:
 
+- [uds_windows 1.1.0]( https://github.com/haraldh/rust_uds_windows )
+
+#### License Text
+
+```
+Third Party Notices
+
+***
+
+rust
+Copyright 2016 The Rust Project Developers
+Permission is hereby granted, free of charge, to any
+person obtaining a copy of this software and associated
+documentation files (the &quot;Software&quot;), to deal in the
+Software without restriction, including without
+limitation the rights to use, copy, modify, merge,
+publish, distribute, sublicense, and/or sell copies of
+the Software, and to permit persons to whom the Software
+is furnished to do so, subject to the following
+conditions:
+The above copyright notice and this permission notice
+shall be included in all copies or substantial portions
+of the Software.
+THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF
+ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
+SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+DEALINGS IN THE SOFTWARE.
+
+***
+
+mio
+Copyright (c) 2014 Carl Lerche and other MIO contributors
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the &quot;Software&quot;), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+***
+
+miow
+Copyright (c) 2014 Alex Crichton
+Permission is hereby granted, free of charge, to any
+person obtaining a copy of this software and associated
+documentation files (the &quot;Software&quot;), to deal in the
+Software without restriction, including without
+limitation the rights to use, copy, modify, merge,
+publish, distribute, sublicense, and/or sell copies of
+the Software, and to permit persons to whom the Software
+is furnished to do so, subject to the following
+conditions:
+The above copyright notice and this permission notice
+shall be included in all copies or substantial portions
+of the Software.
+THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF
+ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
+SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+DEALINGS IN THE SOFTWARE.
+```
+
+### <a id="MIT"></a> MIT License
+
+#### Used by:
+
+- [aho-corasick 1.1.3]( https://github.com/BurntSushi/aho-corasick )
+- [byteorder 1.5.0]( https://github.com/BurntSushi/byteorder )
 - [memchr 2.7.4]( https://github.com/BurntSushi/memchr )
 
 #### License Text
