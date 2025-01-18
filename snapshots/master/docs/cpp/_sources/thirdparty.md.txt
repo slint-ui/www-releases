@@ -2230,7 +2230,7 @@ DEALINGS IN THE SOFTWARE.
 
 #### Used by:
 
-- [cc 1.2.9]( https://github.com/rust-lang/cc-rs )
+- [cc 1.2.10]( https://github.com/rust-lang/cc-rs )
 - [cfg-if 1.0.0]( https://github.com/alexcrichton/cfg-if )
 - [flate2 1.0.35]( https://github.com/rust-lang/flate2-rs )
 - [pkg-config 0.3.31]( https://github.com/rust-lang/pkg-config-rs )
@@ -3219,7 +3219,7 @@ SOFTWARE.
 
 #### Used by:
 
-- [enumflags2_derive 0.7.10]( https://github.com/meithecatte/enumflags2 )
+- [enumflags2_derive 0.7.11]( https://github.com/meithecatte/enumflags2 )
 
 #### License Text
 
@@ -3362,7 +3362,7 @@ DEALINGS IN THE SOFTWARE.
 
 #### Used by:
 
-- [enumflags2 0.7.10]( https://github.com/meithecatte/enumflags2 )
+- [enumflags2 0.7.11]( https://github.com/meithecatte/enumflags2 )
 
 #### License Text
 
