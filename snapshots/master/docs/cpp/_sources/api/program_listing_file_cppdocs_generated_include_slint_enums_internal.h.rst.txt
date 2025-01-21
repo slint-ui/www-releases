@@ -183,4 +183,9 @@ Program Listing for File slint_enums_internal.h
        CloseOnClickOutside,
        NoAutoClose,
    };
+   enum class LineCap {
+       Butt,
+       Round,
+       Square,
+   };
    }

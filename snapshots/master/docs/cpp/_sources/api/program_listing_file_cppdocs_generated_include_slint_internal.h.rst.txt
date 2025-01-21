@@ -804,6 +804,7 @@ Program Listing for File slint_internal.h
        Property<FillRule> fill_rule;
        Property<Brush> stroke;
        Property<LogicalLength> stroke_width;
+       Property<LineCap> stroke_line_cap;
        Property<float> viewbox_x;
        Property<float> viewbox_y;
        Property<float> viewbox_width;
