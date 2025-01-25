@@ -5,7 +5,7 @@ This page lists the licenses of the dependencies used by Slint.
 
 ## Overview of licenses
 
-- [MIT License](#MIT) (326)
+- [MIT License](#MIT) (337)
 - [Apache License 2.0](#Apache-2.0) (15)
 - [BSD 3-Clause &quot;New&quot; or &quot;Revised&quot; License](#BSD-3-Clause) (6)
 - [BSD 2-Clause &quot;Simplified&quot; License](#BSD-2-Clause) (4)
@@ -1702,6 +1702,50 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #### Used by:
 
+- [exr 1.73.0]( https://github.com/johannesvollmer/exrs )
+
+#### License Text
+
+```
+# Licenses
+
+This Rust implementation of the OpenEXR image format
+and the exrs crate are not affiliated with the 
+[OpenEXR project](https://www.openexr.com/) or the 
+[ACADEMY SOFTWARE FOUNDATION](https://www.aswf.io/).
+
+
+## The OpenEXR Image Format: [BSD-3-Clause](https://github.com/AcademySoftwareFoundation/openexr/blob/master/LICENSE.md)
+Copyright (c) Contributors to the OpenEXR Project. All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+## The &#x60;exrs&#x60; Project, and independent Rust implementation of the official OpenEXR Image Format: Also [BSD-3-Clause](https://github.com/AcademySoftwareFoundation/openexr/blob/master/LICENSE.md)
+Copyright (c) Contributors to the exrs Project. All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+```
+
+### <a id="BSD-3-Clause"></a> BSD 3-Clause &quot;New&quot; or &quot;Revised&quot; License
+
+#### Used by:
+
 - [avif-serialize 0.8.2]( https://github.com/kornelski/avif-serialize )
 
 #### License Text
@@ -1858,29 +1902,6 @@ SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
 CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
 USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-```
-
-### <a id="BSD-3-Clause"></a> BSD 3-Clause &quot;New&quot; or &quot;Revised&quot; License
-
-#### Used by:
-
-- [exr 1.73.0]( https://github.com/johannesvollmer/exrs )
-
-#### License Text
-
-```
-Copyright (c) &lt;year&gt; &lt;owner&gt;. 
-
-Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-
-1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-
-2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-
-3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ```
 
@@ -4072,43 +4093,6 @@ SOFTWARE.
 
 #### Used by:
 
-- [cpufeatures 0.2.16]( https://github.com/RustCrypto/utils )
-
-#### License Text
-
-```
-Copyright (c) 2020 The RustCrypto Project Developers
-
-Permission is hereby granted, free of charge, to any
-person obtaining a copy of this software and associated
-documentation files (the &quot;Software&quot;), to deal in the
-Software without restriction, including without
-limitation the rights to use, copy, modify, merge,
-publish, distribute, sublicense, and/or sell copies of
-the Software, and to permit persons to whom the Software
-is furnished to do so, subject to the following
-conditions:
-
-The above copyright notice and this permission notice
-shall be included in all copies or substantial portions
-of the Software.
-
-THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF
-ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
-TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
-PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
-SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
-IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-DEALINGS IN THE SOFTWARE.
-
-```
-
-### <a id="MIT"></a> MIT License
-
-#### Used by:
-
 - [memmap2 0.9.5]( https://github.com/RazrFalcon/memmap2-rs )
 
 #### License Text
@@ -4171,6 +4155,43 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+```
+
+### <a id="MIT"></a> MIT License
+
+#### Used by:
+
+- [cpufeatures 0.2.17]( https://github.com/RustCrypto/utils )
+
+#### License Text
+
+```
+Copyright (c) 2020-2025 The RustCrypto Project Developers
+
+Permission is hereby granted, free of charge, to any
+person obtaining a copy of this software and associated
+documentation files (the &quot;Software&quot;), to deal in the
+Software without restriction, including without
+limitation the rights to use, copy, modify, merge,
+publish, distribute, sublicense, and/or sell copies of
+the Software, and to permit persons to whom the Software
+is furnished to do so, subject to the following
+conditions:
+
+The above copyright notice and this permission notice
+shall be included in all copies or substantial portions
+of the Software.
+
+THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF
+ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
+SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+DEALINGS IN THE SOFTWARE.
 
 ```
 
@@ -5437,6 +5458,7 @@ SOFTWARE.
 - [vtable 0.2.1]( https://github.com/slint-ui/slint )
 - [vtable-macro 0.2.1]( https://github.com/slint-ui/slint )
 - [block2 0.5.1]( https://github.com/madsmtm/objc2 )
+- [block2 0.6.0]( https://github.com/madsmtm/objc2 )
 - [block 0.1.6]( http://github.com/SSheldon/rust-block )
 - [chrono 0.4.39]( https://github.com/chronotope/chrono )
 - [clipboard-win 3.1.1]( https://github.com/DoumanAsh/clipboard-win )
@@ -5457,9 +5479,18 @@ SOFTWARE.
 - [objc-foundation 0.1.1]( http://github.com/SSheldon/rust-objc-foundation )
 - [objc-sys 0.3.5]( https://github.com/madsmtm/objc2 )
 - [objc2-app-kit 0.2.2]( https://github.com/madsmtm/objc2 )
+- [objc2-app-kit 0.3.0]( https://github.com/madsmtm/objc2 )
+- [objc2-cloud-kit 0.3.0]( https://github.com/madsmtm/objc2 )
+- [objc2-core-data 0.3.0]( https://github.com/madsmtm/objc2 )
+- [objc2-core-foundation 0.3.0]( https://github.com/madsmtm/objc2 )
+- [objc2-core-graphics 0.3.0]( https://github.com/madsmtm/objc2 )
+- [objc2-core-image 0.3.0]( https://github.com/madsmtm/objc2 )
 - [objc2-encode 4.1.0]( https://github.com/madsmtm/objc2 )
 - [objc2-foundation 0.2.2]( https://github.com/madsmtm/objc2 )
+- [objc2-foundation 0.3.0]( https://github.com/madsmtm/objc2 )
+- [objc2-quartz-core 0.3.0]( https://github.com/madsmtm/objc2 )
 - [objc2 0.5.2]( https://github.com/madsmtm/objc2 )
+- [objc2 0.6.0]( https://github.com/madsmtm/objc2 )
 - [objc_id 0.1.1]( http://github.com/SSheldon/rust-objc-id )
 - [profiling-procmacros 1.0.16]( https://github.com/aclysma/profiling )
 - [profiling 1.0.16]( https://github.com/aclysma/profiling )
@@ -6618,6 +6649,7 @@ SOFTWARE.
 #### Used by:
 
 - [rustybuzz 0.18.0]( https://github.com/RazrFalcon/rustybuzz )
+- [rustybuzz 0.20.1]( https://github.com/harfbuzz/rustybuzz )
 
 #### License Text
 

@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/eval.rs`."><title>eval.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-5d1d17d0.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0-nightly (99768c80a 2025-01-23)" data-channel="nightly" data-search-js="search-ccb196c1.js" data-settings-js="settings-0f613d39.js" ><script src="../../static.files/storage-59e33391.js"></script><script defer src="../../static.files/src-script-56102188.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/eval.rs`."><title>eval.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-5d1d17d0.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0-nightly (1e9b0177d 2025-01-24)" data-channel="nightly" data-search-js="search-ccb196c1.js" data-settings-js="settings-0f613d39.js" ><script src="../../static.files/storage-59e33391.js"></script><script defer src="../../static.files/src-script-56102188.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -2051,15 +2051,7 @@
 <a href="#1928" id="1928">1928</a>
 <a href="#1929" id="1929">1929</a>
 <a href="#1930" id="1930">1930</a>
-<a href="#1931" id="1931">1931</a>
-<a href="#1932" id="1932">1932</a>
-<a href="#1933" id="1933">1933</a>
-<a href="#1934" id="1934">1934</a>
-<a href="#1935" id="1935">1935</a>
-<a href="#1936" id="1936">1936</a>
-<a href="#1937" id="1937">1937</a>
-<a href="#1938" id="1938">1938</a>
-<a href="#1939" id="1939">1939</a></pre></div><pre class="rust"><code><span class="comment">// Copyright © SixtyFPS GmbH &lt;info@slint.dev&gt;
+<a href="#1931" id="1931">1931</a></pre></div><pre class="rust"><code><span class="comment">// Copyright © SixtyFPS GmbH &lt;info@slint.dev&gt;
 // SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0
 
 </span><span class="kw">use </span><span class="kw">crate</span>::api::{SetPropertyError, Struct, Value};
@@ -2072,7 +2064,7 @@
 <span class="kw">use </span>corelib::window::{Menu, MenuVTable};
 <span class="kw">use </span>corelib::{Brush, Color, PathData, SharedString, SharedVector};
 <span class="kw">use </span>i_slint_compiler::expression_tree::{
-    BuiltinFunction, EasingCurve, Expression, MinMaxOp, Path <span class="kw">as </span>ExprPath,
+    BuiltinFunction, Callable, EasingCurve, Expression, MinMaxOp, Path <span class="kw">as </span>ExprPath,
     PathElement <span class="kw">as </span>ExprPathElement,
 };
 <span class="kw">use </span>i_slint_compiler::langtype::Type;
@@ -2204,14 +2196,7 @@
         Expression::StringLiteral(s) =&gt; Value::String(s.as_str().into()),
         Expression::NumberLiteral(n, unit) =&gt; Value::Number(unit.normalize(<span class="kw-2">*</span>n)),
         Expression::BoolLiteral(b) =&gt; Value::Bool(<span class="kw-2">*</span>b),
-        Expression::CallbackReference { .. } =&gt; <span class="macro">panic!</span>(<span class="string">"callback in expression"</span>),
-        Expression::FunctionReference { .. } =&gt; <span class="macro">panic!</span>(<span class="string">"function in expression"</span>),
-        Expression::BuiltinFunctionReference(..) =&gt; <span class="macro">panic!</span>(
-            <span class="string">"naked builtin function reference not allowed, should be handled by function call"
-        </span>),
         Expression::ElementReference(<span class="kw">_</span>) =&gt; <span class="macro">todo!</span>(<span class="string">"Element references are only supported in the context of built-in function calls at the moment"</span>),
-        Expression::MemberFunction { .. } =&gt; <span class="macro">panic!</span>(<span class="string">"member function expressions must not appear in the code generator anymore"</span>),
-        Expression::BuiltinMacroReference { .. } =&gt; <span class="macro">panic!</span>(<span class="string">"macro expressions must not appear in the code generator anymore"</span>),
         Expression::PropertyReference(nr) =&gt; {
             load_property_helper(<span class="kw-2">&amp;</span>local_context.component_instance, <span class="kw-2">&amp;</span>nr.element(), nr.name()).unwrap()
         }
@@ -2269,17 +2254,16 @@
             }
             v
         }
-        Expression::FunctionCall { function, arguments, source_location: <span class="kw">_ </span>} =&gt; <span class="kw">match </span><span class="kw-2">&amp;**</span>function {
-            Expression::FunctionReference(nr, <span class="kw">_</span>) =&gt; {
+        Expression::FunctionCall { function, arguments, source_location: <span class="kw">_ </span>} =&gt; <span class="kw">match </span><span class="kw-2">&amp;</span>function {
+            Callable::Function(nr) =&gt; {
                 <span class="kw">let </span>args = arguments.iter().map(|e| eval_expression(e, local_context)).collect::&lt;Vec&lt;<span class="kw">_</span>&gt;&gt;();
                 call_function(<span class="kw-2">&amp;</span>local_context.component_instance, <span class="kw-2">&amp;</span>nr.element(), nr.name(), args).unwrap()
             }
-            Expression::CallbackReference(nr, <span class="kw">_</span>) =&gt; {
+            Callable::Callback(nr) =&gt; {
                 <span class="kw">let </span>args = arguments.iter().map(|e| eval_expression(e, local_context)).collect::&lt;Vec&lt;<span class="kw">_</span>&gt;&gt;();
                 invoke_callback(<span class="kw-2">&amp;</span>local_context.component_instance, <span class="kw-2">&amp;</span>nr.element(), nr.name(), <span class="kw-2">&amp;</span>args).unwrap()
             }
-            Expression::BuiltinFunctionReference(f, <span class="kw">_</span>) =&gt; call_builtin_function(f.clone(), arguments, local_context),
-            <span class="kw">_ </span>=&gt; <span class="macro">panic!</span>(<span class="string">"call of something not a callback: {function:?}"</span>),
+            Callable::Builtin(f) =&gt; call_builtin_function(f.clone(), arguments, local_context),
         }
         Expression::SelfAssignment { lhs, rhs, op, .. } =&gt; {
             <span class="kw">let </span>rhs = eval_expression(rhs, local_context);
@@ -3206,7 +3190,7 @@
             <span class="kw">let </span>ComponentInstance::InstanceRef(component) = local_context.component_instance <span class="kw">else </span>{
                 <span class="macro">panic!</span>(<span class="string">"SetupNativeMenuBar from a global"</span>);
             };
-            <span class="kw">let </span>[entries, Expression::CallbackReference(sub_menu, <span class="kw">_</span>), Expression::CallbackReference(activated, <span class="kw">_</span>)] =
+            <span class="kw">let </span>[entries, Expression::PropertyReference(sub_menu), Expression::PropertyReference(activated)] =
                 arguments
             <span class="kw">else </span>{
                 <span class="macro">panic!</span>(<span class="string">"internal error: incorrect arguments to SetupNativeMenuBar"</span>)
