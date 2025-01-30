@@ -75,7 +75,7 @@ jobs:
       - name: Deploy to Netlify
         id: netlify_deploy
         run: |
-          netlify deploy \
+          npx netlify deploy \
             --dir . \
             --site ${{ secrets.NETLIFY_RELEASES_SITE_ID }} \
             --auth ${{ secrets.NETLIFY_API_TOKEN }} \
