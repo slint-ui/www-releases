@@ -41,11 +41,7 @@ Includes
 
 - ``slint_platform_internal.h`` (:ref:`file_cppdocs_generated_include_slint_platform_internal.h`)
 
-- ``slint_point.h`` (:ref:`file__home_runner_work_slint_slint_api_cpp_include_slint_point.h`)
-
 - ``slint_qt_internal.h`` (:ref:`file_cppdocs_generated_include_slint_qt_internal.h`)
-
-- ``slint_size.h`` (:ref:`file__home_runner_work_slint_slint_api_cpp_include_slint_size.h`)
 
 - ``slint_window.h`` (:ref:`file__home_runner_work_slint_slint_api_cpp_include_slint_window.h`)
 

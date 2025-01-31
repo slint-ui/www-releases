@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/dynamic_item_tree.rs`."><title>dynamic_item_tree.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-e7950ecc.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0-nightly (ae5de6c75 2025-01-29)" data-channel="nightly" data-search-js="search-2d513d54.js" data-settings-js="settings-5411db44.js" ><script src="../../static.files/storage-c4642c8f.js"></script><script defer src="../../static.files/src-script-8fee9dc5.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-9b5d7e41.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/dynamic_item_tree.rs`."><title>dynamic_item_tree.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-cf3c48c1.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0-nightly (a730edcd6 2025-01-30)" data-channel="nightly" data-search-js="search-2d513d54.js" data-settings-js="settings-6dad6058.js" ><script src="../../static.files/storage-302de22f.js"></script><script defer src="../../static.files/src-script-8fee9dc5.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-9b5d7e41.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -2588,8 +2588,7 @@
 <a href="#2465" id="2465">2465</a>
 <a href="#2466" id="2466">2466</a>
 <a href="#2467" id="2467">2467</a>
-<a href="#2468" id="2468">2468</a>
-<a href="#2469" id="2469">2469</a></pre></div><pre class="rust"><code><span class="comment">// Copyright © SixtyFPS GmbH &lt;info@slint.dev&gt;
+<a href="#2468" id="2468">2468</a></pre></div><pre class="rust"><code><span class="comment">// Copyright © SixtyFPS GmbH &lt;info@slint.dev&gt;
 // SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0
 
 </span><span class="kw">use </span><span class="kw">crate</span>::api::{CompilationResult, ComponentDefinition, Value};
@@ -2608,10 +2607,8 @@
 <span class="kw">use </span>i_slint_core::api::LogicalPosition;
 <span class="kw">use </span>i_slint_core::component_factory::ComponentFactory;
 <span class="kw">use </span>i_slint_core::item_tree::{
-    IndexRange, ItemTree, ItemTreeRef, ItemTreeRefPin, ItemTreeVTable, ItemTreeWeak,
-};
-<span class="kw">use </span>i_slint_core::item_tree::{
-    ItemRc, ItemTreeNode, ItemVisitorRefMut, ItemVisitorVTable, ItemWeak, TraversalOrder,
+    IndexRange, ItemRc, ItemTree, ItemTreeNode, ItemTreeRef, ItemTreeRefPin, ItemTreeVTable,
+    ItemTreeWeak, ItemVisitorRefMut, ItemVisitorVTable, ItemWeak, TraversalOrder,
     VisitChildrenResult,
 };
 <span class="kw">use </span>i_slint_core::items::{
@@ -2619,7 +2616,8 @@
 };
 <span class="kw">use </span>i_slint_core::layout::{BoxLayoutCellData, LayoutInfo, Orientation};
 <span class="kw">use </span>i_slint_core::lengths::{LogicalLength, LogicalRect};
-<span class="kw">use </span>i_slint_core::model::{RepeatedItemTree, Repeater};
+<span class="kw">use </span>i_slint_core::menus::MenuFromItemTree;
+<span class="kw">use </span>i_slint_core::model::{ModelRc, RepeatedItemTree, Repeater};
 <span class="kw">use </span>i_slint_core::platform::PlatformError;
 <span class="kw">use </span>i_slint_core::properties::{ChangeTracker, InterpolatedPropertyValue};
 <span class="kw">use </span>i_slint_core::rtti::{<span class="self">self</span>, AnimatedBindingKind, FieldOffset, PropertyInfo};
@@ -2639,6 +2637,8 @@
 
 <span class="kw">pub const </span>SPECIAL_PROPERTY_INDEX: <span class="kw-2">&amp;</span>str = <span class="string">"$index"</span>;
 <span class="kw">pub const </span>SPECIAL_PROPERTY_MODEL_DATA: <span class="kw-2">&amp;</span>str = <span class="string">"$model_data"</span>;
+
+<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">type </span>CallbackHandler = Box&lt;<span class="kw">dyn </span>Fn(<span class="kw-2">&amp;</span>[Value]) -&gt; Value&gt;;
 
 <span class="kw">pub struct </span>ItemTreeBox&lt;<span class="lifetime">'id</span>&gt; {
     instance: InstanceBox&lt;<span class="lifetime">'id</span>&gt;,
@@ -3140,7 +3140,6 @@
     ///
     /// Returns an error if the instance does not corresponds to this ItemTreeDescription,
     /// or if the property with this name does not exist in this component
-    </span><span class="attr">#[allow(unused)]
     </span><span class="kw">pub fn </span>set_binding(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         component: ItemTreeRefPin,
@@ -3196,7 +3195,7 @@
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         component: Pin&lt;ItemTreeRef&gt;,
         name: <span class="kw-2">&amp;</span>str,
-        handler: Box&lt;<span class="kw">dyn </span>Fn(<span class="kw-2">&amp;</span>[Value]) -&gt; Value&gt;,
+        handler: CallbackHandler,
     ) -&gt; <span class="prelude-ty">Result</span>&lt;(), ()&gt; {
         <span class="kw">if </span>!core::ptr::eq((<span class="kw-2">&amp;</span><span class="self">self</span>.ct) <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>, component.get_vtable() <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>) {
             <span class="kw">return </span><span class="prelude-val">Err</span>(());
@@ -3212,34 +3211,9 @@
             <span class="macro">generativity::make_guard!</span>(guard);
             <span class="comment">// Safety: we just verified that the component has the right vtable
             </span><span class="kw">let </span>c = <span class="kw">unsafe </span>{ InstanceRef::from_pin_ref(component, guard) };
-            <span class="macro">generativity::make_guard!</span>(guard);
-            <span class="kw">let </span>element = alias.element();
-            <span class="kw">match </span>eval::enclosing_component_instance_for_element(
-                <span class="kw-2">&amp;</span>element,
-                <span class="kw-2">&amp;</span>eval::ComponentInstance::InstanceRef(c),
-                guard,
-            ) {
-                eval::ComponentInstance::InstanceRef(enclosing_component) =&gt; {
-                    <span class="kw">let </span>description = enclosing_component.description;
-                    <span class="kw">let </span>item_info = <span class="kw-2">&amp;</span>description.items[element.borrow().id.as_str()];
-                    <span class="kw">let </span>item =
-                        <span class="kw">unsafe </span>{ item_info.item_from_item_tree(enclosing_component.as_ptr()) };
-                    <span class="kw">if let </span><span class="prelude-val">Some</span>(callback) = item_info.rtti.callbacks.get(alias.name().as_str()) {
-                        callback.set_handler(item, handler)
-                    } <span class="kw">else if let </span><span class="prelude-val">Some</span>(callback_offset) =
-                        description.custom_callbacks.get(alias.name())
-                    {
-                        <span class="kw">let </span>callback = callback_offset.apply(<span class="kw-2">&amp;*</span>enclosing_component.instance);
-                        callback.set_handler(handler)
-                    } <span class="kw">else </span>{
-                        <span class="kw">return </span><span class="prelude-val">Err</span>(());
-                    }
-                }
-                eval::ComponentInstance::GlobalComponent(glob) =&gt; {
-                    <span class="kw">return </span>glob.as_ref().set_callback_handler(alias.name(), handler);
-                }
-            }
-        } <span class="kw">else </span>{
+            <span class="kw">let </span>inst = eval::ComponentInstance::InstanceRef(c);
+            eval::set_callback_handler(<span class="kw-2">&amp;</span>inst, <span class="kw-2">&amp;</span>alias.element(), alias.name(), handler)<span class="question-mark">?
+        </span>} <span class="kw">else </span>{
             <span class="kw">let </span>x = <span class="self">self</span>.custom_callbacks.get(name).ok_or(())<span class="question-mark">?</span>;
             <span class="kw">let </span>sig = x.apply(<span class="kw">unsafe </span>{ <span class="kw-2">&amp;*</span>(component.as_ptr() <span class="kw">as </span><span class="kw-2">*const </span>dynamic_type::Instance) });
             sig.set_handler(handler);
@@ -3579,6 +3553,7 @@
             rtti_for::&lt;Opacity&gt;(),
             rtti_for::&lt;Layer&gt;(),
             rtti_for::&lt;ContextMenu&gt;(),
+            rtti_for::&lt;MenuItem&gt;(),
         ]
         .iter()
         .cloned(),
@@ -4301,7 +4276,7 @@
             <span class="kw">if let </span>Value::Model(m) = m {
                 m.clone()
             } <span class="kw">else </span>{
-                i_slint_core::model::ModelRc::new(<span class="kw">crate</span>::value_model::ValueModel::new(m))
+                ModelRc::new(<span class="kw">crate</span>::value_model::ValueModel::new(m))
             }
         });
     }
@@ -5020,6 +4995,29 @@
     {
         WindowInner::from_pub(parent_window_adapter.window()).close_popup(current_id);
     }
+}
+
+<span class="kw">pub fn </span>make_menu_item_tree(
+    menu_item_tree: <span class="kw-2">&amp;</span>Rc&lt;object_tree::Component&gt;,
+    enclosing_component: <span class="kw-2">&amp;</span>InstanceRef,
+) -&gt; MenuFromItemTree {
+    <span class="macro">generativity::make_guard!</span>(guard);
+    <span class="kw">let </span>mit_compiled = generate_item_tree(
+        menu_item_tree,
+        <span class="prelude-val">None</span>,
+        enclosing_component.description.popup_menu_description.clone(),
+        <span class="bool-val">false</span>,
+        guard,
+    );
+    <span class="kw">let </span>mit_inst = instantiate(
+        mit_compiled.clone(),
+        <span class="prelude-val">Some</span>(enclosing_component.self_weak().get().unwrap().clone()),
+        <span class="prelude-val">None</span>,
+        <span class="prelude-val">None</span>,
+        Default::default(),
+    );
+    mit_inst.run_setup_code();
+    MenuFromItemTree::new(vtable::VRc::into_dyn(mit_inst))
 }
 
 <span class="kw">pub fn </span>update_timers(instance: InstanceRef) {

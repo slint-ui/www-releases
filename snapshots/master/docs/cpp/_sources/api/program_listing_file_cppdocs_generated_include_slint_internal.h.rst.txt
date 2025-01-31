@@ -249,6 +249,10 @@ Program Listing for File slint_internal.h
                                  ItemRendererRef *backend,
                                  const ItemRc *self_rc,
                                  LogicalSize size);
+       LogicalRect (*bounding_rect)(Pin<VRef<ItemVTable>>,
+                                    const WindowAdapterRc *window_adapter,
+                                    const ItemRc *self_rc,
+                                    LogicalRect geometry);
    };
    
    struct ItemVisitorVTable {
@@ -491,6 +495,12 @@ Program Listing for File slint_internal.h
        Slice<BoxLayoutCellData> cells;
    };
    
+   struct MenuVTable {
+       void (*drop)(VRefMut<MenuVTable>);
+       void (*sub_menu)(VRef<MenuVTable>, const MenuEntry*, SharedVector<MenuEntry>*);
+       void (*activate)(VRef<MenuVTable>, const MenuEntry*);
+   };
+   
    struct EasingCurve {
        enum class Tag : uint32_t {
            Linear,
@@ -525,12 +535,6 @@ Program Listing for File slint_internal.h
    using IntSize = Size2D<uint32_t>;
    
    using Size = Size2D<float>;
-   
-   struct MenuVTable {
-       void (*drop)(VRefMut<MenuVTable>);
-       void (*sub_menu)(VRef<MenuVTable>, const MenuEntry*, SharedVector<MenuEntry>*);
-       void (*activate)(VRef<MenuVTable>, const MenuEntry*);
-   };
    
    union WindowEvent {
        enum class Tag : uint32_t {
@@ -873,6 +877,12 @@ Program Listing for File slint_internal.h
        CachedRenderingData cached_rendering_data;
    };
    
+   struct MenuItem {
+       CachedRenderingData cached_rendering_data;
+       Property<SharedString> title;
+       private_api::CallbackHelper<void> activated;
+   };
+   
    extern "C" {
    
    void slint_callback_init(CallbackOpaque *out);
@@ -989,6 +999,8 @@ Program Listing for File slint_internal.h
    LayoutInfo slint_box_layout_info_ortho(Slice<BoxLayoutCellData> cells, const Padding *padding);
    
    void slint_reorder_dialog_button_layout(GridLayoutCellData *cells, Slice<DialogButtonRole> roles);
+   
+   void slint_menus_create_wrapper(const ItemTreeRc *menu_tree, VBox<MenuVTable> *result);
    
    void slint_property_init(PropertyHandleOpaque *out);
    
@@ -1288,6 +1300,7 @@ Program Listing for File slint_internal.h
    SLINT_DECL_ITEM(Opacity);
    SLINT_DECL_ITEM(Layer);
    SLINT_DECL_ITEM(ContextMenu);
+   SLINT_DECL_ITEM(MenuItem);
    }
    
    #undef SLINT_DECL_ITEM

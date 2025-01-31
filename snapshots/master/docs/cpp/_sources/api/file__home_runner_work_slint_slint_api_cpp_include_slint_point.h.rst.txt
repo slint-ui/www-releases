@@ -33,8 +33,6 @@ Included By
 -----------
 
 
-- :ref:`file__home_runner_work_slint_slint_api_cpp_include_slint.h`
-
 - :ref:`file_cppdocs_generated_include_slint_internal.h`
 
 
