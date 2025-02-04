@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/dynamic_item_tree.rs`."><title>dynamic_item_tree.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-cf3c48c1.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0-nightly (4a4309466 2025-02-02)" data-channel="nightly" data-search-js="search-2d513d54.js" data-settings-js="settings-6dad6058.js" ><script src="../../static.files/storage-302de22f.js"></script><script defer src="../../static.files/src-script-8fee9dc5.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-9b5d7e41.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/dynamic_item_tree.rs`."><title>dynamic_item_tree.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-cf3c48c1.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0-nightly (f027438f8 2025-02-03)" data-channel="nightly" data-search-js="search-2d513d54.js" data-settings-js="settings-6dad6058.js" ><script src="../../static.files/storage-302de22f.js"></script><script defer src="../../static.files/src-script-8fee9dc5.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-9b5d7e41.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -2588,7 +2588,8 @@
 <a href="#2465" id="2465">2465</a>
 <a href="#2466" id="2466">2466</a>
 <a href="#2467" id="2467">2467</a>
-<a href="#2468" id="2468">2468</a></pre></div><pre class="rust"><code><span class="comment">// Copyright © SixtyFPS GmbH &lt;info@slint.dev&gt;
+<a href="#2468" id="2468">2468</a>
+<a href="#2469" id="2469">2469</a></pre></div><pre class="rust"><code><span class="comment">// Copyright © SixtyFPS GmbH &lt;info@slint.dev&gt;
 // SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0
 
 </span><span class="kw">use </span><span class="kw">crate</span>::api::{CompilationResult, ComponentDefinition, Value};
@@ -2996,12 +2997,12 @@
 
     <span class="doccomment">/// The type loader, which will be available only on the top-most `ItemTreeDescription`.
     /// All other `ItemTreeDescription`s have `None` here.
-    </span><span class="attr">#[cfg(feature = <span class="string">"highlight"</span>)]
+    </span><span class="attr">#[cfg(feature = <span class="string">"internal-highlight"</span>)]
     </span><span class="kw">pub</span>(<span class="kw">crate</span>) type_loader:
         std::cell::OnceCell&lt;std::rc::Rc&lt;i_slint_compiler::typeloader::TypeLoader&gt;&gt;,
     <span class="doccomment">/// The type loader, which will be available only on the top-most `ItemTreeDescription`.
     /// All other `ItemTreeDescription`s have `None` here.
-    </span><span class="attr">#[cfg(feature = <span class="string">"highlight"</span>)]
+    </span><span class="attr">#[cfg(feature = <span class="string">"internal-highlight"</span>)]
     </span><span class="kw">pub</span>(<span class="kw">crate</span>) raw_type_loader:
         std::cell::OnceCell&lt;<span class="prelude-ty">Option</span>&lt;std::rc::Rc&lt;i_slint_compiler::typeloader::TypeLoader&gt;&gt;&gt;,
 }
@@ -3421,7 +3422,7 @@
     }
 
     <span class="kw">let </span>diag = BuildDiagnostics::default();
-    <span class="attr">#[cfg(feature = <span class="string">"highlight"</span>)]
+    <span class="attr">#[cfg(feature = <span class="string">"internal-highlight"</span>)]
     </span><span class="kw">let </span>(path, <span class="kw-2">mut </span>diag, loader, raw_type_loader) =
         i_slint_compiler::load_root_file_with_raw_type_loader(
             <span class="kw-2">&amp;</span>path,
@@ -3431,7 +3432,7 @@
             compiler_config,
         )
         .<span class="kw">await</span>;
-    <span class="attr">#[cfg(not(feature = <span class="string">"highlight"</span>))]
+    <span class="attr">#[cfg(not(feature = <span class="string">"internal-highlight"</span>))]
     </span><span class="kw">let </span>(path, <span class="kw-2">mut </span>diag, loader) =
         i_slint_compiler::load_root_file(<span class="kw-2">&amp;</span>path, <span class="kw-2">&amp;</span>path, source, diag, compiler_config).<span class="kw">await</span>;
     <span class="kw">if </span>diag.has_errors() {
@@ -3445,9 +3446,9 @@
         };
     }
 
-    <span class="attr">#[cfg(feature = <span class="string">"highlight"</span>)]
+    <span class="attr">#[cfg(feature = <span class="string">"internal-highlight"</span>)]
     </span><span class="kw">let </span>loader = Rc::new(loader);
-    <span class="attr">#[cfg(feature = <span class="string">"highlight"</span>)]
+    <span class="attr">#[cfg(feature = <span class="string">"internal-highlight"</span>)]
     </span><span class="kw">let </span>raw_type_loader = raw_type_loader.map(Rc::new);
 
     <span class="kw">let </span>doc = loader.get_document(<span class="kw-2">&amp;</span>path).unwrap();
@@ -3480,7 +3481,7 @@
             <span class="bool-val">false</span>,
             guard,
         );
-        <span class="attr">#[cfg(feature = <span class="string">"highlight"</span>)]
+        <span class="attr">#[cfg(feature = <span class="string">"internal-highlight"</span>)]
         </span>{
             <span class="kw">let _ </span>= it.type_loader.set(loader.clone());
             <span class="kw">let _ </span>= it.raw_type_loader.set(raw_type_loader.clone());
@@ -3945,9 +3946,9 @@
         timers,
         popup_ids: std::cell::RefCell::new(HashMap::new()),
         popup_menu_description: builder.popup_menu_description,
-        <span class="attr">#[cfg(feature = <span class="string">"highlight"</span>)]
+        <span class="attr">#[cfg(feature = <span class="string">"internal-highlight"</span>)]
         </span>type_loader: std::cell::OnceCell::new(),
-        <span class="attr">#[cfg(feature = <span class="string">"highlight"</span>)]
+        <span class="attr">#[cfg(feature = <span class="string">"internal-highlight"</span>)]
         </span>raw_type_loader: std::cell::OnceCell::new(),
     };
 
@@ -4703,6 +4704,7 @@
         AccessibilityAction::Default =&gt; perform(<span class="string">"accessible-action-default"</span>, <span class="kw-2">&amp;</span>[]),
         AccessibilityAction::Decrement =&gt; perform(<span class="string">"accessible-action-decrement"</span>, <span class="kw-2">&amp;</span>[]),
         AccessibilityAction::Increment =&gt; perform(<span class="string">"accessible-action-increment"</span>, <span class="kw-2">&amp;</span>[]),
+        AccessibilityAction::Expand =&gt; perform(<span class="string">"accessible-action-expand"</span>, <span class="kw-2">&amp;</span>[]),
         AccessibilityAction::ReplaceSelectedText(_a) =&gt; {
             <span class="comment">//perform("accessible-action-replace-selected-text", &amp;[Value::String(a.clone())])
             </span><span class="macro">i_slint_core::debug_log!</span>(<span class="string">"AccessibilityAction::ReplaceSelectedText not implemented in interpreter's accessibility_action"</span>);

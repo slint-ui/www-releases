@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/api.rs`."><title>api.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-cf3c48c1.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0-nightly (4a4309466 2025-02-02)" data-channel="nightly" data-search-js="search-2d513d54.js" data-settings-js="settings-6dad6058.js" ><script src="../../static.files/storage-302de22f.js"></script><script defer src="../../static.files/src-script-8fee9dc5.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-9b5d7e41.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/api.rs`."><title>api.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-cf3c48c1.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0-nightly (f027438f8 2025-02-03)" data-channel="nightly" data-search-js="search-2d513d54.js" data-settings-js="settings-6dad6058.js" ><script src="../../static.files/storage-302de22f.js"></script><script defer src="../../static.files/src-script-8fee9dc5.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-9b5d7e41.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -3512,7 +3512,7 @@
     <span class="doccomment">/// Return the `TypeLoader` used when parsing the code in the interpreter.
     ///
     /// WARNING: this is not part of the public API
-    </span><span class="attr">#[cfg(feature = <span class="string">"highlight"</span>)]
+    </span><span class="attr">#[cfg(feature = <span class="string">"internal-highlight"</span>)]
     </span><span class="kw">pub fn </span>type_loader(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; std::rc::Rc&lt;i_slint_compiler::typeloader::TypeLoader&gt; {
         <span class="kw">let </span>guard = <span class="kw">unsafe </span>{ generativity::Guard::new(generativity::Id::new()) };
         <span class="self">self</span>.inner.unerase(guard).type_loader.get().unwrap().clone()
@@ -3525,7 +3525,7 @@
     /// so this is a fairly expensive function!
     ///
     /// WARNING: this is not part of the public API
-    </span><span class="attr">#[cfg(feature = <span class="string">"highlight"</span>)]
+    </span><span class="attr">#[cfg(feature = <span class="string">"internal-highlight"</span>)]
     </span><span class="kw">pub fn </span>raw_type_loader(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;i_slint_compiler::typeloader::TypeLoader&gt; {
         <span class="kw">let </span>guard = <span class="kw">unsafe </span>{ generativity::Guard::new(generativity::Id::new()) };
         <span class="self">self</span>.inner
@@ -3835,7 +3835,7 @@
     <span class="doccomment">/// Find all positions of the components which are pointed by a given source location.
     ///
     /// WARNING: this is not part of the public API
-    </span><span class="attr">#[cfg(feature = <span class="string">"highlight"</span>)]
+    </span><span class="attr">#[cfg(feature = <span class="string">"internal-highlight"</span>)]
     </span><span class="kw">pub fn </span>component_positions(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         path: <span class="kw-2">&amp;</span>Path,
@@ -3847,7 +3847,7 @@
     <span class="doccomment">/// Find the position of the `element`.
     ///
     /// WARNING: this is not part of the public API
-    </span><span class="attr">#[cfg(feature = <span class="string">"highlight"</span>)]
+    </span><span class="attr">#[cfg(feature = <span class="string">"internal-highlight"</span>)]
     </span><span class="kw">pub fn </span>element_positions(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         element: <span class="kw-2">&amp;</span>i_slint_compiler::object_tree::ElementRc,
@@ -3858,7 +3858,7 @@
     <span class="doccomment">/// Find the the `element` that was defined at the text position.
     ///
     /// WARNING: this is not part of the public API
-    </span><span class="attr">#[cfg(feature = <span class="string">"highlight"</span>)]
+    </span><span class="attr">#[cfg(feature = <span class="string">"internal-highlight"</span>)]
     </span><span class="kw">pub fn </span>element_node_at_source_code_position(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         path: <span class="kw-2">&amp;</span>Path,
@@ -4504,7 +4504,7 @@
     <span class="macro">assert!</span>(result.component(<span class="string">"xyz"</span>).is_none());
 }
 
-<span class="attr">#[cfg(all(test, feature = <span class="string">"highlight"</span>))]
+<span class="attr">#[cfg(all(test, feature = <span class="string">"internal-highlight"</span>))]
 </span><span class="kw">fn </span>compile(code: <span class="kw-2">&amp;</span>str) -&gt; (ComponentInstance, PathBuf) {
     i_slint_backend_testing::init_no_event_loop();
     <span class="kw">let </span><span class="kw-2">mut </span>compiler = Compiler::default();
@@ -4526,7 +4526,7 @@
     (instance, path)
 }
 
-<span class="attr">#[cfg(feature = <span class="string">"highlight"</span>)]
+<span class="attr">#[cfg(feature = <span class="string">"internal-highlight"</span>)]
 #[test]
 </span><span class="kw">fn </span>test_element_node_at_source_code_position() {
     <span class="kw">let </span>code = <span class="string">r#"

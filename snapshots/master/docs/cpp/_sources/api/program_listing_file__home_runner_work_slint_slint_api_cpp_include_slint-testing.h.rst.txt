@@ -308,6 +308,48 @@ Program Listing for File slint-testing.h
            return std::nullopt;
        }
    
+       std::optional<bool> accessible_expanded() const
+       {
+           if (auto result = get_accessible_string_property(
+                       cbindgen_private::AccessibleStringProperty::Expanded)) {
+               if (*result == "true")
+                   return true;
+               else if (*result == "false")
+                   return false;
+           }
+           return std::nullopt;
+       }
+       std::optional<bool> accessible_expandable() const
+       {
+           if (auto result = get_accessible_string_property(
+                       cbindgen_private::AccessibleStringProperty::Expandable)) {
+               if (*result == "true")
+                   return true;
+               else if (*result == "false")
+                   return false;
+           }
+           return std::nullopt;
+       }
+   
+       void invoke_accessible_expand_action() const
+       {
+           if (inner.element_index != 0)
+               return;
+           if (auto item = private_api::upgrade_item_weak(inner.item)) {
+               union ExpandActionHelper {
+                   cbindgen_private::AccessibilityAction action;
+                   ExpandActionHelper()
+                   {
+                       action.tag = cbindgen_private::AccessibilityAction::Tag::Expand;
+                   }
+                   ~ExpandActionHelper() { }
+   
+               } action;
+               item->item_tree.vtable()->accessibility_action(item->item_tree.borrow(), item->index,
+                                                              &action.action);
+           }
+       }
+   
        void set_accessible_value(SharedString value) const
        {
            if (inner.element_index != 0)
