@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/dynamic_item_tree.rs`."><title>dynamic_item_tree.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-cf3c48c1.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0-nightly (bef3c3b01 2025-02-04)" data-channel="nightly" data-search-js="search-1b520363.js" data-settings-js="settings-6dad6058.js" ><script src="../../static.files/storage-302de22f.js"></script><script defer src="../../static.files/src-script-8fee9dc5.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-ddbd176c.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/dynamic_item_tree.rs`."><title>dynamic_item_tree.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-cf3c48c1.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0-nightly (a9730c3b5 2025-02-05)" data-channel="nightly" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../../static.files/storage-3a5871a4.js"></script><script defer src="../../static.files/src-script-8fee9dc5.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -2589,7 +2589,27 @@
 <a href="#2466" id="2466">2466</a>
 <a href="#2467" id="2467">2467</a>
 <a href="#2468" id="2468">2468</a>
-<a href="#2469" id="2469">2469</a></pre></div><pre class="rust"><code><span class="comment">// Copyright © SixtyFPS GmbH &lt;info@slint.dev&gt;
+<a href="#2469" id="2469">2469</a>
+<a href="#2470" id="2470">2470</a>
+<a href="#2471" id="2471">2471</a>
+<a href="#2472" id="2472">2472</a>
+<a href="#2473" id="2473">2473</a>
+<a href="#2474" id="2474">2474</a>
+<a href="#2475" id="2475">2475</a>
+<a href="#2476" id="2476">2476</a>
+<a href="#2477" id="2477">2477</a>
+<a href="#2478" id="2478">2478</a>
+<a href="#2479" id="2479">2479</a>
+<a href="#2480" id="2480">2480</a>
+<a href="#2481" id="2481">2481</a>
+<a href="#2482" id="2482">2482</a>
+<a href="#2483" id="2483">2483</a>
+<a href="#2484" id="2484">2484</a>
+<a href="#2485" id="2485">2485</a>
+<a href="#2486" id="2486">2486</a>
+<a href="#2487" id="2487">2487</a>
+<a href="#2488" id="2488">2488</a>
+<a href="#2489" id="2489">2489</a></pre></div><pre class="rust"><code><span class="comment">// Copyright © SixtyFPS GmbH &lt;info@slint.dev&gt;
 // SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0
 
 </span><span class="kw">use </span><span class="kw">crate</span>::api::{CompilationResult, ComponentDefinition, Value};
@@ -3023,7 +3043,13 @@
 
 <span class="kw">fn </span>internal_properties_to_public&lt;<span class="lifetime">'a</span>&gt;(
     prop_iter: <span class="kw">impl </span>Iterator&lt;Item = (<span class="kw-2">&amp;</span><span class="lifetime">'a </span>SmolStr, <span class="kw-2">&amp;</span><span class="lifetime">'a </span>PropertyDeclaration)&gt; + <span class="lifetime">'a</span>,
-) -&gt; <span class="kw">impl </span>Iterator&lt;Item = (SmolStr, i_slint_compiler::langtype::Type)&gt; + <span class="lifetime">'a </span>{
+) -&gt; <span class="kw">impl </span>Iterator&lt;
+    Item = (
+        SmolStr,
+        i_slint_compiler::langtype::Type,
+        i_slint_compiler::object_tree::PropertyVisibility,
+    ),
+&gt; + <span class="lifetime">'a </span>{
     prop_iter.filter(|(<span class="kw">_</span>, v)| v.expose_in_public_api).map(|(s, v)| {
         <span class="kw">let </span>name = v
             .node
@@ -3034,7 +3060,7 @@
             })
             .map(|n| n.to_smolstr())
             .unwrap_or_else(|| s.to_smolstr());
-        (name, v.property_type.clone())
+        (name, v.property_type.clone(), v.visibility.clone())
     })
 }
 
@@ -3051,7 +3077,7 @@
     },
 }
 
-<span class="kw">impl</span>&lt;<span class="lifetime">'id</span>&gt; ItemTreeDescription&lt;<span class="lifetime">'id</span>&gt; {
+<span class="kw">impl </span>ItemTreeDescription&lt;<span class="lifetime">'_</span>&gt; {
     <span class="doccomment">/// The name of this Component as written in the .slint file
     </span><span class="kw">pub fn </span>id(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>str {
         <span class="self">self</span>.original.id.as_str()
@@ -3062,7 +3088,13 @@
     /// We try to preserve the dashes and underscore as written in the property declaration
     </span><span class="kw">pub fn </span>properties(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-    ) -&gt; <span class="kw">impl </span>Iterator&lt;Item = (SmolStr, i_slint_compiler::langtype::Type)&gt; + <span class="lifetime">'_ </span>{
+    ) -&gt; <span class="kw">impl </span>Iterator&lt;
+        Item = (
+            SmolStr,
+            i_slint_compiler::langtype::Type,
+            i_slint_compiler::object_tree::PropertyVisibility,
+        ),
+    &gt; + <span class="lifetime">'_ </span>{
         internal_properties_to_public(<span class="self">self</span>.public_properties.iter())
     }
 
@@ -3080,7 +3112,15 @@
     <span class="kw">pub fn </span>global_properties(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         name: <span class="kw-2">&amp;</span>str,
-    ) -&gt; <span class="prelude-ty">Option</span>&lt;<span class="kw">impl </span>Iterator&lt;Item = (SmolStr, i_slint_compiler::langtype::Type)&gt; + <span class="lifetime">'_</span>&gt; {
+    ) -&gt; <span class="prelude-ty">Option</span>&lt;
+        <span class="kw">impl </span>Iterator&lt;
+                Item = (
+                    SmolStr,
+                    i_slint_compiler::langtype::Type,
+                    i_slint_compiler::object_tree::PropertyVisibility,
+                ),
+            &gt; + <span class="lifetime">'_</span>,
+    &gt; {
         <span class="kw">let </span>g = <span class="self">self</span>.compiled_globals.as_ref().expect(<span class="string">"Root component should have globals"</span>);
         g.exported_globals_by_name
             .get(<span class="kw">crate</span>::normalize_identifier(name).as_ref())
@@ -3592,7 +3632,7 @@
     <span class="comment">//dbg!(&amp;*component.root_element.borrow());
 
     </span><span class="macro">thread_local!</span> {
-        <span class="kw">static </span>RTTI: Lazy&lt;HashMap&lt;<span class="kw-2">&amp;</span><span class="lifetime">'static </span>str, Rc&lt;ItemRTTI&gt;&gt;&gt; = Lazy::new(|| generate_rtti());
+        <span class="kw">static </span>RTTI: Lazy&lt;HashMap&lt;<span class="kw-2">&amp;</span><span class="lifetime">'static </span>str, Rc&lt;ItemRTTI&gt;&gt;&gt; = Lazy::new(generate_rtti);
     }
 
     <span class="kw">struct </span>TreeBuilder&lt;<span class="lifetime">'id</span>&gt; {
@@ -3607,7 +3647,7 @@
         change_callbacks: Vec&lt;(NamedReference, Expression)&gt;,
         popup_menu_description: PopupMenuDescription,
     }
-    <span class="kw">impl</span>&lt;<span class="lifetime">'id</span>&gt; generator::ItemTreeBuilder <span class="kw">for </span>TreeBuilder&lt;<span class="lifetime">'id</span>&gt; {
+    <span class="kw">impl </span>generator::ItemTreeBuilder <span class="kw">for </span>TreeBuilder&lt;<span class="lifetime">'_</span>&gt; {
         <span class="kw">type </span>SubComponentState = ();
 
         <span class="kw">fn </span>push_repeated_item(
@@ -3788,7 +3828,7 @@
             Type::Bool =&gt; property_info::&lt;bool&gt;(),
             Type::ComponentFactory =&gt; property_info::&lt;ComponentFactory&gt;(),
             Type::Struct(s)
-                <span class="kw">if </span>s.name.as_ref().map_or(<span class="bool-val">false</span>, |name| name.ends_with(<span class="string">"::StateInfo"</span>)) =&gt;
+                <span class="kw">if </span>s.name.as_ref().is_some_and(|name| name.ends_with(<span class="string">"::StateInfo"</span>)) =&gt;
             {
                 property_info::&lt;i_slint_core::properties::StateInfo&gt;()
             }
@@ -3898,7 +3938,7 @@
         .collect();
 
     <span class="comment">// only the public exported component needs the public property list
-    </span><span class="kw">let </span>public_properties = <span class="kw">if </span>!component.parent_element.upgrade().is_some() {
+    </span><span class="kw">let </span>public_properties = <span class="kw">if </span>component.parent_element.upgrade().is_none() {
         component.root_element.borrow().property_declarations.clone()
     } <span class="kw">else </span>{
         Default::default()
@@ -4153,7 +4193,7 @@
                 <span class="kw-2">&amp;</span>elem.borrow().enclosing_component.upgrade().unwrap().root_element,
             );
             <span class="kw">let </span>elem = elem.borrow();
-            <span class="kw">let </span>is_const = binding.analysis.as_ref().map_or(<span class="bool-val">false</span>, |a| a.is_const);
+            <span class="kw">let </span>is_const = binding.analysis.as_ref().is_some_and(|a| a.is_const);
 
             <span class="kw">let </span>property_type = elem.lookup_property(prop_name).property_type;
             <span class="kw">if let </span>Type::Function { .. } = property_type {
@@ -4185,7 +4225,7 @@
             } <span class="kw">else if let </span><span class="prelude-val">Some</span>(PropertiesWithinComponent { offset, prop: prop_info, .. }) =
                 description.custom_properties.get(prop_name).filter(|<span class="kw">_</span>| is_root)
             {
-                <span class="kw">let </span>is_state_info = <span class="macro">matches!</span>(property_type, Type::Struct (s) <span class="kw">if </span>s.name.as_ref().map_or(<span class="bool-val">false</span>, |name| name.ends_with(<span class="string">"::StateInfo"</span>)));
+                <span class="kw">let </span>is_state_info = <span class="macro">matches!</span>(property_type, Type::Struct (s) <span class="kw">if </span>s.name.as_ref().is_some_and(|name| name.ends_with(<span class="string">"::StateInfo"</span>)));
                 <span class="kw">if </span>is_state_info {
                     <span class="kw">let </span>prop = Pin::new_unchecked(
                         <span class="kw-2">&amp;*</span>(instance_ref.as_ptr().add(<span class="kw-2">*</span>offset)
@@ -4926,11 +4966,11 @@
 
     <span class="kw">pub fn </span>toplevel_instance&lt;<span class="lifetime">'id2</span>&gt;(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        guard: generativity::Guard&lt;<span class="lifetime">'id2</span>&gt;,
+        _guard: generativity::Guard&lt;<span class="lifetime">'id2</span>&gt;,
     ) -&gt; InstanceRef&lt;<span class="lifetime">'a</span>, <span class="lifetime">'id2</span>&gt; {
         <span class="macro">generativity::make_guard!</span>(guard2);
         <span class="kw">if let </span><span class="prelude-val">Some</span>(parent) = <span class="self">self</span>.parent_instance(guard2) {
-            <span class="kw">let </span>tl = parent.toplevel_instance(guard);
+            <span class="kw">let </span>tl = parent.toplevel_instance(_guard);
             <span class="comment">// assuming that the parent lives at least for lifetime 'a.
             // FIXME: this may not be sound
             </span><span class="kw">unsafe </span>{ std::mem::transmute::&lt;InstanceRef&lt;<span class="lifetime">'_</span>, <span class="lifetime">'id2</span>&gt;, InstanceRef&lt;<span class="lifetime">'a</span>, <span class="lifetime">'id2</span>&gt;&gt;(tl) }

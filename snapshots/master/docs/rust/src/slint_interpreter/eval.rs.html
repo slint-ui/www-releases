@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/eval.rs`."><title>eval.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-cf3c48c1.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0-nightly (bef3c3b01 2025-02-04)" data-channel="nightly" data-search-js="search-1b520363.js" data-settings-js="settings-6dad6058.js" ><script src="../../static.files/storage-302de22f.js"></script><script defer src="../../static.files/src-script-8fee9dc5.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-ddbd176c.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/eval.rs`."><title>eval.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-cf3c48c1.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0-nightly (a9730c3b5 2025-02-05)" data-channel="nightly" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../../static.files/storage-3a5871a4.js"></script><script defer src="../../static.files/src-script-8fee9dc5.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -3308,7 +3308,7 @@
             ComponentInstance::InstanceRef(component) =&gt; component
                 .window_adapter()
                 .internal(corelib::InternalToken)
-                .map_or(<span class="bool-val">false</span>, |x| x.supports_native_menu_bar())
+                .is_some_and(|x| x.supports_native_menu_bar())
                 .into(),
             ComponentInstance::GlobalComponent(<span class="kw">_</span>) =&gt; {
                 <span class="macro">panic!</span>(<span class="string">"Cannot get the window from a global component"</span>)
@@ -3828,7 +3828,7 @@
             <span class="macro">matches!</span>(value, Value::Model(m) <span class="kw">if </span>m.iter().all(|v| check_value_type(<span class="kw-2">&amp;</span>v, inner)))
         }
         Type::Struct(s) =&gt; {
-            <span class="macro">matches!</span>(value, Value::Struct(str) <span class="kw">if </span>str.iter().all(|(k, v)| s.fields.get(k).map_or(<span class="bool-val">false</span>, |ty| check_value_type(v, ty))))
+            <span class="macro">matches!</span>(value, Value::Struct(str) <span class="kw">if </span>str.iter().all(|(k, v)| s.fields.get(k).is_some_and(|ty| check_value_type(v, ty))))
         }
         Type::Enumeration(en) =&gt; {
             <span class="macro">matches!</span>(value, Value::EnumerationValue(name, <span class="kw">_</span>) <span class="kw">if </span>name == en.name.as_str())
@@ -4195,7 +4195,7 @@
         <span class="kw">let </span><span class="kw-2">mut </span>entries = SharedVector::default();
         context_menu_item_tree_.sub_menu(<span class="prelude-val">None</span>, <span class="kw-2">&amp;mut </span>entries);
         Value::Model(ModelRc::new(VecModel::from(
-            entries.into_iter().map(|x| Value::from(x)).collect::&lt;Vec&lt;<span class="kw">_</span>&gt;&gt;(),
+            entries.into_iter().map(Value::from).collect::&lt;Vec&lt;<span class="kw">_</span>&gt;&gt;(),
         )))
     });
     <span class="kw">let </span>context_menu_item_tree_ = context_menu_item_tree.clone();
@@ -4203,7 +4203,7 @@
         <span class="kw">let </span><span class="kw-2">mut </span>entries = SharedVector::default();
         context_menu_item_tree_.sub_menu(<span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span>args[<span class="number">0</span>].clone().try_into().unwrap()), <span class="kw-2">&amp;mut </span>entries);
         Value::Model(ModelRc::new(VecModel::from(
-            entries.into_iter().map(|x| Value::from(x)).collect::&lt;Vec&lt;<span class="kw">_</span>&gt;&gt;(),
+            entries.into_iter().map(Value::from).collect::&lt;Vec&lt;<span class="kw">_</span>&gt;&gt;(),
         )))
     });
     <span class="kw">let </span>activated = Box::new(<span class="kw">move </span>|args: <span class="kw-2">&amp;</span>[Value]| -&gt; Value {

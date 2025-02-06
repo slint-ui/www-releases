@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/api.rs`."><title>api.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-cf3c48c1.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0-nightly (bef3c3b01 2025-02-04)" data-channel="nightly" data-search-js="search-1b520363.js" data-settings-js="settings-6dad6058.js" ><script src="../../static.files/storage-302de22f.js"></script><script defer src="../../static.files/src-script-8fee9dc5.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-ddbd176c.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/api.rs`."><title>api.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-cf3c48c1.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0-nightly (a9730c3b5 2025-02-05)" data-channel="nightly" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../../static.files/storage-3a5871a4.js"></script><script defer src="../../static.files/src-script-8fee9dc5.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -2340,7 +2340,22 @@
 <a href="#2217" id="2217">2217</a>
 <a href="#2218" id="2218">2218</a>
 <a href="#2219" id="2219">2219</a>
-<a href="#2220" id="2220">2220</a></pre></div><pre class="rust"><code><span class="comment">// Copyright © SixtyFPS GmbH &lt;info@slint.dev&gt;
+<a href="#2220" id="2220">2220</a>
+<a href="#2221" id="2221">2221</a>
+<a href="#2222" id="2222">2222</a>
+<a href="#2223" id="2223">2223</a>
+<a href="#2224" id="2224">2224</a>
+<a href="#2225" id="2225">2225</a>
+<a href="#2226" id="2226">2226</a>
+<a href="#2227" id="2227">2227</a>
+<a href="#2228" id="2228">2228</a>
+<a href="#2229" id="2229">2229</a>
+<a href="#2230" id="2230">2230</a>
+<a href="#2231" id="2231">2231</a>
+<a href="#2232" id="2232">2232</a>
+<a href="#2233" id="2233">2233</a>
+<a href="#2234" id="2234">2234</a>
+<a href="#2235" id="2235">2235</a></pre></div><pre class="rust"><code><span class="comment">// Copyright © SixtyFPS GmbH &lt;info@slint.dev&gt;
 // SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0
 
 </span><span class="kw">use </span>i_slint_compiler::langtype::Type <span class="kw">as </span>LangType;
@@ -2840,7 +2855,7 @@
 
 <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>normalize_identifier_smolstr(ident: <span class="kw-2">&amp;</span>str) -&gt; SmolStr {
     <span class="kw">if </span>ident.contains(<span class="string">'_'</span>) {
-        ident.replace_smolstr(<span class="string">"_"</span>, <span class="string">"-"</span>).into()
+        ident.replace_smolstr(<span class="string">"_"</span>, <span class="string">"-"</span>)
     } <span class="kw">else </span>{
         ident.into()
     }
@@ -3363,11 +3378,16 @@
     #[cfg(feature = <span class="string">"internal"</span>)]
     </span><span class="kw">pub fn </span>properties_and_callbacks(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-    ) -&gt; <span class="kw">impl </span>Iterator&lt;Item = (String, i_slint_compiler::langtype::Type)&gt; + <span class="lifetime">'_ </span>{
+    ) -&gt; <span class="kw">impl </span>Iterator&lt;
+        Item = (
+            String,
+            (i_slint_compiler::langtype::Type, i_slint_compiler::object_tree::PropertyVisibility),
+        ),
+    &gt; + <span class="lifetime">'_ </span>{
         <span class="comment">// We create here a 'static guard, because unfortunately the returned type would be restricted to the guard lifetime
         // which is not required, but this is safe because there is only one instance of the unerased type
         </span><span class="kw">let </span>guard = <span class="kw">unsafe </span>{ generativity::Guard::new(generativity::Id::new()) };
-        <span class="self">self</span>.inner.unerase(guard).properties().map(|(s, t)| (s.to_string(), t))
+        <span class="self">self</span>.inner.unerase(guard).properties().map(|(s, t, v)| (s.to_string(), (t, v)))
     }
 
     <span class="doccomment">/// Returns an iterator over all publicly declared properties. Each iterator item is a tuple of property name
@@ -3376,7 +3396,7 @@
         <span class="comment">// We create here a 'static guard, because unfortunately the returned type would be restricted to the guard lifetime
         // which is not required, but this is safe because there is only one instance of the unerased type
         </span><span class="kw">let </span>guard = <span class="kw">unsafe </span>{ generativity::Guard::new(generativity::Id::new()) };
-        <span class="self">self</span>.inner.unerase(guard).properties().filter_map(|(prop_name, prop_type)| {
+        <span class="self">self</span>.inner.unerase(guard).properties().filter_map(|(prop_name, prop_type, <span class="kw">_</span>)| {
             <span class="kw">if </span>prop_type.is_property_type() {
                 <span class="prelude-val">Some</span>((prop_name.to_string(), prop_type.into()))
             } <span class="kw">else </span>{
@@ -3390,7 +3410,7 @@
         <span class="comment">// We create here a 'static guard, because unfortunately the returned type would be restricted to the guard lifetime
         // which is not required, but this is safe because there is only one instance of the unerased type
         </span><span class="kw">let </span>guard = <span class="kw">unsafe </span>{ generativity::Guard::new(generativity::Id::new()) };
-        <span class="self">self</span>.inner.unerase(guard).properties().filter_map(|(prop_name, prop_type)| {
+        <span class="self">self</span>.inner.unerase(guard).properties().filter_map(|(prop_name, prop_type, <span class="kw">_</span>)| {
             <span class="kw">if </span><span class="macro">matches!</span>(prop_type, LangType::Callback { .. }) {
                 <span class="prelude-val">Some</span>(prop_name.to_string())
             } <span class="kw">else </span>{
@@ -3404,7 +3424,7 @@
         <span class="comment">// We create here a 'static guard, because unfortunately the returned type would be restricted to the guard lifetime
         // which is not required, but this is safe because there is only one instance of the unerased type
         </span><span class="kw">let </span>guard = <span class="kw">unsafe </span>{ generativity::Guard::new(generativity::Id::new()) };
-        <span class="self">self</span>.inner.unerase(guard).properties().filter_map(|(prop_name, prop_type)| {
+        <span class="self">self</span>.inner.unerase(guard).properties().filter_map(|(prop_name, prop_type, <span class="kw">_</span>)| {
             <span class="kw">if </span><span class="macro">matches!</span>(prop_type, LangType::Function { .. }) {
                 <span class="prelude-val">Some</span>(prop_name.to_string())
             } <span class="kw">else </span>{
@@ -3432,14 +3452,24 @@
     </span><span class="kw">pub fn </span>global_properties_and_callbacks(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         global_name: <span class="kw-2">&amp;</span>str,
-    ) -&gt; <span class="prelude-ty">Option</span>&lt;<span class="kw">impl </span>Iterator&lt;Item = (String, i_slint_compiler::langtype::Type)&gt; + <span class="lifetime">'_</span>&gt; {
+    ) -&gt; <span class="prelude-ty">Option</span>&lt;
+        <span class="kw">impl </span>Iterator&lt;
+                Item = (
+                    String,
+                    (
+                        i_slint_compiler::langtype::Type,
+                        i_slint_compiler::object_tree::PropertyVisibility,
+                    ),
+                ),
+            &gt; + <span class="lifetime">'_</span>,
+    &gt; {
         <span class="comment">// We create here a 'static guard, because unfortunately the returned type would be restricted to the guard lifetime
         // which is not required, but this is safe because there is only one instance of the unerased type
         </span><span class="kw">let </span>guard = <span class="kw">unsafe </span>{ generativity::Guard::new(generativity::Id::new()) };
         <span class="self">self</span>.inner
             .unerase(guard)
             .global_properties(global_name)
-            .map(|o| o.map(|(s, t)| (s.to_string(), t)))
+            .map(|o| o.map(|(s, t, v)| (s.to_string(), (t, v))))
     }
 
     <span class="doccomment">/// List of publicly declared properties in the exported global singleton specified by its name.
@@ -3451,7 +3481,7 @@
         // which is not required, but this is safe because there is only one instance of the unerased type
         </span><span class="kw">let </span>guard = <span class="kw">unsafe </span>{ generativity::Guard::new(generativity::Id::new()) };
         <span class="self">self</span>.inner.unerase(guard).global_properties(global_name).map(|iter| {
-            iter.filter_map(|(prop_name, prop_type)| {
+            iter.filter_map(|(prop_name, prop_type, <span class="kw">_</span>)| {
                 <span class="kw">if </span>prop_type.is_property_type() {
                     <span class="prelude-val">Some</span>((prop_name.to_string(), prop_type.into()))
                 } <span class="kw">else </span>{
@@ -3467,7 +3497,7 @@
         // which is not required, but this is safe because there is only one instance of the unerased type
         </span><span class="kw">let </span>guard = <span class="kw">unsafe </span>{ generativity::Guard::new(generativity::Id::new()) };
         <span class="self">self</span>.inner.unerase(guard).global_properties(global_name).map(|iter| {
-            iter.filter_map(|(prop_name, prop_type)| {
+            iter.filter_map(|(prop_name, prop_type, <span class="kw">_</span>)| {
                 <span class="kw">if </span><span class="macro">matches!</span>(prop_type, LangType::Callback { .. }) {
                     <span class="prelude-val">Some</span>(prop_name.to_string())
                 } <span class="kw">else </span>{
@@ -3483,7 +3513,7 @@
         // which is not required, but this is safe because there is only one instance of the unerased type
         </span><span class="kw">let </span>guard = <span class="kw">unsafe </span>{ generativity::Guard::new(generativity::Id::new()) };
         <span class="self">self</span>.inner.unerase(guard).global_properties(global_name).map(|iter| {
-            iter.filter_map(|(prop_name, prop_type)| {
+            iter.filter_map(|(prop_name, prop_type, <span class="kw">_</span>)| {
                 <span class="kw">if </span><span class="macro">matches!</span>(prop_type, LangType::Function { .. }) {
                     <span class="prelude-val">Some</span>(prop_name.to_string())
                 } <span class="kw">else </span>{
@@ -3602,7 +3632,7 @@
             .borrow()
             .property_declarations
             .get(name.as_ref())
-            .map_or(<span class="bool-val">true</span>, |d| !d.expose_in_public_api)
+            .is_none_or(|d| !d.expose_in_public_api)
         {
             <span class="kw">return </span><span class="prelude-val">Err</span>(GetPropertyError::NoSuchProperty);
         }

@@ -4389,7 +4389,7 @@ DEALINGS IN THE SOFTWARE.
 #### Used by:
 
 - [serde_spanned 0.6.8]( https://github.com/toml-rs/toml )
-- [toml 0.8.19]( https://github.com/toml-rs/toml )
+- [toml 0.8.20]( https://github.com/toml-rs/toml )
 - [toml_datetime 0.6.8]( https://github.com/toml-rs/toml )
 - [toml_edit 0.19.15]( https://github.com/toml-rs/toml )
 - [toml_edit 0.20.7]( https://github.com/toml-rs/toml )
