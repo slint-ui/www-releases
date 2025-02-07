@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/json.rs`."><title>json.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-cf3c48c1.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0-nightly (a9730c3b5 2025-02-05)" data-channel="nightly" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../../static.files/storage-3a5871a4.js"></script><script defer src="../../static.files/src-script-8fee9dc5.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/json.rs`."><title>json.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-cf3c48c1.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0-nightly (942db6782 2025-02-06)" data-channel="nightly" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../../static.files/storage-3a5871a4.js"></script><script defer src="../../static.files/src-script-8fee9dc5.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -401,10 +401,7 @@
 <a href="#278" id="278">278</a>
 <a href="#279" id="279">279</a>
 <a href="#280" id="280">280</a>
-<a href="#281" id="281">281</a>
-<a href="#282" id="282">282</a>
-<a href="#283" id="283">283</a>
-<a href="#284" id="284">284</a></pre></div><pre class="rust"><code><span class="comment">// Copyright © SixtyFPS GmbH &lt;info@slint.dev&gt;
+<a href="#281" id="281">281</a></pre></div><pre class="rust"><code><span class="comment">// Copyright © SixtyFPS GmbH &lt;info@slint.dev&gt;
 // SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0
 
 </span><span class="doccomment">//! This module contains the code serialize and desrialize `Value`s to JSON
@@ -478,7 +475,7 @@
                 <span class="kw">if let </span><span class="prelude-val">Some</span>(c) = string_to_color(s) {
                     <span class="prelude-val">Ok</span>(Value::Brush(i_slint_core::Brush::SolidColor(c)))
                 } <span class="kw">else </span>{
-                    <span class="prelude-val">Err</span>(<span class="macro">format!</span>(<span class="string">"Failed to parse color: {}"</span>, s))
+                    <span class="prelude-val">Err</span>(<span class="macro">format!</span>(<span class="string">"Failed to parse color: {s}"</span>))
                 }
             }
             langtype::Type::String =&gt; <span class="prelude-val">Ok</span>(SharedString::from(s.as_str()).into()),
@@ -668,14 +665,11 @@
     <span class="kw">let </span>v = value_to_json_string(<span class="kw-2">&amp;</span>Value::Model(model)).unwrap();
     <span class="macro">assert_eq!</span>(v, <span class="string">"[true,false]"</span>.to_string());
 
-    <span class="kw">let </span>v = value_to_json_string(<span class="kw-2">&amp;</span>Value::Struct(<span class="kw">crate</span>::Struct::from_iter(
-        [
-            (<span class="string">"kind"</span>.to_string(), Value::EnumerationValue(<span class="string">"test"</span>.to_string(), <span class="string">"foo"</span>.to_string())),
-            (<span class="string">"is_bool"</span>.to_string(), Value::Bool(<span class="bool-val">false</span>)),
-            (<span class="string">"string-value"</span>.to_string(), Value::String(<span class="string">"some string"</span>.into())),
-        ]
-        .into_iter(),
-    )))
+    <span class="kw">let </span>v = value_to_json_string(<span class="kw-2">&amp;</span>Value::Struct(<span class="kw">crate</span>::Struct::from_iter([
+        (<span class="string">"kind"</span>.to_string(), Value::EnumerationValue(<span class="string">"test"</span>.to_string(), <span class="string">"foo"</span>.to_string())),
+        (<span class="string">"is_bool"</span>.to_string(), Value::Bool(<span class="bool-val">false</span>)),
+        (<span class="string">"string-value"</span>.to_string(), Value::String(<span class="string">"some string"</span>.into())),
+    ])))
     .unwrap();
     <span class="macro">assert_eq!</span>(
         v,

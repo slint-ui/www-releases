@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/api.rs`."><title>api.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-cf3c48c1.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0-nightly (a9730c3b5 2025-02-05)" data-channel="nightly" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../../static.files/storage-3a5871a4.js"></script><script defer src="../../static.files/src-script-8fee9dc5.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/api.rs`."><title>api.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-cf3c48c1.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0-nightly (942db6782 2025-02-06)" data-channel="nightly" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../../static.files/storage-3a5871a4.js"></script><script defer src="../../static.files/src-script-8fee9dc5.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -2541,22 +2541,22 @@
     <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>std::fmt::Formatter&lt;<span class="lifetime">'_</span>&gt;) -&gt; std::fmt::Result {
         <span class="kw">match </span><span class="self">self </span>{
             Value::Void =&gt; <span class="macro">write!</span>(f, <span class="string">"Value::Void"</span>),
-            Value::Number(n) =&gt; <span class="macro">write!</span>(f, <span class="string">"Value::Number({:?})"</span>, n),
-            Value::String(s) =&gt; <span class="macro">write!</span>(f, <span class="string">"Value::String({:?})"</span>, s),
-            Value::Bool(b) =&gt; <span class="macro">write!</span>(f, <span class="string">"Value::Bool({:?})"</span>, b),
-            Value::Image(i) =&gt; <span class="macro">write!</span>(f, <span class="string">"Value::Image({:?})"</span>, i),
+            Value::Number(n) =&gt; <span class="macro">write!</span>(f, <span class="string">"Value::Number({n:?})"</span>),
+            Value::String(s) =&gt; <span class="macro">write!</span>(f, <span class="string">"Value::String({s:?})"</span>),
+            Value::Bool(b) =&gt; <span class="macro">write!</span>(f, <span class="string">"Value::Bool({b:?})"</span>),
+            Value::Image(i) =&gt; <span class="macro">write!</span>(f, <span class="string">"Value::Image({i:?})"</span>),
             Value::Model(m) =&gt; {
                 <span class="macro">write!</span>(f, <span class="string">"Value::Model("</span>)<span class="question-mark">?</span>;
                 f.debug_list().entries(m.iter()).finish()<span class="question-mark">?</span>;
                 <span class="macro">write!</span>(f, <span class="string">"])"</span>)
             }
-            Value::Struct(s) =&gt; <span class="macro">write!</span>(f, <span class="string">"Value::Struct({:?})"</span>, s),
-            Value::Brush(b) =&gt; <span class="macro">write!</span>(f, <span class="string">"Value::Brush({:?})"</span>, b),
-            Value::PathData(e) =&gt; <span class="macro">write!</span>(f, <span class="string">"Value::PathElements({:?})"</span>, e),
-            Value::EasingCurve(c) =&gt; <span class="macro">write!</span>(f, <span class="string">"Value::EasingCurve({:?})"</span>, c),
-            Value::EnumerationValue(n, v) =&gt; <span class="macro">write!</span>(f, <span class="string">"Value::EnumerationValue({:?}, {:?})"</span>, n, v),
-            Value::LayoutCache(v) =&gt; <span class="macro">write!</span>(f, <span class="string">"Value::LayoutCache({:?})"</span>, v),
-            Value::ComponentFactory(factory) =&gt; <span class="macro">write!</span>(f, <span class="string">"Value::ComponentFactory({:?})"</span>, factory),
+            Value::Struct(s) =&gt; <span class="macro">write!</span>(f, <span class="string">"Value::Struct({s:?})"</span>),
+            Value::Brush(b) =&gt; <span class="macro">write!</span>(f, <span class="string">"Value::Brush({b:?})"</span>),
+            Value::PathData(e) =&gt; <span class="macro">write!</span>(f, <span class="string">"Value::PathElements({e:?})"</span>),
+            Value::EasingCurve(c) =&gt; <span class="macro">write!</span>(f, <span class="string">"Value::EasingCurve({c:?})"</span>),
+            Value::EnumerationValue(n, v) =&gt; <span class="macro">write!</span>(f, <span class="string">"Value::EnumerationValue({n:?}, {v:?})"</span>),
+            Value::LayoutCache(v) =&gt; <span class="macro">write!</span>(f, <span class="string">"Value::LayoutCache({v:?})"</span>),
+            Value::ComponentFactory(factory) =&gt; <span class="macro">write!</span>(f, <span class="string">"Value::ComponentFactory({factory:?})"</span>),
         }
     }
 }
@@ -2831,7 +2831,7 @@
     <span class="macro">assert_eq!</span>(int_model.row_count(), <span class="number">2</span>);
     <span class="macro">assert_eq!</span>(int_model.iter().collect::&lt;Vec&lt;<span class="kw">_</span>&gt;&gt;(), <span class="macro">vec!</span>[<span class="number">42</span>, <span class="number">12</span>]);
 
-    <span class="kw">let </span>Value::Model(m3) = int_model.clone().try_into().unwrap() <span class="kw">else </span>{ <span class="macro">panic!</span>(<span class="string">"not a model?"</span>) };
+    <span class="kw">let </span>Value::Model(m3) = int_model.clone().into() <span class="kw">else </span>{ <span class="macro">panic!</span>(<span class="string">"not a model?"</span>) };
     <span class="macro">assert_eq!</span>(m3.row_count(), <span class="number">2</span>);
     <span class="macro">assert_eq!</span>(m3.iter().collect::&lt;Vec&lt;<span class="kw">_</span>&gt;&gt;(), <span class="macro">vec!</span>[Value::Number(<span class="number">42.</span>), Value::Number(<span class="number">12.</span>)]);
 
@@ -4421,7 +4421,7 @@
                 <span class="macro">assert_eq!</span>(m.row_data(i).unwrap(), Value::Number(<span class="kw-2">*</span>v));
             }
         } <span class="kw">else </span>{
-            <span class="macro">panic!</span>(<span class="string">"{:?} not a model"</span>, val);
+            <span class="macro">panic!</span>(<span class="string">"{val:?} not a model"</span>);
         }
     }
 
@@ -4572,7 +4572,7 @@ export component Foo2 inherits Window  {
 
     <span class="kw">let </span>(handle, path) = compile(code);
 
-    <span class="kw">for </span>i <span class="kw">in </span><span class="number">0</span>..code.as_bytes().len() <span class="kw">as </span>u32 {
+    <span class="kw">for </span>i <span class="kw">in </span><span class="number">0</span>..code.len() <span class="kw">as </span>u32 {
         <span class="kw">let </span>elements = handle.element_node_at_source_code_position(<span class="kw-2">&amp;</span>path, i);
         <span class="macro">eprintln!</span>(<span class="string">"{i}: {}"</span>, code.as_bytes()[i <span class="kw">as </span>usize] <span class="kw">as </span>char);
         <span class="kw">match </span>i {

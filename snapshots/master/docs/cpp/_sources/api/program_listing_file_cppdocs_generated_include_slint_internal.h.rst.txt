@@ -434,6 +434,7 @@ Program Listing for File slint_internal.h
        Property<int32_t> cursor_position_byte_offset;
        Property<int32_t> anchor_position_byte_offset;
        Property<LogicalLength> text_cursor_width;
+       Property<LogicalLength> page_height;
        Property<bool> cursor_visible;
        Property<bool> has_focus;
        Property<bool> enabled;
