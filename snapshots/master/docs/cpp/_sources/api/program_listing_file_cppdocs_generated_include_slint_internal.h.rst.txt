@@ -390,6 +390,20 @@ Program Listing for File slint_internal.h
    
    using ItemTreeRefPin = Pin<ItemTreeRef>;
    
+   struct CachedRenderingData {
+       uintptr_t cache_index;
+       uintptr_t cache_generation;
+       constexpr CachedRenderingData() : cache_index{}, cache_generation{} {}
+   };
+   
+   struct ContextMenu {
+       private_api::CallbackHelper<MenuEntry, std::shared_ptr<slint::Model<MenuEntry>>> sub_menu;
+       private_api::CallbackHelper<MenuEntry> activated;
+       private_api::CallbackHelper<slint::LogicalPosition> show;
+       CachedRenderingData cached_rendering_data;
+       uint32_t popup_id;
+   };
+   
    struct FlickableDataBox {
    struct FlickableData;
        FlickableData *_0;
@@ -399,12 +413,6 @@ Program Listing for File slint_internal.h
        bool valid;
        int32_t start;
        int32_t end;
-   };
-   
-   struct CachedRenderingData {
-       uintptr_t cache_index;
-       uintptr_t cache_generation;
-       constexpr CachedRenderingData() : cache_index{}, cache_generation{} {}
    };
    
    struct UndoItem {
@@ -875,13 +883,6 @@ Program Listing for File slint_internal.h
        CachedRenderingData cached_rendering_data;
    };
    
-   struct ContextMenu {
-       private_api::CallbackHelper<MenuEntry, std::shared_ptr<slint::Model<MenuEntry>>> sub_menu;
-       private_api::CallbackHelper<MenuEntry> activated;
-       private_api::CallbackHelper<slint::LogicalPosition> show;
-       CachedRenderingData cached_rendering_data;
-   };
-   
    struct MenuItem {
        CachedRenderingData cached_rendering_data;
        Property<SharedString> title;
@@ -937,6 +938,11 @@ Program Listing for File slint_internal.h
                                                                                   TraversalOrder order,
                                                                                   VRefMut<ItemVisitorVTable> visitor,
                                                                                   uint32_t dyn_index));
+   
+   void slint_contextmenu_close(Pin<const ContextMenu*> s,
+                                const WindowAdapterRcOpaque *window_adapter,
+                                const VRc<ItemTreeVTable> *self_component,
+                                uint32_t self_index);
    
    LogicalPoint slint_item_absolute_position(const VRc<ItemTreeVTable> *self_component,
                                              uint32_t self_index);
@@ -1203,7 +1209,8 @@ Program Listing for File slint_internal.h
                                       const ItemTreeRc *popup,
                                       LogicalPosition position,
                                       PopupClosePolicy close_policy,
-                                      const ItemRc *parent_item);
+                                      const ItemRc *parent_item,
+                                      bool is_menu);
    
    void slint_windowrc_close_popup(const WindowAdapterRcOpaque *handle, uint32_t popup_id);
    

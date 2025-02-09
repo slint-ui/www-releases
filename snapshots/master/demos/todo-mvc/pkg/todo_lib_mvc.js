@@ -253,7 +253,7 @@ export function main() {
 }
 
 function __wbg_adapter_28(arg0, arg1, arg2) {
-    wasm.closure2197_externref_shim(arg0, arg1, arg2);
+    wasm.closure2311_externref_shim(arg0, arg1, arg2);
 }
 
 function __wbg_adapter_39(arg0, arg1, arg2) {
@@ -1647,24 +1647,24 @@ function __wbg_get_imports() {
         const ret = false;
         return ret;
     };
-    imports.wbg.__wbindgen_closure_wrapper5420 = function(arg0, arg1, arg2) {
-        const ret = makeClosure(arg0, arg1, 2198, __wbg_adapter_28);
+    imports.wbg.__wbindgen_closure_wrapper5207 = function(arg0, arg1, arg2) {
+        const ret = makeClosure(arg0, arg1, 2312, __wbg_adapter_28);
         return ret;
     };
-    imports.wbg.__wbindgen_closure_wrapper5422 = function(arg0, arg1, arg2) {
-        const ret = makeClosure(arg0, arg1, 2198, __wbg_adapter_28);
+    imports.wbg.__wbindgen_closure_wrapper5209 = function(arg0, arg1, arg2) {
+        const ret = makeClosure(arg0, arg1, 2312, __wbg_adapter_28);
         return ret;
     };
-    imports.wbg.__wbindgen_closure_wrapper5424 = function(arg0, arg1, arg2) {
-        const ret = makeClosure(arg0, arg1, 2198, __wbg_adapter_28);
+    imports.wbg.__wbindgen_closure_wrapper5211 = function(arg0, arg1, arg2) {
+        const ret = makeClosure(arg0, arg1, 2312, __wbg_adapter_28);
         return ret;
     };
-    imports.wbg.__wbindgen_closure_wrapper5426 = function(arg0, arg1, arg2) {
-        const ret = makeClosure(arg0, arg1, 2198, __wbg_adapter_28);
+    imports.wbg.__wbindgen_closure_wrapper5213 = function(arg0, arg1, arg2) {
+        const ret = makeClosure(arg0, arg1, 2312, __wbg_adapter_28);
         return ret;
     };
-    imports.wbg.__wbindgen_closure_wrapper5428 = function(arg0, arg1, arg2) {
-        const ret = makeClosure(arg0, arg1, 2198, __wbg_adapter_28);
+    imports.wbg.__wbindgen_closure_wrapper5215 = function(arg0, arg1, arg2) {
+        const ret = makeClosure(arg0, arg1, 2312, __wbg_adapter_28);
         return ret;
     };
     imports.wbg.__wbindgen_closure_wrapper6526 = function(arg0, arg1, arg2) {
