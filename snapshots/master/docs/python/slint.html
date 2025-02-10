@@ -82,16 +82,16 @@
                                 <a class="function" href="#Image.load_from_svg_data">load_from_svg_data</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Image.path">path</a>
-                        </li>
-                        <li>
                                 <a class="variable" href="#Image.width">width</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Image.size">size</a>
+                                <a class="variable" href="#Image.height">height</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Image.height">height</a>
+                                <a class="variable" href="#Image.path">path</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Image.size">size</a>
                         </li>
                 </ul>
 
@@ -115,16 +115,16 @@
                                 <a class="function" href="#Color.with_alpha">with_alpha</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Color.red">red</a>
-                        </li>
-                        <li>
                                 <a class="variable" href="#Color.green">green</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Color.blue">blue</a>
+                                <a class="variable" href="#Color.red">red</a>
                         </li>
                         <li>
                                 <a class="variable" href="#Color.alpha">alpha</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Color.blue">blue</a>
                         </li>
                 </ul>
 
@@ -334,7 +334,7 @@ export component AppWindow inherits Window {
 </code></pre>
 </div>
 
-<ol>
+<ol start="5">
 <li>Run it with <code>uv run main.py</code></li>
 </ol>
 
@@ -401,7 +401,9 @@ first try to locate <code>app_window.slint</code> and then fall back to <code>ap
 <h3 id="accessing-globals">Accessing Globals</h3>
 
 <p><a href="https://slint.dev/docs/slint/src/language/syntax/globals#global-singletons">Global Singletons</a> are accessible in
-Python as properties in the component instance:</p>
+Python as properties in the component instance.</p>
+
+<p>For example, this Slint code declares a <code>PrinterJobQueue</code> singleton:</p>
 
 <p>```slint,ignore
 export global PrinterJobQueue {
@@ -409,6 +411,8 @@ export global PrinterJobQueue {
 }</p>
 
 <pre><code>
+Access it as a property on the component instance by its name:
+
 ```python
 print("job count:", instance.PrinterJobQueue.job_count)
 </code></pre>
@@ -557,9 +561,9 @@ subclasses of <code><a href="#Model">slint.Model</a></code>.</p>
 <p>Use the <code><a href="#ListModel">slint.ListModel</a></code> class to construct a model from an iterable.</p>
 
 <div class="pdoc-code codehilite">
-<pre><span></span><code><span class="nx">component</span><span class="p">.</span><span class="nx">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">slint</span><span class="p">.</span><span class="nx">ListModel</span><span class="p">([</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">]);</span>
-<span class="nx">component</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="mf">4</span><span class="p">)</span>
-<span class="nx">del</span><span class="w"> </span><span class="nx">component</span><span class="p">.</span><span class="nx">model</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span>
+<pre><span></span><code><span class="n">component</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n"><a href="#ListModel">slint.ListModel</a></span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]);</span>
+<span class="n">component</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="k">del</span> <span class="n">component</span><span class="o">.</span><span class="n">model</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </code></pre>
 </div>
 
@@ -1207,19 +1211,6 @@ image file on disk, using <code><a href="#Image.load_from_path">Image.load_from_
 
 
                             </div>
-                            <div id="Image.path" class="classattr">
-                                <div class="attr variable">
-            <span class="name">path</span><span class="annotation">: Optional[str]</span>
-
-        
-    </div>
-    <a class="headerlink" href="#Image.path"></a>
-    
-            <div class="docstring"><p>The path of the image if it was loaded from disk, or None.</p>
-</div>
-
-
-                            </div>
                             <div id="Image.width" class="classattr">
                                 <div class="attr variable">
             <span class="name">width</span><span class="annotation">: int</span>
@@ -1233,19 +1224,6 @@ image file on disk, using <code><a href="#Image.load_from_path">Image.load_from_
 
 
                             </div>
-                            <div id="Image.size" class="classattr">
-                                <div class="attr variable">
-            <span class="name">size</span><span class="annotation">: tuple[int, int]</span>
-
-        
-    </div>
-    <a class="headerlink" href="#Image.size"></a>
-    
-            <div class="docstring"><p>The size of the image as tuple of <code><a href="#Image.width">width</a></code> and <code><a href="#Image.height">height</a></code>.</p>
-</div>
-
-
-                            </div>
                             <div id="Image.height" class="classattr">
                                 <div class="attr variable">
             <span class="name">height</span><span class="annotation">: int</span>
@@ -1255,6 +1233,32 @@ image file on disk, using <code><a href="#Image.load_from_path">Image.load_from_
     <a class="headerlink" href="#Image.height"></a>
     
             <div class="docstring"><p>The height of the image in pixels.</p>
+</div>
+
+
+                            </div>
+                            <div id="Image.path" class="classattr">
+                                <div class="attr variable">
+            <span class="name">path</span><span class="annotation">: Optional[str]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Image.path"></a>
+    
+            <div class="docstring"><p>The path of the image if it was loaded from disk, or None.</p>
+</div>
+
+
+                            </div>
+                            <div id="Image.size" class="classattr">
+                                <div class="attr variable">
+            <span class="name">size</span><span class="annotation">: tuple[int, int]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Image.size"></a>
+    
+            <div class="docstring"><p>The size of the image as tuple of <code><a href="#Image.width">width</a></code> and <code><a href="#Image.height">height</a></code>.</p>
 </div>
 
 
@@ -1337,17 +1341,6 @@ image file on disk, using <code><a href="#Image.load_from_path">Image.load_from_
     
 
                             </div>
-                            <div id="Color.red" class="classattr">
-                                <div class="attr variable">
-            <span class="name">red</span><span class="annotation">: int</span>
-
-        
-    </div>
-    <a class="headerlink" href="#Color.red"></a>
-    
-    
-
-                            </div>
                             <div id="Color.green" class="classattr">
                                 <div class="attr variable">
             <span class="name">green</span><span class="annotation">: int</span>
@@ -1359,13 +1352,13 @@ image file on disk, using <code><a href="#Image.load_from_path">Image.load_from_
     
 
                             </div>
-                            <div id="Color.blue" class="classattr">
+                            <div id="Color.red" class="classattr">
                                 <div class="attr variable">
-            <span class="name">blue</span><span class="annotation">: int</span>
+            <span class="name">red</span><span class="annotation">: int</span>
 
         
     </div>
-    <a class="headerlink" href="#Color.blue"></a>
+    <a class="headerlink" href="#Color.red"></a>
     
     
 
@@ -1377,6 +1370,17 @@ image file on disk, using <code><a href="#Image.load_from_path">Image.load_from_
         
     </div>
     <a class="headerlink" href="#Color.alpha"></a>
+    
+    
+
+                            </div>
+                            <div id="Color.blue" class="classattr">
+                                <div class="attr variable">
+            <span class="name">blue</span><span class="annotation">: int</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Color.blue"></a>
     
     
 

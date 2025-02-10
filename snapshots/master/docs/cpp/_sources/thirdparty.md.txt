@@ -4854,7 +4854,7 @@ SOFTWARE.
 
 #### Used by:
 
-- [built 0.7.5]( https://github.com/lukaslueg/built )
+- [built 0.7.6]( https://github.com/lukaslueg/built )
 
 #### License Text
 
