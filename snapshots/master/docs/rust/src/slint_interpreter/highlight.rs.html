@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/highlight.rs`."><title>highlight.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-cf3c48c1.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0-nightly (124cc9219 2025-02-09)" data-channel="nightly" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../../static.files/storage-3a5871a4.js"></script><script defer src="../../static.files/src-script-8fee9dc5.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/highlight.rs`."><title>highlight.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-cf3c48c1.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.86.0-nightly (6171d944a 2025-02-10)" data-channel="nightly" data-search-js="search-581efc7a.js" data-settings-js="settings-6dad6058.js" ><script src="../../static.files/storage-3a5871a4.js"></script><script defer src="../../static.files/src-script-8fee9dc5.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-4d63596a.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -310,7 +310,28 @@
 <a href="#187" id="187">187</a>
 <a href="#188" id="188">188</a>
 <a href="#189" id="189">189</a>
-<a href="#190" id="190">190</a></pre></div><pre class="rust"><code><span class="comment">// Copyright © SixtyFPS GmbH &lt;info@slint.dev&gt;
+<a href="#190" id="190">190</a>
+<a href="#191" id="191">191</a>
+<a href="#192" id="192">192</a>
+<a href="#193" id="193">193</a>
+<a href="#194" id="194">194</a>
+<a href="#195" id="195">195</a>
+<a href="#196" id="196">196</a>
+<a href="#197" id="197">197</a>
+<a href="#198" id="198">198</a>
+<a href="#199" id="199">199</a>
+<a href="#200" id="200">200</a>
+<a href="#201" id="201">201</a>
+<a href="#202" id="202">202</a>
+<a href="#203" id="203">203</a>
+<a href="#204" id="204">204</a>
+<a href="#205" id="205">205</a>
+<a href="#206" id="206">206</a>
+<a href="#207" id="207">207</a>
+<a href="#208" id="208">208</a>
+<a href="#209" id="209">209</a>
+<a href="#210" id="210">210</a>
+<a href="#211" id="211">211</a></pre></div><pre class="rust"><code><span class="comment">// Copyright © SixtyFPS GmbH &lt;info@slint.dev&gt;
 // SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0
 
 </span><span class="doccomment">//! This module contains the code for the highlight of some elements
@@ -351,7 +372,14 @@
     <span class="kw">for </span>element <span class="kw">in </span>elements.iter().filter_map(|e| e.upgrade()) {
         <span class="kw">let </span>element = normalize_repeated_element(element);
         <span class="kw">if let </span><span class="prelude-val">Some</span>(repeater_path) = repeater_path(<span class="kw-2">&amp;</span>element) {
-            fill_highlight_data(<span class="kw-2">&amp;</span>repeater_path, <span class="kw-2">&amp;</span>element, <span class="kw-2">&amp;</span>c, <span class="kw-2">&amp;</span>c, <span class="kw-2">&amp;mut </span>values);
+            fill_highlight_data(
+                <span class="kw-2">&amp;</span>repeater_path,
+                <span class="kw-2">&amp;</span>element,
+                <span class="kw-2">&amp;</span>c,
+                <span class="kw-2">&amp;</span>c,
+                ElementPositionFilter::IncludeClipped,
+                <span class="kw-2">&amp;mut </span>values,
+            );
         }
     }
     values
@@ -373,9 +401,20 @@
     )
 }
 
-<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>element_positions(
+<span class="doccomment">/// Argument to filter the elements in the [`element_positions`] function
+</span><span class="attr">#[derive(Copy, Clone, Eq, PartialEq)]
+</span><span class="kw">pub enum </span>ElementPositionFilter {
+    <span class="doccomment">/// Include all elements
+    </span>IncludeClipped,
+    <span class="doccomment">/// Exclude elements that are not visible because they are clipped
+    </span>ExcludeClipped,
+}
+
+<span class="doccomment">/// Return the positions of all instances of a specific element
+</span><span class="kw">pub fn </span>element_positions(
     component_instance: <span class="kw-2">&amp;</span>DynamicComponentVRc,
     element: <span class="kw-2">&amp;</span>ElementRc,
+    filter_clipped: ElementPositionFilter,
 ) -&gt; Vec&lt;LogicalRect&gt; {
     <span class="macro">generativity::make_guard!</span>(guard);
     <span class="kw">let </span>c = component_instance.unerase(guard);
@@ -384,7 +423,7 @@
 
     <span class="kw">let </span>element = normalize_repeated_element(element.clone());
     <span class="kw">if let </span><span class="prelude-val">Some</span>(repeater_path) = repeater_path(<span class="kw-2">&amp;</span>element) {
-        fill_highlight_data(<span class="kw-2">&amp;</span>repeater_path, <span class="kw-2">&amp;</span>element, <span class="kw-2">&amp;</span>c, <span class="kw-2">&amp;</span>c, <span class="kw-2">&amp;mut </span>values);
+        fill_highlight_data(<span class="kw-2">&amp;</span>repeater_path, <span class="kw-2">&amp;</span>element, <span class="kw-2">&amp;</span>c, <span class="kw-2">&amp;</span>c, filter_clipped, <span class="kw-2">&amp;mut </span>values);
     }
     values
 }
@@ -405,6 +444,7 @@
     element: <span class="kw-2">&amp;</span>ElementRc,
     component_instance: <span class="kw-2">&amp;</span>ItemTreeBox,
     root_component_instance: <span class="kw-2">&amp;</span>ItemTreeBox,
+    filter_clipped: ElementPositionFilter,
     values: <span class="kw-2">&amp;mut </span>Vec&lt;i_slint_core::lengths::LogicalRect&gt;,
 ) {
     <span class="kw">if </span>element.borrow().repeated.is_some() {
@@ -427,6 +467,7 @@
                     element,
                     <span class="kw-2">&amp;</span>c.unerase(guard),
                     root_component_instance,
+                    filter_clipped,
                     values,
                 );
             }
@@ -440,11 +481,12 @@
         );
         <span class="kw">let </span>index = element.borrow().item_index.get().copied().unwrap();
         <span class="kw">let </span>item_rc = ItemRc::new(vrc.clone(), index);
-        <span class="kw">let </span>geometry = item_rc.geometry();
-        <span class="kw">let </span>origin = item_rc.map_to_item_tree(geometry.origin, <span class="kw-2">&amp;</span>root_vrc);
-        <span class="kw">let </span>size = geometry.size;
-
-        values.push(LogicalRect { origin, size });
+        <span class="kw">if </span>filter_clipped == ElementPositionFilter::IncludeClipped || item_rc.is_visible() {
+            <span class="kw">let </span>geometry = item_rc.geometry();
+            <span class="kw">let </span>origin = item_rc.map_to_item_tree(geometry.origin, <span class="kw-2">&amp;</span>root_vrc);
+            <span class="kw">let </span>size = geometry.size;
+            values.push(LogicalRect { origin, size });
+        }
     }
 }
 

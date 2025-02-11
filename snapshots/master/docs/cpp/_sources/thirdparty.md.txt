@@ -4393,7 +4393,7 @@ DEALINGS IN THE SOFTWARE.
 - [toml_datetime 0.6.8]( https://github.com/toml-rs/toml )
 - [toml_edit 0.19.15]( https://github.com/toml-rs/toml )
 - [toml_edit 0.20.7]( https://github.com/toml-rs/toml )
-- [toml_edit 0.22.23]( https://github.com/toml-rs/toml )
+- [toml_edit 0.22.24]( https://github.com/toml-rs/toml )
 
 #### License Text
 
@@ -5980,7 +5980,7 @@ DEALINGS IN THE SOFTWARE.
 #### Used by:
 
 - [winnow 0.5.40]( https://github.com/winnow-rs/winnow )
-- [winnow 0.7.1]( https://github.com/winnow-rs/winnow )
+- [winnow 0.7.2]( https://github.com/winnow-rs/winnow )
 
 #### License Text
 

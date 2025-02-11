@@ -255,6 +255,7 @@ Program Listing for File slint_internal.h
                                     const WindowAdapterRc *window_adapter,
                                     const ItemRc *self_rc,
                                     LogicalRect geometry);
+       bool (*clips_children)(Pin<VRef<ItemVTable>>);
    };
    
    struct ItemVisitorVTable {
