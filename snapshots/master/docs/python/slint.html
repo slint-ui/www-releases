@@ -88,10 +88,10 @@
                                 <a class="variable" href="#Image.path">path</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Image.size">size</a>
+                                <a class="variable" href="#Image.height">height</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Image.height">height</a>
+                                <a class="variable" href="#Image.size">size</a>
                         </li>
                 </ul>
 
@@ -115,13 +115,13 @@
                                 <a class="function" href="#Color.with_alpha">with_alpha</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Color.blue">blue</a>
+                                <a class="variable" href="#Color.green">green</a>
                         </li>
                         <li>
                                 <a class="variable" href="#Color.red">red</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Color.green">green</a>
+                                <a class="variable" href="#Color.blue">blue</a>
                         </li>
                         <li>
                                 <a class="variable" href="#Color.alpha">alpha</a>
@@ -225,6 +225,9 @@
             <li>
                     <a class="function" href="#set_xdg_app_id">set_xdg_app_id</a>
             </li>
+            <li>
+                    <a class="function" href="#callback">callback</a>
+            </li>
     </ul>
 
 
@@ -325,7 +328,7 @@ export component AppWindow inherits Window {
 
 <span class="c1"># <a href="#loader">slint.loader</a> will look in `sys.path` for `app-window.slint`.</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">App</span><span class="p">(</span><span class="n">slint</span><span class="o">.</span><span class="n">loader</span><span class="o">.</span><span class="n">app_window</span><span class="o">.</span><span class="n">AppWindow</span><span class="p">):</span>
-    <span class="nd">@slint</span><span class="o">.</span><span class="n">callback</span>
+    <span class="nd">@<a href="#callback">slint.callback</a></span>
     <span class="k">def</span><span class="w"> </span><span class="nf">request_increase_value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">counter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">counter</span> <span class="o">+</span> <span class="mi">1</span>
 
@@ -425,7 +428,7 @@ each instance will have their own instance of associated globals singletons.</p>
 <p><a href="src/language/syntax/callbacks">Callbacks</a> declared in <code>.slint</code> files are visible as callable properties on the component instance. Invoke them
 as function to invoke the callback, and assign Python callables to set the callback handler.</p>
 
-<p>Callbacks in Slint can be defined using the <code>callback</code> keyword and can be connected to a callback of an other component
+<p>Callbacks in Slint can be defined using the <code><a href="#callback">callback</a></code> keyword and can be connected to a callback of an other component
 using the <code>&lt;=&gt;</code> syntax.</p>
 
 <p><strong><code>my-component.slint</code></strong></p>
@@ -459,13 +462,13 @@ using the <code>&lt;=&gt;</code> syntax.</p>
 </code></pre>
 </div>
 
-<p>Another way to set callbacks is to sub-class and use the <code>@slint.callback</code> decorator:</p>
+<p>Another way to set callbacks is to sub-class and use the <code>@<a href="#callback">slint.callback</a></code> decorator:</p>
 
 <div class="pdoc-code codehilite">
 <pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">slint</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">Component</span><span class="p">(</span><span class="n">slint</span><span class="o">.</span><span class="n">loader</span><span class="o">.</span><span class="n">my_component</span><span class="o">.</span><span class="n">MyComponent</span><span class="p">):</span>
-    <span class="nd">@slint</span><span class="o">.</span><span class="n">callback</span>
+    <span class="nd">@<a href="#callback">slint.callback</a></span>
     <span class="k">def</span><span class="w"> </span><span class="nf">clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">)</span>
 
@@ -473,7 +476,7 @@ using the <code>&lt;=&gt;</code> syntax.</p>
 </code></pre>
 </div>
 
-<p>The <code>@slint.callback()</code> decorator accepts a <code>name</code> named argument, when the name of the method
+<p>The <code>@<a href="#callback">slint.callback()</a></code> decorator accepts a <code>name</code> named argument, when the name of the method
 does not match the name of the callback in the <code>.slint</code> file. Similarly, a <code>global_name</code> argument
 can be used to bind a method to a callback in a global singleton.</p>
 
@@ -942,7 +945,8 @@ export component MainWindow inherits Window {
 </span><span id="L-317"><a href="#L-317"><span class="linenos">317</span></a>    <span class="n">native</span><span class="o">.</span><span class="n">set_xdg_app_id</span><span class="p">(</span><span class="n">app_id</span><span class="p">)</span>
 </span><span id="L-318"><a href="#L-318"><span class="linenos">318</span></a>
 </span><span id="L-319"><a href="#L-319"><span class="linenos">319</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;CompileError&quot;</span><span class="p">,</span> <span class="s2">&quot;Component&quot;</span><span class="p">,</span> <span class="s2">&quot;load_file&quot;</span><span class="p">,</span> <span class="s2">&quot;loader&quot;</span><span class="p">,</span> <span class="s2">&quot;Image&quot;</span><span class="p">,</span> <span class="s2">&quot;Color&quot;</span><span class="p">,</span>
-</span><span id="L-320"><a href="#L-320"><span class="linenos">320</span></a>           <span class="s2">&quot;Brush&quot;</span><span class="p">,</span> <span class="s2">&quot;Model&quot;</span><span class="p">,</span> <span class="s2">&quot;ListModel&quot;</span><span class="p">,</span> <span class="s2">&quot;Timer&quot;</span><span class="p">,</span> <span class="s2">&quot;TimerMode&quot;</span><span class="p">,</span> <span class="s2">&quot;set_xdg_app_id&quot;</span><span class="p">]</span>
+</span><span id="L-320"><a href="#L-320"><span class="linenos">320</span></a>           <span class="s2">&quot;Brush&quot;</span><span class="p">,</span> <span class="s2">&quot;Model&quot;</span><span class="p">,</span> <span class="s2">&quot;ListModel&quot;</span><span class="p">,</span> <span class="s2">&quot;Timer&quot;</span><span class="p">,</span> <span class="s2">&quot;TimerMode&quot;</span><span class="p">,</span> <span class="s2">&quot;set_xdg_app_id&quot;</span><span class="p">,</span>
+</span><span id="L-321"><a href="#L-321"><span class="linenos">321</span></a>           <span class="s2">&quot;callback&quot;</span><span class="p">]</span>
 </span></pre></div>
 
 
@@ -1185,7 +1189,7 @@ image file on disk, using <code><a href="#Image.load_from_path">Image.load_from_
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">load_from_path</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span> <span class="o">|</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span></span><span class="return-annotation">) -> <span class="n">Self</span>:</span></span>
+        <span class="name">load_from_path</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span> <span class="o">|</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span></span><span class="return-annotation">) -> <span class="n"><a href="#Image">Image</a></span>:</span></span>
 
         
     </div>
@@ -1200,7 +1204,7 @@ image file on disk, using <code><a href="#Image.load_from_path">Image.load_from_
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">load_from_svg_data</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">data</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span></span><span class="return-annotation">) -> <span class="n">Self</span>:</span></span>
+        <span class="name">load_from_svg_data</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">data</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span></span><span class="return-annotation">) -> <span class="n"><a href="#Image">Image</a></span>:</span></span>
 
         
     </div>
@@ -1237,19 +1241,6 @@ image file on disk, using <code><a href="#Image.load_from_path">Image.load_from_
 
 
                             </div>
-                            <div id="Image.size" class="classattr">
-                                <div class="attr variable">
-            <span class="name">size</span><span class="annotation">: tuple[int, int]</span>
-
-        
-    </div>
-    <a class="headerlink" href="#Image.size"></a>
-    
-            <div class="docstring"><p>The size of the image as tuple of <code><a href="#Image.width">width</a></code> and <code><a href="#Image.height">height</a></code>.</p>
-</div>
-
-
-                            </div>
                             <div id="Image.height" class="classattr">
                                 <div class="attr variable">
             <span class="name">height</span><span class="annotation">: int</span>
@@ -1259,6 +1250,19 @@ image file on disk, using <code><a href="#Image.load_from_path">Image.load_from_
     <a class="headerlink" href="#Image.height"></a>
     
             <div class="docstring"><p>The height of the image in pixels.</p>
+</div>
+
+
+                            </div>
+                            <div id="Image.size" class="classattr">
+                                <div class="attr variable">
+            <span class="name">size</span><span class="annotation">: tuple[int, int]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Image.size"></a>
+    
+            <div class="docstring"><p>The size of the image as tuple of <code><a href="#Image.width">width</a></code> and <code><a href="#Image.height">height</a></code>.</p>
 </div>
 
 
@@ -1280,7 +1284,7 @@ image file on disk, using <code><a href="#Image.load_from_path">Image.load_from_
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">brighter</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">factor</span><span class="p">:</span> <span class="nb">float</span></span><span class="return-annotation">) -> <span class="n">Self</span>:</span></span>
+        <span class="name">brighter</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">factor</span><span class="p">:</span> <span class="nb">float</span></span><span class="return-annotation">) -> <span class="n"><a href="#Color">Color</a></span>:</span></span>
 
         
     </div>
@@ -1293,7 +1297,7 @@ image file on disk, using <code><a href="#Image.load_from_path">Image.load_from_
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">darker</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">factor</span><span class="p">:</span> <span class="nb">float</span></span><span class="return-annotation">) -> <span class="n">Self</span>:</span></span>
+        <span class="name">darker</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">factor</span><span class="p">:</span> <span class="nb">float</span></span><span class="return-annotation">) -> <span class="n"><a href="#Color">Color</a></span>:</span></span>
 
         
     </div>
@@ -1306,7 +1310,7 @@ image file on disk, using <code><a href="#Image.load_from_path">Image.load_from_
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">transparentize</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">factor</span><span class="p">:</span> <span class="nb">float</span></span><span class="return-annotation">) -> <span class="n">Self</span>:</span></span>
+        <span class="name">transparentize</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">factor</span><span class="p">:</span> <span class="nb">float</span></span><span class="return-annotation">) -> <span class="n"><a href="#Color">Color</a></span>:</span></span>
 
         
     </div>
@@ -1319,7 +1323,7 @@ image file on disk, using <code><a href="#Image.load_from_path">Image.load_from_
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mix</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">other</span><span class="p">:</span> <span class="n">Self</span>, </span><span class="param"><span class="n">factor</span><span class="p">:</span> <span class="nb">float</span></span><span class="return-annotation">) -> <span class="n">Self</span>:</span></span>
+        <span class="name">mix</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">other</span><span class="p">:</span> <span class="n"><a href="#Image">Image</a></span>, </span><span class="param"><span class="n">factor</span><span class="p">:</span> <span class="nb">float</span></span><span class="return-annotation">) -> <span class="n"><a href="#Color">Color</a></span>:</span></span>
 
         
     </div>
@@ -1332,7 +1336,7 @@ image file on disk, using <code><a href="#Image.load_from_path">Image.load_from_
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">with_alpha</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span></span><span class="return-annotation">) -> <span class="n">Self</span>:</span></span>
+        <span class="name">with_alpha</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span></span><span class="return-annotation">) -> <span class="n"><a href="#Color">Color</a></span>:</span></span>
 
         
     </div>
@@ -1341,13 +1345,13 @@ image file on disk, using <code><a href="#Image.load_from_path">Image.load_from_
     
 
                             </div>
-                            <div id="Color.blue" class="classattr">
+                            <div id="Color.green" class="classattr">
                                 <div class="attr variable">
-            <span class="name">blue</span><span class="annotation">: int</span>
+            <span class="name">green</span><span class="annotation">: int</span>
 
         
     </div>
-    <a class="headerlink" href="#Color.blue"></a>
+    <a class="headerlink" href="#Color.green"></a>
     
     
 
@@ -1363,13 +1367,13 @@ image file on disk, using <code><a href="#Image.load_from_path">Image.load_from_
     
 
                             </div>
-                            <div id="Color.green" class="classattr">
+                            <div id="Color.blue" class="classattr">
                                 <div class="attr variable">
-            <span class="name">green</span><span class="annotation">: int</span>
+            <span class="name">blue</span><span class="annotation">: int</span>
 
         
     </div>
-    <a class="headerlink" href="#Color.green"></a>
+    <a class="headerlink" href="#Color.blue"></a>
     
     
 
@@ -1428,7 +1432,7 @@ image file on disk, using <code><a href="#Image.load_from_path">Image.load_from_
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">brighter</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">factor</span><span class="p">:</span> <span class="nb">float</span></span><span class="return-annotation">) -> <span class="n">Self</span>:</span></span>
+        <span class="name">brighter</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">factor</span><span class="p">:</span> <span class="nb">float</span></span><span class="return-annotation">) -> <span class="n"><a href="#Brush">Brush</a></span>:</span></span>
 
         
     </div>
@@ -1441,7 +1445,7 @@ image file on disk, using <code><a href="#Image.load_from_path">Image.load_from_
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">darker</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">factor</span><span class="p">:</span> <span class="nb">float</span></span><span class="return-annotation">) -> <span class="n">Self</span>:</span></span>
+        <span class="name">darker</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">factor</span><span class="p">:</span> <span class="nb">float</span></span><span class="return-annotation">) -> <span class="n"><a href="#Brush">Brush</a></span>:</span></span>
 
         
     </div>
@@ -1454,7 +1458,7 @@ image file on disk, using <code><a href="#Image.load_from_path">Image.load_from_
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">transparentize</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">amount</span><span class="p">:</span> <span class="nb">float</span></span><span class="return-annotation">) -> <span class="n">Self</span>:</span></span>
+        <span class="name">transparentize</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">amount</span><span class="p">:</span> <span class="nb">float</span></span><span class="return-annotation">) -> <span class="n"><a href="#Brush">Brush</a></span>:</span></span>
 
         
     </div>
@@ -1467,7 +1471,7 @@ image file on disk, using <code><a href="#Image.load_from_path">Image.load_from_
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">with_alpha</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span></span><span class="return-annotation">) -> <span class="n">Self</span>:</span></span>
+        <span class="name">with_alpha</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span></span><span class="return-annotation">) -> <span class="n"><a href="#Brush">Brush</a></span>:</span></span>
 
         
     </div>
@@ -1832,6 +1836,34 @@ image file on disk, using <code><a href="#Image.load_from_path">Image.load_from_
     <a class="headerlink" href="#set_xdg_app_id"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="set_xdg_app_id-317"><a href="#set_xdg_app_id-317"><span class="linenos">317</span></a><span class="k">def</span><span class="w"> </span><span class="nf">set_xdg_app_id</span><span class="p">(</span><span class="n">app_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
 </span><span id="set_xdg_app_id-318"><a href="#set_xdg_app_id-318"><span class="linenos">318</span></a>    <span class="n">native</span><span class="o">.</span><span class="n">set_xdg_app_id</span><span class="p">(</span><span class="n">app_id</span><span class="p">)</span>
+</span></pre></div>
+
+
+    
+
+                </section>
+                <section id="callback">
+                            <input id="callback-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">callback</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">global_name</span><span class="o">=</span><span class="kc">None</span>, </span><span class="param"><span class="n">name</span><span class="o">=</span><span class="kc">None</span></span><span class="return-annotation">):</span></span>
+
+                <label class="view-source-button" for="callback-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#callback"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="callback-305"><a href="#callback-305"><span class="linenos">305</span></a><span class="k">def</span><span class="w"> </span><span class="nf">callback</span><span class="p">(</span><span class="n">global_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+</span><span id="callback-306"><a href="#callback-306"><span class="linenos">306</span></a>    <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="n">global_name</span><span class="p">):</span>
+</span><span id="callback-307"><a href="#callback-307"><span class="linenos">307</span></a>        <span class="n">callback</span> <span class="o">=</span> <span class="n">global_name</span>
+</span><span id="callback-308"><a href="#callback-308"><span class="linenos">308</span></a>        <span class="k">return</span> <span class="n">_callback_decorator</span><span class="p">(</span><span class="n">callback</span><span class="p">,</span> <span class="p">{})</span>
+</span><span id="callback-309"><a href="#callback-309"><span class="linenos">309</span></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="callback-310"><a href="#callback-310"><span class="linenos">310</span></a>        <span class="n">info</span> <span class="o">=</span> <span class="p">{}</span>
+</span><span id="callback-311"><a href="#callback-311"><span class="linenos">311</span></a>        <span class="k">if</span> <span class="n">name</span><span class="p">:</span>
+</span><span id="callback-312"><a href="#callback-312"><span class="linenos">312</span></a>            <span class="n">info</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">name</span>
+</span><span id="callback-313"><a href="#callback-313"><span class="linenos">313</span></a>        <span class="k">if</span> <span class="n">global_name</span><span class="p">:</span>
+</span><span id="callback-314"><a href="#callback-314"><span class="linenos">314</span></a>            <span class="n">info</span><span class="p">[</span><span class="s2">&quot;global_name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">global_name</span>
+</span><span id="callback-315"><a href="#callback-315"><span class="linenos">315</span></a>        <span class="k">return</span> <span class="k">lambda</span> <span class="n">callback</span><span class="p">:</span> <span class="n">_callback_decorator</span><span class="p">(</span><span class="n">callback</span><span class="p">,</span> <span class="n">info</span><span class="p">)</span>
 </span></pre></div>
 
 
