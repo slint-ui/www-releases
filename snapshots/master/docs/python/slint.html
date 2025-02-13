@@ -82,13 +82,13 @@
                                 <a class="function" href="#Image.load_from_svg_data">load_from_svg_data</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Image.width">width</a>
+                                <a class="variable" href="#Image.height">height</a>
                         </li>
                         <li>
                                 <a class="variable" href="#Image.path">path</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Image.height">height</a>
+                                <a class="variable" href="#Image.width">width</a>
                         </li>
                         <li>
                                 <a class="variable" href="#Image.size">size</a>
@@ -115,16 +115,16 @@
                                 <a class="function" href="#Color.with_alpha">with_alpha</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Color.green">green</a>
-                        </li>
-                        <li>
-                                <a class="variable" href="#Color.red">red</a>
+                                <a class="variable" href="#Color.alpha">alpha</a>
                         </li>
                         <li>
                                 <a class="variable" href="#Color.blue">blue</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Color.alpha">alpha</a>
+                                <a class="variable" href="#Color.red">red</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Color.green">green</a>
                         </li>
                 </ul>
 
@@ -1189,7 +1189,7 @@ image file on disk, using <code><a href="#Image.load_from_path">Image.load_from_
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">load_from_path</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span> <span class="o">|</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span></span><span class="return-annotation">) -> <span class="n"><a href="#Image">Image</a></span>:</span></span>
+        <span class="name">load_from_path</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">path</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -1204,7 +1204,7 @@ image file on disk, using <code><a href="#Image.load_from_path">Image.load_from_
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">load_from_svg_data</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">data</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span></span><span class="return-annotation">) -> <span class="n"><a href="#Image">Image</a></span>:</span></span>
+        <span class="name">load_from_svg_data</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">data</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -1215,35 +1215,9 @@ image file on disk, using <code><a href="#Image.load_from_path">Image.load_from_
 
 
                             </div>
-                            <div id="Image.width" class="classattr">
-                                <div class="attr variable">
-            <span class="name">width</span><span class="annotation">: int</span>
-
-        
-    </div>
-    <a class="headerlink" href="#Image.width"></a>
-    
-            <div class="docstring"><p>The width of the image in pixels.</p>
-</div>
-
-
-                            </div>
-                            <div id="Image.path" class="classattr">
-                                <div class="attr variable">
-            <span class="name">path</span><span class="annotation">: Optional[str]</span>
-
-        
-    </div>
-    <a class="headerlink" href="#Image.path"></a>
-    
-            <div class="docstring"><p>The path of the image if it was loaded from disk, or None.</p>
-</div>
-
-
-                            </div>
                             <div id="Image.height" class="classattr">
                                 <div class="attr variable">
-            <span class="name">height</span><span class="annotation">: int</span>
+            <span class="name">height</span>
 
         
     </div>
@@ -1254,9 +1228,35 @@ image file on disk, using <code><a href="#Image.load_from_path">Image.load_from_
 
 
                             </div>
+                            <div id="Image.path" class="classattr">
+                                <div class="attr variable">
+            <span class="name">path</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Image.path"></a>
+    
+            <div class="docstring"><p>The path of the image if it was loaded from disk, or None.</p>
+</div>
+
+
+                            </div>
+                            <div id="Image.width" class="classattr">
+                                <div class="attr variable">
+            <span class="name">width</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Image.width"></a>
+    
+            <div class="docstring"><p>The width of the image in pixels.</p>
+</div>
+
+
+                            </div>
                             <div id="Image.size" class="classattr">
                                 <div class="attr variable">
-            <span class="name">size</span><span class="annotation">: tuple[int, int]</span>
+            <span class="name">size</span>
 
         
     </div>
@@ -1284,7 +1284,7 @@ image file on disk, using <code><a href="#Image.load_from_path">Image.load_from_
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">brighter</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">factor</span><span class="p">:</span> <span class="nb">float</span></span><span class="return-annotation">) -> <span class="n"><a href="#Color">Color</a></span>:</span></span>
+        <span class="name">brighter</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span>, </span><span class="param"><span class="n">factor</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -1297,7 +1297,7 @@ image file on disk, using <code><a href="#Image.load_from_path">Image.load_from_
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">darker</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">factor</span><span class="p">:</span> <span class="nb">float</span></span><span class="return-annotation">) -> <span class="n"><a href="#Color">Color</a></span>:</span></span>
+        <span class="name">darker</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span>, </span><span class="param"><span class="n">factor</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -1310,7 +1310,7 @@ image file on disk, using <code><a href="#Image.load_from_path">Image.load_from_
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">transparentize</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">factor</span><span class="p">:</span> <span class="nb">float</span></span><span class="return-annotation">) -> <span class="n"><a href="#Color">Color</a></span>:</span></span>
+        <span class="name">transparentize</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span>, </span><span class="param"><span class="n">factor</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -1323,7 +1323,7 @@ image file on disk, using <code><a href="#Image.load_from_path">Image.load_from_
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mix</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">other</span><span class="p">:</span> <span class="n"><a href="#Image">Image</a></span>, </span><span class="param"><span class="n">factor</span><span class="p">:</span> <span class="nb">float</span></span><span class="return-annotation">) -> <span class="n"><a href="#Color">Color</a></span>:</span></span>
+        <span class="name">mix</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span>, </span><span class="param"><span class="n">other</span>, </span><span class="param"><span class="n">factor</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -1336,7 +1336,7 @@ image file on disk, using <code><a href="#Image.load_from_path">Image.load_from_
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">with_alpha</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span></span><span class="return-annotation">) -> <span class="n"><a href="#Color">Color</a></span>:</span></span>
+        <span class="name">with_alpha</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span>, </span><span class="param"><span class="n">alpha</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -1345,31 +1345,20 @@ image file on disk, using <code><a href="#Image.load_from_path">Image.load_from_
     
 
                             </div>
-                            <div id="Color.green" class="classattr">
+                            <div id="Color.alpha" class="classattr">
                                 <div class="attr variable">
-            <span class="name">green</span><span class="annotation">: int</span>
+            <span class="name">alpha</span>
 
         
     </div>
-    <a class="headerlink" href="#Color.green"></a>
-    
-    
-
-                            </div>
-                            <div id="Color.red" class="classattr">
-                                <div class="attr variable">
-            <span class="name">red</span><span class="annotation">: int</span>
-
-        
-    </div>
-    <a class="headerlink" href="#Color.red"></a>
+    <a class="headerlink" href="#Color.alpha"></a>
     
     
 
                             </div>
                             <div id="Color.blue" class="classattr">
                                 <div class="attr variable">
-            <span class="name">blue</span><span class="annotation">: int</span>
+            <span class="name">blue</span>
 
         
     </div>
@@ -1378,13 +1367,24 @@ image file on disk, using <code><a href="#Image.load_from_path">Image.load_from_
     
 
                             </div>
-                            <div id="Color.alpha" class="classattr">
+                            <div id="Color.red" class="classattr">
                                 <div class="attr variable">
-            <span class="name">alpha</span><span class="annotation">: int</span>
+            <span class="name">red</span>
 
         
     </div>
-    <a class="headerlink" href="#Color.alpha"></a>
+    <a class="headerlink" href="#Color.red"></a>
+    
+    
+
+                            </div>
+                            <div id="Color.green" class="classattr">
+                                <div class="attr variable">
+            <span class="name">green</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Color.green"></a>
     
     
 
@@ -1406,7 +1406,7 @@ image file on disk, using <code><a href="#Image.load_from_path">Image.load_from_
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">is_transparent</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="nb">bool</span>:</span></span>
+        <span class="name">is_transparent</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -1419,7 +1419,7 @@ image file on disk, using <code><a href="#Image.load_from_path">Image.load_from_
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">is_opaque</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="nb">bool</span>:</span></span>
+        <span class="name">is_opaque</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -1432,7 +1432,7 @@ image file on disk, using <code><a href="#Image.load_from_path">Image.load_from_
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">brighter</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">factor</span><span class="p">:</span> <span class="nb">float</span></span><span class="return-annotation">) -> <span class="n"><a href="#Brush">Brush</a></span>:</span></span>
+        <span class="name">brighter</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span>, </span><span class="param"><span class="n">factor</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -1445,7 +1445,7 @@ image file on disk, using <code><a href="#Image.load_from_path">Image.load_from_
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">darker</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">factor</span><span class="p">:</span> <span class="nb">float</span></span><span class="return-annotation">) -> <span class="n"><a href="#Brush">Brush</a></span>:</span></span>
+        <span class="name">darker</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span>, </span><span class="param"><span class="n">factor</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -1458,7 +1458,7 @@ image file on disk, using <code><a href="#Image.load_from_path">Image.load_from_
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">transparentize</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">amount</span><span class="p">:</span> <span class="nb">float</span></span><span class="return-annotation">) -> <span class="n"><a href="#Brush">Brush</a></span>:</span></span>
+        <span class="name">transparentize</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span>, </span><span class="param"><span class="n">amount</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -1471,7 +1471,7 @@ image file on disk, using <code><a href="#Image.load_from_path">Image.load_from_
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">with_alpha</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span></span><span class="return-annotation">) -> <span class="n"><a href="#Brush">Brush</a></span>:</span></span>
+        <span class="name">with_alpha</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span>, </span><span class="param"><span class="n">alpha</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -1482,7 +1482,7 @@ image file on disk, using <code><a href="#Image.load_from_path">Image.load_from_
                             </div>
                             <div id="Brush.color" class="classattr">
                                 <div class="attr variable">
-            <span class="name">color</span><span class="annotation">: <a href="#Color">Color</a></span>
+            <span class="name">color</span>
 
         
     </div>
@@ -1711,7 +1711,7 @@ image file on disk, using <code><a href="#Image.load_from_path">Image.load_from_
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">start</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="bp">self</span>,</span><span class="param">	<span class="n">mode</span><span class="p">:</span> <span class="n"><a href="#TimerMode">TimerMode</a></span>,</span><span class="param">	<span class="n">interval</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span>,</span><span class="param">	<span class="n">callback</span><span class="p">:</span> <span class="n">Any</span></span><span class="return-annotation">) -> <span class="kc">None</span>:</span></span>
+        <span class="name">start</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span>, </span><span class="param"><span class="n">mode</span>, </span><span class="param"><span class="n">interval</span>, </span><span class="param"><span class="n">callback</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -1724,7 +1724,7 @@ image file on disk, using <code><a href="#Image.load_from_path">Image.load_from_
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">single_shot</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">duration</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span>, </span><span class="param"><span class="n">callback</span><span class="p">:</span> <span class="n">Any</span></span><span class="return-annotation">) -> <span class="kc">None</span>:</span></span>
+        <span class="name">single_shot</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">duration</span>, </span><span class="param"><span class="n">callback</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -1737,7 +1737,7 @@ image file on disk, using <code><a href="#Image.load_from_path">Image.load_from_
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">stop</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="kc">None</span>:</span></span>
+        <span class="name">stop</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -1750,7 +1750,7 @@ image file on disk, using <code><a href="#Image.load_from_path">Image.load_from_
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">restart</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="kc">None</span>:</span></span>
+        <span class="name">restart</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -1763,7 +1763,7 @@ image file on disk, using <code><a href="#Image.load_from_path">Image.load_from_
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">running</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="nb">bool</span>:</span></span>
+        <span class="name">running</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -1776,7 +1776,7 @@ image file on disk, using <code><a href="#Image.load_from_path">Image.load_from_
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">set_interval</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">interval</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span></span><span class="return-annotation">) -> <span class="kc">None</span>:</span></span>
+        <span class="name">set_interval</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span>, </span><span class="param"><span class="n">interval</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
