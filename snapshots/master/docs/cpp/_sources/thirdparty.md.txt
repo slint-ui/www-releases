@@ -3588,7 +3588,7 @@ DEALINGS IN THE SOFTWARE.
 
 #### Used by:
 
-- [smallvec 1.13.2]( https://github.com/servo/rust-smallvec )
+- [smallvec 1.14.0]( https://github.com/servo/rust-smallvec )
 
 #### License Text
 
