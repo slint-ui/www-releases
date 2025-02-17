@@ -2591,7 +2591,7 @@ DEALINGS IN THE SOFTWARE.
 
 #### Used by:
 
-- [tempfile 3.16.0]( https://github.com/Stebalien/tempfile )
+- [tempfile 3.17.0]( https://github.com/Stebalien/tempfile )
 
 #### License Text
 
@@ -5041,7 +5041,7 @@ SOFTWARE.
 
 #### Used by:
 
-- [built 0.7.6]( https://github.com/lukaslueg/built )
+- [built 0.7.7]( https://github.com/lukaslueg/built )
 
 #### License Text
 
