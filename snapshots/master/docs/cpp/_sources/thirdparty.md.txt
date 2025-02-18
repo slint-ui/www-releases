@@ -5,7 +5,7 @@ This page lists the licenses of the dependencies used by Slint.
 
 ## Overview of licenses
 
-- [MIT License](#MIT) (374)
+- [MIT License](#MIT) (373)
 - [Apache License 2.0](#Apache-2.0) (16)
 - [BSD 3-Clause &quot;New&quot; or &quot;Revised&quot; License](#BSD-3-Clause) (6)
 - [BSD 2-Clause &quot;Simplified&quot; License](#BSD-2-Clause) (4)
@@ -5981,18 +5981,6 @@ DEALINGS IN THE SOFTWARE.
 
 #### Used by:
 
-- [typenum 1.17.0]( https://github.com/paholg/typenum )
-
-#### License Text
-
-```
-MIT OR Apache-2.0
-```
-
-### <a id="MIT"></a> MIT License
-
-#### Used by:
-
 - [half 2.4.1]( https://github.com/starkat99/half-rs )
 
 #### License Text
@@ -6296,7 +6284,7 @@ SOFTWARE.
 
 #### Used by:
 
-- [typenum 1.17.0]( https://github.com/paholg/typenum )
+- [typenum 1.18.0]( https://github.com/paholg/typenum )
 
 #### License Text
 
