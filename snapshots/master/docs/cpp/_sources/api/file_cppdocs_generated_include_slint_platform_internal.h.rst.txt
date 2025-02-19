@@ -56,3 +56,5 @@ Namespaces
 
 - :ref:`namespace_slint`
 
+- :ref:`namespace_slint__platform`
+

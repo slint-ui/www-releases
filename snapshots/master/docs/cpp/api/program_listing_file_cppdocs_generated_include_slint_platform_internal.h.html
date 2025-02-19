@@ -434,7 +434,8 @@
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;slint_image_internal.h&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;slint_internal.h&quot;</span>
 
-<span class="k">namespace</span><span class="w"> </span><span class="nn">slint</span><span class="o">::</span><span class="nn">cbindgen_private</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">WindowProperties</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">slint</span><span class="o">::</span><span class="nn">platform</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">Rgb565Pixel</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">slint</span><span class="o">::</span><span class="nn">cbindgen_private</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">WindowProperties</span><span class="p">;</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="n">slint</span><span class="o">::</span><span class="n">platform</span><span class="o">::</span><span class="n">Rgb565Pixel</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 
 
 <span class="k">namespace</span><span class="w"> </span><span class="nn">slint</span><span class="w"> </span><span class="p">{</span>
@@ -569,10 +570,21 @@
 <span class="w">                                                                                     </span><span class="kt">uintptr_t</span><span class="p">,</span>
 <span class="w">                                                                                     </span><span class="kt">uintptr_t</span><span class="p">,</span>
 <span class="w">                                                                                     </span><span class="kt">void</span><span class="p">(</span><span class="o">*</span><span class="p">)(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="p">,</span>
-<span class="w">                                                                                             </span><span class="kt">uint16_t</span><span class="o">*</span><span class="p">,</span>
+<span class="w">                                                                                             </span><span class="n">Rgb565Pixel</span><span class="o">*</span><span class="p">,</span>
 <span class="w">                                                                                             </span><span class="kt">uintptr_t</span><span class="p">),</span>
 <span class="w">                                                                                     </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="p">),</span>
 <span class="w">                                                             </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">user_data</span><span class="p">);</span>
+
+<span class="n">PhysicalRegion</span><span class="w"> </span><span class="nf">slint_software_renderer_render_by_line_rgb8</span><span class="p">(</span><span class="n">SoftwareRendererOpaque</span><span class="w"> </span><span class="n">r</span><span class="p">,</span>
+<span class="w">                                                           </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">process_line_fn</span><span class="p">)(</span><span class="kt">void</span><span class="o">*</span><span class="p">,</span>
+<span class="w">                                                                                   </span><span class="kt">uintptr_t</span><span class="p">,</span>
+<span class="w">                                                                                   </span><span class="kt">uintptr_t</span><span class="p">,</span>
+<span class="w">                                                                                   </span><span class="kt">uintptr_t</span><span class="p">,</span>
+<span class="w">                                                                                   </span><span class="kt">void</span><span class="p">(</span><span class="o">*</span><span class="p">)(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="p">,</span>
+<span class="w">                                                                                           </span><span class="n">Rgb8Pixel</span><span class="o">*</span><span class="p">,</span>
+<span class="w">                                                                                           </span><span class="kt">uintptr_t</span><span class="p">),</span>
+<span class="w">                                                                                   </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="p">),</span>
+<span class="w">                                                           </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">user_data</span><span class="p">);</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">slint_software_renderer_set_rendering_rotation</span><span class="p">(</span><span class="n">SoftwareRendererOpaque</span><span class="w"> </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="kt">int32_t</span><span class="w"> </span><span class="n">rotation</span><span class="p">);</span>
 

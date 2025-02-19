@@ -74,6 +74,7 @@ Program Listing for File slint_internal.h
        ItemSelected,
        Label,
        PlaceholderText,
+       ReadOnly,
        Value,
        ValueMaximum,
        ValueMinimum,
