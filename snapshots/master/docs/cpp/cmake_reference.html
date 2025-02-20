@@ -458,6 +458,9 @@ only one single <code class="docutils literal notranslate"><span class="pre">.h<
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">embed-files</span></code>: The raw files are embedded in the application binary.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">embed-for-software-renderer</span></code>: The files will be loaded by the Slint compiler, optimized for use with the software renderer and embedded in the application binary.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">embed-for-software-renderer-with-sdf</span></code>: Same as <code class="docutils literal notranslate"><span class="pre">embed-for-software-renderer</span></code>, but use <a class="reference external" href="https://en.wikipedia.org/wiki/Signed_distance_function">Signed Distance Fields (SDF)</a> to render fonts.
+This produces smaller binaries, but may result in slightly inferior visual output and slower rendering.
+(Requires the <code class="docutils literal notranslate"><span class="pre">SLINT_FEATURE_SDF_FONTS</span></code> feature to be enabled.)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">as-absolute-path</span></code>: The paths of files are made absolute and will be used at run-time to load the resources from the file system. This is the default.</p></li>
 </ul>
 <p>This target property is initialised from the global <code class="docutils literal notranslate"><span class="pre">DEFAULT_SLINT_EMBED_RESOURCES</span></code> cache variable. Set it to configure the default for all CMake targets.</p>
