@@ -6029,7 +6029,7 @@ DEALINGS IN THE SOFTWARE.
 #### Used by:
 
 - [adler2 2.0.0]( https://github.com/oyvindln/adler2 )
-- [anyhow 1.0.95]( https://github.com/dtolnay/anyhow )
+- [anyhow 1.0.96]( https://github.com/dtolnay/anyhow )
 - [async-channel 2.3.1]( https://github.com/smol-rs/async-channel )
 - [async-executor 1.13.1]( https://github.com/smol-rs/async-executor )
 - [async-fs 2.1.2]( https://github.com/smol-rs/async-fs )
@@ -6070,9 +6070,9 @@ DEALINGS IN THE SOFTWARE.
 - [rustix 0.38.44]( https://github.com/bytecodealliance/rustix )
 - [rustversion 1.0.19]( https://github.com/dtolnay/rustversion )
 - [semver 1.0.25]( https://github.com/dtolnay/semver )
-- [serde 1.0.217]( https://github.com/serde-rs/serde )
-- [serde_derive 1.0.217]( https://github.com/serde-rs/serde )
-- [serde_json 1.0.138]( https://github.com/serde-rs/json )
+- [serde 1.0.218]( https://github.com/serde-rs/serde )
+- [serde_derive 1.0.218]( https://github.com/serde-rs/serde )
+- [serde_json 1.0.139]( https://github.com/serde-rs/json )
 - [serde_repr 0.1.19]( https://github.com/dtolnay/serde-repr )
 - [smol_str 0.2.2]( https://github.com/rust-analyzer/smol_str )
 - [syn 1.0.109]( https://github.com/dtolnay/syn )
