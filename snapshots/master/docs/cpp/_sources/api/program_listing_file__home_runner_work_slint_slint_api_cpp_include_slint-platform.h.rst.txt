@@ -439,7 +439,6 @@ Program Listing for File slint-platform.h
            return PhysicalRegion { r };
        }
    
-   #    ifdef SLINT_FEATURE_EXPERIMENTAL
        template<typename PixelType, typename Callback>
            requires requires(Callback callback) {
                callback(size_t(0), size_t(0), size_t(0), [&callback](std::span<PixelType>) {});
@@ -469,7 +468,6 @@ Program Listing for File slint-platform.h
                              "Unsupported PixelType. It must be either Rgba8Pixel or Rgb565Pixel");
            }
        }
-   #    endif
    
        enum class RenderingRotation {
            NoRotation = 0,

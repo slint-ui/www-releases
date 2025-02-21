@@ -851,7 +851,6 @@ public:
         return PhysicalRegion { r };
     }
 
-#    ifdef SLINT_FEATURE_EXPERIMENTAL
     template&lt;typename PixelType, typename Callback&gt;
         requires requires(Callback callback) {
             callback(size_t(0), size_t(0), size_t(0), [&amp;callback](std::span&lt;PixelType&gt;) {});
@@ -881,7 +880,6 @@ public:
                           &quot;Unsupported PixelType. It must be either Rgba8Pixel or Rgb565Pixel&quot;);
         }
     }
-#    endif
 
     enum class RenderingRotation {
         NoRotation = 0,
