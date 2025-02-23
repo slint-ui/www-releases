@@ -1,27 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
 export function main(): void;
-/**
- * Chroma subsampling format
- */
-export enum ChromaSampling {
-  /**
-   * Both vertically and horizontally subsampled.
-   */
-  Cs420 = 0,
-  /**
-   * Horizontally subsampled.
-   */
-  Cs422 = 1,
-  /**
-   * Not subsampled.
-   */
-  Cs444 = 2,
-  /**
-   * Monochrome.
-   */
-  Cs400 = 3,
-}
 
 export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembly.Module;
 
@@ -40,11 +19,11 @@ export interface InitOutput {
   readonly __wbindgen_malloc: (a: number, b: number) => number;
   readonly __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;
   readonly __wbindgen_export_5: WebAssembly.Table;
-  readonly closure2561_externref_shim: (a: number, b: number, c: any) => void;
-  readonly closure2975_externref_shim: (a: number, b: number, c: any) => void;
-  readonly _dyn_core__ops__function__FnMut_____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__hbf640f4e652326ea: (a: number, b: number) => void;
-  readonly closure2976_externref_shim: (a: number, b: number, c: any, d: any) => void;
-  readonly closure3042_externref_shim: (a: number, b: number, c: any) => void;
+  readonly closure2575_externref_shim: (a: number, b: number, c: any) => void;
+  readonly closure2981_externref_shim: (a: number, b: number, c: any) => void;
+  readonly _dyn_core__ops__function__FnMut_____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__h55c1c000bb431386: (a: number, b: number) => void;
+  readonly closure2982_externref_shim: (a: number, b: number, c: any, d: any) => void;
+  readonly closure3048_externref_shim: (a: number, b: number, c: any) => void;
   readonly __wbindgen_start: () => void;
 }
 
