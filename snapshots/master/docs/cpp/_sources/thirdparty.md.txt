@@ -2441,7 +2441,7 @@ IN THE SOFTWARE.
 
 #### Used by:
 
-- [libc 0.2.169]( https://github.com/rust-lang/libc )
+- [libc 0.2.170]( https://github.com/rust-lang/libc )
 
 #### License Text
 
@@ -2478,7 +2478,7 @@ DEALINGS IN THE SOFTWARE.
 
 #### Used by:
 
-- [either 1.13.0]( https://github.com/rayon-rs/either )
+- [either 1.14.0]( https://github.com/rayon-rs/either )
 - [itertools 0.12.1]( https://github.com/rust-itertools/itertools )
 
 #### License Text
