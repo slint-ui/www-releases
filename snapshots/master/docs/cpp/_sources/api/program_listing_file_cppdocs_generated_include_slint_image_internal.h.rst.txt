@@ -31,7 +31,7 @@ Program Listing for File slint_image_internal.h
        BottomLeft,
    };
    
-   enum class PixelFormat : uint8_t {
+   enum class TexturePixelFormat : uint8_t {
        Rgb,
        Rgba,
        RgbaPremultiplied,
@@ -407,7 +407,7 @@ Program Listing for File slint_image_internal.h
    
    struct StaticTexture {
        IntRect rect;
-       PixelFormat format;
+       TexturePixelFormat format;
        Color color;
        uintptr_t index;
    

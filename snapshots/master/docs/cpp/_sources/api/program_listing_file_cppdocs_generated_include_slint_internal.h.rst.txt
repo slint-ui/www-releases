@@ -86,6 +86,11 @@ Program Listing for File slint_internal.h
        SelectionClipboard = 1,
    };
    
+   enum class CompositionMode : uint8_t {
+       Source,
+       SourceOver,
+   };
+   
    enum class FocusEvent : uint8_t {
        FocusIn,
        FocusOut,
@@ -404,6 +409,10 @@ Program Listing for File slint_internal.h
        private_api::CallbackHelper<slint::LogicalPosition> show;
        CachedRenderingData cached_rendering_data;
        uint32_t popup_id;
+   #if defined(__ANDROID__)
+       Option<Timer> long_press_timer
+   #endif
+       ;
    };
    
    struct FlickableDataBox {

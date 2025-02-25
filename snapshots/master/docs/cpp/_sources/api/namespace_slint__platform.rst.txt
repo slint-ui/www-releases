@@ -47,6 +47,10 @@ Classes
 
 - :ref:`exhale_struct_structslint_1_1platform_1_1SoftwareRenderer_1_1PhysicalRegion_1_1Rect`
 
+- :ref:`exhale_struct_structslint_1_1platform_1_1TargetPixelBuffer`
+
+- :ref:`exhale_struct_structslint_1_1platform_1_1Texture`
+
 - :ref:`exhale_struct_structslint_1_1platform_1_1WindowAdapter_1_1WindowProperties`
 
 - :ref:`exhale_struct_structslint_1_1platform_1_1WindowAdapter_1_1WindowProperties_1_1LayoutConstraints`
