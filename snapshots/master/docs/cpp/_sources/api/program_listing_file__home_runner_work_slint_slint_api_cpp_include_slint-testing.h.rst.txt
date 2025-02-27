@@ -173,14 +173,7 @@ Program Listing for File slint-testing.h
    
        std::optional<bool> accessible_enabled() const
        {
-           if (auto result = get_accessible_string_property(
-                       cbindgen_private::AccessibleStringProperty::Enabled)) {
-               if (*result == "true")
-                   return true;
-               else if (*result == "false")
-                   return false;
-           }
-           return std::nullopt;
+           return get_accessible_bool_property(cbindgen_private::AccessibleStringProperty::Enabled);
        }
    
        std::optional<SharedString> accessible_value() const
@@ -238,50 +231,24 @@ Program Listing for File slint-testing.h
    
        std::optional<bool> accessible_checked() const
        {
-           if (auto result = get_accessible_string_property(
-                       cbindgen_private::AccessibleStringProperty::Checked)) {
-               if (*result == "true")
-                   return true;
-               else if (*result == "false")
-                   return false;
-           }
-           return std::nullopt;
+           return get_accessible_bool_property(cbindgen_private::AccessibleStringProperty::Checked);
        }
    
        std::optional<bool> accessible_checkable() const
        {
-           if (auto result = get_accessible_string_property(
-                       cbindgen_private::AccessibleStringProperty::Checkable)) {
-               if (*result == "true")
-                   return true;
-               else if (*result == "false")
-                   return false;
-           }
-           return std::nullopt;
+           return get_accessible_bool_property(cbindgen_private::AccessibleStringProperty::Checkable);
        }
    
        std::optional<bool> accessible_item_selected() const
        {
-           if (auto result = get_accessible_string_property(
-                       cbindgen_private::AccessibleStringProperty::ItemSelected)) {
-               if (*result == "true")
-                   return true;
-               else if (*result == "false")
-                   return false;
-           }
-           return std::nullopt;
+           return get_accessible_bool_property(
+                   cbindgen_private::AccessibleStringProperty::ItemSelected);
        }
    
        std::optional<bool> accessible_item_selectable() const
        {
-           if (auto result = get_accessible_string_property(
-                       cbindgen_private::AccessibleStringProperty::ItemSelectable)) {
-               if (*result == "true")
-                   return true;
-               else if (*result == "false")
-                   return false;
-           }
-           return std::nullopt;
+           return get_accessible_bool_property(
+                   cbindgen_private::AccessibleStringProperty::ItemSelectable);
        }
    
        std::optional<size_t> accessible_item_index() const
@@ -310,38 +277,17 @@ Program Listing for File slint-testing.h
    
        std::optional<bool> accessible_expanded() const
        {
-           if (auto result = get_accessible_string_property(
-                       cbindgen_private::AccessibleStringProperty::Expanded)) {
-               if (*result == "true")
-                   return true;
-               else if (*result == "false")
-                   return false;
-           }
-           return std::nullopt;
+           return get_accessible_bool_property(cbindgen_private::AccessibleStringProperty::Expanded);
        }
    
        std::optional<bool> accessible_expandable() const
        {
-           if (auto result = get_accessible_string_property(
-                       cbindgen_private::AccessibleStringProperty::Expandable)) {
-               if (*result == "true")
-                   return true;
-               else if (*result == "false")
-                   return false;
-           }
-           return std::nullopt;
+           return get_accessible_bool_property(cbindgen_private::AccessibleStringProperty::Expandable);
        }
    
        std::optional<bool> accessible_read_only() const
        {
-           if (auto result = get_accessible_string_property(
-                       cbindgen_private::AccessibleStringProperty::ReadOnly)) {
-               if (*result == "true")
-                   return true;
-               else if (*result == "false")
-                   return false;
-           }
-           return std::nullopt;
+           return get_accessible_bool_property(cbindgen_private::AccessibleStringProperty::ReadOnly);
        }
    
        void invoke_accessible_expand_action() const
@@ -476,6 +422,18 @@ Program Listing for File slint-testing.h
                                                                         item->index, what, &result)) {
                    return result;
                }
+           }
+           return std::nullopt;
+       }
+   
+       std::optional<bool>
+       get_accessible_bool_property(cbindgen_private::AccessibleStringProperty what) const
+       {
+           if (auto result = get_accessible_string_property(what)) {
+               if (*result == "true")
+                   return true;
+               else if (*result == "false")
+                   return false;
            }
            return std::nullopt;
        }
