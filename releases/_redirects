@@ -1,7 +1,7 @@
 /releases/* /:splat
 /:version/docs/quickstart/:language qs=:qs /:version/docs/:qs/:language
 /1.0.2/docs/nodejs/* /1.0.2/docs/node/:splat
-/1.9.2/* https://docs.slint.dev/latest/:splat 302!
+/1.10.0/* https://docs.slint.dev/latest/:splat 302!
 /latest/* https://docs.slint.dev/latest/:splat
 /demos/* https://docs.slint.dev/latest/demos/:splat
 /docs/* https://docs.slint.dev/latest/docs/:splat

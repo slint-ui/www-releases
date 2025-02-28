@@ -1,0 +1,19 @@
+{
+  "name": "printerdemo",
+  "type": "module",
+  "collaborators": [
+    "Slint Developers <info@slint.dev>"
+  ],
+  "version": "1.10.0",
+  "license": "MIT",
+  "files": [
+    "printerdemo_lib_bg.wasm",
+    "printerdemo_lib.js",
+    "printerdemo_lib.d.ts"
+  ],
+  "main": "printerdemo_lib.js",
+  "types": "printerdemo_lib.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}
