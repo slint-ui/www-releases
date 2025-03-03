@@ -1043,6 +1043,8 @@ Program Listing for File slint_internal.h
    
    void slint_property_mark_dirty(const PropertyHandleOpaque *handle);
    
+   void slint_property_set_constant(const PropertyHandleOpaque *handle);
+   
    void slint_property_drop(PropertyHandleOpaque *handle);
    
    void slint_property_set_animated_value_int(const PropertyHandleOpaque *handle,
