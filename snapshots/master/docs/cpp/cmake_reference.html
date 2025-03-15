@@ -484,7 +484,7 @@ compile time by setting the <code class="docutils literal notranslate"><span cla
 with <a class="reference internal" href="#resource-embedding">Resource Embedding</a>.</p>
 </section>
 <section id="bundle-translations">
-<h2>Bundle translations<a class="headerlink" href="#bundle-translations" title="Permalink to this heading">¶</a></h2>
+<h2>Bundle Translations<a class="headerlink" href="#bundle-translations" title="Permalink to this heading">¶</a></h2>
 <p>Translations can either be done using <code class="docutils literal notranslate"><span class="pre">gettext</span></code> at runtime, or by bundling all the translated strings
 directly into the binary, by embedding them in the generated C++ code.
 If you want to bundle translations, you need to set the <code class="docutils literal notranslate"><span class="pre">SLINT_BUNDLE_TRANSLATIONS</span></code> target property
@@ -493,6 +493,12 @@ to point to a directory containing translations. The translations must be in the
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">set_property</span><span class="p">(</span><span class="s">TARGET</span><span class="w"> </span><span class="s">my_application</span><span class="w"> </span><span class="s">PROPERTY</span><span class="w"> </span><span class="s">SLINT_BUNDLE_TRANSLATIONS</span><span class="w"> </span><span class="s2">&quot;${CMAKE_CURRENT_SOURCE_DIR}/lang&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+</section>
+<section id="translation-domain">
+<h2>Translation Domain<a class="headerlink" href="#translation-domain" title="Permalink to this heading">¶</a></h2>
+<p>By default, the domain used for translations is the name of the CMake target the <code class="docutils literal notranslate"><span class="pre">.slint</span></code> files are targeted with.
+Use the <code class="docutils literal notranslate"><span class="pre">SLINT_TRANSLATION_DOMAIN</span></code> target property to override this and use the specified value as domain, instead.
+This is useful in build environments where the target name is given and not suitable, such as esp-idf.</p>
 </section>
 </section>
 
@@ -555,7 +561,8 @@ to point to a directory containing translations. The translations must be in the
 <li><a class="reference internal" href="#slint-target-sources"><code class="docutils literal notranslate"><span class="pre">slint_target_sources</span></code></a></li>
 <li><a class="reference internal" href="#resource-embedding">Resource Embedding</a></li>
 <li><a class="reference internal" href="#scale-factor-for-microcontrollers">Scale Factor for Microcontrollers</a></li>
-<li><a class="reference internal" href="#bundle-translations">Bundle translations</a></li>
+<li><a class="reference internal" href="#bundle-translations">Bundle Translations</a></li>
+<li><a class="reference internal" href="#translation-domain">Translation Domain</a></li>
 </ul>
 </li>
 </ul>
