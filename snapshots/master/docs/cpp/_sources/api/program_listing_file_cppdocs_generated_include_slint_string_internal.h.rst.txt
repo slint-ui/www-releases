@@ -46,6 +46,10 @@ Program Listing for File slint_string_internal.h
    
    void slint_shared_string_from_number(SharedString *out, double n);
    
+   void slint_shared_string_from_number_fixed(SharedString *out, double n, uintptr_t digits);
+   
+   void slint_shared_string_from_number_precision(SharedString *out, double n, uintptr_t precision);
+   
    void slint_shared_string_append(SharedString *self_, const char *bytes, uintptr_t len);
    
    void slint_shared_string_to_lowercase(SharedString *out, const SharedString *ss);
