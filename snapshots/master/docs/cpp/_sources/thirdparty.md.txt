@@ -2439,7 +2439,7 @@ DEALINGS IN THE SOFTWARE.
 
 #### Used by:
 
-- [tempfile 3.19.0]( https://github.com/Stebalien/tempfile )
+- [tempfile 3.19.1]( https://github.com/Stebalien/tempfile )
 
 #### License Text
 
@@ -5095,7 +5095,7 @@ SOFTWARE.
 
 #### Used by:
 
-- [bytemuck_derive 1.9.1]( https://github.com/Lokathor/bytemuck )
+- [bytemuck_derive 1.9.2]( https://github.com/Lokathor/bytemuck )
 
 #### License Text
 
