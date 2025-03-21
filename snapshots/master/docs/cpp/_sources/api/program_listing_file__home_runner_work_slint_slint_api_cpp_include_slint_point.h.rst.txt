@@ -37,13 +37,13 @@ Program Listing for File slint_point.h
    
    struct LogicalPosition : public Point<float>
    {
-       explicit LogicalPosition(const Point<float> p) : Point<float>(p) {};
-       LogicalPosition() : Point<float> { 0., 0. } {};
+       explicit LogicalPosition(const Point<float> p) : Point<float>(p) { };
+       LogicalPosition() : Point<float> { 0., 0. } { };
    };
    struct PhysicalPosition : public Point<int32_t>
    {
-       explicit PhysicalPosition(const Point<int32_t> p) : Point<int32_t>(p) {};
-       PhysicalPosition() : Point<int32_t> { 0, 0 } {};
+       explicit PhysicalPosition(const Point<int32_t> p) : Point<int32_t>(p) { };
+       PhysicalPosition() : Point<int32_t> { 0, 0 } { };
    };
    
    }

@@ -892,7 +892,7 @@ public:
 
     template&lt;typename PixelType, typename Callback&gt;
         requires requires(Callback callback) {
-            callback(size_t(0), size_t(0), size_t(0), [&amp;callback](std::span&lt;PixelType&gt;) {});
+            callback(size_t(0), size_t(0), size_t(0), [&amp;callback](std::span&lt;PixelType&gt;) { });
         }
     PhysicalRegion render_by_line(Callback process_line_callback) const
     {
