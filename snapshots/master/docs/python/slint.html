@@ -82,13 +82,13 @@
                                 <a class="variable" href="#Image.height">height</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Image.size">size</a>
-                        </li>
-                        <li>
                                 <a class="variable" href="#Image.path">path</a>
                         </li>
                         <li>
                                 <a class="variable" href="#Image.width">width</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Image.size">size</a>
                         </li>
                 </ul>
 
@@ -112,16 +112,16 @@
                                 <a class="function" href="#Color.with_alpha">with_alpha</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Color.blue">blue</a>
-                        </li>
-                        <li>
-                                <a class="variable" href="#Color.red">red</a>
-                        </li>
-                        <li>
                                 <a class="variable" href="#Color.green">green</a>
                         </li>
                         <li>
+                                <a class="variable" href="#Color.blue">blue</a>
+                        </li>
+                        <li>
                                 <a class="variable" href="#Color.alpha">alpha</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Color.red">red</a>
                         </li>
                 </ul>
 
@@ -202,10 +202,10 @@
                                 <a class="function" href="#Timer.restart">restart</a>
                         </li>
                         <li>
-                                <a class="function" href="#Timer.running">running</a>
+                                <a class="variable" href="#Timer.running">running</a>
                         </li>
                         <li>
-                                <a class="function" href="#Timer.set_interval">set_interval</a>
+                                <a class="variable" href="#Timer.interval">interval</a>
                         </li>
                 </ul>
 
@@ -975,51 +975,67 @@ export component MainWindow inherits Window {
 </span><span id="L-347"><a href="#L-347"><span class="linenos">347</span></a>
 </span><span id="L-348"><a href="#L-348"><span class="linenos">348</span></a>
 </span><span id="L-349"><a href="#L-349"><span class="linenos">349</span></a><span class="n">loader</span> <span class="o">=</span> <span class="n">SlintAutoLoader</span><span class="p">()</span>
-</span><span id="L-350"><a href="#L-350"><span class="linenos">350</span></a>
-</span><span id="L-351"><a href="#L-351"><span class="linenos">351</span></a>
-</span><span id="L-352"><a href="#L-352"><span class="linenos">352</span></a><span class="k">def</span><span class="w"> </span><span class="nf">_callback_decorator</span><span class="p">(</span>
-</span><span id="L-353"><a href="#L-353"><span class="linenos">353</span></a>    <span class="nb">callable</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">info</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>
-</span><span id="L-354"><a href="#L-354"><span class="linenos">354</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
-</span><span id="L-355"><a href="#L-355"><span class="linenos">355</span></a>    <span class="k">if</span> <span class="s2">&quot;name&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">info</span><span class="p">:</span>
-</span><span id="L-356"><a href="#L-356"><span class="linenos">356</span></a>        <span class="n">info</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">callable</span><span class="o">.</span><span class="vm">__name__</span>
-</span><span id="L-357"><a href="#L-357"><span class="linenos">357</span></a>    <span class="nb">setattr</span><span class="p">(</span><span class="nb">callable</span><span class="p">,</span> <span class="s2">&quot;slint.callback&quot;</span><span class="p">,</span> <span class="n">info</span><span class="p">)</span>
-</span><span id="L-358"><a href="#L-358"><span class="linenos">358</span></a>    <span class="k">return</span> <span class="nb">callable</span>
-</span><span id="L-359"><a href="#L-359"><span class="linenos">359</span></a>
-</span><span id="L-360"><a href="#L-360"><span class="linenos">360</span></a>
-</span><span id="L-361"><a href="#L-361"><span class="linenos">361</span></a><span class="k">def</span><span class="w"> </span><span class="nf">callback</span><span class="p">(</span>
-</span><span id="L-362"><a href="#L-362"><span class="linenos">362</span></a>    <span class="n">global_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
-</span><span id="L-363"><a href="#L-363"><span class="linenos">363</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
-</span><span id="L-364"><a href="#L-364"><span class="linenos">364</span></a>    <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="n">global_name</span><span class="p">):</span>
-</span><span id="L-365"><a href="#L-365"><span class="linenos">365</span></a>        <span class="n">callback</span> <span class="o">=</span> <span class="n">global_name</span>
-</span><span id="L-366"><a href="#L-366"><span class="linenos">366</span></a>        <span class="k">return</span> <span class="n">_callback_decorator</span><span class="p">(</span><span class="n">callback</span><span class="p">,</span> <span class="p">{})</span>
-</span><span id="L-367"><a href="#L-367"><span class="linenos">367</span></a>    <span class="k">else</span><span class="p">:</span>
-</span><span id="L-368"><a href="#L-368"><span class="linenos">368</span></a>        <span class="n">info</span> <span class="o">=</span> <span class="p">{}</span>
-</span><span id="L-369"><a href="#L-369"><span class="linenos">369</span></a>        <span class="k">if</span> <span class="n">name</span><span class="p">:</span>
-</span><span id="L-370"><a href="#L-370"><span class="linenos">370</span></a>            <span class="n">info</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">name</span>
-</span><span id="L-371"><a href="#L-371"><span class="linenos">371</span></a>        <span class="k">if</span> <span class="n">global_name</span><span class="p">:</span>
-</span><span id="L-372"><a href="#L-372"><span class="linenos">372</span></a>            <span class="n">info</span><span class="p">[</span><span class="s2">&quot;global_name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">global_name</span>
-</span><span id="L-373"><a href="#L-373"><span class="linenos">373</span></a>        <span class="k">return</span> <span class="k">lambda</span> <span class="n">callback</span><span class="p">:</span> <span class="n">_callback_decorator</span><span class="p">(</span><span class="n">callback</span><span class="p">,</span> <span class="n">info</span><span class="p">)</span>
-</span><span id="L-374"><a href="#L-374"><span class="linenos">374</span></a>
+</span><span id="L-350"><a href="#L-350"><span class="linenos">350</span></a><span class="sd">&quot;&quot;&quot;The `loader` object is a global object that can be used to load Slint files from the file system. It exposes two stages of attributes:</span>
+</span><span id="L-351"><a href="#L-351"><span class="linenos">351</span></a><span class="sd">1. Any lookup of an attribute in the loader will try to match a file in `sys.path` with the `.slint` extension. For example `loader.my_component` will look for a file `my_component.slint` in the directories in `sys.path`.</span>
+</span><span id="L-352"><a href="#L-352"><span class="linenos">352</span></a><span class="sd">2. Any lookup in the object returned by the first stage will try to match an exported component in the loaded file, or a struct or enum. For example `loader.my_component.MyComponent` will look for an *exported* component named `MyComponent` in the file `my_component.slint`.</span>
+</span><span id="L-353"><a href="#L-353"><span class="linenos">353</span></a>
+</span><span id="L-354"><a href="#L-354"><span class="linenos">354</span></a><span class="sd">Note that the first entry in the module search path `sys.path` is the directory that contains the input script.</span>
+</span><span id="L-355"><a href="#L-355"><span class="linenos">355</span></a>
+</span><span id="L-356"><a href="#L-356"><span class="linenos">356</span></a><span class="sd">Example:</span>
+</span><span id="L-357"><a href="#L-357"><span class="linenos">357</span></a><span class="sd">```python</span>
+</span><span id="L-358"><a href="#L-358"><span class="linenos">358</span></a><span class="sd">import slint</span>
+</span><span id="L-359"><a href="#L-359"><span class="linenos">359</span></a><span class="sd"># Look for a file `main.slint` in the current directory,</span>
+</span><span id="L-360"><a href="#L-360"><span class="linenos">360</span></a><span class="sd"># #load &amp; compile it, and instantiate the exported `MainWindow` component</span>
+</span><span id="L-361"><a href="#L-361"><span class="linenos">361</span></a><span class="sd">main_window = slint.loader.main_window.MainWindow()</span>
+</span><span id="L-362"><a href="#L-362"><span class="linenos">362</span></a><span class="sd">main_window.show()</span>
+</span><span id="L-363"><a href="#L-363"><span class="linenos">363</span></a><span class="sd">...</span>
+</span><span id="L-364"><a href="#L-364"><span class="linenos">364</span></a><span class="sd">```</span>
+</span><span id="L-365"><a href="#L-365"><span class="linenos">365</span></a><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-366"><a href="#L-366"><span class="linenos">366</span></a>
+</span><span id="L-367"><a href="#L-367"><span class="linenos">367</span></a>
+</span><span id="L-368"><a href="#L-368"><span class="linenos">368</span></a><span class="k">def</span><span class="w"> </span><span class="nf">_callback_decorator</span><span class="p">(</span>
+</span><span id="L-369"><a href="#L-369"><span class="linenos">369</span></a>    <span class="nb">callable</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">info</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>
+</span><span id="L-370"><a href="#L-370"><span class="linenos">370</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+</span><span id="L-371"><a href="#L-371"><span class="linenos">371</span></a>    <span class="k">if</span> <span class="s2">&quot;name&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">info</span><span class="p">:</span>
+</span><span id="L-372"><a href="#L-372"><span class="linenos">372</span></a>        <span class="n">info</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">callable</span><span class="o">.</span><span class="vm">__name__</span>
+</span><span id="L-373"><a href="#L-373"><span class="linenos">373</span></a>    <span class="nb">setattr</span><span class="p">(</span><span class="nb">callable</span><span class="p">,</span> <span class="s2">&quot;slint.callback&quot;</span><span class="p">,</span> <span class="n">info</span><span class="p">)</span>
+</span><span id="L-374"><a href="#L-374"><span class="linenos">374</span></a>    <span class="k">return</span> <span class="nb">callable</span>
 </span><span id="L-375"><a href="#L-375"><span class="linenos">375</span></a>
-</span><span id="L-376"><a href="#L-376"><span class="linenos">376</span></a><span class="k">def</span><span class="w"> </span><span class="nf">set_xdg_app_id</span><span class="p">(</span><span class="n">app_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-377"><a href="#L-377"><span class="linenos">377</span></a>    <span class="n">native</span><span class="o">.</span><span class="n">set_xdg_app_id</span><span class="p">(</span><span class="n">app_id</span><span class="p">)</span>
-</span><span id="L-378"><a href="#L-378"><span class="linenos">378</span></a>
-</span><span id="L-379"><a href="#L-379"><span class="linenos">379</span></a>
-</span><span id="L-380"><a href="#L-380"><span class="linenos">380</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-381"><a href="#L-381"><span class="linenos">381</span></a>    <span class="s2">&quot;CompileError&quot;</span><span class="p">,</span>
-</span><span id="L-382"><a href="#L-382"><span class="linenos">382</span></a>    <span class="s2">&quot;Component&quot;</span><span class="p">,</span>
-</span><span id="L-383"><a href="#L-383"><span class="linenos">383</span></a>    <span class="s2">&quot;load_file&quot;</span><span class="p">,</span>
-</span><span id="L-384"><a href="#L-384"><span class="linenos">384</span></a>    <span class="s2">&quot;loader&quot;</span><span class="p">,</span>
-</span><span id="L-385"><a href="#L-385"><span class="linenos">385</span></a>    <span class="s2">&quot;Image&quot;</span><span class="p">,</span>
-</span><span id="L-386"><a href="#L-386"><span class="linenos">386</span></a>    <span class="s2">&quot;Color&quot;</span><span class="p">,</span>
-</span><span id="L-387"><a href="#L-387"><span class="linenos">387</span></a>    <span class="s2">&quot;Brush&quot;</span><span class="p">,</span>
-</span><span id="L-388"><a href="#L-388"><span class="linenos">388</span></a>    <span class="s2">&quot;Model&quot;</span><span class="p">,</span>
-</span><span id="L-389"><a href="#L-389"><span class="linenos">389</span></a>    <span class="s2">&quot;ListModel&quot;</span><span class="p">,</span>
-</span><span id="L-390"><a href="#L-390"><span class="linenos">390</span></a>    <span class="s2">&quot;Timer&quot;</span><span class="p">,</span>
-</span><span id="L-391"><a href="#L-391"><span class="linenos">391</span></a>    <span class="s2">&quot;TimerMode&quot;</span><span class="p">,</span>
-</span><span id="L-392"><a href="#L-392"><span class="linenos">392</span></a>    <span class="s2">&quot;set_xdg_app_id&quot;</span><span class="p">,</span>
-</span><span id="L-393"><a href="#L-393"><span class="linenos">393</span></a>    <span class="s2">&quot;callback&quot;</span><span class="p">,</span>
-</span><span id="L-394"><a href="#L-394"><span class="linenos">394</span></a><span class="p">]</span>
+</span><span id="L-376"><a href="#L-376"><span class="linenos">376</span></a>
+</span><span id="L-377"><a href="#L-377"><span class="linenos">377</span></a><span class="k">def</span><span class="w"> </span><span class="nf">callback</span><span class="p">(</span>
+</span><span id="L-378"><a href="#L-378"><span class="linenos">378</span></a>    <span class="n">global_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span id="L-379"><a href="#L-379"><span class="linenos">379</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+</span><span id="L-380"><a href="#L-380"><span class="linenos">380</span></a>    <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="n">global_name</span><span class="p">):</span>
+</span><span id="L-381"><a href="#L-381"><span class="linenos">381</span></a>        <span class="n">callback</span> <span class="o">=</span> <span class="n">global_name</span>
+</span><span id="L-382"><a href="#L-382"><span class="linenos">382</span></a>        <span class="k">return</span> <span class="n">_callback_decorator</span><span class="p">(</span><span class="n">callback</span><span class="p">,</span> <span class="p">{})</span>
+</span><span id="L-383"><a href="#L-383"><span class="linenos">383</span></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="L-384"><a href="#L-384"><span class="linenos">384</span></a>        <span class="n">info</span> <span class="o">=</span> <span class="p">{}</span>
+</span><span id="L-385"><a href="#L-385"><span class="linenos">385</span></a>        <span class="k">if</span> <span class="n">name</span><span class="p">:</span>
+</span><span id="L-386"><a href="#L-386"><span class="linenos">386</span></a>            <span class="n">info</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">name</span>
+</span><span id="L-387"><a href="#L-387"><span class="linenos">387</span></a>        <span class="k">if</span> <span class="n">global_name</span><span class="p">:</span>
+</span><span id="L-388"><a href="#L-388"><span class="linenos">388</span></a>            <span class="n">info</span><span class="p">[</span><span class="s2">&quot;global_name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">global_name</span>
+</span><span id="L-389"><a href="#L-389"><span class="linenos">389</span></a>        <span class="k">return</span> <span class="k">lambda</span> <span class="n">callback</span><span class="p">:</span> <span class="n">_callback_decorator</span><span class="p">(</span><span class="n">callback</span><span class="p">,</span> <span class="n">info</span><span class="p">)</span>
+</span><span id="L-390"><a href="#L-390"><span class="linenos">390</span></a>
+</span><span id="L-391"><a href="#L-391"><span class="linenos">391</span></a>
+</span><span id="L-392"><a href="#L-392"><span class="linenos">392</span></a><span class="k">def</span><span class="w"> </span><span class="nf">set_xdg_app_id</span><span class="p">(</span><span class="n">app_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-393"><a href="#L-393"><span class="linenos">393</span></a>    <span class="n">native</span><span class="o">.</span><span class="n">set_xdg_app_id</span><span class="p">(</span><span class="n">app_id</span><span class="p">)</span>
+</span><span id="L-394"><a href="#L-394"><span class="linenos">394</span></a>
+</span><span id="L-395"><a href="#L-395"><span class="linenos">395</span></a>
+</span><span id="L-396"><a href="#L-396"><span class="linenos">396</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-397"><a href="#L-397"><span class="linenos">397</span></a>    <span class="s2">&quot;CompileError&quot;</span><span class="p">,</span>
+</span><span id="L-398"><a href="#L-398"><span class="linenos">398</span></a>    <span class="s2">&quot;Component&quot;</span><span class="p">,</span>
+</span><span id="L-399"><a href="#L-399"><span class="linenos">399</span></a>    <span class="s2">&quot;load_file&quot;</span><span class="p">,</span>
+</span><span id="L-400"><a href="#L-400"><span class="linenos">400</span></a>    <span class="s2">&quot;loader&quot;</span><span class="p">,</span>
+</span><span id="L-401"><a href="#L-401"><span class="linenos">401</span></a>    <span class="s2">&quot;Image&quot;</span><span class="p">,</span>
+</span><span id="L-402"><a href="#L-402"><span class="linenos">402</span></a>    <span class="s2">&quot;Color&quot;</span><span class="p">,</span>
+</span><span id="L-403"><a href="#L-403"><span class="linenos">403</span></a>    <span class="s2">&quot;Brush&quot;</span><span class="p">,</span>
+</span><span id="L-404"><a href="#L-404"><span class="linenos">404</span></a>    <span class="s2">&quot;Model&quot;</span><span class="p">,</span>
+</span><span id="L-405"><a href="#L-405"><span class="linenos">405</span></a>    <span class="s2">&quot;ListModel&quot;</span><span class="p">,</span>
+</span><span id="L-406"><a href="#L-406"><span class="linenos">406</span></a>    <span class="s2">&quot;Timer&quot;</span><span class="p">,</span>
+</span><span id="L-407"><a href="#L-407"><span class="linenos">407</span></a>    <span class="s2">&quot;TimerMode&quot;</span><span class="p">,</span>
+</span><span id="L-408"><a href="#L-408"><span class="linenos">408</span></a>    <span class="s2">&quot;set_xdg_app_id&quot;</span><span class="p">,</span>
+</span><span id="L-409"><a href="#L-409"><span class="linenos">409</span></a>    <span class="s2">&quot;callback&quot;</span><span class="p">,</span>
+</span><span id="L-410"><a href="#L-410"><span class="linenos">410</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -1296,7 +1312,28 @@ used when extracting translations with <code>slint-tr-extractor</code>.</li>
     </div>
     <a class="headerlink" href="#loader"></a>
     
-    
+            <div class="docstring"><p>The <code><a href="#loader">loader</a></code> object is a global object that can be used to load Slint files from the file system. It exposes two stages of attributes:</p>
+
+<ol>
+<li>Any lookup of an attribute in the loader will try to match a file in <code>sys.path</code> with the <code>.slint</code> extension. For example <code>loader.my_component</code> will look for a file <code>my_component.slint</code> in the directories in <code>sys.path</code>.</li>
+<li>Any lookup in the object returned by the first stage will try to match an exported component in the loaded file, or a struct or enum. For example <code>loader.my_component.MyComponent</code> will look for an <em>exported</em> component named <code>MyComponent</code> in the file <code>my_component.slint</code>.</li>
+</ol>
+
+<p>Note that the first entry in the module search path <code>sys.path</code> is the directory that contains the input script.</p>
+
+<p>Example:</p>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">slint</span>
+<span class="c1"># Look for a file `main.slint` in the current directory,</span>
+<span class="c1"># #load &amp; compile it, and instantiate the exported `MainWindow` component</span>
+<span class="n">main_window</span> <span class="o">=</span> <span class="n">slint</span><span class="o">.</span><span class="n">loader</span><span class="o">.</span><span class="n">main_window</span><span class="o">.</span><span class="n">MainWindow</span><span class="p">()</span>
+<span class="n">main_window</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="o">...</span>
+</code></pre>
+</div>
+</div>
+
 
                 </section>
                 <section id="Image">
@@ -1357,19 +1394,6 @@ image file on disk, using <code><a href="#Image.load_from_path">Image.load_from_
 
 
                             </div>
-                            <div id="Image.size" class="classattr">
-                                <div class="attr variable">
-            <span class="name">size</span>
-
-        
-    </div>
-    <a class="headerlink" href="#Image.size"></a>
-    
-            <div class="docstring"><p>The size of the image as tuple of <code><a href="#Image.width">width</a></code> and <code><a href="#Image.height">height</a></code>.</p>
-</div>
-
-
-                            </div>
                             <div id="Image.path" class="classattr">
                                 <div class="attr variable">
             <span class="name">path</span>
@@ -1392,6 +1416,19 @@ image file on disk, using <code><a href="#Image.load_from_path">Image.load_from_
     <a class="headerlink" href="#Image.width"></a>
     
             <div class="docstring"><p>The width of the image in pixels.</p>
+</div>
+
+
+                            </div>
+                            <div id="Image.size" class="classattr">
+                                <div class="attr variable">
+            <span class="name">size</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Image.size"></a>
+    
+            <div class="docstring"><p>The size of the image as tuple of <code><a href="#Image.width">width</a></code> and <code><a href="#Image.height">height</a></code>.</p>
 </div>
 
 
@@ -1493,32 +1530,6 @@ is applied to <code>other</code>.</p>
 
 
                             </div>
-                            <div id="Color.blue" class="classattr">
-                                <div class="attr variable">
-            <span class="name">blue</span>
-
-        
-    </div>
-    <a class="headerlink" href="#Color.blue"></a>
-    
-            <div class="docstring"><p>The blue channel.</p>
-</div>
-
-
-                            </div>
-                            <div id="Color.red" class="classattr">
-                                <div class="attr variable">
-            <span class="name">red</span>
-
-        
-    </div>
-    <a class="headerlink" href="#Color.red"></a>
-    
-            <div class="docstring"><p>The red channel.</p>
-</div>
-
-
-                            </div>
                             <div id="Color.green" class="classattr">
                                 <div class="attr variable">
             <span class="name">green</span>
@@ -1532,6 +1543,19 @@ is applied to <code>other</code>.</p>
 
 
                             </div>
+                            <div id="Color.blue" class="classattr">
+                                <div class="attr variable">
+            <span class="name">blue</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Color.blue"></a>
+    
+            <div class="docstring"><p>The blue channel.</p>
+</div>
+
+
+                            </div>
                             <div id="Color.alpha" class="classattr">
                                 <div class="attr variable">
             <span class="name">alpha</span>
@@ -1541,6 +1565,19 @@ is applied to <code>other</code>.</p>
     <a class="headerlink" href="#Color.alpha"></a>
     
             <div class="docstring"><p>The alpha channel.</p>
+</div>
+
+
+                            </div>
+                            <div id="Color.red" class="classattr">
+                                <div class="attr variable">
+            <span class="name">red</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Color.red"></a>
+    
+            <div class="docstring"><p>The red channel.</p>
 </div>
 
 
@@ -1945,7 +1982,20 @@ set to <code>alpha</code>.</p>
     </div>
     <a class="headerlink" href="#Timer"></a>
     
-    
+            <div class="docstring"><p>Timer is a handle to the timer system that allows triggering a callback to be called
+after a specified period of time.</p>
+
+<p>Use <code><a href="#Timer.start">Timer.start()</a></code> to create a timer that can repeat at frequent interval, or
+<code><a href="#Timer.single_shot">Timer.single_shot()</a></code> if you just want to call a function with a delay and do not
+need to be able to stop it.</p>
+
+<p>The timer will automatically stop when garbage collected. You must keep the Timer object
+around for as long as you want the timer to keep firing.</p>
+
+<p>The timer can only be used in the thread that runs the Slint event loop.
+They will not fire if used in another thread.</p>
+</div>
+
 
                             <div id="Timer.start" class="classattr">
                                 <div class="attr function">
@@ -1957,7 +2007,19 @@ set to <code>alpha</code>.</p>
     </div>
     <a class="headerlink" href="#Timer.start"></a>
     
-    
+            <div class="docstring"><p>Starts the timer with the given mode and interval, in order for the callback to called when the
+timer fires. If the timer has been started previously and not fired yet, then it will be restarted.</p>
+
+<p>Arguments:</p>
+
+<ul>
+<li><code>mode</code>: The timer mode to apply, i.e. whether to repeatedly fire the timer or just once.</li>
+<li><code><a href="#Timer.interval">interval</a></code>: The duration from now until when the timer should fire. And the period of that timer
+for <code><a href="#TimerMode.Repeated">TimerMode.Repeated</a></code> timers.</li>
+<li><code><a href="#callback">callback</a></code>: The function to call when the time has been reached or exceeded.</li>
+</ul>
+</div>
+
 
                             </div>
                             <div id="Timer.single_shot" class="classattr">
@@ -1970,7 +2032,17 @@ set to <code>alpha</code>.</p>
     </div>
     <a class="headerlink" href="#Timer.single_shot"></a>
     
-    
+            <div class="docstring"><p>Starts the timer with the duration, in order for the callback to called when the
+timer fires. It is fired only once and then deleted.</p>
+
+<p>Arguments:</p>
+
+<ul>
+<li><code>duration</code>: The duration from now until when the timer should fire.</li>
+<li><code><a href="#callback">callback</a></code>: The function to call when the time has been reached or exceeded.</li>
+</ul>
+</div>
+
 
                             </div>
                             <div id="Timer.stop" class="classattr">
@@ -1983,7 +2055,9 @@ set to <code>alpha</code>.</p>
     </div>
     <a class="headerlink" href="#Timer.stop"></a>
     
-    
+            <div class="docstring"><p>Stops the previously started timer. Does nothing if the timer has never been started.</p>
+</div>
+
 
                             </div>
                             <div id="Timer.restart" class="classattr">
@@ -1996,33 +2070,43 @@ set to <code>alpha</code>.</p>
     </div>
     <a class="headerlink" href="#Timer.restart"></a>
     
-    
+            <div class="docstring"><p>Restarts the timer. If the timer was previously started by calling <code><a href="#Timer.start">Timer.start()</a></code>
+with a duration and callback, then the time when the callback will be next invoked
+is re-calculated to be in the specified duration relative to when this function is called.</p>
+
+<p>Does nothing if the timer was never started.</p>
+</div>
+
 
                             </div>
                             <div id="Timer.running" class="classattr">
-                                <div class="attr function">
-            
-        <span class="def">def</span>
-        <span class="name">running</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+                                <div class="attr variable">
+            <span class="name">running</span>
 
         
     </div>
     <a class="headerlink" href="#Timer.running"></a>
     
-    
+            <div class="docstring"><p>Set to true if the timer is running; false otherwise.</p>
+</div>
+
 
                             </div>
-                            <div id="Timer.set_interval" class="classattr">
-                                <div class="attr function">
-            
-        <span class="def">def</span>
-        <span class="name">set_interval</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span>, </span><span class="param"><span class="n">interval</span></span><span class="return-annotation">):</span></span>
+                            <div id="Timer.interval" class="classattr">
+                                <div class="attr variable">
+            <span class="name">interval</span>
 
         
     </div>
-    <a class="headerlink" href="#Timer.set_interval"></a>
+    <a class="headerlink" href="#Timer.interval"></a>
     
-    
+            <div class="docstring"><p>The duration of timer.</p>
+
+<p>When setting this property and the timer is running (see <code><a href="#Timer.running">Timer.running</a></code>),
+then the time when the callback will be next invoked is re-calculated to be in the
+specified duration relative to when this property is set.</p>
+</div>
+
 
                             </div>
                 </section>
@@ -2036,7 +2120,11 @@ set to <code>alpha</code>.</p>
     </div>
     <a class="headerlink" href="#TimerMode"></a>
     
-    
+            <div class="docstring"><p>The TimerMode specifies what should happen after the timer fired.</p>
+
+<p>Used by the <code><a href="#Timer.start">Timer.start()</a></code> function.</p>
+</div>
+
 
                             <div id="TimerMode.SingleShot" class="classattr">
                                 <div class="attr variable">
@@ -2074,8 +2162,8 @@ set to <code>alpha</code>.</p>
 
     </div>
     <a class="headerlink" href="#set_xdg_app_id"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="set_xdg_app_id-377"><a href="#set_xdg_app_id-377"><span class="linenos">377</span></a><span class="k">def</span><span class="w"> </span><span class="nf">set_xdg_app_id</span><span class="p">(</span><span class="n">app_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="set_xdg_app_id-378"><a href="#set_xdg_app_id-378"><span class="linenos">378</span></a>    <span class="n">native</span><span class="o">.</span><span class="n">set_xdg_app_id</span><span class="p">(</span><span class="n">app_id</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="set_xdg_app_id-393"><a href="#set_xdg_app_id-393"><span class="linenos">393</span></a><span class="k">def</span><span class="w"> </span><span class="nf">set_xdg_app_id</span><span class="p">(</span><span class="n">app_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="set_xdg_app_id-394"><a href="#set_xdg_app_id-394"><span class="linenos">394</span></a>    <span class="n">native</span><span class="o">.</span><span class="n">set_xdg_app_id</span><span class="p">(</span><span class="n">app_id</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -2093,19 +2181,19 @@ set to <code>alpha</code>.</p>
 
     </div>
     <a class="headerlink" href="#callback"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="callback-362"><a href="#callback-362"><span class="linenos">362</span></a><span class="k">def</span><span class="w"> </span><span class="nf">callback</span><span class="p">(</span>
-</span><span id="callback-363"><a href="#callback-363"><span class="linenos">363</span></a>    <span class="n">global_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
-</span><span id="callback-364"><a href="#callback-364"><span class="linenos">364</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
-</span><span id="callback-365"><a href="#callback-365"><span class="linenos">365</span></a>    <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="n">global_name</span><span class="p">):</span>
-</span><span id="callback-366"><a href="#callback-366"><span class="linenos">366</span></a>        <span class="n">callback</span> <span class="o">=</span> <span class="n">global_name</span>
-</span><span id="callback-367"><a href="#callback-367"><span class="linenos">367</span></a>        <span class="k">return</span> <span class="n">_callback_decorator</span><span class="p">(</span><span class="n">callback</span><span class="p">,</span> <span class="p">{})</span>
-</span><span id="callback-368"><a href="#callback-368"><span class="linenos">368</span></a>    <span class="k">else</span><span class="p">:</span>
-</span><span id="callback-369"><a href="#callback-369"><span class="linenos">369</span></a>        <span class="n">info</span> <span class="o">=</span> <span class="p">{}</span>
-</span><span id="callback-370"><a href="#callback-370"><span class="linenos">370</span></a>        <span class="k">if</span> <span class="n">name</span><span class="p">:</span>
-</span><span id="callback-371"><a href="#callback-371"><span class="linenos">371</span></a>            <span class="n">info</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">name</span>
-</span><span id="callback-372"><a href="#callback-372"><span class="linenos">372</span></a>        <span class="k">if</span> <span class="n">global_name</span><span class="p">:</span>
-</span><span id="callback-373"><a href="#callback-373"><span class="linenos">373</span></a>            <span class="n">info</span><span class="p">[</span><span class="s2">&quot;global_name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">global_name</span>
-</span><span id="callback-374"><a href="#callback-374"><span class="linenos">374</span></a>        <span class="k">return</span> <span class="k">lambda</span> <span class="n">callback</span><span class="p">:</span> <span class="n">_callback_decorator</span><span class="p">(</span><span class="n">callback</span><span class="p">,</span> <span class="n">info</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="callback-378"><a href="#callback-378"><span class="linenos">378</span></a><span class="k">def</span><span class="w"> </span><span class="nf">callback</span><span class="p">(</span>
+</span><span id="callback-379"><a href="#callback-379"><span class="linenos">379</span></a>    <span class="n">global_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span id="callback-380"><a href="#callback-380"><span class="linenos">380</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+</span><span id="callback-381"><a href="#callback-381"><span class="linenos">381</span></a>    <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="n">global_name</span><span class="p">):</span>
+</span><span id="callback-382"><a href="#callback-382"><span class="linenos">382</span></a>        <span class="n">callback</span> <span class="o">=</span> <span class="n">global_name</span>
+</span><span id="callback-383"><a href="#callback-383"><span class="linenos">383</span></a>        <span class="k">return</span> <span class="n">_callback_decorator</span><span class="p">(</span><span class="n">callback</span><span class="p">,</span> <span class="p">{})</span>
+</span><span id="callback-384"><a href="#callback-384"><span class="linenos">384</span></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="callback-385"><a href="#callback-385"><span class="linenos">385</span></a>        <span class="n">info</span> <span class="o">=</span> <span class="p">{}</span>
+</span><span id="callback-386"><a href="#callback-386"><span class="linenos">386</span></a>        <span class="k">if</span> <span class="n">name</span><span class="p">:</span>
+</span><span id="callback-387"><a href="#callback-387"><span class="linenos">387</span></a>            <span class="n">info</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">name</span>
+</span><span id="callback-388"><a href="#callback-388"><span class="linenos">388</span></a>        <span class="k">if</span> <span class="n">global_name</span><span class="p">:</span>
+</span><span id="callback-389"><a href="#callback-389"><span class="linenos">389</span></a>            <span class="n">info</span><span class="p">[</span><span class="s2">&quot;global_name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">global_name</span>
+</span><span id="callback-390"><a href="#callback-390"><span class="linenos">390</span></a>        <span class="k">return</span> <span class="k">lambda</span> <span class="n">callback</span><span class="p">:</span> <span class="n">_callback_decorator</span><span class="p">(</span><span class="n">callback</span><span class="p">,</span> <span class="n">info</span><span class="p">)</span>
 </span></pre></div>
 
 
