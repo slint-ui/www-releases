@@ -82,13 +82,13 @@
                                 <a class="variable" href="#Image.width">width</a>
                         </li>
                         <li>
+                                <a class="variable" href="#Image.path">path</a>
+                        </li>
+                        <li>
                                 <a class="variable" href="#Image.size">size</a>
                         </li>
                         <li>
                                 <a class="variable" href="#Image.height">height</a>
-                        </li>
-                        <li>
-                                <a class="variable" href="#Image.path">path</a>
                         </li>
                 </ul>
 
@@ -115,13 +115,13 @@
                                 <a class="variable" href="#Color.red">red</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Color.blue">blue</a>
-                        </li>
-                        <li>
                                 <a class="variable" href="#Color.alpha">alpha</a>
                         </li>
                         <li>
                                 <a class="variable" href="#Color.green">green</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Color.blue">blue</a>
                         </li>
                 </ul>
 
@@ -211,10 +211,10 @@
                                 <a class="function" href="#Timer.restart">restart</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Timer.interval">interval</a>
+                                <a class="variable" href="#Timer.running">running</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Timer.running">running</a>
+                                <a class="variable" href="#Timer.interval">interval</a>
                         </li>
                 </ul>
 
@@ -1016,9 +1016,9 @@ export component MainWindow inherits Window {
 </span><span id="L-379"><a href="#L-379"><span class="linenos">379</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
 </span><span id="L-380"><a href="#L-380"><span class="linenos">380</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Use the callback decorator to mark a method as a callback that can be invoked from the Slint component.</span>
 </span><span id="L-381"><a href="#L-381"><span class="linenos">381</span></a>
-</span><span id="L-382"><a href="#L-382"><span class="linenos">382</span></a><span class="sd">        For the decorator to work, the method must be a member of a class that is Slint component.</span>
+</span><span id="L-382"><a href="#L-382"><span class="linenos">382</span></a><span class="sd">    For the decorator to work, the method must be a member of a class that is Slint component.</span>
 </span><span id="L-383"><a href="#L-383"><span class="linenos">383</span></a>
-</span><span id="L-384"><a href="#L-384"><span class="linenos">384</span></a><span class="sd">        Example:</span>
+</span><span id="L-384"><a href="#L-384"><span class="linenos">384</span></a><span class="sd">    Example:</span>
 </span><span id="L-385"><a href="#L-385"><span class="linenos">385</span></a><span class="sd">    ```python</span>
 </span><span id="L-386"><a href="#L-386"><span class="linenos">386</span></a><span class="sd">    import slint</span>
 </span><span id="L-387"><a href="#L-387"><span class="linenos">387</span></a>
@@ -1432,6 +1432,19 @@ image file on disk, using <code><a href="#Image.load_from_path">Image.load_from_
 
 
                             </div>
+                            <div id="Image.path" class="classattr">
+                                <div class="attr variable">
+            <span class="name">path</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Image.path"></a>
+    
+            <div class="docstring"><p>The path of the image if it was loaded from disk, or None.</p>
+</div>
+
+
+                            </div>
                             <div id="Image.size" class="classattr">
                                 <div class="attr variable">
             <span class="name">size</span>
@@ -1454,19 +1467,6 @@ image file on disk, using <code><a href="#Image.load_from_path">Image.load_from_
     <a class="headerlink" href="#Image.height"></a>
     
             <div class="docstring"><p>The height of the image in pixels.</p>
-</div>
-
-
-                            </div>
-                            <div id="Image.path" class="classattr">
-                                <div class="attr variable">
-            <span class="name">path</span>
-
-        
-    </div>
-    <a class="headerlink" href="#Image.path"></a>
-    
-            <div class="docstring"><p>The path of the image if it was loaded from disk, or None.</p>
 </div>
 
 
@@ -1581,19 +1581,6 @@ is applied to <code>other</code>.</p>
 
 
                             </div>
-                            <div id="Color.blue" class="classattr">
-                                <div class="attr variable">
-            <span class="name">blue</span>
-
-        
-    </div>
-    <a class="headerlink" href="#Color.blue"></a>
-    
-            <div class="docstring"><p>The blue channel.</p>
-</div>
-
-
-                            </div>
                             <div id="Color.alpha" class="classattr">
                                 <div class="attr variable">
             <span class="name">alpha</span>
@@ -1616,6 +1603,19 @@ is applied to <code>other</code>.</p>
     <a class="headerlink" href="#Color.green"></a>
     
             <div class="docstring"><p>The green channel.</p>
+</div>
+
+
+                            </div>
+                            <div id="Color.blue" class="classattr">
+                                <div class="attr variable">
+            <span class="name">blue</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Color.blue"></a>
+    
+            <div class="docstring"><p>The blue channel.</p>
 </div>
 
 
@@ -2221,6 +2221,19 @@ is re-calculated to be in the specified duration relative to when this function 
 
 
                             </div>
+                            <div id="Timer.running" class="classattr">
+                                <div class="attr variable">
+            <span class="name">running</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Timer.running"></a>
+    
+            <div class="docstring"><p>Set to true if the timer is running; false otherwise.</p>
+</div>
+
+
+                            </div>
                             <div id="Timer.interval" class="classattr">
                                 <div class="attr variable">
             <span class="name">interval</span>
@@ -2234,19 +2247,6 @@ is re-calculated to be in the specified duration relative to when this function 
 <p>When setting this property and the timer is running (see <code><a href="#Timer.running">Timer.running</a></code>),
 then the time when the callback will be next invoked is re-calculated to be in the
 specified duration relative to when this property is set.</p>
-</div>
-
-
-                            </div>
-                            <div id="Timer.running" class="classattr">
-                                <div class="attr variable">
-            <span class="name">running</span>
-
-        
-    </div>
-    <a class="headerlink" href="#Timer.running"></a>
-    
-            <div class="docstring"><p>Set to true if the timer is running; false otherwise.</p>
 </div>
 
 
@@ -2334,9 +2334,9 @@ compliant window managers. This must be set before the window is shown, and has 
 </span><span id="callback-380"><a href="#callback-380"><span class="linenos">380</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
 </span><span id="callback-381"><a href="#callback-381"><span class="linenos">381</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Use the callback decorator to mark a method as a callback that can be invoked from the Slint component.</span>
 </span><span id="callback-382"><a href="#callback-382"><span class="linenos">382</span></a>
-</span><span id="callback-383"><a href="#callback-383"><span class="linenos">383</span></a><span class="sd">        For the decorator to work, the method must be a member of a class that is Slint component.</span>
+</span><span id="callback-383"><a href="#callback-383"><span class="linenos">383</span></a><span class="sd">    For the decorator to work, the method must be a member of a class that is Slint component.</span>
 </span><span id="callback-384"><a href="#callback-384"><span class="linenos">384</span></a>
-</span><span id="callback-385"><a href="#callback-385"><span class="linenos">385</span></a><span class="sd">        Example:</span>
+</span><span id="callback-385"><a href="#callback-385"><span class="linenos">385</span></a><span class="sd">    Example:</span>
 </span><span id="callback-386"><a href="#callback-386"><span class="linenos">386</span></a><span class="sd">    ```python</span>
 </span><span id="callback-387"><a href="#callback-387"><span class="linenos">387</span></a><span class="sd">    import slint</span>
 </span><span id="callback-388"><a href="#callback-388"><span class="linenos">388</span></a>
@@ -2373,10 +2373,9 @@ compliant window managers. This must be set before the window is shown, and has 
 
             <div class="docstring"><p>Use the callback decorator to mark a method as a callback that can be invoked from the Slint component.</p>
 
-<pre><code>For the decorator to work, the method must be a member of a class that is Slint component.
+<p>For the decorator to work, the method must be a member of a class that is Slint component.</p>
 
-Example:
-</code></pre>
+<p>Example:</p>
 
 <div class="pdoc-code codehilite">
 <pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">slint</span>
