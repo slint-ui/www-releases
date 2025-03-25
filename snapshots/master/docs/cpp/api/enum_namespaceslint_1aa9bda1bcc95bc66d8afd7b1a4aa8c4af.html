@@ -431,24 +431,25 @@
 <dl class="cpp enum-class">
 <dt class="sig sig-object cpp" id="_CPPv4N5slint14RenderingStateE">
 <span id="_CPPv3N5slint14RenderingStateE"></span><span id="_CPPv2N5slint14RenderingStateE"></span><span class="target" id="namespaceslint_1aa9bda1bcc95bc66d8afd7b1a4aa8c4af"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">slint</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">RenderingState</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><a class="headerlink" href="#_CPPv4N5slint14RenderingStateE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>This enum describes the different rendering states, that will be provided to the parameter of the callback for <code class="docutils literal notranslate"><span class="pre">set_rendering_notifier</span></code> on the <code class="docutils literal notranslate"><a class="reference internal" href="classslint_1_1Window.html#classslint_1_1Window"><span class="std std-ref"><span class="pre">slint::Window</span></span></a></code>. </p>
+<dd><p>This enum describes the different rendering states, that will be provided to the parameter of the callback for <code class="docutils literal notranslate"><span class="pre">set_rendering_notifier</span></code> on the <code class="docutils literal notranslate"><a class="reference internal" href="classslint_1_1Window.html#classslint_1_1Window"><span class="std std-ref"><span class="pre">slint::Window</span></span></a></code>.</p>
+<p>When OpenGL is used for rendering, the context will be current. It’s safe to call OpenGL functions, but it is crucial that the state of the context is preserved. So make sure to save and restore state such as <code class="docutils literal notranslate"><span class="pre">TEXTURE_BINDING_2D</span></code> or <code class="docutils literal notranslate"><span class="pre">ARRAY_BUFFER_BINDING</span></code> perfectly. </p>
 <p><em>Values:</em></p>
 <dl class="cpp enumerator">
 <dt class="sig sig-object cpp" id="_CPPv4N5slint14RenderingState14RenderingSetupE">
 <span id="_CPPv3N5slint14RenderingState14RenderingSetupE"></span><span id="_CPPv2N5slint14RenderingState14RenderingSetupE"></span><span class="target" id="namespaceslint_1aa9bda1bcc95bc66d8afd7b1a4aa8c4afa0292941e3cdce8948792bdd28427d192"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RenderingSetup</span></span></span><a class="headerlink" href="#_CPPv4N5slint14RenderingState14RenderingSetupE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>The window has been created and the graphics adapter/context initialized. When OpenGL is used for rendering, the context will be current. </p>
+<dd><p>The window has been created and the graphics adapter/context initialized. </p>
 </dd></dl>
 
 <dl class="cpp enumerator">
 <dt class="sig sig-object cpp" id="_CPPv4N5slint14RenderingState15BeforeRenderingE">
 <span id="_CPPv3N5slint14RenderingState15BeforeRenderingE"></span><span id="_CPPv2N5slint14RenderingState15BeforeRenderingE"></span><span class="target" id="namespaceslint_1aa9bda1bcc95bc66d8afd7b1a4aa8c4afab081cfb0d0ea76bebb552308dc1a4022"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">BeforeRendering</span></span></span><a class="headerlink" href="#_CPPv4N5slint14RenderingState15BeforeRenderingE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>The scene of items is about to be rendered. When OpenGL is used for rendering, the context will be current. </p>
+<dd><p>The scene of items is about to be rendered. </p>
 </dd></dl>
 
 <dl class="cpp enumerator">
 <dt class="sig sig-object cpp" id="_CPPv4N5slint14RenderingState14AfterRenderingE">
 <span id="_CPPv3N5slint14RenderingState14AfterRenderingE"></span><span id="_CPPv2N5slint14RenderingState14AfterRenderingE"></span><span class="target" id="namespaceslint_1aa9bda1bcc95bc66d8afd7b1a4aa8c4afae23c9d872e89816c595df30004ded3f9"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AfterRendering</span></span></span><a class="headerlink" href="#_CPPv4N5slint14RenderingState14AfterRenderingE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>The scene of items was rendered, but the back buffer was not sent for display presentation yet (for example GL swap buffers). When OpenGL is used for rendering, the context will be current. </p>
+<dd><p>The scene of items was rendered, but the back buffer was not sent for display presentation yet (for example GL swap buffers). </p>
 </dd></dl>
 
 <dl class="cpp enumerator">
