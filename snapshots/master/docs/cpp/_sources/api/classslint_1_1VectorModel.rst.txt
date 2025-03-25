@@ -3,7 +3,7 @@
 Template Class VectorModel
 ==========================
 
-- Defined in :ref:`file__home_runner_work_slint_slint_api_cpp_include_slint.h`
+- Defined in :ref:`file__home_runner_work_slint_slint_api_cpp_include_slint_models.h`
 
 
 Inheritance Relationships

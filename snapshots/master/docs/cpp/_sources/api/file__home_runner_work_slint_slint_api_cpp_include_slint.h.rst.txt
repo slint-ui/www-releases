@@ -25,19 +25,15 @@ Includes
 --------
 
 
-- ``algorithm``
-
 - ``chrono``
 
 - ``concepts``
 
-- ``functional``
-
-- ``memory``
-
-- ``optional``
-
 - ``slint_internal.h`` (:ref:`file_cppdocs_generated_include_slint_internal.h`)
+
+- ``slint_item_tree.h`` (:ref:`file__home_runner_work_slint_slint_api_cpp_include_slint_item_tree.h`)
+
+- ``slint_models.h`` (:ref:`file__home_runner_work_slint_slint_api_cpp_include_slint_models.h`)
 
 - ``slint_platform_internal.h`` (:ref:`file_cppdocs_generated_include_slint_platform_internal.h`)
 
@@ -59,27 +55,6 @@ Namespaces
 
 
 - :ref:`namespace_slint`
-
-
-Classes
--------
-
-
-- :ref:`exhale_class_classslint_1_1ComponentHandle`
-
-- :ref:`exhale_class_classslint_1_1ComponentWeakHandle`
-
-- :ref:`exhale_class_classslint_1_1FilterModel`
-
-- :ref:`exhale_class_classslint_1_1MapModel`
-
-- :ref:`exhale_class_classslint_1_1Model`
-
-- :ref:`exhale_class_classslint_1_1ReverseModel`
-
-- :ref:`exhale_class_classslint_1_1SortModel`
-
-- :ref:`exhale_class_classslint_1_1VectorModel`
 
 
 Enums

@@ -145,6 +145,16 @@ Files
 .. toctree::
    :maxdepth: 5
 
+   file__home_runner_work_slint_slint_api_cpp_include_slint_item_tree.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file__home_runner_work_slint_slint_api_cpp_include_slint_models.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file__home_runner_work_slint_slint_api_cpp_include_slint_pathdata.h.rst
 
 .. toctree::

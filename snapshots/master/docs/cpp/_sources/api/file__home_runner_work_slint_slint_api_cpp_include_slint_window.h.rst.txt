@@ -35,6 +35,8 @@ Included By
 
 - :ref:`file__home_runner_work_slint_slint_api_cpp_include_slint.h`
 
+- :ref:`file__home_runner_work_slint_slint_api_cpp_include_slint_item_tree.h`
+
 
 
 
