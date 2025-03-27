@@ -6595,8 +6595,8 @@ SOFTWARE.
 
 #### Used by:
 
-- [derive_more-impl 1.0.0]( https://github.com/JelteF/derive_more )
-- [derive_more 1.0.0]( https://github.com/JelteF/derive_more )
+- [derive_more-impl 2.0.1]( https://github.com/JelteF/derive_more )
+- [derive_more 2.0.1]( https://github.com/JelteF/derive_more )
 
 #### License Text
 
@@ -7609,7 +7609,7 @@ Exhibit B - &quot;Incompatible With Secondary Licenses&quot; Notice
 
 #### Used by:
 
-- [dwrote 0.11.2]( https://github.com/servo/dwrote-rs )
+- [dwrote 0.11.3]( https://github.com/servo/dwrote-rs )
 
 #### License Text
 
