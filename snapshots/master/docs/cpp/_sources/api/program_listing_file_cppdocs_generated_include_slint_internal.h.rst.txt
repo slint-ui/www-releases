@@ -955,6 +955,11 @@ Program Listing for File slint_internal.h
                                 const VRc<ItemTreeVTable> *self_component,
                                 uint32_t self_index);
    
+   bool slint_contextmenu_is_open(Pin<const ContextMenu*> s,
+                                  const WindowAdapterRcOpaque *window_adapter,
+                                  const VRc<ItemTreeVTable> *self_component,
+                                  uint32_t self_index);
+   
    LogicalPoint slint_item_absolute_position(const VRc<ItemTreeVTable> *self_component,
                                              uint32_t self_index);
    

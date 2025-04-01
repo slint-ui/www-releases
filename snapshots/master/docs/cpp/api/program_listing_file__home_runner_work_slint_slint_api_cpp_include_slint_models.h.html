@@ -873,6 +873,8 @@
 <span class="p">};</span>
 <span class="p">}</span>
 
+<span class="c1">//          return fmt::format(&quot;{} {}&quot;, person.first, person.last);</span>
+<span class="c1">//      });</span>
 <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">SourceModelData</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">MappedModelData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SourceModelData</span><span class="o">&gt;</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">MapModel</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Model</span><span class="o">&lt;</span><span class="n">MappedModelData</span><span class="o">&gt;</span>
 <span class="p">{</span>
@@ -1040,6 +1042,8 @@
 <span class="p">};</span>
 <span class="p">}</span>
 
+<span class="c1">//      std::vector&lt;SharedString&gt; { &quot;lorem&quot;, &quot;ipsum&quot;, &quot;dolor&quot; });</span>
+
 <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">ModelData</span><span class="o">&gt;</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">SortModel</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Model</span><span class="o">&lt;</span><span class="n">ModelData</span><span class="o">&gt;</span>
 <span class="p">{</span>
@@ -1120,6 +1124,7 @@
 <span class="p">};</span>
 <span class="p">}</span>
 
+<span class="c1">//      std::vector&lt;int&gt; { 1, 2, 3, 4, 5 });</span>
 <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">ModelData</span><span class="o">&gt;</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">ReverseModel</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Model</span><span class="o">&lt;</span><span class="n">ModelData</span><span class="o">&gt;</span>
 <span class="p">{</span>

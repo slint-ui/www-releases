@@ -1369,6 +1369,11 @@
 <span class="w">                             </span><span class="k">const</span><span class="w"> </span><span class="n">VRc</span><span class="o">&lt;</span><span class="n">ItemTreeVTable</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">self_component</span><span class="p">,</span>
 <span class="w">                             </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">self_index</span><span class="p">);</span>
 
+<span class="kt">bool</span><span class="w"> </span><span class="nf">slint_contextmenu_is_open</span><span class="p">(</span><span class="n">Pin</span><span class="o">&lt;</span><span class="k">const</span><span class="w"> </span><span class="n">ContextMenu</span><span class="o">*&gt;</span><span class="w"> </span><span class="n">s</span><span class="p">,</span>
+<span class="w">                               </span><span class="k">const</span><span class="w"> </span><span class="n">WindowAdapterRcOpaque</span><span class="w"> </span><span class="o">*</span><span class="n">window_adapter</span><span class="p">,</span>
+<span class="w">                               </span><span class="k">const</span><span class="w"> </span><span class="n">VRc</span><span class="o">&lt;</span><span class="n">ItemTreeVTable</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">self_component</span><span class="p">,</span>
+<span class="w">                               </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">self_index</span><span class="p">);</span>
+
 <span class="n">LogicalPoint</span><span class="w"> </span><span class="nf">slint_item_absolute_position</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">VRc</span><span class="o">&lt;</span><span class="n">ItemTreeVTable</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">self_component</span><span class="p">,</span>
 <span class="w">                                          </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">self_index</span><span class="p">);</span>
 

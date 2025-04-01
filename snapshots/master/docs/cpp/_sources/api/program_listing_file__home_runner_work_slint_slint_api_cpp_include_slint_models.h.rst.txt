@@ -459,6 +459,8 @@ Program Listing for File slint_models.h
    };
    }
    
+   //          return fmt::format("{} {}", person.first, person.last);
+   //      });
    template<typename SourceModelData, typename MappedModelData = SourceModelData>
    class MapModel : public Model<MappedModelData>
    {
@@ -626,6 +628,8 @@ Program Listing for File slint_models.h
    };
    }
    
+   //      std::vector<SharedString> { "lorem", "ipsum", "dolor" });
+   
    template<typename ModelData>
    class SortModel : public Model<ModelData>
    {
@@ -706,6 +710,7 @@ Program Listing for File slint_models.h
    };
    }
    
+   //      std::vector<int> { 1, 2, 3, 4, 5 });
    template<typename ModelData>
    class ReverseModel : public Model<ModelData>
    {
