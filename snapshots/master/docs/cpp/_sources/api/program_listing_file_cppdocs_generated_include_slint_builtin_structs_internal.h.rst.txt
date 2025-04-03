@@ -80,6 +80,7 @@ Program Listing for File slint_builtin_structs_internal.h
        SharedString title;
        SharedString id;
        bool has_sub_menu;
+       bool is_separator;
        friend bool operator==(const MenuEntry&, const MenuEntry&) = default;
        friend bool operator!=(const MenuEntry&, const MenuEntry&) = default;
    };
