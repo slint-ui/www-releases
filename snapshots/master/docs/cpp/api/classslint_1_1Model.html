@@ -446,6 +446,9 @@
 <span id="_CPPv3I0EN5slint5ModelE"></span><span id="_CPPv2I0EN5slint5ModelE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ModelData</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="classslint_1_1Model"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Model</span></span></span><a class="headerlink" href="#_CPPv4I0EN5slint5ModelE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>A Model is providing Data for Slint <a class="reference external" href="https://slint.dev/releases/1.11.0/docs/slint/guide/language/coding/repetition-and-data-models/#models"><code class="code docutils literal notranslate"><span class="pre">Models</span></code></a> or <a class="reference external" href="https://slint.dev/releases/1.11.0/docs/slint/reference/std-widgets/views/listview/"><code class="code docutils literal notranslate"><span class="pre">ListView</span></code></a> elements of the
 <code class="code docutils literal notranslate"><span class="pre">.slint</span></code> language</p>
+<p>This is typically used in a <code class="docutils literal notranslate"><span class="pre">std::shared_ptr&lt;</span><a class="reference internal" href="#classslint_1_1Model"><span class="std std-ref"><span class="pre">slint::Model</span></span></a><span class="pre">&gt;</span></code>. <a class="reference internal" href="#classslint_1_1Model"><span class="std std-ref">Model</span></a> is an abstract class and you can derive from it to provide your own data model, or use one of the provided models such as <code class="docutils literal notranslate"><a class="reference internal" href="classslint_1_1VectorModel.html#classslint_1_1VectorModel"><span class="std std-ref"><span class="pre">slint::VectorModel</span></span></a></code></p>
+<p>An implementation of the <a class="reference internal" href="#classslint_1_1Model"><span class="std std-ref">Model</span></a> can provide data to slint by re-implementing the <code class="docutils literal notranslate"><span class="pre">row_count</span></code> and <code class="docutils literal notranslate"><span class="pre">row_data</span></code> functions. It is the responsibility of the <a class="reference internal" href="#classslint_1_1Model"><span class="std std-ref">Model</span></a> implementation to call the <code class="docutils literal notranslate"><a class="reference internal" href="#classslint_1_1Model_1a75704f6e14c9e43184ef0bcb46eaceab"><span class="std std-ref"><span class="pre">Model::notify_row_changed()</span></span></a></code>, <code class="docutils literal notranslate"><a class="reference internal" href="#classslint_1_1Model_1a0fba8d30bd29928dc5e787e53ecd625e"><span class="std std-ref"><span class="pre">Model::notify_row_added()</span></span></a></code>, <code class="docutils literal notranslate"><a class="reference internal" href="#classslint_1_1Model_1a1eb89ba1f86fcb65b6731d8afceb1504"><span class="std std-ref"><span class="pre">Model::notify_row_removed()</span></span></a></code>, or <code class="docutils literal notranslate"><a class="reference internal" href="#classslint_1_1Model_1a4101aa19dca60f9a9b0129938ce91553"><span class="std std-ref"><span class="pre">Model::notify_reset()</span></span></a></code> functions when the underlying data changes.</p>
+<p>Note that the <a class="reference internal" href="#classslint_1_1Model"><span class="std std-ref">Model</span></a> is not thread-safe. All <a class="reference internal" href="#classslint_1_1Model"><span class="std std-ref">Model</span></a> operations need to be done in the main thread. If you need to update the model data from another thread, use the <code class="docutils literal notranslate"><a class="reference internal" href="function_namespaceslint_1a4067c90b05ef4cb20e055117b0263430.html#namespaceslint_1a4067c90b05ef4cb20e055117b0263430"><span class="std std-ref"><span class="pre">slint::invoke_from_event_loop()</span></span></a></code> function to send the data to the main thread and update the model. </p>
 <p>Subclassed by <a class="reference internal" href="classslint_1_1FilterModel.html#classslint_1_1FilterModel"><span class="std std-ref">slint::FilterModel&lt; ModelData &gt;</span></a>, <a class="reference internal" href="classslint_1_1MapModel.html#classslint_1_1MapModel"><span class="std std-ref">slint::MapModel&lt; SourceModelData, MappedModelData &gt;</span></a>, <a class="reference internal" href="classslint_1_1ReverseModel.html#classslint_1_1ReverseModel"><span class="std std-ref">slint::ReverseModel&lt; ModelData &gt;</span></a>, <a class="reference internal" href="classslint_1_1SortModel.html#classslint_1_1SortModel"><span class="std std-ref">slint::SortModel&lt; ModelData &gt;</span></a>, <a class="reference internal" href="classslint_1_1VectorModel.html#classslint_1_1VectorModel"><span class="std std-ref">slint::VectorModel&lt; ModelData &gt;</span></a></p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
@@ -494,27 +497,75 @@
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-protected-functions">Protected Functions</p>
 <dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5slint5Model18notify_row_changedE6size_t">
+<span id="_CPPv3N5slint5Model18notify_row_changedE6size_t"></span><span id="_CPPv2N5slint5Model18notify_row_changedE6size_t"></span><span id="slint::Model::notify_row_changed__s"></span><span class="target" id="classslint_1_1Model_1a75704f6e14c9e43184ef0bcb46eaceab"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">notify_row_changed</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">row</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5slint5Model18notify_row_changedE6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Notify the views that a specific row was changed</p>
+<p>Your model implementation should call this function after the data of a row changes. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5slint5Model16notify_row_addedE6size_t6size_t">
+<span id="_CPPv3N5slint5Model16notify_row_addedE6size_t6size_t"></span><span id="_CPPv2N5slint5Model16notify_row_addedE6size_t6size_t"></span><span id="slint::Model::notify_row_added__s.s"></span><span class="target" id="classslint_1_1Model_1a0fba8d30bd29928dc5e787e53ecd625e"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">notify_row_added</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">index</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">count</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5slint5Model16notify_row_addedE6size_t6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Notify the views that rows were added</p>
+<p>Your model implementation should call this function after the row were added. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5slint5Model18notify_row_removedE6size_t6size_t">
+<span id="_CPPv3N5slint5Model18notify_row_removedE6size_t6size_t"></span><span id="_CPPv2N5slint5Model18notify_row_removedE6size_t6size_t"></span><span id="slint::Model::notify_row_removed__s.s"></span><span class="target" id="classslint_1_1Model_1a1eb89ba1f86fcb65b6731d8afceb1504"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">notify_row_removed</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">index</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">count</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5slint5Model18notify_row_removedE6size_t6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Notify the views that rows were removed</p>
+<p>Your model implementation should call this function after the row were removed. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5slint5Model12notify_resetEv">
+<span id="_CPPv3N5slint5Model12notify_resetEv"></span><span id="_CPPv2N5slint5Model12notify_resetEv"></span><span id="slint::Model::notify_reset"></span><span class="target" id="classslint_1_1Model_1a4101aa19dca60f9a9b0129938ce91553"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">notify_reset</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5slint5Model12notify_resetEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Notify the views that the model has been changed and that everything needs to be reloaded</p>
+<p>Your model implementation should call this function after the model has been changed. </p>
+</dd></dl>
+
+<dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N5slint5Model11row_changedE6size_t">
 <span id="_CPPv3N5slint5Model11row_changedE6size_t"></span><span id="_CPPv2N5slint5Model11row_changedE6size_t"></span><span id="slint::Model::row_changed__s"></span><span class="target" id="classslint_1_1Model_1a70093277a142f6677f4db4b33e3cea6e"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">row_changed</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">row</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5slint5Model11row_changedE6size_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Notify the views that a specific row was changed. </p>
+<dd><p><dl>
+<dt class="sig sig-object cpp">
+<a class="reference internal" href="page_deprecated.html#deprecated_1_deprecated000002"><span class="std std-ref"><span class="pre">Deprecated:</span></span></a></dt>
+<dd></dd></dl>
+
+</p>
 </dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N5slint5Model9row_addedE6size_t6size_t">
 <span id="_CPPv3N5slint5Model9row_addedE6size_t6size_t"></span><span id="_CPPv2N5slint5Model9row_addedE6size_t6size_t"></span><span id="slint::Model::row_added__s.s"></span><span class="target" id="classslint_1_1Model_1a9becf7d649b41a19fa9789e412520035"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">row_added</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">index</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">count</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5slint5Model9row_addedE6size_t6size_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Notify the views that rows were added. </p>
+<dd><p><dl>
+<dt class="sig sig-object cpp">
+<a class="reference internal" href="page_deprecated.html#deprecated_1_deprecated000003"><span class="std std-ref"><span class="pre">Deprecated:</span></span></a></dt>
+<dd></dd></dl>
+
+</p>
 </dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N5slint5Model11row_removedE6size_t6size_t">
 <span id="_CPPv3N5slint5Model11row_removedE6size_t6size_t"></span><span id="_CPPv2N5slint5Model11row_removedE6size_t6size_t"></span><span id="slint::Model::row_removed__s.s"></span><span class="target" id="classslint_1_1Model_1a9d19ff420bc51baf708d79e720dbe66d"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">row_removed</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">index</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">count</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5slint5Model11row_removedE6size_t6size_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Notify the views that rows were removed. </p>
+<dd><p><dl>
+<dt class="sig sig-object cpp">
+<a class="reference internal" href="page_deprecated.html#deprecated_1_deprecated000004"><span class="std std-ref"><span class="pre">Deprecated:</span></span></a></dt>
+<dd></dd></dl>
+
+</p>
 </dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N5slint5Model5resetEv">
 <span id="_CPPv3N5slint5Model5resetEv"></span><span id="_CPPv2N5slint5Model5resetEv"></span><span id="slint::Model::reset"></span><span class="target" id="classslint_1_1Model_1ab8657189ba81c6b7ca004c0e64f158f1"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">reset</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5slint5Model5resetEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Notify the views that the model has been changed and that everything needs to be reloaded. </p>
+<dd><p><dl>
+<dt class="sig sig-object cpp">
+<a class="reference internal" href="page_deprecated.html#deprecated_1_deprecated000005"><span class="std std-ref"><span class="pre">Deprecated:</span></span></a></dt>
+<dd></dd></dl>
+
+</p>
 </dd></dl>
 
 </div>

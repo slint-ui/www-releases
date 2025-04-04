@@ -111,7 +111,8 @@ The fourth value, if present, is an alpha value between 0 and 1.</p>
 <p>Unlike in CSS, the commas are mandatory.</p>
 <h3 id="hsvh-float-s-float-v-float---color">hsv(h: float, s: float, v: float) -> color</h3>
 <h3 id="hsvh-float-s-float-v-float-a-float---color">hsv(h: float, s: float, v: float, a: float) -> color</h3>
-<p>Return a color computed from the HSV color space. The hue is between 0 and 360.
+<p>Returns a color using HSV (Hue, Saturation, Value) coordinates. The hue parameter is a float
+representing degrees (0-360) and wraps around (e.g., 480 becomes 120).
 The saturation, value, and optional alpha parameter are expected to be within the range of 0 and 1.</p>
 <h2 id="color-methods">Color Methods</h2>
 <p>All colors and brushes define the following methods:</p>

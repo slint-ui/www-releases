@@ -513,41 +513,58 @@
 <span class="w">    </span><span class="p">}</span>
 
 <span class="k">protected</span><span class="o">:</span>
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">row_changed</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">row</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">notify_row_changed</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">row</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">binary_search</span><span class="p">(</span><span class="n">tracked_rows</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">tracked_rows</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="n">row</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="n">model_row_data_dirty_property</span><span class="p">.</span><span class="n">mark_dirty</span><span class="p">();</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">        </span><span class="n">for_each_peers</span><span class="p">([</span><span class="o">=</span><span class="p">](</span><span class="k">auto</span><span class="w"> </span><span class="n">peer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">peer</span><span class="o">-&gt;</span><span class="n">row_changed</span><span class="p">(</span><span class="n">row</span><span class="p">);</span><span class="w"> </span><span class="p">});</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">row_added</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">count</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">notify_row_added</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">count</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
 <span class="w">        </span><span class="n">model_row_count_dirty_property</span><span class="p">.</span><span class="n">mark_dirty</span><span class="p">();</span>
 <span class="w">        </span><span class="n">tracked_rows</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
 <span class="w">        </span><span class="n">model_row_data_dirty_property</span><span class="p">.</span><span class="n">mark_dirty</span><span class="p">();</span>
 <span class="w">        </span><span class="n">for_each_peers</span><span class="p">([</span><span class="o">=</span><span class="p">](</span><span class="k">auto</span><span class="w"> </span><span class="n">peer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">peer</span><span class="o">-&gt;</span><span class="n">row_added</span><span class="p">(</span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="p">);</span><span class="w"> </span><span class="p">});</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">row_removed</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">count</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">notify_row_removed</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">count</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
 <span class="w">        </span><span class="n">model_row_count_dirty_property</span><span class="p">.</span><span class="n">mark_dirty</span><span class="p">();</span>
 <span class="w">        </span><span class="n">tracked_rows</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
 <span class="w">        </span><span class="n">model_row_data_dirty_property</span><span class="p">.</span><span class="n">mark_dirty</span><span class="p">();</span>
 <span class="w">        </span><span class="n">for_each_peers</span><span class="p">([</span><span class="o">=</span><span class="p">](</span><span class="k">auto</span><span class="w"> </span><span class="n">peer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">peer</span><span class="o">-&gt;</span><span class="n">row_removed</span><span class="p">(</span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="p">);</span><span class="w"> </span><span class="p">});</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">reset</span><span class="p">()</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">notify_reset</span><span class="p">()</span>
 <span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
 <span class="w">        </span><span class="n">model_row_count_dirty_property</span><span class="p">.</span><span class="n">mark_dirty</span><span class="p">();</span>
 <span class="w">        </span><span class="n">tracked_rows</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
 <span class="w">        </span><span class="n">model_row_data_dirty_property</span><span class="p">.</span><span class="n">mark_dirty</span><span class="p">();</span>
 <span class="w">        </span><span class="n">for_each_peers</span><span class="p">([</span><span class="o">=</span><span class="p">](</span><span class="k">auto</span><span class="w"> </span><span class="n">peer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">peer</span><span class="o">-&gt;</span><span class="n">reset</span><span class="p">();</span><span class="w"> </span><span class="p">});</span>
 <span class="w">    </span><span class="p">}</span>
 
+<span class="w">    </span><span class="p">[[</span><span class="n">deprecated</span><span class="p">(</span><span class="s">&quot;Renamed to notify_row_changed&quot;</span><span class="p">)]]</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">row_changed</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">row</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">notify_row_changed</span><span class="p">(</span><span class="n">row</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="p">[[</span><span class="n">deprecated</span><span class="p">(</span><span class="s">&quot;Renamed to notify_row_added&quot;</span><span class="p">)]]</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">row_added</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">count</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">notify_row_added</span><span class="p">(</span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="p">[[</span><span class="n">deprecated</span><span class="p">(</span><span class="s">&quot;Renamed to notify_row_removed&quot;</span><span class="p">)]]</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">row_removed</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">count</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">notify_row_removed</span><span class="p">(</span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="p">[[</span><span class="n">deprecated</span><span class="p">(</span><span class="s">&quot;Renamed to notify_reset&quot;</span><span class="p">)]]</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">reset</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">notify_reset</span><span class="p">();</span><span class="w"> </span><span class="p">}</span>
+
 <span class="k">private</span><span class="o">:</span>
 <span class="w">    </span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">F</span><span class="o">&gt;</span>
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">for_each_peers</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">F</span><span class="w"> </span><span class="o">&amp;</span><span class="n">f</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
 <span class="w">        </span><span class="n">peers</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">remove_if</span><span class="p">(</span><span class="n">peers</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">peers</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span>
 <span class="w">                                   </span><span class="p">[</span><span class="o">&amp;</span><span class="p">](</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                                       </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">pp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">lock</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
@@ -586,7 +603,7 @@
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">row_count</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">value</span><span class="p">;</span>
-<span class="w">            </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">row_changed</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+<span class="w">            </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">notify_row_changed</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">};</span>
@@ -633,40 +650,40 @@
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">row_count</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">value</span><span class="p">;</span>
-<span class="w">            </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">row_changed</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+<span class="w">            </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">notify_row_changed</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">push_back</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">ModelData</span><span class="w"> </span><span class="o">&amp;</span><span class="n">value</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="n">data</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">value</span><span class="p">);</span>
-<span class="w">        </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">row_added</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">        </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">notify_row_added</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">erase</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">index</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="n">data</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">begin</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">index</span><span class="p">);</span>
-<span class="w">        </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">row_removed</span><span class="p">(</span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">        </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">notify_row_removed</span><span class="p">(</span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">insert</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">ModelData</span><span class="w"> </span><span class="o">&amp;</span><span class="n">value</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="n">data</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">begin</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">);</span>
-<span class="w">        </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">row_added</span><span class="p">(</span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">        </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">notify_row_added</span><span class="p">(</span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">clear</span><span class="p">()</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">data</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="n">data</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
-<span class="w">            </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">reset</span><span class="p">();</span>
+<span class="w">            </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">notify_reset</span><span class="p">();</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">set_vector</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">ModelData</span><span class="o">&gt;</span><span class="w"> </span><span class="n">array</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">array</span><span class="p">);</span>
-<span class="w">        </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">reset</span><span class="p">();</span>
+<span class="w">        </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">notify_reset</span><span class="p">();</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">};</span>
 
@@ -717,7 +734,8 @@
 <span class="w">             </span><span class="o">++</span><span class="n">it</span><span class="p">)</span>
 <span class="w">            </span><span class="p">(</span><span class="o">*</span><span class="n">it</span><span class="p">)</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">count</span><span class="p">;</span>
 
-<span class="w">        </span><span class="n">target_model</span><span class="p">.</span><span class="n">row_added</span><span class="p">(</span><span class="n">insertion_point</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">accepted_rows</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">added_accepted_rows</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
+<span class="w">        </span><span class="n">target_model</span><span class="p">.</span><span class="n">notify_row_added</span><span class="p">(</span><span class="n">insertion_point</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">accepted_rows</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span>
+<span class="w">                                      </span><span class="n">added_accepted_rows</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">row_changed</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">index</span><span class="p">)</span><span class="w"> </span><span class="k">override</span>
 <span class="w">    </span><span class="p">{</span>
@@ -732,13 +750,13 @@
 <span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">accepted_updated_row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">filter_fn</span><span class="p">(</span><span class="o">*</span><span class="n">source_model</span><span class="o">-&gt;</span><span class="n">row_data</span><span class="p">(</span><span class="n">index</span><span class="p">));</span>
 
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">is_contained</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">accepted_updated_row</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">target_model</span><span class="p">.</span><span class="n">row_changed</span><span class="p">(</span><span class="n">existing_row_index</span><span class="p">);</span>
+<span class="w">            </span><span class="n">target_model</span><span class="p">.</span><span class="n">notify_row_changed</span><span class="p">(</span><span class="n">existing_row_index</span><span class="p">);</span>
 <span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">is_contained</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">accepted_updated_row</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="n">accepted_rows</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">existing_row</span><span class="p">,</span><span class="w"> </span><span class="n">index</span><span class="p">);</span>
-<span class="w">            </span><span class="n">target_model</span><span class="p">.</span><span class="n">row_added</span><span class="p">(</span><span class="n">existing_row_index</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">            </span><span class="n">target_model</span><span class="p">.</span><span class="n">notify_row_added</span><span class="p">(</span><span class="n">existing_row_index</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
 <span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">is_contained</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">accepted_updated_row</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="n">accepted_rows</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">existing_row</span><span class="p">);</span>
-<span class="w">            </span><span class="n">target_model</span><span class="p">.</span><span class="n">row_removed</span><span class="p">(</span><span class="n">existing_row_index</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">            </span><span class="n">target_model</span><span class="p">.</span><span class="n">notify_row_removed</span><span class="p">(</span><span class="n">existing_row_index</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">row_removed</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">count</span><span class="p">)</span><span class="w"> </span><span class="k">override</span>
@@ -765,14 +783,14 @@
 <span class="w">        </span><span class="p">}</span>
 
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">mapped_removed_index</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">target_model</span><span class="p">.</span><span class="n">row_removed</span><span class="p">(</span><span class="o">*</span><span class="n">mapped_removed_index</span><span class="p">,</span><span class="w"> </span><span class="n">mapped_removed_len</span><span class="p">);</span>
+<span class="w">            </span><span class="n">target_model</span><span class="p">.</span><span class="n">notify_row_removed</span><span class="p">(</span><span class="o">*</span><span class="n">mapped_removed_index</span><span class="p">,</span><span class="w"> </span><span class="n">mapped_removed_len</span><span class="p">);</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">reset</span><span class="p">()</span><span class="w"> </span><span class="k">override</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="n">filtered_rows_dirty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
 <span class="w">        </span><span class="n">update_mapping</span><span class="p">();</span>
-<span class="w">        </span><span class="n">target_model</span><span class="p">.</span><span class="n">Model</span><span class="o">&lt;</span><span class="n">ModelData</span><span class="o">&gt;::</span><span class="n">reset</span><span class="p">();</span>
+<span class="w">        </span><span class="n">target_model</span><span class="p">.</span><span class="n">notify_reset</span><span class="p">();</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">update_mapping</span><span class="p">()</span>
@@ -861,13 +879,16 @@
 <span class="w">    </span><span class="p">{</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">row_added</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">count</span><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">target_model</span><span class="p">.</span><span class="n">row_added</span><span class="p">(</span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">row_changed</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">index</span><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">target_model</span><span class="p">.</span><span class="n">row_changed</span><span class="p">(</span><span class="n">index</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">row_added</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">count</span><span class="p">)</span><span class="w"> </span><span class="k">override</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">target_model</span><span class="p">.</span><span class="n">notify_row_added</span><span class="p">(</span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">row_changed</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">index</span><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">target_model</span><span class="p">.</span><span class="n">notify_row_changed</span><span class="p">(</span><span class="n">index</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">row_removed</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">count</span><span class="p">)</span><span class="w"> </span><span class="k">override</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">target_model</span><span class="p">.</span><span class="n">row_removed</span><span class="p">(</span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="p">);</span>
+<span class="w">        </span><span class="n">target_model</span><span class="p">.</span><span class="n">notify_row_removed</span><span class="p">(</span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">reset</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">target_model</span><span class="p">.</span><span class="n">Model</span><span class="o">&lt;</span><span class="n">MappedModelData</span><span class="o">&gt;::</span><span class="n">reset</span><span class="p">();</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">reset</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">target_model</span><span class="p">.</span><span class="n">notify_reset</span><span class="p">();</span><span class="w"> </span><span class="p">}</span>
 
 <span class="w">    </span><span class="n">slint</span><span class="o">::</span><span class="n">MapModel</span><span class="o">&lt;</span><span class="n">SourceModelData</span><span class="p">,</span><span class="w"> </span><span class="n">MappedModelData</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">target_model</span><span class="p">;</span>
 <span class="p">};</span>
@@ -949,7 +970,7 @@
 <span class="w">                                     </span><span class="p">});</span>
 
 <span class="w">            </span><span class="n">insertion_point</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sorted_rows</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">insertion_point</span><span class="p">,</span><span class="w"> </span><span class="n">row</span><span class="p">);</span>
-<span class="w">            </span><span class="n">target_model</span><span class="p">.</span><span class="n">row_added</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">distance</span><span class="p">(</span><span class="n">sorted_rows</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">insertion_point</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">            </span><span class="n">target_model</span><span class="p">.</span><span class="n">notify_row_added</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">distance</span><span class="p">(</span><span class="n">sorted_rows</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">insertion_point</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">row_changed</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">changed_row</span><span class="p">)</span><span class="w"> </span><span class="k">override</span>
@@ -975,10 +996,10 @@
 <span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">inserted_row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">distance</span><span class="p">(</span><span class="n">sorted_rows</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">insertion_point</span><span class="p">);</span>
 
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">inserted_row</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">removed_row</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">target_model</span><span class="p">.</span><span class="n">row_changed</span><span class="p">(</span><span class="n">removed_row</span><span class="p">);</span>
+<span class="w">            </span><span class="n">target_model</span><span class="p">.</span><span class="n">notify_row_changed</span><span class="p">(</span><span class="n">removed_row</span><span class="p">);</span>
 <span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">target_model</span><span class="p">.</span><span class="n">row_removed</span><span class="p">(</span><span class="n">removed_row</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
-<span class="w">            </span><span class="n">target_model</span><span class="p">.</span><span class="n">row_added</span><span class="p">(</span><span class="n">inserted_row</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">            </span><span class="n">target_model</span><span class="p">.</span><span class="n">notify_row_removed</span><span class="p">(</span><span class="n">removed_row</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">            </span><span class="n">target_model</span><span class="p">.</span><span class="n">notify_row_added</span><span class="p">(</span><span class="n">inserted_row</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">row_removed</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">first_removed_row</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">count</span><span class="p">)</span><span class="w"> </span><span class="k">override</span>
@@ -1005,14 +1026,14 @@
 <span class="w">        </span><span class="p">}</span>
 
 <span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">removed_row</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">removed_rows</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">target_model</span><span class="p">.</span><span class="n">row_removed</span><span class="p">(</span><span class="n">removed_row</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">            </span><span class="n">target_model</span><span class="p">.</span><span class="n">notify_row_removed</span><span class="p">(</span><span class="n">removed_row</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">reset</span><span class="p">()</span><span class="w"> </span><span class="k">override</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="n">sorted_rows_dirty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
-<span class="w">        </span><span class="n">target_model</span><span class="p">.</span><span class="n">Model</span><span class="o">&lt;</span><span class="n">ModelData</span><span class="o">&gt;::</span><span class="n">reset</span><span class="p">();</span>
+<span class="w">        </span><span class="n">target_model</span><span class="p">.</span><span class="n">notify_reset</span><span class="p">();</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">ensure_sorted</span><span class="p">()</span>
@@ -1104,20 +1125,20 @@
 <span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">old_row_count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">row_count</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">count</span><span class="p">;</span>
 <span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">old_row_count</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">first_inserted_row</span><span class="p">;</span>
 
-<span class="w">        </span><span class="n">target_model</span><span class="p">.</span><span class="n">row_added</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="p">);</span>
+<span class="w">        </span><span class="n">target_model</span><span class="p">.</span><span class="n">notify_row_added</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">row_changed</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">changed_row</span><span class="p">)</span><span class="w"> </span><span class="k">override</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">target_model</span><span class="p">.</span><span class="n">row_changed</span><span class="p">(</span><span class="n">source_model</span><span class="o">-&gt;</span><span class="n">row_count</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">changed_row</span><span class="p">);</span>
+<span class="w">        </span><span class="n">target_model</span><span class="p">.</span><span class="n">notify_row_changed</span><span class="p">(</span><span class="n">source_model</span><span class="o">-&gt;</span><span class="n">row_count</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">changed_row</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">row_removed</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">first_removed_row</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">count</span><span class="p">)</span><span class="w"> </span><span class="k">override</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">target_model</span><span class="p">.</span><span class="n">row_removed</span><span class="p">(</span><span class="n">source_model</span><span class="o">-&gt;</span><span class="n">row_count</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">first_removed_row</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="p">);</span>
+<span class="w">        </span><span class="n">target_model</span><span class="p">.</span><span class="n">notify_row_removed</span><span class="p">(</span><span class="n">source_model</span><span class="o">-&gt;</span><span class="n">row_count</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">first_removed_row</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">reset</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">target_model</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">reset</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">target_model</span><span class="p">.</span><span class="n">notify_reset</span><span class="p">();</span><span class="w"> </span><span class="p">}</span>
 
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">slint</span><span class="o">::</span><span class="n">Model</span><span class="o">&lt;</span><span class="n">ModelData</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">source_model</span><span class="p">;</span>
 <span class="w">    </span><span class="n">slint</span><span class="o">::</span><span class="n">ReverseModel</span><span class="o">&lt;</span><span class="n">ModelData</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">target_model</span><span class="p">;</span>
