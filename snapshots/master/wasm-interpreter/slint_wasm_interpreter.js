@@ -1882,11 +1882,11 @@ function __wbg_get_imports() {
         const ret = makeClosure(arg0, arg1, 137, __wbg_adapter_28);
         return ret;
     };
-    imports.wbg.__wbindgen_closure_wrapper3334 = function(arg0, arg1, arg2) {
+    imports.wbg.__wbindgen_closure_wrapper3333 = function(arg0, arg1, arg2) {
         const ret = makeMutClosure(arg0, arg1, 347, __wbg_adapter_39);
         return ret;
     };
-    imports.wbg.__wbindgen_closure_wrapper6958 = function(arg0, arg1, arg2) {
+    imports.wbg.__wbindgen_closure_wrapper6957 = function(arg0, arg1, arg2) {
         const ret = makeMutClosure(arg0, arg1, 347, __wbg_adapter_42);
         return ret;
     };
