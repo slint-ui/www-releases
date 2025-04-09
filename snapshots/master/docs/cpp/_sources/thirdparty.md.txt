@@ -5702,7 +5702,7 @@ SOFTWARE.
 
 #### Used by:
 
-- [miniz_oxide 0.8.7]( https://github.com/Frommi/miniz_oxide/tree/master/miniz_oxide )
+- [miniz_oxide 0.8.8]( https://github.com/Frommi/miniz_oxide/tree/master/miniz_oxide )
 
 #### License Text
 
@@ -5778,7 +5778,7 @@ DEALINGS IN THE SOFTWARE.
 
 #### Used by:
 
-- [half 2.5.0]( https://github.com/starkat99/half-rs )
+- [half 2.6.0]( https://github.com/VoidStarKat/half-rs )
 
 #### License Text
 
@@ -6651,7 +6651,7 @@ SOFTWARE.
 
 #### Used by:
 
-- [crossbeam-channel 0.5.14]( https://github.com/crossbeam-rs/crossbeam )
+- [crossbeam-channel 0.5.15]( https://github.com/crossbeam-rs/crossbeam )
 - [crossbeam-deque 0.8.6]( https://github.com/crossbeam-rs/crossbeam )
 - [crossbeam-epoch 0.9.18]( https://github.com/crossbeam-rs/crossbeam )
 - [crossbeam-utils 0.8.21]( https://github.com/crossbeam-rs/crossbeam )
