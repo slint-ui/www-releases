@@ -16,6 +16,7 @@ export function compile_from_string_with_style(source: string, base_url: string,
  * to ignore.
  */
 export function run_event_loop(): void;
+export function init(): void;
 
 type ImportCallbackFunction = (url: string) => Promise<string>;
 type CurrentElementInformationCallbackFunction = (url: string, start_line: number, start_column: number, end_line: number, end_column: number) => void;
@@ -96,6 +97,7 @@ export interface InitOutput {
   readonly wrappedinstance_show: (a: number) => [number, number, number];
   readonly wrappedinstance_hide: (a: number) => [number, number, number];
   readonly run_event_loop: () => [number, number];
+  readonly init: () => void;
   readonly __externref_table_alloc: () => number;
   readonly __wbindgen_export_1: WebAssembly.Table;
   readonly __wbindgen_exn_store: (a: number) => void;
@@ -104,10 +106,10 @@ export interface InitOutput {
   readonly __wbindgen_free: (a: number, b: number, c: number) => void;
   readonly __wbindgen_export_6: WebAssembly.Table;
   readonly __externref_table_dealloc: (a: number) => void;
-  readonly closure135_externref_shim: (a: number, b: number, c: any) => void;
-  readonly _dyn_core__ops__function__FnMut_____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__h57708d383a93b60a: (a: number, b: number) => void;
-  readonly closure664_externref_shim: (a: number, b: number, c: any) => void;
-  readonly closure670_externref_shim: (a: number, b: number, c: any, d: any) => void;
+  readonly closure132_externref_shim: (a: number, b: number, c: any) => void;
+  readonly _dyn_core__ops__function__FnMut_____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__h5ef290e876c7f545: (a: number, b: number) => void;
+  readonly closure665_externref_shim: (a: number, b: number, c: any) => void;
+  readonly closure671_externref_shim: (a: number, b: number, c: any, d: any) => void;
   readonly __wbindgen_start: () => void;
 }
 
