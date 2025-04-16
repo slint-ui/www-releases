@@ -2440,7 +2440,7 @@ IN THE SOFTWARE.
 
 #### Used by:
 
-- [libc 0.2.171]( https://github.com/rust-lang/libc )
+- [libc 0.2.172]( https://github.com/rust-lang/libc )
 
 #### License Text
 

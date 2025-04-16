@@ -58,6 +58,7 @@ Program Listing for File slint_qt_internal.h
    };
    
    struct NativePalette {
+       Property<SharedString> style_name;
        Property<Brush> background;
        Property<Brush> foreground;
        Property<Brush> alternate_background;

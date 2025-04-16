@@ -898,6 +898,7 @@ Program Listing for File slint_internal.h
        CachedRenderingData cached_rendering_data;
        Property<SharedString> title;
        private_api::CallbackHelper<void> activated;
+       Property<bool> enabled;
    };
    
    extern "C" {
