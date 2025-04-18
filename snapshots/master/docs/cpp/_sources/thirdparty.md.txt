@@ -4724,8 +4724,8 @@ DEALINGS IN THE SOFTWARE.
 
 #### Used by:
 
-- [resvg 0.45.0]( https://github.com/linebender/resvg )
-- [usvg 0.45.0]( https://github.com/linebender/resvg )
+- [resvg 0.45.1]( https://github.com/linebender/resvg )
+- [usvg 0.45.1]( https://github.com/linebender/resvg )
 
 #### License Text
 
