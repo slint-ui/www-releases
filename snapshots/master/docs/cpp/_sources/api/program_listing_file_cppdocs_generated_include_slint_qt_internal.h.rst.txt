@@ -53,12 +53,12 @@ Program Listing for File slint_qt_internal.h
        Property<Color> placeholder_color_disabled;
        Property<bool> dark_color_scheme;
        Property<LayoutAlignment> tab_bar_alignment;
+       Property<SharedString> style_name;
        const uint8_t *style_change_listener;
        inline explicit NativeStyleMetrics(void* = nullptr); inline ~NativeStyleMetrics();
    };
    
    struct NativePalette {
-       Property<SharedString> style_name;
        Property<Brush> background;
        Property<Brush> foreground;
        Property<Brush> alternate_background;
