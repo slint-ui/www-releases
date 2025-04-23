@@ -21,12 +21,11 @@
 
             <h2>Contents</h2>
             <ul>
-  <li><a href="#slint-python-alpha">Slint-python (Alpha)</a>
+  <li><a href="#slint-python-beta">Slint-python (Beta)</a>
   <ul>
     <li><a href="#slint-language-manual">Slint Language Manual</a></li>
     <li><a href="#prerequisites">Prerequisites</a></li>
     <li><a href="#installation">Installation</a></li>
-    <li><a href="#try-it-out">Try it out</a></li>
     <li><a href="#quick-start">Quick Start</a></li>
     <li><a href="#api-overview">API Overview</a></li>
     <li><a href="#third-party-licenses">Third-Party Licenses</a></li>
@@ -80,7 +79,7 @@
                                 <a class="function" href="#Image.load_from_svg_data">load_from_svg_data</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Image.path">path</a>
+                                <a class="variable" href="#Image.height">height</a>
                         </li>
                         <li>
                                 <a class="variable" href="#Image.width">width</a>
@@ -89,7 +88,7 @@
                                 <a class="variable" href="#Image.size">size</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Image.height">height</a>
+                                <a class="variable" href="#Image.path">path</a>
                         </li>
                 </ul>
 
@@ -116,10 +115,10 @@
                                 <a class="variable" href="#Color.green">green</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Color.blue">blue</a>
+                                <a class="variable" href="#Color.red">red</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Color.red">red</a>
+                                <a class="variable" href="#Color.blue">blue</a>
                         </li>
                         <li>
                                 <a class="variable" href="#Color.alpha">alpha</a>
@@ -212,10 +211,10 @@
                                 <a class="function" href="#Timer.restart">restart</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Timer.running">running</a>
+                                <a class="variable" href="#Timer.interval">interval</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Timer.interval">interval</a>
+                                <a class="variable" href="#Timer.running">running</a>
                         </li>
                 </ul>
 
@@ -256,16 +255,15 @@ slint    </h1>
 
                         <div class="docstring"><!-- Copyright © SixtyFPS GmbH <info@slint.dev> ; SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0 -->
 
-<h1 id="slint-python-alpha">Slint-python (Alpha)</h1>
+<h1 id="slint-python-beta">Slint-python (Beta)</h1>
 
 <p><a href="https://slint.dev/">Slint</a> is a UI toolkit that supports different programming languages.
 Slint-python is the integration with Python.</p>
 
-<p><strong>Warning: Alpha</strong>
-Slint-python is still in the very early stages of development: APIs will change and important features are still being developed,
-the project is overall incomplete.</p>
+<p><strong>Warning</strong>
+Slint-python is in a beta phase of development: The APIs while mostly stable, may be subject to further changes. Any changes will be documented in the ChangeLog.</p>
 
-<p>You can track the overall progress for the Python integration by looking at python-labelled issues at <a href="https://github.com/slint-ui/slint/labels/a%3Alanguage-python">https://github.com/slint-ui/slint/labels/a%3Alanguage-python</a> .</p>
+<p>You can track the progress for the Python integration by looking at python-labelled issues at <a href="https://github.com/slint-ui/slint/labels/a%3Alanguage-python">https://github.com/slint-ui/slint/labels/a%3Alanguage-python</a> .</p>
 
 <h2 id="slint-language-manual">Slint Language Manual</h2>
 
@@ -276,37 +274,27 @@ in detail.</p>
 
 <ul>
 <li><a href="https://python.org/">Python 3</a></li>
-<li><a href="https://pypi.org/project/pip/">pip</a></li>
-<li><a href="https://docs.astral.sh/uv/">uv</a></li>
+<li><a href="https://docs.astral.sh/uv/">uv</a> or <a href="https://pypi.org/project/pip/">pip</a></li>
 </ul>
 
 <h2 id="installation">Installation</h2>
 
-<p>Slint can be installed with <code>pip</code> or <code>uv</code> from the <a href="https://pypi.org">Python Package Index</a>:</p>
-
-<pre><code>uv add slint
-</code></pre>
-
-<p>The installation will use binaries provided vi macOS, Windows, and Linux for various architectures. If your target platform is not covered by binaries,
-<code>uv</code> will automatically build Slint from source. If that happens, you need common software development tools on your machine, as well as <a href="https://www.rust-lang.org/learn/get-started">Rust</a>.</p>
-
-<h3 id="building-from-source">Building from Source</h3>
-
-<h2 id="try-it-out">Try it out</h2>
-
-<p>If you want to just play with this, you can try running our Python port of the <a href="../../demos/printerdemo/python/README.md">printer demo</a>:</p>
+<p>Slint can be installed with <code>uv</code> or <code>pip</code> from the <a href="https://pypi.org">Python Package Index</a>:</p>
 
 <div class="pdoc-code codehilite">
-<pre><span></span><code><span class="nb">cd</span><span class="w"> </span>demos/printerdemo/python
-uv<span class="w"> </span>run<span class="w"> </span>main.py
+<pre><span></span><code>uv<span class="w"> </span>add<span class="w"> </span>slint
 </code></pre>
 </div>
+
+<p>The installation uses binaries provided for macOS, Windows, and Linux for various architectures. If your target platform
+is not covered by binaries, <code>uv</code> will automatically build Slint from source. If that happens, you will then need some
+software development tools on your machine, as well as <a href="https://www.rust-lang.org/learn/get-started">Rust</a>.</p>
 
 <h2 id="quick-start">Quick Start</h2>
 
 <ol>
 <li>Create a new project with <code>uv init</code>.</li>
-<li>Add Slint Python Package Index to your Python project: <code>uv add slint</code></li>
+<li>Add the Slint Python package to your Python project: <code>uv add slint</code></li>
 <li>Create a file called <code>app-window.slint</code>:</li>
 </ol>
 
@@ -371,8 +359,7 @@ export component AppWindow inherits Window {
 }
 </code></pre>
 
-<p>The exported component is exposed as a Python class. To access this class, you have two
-options:</p>
+<p>The exported component is exposed as a Python class. To access this class, you have two options:</p>
 
 <ol>
 <li><p>Call <code><a href="#load_file">slint.load_file</a>("app.slint")</code>. The returned object is a <a href="https://docs.python.org/3/library/types.html#types.SimpleNamespace">namespace</a>,
@@ -394,16 +381,20 @@ that provides the <code>MainWindow</code> class as well as any other explicitly 
 </code></pre>
 </div>
 
-<p>Any attribute lookup in <code><a href="#loader">slint.loader</a></code> is searched for in <code>sys.path</code>. If a directory with the name exists, it is returned as a loader object, and subsequent
-attribute lookups follow the same logic. If the name matches a file with the <code>.slint</code> extension, it is automatically loaded with <code><a href="#load_file">load_file</a></code> and the
-<a href="https://docs.python.org/3/library/types.html#types.SimpleNamespace">namespace</a> is returned, which contains classes for each exported component that
-inherits <code>Window</code>. If the file name contains a dash, like <code>app-window.slint</code>, an attribute lookup for <code>app_window</code> will
-first try to locate <code>app_window.slint</code> and then fall back to <code>app-window.slint</code>.</p></li>
+<p>Any attribute lookup in <code><a href="#loader">slint.loader</a></code> is searched for in <code>sys.path</code>. If a directory with the name exists, it is
+returned as a loader object, and subsequent attribute lookups follow the same logic.</p>
+
+<p>If the name matches a file with the <code>.slint</code> extension, it is automatically loaded with <code><a href="#load_file">load_file</a></code> and the
+<a href="https://docs.python.org/3/library/types.html#types.SimpleNamespace">namespace</a> is returned.</p>
+
+<p>If the file name contains a dash, like <code>app-window.slint</code>, an attribute lookup for <code>app_window</code> tries to
+locate <code>app_window.slint</code> and then fall back to <code>app-window.slint</code>.</p></li>
 </ol>
 
 <h3 id="accessing-properties">Accessing Properties</h3>
 
-<p><a href="../slint/src/language/syntax/properties">Properties</a> declared as <code>out</code> or <code>in-out</code> in <code>.slint</code> files are visible as  properties on the component instance.</p>
+<p><a href="../slint/src/language/syntax/properties">Properties</a> declared as <code>out</code> or <code>in-out</code> in <code>.slint</code> files are visible as
+properties on the component instance.</p>
 
 <div class="pdoc-code codehilite">
 <pre><span></span><code><span class="n">main_window</span><span class="o">.</span><span class="n">counter</span> <span class="o">=</span> <span class="mi">42</span>
@@ -418,28 +409,28 @@ Python as properties in the component instance.</p>
 
 <p>For example, this Slint code declares a <code>PrinterJobQueue</code> singleton:</p>
 
-<p>```slint,ignore
-export global PrinterJobQueue {
-    in-out property <int> job-count;
-}</p>
-
-<pre><code>
-Access it as a property on the component instance by its name:
-
-```python
-print("job count:", instance.PrinterJobQueue.job_count)
+<pre><code>export global PrinterJobQueue {
+    in-out property &lt;int&gt; job-count;
+}
 </code></pre>
 
+<p>Access it as a property on the component instance by its name:</p>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;job count:&quot;</span><span class="p">,</span> <span class="n">instance</span><span class="o">.</span><span class="n">PrinterJobQueue</span><span class="o">.</span><span class="n">job_count</span><span class="p">)</span>
+</code></pre>
+</div>
+
 <p><strong>Note</strong>: Global singletons are instantiated once per component. When declaring multiple components for <code>export</code> to Python,
-each instance will have their own instance of associated globals singletons.</p>
+each instance has their own associated globals singletons.</p>
 
 <h3 id="setting-and-invoking-callbacks">Setting and Invoking Callbacks</h3>
 
-<p><a href="src/language/syntax/callbacks">Callbacks</a> declared in <code>.slint</code> files are visible as callable properties on the component instance. Invoke them
-as function to invoke the callback, and assign Python callables to set the callback handler.</p>
+<p><a href="src/language/syntax/callbacks">Callbacks</a> declared in <code>.slint</code> files are visible as callable properties on the component
+instance. Invoke them as functions to invoke the callback, and assign Python callables to set the callback handler.</p>
 
-<p>Callbacks in Slint can be defined using the <code><a href="#callback">callback</a></code> keyword and can be connected to a callback of an other component
-using the <code>&lt;=&gt;</code> syntax.</p>
+<p>In Slint, callbacks are defined using the <code><a href="#callback">callback</a></code> keyword and can be connected to another component's callback using
+the <code>&lt;=&gt;</code> syntax.</p>
 
 <p><strong><code>my-component.slint</code></strong></p>
 
@@ -453,7 +444,7 @@ using the <code>&lt;=&gt;</code> syntax.</p>
 }
 </code></pre>
 
-<p>The callbacks in Slint are exposed as properties and that can be called as a function.</p>
+<p>The callbacks in Slint are exposed as properties and that can be called as functions.</p>
 
 <p><strong><code>main.py</code></strong></p>
 
@@ -486,13 +477,14 @@ using the <code>&lt;=&gt;</code> syntax.</p>
 </code></pre>
 </div>
 
-<p>The <code>@<a href="#callback">slint.callback()</a></code> decorator accepts a <code>name</code> named argument, when the name of the method
-does not match the name of the callback in the <code>.slint</code> file. Similarly, a <code>global_name</code> argument
-can be used to bind a method to a callback in a global singleton.</p>
+<p>The <code>@<a href="#callback">slint.callback()</a></code> decorator accepts a <code>name</code> argument, if the name of the method does not match the name of the
+callback in the <code>.slint</code> file. Similarly, a <code>global_name</code> argument can be used to bind a method to a callback in a global
+singleton.</p>
 
 <h3 id="type-mappings">Type Mappings</h3>
 
-<p>The types used for properties in the Slint Language each translate to specific types in Python. The follow table summarizes the entire mapping:</p>
+<p>Each type used for properties in the Slint Language translates to a specific type in Python. The following table summarizes
+the mapping:</p>
 
 <table>
 <thead>
@@ -568,10 +560,10 @@ can be used to bind a method to a callback in a global singleton.</p>
 
 <h3 id="arrays-and-models">Arrays and Models</h3>
 
-<p><a href="../slint/src/language/syntax/types#arrays-and-models">Array properties</a> can be set from Python by passing
-subclasses of <code><a href="#Model">slint.Model</a></code>.</p>
+<p>You can set <a href="../slint/src/language/syntax/types#arrays-and-models">array properties</a> from Python by passing subclasses of
+<code><a href="#Model">slint.Model</a></code>.</p>
 
-<p>Use the <code><a href="#ListModel">slint.ListModel</a></code> class to construct a model from an iterable.</p>
+<p>Use the <code><a href="#ListModel">slint.ListModel</a></code> class to construct a model from an iterable:</p>
 
 <div class="pdoc-code codehilite">
 <pre><span></span><code><span class="n">component</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n"><a href="#ListModel">slint.ListModel</a></span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]);</span>
@@ -596,12 +588,12 @@ subclasses of <code><a href="#Model">slint.Model</a></code>.</p>
 </code></pre>
 </div>
 
-<p>When adding/inserting rows, call <code>notify_row_added(row, count)</code> on the super class. Similarly, removal
-requires notifying Slint by calling <code>notify_row_removed(row, count)</code>.</p>
+<p>When adding or inserting rows, call <code>notify_row_added(row, count)</code> on the super class. Similarly, when removing rows, notify
+Slint by calling <code>notify_row_removed(row, count)</code>.</p>
 
 <h3 id="structs">Structs</h3>
 
-<p>Structs declared in Slint and exposed to Python via <code>export</code> are accessible in the namespace returned
+<p>Structs declared in Slint and exposed to Python via <code>export</code> are then accessible in the namespace that is returned
 when <a href="#instantiating-a-component">instantiating a component</a>.</p>
 
 <p><strong><code>app.slint</code></strong></p>
@@ -618,7 +610,7 @@ export component MainWindow inherits Window {
 
 <p><strong><code>main.py</code></strong></p>
 
-<p>The exported <code>MyData</code> struct can be constructed</p>
+<p>The exported <code>MyData</code> struct can be constructed as follows:</p>
 
 <div class="pdoc-code codehilite">
 <pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">slint</span>
@@ -897,16 +889,16 @@ export component MainWindow inherits Window {
 </span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a>    <span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a>    <span class="n">translation_domain</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">types</span><span class="o">.</span><span class="n">SimpleNamespace</span><span class="p">:</span>
-</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;This function is the low-level entry point into Slint for Python. Loads the `.slint` file at the specified `path`</span>
-</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a><span class="sd">    and returns a namespace with all exported components as Python classes, as well as enums and structs.</span>
+</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;This function is the low-level entry point into Slint for instantiating components. It loads the `.slint` file at</span>
+</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a><span class="sd">    the specified `path` and returns a namespace with all exported components as Python classes, as well as enums, and structs.</span>
 </span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a>
-</span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a><span class="sd">    * `quiet`: Set to true to prevent any warnings during compilation to be printed to stderr.</span>
-</span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a><span class="sd">    * `style`: Set this to use a specific a widget style.</span>
-</span><span id="L-263"><a href="#L-263"><span class="linenos">263</span></a><span class="sd">    * `include_paths`: Additional include paths that will be used to look up `.slint` files imported from other `.slint` files.</span>
-</span><span id="L-264"><a href="#L-264"><span class="linenos">264</span></a><span class="sd">    * `library_paths`: A dictionary that maps library names to their location in the file system. This is used to look up library imports,</span>
-</span><span id="L-265"><a href="#L-265"><span class="linenos">265</span></a><span class="sd">       such as `import { MyButton } from &quot;@mylibrary&quot;;`.</span>
-</span><span id="L-266"><a href="#L-266"><span class="linenos">266</span></a><span class="sd">    * `translation_domain`: The domain to use for looking up the catalogue run-time translations. This must match the translation domain</span>
-</span><span id="L-267"><a href="#L-267"><span class="linenos">267</span></a><span class="sd">       used when extracting translations with `slint-tr-extractor`.</span>
+</span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a><span class="sd">    * `quiet`: Set to true to prevent any warnings during compilation from being printed to stderr.</span>
+</span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a><span class="sd">    * `style`: Specify a widget style.</span>
+</span><span id="L-263"><a href="#L-263"><span class="linenos">263</span></a><span class="sd">    * `include_paths`: Additional include paths used to look up `.slint` files imported from other `.slint` files.</span>
+</span><span id="L-264"><a href="#L-264"><span class="linenos">264</span></a><span class="sd">    * `library_paths`: A dictionary that maps library names to their location in the file system. This is then used to look up</span>
+</span><span id="L-265"><a href="#L-265"><span class="linenos">265</span></a><span class="sd">       library imports, such as `import { MyButton } from &quot;@mylibrary&quot;;`.</span>
+</span><span id="L-266"><a href="#L-266"><span class="linenos">266</span></a><span class="sd">    * `translation_domain`: The domain to use for looking up the catalogue run-time translations. This must match the</span>
+</span><span id="L-267"><a href="#L-267"><span class="linenos">267</span></a><span class="sd">       translation domain used when extracting translations with `slint-tr-extractor`.</span>
 </span><span id="L-268"><a href="#L-268"><span class="linenos">268</span></a>
 </span><span id="L-269"><a href="#L-269"><span class="linenos">269</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-270"><a href="#L-270"><span class="linenos">270</span></a>
@@ -986,96 +978,97 @@ export component MainWindow inherits Window {
 </span><span id="L-344"><a href="#L-344"><span class="linenos">344</span></a>
 </span><span id="L-345"><a href="#L-345"><span class="linenos">345</span></a>
 </span><span id="L-346"><a href="#L-346"><span class="linenos">346</span></a><span class="n">loader</span> <span class="o">=</span> <span class="n">SlintAutoLoader</span><span class="p">()</span>
-</span><span id="L-347"><a href="#L-347"><span class="linenos">347</span></a><span class="sd">&quot;&quot;&quot;The `loader` object is a global object that can be used to load Slint files from the file system. It exposes two stages of attributes:</span>
-</span><span id="L-348"><a href="#L-348"><span class="linenos">348</span></a><span class="sd">1. Any lookup of an attribute in the loader will try to match a file in `sys.path` with the `.slint` extension. For example `loader.my_component` will look for a file `my_component.slint` in the directories in `sys.path`.</span>
-</span><span id="L-349"><a href="#L-349"><span class="linenos">349</span></a><span class="sd">2. Any lookup in the object returned by the first stage will try to match an exported component in the loaded file, or a struct or enum. For example `loader.my_component.MyComponent` will look for an *exported* component named `MyComponent` in the file `my_component.slint`.</span>
-</span><span id="L-350"><a href="#L-350"><span class="linenos">350</span></a>
-</span><span id="L-351"><a href="#L-351"><span class="linenos">351</span></a><span class="sd">Note that the first entry in the module search path `sys.path` is the directory that contains the input script.</span>
-</span><span id="L-352"><a href="#L-352"><span class="linenos">352</span></a>
-</span><span id="L-353"><a href="#L-353"><span class="linenos">353</span></a><span class="sd">Example:</span>
-</span><span id="L-354"><a href="#L-354"><span class="linenos">354</span></a><span class="sd">```python</span>
-</span><span id="L-355"><a href="#L-355"><span class="linenos">355</span></a><span class="sd">import slint</span>
-</span><span id="L-356"><a href="#L-356"><span class="linenos">356</span></a><span class="sd"># Look for a file `main.slint` in the current directory,</span>
-</span><span id="L-357"><a href="#L-357"><span class="linenos">357</span></a><span class="sd"># #load &amp; compile it, and instantiate the exported `MainWindow` component</span>
-</span><span id="L-358"><a href="#L-358"><span class="linenos">358</span></a><span class="sd">main_window = slint.loader.main_window.MainWindow()</span>
-</span><span id="L-359"><a href="#L-359"><span class="linenos">359</span></a><span class="sd">main_window.show()</span>
-</span><span id="L-360"><a href="#L-360"><span class="linenos">360</span></a><span class="sd">...</span>
-</span><span id="L-361"><a href="#L-361"><span class="linenos">361</span></a><span class="sd">```</span>
-</span><span id="L-362"><a href="#L-362"><span class="linenos">362</span></a><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-363"><a href="#L-363"><span class="linenos">363</span></a>
-</span><span id="L-364"><a href="#L-364"><span class="linenos">364</span></a>
-</span><span id="L-365"><a href="#L-365"><span class="linenos">365</span></a><span class="k">def</span><span class="w"> </span><span class="nf">_callback_decorator</span><span class="p">(</span>
-</span><span id="L-366"><a href="#L-366"><span class="linenos">366</span></a>    <span class="nb">callable</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">info</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>
-</span><span id="L-367"><a href="#L-367"><span class="linenos">367</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
-</span><span id="L-368"><a href="#L-368"><span class="linenos">368</span></a>    <span class="k">if</span> <span class="s2">&quot;name&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">info</span><span class="p">:</span>
-</span><span id="L-369"><a href="#L-369"><span class="linenos">369</span></a>        <span class="n">info</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">callable</span><span class="o">.</span><span class="vm">__name__</span>
-</span><span id="L-370"><a href="#L-370"><span class="linenos">370</span></a>    <span class="nb">setattr</span><span class="p">(</span><span class="nb">callable</span><span class="p">,</span> <span class="s2">&quot;slint.callback&quot;</span><span class="p">,</span> <span class="n">info</span><span class="p">)</span>
-</span><span id="L-371"><a href="#L-371"><span class="linenos">371</span></a>    <span class="k">return</span> <span class="nb">callable</span>
-</span><span id="L-372"><a href="#L-372"><span class="linenos">372</span></a>
-</span><span id="L-373"><a href="#L-373"><span class="linenos">373</span></a>
-</span><span id="L-374"><a href="#L-374"><span class="linenos">374</span></a><span class="k">def</span><span class="w"> </span><span class="nf">callback</span><span class="p">(</span>
-</span><span id="L-375"><a href="#L-375"><span class="linenos">375</span></a>    <span class="n">global_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
-</span><span id="L-376"><a href="#L-376"><span class="linenos">376</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
-</span><span id="L-377"><a href="#L-377"><span class="linenos">377</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Use the callback decorator to mark a method as a callback that can be invoked from the Slint component.</span>
-</span><span id="L-378"><a href="#L-378"><span class="linenos">378</span></a>
-</span><span id="L-379"><a href="#L-379"><span class="linenos">379</span></a><span class="sd">    For the decorator to work, the method must be a member of a class that is Slint component.</span>
-</span><span id="L-380"><a href="#L-380"><span class="linenos">380</span></a>
-</span><span id="L-381"><a href="#L-381"><span class="linenos">381</span></a><span class="sd">    Example:</span>
-</span><span id="L-382"><a href="#L-382"><span class="linenos">382</span></a><span class="sd">    ```python</span>
-</span><span id="L-383"><a href="#L-383"><span class="linenos">383</span></a><span class="sd">    import slint</span>
-</span><span id="L-384"><a href="#L-384"><span class="linenos">384</span></a>
-</span><span id="L-385"><a href="#L-385"><span class="linenos">385</span></a><span class="sd">    class AppMainWindow(slint.loader.main_window.MainWindow):</span>
-</span><span id="L-386"><a href="#L-386"><span class="linenos">386</span></a>
-</span><span id="L-387"><a href="#L-387"><span class="linenos">387</span></a><span class="sd">        # Automatically connected to a callback button_clicked()</span>
-</span><span id="L-388"><a href="#L-388"><span class="linenos">388</span></a><span class="sd">        # in main_window.slint&#39;s MainWindow.</span>
-</span><span id="L-389"><a href="#L-389"><span class="linenos">389</span></a><span class="sd">        @slint.callback()</span>
-</span><span id="L-390"><a href="#L-390"><span class="linenos">390</span></a><span class="sd">        def button_clicked(self):</span>
-</span><span id="L-391"><a href="#L-391"><span class="linenos">391</span></a><span class="sd">            print(&quot;Button clicked&quot;)</span>
-</span><span id="L-392"><a href="#L-392"><span class="linenos">392</span></a>
-</span><span id="L-393"><a href="#L-393"><span class="linenos">393</span></a><span class="sd">    ...</span>
-</span><span id="L-394"><a href="#L-394"><span class="linenos">394</span></a><span class="sd">    ```</span>
+</span><span id="L-347"><a href="#L-347"><span class="linenos">347</span></a><span class="sd">&quot;&quot;&quot;Use the global `loader` object to load Slint files from the file system. It exposes two stages of attributes:</span>
+</span><span id="L-348"><a href="#L-348"><span class="linenos">348</span></a><span class="sd">1. Any lookup of an attribute in the loader tries to match a file in `sys.path` with the `.slint` extension. For example</span>
+</span><span id="L-349"><a href="#L-349"><span class="linenos">349</span></a><span class="sd">   `loader.my_component` looks for a file `my_component.slint` in the directories in `sys.path`.</span>
+</span><span id="L-350"><a href="#L-350"><span class="linenos">350</span></a><span class="sd">2. Any lookup in the object returned by the first stage tries to match an exported component in the loaded file, or a</span>
+</span><span id="L-351"><a href="#L-351"><span class="linenos">351</span></a><span class="sd">   struct, or enum. For example `loader.my_component.MyComponent` looks for an *exported* component named `MyComponent`</span>
+</span><span id="L-352"><a href="#L-352"><span class="linenos">352</span></a><span class="sd">   in the file `my_component.slint`.</span>
+</span><span id="L-353"><a href="#L-353"><span class="linenos">353</span></a>
+</span><span id="L-354"><a href="#L-354"><span class="linenos">354</span></a><span class="sd">**Note:** The first entry in the module search path `sys.path` is the directory that contains the input script.</span>
+</span><span id="L-355"><a href="#L-355"><span class="linenos">355</span></a>
+</span><span id="L-356"><a href="#L-356"><span class="linenos">356</span></a><span class="sd">Example:</span>
+</span><span id="L-357"><a href="#L-357"><span class="linenos">357</span></a><span class="sd">```python</span>
+</span><span id="L-358"><a href="#L-358"><span class="linenos">358</span></a><span class="sd">import slint</span>
+</span><span id="L-359"><a href="#L-359"><span class="linenos">359</span></a><span class="sd"># Look for a file `main.slint` in the current directory,</span>
+</span><span id="L-360"><a href="#L-360"><span class="linenos">360</span></a><span class="sd"># #load &amp; compile it, and instantiate the exported `MainWindow` component</span>
+</span><span id="L-361"><a href="#L-361"><span class="linenos">361</span></a><span class="sd">main_window = slint.loader.main_window.MainWindow()</span>
+</span><span id="L-362"><a href="#L-362"><span class="linenos">362</span></a><span class="sd">main_window.show()</span>
+</span><span id="L-363"><a href="#L-363"><span class="linenos">363</span></a><span class="sd">...</span>
+</span><span id="L-364"><a href="#L-364"><span class="linenos">364</span></a><span class="sd">```</span>
+</span><span id="L-365"><a href="#L-365"><span class="linenos">365</span></a><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-366"><a href="#L-366"><span class="linenos">366</span></a>
+</span><span id="L-367"><a href="#L-367"><span class="linenos">367</span></a>
+</span><span id="L-368"><a href="#L-368"><span class="linenos">368</span></a><span class="k">def</span><span class="w"> </span><span class="nf">_callback_decorator</span><span class="p">(</span>
+</span><span id="L-369"><a href="#L-369"><span class="linenos">369</span></a>    <span class="nb">callable</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">info</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>
+</span><span id="L-370"><a href="#L-370"><span class="linenos">370</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+</span><span id="L-371"><a href="#L-371"><span class="linenos">371</span></a>    <span class="k">if</span> <span class="s2">&quot;name&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">info</span><span class="p">:</span>
+</span><span id="L-372"><a href="#L-372"><span class="linenos">372</span></a>        <span class="n">info</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">callable</span><span class="o">.</span><span class="vm">__name__</span>
+</span><span id="L-373"><a href="#L-373"><span class="linenos">373</span></a>    <span class="nb">setattr</span><span class="p">(</span><span class="nb">callable</span><span class="p">,</span> <span class="s2">&quot;slint.callback&quot;</span><span class="p">,</span> <span class="n">info</span><span class="p">)</span>
+</span><span id="L-374"><a href="#L-374"><span class="linenos">374</span></a>    <span class="k">return</span> <span class="nb">callable</span>
+</span><span id="L-375"><a href="#L-375"><span class="linenos">375</span></a>
+</span><span id="L-376"><a href="#L-376"><span class="linenos">376</span></a>
+</span><span id="L-377"><a href="#L-377"><span class="linenos">377</span></a><span class="k">def</span><span class="w"> </span><span class="nf">callback</span><span class="p">(</span>
+</span><span id="L-378"><a href="#L-378"><span class="linenos">378</span></a>    <span class="n">global_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span id="L-379"><a href="#L-379"><span class="linenos">379</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+</span><span id="L-380"><a href="#L-380"><span class="linenos">380</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Use the callback decorator to mark a method as a callback that can be invoked from the Slint component.</span>
+</span><span id="L-381"><a href="#L-381"><span class="linenos">381</span></a>
+</span><span id="L-382"><a href="#L-382"><span class="linenos">382</span></a><span class="sd">    For the decorator to work, the method must be a member of a class that is Slint component.</span>
+</span><span id="L-383"><a href="#L-383"><span class="linenos">383</span></a>
+</span><span id="L-384"><a href="#L-384"><span class="linenos">384</span></a><span class="sd">    Example:</span>
+</span><span id="L-385"><a href="#L-385"><span class="linenos">385</span></a><span class="sd">    ```python</span>
+</span><span id="L-386"><a href="#L-386"><span class="linenos">386</span></a><span class="sd">    import slint</span>
+</span><span id="L-387"><a href="#L-387"><span class="linenos">387</span></a>
+</span><span id="L-388"><a href="#L-388"><span class="linenos">388</span></a><span class="sd">    class AppMainWindow(slint.loader.main_window.MainWindow):</span>
+</span><span id="L-389"><a href="#L-389"><span class="linenos">389</span></a>
+</span><span id="L-390"><a href="#L-390"><span class="linenos">390</span></a><span class="sd">        # Automatically connected to a callback button_clicked()</span>
+</span><span id="L-391"><a href="#L-391"><span class="linenos">391</span></a><span class="sd">        # in main_window.slint&#39;s MainWindow.</span>
+</span><span id="L-392"><a href="#L-392"><span class="linenos">392</span></a><span class="sd">        @slint.callback()</span>
+</span><span id="L-393"><a href="#L-393"><span class="linenos">393</span></a><span class="sd">        def button_clicked(self):</span>
+</span><span id="L-394"><a href="#L-394"><span class="linenos">394</span></a><span class="sd">            print(&quot;Button clicked&quot;)</span>
 </span><span id="L-395"><a href="#L-395"><span class="linenos">395</span></a>
-</span><span id="L-396"><a href="#L-396"><span class="linenos">396</span></a><span class="sd">    Use the `name` parameter to specify the name of the callback in the Slint component, if the name of the</span>
-</span><span id="L-397"><a href="#L-397"><span class="linenos">397</span></a><span class="sd">    Python method differs from the name of the callback in the Slint component.</span>
+</span><span id="L-396"><a href="#L-396"><span class="linenos">396</span></a><span class="sd">    ...</span>
+</span><span id="L-397"><a href="#L-397"><span class="linenos">397</span></a><span class="sd">    ```</span>
 </span><span id="L-398"><a href="#L-398"><span class="linenos">398</span></a>
-</span><span id="L-399"><a href="#L-399"><span class="linenos">399</span></a><span class="sd">    Use the `global_name` parameter to specify the name of the global in the Slint component, if the callback</span>
-</span><span id="L-400"><a href="#L-400"><span class="linenos">400</span></a><span class="sd">    is to be set on a Slint global object.</span>
-</span><span id="L-401"><a href="#L-401"><span class="linenos">401</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-402"><a href="#L-402"><span class="linenos">402</span></a>
-</span><span id="L-403"><a href="#L-403"><span class="linenos">403</span></a>    <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="n">global_name</span><span class="p">):</span>
-</span><span id="L-404"><a href="#L-404"><span class="linenos">404</span></a>        <span class="n">callback</span> <span class="o">=</span> <span class="n">global_name</span>
-</span><span id="L-405"><a href="#L-405"><span class="linenos">405</span></a>        <span class="k">return</span> <span class="n">_callback_decorator</span><span class="p">(</span><span class="n">callback</span><span class="p">,</span> <span class="p">{})</span>
-</span><span id="L-406"><a href="#L-406"><span class="linenos">406</span></a>    <span class="k">else</span><span class="p">:</span>
-</span><span id="L-407"><a href="#L-407"><span class="linenos">407</span></a>        <span class="n">info</span> <span class="o">=</span> <span class="p">{}</span>
-</span><span id="L-408"><a href="#L-408"><span class="linenos">408</span></a>        <span class="k">if</span> <span class="n">name</span><span class="p">:</span>
-</span><span id="L-409"><a href="#L-409"><span class="linenos">409</span></a>            <span class="n">info</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">name</span>
-</span><span id="L-410"><a href="#L-410"><span class="linenos">410</span></a>        <span class="k">if</span> <span class="n">global_name</span><span class="p">:</span>
-</span><span id="L-411"><a href="#L-411"><span class="linenos">411</span></a>            <span class="n">info</span><span class="p">[</span><span class="s2">&quot;global_name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">global_name</span>
-</span><span id="L-412"><a href="#L-412"><span class="linenos">412</span></a>        <span class="k">return</span> <span class="k">lambda</span> <span class="n">callback</span><span class="p">:</span> <span class="n">_callback_decorator</span><span class="p">(</span><span class="n">callback</span><span class="p">,</span> <span class="n">info</span><span class="p">)</span>
-</span><span id="L-413"><a href="#L-413"><span class="linenos">413</span></a>
+</span><span id="L-399"><a href="#L-399"><span class="linenos">399</span></a><span class="sd">    If your Python method has a different name from the Slint component&#39;s callback, use the `name` parameter to specify</span>
+</span><span id="L-400"><a href="#L-400"><span class="linenos">400</span></a><span class="sd">    the correct name. Similarly, use the `global_name` parameter to specify the name of the correct global singleton in</span>
+</span><span id="L-401"><a href="#L-401"><span class="linenos">401</span></a><span class="sd">    the Slint component.</span>
+</span><span id="L-402"><a href="#L-402"><span class="linenos">402</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-403"><a href="#L-403"><span class="linenos">403</span></a>
+</span><span id="L-404"><a href="#L-404"><span class="linenos">404</span></a>    <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="n">global_name</span><span class="p">):</span>
+</span><span id="L-405"><a href="#L-405"><span class="linenos">405</span></a>        <span class="n">callback</span> <span class="o">=</span> <span class="n">global_name</span>
+</span><span id="L-406"><a href="#L-406"><span class="linenos">406</span></a>        <span class="k">return</span> <span class="n">_callback_decorator</span><span class="p">(</span><span class="n">callback</span><span class="p">,</span> <span class="p">{})</span>
+</span><span id="L-407"><a href="#L-407"><span class="linenos">407</span></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="L-408"><a href="#L-408"><span class="linenos">408</span></a>        <span class="n">info</span> <span class="o">=</span> <span class="p">{}</span>
+</span><span id="L-409"><a href="#L-409"><span class="linenos">409</span></a>        <span class="k">if</span> <span class="n">name</span><span class="p">:</span>
+</span><span id="L-410"><a href="#L-410"><span class="linenos">410</span></a>            <span class="n">info</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">name</span>
+</span><span id="L-411"><a href="#L-411"><span class="linenos">411</span></a>        <span class="k">if</span> <span class="n">global_name</span><span class="p">:</span>
+</span><span id="L-412"><a href="#L-412"><span class="linenos">412</span></a>            <span class="n">info</span><span class="p">[</span><span class="s2">&quot;global_name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">global_name</span>
+</span><span id="L-413"><a href="#L-413"><span class="linenos">413</span></a>        <span class="k">return</span> <span class="k">lambda</span> <span class="n">callback</span><span class="p">:</span> <span class="n">_callback_decorator</span><span class="p">(</span><span class="n">callback</span><span class="p">,</span> <span class="n">info</span><span class="p">)</span>
 </span><span id="L-414"><a href="#L-414"><span class="linenos">414</span></a>
-</span><span id="L-415"><a href="#L-415"><span class="linenos">415</span></a><span class="k">def</span><span class="w"> </span><span class="nf">set_xdg_app_id</span><span class="p">(</span><span class="n">app_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-416"><a href="#L-416"><span class="linenos">416</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Sets the application id for use on Wayland or X11 with [xdg](https://specifications.freedesktop.org/desktop-entry-spec/latest/)</span>
-</span><span id="L-417"><a href="#L-417"><span class="linenos">417</span></a><span class="sd">    compliant window managers. This must be set before the window is shown, and has only an effect on Wayland or X11.&quot;&quot;&quot;</span>
-</span><span id="L-418"><a href="#L-418"><span class="linenos">418</span></a>
-</span><span id="L-419"><a href="#L-419"><span class="linenos">419</span></a>    <span class="n">native</span><span class="o">.</span><span class="n">set_xdg_app_id</span><span class="p">(</span><span class="n">app_id</span><span class="p">)</span>
-</span><span id="L-420"><a href="#L-420"><span class="linenos">420</span></a>
+</span><span id="L-415"><a href="#L-415"><span class="linenos">415</span></a>
+</span><span id="L-416"><a href="#L-416"><span class="linenos">416</span></a><span class="k">def</span><span class="w"> </span><span class="nf">set_xdg_app_id</span><span class="p">(</span><span class="n">app_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-417"><a href="#L-417"><span class="linenos">417</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Sets the application id for use on Wayland or X11 with [xdg](https://specifications.freedesktop.org/desktop-entry-spec/latest/)</span>
+</span><span id="L-418"><a href="#L-418"><span class="linenos">418</span></a><span class="sd">    compliant window managers. This id must be set before the window is shown; it only applies to Wayland or X11.&quot;&quot;&quot;</span>
+</span><span id="L-419"><a href="#L-419"><span class="linenos">419</span></a>
+</span><span id="L-420"><a href="#L-420"><span class="linenos">420</span></a>    <span class="n">native</span><span class="o">.</span><span class="n">set_xdg_app_id</span><span class="p">(</span><span class="n">app_id</span><span class="p">)</span>
 </span><span id="L-421"><a href="#L-421"><span class="linenos">421</span></a>
-</span><span id="L-422"><a href="#L-422"><span class="linenos">422</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-423"><a href="#L-423"><span class="linenos">423</span></a>    <span class="s2">&quot;CompileError&quot;</span><span class="p">,</span>
-</span><span id="L-424"><a href="#L-424"><span class="linenos">424</span></a>    <span class="s2">&quot;Component&quot;</span><span class="p">,</span>
-</span><span id="L-425"><a href="#L-425"><span class="linenos">425</span></a>    <span class="s2">&quot;load_file&quot;</span><span class="p">,</span>
-</span><span id="L-426"><a href="#L-426"><span class="linenos">426</span></a>    <span class="s2">&quot;loader&quot;</span><span class="p">,</span>
-</span><span id="L-427"><a href="#L-427"><span class="linenos">427</span></a>    <span class="s2">&quot;Image&quot;</span><span class="p">,</span>
-</span><span id="L-428"><a href="#L-428"><span class="linenos">428</span></a>    <span class="s2">&quot;Color&quot;</span><span class="p">,</span>
-</span><span id="L-429"><a href="#L-429"><span class="linenos">429</span></a>    <span class="s2">&quot;Brush&quot;</span><span class="p">,</span>
-</span><span id="L-430"><a href="#L-430"><span class="linenos">430</span></a>    <span class="s2">&quot;Model&quot;</span><span class="p">,</span>
-</span><span id="L-431"><a href="#L-431"><span class="linenos">431</span></a>    <span class="s2">&quot;ListModel&quot;</span><span class="p">,</span>
-</span><span id="L-432"><a href="#L-432"><span class="linenos">432</span></a>    <span class="s2">&quot;Timer&quot;</span><span class="p">,</span>
-</span><span id="L-433"><a href="#L-433"><span class="linenos">433</span></a>    <span class="s2">&quot;TimerMode&quot;</span><span class="p">,</span>
-</span><span id="L-434"><a href="#L-434"><span class="linenos">434</span></a>    <span class="s2">&quot;set_xdg_app_id&quot;</span><span class="p">,</span>
-</span><span id="L-435"><a href="#L-435"><span class="linenos">435</span></a>    <span class="s2">&quot;callback&quot;</span><span class="p">,</span>
-</span><span id="L-436"><a href="#L-436"><span class="linenos">436</span></a><span class="p">]</span>
+</span><span id="L-422"><a href="#L-422"><span class="linenos">422</span></a>
+</span><span id="L-423"><a href="#L-423"><span class="linenos">423</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-424"><a href="#L-424"><span class="linenos">424</span></a>    <span class="s2">&quot;CompileError&quot;</span><span class="p">,</span>
+</span><span id="L-425"><a href="#L-425"><span class="linenos">425</span></a>    <span class="s2">&quot;Component&quot;</span><span class="p">,</span>
+</span><span id="L-426"><a href="#L-426"><span class="linenos">426</span></a>    <span class="s2">&quot;load_file&quot;</span><span class="p">,</span>
+</span><span id="L-427"><a href="#L-427"><span class="linenos">427</span></a>    <span class="s2">&quot;loader&quot;</span><span class="p">,</span>
+</span><span id="L-428"><a href="#L-428"><span class="linenos">428</span></a>    <span class="s2">&quot;Image&quot;</span><span class="p">,</span>
+</span><span id="L-429"><a href="#L-429"><span class="linenos">429</span></a>    <span class="s2">&quot;Color&quot;</span><span class="p">,</span>
+</span><span id="L-430"><a href="#L-430"><span class="linenos">430</span></a>    <span class="s2">&quot;Brush&quot;</span><span class="p">,</span>
+</span><span id="L-431"><a href="#L-431"><span class="linenos">431</span></a>    <span class="s2">&quot;Model&quot;</span><span class="p">,</span>
+</span><span id="L-432"><a href="#L-432"><span class="linenos">432</span></a>    <span class="s2">&quot;ListModel&quot;</span><span class="p">,</span>
+</span><span id="L-433"><a href="#L-433"><span class="linenos">433</span></a>    <span class="s2">&quot;Timer&quot;</span><span class="p">,</span>
+</span><span id="L-434"><a href="#L-434"><span class="linenos">434</span></a>    <span class="s2">&quot;TimerMode&quot;</span><span class="p">,</span>
+</span><span id="L-435"><a href="#L-435"><span class="linenos">435</span></a>    <span class="s2">&quot;set_xdg_app_id&quot;</span><span class="p">,</span>
+</span><span id="L-436"><a href="#L-436"><span class="linenos">436</span></a>    <span class="s2">&quot;callback&quot;</span><span class="p">,</span>
+</span><span id="L-437"><a href="#L-437"><span class="linenos">437</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -1264,16 +1257,16 @@ window, or spin the event loop.</p>
 </span><span id="load_file-256"><a href="#load_file-256"><span class="linenos">256</span></a>    <span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="load_file-257"><a href="#load_file-257"><span class="linenos">257</span></a>    <span class="n">translation_domain</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="load_file-258"><a href="#load_file-258"><span class="linenos">258</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">types</span><span class="o">.</span><span class="n">SimpleNamespace</span><span class="p">:</span>
-</span><span id="load_file-259"><a href="#load_file-259"><span class="linenos">259</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;This function is the low-level entry point into Slint for Python. Loads the `.slint` file at the specified `path`</span>
-</span><span id="load_file-260"><a href="#load_file-260"><span class="linenos">260</span></a><span class="sd">    and returns a namespace with all exported components as Python classes, as well as enums and structs.</span>
+</span><span id="load_file-259"><a href="#load_file-259"><span class="linenos">259</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;This function is the low-level entry point into Slint for instantiating components. It loads the `.slint` file at</span>
+</span><span id="load_file-260"><a href="#load_file-260"><span class="linenos">260</span></a><span class="sd">    the specified `path` and returns a namespace with all exported components as Python classes, as well as enums, and structs.</span>
 </span><span id="load_file-261"><a href="#load_file-261"><span class="linenos">261</span></a>
-</span><span id="load_file-262"><a href="#load_file-262"><span class="linenos">262</span></a><span class="sd">    * `quiet`: Set to true to prevent any warnings during compilation to be printed to stderr.</span>
-</span><span id="load_file-263"><a href="#load_file-263"><span class="linenos">263</span></a><span class="sd">    * `style`: Set this to use a specific a widget style.</span>
-</span><span id="load_file-264"><a href="#load_file-264"><span class="linenos">264</span></a><span class="sd">    * `include_paths`: Additional include paths that will be used to look up `.slint` files imported from other `.slint` files.</span>
-</span><span id="load_file-265"><a href="#load_file-265"><span class="linenos">265</span></a><span class="sd">    * `library_paths`: A dictionary that maps library names to their location in the file system. This is used to look up library imports,</span>
-</span><span id="load_file-266"><a href="#load_file-266"><span class="linenos">266</span></a><span class="sd">       such as `import { MyButton } from &quot;@mylibrary&quot;;`.</span>
-</span><span id="load_file-267"><a href="#load_file-267"><span class="linenos">267</span></a><span class="sd">    * `translation_domain`: The domain to use for looking up the catalogue run-time translations. This must match the translation domain</span>
-</span><span id="load_file-268"><a href="#load_file-268"><span class="linenos">268</span></a><span class="sd">       used when extracting translations with `slint-tr-extractor`.</span>
+</span><span id="load_file-262"><a href="#load_file-262"><span class="linenos">262</span></a><span class="sd">    * `quiet`: Set to true to prevent any warnings during compilation from being printed to stderr.</span>
+</span><span id="load_file-263"><a href="#load_file-263"><span class="linenos">263</span></a><span class="sd">    * `style`: Specify a widget style.</span>
+</span><span id="load_file-264"><a href="#load_file-264"><span class="linenos">264</span></a><span class="sd">    * `include_paths`: Additional include paths used to look up `.slint` files imported from other `.slint` files.</span>
+</span><span id="load_file-265"><a href="#load_file-265"><span class="linenos">265</span></a><span class="sd">    * `library_paths`: A dictionary that maps library names to their location in the file system. This is then used to look up</span>
+</span><span id="load_file-266"><a href="#load_file-266"><span class="linenos">266</span></a><span class="sd">       library imports, such as `import { MyButton } from &quot;@mylibrary&quot;;`.</span>
+</span><span id="load_file-267"><a href="#load_file-267"><span class="linenos">267</span></a><span class="sd">    * `translation_domain`: The domain to use for looking up the catalogue run-time translations. This must match the</span>
+</span><span id="load_file-268"><a href="#load_file-268"><span class="linenos">268</span></a><span class="sd">       translation domain used when extracting translations with `slint-tr-extractor`.</span>
 </span><span id="load_file-269"><a href="#load_file-269"><span class="linenos">269</span></a>
 </span><span id="load_file-270"><a href="#load_file-270"><span class="linenos">270</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="load_file-271"><a href="#load_file-271"><span class="linenos">271</span></a>
@@ -1323,17 +1316,17 @@ window, or spin the event loop.</p>
 </span></pre></div>
 
 
-            <div class="docstring"><p>This function is the low-level entry point into Slint for Python. Loads the <code>.slint</code> file at the specified <code>path</code>
-and returns a namespace with all exported components as Python classes, as well as enums and structs.</p>
+            <div class="docstring"><p>This function is the low-level entry point into Slint for instantiating components. It loads the <code>.slint</code> file at
+the specified <code>path</code> and returns a namespace with all exported components as Python classes, as well as enums, and structs.</p>
 
 <ul>
-<li><code>quiet</code>: Set to true to prevent any warnings during compilation to be printed to stderr.</li>
-<li><code>style</code>: Set this to use a specific a widget style.</li>
-<li><code>include_paths</code>: Additional include paths that will be used to look up <code>.slint</code> files imported from other <code>.slint</code> files.</li>
-<li><code>library_paths</code>: A dictionary that maps library names to their location in the file system. This is used to look up library imports,
-such as <code>import { MyButton } from "@mylibrary";</code>.</li>
-<li><code>translation_domain</code>: The domain to use for looking up the catalogue run-time translations. This must match the translation domain
-used when extracting translations with <code>slint-tr-extractor</code>.</li>
+<li><code>quiet</code>: Set to true to prevent any warnings during compilation from being printed to stderr.</li>
+<li><code>style</code>: Specify a widget style.</li>
+<li><code>include_paths</code>: Additional include paths used to look up <code>.slint</code> files imported from other <code>.slint</code> files.</li>
+<li><code>library_paths</code>: A dictionary that maps library names to their location in the file system. This is then used to look up
+library imports, such as <code>import { MyButton } from "@mylibrary";</code>.</li>
+<li><code>translation_domain</code>: The domain to use for looking up the catalogue run-time translations. This must match the
+translation domain used when extracting translations with <code>slint-tr-extractor</code>.</li>
 </ul>
 </div>
 
@@ -1348,14 +1341,17 @@ used when extracting translations with <code>slint-tr-extractor</code>.</li>
     </div>
     <a class="headerlink" href="#loader"></a>
     
-            <div class="docstring"><p>The <code><a href="#loader">loader</a></code> object is a global object that can be used to load Slint files from the file system. It exposes two stages of attributes:</p>
+            <div class="docstring"><p>Use the global <code><a href="#loader">loader</a></code> object to load Slint files from the file system. It exposes two stages of attributes:</p>
 
 <ol>
-<li>Any lookup of an attribute in the loader will try to match a file in <code>sys.path</code> with the <code>.slint</code> extension. For example <code>loader.my_component</code> will look for a file <code>my_component.slint</code> in the directories in <code>sys.path</code>.</li>
-<li>Any lookup in the object returned by the first stage will try to match an exported component in the loaded file, or a struct or enum. For example <code>loader.my_component.MyComponent</code> will look for an <em>exported</em> component named <code>MyComponent</code> in the file <code>my_component.slint</code>.</li>
+<li>Any lookup of an attribute in the loader tries to match a file in <code>sys.path</code> with the <code>.slint</code> extension. For example
+<code>loader.my_component</code> looks for a file <code>my_component.slint</code> in the directories in <code>sys.path</code>.</li>
+<li>Any lookup in the object returned by the first stage tries to match an exported component in the loaded file, or a
+struct, or enum. For example <code>loader.my_component.MyComponent</code> looks for an <em>exported</em> component named <code>MyComponent</code>
+in the file <code>my_component.slint</code>.</li>
 </ol>
 
-<p>Note that the first entry in the module search path <code>sys.path</code> is the directory that contains the input script.</p>
+<p><strong>Note:</strong> The first entry in the module search path <code>sys.path</code> is the directory that contains the input script.</p>
 
 <p>Example:</p>
 
@@ -1382,8 +1378,8 @@ used when extracting translations with <code>slint-tr-extractor</code>.</li>
     </div>
     <a class="headerlink" href="#Image"></a>
     
-            <div class="docstring"><p>Image objects can be set on Slint Image elements for display. Construct Image objects from a path to an
-image file on disk, using <code><a href="#Image.load_from_path">Image.load_from_path</a></code>.</p>
+            <div class="docstring"><p>Image objects can be set on Slint Image elements for display. Use <code><a href="#Image.load_from_path">Image.load_from_path</a></code> to construct Image
+objects from a path to an image file on disk.</p>
 </div>
 
 
@@ -1417,15 +1413,15 @@ image file on disk, using <code><a href="#Image.load_from_path">Image.load_from_
 
 
                             </div>
-                            <div id="Image.path" class="classattr">
+                            <div id="Image.height" class="classattr">
                                 <div class="attr variable">
-            <span class="name">path</span>
+            <span class="name">height</span>
 
         
     </div>
-    <a class="headerlink" href="#Image.path"></a>
+    <a class="headerlink" href="#Image.height"></a>
     
-            <div class="docstring"><p>The path of the image if it was loaded from disk, or None.</p>
+            <div class="docstring"><p>The height of the image in pixels.</p>
 </div>
 
 
@@ -1456,15 +1452,15 @@ image file on disk, using <code><a href="#Image.load_from_path">Image.load_from_
 
 
                             </div>
-                            <div id="Image.height" class="classattr">
+                            <div id="Image.path" class="classattr">
                                 <div class="attr variable">
-            <span class="name">height</span>
+            <span class="name">path</span>
 
         
     </div>
-    <a class="headerlink" href="#Image.height"></a>
+    <a class="headerlink" href="#Image.path"></a>
     
-            <div class="docstring"><p>The height of the image in pixels.</p>
+            <div class="docstring"><p>The path of the image if it was loaded from disk, or None.</p>
 </div>
 
 
@@ -1480,10 +1476,10 @@ image file on disk, using <code><a href="#Image.load_from_path">Image.load_from_
     </div>
     <a class="headerlink" href="#Color"></a>
     
-            <div class="docstring"><p>A Color object represents a color in the RGB color space with an alpha. Each color channel as well as the alpha is represented as an 8-bit
-integer. The alpha channel is 0 for fully transparent and 255 for fully opaque.</p>
+            <div class="docstring"><p>A Color object represents a color in the RGB color space with an alpha. Each color channel and the alpha is represented
+as an 8-bit integer. The alpha channel is 0 for fully transparent and 255 for fully opaque.</p>
 
-<p>Construct colors from either a CSS color string, or by specifying the red, green, blue, and (optional) alpha channels in a dict.</p>
+<p>Construct colors from a CSS color string, or by specifying the red, green, blue, and (optional) alpha channels in a dict.</p>
 </div>
 
 
@@ -1579,19 +1575,6 @@ is applied to <code>other</code>.</p>
 
 
                             </div>
-                            <div id="Color.blue" class="classattr">
-                                <div class="attr variable">
-            <span class="name">blue</span>
-
-        
-    </div>
-    <a class="headerlink" href="#Color.blue"></a>
-    
-            <div class="docstring"><p>The blue channel.</p>
-</div>
-
-
-                            </div>
                             <div id="Color.red" class="classattr">
                                 <div class="attr variable">
             <span class="name">red</span>
@@ -1601,6 +1584,19 @@ is applied to <code>other</code>.</p>
     <a class="headerlink" href="#Color.red"></a>
     
             <div class="docstring"><p>The red channel.</p>
+</div>
+
+
+                            </div>
+                            <div id="Color.blue" class="classattr">
+                                <div class="attr variable">
+            <span class="name">blue</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Color.blue"></a>
+    
+            <div class="docstring"><p>The blue channel.</p>
 </div>
 
 
@@ -1629,13 +1625,12 @@ is applied to <code>other</code>.</p>
     </div>
     <a class="headerlink" href="#Brush"></a>
     
-            <div class="docstring"><p>A brush is a data structure that is used to describe how
-a shape, such as a rectangle, path or even text, shall be filled.
-A brush can also be applied to the outline of a shape, that means
-the fill of the outline itself.</p>
+            <div class="docstring"><p>A brush is a data structure that is used to describe how a shape, such as a rectangle, path or even text,
+shall be filled. A brush can also be applied to the outline of a shape, that means the fill of the outline itself.</p>
 
-<p>Brushes can only be constructed from solid colors. This is a restriction we anticipate to lift in the future,
-to programmatically also declare gradients.</p>
+<p>Brushes can only be constructed from solid colors.</p>
+
+<p><strong>Note:</strong> In future, we plan to reduce this constraint and allow for declaring graidient brushes programmatically.</p>
 </div>
 
 
@@ -2219,19 +2214,6 @@ is re-calculated to be in the specified duration relative to when this function 
 
 
                             </div>
-                            <div id="Timer.running" class="classattr">
-                                <div class="attr variable">
-            <span class="name">running</span>
-
-        
-    </div>
-    <a class="headerlink" href="#Timer.running"></a>
-    
-            <div class="docstring"><p>Set to true if the timer is running; false otherwise.</p>
-</div>
-
-
-                            </div>
                             <div id="Timer.interval" class="classattr">
                                 <div class="attr variable">
             <span class="name">interval</span>
@@ -2245,6 +2227,19 @@ is re-calculated to be in the specified duration relative to when this function 
 <p>When setting this property and the timer is running (see <code><a href="#Timer.running">Timer.running</a></code>),
 then the time when the callback will be next invoked is re-calculated to be in the
 specified duration relative to when this property is set.</p>
+</div>
+
+
+                            </div>
+                            <div id="Timer.running" class="classattr">
+                                <div class="attr variable">
+            <span class="name">running</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Timer.running"></a>
+    
+            <div class="docstring"><p>Set to true if the timer is running; false otherwise.</p>
 </div>
 
 
@@ -2302,16 +2297,16 @@ specified duration relative to when this property is set.</p>
 
     </div>
     <a class="headerlink" href="#set_xdg_app_id"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="set_xdg_app_id-416"><a href="#set_xdg_app_id-416"><span class="linenos">416</span></a><span class="k">def</span><span class="w"> </span><span class="nf">set_xdg_app_id</span><span class="p">(</span><span class="n">app_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="set_xdg_app_id-417"><a href="#set_xdg_app_id-417"><span class="linenos">417</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Sets the application id for use on Wayland or X11 with [xdg](https://specifications.freedesktop.org/desktop-entry-spec/latest/)</span>
-</span><span id="set_xdg_app_id-418"><a href="#set_xdg_app_id-418"><span class="linenos">418</span></a><span class="sd">    compliant window managers. This must be set before the window is shown, and has only an effect on Wayland or X11.&quot;&quot;&quot;</span>
-</span><span id="set_xdg_app_id-419"><a href="#set_xdg_app_id-419"><span class="linenos">419</span></a>
-</span><span id="set_xdg_app_id-420"><a href="#set_xdg_app_id-420"><span class="linenos">420</span></a>    <span class="n">native</span><span class="o">.</span><span class="n">set_xdg_app_id</span><span class="p">(</span><span class="n">app_id</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="set_xdg_app_id-417"><a href="#set_xdg_app_id-417"><span class="linenos">417</span></a><span class="k">def</span><span class="w"> </span><span class="nf">set_xdg_app_id</span><span class="p">(</span><span class="n">app_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="set_xdg_app_id-418"><a href="#set_xdg_app_id-418"><span class="linenos">418</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Sets the application id for use on Wayland or X11 with [xdg](https://specifications.freedesktop.org/desktop-entry-spec/latest/)</span>
+</span><span id="set_xdg_app_id-419"><a href="#set_xdg_app_id-419"><span class="linenos">419</span></a><span class="sd">    compliant window managers. This id must be set before the window is shown; it only applies to Wayland or X11.&quot;&quot;&quot;</span>
+</span><span id="set_xdg_app_id-420"><a href="#set_xdg_app_id-420"><span class="linenos">420</span></a>
+</span><span id="set_xdg_app_id-421"><a href="#set_xdg_app_id-421"><span class="linenos">421</span></a>    <span class="n">native</span><span class="o">.</span><span class="n">set_xdg_app_id</span><span class="p">(</span><span class="n">app_id</span><span class="p">)</span>
 </span></pre></div>
 
 
             <div class="docstring"><p>Sets the application id for use on Wayland or X11 with <a href="https://specifications.freedesktop.org/desktop-entry-spec/latest/">xdg</a>
-compliant window managers. This must be set before the window is shown, and has only an effect on Wayland or X11.</p>
+compliant window managers. This id must be set before the window is shown; it only applies to Wayland or X11.</p>
 </div>
 
 
@@ -2327,45 +2322,43 @@ compliant window managers. This must be set before the window is shown, and has 
 
     </div>
     <a class="headerlink" href="#callback"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="callback-375"><a href="#callback-375"><span class="linenos">375</span></a><span class="k">def</span><span class="w"> </span><span class="nf">callback</span><span class="p">(</span>
-</span><span id="callback-376"><a href="#callback-376"><span class="linenos">376</span></a>    <span class="n">global_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
-</span><span id="callback-377"><a href="#callback-377"><span class="linenos">377</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
-</span><span id="callback-378"><a href="#callback-378"><span class="linenos">378</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Use the callback decorator to mark a method as a callback that can be invoked from the Slint component.</span>
-</span><span id="callback-379"><a href="#callback-379"><span class="linenos">379</span></a>
-</span><span id="callback-380"><a href="#callback-380"><span class="linenos">380</span></a><span class="sd">    For the decorator to work, the method must be a member of a class that is Slint component.</span>
-</span><span id="callback-381"><a href="#callback-381"><span class="linenos">381</span></a>
-</span><span id="callback-382"><a href="#callback-382"><span class="linenos">382</span></a><span class="sd">    Example:</span>
-</span><span id="callback-383"><a href="#callback-383"><span class="linenos">383</span></a><span class="sd">    ```python</span>
-</span><span id="callback-384"><a href="#callback-384"><span class="linenos">384</span></a><span class="sd">    import slint</span>
-</span><span id="callback-385"><a href="#callback-385"><span class="linenos">385</span></a>
-</span><span id="callback-386"><a href="#callback-386"><span class="linenos">386</span></a><span class="sd">    class AppMainWindow(slint.loader.main_window.MainWindow):</span>
-</span><span id="callback-387"><a href="#callback-387"><span class="linenos">387</span></a>
-</span><span id="callback-388"><a href="#callback-388"><span class="linenos">388</span></a><span class="sd">        # Automatically connected to a callback button_clicked()</span>
-</span><span id="callback-389"><a href="#callback-389"><span class="linenos">389</span></a><span class="sd">        # in main_window.slint&#39;s MainWindow.</span>
-</span><span id="callback-390"><a href="#callback-390"><span class="linenos">390</span></a><span class="sd">        @slint.callback()</span>
-</span><span id="callback-391"><a href="#callback-391"><span class="linenos">391</span></a><span class="sd">        def button_clicked(self):</span>
-</span><span id="callback-392"><a href="#callback-392"><span class="linenos">392</span></a><span class="sd">            print(&quot;Button clicked&quot;)</span>
-</span><span id="callback-393"><a href="#callback-393"><span class="linenos">393</span></a>
-</span><span id="callback-394"><a href="#callback-394"><span class="linenos">394</span></a><span class="sd">    ...</span>
-</span><span id="callback-395"><a href="#callback-395"><span class="linenos">395</span></a><span class="sd">    ```</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="callback-378"><a href="#callback-378"><span class="linenos">378</span></a><span class="k">def</span><span class="w"> </span><span class="nf">callback</span><span class="p">(</span>
+</span><span id="callback-379"><a href="#callback-379"><span class="linenos">379</span></a>    <span class="n">global_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span id="callback-380"><a href="#callback-380"><span class="linenos">380</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+</span><span id="callback-381"><a href="#callback-381"><span class="linenos">381</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Use the callback decorator to mark a method as a callback that can be invoked from the Slint component.</span>
+</span><span id="callback-382"><a href="#callback-382"><span class="linenos">382</span></a>
+</span><span id="callback-383"><a href="#callback-383"><span class="linenos">383</span></a><span class="sd">    For the decorator to work, the method must be a member of a class that is Slint component.</span>
+</span><span id="callback-384"><a href="#callback-384"><span class="linenos">384</span></a>
+</span><span id="callback-385"><a href="#callback-385"><span class="linenos">385</span></a><span class="sd">    Example:</span>
+</span><span id="callback-386"><a href="#callback-386"><span class="linenos">386</span></a><span class="sd">    ```python</span>
+</span><span id="callback-387"><a href="#callback-387"><span class="linenos">387</span></a><span class="sd">    import slint</span>
+</span><span id="callback-388"><a href="#callback-388"><span class="linenos">388</span></a>
+</span><span id="callback-389"><a href="#callback-389"><span class="linenos">389</span></a><span class="sd">    class AppMainWindow(slint.loader.main_window.MainWindow):</span>
+</span><span id="callback-390"><a href="#callback-390"><span class="linenos">390</span></a>
+</span><span id="callback-391"><a href="#callback-391"><span class="linenos">391</span></a><span class="sd">        # Automatically connected to a callback button_clicked()</span>
+</span><span id="callback-392"><a href="#callback-392"><span class="linenos">392</span></a><span class="sd">        # in main_window.slint&#39;s MainWindow.</span>
+</span><span id="callback-393"><a href="#callback-393"><span class="linenos">393</span></a><span class="sd">        @slint.callback()</span>
+</span><span id="callback-394"><a href="#callback-394"><span class="linenos">394</span></a><span class="sd">        def button_clicked(self):</span>
+</span><span id="callback-395"><a href="#callback-395"><span class="linenos">395</span></a><span class="sd">            print(&quot;Button clicked&quot;)</span>
 </span><span id="callback-396"><a href="#callback-396"><span class="linenos">396</span></a>
-</span><span id="callback-397"><a href="#callback-397"><span class="linenos">397</span></a><span class="sd">    Use the `name` parameter to specify the name of the callback in the Slint component, if the name of the</span>
-</span><span id="callback-398"><a href="#callback-398"><span class="linenos">398</span></a><span class="sd">    Python method differs from the name of the callback in the Slint component.</span>
+</span><span id="callback-397"><a href="#callback-397"><span class="linenos">397</span></a><span class="sd">    ...</span>
+</span><span id="callback-398"><a href="#callback-398"><span class="linenos">398</span></a><span class="sd">    ```</span>
 </span><span id="callback-399"><a href="#callback-399"><span class="linenos">399</span></a>
-</span><span id="callback-400"><a href="#callback-400"><span class="linenos">400</span></a><span class="sd">    Use the `global_name` parameter to specify the name of the global in the Slint component, if the callback</span>
-</span><span id="callback-401"><a href="#callback-401"><span class="linenos">401</span></a><span class="sd">    is to be set on a Slint global object.</span>
-</span><span id="callback-402"><a href="#callback-402"><span class="linenos">402</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="callback-403"><a href="#callback-403"><span class="linenos">403</span></a>
-</span><span id="callback-404"><a href="#callback-404"><span class="linenos">404</span></a>    <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="n">global_name</span><span class="p">):</span>
-</span><span id="callback-405"><a href="#callback-405"><span class="linenos">405</span></a>        <span class="n">callback</span> <span class="o">=</span> <span class="n">global_name</span>
-</span><span id="callback-406"><a href="#callback-406"><span class="linenos">406</span></a>        <span class="k">return</span> <span class="n">_callback_decorator</span><span class="p">(</span><span class="n">callback</span><span class="p">,</span> <span class="p">{})</span>
-</span><span id="callback-407"><a href="#callback-407"><span class="linenos">407</span></a>    <span class="k">else</span><span class="p">:</span>
-</span><span id="callback-408"><a href="#callback-408"><span class="linenos">408</span></a>        <span class="n">info</span> <span class="o">=</span> <span class="p">{}</span>
-</span><span id="callback-409"><a href="#callback-409"><span class="linenos">409</span></a>        <span class="k">if</span> <span class="n">name</span><span class="p">:</span>
-</span><span id="callback-410"><a href="#callback-410"><span class="linenos">410</span></a>            <span class="n">info</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">name</span>
-</span><span id="callback-411"><a href="#callback-411"><span class="linenos">411</span></a>        <span class="k">if</span> <span class="n">global_name</span><span class="p">:</span>
-</span><span id="callback-412"><a href="#callback-412"><span class="linenos">412</span></a>            <span class="n">info</span><span class="p">[</span><span class="s2">&quot;global_name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">global_name</span>
-</span><span id="callback-413"><a href="#callback-413"><span class="linenos">413</span></a>        <span class="k">return</span> <span class="k">lambda</span> <span class="n">callback</span><span class="p">:</span> <span class="n">_callback_decorator</span><span class="p">(</span><span class="n">callback</span><span class="p">,</span> <span class="n">info</span><span class="p">)</span>
+</span><span id="callback-400"><a href="#callback-400"><span class="linenos">400</span></a><span class="sd">    If your Python method has a different name from the Slint component&#39;s callback, use the `name` parameter to specify</span>
+</span><span id="callback-401"><a href="#callback-401"><span class="linenos">401</span></a><span class="sd">    the correct name. Similarly, use the `global_name` parameter to specify the name of the correct global singleton in</span>
+</span><span id="callback-402"><a href="#callback-402"><span class="linenos">402</span></a><span class="sd">    the Slint component.</span>
+</span><span id="callback-403"><a href="#callback-403"><span class="linenos">403</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="callback-404"><a href="#callback-404"><span class="linenos">404</span></a>
+</span><span id="callback-405"><a href="#callback-405"><span class="linenos">405</span></a>    <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="n">global_name</span><span class="p">):</span>
+</span><span id="callback-406"><a href="#callback-406"><span class="linenos">406</span></a>        <span class="n">callback</span> <span class="o">=</span> <span class="n">global_name</span>
+</span><span id="callback-407"><a href="#callback-407"><span class="linenos">407</span></a>        <span class="k">return</span> <span class="n">_callback_decorator</span><span class="p">(</span><span class="n">callback</span><span class="p">,</span> <span class="p">{})</span>
+</span><span id="callback-408"><a href="#callback-408"><span class="linenos">408</span></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="callback-409"><a href="#callback-409"><span class="linenos">409</span></a>        <span class="n">info</span> <span class="o">=</span> <span class="p">{}</span>
+</span><span id="callback-410"><a href="#callback-410"><span class="linenos">410</span></a>        <span class="k">if</span> <span class="n">name</span><span class="p">:</span>
+</span><span id="callback-411"><a href="#callback-411"><span class="linenos">411</span></a>            <span class="n">info</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">name</span>
+</span><span id="callback-412"><a href="#callback-412"><span class="linenos">412</span></a>        <span class="k">if</span> <span class="n">global_name</span><span class="p">:</span>
+</span><span id="callback-413"><a href="#callback-413"><span class="linenos">413</span></a>            <span class="n">info</span><span class="p">[</span><span class="s2">&quot;global_name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">global_name</span>
+</span><span id="callback-414"><a href="#callback-414"><span class="linenos">414</span></a>        <span class="k">return</span> <span class="k">lambda</span> <span class="n">callback</span><span class="p">:</span> <span class="n">_callback_decorator</span><span class="p">(</span><span class="n">callback</span><span class="p">,</span> <span class="n">info</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -2390,11 +2383,9 @@ compliant window managers. This must be set before the window is shown, and has 
 </code></pre>
 </div>
 
-<p>Use the <code>name</code> parameter to specify the name of the callback in the Slint component, if the name of the
-Python method differs from the name of the callback in the Slint component.</p>
-
-<p>Use the <code>global_name</code> parameter to specify the name of the global in the Slint component, if the callback
-is to be set on a Slint global object.</p>
+<p>If your Python method has a different name from the Slint component's callback, use the <code>name</code> parameter to specify
+the correct name. Similarly, use the <code>global_name</code> parameter to specify the name of the correct global singleton in
+the Slint component.</p>
 </div>
 
 
