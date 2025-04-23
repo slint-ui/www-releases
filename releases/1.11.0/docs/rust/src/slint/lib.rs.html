@@ -1,0 +1,567 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `api/rs/slint/lib.rs`."><title>lib.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-c233d2bd.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint" data-themes="" data-resource-suffix="" data-rustdoc-version="1.88.0-nightly (6bc57c6bf 2025-04-22)" data-channel="nightly" data-search-js="search-f7877310.js" data-settings-js="settings-5514c975.js" ><script src="../../static.files/storage-4e99c027.js"></script><script defer src="../../static.files/src-script-63605ae7.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-7ef8a74a.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
+    This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
+    It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
+    in sphinx and via head.hbs in mdbook.
+-->
+<link rel="stylesheet" href="https://slint.dev/resources/highlightjs/11.0.1/default.min.css">
+<script src="https://slint.dev/resources/highlightjs/11.0.1/highlight.min.js"></script>
+<script>
+  function highlight_slint(hljs) {
+    const KEYWORDS = {
+      keyword:
+        "animate callback changed component enum export for function global if import in in-out inherits out parent private property public pure root self states struct",
+      literal: "false true",
+      built_in:
+        "ArcTo Clip Close Colors CubicTo Flickable FocusScope GridLayout HorizontalLayout Image LineTo Math MoveTo Path PopupWindow QuadraticTo Rectangle Row Text TextInput TouchArea VerticalLayout Window animation-tick debug",
+      type: "bool duration easing float int length logical-length relative-font-size string",
+    };
+
+    return {
+      name: 'slint',
+      case_insensitive: false,
+      keywords: KEYWORDS,
+      contains: [
+        hljs.QUOTE_STRING_MODE,
+        hljs.C_LINE_COMMENT_MODE,
+        hljs.C_BLOCK_COMMENT_MODE,
+        hljs.COMMENT('/\\*', '\\*/', {
+          contains: ['self']
+        }),
+        {
+          className: 'number',
+          begin: '\\b\\d+(\\.\\d+)?(\\w+)?',
+          relevance: 0
+        },
+        {
+          className: 'title',
+          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]* *:=',
+        },
+        {
+          className: 'symbol',
+          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]*(:| *=>)',
+        },
+        {
+          className: 'built_in',
+          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]*!',
+        },
+      ],
+      illegal: /@/
+    };
+  };
+
+  // Tags used in fenced code blocks
+  for (let tag of ["slint", "slint,no-preview", "slint,no-auto-preview", "slint,ignore"]) {
+    hljs.registerLanguage(tag, highlight_slint);
+  }
+
+
+  window.addEventListener("DOMContentLoaded", () => {
+    const rustDoc = document.querySelector('meta[name="generator"]')?.content == "rustdoc";
+    if (rustDoc) {
+      // Only highlight .slint blocks, leave the others to rustdoc
+      for (slintBlock of document.querySelectorAll("[class*=language-slint]")) {
+        hljs.highlightElement(slintBlock)
+      }
+
+      // Some of the rustdoc selectors require the pre element to have the rust class
+      for (codeBlock of document.querySelectorAll(".language-slint.hljs")) {
+        codeBlock.classList.add("rust");
+        codeBlock.classList.remove("hljs");
+      }
+
+      // Change the hljs generated classes to the rustdoc
+      // ones, so that the highlighting adjusts to the theme correctly.
+      const highlightJSToRustDoc = [
+        ["comment", "comment"],
+        ["number", "number"],
+        ["symbol", "struct"], // width:
+        ["keyword", "kw"],
+        ["built_in", "primitive"],
+        ["string", "string"],
+        ["title", "fnname"], // Foo :=
+        ["type", "type"]
+      ];
+
+      for ([hljs_class, rustdoc_class] of highlightJSToRustDoc) {
+        for (titleElement of document.querySelectorAll(`.hljs-${hljs_class}`)) {
+          titleElement.classList.remove(`hljs-${hljs_class}`);
+          titleElement.classList.add(rustdoc_class);
+        }
+      }
+    } else {
+      // For use with the mdbook Tutorial
+      hljs.highlightAll();
+
+      // The Sphinx/my_st generated HTML for code blocks doesn't use <code> tags, so highlight.js'
+      // default selector "pre code" doesn't match. Let's do it by hand:
+      for (block of document.querySelectorAll("div[class*=highlight-slint] div.highlight pre")) {
+        hljs.highlightElement(block)
+      }
+    }
+
+    // Fix up links that sphinx handles but for rustdoc we need to resolve manually:
+    {
+      let target_url = null;
+      if (document.location.hostname == "snapshots.slint.dev") {
+        target_url = `https://snapshots.slint.dev/master/docs/slint/`;
+      } else {
+        let version = document.querySelector("span.version");
+        if (version !== null) {
+          target_url = `https://slint.dev/releases/${version.innerText}/docs/slint/`;
+        }
+      }
+
+      if (target_url !== null) {
+        for (let link of document.querySelectorAll("a[href^='slint-reference:']")) {
+          link.href = link.href.replace("slint-reference:", target_url);
+        }
+      }
+    }
+  });
+</script>
+
+</head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer"></div><main><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><h1><div class="sub-heading">slint/</div>lib.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap digits-3"><pre class="rust"><code><a href=#1 id=1 data-nosnippet>1</a><span class="comment">// Copyright © SixtyFPS GmbH &lt;info@slint.dev&gt;
+<a href=#2 id=2 data-nosnippet>2</a>// SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0
+<a href=#3 id=3 data-nosnippet>3</a>
+<a href=#4 id=4 data-nosnippet>4</a>// cSpell: ignore buildrs
+<a href=#5 id=5 data-nosnippet>5</a>
+<a href=#6 id=6 data-nosnippet>6</a></span><span class="attr">#![cfg_attr(docsrs, feature(doc_cfg, doc_auto_cfg))]
+<a href=#7 id=7 data-nosnippet>7</a>
+<a href=#8 id=8 data-nosnippet>8</a></span><span class="doccomment">/*!
+<a href=#9 id=9 data-nosnippet>9</a># Slint
+<a href=#10 id=10 data-nosnippet>10</a>
+<a href=#11 id=11 data-nosnippet>11</a>This crate is the main entry point for embedding user interfaces designed with
+<a href=#12 id=12 data-nosnippet>12</a>[Slint](https://slint.rs/) in Rust programs.
+<a href=#13 id=13 data-nosnippet>13</a>*/
+<a href=#14 id=14 data-nosnippet>14</a></span><span class="attr">#![doc = <span class="macro">i_slint_core_macros::slint_doc_str!</span>(<span class="string">"If you are new to Slint, start with the [Walk-through **tutorial**](slint:quickstart)"</span>)]
+<a href=#15 id=15 data-nosnippet>15</a></span><span class="doccomment">/*! If you are already familiar with Slint, the following topics provide related information.
+<a href=#16 id=16 data-nosnippet>16</a>
+<a href=#17 id=17 data-nosnippet>17</a>## Topics
+<a href=#18 id=18 data-nosnippet>18</a>
+<a href=#19 id=19 data-nosnippet>19</a>*/
+<a href=#20 id=20 data-nosnippet>20</a></span><span class="attr">#![doc = <span class="macro">i_slint_core_macros::slint_doc_str!</span>(<span class="string">"- [The Slint Language Documentation](slint:index)"</span>)]
+<a href=#21 id=21 data-nosnippet>21</a></span><span class="doccomment">/*! - [Type mappings between .slint and Rust](docs::type_mappings)
+<a href=#22 id=22 data-nosnippet>22</a> - [Feature flags and backend selection](docs::cargo_features)
+<a href=#23 id=23 data-nosnippet>23</a> - [Slint on Microcontrollers](docs::mcu)
+<a href=#24 id=24 data-nosnippet>24</a>
+<a href=#25 id=25 data-nosnippet>25</a>## How to use this crate:
+<a href=#26 id=26 data-nosnippet>26</a>
+<a href=#27 id=27 data-nosnippet>27</a>Designs of user interfaces are described in the `.slint` design markup language. There are three ways
+<a href=#28 id=28 data-nosnippet>28</a>of including them in Rust:
+<a href=#29 id=29 data-nosnippet>29</a>
+<a href=#30 id=30 data-nosnippet>30</a> - The `.slint` code is [inline in a macro](#the-slint-code-in-a-macro).
+<a href=#31 id=31 data-nosnippet>31</a> - The `.slint` code in [external files compiled with `build.rs`](#the-slint-code-in-external-files-is-compiled-with-buildrs)
+<a href=#32 id=32 data-nosnippet>32</a>*/
+<a href=#33 id=33 data-nosnippet>33</a></span><span class="attr">#![doc = <span class="macro">i_slint_core_macros::slint_doc_str!</span>(<span class="string">" - The `.slint` code is loaded dynamically at run-time from the file system, by using the [interpreter API](slint:rust:slint_interpreter/)."</span>)]
+<a href=#34 id=34 data-nosnippet>34</a></span><span class="doccomment">/*!
+<a href=#35 id=35 data-nosnippet>35</a>
+<a href=#36 id=36 data-nosnippet>36</a>With the first two methods, the markup code is translated to Rust code and each component is turned into a Rust
+<a href=#37 id=37 data-nosnippet>37</a>struct with functions. Use these functions to instantiate and show the component, and
+<a href=#38 id=38 data-nosnippet>38</a>to access declared properties. Check out our [sample component](docs::generated_code::SampleComponent) for more
+<a href=#39 id=39 data-nosnippet>39</a>information about the generation functions and how to use them.
+<a href=#40 id=40 data-nosnippet>40</a>
+<a href=#41 id=41 data-nosnippet>41</a>### The .slint code in a macro
+<a href=#42 id=42 data-nosnippet>42</a>
+<a href=#43 id=43 data-nosnippet>43</a>This method combines your Rust code with the `.slint` design markup in one file, using a macro:
+<a href=#44 id=44 data-nosnippet>44</a>
+<a href=#45 id=45 data-nosnippet>45</a>```rust
+<a href=#46 id=46 data-nosnippet>46</a>slint::slint!{
+<a href=#47 id=47 data-nosnippet>47</a>    export component HelloWorld inherits Window {
+<a href=#48 id=48 data-nosnippet>48</a>        Text {
+<a href=#49 id=49 data-nosnippet>49</a>            text: "hello world";
+<a href=#50 id=50 data-nosnippet>50</a>            color: green;
+<a href=#51 id=51 data-nosnippet>51</a>        }
+<a href=#52 id=52 data-nosnippet>52</a>    }
+<a href=#53 id=53 data-nosnippet>53</a>}
+<a href=#54 id=54 data-nosnippet>54</a>fn main() {
+<a href=#55 id=55 data-nosnippet>55</a>#   return; // Don't run a window in an example
+<a href=#56 id=56 data-nosnippet>56</a>    HelloWorld::new().unwrap().run().unwrap();
+<a href=#57 id=57 data-nosnippet>57</a>}
+<a href=#58 id=58 data-nosnippet>58</a>```
+<a href=#59 id=59 data-nosnippet>59</a>
+<a href=#60 id=60 data-nosnippet>60</a>### The .slint code in external files is compiled with `build.rs`
+<a href=#61 id=61 data-nosnippet>61</a>
+<a href=#62 id=62 data-nosnippet>62</a>When your design becomes bigger in terms of markup code, you may want move it to a dedicated
+<a href=#63 id=63 data-nosnippet>63</a>`.slint` file. */
+<a href=#64 id=64 data-nosnippet>64</a></span><span class="attr">#![doc = <span class="macro">i_slint_core_macros::slint_doc_str!</span>(<span class="string">"It's also possible to split a `.slint` file into multiple files using [modules](slint:modules)."</span>)]
+<a href=#65 id=65 data-nosnippet>65</a></span><span class="doccomment">/*!Use a [build script](https://doc.rust-lang.org/cargo/reference/build-scripts.html) to compile
+<a href=#66 id=66 data-nosnippet>66</a>your main `.slint` file:
+<a href=#67 id=67 data-nosnippet>67</a>
+<a href=#68 id=68 data-nosnippet>68</a>*/
+<a href=#69 id=69 data-nosnippet>69</a></span><span class="attr">#![doc = <span class="macro">i_slint_core_macros::slint_doc_str!</span>(<span class="string">"In your Cargo.toml add a `build` assignment and use the [`slint-build`](slint:rust:slint_build/) crate in `build-dependencies`:"</span>)]
+<a href=#70 id=70 data-nosnippet>70</a></span><span class="comment">/*
+<a href=#71 id=71 data-nosnippet>71</a>
+<a href=#72 id=72 data-nosnippet>72</a>```toml
+<a href=#73 id=73 data-nosnippet>73</a>[package]
+<a href=#74 id=74 data-nosnippet>74</a>...
+<a href=#75 id=75 data-nosnippet>75</a>build = "build.rs"
+<a href=#76 id=76 data-nosnippet>76</a>edition = "2021"
+<a href=#77 id=77 data-nosnippet>77</a>
+<a href=#78 id=78 data-nosnippet>78</a>[dependencies]
+<a href=#79 id=79 data-nosnippet>79</a>slint = "1.10.0"
+<a href=#80 id=80 data-nosnippet>80</a>...
+<a href=#81 id=81 data-nosnippet>81</a>
+<a href=#82 id=82 data-nosnippet>82</a>[build-dependencies]
+<a href=#83 id=83 data-nosnippet>83</a>slint-build = "1.10.0"
+<a href=#84 id=84 data-nosnippet>84</a>```
+<a href=#85 id=85 data-nosnippet>85</a>
+<a href=#86 id=86 data-nosnippet>86</a>Use the API of the slint-build crate in the `build.rs` file:
+<a href=#87 id=87 data-nosnippet>87</a>
+<a href=#88 id=88 data-nosnippet>88</a>```rust,no_run
+<a href=#89 id=89 data-nosnippet>89</a>fn main() {
+<a href=#90 id=90 data-nosnippet>90</a>    slint_build::compile("ui/hello.slint").unwrap();
+<a href=#91 id=91 data-nosnippet>91</a>}
+<a href=#92 id=92 data-nosnippet>92</a>```
+<a href=#93 id=93 data-nosnippet>93</a>
+<a href=#94 id=94 data-nosnippet>94</a>Finally, use the [`include_modules!`] macro in your `main.rs`:
+<a href=#95 id=95 data-nosnippet>95</a>
+<a href=#96 id=96 data-nosnippet>96</a>```ignore
+<a href=#97 id=97 data-nosnippet>97</a>slint::include_modules!();
+<a href=#98 id=98 data-nosnippet>98</a>fn main() {
+<a href=#99 id=99 data-nosnippet>99</a>    HelloWorld::new().unwrap().run().unwrap();
+<a href=#100 id=100 data-nosnippet>100</a>}
+<a href=#101 id=101 data-nosnippet>101</a>```
+<a href=#102 id=102 data-nosnippet>102</a>
+<a href=#103 id=103 data-nosnippet>103</a>Use our [Template Repository](https://github.com/slint-ui/slint-rust-template) to create a skeleton file
+<a href=#104 id=104 data-nosnippet>104</a>hierarchy that uses this method:
+<a href=#105 id=105 data-nosnippet>105</a>
+<a href=#106 id=106 data-nosnippet>106</a>1. Download and extract the [ZIP archive of the Rust Template](https://github.com/slint-ui/slint-rust-template/archive/refs/heads/main.zip).
+<a href=#107 id=107 data-nosnippet>107</a>2. Rename the extracted directory and change into it:
+<a href=#108 id=108 data-nosnippet>108</a>
+<a href=#109 id=109 data-nosnippet>109</a>```bash
+<a href=#110 id=110 data-nosnippet>110</a>mv slint-rust-template-main my-project
+<a href=#111 id=111 data-nosnippet>111</a>cd my-project
+<a href=#112 id=112 data-nosnippet>112</a>```
+<a href=#113 id=113 data-nosnippet>113</a>
+<a href=#114 id=114 data-nosnippet>114</a>## Generated components
+<a href=#115 id=115 data-nosnippet>115</a>
+<a href=#116 id=116 data-nosnippet>116</a>Exported component from the macro or the main file that inherit `Window` or `Dialog` is mapped to a Rust structure.
+<a href=#117 id=117 data-nosnippet>117</a>
+<a href=#118 id=118 data-nosnippet>118</a>The components are generated and re-exported to the location of the [`include_modules!`] or [`slint!`] macro.
+<a href=#119 id=119 data-nosnippet>119</a>It is represented as a struct with the same name as the component.
+<a href=#120 id=120 data-nosnippet>120</a>
+<a href=#121 id=121 data-nosnippet>121</a>For example, if you have
+<a href=#122 id=122 data-nosnippet>122</a>
+<a href=#123 id=123 data-nosnippet>123</a>```slint,no-preview
+<a href=#124 id=124 data-nosnippet>124</a>export component MyComponent inherits Window { /*...*/ }
+<a href=#125 id=125 data-nosnippet>125</a>```
+<a href=#126 id=126 data-nosnippet>126</a>
+<a href=#127 id=127 data-nosnippet>127</a>in the .slint file, it will create a
+<a href=#128 id=128 data-nosnippet>128</a>```rust
+<a href=#129 id=129 data-nosnippet>129</a>struct MyComponent { /*...*/ }
+<a href=#130 id=130 data-nosnippet>130</a>```
+<a href=#131 id=131 data-nosnippet>131</a>
+<a href=#132 id=132 data-nosnippet>132</a>See also our [sample component](docs::generated_code::SampleComponent) for more information about the API of the generated struct.
+<a href=#133 id=133 data-nosnippet>133</a>
+<a href=#134 id=134 data-nosnippet>134</a>A component is instantiated using the [`fn new() -&gt; Self`](docs::generated_code::SampleComponent::new) function. The following
+<a href=#135 id=135 data-nosnippet>135</a>convenience functions are available through the [`ComponentHandle`] implementation:
+<a href=#136 id=136 data-nosnippet>136</a>
+<a href=#137 id=137 data-nosnippet>137</a>  - [`fn clone_strong(&amp;self) -&gt; Self`](docs::generated_code::SampleComponent::clone_strong): creates a strongly referenced clone of the component instance.
+<a href=#138 id=138 data-nosnippet>138</a>  - [`fn as_weak(&amp;self) -&gt; Weak`](docs::generated_code::SampleComponent::as_weak): to create a [weak](Weak) reference to the component instance.
+<a href=#139 id=139 data-nosnippet>139</a>  - [`fn show(&amp;self)`](docs::generated_code::SampleComponent::show): to show the window of the component.
+<a href=#140 id=140 data-nosnippet>140</a>  - [`fn hide(&amp;self)`](docs::generated_code::SampleComponent::hide): to hide the window of the component.
+<a href=#141 id=141 data-nosnippet>141</a>  - [`fn run(&amp;self)`](docs::generated_code::SampleComponent::run): a convenience function that first calls `show()`,
+<a href=#142 id=142 data-nosnippet>142</a>    followed by spinning the event loop, and `hide()` when returning from the event loop.
+<a href=#143 id=143 data-nosnippet>143</a>  - [`fn global&lt;T: Global&lt;Self&gt;&gt;(&amp;self) -&gt; T`](docs::generated_code::SampleComponent::global): an accessor to the global singletons,
+<a href=#144 id=144 data-nosnippet>144</a>
+<a href=#145 id=145 data-nosnippet>145</a>For each top-level property
+<a href=#146 id=146 data-nosnippet>146</a>  - A setter [`fn set_&lt;property_name&gt;(&amp;self, value: &lt;PropertyType&gt;)`](docs::generated_code::SampleComponent::set_counter)
+<a href=#147 id=147 data-nosnippet>147</a>  - A getter [`fn get_&lt;property_name&gt;(&amp;self) -&gt; &lt;PropertyType&gt;`](docs::generated_code::SampleComponent::get_counter)
+<a href=#148 id=148 data-nosnippet>148</a>
+<a href=#149 id=149 data-nosnippet>149</a>For each top-level callback
+<a href=#150 id=150 data-nosnippet>150</a>  - [`fn invoke_&lt;callback_name&gt;(&amp;self)`](docs::generated_code::SampleComponent::invoke_hello): to invoke the callback
+<a href=#151 id=151 data-nosnippet>151</a>  - [`fn on_&lt;callback_name&gt;(&amp;self, callback: impl Fn(&lt;CallbackArgs&gt;) + 'static)`](docs::generated_code::SampleComponent::on_hello): to set the callback handler.
+<a href=#152 id=152 data-nosnippet>152</a>
+<a href=#153 id=153 data-nosnippet>153</a>Note: All dashes (`-`) are replaced by underscores (`_`) in names of types or functions.
+<a href=#154 id=154 data-nosnippet>154</a>
+<a href=#155 id=155 data-nosnippet>155</a>After instantiating the component, call [`ComponentHandle::run()`] on show it on the screen and spin the event loop to
+<a href=#156 id=156 data-nosnippet>156</a>react to input events. To show multiple components simultaneously, call [`ComponentHandle::show()`] on each instance.
+<a href=#157 id=157 data-nosnippet>157</a>Call [`run_event_loop()`] when you're ready to enter the event loop.
+<a href=#158 id=158 data-nosnippet>158</a>
+<a href=#159 id=159 data-nosnippet>159</a>The generated component struct acts as a handle holding a strong reference (similar to an `Rc`). The `Clone` trait is
+<a href=#160 id=160 data-nosnippet>160</a>not implemented. Instead you need to make explicit [`ComponentHandle::clone_strong`] and [`ComponentHandle::as_weak`]
+<a href=#161 id=161 data-nosnippet>161</a>calls. A strong reference should not be captured by the closures given to a callback, as this would produce a reference
+<a href=#162 id=162 data-nosnippet>162</a>loop and leak the component. Instead, the callback function should capture a weak component.
+<a href=#163 id=163 data-nosnippet>163</a>
+<a href=#164 id=164 data-nosnippet>164</a>## Threading and Event-loop
+<a href=#165 id=165 data-nosnippet>165</a>
+<a href=#166 id=166 data-nosnippet>166</a>For platform-specific reasons, the event loop must run in the main thread, in most backends, and all the components
+<a href=#167 id=167 data-nosnippet>167</a>must be created in the same thread as the thread the event loop is running or is going to run.
+<a href=#168 id=168 data-nosnippet>168</a>
+<a href=#169 id=169 data-nosnippet>169</a>You should perform the minimum amount of work in the main thread and delegate the actual logic to another
+<a href=#170 id=170 data-nosnippet>170</a>thread to avoid blocking animations. Use the [`invoke_from_event_loop`] function to communicate from your worker thread to the UI thread.
+<a href=#171 id=171 data-nosnippet>171</a>
+<a href=#172 id=172 data-nosnippet>172</a>To run a function with a delay or with an interval use a [`Timer`].
+<a href=#173 id=173 data-nosnippet>173</a>
+<a href=#174 id=174 data-nosnippet>174</a>To run an async function or a future, use [`spawn_local()`].
+<a href=#175 id=175 data-nosnippet>175</a>
+<a href=#176 id=176 data-nosnippet>176</a>## Exported Global singletons
+<a href=#177 id=177 data-nosnippet>177</a>
+<a href=#178 id=178 data-nosnippet>178</a>*/
+<a href=#179 id=179 data-nosnippet>179</a></span><span class="attr">#![doc = <span class="macro">i_slint_core_macros::slint_doc_str!</span>(<span class="string">"When you export a [global singleton](slint:globals) from the main file,"</span>)]
+<a href=#180 id=180 data-nosnippet>180</a></span><span class="doccomment">/*! it is also generated with the exported name. Like the main component, the generated struct have
+<a href=#181 id=181 data-nosnippet>181</a>inherent method to access the properties and callback:
+<a href=#182 id=182 data-nosnippet>182</a>
+<a href=#183 id=183 data-nosnippet>183</a>For each property
+<a href=#184 id=184 data-nosnippet>184</a>  - A setter: `fn set_&lt;property_name&gt;(&amp;self, value: &lt;PropertyType&gt;)`
+<a href=#185 id=185 data-nosnippet>185</a>  - A getter: `fn get_&lt;property_name&gt;(&amp;self) -&gt; &lt;PropertyType&gt;`
+<a href=#186 id=186 data-nosnippet>186</a>
+<a href=#187 id=187 data-nosnippet>187</a>For each callback
+<a href=#188 id=188 data-nosnippet>188</a>  - `fn invoke_&lt;callback_name&gt;(&amp;self, &lt;CallbackArgs&gt;) -&gt; &lt;ReturnValue&gt;` to invoke the callback
+<a href=#189 id=189 data-nosnippet>189</a>  - `fn on_&lt;callback_name&gt;(&amp;self, callback: impl Fn(&lt;CallbackArgs&gt;) + 'static)` to set the callback handler.
+<a href=#190 id=190 data-nosnippet>190</a>
+<a href=#191 id=191 data-nosnippet>191</a>The global can be accessed with the [`ComponentHandle::global()`] function, or with [`Global::get()`]
+<a href=#192 id=192 data-nosnippet>192</a>
+<a href=#193 id=193 data-nosnippet>193</a>See the [documentation of the `Global` trait](Global) for an example.
+<a href=#194 id=194 data-nosnippet>194</a>
+<a href=#195 id=195 data-nosnippet>195</a>**Note**: Global singletons are instantiated once per component. When declaring multiple components for `export` to Rust,
+<a href=#196 id=196 data-nosnippet>196</a>each instance will have their own instance of associated globals singletons.
+<a href=#197 id=197 data-nosnippet>197</a>*/
+<a href=#198 id=198 data-nosnippet>198</a>
+<a href=#199 id=199 data-nosnippet>199</a></span><span class="attr">#![warn(missing_docs)]
+<a href=#200 id=200 data-nosnippet>200</a>#![deny(unsafe_code)]
+<a href=#201 id=201 data-nosnippet>201</a>#![doc(html_logo_url = <span class="string">"https://slint.dev/logo/slint-logo-square-light.svg"</span>)]
+<a href=#202 id=202 data-nosnippet>202</a>#![cfg_attr(not(feature = <span class="string">"std"</span>), no_std)]
+<a href=#203 id=203 data-nosnippet>203</a>#![allow(clippy::needless_doctest_main)] </span><span class="comment">// We document how to write a main function
+<a href=#204 id=204 data-nosnippet>204</a>
+<a href=#205 id=205 data-nosnippet>205</a></span><span class="kw">extern crate </span>alloc;
+<a href=#206 id=206 data-nosnippet>206</a>
+<a href=#207 id=207 data-nosnippet>207</a><span class="attr">#[cfg(not(feature = <span class="string">"compat-1-2"</span>))]
+<a href=#208 id=208 data-nosnippet>208</a></span><span class="macro">compile_error!</span>(
+<a href=#209 id=209 data-nosnippet>209</a>    <span class="string">"The feature `compat-1-2` must be enabled to ensure \
+<a href=#210 id=210 data-nosnippet>210</a>    forward compatibility with future version of this crate"
+<a href=#211 id=211 data-nosnippet>211</a></span>);
+<a href=#212 id=212 data-nosnippet>212</a>
+<a href=#213 id=213 data-nosnippet>213</a><span class="kw">pub use </span>slint_macros::slint;
+<a href=#214 id=214 data-nosnippet>214</a>
+<a href=#215 id=215 data-nosnippet>215</a><span class="kw">pub use </span>i_slint_core::api::<span class="kw-2">*</span>;
+<a href=#216 id=216 data-nosnippet>216</a><span class="attr">#[doc(hidden)]
+<a href=#217 id=217 data-nosnippet>217</a>#[deprecated(note = <span class="string">"Experimental type was made public by mistake"</span>)]
+<a href=#218 id=218 data-nosnippet>218</a></span><span class="kw">pub use </span>i_slint_core::component_factory::ComponentFactory;
+<a href=#219 id=219 data-nosnippet>219</a><span class="attr">#[cfg(not(target_arch = <span class="string">"wasm32"</span>))]
+<a href=#220 id=220 data-nosnippet>220</a></span><span class="kw">pub use </span>i_slint_core::graphics::{BorrowedOpenGLTextureBuilder, BorrowedOpenGLTextureOrigin};
+<a href=#221 id=221 data-nosnippet>221</a><span class="comment">// keep in sync with internal/interpreter/api.rs
+<a href=#222 id=222 data-nosnippet>222</a></span><span class="kw">pub use </span>i_slint_core::graphics::{
+<a href=#223 id=223 data-nosnippet>223</a>    Brush, Color, Image, LoadImageError, Rgb8Pixel, Rgba8Pixel, RgbaColor, SharedPixelBuffer,
+<a href=#224 id=224 data-nosnippet>224</a>};
+<a href=#225 id=225 data-nosnippet>225</a><span class="kw">pub use </span>i_slint_core::model::{
+<a href=#226 id=226 data-nosnippet>226</a>    FilterModel, MapModel, Model, ModelExt, ModelNotify, ModelPeer, ModelRc, ModelTracker,
+<a href=#227 id=227 data-nosnippet>227</a>    ReverseModel, SortModel, StandardListViewItem, TableColumn, VecModel,
+<a href=#228 id=228 data-nosnippet>228</a>};
+<a href=#229 id=229 data-nosnippet>229</a><span class="kw">pub use </span>i_slint_core::sharedvector::SharedVector;
+<a href=#230 id=230 data-nosnippet>230</a><span class="kw">pub use </span>i_slint_core::timers::{Timer, TimerMode};
+<a href=#231 id=231 data-nosnippet>231</a><span class="kw">pub use </span>i_slint_core::translations::{select_bundled_translation, SelectBundledTranslationError};
+<a href=#232 id=232 data-nosnippet>232</a><span class="kw">pub use </span>i_slint_core::{
+<a href=#233 id=233 data-nosnippet>233</a>    format,
+<a href=#234 id=234 data-nosnippet>234</a>    string::{SharedString, ToSharedString},
+<a href=#235 id=235 data-nosnippet>235</a>};
+<a href=#236 id=236 data-nosnippet>236</a>
+<a href=#237 id=237 data-nosnippet>237</a><span class="kw">pub mod </span>private_unstable_api;
+<a href=#238 id=238 data-nosnippet>238</a>
+<a href=#239 id=239 data-nosnippet>239</a><span class="doccomment">/// Enters the main event loop. This is necessary in order to receive
+<a href=#240 id=240 data-nosnippet>240</a>/// events from the windowing system for rendering to the screen
+<a href=#241 id=241 data-nosnippet>241</a>/// and reacting to user input.
+<a href=#242 id=242 data-nosnippet>242</a>/// This function will run until the last window is closed or until
+<a href=#243 id=243 data-nosnippet>243</a>/// [`quit_event_loop()`] is called.
+<a href=#244 id=244 data-nosnippet>244</a>///
+<a href=#245 id=245 data-nosnippet>245</a>/// See also [`run_event_loop_until_quit()`] to keep the event loop running until
+<a href=#246 id=246 data-nosnippet>246</a>/// [`quit_event_loop()`] is called, even if all windows are closed.
+<a href=#247 id=247 data-nosnippet>247</a></span><span class="kw">pub fn </span>run_event_loop() -&gt; <span class="prelude-ty">Result</span>&lt;(), PlatformError&gt; {
+<a href=#248 id=248 data-nosnippet>248</a>    i_slint_backend_selector::with_platform(|b| b.run_event_loop())
+<a href=#249 id=249 data-nosnippet>249</a>}
+<a href=#250 id=250 data-nosnippet>250</a>
+<a href=#251 id=251 data-nosnippet>251</a><span class="doccomment">/// Similar to [`run_event_loop()`], but this function enters the main event loop
+<a href=#252 id=252 data-nosnippet>252</a>/// and continues to run even when the last window is closed, until
+<a href=#253 id=253 data-nosnippet>253</a>/// [`quit_event_loop()`] is called.
+<a href=#254 id=254 data-nosnippet>254</a>///
+<a href=#255 id=255 data-nosnippet>255</a>/// This is useful for system tray applications where the application needs to stay alive
+<a href=#256 id=256 data-nosnippet>256</a>/// even if no windows are visible.
+<a href=#257 id=257 data-nosnippet>257</a></span><span class="kw">pub fn </span>run_event_loop_until_quit() -&gt; <span class="prelude-ty">Result</span>&lt;(), PlatformError&gt; {
+<a href=#258 id=258 data-nosnippet>258</a>    i_slint_backend_selector::with_platform(|b| {
+<a href=#259 id=259 data-nosnippet>259</a>        <span class="attr">#[allow(deprecated)]
+<a href=#260 id=260 data-nosnippet>260</a>        </span>b.set_event_loop_quit_on_last_window_closed(<span class="bool-val">false</span>);
+<a href=#261 id=261 data-nosnippet>261</a>        b.run_event_loop()
+<a href=#262 id=262 data-nosnippet>262</a>    })
+<a href=#263 id=263 data-nosnippet>263</a>}
+<a href=#264 id=264 data-nosnippet>264</a>
+<a href=#265 id=265 data-nosnippet>265</a><span class="doccomment">/// Spawns a [`Future`](core::future::Future) to execute in the Slint event loop.
+<a href=#266 id=266 data-nosnippet>266</a>///
+<a href=#267 id=267 data-nosnippet>267</a>/// This function is intended to be invoked only from the main Slint thread that runs the event loop.
+<a href=#268 id=268 data-nosnippet>268</a>///
+<a href=#269 id=269 data-nosnippet>269</a>/// For spawning a `Send` future from a different thread, this function should be called from a closure
+<a href=#270 id=270 data-nosnippet>270</a>/// passed to [`invoke_from_event_loop()`].
+<a href=#271 id=271 data-nosnippet>271</a>///
+<a href=#272 id=272 data-nosnippet>272</a>/// This function is typically called from a UI callback.
+<a href=#273 id=273 data-nosnippet>273</a>///
+<a href=#274 id=274 data-nosnippet>274</a>/// # Example
+<a href=#275 id=275 data-nosnippet>275</a>///
+<a href=#276 id=276 data-nosnippet>276</a>/// ```rust,no_run
+<a href=#277 id=277 data-nosnippet>277</a>/// slint::spawn_local(async move {
+<a href=#278 id=278 data-nosnippet>278</a>///     // your async code goes here
+<a href=#279 id=279 data-nosnippet>279</a>/// }).unwrap();
+<a href=#280 id=280 data-nosnippet>280</a>/// ```
+<a href=#281 id=281 data-nosnippet>281</a>///
+<a href=#282 id=282 data-nosnippet>282</a>/// # Compatibility with Tokio and other runtimes
+<a href=#283 id=283 data-nosnippet>283</a>///
+<a href=#284 id=284 data-nosnippet>284</a>/// The runtime used to execute the future on the main thread is platform-dependent,
+<a href=#285 id=285 data-nosnippet>285</a>/// for instance, it could be the winit event loop. Therefore, futures that assume a specific runtime
+<a href=#286 id=286 data-nosnippet>286</a>/// may not work. This may be an issue if you call `.await` on a future created by another
+<a href=#287 id=287 data-nosnippet>287</a>/// runtime, or pass the future directly to `spawn_local`.
+<a href=#288 id=288 data-nosnippet>288</a>///
+<a href=#289 id=289 data-nosnippet>289</a>/// Futures from the [smol](https://docs.rs/smol/latest/smol/) runtime always hand off their work to
+<a href=#290 id=290 data-nosnippet>290</a>/// separate I/O threads that run in parallel to the Slint event loop.
+<a href=#291 id=291 data-nosnippet>291</a>///
+<a href=#292 id=292 data-nosnippet>292</a>/// The [Tokio](https://docs.rs/tokio/latest/tokio/index.html) runtime is subject to the following constraints:
+<a href=#293 id=293 data-nosnippet>293</a>///
+<a href=#294 id=294 data-nosnippet>294</a>/// * Tokio futures require entering the context of a global Tokio runtime.
+<a href=#295 id=295 data-nosnippet>295</a>/// * Tokio futures aren't guaranteed to hand off their work to separate threads and may therefore not complete, because
+<a href=#296 id=296 data-nosnippet>296</a>/// the Slint runtime can't drive the Tokio runtime.
+<a href=#297 id=297 data-nosnippet>297</a>/// * Tokio futures require regular yielding to the Tokio runtime for fairness, a constraint that also can't be met by Slint.
+<a href=#298 id=298 data-nosnippet>298</a>/// * Tokio's [current-thread schedule](https://docs.rs/tokio/latest/tokio/runtime/index.html#current-thread-scheduler)
+<a href=#299 id=299 data-nosnippet>299</a>/// cannot be used in Slint main thread, because Slint cannot yield to it.
+<a href=#300 id=300 data-nosnippet>300</a>///
+<a href=#301 id=301 data-nosnippet>301</a>/// To address these constraints, use [async_compat](https://docs.rs/async-compat/latest/async_compat/index.html)'s [Compat::new()](https://docs.rs/async-compat/latest/async_compat/struct.Compat.html#method.new)
+<a href=#302 id=302 data-nosnippet>302</a>/// to implicitly allocate a shared, multi-threaded Tokio runtime that will be used for Tokio futures.
+<a href=#303 id=303 data-nosnippet>303</a>///
+<a href=#304 id=304 data-nosnippet>304</a>/// The following little example demonstrates the use of Tokio's [`TcpStream`](https://docs.rs/tokio/latest/tokio/net/struct.TcpStream.html) to
+<a href=#305 id=305 data-nosnippet>305</a>/// read from a network socket. The entire future passed to `spawn_local()` is wrapped in `Compat::new()` to make it run:
+<a href=#306 id=306 data-nosnippet>306</a>///
+<a href=#307 id=307 data-nosnippet>307</a>/// ```rust,no_run
+<a href=#308 id=308 data-nosnippet>308</a>/// // A dummy TCP server that once reports "Hello World"
+<a href=#309 id=309 data-nosnippet>309</a>/// # i_slint_backend_testing::init_integration_test_with_mock_time();
+<a href=#310 id=310 data-nosnippet>310</a>/// use std::io::Write;
+<a href=#311 id=311 data-nosnippet>311</a>///
+<a href=#312 id=312 data-nosnippet>312</a>/// let listener = std::net::TcpListener::bind("127.0.0.1:0").unwrap();
+<a href=#313 id=313 data-nosnippet>313</a>/// let local_addr = listener.local_addr().unwrap();
+<a href=#314 id=314 data-nosnippet>314</a>/// let server = std::thread::spawn(move || {
+<a href=#315 id=315 data-nosnippet>315</a>///     let mut stream = listener.incoming().next().unwrap().unwrap();
+<a href=#316 id=316 data-nosnippet>316</a>///     stream.write("Hello World".as_bytes()).unwrap();
+<a href=#317 id=317 data-nosnippet>317</a>/// });
+<a href=#318 id=318 data-nosnippet>318</a>///
+<a href=#319 id=319 data-nosnippet>319</a>/// let slint_future = async move {
+<a href=#320 id=320 data-nosnippet>320</a>///     use tokio::io::AsyncReadExt;
+<a href=#321 id=321 data-nosnippet>321</a>///     let mut stream = tokio::net::TcpStream::connect(local_addr).await.unwrap();
+<a href=#322 id=322 data-nosnippet>322</a>///     let mut data = Vec::new();
+<a href=#323 id=323 data-nosnippet>323</a>///     stream.read_to_end(&amp;mut data).await.unwrap();
+<a href=#324 id=324 data-nosnippet>324</a>///     assert_eq!(data, "Hello World".as_bytes());
+<a href=#325 id=325 data-nosnippet>325</a>///     slint::quit_event_loop().unwrap();
+<a href=#326 id=326 data-nosnippet>326</a>/// };
+<a href=#327 id=327 data-nosnippet>327</a>///
+<a href=#328 id=328 data-nosnippet>328</a>/// // Wrap the future that includes Tokio futures in async_compat's `Compat` to ensure
+<a href=#329 id=329 data-nosnippet>329</a>/// // presence of a Tokio run-time.
+<a href=#330 id=330 data-nosnippet>330</a>/// slint::spawn_local(async_compat::Compat::new(slint_future)).unwrap();
+<a href=#331 id=331 data-nosnippet>331</a>///
+<a href=#332 id=332 data-nosnippet>332</a>/// slint::run_event_loop_until_quit().unwrap();
+<a href=#333 id=333 data-nosnippet>333</a>///
+<a href=#334 id=334 data-nosnippet>334</a>/// server.join().unwrap();
+<a href=#335 id=335 data-nosnippet>335</a>/// ```
+<a href=#336 id=336 data-nosnippet>336</a>///
+<a href=#337 id=337 data-nosnippet>337</a>/// The use of `#[tokio::main]` is **not recommended**. If it's necessary to use though, wrap the call to enter the Slint
+<a href=#338 id=338 data-nosnippet>338</a>/// event loop  in a call to [`tokio::task::block_in_place`](https://docs.rs/tokio/latest/tokio/task/fn.block_in_place.html):
+<a href=#339 id=339 data-nosnippet>339</a>///
+<a href=#340 id=340 data-nosnippet>340</a>/// ```rust, no_run
+<a href=#341 id=341 data-nosnippet>341</a>/// // Wrap the call to run_event_loop to ensure presence of a Tokio run-time.
+<a href=#342 id=342 data-nosnippet>342</a>/// tokio::task::block_in_place(slint::run_event_loop).unwrap();
+<a href=#343 id=343 data-nosnippet>343</a>/// ```
+<a href=#344 id=344 data-nosnippet>344</a></span><span class="attr">#[cfg(target_has_atomic = <span class="string">"ptr"</span>)]
+<a href=#345 id=345 data-nosnippet>345</a></span><span class="kw">pub fn </span>spawn_local&lt;F: core::future::Future + <span class="lifetime">'static</span>&gt;(
+<a href=#346 id=346 data-nosnippet>346</a>    fut: F,
+<a href=#347 id=347 data-nosnippet>347</a>) -&gt; <span class="prelude-ty">Result</span>&lt;JoinHandle&lt;F::Output&gt;, EventLoopError&gt; {
+<a href=#348 id=348 data-nosnippet>348</a>    i_slint_backend_selector::with_global_context(|ctx| ctx.spawn_local(fut))
+<a href=#349 id=349 data-nosnippet>349</a>        .map_err(|<span class="kw">_</span>| EventLoopError::NoEventLoopProvider)<span class="question-mark">?
+<a href=#350 id=350 data-nosnippet>350</a></span>}
+<a href=#351 id=351 data-nosnippet>351</a>
+<a href=#352 id=352 data-nosnippet>352</a><span class="doccomment">/// Include the code generated with the slint-build crate from the build script. After calling `slint_build::compile`
+<a href=#353 id=353 data-nosnippet>353</a>/// in your `build.rs` build script, the use of this macro includes the generated Rust code and makes the exported types
+<a href=#354 id=354 data-nosnippet>354</a>/// available for you to instantiate.
+<a href=#355 id=355 data-nosnippet>355</a>///
+<a href=#356 id=356 data-nosnippet>356</a>/// Check the documentation of the `slint-build` crate for more information.
+<a href=#357 id=357 data-nosnippet>357</a></span><span class="attr">#[doc = <span class="macro">i_slint_core_macros::slint_doc_str!</span>(<span class="string">"Check the documentation of the [`slint-build`](slint:rust:slint_build/) crate for more information."</span>)]
+<a href=#358 id=358 data-nosnippet>358</a>#[macro_export]
+<a href=#359 id=359 data-nosnippet>359</a></span><span class="macro">macro_rules!</span> include_modules {
+<a href=#360 id=360 data-nosnippet>360</a>    () =&gt; {
+<a href=#361 id=361 data-nosnippet>361</a>        <span class="macro">include!</span>(<span class="macro">env!</span>(<span class="string">"SLINT_INCLUDE_GENERATED"</span>));
+<a href=#362 id=362 data-nosnippet>362</a>    };
+<a href=#363 id=363 data-nosnippet>363</a>}
+<a href=#364 id=364 data-nosnippet>364</a>
+<a href=#365 id=365 data-nosnippet>365</a><span class="attr">#[i_slint_core_macros::slint_doc]
+<a href=#366 id=366 data-nosnippet>366</a></span><span class="doccomment">/// Initialize translations when using the `gettext` feature.
+<a href=#367 id=367 data-nosnippet>367</a>///
+<a href=#368 id=368 data-nosnippet>368</a>/// Call this in your main function with the path where translations are located.
+<a href=#369 id=369 data-nosnippet>369</a>/// This macro internally calls the [`bindtextdomain`](https://man7.org/linux/man-pages/man3/bindtextdomain.3.html) function from gettext.
+<a href=#370 id=370 data-nosnippet>370</a>///
+<a href=#371 id=371 data-nosnippet>371</a>/// The first argument of the macro must be an expression that implements `Into&lt;std::path::PathBuf&gt;`.
+<a href=#372 id=372 data-nosnippet>372</a>/// It specifies the directory in which gettext should search for translations.
+<a href=#373 id=373 data-nosnippet>373</a>///
+<a href=#374 id=374 data-nosnippet>374</a>/// Translations are expected to be found at `&lt;dirname&gt;/&lt;locale&gt;/LC_MESSAGES/&lt;crate&gt;.mo`,
+<a href=#375 id=375 data-nosnippet>375</a>/// where `dirname` is the directory passed as an argument to this macro,
+<a href=#376 id=376 data-nosnippet>376</a>/// `locale` is a locale name (e.g., `en`, `en_GB`, `fr`), and
+<a href=#377 id=377 data-nosnippet>377</a>/// `crate` is the package name obtained from the `CARGO_PKG_NAME` environment variable.
+<a href=#378 id=378 data-nosnippet>378</a>///
+<a href=#379 id=379 data-nosnippet>379</a>/// See also the [Translation documentation](slint:translations).
+<a href=#380 id=380 data-nosnippet>380</a>///
+<a href=#381 id=381 data-nosnippet>381</a>/// ### Example
+<a href=#382 id=382 data-nosnippet>382</a>/// ```rust
+<a href=#383 id=383 data-nosnippet>383</a>/// fn main() {
+<a href=#384 id=384 data-nosnippet>384</a>///    slint::init_translations!(concat!(env!("CARGO_MANIFEST_DIR"), "/translations/"));
+<a href=#385 id=385 data-nosnippet>385</a>///    // ...
+<a href=#386 id=386 data-nosnippet>386</a>/// }
+<a href=#387 id=387 data-nosnippet>387</a>/// ```
+<a href=#388 id=388 data-nosnippet>388</a>///
+<a href=#389 id=389 data-nosnippet>389</a>/// For example, assuming this is in a crate called `example` and the default locale
+<a href=#390 id=390 data-nosnippet>390</a>/// is configured to be French, it will load translations at runtime from
+<a href=#391 id=391 data-nosnippet>391</a>/// `/path/to/example/translations/fr/LC_MESSAGES/example.mo`.
+<a href=#392 id=392 data-nosnippet>392</a>///
+<a href=#393 id=393 data-nosnippet>393</a>/// Another example of loading translations relative to the executable:
+<a href=#394 id=394 data-nosnippet>394</a>/// ```rust
+<a href=#395 id=395 data-nosnippet>395</a>/// slint::init_translations!(std::env::current_exe().unwrap().parent().unwrap().join("translations"));
+<a href=#396 id=396 data-nosnippet>396</a>/// ```
+<a href=#397 id=397 data-nosnippet>397</a></span><span class="attr">#[cfg(feature = <span class="string">"gettext"</span>)]
+<a href=#398 id=398 data-nosnippet>398</a>#[macro_export]
+<a href=#399 id=399 data-nosnippet>399</a></span><span class="macro">macro_rules!</span> init_translations {
+<a href=#400 id=400 data-nosnippet>400</a>    (<span class="macro-nonterminal">$dirname</span>:expr) =&gt; {
+<a href=#401 id=401 data-nosnippet>401</a>        <span class="macro-nonterminal">$crate::private_unstable_api::init_translations</span>(<span class="macro">env!</span>(<span class="string">"CARGO_PKG_NAME"</span>), <span class="macro-nonterminal">$dirname</span>);
+<a href=#402 id=402 data-nosnippet>402</a>    };
+<a href=#403 id=403 data-nosnippet>403</a>}
+<a href=#404 id=404 data-nosnippet>404</a>
+<a href=#405 id=405 data-nosnippet>405</a><span class="doccomment">/// This module contains items that you need to use or implement if you want use Slint in an environment without
+<a href=#406 id=406 data-nosnippet>406</a>/// one of the supplied platform backends such as qt or winit.
+<a href=#407 id=407 data-nosnippet>407</a>///
+<a href=#408 id=408 data-nosnippet>408</a>/// The primary interface is the [`platform::Platform`] trait. Pass your implementation of it to Slint by calling
+<a href=#409 id=409 data-nosnippet>409</a>/// [`platform::set_platform()`] early on in your application, before creating any Slint components.
+<a href=#410 id=410 data-nosnippet>410</a>///
+<a href=#411 id=411 data-nosnippet>411</a>/// The [Slint on Microcontrollers](crate::docs::mcu) documentation has additional examples.
+<a href=#412 id=412 data-nosnippet>412</a></span><span class="kw">pub mod </span>platform {
+<a href=#413 id=413 data-nosnippet>413</a>    <span class="kw">pub use </span>i_slint_core::platform::<span class="kw-2">*</span>;
+<a href=#414 id=414 data-nosnippet>414</a>
+<a href=#415 id=415 data-nosnippet>415</a>    <span class="doccomment">/// This module contains the [`femtovg_renderer::FemtoVGRenderer`] and related types.
+<a href=#416 id=416 data-nosnippet>416</a>    ///
+<a href=#417 id=417 data-nosnippet>417</a>    /// It is only enabled when the `renderer-femtovg` Slint feature is enabled.
+<a href=#418 id=418 data-nosnippet>418</a>    </span><span class="attr">#[cfg(all(feature = <span class="string">"renderer-femtovg"</span>, not(target_os = <span class="string">"android"</span>)))]
+<a href=#419 id=419 data-nosnippet>419</a>    </span><span class="kw">pub mod </span>femtovg_renderer {
+<a href=#420 id=420 data-nosnippet>420</a>        <span class="kw">pub use </span>i_slint_renderer_femtovg::FemtoVGRenderer;
+<a href=#421 id=421 data-nosnippet>421</a>        <span class="kw">pub use </span>i_slint_renderer_femtovg::OpenGLInterface;
+<a href=#422 id=422 data-nosnippet>422</a>    }
+<a href=#423 id=423 data-nosnippet>423</a>}
+<a href=#424 id=424 data-nosnippet>424</a>
+<a href=#425 id=425 data-nosnippet>425</a><span class="attr">#[cfg(any(
+<a href=#426 id=426 data-nosnippet>426</a>    doc,
+<a href=#427 id=427 data-nosnippet>427</a>    all(
+<a href=#428 id=428 data-nosnippet>428</a>        target_os = <span class="string">"android"</span>,
+<a href=#429 id=429 data-nosnippet>429</a>        any(feature = <span class="string">"backend-android-activity-05"</span>, feature = <span class="string">"backend-android-activity-06"</span>)
+<a href=#430 id=430 data-nosnippet>430</a>    )
+<a href=#431 id=431 data-nosnippet>431</a>))]
+<a href=#432 id=432 data-nosnippet>432</a></span><span class="kw">pub mod </span>android;
+<a href=#433 id=433 data-nosnippet>433</a>
+<a href=#434 id=434 data-nosnippet>434</a><span class="kw">pub use </span>i_slint_backend_selector::api::<span class="kw-2">*</span>;
+<a href=#435 id=435 data-nosnippet>435</a>
+<a href=#436 id=436 data-nosnippet>436</a><span class="doccomment">/// Helper type that helps checking that the generated code is generated for the right version
+<a href=#437 id=437 data-nosnippet>437</a></span><span class="attr">#[doc(hidden)]
+<a href=#438 id=438 data-nosnippet>438</a>#[allow(non_camel_case_types)]
+<a href=#439 id=439 data-nosnippet>439</a></span><span class="kw">pub struct </span>VersionCheck_1_11_0;
+<a href=#440 id=440 data-nosnippet>440</a>
+<a href=#441 id=441 data-nosnippet>441</a><span class="attr">#[cfg(doctest)]
+<a href=#442 id=442 data-nosnippet>442</a></span><span class="kw">mod </span>compile_fail_tests;
+<a href=#443 id=443 data-nosnippet>443</a>
+<a href=#444 id=444 data-nosnippet>444</a><span class="attr">#[cfg(doc)]
+<a href=#445 id=445 data-nosnippet>445</a></span><span class="kw">pub mod </span>docs;</code></pre></div></section></main></body></html>
