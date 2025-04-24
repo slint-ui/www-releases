@@ -112,13 +112,13 @@
                                 <a class="function" href="#Color.with_alpha">with_alpha</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Color.green">green</a>
+                                <a class="variable" href="#Color.blue">blue</a>
                         </li>
                         <li>
                                 <a class="variable" href="#Color.red">red</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Color.blue">blue</a>
+                                <a class="variable" href="#Color.green">green</a>
                         </li>
                         <li>
                                 <a class="variable" href="#Color.alpha">alpha</a>
@@ -211,10 +211,10 @@
                                 <a class="function" href="#Timer.restart">restart</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Timer.interval">interval</a>
+                                <a class="variable" href="#Timer.running">running</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Timer.running">running</a>
+                                <a class="variable" href="#Timer.interval">interval</a>
                         </li>
                 </ul>
 
@@ -1562,15 +1562,15 @@ is applied to <code>other</code>.</p>
 
 
                             </div>
-                            <div id="Color.green" class="classattr">
+                            <div id="Color.blue" class="classattr">
                                 <div class="attr variable">
-            <span class="name">green</span>
+            <span class="name">blue</span>
 
         
     </div>
-    <a class="headerlink" href="#Color.green"></a>
+    <a class="headerlink" href="#Color.blue"></a>
     
-            <div class="docstring"><p>The green channel.</p>
+            <div class="docstring"><p>The blue channel.</p>
 </div>
 
 
@@ -1588,15 +1588,15 @@ is applied to <code>other</code>.</p>
 
 
                             </div>
-                            <div id="Color.blue" class="classattr">
+                            <div id="Color.green" class="classattr">
                                 <div class="attr variable">
-            <span class="name">blue</span>
+            <span class="name">green</span>
 
         
     </div>
-    <a class="headerlink" href="#Color.blue"></a>
+    <a class="headerlink" href="#Color.green"></a>
     
-            <div class="docstring"><p>The blue channel.</p>
+            <div class="docstring"><p>The green channel.</p>
 </div>
 
 
@@ -2122,7 +2122,7 @@ Re-implement this method in a sub-class to handle the change.</p>
 period of time.</p>
 
 <p>Use <code><a href="#Timer.start">Timer.start()</a></code> to create a timer that that repeatedly triggers a callback, or
-[<code>Timer::single_shot</code>] to trigger a callback only once.</p>
+<code><a href="#Timer.single_shot">Timer.single_shot()</a></code> to trigger a callback only once.</p>
 
 <p>The timer will automatically stop when garbage collected. You must keep the Timer object
 around for as long as you want the timer to keep firing.</p>
@@ -2214,6 +2214,19 @@ is re-calculated to be in the specified duration relative to when this function 
 
 
                             </div>
+                            <div id="Timer.running" class="classattr">
+                                <div class="attr variable">
+            <span class="name">running</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Timer.running"></a>
+    
+            <div class="docstring"><p>Set to true if the timer is running; false otherwise.</p>
+</div>
+
+
+                            </div>
                             <div id="Timer.interval" class="classattr">
                                 <div class="attr variable">
             <span class="name">interval</span>
@@ -2227,19 +2240,6 @@ is re-calculated to be in the specified duration relative to when this function 
 <p>When setting this property and the timer is running (see <code><a href="#Timer.running">Timer.running</a></code>),
 then the time when the callback will be next invoked is re-calculated to be in the
 specified duration relative to when this property is set.</p>
-</div>
-
-
-                            </div>
-                            <div id="Timer.running" class="classattr">
-                                <div class="attr variable">
-            <span class="name">running</span>
-
-        
-    </div>
-    <a class="headerlink" href="#Timer.running"></a>
-    
-            <div class="docstring"><p>Set to true if the timer is running; false otherwise.</p>
 </div>
 
 
