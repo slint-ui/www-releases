@@ -236,7 +236,8 @@ Program Listing for File slint_internal.h
        uintptr_t cached_rendering_data_offset;
        LayoutInfo (*layout_info)(Pin<VRef<ItemVTable>>,
                                  Orientation orientation,
-                                 const WindowAdapterRc *window_adapter);
+                                 const WindowAdapterRc *window_adapter,
+                                 const ItemRc *self_rc);
        InputEventFilterResult (*input_event_filter_before_children)(Pin<VRef<ItemVTable>>,
                                                                     MouseEvent,
                                                                     const WindowAdapterRc *window_adapter,
