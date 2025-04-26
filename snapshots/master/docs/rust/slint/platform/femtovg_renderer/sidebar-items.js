@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"struct":["FemtoVGRenderer"],"trait":["OpenGLInterface"]};
+window.SIDEBAR_ITEMS = {"trait":["OpenGLInterface"],"type":["FemtoVGRenderer"]};
