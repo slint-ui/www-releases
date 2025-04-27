@@ -6255,7 +6255,7 @@ DEALINGS IN THE SOFTWARE.
 - [serde_repr 0.1.20]( https://github.com/dtolnay/serde-repr )
 - [smol_str 0.2.2]( https://github.com/rust-analyzer/smol_str )
 - [syn 1.0.109]( https://github.com/dtolnay/syn )
-- [syn 2.0.100]( https://github.com/dtolnay/syn )
+- [syn 2.0.101]( https://github.com/dtolnay/syn )
 - [system-deps 6.2.2]( https://github.com/gdesmott/system-deps )
 - [thiserror-impl 1.0.69]( https://github.com/dtolnay/thiserror )
 - [thiserror-impl 2.0.12]( https://github.com/dtolnay/thiserror )
