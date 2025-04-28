@@ -7207,7 +7207,7 @@ SOFTWARE.
 
 #### Used by:
 
-- [quick-xml 0.37.4]( https://github.com/tafia/quick-xml )
+- [quick-xml 0.37.5]( https://github.com/tafia/quick-xml )
 
 #### License Text
 
