@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Feature flags and backend selection."><title>slint::docs::cargo_features - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-20739d33.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="slint" data-themes="" data-resource-suffix="" data-rustdoc-version="1.88.0-nightly (cb31a009e 2025-04-27)" data-channel="nightly" data-search-js="search-f7877310.js" data-settings-js="settings-5514c975.js" ><script src="../../../static.files/storage-4e99c027.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-7ef8a74a.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Feature flags and backend selection."><title>slint::docs::cargo_features - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-20739d33.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="slint" data-themes="" data-resource-suffix="" data-rustdoc-version="1.88.0-nightly (74509131e 2025-04-29)" data-channel="nightly" data-search-js="search-f7877310.js" data-settings-js="settings-5514c975.js" ><script src="../../../static.files/storage-4e99c027.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-7ef8a74a.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -201,32 +201,68 @@ are enabled, using the <code>SLINT_BACKEND</code>  environment variable.</p>
 <p>If the selected backend is not available, the default will be used.</p>
 <p>Here are the cargo features controlling the backend:</p>
 <ul>
-<li><strong><code>backend-qt</code></strong> —  The Qt backend feature uses Qt for the windowing system integration and rendering.
+<li>
+<p><strong><code>backend-qt</code></strong> —  The Qt backend feature uses Qt for the windowing system integration and rendering.
 This backend also provides the <code>native</code> style.
 It requires Qt 5.15 or later to be installed. If Qt is not installed, the
-backend will not be operational</li>
-<li><strong><code>backend-winit</code></strong> —  The <a href="https://crates.io/crates/winit">winit</a> crate is used for the event loop and windowing system integration.
+backend will not be operational</p>
+</li>
+<li>
+<p><strong><code>backend-winit</code></strong> —  The <a href="https://crates.io/crates/winit">winit</a> crate is used for the event loop and windowing system integration.
 It supports Windows, macOS, web browsers, X11 and Wayland. X11 and wayland are only available when
 compiling for Linux or other Unix-like operating systems. With this feature, both X11 and Wayland are supported.
-For a smaller build, omit this feature and select one of the other specific <code>backend-winit-XX</code> features.</li>
-<li><strong><code>backend-winit-x11</code></strong> —  Simliar to <code>backend-winit</code> this enables the winit based event loop but only
-with support for the X Window System on Unix.</li>
-<li><strong><code>backend-winit-wayland</code></strong> —  Simliar to <code>backend-winit</code> this enables the winit based event loop but only
-with support for the Wayland window system on Unix.</li>
-<li><strong><code>backend-default</code></strong> <em>(enabled by default)</em> —  Alias to a backend and renderer that depends on the platform.
-Will select the Qt backend on linux if present, and the winit otherwise</li>
-<li><strong><code>renderer-femtovg</code></strong> <em>(enabled by default)</em> —  Render using the <a href="https://crates.io/crates/femtovg">FemtoVG</a> crate.</li>
-<li><strong><code>renderer-femtovg-wgpu</code></strong> —  Render using the <a href="https://crates.io/crates/femtovg">FemtoVG</a> crate and <a href="https://crates.io/crates/wgpu">WGPU</a>.</li>
-<li><strong><code>renderer-skia</code></strong> —  Render using <a href="https://skia.org/">Skia</a>.</li>
-<li><strong><code>renderer-skia-opengl</code></strong> —  Same as <code>renderer-skia</code>, but Skia will always use OpenGL.</li>
-<li><strong><code>renderer-skia-vulkan</code></strong> —  Same as <code>renderer-skia</code>, but Skia will always use Vulkan.</li>
-<li><strong><code>renderer-software</code></strong> <em>(enabled by default)</em> —  Render using the software renderer.</li>
-<li><strong><code>backend-linuxkms</code></strong> —  KMS with Vulkan or EGL and libinput on Linux are used to render the application in full screen mode, without any
-windowing system. Requires libseat. If you don’t have libseat, select <code>backend-linuxkms-noseat</code> instead. (Experimental)</li>
-<li><strong><code>backend-linuxkms-noseat</code></strong> —  KMS with Vulkan or EGL and libinput on Linux are used to render the application in full screen mode, without any
-windowing system. (Experimental)</li>
-<li><strong><code>backend-android-activity-06</code></strong> —  Use the backend based on the <a href="https://docs.rs/android-activity">android-activity</a> crate. (Using it’s native activity feature)</li>
-<li><strong><code>backend-android-activity-05</code></strong> —  <strong>Deprecated</strong> Use previous version of android-activity. This is mutually exclusive with <code>backend-android-activity-06</code>.</li>
+For a smaller build, omit this feature and select one of the other specific <code>backend-winit-XX</code> features.</p>
+</li>
+<li>
+<p><strong><code>backend-winit-x11</code></strong> —  Simliar to <code>backend-winit</code> this enables the winit based event loop but only
+with support for the X Window System on Unix.</p>
+</li>
+<li>
+<p><strong><code>backend-winit-wayland</code></strong> —  Simliar to <code>backend-winit</code> this enables the winit based event loop but only
+with support for the Wayland window system on Unix.</p>
+</li>
+<li>
+<p><strong><code>backend-default</code></strong> <em>(enabled by default)</em> —  Alias to a backend and renderer that depends on the platform.
+Will select the Qt backend on linux if present, and the winit otherwise</p>
+</li>
+<li>
+<p><strong><code>renderer-femtovg</code></strong> <em>(enabled by default)</em> —  Render using the <a href="https://crates.io/crates/femtovg">FemtoVG</a> crate.</p>
+</li>
+<li>
+<p><strong><code>renderer-femtovg-wgpu</code></strong> —  Render using the <a href="https://crates.io/crates/femtovg">FemtoVG</a> crate and <a href="https://crates.io/crates/wgpu">WGPU</a>.</p>
+</li>
+<li>
+<p><strong><code>renderer-skia</code></strong> —  Render using <a href="https://skia.org/">Skia</a>.</p>
+</li>
+<li>
+<p><strong><code>renderer-skia-opengl</code></strong> —  Same as <code>renderer-skia</code>, but Skia will always use OpenGL.</p>
+</li>
+<li>
+<p><strong><code>renderer-skia-vulkan</code></strong> —  Same as <code>renderer-skia</code>, but Skia will always use Vulkan.</p>
+</li>
+<li>
+<p><strong><code>renderer-software</code></strong> <em>(enabled by default)</em> —  Render using the software renderer.</p>
+</li>
+<li>
+<p><strong><code>backend-linuxkms</code></strong> —  KMS with Vulkan or EGL and libinput on Linux are used to render the application in full screen mode, without any
+windowing system. Requires libseat. If you don’t have libseat, select <code>backend-linuxkms-noseat</code> instead. (Experimental)</p>
+</li>
+<li>
+<p><strong><code>backend-linuxkms-noseat</code></strong> —  KMS with Vulkan or EGL and libinput on Linux are used to render the application in full screen mode, without any
+windowing system. (Experimental)</p>
+</li>
+<li>
+<p><strong><code>backend-android-activity-06</code></strong> —  Use the backend based on the <a href="https://docs.rs/android-activity">android-activity</a> crate. (Using it’s native activity feature)</p>
+</li>
+<li>
+<p><strong><code>backend-android-activity-05</code></strong> —  <strong>Deprecated</strong> Use previous version of android-activity. This is mutually exclusive with <code>backend-android-activity-06</code>.</p>
+</li>
+<li>
+<p><strong><code>unstable-wgpu-24</code></strong> —  Enable support for <a href="http://wgpu.rs">WGPU</a> based rendering and expose WGPU based APIs based on WGPU version 24.x.</p>
+<p>Access to these APIS is valuable, but as WGPU releases new major versions frequently, this feature as well as the
+APIs guarded with it are <em>NOT</em> subject to the usual Slint API stability guarantees. This will may be removed in future
+minor releases of Slint, likely to be replaced by a feature with a similar name but the WGPU version suffix being bumped.</p>
+</li>
 </ul>
 <p>More information about the backend and renderers is available in the
 <a href="https://releases.slint.dev/1.11.0/docs/slint/guide/backends-and-renderers/backends_and_renderers/">Slint Documentation</a>“)]</p>

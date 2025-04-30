@@ -51,6 +51,7 @@ Program Listing for File slint_generated_public.h
    
    enum class GraphicsAPI : uint8_t {
        NativeOpenGL,
+       Inaccessible,
    };
    
    enum class RenderingState : uint8_t {

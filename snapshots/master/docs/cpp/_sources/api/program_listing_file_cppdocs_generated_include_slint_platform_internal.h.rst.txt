@@ -23,7 +23,7 @@ Program Listing for File slint_platform_internal.h
    #include "slint_internal.h"
    
    namespace slint::platform { struct Rgb565Pixel; }
-   namespace slint::cbindgen_private { struct WindowProperties; using slint::platform::Rgb565Pixel; using slint::cbindgen_private::types::TexturePixelFormat; }
+   namespace slint::cbindgen_private { struct WindowProperties; using slint::platform::Rgb565Pixel; using slint::cbindgen_private::types::TexturePixelFormat; struct DrawTextureArgs; }
    
    
    namespace slint {
@@ -55,25 +55,10 @@ Program Listing for File slint_platform_internal.h
    
    using CppTargetPixelBufferUserData = void*;
    
-   struct CppInternalTexture {
-       const uint8_t *bytes;
-       uintptr_t bytes_len;
-       TexturePixelFormat pixel_format;
-       uint16_t pixel_stride;
-       uint16_t width;
-       uint16_t height;
-       uint16_t delta_x;
-       uint16_t delta_y;
-       uint16_t source_offset_x;
-       uint16_t source_offset_y;
-   };
-   
-   struct CppRgb8TargetPixelBuffer {
+   template<typename T>
+   struct CppTargetPixelBuffer {
        CppTargetPixelBufferUserData user_data;
-       void (*line_slice)(CppTargetPixelBufferUserData,
-                          uintptr_t,
-                          Rgb8Pixel **slice_ptr,
-                          uintptr_t *slice_len);
+       void (*line_slice)(CppTargetPixelBufferUserData, uintptr_t, T **slice_ptr, uintptr_t *slice_len);
        uintptr_t (*num_lines)(CppTargetPixelBufferUserData);
        bool (*fill_rectangle)(CppTargetPixelBufferUserData,
                               int16_t,
@@ -85,45 +70,7 @@ Program Listing for File slint_platform_internal.h
                               uint8_t,
                               uint8_t,
                               CompositionMode);
-       bool (*draw_texture)(CppTargetPixelBufferUserData,
-                            int16_t,
-                            int16_t,
-                            int16_t,
-                            int16_t,
-                            const CppInternalTexture*,
-                            uint32_t,
-                            uint8_t,
-                            int32_t,
-                            CompositionMode);
-   };
-   
-   struct CppRgb565TargetPixelBuffer {
-       CppTargetPixelBufferUserData user_data;
-       void (*line_slice)(CppTargetPixelBufferUserData,
-                          uintptr_t,
-                          uint16_t **slice_ptr,
-                          uintptr_t *slice_len);
-       uintptr_t (*num_lines)(CppTargetPixelBufferUserData);
-       bool (*fill_rectangle)(CppTargetPixelBufferUserData,
-                              int16_t,
-                              int16_t,
-                              int16_t,
-                              int16_t,
-                              uint8_t,
-                              uint8_t,
-                              uint8_t,
-                              uint8_t,
-                              CompositionMode);
-       bool (*draw_texture)(CppTargetPixelBufferUserData,
-                            int16_t,
-                            int16_t,
-                            int16_t,
-                            int16_t,
-                            const CppInternalTexture*,
-                            uint32_t,
-                            uint8_t,
-                            int32_t,
-                            CompositionMode);
+       bool (*draw_texture)(CppTargetPixelBufferUserData, const DrawTextureArgs*, const PhysicalRegion*);
    };
    
    using CppRawHandleOpaque = const void*;
@@ -221,10 +168,10 @@ Program Listing for File slint_platform_internal.h
                                                       uintptr_t pixel_stride);
    
    PhysicalRegion slint_software_renderer_render_accel_rgb8(SoftwareRendererOpaque r,
-                                                            CppRgb8TargetPixelBuffer *buffer);
+                                                            CppTargetPixelBuffer<Rgb8Pixel> *buffer);
    
    PhysicalRegion slint_software_renderer_render_accel_rgb565(SoftwareRendererOpaque r,
-                                                              CppRgb565TargetPixelBuffer *buffer);
+                                                              CppTargetPixelBuffer<Rgb565Pixel> *buffer);
    
    PhysicalRegion slint_software_renderer_render_rgb565(SoftwareRendererOpaque r,
                                                         uint16_t *buffer,

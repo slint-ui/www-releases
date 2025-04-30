@@ -19,11 +19,11 @@ export interface InitOutput {
   readonly __wbindgen_malloc: (a: number, b: number) => number;
   readonly __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;
   readonly __wbindgen_export_5: WebAssembly.Table;
-  readonly closure3087_externref_shim: (a: number, b: number, c: any) => void;
-  readonly closure3652_externref_shim: (a: number, b: number, c: any) => void;
+  readonly closure3347_externref_shim: (a: number, b: number, c: any) => void;
+  readonly closure3655_externref_shim: (a: number, b: number, c: any) => void;
   readonly _dyn_core__ops__function__FnMut_____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__h3ff13a217d79fd9d: (a: number, b: number) => void;
-  readonly closure3653_externref_shim: (a: number, b: number, c: any, d: any) => void;
-  readonly closure3691_externref_shim: (a: number, b: number, c: any) => void;
+  readonly closure3656_externref_shim: (a: number, b: number, c: any, d: any) => void;
+  readonly closure3694_externref_shim: (a: number, b: number, c: any) => void;
   readonly __wbindgen_start: () => void;
 }
 
