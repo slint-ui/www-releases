@@ -83,7 +83,7 @@ Program Listing for File slint_properties_internal.h
                                    void (*binding)(void *user_data, void *pointer_to_value),
                                    void *user_data,
                                    void (*drop_user_data)(void*),
-                                   bool (*intercept_set)(void *user_data, const void *pointer_to_Value),
+                                   bool (*intercept_set)(void *user_data, const void *pointer_to_value),
                                    bool (*intercept_set_binding)(void *user_data, void *new_binding));
    
    void slint_property_set_binding_internal(const PropertyHandleOpaque *handle, void *binding);
