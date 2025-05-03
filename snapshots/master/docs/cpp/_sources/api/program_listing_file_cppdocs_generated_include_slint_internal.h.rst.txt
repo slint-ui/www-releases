@@ -410,6 +410,7 @@ Program Listing for File slint_internal.h
        private_api::CallbackHelper<slint::LogicalPosition> show;
        CachedRenderingData cached_rendering_data;
        uint32_t popup_id;
+       Property<bool> enabled;
    #if defined(__ANDROID__)
        Option<Timer> long_press_timer
    #endif

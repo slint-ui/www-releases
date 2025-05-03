@@ -1,0 +1,174 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Winit 0.30.x specific types and re-exports."><title>slint::winit_030 - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-20739d33.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint" data-themes="" data-resource-suffix="" data-rustdoc-version="1.88.0-nightly (4824c2bb7 2025-05-02)" data-channel="nightly" data-search-js="search-f7877310.js" data-settings-js="settings-5514c975.js" ><script src="../../static.files/storage-4e99c027.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../static.files/main-7ef8a74a.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
+    This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
+    It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
+    in sphinx and via head.hbs in mdbook.
+-->
+<link rel="stylesheet" href="https://slint.dev/resources/highlightjs/11.0.1/default.min.css">
+<script src="https://slint.dev/resources/highlightjs/11.0.1/highlight.min.js"></script>
+<script>
+  function highlight_slint(hljs) {
+    const KEYWORDS = {
+      keyword:
+        "animate callback changed component enum export for function global if import in in-out inherits out parent private property public pure root self states struct",
+      literal: "false true",
+      built_in:
+        "ArcTo Clip Close Colors CubicTo Flickable FocusScope GridLayout HorizontalLayout Image LineTo Math MoveTo Path PopupWindow QuadraticTo Rectangle Row Text TextInput TouchArea VerticalLayout Window animation-tick debug",
+      type: "bool duration easing float int length logical-length relative-font-size string",
+    };
+
+    return {
+      name: 'slint',
+      case_insensitive: false,
+      keywords: KEYWORDS,
+      contains: [
+        hljs.QUOTE_STRING_MODE,
+        hljs.C_LINE_COMMENT_MODE,
+        hljs.C_BLOCK_COMMENT_MODE,
+        hljs.COMMENT('/\\*', '\\*/', {
+          contains: ['self']
+        }),
+        {
+          className: 'number',
+          begin: '\\b\\d+(\\.\\d+)?(\\w+)?',
+          relevance: 0
+        },
+        {
+          className: 'title',
+          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]* *:=',
+        },
+        {
+          className: 'symbol',
+          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]*(:| *=>)',
+        },
+        {
+          className: 'built_in',
+          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]*!',
+        },
+      ],
+      illegal: /@/
+    };
+  };
+
+  // Tags used in fenced code blocks
+  for (let tag of ["slint", "slint,no-preview", "slint,no-auto-preview", "slint,ignore"]) {
+    hljs.registerLanguage(tag, highlight_slint);
+  }
+
+
+  window.addEventListener("DOMContentLoaded", () => {
+    const rustDoc = document.querySelector('meta[name="generator"]')?.content == "rustdoc";
+    if (rustDoc) {
+      // Only highlight .slint blocks, leave the others to rustdoc
+      for (slintBlock of document.querySelectorAll("[class*=language-slint]")) {
+        hljs.highlightElement(slintBlock)
+      }
+
+      // Some of the rustdoc selectors require the pre element to have the rust class
+      for (codeBlock of document.querySelectorAll(".language-slint.hljs")) {
+        codeBlock.classList.add("rust");
+        codeBlock.classList.remove("hljs");
+      }
+
+      // Change the hljs generated classes to the rustdoc
+      // ones, so that the highlighting adjusts to the theme correctly.
+      const highlightJSToRustDoc = [
+        ["comment", "comment"],
+        ["number", "number"],
+        ["symbol", "struct"], // width:
+        ["keyword", "kw"],
+        ["built_in", "primitive"],
+        ["string", "string"],
+        ["title", "fnname"], // Foo :=
+        ["type", "type"]
+      ];
+
+      for ([hljs_class, rustdoc_class] of highlightJSToRustDoc) {
+        for (titleElement of document.querySelectorAll(`.hljs-${hljs_class}`)) {
+          titleElement.classList.remove(`hljs-${hljs_class}`);
+          titleElement.classList.add(rustdoc_class);
+        }
+      }
+    } else {
+      // For use with the mdbook Tutorial
+      hljs.highlightAll();
+
+      // The Sphinx/my_st generated HTML for code blocks doesn't use <code> tags, so highlight.js'
+      // default selector "pre code" doesn't match. Let's do it by hand:
+      for (block of document.querySelectorAll("div[class*=highlight-slint] div.highlight pre")) {
+        hljs.highlightElement(block)
+      }
+    }
+
+    // Fix up links that sphinx handles but for rustdoc we need to resolve manually:
+    {
+      let target_url = null;
+      if (document.location.hostname == "snapshots.slint.dev") {
+        target_url = `https://snapshots.slint.dev/master/docs/slint/`;
+      } else {
+        let version = document.querySelector("span.version");
+        if (version !== null) {
+          target_url = `https://slint.dev/releases/${version.innerText}/docs/slint/`;
+        }
+      }
+
+      if (target_url !== null) {
+        for (let link of document.querySelectorAll("a[href^='slint-reference:']")) {
+          link.href = link.href.replace("slint-reference:", target_url);
+        }
+      }
+    }
+  });
+</script>
+
+</head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle" title="show sidebar"></button><a class="logo-container" href="../../slint/index.html"><img src="https://slint.dev/logo/slint-logo-square-light.svg" alt=""></a></nav><nav class="sidebar"><div class="sidebar-crate"><a class="logo-container" href="../../slint/index.html"><img src="https://slint.dev/logo/slint-logo-square-light.svg" alt="logo"></a><h2><a href="../../slint/index.html">slint</a><span class="version">1.12.0</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module winit_<wbr>030</a></h2><h3><a href="#reexports">Module Items</a></h3><ul class="block"><li><a href="#reexports" title="Re-exports">Re-exports</a></li><li><a href="#structs" title="Structs">Structs</a></li><li><a href="#enums" title="Enums">Enums</a></li><li><a href="#traits" title="Traits">Traits</a></li><li><a href="#types" title="Type Aliases">Type Aliases</a></li></ul></section><div id="rustdoc-modnav"><h2 class="in-crate"><a href="../index.html">In crate slint</a></h2></div></div></nav><div class="sidebar-resizer"></div><main><div class="width-limiter"><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../index.html">slint</a></div><h1>Module <span>winit_030</span><button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../src/slint/lib.rs.html#545">Source</a> </span></div><span class="item-info"><div class="stab portability">Available on <strong>crate feature <code>unstable-winit-030</code></strong> only.</div></span><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Winit 0.30.x specific types and re-exports.</p>
+<p><em>Note</em>: This module is behind a feature flag and may be removed or changed in future minor releases,
+as new major Winit releases become available.</p>
+<p>Use the types and traits in this module in combination with other APIs to access additional window properties,
+create custom windows, or hook into the winit event loop.</p>
+<p>For example, use the <a href="trait.WinitWindowAccessor.html" title="trait slint::winit_030::WinitWindowAccessor"><code>WinitWindowAccessor</code></a> to obtain access to the underling [<code>winit::window::Window</code>]:</p>
+<p><code>Cargo.toml</code>:</p>
+<div class="example-wrap"><pre class="language-toml"><code>slint = { version = &quot;~1.12&quot;, features = [&quot;unstable-winit-030&quot;] }</code></pre></div>
+<p><code>main.rs</code>:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="comment">// Bring winit and accessor traits into scope.
+</span><span class="kw">use </span>slint::winit_030::{WinitWindowAccessor, winit};
+
+<span class="macro">slint::slint!</span>{
+    import { VerticalBox, Button } from <span class="string">"std-widgets.slint"</span>;
+    export component HelloWorld inherits Window {
+        callback clicked;
+        VerticalBox {
+            Text {
+                text: <span class="string">"hello world"</span>;
+                color: green;
+            }
+            Button {
+                text: <span class="string">"Click me"</span>;
+                clicked =&gt; { root.clicked(); }
+            }
+        }
+    }
+}
+<span class="kw">fn </span>main() -&gt; <span class="prelude-ty">Result</span>&lt;(), Box&lt;<span class="kw">dyn </span>std::error::Error&gt;&gt; {
+    <span class="comment">// Make sure the winit backed is selected:
+   </span>slint::BackendSelector::new()
+       .backend_name(<span class="string">"winit"</span>.into())
+       .select()<span class="question-mark">?</span>;
+
+    <span class="kw">let </span>app = HelloWorld::new()<span class="question-mark">?</span>;
+    <span class="kw">let </span>app_weak = app.as_weak();
+    app.on_clicked(<span class="kw">move </span>|| {
+        <span class="comment">// access the winit window
+        </span><span class="kw">let </span>app = app_weak.unwrap();
+        app.window().with_winit_window(|winit_window: <span class="kw-2">&amp;</span>winit::window::Window| {
+            <span class="macro">eprintln!</span>(<span class="string">"window id = {:#?}"</span>, winit_window.id());
+        });
+    });
+    app.run()<span class="question-mark">?</span>;
+    <span class="prelude-val">Ok</span>(())
+}</code></pre></div>
+<p>See also <a href="../struct.BackendSelector.html#method.with_winit_030_event_loop_builder" title="method slint::BackendSelector::with_winit_030_event_loop_builder"><code>BackendSelector::with_winit_030_event_loop_builder()</code></a>
+and <a href="../struct.BackendSelector.html#method.with_winit_030_window_attributes_hook" title="method slint::BackendSelector::with_winit_030_window_attributes_hook"><code>BackendSelector::with_winit_030_window_attributes_hook()</code></a>.</p>
+</div></details><h2 id="reexports" class="section-header">Re-exports<a href="#reexports" class="anchor">§</a></h2><dl class="item-table reexports"><dt id="reexport.winit"><code>pub use i_slint_backend_winit::winit;</code></dt></dl><h2 id="structs" class="section-header">Structs<a href="#structs" class="anchor">§</a></h2><dl class="item-table"><dt><a class="struct" href="struct.SlintEvent.html" title="struct slint::winit_030::SlintEvent">Slint<wbr>Event</a></dt><dd>Internal type used by the winit backend for thread communication and window system updates.</dd></dl><h2 id="enums" class="section-header">Enums<a href="#enums" class="anchor">§</a></h2><dl class="item-table"><dt><a class="enum" href="enum.WinitWindowEventResult.html" title="enum slint::winit_030::WinitWindowEventResult">Winit<wbr>Window<wbr>Event<wbr>Result</a></dt><dd>Returned by callbacks passed to <a href="trait.WinitWindowAccessor.html#tymethod.on_winit_window_event" title="method slint::winit_030::WinitWindowAccessor::on_winit_window_event"><code>Window::on_winit_window_event</code></a>
+to determine if winit events should propagate to the Slint event loop.</dd></dl><h2 id="traits" class="section-header">Traits<a href="#traits" class="anchor">§</a></h2><dl class="item-table"><dt><a class="trait" href="trait.WinitWindowAccessor.html" title="trait slint::winit_030::WinitWindowAccessor">Winit<wbr>Window<wbr>Accessor</a></dt><dd>This helper trait can be used to obtain access to the [<code>winit::window::Window</code>] for a given
+<a href="https://releases.slint.dev/1.12.0/docs/rust/slint/struct.window"><code>slint::Window</code></a>.</dd></dl><h2 id="types" class="section-header">Type Aliases<a href="#types" class="anchor">§</a></h2><dl class="item-table"><dt><a class="type" href="type.EventLoopBuilder.html" title="type slint::winit_030::EventLoopBuilder">Event<wbr>Loop<wbr>Builder</a></dt><dd>Convenience alias for the event loop builder used by Slint.</dd></dl></section></div></main></body></html>

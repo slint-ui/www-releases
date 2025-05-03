@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `api/rs/slint/lib.rs`."><title>lib.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-20739d33.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint" data-themes="" data-resource-suffix="" data-rustdoc-version="1.88.0-nightly (3350c1eb3 2025-05-01)" data-channel="nightly" data-search-js="search-f7877310.js" data-settings-js="settings-5514c975.js" ><script src="../../static.files/storage-4e99c027.js"></script><script defer src="../../static.files/src-script-63605ae7.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-7ef8a74a.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `api/rs/slint/lib.rs`."><title>lib.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-20739d33.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint" data-themes="" data-resource-suffix="" data-rustdoc-version="1.88.0-nightly (4824c2bb7 2025-05-02)" data-channel="nightly" data-search-js="search-f7877310.js" data-settings-js="settings-5514c975.js" ><script src="../../static.files/storage-4e99c027.js"></script><script defer src="../../static.files/src-script-63605ae7.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-7ef8a74a.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -661,4 +661,69 @@
 <a href=#539 id=539 data-nosnippet>539</a>    //!
 <a href=#540 id=540 data-nosnippet>540</a>    </span><span class="kw">pub use </span>i_slint_core::graphics::wgpu_24::<span class="kw-2">*</span>;
 <a href=#541 id=541 data-nosnippet>541</a>    <span class="kw">pub use </span>wgpu_24 <span class="kw">as </span>wgpu;
-<a href=#542 id=542 data-nosnippet>542</a>}</code></pre></div></section></main></body></html>
+<a href=#542 id=542 data-nosnippet>542</a>}
+<a href=#543 id=543 data-nosnippet>543</a>
+<a href=#544 id=544 data-nosnippet>544</a><span class="attr">#[cfg(feature = <span class="string">"unstable-winit-030"</span>)]
+<a href=#545 id=545 data-nosnippet>545</a></span><span class="kw">pub mod </span>winit_030 {
+<a href=#546 id=546 data-nosnippet>546</a>    <span class="doccomment">//! Winit 0.30.x specific types and re-exports.
+<a href=#547 id=547 data-nosnippet>547</a>    //!
+<a href=#548 id=548 data-nosnippet>548</a>    //! *Note*: This module is behind a feature flag and may be removed or changed in future minor releases,
+<a href=#549 id=549 data-nosnippet>549</a>    //!         as new major Winit releases become available.
+<a href=#550 id=550 data-nosnippet>550</a>    //!
+<a href=#551 id=551 data-nosnippet>551</a>    //! Use the types and traits in this module in combination with other APIs to access additional window properties,
+<a href=#552 id=552 data-nosnippet>552</a>    //! create custom windows, or hook into the winit event loop.
+<a href=#553 id=553 data-nosnippet>553</a>    //!
+<a href=#554 id=554 data-nosnippet>554</a>    //! For example, use the [`WinitWindowAccessor`] to obtain access to the underling [`winit::window::Window`]:
+<a href=#555 id=555 data-nosnippet>555</a>    //!
+<a href=#556 id=556 data-nosnippet>556</a>    //! `Cargo.toml`:
+<a href=#557 id=557 data-nosnippet>557</a>    //! ```toml
+<a href=#558 id=558 data-nosnippet>558</a>    //! slint = { version = "~1.12", features = ["unstable-winit-030"] }
+<a href=#559 id=559 data-nosnippet>559</a>    //! ```
+<a href=#560 id=560 data-nosnippet>560</a>    //!
+<a href=#561 id=561 data-nosnippet>561</a>    //! `main.rs`:
+<a href=#562 id=562 data-nosnippet>562</a>    //! ```rust,no_run
+<a href=#563 id=563 data-nosnippet>563</a>    //! // Bring winit and accessor traits into scope.
+<a href=#564 id=564 data-nosnippet>564</a>    //! use slint::winit_030::{WinitWindowAccessor, winit};
+<a href=#565 id=565 data-nosnippet>565</a>    //!
+<a href=#566 id=566 data-nosnippet>566</a>    //! slint::slint!{
+<a href=#567 id=567 data-nosnippet>567</a>    //!     import { VerticalBox, Button } from "std-widgets.slint";
+<a href=#568 id=568 data-nosnippet>568</a>    //!     export component HelloWorld inherits Window {
+<a href=#569 id=569 data-nosnippet>569</a>    //!         callback clicked;
+<a href=#570 id=570 data-nosnippet>570</a>    //!         VerticalBox {
+<a href=#571 id=571 data-nosnippet>571</a>    //!             Text {
+<a href=#572 id=572 data-nosnippet>572</a>    //!                 text: "hello world";
+<a href=#573 id=573 data-nosnippet>573</a>    //!                 color: green;
+<a href=#574 id=574 data-nosnippet>574</a>    //!             }
+<a href=#575 id=575 data-nosnippet>575</a>    //!             Button {
+<a href=#576 id=576 data-nosnippet>576</a>    //!                 text: "Click me";
+<a href=#577 id=577 data-nosnippet>577</a>    //!                 clicked =&gt; { root.clicked(); }
+<a href=#578 id=578 data-nosnippet>578</a>    //!             }
+<a href=#579 id=579 data-nosnippet>579</a>    //!         }
+<a href=#580 id=580 data-nosnippet>580</a>    //!     }
+<a href=#581 id=581 data-nosnippet>581</a>    //! }
+<a href=#582 id=582 data-nosnippet>582</a>    //! fn main() -&gt; Result&lt;(), Box&lt;dyn std::error::Error&gt;&gt; {
+<a href=#583 id=583 data-nosnippet>583</a>    //!     // Make sure the winit backed is selected:
+<a href=#584 id=584 data-nosnippet>584</a>    //!    slint::BackendSelector::new()
+<a href=#585 id=585 data-nosnippet>585</a>    //!        .backend_name("winit".into())
+<a href=#586 id=586 data-nosnippet>586</a>    //!        .select()?;
+<a href=#587 id=587 data-nosnippet>587</a>    //!
+<a href=#588 id=588 data-nosnippet>588</a>    //!     let app = HelloWorld::new()?;
+<a href=#589 id=589 data-nosnippet>589</a>    //!     let app_weak = app.as_weak();
+<a href=#590 id=590 data-nosnippet>590</a>    //!     app.on_clicked(move || {
+<a href=#591 id=591 data-nosnippet>591</a>    //!         // access the winit window
+<a href=#592 id=592 data-nosnippet>592</a>    //!         let app = app_weak.unwrap();
+<a href=#593 id=593 data-nosnippet>593</a>    //!         app.window().with_winit_window(|winit_window: &amp;winit::window::Window| {
+<a href=#594 id=594 data-nosnippet>594</a>    //!             eprintln!("window id = {:#?}", winit_window.id());
+<a href=#595 id=595 data-nosnippet>595</a>    //!         });
+<a href=#596 id=596 data-nosnippet>596</a>    //!     });
+<a href=#597 id=597 data-nosnippet>597</a>    //!     app.run()?;
+<a href=#598 id=598 data-nosnippet>598</a>    //!     Ok(())
+<a href=#599 id=599 data-nosnippet>599</a>    //! }
+<a href=#600 id=600 data-nosnippet>600</a>    //! ```
+<a href=#601 id=601 data-nosnippet>601</a>    //! See also [`BackendSelector::with_winit_030_event_loop_builder()`](crate::BackendSelector::with_winit_030_event_loop_builder())
+<a href=#602 id=602 data-nosnippet>602</a>    //! and [`BackendSelector::with_winit_030_window_attributes_hook()`](crate::BackendSelector::with_winit_030_window_attributes_hook()).
+<a href=#603 id=603 data-nosnippet>603</a>
+<a href=#604 id=604 data-nosnippet>604</a>    </span><span class="kw">pub use </span>i_slint_backend_winit::{
+<a href=#605 id=605 data-nosnippet>605</a>        winit, EventLoopBuilder, SlintEvent, WinitWindowAccessor, WinitWindowEventResult,
+<a href=#606 id=606 data-nosnippet>606</a>    };
+<a href=#607 id=607 data-nosnippet>607</a>}</code></pre></div></section></main></body></html>
