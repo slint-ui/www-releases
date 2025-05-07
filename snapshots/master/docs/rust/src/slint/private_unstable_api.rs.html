@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `api/rs/slint/private_unstable_api.rs`."><title>private_unstable_api.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-20739d33.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint" data-themes="" data-resource-suffix="" data-rustdoc-version="1.88.0-nightly (2e6882ac5 2025-05-05)" data-channel="nightly" data-search-js="search-f7877310.js" data-settings-js="settings-5514c975.js" ><script src="../../static.files/storage-4e99c027.js"></script><script defer src="../../static.files/src-script-63605ae7.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-7ef8a74a.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `api/rs/slint/private_unstable_api.rs`."><title>private_unstable_api.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-1a91846b.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint" data-themes="" data-resource-suffix="" data-rustdoc-version="1.88.0-nightly (27d6200a7 2025-05-06)" data-channel="nightly" data-search-js="search-f7877310.js" data-settings-js="settings-5514c975.js" ><script src="../../static.files/storage-4e99c027.js"></script><script defer src="../../static.files/src-script-63605ae7.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-7ef8a74a.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -312,47 +312,48 @@
 <a href=#190 id=190 data-nosnippet>190</a>    <span class="kw">pub use </span>i_slint_core::api::LogicalPosition;
 <a href=#191 id=191 data-nosnippet>191</a>    <span class="kw">pub use </span>i_slint_core::callbacks::Callback;
 <a href=#192 id=192 data-nosnippet>192</a>    <span class="kw">pub use </span>i_slint_core::date_time::<span class="kw-2">*</span>;
-<a href=#193 id=193 data-nosnippet>193</a>    <span class="kw">pub use </span>i_slint_core::graphics::<span class="kw-2">*</span>;
-<a href=#194 id=194 data-nosnippet>194</a>    <span class="kw">pub use </span>i_slint_core::input::{
-<a href=#195 id=195 data-nosnippet>195</a>        key_codes::Key, FocusEvent, InputEventResult, KeyEvent, KeyEventResult, KeyboardModifiers,
-<a href=#196 id=196 data-nosnippet>196</a>        MouseEvent,
-<a href=#197 id=197 data-nosnippet>197</a>    };
-<a href=#198 id=198 data-nosnippet>198</a>    <span class="kw">pub use </span>i_slint_core::item_tree::{
-<a href=#199 id=199 data-nosnippet>199</a>        register_item_tree, unregister_item_tree, IndexRange, ItemTree, ItemTreeRefPin,
-<a href=#200 id=200 data-nosnippet>200</a>        ItemTreeVTable, ItemTreeWeak,
-<a href=#201 id=201 data-nosnippet>201</a>    };
-<a href=#202 id=202 data-nosnippet>202</a>    <span class="kw">pub use </span>i_slint_core::item_tree::{
-<a href=#203 id=203 data-nosnippet>203</a>        visit_item_tree, ItemTreeNode, ItemVisitorRefMut, ItemVisitorVTable, ItemWeak,
-<a href=#204 id=204 data-nosnippet>204</a>        TraversalOrder, VisitChildrenResult,
-<a href=#205 id=205 data-nosnippet>205</a>    };
-<a href=#206 id=206 data-nosnippet>206</a>    <span class="kw">pub use </span>i_slint_core::items::<span class="kw-2">*</span>;
-<a href=#207 id=207 data-nosnippet>207</a>    <span class="kw">pub use </span>i_slint_core::layout::<span class="kw-2">*</span>;
-<a href=#208 id=208 data-nosnippet>208</a>    <span class="kw">pub use </span>i_slint_core::lengths::{
-<a href=#209 id=209 data-nosnippet>209</a>        logical_position_to_api, LogicalLength, LogicalPoint, LogicalRect,
-<a href=#210 id=210 data-nosnippet>210</a>    };
-<a href=#211 id=211 data-nosnippet>211</a>    <span class="kw">pub use </span>i_slint_core::menus::{Menu, MenuFromItemTree, MenuVTable};
-<a href=#212 id=212 data-nosnippet>212</a>    <span class="kw">pub use </span>i_slint_core::model::<span class="kw-2">*</span>;
-<a href=#213 id=213 data-nosnippet>213</a>    <span class="kw">pub use </span>i_slint_core::properties::{
-<a href=#214 id=214 data-nosnippet>214</a>        set_state_binding, ChangeTracker, Property, PropertyTracker, StateInfo,
-<a href=#215 id=215 data-nosnippet>215</a>    };
-<a href=#216 id=216 data-nosnippet>216</a>    <span class="kw">pub use </span>i_slint_core::slice::Slice;
-<a href=#217 id=217 data-nosnippet>217</a>    <span class="kw">pub use </span>i_slint_core::string::shared_string_from_number;
-<a href=#218 id=218 data-nosnippet>218</a>    <span class="kw">pub use </span>i_slint_core::string::shared_string_from_number_fixed;
-<a href=#219 id=219 data-nosnippet>219</a>    <span class="kw">pub use </span>i_slint_core::string::shared_string_from_number_precision;
-<a href=#220 id=220 data-nosnippet>220</a>    <span class="kw">pub use </span>i_slint_core::timers::{Timer, TimerMode};
-<a href=#221 id=221 data-nosnippet>221</a>    <span class="kw">pub use </span>i_slint_core::translations::{
-<a href=#222 id=222 data-nosnippet>222</a>        set_bundled_languages, translate_from_bundle, translate_from_bundle_with_plural,
-<a href=#223 id=223 data-nosnippet>223</a>    };
-<a href=#224 id=224 data-nosnippet>224</a>    <span class="kw">pub use </span>i_slint_core::window::{
-<a href=#225 id=225 data-nosnippet>225</a>        InputMethodRequest, WindowAdapter, WindowAdapterRc, WindowInner,
-<a href=#226 id=226 data-nosnippet>226</a>    };
-<a href=#227 id=227 data-nosnippet>227</a>    <span class="kw">pub use </span>i_slint_core::{Color, Coord, SharedString, SharedVector};
-<a href=#228 id=228 data-nosnippet>228</a>    <span class="kw">pub use </span>i_slint_core::{ItemTreeVTable_static, MenuVTable_static};
-<a href=#229 id=229 data-nosnippet>229</a>    <span class="kw">pub use </span>num_traits::float::Float;
-<a href=#230 id=230 data-nosnippet>230</a>    <span class="kw">pub use </span>num_traits::ops::euclid::Euclid;
-<a href=#231 id=231 data-nosnippet>231</a>    <span class="kw">pub use </span>once_cell::race::OnceBox;
-<a href=#232 id=232 data-nosnippet>232</a>    <span class="kw">pub use </span>once_cell::unsync::OnceCell;
-<a href=#233 id=233 data-nosnippet>233</a>    <span class="kw">pub use </span>pin_weak::rc::PinWeak;
-<a href=#234 id=234 data-nosnippet>234</a>    <span class="kw">pub use </span>unicode_segmentation::UnicodeSegmentation;
-<a href=#235 id=235 data-nosnippet>235</a>    <span class="kw">pub use </span>vtable::{<span class="self">self</span>, <span class="kw-2">*</span>};
-<a href=#236 id=236 data-nosnippet>236</a>}</code></pre></div></section></main></body></html>
+<a href=#193 id=193 data-nosnippet>193</a>    <span class="kw">pub use </span>i_slint_core::detect_operating_system;
+<a href=#194 id=194 data-nosnippet>194</a>    <span class="kw">pub use </span>i_slint_core::graphics::<span class="kw-2">*</span>;
+<a href=#195 id=195 data-nosnippet>195</a>    <span class="kw">pub use </span>i_slint_core::input::{
+<a href=#196 id=196 data-nosnippet>196</a>        key_codes::Key, FocusEvent, InputEventResult, KeyEvent, KeyEventResult, KeyboardModifiers,
+<a href=#197 id=197 data-nosnippet>197</a>        MouseEvent,
+<a href=#198 id=198 data-nosnippet>198</a>    };
+<a href=#199 id=199 data-nosnippet>199</a>    <span class="kw">pub use </span>i_slint_core::item_tree::{
+<a href=#200 id=200 data-nosnippet>200</a>        register_item_tree, unregister_item_tree, IndexRange, ItemTree, ItemTreeRefPin,
+<a href=#201 id=201 data-nosnippet>201</a>        ItemTreeVTable, ItemTreeWeak,
+<a href=#202 id=202 data-nosnippet>202</a>    };
+<a href=#203 id=203 data-nosnippet>203</a>    <span class="kw">pub use </span>i_slint_core::item_tree::{
+<a href=#204 id=204 data-nosnippet>204</a>        visit_item_tree, ItemTreeNode, ItemVisitorRefMut, ItemVisitorVTable, ItemWeak,
+<a href=#205 id=205 data-nosnippet>205</a>        TraversalOrder, VisitChildrenResult,
+<a href=#206 id=206 data-nosnippet>206</a>    };
+<a href=#207 id=207 data-nosnippet>207</a>    <span class="kw">pub use </span>i_slint_core::items::<span class="kw-2">*</span>;
+<a href=#208 id=208 data-nosnippet>208</a>    <span class="kw">pub use </span>i_slint_core::layout::<span class="kw-2">*</span>;
+<a href=#209 id=209 data-nosnippet>209</a>    <span class="kw">pub use </span>i_slint_core::lengths::{
+<a href=#210 id=210 data-nosnippet>210</a>        logical_position_to_api, LogicalLength, LogicalPoint, LogicalRect,
+<a href=#211 id=211 data-nosnippet>211</a>    };
+<a href=#212 id=212 data-nosnippet>212</a>    <span class="kw">pub use </span>i_slint_core::menus::{Menu, MenuFromItemTree, MenuVTable};
+<a href=#213 id=213 data-nosnippet>213</a>    <span class="kw">pub use </span>i_slint_core::model::<span class="kw-2">*</span>;
+<a href=#214 id=214 data-nosnippet>214</a>    <span class="kw">pub use </span>i_slint_core::properties::{
+<a href=#215 id=215 data-nosnippet>215</a>        set_state_binding, ChangeTracker, Property, PropertyTracker, StateInfo,
+<a href=#216 id=216 data-nosnippet>216</a>    };
+<a href=#217 id=217 data-nosnippet>217</a>    <span class="kw">pub use </span>i_slint_core::slice::Slice;
+<a href=#218 id=218 data-nosnippet>218</a>    <span class="kw">pub use </span>i_slint_core::string::shared_string_from_number;
+<a href=#219 id=219 data-nosnippet>219</a>    <span class="kw">pub use </span>i_slint_core::string::shared_string_from_number_fixed;
+<a href=#220 id=220 data-nosnippet>220</a>    <span class="kw">pub use </span>i_slint_core::string::shared_string_from_number_precision;
+<a href=#221 id=221 data-nosnippet>221</a>    <span class="kw">pub use </span>i_slint_core::timers::{Timer, TimerMode};
+<a href=#222 id=222 data-nosnippet>222</a>    <span class="kw">pub use </span>i_slint_core::translations::{
+<a href=#223 id=223 data-nosnippet>223</a>        set_bundled_languages, translate_from_bundle, translate_from_bundle_with_plural,
+<a href=#224 id=224 data-nosnippet>224</a>    };
+<a href=#225 id=225 data-nosnippet>225</a>    <span class="kw">pub use </span>i_slint_core::window::{
+<a href=#226 id=226 data-nosnippet>226</a>        InputMethodRequest, WindowAdapter, WindowAdapterRc, WindowInner,
+<a href=#227 id=227 data-nosnippet>227</a>    };
+<a href=#228 id=228 data-nosnippet>228</a>    <span class="kw">pub use </span>i_slint_core::{Color, Coord, SharedString, SharedVector};
+<a href=#229 id=229 data-nosnippet>229</a>    <span class="kw">pub use </span>i_slint_core::{ItemTreeVTable_static, MenuVTable_static};
+<a href=#230 id=230 data-nosnippet>230</a>    <span class="kw">pub use </span>num_traits::float::Float;
+<a href=#231 id=231 data-nosnippet>231</a>    <span class="kw">pub use </span>num_traits::ops::euclid::Euclid;
+<a href=#232 id=232 data-nosnippet>232</a>    <span class="kw">pub use </span>once_cell::race::OnceBox;
+<a href=#233 id=233 data-nosnippet>233</a>    <span class="kw">pub use </span>once_cell::unsync::OnceCell;
+<a href=#234 id=234 data-nosnippet>234</a>    <span class="kw">pub use </span>pin_weak::rc::PinWeak;
+<a href=#235 id=235 data-nosnippet>235</a>    <span class="kw">pub use </span>unicode_segmentation::UnicodeSegmentation;
+<a href=#236 id=236 data-nosnippet>236</a>    <span class="kw">pub use </span>vtable::{<span class="self">self</span>, <span class="kw-2">*</span>};
+<a href=#237 id=237 data-nosnippet>237</a>}</code></pre></div></section></main></body></html>

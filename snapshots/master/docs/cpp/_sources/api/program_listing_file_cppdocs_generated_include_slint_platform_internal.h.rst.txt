@@ -23,7 +23,12 @@ Program Listing for File slint_platform_internal.h
    #include "slint_internal.h"
    
    namespace slint::platform { struct Rgb565Pixel; }
-   namespace slint::cbindgen_private { struct WindowProperties; using slint::platform::Rgb565Pixel; using slint::cbindgen_private::types::TexturePixelFormat; struct DrawTextureArgs; }
+   namespace slint::cbindgen_private {
+       struct WindowProperties; using slint::platform::Rgb565Pixel;
+       using slint::cbindgen_private::types::TexturePixelFormat;
+       struct DrawTextureArgs;
+       struct DrawRectangleArgs;
+   }
    
    
    namespace slint {
@@ -60,16 +65,10 @@ Program Listing for File slint_platform_internal.h
        CppTargetPixelBufferUserData user_data;
        void (*line_slice)(CppTargetPixelBufferUserData, uintptr_t, T **slice_ptr, uintptr_t *slice_len);
        uintptr_t (*num_lines)(CppTargetPixelBufferUserData);
-       bool (*fill_rectangle)(CppTargetPixelBufferUserData,
-                              int16_t,
-                              int16_t,
-                              int16_t,
-                              int16_t,
-                              uint8_t,
-                              uint8_t,
-                              uint8_t,
-                              uint8_t,
-                              CompositionMode);
+       bool (*fill_background)(CppTargetPixelBufferUserData, const Brush*, const PhysicalRegion*);
+       bool (*draw_rectangle)(CppTargetPixelBufferUserData,
+                              const DrawRectangleArgs*,
+                              const PhysicalRegion*);
        bool (*draw_texture)(CppTargetPixelBufferUserData, const DrawTextureArgs*, const PhysicalRegion*);
    };
    
@@ -110,6 +109,8 @@ Program Listing for File slint_platform_internal.h
    void slint_debug(const SharedString *string);
    
    void slint_set_xdg_app_id(const SharedString *_app_id);
+   
+   void slint_detect_operating_system(SharedString *out);
    
    void slint_window_properties_get_title(const WindowProperties *wp, SharedString *out);
    
