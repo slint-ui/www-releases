@@ -418,7 +418,6 @@ Program Listing for File slint-platform.h
        };
    
    #    ifdef SLINT_FEATURE_EXPERIMENTAL
-       using CompositionMode = cbindgen_private::CompositionMode;
        // (FIXME: this is currently opaque, but should be exposed)
        using DrawTextureArgs = cbindgen_private::DrawTextureArgs;
        using DrawRectangleArgs = cbindgen_private::DrawRectangleArgs;
@@ -430,10 +429,6 @@ Program Listing for File slint-platform.h
    
            virtual std::span<PixelType> line_slice(std::size_t line_number) = 0;
            virtual std::size_t num_lines() = 0;
-   
-           virtual bool fill_rectangle(int16_t x, int16_t y, int16_t width, int16_t height,
-                                       const RgbaColor<uint8_t> &premultiplied_color,
-                                       CompositionMode composition_mode) = 0;
    
            // FIXME: Texture is currently opaque, but should be exposed
            virtual bool draw_texture(const DrawTextureArgs &texture, const PhysicalRegion &clip) = 0;

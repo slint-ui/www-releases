@@ -86,11 +86,6 @@ Program Listing for File slint_internal.h
        SelectionClipboard = 1,
    };
    
-   enum class CompositionMode : uint8_t {
-       Source,
-       SourceOver,
-   };
-   
    enum class FocusEvent : uint8_t {
        FocusIn,
        FocusOut,
