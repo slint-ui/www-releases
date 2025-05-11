@@ -5,7 +5,7 @@ This page lists the licenses of the dependencies used by Slint.
 
 ## Overview of licenses
 
-- [MIT License](#MIT) (375)
+- [MIT License](#MIT) (378)
 - [Apache License 2.0](#Apache-2.0) (16)
 - [BSD 3-Clause &quot;New&quot; or &quot;Revised&quot; License](#BSD-3-Clause) (6)
 - [BSD 2-Clause &quot;Simplified&quot; License](#BSD-2-Clause) (4)
@@ -1964,7 +1964,7 @@ THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRES
 
 #### Used by:
 
-- [libloading 0.8.6]( https://github.com/nagisa/rust_libloading/ )
+- [libloading 0.8.7]( https://github.com/nagisa/rust_libloading/ )
 
 #### License Text
 
@@ -1999,10 +1999,13 @@ THIS SOFTWARE.
 - [windows-sys 0.59.0]( https://github.com/microsoft/windows-rs )
 - [windows-targets 0.48.5]( https://github.com/microsoft/windows-rs )
 - [windows-targets 0.52.6]( https://github.com/microsoft/windows-rs )
+- [windows-targets 0.53.0]( https://github.com/microsoft/windows-rs )
 - [windows_x86_64_gnu 0.48.5]( https://github.com/microsoft/windows-rs )
 - [windows_x86_64_gnu 0.52.6]( https://github.com/microsoft/windows-rs )
+- [windows_x86_64_gnu 0.53.0]( https://github.com/microsoft/windows-rs )
 - [windows_x86_64_msvc 0.48.5]( https://github.com/microsoft/windows-rs )
 - [windows_x86_64_msvc 0.52.6]( https://github.com/microsoft/windows-rs )
+- [windows_x86_64_msvc 0.53.0]( https://github.com/microsoft/windows-rs )
 
 #### License Text
 
