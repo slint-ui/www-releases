@@ -2653,7 +2653,7 @@ DEALINGS IN THE SOFTWARE.
 
 #### Used by:
 
-- [tempfile 3.19.1]( https://github.com/Stebalien/tempfile )
+- [tempfile 3.20.0]( https://github.com/Stebalien/tempfile )
 
 #### License Text
 
