@@ -1989,12 +1989,9 @@ THIS SOFTWARE.
 #### Used by:
 
 - [rustybuzz 0.20.1]( https://github.com/harfbuzz/rustybuzz )
-- [windows-core 0.61.0]( https://github.com/microsoft/windows-rs )
 - [windows-implement 0.60.0]( https://github.com/microsoft/windows-rs )
 - [windows-interface 0.59.1]( https://github.com/microsoft/windows-rs )
 - [windows-link 0.1.1]( https://github.com/microsoft/windows-rs )
-- [windows-result 0.3.2]( https://github.com/microsoft/windows-rs )
-- [windows-strings 0.4.0]( https://github.com/microsoft/windows-rs )
 - [windows-sys 0.52.0]( https://github.com/microsoft/windows-rs )
 - [windows-sys 0.59.0]( https://github.com/microsoft/windows-rs )
 - [windows-targets 0.48.5]( https://github.com/microsoft/windows-rs )
@@ -2319,7 +2316,7 @@ DEALINGS IN THE SOFTWARE.
 
 #### Used by:
 
-- [errno 0.3.11]( https://github.com/lambda-fairy/rust-errno )
+- [errno 0.3.12]( https://github.com/lambda-fairy/rust-errno )
 
 #### License Text
 
@@ -5820,6 +5817,9 @@ SOFTWARE.
 - [qttypes 0.2.12]( https://github.com/woboq/qmetaobject-rs )
 - [simd_helpers 0.1.0]( https://github.com/lu-zero/simd_helpers )
 - [siphasher 1.0.1]( https://github.com/jedisct1/rust-siphash )
+- [windows-core 0.61.1]( https://github.com/microsoft/windows-rs )
+- [windows-result 0.3.3]( https://github.com/microsoft/windows-rs )
+- [windows-strings 0.4.1]( https://github.com/microsoft/windows-rs )
 - [zune-core 0.4.12](
 https://crates.io/crates/zune-core )
 - [zune-inflate 0.2.54](
@@ -7127,7 +7127,7 @@ SOFTWARE.
 
 #### Used by:
 
-- [weezl 0.1.9]( https://github.com/image-rs/weezl )
+- [weezl 0.1.8]( https://github.com/image-rs/lzw )
 
 #### License Text
 
