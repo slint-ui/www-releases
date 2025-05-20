@@ -5817,9 +5817,9 @@ SOFTWARE.
 - [qttypes 0.2.12]( https://github.com/woboq/qmetaobject-rs )
 - [simd_helpers 0.1.0]( https://github.com/lu-zero/simd_helpers )
 - [siphasher 1.0.1]( https://github.com/jedisct1/rust-siphash )
-- [windows-core 0.61.1]( https://github.com/microsoft/windows-rs )
-- [windows-result 0.3.3]( https://github.com/microsoft/windows-rs )
-- [windows-strings 0.4.1]( https://github.com/microsoft/windows-rs )
+- [windows-core 0.61.2]( https://github.com/microsoft/windows-rs )
+- [windows-result 0.3.4]( https://github.com/microsoft/windows-rs )
+- [windows-strings 0.4.2]( https://github.com/microsoft/windows-rs )
 - [zune-core 0.4.12](
 https://crates.io/crates/zune-core )
 - [zune-inflate 0.2.54](
