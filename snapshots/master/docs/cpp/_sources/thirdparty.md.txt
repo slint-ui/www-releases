@@ -5,7 +5,7 @@ This page lists the licenses of the dependencies used by Slint.
 
 ## Overview of licenses
 
-- [MIT License](#MIT) (377)
+- [MIT License](#MIT) (378)
 - [Apache License 2.0](#Apache-2.0) (16)
 - [BSD 3-Clause &quot;New&quot; or &quot;Revised&quot; License](#BSD-3-Clause) (6)
 - [BSD 2-Clause &quot;Simplified&quot; License](#BSD-2-Clause) (4)
@@ -5022,6 +5022,7 @@ according to those terms.
 
 #### Used by:
 
+- [cgl 0.3.2]( https://github.com/servo/cgl-rs )
 - [core-graphics 0.23.2]( https://github.com/servo/core-foundation-rs )
 - [core-text 20.1.0]( https://github.com/servo/core-foundation-rs )
 - [euclid 0.22.11]( https://github.com/servo/euclid )
@@ -6264,7 +6265,7 @@ DEALINGS IN THE SOFTWARE.
 - [quote 1.0.40]( https://github.com/dtolnay/quote )
 - [rustix 0.38.44]( https://github.com/bytecodealliance/rustix )
 - [rustix 1.0.7]( https://github.com/bytecodealliance/rustix )
-- [rustversion 1.0.20]( https://github.com/dtolnay/rustversion )
+- [rustversion 1.0.21]( https://github.com/dtolnay/rustversion )
 - [semver 1.0.26]( https://github.com/dtolnay/semver )
 - [serde 1.0.219]( https://github.com/serde-rs/serde )
 - [serde_derive 1.0.219]( https://github.com/serde-rs/serde )
@@ -7126,7 +7127,7 @@ SOFTWARE.
 
 #### Used by:
 
-- [weezl 0.1.8]( https://github.com/image-rs/lzw )
+- [weezl 0.1.10]( https://github.com/image-rs/weezl )
 
 #### License Text
 
