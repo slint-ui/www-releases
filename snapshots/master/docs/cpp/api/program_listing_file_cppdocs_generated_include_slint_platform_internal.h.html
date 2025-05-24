@@ -473,6 +473,44 @@
 
 <span class="k">using</span><span class="w"> </span><span class="n">CppTargetPixelBufferUserData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="p">;</span>
 
+<span class="k">struct</span><span class="w"> </span><span class="nc">DrawRectangleArgs</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">width</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">height</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">top_left_radius</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">top_right_radius</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">bottom_right_radius</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">bottom_left_radius</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">border_width</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Brush</span><span class="w"> </span><span class="n">background</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Brush</span><span class="w"> </span><span class="n">border</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">alpha</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int32_t</span><span class="w"> </span><span class="n">rotation</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">DrawTextureArgs</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">image_data</span><span class="p">;</span>
+<span class="w">    </span><span class="n">TexturePixelFormat</span><span class="w"> </span><span class="n">pixel_format</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uintptr_t</span><span class="w"> </span><span class="n">byte_stride</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">width</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">height</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Color</span><span class="w"> </span><span class="n">colorize</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">alpha</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">intptr_t</span><span class="w"> </span><span class="n">dst_x</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">intptr_t</span><span class="w"> </span><span class="n">dst_y</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uintptr_t</span><span class="w"> </span><span class="n">dst_width</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uintptr_t</span><span class="w"> </span><span class="n">dst_height</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int32_t</span><span class="w"> </span><span class="n">rotation</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">has_tiling</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int32_t</span><span class="w"> </span><span class="n">tiling_offset_x</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int32_t</span><span class="w"> </span><span class="n">tiling_offset_y</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">tiling_scale_x</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">tiling_scale_y</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">tiling_gap_x</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">tiling_gap_y</span><span class="p">;</span>
+<span class="p">};</span>
+
 <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
 <span class="k">struct</span><span class="w"> </span><span class="nc">CppTargetPixelBuffer</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">CppTargetPixelBufferUserData</span><span class="w"> </span><span class="n">user_data</span><span class="p">;</span>

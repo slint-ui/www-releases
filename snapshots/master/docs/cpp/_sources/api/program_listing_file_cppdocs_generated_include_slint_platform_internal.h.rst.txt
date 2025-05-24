@@ -60,6 +60,44 @@ Program Listing for File slint_platform_internal.h
    
    using CppTargetPixelBufferUserData = void*;
    
+   struct DrawRectangleArgs {
+       float x;
+       float y;
+       float width;
+       float height;
+       float top_left_radius;
+       float top_right_radius;
+       float bottom_right_radius;
+       float bottom_left_radius;
+       float border_width;
+       Brush background;
+       Brush border;
+       uint8_t alpha;
+       int32_t rotation;
+   };
+   
+   struct DrawTextureArgs {
+       const uint8_t *image_data;
+       TexturePixelFormat pixel_format;
+       uintptr_t byte_stride;
+       uint32_t width;
+       uint32_t height;
+       Color colorize;
+       uint8_t alpha;
+       intptr_t dst_x;
+       intptr_t dst_y;
+       uintptr_t dst_width;
+       uintptr_t dst_height;
+       int32_t rotation;
+       bool has_tiling;
+       int32_t tiling_offset_x;
+       int32_t tiling_offset_y;
+       float tiling_scale_x;
+       float tiling_scale_y;
+       uint32_t tiling_gap_x;
+       uint32_t tiling_gap_y;
+   };
+   
    template<typename T>
    struct CppTargetPixelBuffer {
        CppTargetPixelBufferUserData user_data;
