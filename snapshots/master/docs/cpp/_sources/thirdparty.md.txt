@@ -4598,7 +4598,7 @@ THE SOFTWARE.
 
 #### Used by:
 
-- [cursor-icon 1.1.0]( https://github.com/rust-windowing/cursor-icon )
+- [cursor-icon 1.2.0]( https://github.com/rust-windowing/cursor-icon )
 - [wayland-csd-frame 0.3.0]( https://github.com/rust-windowing/wayland-csd-frame )
 
 #### License Text
@@ -6228,7 +6228,7 @@ DEALINGS IN THE SOFTWARE.
 - [async-channel 2.3.1]( https://github.com/smol-rs/async-channel )
 - [async-executor 1.13.2]( https://github.com/smol-rs/async-executor )
 - [async-fs 2.1.2]( https://github.com/smol-rs/async-fs )
-- [async-io 2.4.0]( https://github.com/smol-rs/async-io )
+- [async-io 2.4.1]( https://github.com/smol-rs/async-io )
 - [async-lock 3.4.0]( https://github.com/smol-rs/async-lock )
 - [async-process 2.3.0]( https://github.com/smol-rs/async-process )
 - [async-signal 0.2.10]( https://github.com/smol-rs/async-signal )
@@ -6256,7 +6256,7 @@ DEALINGS IN THE SOFTWARE.
 - [pin-project-lite 0.2.16]( https://github.com/taiki-e/pin-project-lite )
 - [pin-project 1.1.10]( https://github.com/taiki-e/pin-project )
 - [piper 0.2.4]( https://github.com/smol-rs/piper )
-- [polling 3.7.4]( https://github.com/smol-rs/polling )
+- [polling 3.8.0]( https://github.com/smol-rs/polling )
 - [portable-atomic 1.11.0]( https://github.com/taiki-e/portable-atomic )
 - [proc-macro-crate 1.3.1]( https://github.com/bkchr/proc-macro-crate )
 - [proc-macro-crate 2.0.0]( https://github.com/bkchr/proc-macro-crate )
