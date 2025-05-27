@@ -12,7 +12,7 @@ Program Listing for File slint_interpreter_generated_public.h
 
    #pragma once
    
-   /* Generated with cbindgen:0.26.0 */
+   /* Generated with cbindgen:0.29.0 */
    
    #include <cstdarg>
    #include <cstdint>
@@ -53,5 +53,5 @@ Program Listing for File slint_interpreter_generated_public.h
        ValueType property_type;
    };
    
-   } // namespace interpreter
-   } // namespace slint
+   }  // namespace interpreter
+   }  // namespace slint

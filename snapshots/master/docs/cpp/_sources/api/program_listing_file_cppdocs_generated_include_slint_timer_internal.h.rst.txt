@@ -12,7 +12,7 @@ Program Listing for File slint_timer_internal.h
 
    #pragma once
    
-   /* Generated with cbindgen:0.26.0 */
+   /* Generated with cbindgen:0.29.0 */
    
    #include <cstdarg>
    #include <cstdint>
@@ -52,7 +52,7 @@ Program Listing for File slint_timer_internal.h
    
    uint64_t slint_timer_interval(uintptr_t id);
    
-   } // extern "C"
+   }  // extern "C"
    
-   } // namespace cbindgen_private
-   } // namespace slint
+   }  // namespace cbindgen_private
+   }  // namespace slint

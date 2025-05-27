@@ -12,7 +12,7 @@ Program Listing for File slint_pathdata_internal.h
 
    #pragma once
    
-   /* Generated with cbindgen:0.26.0 */
+   /* Generated with cbindgen:0.29.0 */
    
    #include <cstdarg>
    #include <cstdint>
@@ -502,8 +502,8 @@ Program Listing for File slint_pathdata_internal.h
                               uintptr_t coordinate_count);
    #endif
    
-   } // extern "C"
+   }  // extern "C"
    
-   } // namespace types
-   } // namespace cbindgen_private
-   } // namespace slint
+   }  // namespace types
+   }  // namespace cbindgen_private
+   }  // namespace slint

@@ -12,7 +12,7 @@ Program Listing for File slint_interpreter_internal.h
 
    #pragma once
    
-   /* Generated with cbindgen:0.26.0 */
+   /* Generated with cbindgen:0.29.0 */
    
    #include <cstdarg>
    #include <cstdint>
@@ -275,7 +275,7 @@ Program Listing for File slint_interpreter_internal.h
                                                                 Slice<uint8_t> global_name,
                                                                 SharedVector<SharedString> *names);
    
-   } // extern "C"
+   }  // extern "C"
    
-   } // namespace cbindgen_private
-   } // namespace slint
+   }  // namespace cbindgen_private
+   }  // namespace slint

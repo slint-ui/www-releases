@@ -12,7 +12,7 @@ Program Listing for File slint_sharedvector_internal.h
 
    #pragma once
    
-   /* Generated with cbindgen:0.26.0 */
+   /* Generated with cbindgen:0.29.0 */
    
    #include <cstdarg>
    #include <cstdint>
@@ -35,7 +35,7 @@ Program Listing for File slint_sharedvector_internal.h
    
    const uint8_t *slint_shared_vector_empty();
    
-   } // extern "C"
+   }  // extern "C"
    
-   } // namespace cbindgen_private
-   } // namespace slint
+   }  // namespace cbindgen_private
+   }  // namespace slint

@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/ffi.rs`."><title>ffi.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-84e720fa.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.89.0-nightly (283db70ac 2025-05-25)" data-channel="nightly" data-search-js="search-f7877310.js" data-settings-js="settings-5514c975.js" ><script src="../../static.files/storage-4e99c027.js"></script><script defer src="../../static.files/src-script-63605ae7.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-fd3af306.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-32bb7600.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/ffi.rs`."><title>ffi.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-84e720fa.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.89.0-nightly (2805e1dc4 2025-05-26)" data-channel="nightly" data-search-js="search-f7877310.js" data-settings-js="settings-5514c975.js" ><script src="../../static.files/storage-4e99c027.js"></script><script defer src="../../static.files/src-script-63605ae7.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-fd3af306.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-32bb7600.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -134,48 +134,48 @@
 <a href=#12 id=12 data-nosnippet>12</a><span class="kw">use </span>vtable::VRef;
 <a href=#13 id=13 data-nosnippet>13</a>
 <a href=#14 id=14 data-nosnippet>14</a><span class="doccomment">/// Construct a new Value in the given memory location
-<a href=#15 id=15 data-nosnippet>15</a></span><span class="attr">#[no_mangle]
+<a href=#15 id=15 data-nosnippet>15</a></span><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#16 id=16 data-nosnippet>16</a></span><span class="kw">pub unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_value_new() -&gt; Box&lt;Value&gt; {
 <a href=#17 id=17 data-nosnippet>17</a>    Box::new(Value::default())
 <a href=#18 id=18 data-nosnippet>18</a>}
 <a href=#19 id=19 data-nosnippet>19</a>
 <a href=#20 id=20 data-nosnippet>20</a><span class="doccomment">/// Construct a new Value in the given memory location
-<a href=#21 id=21 data-nosnippet>21</a></span><span class="attr">#[no_mangle]
+<a href=#21 id=21 data-nosnippet>21</a></span><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#22 id=22 data-nosnippet>22</a></span><span class="kw">pub unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_value_clone(other: <span class="kw-2">&amp;</span>Value) -&gt; Box&lt;Value&gt; {
 <a href=#23 id=23 data-nosnippet>23</a>    Box::new(other.clone())
 <a href=#24 id=24 data-nosnippet>24</a>}
 <a href=#25 id=25 data-nosnippet>25</a>
 <a href=#26 id=26 data-nosnippet>26</a><span class="doccomment">/// Destruct the value in that memory location
-<a href=#27 id=27 data-nosnippet>27</a></span><span class="attr">#[no_mangle]
+<a href=#27 id=27 data-nosnippet>27</a></span><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#28 id=28 data-nosnippet>28</a></span><span class="kw">pub unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_value_destructor(val: Box&lt;Value&gt;) {
 <a href=#29 id=29 data-nosnippet>29</a>    drop(val);
 <a href=#30 id=30 data-nosnippet>30</a>}
 <a href=#31 id=31 data-nosnippet>31</a>
-<a href=#32 id=32 data-nosnippet>32</a><span class="attr">#[no_mangle]
+<a href=#32 id=32 data-nosnippet>32</a><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#33 id=33 data-nosnippet>33</a></span><span class="kw">pub extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_value_eq(a: <span class="kw-2">&amp;</span>Value, b: <span class="kw-2">&amp;</span>Value) -&gt; bool {
 <a href=#34 id=34 data-nosnippet>34</a>    a == b
 <a href=#35 id=35 data-nosnippet>35</a>}
 <a href=#36 id=36 data-nosnippet>36</a>
 <a href=#37 id=37 data-nosnippet>37</a><span class="doccomment">/// Construct a new Value in the given memory location as string
-<a href=#38 id=38 data-nosnippet>38</a></span><span class="attr">#[no_mangle]
+<a href=#38 id=38 data-nosnippet>38</a></span><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#39 id=39 data-nosnippet>39</a></span><span class="kw">pub unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_value_new_string(str: <span class="kw-2">&amp;</span>SharedString) -&gt; Box&lt;Value&gt; {
 <a href=#40 id=40 data-nosnippet>40</a>    Box::new(Value::String(str.clone()))
 <a href=#41 id=41 data-nosnippet>41</a>}
 <a href=#42 id=42 data-nosnippet>42</a>
 <a href=#43 id=43 data-nosnippet>43</a><span class="doccomment">/// Construct a new Value in the given memory location as double
-<a href=#44 id=44 data-nosnippet>44</a></span><span class="attr">#[no_mangle]
+<a href=#44 id=44 data-nosnippet>44</a></span><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#45 id=45 data-nosnippet>45</a></span><span class="kw">pub unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_value_new_double(double: f64) -&gt; Box&lt;Value&gt; {
 <a href=#46 id=46 data-nosnippet>46</a>    Box::new(Value::Number(double))
 <a href=#47 id=47 data-nosnippet>47</a>}
 <a href=#48 id=48 data-nosnippet>48</a>
 <a href=#49 id=49 data-nosnippet>49</a><span class="doccomment">/// Construct a new Value in the given memory location as bool
-<a href=#50 id=50 data-nosnippet>50</a></span><span class="attr">#[no_mangle]
+<a href=#50 id=50 data-nosnippet>50</a></span><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#51 id=51 data-nosnippet>51</a></span><span class="kw">pub unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_value_new_bool(b: bool) -&gt; Box&lt;Value&gt; {
 <a href=#52 id=52 data-nosnippet>52</a>    Box::new(Value::Bool(b))
 <a href=#53 id=53 data-nosnippet>53</a>}
 <a href=#54 id=54 data-nosnippet>54</a>
 <a href=#55 id=55 data-nosnippet>55</a><span class="doccomment">/// Construct a new Value in the given memory location as array model
-<a href=#56 id=56 data-nosnippet>56</a></span><span class="attr">#[no_mangle]
+<a href=#56 id=56 data-nosnippet>56</a></span><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#57 id=57 data-nosnippet>57</a></span><span class="kw">pub unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_value_new_array_model(
 <a href=#58 id=58 data-nosnippet>58</a>    a: <span class="kw-2">&amp;</span>SharedVector&lt;Box&lt;Value&gt;&gt;,
 <a href=#59 id=59 data-nosnippet>59</a>) -&gt; Box&lt;Value&gt; {
@@ -184,25 +184,25 @@
 <a href=#62 id=62 data-nosnippet>62</a>}
 <a href=#63 id=63 data-nosnippet>63</a>
 <a href=#64 id=64 data-nosnippet>64</a><span class="doccomment">/// Construct a new Value in the given memory location as Brush
-<a href=#65 id=65 data-nosnippet>65</a></span><span class="attr">#[no_mangle]
+<a href=#65 id=65 data-nosnippet>65</a></span><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#66 id=66 data-nosnippet>66</a></span><span class="kw">pub unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_value_new_brush(brush: <span class="kw-2">&amp;</span>Brush) -&gt; Box&lt;Value&gt; {
 <a href=#67 id=67 data-nosnippet>67</a>    Box::new(Value::Brush(brush.clone()))
 <a href=#68 id=68 data-nosnippet>68</a>}
 <a href=#69 id=69 data-nosnippet>69</a>
 <a href=#70 id=70 data-nosnippet>70</a><span class="doccomment">/// Construct a new Value in the given memory location as Struct
-<a href=#71 id=71 data-nosnippet>71</a></span><span class="attr">#[no_mangle]
+<a href=#71 id=71 data-nosnippet>71</a></span><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#72 id=72 data-nosnippet>72</a></span><span class="kw">pub unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_value_new_struct(struc: <span class="kw-2">&amp;</span>StructOpaque) -&gt; Box&lt;Value&gt; {
 <a href=#73 id=73 data-nosnippet>73</a>    Box::new(Value::Struct(struc.as_struct().clone()))
 <a href=#74 id=74 data-nosnippet>74</a>}
 <a href=#75 id=75 data-nosnippet>75</a>
 <a href=#76 id=76 data-nosnippet>76</a><span class="doccomment">/// Construct a new Value in the given memory location as image
-<a href=#77 id=77 data-nosnippet>77</a></span><span class="attr">#[no_mangle]
+<a href=#77 id=77 data-nosnippet>77</a></span><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#78 id=78 data-nosnippet>78</a></span><span class="kw">pub unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_value_new_image(img: <span class="kw-2">&amp;</span>Image) -&gt; Box&lt;Value&gt; {
 <a href=#79 id=79 data-nosnippet>79</a>    Box::new(Value::Image(img.clone()))
 <a href=#80 id=80 data-nosnippet>80</a>}
 <a href=#81 id=81 data-nosnippet>81</a>
 <a href=#82 id=82 data-nosnippet>82</a><span class="doccomment">/// Construct a new Value containing a model in the given memory location
-<a href=#83 id=83 data-nosnippet>83</a></span><span class="attr">#[no_mangle]
+<a href=#83 id=83 data-nosnippet>83</a></span><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#84 id=84 data-nosnippet>84</a></span><span class="kw">pub unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_value_new_model(
 <a href=#85 id=85 data-nosnippet>85</a>    model: NonNull&lt;u8&gt;,
 <a href=#86 id=86 data-nosnippet>86</a>    vtable: <span class="kw-2">&amp;</span>ModelAdaptorVTable,
@@ -213,12 +213,12 @@
 <a href=#91 id=91 data-nosnippet>91</a>    )))))
 <a href=#92 id=92 data-nosnippet>92</a>}
 <a href=#93 id=93 data-nosnippet>93</a>
-<a href=#94 id=94 data-nosnippet>94</a><span class="attr">#[no_mangle]
+<a href=#94 id=94 data-nosnippet>94</a><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#95 id=95 data-nosnippet>95</a></span><span class="kw">pub unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_value_type(val: <span class="kw-2">&amp;</span>Value) -&gt; ValueType {
 <a href=#96 id=96 data-nosnippet>96</a>    val.value_type()
 <a href=#97 id=97 data-nosnippet>97</a>}
 <a href=#98 id=98 data-nosnippet>98</a>
-<a href=#99 id=99 data-nosnippet>99</a><span class="attr">#[no_mangle]
+<a href=#99 id=99 data-nosnippet>99</a><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#100 id=100 data-nosnippet>100</a></span><span class="kw">pub extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_value_to_string(val: <span class="kw-2">&amp;</span>Value) -&gt; <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>SharedString&gt; {
 <a href=#101 id=101 data-nosnippet>101</a>    <span class="kw">match </span>val {
 <a href=#102 id=102 data-nosnippet>102</a>        Value::String(v) =&gt; <span class="prelude-val">Some</span>(v),
@@ -226,7 +226,7 @@
 <a href=#104 id=104 data-nosnippet>104</a>    }
 <a href=#105 id=105 data-nosnippet>105</a>}
 <a href=#106 id=106 data-nosnippet>106</a>
-<a href=#107 id=107 data-nosnippet>107</a><span class="attr">#[no_mangle]
+<a href=#107 id=107 data-nosnippet>107</a><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#108 id=108 data-nosnippet>108</a></span><span class="kw">pub extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_value_to_number(val: <span class="kw-2">&amp;</span>Value) -&gt; <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>f64&gt; {
 <a href=#109 id=109 data-nosnippet>109</a>    <span class="kw">match </span>val {
 <a href=#110 id=110 data-nosnippet>110</a>        Value::Number(v) =&gt; <span class="prelude-val">Some</span>(v),
@@ -234,7 +234,7 @@
 <a href=#112 id=112 data-nosnippet>112</a>    }
 <a href=#113 id=113 data-nosnippet>113</a>}
 <a href=#114 id=114 data-nosnippet>114</a>
-<a href=#115 id=115 data-nosnippet>115</a><span class="attr">#[no_mangle]
+<a href=#115 id=115 data-nosnippet>115</a><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#116 id=116 data-nosnippet>116</a></span><span class="kw">pub extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_value_to_bool(val: <span class="kw-2">&amp;</span>Value) -&gt; <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>bool&gt; {
 <a href=#117 id=117 data-nosnippet>117</a>    <span class="kw">match </span>val {
 <a href=#118 id=118 data-nosnippet>118</a>        Value::Bool(v) =&gt; <span class="prelude-val">Some</span>(v),
@@ -245,7 +245,7 @@
 <a href=#123 id=123 data-nosnippet>123</a><span class="doccomment">/// Extracts a `SharedVector&lt;ValueOpaque&gt;` out of the given value `val`, writes that into the
 <a href=#124 id=124 data-nosnippet>124</a>/// `out` parameter and returns true; returns false if the value does not hold an extractable
 <a href=#125 id=125 data-nosnippet>125</a>/// array.
-<a href=#126 id=126 data-nosnippet>126</a></span><span class="attr">#[no_mangle]
+<a href=#126 id=126 data-nosnippet>126</a></span><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#127 id=127 data-nosnippet>127</a></span><span class="kw">pub extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_value_to_array(
 <a href=#128 id=128 data-nosnippet>128</a>    val: <span class="kw-2">&amp;</span>Box&lt;Value&gt;,
 <a href=#129 id=129 data-nosnippet>129</a>    out: <span class="kw-2">*mut </span>SharedVector&lt;Box&lt;Value&gt;&gt;,
@@ -263,7 +263,7 @@
 <a href=#141 id=141 data-nosnippet>141</a>    }
 <a href=#142 id=142 data-nosnippet>142</a>}
 <a href=#143 id=143 data-nosnippet>143</a>
-<a href=#144 id=144 data-nosnippet>144</a><span class="attr">#[no_mangle]
+<a href=#144 id=144 data-nosnippet>144</a><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#145 id=145 data-nosnippet>145</a></span><span class="kw">pub extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_value_to_brush(val: <span class="kw-2">&amp;</span>Value) -&gt; <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>Brush&gt; {
 <a href=#146 id=146 data-nosnippet>146</a>    <span class="kw">match </span>val {
 <a href=#147 id=147 data-nosnippet>147</a>        Value::Brush(b) =&gt; <span class="prelude-val">Some</span>(b),
@@ -271,7 +271,7 @@
 <a href=#149 id=149 data-nosnippet>149</a>    }
 <a href=#150 id=150 data-nosnippet>150</a>}
 <a href=#151 id=151 data-nosnippet>151</a>
-<a href=#152 id=152 data-nosnippet>152</a><span class="attr">#[no_mangle]
+<a href=#152 id=152 data-nosnippet>152</a><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#153 id=153 data-nosnippet>153</a></span><span class="kw">pub extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_value_to_struct(val: <span class="kw-2">&amp;</span>Value) -&gt; <span class="kw-2">*const </span>StructOpaque {
 <a href=#154 id=154 data-nosnippet>154</a>    <span class="kw">match </span>val {
 <a href=#155 id=155 data-nosnippet>155</a>        Value::Struct(s) =&gt; s <span class="kw">as </span><span class="kw-2">*const </span>Struct <span class="kw">as </span><span class="kw-2">*const </span>StructOpaque,
@@ -279,7 +279,7 @@
 <a href=#157 id=157 data-nosnippet>157</a>    }
 <a href=#158 id=158 data-nosnippet>158</a>}
 <a href=#159 id=159 data-nosnippet>159</a>
-<a href=#160 id=160 data-nosnippet>160</a><span class="attr">#[no_mangle]
+<a href=#160 id=160 data-nosnippet>160</a><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#161 id=161 data-nosnippet>161</a></span><span class="kw">pub extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_value_to_image(val: <span class="kw-2">&amp;</span>Value) -&gt; <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>Image&gt; {
 <a href=#162 id=162 data-nosnippet>162</a>    <span class="kw">match </span>val {
 <a href=#163 id=163 data-nosnippet>163</a>        Value::Image(img) =&gt; <span class="prelude-val">Some</span>(img),
@@ -308,13 +308,13 @@
 <a href=#186 id=186 data-nosnippet>186</a>}
 <a href=#187 id=187 data-nosnippet>187</a>
 <a href=#188 id=188 data-nosnippet>188</a><span class="doccomment">/// Construct a new Struct in the given memory location
-<a href=#189 id=189 data-nosnippet>189</a></span><span class="attr">#[no_mangle]
+<a href=#189 id=189 data-nosnippet>189</a></span><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#190 id=190 data-nosnippet>190</a></span><span class="kw">pub unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_struct_new(val: <span class="kw-2">*mut </span>StructOpaque) {
 <a href=#191 id=191 data-nosnippet>191</a>    std::ptr::write(val <span class="kw">as </span><span class="kw-2">*mut </span>Struct, Struct::default())
 <a href=#192 id=192 data-nosnippet>192</a>}
 <a href=#193 id=193 data-nosnippet>193</a>
 <a href=#194 id=194 data-nosnippet>194</a><span class="doccomment">/// Construct a new Struct in the given memory location
-<a href=#195 id=195 data-nosnippet>195</a></span><span class="attr">#[no_mangle]
+<a href=#195 id=195 data-nosnippet>195</a></span><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#196 id=196 data-nosnippet>196</a></span><span class="kw">pub unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_struct_clone(
 <a href=#197 id=197 data-nosnippet>197</a>    other: <span class="kw-2">&amp;</span>StructOpaque,
 <a href=#198 id=198 data-nosnippet>198</a>    val: <span class="kw-2">*mut </span>StructOpaque,
@@ -323,12 +323,12 @@
 <a href=#201 id=201 data-nosnippet>201</a>}
 <a href=#202 id=202 data-nosnippet>202</a>
 <a href=#203 id=203 data-nosnippet>203</a><span class="doccomment">/// Destruct the struct in that memory location
-<a href=#204 id=204 data-nosnippet>204</a></span><span class="attr">#[no_mangle]
+<a href=#204 id=204 data-nosnippet>204</a></span><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#205 id=205 data-nosnippet>205</a></span><span class="kw">pub unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_struct_destructor(val: <span class="kw-2">*mut </span>StructOpaque) {
 <a href=#206 id=206 data-nosnippet>206</a>    drop(std::ptr::read(val <span class="kw">as </span><span class="kw-2">*mut </span>Struct))
 <a href=#207 id=207 data-nosnippet>207</a>}
 <a href=#208 id=208 data-nosnippet>208</a>
-<a href=#209 id=209 data-nosnippet>209</a><span class="attr">#[no_mangle]
+<a href=#209 id=209 data-nosnippet>209</a><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#210 id=210 data-nosnippet>210</a></span><span class="kw">pub extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_struct_get_field(
 <a href=#211 id=211 data-nosnippet>211</a>    stru: <span class="kw-2">&amp;</span>StructOpaque,
 <a href=#212 id=212 data-nosnippet>212</a>    name: Slice&lt;u8&gt;,
@@ -340,7 +340,7 @@
 <a href=#218 id=218 data-nosnippet>218</a>    }
 <a href=#219 id=219 data-nosnippet>219</a>}
 <a href=#220 id=220 data-nosnippet>220</a>
-<a href=#221 id=221 data-nosnippet>221</a><span class="attr">#[no_mangle]
+<a href=#221 id=221 data-nosnippet>221</a><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#222 id=222 data-nosnippet>222</a></span><span class="kw">pub extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_struct_set_field&lt;<span class="lifetime">'a</span>&gt;(
 <a href=#223 id=223 data-nosnippet>223</a>    stru: <span class="kw-2">&amp;</span><span class="lifetime">'a </span><span class="kw-2">mut </span>StructOpaque,
 <a href=#224 id=224 data-nosnippet>224</a>    name: Slice&lt;u8&gt;,
@@ -357,7 +357,7 @@
 <a href=#235 id=235 data-nosnippet>235</a><span class="kw">const _</span>: [(); std::mem::align_of::&lt;StructIteratorOpaque&gt;()] =
 <a href=#236 id=236 data-nosnippet>236</a>    [(); std::mem::align_of::&lt;StructIterator&gt;()];
 <a href=#237 id=237 data-nosnippet>237</a>
-<a href=#238 id=238 data-nosnippet>238</a><span class="attr">#[no_mangle]
+<a href=#238 id=238 data-nosnippet>238</a><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#239 id=239 data-nosnippet>239</a></span><span class="kw">pub unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_struct_iterator_destructor(
 <a href=#240 id=240 data-nosnippet>240</a>    val: <span class="kw-2">*mut </span>StructIteratorOpaque,
 <a href=#241 id=241 data-nosnippet>241</a>) {
@@ -365,7 +365,7 @@
 <a href=#243 id=243 data-nosnippet>243</a>}
 <a href=#244 id=244 data-nosnippet>244</a>
 <a href=#245 id=245 data-nosnippet>245</a><span class="doccomment">/// Advance the iterator and return the next value, or a null pointer
-<a href=#246 id=246 data-nosnippet>246</a></span><span class="attr">#[no_mangle]
+<a href=#246 id=246 data-nosnippet>246</a></span><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#247 id=247 data-nosnippet>247</a></span><span class="kw">pub unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_struct_iterator_next&lt;<span class="lifetime">'a</span>&gt;(
 <a href=#248 id=248 data-nosnippet>248</a>    iter: <span class="kw-2">&amp;</span><span class="lifetime">'a </span><span class="kw-2">mut </span>StructIteratorOpaque,
 <a href=#249 id=249 data-nosnippet>249</a>    k: <span class="kw-2">&amp;mut </span>Slice&lt;<span class="lifetime">'a</span>, u8&gt;,
@@ -379,7 +379,7 @@
 <a href=#257 id=257 data-nosnippet>257</a>    }
 <a href=#258 id=258 data-nosnippet>258</a>}
 <a href=#259 id=259 data-nosnippet>259</a>
-<a href=#260 id=260 data-nosnippet>260</a><span class="attr">#[no_mangle]
+<a href=#260 id=260 data-nosnippet>260</a><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#261 id=261 data-nosnippet>261</a></span><span class="kw">pub extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_struct_make_iter(stru: <span class="kw-2">&amp;</span>StructOpaque) -&gt; StructIteratorOpaque {
 <a href=#262 id=262 data-nosnippet>262</a>    <span class="kw">let </span>ret_it: StructIterator = stru.as_struct().<span class="number">0</span>.iter();
 <a href=#263 id=263 data-nosnippet>263</a>    <span class="kw">unsafe </span>{
@@ -390,7 +390,7 @@
 <a href=#268 id=268 data-nosnippet>268</a>}
 <a href=#269 id=269 data-nosnippet>269</a>
 <a href=#270 id=270 data-nosnippet>270</a><span class="doccomment">/// Get a property. Returns a null pointer if the property does not exist.
-<a href=#271 id=271 data-nosnippet>271</a></span><span class="attr">#[no_mangle]
+<a href=#271 id=271 data-nosnippet>271</a></span><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#272 id=272 data-nosnippet>272</a></span><span class="kw">pub unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_component_instance_get_property(
 <a href=#273 id=273 data-nosnippet>273</a>    inst: <span class="kw-2">&amp;</span>ErasedItemTreeBox,
 <a href=#274 id=274 data-nosnippet>274</a>    name: Slice&lt;u8&gt;,
@@ -406,7 +406,7 @@
 <a href=#284 id=284 data-nosnippet>284</a>    }
 <a href=#285 id=285 data-nosnippet>285</a>}
 <a href=#286 id=286 data-nosnippet>286</a>
-<a href=#287 id=287 data-nosnippet>287</a><span class="attr">#[no_mangle]
+<a href=#287 id=287 data-nosnippet>287</a><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#288 id=288 data-nosnippet>288</a></span><span class="kw">pub extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_component_instance_set_property(
 <a href=#289 id=289 data-nosnippet>289</a>    inst: <span class="kw-2">&amp;</span>ErasedItemTreeBox,
 <a href=#290 id=290 data-nosnippet>290</a>    name: Slice&lt;u8&gt;,
@@ -424,7 +424,7 @@
 <a href=#302 id=302 data-nosnippet>302</a>}
 <a href=#303 id=303 data-nosnippet>303</a>
 <a href=#304 id=304 data-nosnippet>304</a><span class="doccomment">/// Invoke a callback or function. Returns raw boxed value on success and null ptr on failure.
-<a href=#305 id=305 data-nosnippet>305</a></span><span class="attr">#[no_mangle]
+<a href=#305 id=305 data-nosnippet>305</a></span><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#306 id=306 data-nosnippet>306</a></span><span class="kw">pub unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_component_instance_invoke(
 <a href=#307 id=307 data-nosnippet>307</a>    inst: <span class="kw-2">&amp;</span>ErasedItemTreeBox,
 <a href=#308 id=308 data-nosnippet>308</a>    name: Slice&lt;u8&gt;,
@@ -470,7 +470,7 @@
 <a href=#348 id=348 data-nosnippet>348</a>
 <a href=#349 id=349 data-nosnippet>349</a><span class="doccomment">/// Set a handler for the callback.
 <a href=#350 id=350 data-nosnippet>350</a>/// The `callback` function must initialize the `ret` (the `ret` passed to the callback is initialized and is assumed initialized after the function)
-<a href=#351 id=351 data-nosnippet>351</a></span><span class="attr">#[no_mangle]
+<a href=#351 id=351 data-nosnippet>351</a></span><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#352 id=352 data-nosnippet>352</a></span><span class="kw">pub unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_component_instance_set_callback(
 <a href=#353 id=353 data-nosnippet>353</a>    inst: <span class="kw-2">&amp;</span>ErasedItemTreeBox,
 <a href=#354 id=354 data-nosnippet>354</a>    name: Slice&lt;u8&gt;,
@@ -492,7 +492,7 @@
 <a href=#370 id=370 data-nosnippet>370</a>}
 <a href=#371 id=371 data-nosnippet>371</a>
 <a href=#372 id=372 data-nosnippet>372</a><span class="doccomment">/// Get a global property. Returns a raw boxed value on success; nullptr otherwise.
-<a href=#373 id=373 data-nosnippet>373</a></span><span class="attr">#[no_mangle]
+<a href=#373 id=373 data-nosnippet>373</a></span><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#374 id=374 data-nosnippet>374</a></span><span class="kw">pub unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_component_instance_get_global_property(
 <a href=#375 id=375 data-nosnippet>375</a>    inst: <span class="kw-2">&amp;</span>ErasedItemTreeBox,
 <a href=#376 id=376 data-nosnippet>376</a>    global: Slice&lt;u8&gt;,
@@ -512,7 +512,7 @@
 <a href=#390 id=390 data-nosnippet>390</a>    }
 <a href=#391 id=391 data-nosnippet>391</a>}
 <a href=#392 id=392 data-nosnippet>392</a>
-<a href=#393 id=393 data-nosnippet>393</a><span class="attr">#[no_mangle]
+<a href=#393 id=393 data-nosnippet>393</a><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#394 id=394 data-nosnippet>394</a></span><span class="kw">pub extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_component_instance_set_global_property(
 <a href=#395 id=395 data-nosnippet>395</a>    inst: <span class="kw-2">&amp;</span>ErasedItemTreeBox,
 <a href=#396 id=396 data-nosnippet>396</a>    global: Slice&lt;u8&gt;,
@@ -535,7 +535,7 @@
 <a href=#413 id=413 data-nosnippet>413</a>}
 <a href=#414 id=414 data-nosnippet>414</a>
 <a href=#415 id=415 data-nosnippet>415</a><span class="doccomment">/// The `callback` function must initialize the `ret` (the `ret` passed to the callback is initialized and is assumed initialized after the function)
-<a href=#416 id=416 data-nosnippet>416</a></span><span class="attr">#[no_mangle]
+<a href=#416 id=416 data-nosnippet>416</a></span><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#417 id=417 data-nosnippet>417</a></span><span class="kw">pub unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_component_instance_set_global_callback(
 <a href=#418 id=418 data-nosnippet>418</a>    inst: <span class="kw-2">&amp;</span>ErasedItemTreeBox,
 <a href=#419 id=419 data-nosnippet>419</a>    global: Slice&lt;u8&gt;,
@@ -560,7 +560,7 @@
 <a href=#438 id=438 data-nosnippet>438</a>}
 <a href=#439 id=439 data-nosnippet>439</a>
 <a href=#440 id=440 data-nosnippet>440</a><span class="doccomment">/// Invoke a global callback or function. Returns raw boxed value on success; nullptr otherwise.
-<a href=#441 id=441 data-nosnippet>441</a></span><span class="attr">#[no_mangle]
+<a href=#441 id=441 data-nosnippet>441</a></span><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#442 id=442 data-nosnippet>442</a></span><span class="kw">pub unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_component_instance_invoke_global(
 <a href=#443 id=443 data-nosnippet>443</a>    inst: <span class="kw-2">&amp;</span>ErasedItemTreeBox,
 <a href=#444 id=444 data-nosnippet>444</a>    global: Slice&lt;u8&gt;,
@@ -598,7 +598,7 @@
 <a href=#476 id=476 data-nosnippet>476</a>}
 <a href=#477 id=477 data-nosnippet>477</a>
 <a href=#478 id=478 data-nosnippet>478</a><span class="doccomment">/// Show or hide
-<a href=#479 id=479 data-nosnippet>479</a></span><span class="attr">#[no_mangle]
+<a href=#479 id=479 data-nosnippet>479</a></span><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#480 id=480 data-nosnippet>480</a></span><span class="kw">pub extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_component_instance_show(
 <a href=#481 id=481 data-nosnippet>481</a>    inst: <span class="kw-2">&amp;</span>ErasedItemTreeBox,
 <a href=#482 id=482 data-nosnippet>482</a>    is_visible: bool,
@@ -615,7 +615,7 @@
 <a href=#493 id=493 data-nosnippet>493</a>///
 <a href=#494 id=494 data-nosnippet>494</a>/// The out pointer must be uninitialized and must be destroyed with
 <a href=#495 id=495 data-nosnippet>495</a>/// slint_windowrc_drop after usage
-<a href=#496 id=496 data-nosnippet>496</a></span><span class="attr">#[no_mangle]
+<a href=#496 id=496 data-nosnippet>496</a></span><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#497 id=497 data-nosnippet>497</a></span><span class="kw">pub unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_component_instance_window(
 <a href=#498 id=498 data-nosnippet>498</a>    inst: <span class="kw-2">&amp;</span>ErasedItemTreeBox,
 <a href=#499 id=499 data-nosnippet>499</a>    out: <span class="kw-2">*mut *const </span>i_slint_core::window::ffi::WindowAdapterRcOpaque,
@@ -634,7 +634,7 @@
 <a href=#512 id=512 data-nosnippet>512</a>///
 <a href=#513 id=513 data-nosnippet>513</a>/// The `out` must be uninitialized and is going to be initialized after the call
 <a href=#514 id=514 data-nosnippet>514</a>/// and need to be destroyed with slint_interpreter_component_instance_destructor
-<a href=#515 id=515 data-nosnippet>515</a></span><span class="attr">#[no_mangle]
+<a href=#515 id=515 data-nosnippet>515</a></span><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#516 id=516 data-nosnippet>516</a></span><span class="kw">pub unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_component_instance_create(
 <a href=#517 id=517 data-nosnippet>517</a>    def: <span class="kw-2">&amp;</span>ComponentDefinitionOpaque,
 <a href=#518 id=518 data-nosnippet>518</a>    out: <span class="kw-2">*mut </span>ComponentInstance,
@@ -642,7 +642,7 @@
 <a href=#520 id=520 data-nosnippet>520</a>    std::ptr::write(out, def.as_component_definition().create().unwrap())
 <a href=#521 id=521 data-nosnippet>521</a>}
 <a href=#522 id=522 data-nosnippet>522</a>
-<a href=#523 id=523 data-nosnippet>523</a><span class="attr">#[no_mangle]
+<a href=#523 id=523 data-nosnippet>523</a><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#524 id=524 data-nosnippet>524</a></span><span class="kw">pub unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_component_instance_component_definition(
 <a href=#525 id=525 data-nosnippet>525</a>    inst: <span class="kw-2">&amp;</span>ErasedItemTreeBox,
 <a href=#526 id=526 data-nosnippet>526</a>    component_definition_ptr: <span class="kw-2">*mut </span>ComponentDefinitionOpaque,
@@ -707,18 +707,18 @@
 <a href=#585 id=585 data-nosnippet>585</a>}
 <a href=#586 id=586 data-nosnippet>586</a>
 <a href=#587 id=587 data-nosnippet>587</a><span class="doccomment">/// Construct a new ModelNotifyNotify in the given memory region
-<a href=#588 id=588 data-nosnippet>588</a></span><span class="attr">#[no_mangle]
+<a href=#588 id=588 data-nosnippet>588</a></span><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#589 id=589 data-nosnippet>589</a></span><span class="kw">pub unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_model_notify_new(val: <span class="kw-2">*mut </span>ModelNotifyOpaque) {
 <a href=#590 id=590 data-nosnippet>590</a>    std::ptr::write(val <span class="kw">as </span><span class="kw-2">*mut </span>ModelNotify, ModelNotify::default());
 <a href=#591 id=591 data-nosnippet>591</a>}
 <a href=#592 id=592 data-nosnippet>592</a>
 <a href=#593 id=593 data-nosnippet>593</a><span class="doccomment">/// Destruct the value in that memory location
-<a href=#594 id=594 data-nosnippet>594</a></span><span class="attr">#[no_mangle]
+<a href=#594 id=594 data-nosnippet>594</a></span><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#595 id=595 data-nosnippet>595</a></span><span class="kw">pub unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_model_notify_destructor(val: <span class="kw-2">*mut </span>ModelNotifyOpaque) {
 <a href=#596 id=596 data-nosnippet>596</a>    drop(std::ptr::read(val <span class="kw">as </span><span class="kw-2">*mut </span>ModelNotify))
 <a href=#597 id=597 data-nosnippet>597</a>}
 <a href=#598 id=598 data-nosnippet>598</a>
-<a href=#599 id=599 data-nosnippet>599</a><span class="attr">#[no_mangle]
+<a href=#599 id=599 data-nosnippet>599</a><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#600 id=600 data-nosnippet>600</a></span><span class="kw">pub unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_model_notify_row_changed(
 <a href=#601 id=601 data-nosnippet>601</a>    notify: <span class="kw-2">&amp;</span>ModelNotifyOpaque,
 <a href=#602 id=602 data-nosnippet>602</a>    row: usize,
@@ -726,7 +726,7 @@
 <a href=#604 id=604 data-nosnippet>604</a>    notify.as_model_notify().row_changed(row);
 <a href=#605 id=605 data-nosnippet>605</a>}
 <a href=#606 id=606 data-nosnippet>606</a>
-<a href=#607 id=607 data-nosnippet>607</a><span class="attr">#[no_mangle]
+<a href=#607 id=607 data-nosnippet>607</a><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#608 id=608 data-nosnippet>608</a></span><span class="kw">pub unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_model_notify_row_added(
 <a href=#609 id=609 data-nosnippet>609</a>    notify: <span class="kw-2">&amp;</span>ModelNotifyOpaque,
 <a href=#610 id=610 data-nosnippet>610</a>    row: usize,
@@ -735,12 +735,12 @@
 <a href=#613 id=613 data-nosnippet>613</a>    notify.as_model_notify().row_added(row, count);
 <a href=#614 id=614 data-nosnippet>614</a>}
 <a href=#615 id=615 data-nosnippet>615</a>
-<a href=#616 id=616 data-nosnippet>616</a><span class="attr">#[no_mangle]
+<a href=#616 id=616 data-nosnippet>616</a><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#617 id=617 data-nosnippet>617</a></span><span class="kw">pub unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_model_notify_reset(notify: <span class="kw-2">&amp;</span>ModelNotifyOpaque) {
 <a href=#618 id=618 data-nosnippet>618</a>    notify.as_model_notify().reset();
 <a href=#619 id=619 data-nosnippet>619</a>}
 <a href=#620 id=620 data-nosnippet>620</a>
-<a href=#621 id=621 data-nosnippet>621</a><span class="attr">#[no_mangle]
+<a href=#621 id=621 data-nosnippet>621</a><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#622 id=622 data-nosnippet>622</a></span><span class="kw">pub unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_model_notify_row_removed(
 <a href=#623 id=623 data-nosnippet>623</a>    notify: <span class="kw-2">&amp;</span>ModelNotifyOpaque,
 <a href=#624 id=624 data-nosnippet>624</a>    row: usize,
@@ -793,7 +793,7 @@
 <a href=#671 id=671 data-nosnippet>671</a>    }
 <a href=#672 id=672 data-nosnippet>672</a>}
 <a href=#673 id=673 data-nosnippet>673</a>
-<a href=#674 id=674 data-nosnippet>674</a><span class="attr">#[no_mangle]
+<a href=#674 id=674 data-nosnippet>674</a><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#675 id=675 data-nosnippet>675</a>#[allow(deprecated)]
 <a href=#676 id=676 data-nosnippet>676</a></span><span class="kw">pub unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_component_compiler_new(
 <a href=#677 id=677 data-nosnippet>677</a>    compiler: <span class="kw-2">*mut </span>ComponentCompilerOpaque,
@@ -803,14 +803,14 @@
 <a href=#681 id=681 data-nosnippet>681</a>    ))));
 <a href=#682 id=682 data-nosnippet>682</a>}
 <a href=#683 id=683 data-nosnippet>683</a>
-<a href=#684 id=684 data-nosnippet>684</a><span class="attr">#[no_mangle]
+<a href=#684 id=684 data-nosnippet>684</a><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#685 id=685 data-nosnippet>685</a></span><span class="kw">pub unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_component_compiler_destructor(
 <a href=#686 id=686 data-nosnippet>686</a>    compiler: <span class="kw-2">*mut </span>ComponentCompilerOpaque,
 <a href=#687 id=687 data-nosnippet>687</a>) {
 <a href=#688 id=688 data-nosnippet>688</a>    drop(Box::from_raw((<span class="kw-2">*</span>compiler).<span class="number">0</span>.as_ptr()))
 <a href=#689 id=689 data-nosnippet>689</a>}
 <a href=#690 id=690 data-nosnippet>690</a>
-<a href=#691 id=691 data-nosnippet>691</a><span class="attr">#[no_mangle]
+<a href=#691 id=691 data-nosnippet>691</a><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#692 id=692 data-nosnippet>692</a></span><span class="kw">pub unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_component_compiler_set_include_paths(
 <a href=#693 id=693 data-nosnippet>693</a>    compiler: <span class="kw-2">&amp;mut </span>ComponentCompilerOpaque,
 <a href=#694 id=694 data-nosnippet>694</a>    paths: <span class="kw-2">&amp;</span>SharedVector&lt;SharedString&gt;,
@@ -820,7 +820,7 @@
 <a href=#698 id=698 data-nosnippet>698</a>        .set_include_paths(paths.iter().map(|path| path.as_str().into()).collect())
 <a href=#699 id=699 data-nosnippet>699</a>}
 <a href=#700 id=700 data-nosnippet>700</a>
-<a href=#701 id=701 data-nosnippet>701</a><span class="attr">#[no_mangle]
+<a href=#701 id=701 data-nosnippet>701</a><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#702 id=702 data-nosnippet>702</a></span><span class="kw">pub unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_component_compiler_set_style(
 <a href=#703 id=703 data-nosnippet>703</a>    compiler: <span class="kw-2">&amp;mut </span>ComponentCompilerOpaque,
 <a href=#704 id=704 data-nosnippet>704</a>    style: Slice&lt;u8&gt;,
@@ -828,7 +828,7 @@
 <a href=#706 id=706 data-nosnippet>706</a>    compiler.as_component_compiler_mut().set_style(std::str::from_utf8(<span class="kw-2">&amp;</span>style).unwrap().to_string())
 <a href=#707 id=707 data-nosnippet>707</a>}
 <a href=#708 id=708 data-nosnippet>708</a>
-<a href=#709 id=709 data-nosnippet>709</a><span class="attr">#[no_mangle]
+<a href=#709 id=709 data-nosnippet>709</a><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#710 id=710 data-nosnippet>710</a></span><span class="kw">pub unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_component_compiler_set_translation_domain(
 <a href=#711 id=711 data-nosnippet>711</a>    compiler: <span class="kw-2">&amp;mut </span>ComponentCompilerOpaque,
 <a href=#712 id=712 data-nosnippet>712</a>    translation_domain: Slice&lt;u8&gt;,
@@ -838,7 +838,7 @@
 <a href=#716 id=716 data-nosnippet>716</a>        .set_translation_domain(std::str::from_utf8(<span class="kw-2">&amp;</span>translation_domain).unwrap().to_string())
 <a href=#717 id=717 data-nosnippet>717</a>}
 <a href=#718 id=718 data-nosnippet>718</a>
-<a href=#719 id=719 data-nosnippet>719</a><span class="attr">#[no_mangle]
+<a href=#719 id=719 data-nosnippet>719</a><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#720 id=720 data-nosnippet>720</a></span><span class="kw">pub unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_component_compiler_get_style(
 <a href=#721 id=721 data-nosnippet>721</a>    compiler: <span class="kw-2">&amp;</span>ComponentCompilerOpaque,
 <a href=#722 id=722 data-nosnippet>722</a>    style_out: <span class="kw-2">&amp;mut </span>SharedString,
@@ -847,7 +847,7 @@
 <a href=#725 id=725 data-nosnippet>725</a>        compiler.as_component_compiler().style().map_or(SharedString::default(), |s| s.into());
 <a href=#726 id=726 data-nosnippet>726</a>}
 <a href=#727 id=727 data-nosnippet>727</a>
-<a href=#728 id=728 data-nosnippet>728</a><span class="attr">#[no_mangle]
+<a href=#728 id=728 data-nosnippet>728</a><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#729 id=729 data-nosnippet>729</a></span><span class="kw">pub unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_component_compiler_get_include_paths(
 <a href=#730 id=730 data-nosnippet>730</a>    compiler: <span class="kw-2">&amp;</span>ComponentCompilerOpaque,
 <a href=#731 id=731 data-nosnippet>731</a>    paths: <span class="kw-2">&amp;mut </span>SharedVector&lt;SharedString&gt;,
@@ -861,7 +861,7 @@
 <a href=#739 id=739 data-nosnippet>739</a>    );
 <a href=#740 id=740 data-nosnippet>740</a>}
 <a href=#741 id=741 data-nosnippet>741</a>
-<a href=#742 id=742 data-nosnippet>742</a><span class="attr">#[no_mangle]
+<a href=#742 id=742 data-nosnippet>742</a><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#743 id=743 data-nosnippet>743</a></span><span class="kw">pub unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_component_compiler_get_diagnostics(
 <a href=#744 id=744 data-nosnippet>744</a>    compiler: <span class="kw-2">&amp;</span>ComponentCompilerOpaque,
 <a href=#745 id=745 data-nosnippet>745</a>    out_diags: <span class="kw-2">&amp;mut </span>SharedVector&lt;Diagnostic&gt;,
@@ -886,7 +886,7 @@
 <a href=#764 id=764 data-nosnippet>764</a>    }));
 <a href=#765 id=765 data-nosnippet>765</a>}
 <a href=#766 id=766 data-nosnippet>766</a>
-<a href=#767 id=767 data-nosnippet>767</a><span class="attr">#[no_mangle]
+<a href=#767 id=767 data-nosnippet>767</a><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#768 id=768 data-nosnippet>768</a></span><span class="kw">pub unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_component_compiler_build_from_source(
 <a href=#769 id=769 data-nosnippet>769</a>    compiler: <span class="kw-2">&amp;mut </span>ComponentCompilerOpaque,
 <a href=#770 id=770 data-nosnippet>770</a>    source_code: Slice&lt;u8&gt;,
@@ -905,7 +905,7 @@
 <a href=#783 id=783 data-nosnippet>783</a>    }
 <a href=#784 id=784 data-nosnippet>784</a>}
 <a href=#785 id=785 data-nosnippet>785</a>
-<a href=#786 id=786 data-nosnippet>786</a><span class="attr">#[no_mangle]
+<a href=#786 id=786 data-nosnippet>786</a><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#787 id=787 data-nosnippet>787</a></span><span class="kw">pub unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_component_compiler_build_from_path(
 <a href=#788 id=788 data-nosnippet>788</a>    compiler: <span class="kw-2">&amp;mut </span>ComponentCompilerOpaque,
 <a href=#789 id=789 data-nosnippet>789</a>    path: Slice&lt;u8&gt;,
@@ -955,7 +955,7 @@
 <a href=#833 id=833 data-nosnippet>833</a>}
 <a href=#834 id=834 data-nosnippet>834</a>
 <a href=#835 id=835 data-nosnippet>835</a><span class="doccomment">/// Construct a new Value in the given memory location
-<a href=#836 id=836 data-nosnippet>836</a></span><span class="attr">#[no_mangle]
+<a href=#836 id=836 data-nosnippet>836</a></span><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#837 id=837 data-nosnippet>837</a></span><span class="kw">pub unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_component_definition_clone(
 <a href=#838 id=838 data-nosnippet>838</a>    other: <span class="kw-2">&amp;</span>ComponentDefinitionOpaque,
 <a href=#839 id=839 data-nosnippet>839</a>    def: <span class="kw-2">*mut </span>ComponentDefinitionOpaque,
@@ -964,7 +964,7 @@
 <a href=#842 id=842 data-nosnippet>842</a>}
 <a href=#843 id=843 data-nosnippet>843</a>
 <a href=#844 id=844 data-nosnippet>844</a><span class="doccomment">/// Destruct the component definition in that memory location
-<a href=#845 id=845 data-nosnippet>845</a></span><span class="attr">#[no_mangle]
+<a href=#845 id=845 data-nosnippet>845</a></span><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#846 id=846 data-nosnippet>846</a></span><span class="kw">pub unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_component_definition_destructor(
 <a href=#847 id=847 data-nosnippet>847</a>    val: <span class="kw-2">*mut </span>ComponentDefinitionOpaque,
 <a href=#848 id=848 data-nosnippet>848</a>) {
@@ -972,7 +972,7 @@
 <a href=#850 id=850 data-nosnippet>850</a>}
 <a href=#851 id=851 data-nosnippet>851</a>
 <a href=#852 id=852 data-nosnippet>852</a><span class="doccomment">/// Returns the list of properties of the component the component definition describes
-<a href=#853 id=853 data-nosnippet>853</a></span><span class="attr">#[no_mangle]
+<a href=#853 id=853 data-nosnippet>853</a></span><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#854 id=854 data-nosnippet>854</a></span><span class="kw">pub unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_component_definition_properties(
 <a href=#855 id=855 data-nosnippet>855</a>    def: <span class="kw-2">&amp;</span>ComponentDefinitionOpaque,
 <a href=#856 id=856 data-nosnippet>856</a>    props: <span class="kw-2">&amp;mut </span>SharedVector&lt;PropertyDescriptor&gt;,
@@ -986,7 +986,7 @@
 <a href=#864 id=864 data-nosnippet>864</a>}
 <a href=#865 id=865 data-nosnippet>865</a>
 <a href=#866 id=866 data-nosnippet>866</a><span class="doccomment">/// Returns the list of callback names of the component the component definition describes
-<a href=#867 id=867 data-nosnippet>867</a></span><span class="attr">#[no_mangle]
+<a href=#867 id=867 data-nosnippet>867</a></span><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#868 id=868 data-nosnippet>868</a></span><span class="kw">pub unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_component_definition_callbacks(
 <a href=#869 id=869 data-nosnippet>869</a>    def: <span class="kw-2">&amp;</span>ComponentDefinitionOpaque,
 <a href=#870 id=870 data-nosnippet>870</a>    callbacks: <span class="kw-2">&amp;mut </span>SharedVector&lt;SharedString&gt;,
@@ -995,7 +995,7 @@
 <a href=#873 id=873 data-nosnippet>873</a>}
 <a href=#874 id=874 data-nosnippet>874</a>
 <a href=#875 id=875 data-nosnippet>875</a><span class="doccomment">/// Returns the list of function names of the component the component definition describes
-<a href=#876 id=876 data-nosnippet>876</a></span><span class="attr">#[no_mangle]
+<a href=#876 id=876 data-nosnippet>876</a></span><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#877 id=877 data-nosnippet>877</a></span><span class="kw">pub unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_component_definition_functions(
 <a href=#878 id=878 data-nosnippet>878</a>    def: <span class="kw-2">&amp;</span>ComponentDefinitionOpaque,
 <a href=#879 id=879 data-nosnippet>879</a>    functions: <span class="kw-2">&amp;mut </span>SharedVector&lt;SharedString&gt;,
@@ -1004,7 +1004,7 @@
 <a href=#882 id=882 data-nosnippet>882</a>}
 <a href=#883 id=883 data-nosnippet>883</a>
 <a href=#884 id=884 data-nosnippet>884</a><span class="doccomment">/// Return the name of the component definition
-<a href=#885 id=885 data-nosnippet>885</a></span><span class="attr">#[no_mangle]
+<a href=#885 id=885 data-nosnippet>885</a></span><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#886 id=886 data-nosnippet>886</a></span><span class="kw">pub unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_component_definition_name(
 <a href=#887 id=887 data-nosnippet>887</a>    def: <span class="kw-2">&amp;</span>ComponentDefinitionOpaque,
 <a href=#888 id=888 data-nosnippet>888</a>    name: <span class="kw-2">&amp;mut </span>SharedString,
@@ -1013,7 +1013,7 @@
 <a href=#891 id=891 data-nosnippet>891</a>}
 <a href=#892 id=892 data-nosnippet>892</a>
 <a href=#893 id=893 data-nosnippet>893</a><span class="doccomment">/// Returns a vector of strings with the names of all exported global singletons.
-<a href=#894 id=894 data-nosnippet>894</a></span><span class="attr">#[no_mangle]
+<a href=#894 id=894 data-nosnippet>894</a></span><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#895 id=895 data-nosnippet>895</a></span><span class="kw">pub unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_component_definition_globals(
 <a href=#896 id=896 data-nosnippet>896</a>    def: <span class="kw-2">&amp;</span>ComponentDefinitionOpaque,
 <a href=#897 id=897 data-nosnippet>897</a>    names: <span class="kw-2">&amp;mut </span>SharedVector&lt;SharedString&gt;,
@@ -1023,7 +1023,7 @@
 <a href=#901 id=901 data-nosnippet>901</a>
 <a href=#902 id=902 data-nosnippet>902</a><span class="doccomment">/// Returns a vector of the property descriptors of the properties of the specified publicly exported global
 <a href=#903 id=903 data-nosnippet>903</a>/// singleton. Returns true if a global exists under the specified name; false otherwise.
-<a href=#904 id=904 data-nosnippet>904</a></span><span class="attr">#[no_mangle]
+<a href=#904 id=904 data-nosnippet>904</a></span><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#905 id=905 data-nosnippet>905</a></span><span class="kw">pub unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_component_definition_global_properties(
 <a href=#906 id=906 data-nosnippet>906</a>    def: <span class="kw-2">&amp;</span>ComponentDefinitionOpaque,
 <a href=#907 id=907 data-nosnippet>907</a>    global_name: Slice&lt;u8&gt;,
@@ -1045,7 +1045,7 @@
 <a href=#923 id=923 data-nosnippet>923</a>
 <a href=#924 id=924 data-nosnippet>924</a><span class="doccomment">/// Returns a vector of the names of the callbacks of the specified publicly exported global
 <a href=#925 id=925 data-nosnippet>925</a>/// singleton. Returns true if a global exists under the specified name; false otherwise.
-<a href=#926 id=926 data-nosnippet>926</a></span><span class="attr">#[no_mangle]
+<a href=#926 id=926 data-nosnippet>926</a></span><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#927 id=927 data-nosnippet>927</a></span><span class="kw">pub unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_component_definition_global_callbacks(
 <a href=#928 id=928 data-nosnippet>928</a>    def: <span class="kw-2">&amp;</span>ComponentDefinitionOpaque,
 <a href=#929 id=929 data-nosnippet>929</a>    global_name: Slice&lt;u8&gt;,
@@ -1064,7 +1064,7 @@
 <a href=#942 id=942 data-nosnippet>942</a>
 <a href=#943 id=943 data-nosnippet>943</a><span class="doccomment">/// Returns a vector of the names of the functions of the specified publicly exported global
 <a href=#944 id=944 data-nosnippet>944</a>/// singleton. Returns true if a global exists under the specified name; false otherwise.
-<a href=#945 id=945 data-nosnippet>945</a></span><span class="attr">#[no_mangle]
+<a href=#945 id=945 data-nosnippet>945</a></span><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#946 id=946 data-nosnippet>946</a></span><span class="kw">pub unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_component_definition_global_functions(
 <a href=#947 id=947 data-nosnippet>947</a>    def: <span class="kw-2">&amp;</span>ComponentDefinitionOpaque,
 <a href=#948 id=948 data-nosnippet>948</a>    global_name: Slice&lt;u8&gt;,

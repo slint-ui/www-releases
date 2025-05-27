@@ -12,7 +12,7 @@ Program Listing for File slint_qt_internal.h
 
    #pragma once
    
-   /* Generated with cbindgen:0.26.0 */
+   /* Generated with cbindgen:0.29.0 */
    
    #include <cstdarg>
    #include <cstdint>
@@ -1843,10 +1843,10 @@ Program Listing for File slint_qt_internal.h
    
    void *slint_qt_get_widget(const WindowAdapterRc*);
    
-   } // extern "C"
+   }  // extern "C"
    
-   } // namespace cbindgen_private
-   } // namespace slint
+   }  // namespace cbindgen_private
+   }  // namespace slint
    
    
    namespace slint::private_api {

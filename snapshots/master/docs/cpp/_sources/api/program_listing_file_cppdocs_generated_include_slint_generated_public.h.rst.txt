@@ -12,7 +12,7 @@ Program Listing for File slint_generated_public.h
 
    #pragma once
    
-   /* Generated with cbindgen:0.26.0 */
+   /* Generated with cbindgen:0.29.0 */
    
    #include <cstdarg>
    #include <cstdint>
@@ -81,4 +81,4 @@ Program Listing for File slint_generated_public.h
    friend bool operator==(const Rgb8Pixel&, const Rgb8Pixel&) = default;
    };
    
-   } // namespace slint
+   }  // namespace slint

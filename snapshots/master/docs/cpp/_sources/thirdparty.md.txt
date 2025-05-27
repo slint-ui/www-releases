@@ -5,7 +5,7 @@ This page lists the licenses of the dependencies used by Slint.
 
 ## Overview of licenses
 
-- [MIT License](#MIT) (378)
+- [MIT License](#MIT) (376)
 - [Apache License 2.0](#Apache-2.0) (16)
 - [BSD 3-Clause &quot;New&quot; or &quot;Revised&quot; License](#BSD-3-Clause) (6)
 - [BSD 2-Clause &quot;Simplified&quot; License](#BSD-2-Clause) (4)
@@ -1964,7 +1964,7 @@ THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRES
 
 #### Used by:
 
-- [libloading 0.8.7]( https://github.com/nagisa/rust_libloading/ )
+- [libloading 0.8.8]( https://github.com/nagisa/rust_libloading/ )
 
 #### License Text
 
@@ -2279,7 +2279,6 @@ DEALINGS IN THE SOFTWARE.
 - [cfg-if 1.0.0]( https://github.com/alexcrichton/cfg-if )
 - [pkg-config 0.3.32]( https://github.com/rust-lang/pkg-config-rs )
 - [scoped-tls 1.0.1]( https://github.com/alexcrichton/scoped-tls )
-- [toml 0.5.11]( https://github.com/toml-rs/toml )
 
 #### License Text
 
@@ -2935,7 +2934,6 @@ DEALINGS IN THE SOFTWARE.
 
 #### Used by:
 
-- [hashbrown 0.12.3]( https://github.com/rust-lang/hashbrown )
 - [hashbrown 0.15.3]( https://github.com/rust-lang/hashbrown )
 
 #### License Text
@@ -3010,7 +3008,6 @@ DEALINGS IN THE SOFTWARE.
 
 #### Used by:
 
-- [indexmap 1.9.3]( https://github.com/bluss/indexmap )
 - [indexmap 2.9.0]( https://github.com/indexmap-rs/indexmap )
 
 #### License Text
@@ -4676,6 +4673,7 @@ DEALINGS IN THE SOFTWARE.
 - [toml_edit 0.19.15]( https://github.com/toml-rs/toml )
 - [toml_edit 0.20.7]( https://github.com/toml-rs/toml )
 - [toml_edit 0.22.26]( https://github.com/toml-rs/toml )
+- [toml_write 0.1.1]( https://github.com/toml-rs/toml )
 
 #### License Text
 
@@ -6230,8 +6228,8 @@ DEALINGS IN THE SOFTWARE.
 - [async-fs 2.1.2]( https://github.com/smol-rs/async-fs )
 - [async-io 2.4.1]( https://github.com/smol-rs/async-io )
 - [async-lock 3.4.0]( https://github.com/smol-rs/async-lock )
-- [async-process 2.3.0]( https://github.com/smol-rs/async-process )
-- [async-signal 0.2.10]( https://github.com/smol-rs/async-signal )
+- [async-process 2.3.1]( https://github.com/smol-rs/async-process )
+- [async-signal 0.2.11]( https://github.com/smol-rs/async-signal )
 - [async-task 4.7.1]( https://github.com/smol-rs/async-task )
 - [async-trait 0.1.88]( https://github.com/dtolnay/async-trait )
 - [atomic-waker 1.1.2]( https://github.com/smol-rs/atomic-waker )
@@ -7379,7 +7377,7 @@ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
 
 #### Used by:
 
-- [cbindgen 0.26.0]( https://github.com/mozilla/cbindgen )
+- [cbindgen 0.29.0]( https://github.com/mozilla/cbindgen )
 
 #### License Text
 
