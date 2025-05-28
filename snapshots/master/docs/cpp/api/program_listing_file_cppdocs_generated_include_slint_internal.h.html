@@ -499,11 +499,13 @@
 <span class="w">    </span><span class="n">SelectionClipboard</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
 <span class="p">};</span>
 
-<span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">FocusEvent</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">FocusIn</span><span class="p">,</span>
-<span class="w">    </span><span class="n">FocusOut</span><span class="p">,</span>
-<span class="w">    </span><span class="n">WindowReceivedFocus</span><span class="p">,</span>
-<span class="w">    </span><span class="n">WindowLostFocus</span><span class="p">,</span>
+<span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">FocusEventReason</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Keyboard</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Mouse</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Popup</span><span class="p">,</span>
+<span class="w">    </span><span class="n">BuiltinFunction</span><span class="p">,</span>
+<span class="w">    </span><span class="n">AccessKit</span><span class="p">,</span>
+<span class="w">    </span><span class="n">ActiveWindow</span><span class="p">,</span>
 <span class="p">};</span>
 
 <span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">FocusEventResult</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="p">{</span>
@@ -632,6 +634,29 @@
 <span class="w">        </span><span class="n">Moved_Body</span><span class="w"> </span><span class="n">moved</span><span class="p">;</span>
 <span class="w">        </span><span class="n">Wheel_Body</span><span class="w"> </span><span class="n">wheel</span><span class="p">;</span>
 <span class="w">    </span><span class="p">};</span>
+<span class="p">};</span>
+
+<span class="k">union</span><span class="w"> </span><span class="nc">FocusEvent</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Tag</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">FocusIn</span><span class="p">,</span>
+<span class="w">        </span><span class="n">FocusOut</span><span class="p">,</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">FocusIn_Body</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Tag</span><span class="w"> </span><span class="n">tag</span><span class="p">;</span>
+<span class="w">        </span><span class="n">FocusEventReason</span><span class="w"> </span><span class="n">_0</span><span class="p">;</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">FocusOut_Body</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Tag</span><span class="w"> </span><span class="n">tag</span><span class="p">;</span>
+<span class="w">        </span><span class="n">FocusEventReason</span><span class="w"> </span><span class="n">_0</span><span class="p">;</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Tag</span><span class="w"> </span><span class="n">tag</span><span class="p">;</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">    </span><span class="n">FocusIn_Body</span><span class="w"> </span><span class="n">focus_in</span><span class="p">;</span>
+<span class="w">    </span><span class="n">FocusOut_Body</span><span class="w"> </span><span class="n">focus_out</span><span class="p">;</span>
 <span class="p">};</span>
 
 <span class="k">struct</span><span class="w"> </span><span class="nc">LogicalSize</span><span class="w"> </span><span class="p">{</span>
@@ -1634,7 +1659,8 @@
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">slint_windowrc_set_focus_item</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">WindowAdapterRcOpaque</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">,</span>
 <span class="w">                                   </span><span class="k">const</span><span class="w"> </span><span class="n">ItemRc</span><span class="w"> </span><span class="o">*</span><span class="n">focus_item</span><span class="p">,</span>
-<span class="w">                                   </span><span class="kt">bool</span><span class="w"> </span><span class="n">set_focus</span><span class="p">);</span>
+<span class="w">                                   </span><span class="kt">bool</span><span class="w"> </span><span class="n">set_focus</span><span class="p">,</span>
+<span class="w">                                   </span><span class="n">FocusEventReason</span><span class="w"> </span><span class="n">reason</span><span class="p">);</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">slint_windowrc_set_component</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">WindowAdapterRcOpaque</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">ItemTreeRc</span><span class="w"> </span><span class="o">*</span><span class="n">component</span><span class="p">);</span>
 

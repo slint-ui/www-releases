@@ -86,11 +86,13 @@ Program Listing for File slint_internal.h
        SelectionClipboard = 1,
    };
    
-   enum class FocusEvent : uint8_t {
-       FocusIn,
-       FocusOut,
-       WindowReceivedFocus,
-       WindowLostFocus,
+   enum class FocusEventReason : uint8_t {
+       Keyboard,
+       Mouse,
+       Popup,
+       BuiltinFunction,
+       AccessKit,
+       ActiveWindow,
    };
    
    enum class FocusEventResult : uint8_t {
@@ -219,6 +221,29 @@ Program Listing for File slint_internal.h
            Moved_Body moved;
            Wheel_Body wheel;
        };
+   };
+   
+   union FocusEvent {
+       enum class Tag : uint8_t {
+           FocusIn,
+           FocusOut,
+       };
+   
+       struct FocusIn_Body {
+           Tag tag;
+           FocusEventReason _0;
+       };
+   
+       struct FocusOut_Body {
+           Tag tag;
+           FocusEventReason _0;
+       };
+   
+       struct {
+           Tag tag;
+       };
+       FocusIn_Body focus_in;
+       FocusOut_Body focus_out;
    };
    
    struct LogicalSize {
@@ -1221,7 +1246,8 @@ Program Listing for File slint_internal.h
    
    void slint_windowrc_set_focus_item(const WindowAdapterRcOpaque *handle,
                                       const ItemRc *focus_item,
-                                      bool set_focus);
+                                      bool set_focus,
+                                      FocusEventReason reason);
    
    void slint_windowrc_set_component(const WindowAdapterRcOpaque *handle, const ItemTreeRc *component);
    
