@@ -17,11 +17,6 @@ Program Listing for File slint_window.h
    
    #include "slint_internal.h"
    
-   #ifndef SLINT_FEATURE_FREESTANDING
-   #    include <thread>
-   #    include <iostream>
-   #endif
-   
    namespace slint {
    #if !defined(DOXYGEN)
    namespace platform {
@@ -31,24 +26,6 @@ Program Listing for File slint_window.h
    #endif
    
    namespace private_api {
-   inline void assert_main_thread()
-   {
-   #ifndef SLINT_FEATURE_FREESTANDING
-   #    ifndef NDEBUG
-       static auto main_thread_id = std::this_thread::get_id();
-       if (main_thread_id != std::this_thread::get_id()) {
-           std::cerr << "A function that should be only called from the main thread was called from a "
-                        "thread."
-                     << std::endl;
-           std::cerr << "Most API should be called from the main thread. When using thread one must "
-                        "use slint::invoke_from_event_loop."
-                     << std::endl;
-           std::abort();
-       }
-   #    endif
-   #endif
-   }
-   
    using ItemTreeRc = vtable::VRc<cbindgen_private::ItemTreeVTable>;
    using slint::LogicalPosition;
    
