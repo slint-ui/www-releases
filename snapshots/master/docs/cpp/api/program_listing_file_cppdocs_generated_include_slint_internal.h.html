@@ -499,15 +499,6 @@
 <span class="w">    </span><span class="n">SelectionClipboard</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
 <span class="p">};</span>
 
-<span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">FocusEventReason</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">Keyboard</span><span class="p">,</span>
-<span class="w">    </span><span class="n">Mouse</span><span class="p">,</span>
-<span class="w">    </span><span class="n">Popup</span><span class="p">,</span>
-<span class="w">    </span><span class="n">BuiltinFunction</span><span class="p">,</span>
-<span class="w">    </span><span class="n">AccessKit</span><span class="p">,</span>
-<span class="w">    </span><span class="n">ActiveWindow</span><span class="p">,</span>
-<span class="p">};</span>
-
 <span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">FocusEventResult</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">FocusAccepted</span><span class="p">,</span>
 <span class="w">    </span><span class="n">FocusIgnored</span><span class="p">,</span>
@@ -644,12 +635,12 @@
 
 <span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">FocusIn_Body</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">Tag</span><span class="w"> </span><span class="n">tag</span><span class="p">;</span>
-<span class="w">        </span><span class="n">FocusEventReason</span><span class="w"> </span><span class="n">_0</span><span class="p">;</span>
+<span class="w">        </span><span class="n">FocusReason</span><span class="w"> </span><span class="n">_0</span><span class="p">;</span>
 <span class="w">    </span><span class="p">};</span>
 
 <span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">FocusOut_Body</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">Tag</span><span class="w"> </span><span class="n">tag</span><span class="p">;</span>
-<span class="w">        </span><span class="n">FocusEventReason</span><span class="w"> </span><span class="n">_0</span><span class="p">;</span>
+<span class="w">        </span><span class="n">FocusReason</span><span class="w"> </span><span class="n">_0</span><span class="p">;</span>
 <span class="w">    </span><span class="p">};</span>
 
 <span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span>
@@ -1213,7 +1204,9 @@
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="w"> </span><span class="n">has_focus</span><span class="p">;</span>
 <span class="w">    </span><span class="n">private_api</span><span class="o">::</span><span class="n">CallbackHelper</span><span class="o">&lt;</span><span class="n">KeyEvent</span><span class="p">,</span><span class="w"> </span><span class="n">EventResult</span><span class="o">&gt;</span><span class="w"> </span><span class="n">key_pressed</span><span class="p">;</span>
 <span class="w">    </span><span class="n">private_api</span><span class="o">::</span><span class="n">CallbackHelper</span><span class="o">&lt;</span><span class="n">KeyEvent</span><span class="p">,</span><span class="w"> </span><span class="n">EventResult</span><span class="o">&gt;</span><span class="w"> </span><span class="n">key_released</span><span class="p">;</span>
-<span class="w">    </span><span class="n">private_api</span><span class="o">::</span><span class="n">CallbackHelper</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;</span><span class="w"> </span><span class="n">focus_changed_event</span><span class="p">;</span>
+<span class="w">    </span><span class="n">private_api</span><span class="o">::</span><span class="n">CallbackHelper</span><span class="o">&lt;</span><span class="n">FocusReason</span><span class="o">&gt;</span><span class="w"> </span><span class="n">focus_changed_event</span><span class="p">;</span>
+<span class="w">    </span><span class="n">private_api</span><span class="o">::</span><span class="n">CallbackHelper</span><span class="o">&lt;</span><span class="n">FocusReason</span><span class="o">&gt;</span><span class="w"> </span><span class="n">focus_gained</span><span class="p">;</span>
+<span class="w">    </span><span class="n">private_api</span><span class="o">::</span><span class="n">CallbackHelper</span><span class="o">&lt;</span><span class="n">FocusReason</span><span class="o">&gt;</span><span class="w"> </span><span class="n">focus_lost</span><span class="p">;</span>
 <span class="w">    </span><span class="n">CachedRenderingData</span><span class="w"> </span><span class="n">cached_rendering_data</span><span class="p">;</span>
 <span class="p">};</span>
 
@@ -1660,7 +1653,7 @@
 <span class="kt">void</span><span class="w"> </span><span class="nf">slint_windowrc_set_focus_item</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">WindowAdapterRcOpaque</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">,</span>
 <span class="w">                                   </span><span class="k">const</span><span class="w"> </span><span class="n">ItemRc</span><span class="w"> </span><span class="o">*</span><span class="n">focus_item</span><span class="p">,</span>
 <span class="w">                                   </span><span class="kt">bool</span><span class="w"> </span><span class="n">set_focus</span><span class="p">,</span>
-<span class="w">                                   </span><span class="n">FocusEventReason</span><span class="w"> </span><span class="n">reason</span><span class="p">);</span>
+<span class="w">                                   </span><span class="n">FocusReason</span><span class="w"> </span><span class="n">reason</span><span class="p">);</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">slint_windowrc_set_component</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">WindowAdapterRcOpaque</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">ItemTreeRc</span><span class="w"> </span><span class="o">*</span><span class="n">component</span><span class="p">);</span>
 

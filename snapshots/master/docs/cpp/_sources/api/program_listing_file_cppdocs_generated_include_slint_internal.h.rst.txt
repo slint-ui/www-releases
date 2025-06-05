@@ -86,15 +86,6 @@ Program Listing for File slint_internal.h
        SelectionClipboard = 1,
    };
    
-   enum class FocusEventReason : uint8_t {
-       Keyboard,
-       Mouse,
-       Popup,
-       BuiltinFunction,
-       AccessKit,
-       ActiveWindow,
-   };
-   
    enum class FocusEventResult : uint8_t {
        FocusAccepted,
        FocusIgnored,
@@ -231,12 +222,12 @@ Program Listing for File slint_internal.h
    
        struct FocusIn_Body {
            Tag tag;
-           FocusEventReason _0;
+           FocusReason _0;
        };
    
        struct FocusOut_Body {
            Tag tag;
-           FocusEventReason _0;
+           FocusReason _0;
        };
    
        struct {
@@ -800,7 +791,9 @@ Program Listing for File slint_internal.h
        Property<bool> has_focus;
        private_api::CallbackHelper<KeyEvent, EventResult> key_pressed;
        private_api::CallbackHelper<KeyEvent, EventResult> key_released;
-       private_api::CallbackHelper<void> focus_changed_event;
+       private_api::CallbackHelper<FocusReason> focus_changed_event;
+       private_api::CallbackHelper<FocusReason> focus_gained;
+       private_api::CallbackHelper<FocusReason> focus_lost;
        CachedRenderingData cached_rendering_data;
    };
    
@@ -1247,7 +1240,7 @@ Program Listing for File slint_internal.h
    void slint_windowrc_set_focus_item(const WindowAdapterRcOpaque *handle,
                                       const ItemRc *focus_item,
                                       bool set_focus,
-                                      FocusEventReason reason);
+                                      FocusReason reason);
    
    void slint_windowrc_set_component(const WindowAdapterRcOpaque *handle, const ItemTreeRc *component);
    

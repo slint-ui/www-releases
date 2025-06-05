@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/eval.rs`."><title>eval.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-84e720fa.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.89.0-nightly (59aa1e873 2025-06-03)" data-channel="nightly" data-search-js="search-f7877310.js" data-settings-js="settings-5514c975.js" ><script src="../../static.files/storage-4e99c027.js"></script><script defer src="../../static.files/src-script-63605ae7.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-fd3af306.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-32bb7600.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/eval.rs`."><title>eval.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-84e720fa.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.89.0-nightly (4b27a04cc 2025-06-04)" data-channel="nightly" data-search-js="search-f7877310.js" data-settings-js="settings-5514c975.js" ><script src="../../static.files/storage-4e99c027.js"></script><script defer src="../../static.files/src-script-63605ae7.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-fd3af306.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-32bb7600.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -141,7 +141,7 @@
 <a href=#19 id=19 data-nosnippet>19</a><span class="kw">use </span>i_slint_compiler::namedreference::NamedReference;
 <a href=#20 id=20 data-nosnippet>20</a><span class="kw">use </span>i_slint_compiler::object_tree::ElementRc;
 <a href=#21 id=21 data-nosnippet>21</a><span class="kw">use </span>i_slint_core <span class="kw">as </span>corelib;
-<a href=#22 id=22 data-nosnippet>22</a><span class="kw">use </span>i_slint_core::input::FocusEventReason;
+<a href=#22 id=22 data-nosnippet>22</a><span class="kw">use </span>i_slint_core::input::FocusReason;
 <a href=#23 id=23 data-nosnippet>23</a><span class="kw">use </span>i_slint_core::items::ItemRc;
 <a href=#24 id=24 data-nosnippet>24</a><span class="kw">use </span>smol_str::SmolStr;
 <a href=#25 id=25 data-nosnippet>25</a><span class="kw">use </span>std::collections::HashMap;
@@ -655,7 +655,7 @@
 <a href=#533 id=533 data-nosnippet>533</a>                            item_info.item_index(),
 <a href=#534 id=534 data-nosnippet>534</a>                        ),
 <a href=#535 id=535 data-nosnippet>535</a>                        <span class="bool-val">true</span>,
-<a href=#536 id=536 data-nosnippet>536</a>                        FocusEventReason::BuiltinFunction,
+<a href=#536 id=536 data-nosnippet>536</a>                        FocusReason::Programmatic,
 <a href=#537 id=537 data-nosnippet>537</a>                    )
 <a href=#538 id=538 data-nosnippet>538</a>                });
 <a href=#539 id=539 data-nosnippet>539</a>                Value::Void
@@ -688,7 +688,7 @@
 <a href=#566 id=566 data-nosnippet>566</a>                            item_info.item_index(),
 <a href=#567 id=567 data-nosnippet>567</a>                        ),
 <a href=#568 id=568 data-nosnippet>568</a>                        <span class="bool-val">false</span>,
-<a href=#569 id=569 data-nosnippet>569</a>                        FocusEventReason::BuiltinFunction,
+<a href=#569 id=569 data-nosnippet>569</a>                        FocusReason::Programmatic,
 <a href=#570 id=570 data-nosnippet>570</a>                    )
 <a href=#571 id=571 data-nosnippet>571</a>                });
 <a href=#572 id=572 data-nosnippet>572</a>                Value::Void

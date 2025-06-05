@@ -5,7 +5,7 @@ This page lists the licenses of the dependencies used by Slint.
 
 ## Overview of licenses
 
-- [MIT License](#MIT) (359)
+- [MIT License](#MIT) (364)
 - [Apache License 2.0](#Apache-2.0) (16)
 - [BSD 3-Clause &quot;New&quot; or &quot;Revised&quot; License](#BSD-3-Clause) (6)
 - [BSD 2-Clause &quot;Simplified&quot; License](#BSD-2-Clause) (4)
@@ -2128,10 +2128,13 @@ DEALINGS IN THE SOFTWARE.
 
 - [cgl 0.3.2]( https://github.com/servo/cgl-rs )
 - [core-foundation-sys 0.8.7]( https://github.com/servo/core-foundation-rs )
+- [core-foundation 0.10.1]( https://github.com/servo/core-foundation-rs )
 - [core-foundation 0.9.4]( https://github.com/servo/core-foundation-rs )
 - [core-graphics-types 0.1.3]( https://github.com/servo/core-foundation-rs )
+- [core-graphics-types 0.2.0]( https://github.com/servo/core-foundation-rs )
 - [core-graphics 0.23.2]( https://github.com/servo/core-foundation-rs )
-- [core-text 20.1.0]( https://github.com/servo/core-foundation-rs )
+- [core-graphics 0.24.0]( https://github.com/servo/core-foundation-rs )
+- [core-text 21.0.0]( https://github.com/servo/core-foundation-rs )
 - [euclid 0.22.11]( https://github.com/servo/euclid )
 
 #### License Text
@@ -4722,7 +4725,9 @@ according to those terms.
 
 #### Used by:
 
-- [core-text 20.1.0]( https://github.com/servo/core-foundation-rs )
+- [cgl 0.3.2]( https://github.com/servo/cgl-rs )
+- [core-graphics 0.23.2]( https://github.com/servo/core-foundation-rs )
+- [core-graphics 0.24.0]( https://github.com/servo/core-foundation-rs )
 - [euclid 0.22.11]( https://github.com/servo/euclid )
 
 #### License Text
@@ -5519,7 +5524,7 @@ SOFTWARE.
 https://crates.io/crates/zune-core )
 - [zune-inflate 0.2.54](
 https://crates.io/crates/zune-inflate )
-- [zune-jpeg 0.4.15]( https://github.com/etemesi254/zune-image/tree/dev/crates/zune-jpeg )
+- [zune-jpeg 0.4.16]( https://github.com/etemesi254/zune-image/tree/dev/crates/zune-jpeg )
 
 #### License Text
 

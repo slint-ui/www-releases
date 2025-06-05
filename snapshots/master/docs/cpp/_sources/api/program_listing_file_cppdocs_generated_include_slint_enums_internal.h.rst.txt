@@ -67,6 +67,13 @@ Program Listing for File slint_enums_internal.h
        Help,
        Action,
    };
+   enum class FocusReason {
+       KeyboardNavigation,
+       Clicked,
+       PopupActivation,
+       Programmatic,
+       WindowActivation,
+   };
    enum class PointerEventKind {
        Cancel,
        Down,
