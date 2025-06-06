@@ -68,8 +68,8 @@ Program Listing for File slint_enums_internal.h
        Action,
    };
    enum class FocusReason {
-       KeyboardNavigation,
-       Clicked,
+       TabNavigation,
+       PointerClick,
        PopupActivation,
        Programmatic,
        WindowActivation,
