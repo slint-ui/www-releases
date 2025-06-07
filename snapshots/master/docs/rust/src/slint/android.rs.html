@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `api/rs/slint/android.rs`."><title>android.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-84e720fa.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint" data-themes="" data-resource-suffix="" data-rustdoc-version="1.89.0-nightly (ccf3198de 2025-06-05)" data-channel="nightly" data-search-js="search-f7877310.js" data-settings-js="settings-5514c975.js" ><script src="../../static.files/storage-4e99c027.js"></script><script defer src="../../static.files/src-script-63605ae7.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-fd3af306.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-32bb7600.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `api/rs/slint/android.rs`."><title>android.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-84e720fa.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint" data-themes="" data-resource-suffix="" data-rustdoc-version="1.89.0-nightly (44f415c1d 2025-06-06)" data-channel="nightly" data-search-js="search-f7877310.js" data-settings-js="settings-5514c975.js" ><script src="../../static.files/storage-4e99c027.js"></script><script defer src="../../static.files/src-script-63605ae7.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-fd3af306.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-32bb7600.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -212,7 +212,7 @@
 <a href=#90 id=90 data-nosnippet>90</a>    any(feature = <span class="string">"backend-android-activity-05"</span>, feature = <span class="string">"backend-android-activity-06"</span>)
 <a href=#91 id=91 data-nosnippet>91</a>)))]
 <a href=#92 id=92 data-nosnippet>92</a></span><span class="doccomment">/// Re-export of the [android-activity](https://docs.rs/android-activity) crate.
-<a href=#93 id=93 data-nosnippet>93</a></span><span class="kw">pub mod </span>android_activity {
+<a href=#93 id=93 data-nosnippet>93</a></span><span class="kw">pub mod </span><a href="../../slint/android/android_activity/index.html">android_activity</a> {
 <a href=#94 id=94 data-nosnippet>94</a>    <span class="attr">#[doc(hidden)]
 <a href=#95 id=95 data-nosnippet>95</a>    </span><span class="kw">pub struct </span>AndroidApp;
 <a href=#96 id=96 data-nosnippet>96</a>    <span class="attr">#[doc(hidden)]
@@ -221,9 +221,9 @@
 <a href=#99 id=99 data-nosnippet>99</a>
 <a href=#100 id=100 data-nosnippet>100</a><span class="doccomment">/// Re-export of AndroidApp from the [android-activity](https://docs.rs/android-activity) crate.
 <a href=#101 id=101 data-nosnippet>101</a></span><span class="attr">#[doc(no_inline)]
-<a href=#102 id=102 data-nosnippet>102</a></span><span class="kw">pub use </span>android_activity::AndroidApp;
+<a href=#102 id=102 data-nosnippet>102</a></span><span class="kw">pub use </span><a href="#95">android_activity::AndroidApp</a>;
 <a href=#103 id=103 data-nosnippet>103</a>
-<a href=#104 id=104 data-nosnippet>104</a><span class="kw">use </span><span class="kw">crate</span>::platform::SetPlatformError;
+<a href=#104 id=104 data-nosnippet>104</a><span class="kw">use </span><a href="../../slint/platform/enum.SetPlatformError.html"><span class="kw">crate</span>::platform::SetPlatformError</a>;
 <a href=#105 id=105 data-nosnippet>105</a>
 <a href=#106 id=106 data-nosnippet>106</a><span class="doccomment">/// Initializes the Android backend.
 <a href=#107 id=107 data-nosnippet>107</a>///
@@ -234,40 +234,52 @@
 <a href=#112 id=112 data-nosnippet>112</a>/// See the [module documentation](self) for an example on how to create Android application.
 <a href=#113 id=113 data-nosnippet>113</a>///
 <a href=#114 id=114 data-nosnippet>114</a>/// See also [`init_with_event_listener`]
-<a href=#115 id=115 data-nosnippet>115</a></span><span class="kw">pub fn </span>init(app: android_activity::AndroidApp) -&gt; <span class="prelude-ty">Result</span>&lt;(), SetPlatformError&gt; {
-<a href=#116 id=116 data-nosnippet>116</a>    <span class="kw">crate</span>::platform::set_platform(Box::new(i_slint_backend_android_activity::AndroidPlatform::new(
-<a href=#117 id=117 data-nosnippet>117</a>        app,
-<a href=#118 id=118 data-nosnippet>118</a>    )))
-<a href=#119 id=119 data-nosnippet>119</a>}
-<a href=#120 id=120 data-nosnippet>120</a>
-<a href=#121 id=121 data-nosnippet>121</a><span class="doccomment">/// Similar to [`init()`], which allow to listen to android-activity's event
-<a href=#122 id=122 data-nosnippet>122</a>///
-<a href=#123 id=123 data-nosnippet>123</a>/// **Note:** This function is only available on Android with the "backend-android-activity-06" feature
-<a href=#124 id=124 data-nosnippet>124</a>///
-<a href=#125 id=125 data-nosnippet>125</a>/// The listener argument is a function that takes a [`android_activity::PollEvent`](https://docs.rs/android-activity/latest/android_activity/enum.PollEvent.html)
-<a href=#126 id=126 data-nosnippet>126</a>///
-<a href=#127 id=127 data-nosnippet>127</a>/// # Example
-<a href=#128 id=128 data-nosnippet>128</a>///
-<a href=#129 id=129 data-nosnippet>129</a>/// ```rust
-<a href=#130 id=130 data-nosnippet>130</a>/// # #[cfg(target_os = "android")]
-<a href=#131 id=131 data-nosnippet>131</a>/// #[unsafe(no_mangle)]
-<a href=#132 id=132 data-nosnippet>132</a>/// fn android_main(app: slint::android_activity::AndroidApp) {
-<a href=#133 id=133 data-nosnippet>133</a>///     slint::android_init_with_event_listener(
-<a href=#134 id=134 data-nosnippet>134</a>///        app,
-<a href=#135 id=135 data-nosnippet>135</a>///        |event| { eprintln!("got event {event:?}") }
-<a href=#136 id=136 data-nosnippet>136</a>///     ).unwrap();
-<a href=#137 id=137 data-nosnippet>137</a>///
-<a href=#138 id=138 data-nosnippet>138</a>///     // ... rest of your application ...
-<a href=#139 id=139 data-nosnippet>139</a>///
-<a href=#140 id=140 data-nosnippet>140</a>/// }
-<a href=#141 id=141 data-nosnippet>141</a>/// ```
+<a href=#115 id=115 data-nosnippet>115</a></span><span class="kw">pub fn </span><a href="../../slint/android/fn.init.html">init</a>(app: <a href="#95">android_activity::AndroidApp</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), <a href="../../slint/platform/enum.SetPlatformError.html">SetPlatformError</a>&gt; {
+<a href=#116 id=116 data-nosnippet>116</a>    <span class="attr">#[cfg(not(target_os = <span class="string">"android"</span>))]
+<a href=#117 id=117 data-nosnippet>117</a>    </span><a class="macro" href="https://doc.rust-lang.org/nightly/core/macro.unreachable.html">unreachable!</a>();
+<a href=#118 id=118 data-nosnippet>118</a>    <span class="attr">#[cfg(target_os = <span class="string">"android"</span>)]
+<a href=#119 id=119 data-nosnippet>119</a>    </span>{
+<a href=#120 id=120 data-nosnippet>120</a>        <span class="kw">crate</span>::platform::set_platform(Box::new(
+<a href=#121 id=121 data-nosnippet>121</a>            i_slint_backend_android_activity::AndroidPlatform::new(app),
+<a href=#122 id=122 data-nosnippet>122</a>        ))
+<a href=#123 id=123 data-nosnippet>123</a>    }
+<a href=#124 id=124 data-nosnippet>124</a>}
+<a href=#125 id=125 data-nosnippet>125</a>
+<a href=#126 id=126 data-nosnippet>126</a><span class="doccomment">/// Similar to [`init()`], which allow to listen to android-activity's event
+<a href=#127 id=127 data-nosnippet>127</a>///
+<a href=#128 id=128 data-nosnippet>128</a>/// **Note:** This function is only available on Android with the "backend-android-activity-06" feature
+<a href=#129 id=129 data-nosnippet>129</a>///
+<a href=#130 id=130 data-nosnippet>130</a>/// The listener argument is a function that takes a [`android_activity::PollEvent`](https://docs.rs/android-activity/latest/android_activity/enum.PollEvent.html)
+<a href=#131 id=131 data-nosnippet>131</a>///
+<a href=#132 id=132 data-nosnippet>132</a>/// # Example
+<a href=#133 id=133 data-nosnippet>133</a>///
+<a href=#134 id=134 data-nosnippet>134</a>/// ```rust
+<a href=#135 id=135 data-nosnippet>135</a>/// # #[cfg(target_os = "android")]
+<a href=#136 id=136 data-nosnippet>136</a>/// #[unsafe(no_mangle)]
+<a href=#137 id=137 data-nosnippet>137</a>/// fn android_main(app: slint::android_activity::AndroidApp) {
+<a href=#138 id=138 data-nosnippet>138</a>///     slint::android_init_with_event_listener(
+<a href=#139 id=139 data-nosnippet>139</a>///        app,
+<a href=#140 id=140 data-nosnippet>140</a>///        |event| { eprintln!("got event {event:?}") }
+<a href=#141 id=141 data-nosnippet>141</a>///     ).unwrap();
 <a href=#142 id=142 data-nosnippet>142</a>///
-<a href=#143 id=143 data-nosnippet>143</a>/// Check out the [module documentation](self) for a more complete example  on how to write an android application
-<a href=#144 id=144 data-nosnippet>144</a></span><span class="kw">pub fn </span>init_with_event_listener(
-<a href=#145 id=145 data-nosnippet>145</a>    app: android_activity::AndroidApp,
-<a href=#146 id=146 data-nosnippet>146</a>    listener: <span class="kw">impl </span>Fn(<span class="kw-2">&amp;</span>android_activity::PollEvent&lt;<span class="lifetime">'_</span>&gt;) + <span class="lifetime">'static</span>,
-<a href=#147 id=147 data-nosnippet>147</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), SetPlatformError&gt; {
-<a href=#148 id=148 data-nosnippet>148</a>    <span class="kw">crate</span>::platform::set_platform(Box::new(
-<a href=#149 id=149 data-nosnippet>149</a>        i_slint_backend_android_activity::AndroidPlatform::new_with_event_listener(app, listener),
-<a href=#150 id=150 data-nosnippet>150</a>    ))
-<a href=#151 id=151 data-nosnippet>151</a>}</code></pre></div></section></main></body></html>
+<a href=#143 id=143 data-nosnippet>143</a>///     // ... rest of your application ...
+<a href=#144 id=144 data-nosnippet>144</a>///
+<a href=#145 id=145 data-nosnippet>145</a>/// }
+<a href=#146 id=146 data-nosnippet>146</a>/// ```
+<a href=#147 id=147 data-nosnippet>147</a>///
+<a href=#148 id=148 data-nosnippet>148</a>/// Check out the [module documentation](self) for a more complete example  on how to write an android application
+<a href=#149 id=149 data-nosnippet>149</a></span><span class="kw">pub fn </span><a href="../../slint/android/fn.init_with_event_listener.html">init_with_event_listener</a>(
+<a href=#150 id=150 data-nosnippet>150</a>    app: <a href="#95">android_activity::AndroidApp</a>,
+<a href=#151 id=151 data-nosnippet>151</a>    listener: <span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html">Fn</a>(<span class="kw-2">&amp;</span><a href="#97">android_activity::PollEvent</a>&lt;<span class="lifetime">'_</span>&gt;) + <span class="lifetime">'static</span>,
+<a href=#152 id=152 data-nosnippet>152</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), <a href="../../slint/platform/enum.SetPlatformError.html">SetPlatformError</a>&gt; {
+<a href=#153 id=153 data-nosnippet>153</a>    <span class="attr">#[cfg(not(target_os = <span class="string">"android"</span>))]
+<a href=#154 id=154 data-nosnippet>154</a>    </span><a class="macro" href="https://doc.rust-lang.org/nightly/core/macro.unreachable.html">unreachable!</a>();
+<a href=#155 id=155 data-nosnippet>155</a>    <span class="attr">#[cfg(target_os = <span class="string">"android"</span>)]
+<a href=#156 id=156 data-nosnippet>156</a>    </span>{
+<a href=#157 id=157 data-nosnippet>157</a>        <span class="kw">crate</span>::platform::set_platform(Box::new(
+<a href=#158 id=158 data-nosnippet>158</a>            i_slint_backend_android_activity::AndroidPlatform::new_with_event_listener(
+<a href=#159 id=159 data-nosnippet>159</a>                app, listener,
+<a href=#160 id=160 data-nosnippet>160</a>            ),
+<a href=#161 id=161 data-nosnippet>161</a>        ))
+<a href=#162 id=162 data-nosnippet>162</a>    }
+<a href=#163 id=163 data-nosnippet>163</a>}</code></pre></div></section></main></body></html>

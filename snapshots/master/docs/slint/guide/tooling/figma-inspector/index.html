@@ -86,7 +86,7 @@ You are viewing contents of an older version. Switch to <a href="https://docs.sl
 <p>The “Figma to Slint” plugin bridges the gap between Figma designs and Slint user interfaces. It provides two primary functionalities:</p>
 <ol>
 <li><strong>Object Inspection:</strong> Allows developers to select any object on the Figma canvas and view its properties (like dimensions, colors, fonts, etc.)formatted as a Slint code snippet. This is useful for quickly translating visual design elements into Slint code.  When paired with the variable export, this inserts variables into the code, if they are used in the figma file.</li>
-<li><strong>Variable Export:</strong> Enables the export of design tokens (variables for colors, numbers, strings, and booleans) defined in Figma directly into <code dir="auto">.slint</code> files. This feature supports Figma’s modes, allowing for themeable designs (e.g., light and dark modes) and generates the necessary Slint structs, enums, and global instances to use these tokens seamlessly in your Slint application.</li>
+<li><strong>Variable Export:</strong> Enables the reliable export of design tokens (variables for colors, numbers, strings, and booleans) defined in Figma directly into <code dir="auto">.slint</code> files. This feature fully supports Figma’s modes, allowing for themeable designs (e.g., light and dark modes) and generates the necessary Slint structs, enums, and global instances to use these tokens seamlessly in your Slint application.</li>
 </ol>
 <div class="sl-heading-wrapper level-h2"><h2 id="setting-up-the-figma-inspector">Setting up the Figma Inspector</h2><a class="sl-anchor-link" href="#setting-up-the-figma-inspector"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “Setting up the Figma Inspector”</span></a></div>
 <p>First of all, find and enable the “Figma to Slint” plugin in the Figma Plugin Manager.
@@ -134,7 +134,7 @@ The file also contains a <code dir="auto">Scheme</code> struct (<code dir="auto"
 </ul>
 </li>
 <li>
-<p><strong>Alias Resolution:</strong> Follows variable aliases (references) to find the underlying concrete value or target variable path.</p>
+<p><strong>Reliable Variable Resolution:</strong> Automatically resolves all variable aliases (references) to their concrete values, ensuring consistent and predictable output regardless of how variables reference each other.</p>
 </li>
 <li>
 <p><strong>Hierarchy Generation:</strong> Interprets <code dir="auto">/</code> in Figma like
@@ -142,7 +142,7 @@ The file also contains a <code dir="auto">Scheme</code> struct (<code dir="auto"
 to generate nested Slint structs so the corresponding variables are nested for dot notation in Slint, thus the above example turns into <code dir="auto">colors.background.primary</code></p>
 </li>
 <li>
-<p><strong>Circular Reference Handling:</strong> Detects dependency cycles between variables. If a cycle is detected within the same collection, it attempts to break the loop using the target’s concrete value. Otherwise, or if the loop break fails, it resolves with a default value and logs a warning. Collections involved in cycles force a single-file export.</p>
+<p><strong>Robust Mode Handling:</strong> Intelligently matches Figma modes to ensure all variables export with their correct values, even when mode IDs don’t match perfectly between collections and variables.</p>
 </li>
 <li>
 <p><strong>Name Sanitization:</strong> Cleans up collection, variable, and mode names to be valid Slint identifiers (e.g., converting spaces and special characters to underscores, handling leading digits).</p>
@@ -150,12 +150,12 @@ to generate nested Slint structs so the corresponding variables are nested for d
 <li>
 <p><strong>Export Options:</strong></p>
 <ul>
-<li><strong>Separate Files:</strong> Exports each Figma collection into its own <code dir="auto">.slint</code> file. Automatically generates necessary <code dir="auto">import</code> statements between files if cross-collection references exist (unless a cycle forces single-file mode).</li>
-<li><strong>Single File:</strong> Combines all collections into a single <code dir="auto">design-tokens.slint</code> file. This is also the fallback if dependency cycles are detected.</li>
+<li><strong>Separate Files:</strong> Exports each Figma collection into its own <code dir="auto">.slint</code> file. Creates <code dir="auto">&#x3C;collection_name>.slint</code> files with automatic cross-collection imports when needed.</li>
+<li><strong>Single File:</strong> Combines all collections into a single <code dir="auto">design-tokens.slint</code> file for simpler project integration.</li>
 </ul>
 </li>
 <li>
-<p><strong>README Generation:</strong> Creates a <code dir="auto">README.md</code> file alongside the export, summarizing exported collections, renamed variables, detected circular references, and warnings.</p>
+<p><strong>README Generation:</strong> Creates a <code dir="auto">README.md</code> file alongside the export, summarizing exported collections, renamed variables, and any warnings.</p>
 </li>
 </ul>
 <div class="sl-heading-wrapper level-h2"><h2 id="usage">Usage</h2><a class="sl-anchor-link" href="#usage"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “Usage”</span></a></div>
@@ -180,8 +180,8 @@ to generate nested Slint structs so the corresponding variables are nested for d
 <p><strong>Export:</strong> Click the “Export” button and choose:
 <img src="/master/docs/slint/_astro/export-variables.B6y5Rfj2_1tODRs.webp" alt="alt text" width="582" height="212" loading="lazy" decoding="async"></p>
 <ul>
-<li><code dir="auto">Separate Files Per Collection…</code>: Recommended for organization if no recursive references exist. Creates <code dir="auto">&#x3C;collection_name>.slint</code> files.</li>
-<li><code dir="auto">Single Design-Tokens File…</code>: Creates <code dir="auto">design-tokens.slint</code>. Necessary if any self references exist.</li>
+<li><code dir="auto">Separate Files Per Collection…</code>: Recommended for organization. Creates <code dir="auto">&#x3C;collection_name>.slint</code> files.</li>
+<li><code dir="auto">Single Design-Tokens File…</code>: Creates <code dir="auto">design-tokens.slint</code> for simpler project integration.</li>
 </ul>
 </li>
 <li>

@@ -3574,7 +3574,7 @@ DEALINGS IN THE SOFTWARE.
 
 #### Used by:
 
-- [smallvec 1.15.0]( https://github.com/servo/rust-smallvec )
+- [smallvec 1.15.1]( https://github.com/servo/rust-smallvec )
 
 #### License Text
 
@@ -4412,13 +4412,13 @@ DEALINGS IN THE SOFTWARE.
 
 #### Used by:
 
-- [serde_spanned 0.6.8]( https://github.com/toml-rs/toml )
-- [toml 0.8.22]( https://github.com/toml-rs/toml )
-- [toml_datetime 0.6.9]( https://github.com/toml-rs/toml )
+- [serde_spanned 0.6.9]( https://github.com/toml-rs/toml )
+- [toml 0.8.23]( https://github.com/toml-rs/toml )
+- [toml_datetime 0.6.11]( https://github.com/toml-rs/toml )
 - [toml_edit 0.19.15]( https://github.com/toml-rs/toml )
 - [toml_edit 0.20.7]( https://github.com/toml-rs/toml )
-- [toml_edit 0.22.26]( https://github.com/toml-rs/toml )
-- [toml_write 0.1.1]( https://github.com/toml-rs/toml )
+- [toml_edit 0.22.27]( https://github.com/toml-rs/toml )
+- [toml_write 0.1.2]( https://github.com/toml-rs/toml )
 
 #### License Text
 
@@ -5483,8 +5483,8 @@ SOFTWARE.
 
 - [const-field-offset 0.1.5]( https://github.com/slint-ui/slint )
 - [const-field-offset-macro 0.1.5]( https://github.com/slint-ui/slint )
-- [vtable 0.2.1]( https://github.com/slint-ui/slint )
-- [vtable-macro 0.2.1]( https://github.com/slint-ui/slint )
+- [vtable 0.3.0]( https://github.com/slint-ui/slint )
+- [vtable-macro 0.3.0]( https://github.com/slint-ui/slint )
 - [block2 0.5.1]( https://github.com/madsmtm/objc2 )
 - [block2 0.6.1]( https://github.com/madsmtm/objc2 )
 - [chrono 0.4.41]( https://github.com/chronotope/chrono )
