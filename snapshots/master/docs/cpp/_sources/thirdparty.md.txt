@@ -5008,7 +5008,7 @@ SOFTWARE.
 
 #### Used by:
 
-- [bytemuck 1.23.0]( https://github.com/Lokathor/bytemuck )
+- [bytemuck 1.23.1]( https://github.com/Lokathor/bytemuck )
 - [bytemuck_derive 1.9.3]( https://github.com/Lokathor/bytemuck )
 
 #### License Text
