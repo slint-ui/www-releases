@@ -253,7 +253,7 @@ export function main() {
 }
 
 function __wbg_adapter_28(arg0, arg1, arg2) {
-    wasm.closure1820_externref_shim(arg0, arg1, arg2);
+    wasm.closure1875_externref_shim(arg0, arg1, arg2);
 }
 
 function __wbg_adapter_39(arg0, arg1) {
@@ -1639,24 +1639,24 @@ function __wbg_get_imports() {
         const ret = false;
         return ret;
     };
-    imports.wbg.__wbindgen_closure_wrapper4415 = function(arg0, arg1, arg2) {
-        const ret = makeClosure(arg0, arg1, 1821, __wbg_adapter_28);
+    imports.wbg.__wbindgen_closure_wrapper4541 = function(arg0, arg1, arg2) {
+        const ret = makeClosure(arg0, arg1, 1876, __wbg_adapter_28);
         return ret;
     };
-    imports.wbg.__wbindgen_closure_wrapper4417 = function(arg0, arg1, arg2) {
-        const ret = makeClosure(arg0, arg1, 1821, __wbg_adapter_28);
+    imports.wbg.__wbindgen_closure_wrapper4543 = function(arg0, arg1, arg2) {
+        const ret = makeClosure(arg0, arg1, 1876, __wbg_adapter_28);
         return ret;
     };
-    imports.wbg.__wbindgen_closure_wrapper4419 = function(arg0, arg1, arg2) {
-        const ret = makeClosure(arg0, arg1, 1821, __wbg_adapter_28);
+    imports.wbg.__wbindgen_closure_wrapper4545 = function(arg0, arg1, arg2) {
+        const ret = makeClosure(arg0, arg1, 1876, __wbg_adapter_28);
         return ret;
     };
-    imports.wbg.__wbindgen_closure_wrapper4421 = function(arg0, arg1, arg2) {
-        const ret = makeClosure(arg0, arg1, 1821, __wbg_adapter_28);
+    imports.wbg.__wbindgen_closure_wrapper4547 = function(arg0, arg1, arg2) {
+        const ret = makeClosure(arg0, arg1, 1876, __wbg_adapter_28);
         return ret;
     };
-    imports.wbg.__wbindgen_closure_wrapper4423 = function(arg0, arg1, arg2) {
-        const ret = makeClosure(arg0, arg1, 1821, __wbg_adapter_28);
+    imports.wbg.__wbindgen_closure_wrapper4549 = function(arg0, arg1, arg2) {
+        const ret = makeClosure(arg0, arg1, 1876, __wbg_adapter_28);
         return ret;
     };
     imports.wbg.__wbindgen_closure_wrapper5639 = function(arg0, arg1, arg2) {

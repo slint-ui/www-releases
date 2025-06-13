@@ -195,4 +195,12 @@ Program Listing for File slint_enums_internal.h
        Round,
        Square,
    };
+   enum class OperatingSystemType {
+       Android,
+       Ios,
+       Macos,
+       Linux,
+       Windows,
+       Other,
+   };
    }

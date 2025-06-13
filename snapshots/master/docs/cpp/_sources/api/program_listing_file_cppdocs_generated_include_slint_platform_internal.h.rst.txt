@@ -148,7 +148,7 @@ Program Listing for File slint_platform_internal.h
    
    void slint_set_xdg_app_id(const SharedString *_app_id);
    
-   void slint_detect_operating_system(SharedString *out);
+   OperatingSystemType slint_detect_operating_system();
    
    void slint_window_properties_get_title(const WindowProperties *wp, SharedString *out);
    

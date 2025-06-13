@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"enum":["WGPUConfiguration"],"struct":["WGPUSettings"]};
+window.SIDEBAR_ITEMS = {"enum":["TextureImportError","WGPUConfiguration"],"struct":["WGPUSettings"]};
