@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["TextureImportError","WGPUConfiguration"],"mod":["wgpu"],"struct":["WGPUSettings"]};

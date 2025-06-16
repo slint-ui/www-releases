@@ -1,0 +1,206 @@
+
+.. _program_listing_file_cppdocs_generated_include_slint_enums_internal.h:
+
+Program Listing for File slint_enums_internal.h
+===============================================
+
+|exhale_lsh| :ref:`Return to documentation for file <file_cppdocs_generated_include_slint_enums_internal.h>` (``cppdocs/generated_include/slint_enums_internal.h``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   #pragma once
+   // This file is auto-generated from xtask/src/../../api/cpp/cbindgen.rs
+   #include "slint_enums.h"
+   namespace slint::cbindgen_private {
+   enum class TextHorizontalAlignment {
+       Left,
+       Center,
+       Right,
+   };
+   enum class TextVerticalAlignment {
+       Top,
+       Center,
+       Bottom,
+   };
+   enum class TextWrap {
+       NoWrap,
+       WordWrap,
+       CharWrap,
+   };
+   enum class TextOverflow {
+       Clip,
+       Elide,
+   };
+   enum class TextStrokeStyle {
+       Outside,
+       Center,
+   };
+   enum class EventResult {
+       Reject,
+       Accept,
+   };
+   enum class FillRule {
+       Nonzero,
+       Evenodd,
+   };
+   enum class StandardButtonKind {
+       Ok,
+       Cancel,
+       Apply,
+       Close,
+       Reset,
+       Help,
+       Yes,
+       No,
+       Abort,
+       Retry,
+       Ignore,
+   };
+   enum class DialogButtonRole {
+       None,
+       Accept,
+       Reject,
+       Apply,
+       Reset,
+       Help,
+       Action,
+   };
+   enum class FocusReason {
+       TabNavigation,
+       PointerClick,
+       PopupActivation,
+       Programmatic,
+       WindowActivation,
+   };
+   enum class PointerEventKind {
+       Cancel,
+       Down,
+       Up,
+       Move,
+   };
+   using slint::PointerEventButton;
+   enum class MouseCursor {
+       Default,
+       None,
+       Help,
+       Pointer,
+       Progress,
+       Wait,
+       Crosshair,
+       Text,
+       Alias,
+       Copy,
+       Move,
+       NoDrop,
+       NotAllowed,
+       Grab,
+       Grabbing,
+       ColResize,
+       RowResize,
+       NResize,
+       EResize,
+       SResize,
+       WResize,
+       NeResize,
+       NwResize,
+       SeResize,
+       SwResize,
+       EwResize,
+       NsResize,
+       NeswResize,
+       NwseResize,
+   };
+   enum class ImageFit {
+       Fill,
+       Contain,
+       Cover,
+       Preserve,
+   };
+   enum class ImageHorizontalAlignment {
+       Center,
+       Left,
+       Right,
+   };
+   enum class ImageVerticalAlignment {
+       Center,
+       Top,
+       Bottom,
+   };
+   enum class ImageRendering {
+       Smooth,
+       Pixelated,
+   };
+   enum class ImageTiling {
+       None,
+       Repeat,
+       Round,
+   };
+   enum class InputType {
+       Text,
+       Password,
+       Number,
+       Decimal,
+   };
+   enum class LayoutAlignment {
+       Stretch,
+       Center,
+       Start,
+       End,
+       SpaceBetween,
+       SpaceAround,
+   };
+   enum class PathEvent {
+       Begin,
+       Line,
+       Quadratic,
+       Cubic,
+       EndOpen,
+       EndClosed,
+   };
+   using slint::testing::AccessibleRole;
+   enum class SortOrder {
+       Unsorted,
+       Ascending,
+       Descending,
+   };
+   enum class Orientation {
+       Horizontal,
+       Vertical,
+   };
+   enum class ColorScheme {
+       Unknown,
+       Dark,
+       Light,
+   };
+   enum class AnimationDirection {
+       Normal,
+       Reverse,
+       Alternate,
+       AlternateReverse,
+   };
+   enum class ScrollBarPolicy {
+       AsNeeded,
+       AlwaysOff,
+       AlwaysOn,
+   };
+   enum class PopupClosePolicy {
+       CloseOnClick,
+       CloseOnClickOutside,
+       NoAutoClose,
+   };
+   enum class LineCap {
+       Butt,
+       Round,
+       Square,
+   };
+   enum class OperatingSystemType {
+       Android,
+       Ios,
+       Macos,
+       Linux,
+       Windows,
+       Other,
+   };
+   }

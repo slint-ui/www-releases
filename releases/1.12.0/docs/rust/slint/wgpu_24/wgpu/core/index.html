@@ -1,0 +1,202 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="This library safely implements WebGPU on native platforms. It is designed for integration into browsers, as well as wrapping into other language-specific user-friendly libraries."><title>slint::wgpu_24::wgpu::core - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../../static.files/rustdoc-84e720fa.css"><meta name="rustdoc-vars" data-root-path="../../../../" data-static-root-path="../../../../static.files/" data-current-crate="slint" data-themes="" data-resource-suffix="" data-rustdoc-version="1.89.0-nightly (586ad391f 2025-06-15)" data-channel="nightly" data-search-js="search-f7877310.js" data-settings-js="settings-5514c975.js" ><script src="../../../../static.files/storage-4e99c027.js"></script><script defer src="../../../../crates.js"></script><script defer src="../../../../static.files/main-fd3af306.js"></script><noscript><link rel="stylesheet" href="../../../../static.files/noscript-32bb7600.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../../static.files/favicon-044be391.svg"><!--
+    This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
+    It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
+    in sphinx and via head.hbs in mdbook.
+-->
+<link rel="stylesheet" href="https://slint.dev/resources/highlightjs/11.0.1/default.min.css">
+<script src="https://slint.dev/resources/highlightjs/11.0.1/highlight.min.js"></script>
+<script>
+  function highlight_slint(hljs) {
+    const KEYWORDS = {
+      keyword:
+        "animate callback changed component enum export for function global if import in in-out inherits out parent private property public pure root self states struct",
+      literal: "false true",
+      built_in:
+        "ArcTo Clip Close Colors CubicTo Flickable FocusScope GridLayout HorizontalLayout Image LineTo Math MoveTo Path PopupWindow QuadraticTo Rectangle Row Text TextInput TouchArea VerticalLayout Window animation-tick debug",
+      type: "bool duration easing float int length logical-length relative-font-size string",
+    };
+
+    return {
+      name: 'slint',
+      case_insensitive: false,
+      keywords: KEYWORDS,
+      contains: [
+        hljs.QUOTE_STRING_MODE,
+        hljs.C_LINE_COMMENT_MODE,
+        hljs.C_BLOCK_COMMENT_MODE,
+        hljs.COMMENT('/\\*', '\\*/', {
+          contains: ['self']
+        }),
+        {
+          className: 'number',
+          begin: '\\b\\d+(\\.\\d+)?(\\w+)?',
+          relevance: 0
+        },
+        {
+          className: 'title',
+          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]* *:=',
+        },
+        {
+          className: 'symbol',
+          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]*(:| *=>)',
+        },
+        {
+          className: 'built_in',
+          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]*!',
+        },
+      ],
+      illegal: /@/
+    };
+  };
+
+  // Tags used in fenced code blocks
+  for (let tag of ["slint", "slint,no-preview", "slint,no-auto-preview", "slint,ignore"]) {
+    hljs.registerLanguage(tag, highlight_slint);
+  }
+
+
+  window.addEventListener("DOMContentLoaded", () => {
+    const rustDoc = document.querySelector('meta[name="generator"]')?.content == "rustdoc";
+    if (rustDoc) {
+      // Only highlight .slint blocks, leave the others to rustdoc
+      for (slintBlock of document.querySelectorAll("[class*=language-slint]")) {
+        hljs.highlightElement(slintBlock)
+      }
+
+      // Some of the rustdoc selectors require the pre element to have the rust class
+      for (codeBlock of document.querySelectorAll(".language-slint.hljs")) {
+        codeBlock.classList.add("rust");
+        codeBlock.classList.remove("hljs");
+      }
+
+      // Change the hljs generated classes to the rustdoc
+      // ones, so that the highlighting adjusts to the theme correctly.
+      const highlightJSToRustDoc = [
+        ["comment", "comment"],
+        ["number", "number"],
+        ["symbol", "struct"], // width:
+        ["keyword", "kw"],
+        ["built_in", "primitive"],
+        ["string", "string"],
+        ["title", "fnname"], // Foo :=
+        ["type", "type"]
+      ];
+
+      for ([hljs_class, rustdoc_class] of highlightJSToRustDoc) {
+        for (titleElement of document.querySelectorAll(`.hljs-${hljs_class}`)) {
+          titleElement.classList.remove(`hljs-${hljs_class}`);
+          titleElement.classList.add(rustdoc_class);
+        }
+      }
+    } else {
+      // For use with the mdbook Tutorial
+      hljs.highlightAll();
+
+      // The Sphinx/my_st generated HTML for code blocks doesn't use <code> tags, so highlight.js'
+      // default selector "pre code" doesn't match. Let's do it by hand:
+      for (block of document.querySelectorAll("div[class*=highlight-slint] div.highlight pre")) {
+        hljs.highlightElement(block)
+      }
+    }
+
+    // Fix up links that sphinx handles but for rustdoc we need to resolve manually:
+    {
+      let target_url = null;
+      if (document.location.hostname == "snapshots.slint.dev") {
+        target_url = `https://snapshots.slint.dev/master/docs/slint/`;
+      } else {
+        let version = document.querySelector("span.version");
+        if (version !== null) {
+          target_url = `https://slint.dev/releases/${version.innerText}/docs/slint/`;
+        }
+      }
+
+      if (target_url !== null) {
+        for (let link of document.querySelectorAll("a[href^='slint-reference:']")) {
+          link.href = link.href.replace("slint-reference:", target_url);
+        }
+      }
+    }
+  });
+</script>
+
+</head><body class="rustdoc mod crate"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle" title="show sidebar"></button><a class="logo-container" href="../../../../slint/index.html"><img src="https://slint.dev/logo/slint-logo-square-light.svg" alt=""></a></nav><nav class="sidebar"><div class="sidebar-crate"><a class="logo-container" href="../../../../slint/index.html"><img src="https://slint.dev/logo/slint-logo-square-light.svg" alt="logo"></a><h2><a href="../../../../slint/index.html">slint</a><span class="version">1.12.0</span></h2></div><div class="sidebar-elems"><ul class="block"><li><a id="all-types" href="all.html">All Items</a></li></ul><section id="rustdoc-toc"><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#feature-flags" title="Feature flags">Feature flags</a><ul><li><a href="#backends-passed-through-to-wgpu-hal" title="Backends, passed through to wgpu-hal">Backends, passed through to wgpu-hal</a></li></ul></li></ul><h3><a href="#modules">Crate Items</a></h3><ul class="block"><li><a href="#modules" title="Modules">Modules</a></li><li><a href="#macros" title="Macros">Macros</a></li><li><a href="#constants" title="Constants">Constants</a></li><li><a href="#functions" title="Functions">Functions</a></li><li><a href="#types" title="Type Aliases">Type Aliases</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In slint::<wbr>wgpu_<wbr>24::<wbr>wgpu</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../../index.html">slint</a>::<wbr><a href="../../index.html">wgpu_24</a>::<wbr><a href="../index.html">wgpu</a></div><h1>Crate <span>core</span><button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"></span></div><span class="item-info"><div class="stab portability">Available on <strong>crate feature <code>unstable-wgpu-24</code></strong> only.</div></span><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>This library safely implements WebGPU on native platforms.
+It is designed for integration into browsers, as well as wrapping
+into other language-specific user-friendly libraries.</p>
+<h3 id="feature-flags"><a class="doc-anchor" href="#feature-flags">§</a>Feature flags</h3>
+<ul>
+<li>
+<p><strong><code>counters</code></strong> —  Internally count resources and events for debugging purposes. If the counters
+feature is disabled, the counting infrastructure is removed from the build and
+the exposed counters always return 0.</p>
+</li>
+<li>
+<p><strong><code>api_log_info</code></strong> —  Log all API entry points at info instead of trace level.
+Also, promotes certain debug log calls to info.</p>
+</li>
+<li>
+<p><strong><code>resource_log_info</code></strong> —  Log resource lifecycle management at info instead of trace level.</p>
+</li>
+<li>
+<p><strong><code>renderdoc</code></strong> —  Support the Renderdoc graphics debugger:
+<a href="https://renderdoc.org/">https://renderdoc.org/</a></p>
+</li>
+<li>
+<p><strong><code>strict_asserts</code></strong> —  Apply run-time checks, even in release builds. These are in addition
+to the validation carried out at public APIs in all builds.</p>
+</li>
+<li>
+<p><strong><code>indirect-validation</code></strong> —  Validates indirect draw/dispatch calls. This will also enable naga’s
+WGSL frontend since we use a WGSL compute shader to do the validation.</p>
+</li>
+<li>
+<p><strong><code>serde</code></strong> —  Enables serialization via <code>serde</code> on common wgpu types.</p>
+</li>
+<li>
+<p><strong><code>trace</code></strong> —  Enable API tracing.</p>
+</li>
+<li>
+<p><strong><code>observe_locks</code></strong> —  Enable lock order observation.</p>
+</li>
+<li>
+<p><strong><code>replay</code></strong> —  Enable API replaying</p>
+</li>
+<li>
+<p><strong><code>raw-window-handle</code></strong> —  Enable creating instances using raw-window-handle</p>
+</li>
+<li>
+<p><strong><code>wgsl</code></strong> —  Enable <code>ShaderModuleSource::Wgsl</code></p>
+</li>
+<li>
+<p><strong><code>glsl</code></strong> —  Enable <code>ShaderModuleSource::Glsl</code></p>
+</li>
+<li>
+<p><strong><code>spirv</code></strong> —  Enable <code>ShaderModuleSource::SpirV</code></p>
+</li>
+<li>
+<p><strong><code>fragile-send-sync-non-atomic-wasm</code></strong> —  Implement <code>Send</code> and <code>Sync</code> on Wasm, but only if atomics are not enabled.</p>
+<p>WebGL/WebGPU objects can not be shared between threads.
+However, it can be useful to artificially mark them as <code>Send</code> and <code>Sync</code>
+anyways to make it easier to write cross-platform code.
+This is technically <em>very</em> unsafe in a multithreaded environment,
+but on a wasm binary compiled without atomics we know we are definitely
+not in a multithreaded environment.</p>
+</li>
+</ul>
+<h4 id="backends-passed-through-to-wgpu-hal"><a class="doc-anchor" href="#backends-passed-through-to-wgpu-hal">§</a>Backends, passed through to wgpu-hal</h4>
+<ul>
+<li>
+<p><strong><code>metal</code></strong> —  Enable the <code>metal</code> backend.</p>
+</li>
+<li>
+<p><strong><code>vulkan</code></strong> —  Enable the <code>vulkan</code> backend.</p>
+</li>
+<li>
+<p><strong><code>gles</code></strong> —  Enable the <code>GLES</code> backend.</p>
+<p>This is used for all of GLES, OpenGL, and WebGL.</p>
+</li>
+<li>
+<p><strong><code>dx12</code></strong> —  Enable the <code>dx12</code> backend.</p>
+</li>
+</ul>
+</div></details><h2 id="modules" class="section-header">Modules<a href="#modules" class="anchor">§</a></h2><dl class="item-table"><dt><a class="mod" href="api/index.html" title="mod slint::wgpu_24::wgpu::core::api">api</a></dt><dt><a class="mod" href="binding_model/index.html" title="mod slint::wgpu_24::wgpu::core::binding_model">binding_<wbr>model</a></dt><dt><a class="mod" href="command/index.html" title="mod slint::wgpu_24::wgpu::core::command">command</a></dt><dt><a class="mod" href="device/index.html" title="mod slint::wgpu_24::wgpu::core::device">device</a></dt><dt><a class="mod" href="error/index.html" title="mod slint::wgpu_24::wgpu::core::error">error</a></dt><dt><a class="mod" href="global/index.html" title="mod slint::wgpu_24::wgpu::core::global">global</a></dt><dt><a class="mod" href="hal_api/index.html" title="mod slint::wgpu_24::wgpu::core::hal_api">hal_api</a></dt><dt><a class="mod" href="hub/index.html" title="mod slint::wgpu_24::wgpu::core::hub">hub</a></dt><dd>Allocating resource ids, and tracking the resources they refer to.</dd><dt><a class="mod" href="id/index.html" title="mod slint::wgpu_24::wgpu::core::id">id</a></dt><dt><a class="mod" href="identity/index.html" title="mod slint::wgpu_24::wgpu::core::identity">identity</a></dt><dt><a class="mod" href="instance/index.html" title="mod slint::wgpu_24::wgpu::core::instance">instance</a></dt><dt><a class="mod" href="naga/index.html" title="mod slint::wgpu_24::wgpu::core::naga">naga</a></dt><dd>Universal shader translator.</dd><dt><a class="mod" href="pipeline/index.html" title="mod slint::wgpu_24::wgpu::core::pipeline">pipeline</a></dt><dt><a class="mod" href="present/index.html" title="mod slint::wgpu_24::wgpu::core::present">present</a></dt><dd>Presentation.</dd><dt><a class="mod" href="ray_tracing/index.html" title="mod slint::wgpu_24::wgpu::core::ray_tracing">ray_<wbr>tracing</a></dt><dt><a class="mod" href="registry/index.html" title="mod slint::wgpu_24::wgpu::core::registry">registry</a></dt><dt><a class="mod" href="resource/index.html" title="mod slint::wgpu_24::wgpu::core::resource">resource</a></dt><dt><a class="mod" href="storage/index.html" title="mod slint::wgpu_24::wgpu::core::storage">storage</a></dt><dt><a class="mod" href="validation/index.html" title="mod slint::wgpu_24::wgpu::core::validation">validation</a></dt></dl><h2 id="macros" class="section-header">Macros<a href="#macros" class="anchor">§</a></h2><dl class="item-table"><dt><a class="macro" href="macro.impl_labeled.html" title="macro slint::wgpu_24::wgpu::core::impl_labeled">impl_<wbr>labeled</a></dt><dt><a class="macro" href="macro.impl_parent_device.html" title="macro slint::wgpu_24::wgpu::core::impl_parent_device">impl_<wbr>parent_<wbr>device</a></dt><dt><a class="macro" href="macro.impl_resource_type.html" title="macro slint::wgpu_24::wgpu::core::impl_resource_type">impl_<wbr>resource_<wbr>type</a></dt><dt><a class="macro" href="macro.impl_storage_item.html" title="macro slint::wgpu_24::wgpu::core::impl_storage_item">impl_<wbr>storage_<wbr>item</a></dt><dt><a class="macro" href="macro.impl_trackable.html" title="macro slint::wgpu_24::wgpu::core::impl_trackable">impl_<wbr>trackable</a></dt></dl><h2 id="constants" class="section-header">Constants<a href="#constants" class="anchor">§</a></h2><dl class="item-table"><dt><a class="constant" href="constant.MAX_BIND_GROUPS.html" title="constant slint::wgpu_24::wgpu::core::MAX_BIND_GROUPS">MAX_<wbr>BIND_<wbr>GROUPS</a></dt><dt><a class="constant" href="constant.MAX_COLOR_ATTACHMENTS.html" title="constant slint::wgpu_24::wgpu::core::MAX_COLOR_ATTACHMENTS">MAX_<wbr>COLOR_<wbr>ATTACHMENTS</a></dt><dt><a class="constant" href="constant.MAX_VERTEX_BUFFERS.html" title="constant slint::wgpu_24::wgpu::core::MAX_VERTEX_BUFFERS">MAX_<wbr>VERTEX_<wbr>BUFFERS</a></dt></dl><h2 id="functions" class="section-header">Functions<a href="#functions" class="anchor">§</a></h2><dl class="item-table"><dt><a class="fn" href="fn.hal_label.html" title="fn slint::wgpu_24::wgpu::core::hal_label">hal_<wbr>label</a></dt><dt><a class="fn" href="fn.map_storage_format_from_naga.html" title="fn slint::wgpu_24::wgpu::core::map_storage_format_from_naga">map_<wbr>storage_<wbr>format_<wbr>from_<wbr>naga</a></dt><dt><a class="fn" href="fn.map_storage_format_to_naga.html" title="fn slint::wgpu_24::wgpu::core::map_storage_format_to_naga">map_<wbr>storage_<wbr>format_<wbr>to_<wbr>naga</a></dt></dl><h2 id="types" class="section-header">Type Aliases<a href="#types" class="anchor">§</a></h2><dl class="item-table"><dt><a class="type" href="type.Label.html" title="type slint::wgpu_24::wgpu::core::Label">Label</a></dt><dt><a class="type" href="type.RawString.html" title="type slint::wgpu_24::wgpu::core::RawString">RawString</a></dt><dt><a class="type" href="type.SubmissionIndex.html" title="type slint::wgpu_24::wgpu::core::SubmissionIndex">Submission<wbr>Index</a></dt><dd>The index of a queue submission.</dd></dl></section></div></main></body></html>
