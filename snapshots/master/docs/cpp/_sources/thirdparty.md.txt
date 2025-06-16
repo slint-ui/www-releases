@@ -3815,7 +3815,7 @@ DEALINGS IN THE SOFTWARE.
 
 #### Used by:
 
-- [slab 0.4.9]( https://github.com/tokio-rs/slab )
+- [slab 0.4.10]( https://github.com/tokio-rs/slab )
 
 #### License Text
 
