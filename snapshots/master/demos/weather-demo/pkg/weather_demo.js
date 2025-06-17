@@ -1043,7 +1043,7 @@ function __wbg_get_imports() {
         const ret = arg0.location;
         return ret;
     };
-    imports.wbg.__wbg_log_680a7653fc3825b7 = function(arg0, arg1) {
+    imports.wbg.__wbg_log_21f06d4d92fd0f3f = function(arg0, arg1) {
         console.log(getStringFromWasm0(arg0, arg1));
     };
     imports.wbg.__wbg_log_c222819a41e063d3 = function(arg0) {
