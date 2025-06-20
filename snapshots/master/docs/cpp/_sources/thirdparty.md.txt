@@ -5,7 +5,7 @@ This page lists the licenses of the dependencies used by Slint.
 
 ## Overview of licenses
 
-- [MIT License](#MIT) (350)
+- [MIT License](#MIT) (351)
 - [Apache License 2.0](#Apache-2.0) (16)
 - [BSD 3-Clause &quot;New&quot; or &quot;Revised&quot; License](#BSD-3-Clause) (6)
 - [BSD 2-Clause &quot;Simplified&quot; License](#BSD-2-Clause) (4)
@@ -2084,7 +2084,7 @@ DEALINGS IN THE SOFTWARE.
 
 #### Used by:
 
-- [errno 0.3.12]( https://github.com/lambda-fairy/rust-errno )
+- [errno 0.3.13]( https://github.com/lambda-fairy/rust-errno )
 
 #### License Text
 
@@ -4979,7 +4979,7 @@ THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRES
 
 #### Used by:
 
-- [xcursor 0.3.8]( https://github.com/esposm03/xcursor-rs )
+- [xcursor 0.3.9]( https://github.com/esposm03/xcursor-rs )
 
 #### License Text
 
@@ -5323,6 +5323,7 @@ SOFTWARE.
 - [windows-strings 0.4.2]( https://github.com/microsoft/windows-rs )
 - [windows-sys 0.52.0]( https://github.com/microsoft/windows-rs )
 - [windows-sys 0.59.0]( https://github.com/microsoft/windows-rs )
+- [windows-sys 0.60.2]( https://github.com/microsoft/windows-rs )
 - [windows-targets 0.48.5]( https://github.com/microsoft/windows-rs )
 - [windows-targets 0.52.6]( https://github.com/microsoft/windows-rs )
 - [windows-targets 0.53.2]( https://github.com/microsoft/windows-rs )
@@ -5427,7 +5428,7 @@ SOFTWARE.
 #### Used by:
 
 - [fdeflate 0.3.7]( https://github.com/image-rs/fdeflate )
-- [image-webp 0.2.2]( https://github.com/image-rs/image-webp )
+- [image-webp 0.2.3]( https://github.com/image-rs/image-webp )
 - [image 0.25.6]( https://github.com/image-rs/image )
 
 #### License Text
