@@ -4704,7 +4704,7 @@ SOFTWARE.
 
 #### Used by:
 
-- [jpeg-decoder 0.3.1]( https://github.com/image-rs/jpeg-decoder )
+- [jpeg-decoder 0.3.2]( https://github.com/image-rs/jpeg-decoder )
 
 #### License Text
 
@@ -6209,7 +6209,7 @@ THE SOFTWARE.
 
 #### Used by:
 
-- [gif 0.13.1]( https://github.com/image-rs/image-gif )
+- [gif 0.13.2]( https://github.com/image-rs/image-gif )
 
 #### License Text
 
