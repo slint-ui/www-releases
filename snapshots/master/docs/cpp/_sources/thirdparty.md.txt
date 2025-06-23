@@ -5442,8 +5442,8 @@ SOFTWARE.
 - [objc2-quartz-core 0.3.1]( https://github.com/madsmtm/objc2 )
 - [objc2 0.5.2]( https://github.com/madsmtm/objc2 )
 - [objc2 0.6.1]( https://github.com/madsmtm/objc2 )
-- [profiling-procmacros 1.0.16]( https://github.com/aclysma/profiling )
-- [profiling 1.0.16]( https://github.com/aclysma/profiling )
+- [profiling-procmacros 1.0.17]( https://github.com/aclysma/profiling )
+- [profiling 1.0.17]( https://github.com/aclysma/profiling )
 - [qttypes 0.2.12]( https://github.com/woboq/qmetaobject-rs )
 - [simd_helpers 0.1.0]( https://github.com/lu-zero/simd_helpers )
 - [siphasher 1.0.1]( https://github.com/jedisct1/rust-siphash )
@@ -5452,7 +5452,7 @@ SOFTWARE.
 https://crates.io/crates/zune-core )
 - [zune-inflate 0.2.54](
 https://crates.io/crates/zune-inflate )
-- [zune-jpeg 0.4.17]( https://github.com/etemesi254/zune-image/tree/dev/crates/zune-jpeg )
+- [zune-jpeg 0.4.18]( https://github.com/etemesi254/zune-image/tree/dev/crates/zune-jpeg )
 
 #### License Text
 
@@ -6209,7 +6209,7 @@ THE SOFTWARE.
 
 #### Used by:
 
-- [gif 0.13.2]( https://github.com/image-rs/image-gif )
+- [gif 0.13.3]( https://github.com/image-rs/image-gif )
 
 #### License Text
 
