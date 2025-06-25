@@ -1,0 +1,88 @@
+
+.. _program_listing_file_cppdocs_generated_include_slint_builtin_structs_internal.h:
+
+Program Listing for File slint_builtin_structs_internal.h
+=========================================================
+
+|exhale_lsh| :ref:`Return to documentation for file <file_cppdocs_generated_include_slint_builtin_structs_internal.h>` (``cppdocs/generated_include/slint_builtin_structs_internal.h``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   #pragma once
+   // This file is auto-generated from xtask/src/../../api/cpp/cbindgen.rs
+   #include "slint_builtin_structs.h"
+   #include "slint_enums_internal.h"
+   namespace slint::cbindgen_private {
+   enum class KeyEventType : uint8_t;
+   struct KeyboardModifiers {
+       bool alt;
+       bool control;
+       bool shift;
+       bool meta;
+       friend bool operator==(const KeyboardModifiers&, const KeyboardModifiers&) = default;
+       friend bool operator!=(const KeyboardModifiers&, const KeyboardModifiers&) = default;
+   };
+   struct PointerEvent {
+       PointerEventButton button;
+       PointerEventKind kind;
+       KeyboardModifiers modifiers;
+       friend bool operator==(const PointerEvent&, const PointerEvent&) = default;
+       friend bool operator!=(const PointerEvent&, const PointerEvent&) = default;
+   };
+   struct PointerScrollEvent {
+       float delta_x;
+       float delta_y;
+       KeyboardModifiers modifiers;
+       friend bool operator==(const PointerScrollEvent&, const PointerScrollEvent&) = default;
+       friend bool operator!=(const PointerScrollEvent&, const PointerScrollEvent&) = default;
+   };
+   struct KeyEvent {
+       SharedString text;
+       KeyboardModifiers modifiers;
+       bool repeat;
+       KeyEventType event_type;
+       std::tuple<int32_t, int32_t, int32_t> replacement_range;
+       SharedString preedit_text;
+       std::tuple<int32_t, int32_t, int32_t> preedit_selection;
+       std::pair<int32_t, int32_t> cursor_position;
+       std::pair<int32_t, int32_t> anchor_position;
+       friend bool operator==(const KeyEvent&, const KeyEvent&) = default;
+       friend bool operator!=(const KeyEvent&, const KeyEvent&) = default;
+   };
+   using slint::StandardListViewItem;
+   struct TableColumn {
+       SharedString title;
+       float min_width;
+       float horizontal_stretch;
+       SortOrder sort_order;
+       float width;
+       friend bool operator==(const TableColumn&, const TableColumn&) = default;
+       friend bool operator!=(const TableColumn&, const TableColumn&) = default;
+   };
+   struct StateInfo {
+       int32_t current_state;
+       int32_t previous_state;
+       uint64_t change_time;
+       friend bool operator==(const StateInfo&, const StateInfo&) = default;
+       friend bool operator!=(const StateInfo&, const StateInfo&) = default;
+   };
+   struct FontMetrics {
+       float ascent;
+       float descent;
+       float x_height;
+       float cap_height;
+       friend bool operator==(const FontMetrics&, const FontMetrics&) = default;
+       friend bool operator!=(const FontMetrics&, const FontMetrics&) = default;
+   };
+   struct MenuEntry {
+       SharedString title;
+       SharedString id;
+       bool enabled;
+       bool has_sub_menu;
+       bool is_separator;
+       friend bool operator==(const MenuEntry&, const MenuEntry&) = default;
+       friend bool operator!=(const MenuEntry&, const MenuEntry&) = default;
+   };
+   }

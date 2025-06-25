@@ -1,0 +1,297 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `api/rs/slint/docs.rs`."><title>docs.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-84e720fa.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint" data-themes="" data-resource-suffix="" data-rustdoc-version="1.90.0-nightly (28f1c8079 2025-06-24)" data-channel="nightly" data-search-js="search-92309212.js" data-settings-js="settings-5514c975.js" ><script src="../../static.files/storage-4e99c027.js"></script><script defer src="../../static.files/src-script-813739b1.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-340f468f.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-32bb7600.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
+    This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
+    It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
+    in sphinx and via head.hbs in mdbook.
+-->
+<link rel="stylesheet" href="https://slint.dev/resources/highlightjs/11.0.1/default.min.css">
+<script src="https://slint.dev/resources/highlightjs/11.0.1/highlight.min.js"></script>
+<script>
+  function highlight_slint(hljs) {
+    const KEYWORDS = {
+      keyword:
+        "animate callback changed component enum export for function global if import in in-out inherits out parent private property public pure root self states struct",
+      literal: "false true",
+      built_in:
+        "ArcTo Clip Close Colors CubicTo Flickable FocusScope GridLayout HorizontalLayout Image LineTo Math MoveTo Path PopupWindow QuadraticTo Rectangle Row Text TextInput TouchArea VerticalLayout Window animation-tick debug",
+      type: "bool duration easing float int length logical-length relative-font-size string",
+    };
+
+    return {
+      name: 'slint',
+      case_insensitive: false,
+      keywords: KEYWORDS,
+      contains: [
+        hljs.QUOTE_STRING_MODE,
+        hljs.C_LINE_COMMENT_MODE,
+        hljs.C_BLOCK_COMMENT_MODE,
+        hljs.COMMENT('/\\*', '\\*/', {
+          contains: ['self']
+        }),
+        {
+          className: 'number',
+          begin: '\\b\\d+(\\.\\d+)?(\\w+)?',
+          relevance: 0
+        },
+        {
+          className: 'title',
+          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]* *:=',
+        },
+        {
+          className: 'symbol',
+          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]*(:| *=>)',
+        },
+        {
+          className: 'built_in',
+          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]*!',
+        },
+      ],
+      illegal: /@/
+    };
+  };
+
+  // Tags used in fenced code blocks
+  for (let tag of ["slint", "slint,no-preview", "slint,no-auto-preview", "slint,ignore"]) {
+    hljs.registerLanguage(tag, highlight_slint);
+  }
+
+
+  window.addEventListener("DOMContentLoaded", () => {
+    const rustDoc = document.querySelector('meta[name="generator"]')?.content == "rustdoc";
+    if (rustDoc) {
+      // Only highlight .slint blocks, leave the others to rustdoc
+      for (slintBlock of document.querySelectorAll("[class*=language-slint]")) {
+        hljs.highlightElement(slintBlock)
+      }
+
+      // Some of the rustdoc selectors require the pre element to have the rust class
+      for (codeBlock of document.querySelectorAll(".language-slint.hljs")) {
+        codeBlock.classList.add("rust");
+        codeBlock.classList.remove("hljs");
+      }
+
+      // Change the hljs generated classes to the rustdoc
+      // ones, so that the highlighting adjusts to the theme correctly.
+      const highlightJSToRustDoc = [
+        ["comment", "comment"],
+        ["number", "number"],
+        ["symbol", "struct"], // width:
+        ["keyword", "kw"],
+        ["built_in", "primitive"],
+        ["string", "string"],
+        ["title", "fnname"], // Foo :=
+        ["type", "type"]
+      ];
+
+      for ([hljs_class, rustdoc_class] of highlightJSToRustDoc) {
+        for (titleElement of document.querySelectorAll(`.hljs-${hljs_class}`)) {
+          titleElement.classList.remove(`hljs-${hljs_class}`);
+          titleElement.classList.add(rustdoc_class);
+        }
+      }
+    } else {
+      // For use with the mdbook Tutorial
+      hljs.highlightAll();
+
+      // The Sphinx/my_st generated HTML for code blocks doesn't use <code> tags, so highlight.js'
+      // default selector "pre code" doesn't match. Let's do it by hand:
+      for (block of document.querySelectorAll("div[class*=highlight-slint] div.highlight pre")) {
+        hljs.highlightElement(block)
+      }
+    }
+
+    // Fix up links that sphinx handles but for rustdoc we need to resolve manually:
+    {
+      let target_url = null;
+      if (document.location.hostname == "snapshots.slint.dev") {
+        target_url = `https://snapshots.slint.dev/master/docs/slint/`;
+      } else {
+        let version = document.querySelector("span.version");
+        if (version !== null) {
+          target_url = `https://slint.dev/releases/${version.innerText}/docs/slint/`;
+        }
+      }
+
+      if (target_url !== null) {
+        for (let link of document.querySelectorAll("a[href^='slint-reference:']")) {
+          link.href = link.href.replace("slint-reference:", target_url);
+        }
+      }
+    }
+  });
+</script>
+
+</head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><h1><div class="sub-heading">slint/</div>docs.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap digits-3"><pre class="rust"><code><a href=#1 id=1 data-nosnippet>1</a><span class="comment">// Copyright © SixtyFPS GmbH &lt;info@slint.dev&gt;
+<a href=#2 id=2 data-nosnippet>2</a>// SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0
+<a href=#3 id=3 data-nosnippet>3</a>
+<a href=#4 id=4 data-nosnippet>4</a></span><span class="attr">#![cfg(doc)]
+<a href=#5 id=5 data-nosnippet>5</a></span><span class="doccomment">/*!
+<a href=#6 id=6 data-nosnippet>6</a>    This is a pseudo module which only exist for documentation purposes as a way to show
+<a href=#7 id=7 data-nosnippet>7</a>    the Slint documentation as part of rustdoc.
+<a href=#8 id=8 data-nosnippet>8</a>
+<a href=#9 id=9 data-nosnippet>9</a>    - The [`generated_code`] module contains an [commented example](generated_code::SampleComponent)
+<a href=#10 id=10 data-nosnippet>10</a>      of what is generated from the `.slint` file
+<a href=#11 id=11 data-nosnippet>11</a>*/
+<a href=#12 id=12 data-nosnippet>12</a>
+<a href=#13 id=13 data-nosnippet>13</a></span><span class="comment">// cSpell: ignore rustdoc
+<a href=#14 id=14 data-nosnippet>14</a>
+<a href=#15 id=15 data-nosnippet>15</a></span><span class="doccomment">/// This module exists only to explain the API of the code generated from `.slint` design markup. Its described structure
+<a href=#16 id=16 data-nosnippet>16</a>/// is not really contained in the compiled crate.
+<a href=#17 id=17 data-nosnippet>17</a></span><span class="kw">pub mod </span><a href="../../slint/docs/generated_code/index.html">generated_code</a> {
+<a href=#18 id=18 data-nosnippet>18</a>
+<a href=#19 id=19 data-nosnippet>19</a>    <span class="kw">use </span><a href="../../slint/trait.ComponentHandle.html"><span class="kw">crate</span>::ComponentHandle</a>;
+<a href=#20 id=20 data-nosnippet>20</a>    <span class="kw">use </span><a href="../../slint/trait.Global.html"><span class="kw">crate</span>::Global</a>;
+<a href=#21 id=21 data-nosnippet>21</a>    <span class="kw">use </span><a href="../../slint/struct.Weak.html"><span class="kw">crate</span>::Weak</a>;
+<a href=#22 id=22 data-nosnippet>22</a>    <span class="kw">use </span><a href="../../slint/struct.Window.html"><span class="kw">crate</span>::Window</a>;
+<a href=#23 id=23 data-nosnippet>23</a>
+<a href=#24 id=24 data-nosnippet>24</a>    <span class="doccomment">/// This an example of the API that is generated for a component in `.slint` design markup. This may help you understand
+<a href=#25 id=25 data-nosnippet>25</a>    /// what functions you can call and how you can pass data in and out.
+<a href=#26 id=26 data-nosnippet>26</a>    ///
+<a href=#27 id=27 data-nosnippet>27</a>    /// This is the source code:
+<a href=#28 id=28 data-nosnippet>28</a>    ///
+<a href=#29 id=29 data-nosnippet>29</a>    /// ```slint,no-preview
+<a href=#30 id=30 data-nosnippet>30</a>    /// export component SampleComponent inherits Window {
+<a href=#31 id=31 data-nosnippet>31</a>    ///     in-out property&lt;int&gt; counter;
+<a href=#32 id=32 data-nosnippet>32</a>    ///     // note that dashes will be replaced by underscores in the generated code
+<a href=#33 id=33 data-nosnippet>33</a>    ///     in-out property&lt;string&gt; user-name;
+<a href=#34 id=34 data-nosnippet>34</a>    ///     callback hello;
+<a href=#35 id=35 data-nosnippet>35</a>    ///     public function do-something(x: int) -&gt; bool { return x &gt; 0; }
+<a href=#36 id=36 data-nosnippet>36</a>    ///     // ... maybe more elements here
+<a href=#37 id=37 data-nosnippet>37</a>    /// }
+<a href=#38 id=38 data-nosnippet>38</a>    /// ```
+<a href=#39 id=39 data-nosnippet>39</a>    </span><span class="attr">#[derive(Clone)]
+<a href=#40 id=40 data-nosnippet>40</a>    </span><span class="kw">pub struct </span><a href="../../slint/docs/generated_code/struct.SampleComponent.html">SampleComponent</a> {
+<a href=#41 id=41 data-nosnippet>41</a>        _marker: <a href="https://doc.rust-lang.org/nightly/core/marker/struct.PhantomData.html">core::marker::PhantomData</a>&lt;<span class="kw-2">*mut </span>()&gt;,
+<a href=#42 id=42 data-nosnippet>42</a>    }
+<a href=#43 id=43 data-nosnippet>43</a>    <span class="kw">impl </span><a href="#40-42">SampleComponent</a> {
+<a href=#44 id=44 data-nosnippet>44</a>        <span class="doccomment">/// Creates a new instance that is reference counted and pinned in memory.
+<a href=#45 id=45 data-nosnippet>45</a>        </span><span class="kw">pub fn </span>new() -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<span class="self">Self</span>, <a href="../../slint/enum.PlatformError.html"><span class="kw">crate</span>::PlatformError</a>&gt; {
+<a href=#46 id=46 data-nosnippet>46</a>            <a class="macro" href="https://doc.rust-lang.org/nightly/core/macro.unimplemented.html">unimplemented!</a>()
+<a href=#47 id=47 data-nosnippet>47</a>        }
+<a href=#48 id=48 data-nosnippet>48</a>
+<a href=#49 id=49 data-nosnippet>49</a>        <span class="doccomment">/// A getter is generated for each property declared at the root of the component.
+<a href=#50 id=50 data-nosnippet>50</a>        /// In this case, this is the getter that returns the value of the `counter`
+<a href=#51 id=51 data-nosnippet>51</a>        /// property declared in the `.slint` design markup.
+<a href=#52 id=52 data-nosnippet>52</a>        </span><span class="kw">pub fn </span>get_counter(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a> {
+<a href=#53 id=53 data-nosnippet>53</a>            <a class="macro" href="https://doc.rust-lang.org/nightly/core/macro.unimplemented.html">unimplemented!</a>()
+<a href=#54 id=54 data-nosnippet>54</a>        }
+<a href=#55 id=55 data-nosnippet>55</a>        <span class="doccomment">/// A setter is generated for each property declared at the root of the component,
+<a href=#56 id=56 data-nosnippet>56</a>        /// In this case, this is the setter that sets the value of the `counter` property
+<a href=#57 id=57 data-nosnippet>57</a>        /// declared in the `.slint` design markup.
+<a href=#58 id=58 data-nosnippet>58</a>        </span><span class="kw">pub fn </span>set_counter(<span class="kw-2">&amp;</span><span class="self">self</span>, value: <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) {}
+<a href=#59 id=59 data-nosnippet>59</a>        <span class="doccomment">/// Returns the value of the `user_name` property declared in the `.slint` design markup.
+<a href=#60 id=60 data-nosnippet>60</a>        </span><span class="kw">pub fn </span>get_user_name(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="../../slint/struct.SharedString.html"><span class="kw">crate</span>::SharedString</a> {
+<a href=#61 id=61 data-nosnippet>61</a>            <a class="macro" href="https://doc.rust-lang.org/nightly/core/macro.unimplemented.html">unimplemented!</a>()
+<a href=#62 id=62 data-nosnippet>62</a>        }
+<a href=#63 id=63 data-nosnippet>63</a>        <span class="doccomment">/// Assigns a new value to the `user_name` property.
+<a href=#64 id=64 data-nosnippet>64</a>        </span><span class="kw">pub fn </span>set_user_name(<span class="kw-2">&amp;</span><span class="self">self</span>, value: <a href="../../slint/struct.SharedString.html"><span class="kw">crate</span>::SharedString</a>) {}
+<a href=#65 id=65 data-nosnippet>65</a>
+<a href=#66 id=66 data-nosnippet>66</a>        <span class="doccomment">/// For each callback declared at the root of the component, a function to synchronously call that
+<a href=#67 id=67 data-nosnippet>67</a>        /// callback is generated. This is the function that calls the `hello` callback declared
+<a href=#68 id=68 data-nosnippet>68</a>        /// in the `.slint` design markup.
+<a href=#69 id=69 data-nosnippet>69</a>        </span><span class="kw">pub fn </span>invoke_hello(<span class="kw-2">&amp;</span><span class="self">self</span>) {}
+<a href=#70 id=70 data-nosnippet>70</a>        <span class="doccomment">/// For each callback declared at the root of the component, a function connect to that callback
+<a href=#71 id=71 data-nosnippet>71</a>        /// is generated. This is the function that registers the function f as callback when the
+<a href=#72 id=72 data-nosnippet>72</a>        /// callback `hello` is emitted. In order to access
+<a href=#73 id=73 data-nosnippet>73</a>        /// the component in the callback, you'd typically capture a weak reference obtained using
+<a href=#74 id=74 data-nosnippet>74</a>        /// [`ComponentHandle::as_weak`]
+<a href=#75 id=75 data-nosnippet>75</a>        /// and then upgrade it to a strong reference when the callback is run:
+<a href=#76 id=76 data-nosnippet>76</a>        /// ```ignore
+<a href=#77 id=77 data-nosnippet>77</a>        ///     let sample = SampleComponent::new().unwrap();
+<a href=#78 id=78 data-nosnippet>78</a>        ///     let sample_weak = sample.as_weak();
+<a href=#79 id=79 data-nosnippet>79</a>        ///     sample.as_ref().on_hello(move || {
+<a href=#80 id=80 data-nosnippet>80</a>        ///         let sample = sample_weak.unwrap();
+<a href=#81 id=81 data-nosnippet>81</a>        ///         sample.as_ref().set_counter(42);
+<a href=#82 id=82 data-nosnippet>82</a>        ///     });
+<a href=#83 id=83 data-nosnippet>83</a>        /// ```
+<a href=#84 id=84 data-nosnippet>84</a>        </span><span class="kw">pub fn </span>on_hello(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html">Fn</a>() + <span class="lifetime">'static</span>) {}
+<a href=#85 id=85 data-nosnippet>85</a>
+<a href=#86 id=86 data-nosnippet>86</a>        <span class="doccomment">/// For each public function declared at the root of the component, a function to synchronously call
+<a href=#87 id=87 data-nosnippet>87</a>        /// that function is generated. This is the function that calls the `do-something` function
+<a href=#88 id=88 data-nosnippet>88</a>        /// declared in the `.slint` design markup.
+<a href=#89 id=89 data-nosnippet>89</a>        </span><span class="kw">pub fn </span>invoke_do_something(<span class="kw-2">&amp;</span><span class="self">self</span>, d: <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a> {
+<a href=#90 id=90 data-nosnippet>90</a>            <a class="macro" href="https://doc.rust-lang.org/nightly/core/macro.unimplemented.html">unimplemented!</a>()
+<a href=#91 id=91 data-nosnippet>91</a>        }
+<a href=#92 id=92 data-nosnippet>92</a>    }
+<a href=#93 id=93 data-nosnippet>93</a>
+<a href=#94 id=94 data-nosnippet>94</a>    <span class="kw">impl </span><a href="../../slint/trait.ComponentHandle.html">ComponentHandle</a> <span class="kw">for </span><a href="#40-42">SampleComponent</a> {
+<a href=#95 id=95 data-nosnippet>95</a>        <span class="attr">#[doc(hidden)]
+<a href=#96 id=96 data-nosnippet>96</a>        </span><span class="kw">type </span>Inner = <a href="#40-42">SampleComponent</a>;
+<a href=#97 id=97 data-nosnippet>97</a>
+<a href=#98 id=98 data-nosnippet>98</a>        <span class="doccomment">/// Returns a new weak pointer.
+<a href=#99 id=99 data-nosnippet>99</a>        </span><span class="kw">fn </span>as_weak(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="../../slint/struct.Weak.html">Weak</a>&lt;<span class="self">Self</span>&gt; {
+<a href=#100 id=100 data-nosnippet>100</a>            <a class="macro" href="https://doc.rust-lang.org/nightly/core/macro.unimplemented.html">unimplemented!</a>()
+<a href=#101 id=101 data-nosnippet>101</a>        }
+<a href=#102 id=102 data-nosnippet>102</a>
+<a href=#103 id=103 data-nosnippet>103</a>        <span class="doccomment">/// Returns a clone of this handle that's a strong reference.
+<a href=#104 id=104 data-nosnippet>104</a>        </span><span class="kw">fn </span>clone_strong(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="self">Self </span>{
+<a href=#105 id=105 data-nosnippet>105</a>            <a class="macro" href="https://doc.rust-lang.org/nightly/core/macro.unimplemented.html">unimplemented!</a>();
+<a href=#106 id=106 data-nosnippet>106</a>        }
+<a href=#107 id=107 data-nosnippet>107</a>
+<a href=#108 id=108 data-nosnippet>108</a>        <span class="attr">#[doc(hidden)]
+<a href=#109 id=109 data-nosnippet>109</a>        </span><span class="kw">fn </span>from_inner(
+<a href=#110 id=110 data-nosnippet>110</a>            <span class="kw">_</span>: vtable::VRc&lt;<span class="kw">crate</span>::private_unstable_api::re_exports::ItemTreeVTable, <span class="self">Self</span>::Inner&gt;,
+<a href=#111 id=111 data-nosnippet>111</a>        ) -&gt; <span class="self">Self </span>{
+<a href=#112 id=112 data-nosnippet>112</a>            <a class="macro" href="https://doc.rust-lang.org/nightly/core/macro.unimplemented.html">unimplemented!</a>();
+<a href=#113 id=113 data-nosnippet>113</a>        }
+<a href=#114 id=114 data-nosnippet>114</a>
+<a href=#115 id=115 data-nosnippet>115</a>        <span class="doccomment">/// Convenience function for [`crate::Window::show()`]. This shows the window on the screen
+<a href=#116 id=116 data-nosnippet>116</a>        /// and maintains an extra strong reference while the window is visible. To react
+<a href=#117 id=117 data-nosnippet>117</a>        /// to events from the windowing system, such as draw requests or mouse/touch input, it is
+<a href=#118 id=118 data-nosnippet>118</a>        /// still necessary to spin the event loop, using [`crate::run_event_loop`].
+<a href=#119 id=119 data-nosnippet>119</a>        </span><span class="kw">fn </span>show(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), <a href="../../slint/enum.PlatformError.html"><span class="kw">crate</span>::PlatformError</a>&gt; {
+<a href=#120 id=120 data-nosnippet>120</a>            <a class="macro" href="https://doc.rust-lang.org/nightly/core/macro.unimplemented.html">unimplemented!</a>();
+<a href=#121 id=121 data-nosnippet>121</a>        }
+<a href=#122 id=122 data-nosnippet>122</a>
+<a href=#123 id=123 data-nosnippet>123</a>        <span class="doccomment">/// Convenience function for [`crate::Window::hide()`]. Hides the window, so that it is not
+<a href=#124 id=124 data-nosnippet>124</a>        /// visible anymore. The additional strong reference on the associated component, that was
+<a href=#125 id=125 data-nosnippet>125</a>        /// created when show() was called, is dropped.
+<a href=#126 id=126 data-nosnippet>126</a>        </span><span class="kw">fn </span>hide(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), <a href="../../slint/enum.PlatformError.html"><span class="kw">crate</span>::PlatformError</a>&gt; {
+<a href=#127 id=127 data-nosnippet>127</a>            <a class="macro" href="https://doc.rust-lang.org/nightly/core/macro.unimplemented.html">unimplemented!</a>();
+<a href=#128 id=128 data-nosnippet>128</a>        }
+<a href=#129 id=129 data-nosnippet>129</a>
+<a href=#130 id=130 data-nosnippet>130</a>        <span class="doccomment">/// Returns the Window associated with this component. The window API can be used
+<a href=#131 id=131 data-nosnippet>131</a>        /// to control different aspects of the integration into the windowing system,
+<a href=#132 id=132 data-nosnippet>132</a>        /// such as the position on the screen.
+<a href=#133 id=133 data-nosnippet>133</a>        </span><span class="kw">fn </span>window(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><a href="../../slint/struct.Window.html">Window</a> {
+<a href=#134 id=134 data-nosnippet>134</a>            <a class="macro" href="https://doc.rust-lang.org/nightly/core/macro.unimplemented.html">unimplemented!</a>()
+<a href=#135 id=135 data-nosnippet>135</a>        }
+<a href=#136 id=136 data-nosnippet>136</a>
+<a href=#137 id=137 data-nosnippet>137</a>        <span class="doccomment">/// This is a convenience function that first calls [`Self::show`], followed by [`crate::run_event_loop()`]
+<a href=#138 id=138 data-nosnippet>138</a>        /// and [`Self::hide`].
+<a href=#139 id=139 data-nosnippet>139</a>        </span><span class="kw">fn </span>run(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), <a href="../../slint/enum.PlatformError.html"><span class="kw">crate</span>::PlatformError</a>&gt; {
+<a href=#140 id=140 data-nosnippet>140</a>            <a class="macro" href="https://doc.rust-lang.org/nightly/core/macro.unimplemented.html">unimplemented!</a>();
+<a href=#141 id=141 data-nosnippet>141</a>        }
+<a href=#142 id=142 data-nosnippet>142</a>
+<a href=#143 id=143 data-nosnippet>143</a>        <span class="doccomment">/// This function provides access to instances of global singletons exported in `.slint`.
+<a href=#144 id=144 data-nosnippet>144</a>        </span><span class="kw">fn </span>global&lt;<span class="lifetime">'a</span>, T: <a href="../../slint/trait.Global.html">Global</a>&lt;<span class="lifetime">'a</span>, <span class="self">Self</span>&gt;&gt;(<span class="kw-2">&amp;</span><span class="lifetime">'a </span><span class="self">self</span>) -&gt; T {
+<a href=#145 id=145 data-nosnippet>145</a>            <a class="macro" href="https://doc.rust-lang.org/nightly/core/macro.unimplemented.html">unimplemented!</a>()
+<a href=#146 id=146 data-nosnippet>146</a>        }
+<a href=#147 id=147 data-nosnippet>147</a>    }
+<a href=#148 id=148 data-nosnippet>148</a>}
+<a href=#149 id=149 data-nosnippet>149</a>
+<a href=#150 id=150 data-nosnippet>150</a><span class="kw">pub mod </span><a href="../../slint/docs/mcu/index.html">mcu</a> {
+<a href=#151 id=151 data-nosnippet>151</a>    <span class="attr">#![doc = <span class="macro">include_str!</span>(<span class="string">"mcu.md"</span>)]
+<a href=#152 id=152 data-nosnippet>152</a>    #[cfg(feature = <span class="string">"renderer-software"</span>)]
+<a href=#153 id=153 data-nosnippet>153</a>    </span><span class="kw">use </span><a href="../../slint/platform/software_renderer/index.html"><span class="kw">crate</span>::platform::software_renderer</a>::<span class="kw-2">*</span>;
+<a href=#154 id=154 data-nosnippet>154</a>    <span class="kw">use </span><a href="lib.rs.html#414-425"><span class="kw">crate</span>::platform</a>::<span class="kw-2">*</span>;
+<a href=#155 id=155 data-nosnippet>155</a>    <span class="kw">mod </span>slint {
+<a href=#156 id=156 data-nosnippet>156</a>        <span class="kw">pub use crate</span>::<span class="kw-2">*</span>;
+<a href=#157 id=157 data-nosnippet>157</a>    }
+<a href=#158 id=158 data-nosnippet>158</a>}
+<a href=#159 id=159 data-nosnippet>159</a>
+<a href=#160 id=160 data-nosnippet>160</a><span class="attr">#[i_slint_core_macros::slint_doc]
+<a href=#161 id=161 data-nosnippet>161</a></span><span class="kw">pub mod </span><a href="../../slint/docs/cargo_features/index.html">cargo_features</a> {
+<a href=#162 id=162 data-nosnippet>162</a>    <span class="doccomment">//! # Feature flags and backend selection.
+<a href=#163 id=163 data-nosnippet>163</a>    //! Use the following feature flags in your Cargo.toml to enable additional features.
+<a href=#164 id=164 data-nosnippet>164</a>    //!
+<a href=#165 id=165 data-nosnippet>165</a>    </span><span class="attr">#![cfg_attr(feature = <span class="string">"document-features"</span>, doc = <span class="macro">document_features::document_features!</span>())]
+<a href=#166 id=166 data-nosnippet>166</a>    </span><span class="doccomment">//!
+<a href=#167 id=167 data-nosnippet>167</a>    //! More information about the backend and renderers is available in the
+<a href=#168 id=168 data-nosnippet>168</a>    //![Slint Documentation](slint:backends_and_renderers)")]
+<a href=#169 id=169 data-nosnippet>169</a>    </span><span class="kw">use crate</span>::<span class="kw-2">*</span>;
+<a href=#170 id=170 data-nosnippet>170</a>}
+<a href=#171 id=171 data-nosnippet>171</a>
+<a href=#172 id=172 data-nosnippet>172</a><span class="kw">pub mod </span><a href="../../slint/docs/type_mappings/index.html">type_mappings</a> {
+<a href=#173 id=173 data-nosnippet>173</a>    <span class="attr">#![doc = <span class="macro">include_str!</span>(<span class="string">"type-mappings.md"</span>)]
+<a href=#174 id=174 data-nosnippet>174</a>    </span><span class="kw">use crate</span>::<span class="kw-2">*</span>;
+<a href=#175 id=175 data-nosnippet>175</a>}</code></pre></div></section></main></body></html>

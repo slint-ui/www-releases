@@ -1,0 +1,19 @@
+{
+  "name": "usecases",
+  "type": "module",
+  "collaborators": [
+    "Slint Developers <info@slint.dev>"
+  ],
+  "version": "1.12.1",
+  "license": "MIT",
+  "files": [
+    "usecases_lib_bg.wasm",
+    "usecases_lib.js",
+    "usecases_lib.d.ts"
+  ],
+  "main": "usecases_lib.js",
+  "types": "usecases_lib.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}
