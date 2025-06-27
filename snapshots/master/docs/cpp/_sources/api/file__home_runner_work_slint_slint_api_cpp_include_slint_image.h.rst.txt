@@ -45,6 +45,8 @@ Included By
 -----------
 
 
+- :ref:`file_cppdocs_generated_include_slint_builtin_structs_internal.h`
+
 - :ref:`file_cppdocs_generated_include_slint_internal.h`
 
 

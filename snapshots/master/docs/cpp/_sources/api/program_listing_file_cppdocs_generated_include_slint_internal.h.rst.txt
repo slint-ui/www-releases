@@ -34,23 +34,21 @@ Program Listing for File slint_internal.h
    #include "slint_point.h"
    #include "slint_timer.h"
    #include "slint_builtin_structs_internal.h"
+   #include "slint_events_internal.h"
    
    namespace slint {
        namespace private_api { class WindowAdapterRc; }
        namespace cbindgen_private {
            using slint::private_api::WindowAdapterRc;
            using namespace vtable;
-           struct KeyEvent; struct PointerEvent;
            using private_api::Property;
            using private_api::PathData;
            using private_api::Point;
-           struct Rect;
-           using LogicalRect = Rect;
-           using LogicalPoint = Point2D<float>;
-           using LogicalLength = float;
            struct ItemTreeVTable;
            struct ItemVTable;
            using types::IntRect;
+           using types::Size;
+           using types::MouseEvent;
        }
        template<typename ModelData> class Model;
    }
@@ -95,6 +93,7 @@ Program Listing for File slint_internal.h
        EventAccepted,
        EventIgnored,
        GrabMouse,
+       StartDrag,
    };
    
    enum class KeyEventResult : uint8_t {
@@ -174,46 +173,6 @@ Program Listing for File slint_internal.h
        };
    };
    
-   struct MouseEvent {
-       enum class Tag {
-           Pressed,
-           Released,
-           Moved,
-           Wheel,
-           Exit,
-       };
-   
-       struct Pressed_Body {
-           LogicalPoint position;
-           PointerEventButton button;
-           uint8_t click_count;
-       };
-   
-       struct Released_Body {
-           LogicalPoint position;
-           PointerEventButton button;
-           uint8_t click_count;
-       };
-   
-       struct Moved_Body {
-           LogicalPoint position;
-       };
-   
-       struct Wheel_Body {
-           LogicalPoint position;
-           float delta_x;
-           float delta_y;
-       };
-   
-       Tag tag;
-       union {
-           Pressed_Body pressed;
-           Released_Body released;
-           Moved_Body moved;
-           Wheel_Body wheel;
-       };
-   };
-   
    union FocusEvent {
        enum class Tag : uint8_t {
            FocusIn,
@@ -250,11 +209,11 @@ Program Listing for File slint_internal.h
                                  const WindowAdapterRc *window_adapter,
                                  const ItemRc *self_rc);
        InputEventFilterResult (*input_event_filter_before_children)(Pin<VRef<ItemVTable>>,
-                                                                    MouseEvent,
+                                                                    const MouseEvent*,
                                                                     const WindowAdapterRc *window_adapter,
                                                                     const ItemRc *self_rc);
        InputEventResult (*input_event)(Pin<VRef<ItemVTable>>,
-                                       MouseEvent,
+                                       const MouseEvent*,
                                        const WindowAdapterRc *window_adapter,
                                        const ItemRc *self_rc);
        FocusEventResult (*focus_event)(Pin<VRef<ItemVTable>>,
@@ -571,8 +530,6 @@ Program Listing for File slint_internal.h
    
    using IntSize = Size2D<uint32_t>;
    
-   using Size = Size2D<float>;
-   
    union WindowEvent {
        enum class Tag : uint32_t {
            PointerPressed,
@@ -737,6 +694,23 @@ Program Listing for File slint_internal.h
        Property<LogicalLength> border_bottom_left_radius;
        Property<LogicalLength> border_bottom_right_radius;
        Property<Brush> border_color;
+       CachedRenderingData cached_rendering_data;
+   };
+   
+   struct DragArea {
+       Property<bool> enabled;
+       Property<SharedString> mime_type;
+       Property<SharedString> data;
+       bool pressed;
+       LogicalPoint pressed_position;
+       CachedRenderingData cached_rendering_data;
+   };
+   
+   struct DropArea {
+       Property<bool> enabled;
+       Property<bool> contains_drag;
+       private_api::CallbackHelper<DropEvent, bool> can_drop;
+       private_api::CallbackHelper<DropEvent> dropped;
        CachedRenderingData cached_rendering_data;
    };
    
@@ -914,6 +888,7 @@ Program Listing for File slint_internal.h
        Property<SharedString> title;
        private_api::CallbackHelper<void> activated;
        Property<bool> enabled;
+       Property<Image> icon;
    };
    
    extern "C" {
@@ -1297,7 +1272,8 @@ Program Listing for File slint_internal.h
                                           const SharedString *text,
                                           bool repeat);
    
-   void slint_windowrc_dispatch_pointer_event(const WindowAdapterRcOpaque *handle, MouseEvent event);
+   void slint_windowrc_dispatch_pointer_event(const WindowAdapterRcOpaque *handle,
+                                              const MouseEvent *event);
    
    void slint_windowrc_dispatch_event(const WindowAdapterRcOpaque *handle, const WindowEvent *event);
    
@@ -1334,6 +1310,8 @@ Program Listing for File slint_internal.h
    SLINT_DECL_ITEM(Rectangle);
    SLINT_DECL_ITEM(BasicBorderRectangle);
    SLINT_DECL_ITEM(BorderRectangle);
+   SLINT_DECL_ITEM(DragArea);
+   SLINT_DECL_ITEM(DropArea);
    SLINT_DECL_ITEM(ImageItem);
    SLINT_DECL_ITEM(ClippedImage);
    SLINT_DECL_ITEM(TouchArea);

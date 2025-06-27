@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
-        <title>Program Listing for File slint_builtin_structs_internal.h - Slint 1.12.1 C++ API documentation</title>
+        <title>Program Listing for File slint_builtin_structs_internal.h - Slint 1.13.0 C++ API documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../_static/theme_tweak.css?v=ca455ff5" />
@@ -168,7 +168,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../index.html"><div class="brand">Slint 1.12.1 C++ API  documentation</div></a>
+      <a href="../index.html"><div class="brand">Slint 1.13.0 C++ API  documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -195,7 +195,7 @@
     <img class="sidebar-logo" src="https://slint.dev/logo/slint-logo-small-light.svg" alt="Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">Slint 1.12.1 C++ API  documentation</span>
+  <span class="sidebar-brand-text">Slint 1.13.0 C++ API  documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -427,6 +427,8 @@
 <span class="c1">// This file is auto-generated from xtask/src/../../api/cpp/cbindgen.rs</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;slint_builtin_structs.h&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;slint_enums_internal.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;slint_point.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;slint_image.h&quot;</span>
 <span class="k">namespace</span><span class="w"> </span><span class="nn">slint</span><span class="o">::</span><span class="nn">cbindgen_private</span><span class="w"> </span><span class="p">{</span>
 <span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">KeyEventType</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">uint8_t</span><span class="p">;</span>
 <span class="k">struct</span><span class="w"> </span><span class="nc">KeyboardModifiers</span><span class="w"> </span><span class="p">{</span>
@@ -464,6 +466,13 @@
 <span class="w">    </span><span class="k">friend</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="k">operator</span><span class="o">==</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">KeyEvent</span><span class="o">&amp;</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">KeyEvent</span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span>
 <span class="w">    </span><span class="k">friend</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="k">operator</span><span class="o">!=</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">KeyEvent</span><span class="o">&amp;</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">KeyEvent</span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span>
 <span class="p">};</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">DropEvent</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">SharedString</span><span class="w"> </span><span class="n">mime_type</span><span class="p">;</span>
+<span class="w">    </span><span class="n">SharedString</span><span class="w"> </span><span class="n">data</span><span class="p">;</span>
+<span class="w">    </span><span class="n">LogicalPosition</span><span class="w"> </span><span class="n">position</span><span class="p">;</span>
+<span class="w">    </span><span class="k">friend</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="k">operator</span><span class="o">==</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">DropEvent</span><span class="o">&amp;</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">DropEvent</span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span>
+<span class="w">    </span><span class="k">friend</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="k">operator</span><span class="o">!=</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">DropEvent</span><span class="o">&amp;</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">DropEvent</span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span>
+<span class="p">};</span>
 <span class="k">using</span><span class="w"> </span><span class="n">slint</span><span class="o">::</span><span class="n">StandardListViewItem</span><span class="p">;</span>
 <span class="k">struct</span><span class="w"> </span><span class="nc">TableColumn</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">SharedString</span><span class="w"> </span><span class="n">title</span><span class="p">;</span>
@@ -491,6 +500,7 @@
 <span class="p">};</span>
 <span class="k">struct</span><span class="w"> </span><span class="nc">MenuEntry</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">SharedString</span><span class="w"> </span><span class="n">title</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Image</span><span class="w"> </span><span class="n">icon</span><span class="p">;</span>
 <span class="w">    </span><span class="n">SharedString</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
 <span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">enabled</span><span class="p">;</span>
 <span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">has_sub_menu</span><span class="p">;</span>

@@ -110,6 +110,11 @@ Files
 .. toctree::
    :maxdepth: 5
 
+   file_cppdocs_generated_include_slint_events_internal.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file_cppdocs_generated_include_slint_generated_public.h.rst
 
 .. toctree::

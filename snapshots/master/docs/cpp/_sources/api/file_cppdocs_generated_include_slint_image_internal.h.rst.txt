@@ -35,6 +35,8 @@ Includes
 
 - ``ostream``
 
+- ``slint_color.h`` (:ref:`file__home_runner_work_slint_slint_api_cpp_include_slint_color.h`)
+
 - ``slint_enums_internal.h`` (:ref:`file_cppdocs_generated_include_slint_enums_internal.h`)
 
 

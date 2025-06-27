@@ -20,6 +20,8 @@ Program Listing for File slint_pathdata_internal.h
    #include <ostream>
    #include <new>
    #include "slint_enums_internal.h"
+   #include "slint_sharedvector.h"
+   #include "slint_point.h"
    
    namespace slint {
    namespace cbindgen_private {

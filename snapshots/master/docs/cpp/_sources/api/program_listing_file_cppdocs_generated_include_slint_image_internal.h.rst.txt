@@ -20,6 +20,7 @@ Program Listing for File slint_image_internal.h
    #include <ostream>
    #include <new>
    #include "slint_enums_internal.h"
+   #include "slint_color.h"
    namespace slint::cbindgen_private { struct ParsedSVG{}; struct HTMLImage{}; using namespace vtable; namespace types{ struct NineSliceImage{}; } }
    
    namespace slint {
@@ -47,7 +48,7 @@ Program Listing for File slint_image_internal.h
    
    struct CachedPath {
        SharedString path;
-       uint64_t last_modified;
+       uint32_t last_modified;
    
        bool operator==(const CachedPath& other) const {
            return path == other.path &&
@@ -805,6 +806,20 @@ Program Listing for File slint_image_internal.h
    using Size = Size2D<float>;
    
    extern "C" {
+   
+   void slint_color_brighter(const Color *col, float factor, Color *out);
+   
+   void slint_color_darker(const Color *col, float factor, Color *out);
+   
+   void slint_color_transparentize(const Color *col, float factor, Color *out);
+   
+   void slint_color_mix(const Color *col1, const Color *col2, float factor, Color *out);
+   
+   void slint_color_with_alpha(const Color *col, float alpha, Color *out);
+   
+   void slint_color_to_hsva(const Color *col, float *h, float *s, float *v, float *a);
+   
+   Color slint_color_from_hsva(float h, float s, float v, float a);
    
    void slint_image_load_from_path(const SharedString *path, Image *image);
    

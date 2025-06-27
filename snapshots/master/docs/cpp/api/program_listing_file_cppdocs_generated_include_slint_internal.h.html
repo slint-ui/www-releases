@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
-        <title>Program Listing for File slint_internal.h - Slint 1.12.1 C++ API documentation</title>
+        <title>Program Listing for File slint_internal.h - Slint 1.13.0 C++ API documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../_static/theme_tweak.css?v=ca455ff5" />
@@ -168,7 +168,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../index.html"><div class="brand">Slint 1.12.1 C++ API  documentation</div></a>
+      <a href="../index.html"><div class="brand">Slint 1.13.0 C++ API  documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -195,7 +195,7 @@
     <img class="sidebar-logo" src="https://slint.dev/logo/slint-logo-small-light.svg" alt="Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">Slint 1.12.1 C++ API  documentation</span>
+  <span class="sidebar-brand-text">Slint 1.13.0 C++ API  documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -447,23 +447,21 @@
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;slint_point.h&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;slint_timer.h&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;slint_builtin_structs_internal.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;slint_events_internal.h&quot;</span>
 
 <span class="k">namespace</span><span class="w"> </span><span class="nn">slint</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">namespace</span><span class="w"> </span><span class="nn">private_api</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">WindowAdapterRc</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 <span class="w">    </span><span class="k">namespace</span><span class="w"> </span><span class="nn">cbindgen_private</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">using</span><span class="w"> </span><span class="n">slint</span><span class="o">::</span><span class="n">private_api</span><span class="o">::</span><span class="n">WindowAdapterRc</span><span class="p">;</span>
 <span class="w">        </span><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">vtable</span><span class="p">;</span>
-<span class="w">        </span><span class="k">struct</span><span class="w"> </span><span class="nc">KeyEvent</span><span class="p">;</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">PointerEvent</span><span class="p">;</span>
 <span class="w">        </span><span class="k">using</span><span class="w"> </span><span class="n">private_api</span><span class="o">::</span><span class="n">Property</span><span class="p">;</span>
 <span class="w">        </span><span class="k">using</span><span class="w"> </span><span class="n">private_api</span><span class="o">::</span><span class="n">PathData</span><span class="p">;</span>
 <span class="w">        </span><span class="k">using</span><span class="w"> </span><span class="n">private_api</span><span class="o">::</span><span class="n">Point</span><span class="p">;</span>
-<span class="w">        </span><span class="k">struct</span><span class="w"> </span><span class="nc">Rect</span><span class="p">;</span>
-<span class="w">        </span><span class="k">using</span><span class="w"> </span><span class="n">LogicalRect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Rect</span><span class="p">;</span>
-<span class="w">        </span><span class="k">using</span><span class="w"> </span><span class="n">LogicalPoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Point2D</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">;</span>
-<span class="w">        </span><span class="k">using</span><span class="w"> </span><span class="n">LogicalLength</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">float</span><span class="p">;</span>
 <span class="w">        </span><span class="k">struct</span><span class="w"> </span><span class="nc">ItemTreeVTable</span><span class="p">;</span>
 <span class="w">        </span><span class="k">struct</span><span class="w"> </span><span class="nc">ItemVTable</span><span class="p">;</span>
 <span class="w">        </span><span class="k">using</span><span class="w"> </span><span class="n">types</span><span class="o">::</span><span class="n">IntRect</span><span class="p">;</span>
+<span class="w">        </span><span class="k">using</span><span class="w"> </span><span class="n">types</span><span class="o">::</span><span class="n">Size</span><span class="p">;</span>
+<span class="w">        </span><span class="k">using</span><span class="w"> </span><span class="n">types</span><span class="o">::</span><span class="n">MouseEvent</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">ModelData</span><span class="o">&gt;</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Model</span><span class="p">;</span>
 <span class="p">}</span>
@@ -508,6 +506,7 @@
 <span class="w">    </span><span class="n">EventAccepted</span><span class="p">,</span>
 <span class="w">    </span><span class="n">EventIgnored</span><span class="p">,</span>
 <span class="w">    </span><span class="n">GrabMouse</span><span class="p">,</span>
+<span class="w">    </span><span class="n">StartDrag</span><span class="p">,</span>
 <span class="p">};</span>
 
 <span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">KeyEventResult</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="p">{</span>
@@ -587,46 +586,6 @@
 <span class="w">    </span><span class="p">};</span>
 <span class="p">};</span>
 
-<span class="k">struct</span><span class="w"> </span><span class="nc">MouseEvent</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Tag</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">Pressed</span><span class="p">,</span>
-<span class="w">        </span><span class="n">Released</span><span class="p">,</span>
-<span class="w">        </span><span class="n">Moved</span><span class="p">,</span>
-<span class="w">        </span><span class="n">Wheel</span><span class="p">,</span>
-<span class="w">        </span><span class="n">Exit</span><span class="p">,</span>
-<span class="w">    </span><span class="p">};</span>
-
-<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">Pressed_Body</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">LogicalPoint</span><span class="w"> </span><span class="n">position</span><span class="p">;</span>
-<span class="w">        </span><span class="n">PointerEventButton</span><span class="w"> </span><span class="n">button</span><span class="p">;</span>
-<span class="w">        </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">click_count</span><span class="p">;</span>
-<span class="w">    </span><span class="p">};</span>
-
-<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">Released_Body</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">LogicalPoint</span><span class="w"> </span><span class="n">position</span><span class="p">;</span>
-<span class="w">        </span><span class="n">PointerEventButton</span><span class="w"> </span><span class="n">button</span><span class="p">;</span>
-<span class="w">        </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">click_count</span><span class="p">;</span>
-<span class="w">    </span><span class="p">};</span>
-
-<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">Moved_Body</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">LogicalPoint</span><span class="w"> </span><span class="n">position</span><span class="p">;</span>
-<span class="w">    </span><span class="p">};</span>
-
-<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">Wheel_Body</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">LogicalPoint</span><span class="w"> </span><span class="n">position</span><span class="p">;</span>
-<span class="w">        </span><span class="kt">float</span><span class="w"> </span><span class="n">delta_x</span><span class="p">;</span>
-<span class="w">        </span><span class="kt">float</span><span class="w"> </span><span class="n">delta_y</span><span class="p">;</span>
-<span class="w">    </span><span class="p">};</span>
-
-<span class="w">    </span><span class="n">Tag</span><span class="w"> </span><span class="n">tag</span><span class="p">;</span>
-<span class="w">    </span><span class="k">union</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">Pressed_Body</span><span class="w"> </span><span class="n">pressed</span><span class="p">;</span>
-<span class="w">        </span><span class="n">Released_Body</span><span class="w"> </span><span class="n">released</span><span class="p">;</span>
-<span class="w">        </span><span class="n">Moved_Body</span><span class="w"> </span><span class="n">moved</span><span class="p">;</span>
-<span class="w">        </span><span class="n">Wheel_Body</span><span class="w"> </span><span class="n">wheel</span><span class="p">;</span>
-<span class="w">    </span><span class="p">};</span>
-<span class="p">};</span>
-
 <span class="k">union</span><span class="w"> </span><span class="nc">FocusEvent</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Tag</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">FocusIn</span><span class="p">,</span>
@@ -663,11 +622,11 @@
 <span class="w">                              </span><span class="k">const</span><span class="w"> </span><span class="n">WindowAdapterRc</span><span class="w"> </span><span class="o">*</span><span class="n">window_adapter</span><span class="p">,</span>
 <span class="w">                              </span><span class="k">const</span><span class="w"> </span><span class="n">ItemRc</span><span class="w"> </span><span class="o">*</span><span class="n">self_rc</span><span class="p">);</span>
 <span class="w">    </span><span class="n">InputEventFilterResult</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">input_event_filter_before_children</span><span class="p">)(</span><span class="n">Pin</span><span class="o">&lt;</span><span class="n">VRef</span><span class="o">&lt;</span><span class="n">ItemVTable</span><span class="o">&gt;&gt;</span><span class="p">,</span>
-<span class="w">                                                                 </span><span class="n">MouseEvent</span><span class="p">,</span>
+<span class="w">                                                                 </span><span class="k">const</span><span class="w"> </span><span class="n">MouseEvent</span><span class="o">*</span><span class="p">,</span>
 <span class="w">                                                                 </span><span class="k">const</span><span class="w"> </span><span class="n">WindowAdapterRc</span><span class="w"> </span><span class="o">*</span><span class="n">window_adapter</span><span class="p">,</span>
 <span class="w">                                                                 </span><span class="k">const</span><span class="w"> </span><span class="n">ItemRc</span><span class="w"> </span><span class="o">*</span><span class="n">self_rc</span><span class="p">);</span>
 <span class="w">    </span><span class="n">InputEventResult</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">input_event</span><span class="p">)(</span><span class="n">Pin</span><span class="o">&lt;</span><span class="n">VRef</span><span class="o">&lt;</span><span class="n">ItemVTable</span><span class="o">&gt;&gt;</span><span class="p">,</span>
-<span class="w">                                    </span><span class="n">MouseEvent</span><span class="p">,</span>
+<span class="w">                                    </span><span class="k">const</span><span class="w"> </span><span class="n">MouseEvent</span><span class="o">*</span><span class="p">,</span>
 <span class="w">                                    </span><span class="k">const</span><span class="w"> </span><span class="n">WindowAdapterRc</span><span class="w"> </span><span class="o">*</span><span class="n">window_adapter</span><span class="p">,</span>
 <span class="w">                                    </span><span class="k">const</span><span class="w"> </span><span class="n">ItemRc</span><span class="w"> </span><span class="o">*</span><span class="n">self_rc</span><span class="p">);</span>
 <span class="w">    </span><span class="n">FocusEventResult</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">focus_event</span><span class="p">)(</span><span class="n">Pin</span><span class="o">&lt;</span><span class="n">VRef</span><span class="o">&lt;</span><span class="n">ItemVTable</span><span class="o">&gt;&gt;</span><span class="p">,</span>
@@ -984,8 +943,6 @@
 
 <span class="k">using</span><span class="w"> </span><span class="n">IntSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Size2D</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="p">;</span>
 
-<span class="k">using</span><span class="w"> </span><span class="n">Size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Size2D</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">;</span>
-
 <span class="k">union</span><span class="w"> </span><span class="nc">WindowEvent</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Tag</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">PointerPressed</span><span class="p">,</span>
@@ -1150,6 +1107,23 @@
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">border_bottom_left_radius</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">border_bottom_right_radius</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">Brush</span><span class="o">&gt;</span><span class="w"> </span><span class="n">border_color</span><span class="p">;</span>
+<span class="w">    </span><span class="n">CachedRenderingData</span><span class="w"> </span><span class="n">cached_rendering_data</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">DragArea</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="w"> </span><span class="n">enabled</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">SharedString</span><span class="o">&gt;</span><span class="w"> </span><span class="n">mime_type</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">SharedString</span><span class="o">&gt;</span><span class="w"> </span><span class="n">data</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">pressed</span><span class="p">;</span>
+<span class="w">    </span><span class="n">LogicalPoint</span><span class="w"> </span><span class="n">pressed_position</span><span class="p">;</span>
+<span class="w">    </span><span class="n">CachedRenderingData</span><span class="w"> </span><span class="n">cached_rendering_data</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">DropArea</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="w"> </span><span class="n">enabled</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="w"> </span><span class="n">contains_drag</span><span class="p">;</span>
+<span class="w">    </span><span class="n">private_api</span><span class="o">::</span><span class="n">CallbackHelper</span><span class="o">&lt;</span><span class="n">DropEvent</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="o">&gt;</span><span class="w"> </span><span class="n">can_drop</span><span class="p">;</span>
+<span class="w">    </span><span class="n">private_api</span><span class="o">::</span><span class="n">CallbackHelper</span><span class="o">&lt;</span><span class="n">DropEvent</span><span class="o">&gt;</span><span class="w"> </span><span class="n">dropped</span><span class="p">;</span>
 <span class="w">    </span><span class="n">CachedRenderingData</span><span class="w"> </span><span class="n">cached_rendering_data</span><span class="p">;</span>
 <span class="p">};</span>
 
@@ -1327,6 +1301,7 @@
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">SharedString</span><span class="o">&gt;</span><span class="w"> </span><span class="n">title</span><span class="p">;</span>
 <span class="w">    </span><span class="n">private_api</span><span class="o">::</span><span class="n">CallbackHelper</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;</span><span class="w"> </span><span class="n">activated</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="w"> </span><span class="n">enabled</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">Image</span><span class="o">&gt;</span><span class="w"> </span><span class="n">icon</span><span class="p">;</span>
 <span class="p">};</span>
 
 <span class="k">extern</span><span class="w"> </span><span class="s">&quot;C&quot;</span><span class="w"> </span><span class="p">{</span>
@@ -1710,7 +1685,8 @@
 <span class="w">                                       </span><span class="k">const</span><span class="w"> </span><span class="n">SharedString</span><span class="w"> </span><span class="o">*</span><span class="n">text</span><span class="p">,</span>
 <span class="w">                                       </span><span class="kt">bool</span><span class="w"> </span><span class="n">repeat</span><span class="p">);</span>
 
-<span class="kt">void</span><span class="w"> </span><span class="nf">slint_windowrc_dispatch_pointer_event</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">WindowAdapterRcOpaque</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="n">MouseEvent</span><span class="w"> </span><span class="n">event</span><span class="p">);</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">slint_windowrc_dispatch_pointer_event</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">WindowAdapterRcOpaque</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">,</span>
+<span class="w">                                           </span><span class="k">const</span><span class="w"> </span><span class="n">MouseEvent</span><span class="w"> </span><span class="o">*</span><span class="n">event</span><span class="p">);</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">slint_windowrc_dispatch_event</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">WindowAdapterRcOpaque</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">WindowEvent</span><span class="w"> </span><span class="o">*</span><span class="n">event</span><span class="p">);</span>
 
@@ -1747,6 +1723,8 @@
 <span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">Rectangle</span><span class="p">);</span>
 <span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">BasicBorderRectangle</span><span class="p">);</span>
 <span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">BorderRectangle</span><span class="p">);</span>
+<span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">DragArea</span><span class="p">);</span>
+<span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">DropArea</span><span class="p">);</span>
 <span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">ImageItem</span><span class="p">);</span>
 <span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">ClippedImage</span><span class="p">);</span>
 <span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">TouchArea</span><span class="p">);</span>

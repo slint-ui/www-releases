@@ -29,6 +29,10 @@ Includes
 
 - ``slint_enums_internal.h`` (:ref:`file_cppdocs_generated_include_slint_enums_internal.h`)
 
+- ``slint_image.h`` (:ref:`file__home_runner_work_slint_slint_api_cpp_include_slint_image.h`)
+
+- ``slint_point.h`` (:ref:`file__home_runner_work_slint_slint_api_cpp_include_slint_point.h`)
+
 
 
 Included By

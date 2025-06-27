@@ -14,6 +14,8 @@ Program Listing for File slint_builtin_structs_internal.h
    // This file is auto-generated from xtask/src/../../api/cpp/cbindgen.rs
    #include "slint_builtin_structs.h"
    #include "slint_enums_internal.h"
+   #include "slint_point.h"
+   #include "slint_image.h"
    namespace slint::cbindgen_private {
    enum class KeyEventType : uint8_t;
    struct KeyboardModifiers {
@@ -51,6 +53,13 @@ Program Listing for File slint_builtin_structs_internal.h
        friend bool operator==(const KeyEvent&, const KeyEvent&) = default;
        friend bool operator!=(const KeyEvent&, const KeyEvent&) = default;
    };
+   struct DropEvent {
+       SharedString mime_type;
+       SharedString data;
+       LogicalPosition position;
+       friend bool operator==(const DropEvent&, const DropEvent&) = default;
+       friend bool operator!=(const DropEvent&, const DropEvent&) = default;
+   };
    using slint::StandardListViewItem;
    struct TableColumn {
        SharedString title;
@@ -78,6 +87,7 @@ Program Listing for File slint_builtin_structs_internal.h
    };
    struct MenuEntry {
        SharedString title;
+       Image icon;
        SharedString id;
        bool enabled;
        bool has_sub_menu;
