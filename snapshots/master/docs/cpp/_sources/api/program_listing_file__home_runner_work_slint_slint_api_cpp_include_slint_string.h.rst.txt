@@ -85,6 +85,8 @@ Program Listing for File slint_string.h
                    == 0;
        }
    
+       void clear() { *this = std::string_view("", 0); }
+   
        static SharedString from_number(double n) { return SharedString(n); }
    
        SharedString to_lowercase() const
