@@ -1784,6 +1784,7 @@ THIS SOFTWARE.
 - [windows-strings 0.4.2]( https://github.com/microsoft/windows-rs )
 - [windows-sys 0.52.0]( https://github.com/microsoft/windows-rs )
 - [windows-sys 0.59.0]( https://github.com/microsoft/windows-rs )
+- [windows-sys 0.60.2]( https://github.com/microsoft/windows-rs )
 - [windows-targets 0.48.5]( https://github.com/microsoft/windows-rs )
 - [windows-targets 0.52.6]( https://github.com/microsoft/windows-rs )
 - [windows-targets 0.53.2]( https://github.com/microsoft/windows-rs )
@@ -5235,7 +5236,6 @@ SOFTWARE.
 - [qttypes 0.2.12]( https://github.com/woboq/qmetaobject-rs )
 - [simd_helpers 0.1.0]( https://github.com/lu-zero/simd_helpers )
 - [siphasher 1.0.1]( https://github.com/jedisct1/rust-siphash )
-- [windows-sys 0.60.2]( https://github.com/microsoft/windows-rs )
 - [zune-core 0.4.12](
 https://crates.io/crates/zune-core )
 - [zune-inflate 0.2.54](
