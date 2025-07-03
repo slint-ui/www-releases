@@ -82,13 +82,13 @@
                                 <a class="variable" href="#Image.width">width</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Image.height">height</a>
+                                <a class="variable" href="#Image.path">path</a>
                         </li>
                         <li>
                                 <a class="variable" href="#Image.size">size</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Image.path">path</a>
+                                <a class="variable" href="#Image.height">height</a>
                         </li>
                 </ul>
 
@@ -112,7 +112,7 @@
                                 <a class="function" href="#Color.with_alpha">with_alpha</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Color.green">green</a>
+                                <a class="variable" href="#Color.blue">blue</a>
                         </li>
                         <li>
                                 <a class="variable" href="#Color.red">red</a>
@@ -121,7 +121,7 @@
                                 <a class="variable" href="#Color.alpha">alpha</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Color.blue">blue</a>
+                                <a class="variable" href="#Color.green">green</a>
                         </li>
                 </ul>
 
@@ -211,10 +211,10 @@
                                 <a class="function" href="#Timer.restart">restart</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Timer.running">running</a>
+                                <a class="variable" href="#Timer.interval">interval</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Timer.interval">interval</a>
+                                <a class="variable" href="#Timer.running">running</a>
                         </li>
                 </ul>
 
@@ -1426,15 +1426,15 @@ objects from a path to an image file on disk.</p>
 
 
                             </div>
-                            <div id="Image.height" class="classattr">
+                            <div id="Image.path" class="classattr">
                                 <div class="attr variable">
-            <span class="name">height</span>
+            <span class="name">path</span>
 
         
     </div>
-    <a class="headerlink" href="#Image.height"></a>
+    <a class="headerlink" href="#Image.path"></a>
     
-            <div class="docstring"><p>The height of the image in pixels.</p>
+            <div class="docstring"><p>The path of the image if it was loaded from disk, or None.</p>
 </div>
 
 
@@ -1452,15 +1452,15 @@ objects from a path to an image file on disk.</p>
 
 
                             </div>
-                            <div id="Image.path" class="classattr">
+                            <div id="Image.height" class="classattr">
                                 <div class="attr variable">
-            <span class="name">path</span>
+            <span class="name">height</span>
 
         
     </div>
-    <a class="headerlink" href="#Image.path"></a>
+    <a class="headerlink" href="#Image.height"></a>
     
-            <div class="docstring"><p>The path of the image if it was loaded from disk, or None.</p>
+            <div class="docstring"><p>The height of the image in pixels.</p>
 </div>
 
 
@@ -1562,15 +1562,15 @@ is applied to <code>other</code>.</p>
 
 
                             </div>
-                            <div id="Color.green" class="classattr">
+                            <div id="Color.blue" class="classattr">
                                 <div class="attr variable">
-            <span class="name">green</span>
+            <span class="name">blue</span>
 
         
     </div>
-    <a class="headerlink" href="#Color.green"></a>
+    <a class="headerlink" href="#Color.blue"></a>
     
-            <div class="docstring"><p>The green channel.</p>
+            <div class="docstring"><p>The blue channel.</p>
 </div>
 
 
@@ -1601,15 +1601,15 @@ is applied to <code>other</code>.</p>
 
 
                             </div>
-                            <div id="Color.blue" class="classattr">
+                            <div id="Color.green" class="classattr">
                                 <div class="attr variable">
-            <span class="name">blue</span>
+            <span class="name">green</span>
 
         
     </div>
-    <a class="headerlink" href="#Color.blue"></a>
+    <a class="headerlink" href="#Color.green"></a>
     
-            <div class="docstring"><p>The blue channel.</p>
+            <div class="docstring"><p>The green channel.</p>
 </div>
 
 
@@ -2214,19 +2214,6 @@ is re-calculated to be in the specified duration relative to when this function 
 
 
                             </div>
-                            <div id="Timer.running" class="classattr">
-                                <div class="attr variable">
-            <span class="name">running</span>
-
-        
-    </div>
-    <a class="headerlink" href="#Timer.running"></a>
-    
-            <div class="docstring"><p>Set to true if the timer is running; false otherwise.</p>
-</div>
-
-
-                            </div>
                             <div id="Timer.interval" class="classattr">
                                 <div class="attr variable">
             <span class="name">interval</span>
@@ -2240,6 +2227,19 @@ is re-calculated to be in the specified duration relative to when this function 
 <p>When setting this property and the timer is running (see <code><a href="#Timer.running">Timer.running</a></code>),
 then the time when the callback will be next invoked is re-calculated to be in the
 specified duration relative to when this property is set.</p>
+</div>
+
+
+                            </div>
+                            <div id="Timer.running" class="classattr">
+                                <div class="attr variable">
+            <span class="name">running</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Timer.running"></a>
+    
+            <div class="docstring"><p>Set to true if the timer is running; false otherwise.</p>
 </div>
 
 
