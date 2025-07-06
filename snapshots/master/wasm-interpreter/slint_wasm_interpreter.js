@@ -1883,7 +1883,7 @@ function __wbg_get_imports() {
         const ret = makeMutClosure(arg0, arg1, 310, __wbg_adapter_41);
         return ret;
     };
-    imports.wbg.__wbindgen_closure_wrapper7052 = function(arg0, arg1, arg2) {
+    imports.wbg.__wbindgen_closure_wrapper7051 = function(arg0, arg1, arg2) {
         const ret = makeMutClosure(arg0, arg1, 574, __wbg_adapter_44);
         return ret;
     };
