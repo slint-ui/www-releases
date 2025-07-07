@@ -86,6 +86,7 @@ jobs:
         run: |
             rsync -ua ${{ steps.identify-version.outputs.VERSION }} docs
             cp versions.txt 404.html index.html docs
+            cp ../robots-docs.txt docs/robots.txt
             mv docs/${{ steps.identify-version.outputs.VERSION }} docs/latest
             find docs/latest -type f -exec sed -i "s@/${{ steps.identify-version.outputs.VERSION }}/docs@/latest/docs@g" {} \;
             find docs/latest -type f -exec sed -i "s@releases.slint.dev/latest/docs@docs.slint.dev/latest/docs@g" {} \;

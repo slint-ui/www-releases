@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://docs.slint.dev/latest/docs/slint/sitemap-0.xml
