@@ -136,7 +136,7 @@ jobs:
               },
               "description": "docs.slint.dev to releases subdomain",
               "enabled": false,
-              "expression": "(http.host eq \"docs.slint.dev\" and not starts_with(http.request.uri.path, \"/${{ steps.identify-version.outputs.VERSION }}\") and http.request.uri ne \"/index.html\" and http.request.uri ne \"/\") and not starts_with(http.request.uri.path, \"/latest\") and not starts_with(http.request.uri.path, \"/cdn-cgi\")",
+              "expression": "(http.host eq \"docs.slint.dev\" and not starts_with(http.request.uri.path, \"/${{ steps.identify-version.outputs.VERSION }}\") and http.request.uri ne \"/index.html\" and http.request.uri ne \"/robots.txt\" and http.request.uri ne \"/\") and not starts_with(http.request.uri.path, \"/latest\") and not starts_with(http.request.uri.path, \"/cdn-cgi\")",
               "id": "${{ vars.CLOUDFLARE_RULE_ID }}",
               "ref": "${{ vars.CLOUDFLARE_RULE_ID }}"
           }'
