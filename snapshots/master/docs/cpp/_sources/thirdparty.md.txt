@@ -3659,11 +3659,11 @@ SOFTWARE.
 
 #### Used by:
 
-- [zbus 5.7.1]( https://github.com/dbus2/zbus/ )
-- [zbus_macros 5.7.1]( https://github.com/dbus2/zbus/ )
+- [zbus 5.8.0]( https://github.com/dbus2/zbus/ )
+- [zbus_macros 5.8.0]( https://github.com/dbus2/zbus/ )
 - [zbus_names 4.2.0]( https://github.com/dbus2/zbus/ )
-- [zvariant 5.5.3]( https://github.com/dbus2/zbus/ )
-- [zvariant_derive 5.5.3]( https://github.com/dbus2/zbus/ )
+- [zvariant 5.6.0]( https://github.com/dbus2/zbus/ )
+- [zvariant_derive 5.6.0]( https://github.com/dbus2/zbus/ )
 
 #### License Text
 

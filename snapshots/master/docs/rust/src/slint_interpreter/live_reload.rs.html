@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/live_reload.rs`."><title>live_reload.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-aa0817cf.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.90.0-nightly (a84ab0ce6 2025-07-06)" data-channel="nightly" data-search-js="search-179e01a3.js" data-settings-js="settings-5514c975.js" ><script src="../../static.files/storage-4e99c027.js"></script><script defer src="../../static.files/src-script-813739b1.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-673ee1e0.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-32bb7600.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/live_reload.rs`."><title>live_reload.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-aa0817cf.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.90.0-nightly (a2d45f73c 2025-07-07)" data-channel="nightly" data-search-js="search-179e01a3.js" data-settings-js="settings-5514c975.js" ><script src="../../static.files/storage-4e99c027.js"></script><script defer src="../../static.files/src-script-813739b1.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-673ee1e0.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-32bb7600.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -129,7 +129,7 @@
 <a href=#7 id=7 data-nosnippet>7</a><span class="kw">use </span><a href="https://doc.rust-lang.org/nightly/core/cell/struct.RefCell.html">core::cell::RefCell</a>;
 <a href=#8 id=8 data-nosnippet>8</a><span class="kw">use </span><a href="https://doc.rust-lang.org/nightly/core/task/wake/struct.Waker.html">core::task::Waker</a>;
 <a href=#9 id=9 data-nosnippet>9</a><span class="kw">use </span>i_slint_core::api::{<a href="../../slint_interpreter/trait.ComponentHandle.html">ComponentHandle</a>, <a href="../../slint_interpreter/enum.PlatformError.html">PlatformError</a>};
-<a href=#10 id=10 data-nosnippet>10</a><span class="kw">use </span><a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">std::collections::HashMap</a>;
+<a href=#10 id=10 data-nosnippet>10</a><span class="kw">use </span>std::collections::{<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">HashMap</a>, <a href="https://doc.rust-lang.org/nightly/std/collections/hash/set/struct.HashSet.html">HashSet</a>};
 <a href=#11 id=11 data-nosnippet>11</a><span class="kw">use </span>std::path::{<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html">Path</a>, <a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>};
 <a href=#12 id=12 data-nosnippet>12</a><span class="kw">use </span><a href="https://doc.rust-lang.org/nightly/alloc/rc/struct.Rc.html">std::rc::Rc</a>;
 <a href=#13 id=13 data-nosnippet>13</a><span class="kw">use </span>std::sync::{<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>, <a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html">Mutex</a>};
@@ -157,14 +157,14 @@
 <a href=#35 id=35 data-nosnippet>35</a>        component_name: <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#36 id=36 data-nosnippet>36</a>    ) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/rc/struct.Rc.html">Rc</a>&lt;<a href="https://doc.rust-lang.org/nightly/core/cell/struct.RefCell.html">RefCell</a>&lt;<span class="self">Self</span>&gt;&gt;, <a href="../../slint_interpreter/enum.PlatformError.html">PlatformError</a>&gt; {
 <a href=#37 id=37 data-nosnippet>37</a>        <span class="kw">let </span>self_rc = <a href="https://doc.rust-lang.org/nightly/alloc/rc/struct.Rc.html">Rc</a>::&lt;<a href="https://doc.rust-lang.org/nightly/core/cell/struct.RefCell.html">RefCell</a>&lt;<span class="self">Self</span>&gt;&gt;::new_cyclic(<span class="kw">move </span>|self_weak| {
-<a href=#38 id=38 data-nosnippet>38</a>            <span class="kw">let </span>watcher = <a href="#243-285">Watcher::new</a>(<a href="#37">self_weak</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>());
+<a href=#38 id=38 data-nosnippet>38</a>            <span class="kw">let </span>watcher = <a href="#244-294">Watcher::new</a>(<a href="#37">self_weak</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>());
 <a href=#39 id=39 data-nosnippet>39</a>            <span class="kw">if </span>watcher.lock().unwrap().watcher.is_some() {
 <a href=#40 id=40 data-nosnippet>40</a>                <span class="kw">let </span>watcher_clone = <a href="#38">watcher</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>();
 <a href=#41 id=41 data-nosnippet>41</a>                <a href="#33">compiler</a>.<a href="api.rs.html#792-799">set_file_loader</a>(<span class="kw">move </span>|path| {
-<a href=#42 id=42 data-nosnippet>42</a>                    <a href="#40">watcher_clone</a>.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>().<a href="#287-298">watch</a>(<a href="#41">path</a>);
+<a href=#42 id=42 data-nosnippet>42</a>                    <a href="#40">watcher_clone</a>.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>().<a href="#296-304">watch</a>(<a href="#41">path</a>);
 <a href=#43 id=43 data-nosnippet>43</a>                    <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.pin">Box::pin</a>(<span class="kw">async </span>{ <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None"><a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a> </a>})
 <a href=#44 id=44 data-nosnippet>44</a>                });
-<a href=#45 id=45 data-nosnippet>45</a>                <a href="#38">watcher</a>.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>().<a href="#287-298">watch</a>(<span class="kw-2">&amp;</span><a href="#34">file_name</a>);
+<a href=#45 id=45 data-nosnippet>45</a>                <a href="#38">watcher</a>.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>().<a href="#296-304">watch</a>(<span class="kw-2">&amp;</span><a href="#34">file_name</a>);
 <a href=#46 id=46 data-nosnippet>46</a>            }
 <a href=#47 id=47 data-nosnippet>47</a>            <a href="https://doc.rust-lang.org/nightly/core/cell/struct.RefCell.html#method.new">RefCell::new</a>(<span class="self">Self </span>{
 <a href=#48 id=48 data-nosnippet>48</a>                instance: <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a>,
@@ -359,63 +359,69 @@
 <a href=#237 id=237 data-nosnippet>237</a>    <span class="comment">// (wouldn't need to be an option if new_cyclic() could return errors)
 <a href=#238 id=238 data-nosnippet>238</a>    </span>watcher: <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;notify::RecommendedWatcher&gt;,
 <a href=#239 id=239 data-nosnippet>239</a>    state: <a href="#228-234">WatcherState</a>,
-<a href=#240 id=240 data-nosnippet>240</a>}
-<a href=#241 id=241 data-nosnippet>241</a>
-<a href=#242 id=242 data-nosnippet>242</a><span class="kw">impl </span><a href="#236-240">Watcher</a> {
-<a href=#243 id=243 data-nosnippet>243</a>    <span class="kw">fn </span>new(component_weak: <a href="https://doc.rust-lang.org/nightly/alloc/rc/struct.Weak.html">std::rc::Weak</a>&lt;<a href="https://doc.rust-lang.org/nightly/core/cell/struct.RefCell.html">RefCell</a>&lt;<a href="#20-28">LiveReloadingComponent</a>&gt;&gt;) -&gt; <a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html">Mutex</a>&lt;<span class="self">Self</span>&gt;&gt; {
-<a href=#244 id=244 data-nosnippet>244</a>        <span class="kw">let </span>arc = <a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html#method.new">Arc::new</a>(<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.new">Mutex::new</a>(<span class="self">Self </span>{ state: <a href="#229">WatcherState::Starting</a>, watcher: <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None"><a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a> </a>}));
-<a href=#245 id=245 data-nosnippet>245</a>
-<a href=#246 id=246 data-nosnippet>246</a>        <span class="kw">let </span>watcher_weak = <a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html#method.downgrade">Arc::downgrade</a>(<span class="kw-2">&amp;</span><a href="#244">arc</a>);
-<a href=#247 id=247 data-nosnippet>247</a>        <span class="kw">let </span>result = <a href="api.rs.html#1646-1649"><span class="kw">crate</span>::spawn_local</a>(<a href="https://doc.rust-lang.org/nightly/core/future/poll_fn/fn.poll_fn.html">std::future::poll_fn</a>(<span class="kw">move </span>|cx| {
-<a href=#248 id=248 data-nosnippet>248</a>            <span class="kw">let </span>(<span class="prelude-val">Some</span>(instance), <span class="prelude-val">Some</span>(watcher)) =
-<a href=#249 id=249 data-nosnippet>249</a>                (<a href="#243">component_weak</a>.<a href="https://doc.rust-lang.org/nightly/alloc/rc/struct.Weak.html#method.upgrade">upgrade</a>(), <a href="#246">watcher_weak</a>.<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Weak.html#method.upgrade">upgrade</a>())
-<a href=#250 id=250 data-nosnippet>250</a>            <span class="kw">else </span>{
-<a href=#251 id=251 data-nosnippet>251</a>                <span class="comment">// When the instance is dropped, we can stop this future
-<a href=#252 id=252 data-nosnippet>252</a>                </span><span class="kw">return </span><a href="https://doc.rust-lang.org/nightly/core/task/poll/enum.Poll.html#variant.Ready">std::task::Poll::Ready</a>(());
-<a href=#253 id=253 data-nosnippet>253</a>            };
-<a href=#254 id=254 data-nosnippet>254</a>            <span class="kw">let </span>state = <a href="https://doc.rust-lang.org/nightly/core/mem/fn.replace.html">std::mem::replace</a>(
-<a href=#255 id=255 data-nosnippet>255</a>                <span class="kw-2">&amp;mut </span><a href="#248">watcher</a>.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>().state,
-<a href=#256 id=256 data-nosnippet>256</a>                <a href="#233">WatcherState::Waiting</a>(<a href="#247">cx</a>.<a href="https://doc.rust-lang.org/nightly/core/task/wake/struct.Context.html#method.waker">waker</a>().<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>()),
-<a href=#257 id=257 data-nosnippet>257</a>            );
-<a href=#258 id=258 data-nosnippet>258</a>            <span class="kw">if </span><a class="macro" href="https://doc.rust-lang.org/nightly/core/macro.matches.html">matches!</a>(state, WatcherState::Changed) {
-<a href=#259 id=259 data-nosnippet>259</a>                <a href="#248">instance</a>.<a href="https://doc.rust-lang.org/nightly/core/cell/struct.RefCell.html#method.borrow_mut">borrow_mut</a>().<a href="#92-155">reload</a>();
-<a href=#260 id=260 data-nosnippet>260</a>            };
-<a href=#261 id=261 data-nosnippet>261</a>            <a href="https://doc.rust-lang.org/nightly/core/task/poll/enum.Poll.html#variant.Pending">std::task::Poll::Pending</a>
-<a href=#262 id=262 data-nosnippet>262</a>        }));
-<a href=#263 id=263 data-nosnippet>263</a>
-<a href=#264 id=264 data-nosnippet>264</a>        <span class="comment">// no event loop, no need to start a watcher
-<a href=#265 id=265 data-nosnippet>265</a>        </span><span class="kw">if </span>!result.is_ok() {
-<a href=#266 id=266 data-nosnippet>266</a>            <span class="kw">return </span><a href="#244">arc</a>;
-<a href=#267 id=267 data-nosnippet>267</a>        }
+<a href=#240 id=240 data-nosnippet>240</a>    files: <a href="https://doc.rust-lang.org/nightly/std/collections/hash/set/struct.HashSet.html">HashSet</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>&gt;,
+<a href=#241 id=241 data-nosnippet>241</a>}
+<a href=#242 id=242 data-nosnippet>242</a>
+<a href=#243 id=243 data-nosnippet>243</a><span class="kw">impl </span><a href="#236-241">Watcher</a> {
+<a href=#244 id=244 data-nosnippet>244</a>    <span class="kw">fn </span>new(component_weak: <a href="https://doc.rust-lang.org/nightly/alloc/rc/struct.Weak.html">std::rc::Weak</a>&lt;<a href="https://doc.rust-lang.org/nightly/core/cell/struct.RefCell.html">RefCell</a>&lt;<a href="#20-28">LiveReloadingComponent</a>&gt;&gt;) -&gt; <a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html">Mutex</a>&lt;<span class="self">Self</span>&gt;&gt; {
+<a href=#245 id=245 data-nosnippet>245</a>        <span class="kw">let </span>arc = <a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html#method.new">Arc::new</a>(<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.new">Mutex::new</a>(<span class="self">Self </span>{
+<a href=#246 id=246 data-nosnippet>246</a>            state: <a href="#229">WatcherState::Starting</a>,
+<a href=#247 id=247 data-nosnippet>247</a>            watcher: <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a>,
+<a href=#248 id=248 data-nosnippet>248</a>            files: <a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default">Default::default</a>(),
+<a href=#249 id=249 data-nosnippet>249</a>        }));
+<a href=#250 id=250 data-nosnippet>250</a>
+<a href=#251 id=251 data-nosnippet>251</a>        <span class="kw">let </span>watcher_weak = <a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html#method.downgrade">Arc::downgrade</a>(<span class="kw-2">&amp;</span><a href="#245">arc</a>);
+<a href=#252 id=252 data-nosnippet>252</a>        <span class="kw">let </span>result = <a href="api.rs.html#1646-1649"><span class="kw">crate</span>::spawn_local</a>(<a href="https://doc.rust-lang.org/nightly/core/future/poll_fn/fn.poll_fn.html">std::future::poll_fn</a>(<span class="kw">move </span>|cx| {
+<a href=#253 id=253 data-nosnippet>253</a>            <span class="kw">let </span>(<span class="prelude-val">Some</span>(instance), <span class="prelude-val">Some</span>(watcher)) =
+<a href=#254 id=254 data-nosnippet>254</a>                (<a href="#244">component_weak</a>.<a href="https://doc.rust-lang.org/nightly/alloc/rc/struct.Weak.html#method.upgrade">upgrade</a>(), <a href="#251">watcher_weak</a>.<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Weak.html#method.upgrade">upgrade</a>())
+<a href=#255 id=255 data-nosnippet>255</a>            <span class="kw">else </span>{
+<a href=#256 id=256 data-nosnippet>256</a>                <span class="comment">// When the instance is dropped, we can stop this future
+<a href=#257 id=257 data-nosnippet>257</a>                </span><span class="kw">return </span><a href="https://doc.rust-lang.org/nightly/core/task/poll/enum.Poll.html#variant.Ready">std::task::Poll::Ready</a>(());
+<a href=#258 id=258 data-nosnippet>258</a>            };
+<a href=#259 id=259 data-nosnippet>259</a>            <span class="kw">let </span>state = <a href="https://doc.rust-lang.org/nightly/core/mem/fn.replace.html">std::mem::replace</a>(
+<a href=#260 id=260 data-nosnippet>260</a>                <span class="kw-2">&amp;mut </span><a href="#253">watcher</a>.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>().state,
+<a href=#261 id=261 data-nosnippet>261</a>                <a href="#233">WatcherState::Waiting</a>(<a href="#252">cx</a>.<a href="https://doc.rust-lang.org/nightly/core/task/wake/struct.Context.html#method.waker">waker</a>().<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>()),
+<a href=#262 id=262 data-nosnippet>262</a>            );
+<a href=#263 id=263 data-nosnippet>263</a>            <span class="kw">if </span><a class="macro" href="https://doc.rust-lang.org/nightly/core/macro.matches.html">matches!</a>(state, WatcherState::Changed) {
+<a href=#264 id=264 data-nosnippet>264</a>                <a href="#253">instance</a>.<a href="https://doc.rust-lang.org/nightly/core/cell/struct.RefCell.html#method.borrow_mut">borrow_mut</a>().<a href="#92-155">reload</a>();
+<a href=#265 id=265 data-nosnippet>265</a>            };
+<a href=#266 id=266 data-nosnippet>266</a>            <a href="https://doc.rust-lang.org/nightly/core/task/poll/enum.Poll.html#variant.Pending">std::task::Poll::Pending</a>
+<a href=#267 id=267 data-nosnippet>267</a>        }));
 <a href=#268 id=268 data-nosnippet>268</a>
-<a href=#269 id=269 data-nosnippet>269</a>        <span class="kw">let </span>watcher_weak = <a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html#method.downgrade">Arc::downgrade</a>(<span class="kw-2">&amp;</span><a href="#244">arc</a>);
-<a href=#270 id=270 data-nosnippet>270</a>        <a href="#244">arc</a>.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>().watcher =
-<a href=#271 id=271 data-nosnippet>271</a>            notify::recommended_watcher(<span class="kw">move </span>|event: notify::Result&lt;notify::Event&gt;| {
-<a href=#272 id=272 data-nosnippet>272</a>                <span class="kw">use </span>notify::EventKind <span class="kw">as </span>K;
-<a href=#273 id=273 data-nosnippet>273</a>                <span class="kw">let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(event) = <a href="#271">event</a> <span class="kw">else </span>{ <span class="kw">return </span>};
-<a href=#274 id=274 data-nosnippet>274</a>                <span class="kw">let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(watcher) = <a href="#269">watcher_weak</a>.<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Weak.html#method.upgrade">upgrade</a>() <span class="kw">else </span>{ <span class="kw">return </span>};
-<a href=#275 id=275 data-nosnippet>275</a>                <span class="kw">if </span><a class="macro" href="https://doc.rust-lang.org/nightly/core/macro.matches.html">matches!</a>(event.kind, K::Modify(<span class="kw">_</span>) | K::Create(<span class="kw">_</span>)) {
-<a href=#276 id=276 data-nosnippet>276</a>                    <span class="kw">if let </span><a href="#233">WatcherState::Waiting</a>(waker) =
-<a href=#277 id=277 data-nosnippet>277</a>                        <a href="https://doc.rust-lang.org/nightly/core/mem/fn.replace.html">std::mem::replace</a>(<span class="kw-2">&amp;mut </span><a href="#274">watcher</a>.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>().state, <a href="#231">WatcherState::Changed</a>)
-<a href=#278 id=278 data-nosnippet>278</a>                    {
-<a href=#279 id=279 data-nosnippet>279</a>                        <a href="#276">waker</a>.<a href="https://doc.rust-lang.org/nightly/core/task/wake/struct.Waker.html#method.wake">wake</a>();
-<a href=#280 id=280 data-nosnippet>280</a>                    }
-<a href=#281 id=281 data-nosnippet>281</a>                }
-<a href=#282 id=282 data-nosnippet>282</a>            })
-<a href=#283 id=283 data-nosnippet>283</a>            .<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.ok">ok</a>();
-<a href=#284 id=284 data-nosnippet>284</a>        <a href="#244">arc</a>
-<a href=#285 id=285 data-nosnippet>285</a>    }
-<a href=#286 id=286 data-nosnippet>286</a>
-<a href=#287 id=287 data-nosnippet>287</a>    <span class="kw">fn </span>watch(<span class="kw-2">&amp;mut </span><span class="self">self</span>, path: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html">Path</a>) {
-<a href=#288 id=288 data-nosnippet>288</a>        <span class="kw">let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(watcher) = <a class="self" href="#287">self</a>.watcher.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.as_mut">as_mut</a>() <span class="kw">else </span>{ <span class="kw">return </span>};
-<a href=#289 id=289 data-nosnippet>289</a>        notify::Watcher::watch(<a href="#288">watcher</a>, <a href="#287">path</a>, notify::RecursiveMode::NonRecursive).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap_or_else">unwrap_or_else</a>(
-<a href=#290 id=290 data-nosnippet>290</a>            |err| <span class="kw">match </span><a href="#290">err</a>.kind {
-<a href=#291 id=291 data-nosnippet>291</a>                notify::ErrorKind::PathNotFound =&gt; {
-<a href=#292 id=292 data-nosnippet>292</a>                    <span class="comment">// Editors can save the file by first removing the old file and then renaming the new file to the final name.
-<a href=#293 id=293 data-nosnippet>293</a>                    // Ignore the error if the file doesn't exist
-<a href=#294 id=294 data-nosnippet>294</a>                </span>}
-<a href=#295 id=295 data-nosnippet>295</a>                <span class="kw">_ </span>=&gt; <a class="macro" href="https://doc.rust-lang.org/nightly/std/macro.eprintln.html">eprintln!</a>(<span class="string">"Warning: error while watching {}: {:?}"</span>, path.display(), err),
-<a href=#296 id=296 data-nosnippet>296</a>            },
-<a href=#297 id=297 data-nosnippet>297</a>        );
-<a href=#298 id=298 data-nosnippet>298</a>    }
-<a href=#299 id=299 data-nosnippet>299</a>}</code></pre></div></section></main></body></html>
+<a href=#269 id=269 data-nosnippet>269</a>        <span class="comment">// no event loop, no need to start a watcher
+<a href=#270 id=270 data-nosnippet>270</a>        </span><span class="kw">if </span>!result.is_ok() {
+<a href=#271 id=271 data-nosnippet>271</a>            <span class="kw">return </span><a href="#245">arc</a>;
+<a href=#272 id=272 data-nosnippet>272</a>        }
+<a href=#273 id=273 data-nosnippet>273</a>
+<a href=#274 id=274 data-nosnippet>274</a>        <span class="kw">let </span>watcher_weak = <a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html#method.downgrade">Arc::downgrade</a>(<span class="kw-2">&amp;</span><a href="#245">arc</a>);
+<a href=#275 id=275 data-nosnippet>275</a>        <a href="#245">arc</a>.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>().watcher =
+<a href=#276 id=276 data-nosnippet>276</a>            notify::recommended_watcher(<span class="kw">move </span>|event: notify::Result&lt;notify::Event&gt;| {
+<a href=#277 id=277 data-nosnippet>277</a>                <span class="kw">use </span>notify::{event::ModifyKind, EventKind <span class="kw">as </span>K};
+<a href=#278 id=278 data-nosnippet>278</a>                <span class="kw">let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(event) = <a href="#276">event</a> <span class="kw">else </span>{ <span class="kw">return </span>};
+<a href=#279 id=279 data-nosnippet>279</a>                <span class="kw">let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(watcher) = <a href="#274">watcher_weak</a>.<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Weak.html#method.upgrade">upgrade</a>() <span class="kw">else </span>{ <span class="kw">return </span>};
+<a href=#280 id=280 data-nosnippet>280</a>                <span class="kw">if </span><span class="macro">matches!</span>(event.kind, K::Modify(ModifyKind::Data(<span class="kw">_</span>)) | K::Create(<span class="kw">_</span>))
+<a href=#281 id=281 data-nosnippet>281</a>                    &amp;&amp; watcher.lock().is_ok_and(|w| event.paths.iter().any(|p| w.files.contains(p)))
+<a href=#282 id=282 data-nosnippet>282</a>                {
+<a href=#283 id=283 data-nosnippet>283</a>                    <span class="kw">if let </span><a href="#233">WatcherState::Waiting</a>(waker) =
+<a href=#284 id=284 data-nosnippet>284</a>                        <a href="https://doc.rust-lang.org/nightly/core/mem/fn.replace.html">std::mem::replace</a>(<span class="kw-2">&amp;mut </span><a href="#279">watcher</a>.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>().state, <a href="#231">WatcherState::Changed</a>)
+<a href=#285 id=285 data-nosnippet>285</a>                    {
+<a href=#286 id=286 data-nosnippet>286</a>                        <span class="comment">// Wait a bit to let the time to write multiple files
+<a href=#287 id=287 data-nosnippet>287</a>                        </span><a href="https://doc.rust-lang.org/nightly/std/thread/fn.sleep.html">std::thread::sleep</a>(<a href="https://doc.rust-lang.org/nightly/core/time/struct.Duration.html#method.from_millis">std::time::Duration::from_millis</a>(<span class="number">15</span>));
+<a href=#288 id=288 data-nosnippet>288</a>                        <a href="#283">waker</a>.<a href="https://doc.rust-lang.org/nightly/core/task/wake/struct.Waker.html#method.wake">wake</a>();
+<a href=#289 id=289 data-nosnippet>289</a>                    }
+<a href=#290 id=290 data-nosnippet>290</a>                }
+<a href=#291 id=291 data-nosnippet>291</a>            })
+<a href=#292 id=292 data-nosnippet>292</a>            .<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.ok">ok</a>();
+<a href=#293 id=293 data-nosnippet>293</a>        <a href="#245">arc</a>
+<a href=#294 id=294 data-nosnippet>294</a>    }
+<a href=#295 id=295 data-nosnippet>295</a>
+<a href=#296 id=296 data-nosnippet>296</a>    <span class="kw">fn </span>watch(<span class="kw-2">&amp;mut </span><span class="self">self</span>, path: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html">Path</a>) {
+<a href=#297 id=297 data-nosnippet>297</a>        <span class="kw">let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(watcher) = <a class="self" href="#296">self</a>.watcher.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.as_mut">as_mut</a>() <span class="kw">else </span>{ <span class="kw">return </span>};
+<a href=#298 id=298 data-nosnippet>298</a>        <span class="kw">let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(parent) = <a href="#296">path</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.parent">parent</a>() <span class="kw">else </span>{ <span class="kw">return </span>};
+<a href=#299 id=299 data-nosnippet>299</a>        notify::Watcher::watch(<a href="#297">watcher</a>, <a href="#298">parent</a>, notify::RecursiveMode::NonRecursive)
+<a href=#300 id=300 data-nosnippet>300</a>            .<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap_or_else">unwrap_or_else</a>(|err| {
+<a href=#301 id=301 data-nosnippet>301</a>                <a class="macro" href="https://doc.rust-lang.org/nightly/std/macro.eprintln.html">eprintln!</a>(<span class="string">"Warning: error while watching {}: {:?}"</span>, path.display(), err)
+<a href=#302 id=302 data-nosnippet>302</a>            });
+<a href=#303 id=303 data-nosnippet>303</a>        <a class="self" href="#296">self</a>.files.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/set/struct.HashSet.html#method.insert">insert</a>(<a href="#296">path</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html#tymethod.into">into</a>());
+<a href=#304 id=304 data-nosnippet>304</a>    }
+<a href=#305 id=305 data-nosnippet>305</a>}</code></pre></div></section></main></body></html>
