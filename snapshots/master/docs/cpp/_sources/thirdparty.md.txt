@@ -3885,7 +3885,7 @@ DEALINGS IN THE SOFTWARE.
 
 #### Used by:
 
-- [femtovg 0.14.1]( https://github.com/femtovg/femtovg )
+- [femtovg 0.15.0]( https://github.com/femtovg/femtovg )
 
 #### License Text
 
@@ -3990,7 +3990,7 @@ SOFTWARE.
 
 #### Used by:
 
-- [lru 0.12.5]( https://github.com/jeromefroe/lru-rs.git )
+- [lru 0.16.0]( https://github.com/jeromefroe/lru-rs.git )
 
 #### License Text
 
@@ -5276,7 +5276,7 @@ THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRES
 
 #### Used by:
 
-- [xml-rs 0.8.26]( https://github.com/kornelski/xml-rs )
+- [xml-rs 0.8.27]( https://github.com/kornelski/xml-rs )
 
 #### License Text
 
