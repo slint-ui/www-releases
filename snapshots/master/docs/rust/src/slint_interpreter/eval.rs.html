@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/eval.rs`."><title>eval.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-aa0817cf.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.90.0-nightly (bfc046a4b 2025-07-12)" data-channel="nightly" data-search-js="search-179e01a3.js" data-settings-js="settings-5514c975.js" ><script src="../../static.files/storage-4e99c027.js"></script><script defer src="../../static.files/src-script-813739b1.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-673ee1e0.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-32bb7600.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/eval.rs`."><title>eval.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-aa0817cf.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.90.0-nightly (e9182f195 2025-07-13)" data-channel="nightly" data-search-js="search-179e01a3.js" data-settings-js="settings-5514c975.js" ><script src="../../static.files/storage-4e99c027.js"></script><script defer src="../../static.files/src-script-813739b1.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-673ee1e0.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-32bb7600.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -338,7 +338,7 @@
 <a href=#216 id=216 data-nosnippet>216</a>        Expression::FunctionCall { function, arguments, source_location } =&gt; <span class="kw">match </span><span class="kw-2">&amp;</span><a href="#216">function</a> {
 <a href=#217 id=217 data-nosnippet>217</a>            Callable::Function(nr) =&gt; {
 <a href=#218 id=218 data-nosnippet>218</a>                <span class="kw">let </span>is_item_member = <a href="#217">nr</a>.element().<a href="https://doc.rust-lang.org/nightly/core/cell/struct.RefCell.html#method.borrow">borrow</a>().native_class().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.is_some_and">is_some_and</a>(|n| <a href="#218">n</a>.properties.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.contains_key">contains_key</a>(<a href="#217">nr</a>.name()));
-<a href=#219 id=219 data-nosnippet>219</a>                <span class="kw">if </span>is_item_member {
+<a href=#219 id=219 data-nosnippet>219</a>                <span class="kw">if </span><a href="#218">is_item_member</a> {
 <a href=#220 id=220 data-nosnippet>220</a>                    <a href="#1359-1406">call_item_member_function</a>(<a href="#217">nr</a>, <a href="#139">local_context</a>)
 <a href=#221 id=221 data-nosnippet>221</a>                } <span class="kw">else </span>{
 <a href=#222 id=222 data-nosnippet>222</a>                    <span class="kw">let </span>args = <a href="#216">arguments</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.iter">iter</a>().<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#tymethod.map">map</a>(|e| <a href="#139-412">eval_expression</a>(<a href="#222">e</a>, <a href="#139">local_context</a>)).<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#tymethod.collect">collect</a>::&lt;<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<span class="kw">_</span>&gt;&gt;();
@@ -406,7 +406,7 @@
 <a href=#284 id=284 data-nosnippet>284</a>                }
 <a href=#285 id=285 data-nosnippet>285</a>                i_slint_compiler::expression_tree::ImageReference::AbsolutePath(path) =&gt; {
 <a href=#286 id=286 data-nosnippet>286</a>                    <span class="kw">let </span>path = <a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.new">std::path::Path::new</a>(<a href="#285">path</a>);
-<a href=#287 id=287 data-nosnippet>287</a>                    <span class="kw">if </span>path.starts_with(<span class="string">"builtin:/"</span>) {
+<a href=#287 id=287 data-nosnippet>287</a>                    <span class="kw">if </span><a href="#286">path</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.starts_with">starts_with</a>(<span class="string">"builtin:/"</span>) {
 <a href=#288 id=288 data-nosnippet>288</a>                        i_slint_compiler::fileaccess::load_file(<a href="#286">path</a>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(|virtual_file| <a href="#288">virtual_file</a>.builtin_contents).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(|virtual_file| {
 <a href=#289 id=289 data-nosnippet>289</a>                            <span class="kw">let </span>extension = <a href="#286">path</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.extension">extension</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap">unwrap</a>().<a href="https://doc.rust-lang.org/nightly/std/ffi/os_str/struct.OsStr.html#method.to_str">to_str</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap">unwrap</a>();
 <a href=#290 id=290 data-nosnippet>290</a>                            corelib::graphics::load_image_from_embedded_data(
@@ -496,7 +496,7 @@
 <a href=#374 id=374 data-nosnippet>374</a>        }
 <a href=#375 id=375 data-nosnippet>375</a>        Expression::ReturnStatement(x) =&gt; {
 <a href=#376 id=376 data-nosnippet>376</a>            <span class="kw">let </span>val = <a href="#375">x</a>.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.as_ref">as_ref</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map_or">map_or</a>(<a href="api.rs.html#101">Value::Void</a>, |x| <a href="#139-412">eval_expression</a>(<a href="#376">x</a>, <a href="#139">local_context</a>));
-<a href=#377 id=377 data-nosnippet>377</a>            <span class="kw">if </span>local_context.return_value.is_none() {
+<a href=#377 id=377 data-nosnippet>377</a>            <span class="kw">if </span><a href="#139">local_context</a>.return_value.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.is_none">is_none</a>() {
 <a href=#378 id=378 data-nosnippet>378</a>                <a href="#139">local_context</a>.return_value = <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(<a href="#376">val</a>);
 <a href=#379 id=379 data-nosnippet>379</a>            }
 <a href=#380 id=380 data-nosnippet>380</a>            <a href="#139">local_context</a>.return_value.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap">unwrap</a>()
@@ -644,7 +644,7 @@
 <a href=#522 id=522 data-nosnippet>522</a>            <a href="api.rs.html#105">Value::String</a>(i_slint_core::string::shared_string_from_number_precision(<a href="#519">n</a>, <a href="#521">precision</a>))
 <a href=#523 id=523 data-nosnippet>523</a>        }
 <a href=#524 id=524 data-nosnippet>524</a>        BuiltinFunction::SetFocusItem =&gt; {
-<a href=#525 id=525 data-nosnippet>525</a>            <span class="kw">if </span>arguments.len() != <span class="number">1 </span>{
+<a href=#525 id=525 data-nosnippet>525</a>            <span class="kw">if </span><a href="#416">arguments</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.len">len</a>() != <span class="number">1 </span>{
 <a href=#526 id=526 data-nosnippet>526</a>                <a class="macro" href="https://doc.rust-lang.org/nightly/std/macro.panic.html">panic!</a>(<span class="string">"internal error: incorrect argument count to SetFocusItem"</span>)
 <a href=#527 id=527 data-nosnippet>527</a>            }
 <a href=#528 id=528 data-nosnippet>528</a>            <span class="kw">let </span>component = <a href="#417">local_context</a>.component_instance;
@@ -677,7 +677,7 @@
 <a href=#555 id=555 data-nosnippet>555</a>            }
 <a href=#556 id=556 data-nosnippet>556</a>        }
 <a href=#557 id=557 data-nosnippet>557</a>        BuiltinFunction::ClearFocusItem =&gt; {
-<a href=#558 id=558 data-nosnippet>558</a>            <span class="kw">if </span>arguments.len() != <span class="number">1 </span>{
+<a href=#558 id=558 data-nosnippet>558</a>            <span class="kw">if </span><a href="#416">arguments</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.len">len</a>() != <span class="number">1 </span>{
 <a href=#559 id=559 data-nosnippet>559</a>                <a class="macro" href="https://doc.rust-lang.org/nightly/std/macro.panic.html">panic!</a>(<span class="string">"internal error: incorrect argument count to SetFocusItem"</span>)
 <a href=#560 id=560 data-nosnippet>560</a>            }
 <a href=#561 id=561 data-nosnippet>561</a>            <span class="kw">let </span>component = <a href="#417">local_context</a>.component_instance;
@@ -710,7 +710,7 @@
 <a href=#588 id=588 data-nosnippet>588</a>            }
 <a href=#589 id=589 data-nosnippet>589</a>        }
 <a href=#590 id=590 data-nosnippet>590</a>        BuiltinFunction::ShowPopupWindow =&gt; {
-<a href=#591 id=591 data-nosnippet>591</a>            <span class="kw">if </span>arguments.len() != <span class="number">1 </span>{
+<a href=#591 id=591 data-nosnippet>591</a>            <span class="kw">if </span><a href="#416">arguments</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.len">len</a>() != <span class="number">1 </span>{
 <a href=#592 id=592 data-nosnippet>592</a>                <a class="macro" href="https://doc.rust-lang.org/nightly/std/macro.panic.html">panic!</a>(<span class="string">"internal error: incorrect argument count to ShowPopupWindow"</span>)
 <a href=#593 id=593 data-nosnippet>593</a>            }
 <a href=#594 id=594 data-nosnippet>594</a>            <span class="kw">let </span>component = <a href="#417">local_context</a>.component_instance;
@@ -824,7 +824,7 @@
 <a href=#702 id=702 data-nosnippet>702</a>                <a href="#698">item_info</a>.<a href="dynamic_item_tree.rs.html#104-106">item_index</a>(),
 <a href=#703 id=703 data-nosnippet>703</a>            );
 <a href=#704 id=704 data-nosnippet>704</a>
-<a href=#705 id=705 data-nosnippet>705</a>            <span class="kw">if </span>component.access_window(|window| window.show_native_popup_menu(<span class="kw-2">&amp;</span>item_rc, position)) {
+<a href=#705 id=705 data-nosnippet>705</a>            <span class="kw">if </span><a href="#693">component</a>.<a href="dynamic_item_tree.rs.html#2356-2361">access_window</a>(|window| <a href="#705">window</a>.show_native_popup_menu(<span class="kw-2">&amp;</span><a href="#700">item_rc</a>, <a href="#689">position</a>)) {
 <a href=#706 id=706 data-nosnippet>706</a>                <span class="kw">return </span><a href="api.rs.html#101">Value::Void</a>;
 <a href=#707 id=707 data-nosnippet>707</a>            }
 <a href=#708 id=708 data-nosnippet>708</a>
@@ -929,7 +929,7 @@
 <a href=#807 id=807 data-nosnippet>807</a>            <a href="api.rs.html#101">Value::Void</a>
 <a href=#808 id=808 data-nosnippet>808</a>        }
 <a href=#809 id=809 data-nosnippet>809</a>        BuiltinFunction::SetSelectionOffsets =&gt; {
-<a href=#810 id=810 data-nosnippet>810</a>            <span class="kw">if </span>arguments.len() != <span class="number">3 </span>{
+<a href=#810 id=810 data-nosnippet>810</a>            <span class="kw">if </span><a href="#416">arguments</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.len">len</a>() != <span class="number">3 </span>{
 <a href=#811 id=811 data-nosnippet>811</a>                <a class="macro" href="https://doc.rust-lang.org/nightly/std/macro.panic.html">panic!</a>(<span class="string">"internal error: incorrect argument count to select range function call"</span>)
 <a href=#812 id=812 data-nosnippet>812</a>            }
 <a href=#813 id=813 data-nosnippet>813</a>            <span class="kw">let </span>component = <a href="#417">local_context</a>.component_instance;
@@ -977,7 +977,7 @@
 <a href=#855 id=855 data-nosnippet>855</a>            }
 <a href=#856 id=856 data-nosnippet>856</a>        }
 <a href=#857 id=857 data-nosnippet>857</a>        BuiltinFunction::ItemFontMetrics =&gt; {
-<a href=#858 id=858 data-nosnippet>858</a>            <span class="kw">if </span>arguments.len() != <span class="number">1 </span>{
+<a href=#858 id=858 data-nosnippet>858</a>            <span class="kw">if </span><a href="#416">arguments</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.len">len</a>() != <span class="number">1 </span>{
 <a href=#859 id=859 data-nosnippet>859</a>                <a class="macro" href="https://doc.rust-lang.org/nightly/std/macro.panic.html">panic!</a>(
 <a href=#860 id=860 data-nosnippet>860</a>                    <span class="string">"internal error: incorrect argument count to item font metrics function call"
 <a href=#861 id=861 data-nosnippet>861</a>                </span>)
@@ -1009,7 +1009,7 @@
 <a href=#887 id=887 data-nosnippet>887</a>            }
 <a href=#888 id=888 data-nosnippet>888</a>        }
 <a href=#889 id=889 data-nosnippet>889</a>        BuiltinFunction::StringIsFloat =&gt; {
-<a href=#890 id=890 data-nosnippet>890</a>            <span class="kw">if </span>arguments.len() != <span class="number">1 </span>{
+<a href=#890 id=890 data-nosnippet>890</a>            <span class="kw">if </span><a href="#416">arguments</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.len">len</a>() != <span class="number">1 </span>{
 <a href=#891 id=891 data-nosnippet>891</a>                <a class="macro" href="https://doc.rust-lang.org/nightly/std/macro.panic.html">panic!</a>(<span class="string">"internal error: incorrect argument count to StringIsFloat"</span>)
 <a href=#892 id=892 data-nosnippet>892</a>            }
 <a href=#893 id=893 data-nosnippet>893</a>            <span class="kw">if let </span><a href="api.rs.html#105">Value::String</a>(s) = <a href="#139-412">eval_expression</a>(<span class="kw-2">&amp;</span><a href="#416">arguments</a>[<span class="number">0</span>], <a href="#417">local_context</a>) {
@@ -1019,7 +1019,7 @@
 <a href=#897 id=897 data-nosnippet>897</a>            }
 <a href=#898 id=898 data-nosnippet>898</a>        }
 <a href=#899 id=899 data-nosnippet>899</a>        BuiltinFunction::StringToFloat =&gt; {
-<a href=#900 id=900 data-nosnippet>900</a>            <span class="kw">if </span>arguments.len() != <span class="number">1 </span>{
+<a href=#900 id=900 data-nosnippet>900</a>            <span class="kw">if </span><a href="#416">arguments</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.len">len</a>() != <span class="number">1 </span>{
 <a href=#901 id=901 data-nosnippet>901</a>                <a class="macro" href="https://doc.rust-lang.org/nightly/std/macro.panic.html">panic!</a>(<span class="string">"internal error: incorrect argument count to StringToFloat"</span>)
 <a href=#902 id=902 data-nosnippet>902</a>            }
 <a href=#903 id=903 data-nosnippet>903</a>            <span class="kw">if let </span><a href="api.rs.html#105">Value::String</a>(s) = <a href="#139-412">eval_expression</a>(<span class="kw-2">&amp;</span><a href="#416">arguments</a>[<span class="number">0</span>], <a href="#417">local_context</a>) {
@@ -1029,7 +1029,7 @@
 <a href=#907 id=907 data-nosnippet>907</a>            }
 <a href=#908 id=908 data-nosnippet>908</a>        }
 <a href=#909 id=909 data-nosnippet>909</a>        BuiltinFunction::StringIsEmpty =&gt; {
-<a href=#910 id=910 data-nosnippet>910</a>            <span class="kw">if </span>arguments.len() != <span class="number">1 </span>{
+<a href=#910 id=910 data-nosnippet>910</a>            <span class="kw">if </span><a href="#416">arguments</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.len">len</a>() != <span class="number">1 </span>{
 <a href=#911 id=911 data-nosnippet>911</a>                <a class="macro" href="https://doc.rust-lang.org/nightly/std/macro.panic.html">panic!</a>(<span class="string">"internal error: incorrect argument count to StringIsEmpty"</span>)
 <a href=#912 id=912 data-nosnippet>912</a>            }
 <a href=#913 id=913 data-nosnippet>913</a>            <span class="kw">if let </span><a href="api.rs.html#105">Value::String</a>(s) = <a href="#139-412">eval_expression</a>(<span class="kw-2">&amp;</span><a href="#416">arguments</a>[<span class="number">0</span>], <a href="#417">local_context</a>) {
@@ -1039,7 +1039,7 @@
 <a href=#917 id=917 data-nosnippet>917</a>            }
 <a href=#918 id=918 data-nosnippet>918</a>        }
 <a href=#919 id=919 data-nosnippet>919</a>        BuiltinFunction::StringCharacterCount =&gt; {
-<a href=#920 id=920 data-nosnippet>920</a>            <span class="kw">if </span>arguments.len() != <span class="number">1 </span>{
+<a href=#920 id=920 data-nosnippet>920</a>            <span class="kw">if </span><a href="#416">arguments</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.len">len</a>() != <span class="number">1 </span>{
 <a href=#921 id=921 data-nosnippet>921</a>                <a class="macro" href="https://doc.rust-lang.org/nightly/std/macro.panic.html">panic!</a>(<span class="string">"internal error: incorrect argument count to StringCharacterCount"</span>)
 <a href=#922 id=922 data-nosnippet>922</a>            }
 <a href=#923 id=923 data-nosnippet>923</a>            <span class="kw">if let </span><a href="api.rs.html#105">Value::String</a>(s) = <a href="#139-412">eval_expression</a>(<span class="kw-2">&amp;</span><a href="#416">arguments</a>[<span class="number">0</span>], <a href="#417">local_context</a>) {
@@ -1052,7 +1052,7 @@
 <a href=#930 id=930 data-nosnippet>930</a>            }
 <a href=#931 id=931 data-nosnippet>931</a>        }
 <a href=#932 id=932 data-nosnippet>932</a>        BuiltinFunction::StringToLowercase =&gt; {
-<a href=#933 id=933 data-nosnippet>933</a>            <span class="kw">if </span>arguments.len() != <span class="number">1 </span>{
+<a href=#933 id=933 data-nosnippet>933</a>            <span class="kw">if </span><a href="#416">arguments</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.len">len</a>() != <span class="number">1 </span>{
 <a href=#934 id=934 data-nosnippet>934</a>                <a class="macro" href="https://doc.rust-lang.org/nightly/std/macro.panic.html">panic!</a>(<span class="string">"internal error: incorrect argument count to StringToLowercase"</span>)
 <a href=#935 id=935 data-nosnippet>935</a>            }
 <a href=#936 id=936 data-nosnippet>936</a>            <span class="kw">if let </span><a href="api.rs.html#105">Value::String</a>(s) = <a href="#139-412">eval_expression</a>(<span class="kw-2">&amp;</span><a href="#416">arguments</a>[<span class="number">0</span>], <a href="#417">local_context</a>) {
@@ -1062,7 +1062,7 @@
 <a href=#940 id=940 data-nosnippet>940</a>            }
 <a href=#941 id=941 data-nosnippet>941</a>        }
 <a href=#942 id=942 data-nosnippet>942</a>        BuiltinFunction::StringToUppercase =&gt; {
-<a href=#943 id=943 data-nosnippet>943</a>            <span class="kw">if </span>arguments.len() != <span class="number">1 </span>{
+<a href=#943 id=943 data-nosnippet>943</a>            <span class="kw">if </span><a href="#416">arguments</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.len">len</a>() != <span class="number">1 </span>{
 <a href=#944 id=944 data-nosnippet>944</a>                <a class="macro" href="https://doc.rust-lang.org/nightly/std/macro.panic.html">panic!</a>(<span class="string">"internal error: incorrect argument count to StringToUppercase"</span>)
 <a href=#945 id=945 data-nosnippet>945</a>            }
 <a href=#946 id=946 data-nosnippet>946</a>            <span class="kw">if let </span><a href="api.rs.html#105">Value::String</a>(s) = <a href="#139-412">eval_expression</a>(<span class="kw-2">&amp;</span><a href="#416">arguments</a>[<span class="number">0</span>], <a href="#417">local_context</a>) {
@@ -1072,7 +1072,7 @@
 <a href=#950 id=950 data-nosnippet>950</a>            }
 <a href=#951 id=951 data-nosnippet>951</a>        }
 <a href=#952 id=952 data-nosnippet>952</a>        BuiltinFunction::ColorRgbaStruct =&gt; {
-<a href=#953 id=953 data-nosnippet>953</a>            <span class="kw">if </span>arguments.len() != <span class="number">1 </span>{
+<a href=#953 id=953 data-nosnippet>953</a>            <span class="kw">if </span><a href="#416">arguments</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.len">len</a>() != <span class="number">1 </span>{
 <a href=#954 id=954 data-nosnippet>954</a>                <a class="macro" href="https://doc.rust-lang.org/nightly/std/macro.panic.html">panic!</a>(<span class="string">"internal error: incorrect argument count to ColorRGBAComponents"</span>)
 <a href=#955 id=955 data-nosnippet>955</a>            }
 <a href=#956 id=956 data-nosnippet>956</a>            <span class="kw">if let </span><a href="api.rs.html#115">Value::Brush</a>(brush) = <a href="#139-412">eval_expression</a>(<span class="kw-2">&amp;</span><a href="#416">arguments</a>[<span class="number">0</span>], <a href="#417">local_context</a>) {
@@ -1090,7 +1090,7 @@
 <a href=#968 id=968 data-nosnippet>968</a>            }
 <a href=#969 id=969 data-nosnippet>969</a>        }
 <a href=#970 id=970 data-nosnippet>970</a>        BuiltinFunction::ColorHsvaStruct =&gt; {
-<a href=#971 id=971 data-nosnippet>971</a>            <span class="kw">if </span>arguments.len() != <span class="number">1 </span>{
+<a href=#971 id=971 data-nosnippet>971</a>            <span class="kw">if </span><a href="#416">arguments</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.len">len</a>() != <span class="number">1 </span>{
 <a href=#972 id=972 data-nosnippet>972</a>                <a class="macro" href="https://doc.rust-lang.org/nightly/std/macro.panic.html">panic!</a>(<span class="string">"internal error: incorrect argument count to ColorHSVAComponents"</span>)
 <a href=#973 id=973 data-nosnippet>973</a>            }
 <a href=#974 id=974 data-nosnippet>974</a>            <span class="kw">if let </span><a href="api.rs.html#115">Value::Brush</a>(brush) = <a href="#139-412">eval_expression</a>(<span class="kw-2">&amp;</span><a href="#416">arguments</a>[<span class="number">0</span>], <a href="#417">local_context</a>) {
@@ -1108,7 +1108,7 @@
 <a href=#986 id=986 data-nosnippet>986</a>            }
 <a href=#987 id=987 data-nosnippet>987</a>        }
 <a href=#988 id=988 data-nosnippet>988</a>        BuiltinFunction::ColorBrighter =&gt; {
-<a href=#989 id=989 data-nosnippet>989</a>            <span class="kw">if </span>arguments.len() != <span class="number">2 </span>{
+<a href=#989 id=989 data-nosnippet>989</a>            <span class="kw">if </span><a href="#416">arguments</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.len">len</a>() != <span class="number">2 </span>{
 <a href=#990 id=990 data-nosnippet>990</a>                <a class="macro" href="https://doc.rust-lang.org/nightly/std/macro.panic.html">panic!</a>(<span class="string">"internal error: incorrect argument count to ColorBrighter"</span>)
 <a href=#991 id=991 data-nosnippet>991</a>            }
 <a href=#992 id=992 data-nosnippet>992</a>            <span class="kw">if let </span><a href="api.rs.html#115">Value::Brush</a>(brush) = <a href="#139-412">eval_expression</a>(<span class="kw-2">&amp;</span><a href="#416">arguments</a>[<span class="number">0</span>], <a href="#417">local_context</a>) {
@@ -1122,7 +1122,7 @@
 <a href=#1000 id=1000 data-nosnippet>1000</a>            }
 <a href=#1001 id=1001 data-nosnippet>1001</a>        }
 <a href=#1002 id=1002 data-nosnippet>1002</a>        BuiltinFunction::ColorDarker =&gt; {
-<a href=#1003 id=1003 data-nosnippet>1003</a>            <span class="kw">if </span>arguments.len() != <span class="number">2 </span>{
+<a href=#1003 id=1003 data-nosnippet>1003</a>            <span class="kw">if </span><a href="#416">arguments</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.len">len</a>() != <span class="number">2 </span>{
 <a href=#1004 id=1004 data-nosnippet>1004</a>                <a class="macro" href="https://doc.rust-lang.org/nightly/std/macro.panic.html">panic!</a>(<span class="string">"internal error: incorrect argument count to ColorDarker"</span>)
 <a href=#1005 id=1005 data-nosnippet>1005</a>            }
 <a href=#1006 id=1006 data-nosnippet>1006</a>            <span class="kw">if let </span><a href="api.rs.html#115">Value::Brush</a>(brush) = <a href="#139-412">eval_expression</a>(<span class="kw-2">&amp;</span><a href="#416">arguments</a>[<span class="number">0</span>], <a href="#417">local_context</a>) {
@@ -1136,7 +1136,7 @@
 <a href=#1014 id=1014 data-nosnippet>1014</a>            }
 <a href=#1015 id=1015 data-nosnippet>1015</a>        }
 <a href=#1016 id=1016 data-nosnippet>1016</a>        BuiltinFunction::ColorTransparentize =&gt; {
-<a href=#1017 id=1017 data-nosnippet>1017</a>            <span class="kw">if </span>arguments.len() != <span class="number">2 </span>{
+<a href=#1017 id=1017 data-nosnippet>1017</a>            <span class="kw">if </span><a href="#416">arguments</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.len">len</a>() != <span class="number">2 </span>{
 <a href=#1018 id=1018 data-nosnippet>1018</a>                <a class="macro" href="https://doc.rust-lang.org/nightly/std/macro.panic.html">panic!</a>(<span class="string">"internal error: incorrect argument count to ColorFaded"</span>)
 <a href=#1019 id=1019 data-nosnippet>1019</a>            }
 <a href=#1020 id=1020 data-nosnippet>1020</a>            <span class="kw">if let </span><a href="api.rs.html#115">Value::Brush</a>(brush) = <a href="#139-412">eval_expression</a>(<span class="kw-2">&amp;</span><a href="#416">arguments</a>[<span class="number">0</span>], <a href="#417">local_context</a>) {
@@ -1150,7 +1150,7 @@
 <a href=#1028 id=1028 data-nosnippet>1028</a>            }
 <a href=#1029 id=1029 data-nosnippet>1029</a>        }
 <a href=#1030 id=1030 data-nosnippet>1030</a>        BuiltinFunction::ColorMix =&gt; {
-<a href=#1031 id=1031 data-nosnippet>1031</a>            <span class="kw">if </span>arguments.len() != <span class="number">3 </span>{
+<a href=#1031 id=1031 data-nosnippet>1031</a>            <span class="kw">if </span><a href="#416">arguments</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.len">len</a>() != <span class="number">3 </span>{
 <a href=#1032 id=1032 data-nosnippet>1032</a>                <a class="macro" href="https://doc.rust-lang.org/nightly/std/macro.panic.html">panic!</a>(<span class="string">"internal error: incorrect argument count to ColorMix"</span>)
 <a href=#1033 id=1033 data-nosnippet>1033</a>            }
 <a href=#1034 id=1034 data-nosnippet>1034</a>
@@ -1158,13 +1158,13 @@
 <a href=#1036 id=1036 data-nosnippet>1036</a>            <span class="kw">let </span>arg1 = <a href="#139-412">eval_expression</a>(<span class="kw-2">&amp;</span><a href="#416">arguments</a>[<span class="number">1</span>], <a href="#417">local_context</a>);
 <a href=#1037 id=1037 data-nosnippet>1037</a>            <span class="kw">let </span>arg2 = <a href="#139-412">eval_expression</a>(<span class="kw-2">&amp;</span><a href="#416">arguments</a>[<span class="number">2</span>], <a href="#417">local_context</a>);
 <a href=#1038 id=1038 data-nosnippet>1038</a>
-<a href=#1039 id=1039 data-nosnippet>1039</a>            <span class="kw">if </span>!<span class="macro">matches!</span>(arg0, Value::Brush(Brush::SolidColor(<span class="kw">_</span>))) {
+<a href=#1039 id=1039 data-nosnippet>1039</a>            <span class="kw">if </span>!<a class="macro" href="https://doc.rust-lang.org/nightly/core/macro.matches.html">matches!</a>(arg0, Value::Brush(Brush::SolidColor(<span class="kw">_</span>))) {
 <a href=#1040 id=1040 data-nosnippet>1040</a>                <a class="macro" href="https://doc.rust-lang.org/nightly/std/macro.panic.html">panic!</a>(<span class="string">"First argument not a color"</span>);
 <a href=#1041 id=1041 data-nosnippet>1041</a>            }
-<a href=#1042 id=1042 data-nosnippet>1042</a>            <span class="kw">if </span>!<span class="macro">matches!</span>(arg1, Value::Brush(Brush::SolidColor(<span class="kw">_</span>))) {
+<a href=#1042 id=1042 data-nosnippet>1042</a>            <span class="kw">if </span>!<a class="macro" href="https://doc.rust-lang.org/nightly/core/macro.matches.html">matches!</a>(arg1, Value::Brush(Brush::SolidColor(<span class="kw">_</span>))) {
 <a href=#1043 id=1043 data-nosnippet>1043</a>                <a class="macro" href="https://doc.rust-lang.org/nightly/std/macro.panic.html">panic!</a>(<span class="string">"Second argument not a color"</span>);
 <a href=#1044 id=1044 data-nosnippet>1044</a>            }
-<a href=#1045 id=1045 data-nosnippet>1045</a>            <span class="kw">if </span>!<span class="macro">matches!</span>(arg2, Value::Number(<span class="kw">_</span>)) {
+<a href=#1045 id=1045 data-nosnippet>1045</a>            <span class="kw">if </span>!<a class="macro" href="https://doc.rust-lang.org/nightly/core/macro.matches.html">matches!</a>(arg2, Value::Number(<span class="kw">_</span>)) {
 <a href=#1046 id=1046 data-nosnippet>1046</a>                <a class="macro" href="https://doc.rust-lang.org/nightly/std/macro.panic.html">panic!</a>(<span class="string">"Third argument not a number"</span>);
 <a href=#1047 id=1047 data-nosnippet>1047</a>            }
 <a href=#1048 id=1048 data-nosnippet>1048</a>
@@ -1180,7 +1180,7 @@
 <a href=#1058 id=1058 data-nosnippet>1058</a>            <a href="#1050">color_a</a>.mix(<span class="kw-2">&amp;</span><a href="#1051">color_b</a>, <a href="#1052">factor</a> <span class="kw">as _</span>).<a href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html#tymethod.into">into</a>()
 <a href=#1059 id=1059 data-nosnippet>1059</a>        }
 <a href=#1060 id=1060 data-nosnippet>1060</a>        BuiltinFunction::ColorWithAlpha =&gt; {
-<a href=#1061 id=1061 data-nosnippet>1061</a>            <span class="kw">if </span>arguments.len() != <span class="number">2 </span>{
+<a href=#1061 id=1061 data-nosnippet>1061</a>            <span class="kw">if </span><a href="#416">arguments</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.len">len</a>() != <span class="number">2 </span>{
 <a href=#1062 id=1062 data-nosnippet>1062</a>                <a class="macro" href="https://doc.rust-lang.org/nightly/std/macro.panic.html">panic!</a>(<span class="string">"internal error: incorrect argument count to ColorWithAlpha"</span>)
 <a href=#1063 id=1063 data-nosnippet>1063</a>            }
 <a href=#1064 id=1064 data-nosnippet>1064</a>            <span class="kw">if let </span><a href="api.rs.html#115">Value::Brush</a>(brush) = <a href="#139-412">eval_expression</a>(<span class="kw-2">&amp;</span><a href="#416">arguments</a>[<span class="number">0</span>], <a href="#417">local_context</a>) {
@@ -1194,7 +1194,7 @@
 <a href=#1072 id=1072 data-nosnippet>1072</a>            }
 <a href=#1073 id=1073 data-nosnippet>1073</a>        }
 <a href=#1074 id=1074 data-nosnippet>1074</a>        BuiltinFunction::ImageSize =&gt; {
-<a href=#1075 id=1075 data-nosnippet>1075</a>            <span class="kw">if </span>arguments.len() != <span class="number">1 </span>{
+<a href=#1075 id=1075 data-nosnippet>1075</a>            <span class="kw">if </span><a href="#416">arguments</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.len">len</a>() != <span class="number">1 </span>{
 <a href=#1076 id=1076 data-nosnippet>1076</a>                <a class="macro" href="https://doc.rust-lang.org/nightly/std/macro.panic.html">panic!</a>(<span class="string">"internal error: incorrect argument count to ImageSize"</span>)
 <a href=#1077 id=1077 data-nosnippet>1077</a>            }
 <a href=#1078 id=1078 data-nosnippet>1078</a>            <span class="kw">if let </span><a href="api.rs.html#109">Value::Image</a>(img) = <a href="#139-412">eval_expression</a>(<span class="kw-2">&amp;</span><a href="#416">arguments</a>[<span class="number">0</span>], <a href="#417">local_context</a>) {
@@ -1210,7 +1210,7 @@
 <a href=#1088 id=1088 data-nosnippet>1088</a>            }
 <a href=#1089 id=1089 data-nosnippet>1089</a>        }
 <a href=#1090 id=1090 data-nosnippet>1090</a>        BuiltinFunction::ArrayLength =&gt; {
-<a href=#1091 id=1091 data-nosnippet>1091</a>            <span class="kw">if </span>arguments.len() != <span class="number">1 </span>{
+<a href=#1091 id=1091 data-nosnippet>1091</a>            <span class="kw">if </span><a href="#416">arguments</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.len">len</a>() != <span class="number">1 </span>{
 <a href=#1092 id=1092 data-nosnippet>1092</a>                <a class="macro" href="https://doc.rust-lang.org/nightly/std/macro.panic.html">panic!</a>(<span class="string">"internal error: incorrect argument count to ArrayLength"</span>)
 <a href=#1093 id=1093 data-nosnippet>1093</a>            }
 <a href=#1094 id=1094 data-nosnippet>1094</a>            <span class="kw">match </span><a href="#139-412">eval_expression</a>(<span class="kw-2">&amp;</span><a href="#416">arguments</a>[<span class="number">0</span>], <a href="#417">local_context</a>) {
@@ -1270,7 +1270,7 @@
 <a href=#1148 id=1148 data-nosnippet>1148</a>                    <a href="dynamic_item_tree.rs.html#2462-2483"><span class="kw">crate</span>::dynamic_item_tree::make_menu_item_tree</a>(<span class="kw-2">&amp;</span><a href="#1140">menu_item_tree</a>, <span class="kw-2">&amp;</span><a href="#1136">component</a>);
 <a href=#1149 id=1149 data-nosnippet>1149</a>
 <a href=#1150 id=1150 data-nosnippet>1150</a>                <span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(w) = <a href="#1136">component</a>.<a href="dynamic_item_tree.rs.html#2289-2302">window_adapter</a>().internal(i_slint_core::InternalToken) {
-<a href=#1151 id=1151 data-nosnippet>1151</a>                    <span class="kw">if </span>!no_native &amp;&amp; w.supports_native_menu_bar() {
+<a href=#1151 id=1151 data-nosnippet>1151</a>                    <span class="kw">if </span>!<a href="#1137">no_native</a> &amp;&amp; <a href="#1150">w</a>.supports_native_menu_bar() {
 <a href=#1152 id=1152 data-nosnippet>1152</a>                        <a href="#1150">w</a>.setup_menubar(vtable::VBox::new(<a href="#1147">menu_item_tree</a>));
 <a href=#1153 id=1153 data-nosnippet>1153</a>                        <span class="kw">return </span><a href="api.rs.html#101">Value::Void</a>;
 <a href=#1154 id=1154 data-nosnippet>1154</a>                    }
@@ -1302,7 +1302,7 @@
 <a href=#1180 id=1180 data-nosnippet>1180</a>                <a class="macro" href="https://doc.rust-lang.org/nightly/std/macro.panic.html">panic!</a>(<span class="string">"internal error: incorrect arguments to SetupNativeMenuBar: {arguments:?}"</span>)
 <a href=#1181 id=1181 data-nosnippet>1181</a>            };
 <a href=#1182 id=1182 data-nosnippet>1182</a>            <span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(w) = <a href="#1136">component</a>.<a href="dynamic_item_tree.rs.html#2289-2302">window_adapter</a>().internal(i_slint_core::InternalToken) {
-<a href=#1183 id=1183 data-nosnippet>1183</a>                <span class="kw">if </span>w.supports_native_menu_bar() {
+<a href=#1183 id=1183 data-nosnippet>1183</a>                <span class="kw">if </span><a href="#1182">w</a>.supports_native_menu_bar() {
 <a href=#1184 id=1184 data-nosnippet>1184</a>                    <a href="#1182">w</a>.setup_menubar(vtable::VBox::new(<a href="#1980-1985">MenuWrapper</a> {
 <a href=#1185 id=1185 data-nosnippet>1185</a>                        entries: <a href="#1177">entries</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>(),
 <a href=#1186 id=1186 data-nosnippet>1186</a>                        sub_menu: <a href="#1177">sub_menu</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>(),
@@ -1395,7 +1395,7 @@
 <a href=#1273 id=1273 data-nosnippet>1273</a>            }
 <a href=#1274 id=1274 data-nosnippet>1274</a>        }
 <a href=#1275 id=1275 data-nosnippet>1275</a>        BuiltinFunction::ItemAbsolutePosition =&gt; {
-<a href=#1276 id=1276 data-nosnippet>1276</a>            <span class="kw">if </span>arguments.len() != <span class="number">1 </span>{
+<a href=#1276 id=1276 data-nosnippet>1276</a>            <span class="kw">if </span><a href="#416">arguments</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.len">len</a>() != <span class="number">1 </span>{
 <a href=#1277 id=1277 data-nosnippet>1277</a>                <a class="macro" href="https://doc.rust-lang.org/nightly/std/macro.panic.html">panic!</a>(<span class="string">"internal error: incorrect argument count to ItemAbsolutePosition"</span>)
 <a href=#1278 id=1278 data-nosnippet>1278</a>            }
 <a href=#1279 id=1279 data-nosnippet>1279</a>
@@ -1423,7 +1423,7 @@
 <a href=#1301 id=1301 data-nosnippet>1301</a>            }
 <a href=#1302 id=1302 data-nosnippet>1302</a>        }
 <a href=#1303 id=1303 data-nosnippet>1303</a>        BuiltinFunction::RegisterCustomFontByPath =&gt; {
-<a href=#1304 id=1304 data-nosnippet>1304</a>            <span class="kw">if </span>arguments.len() != <span class="number">1 </span>{
+<a href=#1304 id=1304 data-nosnippet>1304</a>            <span class="kw">if </span><a href="#416">arguments</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.len">len</a>() != <span class="number">1 </span>{
 <a href=#1305 id=1305 data-nosnippet>1305</a>                <a class="macro" href="https://doc.rust-lang.org/nightly/std/macro.panic.html">panic!</a>(<span class="string">"internal error: incorrect argument count to RegisterCustomFontByPath"</span>)
 <a href=#1306 id=1306 data-nosnippet>1306</a>            }
 <a href=#1307 id=1307 data-nosnippet>1307</a>            <span class="kw">let </span>component = <a href="#417">local_context</a>.component_instance;
@@ -1551,13 +1551,13 @@
 <a href=#1429 id=1429 data-nosnippet>1429</a>
 <a href=#1430 id=1430 data-nosnippet>1430</a>            <span class="kw">match </span><a href="#1424">enclosing_component</a> {
 <a href=#1431 id=1431 data-nosnippet>1431</a>                <a href="#101">ComponentInstance::InstanceRef</a>(enclosing_component) =&gt; {
-<a href=#1432 id=1432 data-nosnippet>1432</a>                    <span class="kw">if </span>op == <span class="string">'=' </span>{
+<a href=#1432 id=1432 data-nosnippet>1432</a>                    <span class="kw">if </span><a href="#1408">op</a> == <span class="string">'=' </span>{
 <a href=#1433 id=1433 data-nosnippet>1433</a>                        <a href="#1574-1635">store_property</a>(<a href="#1431">enclosing_component</a>, <span class="kw-2">&amp;</span><a href="#1422">element</a>, <a href="#1421">nr</a>.name(), <a href="#1408">rhs</a>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>();
 <a href=#1434 id=1434 data-nosnippet>1434</a>                        <span class="kw">return</span>;
 <a href=#1435 id=1435 data-nosnippet>1435</a>                    }
 <a href=#1436 id=1436 data-nosnippet>1436</a>
 <a href=#1437 id=1437 data-nosnippet>1437</a>                    <span class="kw">let </span>component = <a href="#1422">element</a>.<a href="https://doc.rust-lang.org/nightly/core/cell/struct.RefCell.html#method.borrow">borrow</a>().enclosing_component.<a href="https://doc.rust-lang.org/nightly/alloc/rc/struct.Weak.html#method.upgrade">upgrade</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap">unwrap</a>();
-<a href=#1438 id=1438 data-nosnippet>1438</a>                    <span class="kw">if </span>element.borrow().id == component.root_element.borrow().id {
+<a href=#1438 id=1438 data-nosnippet>1438</a>                    <span class="kw">if </span><a href="#1422">element</a>.<a href="https://doc.rust-lang.org/nightly/core/cell/struct.RefCell.html#method.borrow">borrow</a>().id == <a href="#1437">component</a>.root_element.<a href="https://doc.rust-lang.org/nightly/core/cell/struct.RefCell.html#method.borrow">borrow</a>().id {
 <a href=#1439 id=1439 data-nosnippet>1439</a>                        <span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(x) =
 <a href=#1440 id=1440 data-nosnippet>1440</a>                            <a href="#1431">enclosing_component</a>.description.custom_properties.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.get">get</a>(<a href="#1421">nr</a>.name())
 <a href=#1441 id=1441 data-nosnippet>1441</a>                        {
@@ -1578,7 +1578,7 @@
 <a href=#1456 id=1456 data-nosnippet>1456</a>                    <a href="#1455">p</a>.<a href="#30-35">set</a>(<a href="#1453">item</a>, <a href="#1409">eval</a>(<a href="#1455">p</a>.<a href="#29">get</a>(<a href="#1453">item</a>)), <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>();
 <a href=#1457 id=1457 data-nosnippet>1457</a>                }
 <a href=#1458 id=1458 data-nosnippet>1458</a>                <a href="#102">ComponentInstance::GlobalComponent</a>(global) =&gt; {
-<a href=#1459 id=1459 data-nosnippet>1459</a>                    <span class="kw">let </span>val = <span class="kw">if </span>op == <span class="string">'=' </span>{
+<a href=#1459 id=1459 data-nosnippet>1459</a>                    <span class="kw">let </span>val = <span class="kw">if </span><a href="#1408">op</a> == <span class="string">'=' </span>{
 <a href=#1460 id=1460 data-nosnippet>1460</a>                        <a href="#1408">rhs</a>
 <a href=#1461 id=1461 data-nosnippet>1461</a>                    } <span class="kw">else </span>{
 <a href=#1462 id=1462 data-nosnippet>1462</a>                        <a href="#1409">eval</a>(<a href="#1458">global</a>.<a href="https://doc.rust-lang.org/nightly/core/pin/struct.Pin.html#method.as_ref">as_ref</a>().<a href="global_component.rs.html#160">get_property</a>(<a href="#1421">nr</a>.name()).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>())
@@ -1590,7 +1590,7 @@
 <a href=#1468 id=1468 data-nosnippet>1468</a>        Expression::StructFieldAccess { base, name } =&gt; {
 <a href=#1469 id=1469 data-nosnippet>1469</a>            <span class="kw">if let </span><a href="api.rs.html#113">Value::Struct</a>(<span class="kw-2">mut </span>o) = <a href="#139-412">eval_expression</a>(<a href="#1468">base</a>, <a href="#1408">local_context</a>) {
 <a href=#1470 id=1470 data-nosnippet>1470</a>                <span class="kw">let </span><span class="kw-2">mut </span>r = <a href="#1469">o</a>.<a href="api.rs.html#534-536">get_field</a>(<a href="#1468">name</a>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap">unwrap</a>().<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>();
-<a href=#1471 id=1471 data-nosnippet>1471</a>                <a href="#1470">r</a> = <span class="kw">if </span>op == <span class="string">'=' </span>{ <a href="#1408">rhs</a> } <span class="kw">else </span>{ <a href="#1409">eval</a>(<a href="https://doc.rust-lang.org/nightly/core/mem/fn.take.html">std::mem::take</a>(<span class="kw-2">&amp;mut </span><a href="#1470">r</a>)) };
+<a href=#1471 id=1471 data-nosnippet>1471</a>                <a href="#1470">r</a> = <span class="kw">if </span><a href="#1408">op</a> == <span class="string">'=' </span>{ <a href="#1408">rhs</a> } <span class="kw">else </span>{ <a href="#1409">eval</a>(<a href="https://doc.rust-lang.org/nightly/core/mem/fn.take.html">std::mem::take</a>(<span class="kw-2">&amp;mut </span><a href="#1470">r</a>)) };
 <a href=#1472 id=1472 data-nosnippet>1472</a>                <a href="#1469">o</a>.<a href="api.rs.html#538-540">set_field</a>(<a href="#1468">name</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(), <a href="#1470">r</a>);
 <a href=#1473 id=1473 data-nosnippet>1473</a>                <a href="#1408-1536">eval_assignment</a>(<a href="#1468">base</a>, <span class="string">'='</span>, <a href="api.rs.html#113">Value::Struct</a>(<a href="#1469">o</a>), <a href="#1408">local_context</a>)
 <a href=#1474 id=1474 data-nosnippet>1474</a>            }
@@ -1617,7 +1617,7 @@
 <a href=#1495 id=1495 data-nosnippet>1495</a>                )
 <a href=#1496 id=1496 data-nosnippet>1496</a>                .<a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#tymethod.try_into">try_into</a>()
 <a href=#1497 id=1497 data-nosnippet>1497</a>                .<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>(),
-<a href=#1498 id=1498 data-nosnippet>1498</a>                <span class="kw">if </span>op == <span class="string">'=' </span>{
+<a href=#1498 id=1498 data-nosnippet>1498</a>                <span class="kw">if </span><a href="#1408">op</a> == <span class="string">'=' </span>{
 <a href=#1499 id=1499 data-nosnippet>1499</a>                    <a href="#1408">rhs</a>
 <a href=#1500 id=1500 data-nosnippet>1500</a>                } <span class="kw">else </span>{
 <a href=#1501 id=1501 data-nosnippet>1501</a>                    <a href="#1409">eval</a>(<a href="#139-412">eval_expression</a>(
@@ -1632,9 +1632,9 @@
 <a href=#1510 id=1510 data-nosnippet>1510</a>            <span class="kw">let </span>index = <a href="#139-412">eval_expression</a>(<a href="#1508">index</a>, <a href="#1408">local_context</a>);
 <a href=#1511 id=1511 data-nosnippet>1511</a>            <span class="kw">match </span>(<a href="#1509">array</a>, <a href="#1510">index</a>) {
 <a href=#1512 id=1512 data-nosnippet>1512</a>                (Value::Model(model), Value::Number(index)) =&gt; {
-<a href=#1513 id=1513 data-nosnippet>1513</a>                    <span class="kw">if </span>index &gt;= <span class="number">0. </span>&amp;&amp; (index <span class="kw">as </span>usize) &lt; model.row_count() {
+<a href=#1513 id=1513 data-nosnippet>1513</a>                    <span class="kw">if </span><a href="#1512">index</a> &gt;= <span class="number">0. </span>&amp;&amp; (<a href="#1512">index</a> <span class="kw">as </span><a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>) &lt; <a href="#1512">model</a>.row_count() {
 <a href=#1514 id=1514 data-nosnippet>1514</a>                        <span class="kw">let </span>index = <a href="#1512">index</a> <span class="kw">as </span><a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>;
-<a href=#1515 id=1515 data-nosnippet>1515</a>                        <span class="kw">if </span>op == <span class="string">'=' </span>{
+<a href=#1515 id=1515 data-nosnippet>1515</a>                        <span class="kw">if </span><a href="#1408">op</a> == <span class="string">'=' </span>{
 <a href=#1516 id=1516 data-nosnippet>1516</a>                            <a href="#1512">model</a>.set_row_data(<a href="#1514">index</a>, <a href="#1408">rhs</a>);
 <a href=#1517 id=1517 data-nosnippet>1517</a>                        } <span class="kw">else </span>{
 <a href=#1518 id=1518 data-nosnippet>1518</a>                            <a href="#1512">model</a>.set_row_data(
@@ -1670,13 +1670,13 @@
 <a href=#1548 id=1548 data-nosnippet>1548</a>    <span class="kw">match </span><a href="#1817-1848">enclosing_component_instance_for_element</a>(<a href="#1544">element</a>, <a href="#1543">component_instance</a>, <a href="#1547">guard</a>) {
 <a href=#1549 id=1549 data-nosnippet>1549</a>        <a href="#101">ComponentInstance::InstanceRef</a>(enclosing_component) =&gt; {
 <a href=#1550 id=1550 data-nosnippet>1550</a>            <span class="kw">let </span>element = <a href="#1544">element</a>.<a href="https://doc.rust-lang.org/nightly/core/cell/struct.RefCell.html#method.borrow">borrow</a>();
-<a href=#1551 id=1551 data-nosnippet>1551</a>            <span class="kw">if </span>element.id == element.enclosing_component.upgrade().unwrap().root_element.borrow().id
+<a href=#1551 id=1551 data-nosnippet>1551</a>            <span class="kw">if </span><a href="#1550">element</a>.id == <a href="#1550">element</a>.enclosing_component.<a href="https://doc.rust-lang.org/nightly/alloc/rc/struct.Weak.html#method.upgrade">upgrade</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap">unwrap</a>().root_element.<a href="https://doc.rust-lang.org/nightly/core/cell/struct.RefCell.html#method.borrow">borrow</a>().id
 <a href=#1552 id=1552 data-nosnippet>1552</a>            {
 <a href=#1553 id=1553 data-nosnippet>1553</a>                <span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(x) = <a href="#1549">enclosing_component</a>.description.custom_properties.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.get">get</a>(<a href="#1545">name</a>) {
 <a href=#1554 id=1554 data-nosnippet>1554</a>                    <span class="kw">return unsafe </span>{
 <a href=#1555 id=1555 data-nosnippet>1555</a>                        <a href="#1553">x</a>.prop.get(<a href="https://doc.rust-lang.org/nightly/core/pin/struct.Pin.html#method.new_unchecked">Pin::new_unchecked</a>(<span class="kw-2">&amp;*</span><a href="#1549">enclosing_component</a>.<a href="dynamic_item_tree.rs.html#2262-2264">as_ptr</a>().<a href="https://doc.rust-lang.org/nightly/core/ptr/foreigntype.const_ptr.html#method.add">add</a>(<a href="#1553">x</a>.offset)))
 <a href=#1556 id=1556 data-nosnippet>1556</a>                    };
-<a href=#1557 id=1557 data-nosnippet>1557</a>                } <span class="kw">else if </span>enclosing_component.description.original.is_global() {
+<a href=#1557 id=1557 data-nosnippet>1557</a>                } <span class="kw">else if </span><a href="#1549">enclosing_component</a>.description.original.is_global() {
 <a href=#1558 id=1558 data-nosnippet>1558</a>                    <span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(());
 <a href=#1559 id=1559 data-nosnippet>1559</a>                }
 <a href=#1560 id=1560 data-nosnippet>1560</a>            };
@@ -1717,7 +1717,7 @@
 <a href=#1595 id=1595 data-nosnippet>1595</a>            };
 <a href=#1596 id=1596 data-nosnippet>1596</a>
 <a href=#1597 id=1597 data-nosnippet>1597</a>            <span class="kw">let </span>component = <a href="#1576">element</a>.<a href="https://doc.rust-lang.org/nightly/core/cell/struct.RefCell.html#method.borrow">borrow</a>().enclosing_component.<a href="https://doc.rust-lang.org/nightly/alloc/rc/struct.Weak.html#method.upgrade">upgrade</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap">unwrap</a>();
-<a href=#1598 id=1598 data-nosnippet>1598</a>            <span class="kw">if </span>element.borrow().id == component.root_element.borrow().id {
+<a href=#1598 id=1598 data-nosnippet>1598</a>            <span class="kw">if </span><a href="#1576">element</a>.<a href="https://doc.rust-lang.org/nightly/core/cell/struct.RefCell.html#method.borrow">borrow</a>().id == <a href="#1597">component</a>.root_element.<a href="https://doc.rust-lang.org/nightly/core/cell/struct.RefCell.html#method.borrow">borrow</a>().id {
 <a href=#1599 id=1599 data-nosnippet>1599</a>                <span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(x) = <a href="#1586">enclosing_component</a>.description.custom_properties.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.get">get</a>(<a href="#1577">name</a>) {
 <a href=#1600 id=1600 data-nosnippet>1600</a>                    <span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(orig_decl) = <a href="#1586">enclosing_component</a>
 <a href=#1601 id=1601 data-nosnippet>1601</a>                        .description
@@ -1728,7 +1728,7 @@
 <a href=#1606 id=1606 data-nosnippet>1606</a>                        .<a href="https://doc.rust-lang.org/nightly/alloc/collections/btree/map/struct.BTreeMap.html#method.get">get</a>(<a href="#1577">name</a>)
 <a href=#1607 id=1607 data-nosnippet>1607</a>                    {
 <a href=#1608 id=1608 data-nosnippet>1608</a>                        <span class="comment">// Do an extra type checking because PropertyInfo::set won't do it for custom structures or array
-<a href=#1609 id=1609 data-nosnippet>1609</a>                        </span><span class="kw">if </span>!check_value_type(<span class="kw-2">&amp;</span>value, <span class="kw-2">&amp;</span>orig_decl.property_type) {
+<a href=#1609 id=1609 data-nosnippet>1609</a>                        </span><span class="kw">if </span>!<a href="#1638-1678">check_value_type</a>(<span class="kw-2">&amp;</span><a href="#1578">value</a>, <span class="kw-2">&amp;</span><a href="#1600">orig_decl</a>.property_type) {
 <a href=#1610 id=1610 data-nosnippet>1610</a>                            <span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(<a href="api.rs.html#1612">SetPropertyError::WrongType</a>);
 <a href=#1611 id=1611 data-nosnippet>1611</a>                        }
 <a href=#1612 id=1612 data-nosnippet>1612</a>                    }
@@ -1739,7 +1739,7 @@
 <a href=#1617 id=1617 data-nosnippet>1617</a>                            .set(<a href="#1614">p</a>, <a href="#1578">value</a>, <a href="#1587">maybe_animation</a>.as_animation())
 <a href=#1618 id=1618 data-nosnippet>1618</a>                            .<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|()| <a href="api.rs.html#1612">SetPropertyError::WrongType</a>);
 <a href=#1619 id=1619 data-nosnippet>1619</a>                    }
-<a href=#1620 id=1620 data-nosnippet>1620</a>                } <span class="kw">else if </span>enclosing_component.description.original.is_global() {
+<a href=#1620 id=1620 data-nosnippet>1620</a>                } <span class="kw">else if </span><a href="#1586">enclosing_component</a>.description.original.is_global() {
 <a href=#1621 id=1621 data-nosnippet>1621</a>                    <span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(<a href="api.rs.html#1605">SetPropertyError::NoSuchProperty</a>);
 <a href=#1622 id=1622 data-nosnippet>1622</a>                }
 <a href=#1623 id=1623 data-nosnippet>1623</a>            };
@@ -1810,12 +1810,12 @@
 <a href=#1688 id=1688 data-nosnippet>1688</a>        <a href="#101">ComponentInstance::InstanceRef</a>(enclosing_component) =&gt; {
 <a href=#1689 id=1689 data-nosnippet>1689</a>            <span class="kw">let </span>description = <a href="#1688">enclosing_component</a>.description;
 <a href=#1690 id=1690 data-nosnippet>1690</a>            <span class="kw">let </span>element = <a href="#1682">element</a>.<a href="https://doc.rust-lang.org/nightly/core/cell/struct.RefCell.html#method.borrow">borrow</a>();
-<a href=#1691 id=1691 data-nosnippet>1691</a>            <span class="kw">if </span>element.id == element.enclosing_component.upgrade().unwrap().root_element.borrow().id
+<a href=#1691 id=1691 data-nosnippet>1691</a>            <span class="kw">if </span><a href="#1690">element</a>.id == <a href="#1690">element</a>.enclosing_component.<a href="https://doc.rust-lang.org/nightly/alloc/rc/struct.Weak.html#method.upgrade">upgrade</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap">unwrap</a>().root_element.<a href="https://doc.rust-lang.org/nightly/core/cell/struct.RefCell.html#method.borrow">borrow</a>().id
 <a href=#1692 id=1692 data-nosnippet>1692</a>            {
 <a href=#1693 id=1693 data-nosnippet>1693</a>                <span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(callback_offset) = <a href="#1689">description</a>.custom_callbacks.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.get">get</a>(<a href="#1683">callback_name</a>) {
 <a href=#1694 id=1694 data-nosnippet>1694</a>                    <span class="kw">let </span>callback = <a href="#1693">callback_offset</a>.apply(<span class="kw-2">&amp;*</span><a href="#1688">enclosing_component</a>.instance);
 <a href=#1695 id=1695 data-nosnippet>1695</a>                    <span class="kw">let </span>res = <a href="#1694">callback</a>.call(<a href="#1684">args</a>);
-<a href=#1696 id=1696 data-nosnippet>1696</a>                    <span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(<span class="kw">if </span>res != Value::Void {
+<a href=#1696 id=1696 data-nosnippet>1696</a>                    <span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(<span class="kw">if </span><a href="#1695">res</a> != <a href="api.rs.html#101">Value::Void</a> {
 <a href=#1697 id=1697 data-nosnippet>1697</a>                        <a href="#1695">res</a>
 <a href=#1698 id=1698 data-nosnippet>1698</a>                    } <span class="kw">else if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(Type::Callback(callback)) = <a href="#1689">description</a>
 <a href=#1699 id=1699 data-nosnippet>1699</a>                        .original
@@ -1832,7 +1832,7 @@
 <a href=#1710 id=1710 data-nosnippet>1710</a>                    } <span class="kw">else </span>{
 <a href=#1711 id=1711 data-nosnippet>1711</a>                        <a href="#1695">res</a>
 <a href=#1712 id=1712 data-nosnippet>1712</a>                    });
-<a href=#1713 id=1713 data-nosnippet>1713</a>                } <span class="kw">else if </span>enclosing_component.description.original.is_global() {
+<a href=#1713 id=1713 data-nosnippet>1713</a>                } <span class="kw">else if </span><a href="#1688">enclosing_component</a>.description.original.is_global() {
 <a href=#1714 id=1714 data-nosnippet>1714</a>                    <span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a>;
 <a href=#1715 id=1715 data-nosnippet>1715</a>                }
 <a href=#1716 id=1716 data-nosnippet>1716</a>            };
@@ -1861,13 +1861,13 @@
 <a href=#1739 id=1739 data-nosnippet>1739</a>        <a href="#101">ComponentInstance::InstanceRef</a>(enclosing_component) =&gt; {
 <a href=#1740 id=1740 data-nosnippet>1740</a>            <span class="kw">let </span>description = <a href="#1739">enclosing_component</a>.description;
 <a href=#1741 id=1741 data-nosnippet>1741</a>            <span class="kw">let </span>element = <a href="#1733">element</a>.<a href="https://doc.rust-lang.org/nightly/core/cell/struct.RefCell.html#method.borrow">borrow</a>();
-<a href=#1742 id=1742 data-nosnippet>1742</a>            <span class="kw">if </span>element.id == element.enclosing_component.upgrade().unwrap().root_element.borrow().id
+<a href=#1742 id=1742 data-nosnippet>1742</a>            <span class="kw">if </span><a href="#1741">element</a>.id == <a href="#1741">element</a>.enclosing_component.<a href="https://doc.rust-lang.org/nightly/alloc/rc/struct.Weak.html#method.upgrade">upgrade</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap">unwrap</a>().root_element.<a href="https://doc.rust-lang.org/nightly/core/cell/struct.RefCell.html#method.borrow">borrow</a>().id
 <a href=#1743 id=1743 data-nosnippet>1743</a>            {
 <a href=#1744 id=1744 data-nosnippet>1744</a>                <span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(callback_offset) = <a href="#1740">description</a>.custom_callbacks.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.get">get</a>(<a href="#1734">callback_name</a>) {
 <a href=#1745 id=1745 data-nosnippet>1745</a>                    <span class="kw">let </span>callback = <a href="#1744">callback_offset</a>.apply(<span class="kw-2">&amp;*</span><a href="#1739">enclosing_component</a>.instance);
 <a href=#1746 id=1746 data-nosnippet>1746</a>                    <a href="#1745">callback</a>.set_handler(<a href="#1735">handler</a>);
 <a href=#1747 id=1747 data-nosnippet>1747</a>                    <span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(());
-<a href=#1748 id=1748 data-nosnippet>1748</a>                } <span class="kw">else if </span>enclosing_component.description.original.is_global() {
+<a href=#1748 id=1748 data-nosnippet>1748</a>                } <span class="kw">else if </span><a href="#1739">enclosing_component</a>.description.original.is_global() {
 <a href=#1749 id=1749 data-nosnippet>1749</a>                    <span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(());
 <a href=#1750 id=1750 data-nosnippet>1750</a>                }
 <a href=#1751 id=1751 data-nosnippet>1751</a>            };
@@ -1917,7 +1917,7 @@
 <a href=#1795 id=1795 data-nosnippet>1795</a>    _guard: generativity::Guard&lt;<span class="lifetime">'new_id</span>&gt;,
 <a href=#1796 id=1796 data-nosnippet>1796</a>) -&gt; <a href="dynamic_item_tree.rs.html#2244-2247">InstanceRef</a>&lt;<span class="lifetime">'a</span>, <span class="lifetime">'new_id</span>&gt; {
 <a href=#1797 id=1797 data-nosnippet>1797</a>    <span class="kw">let </span>enclosing = <span class="kw-2">&amp;</span><a href="#1793">element</a>.<a href="https://doc.rust-lang.org/nightly/core/cell/struct.RefCell.html#method.borrow">borrow</a>().enclosing_component.<a href="https://doc.rust-lang.org/nightly/alloc/rc/struct.Weak.html#method.upgrade">upgrade</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap">unwrap</a>();
-<a href=#1798 id=1798 data-nosnippet>1798</a>    <span class="kw">if </span>Rc::ptr_eq(enclosing, <span class="kw-2">&amp;</span>component.description.original) {
+<a href=#1798 id=1798 data-nosnippet>1798</a>    <span class="kw">if </span><a href="https://doc.rust-lang.org/nightly/alloc/rc/struct.Rc.html#method.ptr_eq">Rc::ptr_eq</a>(<a href="#1797">enclosing</a>, <span class="kw-2">&amp;</span><a href="#1794">component</a>.description.original) {
 <a href=#1799 id=1799 data-nosnippet>1799</a>        <span class="comment">// Safety: new_id is an unique id
 <a href=#1800 id=1800 data-nosnippet>1800</a>        </span><span class="kw">unsafe </span>{
 <a href=#1801 id=1801 data-nosnippet>1801</a>            <a href="https://doc.rust-lang.org/nightly/core/intrinsics/fn.transmute.html">std::mem::transmute</a>::&lt;<a href="dynamic_item_tree.rs.html#2244-2247">InstanceRef</a>&lt;<span class="lifetime">'a</span>, <span class="lifetime">'old_id</span>&gt;, <a href="dynamic_item_tree.rs.html#2244-2247">InstanceRef</a>&lt;<span class="lifetime">'a</span>, <span class="lifetime">'new_id</span>&gt;&gt;(<a href="#1794">component</a>)
@@ -1944,7 +1944,7 @@
 <a href=#1822 id=1822 data-nosnippet>1822</a>    <span class="kw">let </span>enclosing = <span class="kw-2">&amp;</span><a href="#1818">element</a>.<a href="https://doc.rust-lang.org/nightly/core/cell/struct.RefCell.html#method.borrow">borrow</a>().enclosing_component.<a href="https://doc.rust-lang.org/nightly/alloc/rc/struct.Weak.html#method.upgrade">upgrade</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap">unwrap</a>();
 <a href=#1823 id=1823 data-nosnippet>1823</a>    <span class="kw">match </span><a href="#1819">component_instance</a> {
 <a href=#1824 id=1824 data-nosnippet>1824</a>        <a href="#101">ComponentInstance::InstanceRef</a>(component) =&gt; {
-<a href=#1825 id=1825 data-nosnippet>1825</a>            <span class="kw">if </span>enclosing.is_global() &amp;&amp; !Rc::ptr_eq(enclosing, <span class="kw-2">&amp;</span>component.description.original) {
+<a href=#1825 id=1825 data-nosnippet>1825</a>            <span class="kw">if </span><a href="#1822">enclosing</a>.is_global() &amp;&amp; !<a href="https://doc.rust-lang.org/nightly/alloc/rc/struct.Rc.html#method.ptr_eq">Rc::ptr_eq</a>(<a href="#1822">enclosing</a>, <span class="kw-2">&amp;</span><a href="#1824">component</a>.description.original) {
 <a href=#1826 id=1826 data-nosnippet>1826</a>                <span class="kw">let </span>root = <a href="#1824">component</a>.<a href="dynamic_item_tree.rs.html#2386-2400">toplevel_instance</a>(<a href="#1820">guard</a>);
 <a href=#1827 id=1827 data-nosnippet>1827</a>                <a href="#102">ComponentInstance::GlobalComponent</a>(
 <a href=#1828 id=1828 data-nosnippet>1828</a>                    <a href="#1826">root</a>.description
