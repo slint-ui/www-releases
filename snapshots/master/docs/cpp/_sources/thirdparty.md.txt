@@ -5144,7 +5144,7 @@ DEALINGS IN THE SOFTWARE.
 - [proc-macro2 1.0.95]( https://github.com/dtolnay/proc-macro2 )
 - [quote 1.0.40]( https://github.com/dtolnay/quote )
 - [rustix 0.38.44]( https://github.com/bytecodealliance/rustix )
-- [rustix 1.0.7]( https://github.com/bytecodealliance/rustix )
+- [rustix 1.0.8]( https://github.com/bytecodealliance/rustix )
 - [rustversion 1.0.21]( https://github.com/dtolnay/rustversion )
 - [semver 1.0.26]( https://github.com/dtolnay/semver )
 - [serde 1.0.219]( https://github.com/serde-rs/serde )
