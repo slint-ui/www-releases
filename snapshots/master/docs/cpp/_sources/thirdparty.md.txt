@@ -1253,7 +1253,7 @@ Apache License
 
 #### Used by:
 
-- [ab_glyph 0.2.30]( https://github.com/alexheretic/ab-glyph )
+- [ab_glyph 0.2.31]( https://github.com/alexheretic/ab-glyph )
 - [ab_glyph_rasterizer 0.1.9]( https://github.com/alexheretic/ab-glyph )
 - [gl_generator 0.14.0]( https://github.com/brendanzab/gl-rs/ )
 - [khronos_api 3.1.0]( https://github.com/brendanzab/gl-rs/ )
@@ -1732,7 +1732,7 @@ DEALINGS IN THE SOFTWARE.
 
 #### Used by:
 
-- [clipboard-win 5.4.0]( https://github.com/DoumanAsh/clipboard-win )
+- [clipboard-win 5.4.1]( https://github.com/DoumanAsh/clipboard-win )
 
 #### License Text
 
