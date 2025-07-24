@@ -74,6 +74,11 @@ Program Listing for File slint_enums_internal.h
        Programmatic,
        WindowActivation,
    };
+   enum class FocusPolicy {
+       TabAndClick,
+       TabOnly,
+       ClickOnly,
+   };
    enum class PointerEventKind {
        Cancel,
        Down,
