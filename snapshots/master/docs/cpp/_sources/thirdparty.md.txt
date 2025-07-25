@@ -881,7 +881,7 @@ Apache License
 - [ab_glyph_rasterizer 0.1.9]( https://github.com/alexheretic/ab-glyph )
 - [gl_generator 0.14.0]( https://github.com/brendanzab/gl-rs/ )
 - [khronos_api 3.1.0]( https://github.com/brendanzab/gl-rs/ )
-- [owned_ttf_parser 0.25.0]( https://github.com/alexheretic/owned-ttf-parser )
+- [owned_ttf_parser 0.25.1]( https://github.com/alexheretic/owned-ttf-parser )
 - [ryu 1.0.20]( https://github.com/dtolnay/ryu )
 
 #### License Text
