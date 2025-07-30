@@ -492,9 +492,10 @@ Program Listing for File slint_internal.h
    };
    
    struct MenuVTable {
-       void (*drop)(VRefMut<MenuVTable>);
        void (*sub_menu)(VRef<MenuVTable>, const MenuEntry*, SharedVector<MenuEntry>*);
        void (*activate)(VRef<MenuVTable>, const MenuEntry*);
+       Layout (*drop_in_place)(VRefMut<MenuVTable>);
+       void (*dealloc)(const MenuVTable*, uint8_t *ptr, Layout layout);
    };
    
    struct EasingCurve {
@@ -1019,7 +1020,7 @@ Program Listing for File slint_internal.h
    
    void slint_reorder_dialog_button_layout(GridLayoutCellData *cells, Slice<DialogButtonRole> roles);
    
-   void slint_menus_create_wrapper(const ItemTreeRc *menu_tree, VBox<MenuVTable> *result);
+   void slint_menus_create_wrapper(const ItemTreeRc *menu_tree, VRc<MenuVTable> *result);
    
    void slint_property_init(PropertyHandleOpaque *out);
    
@@ -1263,8 +1264,7 @@ Program Listing for File slint_internal.h
    bool slint_windowrc_supports_native_menu_bar(const WindowAdapterRcOpaque *handle);
    
    void slint_windowrc_setup_native_menu_bar(const WindowAdapterRcOpaque *handle,
-                                             MenuVTable *vtable,
-                                             void *menu_instance);
+                                             const VRc<MenuVTable> *menu_instance);
    
    float slint_windowrc_default_font_size(const WindowAdapterRcOpaque *handle);
    
