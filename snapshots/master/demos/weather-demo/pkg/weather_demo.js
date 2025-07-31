@@ -253,7 +253,7 @@ export function main() {
 }
 
 function __wbg_adapter_28(arg0, arg1, arg2) {
-    wasm.closure1949_externref_shim(arg0, arg1, arg2);
+    wasm.closure1950_externref_shim(arg0, arg1, arg2);
 }
 
 function __wbg_adapter_39(arg0, arg1, arg2) {
@@ -1640,23 +1640,23 @@ function __wbg_get_imports() {
         return ret;
     };
     imports.wbg.__wbindgen_closure_wrapper4798 = function(arg0, arg1, arg2) {
-        const ret = makeClosure(arg0, arg1, 1950, __wbg_adapter_28);
+        const ret = makeClosure(arg0, arg1, 1951, __wbg_adapter_28);
         return ret;
     };
     imports.wbg.__wbindgen_closure_wrapper4800 = function(arg0, arg1, arg2) {
-        const ret = makeClosure(arg0, arg1, 1950, __wbg_adapter_28);
+        const ret = makeClosure(arg0, arg1, 1951, __wbg_adapter_28);
         return ret;
     };
     imports.wbg.__wbindgen_closure_wrapper4802 = function(arg0, arg1, arg2) {
-        const ret = makeClosure(arg0, arg1, 1950, __wbg_adapter_28);
+        const ret = makeClosure(arg0, arg1, 1951, __wbg_adapter_28);
         return ret;
     };
     imports.wbg.__wbindgen_closure_wrapper4804 = function(arg0, arg1, arg2) {
-        const ret = makeClosure(arg0, arg1, 1950, __wbg_adapter_28);
+        const ret = makeClosure(arg0, arg1, 1951, __wbg_adapter_28);
         return ret;
     };
     imports.wbg.__wbindgen_closure_wrapper4806 = function(arg0, arg1, arg2) {
-        const ret = makeClosure(arg0, arg1, 1950, __wbg_adapter_28);
+        const ret = makeClosure(arg0, arg1, 1951, __wbg_adapter_28);
         return ret;
     };
     imports.wbg.__wbindgen_closure_wrapper5671 = function(arg0, arg1, arg2) {
@@ -1695,7 +1695,7 @@ function __wbg_get_imports() {
         const ret = makeMutClosure(arg0, arg1, 2296, __wbg_adapter_39);
         return ret;
     };
-    imports.wbg.__wbindgen_closure_wrapper6385 = function(arg0, arg1, arg2) {
+    imports.wbg.__wbindgen_closure_wrapper6386 = function(arg0, arg1, arg2) {
         const ret = makeMutClosure(arg0, arg1, 2379, __wbg_adapter_60);
         return ret;
     };
