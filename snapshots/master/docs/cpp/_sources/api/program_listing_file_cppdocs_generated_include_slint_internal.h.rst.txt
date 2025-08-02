@@ -220,6 +220,10 @@ Program Listing for File slint_internal.h
                                        const FocusEvent*,
                                        const WindowAdapterRc *window_adapter,
                                        const ItemRc *self_rc);
+       KeyEventResult (*capture_key_event)(Pin<VRef<ItemVTable>>,
+                                           const KeyEvent*,
+                                           const WindowAdapterRc *window_adapter,
+                                           const ItemRc *self_rc);
        KeyEventResult (*key_event)(Pin<VRef<ItemVTable>>,
                                    const KeyEvent*,
                                    const WindowAdapterRc *window_adapter,
@@ -767,6 +771,8 @@ Program Listing for File slint_internal.h
        Property<FocusPolicy> focus_policy;
        private_api::CallbackHelper<KeyEvent, EventResult> key_pressed;
        private_api::CallbackHelper<KeyEvent, EventResult> key_released;
+       private_api::CallbackHelper<KeyEvent, EventResult> capture_key_pressed;
+       private_api::CallbackHelper<KeyEvent, EventResult> capture_key_released;
        private_api::CallbackHelper<FocusReason> focus_changed_event;
        private_api::CallbackHelper<FocusReason> focus_gained;
        private_api::CallbackHelper<FocusReason> focus_lost;

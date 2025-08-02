@@ -79,16 +79,19 @@
                                 <a class="function" href="#Image.load_from_svg_data">load_from_svg_data</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Image.height">height</a>
+                                <a class="function" href="#Image.load_from_array">load_from_array</a>
                         </li>
                         <li>
                                 <a class="variable" href="#Image.size">size</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Image.path">path</a>
+                                <a class="variable" href="#Image.height">height</a>
                         </li>
                         <li>
                                 <a class="variable" href="#Image.width">width</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Image.path">path</a>
                         </li>
                 </ul>
 
@@ -112,10 +115,10 @@
                                 <a class="function" href="#Color.with_alpha">with_alpha</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Color.alpha">alpha</a>
+                                <a class="variable" href="#Color.green">green</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Color.green">green</a>
+                                <a class="variable" href="#Color.alpha">alpha</a>
                         </li>
                         <li>
                                 <a class="variable" href="#Color.blue">blue</a>
@@ -211,10 +214,10 @@
                                 <a class="function" href="#Timer.restart">restart</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Timer.running">running</a>
+                                <a class="variable" href="#Timer.interval">interval</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Timer.interval">interval</a>
+                                <a class="variable" href="#Timer.running">running</a>
                         </li>
                 </ul>
 
@@ -1456,15 +1459,63 @@ objects from a path to an image file on disk.</p>
 
 
                             </div>
-                            <div id="Image.height" class="classattr">
-                                <div class="attr variable">
-            <span class="name">height</span>
+                            <div id="Image.load_from_array" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">load_from_array</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">array</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
-    <a class="headerlink" href="#Image.height"></a>
+    <a class="headerlink" href="#Image.load_from_array"></a>
     
-            <div class="docstring"><p>The height of the image in pixels.</p>
+            <div class="docstring"><p>Creates a new image from an array-like object that implements the <a href="https://docs.python.org/3/c-api/buffer.html">Buffer Protocol</a>.
+Use this function to import images created by third-party modules such as matplotlib or Pillow.</p>
+
+<p>The array must satisfy certain contraints to represent an image:</p>
+
+<ul>
+<li>The buffer's format needs to be <code>B</code> (unsigned char)</li>
+<li>The shape must be a tuple of (height, width, bytes-per-pixel)</li>
+<li>If a stride is defined, the row stride must be equal to width * bytes-per-pixel, and the column stride must equal the bytes-per-pixel.</li>
+<li>A value of 3 for bytes-per-pixel is interpreted as RGB image, a value of 4 means RGBA.</li>
+</ul>
+
+<p>The image is created by performing a deep copy of the array's data. Subsequent changes to the buffer are not automatically
+reflected in a previously created Image.</p>
+
+<p>Example of importing a matplot figure into an image:</p>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">slint</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.backends.backend_agg</span><span class="w"> </span><span class="kn">import</span> <span class="n">FigureCanvasAgg</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.figure</span><span class="w"> </span><span class="kn">import</span> <span class="n">Figure</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">Figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">canvas</span> <span class="o">=</span> <span class="n">FigureCanvasAgg</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">canvas</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+
+<span class="n">buffer</span> <span class="o">=</span> <span class="n">canvas</span><span class="o">.</span><span class="n">buffer_rgba</span><span class="p">()</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n"><a href="#Image.load_from_array">slint.Image.load_from_array</a></span><span class="p">(</span><span class="n">buffer</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>Example of loading an image with Pillow:</p>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">slint</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PIL</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">pil_img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;hello.jpeg&quot;</span><span class="p">)</span>
+<span class="n">array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">pil_img</span><span class="p">)</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n"><a href="#Image.load_from_array">slint.Image.load_from_array</a></span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
+</code></pre>
+</div>
 </div>
 
 
@@ -1482,15 +1533,15 @@ objects from a path to an image file on disk.</p>
 
 
                             </div>
-                            <div id="Image.path" class="classattr">
+                            <div id="Image.height" class="classattr">
                                 <div class="attr variable">
-            <span class="name">path</span>
+            <span class="name">height</span>
 
         
     </div>
-    <a class="headerlink" href="#Image.path"></a>
+    <a class="headerlink" href="#Image.height"></a>
     
-            <div class="docstring"><p>The path of the image if it was loaded from disk, or None.</p>
+            <div class="docstring"><p>The height of the image in pixels.</p>
 </div>
 
 
@@ -1504,6 +1555,19 @@ objects from a path to an image file on disk.</p>
     <a class="headerlink" href="#Image.width"></a>
     
             <div class="docstring"><p>The width of the image in pixels.</p>
+</div>
+
+
+                            </div>
+                            <div id="Image.path" class="classattr">
+                                <div class="attr variable">
+            <span class="name">path</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Image.path"></a>
+    
+            <div class="docstring"><p>The path of the image if it was loaded from disk, or None.</p>
 </div>
 
 
@@ -1605,19 +1669,6 @@ is applied to <code>other</code>.</p>
 
 
                             </div>
-                            <div id="Color.alpha" class="classattr">
-                                <div class="attr variable">
-            <span class="name">alpha</span>
-
-        
-    </div>
-    <a class="headerlink" href="#Color.alpha"></a>
-    
-            <div class="docstring"><p>The alpha channel.</p>
-</div>
-
-
-                            </div>
                             <div id="Color.green" class="classattr">
                                 <div class="attr variable">
             <span class="name">green</span>
@@ -1627,6 +1678,19 @@ is applied to <code>other</code>.</p>
     <a class="headerlink" href="#Color.green"></a>
     
             <div class="docstring"><p>The green channel.</p>
+</div>
+
+
+                            </div>
+                            <div id="Color.alpha" class="classattr">
+                                <div class="attr variable">
+            <span class="name">alpha</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Color.alpha"></a>
+    
+            <div class="docstring"><p>The alpha channel.</p>
 </div>
 
 
@@ -2257,19 +2321,6 @@ is re-calculated to be in the specified duration relative to when this function 
 
 
                             </div>
-                            <div id="Timer.running" class="classattr">
-                                <div class="attr variable">
-            <span class="name">running</span>
-
-        
-    </div>
-    <a class="headerlink" href="#Timer.running"></a>
-    
-            <div class="docstring"><p>Set to true if the timer is running; false otherwise.</p>
-</div>
-
-
-                            </div>
                             <div id="Timer.interval" class="classattr">
                                 <div class="attr variable">
             <span class="name">interval</span>
@@ -2283,6 +2334,19 @@ is re-calculated to be in the specified duration relative to when this function 
 <p>When setting this property and the timer is running (see <code><a href="#Timer.running">Timer.running</a></code>),
 then the time when the callback will be next invoked is re-calculated to be in the
 specified duration relative to when this property is set.</p>
+</div>
+
+
+                            </div>
+                            <div id="Timer.running" class="classattr">
+                                <div class="attr variable">
+            <span class="name">running</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Timer.running"></a>
+    
+            <div class="docstring"><p>Set to true if the timer is running; false otherwise.</p>
 </div>
 
 
