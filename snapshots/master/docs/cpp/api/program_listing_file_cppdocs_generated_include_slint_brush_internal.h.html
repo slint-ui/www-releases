@@ -456,11 +456,14 @@
 
 <span class="k">using</span><span class="w"> </span><span class="n">RadialGradientBrush</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SharedVector</span><span class="o">&lt;</span><span class="n">GradientStop</span><span class="o">&gt;</span><span class="p">;</span>
 
+<span class="k">using</span><span class="w"> </span><span class="n">ConicGradientBrush</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SharedVector</span><span class="o">&lt;</span><span class="n">GradientStop</span><span class="o">&gt;</span><span class="p">;</span>
+
 <span class="k">struct</span><span class="w"> </span><span class="nc">Brush</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Tag</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">SolidColor</span><span class="p">,</span>
 <span class="w">        </span><span class="n">LinearGradient</span><span class="p">,</span>
 <span class="w">        </span><span class="n">RadialGradient</span><span class="p">,</span>
+<span class="w">        </span><span class="n">ConicGradient</span><span class="p">,</span>
 <span class="w">    </span><span class="p">};</span>
 
 <span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">SolidColor_Body</span><span class="w"> </span><span class="p">{</span>
@@ -496,11 +499,23 @@
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">};</span>
 
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">ConicGradient_Body</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">ConicGradientBrush</span><span class="w"> </span><span class="n">_0</span><span class="p">;</span>
+
+<span class="w">        </span><span class="kt">bool</span><span class="w"> </span><span class="k">operator</span><span class="o">==</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">ConicGradient_Body</span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">_0</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="n">_0</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="kt">bool</span><span class="w"> </span><span class="k">operator</span><span class="o">!=</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">ConicGradient_Body</span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">_0</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="n">_0</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">};</span>
+
 <span class="w">    </span><span class="n">Tag</span><span class="w"> </span><span class="n">tag</span><span class="p">;</span>
 <span class="w">    </span><span class="k">union</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">SolidColor_Body</span><span class="w"> </span><span class="n">solid_color</span><span class="p">;</span>
 <span class="w">        </span><span class="n">LinearGradient_Body</span><span class="w"> </span><span class="n">linear_gradient</span><span class="p">;</span>
 <span class="w">        </span><span class="n">RadialGradient_Body</span><span class="w"> </span><span class="n">radial_gradient</span><span class="p">;</span>
+<span class="w">        </span><span class="n">ConicGradient_Body</span><span class="w"> </span><span class="n">conic_gradient</span><span class="p">;</span>
 <span class="w">    </span><span class="p">};</span>
 
 <span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">Brush</span><span class="w"> </span><span class="nf">SolidColor</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Color</span><span class="w"> </span><span class="o">&amp;</span><span class="n">_0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -536,6 +551,17 @@
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">tag</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">Tag</span><span class="o">::</span><span class="n">RadialGradient</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">Brush</span><span class="w"> </span><span class="nf">ConicGradient</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">ConicGradientBrush</span><span class="w"> </span><span class="o">&amp;</span><span class="n">_0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Brush</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
+<span class="w">        </span><span class="o">::</span><span class="k">new</span><span class="w"> </span><span class="p">(</span><span class="o">&amp;</span><span class="n">result</span><span class="p">.</span><span class="n">conic_gradient</span><span class="p">.</span><span class="n">_0</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">ConicGradientBrush</span><span class="p">)(</span><span class="n">_0</span><span class="p">);</span>
+<span class="w">        </span><span class="n">result</span><span class="p">.</span><span class="n">tag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Tag</span><span class="o">::</span><span class="n">ConicGradient</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">IsConicGradient</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">tag</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">Tag</span><span class="o">::</span><span class="n">ConicGradient</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
 <span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="k">operator</span><span class="o">==</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Brush</span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tag</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="n">tag</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
@@ -544,6 +570,7 @@
 <span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="no">Tag</span><span class="o">::</span><span class="no">SolidColor</span><span class="p">:</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">solid_color</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="n">solid_color</span><span class="p">;</span>
 <span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="no">Tag</span><span class="o">::</span><span class="no">LinearGradient</span><span class="p">:</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">linear_gradient</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="n">linear_gradient</span><span class="p">;</span>
 <span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="no">Tag</span><span class="o">::</span><span class="no">RadialGradient</span><span class="p">:</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">radial_gradient</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="n">radial_gradient</span><span class="p">;</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="no">Tag</span><span class="o">::</span><span class="no">ConicGradient</span><span class="p">:</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">conic_gradient</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="n">conic_gradient</span><span class="p">;</span>
 
 <span class="w">        </span><span class="p">}</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
@@ -565,6 +592,7 @@
 <span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="no">Tag</span><span class="o">::</span><span class="no">SolidColor</span><span class="p">:</span><span class="w"> </span><span class="n">solid_color</span><span class="p">.</span><span class="o">~</span><span class="n">SolidColor_Body</span><span class="p">();</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
 <span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="no">Tag</span><span class="o">::</span><span class="no">LinearGradient</span><span class="p">:</span><span class="w"> </span><span class="n">linear_gradient</span><span class="p">.</span><span class="o">~</span><span class="n">LinearGradient_Body</span><span class="p">();</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
 <span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="no">Tag</span><span class="o">::</span><span class="no">RadialGradient</span><span class="p">:</span><span class="w"> </span><span class="n">radial_gradient</span><span class="p">.</span><span class="o">~</span><span class="n">RadialGradient_Body</span><span class="p">();</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="no">Tag</span><span class="o">::</span><span class="no">ConicGradient</span><span class="p">:</span><span class="w"> </span><span class="n">conic_gradient</span><span class="p">.</span><span class="o">~</span><span class="n">ConicGradient_Body</span><span class="p">();</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
 
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
@@ -575,6 +603,7 @@
 <span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="no">Tag</span><span class="o">::</span><span class="no">SolidColor</span><span class="p">:</span><span class="w"> </span><span class="o">::</span><span class="k">new</span><span class="w"> </span><span class="p">(</span><span class="o">&amp;</span><span class="n">solid_color</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">SolidColor_Body</span><span class="p">)(</span><span class="n">other</span><span class="p">.</span><span class="n">solid_color</span><span class="p">);</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
 <span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="no">Tag</span><span class="o">::</span><span class="no">LinearGradient</span><span class="p">:</span><span class="w"> </span><span class="o">::</span><span class="k">new</span><span class="w"> </span><span class="p">(</span><span class="o">&amp;</span><span class="n">linear_gradient</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">LinearGradient_Body</span><span class="p">)(</span><span class="n">other</span><span class="p">.</span><span class="n">linear_gradient</span><span class="p">);</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
 <span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="no">Tag</span><span class="o">::</span><span class="no">RadialGradient</span><span class="p">:</span><span class="w"> </span><span class="o">::</span><span class="k">new</span><span class="w"> </span><span class="p">(</span><span class="o">&amp;</span><span class="n">radial_gradient</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">RadialGradient_Body</span><span class="p">)(</span><span class="n">other</span><span class="p">.</span><span class="n">radial_gradient</span><span class="p">);</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="no">Tag</span><span class="o">::</span><span class="no">ConicGradient</span><span class="p">:</span><span class="w"> </span><span class="o">::</span><span class="k">new</span><span class="w"> </span><span class="p">(</span><span class="o">&amp;</span><span class="n">conic_gradient</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">ConicGradient_Body</span><span class="p">)(</span><span class="n">other</span><span class="p">.</span><span class="n">conic_gradient</span><span class="p">);</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
 
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>

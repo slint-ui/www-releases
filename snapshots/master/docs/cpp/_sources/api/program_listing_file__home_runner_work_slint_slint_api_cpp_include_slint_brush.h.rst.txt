@@ -90,6 +90,35 @@ Program Listing for File slint_brush.h
        }
    };
    
+   class ConicGradientBrush
+   {
+   public:
+       ConicGradientBrush() = default;
+       ConicGradientBrush(const GradientStop *firstStop, int stopCount)
+           : inner(make_conic_gradient(firstStop, stopCount))
+       {
+       }
+   
+       int stopCount() const { return int(inner.size()); }
+   
+       const GradientStop *stopsBegin() const { return inner.begin(); }
+       const GradientStop *stopsEnd() const { return inner.end(); }
+   
+   private:
+       cbindgen_private::types::ConicGradientBrush inner;
+   
+       friend class slint::Brush;
+   
+       static SharedVector<private_api::GradientStop>
+       make_conic_gradient(const GradientStop *firstStop, int stopCount)
+       {
+           SharedVector<private_api::GradientStop> gradient;
+           for (int i = 0; i < stopCount; ++i, ++firstStop)
+               gradient.push_back(*firstStop);
+           return gradient;
+       }
+   };
+   
    }
    
    class Brush
@@ -104,6 +133,11 @@ Program Listing for File slint_brush.h
    
        Brush(const private_api::RadialGradientBrush &gradient)
            : data(Inner::RadialGradient(gradient.inner))
+       {
+       }
+   
+       Brush(const private_api::ConicGradientBrush &gradient)
+           : data(Inner::ConicGradient(gradient.inner))
        {
        }
    
@@ -143,6 +177,11 @@ Program Listing for File slint_brush.h
                result.inner = data.radial_gradient._0[0].color;
            }
            break;
+       case Tag::ConicGradient:
+           if (data.conic_gradient._0.size() > 0) {
+               result.inner = data.conic_gradient._0[0].color;
+           }
+           break;
        }
        return result;
    }
@@ -167,6 +206,12 @@ Program Listing for File slint_brush.h
                                                              &result.data.radial_gradient._0[i].color);
            }
            break;
+       case Tag::ConicGradient:
+           for (std::size_t i = 0; i < data.conic_gradient._0.size(); ++i) {
+               cbindgen_private::types::slint_color_brighter(&data.conic_gradient._0[i].color, factor,
+                                                             &result.data.conic_gradient._0[i].color);
+           }
+           break;
        }
        return result;
    }
@@ -189,6 +234,12 @@ Program Listing for File slint_brush.h
            for (std::size_t i = 0; i < data.radial_gradient._0.size(); ++i) {
                cbindgen_private::types::slint_color_darker(&data.radial_gradient._0[i].color, factor,
                                                            &result.data.radial_gradient._0[i].color);
+           }
+           break;
+       case Tag::ConicGradient:
+           for (std::size_t i = 0; i < data.conic_gradient._0.size(); ++i) {
+               cbindgen_private::types::slint_color_darker(&data.conic_gradient._0[i].color, factor,
+                                                           &result.data.conic_gradient._0[i].color);
            }
            break;
        }
@@ -217,6 +268,13 @@ Program Listing for File slint_brush.h
                        &result.data.radial_gradient._0[i].color);
            }
            break;
+       case Tag::ConicGradient:
+           for (std::size_t i = 0; i < data.conic_gradient._0.size(); ++i) {
+               cbindgen_private::types::slint_color_transparentize(
+                       &data.conic_gradient._0[i].color, factor,
+                       &result.data.conic_gradient._0[i].color);
+           }
+           break;
        }
        return result;
    }
@@ -241,6 +299,13 @@ Program Listing for File slint_brush.h
                cbindgen_private::types::slint_color_with_alpha(
                        &data.radial_gradient._0[i].color, alpha,
                        &result.data.radial_gradient._0[i].color);
+           }
+           break;
+       case Tag::ConicGradient:
+           for (std::size_t i = 0; i < data.conic_gradient._0.size(); ++i) {
+               cbindgen_private::types::slint_color_with_alpha(
+                       &data.conic_gradient._0[i].color, alpha,
+                       &result.data.conic_gradient._0[i].color);
            }
            break;
        }

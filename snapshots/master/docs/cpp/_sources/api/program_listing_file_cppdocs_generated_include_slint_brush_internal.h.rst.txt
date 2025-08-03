@@ -43,11 +43,14 @@ Program Listing for File slint_brush_internal.h
    
    using RadialGradientBrush = SharedVector<GradientStop>;
    
+   using ConicGradientBrush = SharedVector<GradientStop>;
+   
    struct Brush {
        enum class Tag {
            SolidColor,
            LinearGradient,
            RadialGradient,
+           ConicGradient,
        };
    
        struct SolidColor_Body {
@@ -83,11 +86,23 @@ Program Listing for File slint_brush_internal.h
            }
        };
    
+       struct ConicGradient_Body {
+           ConicGradientBrush _0;
+   
+           bool operator==(const ConicGradient_Body& other) const {
+               return _0 == other._0;
+           }
+           bool operator!=(const ConicGradient_Body& other) const {
+               return _0 != other._0;
+           }
+       };
+   
        Tag tag;
        union {
            SolidColor_Body solid_color;
            LinearGradient_Body linear_gradient;
            RadialGradient_Body radial_gradient;
+           ConicGradient_Body conic_gradient;
        };
    
        static Brush SolidColor(const Color &_0) {
@@ -123,6 +138,17 @@ Program Listing for File slint_brush_internal.h
            return tag == Tag::RadialGradient;
        }
    
+       static Brush ConicGradient(const ConicGradientBrush &_0) {
+           Brush result;
+           ::new (&result.conic_gradient._0) (ConicGradientBrush)(_0);
+           result.tag = Tag::ConicGradient;
+           return result;
+       }
+   
+       bool IsConicGradient() const {
+           return tag == Tag::ConicGradient;
+       }
+   
        bool operator==(const Brush& other) const {
            if (tag != other.tag) {
                return false;
@@ -131,6 +157,7 @@ Program Listing for File slint_brush_internal.h
                case Tag::SolidColor: return solid_color == other.solid_color;
                case Tag::LinearGradient: return linear_gradient == other.linear_gradient;
                case Tag::RadialGradient: return radial_gradient == other.radial_gradient;
+               case Tag::ConicGradient: return conic_gradient == other.conic_gradient;
    
            }
            return true;
@@ -152,6 +179,7 @@ Program Listing for File slint_brush_internal.h
                case Tag::SolidColor: solid_color.~SolidColor_Body(); break;
                case Tag::LinearGradient: linear_gradient.~LinearGradient_Body(); break;
                case Tag::RadialGradient: radial_gradient.~RadialGradient_Body(); break;
+               case Tag::ConicGradient: conic_gradient.~ConicGradient_Body(); break;
    
            }
        }
@@ -162,6 +190,7 @@ Program Listing for File slint_brush_internal.h
                case Tag::SolidColor: ::new (&solid_color) (SolidColor_Body)(other.solid_color); break;
                case Tag::LinearGradient: ::new (&linear_gradient) (LinearGradient_Body)(other.linear_gradient); break;
                case Tag::RadialGradient: ::new (&radial_gradient) (RadialGradient_Body)(other.radial_gradient); break;
+               case Tag::ConicGradient: ::new (&conic_gradient) (ConicGradient_Body)(other.conic_gradient); break;
    
            }
        }
