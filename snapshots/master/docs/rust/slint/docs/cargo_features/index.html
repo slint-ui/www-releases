@@ -280,6 +280,13 @@ by a feature with a similar name but the winit version suffix being bumped.</p>
 <p>To avoid unintended compilation failures, we recommend to use the <a href="https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html#tilde-requirements">tilde requirement</a>
 in your <code>Cargo.toml</code> when enabling this feature:</p>
 <div class="example-wrap"><pre class="language-toml"><code>slint = { version = &quot;~1.12&quot;, features = [&quot;unstable-winit-030&quot;] }</code></pre></div></li>
+<li>
+<p><strong><code>unstable-input-09</code></strong> —  Enable support for exposing <a href="https://docs.rs/input/latest/input/index.html">libinput</a> related APIs in the LinuxKMS backend.</p>
+<p>APIs guarded with this feature are <em>NOT</em> subject to the usual Slint API stability guarantees. This feature as well as the APIs changed or removed
+in future minor releases of Slint, likely to be replaced by a feature with a similar name but the input version suffix being bumped.</p>
+<p>To avoid unintended compilation failures, we recommend to use the <a href="https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html#tilde-requirements">tilde requirement</a>
+in your <code>Cargo.toml</code> when enabling this feature:</p>
+<div class="example-wrap"><pre class="language-toml"><code>slint = { version = &quot;~1.13&quot;, features = [&quot;unstable-input-09&quot;] }</code></pre></div></li>
 </ul>
 <p>More information about the backend and renderers is available in the
 <a href="https://releases.slint.dev/1.13.0/docs/slint/guide/backends-and-renderers/backends_and_renderers/">Slint Documentation</a>“)]</p>

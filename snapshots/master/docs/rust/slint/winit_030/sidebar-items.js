@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"enum":["WinitWindowEventResult"],"struct":["SlintEvent"],"trait":["WinitWindowAccessor"],"type":["EventLoopBuilder"]};
+window.SIDEBAR_ITEMS = {"enum":["WinitWindowEventResult"],"struct":["SlintEvent"],"trait":["CustomApplicationHandler","WinitWindowAccessor"],"type":["EventLoopBuilder"]};

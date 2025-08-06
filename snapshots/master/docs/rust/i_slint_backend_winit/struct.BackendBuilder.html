@@ -144,7 +144,7 @@ slint::platform::set_platform(Box::new(backend));</code></pre></div>
 loop during a subsequent call to <a href="struct.BackendBuilder.html#method.build" title="method i_slint_backend_winit::BackendBuilder::build"><code>Self::build</code></a>.</p>
 </div></details><details class="toggle method-toggle" open><summary><section id="method.with_custom_application_handler" class="method"><a class="src rightside" href="../src/i_slint_backend_winit/lib.rs.html#330-336">Source</a><h4 class="code-header">pub fn <a href="#method.with_custom_application_handler" class="fn">with_custom_application_handler</a>(
     self,
-    handler: impl <a class="trait" href="trait.CustomApplicationHandler.html" title="trait i_slint_backend_winit::CustomApplicationHandler">CustomApplicationHandler</a> + 'static,
+    handler: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html" title="struct alloc::boxed::Box">Box</a>&lt;dyn <a class="trait" href="trait.CustomApplicationHandler.html" title="trait i_slint_backend_winit::CustomApplicationHandler">CustomApplicationHandler</a> + 'static&gt;,
 ) -&gt; Self</h4></section></summary><div class="docblock"><p>Configures this builder to use the specified <a href="trait.CustomApplicationHandler.html" title="trait i_slint_backend_winit::CustomApplicationHandler"><code>CustomApplicationHandler</code></a>.</p>
 <p>This allow application developer to intercept events from winit.
 Similar to <a href="https://docs.rs/winit/0.30/winit/application/trait.ApplicationHandler.html" title="trait winit::application::ApplicationHandler"><code>winit::application::ApplicationHandler</code></a>.</p>
