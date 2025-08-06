@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"enum":["BlasGeometries","BuildAccelerationStructureError","CreateBlasError","CreateTlasError","TraceBlasGeometries","ValidateAsActionsError"],"struct":["BlasBuildEntry","BlasTriangleGeometry","TlasBuildEntry","TlasInstance","TlasPackage","TraceBlasBuildEntry","TraceBlasTriangleGeometry","TraceTlasInstance","TraceTlasPackage"]};
