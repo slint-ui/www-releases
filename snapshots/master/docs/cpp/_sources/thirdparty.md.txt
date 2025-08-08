@@ -2501,7 +2501,7 @@ DEALINGS IN THE SOFTWARE.
 
 #### Used by:
 
-- [hashbrown 0.15.4]( https://github.com/rust-lang/hashbrown )
+- [hashbrown 0.15.5]( https://github.com/rust-lang/hashbrown )
 
 #### License Text
 
@@ -4538,7 +4538,7 @@ SOFTWARE.
 
 #### Used by:
 
-- [bytemuck 1.23.1]( https://github.com/Lokathor/bytemuck )
+- [bytemuck 1.23.2]( https://github.com/Lokathor/bytemuck )
 - [bytemuck_derive 1.10.1]( https://github.com/Lokathor/bytemuck )
 
 #### License Text
