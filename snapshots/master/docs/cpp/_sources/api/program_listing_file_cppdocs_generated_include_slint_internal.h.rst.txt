@@ -1026,7 +1026,9 @@ Program Listing for File slint_internal.h
    
    void slint_reorder_dialog_button_layout(GridLayoutCellData *cells, Slice<DialogButtonRole> roles);
    
-   void slint_menus_create_wrapper(const ItemTreeRc *menu_tree, VRc<MenuVTable> *result);
+   void slint_menus_create_wrapper(const ItemTreeRc *menu_tree,
+                                   VRc<MenuVTable> *result,
+                                   bool (*condition)(const ItemTreeRc *menu_tree));
    
    void slint_property_init(PropertyHandleOpaque *out);
    

@@ -131,6 +131,10 @@ Program Listing for File slint_interpreter_internal.h
    
    const Image *slint_interpreter_value_to_image(const Value *val);
    
+   bool slint_interpreter_value_enum_to_string(const Value *val, SharedString *result);
+   
+   Box<Value> slint_interpreter_value_new_enum(Slice<uint8_t> name, Slice<uint8_t> value);
+   
    void slint_interpreter_struct_new(StructOpaque *val);
    
    void slint_interpreter_struct_clone(const StructOpaque *other, StructOpaque *val);

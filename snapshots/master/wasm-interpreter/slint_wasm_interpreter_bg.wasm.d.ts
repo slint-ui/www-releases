@@ -30,7 +30,7 @@ export const __wbindgen_free: (a: number, b: number, c: number) => void;
 export const __wbindgen_export_6: WebAssembly.Table;
 export const __externref_table_dealloc: (a: number) => void;
 export const closure135_externref_shim: (a: number, b: number, c: any) => void;
-export const _dyn_core__ops__function__FnMut_____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__h5dde47ab537040ce: (a: number, b: number) => void;
+export const _dyn_core__ops__function__FnMut_____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__ha4c7439ff38fc9a3: (a: number, b: number) => void;
 export const closure577_externref_shim: (a: number, b: number, c: any) => void;
 export const closure588_externref_shim: (a: number, b: number, c: any, d: any) => void;
 export const __wbindgen_start: () => void;
