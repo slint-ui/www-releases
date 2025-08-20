@@ -29,9 +29,6 @@ Program Listing for File slint_string_internal.h
        T *ptr;
        uintptr_t len;
        const T &operator[](int i) const { return ptr[i]; }
-           constexpr Slice() = default;
-           constexpr Slice(const T *ptr, uintptr_t len) : ptr(ptr ? const_cast<T*>(ptr) : reinterpret_cast<T*>(sizeof(T))), len(len) {}
-           
    };
    
    extern "C" {

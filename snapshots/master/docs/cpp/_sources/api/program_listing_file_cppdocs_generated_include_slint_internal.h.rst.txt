@@ -1274,6 +1274,11 @@ Program Listing for File slint_internal.h
    void slint_windowrc_setup_native_menu_bar(const WindowAdapterRcOpaque *handle,
                                              const VRc<MenuVTable> *menu_instance);
    
+   bool slint_windowrc_show_native_popup_menu(const WindowAdapterRcOpaque *handle,
+                                              const VRc<MenuVTable> *context_menu,
+                                              LogicalPosition position,
+                                              const ItemRc *parent_item);
+   
    float slint_windowrc_default_font_size(const WindowAdapterRcOpaque *handle);
    
    void slint_windowrc_dispatch_key_event(const WindowAdapterRcOpaque *handle,

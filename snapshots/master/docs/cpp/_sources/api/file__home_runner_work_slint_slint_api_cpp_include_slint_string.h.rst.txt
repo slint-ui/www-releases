@@ -27,6 +27,8 @@ Includes
 
 - ``slint_string_internal.h`` (:ref:`file_cppdocs_generated_include_slint_string_internal.h`)
 
+- ``span``
+
 - ``string_view``
 
 
