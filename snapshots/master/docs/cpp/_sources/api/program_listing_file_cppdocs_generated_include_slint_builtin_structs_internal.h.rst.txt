@@ -90,6 +90,8 @@ Program Listing for File slint_builtin_structs_internal.h
        Image icon;
        SharedString id;
        bool enabled;
+       bool checkable;
+       bool checked;
        bool has_sub_menu;
        bool is_separator;
        friend bool operator==(const MenuEntry&, const MenuEntry&) = default;

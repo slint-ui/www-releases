@@ -896,6 +896,8 @@ Program Listing for File slint_internal.h
        Property<SharedString> title;
        private_api::CallbackHelper<void> activated;
        Property<bool> enabled;
+       Property<bool> checkable;
+       Property<bool> checked;
        Property<Image> icon;
    };
    
