@@ -235,11 +235,6 @@ Program Listing for File slint_window.h
            cbindgen_private::slint_register_bitmap_font(&inner, &font);
        }
    
-       inline float default_font_size() const
-       {
-           return cbindgen_private::slint_windowrc_default_font_size(&inner);
-       }
-   
        const cbindgen_private::WindowAdapterRcOpaque &handle() const { return inner; }
    
    private:

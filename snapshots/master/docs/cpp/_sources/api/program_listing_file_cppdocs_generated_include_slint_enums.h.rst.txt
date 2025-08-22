@@ -102,4 +102,5 @@ Program Listing for File slint_enums.h
    constexpr std::u8string_view SysReq = u8"\uf731";
    constexpr std::u8string_view Stop = u8"\uf734";
    constexpr std::u8string_view Menu = u8"\uf735";
+   constexpr std::u8string_view Back = u8"\uf748";
    }

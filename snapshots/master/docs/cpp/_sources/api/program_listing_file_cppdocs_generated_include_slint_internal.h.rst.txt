@@ -1281,7 +1281,7 @@ Program Listing for File slint_internal.h
                                               LogicalPosition position,
                                               const ItemRc *parent_item);
    
-   float slint_windowrc_default_font_size(const WindowAdapterRcOpaque *handle);
+   float slint_windowrc_resolved_default_font_size(const ItemTreeRc *item_tree);
    
    void slint_windowrc_dispatch_key_event(const WindowAdapterRcOpaque *handle,
                                           KeyEventType event_type,

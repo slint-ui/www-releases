@@ -44,7 +44,6 @@ Program Listing for File slint_qt_internal.h
        Property<LogicalLength> text_cursor_width;
        Property<Color> window_background;
        Property<Color> default_text_color;
-       Property<LogicalLength> default_font_size;
        Property<Color> textedit_background;
        Property<Color> textedit_text_color;
        Property<Color> textedit_background_disabled;

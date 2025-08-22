@@ -306,6 +306,7 @@
 <li class="toctree-l2"><a class="reference internal" href="function_namespaceslint_1aefd8612f7c509003040eddfaf7a38505.html">Function slint::update_all_translations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="variable_namespaceslint_1_1platform_1_1key__codes_1a569d5973c36441dd8fb3c88a61c48b7d.html">Variable slint::platform::key_codes::Alt</a></li>
 <li class="toctree-l2"><a class="reference internal" href="variable_namespaceslint_1_1platform_1_1key__codes_1a4c83e50d2ba5a7d2f9399053f84e064f.html">Variable slint::platform::key_codes::AltGr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="variable_namespaceslint_1_1platform_1_1key__codes_1a9c0ff72eb0e38a4ae8fc86c6f9be712d.html">Variable slint::platform::key_codes::Back</a></li>
 <li class="toctree-l2"><a class="reference internal" href="variable_namespaceslint_1_1platform_1_1key__codes_1a73b54ab296bc68ad7fd177222471679f.html">Variable slint::platform::key_codes::Backspace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="variable_namespaceslint_1_1platform_1_1key__codes_1ac32910f77f4588aa03446574e7e6b48b.html">Variable slint::platform::key_codes::Backtab</a></li>
 <li class="toctree-l2"><a class="reference internal" href="variable_namespaceslint_1_1platform_1_1key__codes_1a0456177e3225079f495df1a40eb25de6.html">Variable slint::platform::key_codes::CapsLock</a></li>
@@ -670,6 +671,13 @@
 <span class="w">    </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_translate_from_bundle_with_plural</span><span class="p">(</span>
 <span class="w">            </span><span class="n">strs_slice</span><span class="p">,</span><span class="w"> </span><span class="n">indices_slice</span><span class="p">,</span><span class="w"> </span><span class="n">plural_rules_slice</span><span class="p">,</span><span class="w"> </span><span class="n">arguments</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">result</span><span class="p">);</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">Component</span><span class="o">&gt;</span>
+<span class="kr">inline</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">get_resolved_default_font_size</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Component</span><span class="w"> </span><span class="o">&amp;</span><span class="n">component</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">ItemTreeRc</span><span class="w"> </span><span class="n">item_tree_rc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">component</span><span class="p">.</span><span class="n">self_weak</span><span class="p">.</span><span class="n">lock</span><span class="p">()).</span><span class="n">into_dyn</span><span class="p">();</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">slint</span><span class="o">::</span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_windowrc_resolved_default_font_size</span><span class="p">(</span><span class="o">&amp;</span><span class="n">item_tree_rc</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="p">}</span><span class="w"> </span><span class="c1">// namespace private_api</span>
