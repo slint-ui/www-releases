@@ -768,7 +768,8 @@ Program Listing for File slint_internal.h
    struct FocusScope {
        Property<bool> enabled;
        Property<bool> has_focus;
-       Property<FocusPolicy> focus_policy;
+       Property<bool> focus_on_click;
+       Property<bool> focus_on_tab_navigation;
        private_api::CallbackHelper<KeyEvent, EventResult> key_pressed;
        private_api::CallbackHelper<KeyEvent, EventResult> key_released;
        private_api::CallbackHelper<KeyEvent, EventResult> capture_key_pressed;
