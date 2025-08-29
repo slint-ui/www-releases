@@ -283,36 +283,36 @@ Program Listing for File slint_interpreter_internal.h
                                                                 Slice<uint8_t> global_name,
                                                                 SharedVector<SharedString> *names);
    
-   const LiveReloadingComponentInner *slint_live_reload_new(Slice<uint8_t> file_name,
-                                                            Slice<uint8_t> component_name,
-                                                            const SharedVector<SharedString> *include_paths,
-                                                            const SharedVector<SharedString> *library_paths,
-                                                            Slice<uint8_t> style);
+   const LiveReloadingComponentInner *slint_live_preview_new(Slice<uint8_t> file_name,
+                                                             Slice<uint8_t> component_name,
+                                                             const SharedVector<SharedString> *include_paths,
+                                                             const SharedVector<SharedString> *library_paths,
+                                                             Slice<uint8_t> style);
    
-   void slint_live_reload_clone(const LiveReloadingComponentInner *component);
+   void slint_live_preview_clone(const LiveReloadingComponentInner *component);
    
-   void slint_live_reload_drop(const LiveReloadingComponentInner *component);
+   void slint_live_preview_drop(const LiveReloadingComponentInner *component);
    
-   void slint_live_reload_set_property(const LiveReloadingComponentInner *component,
-                                       Slice<uint8_t> property,
-                                       const Value *value);
+   void slint_live_preview_set_property(const LiveReloadingComponentInner *component,
+                                        Slice<uint8_t> property,
+                                        const Value *value);
    
-   Value *slint_live_reload_get_property(const LiveReloadingComponentInner *component,
-                                         Slice<uint8_t> property);
+   Value *slint_live_preview_get_property(const LiveReloadingComponentInner *component,
+                                          Slice<uint8_t> property);
    
-   Value *slint_live_reload_invoke(const LiveReloadingComponentInner *component,
-                                   Slice<uint8_t> callback,
-                                   Slice<Box<Value>> args);
+   Value *slint_live_preview_invoke(const LiveReloadingComponentInner *component,
+                                    Slice<uint8_t> callback,
+                                    Slice<Box<Value>> args);
    
-   void slint_live_reload_set_callback(const LiveReloadingComponentInner *component,
-                                       Slice<uint8_t> callback,
-                                       Box<Value> (*callback_handler)(void *user_data,
-                                                                      Slice<Box<Value>> arg),
-                                       void *user_data,
-                                       void (*drop_user_data)(void*));
+   void slint_live_preview_set_callback(const LiveReloadingComponentInner *component,
+                                        Slice<uint8_t> callback,
+                                        Box<Value> (*callback_handler)(void *user_data,
+                                                                       Slice<Box<Value>> arg),
+                                        void *user_data,
+                                        void (*drop_user_data)(void*));
    
-   void slint_live_reload_window(const LiveReloadingComponentInner *component,
-                                 const WindowAdapterRcOpaque **out);
+   void slint_live_preview_window(const LiveReloadingComponentInner *component,
+                                  const WindowAdapterRcOpaque **out);
    
    }  // extern "C"
    
