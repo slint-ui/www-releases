@@ -1,0 +1,130 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="`Module` processing functionality."><title>slint::wgpu_26::wgpu::wgc::naga::proc - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../../../../static.files/rustdoc-e56847b5.css"><meta name="rustdoc-vars" data-root-path="../../../../../../" data-static-root-path="../../../../../../static.files/" data-current-crate="slint" data-themes="" data-resource-suffix="" data-rustdoc-version="1.91.0-nightly (51ff89506 2025-09-02)" data-channel="nightly" data-search-js="search-272972ce.js" data-stringdex-js="stringdex-0e748618.js" data-settings-js="settings-c38705f0.js" ><script src="../../../../../../static.files/storage-e2aeef58.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../../../../static.files/main-6dc2a7f3.js"></script><noscript><link rel="stylesheet" href="../../../../../../static.files/noscript-263c88ec.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../../../../static.files/favicon-044be391.svg"><!--
+    This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
+    It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
+    in sphinx and via head.hbs in mdbook.
+-->
+<link rel="stylesheet" href="https://slint.dev/resources/highlightjs/11.0.1/default.min.css">
+<script src="https://slint.dev/resources/highlightjs/11.0.1/highlight.min.js"></script>
+<script>
+  function highlight_slint(hljs) {
+    const KEYWORDS = {
+      keyword:
+        "animate callback changed component enum export for function global if import in in-out inherits out parent private property public pure root self states struct",
+      literal: "false true",
+      built_in:
+        "ArcTo Clip Close Colors CubicTo Flickable FocusScope GridLayout HorizontalLayout Image LineTo Math MoveTo Path PopupWindow QuadraticTo Rectangle Row Text TextInput TouchArea VerticalLayout Window animation-tick debug",
+      type: "bool duration easing float int length logical-length relative-font-size string",
+    };
+
+    return {
+      name: 'slint',
+      case_insensitive: false,
+      keywords: KEYWORDS,
+      contains: [
+        hljs.QUOTE_STRING_MODE,
+        hljs.C_LINE_COMMENT_MODE,
+        hljs.C_BLOCK_COMMENT_MODE,
+        hljs.COMMENT('/\\*', '\\*/', {
+          contains: ['self']
+        }),
+        {
+          className: 'number',
+          begin: '\\b\\d+(\\.\\d+)?(\\w+)?',
+          relevance: 0
+        },
+        {
+          className: 'title',
+          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]* *:=',
+        },
+        {
+          className: 'symbol',
+          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]*(:| *=>)',
+        },
+        {
+          className: 'built_in',
+          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]*!',
+        },
+      ],
+      illegal: /@/
+    };
+  };
+
+  // Tags used in fenced code blocks
+  for (let tag of ["slint", "slint,no-preview", "slint,no-auto-preview", "slint,ignore"]) {
+    hljs.registerLanguage(tag, highlight_slint);
+  }
+
+
+  window.addEventListener("DOMContentLoaded", () => {
+    const rustDoc = document.querySelector('meta[name="generator"]')?.content == "rustdoc";
+    if (rustDoc) {
+      // Only highlight .slint blocks, leave the others to rustdoc
+      for (slintBlock of document.querySelectorAll("[class*=language-slint]")) {
+        hljs.highlightElement(slintBlock)
+      }
+
+      // Some of the rustdoc selectors require the pre element to have the rust class
+      for (codeBlock of document.querySelectorAll(".language-slint.hljs")) {
+        codeBlock.classList.add("rust");
+        codeBlock.classList.remove("hljs");
+      }
+
+      // Change the hljs generated classes to the rustdoc
+      // ones, so that the highlighting adjusts to the theme correctly.
+      const highlightJSToRustDoc = [
+        ["comment", "comment"],
+        ["number", "number"],
+        ["symbol", "struct"], // width:
+        ["keyword", "kw"],
+        ["built_in", "primitive"],
+        ["string", "string"],
+        ["title", "fnname"], // Foo :=
+        ["type", "type"]
+      ];
+
+      for ([hljs_class, rustdoc_class] of highlightJSToRustDoc) {
+        for (titleElement of document.querySelectorAll(`.hljs-${hljs_class}`)) {
+          titleElement.classList.remove(`hljs-${hljs_class}`);
+          titleElement.classList.add(rustdoc_class);
+        }
+      }
+    } else {
+      // For use with the mdbook Tutorial
+      hljs.highlightAll();
+
+      // The Sphinx/my_st generated HTML for code blocks doesn't use <code> tags, so highlight.js'
+      // default selector "pre code" doesn't match. Let's do it by hand:
+      for (block of document.querySelectorAll("div[class*=highlight-slint] div.highlight pre")) {
+        hljs.highlightElement(block)
+      }
+    }
+
+    // Fix up links that sphinx handles but for rustdoc we need to resolve manually:
+    {
+      let target_url = null;
+      if (document.location.hostname == "snapshots.slint.dev") {
+        target_url = `https://snapshots.slint.dev/master/docs/slint/`;
+      } else {
+        let version = document.querySelector("span.version");
+        if (version !== null) {
+          target_url = `https://slint.dev/releases/${version.innerText}/docs/slint/`;
+        }
+      }
+
+      if (target_url !== null) {
+        for (let link of document.querySelectorAll("a[href^='slint-reference:']")) {
+          link.href = link.href.replace("slint-reference:", target_url);
+        }
+      }
+    }
+  });
+</script>
+
+</head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module proc</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><a class="logo-container" href="../../../../../../slint/index.html"><img src="https://slint.dev/logo/slint-logo-square-light.svg" alt="logo"></a><h2><a href="../../../../../../slint/index.html">slint</a><span class="version">1.13.0</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module proc</a></h2><h3><a href="#modules">Module Items</a></h3><ul class="block"><li><a href="#modules" title="Modules">Modules</a></li><li><a href="#structs" title="Structs">Structs</a></li><li><a href="#enums" title="Enums">Enums</a></li><li><a href="#traits" title="Traits">Traits</a></li><li><a href="#functions" title="Functions">Functions</a></li><li><a href="#types" title="Type Aliases">Type Aliases</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In slint::<wbr>wgpu_<wbr>26::<wbr>wgpu::<wbr>wgc::<wbr>naga</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../../../../index.html">slint</a>::<wbr><a href="../../../../index.html">wgpu_26</a>::<wbr><a href="../../../index.html">wgpu</a>::<wbr><a href="../../index.html">wgc</a>::<wbr><a href="../index.html">naga</a></div><h1>Module <span>proc</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"></span></div><span class="item-info"><div class="stab portability">Available on <strong>crate feature <code>unstable-wgpu-26</code></strong> only.</div></span><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p><a href="../struct.Module.html" title="struct slint::wgpu_26::wgpu::wgc::naga::Module"><code>Module</code></a> processing functionality.</p>
+</div></details><h2 id="modules" class="section-header">Modules<a href="#modules" class="anchor">§</a></h2><dl class="item-table"><dt><a class="mod" href="index/index.html" title="mod slint::wgpu_26::wgpu::wgc::naga::proc::index">index</a></dt><dd>Definitions for index bounds checking.</dd></dl><h2 id="structs" class="section-header">Structs<a href="#structs" class="anchor">§</a></h2><dl class="item-table"><dt><a class="struct" href="struct.Alignment.html" title="struct slint::wgpu_26::wgpu::wgc::naga::proc::Alignment">Alignment</a></dt><dd>A newtype struct where its only valid values are powers of 2</dd><dt><a class="struct" href="struct.BoundsCheckPolicies.html" title="struct slint::wgpu_26::wgpu::wgc::naga::proc::BoundsCheckPolicies">Bounds<wbr>Check<wbr>Policies</a></dt><dd>Policies for injecting bounds checks during code generation.</dd><dt><a class="struct" href="struct.ConstantEvaluator.html" title="struct slint::wgpu_26::wgpu::wgc::naga::proc::ConstantEvaluator">Constant<wbr>Evaluator</a></dt><dd>A context for evaluating constant expressions.</dd><dt><a class="struct" href="struct.Emitter.html" title="struct slint::wgpu_26::wgpu::wgc::naga::proc::Emitter">Emitter</a></dt><dd>Helper class to emit expressions</dd><dt><a class="struct" href="struct.ExpressionKindTracker.html" title="struct slint::wgpu_26::wgpu::wgc::naga::proc::ExpressionKindTracker">Expression<wbr>Kind<wbr>Tracker</a></dt><dt><a class="struct" href="struct.GlobalCtx.html" title="struct slint::wgpu_26::wgpu::wgc::naga::proc::GlobalCtx">Global<wbr>Ctx</a></dt><dt><a class="struct" href="struct.LayoutError.html" title="struct slint::wgpu_26::wgpu::wgc::naga::proc::LayoutError">Layout<wbr>Error</a></dt><dt><a class="struct" href="struct.Layouter.html" title="struct slint::wgpu_26::wgpu::wgc::naga::proc::Layouter">Layouter</a></dt><dd>Helper processor that derives the sizes of all types.</dd><dt><a class="struct" href="struct.MissingSpecialType.html" title="struct slint::wgpu_26::wgpu::wgc::naga::proc::MissingSpecialType">Missing<wbr>Special<wbr>Type</a></dt><dt><a class="struct" href="struct.Namer.html" title="struct slint::wgpu_26::wgpu::wgc::naga::proc::Namer">Namer</a></dt><dd>This processor assigns names to all the things in a module
+that may need identifiers in a textual backend.</dd><dt><a class="struct" href="struct.ResolveContext.html" title="struct slint::wgpu_26::wgpu::wgc::naga::proc::ResolveContext">Resolve<wbr>Context</a></dt><dt><a class="struct" href="struct.Rule.html" title="struct slint::wgpu_26::wgpu::wgc::naga::proc::Rule">Rule</a></dt><dd>A single type rule.</dd><dt><a class="struct" href="struct.TypeLayout.html" title="struct slint::wgpu_26::wgpu::wgc::naga::proc::TypeLayout">Type<wbr>Layout</a></dt><dd>Size and alignment information for a type.</dd></dl><h2 id="enums" class="section-header">Enums<a href="#enums" class="anchor">§</a></h2><dl class="item-table"><dt><a class="enum" href="enum.BoundsCheckPolicy.html" title="enum slint::wgpu_26::wgpu::wgc::naga::proc::BoundsCheckPolicy">Bounds<wbr>Check<wbr>Policy</a></dt><dd>How should code generated by Naga do bounds checks?</dd><dt><a class="enum" href="enum.Conclusion.html" title="enum slint::wgpu_26::wgpu::wgc::naga::proc::Conclusion">Conclusion</a></dt><dd>The result type of a <a href="struct.Rule.html" title="struct slint::wgpu_26::wgpu::wgc::naga::proc::Rule"><code>Rule</code></a>.</dd><dt><a class="enum" href="enum.ConstantEvaluatorError.html" title="enum slint::wgpu_26::wgpu::wgc::naga::proc::ConstantEvaluatorError">Constant<wbr>Evaluator<wbr>Error</a></dt><dt><a class="enum" href="enum.ExpressionKind.html" title="enum slint::wgpu_26::wgpu::wgc::naga::proc::ExpressionKind">Expression<wbr>Kind</a></dt><dt><a class="enum" href="enum.HashableLiteral.html" title="enum slint::wgpu_26::wgpu::wgc::naga::proc::HashableLiteral">Hashable<wbr>Literal</a></dt><dt><a class="enum" href="enum.IndexableLength.html" title="enum slint::wgpu_26::wgpu::wgc::naga::proc::IndexableLength">Indexable<wbr>Length</a></dt><dd>The number of elements in an indexable type.</dd><dt><a class="enum" href="enum.IndexableLengthError.html" title="enum slint::wgpu_26::wgpu::wgc::naga::proc::IndexableLengthError">Indexable<wbr>Length<wbr>Error</a></dt><dt><a class="enum" href="enum.LayoutErrorInner.html" title="enum slint::wgpu_26::wgpu::wgc::naga::proc::LayoutErrorInner">Layout<wbr>Error<wbr>Inner</a></dt><dt><a class="enum" href="enum.NameKey.html" title="enum slint::wgpu_26::wgpu::wgc::naga::proc::NameKey">NameKey</a></dt><dt><a class="enum" href="enum.ResolveArraySizeError.html" title="enum slint::wgpu_26::wgpu::wgc::naga::proc::ResolveArraySizeError">Resolve<wbr>Array<wbr>Size<wbr>Error</a></dt><dt><a class="enum" href="enum.ResolveError.html" title="enum slint::wgpu_26::wgpu::wgc::naga::proc::ResolveError">Resolve<wbr>Error</a></dt><dt><a class="enum" href="enum.TypeResolution.html" title="enum slint::wgpu_26::wgpu::wgc::naga::proc::TypeResolution">Type<wbr>Resolution</a></dt><dd>The result of computing an expression’s type.</dd></dl><h2 id="traits" class="section-header">Traits<a href="#traits" class="anchor">§</a></h2><dl class="item-table"><dt><a class="trait" href="trait.OverloadSet.html" title="trait slint::wgpu_26::wgpu::wgc::naga::proc::OverloadSet">Overload<wbr>Set</a></dt><dd>A trait for types representing of a set of Naga IR type rules.</dd></dl><h2 id="functions" class="section-header">Functions<a href="#functions" class="anchor">§</a></h2><dl class="item-table"><dt><a class="fn" href="fn.compare_types.html" title="fn slint::wgpu_26::wgpu::wgc::naga::proc::compare_types">compare_<wbr>types</a></dt><dd>Compare two types.</dd><dt><a class="fn" href="fn.ensure_block_returns.html" title="fn slint::wgpu_26::wgpu::wgc::naga::proc::ensure_block_returns">ensure_<wbr>block_<wbr>returns</a></dt><dd>Ensure that the given block has return statements
+at the end of its control flow.</dd><dt><a class="fn" href="fn.flatten_compose.html" title="fn slint::wgpu_26::wgpu::wgc::naga::proc::flatten_compose">flatten_<wbr>compose</a></dt><dd>Return an iterator over the individual components assembled by a
+<code>Compose</code> expression.</dd><dt><a class="fn" href="fn.min_max_float_representable_by.html" title="fn slint::wgpu_26::wgpu::wgc::naga::proc::min_max_float_representable_by">min_<wbr>max_<wbr>float_<wbr>representable_<wbr>by</a></dt><dd>Returns a tuple of <a href="../enum.Literal.html" title="enum slint::wgpu_26::wgpu::wgc::naga::Literal"><code>crate::Literal</code></a>s representing the minimum and maximum
+float values exactly representable by the provided float and integer types.
+Panics if <code>float</code> is not one of <code>F16</code>, <code>F32</code>, or <code>F64</code>, or <code>int</code> is
+not one of <code>I32</code>, <code>U32</code>, <code>I64</code>, or <code>U64</code>.</dd></dl><h2 id="types" class="section-header">Type Aliases<a href="#types" class="anchor">§</a></h2><dl class="item-table"><dt><a class="type" href="type.EntryPointIndex.html" title="type slint::wgpu_26::wgpu::wgc::naga::proc::EntryPointIndex">Entry<wbr>Point<wbr>Index</a></dt></dl></section></div></main></body></html>
