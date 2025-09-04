@@ -15,7 +15,7 @@ export const __wbindgen_malloc: (a: number, b: number) => number;
 export const __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;
 export const __wbindgen_export_5: WebAssembly.Table;
 export const closure1882_externref_shim: (a: number, b: number, c: any) => void;
-export const _dyn_core__ops__function__FnMut_____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__h56498415758e1043: (a: number, b: number) => void;
+export const _dyn_core__ops__function__FnMut_____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__h93b7895c6b247dd4: (a: number, b: number) => void;
 export const closure2404_externref_shim: (a: number, b: number, c: any) => void;
 export const closure2405_externref_shim: (a: number, b: number, c: any, d: any) => void;
 export const closure2477_externref_shim: (a: number, b: number, c: any) => void;
