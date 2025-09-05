@@ -22,7 +22,7 @@ This page lists the licenses of the dependencies used by Slint.
 #### Used by:
 
 - [moxcms 0.7.5]( https://github.com/awxkee/moxcms.git )
-- [pxfm 0.1.20]( https://github.com/awxkee/pxfm )
+- [pxfm 0.1.21]( https://github.com/awxkee/pxfm )
 
 #### License Text
 
