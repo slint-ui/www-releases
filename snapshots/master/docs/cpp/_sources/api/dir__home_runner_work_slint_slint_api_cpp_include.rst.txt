@@ -27,7 +27,7 @@ Files
 - :ref:`file__home_runner_work_slint_slint_api_cpp_include_slint_image.h`
 - :ref:`file__home_runner_work_slint_slint_api_cpp_include_slint_interpreter.h`
 - :ref:`file__home_runner_work_slint_slint_api_cpp_include_slint_item_tree.h`
-- :ref:`file__home_runner_work_slint_slint_api_cpp_include_slint_live_reload.h`
+- :ref:`file__home_runner_work_slint_slint_api_cpp_include_slint_live_preview.h`
 - :ref:`file__home_runner_work_slint_slint_api_cpp_include_slint_models.h`
 - :ref:`file__home_runner_work_slint_slint_api_cpp_include_slint_pathdata.h`
 - :ref:`file__home_runner_work_slint_slint_api_cpp_include_slint_point.h`

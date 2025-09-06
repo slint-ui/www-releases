@@ -155,7 +155,7 @@ Files
 .. toctree::
    :maxdepth: 5
 
-   file__home_runner_work_slint_slint_api_cpp_include_slint_live_reload.h.rst
+   file__home_runner_work_slint_slint_api_cpp_include_slint_live_preview.h.rst
 
 .. toctree::
    :maxdepth: 5
