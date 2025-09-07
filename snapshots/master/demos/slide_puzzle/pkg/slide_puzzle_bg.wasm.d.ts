@@ -17,5 +17,5 @@ export const __wbindgen_export_5: WebAssembly.Table;
 export const closure308_externref_shim: (a: number, b: number, c: any) => void;
 export const closure515_externref_shim: (a: number, b: number, c: any) => void;
 export const wasm_bindgen__convert__closures_____invoke__h13e49de68ae98a9e: (a: number, b: number) => void;
-export const closure415_externref_shim: (a: number, b: number, c: any, d: any) => void;
+export const closure416_externref_shim: (a: number, b: number, c: any, d: any) => void;
 export const __wbindgen_start: () => void;

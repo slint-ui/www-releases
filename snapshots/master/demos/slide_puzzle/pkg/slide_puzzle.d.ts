@@ -22,7 +22,7 @@ export interface InitOutput {
   readonly closure308_externref_shim: (a: number, b: number, c: any) => void;
   readonly closure515_externref_shim: (a: number, b: number, c: any) => void;
   readonly wasm_bindgen__convert__closures_____invoke__h13e49de68ae98a9e: (a: number, b: number) => void;
-  readonly closure415_externref_shim: (a: number, b: number, c: any, d: any) => void;
+  readonly closure416_externref_shim: (a: number, b: number, c: any, d: any) => void;
   readonly __wbindgen_start: () => void;
 }
 
