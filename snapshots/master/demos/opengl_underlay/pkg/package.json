@@ -4,7 +4,7 @@
   "collaborators": [
     "Slint Developers <info@slint.dev>"
   ],
-  "version": "1.13.0",
+  "version": "1.13.1",
   "license": "MIT",
   "files": [
     "opengl_underlay_bg.wasm",

@@ -1066,7 +1066,7 @@ function __wbg_get_imports() {
         const ret = arg0.location;
         return ret;
     };
-    imports.wbg.__wbg_log_9d7931510caaa8b0 = function(arg0, arg1) {
+    imports.wbg.__wbg_log_746a83ac42764287 = function(arg0, arg1) {
         console.log(getStringFromWasm0(arg0, arg1));
     };
     imports.wbg.__wbg_log_ea240990d83e374e = function(arg0) {
