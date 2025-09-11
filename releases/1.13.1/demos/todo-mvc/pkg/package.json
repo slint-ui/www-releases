@@ -1,0 +1,19 @@
+{
+  "name": "todo-mvc",
+  "type": "module",
+  "collaborators": [
+    "Slint Developers <info@slint.dev>"
+  ],
+  "version": "1.13.1",
+  "license": "MIT",
+  "files": [
+    "todo_lib_mvc_bg.wasm",
+    "todo_lib_mvc.js",
+    "todo_lib_mvc.d.ts"
+  ],
+  "main": "todo_lib_mvc.js",
+  "types": "todo_lib_mvc.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}

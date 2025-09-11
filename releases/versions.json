@@ -6,6 +6,10 @@
     },
     {
         "preferred": true,
+        "version": "1.13.1",
+        "url": "https://releases.slint.dev/1.13.1/docs/slint"
+    },
+    {
         "version": "1.13.0",
         "url": "https://releases.slint.dev/1.13.0/docs/slint"
     },
