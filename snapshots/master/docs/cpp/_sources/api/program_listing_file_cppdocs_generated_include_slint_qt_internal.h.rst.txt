@@ -97,6 +97,7 @@ Program Listing for File slint_qt_internal.h
    struct NativeButton {
        Property<SharedString> text;
        Property<Image> icon;
+       Property<LogicalLength> icon_size;
        Property<bool> pressed;
        Property<bool> has_hover;
        Property<bool> checkable;
