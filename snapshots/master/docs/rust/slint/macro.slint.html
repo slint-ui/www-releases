@@ -124,8 +124,9 @@
 you can use place Slint code and the named exported components will be available for instantiation.</p>
 <p>For the documentation about the syntax of the language, see
 <a href="../../slint">The Slint Language Documentation</a></p>
-<p>When <code>import</code>ing <code>.slint</code> files or loading images with <code>@image-url</code>, the specified paths are relative to the
-the directory that contains Cargo.toml.</p>
+<p>When Rust 1.88 or later is used, the paths for loading images with <code>@image-url</code> and importing <code>.slint</code> files
+are relative to the <code>.rs</code> file that contains the macro.
+For compatibility with older rust version, the files are also searched in the manifest directory that contains <code>Cargo.toml</code>.</p>
 <h4 id="limitations"><a class="doc-anchor" href="#limitations">§</a>Limitations</h4>
 <p>Within <code>.slint</code> files, you can interpolate string literals using <code>\{...}</code> syntax.
 This is not possible in this macro as this wouldn’t parse as a Rust string.</p>
