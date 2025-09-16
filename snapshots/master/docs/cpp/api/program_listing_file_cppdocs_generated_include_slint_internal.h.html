@@ -1290,8 +1290,10 @@
 <span class="w">    </span><span class="n">CachedRenderingData</span><span class="w"> </span><span class="n">cached_rendering_data</span><span class="p">;</span>
 <span class="p">};</span>
 
-<span class="k">struct</span><span class="w"> </span><span class="nc">Rotate</span><span class="w"> </span><span class="p">{</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">Transform</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">rotation_angle</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">scale_x</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">scale_y</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">rotation_origin_x</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">rotation_origin_y</span><span class="p">;</span>
 <span class="w">    </span><span class="n">CachedRenderingData</span><span class="w"> </span><span class="n">cached_rendering_data</span><span class="p">;</span>
@@ -1757,7 +1759,7 @@
 <span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">TextInput</span><span class="p">);</span>
 <span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">Clip</span><span class="p">);</span>
 <span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">BoxShadow</span><span class="p">);</span>
-<span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">Rotate</span><span class="p">);</span>
+<span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">Transform</span><span class="p">);</span>
 <span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">Opacity</span><span class="p">);</span>
 <span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">Layer</span><span class="p">);</span>
 <span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">ContextMenu</span><span class="p">);</span>

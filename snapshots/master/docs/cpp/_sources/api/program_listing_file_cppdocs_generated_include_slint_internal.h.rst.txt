@@ -875,8 +875,10 @@ Program Listing for File slint_internal.h
        CachedRenderingData cached_rendering_data;
    };
    
-   struct Rotate {
+   struct Transform {
        Property<float> rotation_angle;
+       Property<float> scale_x;
+       Property<float> scale_y;
        Property<LogicalLength> rotation_origin_x;
        Property<LogicalLength> rotation_origin_y;
        CachedRenderingData cached_rendering_data;
@@ -1342,7 +1344,7 @@ Program Listing for File slint_internal.h
    SLINT_DECL_ITEM(TextInput);
    SLINT_DECL_ITEM(Clip);
    SLINT_DECL_ITEM(BoxShadow);
-   SLINT_DECL_ITEM(Rotate);
+   SLINT_DECL_ITEM(Transform);
    SLINT_DECL_ITEM(Opacity);
    SLINT_DECL_ITEM(Layer);
    SLINT_DECL_ITEM(ContextMenu);
