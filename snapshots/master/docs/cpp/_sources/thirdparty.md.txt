@@ -1570,7 +1570,7 @@ THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRES
 
 #### Used by:
 
-- [libloading 0.8.8]( https://github.com/nagisa/rust_libloading/ )
+- [libloading 0.8.9]( https://github.com/nagisa/rust_libloading/ )
 
 #### License Text
 
@@ -4932,7 +4932,7 @@ SOFTWARE.
 - [libm 0.2.15]( https://github.com/rust-lang/compiler-builtins )
 - [lyon_algorithms 1.0.16]( https://github.com/nical/lyon )
 - [lyon_extra 1.0.3]( https://github.com/nical/lyon )
-- [lyon_geom 1.0.16]( https://github.com/nical/lyon )
+- [lyon_geom 1.0.17]( https://github.com/nical/lyon )
 - [lyon_path 1.0.16]( https://github.com/nical/lyon )
 - [objc-sys 0.3.5]( https://github.com/madsmtm/objc2 )
 - [objc2-app-kit 0.2.2]( https://github.com/madsmtm/objc2 )
