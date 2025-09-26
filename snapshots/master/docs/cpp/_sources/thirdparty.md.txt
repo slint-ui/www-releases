@@ -235,7 +235,7 @@ This page lists the licenses of the dependencies used by Slint.
 
 #### Used by:
 
-- [imgref 1.11.0]( https://github.com/kornelski/imgref )
+- [imgref 1.12.0]( https://github.com/kornelski/imgref )
 - [unicode-linebreak 0.1.5]( https://github.com/axelf4/unicode-linebreak )
 
 #### License Text
@@ -1900,9 +1900,9 @@ DEALINGS IN THE SOFTWARE.
 - [num-integer 0.1.46]( https://github.com/rust-num/num-integer )
 - [num-rational 0.4.2]( https://github.com/rust-num/num-rational )
 - [num-traits 0.2.19]( https://github.com/rust-num/num-traits )
-- [regex-automata 0.4.10]( https://github.com/rust-lang/regex )
+- [regex-automata 0.4.11]( https://github.com/rust-lang/regex )
 - [regex-syntax 0.8.6]( https://github.com/rust-lang/regex )
-- [regex 1.11.2]( https://github.com/rust-lang/regex )
+- [regex 1.11.3]( https://github.com/rust-lang/regex )
 
 #### License Text
 
@@ -2002,7 +2002,7 @@ IN THE SOFTWARE.
 
 #### Used by:
 
-- [libc 0.2.175]( https://github.com/rust-lang/libc )
+- [libc 0.2.176]( https://github.com/rust-lang/libc )
 
 #### License Text
 
@@ -2189,7 +2189,7 @@ DEALINGS IN THE SOFTWARE.
 
 #### Used by:
 
-- [tempfile 3.22.0]( https://github.com/Stebalien/tempfile )
+- [tempfile 3.23.0]( https://github.com/Stebalien/tempfile )
 
 #### License Text
 
@@ -4955,10 +4955,10 @@ SOFTWARE.
 - [siphasher 1.0.1]( https://github.com/jedisct1/rust-siphash )
 - [windows-collections 0.2.0]( https://github.com/microsoft/windows-rs )
 - [windows-core 0.61.2]( https://github.com/microsoft/windows-rs )
-- [windows-core 0.62.0]( https://github.com/microsoft/windows-rs )
+- [windows-core 0.62.1]( https://github.com/microsoft/windows-rs )
 - [windows-future 0.2.1]( https://github.com/microsoft/windows-rs )
-- [windows-implement 0.60.0]( https://github.com/microsoft/windows-rs )
-- [windows-interface 0.59.1]( https://github.com/microsoft/windows-rs )
+- [windows-implement 0.60.1]( https://github.com/microsoft/windows-rs )
+- [windows-interface 0.59.2]( https://github.com/microsoft/windows-rs )
 - [windows-link 0.1.3]( https://github.com/microsoft/windows-rs )
 - [windows-link 0.2.0]( https://github.com/microsoft/windows-rs )
 - [windows-numerics 0.2.0]( https://github.com/microsoft/windows-rs )
@@ -4969,9 +4969,9 @@ SOFTWARE.
 - [windows-sys 0.52.0]( https://github.com/microsoft/windows-rs )
 - [windows-sys 0.59.0]( https://github.com/microsoft/windows-rs )
 - [windows-sys 0.60.2]( https://github.com/microsoft/windows-rs )
-- [windows-sys 0.61.0]( https://github.com/microsoft/windows-rs )
+- [windows-sys 0.61.1]( https://github.com/microsoft/windows-rs )
 - [windows-targets 0.52.6]( https://github.com/microsoft/windows-rs )
-- [windows-targets 0.53.3]( https://github.com/microsoft/windows-rs )
+- [windows-targets 0.53.4]( https://github.com/microsoft/windows-rs )
 - [windows-threading 0.1.0]( https://github.com/microsoft/windows-rs )
 - [windows 0.61.3]( https://github.com/microsoft/windows-rs )
 - [windows_x86_64_gnu 0.52.6]( https://github.com/microsoft/windows-rs )
@@ -5342,9 +5342,9 @@ DEALINGS IN THE SOFTWARE.
 - [rustix 0.38.44]( https://github.com/bytecodealliance/rustix )
 - [rustix 1.1.2]( https://github.com/bytecodealliance/rustix )
 - [semver 1.0.27]( https://github.com/dtolnay/semver )
-- [serde 1.0.226]( https://github.com/serde-rs/serde )
-- [serde_core 1.0.226]( https://github.com/serde-rs/serde )
-- [serde_derive 1.0.226]( https://github.com/serde-rs/serde )
+- [serde 1.0.227]( https://github.com/serde-rs/serde )
+- [serde_core 1.0.227]( https://github.com/serde-rs/serde )
+- [serde_derive 1.0.227]( https://github.com/serde-rs/serde )
 - [serde_json 1.0.145]( https://github.com/serde-rs/json )
 - [serde_repr 0.1.20]( https://github.com/dtolnay/serde-repr )
 - [smol_str 0.2.2]( https://github.com/rust-analyzer/smol_str )
@@ -5540,7 +5540,7 @@ THE SOFTWARE.
 - [aho-corasick 1.1.3]( https://github.com/BurntSushi/aho-corasick )
 - [byteorder-lite 0.1.0]( https://github.com/image-rs/byteorder-lite )
 - [byteorder 1.5.0]( https://github.com/BurntSushi/byteorder )
-- [memchr 2.7.5]( https://github.com/BurntSushi/memchr )
+- [memchr 2.7.6]( https://github.com/BurntSushi/memchr )
 
 #### License Text
 

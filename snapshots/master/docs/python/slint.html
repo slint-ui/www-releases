@@ -116,16 +116,16 @@
                                 <a class="function" href="#Color.with_alpha">with_alpha</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Color.red">red</a>
-                        </li>
-                        <li>
                                 <a class="variable" href="#Color.alpha">alpha</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Color.blue">blue</a>
+                                <a class="variable" href="#Color.red">red</a>
                         </li>
                         <li>
                                 <a class="variable" href="#Color.green">green</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Color.blue">blue</a>
                         </li>
                 </ul>
 
@@ -215,10 +215,10 @@
                                 <a class="function" href="#Timer.restart">restart</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Timer.interval">interval</a>
+                                <a class="variable" href="#Timer.running">running</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Timer.running">running</a>
+                                <a class="variable" href="#Timer.interval">interval</a>
                         </li>
                 </ul>
 
@@ -1765,19 +1765,6 @@ is applied to <code>other</code>.</p>
 
 
                             </div>
-                            <div id="Color.red" class="classattr">
-                                <div class="attr variable">
-            <span class="name">red</span>
-
-        
-    </div>
-    <a class="headerlink" href="#Color.red"></a>
-    
-            <div class="docstring"><p>The red channel.</p>
-</div>
-
-
-                            </div>
                             <div id="Color.alpha" class="classattr">
                                 <div class="attr variable">
             <span class="name">alpha</span>
@@ -1791,15 +1778,15 @@ is applied to <code>other</code>.</p>
 
 
                             </div>
-                            <div id="Color.blue" class="classattr">
+                            <div id="Color.red" class="classattr">
                                 <div class="attr variable">
-            <span class="name">blue</span>
+            <span class="name">red</span>
 
         
     </div>
-    <a class="headerlink" href="#Color.blue"></a>
+    <a class="headerlink" href="#Color.red"></a>
     
-            <div class="docstring"><p>The blue channel.</p>
+            <div class="docstring"><p>The red channel.</p>
 </div>
 
 
@@ -1813,6 +1800,19 @@ is applied to <code>other</code>.</p>
     <a class="headerlink" href="#Color.green"></a>
     
             <div class="docstring"><p>The green channel.</p>
+</div>
+
+
+                            </div>
+                            <div id="Color.blue" class="classattr">
+                                <div class="attr variable">
+            <span class="name">blue</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Color.blue"></a>
+    
+            <div class="docstring"><p>The blue channel.</p>
 </div>
 
 
@@ -2330,6 +2330,22 @@ period of time.</p>
 <p>The timer will automatically stop when garbage collected. You must keep the Timer object
 around for as long as you want the timer to keep firing.</p>
 
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">AppWindow</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">my_timer</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="nd">@<a href="#callback">slint.callback</a></span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">button_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">my_timer</span> <span class="o">=</span> <span class="n"><a href="#Timer">slint.Timer</a></span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">my_timer</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">do_something</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">do_something</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+</code></pre>
+</div>
+
 <p>Timers can only be used in the thread that runs the Slint event loop. They don't
 fire if used in another thread.</p>
 </div>
@@ -2417,6 +2433,19 @@ is re-calculated to be in the specified duration relative to when this function 
 
 
                             </div>
+                            <div id="Timer.running" class="classattr">
+                                <div class="attr variable">
+            <span class="name">running</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Timer.running"></a>
+    
+            <div class="docstring"><p>Set to true if the timer is running; false otherwise.</p>
+</div>
+
+
+                            </div>
                             <div id="Timer.interval" class="classattr">
                                 <div class="attr variable">
             <span class="name">interval</span>
@@ -2430,19 +2459,6 @@ is re-calculated to be in the specified duration relative to when this function 
 <p>When setting this property and the timer is running (see <code><a href="#Timer.running">Timer.running</a></code>),
 then the time when the callback will be next invoked is re-calculated to be in the
 specified duration relative to when this property is set.</p>
-</div>
-
-
-                            </div>
-                            <div id="Timer.running" class="classattr">
-                                <div class="attr variable">
-            <span class="name">running</span>
-
-        
-    </div>
-    <a class="headerlink" href="#Timer.running"></a>
-    
-            <div class="docstring"><p>Set to true if the timer is running; false otherwise.</p>
 </div>
 
 
