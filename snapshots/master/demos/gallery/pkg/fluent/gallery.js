@@ -278,11 +278,11 @@ function __wbg_adapter_9(arg0, arg1, arg2) {
     wasm.closure3421_externref_shim(arg0, arg1, arg2);
 }
 
-function __wbg_adapter_20(arg0, arg1, arg2, arg3) {
+function __wbg_adapter_16(arg0, arg1, arg2, arg3) {
     wasm.closure3529_externref_shim(arg0, arg1, arg2, arg3);
 }
 
-function __wbg_adapter_25(arg0, arg1) {
+function __wbg_adapter_43(arg0, arg1) {
     wasm.wasm_bindgen__convert__closures_____invoke__he2f4d26de2e24d86(arg0, arg1);
 }
 
@@ -1660,7 +1660,7 @@ function __wbg_get_imports() {
     };
     imports.wbg.__wbindgen_cast_382027b0194964ec = function(arg0, arg1) {
         // Cast intrinsic for `Closure(Closure { dtor_idx: 3622, function: Function { arguments: [NamedExternref("Array<any>"), NamedExternref("ResizeObserver")], shim_idx: 3529, ret: Unit, inner_ret: Some(Unit) }, mutable: true }) -> Externref`.
-        const ret = makeMutClosure(arg0, arg1, 3622, __wbg_adapter_20);
+        const ret = makeMutClosure(arg0, arg1, 3622, __wbg_adapter_16);
         return ret;
     };
     imports.wbg.__wbindgen_cast_41b02a4f29713a1d = function(arg0, arg1) {
@@ -1670,7 +1670,7 @@ function __wbg_get_imports() {
     };
     imports.wbg.__wbindgen_cast_69170557d4c4768d = function(arg0, arg1) {
         // Cast intrinsic for `Closure(Closure { dtor_idx: 3622, function: Function { arguments: [], shim_idx: 3625, ret: Unit, inner_ret: Some(Unit) }, mutable: true }) -> Externref`.
-        const ret = makeMutClosure(arg0, arg1, 3622, __wbg_adapter_25);
+        const ret = makeMutClosure(arg0, arg1, 3622, __wbg_adapter_43);
         return ret;
     };
     imports.wbg.__wbindgen_cast_79046161f72ab081 = function(arg0, arg1) {
