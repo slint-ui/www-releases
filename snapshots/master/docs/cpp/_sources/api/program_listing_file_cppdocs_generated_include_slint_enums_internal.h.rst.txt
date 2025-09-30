@@ -150,6 +150,7 @@ Program Listing for File slint_enums_internal.h
        End,
        SpaceBetween,
        SpaceAround,
+       SpaceEvenly,
    };
    enum class PathEvent {
        Begin,
