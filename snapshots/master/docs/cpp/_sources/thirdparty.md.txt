@@ -209,7 +209,7 @@ This page lists the licenses of the dependencies used by Slint.
 
 #### Used by:
 
-- [moxcms 0.7.5]( https://github.com/awxkee/moxcms.git )
+- [moxcms 0.7.6]( https://github.com/awxkee/moxcms.git )
 - [pxfm 0.1.24]( https://github.com/awxkee/pxfm )
 
 #### License Text
@@ -2471,7 +2471,7 @@ DEALINGS IN THE SOFTWARE.
 
 #### Used by:
 
-- [flate2 1.1.2]( https://github.com/rust-lang/flate2-rs )
+- [flate2 1.1.4]( https://github.com/rust-lang/flate2-rs )
 
 #### License Text
 
