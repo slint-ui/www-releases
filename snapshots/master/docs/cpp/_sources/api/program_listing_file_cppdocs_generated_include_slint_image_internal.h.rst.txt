@@ -42,7 +42,7 @@ Program Listing for File slint_image_internal.h
    
    struct NineSliceImage;
    
-   #if defined(SLINT_DISABLED_CODE)
+   #if (defined(SLINT_DISABLED_CODE) || defined(SLINT_DISABLED_CODE))
    struct WGPUTexture;
    #endif
    
@@ -483,7 +483,7 @@ Program Listing for File slint_image_internal.h
            ImageInner_BorrowedOpenGLTexture = 6,
    #endif
            ImageInner_NineSlice = 7,
-   #if defined(SLINT_DISABLED_CODE)
+   #if (defined(SLINT_DISABLED_CODE) || defined(SLINT_DISABLED_CODE))
            ImageInner_WGPUTexture = 8,
    #endif
        };
@@ -579,7 +579,7 @@ Program Listing for File slint_image_internal.h
            }
        };
    
-   #if defined(SLINT_DISABLED_CODE)
+   #if (defined(SLINT_DISABLED_CODE) || defined(SLINT_DISABLED_CODE))
        struct ImageInner_WGPUTexture_Body {
            Tag tag;
            WGPUTexture _0;
@@ -607,7 +607,7 @@ Program Listing for File slint_image_internal.h
        ImageInner_BorrowedOpenGLTexture_Body borrowed_open_gl_texture;
    #endif
        ImageInner_NineSlice_Body nine_slice;
-   #if defined(SLINT_DISABLED_CODE)
+   #if (defined(SLINT_DISABLED_CODE) || defined(SLINT_DISABLED_CODE))
        ImageInner_WGPUTexture_Body wgpu_texture;
    #endif
    
@@ -704,7 +704,7 @@ Program Listing for File slint_image_internal.h
            return tag == Tag::ImageInner_NineSlice;
        }
    
-   #if defined(SLINT_DISABLED_CODE)
+   #if (defined(SLINT_DISABLED_CODE) || defined(SLINT_DISABLED_CODE))
        static ImageInner ImageInner_WGPUTexture(const WGPUTexture &_0) {
            ImageInner result;
            ::new (&result.wgpu_texture._0) (WGPUTexture)(_0);
@@ -733,7 +733,7 @@ Program Listing for File slint_image_internal.h
                case Tag::ImageInner_BorrowedOpenGLTexture: return borrowed_open_gl_texture == other.borrowed_open_gl_texture;
    #endif
                case Tag::ImageInner_NineSlice: return nine_slice == other.nine_slice;
-   #if defined(SLINT_DISABLED_CODE)
+   #if (defined(SLINT_DISABLED_CODE) || defined(SLINT_DISABLED_CODE))
                case Tag::ImageInner_WGPUTexture: return wgpu_texture == other.wgpu_texture;
    #endif
                default: break;
@@ -765,7 +765,7 @@ Program Listing for File slint_image_internal.h
                case Tag::ImageInner_BorrowedOpenGLTexture: borrowed_open_gl_texture.~ImageInner_BorrowedOpenGLTexture_Body(); break;
    #endif
                case Tag::ImageInner_NineSlice: nine_slice.~ImageInner_NineSlice_Body(); break;
-   #if defined(SLINT_DISABLED_CODE)
+   #if (defined(SLINT_DISABLED_CODE) || defined(SLINT_DISABLED_CODE))
                case Tag::ImageInner_WGPUTexture: wgpu_texture.~ImageInner_WGPUTexture_Body(); break;
    #endif
                default: break;
@@ -786,7 +786,7 @@ Program Listing for File slint_image_internal.h
                case Tag::ImageInner_BorrowedOpenGLTexture: ::new (&borrowed_open_gl_texture) (ImageInner_BorrowedOpenGLTexture_Body)(other.borrowed_open_gl_texture); break;
    #endif
                case Tag::ImageInner_NineSlice: ::new (&nine_slice) (ImageInner_NineSlice_Body)(other.nine_slice); break;
-   #if defined(SLINT_DISABLED_CODE)
+   #if (defined(SLINT_DISABLED_CODE) || defined(SLINT_DISABLED_CODE))
                case Tag::ImageInner_WGPUTexture: ::new (&wgpu_texture) (ImageInner_WGPUTexture_Body)(other.wgpu_texture); break;
    #endif
                default: break;

@@ -5,7 +5,7 @@ This page lists the licenses of the dependencies used by Slint.
 
 ## Overview of licenses
 
-- [MIT License](#MIT) (363)
+- [MIT License](#MIT) (356)
 - [Apache License 2.0](#Apache-2.0) (17)
 - [BSD 3-Clause &quot;New&quot; or &quot;Revised&quot; License](#BSD-3-Clause) (6)
 - [Unicode License v3](#Unicode-3.0) (5)
@@ -1704,50 +1704,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #### Used by:
 
-- [exr 1.73.0]( https://github.com/johannesvollmer/exrs )
-
-#### License Text
-
-```
-# Licenses
-
-This Rust implementation of the OpenEXR image format
-and the exrs crate are not affiliated with the 
-[OpenEXR project](https://www.openexr.com/) or the 
-[ACADEMY SOFTWARE FOUNDATION](https://www.aswf.io/).
-
-
-## The OpenEXR Image Format: [BSD-3-Clause](https://github.com/AcademySoftwareFoundation/openexr/blob/master/LICENSE.md)
-Copyright (c) Contributors to the OpenEXR Project. All rights reserved.
-
-Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-
-1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-
-2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-
-3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-## The &#x60;exrs&#x60; Project, and independent Rust implementation of the official OpenEXR Image Format: Also [BSD-3-Clause](https://github.com/AcademySoftwareFoundation/openexr/blob/master/LICENSE.md)
-Copyright (c) Contributors to the exrs Project. All rights reserved.
-
-Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-
-1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-
-2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-
-3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-```
-
-### <a id="BSD-3-Clause"></a> BSD 3-Clause &quot;New&quot; or &quot;Revised&quot; License
-
-#### Used by:
-
 - [avif-serialize 0.8.6]( https://github.com/kornelski/avif-serialize )
 
 #### License Text
@@ -1907,6 +1863,29 @@ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ```
 
+### <a id="BSD-3-Clause"></a> BSD 3-Clause &quot;New&quot; or &quot;Revised&quot; License
+
+#### Used by:
+
+- [exr 1.73.0]( https://github.com/johannesvollmer/exrs )
+
+#### License Text
+
+```
+Copyright (c) &lt;year&gt; &lt;owner&gt;. 
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+```
+
 ### <a id="BSL-1.0"></a> Boost Software License 1.0
 
 #### Used by:
@@ -1991,29 +1970,8 @@ THIS SOFTWARE.
 
 - [rustybuzz 0.20.1]( https://github.com/harfbuzz/rustybuzz )
 - [windows-collections 0.2.0]( https://github.com/microsoft/windows-rs )
-- [windows-core 0.58.0]( https://github.com/microsoft/windows-rs )
-- [windows-core 0.61.2]( https://github.com/microsoft/windows-rs )
-- [windows-future 0.2.1]( https://github.com/microsoft/windows-rs )
-- [windows-implement 0.58.0]( https://github.com/microsoft/windows-rs )
-- [windows-interface 0.58.0]( https://github.com/microsoft/windows-rs )
-- [windows-link 0.1.3]( https://github.com/microsoft/windows-rs )
-- [windows-link 0.2.0]( https://github.com/microsoft/windows-rs )
-- [windows-numerics 0.2.0]( https://github.com/microsoft/windows-rs )
-- [windows-result 0.2.0]( https://github.com/microsoft/windows-rs )
-- [windows-result 0.3.4]( https://github.com/microsoft/windows-rs )
-- [windows-strings 0.1.0]( https://github.com/microsoft/windows-rs )
-- [windows-strings 0.4.2]( https://github.com/microsoft/windows-rs )
-- [windows-sys 0.52.0]( https://github.com/microsoft/windows-rs )
-- [windows-sys 0.59.0]( https://github.com/microsoft/windows-rs )
-- [windows-sys 0.60.2]( https://github.com/microsoft/windows-rs )
-- [windows-targets 0.52.6]( https://github.com/microsoft/windows-rs )
-- [windows-threading 0.1.0]( https://github.com/microsoft/windows-rs )
 - [windows 0.58.0]( https://github.com/microsoft/windows-rs )
 - [windows 0.61.3]( https://github.com/microsoft/windows-rs )
-- [windows_x86_64_gnu 0.52.6]( https://github.com/microsoft/windows-rs )
-- [windows_x86_64_gnu 0.53.0]( https://github.com/microsoft/windows-rs )
-- [windows_x86_64_msvc 0.52.6]( https://github.com/microsoft/windows-rs )
-- [windows_x86_64_msvc 0.53.0]( https://github.com/microsoft/windows-rs )
 
 #### License Text
 
@@ -4765,7 +4723,6 @@ SOFTWARE.
 
 #### Used by:
 
-- [unicode-properties 0.1.3]( https://github.com/unicode-rs/unicode-properties )
 - [unicode-segmentation 1.12.0]( https://github.com/unicode-rs/unicode-segmentation )
 - [unicode-xid 0.2.6]( https://github.com/unicode-rs/unicode-xid )
 
@@ -4786,8 +4743,6 @@ according to those terms.
 
 #### Used by:
 
-- [cgl 0.3.2]( https://github.com/servo/cgl-rs )
-- [core-graphics 0.23.2]( https://github.com/servo/core-foundation-rs )
 - [euclid 0.22.11]( https://github.com/servo/euclid )
 
 #### License Text
@@ -5552,13 +5507,34 @@ SOFTWARE.
 - [qttypes 0.2.12]( https://github.com/woboq/qmetaobject-rs )
 - [simd_helpers 0.1.0]( https://github.com/lu-zero/simd_helpers )
 - [siphasher 1.0.1]( https://github.com/jedisct1/rust-siphash )
-- [windows-core 0.62.1]( https://github.com/microsoft/windows-rs )
-- [windows-implement 0.60.1]( https://github.com/microsoft/windows-rs )
-- [windows-interface 0.59.2]( https://github.com/microsoft/windows-rs )
-- [windows-result 0.4.0]( https://github.com/microsoft/windows-rs )
-- [windows-strings 0.5.0]( https://github.com/microsoft/windows-rs )
-- [windows-sys 0.61.1]( https://github.com/microsoft/windows-rs )
-- [windows-targets 0.53.4]( https://github.com/microsoft/windows-rs )
+- [windows-core 0.58.0]( https://github.com/microsoft/windows-rs )
+- [windows-core 0.61.2]( https://github.com/microsoft/windows-rs )
+- [windows-core 0.62.2]( https://github.com/microsoft/windows-rs )
+- [windows-future 0.2.1]( https://github.com/microsoft/windows-rs )
+- [windows-implement 0.58.0]( https://github.com/microsoft/windows-rs )
+- [windows-implement 0.60.2]( https://github.com/microsoft/windows-rs )
+- [windows-interface 0.58.0]( https://github.com/microsoft/windows-rs )
+- [windows-interface 0.59.3]( https://github.com/microsoft/windows-rs )
+- [windows-link 0.1.3]( https://github.com/microsoft/windows-rs )
+- [windows-link 0.2.1]( https://github.com/microsoft/windows-rs )
+- [windows-numerics 0.2.0]( https://github.com/microsoft/windows-rs )
+- [windows-result 0.2.0]( https://github.com/microsoft/windows-rs )
+- [windows-result 0.3.4]( https://github.com/microsoft/windows-rs )
+- [windows-result 0.4.1]( https://github.com/microsoft/windows-rs )
+- [windows-strings 0.1.0]( https://github.com/microsoft/windows-rs )
+- [windows-strings 0.4.2]( https://github.com/microsoft/windows-rs )
+- [windows-strings 0.5.1]( https://github.com/microsoft/windows-rs )
+- [windows-sys 0.52.0]( https://github.com/microsoft/windows-rs )
+- [windows-sys 0.59.0]( https://github.com/microsoft/windows-rs )
+- [windows-sys 0.60.2]( https://github.com/microsoft/windows-rs )
+- [windows-sys 0.61.2]( https://github.com/microsoft/windows-rs )
+- [windows-targets 0.52.6]( https://github.com/microsoft/windows-rs )
+- [windows-targets 0.53.5]( https://github.com/microsoft/windows-rs )
+- [windows-threading 0.1.0]( https://github.com/microsoft/windows-rs )
+- [windows_x86_64_gnu 0.52.6]( https://github.com/microsoft/windows-rs )
+- [windows_x86_64_gnu 0.53.1]( https://github.com/microsoft/windows-rs )
+- [windows_x86_64_msvc 0.52.6]( https://github.com/microsoft/windows-rs )
+- [windows_x86_64_msvc 0.53.1]( https://github.com/microsoft/windows-rs )
 - [zune-core 0.4.12](
 https://crates.io/crates/zune-core )
 - [zune-inflate 0.2.54](
@@ -6117,39 +6093,6 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-```
-
-### <a id="MIT"></a> MIT License
-
-#### Used by:
-
-- [tracing-core 0.1.34]( https://github.com/tokio-rs/tracing )
-
-#### License Text
-
-```
-The MIT License (MIT)
-
-Copyright (c) 2014 Mathijs van de Nes
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the &quot;Software&quot;), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
 
 ```
 
@@ -6835,106 +6778,6 @@ THE SOFTWARE.
 
 #### Used by:
 
-- [uds_windows 1.1.0]( https://github.com/haraldh/rust_uds_windows )
-
-#### License Text
-
-```
-Third Party Notices
-
-***
-
-rust
-Copyright 2016 The Rust Project Developers
-Permission is hereby granted, free of charge, to any
-person obtaining a copy of this software and associated
-documentation files (the &quot;Software&quot;), to deal in the
-Software without restriction, including without
-limitation the rights to use, copy, modify, merge,
-publish, distribute, sublicense, and/or sell copies of
-the Software, and to permit persons to whom the Software
-is furnished to do so, subject to the following
-conditions:
-The above copyright notice and this permission notice
-shall be included in all copies or substantial portions
-of the Software.
-THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF
-ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
-TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
-PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
-SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
-IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-DEALINGS IN THE SOFTWARE.
-
-***
-
-mio
-Copyright (c) 2014 Carl Lerche and other MIO contributors
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the &quot;Software&quot;), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-
-***
-
-miow
-Copyright (c) 2014 Alex Crichton
-Permission is hereby granted, free of charge, to any
-person obtaining a copy of this software and associated
-documentation files (the &quot;Software&quot;), to deal in the
-Software without restriction, including without
-limitation the rights to use, copy, modify, merge,
-publish, distribute, sublicense, and/or sell copies of
-the Software, and to permit persons to whom the Software
-is furnished to do so, subject to the following
-conditions:
-The above copyright notice and this permission notice
-shall be included in all copies or substantial portions
-of the Software.
-THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF
-ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
-TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
-PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
-SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
-IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-DEALINGS IN THE SOFTWARE.
-```
-
-### <a id="MIT"></a> MIT License
-
-#### Used by:
-
-- [aho-corasick 1.1.3]( https://github.com/BurntSushi/aho-corasick )
-- [byteorder 1.5.0]( https://github.com/BurntSushi/byteorder )
-
-#### License Text
-
-```
-This project is dual-licensed under the Unlicense and MIT licenses.
-
-You may use this code under the terms of either license.
-
-```
-
-### <a id="MIT"></a> MIT License
-
-#### Used by:
-
 - [loop9 0.1.5]( https://gitlab.com/kornelski/loop9.git )
 
 #### License Text
@@ -7339,11 +7182,9 @@ Exhibit B - &quot;Incompatible With Secondary Licenses&quot; Notice
 
 #### Used by:
 
-- [icu_locid 1.5.0]( https://github.com/unicode-org/icu4x )
 - [litemap 0.7.5]( https://github.com/unicode-org/icu4x )
 - [tinystr 0.7.6]( https://github.com/unicode-org/icu4x )
 - [unicode-ident 1.0.19]( https://github.com/dtolnay/unicode-ident )
-- [writeable 0.5.5]( https://github.com/unicode-org/icu4x )
 
 #### License Text
 
@@ -7387,6 +7228,65 @@ Except as contained in this notice, the name of a copyright holder shall
 not be used in advertising or otherwise to promote the sale, use or other
 dealings in these Data Files or Software without prior written
 authorization of the copyright holder.
+
+```
+
+### <a id="Unicode-3.0"></a> Unicode License v3
+
+#### Used by:
+
+- [icu_locid 1.5.0]( https://github.com/unicode-org/icu4x )
+- [writeable 0.5.5]( https://github.com/unicode-org/icu4x )
+
+#### License Text
+
+```
+UNICODE LICENSE V3
+
+COPYRIGHT AND PERMISSION NOTICE
+
+Copyright © 2020-2024 Unicode, Inc.
+
+NOTICE TO USER: Carefully read the following legal agreement. BY
+DOWNLOADING, INSTALLING, COPYING OR OTHERWISE USING DATA FILES, AND/OR
+SOFTWARE, YOU UNEQUIVOCALLY ACCEPT, AND AGREE TO BE BOUND BY, ALL OF THE
+TERMS AND CONDITIONS OF THIS AGREEMENT. IF YOU DO NOT AGREE, DO NOT
+DOWNLOAD, INSTALL, COPY, DISTRIBUTE OR USE THE DATA FILES OR SOFTWARE.
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of data files and any associated documentation (the &quot;Data Files&quot;) or
+software and any associated documentation (the &quot;Software&quot;) to deal in the
+Data Files or Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, and/or sell
+copies of the Data Files or Software, and to permit persons to whom the
+Data Files or Software are furnished to do so, provided that either (a)
+this copyright and permission notice appear with all copies of the Data
+Files or Software, or (b) this copyright and permission notice appear in
+associated Documentation.
+
+THE DATA FILES AND SOFTWARE ARE PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY
+KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT OF
+THIRD PARTY RIGHTS.
+
+IN NO EVENT SHALL THE COPYRIGHT HOLDER OR HOLDERS INCLUDED IN THIS NOTICE
+BE LIABLE FOR ANY CLAIM, OR ANY SPECIAL INDIRECT OR CONSEQUENTIAL DAMAGES,
+OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS,
+WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION,
+ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THE DATA
+FILES OR SOFTWARE.
+
+Except as contained in this notice, the name of a copyright holder shall
+not be used in advertising or otherwise to promote the sale, use or other
+dealings in these Data Files or Software without prior written
+authorization of the copyright holder.
+
+SPDX-License-Identifier: Unicode-3.0
+
+—
+
+Portions of ICU4X may have been adapted from ICU4C and/or ICU4J.
+ICU 1.8.1 to ICU 57.1 © 1995-2016 International Business Machines Corporation and others.
 
 ```
 

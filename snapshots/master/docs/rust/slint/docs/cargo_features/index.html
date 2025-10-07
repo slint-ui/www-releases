@@ -266,13 +266,21 @@ windowing system. (Experimental)</p>
 <p><strong><code>backend-android-activity-05</code></strong> —  <strong>Deprecated</strong> Use previous version of android-activity. This is mutually exclusive with <code>backend-android-activity-06</code>.</p>
 </li>
 <li>
-<p><strong><code>unstable-wgpu-26</code></strong> —  Enable support for <a href="http://wgpu.rs">WGPU</a> based rendering and expose WGPU based APIs based on WGPU version 25.x.</p>
+<p><strong><code>unstable-wgpu-26</code></strong> —  Enable support for <a href="http://wgpu.rs">WGPU</a> based rendering and expose WGPU based APIs based on WGPU version 26.x.</p>
 <p>APIs guarded with this feature are <em>NOT</em> subject to the usual Slint API stability guarantees, because WGPU releases new major
 versions frequently. This feature as well as the APIs changed or removed in future minor releases of Slint, likely to be replaced
 by a feature with a similar name but the WGPU version suffix being bumped.</p>
 <p>To avoid unintended compilation failures, we recommend to use the <a href="https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html#tilde-requirements">tilde requirement</a>
 in your <code>Cargo.toml</code> when enabling this feature:</p>
-<div class="example-wrap"><pre class="language-toml"><code>slint = { version = &quot;~1.13&quot;, features = [&quot;unstable-wgpu-26&quot;] }</code></pre></div></li>
+<div class="example-wrap"><pre class="language-toml"><code>slint = { version = &quot;~1.14&quot;, features = [&quot;unstable-wgpu-26&quot;] }</code></pre></div></li>
+<li>
+<p><strong><code>unstable-wgpu-27</code></strong> —  Enable support for <a href="http://wgpu.rs">WGPU</a> based rendering and expose WGPU based APIs based on WGPU version 27.x.</p>
+<p>APIs guarded with this feature are <em>NOT</em> subject to the usual Slint API stability guarantees, because WGPU releases new major
+versions frequently. This feature as well as the APIs changed or removed in future minor releases of Slint, likely to be replaced
+by a feature with a similar name but the WGPU version suffix being bumped.</p>
+<p>To avoid unintended compilation failures, we recommend to use the <a href="https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html#tilde-requirements">tilde requirement</a>
+in your <code>Cargo.toml</code> when enabling this feature:</p>
+<div class="example-wrap"><pre class="language-toml"><code>slint = { version = &quot;~1.14&quot;, features = [&quot;unstable-wgpu-27&quot;] }</code></pre></div></li>
 <li>
 <p><strong><code>unstable-winit-030</code></strong> —  APIs guarded with this feature are <em>NOT</em> subject to the usual Slint API stability guarantees, because winit releases new major
 versions more frequently than Slint. This feature as well as the APIs changed or removed in future minor releases of Slint, likely to be replaced

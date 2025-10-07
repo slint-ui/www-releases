@@ -278,12 +278,12 @@ function __wbg_adapter_9(arg0, arg1, arg2) {
     wasm.closure4794_externref_shim(arg0, arg1, arg2);
 }
 
-function __wbg_adapter_34(arg0, arg1) {
-    wasm.wasm_bindgen__convert__closures_____invoke__h0edb6a1aed6dc497(arg0, arg1);
+function __wbg_adapter_18(arg0, arg1, arg2, arg3) {
+    wasm.closure4700_externref_shim(arg0, arg1, arg2, arg3);
 }
 
-function __wbg_adapter_37(arg0, arg1, arg2, arg3) {
-    wasm.closure4700_externref_shim(arg0, arg1, arg2, arg3);
+function __wbg_adapter_31(arg0, arg1) {
+    wasm.wasm_bindgen__convert__closures_____invoke__h0edb6a1aed6dc497(arg0, arg1);
 }
 
 const __wbindgen_enum_ResizeObserverBoxOptions = ["border-box", "content-box", "device-pixel-content-box"];
@@ -1665,7 +1665,7 @@ function __wbg_get_imports() {
     };
     imports.wbg.__wbindgen_cast_2e6d42c09331274e = function(arg0, arg1) {
         // Cast intrinsic for `Closure(Closure { dtor_idx: 4793, function: Function { arguments: [NamedExternref("Array<any>"), NamedExternref("ResizeObserver")], shim_idx: 4700, ret: Unit, inner_ret: Some(Unit) }, mutable: true }) -> Externref`.
-        const ret = makeMutClosure(arg0, arg1, 4793, __wbg_adapter_37);
+        const ret = makeMutClosure(arg0, arg1, 4793, __wbg_adapter_18);
         return ret;
     };
     imports.wbg.__wbindgen_cast_369c23181db2fe81 = function(arg0, arg1) {
@@ -1695,7 +1695,7 @@ function __wbg_get_imports() {
     };
     imports.wbg.__wbindgen_cast_aff39b403f6d1f40 = function(arg0, arg1) {
         // Cast intrinsic for `Closure(Closure { dtor_idx: 4793, function: Function { arguments: [], shim_idx: 4796, ret: Unit, inner_ret: Some(Unit) }, mutable: true }) -> Externref`.
-        const ret = makeMutClosure(arg0, arg1, 4793, __wbg_adapter_34);
+        const ret = makeMutClosure(arg0, arg1, 4793, __wbg_adapter_31);
         return ret;
     };
     imports.wbg.__wbindgen_cast_bea16582066b8b13 = function(arg0, arg1) {
