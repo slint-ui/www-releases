@@ -1,0 +1,243 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Backend for HLSL (High-Level Shading Language)."><title>slint::wgpu_27::wgpu::wgc::naga::back::hlsl - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../../../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../../../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../../../../../static.files/rustdoc-e56847b5.css"><meta name="rustdoc-vars" data-root-path="../../../../../../../" data-static-root-path="../../../../../../../static.files/" data-current-crate="slint" data-themes="" data-resource-suffix="" data-rustdoc-version="1.91.0-nightly (07d246fc6 2025-08-31)" data-channel="nightly" data-search-js="search-449aa9bf.js" data-stringdex-js="stringdex-0e748618.js" data-settings-js="settings-c38705f0.js" ><script src="../../../../../../../static.files/storage-e2aeef58.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../../../../../static.files/main-6dc2a7f3.js"></script><noscript><link rel="stylesheet" href="../../../../../../../static.files/noscript-263c88ec.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../../../../../static.files/favicon-044be391.svg"><!--
+    This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
+    It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
+    in sphinx and via head.hbs in mdbook.
+-->
+<link rel="stylesheet" href="https://slint.dev/resources/highlightjs/11.0.1/default.min.css">
+<script src="https://slint.dev/resources/highlightjs/11.0.1/highlight.min.js"></script>
+<script>
+  function highlight_slint(hljs) {
+    const KEYWORDS = {
+      keyword:
+        "animate callback changed component enum export for function global if import in in-out inherits out parent private property public pure root self states struct",
+      literal: "false true",
+      built_in:
+        "ArcTo Clip Close Colors CubicTo Flickable FocusScope GridLayout HorizontalLayout Image LineTo Math MoveTo Path PopupWindow QuadraticTo Rectangle Row Text TextInput TouchArea VerticalLayout Window animation-tick debug",
+      type: "bool duration easing float int length logical-length relative-font-size string",
+    };
+
+    return {
+      name: 'slint',
+      case_insensitive: false,
+      keywords: KEYWORDS,
+      contains: [
+        hljs.QUOTE_STRING_MODE,
+        hljs.C_LINE_COMMENT_MODE,
+        hljs.C_BLOCK_COMMENT_MODE,
+        hljs.COMMENT('/\\*', '\\*/', {
+          contains: ['self']
+        }),
+        {
+          className: 'number',
+          begin: '\\b\\d+(\\.\\d+)?(\\w+)?',
+          relevance: 0
+        },
+        {
+          className: 'title',
+          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]* *:=',
+        },
+        {
+          className: 'symbol',
+          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]*(:| *=>)',
+        },
+        {
+          className: 'built_in',
+          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]*!',
+        },
+      ],
+      illegal: /@/
+    };
+  };
+
+  // Tags used in fenced code blocks
+  for (let tag of ["slint", "slint,no-preview", "slint,no-auto-preview", "slint,ignore"]) {
+    hljs.registerLanguage(tag, highlight_slint);
+  }
+
+
+  window.addEventListener("DOMContentLoaded", () => {
+    const rustDoc = document.querySelector('meta[name="generator"]')?.content == "rustdoc";
+    if (rustDoc) {
+      // Only highlight .slint blocks, leave the others to rustdoc
+      for (slintBlock of document.querySelectorAll("[class*=language-slint]")) {
+        hljs.highlightElement(slintBlock)
+      }
+
+      // Some of the rustdoc selectors require the pre element to have the rust class
+      for (codeBlock of document.querySelectorAll(".language-slint.hljs")) {
+        codeBlock.classList.add("rust");
+        codeBlock.classList.remove("hljs");
+      }
+
+      // Change the hljs generated classes to the rustdoc
+      // ones, so that the highlighting adjusts to the theme correctly.
+      const highlightJSToRustDoc = [
+        ["comment", "comment"],
+        ["number", "number"],
+        ["symbol", "struct"], // width:
+        ["keyword", "kw"],
+        ["built_in", "primitive"],
+        ["string", "string"],
+        ["title", "fnname"], // Foo :=
+        ["type", "type"]
+      ];
+
+      for ([hljs_class, rustdoc_class] of highlightJSToRustDoc) {
+        for (titleElement of document.querySelectorAll(`.hljs-${hljs_class}`)) {
+          titleElement.classList.remove(`hljs-${hljs_class}`);
+          titleElement.classList.add(rustdoc_class);
+        }
+      }
+    } else {
+      // For use with the mdbook Tutorial
+      hljs.highlightAll();
+
+      // The Sphinx/my_st generated HTML for code blocks doesn't use <code> tags, so highlight.js'
+      // default selector "pre code" doesn't match. Let's do it by hand:
+      for (block of document.querySelectorAll("div[class*=highlight-slint] div.highlight pre")) {
+        hljs.highlightElement(block)
+      }
+    }
+
+    // Fix up links that sphinx handles but for rustdoc we need to resolve manually:
+    {
+      let target_url = null;
+      if (document.location.hostname == "snapshots.slint.dev") {
+        target_url = `https://snapshots.slint.dev/master/docs/slint/`;
+      } else {
+        let version = document.querySelector("span.version");
+        if (version !== null) {
+          target_url = `https://slint.dev/releases/${version.innerText}/docs/slint/`;
+        }
+      }
+
+      if (target_url !== null) {
+        for (let link of document.querySelectorAll("a[href^='slint-reference:']")) {
+          link.href = link.href.replace("slint-reference:", target_url);
+        }
+      }
+    }
+  });
+</script>
+
+</head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module hlsl</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><a class="logo-container" href="../../../../../../../slint/index.html"><img src="https://slint.dev/logo/slint-logo-square-light.svg" alt="logo"></a><h2><a href="../../../../../../../slint/index.html">slint</a><span class="version">1.14.0</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module hlsl</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#supported-shader-model-versions" title="Supported shader model versions:">Supported shader model versions:</a></li><li><a href="#layout-of-values-in-uniform-buffers" title="Layout of values in `uniform` buffers">Layout of values in <code>uniform</code> buffers</a><ul><li><a href="#row--and-column-major-ordering-for-matrices" title="Row- and column-major ordering for matrices">Row- and column-major ordering for matrices</a></li><li><a href="#padding-in-two-row-matrices" title="Padding in two-row matrices">Padding in two-row matrices</a></li><li><a href="#sampler-handling" title="Sampler Handling">Sampler Handling</a></li></ul></li><li><a href="#external-textures" title="External textures">External textures</a></li></ul><h3><a href="#structs">Module Items</a></h3><ul class="block"><li><a href="#structs" title="Structs">Structs</a></li><li><a href="#enums" title="Enums">Enums</a></li><li><a href="#types" title="Type Aliases">Type Aliases</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In slint::<wbr>wgpu_<wbr>27::<wbr>wgpu::<wbr>wgc::<wbr>naga::<wbr>back</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../../../../../index.html">slint</a>::<wbr><a href="../../../../../index.html">wgpu_27</a>::<wbr><a href="../../../../index.html">wgpu</a>::<wbr><a href="../../../index.html">wgc</a>::<wbr><a href="../../index.html">naga</a>::<wbr><a href="../index.html">back</a></div><h1>Module <span>hlsl</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"></span></div><span class="item-info"><div class="stab portability">Available on <strong>crate feature <code>unstable-wgpu-27</code></strong> only.</div></span><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Backend for <a href="https://docs.microsoft.com/en-us/windows/win32/direct3dhlsl/dx-graphics-hlsl">HLSL</a> (High-Level Shading Language).</p>
+<h2 id="supported-shader-model-versions"><a class="doc-anchor" href="#supported-shader-model-versions">§</a>Supported shader model versions:</h2>
+<ul>
+<li>5.0</li>
+<li>5.1</li>
+<li>6.0</li>
+</ul>
+<h2 id="layout-of-values-in-uniform-buffers"><a class="doc-anchor" href="#layout-of-values-in-uniform-buffers">§</a>Layout of values in <code>uniform</code> buffers</h2>
+<p>WGSL’s <a href="https://gpuweb.github.io/gpuweb/wgsl/#internal-value-layout">“Internal Layout of Values”</a> rules specify how each WGSL
+type should be stored in <code>uniform</code> and <code>storage</code> buffers. The HLSL we
+generate must access values in that form, even when it is not what
+HLSL would use normally.</p>
+<p>Matching the WGSL memory layout is a concern only for <code>uniform</code>
+variables. WGSL <code>storage</code> buffers are translated as HLSL
+<code>ByteAddressBuffers</code>, for which we generate <code>Load</code> and <code>Store</code> method
+calls with explicit byte offsets. WGSL pipeline inputs must be scalars
+or vectors; they cannot be matrices, which is where the interesting
+problems arise. However, when an affected type appears in a struct
+definition, the transformations described here are applied without
+consideration of where the struct is used.</p>
+<p>Access to storage buffers is implemented in <code>storage.rs</code>. Access to
+uniform buffers is implemented where applicable in <code>writer.rs</code>.</p>
+<h3 id="row--and-column-major-ordering-for-matrices"><a class="doc-anchor" href="#row--and-column-major-ordering-for-matrices">§</a>Row- and column-major ordering for matrices</h3>
+<p>WGSL specifies that matrices in uniform buffers are stored in
+column-major order. This matches HLSL’s default, so one might expect
+things to be straightforward. Unfortunately, WGSL and HLSL disagree on
+what indexing a matrix means: in WGSL, <code>m[i]</code> retrieves the <code>i</code>’th
+<em>column</em> of <code>m</code>, whereas in HLSL it retrieves the <code>i</code>’th <em>row</em>. We
+want to avoid translating <code>m[i]</code> into some complicated reassembly of a
+vector from individually fetched components, so this is a problem.</p>
+<p>However, with a bit of trickery, it is possible to use HLSL’s <code>m[i]</code>
+as the translation of WGSL’s <code>m[i]</code>:</p>
+<ul>
+<li>
+<p>We declare all matrices in uniform buffers in HLSL with the
+<code>row_major</code> qualifier, and transpose the row and column counts: a
+WGSL <code>mat3x4&lt;f32&gt;</code>, say, becomes an HLSL <code>row_major float3x4</code>. (Note
+that WGSL and HLSL type names put the row and column in reverse
+order.) Since the HLSL type is the transpose of how WebGPU directs
+the user to store the data, HLSL will load all matrices transposed.</p>
+</li>
+<li>
+<p>Since matrices are transposed, an HLSL indexing expression retrieves
+the “columns” of the intended WGSL value, as desired.</p>
+</li>
+<li>
+<p>For vector-matrix multiplication, since <code>mul(transpose(m), v)</code> is
+equivalent to <code>mul(v, m)</code> (note the reversal of the arguments), and
+<code>mul(v, transpose(m))</code> is equivalent to <code>mul(m, v)</code>, we can
+translate WGSL <code>m * v</code> and <code>v * m</code> to HLSL by simply reversing the
+arguments to <code>mul</code>.</p>
+</li>
+</ul>
+<h3 id="padding-in-two-row-matrices"><a class="doc-anchor" href="#padding-in-two-row-matrices">§</a>Padding in two-row matrices</h3>
+<p>An HLSL <code>row_major floatKx2</code> matrix has padding between its rows that
+the WGSL <code>matKx2&lt;f32&gt;</code> matrix it represents does not. HLSL stores all
+matrix rows <a href="https://github.com/microsoft/DirectXShaderCompiler/wiki/Buffer-Packing#constant-buffer-packing">aligned on 16-byte boundaries</a>, whereas WGSL says
+that the columns of a <code>matKx2&lt;f32&gt;</code> need only be <a href="https://gpuweb.github.io/gpuweb/wgsl/#internal-value-layout">aligned as required
+for <code>vec2&lt;f32&gt;</code></a>, which is <a href="https://gpuweb.github.io/gpuweb/wgsl/#alignment-and-size">eight-byte alignment</a>.</p>
+<p>To compensate for this, any time a <code>matKx2&lt;f32&gt;</code> appears in a WGSL
+<code>uniform</code> value or as part of a struct/array, we actually emit <code>K</code>
+separate <code>float2</code> members, and assemble/disassemble the matrix from its
+columns (in WGSL; rows in HLSL) upon load and store.</p>
+<p>For example, the following WGSL struct type:</p>
+
+<div class="example-wrap ignore"><a href="#" class="tooltip" title="This example is not tested">ⓘ</a><pre class="rust rust-example-rendered"><code><span class="kw">struct </span>Baz {
+        m: mat3x2&lt;f32&gt;,
+}</code></pre></div>
+<p>is rendered as the HLSL struct type:</p>
+
+<div class="example-wrap ignore"><a href="#" class="tooltip" title="This example is not tested">ⓘ</a><pre class="rust rust-example-rendered"><code><span class="kw">struct </span>Baz {
+    float2 m_0; float2 m_1; float2 m_2;
+};</code></pre></div>
+<p>The <code>wrapped_struct_matrix</code> functions in <code>help.rs</code> generate HLSL
+helper functions to access such members, converting between the stored
+form and the HLSL matrix types appropriately. For example, for reading
+the member <code>m</code> of the <code>Baz</code> struct above, we emit:</p>
+
+<div class="example-wrap ignore"><a href="#" class="tooltip" title="This example is not tested">ⓘ</a><pre class="rust rust-example-rendered"><code>float3x2 GetMatmOnBaz(Baz obj) {
+    <span class="kw">return </span>float3x2(obj.m_0, obj.m_1, obj.m_2);
+}</code></pre></div>
+<p>We also emit an analogous <code>Set</code> function, as well as functions for
+accessing individual columns by dynamic index.</p>
+<h3 id="sampler-handling"><a class="doc-anchor" href="#sampler-handling">§</a>Sampler Handling</h3>
+<p>Due to limitations in how sampler heaps work in D3D12, we need to access samplers
+through a layer of indirection. Instead of directly binding samplers, we bind the entire
+sampler heap as both a standard and a comparison sampler heap. We then use a sampler
+index buffer for each bind group. This buffer is accessed in the shader to get the actual
+sampler index within the heap. See the wgpu_hal dx12 backend documentation for more
+information.</p>
+<h2 id="external-textures"><a class="doc-anchor" href="#external-textures">§</a>External textures</h2>
+<p>Support for <a href="../../enum.ImageClass.html#variant.External" title="variant slint::wgpu_27::wgpu::wgc::naga::ImageClass::External"><code>crate::ImageClass::External</code></a> textures is implemented by lowering
+each external texture global variable to 3 <code>Texture2D&lt;float4&gt;</code>s, and a <code>cbuffer</code>
+of type <code>NagaExternalTextureParams</code>. This provides up to 3 planes of texture
+data (for example single planar RGBA, or separate Y, Cb, and Cr planes), and the
+parameters buffer containing information describing how to handle these
+correctly. The bind target to use for each of these globals is specified via
+<a href="struct.Options.html#structfield.external_texture_binding_map" title="field slint::wgpu_27::wgpu::wgc::naga::back::hlsl::Options::external_texture_binding_map"><code>Options::external_texture_binding_map</code></a>.</p>
+<p>External textures are supported by WGSL’s <code>textureDimensions()</code>,
+<code>textureLoad()</code>, and <code>textureSampleBaseClampToEdge()</code> built-in functions. These
+are implemented using helper functions. See the following functions for how
+these are generated:</p>
+<ul>
+<li><code>Writer::write_wrapped_image_query_function</code></li>
+<li><code>Writer::write_wrapped_image_load_function</code></li>
+<li><code>Writer::write_wrapped_image_sample_function</code></li>
+</ul>
+<p>Ideally the set of global variables could be wrapped in a single struct that
+could conveniently be passed around. But, alas, HLSL does not allow structs to
+have <code>Texture2D</code> members. Fortunately, however, external textures can only be
+used as arguments to either built-in or user-defined functions. We therefore
+expand any external texture function argument to four consecutive arguments (3
+textures and the params struct) when declaring user-defined functions, and
+ensure our built-in function implementations take the same arguments. Then,
+whenever we need to emit an external texture in <code>Writer::write_expr</code>, which
+fortunately can only ever be for a global variable or function argument, we
+simply emit the variable name of each of the three textures and the parameters
+struct in a comma-separated list. This won’t win any awards for elegance, but
+it works for our purposes.</p>
+</div></details><h2 id="structs" class="section-header">Structs<a href="#structs" class="anchor">§</a></h2><dl class="item-table"><dt><a class="struct" href="struct.BindTarget.html" title="struct slint::wgpu_27::wgpu::wgc::naga::back::hlsl::BindTarget">Bind<wbr>Target</a></dt><dd>Direct3D 12 binding information for a global variable.</dd><dt><a class="struct" href="struct.ExternalTextureBindTarget.html" title="struct slint::wgpu_27::wgpu::wgc::naga::back::hlsl::ExternalTextureBindTarget">External<wbr>Texture<wbr>Bind<wbr>Target</a></dt><dd>HLSL binding information for a Naga <a href="../../enum.ImageClass.html#variant.External" title="variant slint::wgpu_27::wgpu::wgc::naga::ImageClass::External"><code>External</code></a> image global variable.</dd><dt><a class="struct" href="struct.FragmentEntryPoint.html" title="struct slint::wgpu_27::wgpu::wgc::naga::back::hlsl::FragmentEntryPoint">Fragment<wbr>Entry<wbr>Point</a></dt><dd>A fragment entry point to be considered when generating HLSL for the output interface of vertex
+entry points.</dd><dt><a class="struct" href="struct.OffsetsBindTarget.html" title="struct slint::wgpu_27::wgpu::wgc::naga::back::hlsl::OffsetsBindTarget">Offsets<wbr>Bind<wbr>Target</a></dt><dd>BindTarget for dynamic storage buffer offsets</dd><dt><a class="struct" href="struct.Options.html" title="struct slint::wgpu_27::wgpu::wgc::naga::back::hlsl::Options">Options</a></dt><dd>Configuration used in the <a href="struct.Writer.html" title="struct slint::wgpu_27::wgpu::wgc::naga::back::hlsl::Writer"><code>Writer</code></a>.</dd><dt><a class="struct" href="struct.PipelineOptions.html" title="struct slint::wgpu_27::wgpu::wgc::naga::back::hlsl::PipelineOptions">Pipeline<wbr>Options</a></dt><dd>A subset of options that are meant to be changed per pipeline.</dd><dt><a class="struct" href="struct.ReflectionInfo.html" title="struct slint::wgpu_27::wgpu::wgc::naga::back::hlsl::ReflectionInfo">Reflection<wbr>Info</a></dt><dd>Reflection info for entry point names.</dd><dt><a class="struct" href="struct.SamplerHeapBindTargets.html" title="struct slint::wgpu_27::wgpu::wgc::naga::back::hlsl::SamplerHeapBindTargets">Sampler<wbr>Heap<wbr>Bind<wbr>Targets</a></dt><dt><a class="struct" href="struct.SamplerIndexBufferKey.html" title="struct slint::wgpu_27::wgpu::wgc::naga::back::hlsl::SamplerIndexBufferKey">Sampler<wbr>Index<wbr>Buffer<wbr>Key</a></dt><dt><a class="struct" href="struct.Writer.html" title="struct slint::wgpu_27::wgpu::wgc::naga::back::hlsl::Writer">Writer</a></dt></dl><h2 id="enums" class="section-header">Enums<a href="#enums" class="anchor">§</a></h2><dl class="item-table"><dt><a class="enum" href="enum.EntryPointError.html" title="enum slint::wgpu_27::wgpu::wgc::naga::back::hlsl::EntryPointError">Entry<wbr>Point<wbr>Error</a></dt><dt><a class="enum" href="enum.Error.html" title="enum slint::wgpu_27::wgpu::wgc::naga::back::hlsl::Error">Error</a></dt><dt><a class="enum" href="enum.ShaderModel.html" title="enum slint::wgpu_27::wgpu::wgc::naga::back::hlsl::ShaderModel">Shader<wbr>Model</a></dt><dd>A HLSL shader model version.</dd></dl><h2 id="types" class="section-header">Type Aliases<a href="#types" class="anchor">§</a></h2><dl class="item-table"><dt><a class="type" href="type.BindingMap.html" title="type slint::wgpu_27::wgpu::wgc::naga::back::hlsl::BindingMap">Binding<wbr>Map</a></dt><dt><a class="type" href="type.DynamicStorageBufferOffsetsTargets.html" title="type slint::wgpu_27::wgpu::wgc::naga::back::hlsl::DynamicStorageBufferOffsetsTargets">Dynamic<wbr>Storage<wbr>Buffer<wbr>Offsets<wbr>Targets</a></dt><dt><a class="type" href="type.ExternalTextureBindingMap.html" title="type slint::wgpu_27::wgpu::wgc::naga::back::hlsl::ExternalTextureBindingMap">External<wbr>Texture<wbr>Binding<wbr>Map</a></dt><dt><a class="type" href="type.SamplerIndexBufferBindingMap.html" title="type slint::wgpu_27::wgpu::wgc::naga::back::hlsl::SamplerIndexBufferBindingMap">Sampler<wbr>Index<wbr>Buffer<wbr>Binding<wbr>Map</a></dt></dl></section></div></main></body></html>
