@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/lib.rs`."><title>lib.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-e56847b5.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.91.0-nightly (07d246fc6 2025-08-31)" data-channel="nightly" data-search-js="search-449aa9bf.js" data-stringdex-js="stringdex-0e748618.js" data-settings-js="settings-c38705f0.js" ><script src="../../static.files/storage-e2aeef58.js"></script><script defer src="../../static.files/src-script-813739b1.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-6dc2a7f3.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-263c88ec.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/lib.rs`."><title>lib.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-ca0dd0c4.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.92.0-nightly (b6f0945e4 2025-10-08)" data-channel="nightly" data-search-js="search-8d3311b9.js" data-stringdex-js="stringdex-828709d0.js" data-settings-js="settings-c38705f0.js" ><script src="../../static.files/storage-e2aeef58.js"></script><script defer src="../../static.files/src-script-813739b1.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-ce535bd0.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-263c88ec.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -123,7 +123,7 @@
 </head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><section id="main-content" class="content"><div class="main-heading"><h1><div class="sub-heading">slint_interpreter/</div>lib.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap digits-3"><pre class="rust"><code><a href=#1 id=1 data-nosnippet>1</a><span class="comment">// Copyright © SixtyFPS GmbH &lt;info@slint.dev&gt;
 <a href=#2 id=2 data-nosnippet>2</a>// SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0
 <a href=#3 id=3 data-nosnippet>3</a>
-<a href=#4 id=4 data-nosnippet>4</a></span><span class="attr">#![cfg_attr(docsrs, feature(doc_cfg, doc_auto_cfg))]
+<a href=#4 id=4 data-nosnippet>4</a></span><span class="attr">#![cfg_attr(docsrs, feature(doc_cfg))]
 <a href=#5 id=5 data-nosnippet>5</a>
 <a href=#6 id=6 data-nosnippet>6</a></span><span class="doccomment">/*!
 <a href=#7 id=7 data-nosnippet>7</a># Slint interpreter library
@@ -190,40 +190,40 @@
 <a href=#68 id=68 data-nosnippet>68</a>```
 <a href=#69 id=69 data-nosnippet>69</a>*/
 <a href=#70 id=70 data-nosnippet>70</a>//! ## Feature flags
-<a href=#71 id=71 data-nosnippet>71</a></span><span class="attr">#![cfg_attr(feature = <span class="string">"document-features"</span>, doc = <span class="macro">document_features::document_features!</span>())]
+<a href=#71 id=71 data-nosnippet>71</a></span><span class="attr"><a href="value_model.rs.html#64">#![cfg_attr(feature = </a><span class="string">"document-features"</span><a href="value_model.rs.html#64">, doc = </a><span class="macro">document_features::document_features!</span><a href="value_model.rs.html#64">())]
 <a href=#72 id=72 data-nosnippet>72</a>#![warn(missing_docs)]
-<a href=#73 id=73 data-nosnippet>73</a>#![doc(html_logo_url = <span class="string">"https://slint.dev/logo/slint-logo-square-light.svg"</span>)]
+<a href=#73 id=73 data-nosnippet>73</a>#![doc(html_logo_url = </a><span class="string">"https://slint.dev/logo/slint-logo-square-light.svg"</span><a href="value_model.rs.html#64">)]
 <a href=#74 id=74 data-nosnippet>74</a>
-<a href=#75 id=75 data-nosnippet>75</a>#[cfg(not(feature = <span class="string">"compat-1-2"</span>))]
+<a href=#75 id=75 data-nosnippet>75</a>#[cfg(not(feature = </a><span class="string">"compat-1-2"</span>))]
 <a href=#76 id=76 data-nosnippet>76</a></span><span class="macro">compile_error!</span>(
 <a href=#77 id=77 data-nosnippet>77</a>    <span class="string">"The feature `compat-1-2` must be enabled to ensure \
 <a href=#78 id=78 data-nosnippet>78</a>    forward compatibility with future version of this crate"
 <a href=#79 id=79 data-nosnippet>79</a></span>);
 <a href=#80 id=80 data-nosnippet>80</a>
-<a href=#81 id=81 data-nosnippet>81</a><span class="kw">mod </span><a href="api.rs.html#4-2222">api</a>;
-<a href=#82 id=82 data-nosnippet>82</a><span class="kw">mod </span><a href="dynamic_item_tree.rs.html#4-2547">dynamic_item_tree</a>;
-<a href=#83 id=83 data-nosnippet>83</a><span class="kw">mod </span><a href="dynamic_type.rs.html#4-223">dynamic_type</a>;
-<a href=#84 id=84 data-nosnippet>84</a><span class="kw">mod </span><a href="eval.rs.html#4-2023">eval</a>;
-<a href=#85 id=85 data-nosnippet>85</a><span class="kw">mod </span><a href="eval_layout.rs.html#4-323">eval_layout</a>;
-<a href=#86 id=86 data-nosnippet>86</a><span class="kw">mod </span><a href="global_component.rs.html#4-366">global_component</a>;
-<a href=#87 id=87 data-nosnippet>87</a><span class="attr">#[cfg(feature = <span class="string">"internal-highlight"</span>)]
-<a href=#88 id=88 data-nosnippet>88</a></span><span class="kw">pub mod </span><a href="highlight.rs.html#4-211">highlight</a>;
-<a href=#89 id=89 data-nosnippet>89</a><span class="attr">#[cfg(feature = <span class="string">"internal-json"</span>)]
-<a href=#90 id=90 data-nosnippet>90</a></span><span class="kw">pub mod </span><a href="json.rs.html#4-545">json</a>;
-<a href=#91 id=91 data-nosnippet>91</a><span class="attr">#[cfg(feature = <span class="string">"internal-live-preview"</span>)]
-<a href=#92 id=92 data-nosnippet>92</a></span><span class="kw">pub mod </span><a href="live_preview.rs.html#4-456">live_preview</a>;
-<a href=#93 id=93 data-nosnippet>93</a><span class="kw">mod </span><a href="value_model.rs.html#4-146">value_model</a>;
+<a href=#81 id=81 data-nosnippet>81</a><span class="kw">mod </span><a href="value_model.rs.html#64"><a href="api.rs.html#4-2222">api</a>;
+<a href=#82 id=82 data-nosnippet>82</a></a><span class="kw">mod </span><a href="value_model.rs.html#64"><a href="dynamic_item_tree.rs.html#4-2547">dynamic_item_tree</a>;
+<a href=#83 id=83 data-nosnippet>83</a></a><span class="kw">mod </span><a href="value_model.rs.html#64"><a href="dynamic_type.rs.html#4-223">dynamic_type</a>;
+<a href=#84 id=84 data-nosnippet>84</a></a><span class="kw">mod </span><a href="value_model.rs.html#64"><a href="eval.rs.html#4-2019">eval</a>;
+<a href=#85 id=85 data-nosnippet>85</a></a><span class="kw">mod </span><a href="value_model.rs.html#64"><a href="eval_layout.rs.html#4-323">eval_layout</a>;
+<a href=#86 id=86 data-nosnippet>86</a></a><span class="kw">mod </span><a href="value_model.rs.html#64"><a href="global_component.rs.html#4-366">global_component</a>;
+<a href=#87 id=87 data-nosnippet>87</a></a><span class="attr"><a href="value_model.rs.html#64">#[cfg(feature = </a><span class="string">"internal-highlight"</span>)]
+<a href=#88 id=88 data-nosnippet>88</a></span><span class="kw">pub mod </span><a href="value_model.rs.html#64"><a href="highlight.rs.html#4-211">highlight</a>;
+<a href=#89 id=89 data-nosnippet>89</a></a><span class="attr"><a href="value_model.rs.html#64">#[cfg(feature = </a><span class="string">"internal-json"</span>)]
+<a href=#90 id=90 data-nosnippet>90</a></span><span class="kw">pub mod </span><a href="value_model.rs.html#64"><a href="json.rs.html#4-545">json</a>;
+<a href=#91 id=91 data-nosnippet>91</a></a><span class="attr"><a href="value_model.rs.html#64">#[cfg(feature = </a><span class="string">"internal-live-preview"</span>)]
+<a href=#92 id=92 data-nosnippet>92</a></span><span class="kw">pub mod </span><a href="value_model.rs.html#64"><a href="live_preview.rs.html#4-456">live_preview</a>;
+<a href=#93 id=93 data-nosnippet>93</a></a><span class="kw">mod </span><a href="value_model.rs.html#64"><a href="value_model.rs.html#4-146">value_model</a>;
 <a href=#94 id=94 data-nosnippet>94</a>
-<a href=#95 id=95 data-nosnippet>95</a><span class="attr">#[doc(inline)]
-<a href=#96 id=96 data-nosnippet>96</a></span><span class="kw">pub use </span><a href="#81">api</a>::<span class="kw-2">*</span>;
+<a href=#95 id=95 data-nosnippet>95</a></a><span class="attr">#[doc(inline)]
+<a href=#96 id=96 data-nosnippet>96</a></span><span class="kw">pub use </span><a href="value_model.rs.html#64"><a href="#81">api</a>::</a><span class="kw-2">*</span>;
 <a href=#97 id=97 data-nosnippet>97</a>
-<a href=#98 id=98 data-nosnippet>98</a><span class="attr">#[cfg(feature = <span class="string">"internal"</span>)]
+<a href=#98 id=98 data-nosnippet>98</a><span class="attr"><a href="value_model.rs.html#64">#[cfg(feature = </a><span class="string">"internal"</span>)]
 <a href=#99 id=99 data-nosnippet>99</a>#[doc(hidden)]
-<a href=#100 id=100 data-nosnippet>100</a></span><span class="kw">pub use </span><a href="eval.rs.html#1961-1997">eval::default_value_for_type</a>;
+<a href=#100 id=100 data-nosnippet>100</a></span><span class="kw">pub use </span><a href="value_model.rs.html#64"><a href="eval.rs.html#1957-1993">eval::default_value_for_type</a>;
 <a href=#101 id=101 data-nosnippet>101</a>
-<a href=#102 id=102 data-nosnippet>102</a><span class="doccomment">/// (Re-export from corelib.)
+<a href=#102 id=102 data-nosnippet>102</a></a><span class="doccomment">/// (Re-export from corelib.)
 <a href=#103 id=103 data-nosnippet>103</a></span><span class="attr">#[doc(inline)]
-<a href=#104 id=104 data-nosnippet>104</a></span><span class="kw">pub use </span>i_slint_core::{<a href="../../slint_interpreter/enum.Brush.html">Brush</a>, <a href="../../slint_interpreter/struct.Color.html">Color</a>, <a href="../../slint_interpreter/struct.SharedString.html">SharedString</a>, <a href="../../slint_interpreter/struct.SharedVector.html">SharedVector</a>};
+<a href=#104 id=104 data-nosnippet>104</a></span><span class="kw">pub use </span><a href="value_model.rs.html#64">i_slint_core::{<a href="../../slint_interpreter/enum.Brush.html">Brush</a>, <a href="../../slint_interpreter/struct.Color.html">Color</a>, <a href="../../slint_interpreter/struct.SharedString.html">SharedString</a>, <a href="../../slint_interpreter/struct.SharedVector.html">SharedVector</a>};
 <a href=#105 id=105 data-nosnippet>105</a>
-<a href=#106 id=106 data-nosnippet>106</a><span class="attr">#[cfg(test)]
-<a href=#107 id=107 data-nosnippet>107</a></span><span class="kw">mod </span>tests;</code></pre></div></section></main></body></html>
+<a href=#106 id=106 data-nosnippet>106</a></a><span class="attr">#[cfg(test)]
+<a href=#107 id=107 data-nosnippet>107</a></span><span class="kw">mod </span><a href="value_model.rs.html#64">tests;</a></code></pre></div></section></main></body></html>
