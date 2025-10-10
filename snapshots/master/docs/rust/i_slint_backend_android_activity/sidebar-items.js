@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"struct":["AndroidApp","AndroidPlatform"]};
+window.SIDEBAR_ITEMS = {"fn":["set_requested_graphics_api"],"struct":["AndroidApp","AndroidPlatform"]};

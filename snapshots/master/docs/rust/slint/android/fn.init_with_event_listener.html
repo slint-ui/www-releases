@@ -129,7 +129,7 @@
 <h2 id="example"><a class="doc-anchor" href="#example">§</a>Example</h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 </span><span class="kw">fn </span>android_main(app: slint::android_activity::AndroidApp) {
-    slint::android_init_with_event_listener(
+    slint::android::init_with_event_listener(
        app,
        |event| { <span class="macro">eprintln!</span>(<span class="string">"got event {event:?}"</span>) }
     ).unwrap();

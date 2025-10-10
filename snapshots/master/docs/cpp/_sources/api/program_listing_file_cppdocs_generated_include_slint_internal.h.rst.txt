@@ -876,11 +876,10 @@ Program Listing for File slint_internal.h
    };
    
    struct Transform {
-       Property<float> rotation_angle;
+       Property<float> transform_rotation;
        Property<float> transform_scale_x;
        Property<float> transform_scale_y;
-       Property<LogicalLength> rotation_origin_x;
-       Property<LogicalLength> rotation_origin_y;
+       Property<LogicalPosition> transform_origin;
        CachedRenderingData cached_rendering_data;
    };
    
