@@ -449,7 +449,7 @@ This page lists the licenses of the dependencies used by Slint.
 
 #### Used by:
 
-- [gethostname 1.0.2]( https://codeberg.org/swsnr/gethostname.rs.git )
+- [gethostname 1.1.0]( https://codeberg.org/swsnr/gethostname.rs.git )
 
 #### License Text
 
@@ -3320,7 +3320,7 @@ THE SOFTWARE.
 
 #### Used by:
 
-- [getrandom 0.3.3]( https://github.com/rust-random/getrandom )
+- [getrandom 0.3.4]( https://github.com/rust-random/getrandom )
 
 #### License Text
 
@@ -5234,7 +5234,7 @@ DEALINGS IN THE SOFTWARE.
 
 #### Used by:
 
-- [half 2.7.0]( https://github.com/VoidStarKat/half-rs )
+- [half 2.7.1]( https://github.com/VoidStarKat/half-rs )
 - [linebender_resource_handle 0.1.1]( https://github.com/linebender/raw_resource_handle )
 
 #### License Text
