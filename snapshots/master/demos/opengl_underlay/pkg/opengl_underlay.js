@@ -274,15 +274,15 @@ function __wbg_adapter_6(arg0, arg1, arg2) {
     wasm.closure415_externref_shim(arg0, arg1, arg2);
 }
 
-function __wbg_adapter_9(arg0, arg1, arg2) {
+function __wbg_adapter_17(arg0, arg1, arg2) {
     wasm.closure215_externref_shim(arg0, arg1, arg2);
 }
 
-function __wbg_adapter_18(arg0, arg1) {
+function __wbg_adapter_36(arg0, arg1) {
     wasm.wasm_bindgen__convert__closures_____invoke__h1c28e1d9555bb37c(arg0, arg1);
 }
 
-function __wbg_adapter_31(arg0, arg1, arg2, arg3) {
+function __wbg_adapter_43(arg0, arg1, arg2, arg3) {
     wasm.closure319_externref_shim(arg0, arg1, arg2, arg3);
 }
 
@@ -1643,17 +1643,17 @@ function __wbg_get_imports() {
     };
     imports.wbg.__wbindgen_cast_2469401051872c83 = function(arg0, arg1) {
         // Cast intrinsic for `Closure(Closure { dtor_idx: 414, function: Function { arguments: [NamedExternref("Array<any>"), NamedExternref("ResizeObserver")], shim_idx: 319, ret: Unit, inner_ret: Some(Unit) }, mutable: true }) -> Externref`.
-        const ret = makeMutClosure(arg0, arg1, 414, __wbg_adapter_31);
+        const ret = makeMutClosure(arg0, arg1, 414, __wbg_adapter_43);
         return ret;
     };
     imports.wbg.__wbindgen_cast_2d46f36561461933 = function(arg0, arg1) {
         // Cast intrinsic for `Closure(Closure { dtor_idx: 214, function: Function { arguments: [NamedExternref("ClipboardEvent")], shim_idx: 215, ret: Unit, inner_ret: Some(Unit) }, mutable: false }) -> Externref`.
-        const ret = makeClosure(arg0, arg1, 214, __wbg_adapter_9);
+        const ret = makeClosure(arg0, arg1, 214, __wbg_adapter_17);
         return ret;
     };
     imports.wbg.__wbindgen_cast_4e7e7e1e27812b9a = function(arg0, arg1) {
         // Cast intrinsic for `Closure(Closure { dtor_idx: 214, function: Function { arguments: [NamedExternref("KeyboardEvent")], shim_idx: 215, ret: Unit, inner_ret: Some(Unit) }, mutable: false }) -> Externref`.
-        const ret = makeClosure(arg0, arg1, 214, __wbg_adapter_9);
+        const ret = makeClosure(arg0, arg1, 214, __wbg_adapter_17);
         return ret;
     };
     imports.wbg.__wbindgen_cast_6ab87556ec048b13 = function(arg0, arg1) {
@@ -1668,22 +1668,22 @@ function __wbg_get_imports() {
     };
     imports.wbg.__wbindgen_cast_a2f931e8a6266731 = function(arg0, arg1) {
         // Cast intrinsic for `Closure(Closure { dtor_idx: 214, function: Function { arguments: [NamedExternref("InputEvent")], shim_idx: 215, ret: Unit, inner_ret: Some(Unit) }, mutable: false }) -> Externref`.
-        const ret = makeClosure(arg0, arg1, 214, __wbg_adapter_9);
+        const ret = makeClosure(arg0, arg1, 214, __wbg_adapter_17);
         return ret;
     };
     imports.wbg.__wbindgen_cast_aacde139c470e6dd = function(arg0, arg1) {
         // Cast intrinsic for `Closure(Closure { dtor_idx: 414, function: Function { arguments: [], shim_idx: 417, ret: Unit, inner_ret: Some(Unit) }, mutable: true }) -> Externref`.
-        const ret = makeMutClosure(arg0, arg1, 414, __wbg_adapter_18);
+        const ret = makeMutClosure(arg0, arg1, 414, __wbg_adapter_36);
         return ret;
     };
     imports.wbg.__wbindgen_cast_b65fe52f5c0f72c5 = function(arg0, arg1) {
         // Cast intrinsic for `Closure(Closure { dtor_idx: 214, function: Function { arguments: [NamedExternref("CompositionEvent")], shim_idx: 215, ret: Unit, inner_ret: Some(Unit) }, mutable: false }) -> Externref`.
-        const ret = makeClosure(arg0, arg1, 214, __wbg_adapter_9);
+        const ret = makeClosure(arg0, arg1, 214, __wbg_adapter_17);
         return ret;
     };
     imports.wbg.__wbindgen_cast_c8c7eea5d3f21352 = function(arg0, arg1) {
         // Cast intrinsic for `Closure(Closure { dtor_idx: 214, function: Function { arguments: [NamedExternref("Event")], shim_idx: 215, ret: Unit, inner_ret: Some(Unit) }, mutable: false }) -> Externref`.
-        const ret = makeClosure(arg0, arg1, 214, __wbg_adapter_9);
+        const ret = makeClosure(arg0, arg1, 214, __wbg_adapter_17);
         return ret;
     };
     imports.wbg.__wbindgen_cast_cb9088102bce6b30 = function(arg0, arg1) {
