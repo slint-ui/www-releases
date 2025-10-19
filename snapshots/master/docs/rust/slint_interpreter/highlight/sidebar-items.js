@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"enum":["ElementPositionFilter"],"fn":["element_positions"]};
+window.SIDEBAR_ITEMS = {"enum":["ElementPositionFilter"],"fn":["element_positions"],"struct":["HighlightedRect"]};
