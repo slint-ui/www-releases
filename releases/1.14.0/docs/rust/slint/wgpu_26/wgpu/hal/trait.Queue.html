@@ -1,0 +1,217 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="API documentation for the Rust `Queue` trait in crate `slint`."><title>Queue in slint::wgpu_26::wgpu::hal - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../../static.files/rustdoc-ca0dd0c4.css"><meta name="rustdoc-vars" data-root-path="../../../../" data-static-root-path="../../../../static.files/" data-current-crate="slint" data-themes="" data-resource-suffix="" data-rustdoc-version="1.92.0-nightly (4068bafed 2025-10-20)" data-channel="nightly" data-search-js="search-8d3311b9.js" data-stringdex-js="stringdex-c3e638e9.js" data-settings-js="settings-c38705f0.js" ><script src="../../../../static.files/storage-e2aeef58.js"></script><script defer src="sidebar-items.js"></script><script defer src="../../../../static.files/main-ce535bd0.js"></script><noscript><link rel="stylesheet" href="../../../../static.files/noscript-263c88ec.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../../static.files/favicon-044be391.svg"><!--
+    This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
+    It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
+    in sphinx and via head.hbs in mdbook.
+-->
+<link rel="stylesheet" href="https://slint.dev/resources/highlightjs/11.0.1/default.min.css">
+<script src="https://slint.dev/resources/highlightjs/11.0.1/highlight.min.js"></script>
+<script>
+  function highlight_slint(hljs) {
+    const KEYWORDS = {
+      keyword:
+        "animate callback changed component enum export for function global if import in in-out inherits out parent private property public pure root self states struct",
+      literal: "false true",
+      built_in:
+        "ArcTo Clip Close Colors CubicTo Flickable FocusScope GridLayout HorizontalLayout Image LineTo Math MoveTo Path PopupWindow QuadraticTo Rectangle Row Text TextInput TouchArea VerticalLayout Window animation-tick debug",
+      type: "bool duration easing float int length logical-length relative-font-size string",
+    };
+
+    return {
+      name: 'slint',
+      case_insensitive: false,
+      keywords: KEYWORDS,
+      contains: [
+        hljs.QUOTE_STRING_MODE,
+        hljs.C_LINE_COMMENT_MODE,
+        hljs.C_BLOCK_COMMENT_MODE,
+        hljs.COMMENT('/\\*', '\\*/', {
+          contains: ['self']
+        }),
+        {
+          className: 'number',
+          begin: '\\b\\d+(\\.\\d+)?(\\w+)?',
+          relevance: 0
+        },
+        {
+          className: 'title',
+          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]* *:=',
+        },
+        {
+          className: 'symbol',
+          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]*(:| *=>)',
+        },
+        {
+          className: 'built_in',
+          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]*!',
+        },
+      ],
+      illegal: /@/
+    };
+  };
+
+  // Tags used in fenced code blocks
+  for (let tag of ["slint", "slint,no-preview", "slint,no-auto-preview", "slint,ignore"]) {
+    hljs.registerLanguage(tag, highlight_slint);
+  }
+
+
+  window.addEventListener("DOMContentLoaded", () => {
+    const rustDoc = document.querySelector('meta[name="generator"]')?.content == "rustdoc";
+    if (rustDoc) {
+      // Only highlight .slint blocks, leave the others to rustdoc
+      for (slintBlock of document.querySelectorAll("[class*=language-slint]")) {
+        hljs.highlightElement(slintBlock)
+      }
+
+      // Some of the rustdoc selectors require the pre element to have the rust class
+      for (codeBlock of document.querySelectorAll(".language-slint.hljs")) {
+        codeBlock.classList.add("rust");
+        codeBlock.classList.remove("hljs");
+      }
+
+      // Change the hljs generated classes to the rustdoc
+      // ones, so that the highlighting adjusts to the theme correctly.
+      const highlightJSToRustDoc = [
+        ["comment", "comment"],
+        ["number", "number"],
+        ["symbol", "struct"], // width:
+        ["keyword", "kw"],
+        ["built_in", "primitive"],
+        ["string", "string"],
+        ["title", "fnname"], // Foo :=
+        ["type", "type"]
+      ];
+
+      for ([hljs_class, rustdoc_class] of highlightJSToRustDoc) {
+        for (titleElement of document.querySelectorAll(`.hljs-${hljs_class}`)) {
+          titleElement.classList.remove(`hljs-${hljs_class}`);
+          titleElement.classList.add(rustdoc_class);
+        }
+      }
+    } else {
+      // For use with the mdbook Tutorial
+      hljs.highlightAll();
+
+      // The Sphinx/my_st generated HTML for code blocks doesn't use <code> tags, so highlight.js'
+      // default selector "pre code" doesn't match. Let's do it by hand:
+      for (block of document.querySelectorAll("div[class*=highlight-slint] div.highlight pre")) {
+        hljs.highlightElement(block)
+      }
+    }
+
+    // Fix up links that sphinx handles but for rustdoc we need to resolve manually:
+    {
+      let target_url = null;
+      if (document.location.hostname == "snapshots.slint.dev") {
+        target_url = `https://snapshots.slint.dev/master/docs/slint/`;
+      } else {
+        let version = document.querySelector("span.version");
+        if (version !== null) {
+          target_url = `https://slint.dev/releases/${version.innerText}/docs/slint/`;
+        }
+      }
+
+      if (target_url !== null) {
+        for (let link of document.querySelectorAll("a[href^='slint-reference:']")) {
+          link.href = link.href.replace("slint-reference:", target_url);
+        }
+      }
+    }
+  });
+</script>
+
+</head><body class="rustdoc trait"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Queue</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><a class="logo-container" href="../../../../slint/index.html"><img src="https://slint.dev/logo/slint-logo-square-light.svg" alt="logo"></a><h2><a href="../../../../slint/index.html">slint</a><span class="version">1.14.0</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Queue</a></h2><h3><a href="#required-associated-types">Required Associated Types</a></h3><ul class="block"><li><a href="#associatedtype.A" title="A">A</a></li></ul><h3><a href="#required-methods">Required Methods</a></h3><ul class="block"><li><a href="#tymethod.get_timestamp_period" title="get_timestamp_period">get_timestamp_period</a></li><li><a href="#tymethod.present" title="present">present</a></li><li><a href="#tymethod.submit" title="submit">submit</a></li></ul><h3><a href="#implementors">Implementors</a></h3></section><div id="rustdoc-modnav"><h2><a href="index.html">In slint::<wbr>wgpu_<wbr>26::<wbr>wgpu::<wbr>hal</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../../index.html">slint</a>::<wbr><a href="../../index.html">wgpu_26</a>::<wbr><a href="../index.html">wgpu</a>::<wbr><a href="index.html">hal</a></div><h1>Trait <span class="trait">Queue</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"></span></div><pre class="rust item-decl"><code>pub trait Queue: <a class="trait" href="../trait.WasmNotSendSync.html" title="trait slint::wgpu_26::wgpu::WasmNotSendSync">WasmNotSendSync</a> {
+    type <a href="#associatedtype.A" class="associatedtype">A</a>: <a class="trait" href="trait.Api.html" title="trait slint::wgpu_26::wgpu::hal::Api">Api</a>;
+
+    // Required methods
+    unsafe fn <a href="#tymethod.submit" class="fn">submit</a>(
+        &amp;self,
+        command_buffers: &amp;[&amp;&lt;Self::<a class="associatedtype" href="trait.Queue.html#associatedtype.A" title="type slint::wgpu_26::wgpu::hal::Queue::A">A</a> as <a class="trait" href="trait.Api.html" title="trait slint::wgpu_26::wgpu::hal::Api">Api</a>&gt;::<a class="associatedtype" href="trait.Api.html#associatedtype.CommandBuffer" title="type slint::wgpu_26::wgpu::hal::Api::CommandBuffer">CommandBuffer</a>],
+        surface_textures: &amp;[&amp;&lt;Self::<a class="associatedtype" href="trait.Queue.html#associatedtype.A" title="type slint::wgpu_26::wgpu::hal::Queue::A">A</a> as <a class="trait" href="trait.Api.html" title="trait slint::wgpu_26::wgpu::hal::Api">Api</a>&gt;::<a class="associatedtype" href="trait.Api.html#associatedtype.SurfaceTexture" title="type slint::wgpu_26::wgpu::hal::Api::SurfaceTexture">SurfaceTexture</a>],
+        signal_fence: (&amp;mut &lt;Self::<a class="associatedtype" href="trait.Queue.html#associatedtype.A" title="type slint::wgpu_26::wgpu::hal::Queue::A">A</a> as <a class="trait" href="trait.Api.html" title="trait slint::wgpu_26::wgpu::hal::Api">Api</a>&gt;::<a class="associatedtype" href="trait.Api.html#associatedtype.Fence" title="type slint::wgpu_26::wgpu::hal::Api::Fence">Fence</a>, <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>),
+    ) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>, <a class="enum" href="enum.DeviceError.html" title="enum slint::wgpu_26::wgpu::hal::DeviceError">DeviceError</a>&gt;;
+<span class="item-spacer"></span>    unsafe fn <a href="#tymethod.present" class="fn">present</a>(
+        &amp;self,
+        surface: &amp;&lt;Self::<a class="associatedtype" href="trait.Queue.html#associatedtype.A" title="type slint::wgpu_26::wgpu::hal::Queue::A">A</a> as <a class="trait" href="trait.Api.html" title="trait slint::wgpu_26::wgpu::hal::Api">Api</a>&gt;::<a class="associatedtype" href="trait.Api.html#associatedtype.Surface" title="type slint::wgpu_26::wgpu::hal::Api::Surface">Surface</a>,
+        texture: &lt;Self::<a class="associatedtype" href="trait.Queue.html#associatedtype.A" title="type slint::wgpu_26::wgpu::hal::Queue::A">A</a> as <a class="trait" href="trait.Api.html" title="trait slint::wgpu_26::wgpu::hal::Api">Api</a>&gt;::<a class="associatedtype" href="trait.Api.html#associatedtype.SurfaceTexture" title="type slint::wgpu_26::wgpu::hal::Api::SurfaceTexture">SurfaceTexture</a>,
+    ) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>, <a class="enum" href="enum.SurfaceError.html" title="enum slint::wgpu_26::wgpu::hal::SurfaceError">SurfaceError</a>&gt;;
+<span class="item-spacer"></span>    unsafe fn <a href="#tymethod.get_timestamp_period" class="fn">get_timestamp_period</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>;
+}</code></pre><span class="item-info"><div class="stab portability">Available on <strong>crate feature <code>unstable-wgpu-26</code></strong> only.</div></span><h2 id="required-associated-types" class="section-header">Required Associated Types<a href="#required-associated-types" class="anchor">§</a></h2><div class="methods"><section id="associatedtype.A" class="method"><h4 class="code-header">type <a href="#associatedtype.A" class="associatedtype">A</a>: <a class="trait" href="trait.Api.html" title="trait slint::wgpu_26::wgpu::hal::Api">Api</a></h4></section></div><h2 id="required-methods" class="section-header">Required Methods<a href="#required-methods" class="anchor">§</a></h2><div class="methods"><details class="toggle method-toggle" open><summary><section id="tymethod.submit" class="method"><h4 class="code-header">unsafe fn <a href="#tymethod.submit" class="fn">submit</a>(
+    &amp;self,
+    command_buffers: &amp;[&amp;&lt;Self::<a class="associatedtype" href="trait.Queue.html#associatedtype.A" title="type slint::wgpu_26::wgpu::hal::Queue::A">A</a> as <a class="trait" href="trait.Api.html" title="trait slint::wgpu_26::wgpu::hal::Api">Api</a>&gt;::<a class="associatedtype" href="trait.Api.html#associatedtype.CommandBuffer" title="type slint::wgpu_26::wgpu::hal::Api::CommandBuffer">CommandBuffer</a>],
+    surface_textures: &amp;[&amp;&lt;Self::<a class="associatedtype" href="trait.Queue.html#associatedtype.A" title="type slint::wgpu_26::wgpu::hal::Queue::A">A</a> as <a class="trait" href="trait.Api.html" title="trait slint::wgpu_26::wgpu::hal::Api">Api</a>&gt;::<a class="associatedtype" href="trait.Api.html#associatedtype.SurfaceTexture" title="type slint::wgpu_26::wgpu::hal::Api::SurfaceTexture">SurfaceTexture</a>],
+    signal_fence: (&amp;mut &lt;Self::<a class="associatedtype" href="trait.Queue.html#associatedtype.A" title="type slint::wgpu_26::wgpu::hal::Queue::A">A</a> as <a class="trait" href="trait.Api.html" title="trait slint::wgpu_26::wgpu::hal::Api">Api</a>&gt;::<a class="associatedtype" href="trait.Api.html#associatedtype.Fence" title="type slint::wgpu_26::wgpu::hal::Api::Fence">Fence</a>, <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>),
+) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>, <a class="enum" href="enum.DeviceError.html" title="enum slint::wgpu_26::wgpu::hal::DeviceError">DeviceError</a>&gt;</h4></section></summary><div class="docblock"><p>Submit <code>command_buffers</code> for execution on GPU.</p>
+<p>Update <code>fence</code> to <code>value</code> when the operation is complete. See
+<a href="trait.Api.html#associatedtype.Fence" title="associated type slint::wgpu_26::wgpu::hal::Api::Fence"><code>Fence</code></a> for details.</p>
+<p>A <code>wgpu_hal</code> queue is “single threaded”: all command buffers are
+executed in the order they’re submitted, with each buffer able to see
+previous buffers’ results. Specifically:</p>
+<ul>
+<li>
+<p>If two calls to <code>submit</code> on a single <code>Queue</code> occur in a particular
+order (that is, they happen on the same thread, or on two threads that
+have synchronized to establish an ordering), then the first
+submission’s commands all complete execution before any of the second
+submission’s commands begin. All results produced by one submission
+are visible to the next.</p>
+</li>
+<li>
+<p>Within a submission, command buffers execute in the order in which they
+appear in <code>command_buffers</code>. All results produced by one buffer are
+visible to the next.</p>
+</li>
+</ul>
+<p>If two calls to <code>submit</code> on a single <code>Queue</code> from different threads are
+not synchronized to occur in a particular order, they must pass distinct
+<a href="trait.Api.html#associatedtype.Fence" title="associated type slint::wgpu_26::wgpu::hal::Api::Fence"><code>Fence</code></a>s. As explained in the <a href="trait.Api.html#associatedtype.Fence" title="associated type slint::wgpu_26::wgpu::hal::Api::Fence"><code>Fence</code></a> documentation, waiting for
+operations to complete is only trustworthy when operations finish in
+order of increasing fence value, but submissions from different threads
+cannot determine how to order the fence values if the submissions
+themselves are unordered. If each thread uses a separate <a href="trait.Api.html#associatedtype.Fence" title="associated type slint::wgpu_26::wgpu::hal::Api::Fence"><code>Fence</code></a>, this
+problem does not arise.</p>
+<h5 id="safety"><a class="doc-anchor" href="#safety">§</a>Safety</h5>
+<ul>
+<li>
+<p>Each <a href="trait.Api.html#associatedtype.CommandBuffer" title="associated type slint::wgpu_26::wgpu::hal::Api::CommandBuffer"><code>CommandBuffer</code></a> in <code>command_buffers</code> must have been created
+from a <a href="trait.Api.html#associatedtype.CommandEncoder" title="associated type slint::wgpu_26::wgpu::hal::Api::CommandEncoder"><code>CommandEncoder</code></a> that was constructed from the
+<a href="trait.Api.html#associatedtype.Device" title="associated type slint::wgpu_26::wgpu::hal::Api::Device"><code>Device</code></a> associated with this <a href="trait.Queue.html" title="trait slint::wgpu_26::wgpu::hal::Queue"><code>Queue</code></a>.</p>
+</li>
+<li>
+<p>Each <a href="trait.Api.html#associatedtype.CommandBuffer" title="associated type slint::wgpu_26::wgpu::hal::Api::CommandBuffer"><code>CommandBuffer</code></a> must remain alive until the submitted
+commands have finished execution. Since command buffers must not
+outlive their encoders, this implies that the encoders must remain
+alive as well.</p>
+</li>
+<li>
+<p>All resources used by a submitted <a href="trait.Api.html#associatedtype.CommandBuffer" title="associated type slint::wgpu_26::wgpu::hal::Api::CommandBuffer"><code>CommandBuffer</code></a>
+(<a href="trait.Api.html#associatedtype.Texture" title="associated type slint::wgpu_26::wgpu::hal::Api::Texture"><code>Texture</code></a>s, <a href="trait.Api.html#associatedtype.BindGroup" title="associated type slint::wgpu_26::wgpu::hal::Api::BindGroup"><code>BindGroup</code></a>s, <a href="trait.Api.html#associatedtype.RenderPipeline" title="associated type slint::wgpu_26::wgpu::hal::Api::RenderPipeline"><code>RenderPipeline</code></a>s, and so
+on) must remain alive until the command buffer finishes execution.</p>
+</li>
+<li>
+<p>Every <a href="trait.Api.html#associatedtype.SurfaceTexture" title="associated type slint::wgpu_26::wgpu::hal::Api::SurfaceTexture"><code>SurfaceTexture</code></a> that any command in <code>command_buffers</code>
+writes to must appear in the <code>surface_textures</code> argument.</p>
+</li>
+<li>
+<p>No <a href="trait.Api.html#associatedtype.SurfaceTexture" title="associated type slint::wgpu_26::wgpu::hal::Api::SurfaceTexture"><code>SurfaceTexture</code></a> may appear in the <code>surface_textures</code>
+argument more than once.</p>
+</li>
+<li>
+<p>Each <a href="trait.Api.html#associatedtype.SurfaceTexture" title="associated type slint::wgpu_26::wgpu::hal::Api::SurfaceTexture"><code>SurfaceTexture</code></a> in <code>surface_textures</code> must be configured
+for use with the <a href="trait.Api.html#associatedtype.Device" title="associated type slint::wgpu_26::wgpu::hal::Api::Device"><code>Device</code></a> associated with this <a href="trait.Queue.html" title="trait slint::wgpu_26::wgpu::hal::Queue"><code>Queue</code></a>,
+typically by calling <a href="trait.Surface.html#tymethod.configure" title="method slint::wgpu_26::wgpu::hal::Surface::configure"><code>Surface::configure</code></a>.</p>
+</li>
+<li>
+<p>All calls to this function that include a given <a href="trait.Api.html#associatedtype.SurfaceTexture" title="associated type slint::wgpu_26::wgpu::hal::Api::SurfaceTexture"><code>SurfaceTexture</code></a>
+in <code>surface_textures</code> must use the same <a href="trait.Api.html#associatedtype.Fence" title="associated type slint::wgpu_26::wgpu::hal::Api::Fence"><code>Fence</code></a>.</p>
+</li>
+<li>
+<p>The <a href="trait.Api.html#associatedtype.Fence" title="associated type slint::wgpu_26::wgpu::hal::Api::Fence"><code>Fence</code></a> passed as <code>signal_fence.0</code> must remain alive until
+all submissions that will signal it have completed.</p>
+</li>
+</ul>
+</div></details><section id="tymethod.present" class="method"><h4 class="code-header">unsafe fn <a href="#tymethod.present" class="fn">present</a>(
+    &amp;self,
+    surface: &amp;&lt;Self::<a class="associatedtype" href="trait.Queue.html#associatedtype.A" title="type slint::wgpu_26::wgpu::hal::Queue::A">A</a> as <a class="trait" href="trait.Api.html" title="trait slint::wgpu_26::wgpu::hal::Api">Api</a>&gt;::<a class="associatedtype" href="trait.Api.html#associatedtype.Surface" title="type slint::wgpu_26::wgpu::hal::Api::Surface">Surface</a>,
+    texture: &lt;Self::<a class="associatedtype" href="trait.Queue.html#associatedtype.A" title="type slint::wgpu_26::wgpu::hal::Queue::A">A</a> as <a class="trait" href="trait.Api.html" title="trait slint::wgpu_26::wgpu::hal::Api">Api</a>&gt;::<a class="associatedtype" href="trait.Api.html#associatedtype.SurfaceTexture" title="type slint::wgpu_26::wgpu::hal::Api::SurfaceTexture">SurfaceTexture</a>,
+) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>, <a class="enum" href="enum.SurfaceError.html" title="enum slint::wgpu_26::wgpu::hal::SurfaceError">SurfaceError</a>&gt;</h4></section><section id="tymethod.get_timestamp_period" class="method"><h4 class="code-header">unsafe fn <a href="#tymethod.get_timestamp_period" class="fn">get_timestamp_period</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a></h4></section></div><h2 id="implementors" class="section-header">Implementors<a href="#implementors" class="anchor">§</a></h2><div id="implementors-list"><details class="toggle implementors-toggle"><summary><section id="impl-Queue-for-Context" class="impl"><a href="#impl-Queue-for-Context" class="anchor">§</a><h3 class="code-header">impl <a class="trait" href="trait.Queue.html" title="trait slint::wgpu_26::wgpu::hal::Queue">Queue</a> for <a class="struct" href="noop/struct.Context.html" title="struct slint::wgpu_26::wgpu::hal::noop::Context">Context</a></h3></section></summary><div class="impl-items"><section id="associatedtype.A-1" class="associatedtype trait-impl"><a href="#associatedtype.A-1" class="anchor">§</a><h4 class="code-header">type <a href="#associatedtype.A" class="associatedtype">A</a> = <a class="struct" href="../wgc/api/struct.Noop.html" title="struct slint::wgpu_26::wgpu::wgc::api::Noop">Api</a></h4></section></div></details><details class="toggle implementors-toggle"><summary><section id="impl-Queue-for-Queue" class="impl"><a href="#impl-Queue-for-Queue" class="anchor">§</a><h3 class="code-header">impl <a class="trait" href="trait.Queue.html" title="trait slint::wgpu_26::wgpu::hal::Queue">Queue</a> for <a class="struct" href="vulkan/struct.Queue.html" title="struct slint::wgpu_26::wgpu::hal::vulkan::Queue">Queue</a></h3></section></summary><div class="impl-items"><section id="associatedtype.A-2" class="associatedtype trait-impl"><a href="#associatedtype.A-2" class="anchor">§</a><h4 class="code-header">type <a href="#associatedtype.A" class="associatedtype">A</a> = <a class="struct" href="../wgc/api/struct.Vulkan.html" title="struct slint::wgpu_26::wgpu::wgc::api::Vulkan">Api</a></h4></section></div></details></div><script src="../../../../trait.impl/wgpu_hal/trait.Queue.js" data-ignore-extern-crates="wgpu_hal" async></script></section></div></main></body></html>

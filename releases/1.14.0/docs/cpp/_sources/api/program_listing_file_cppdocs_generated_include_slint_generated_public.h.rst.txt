@@ -1,0 +1,83 @@
+
+.. _program_listing_file_cppdocs_generated_include_slint_generated_public.h:
+
+Program Listing for File slint_generated_public.h
+=================================================
+
+|exhale_lsh| :ref:`Return to documentation for file <file_cppdocs_generated_include_slint_generated_public.h>` (``cppdocs/generated_include/slint_generated_public.h``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   #pragma once
+   
+   /* Generated with cbindgen:0.29.0 */
+   
+   #include <cstdarg>
+   #include <cstdint>
+   #include <cstdlib>
+   #include <ostream>
+   #include <new>
+   #include "slint_string.h"
+   
+   #define SLINT_VERSION_MAJOR 1
+   #define SLINT_VERSION_MINOR 14
+   #define SLINT_VERSION_PATCH 0
+   #define SLINT_VERSION_STRING "1.14.0"
+   
+   #define SLINT_FEATURE_INTERPRETER
+   #define SLINT_FEATURE_TESTING
+   #define SLINT_FEATURE_BACKEND_QT
+   #define SLINT_FEATURE_BACKEND_WINIT
+   #define SLINT_FEATURE_BACKEND_LINUXKMS
+   #define SLINT_FEATURE_RENDERER_FEMTOVG
+   #define SLINT_FEATURE_RENDERER_SKIA
+   #define SLINT_FEATURE_RENDERER_SOFTWARE
+   #define SLINT_FEATURE_GETTEXT
+   #define SLINT_FEATURE_ACCESSIBILITY
+   #define SLINT_FEATURE_SYSTEM_TESTING
+   #define SLINT_FEATURE_FREESTANDING
+   
+   
+   
+   namespace slint {
+   
+   enum class CloseRequestResponse : uint8_t {
+       HideWindow = 0,
+       KeepWindowShown = 1,
+   };
+   
+   enum class GraphicsAPI : uint8_t {
+       NativeOpenGL,
+       Inaccessible,
+   };
+   
+   enum class RenderingState : uint8_t {
+       RenderingSetup,
+       BeforeRendering,
+       AfterRendering,
+       RenderingTeardown,
+   };
+   
+   enum class SetRenderingNotifierError : uint8_t {
+       Unsupported,
+       AlreadySet,
+   };
+   
+   struct Rgba8Pixel {
+       uint8_t r;
+       uint8_t g;
+       uint8_t b;
+       uint8_t a;
+   friend bool operator==(const Rgba8Pixel&, const Rgba8Pixel&) = default;
+   };
+   
+   struct Rgb8Pixel {
+       uint8_t r;
+       uint8_t g;
+       uint8_t b;
+   friend bool operator==(const Rgb8Pixel&, const Rgb8Pixel&) = default;
+   };
+   
+   }  // namespace slint
