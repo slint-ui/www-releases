@@ -418,7 +418,7 @@
 <p>↰ <a class="reference internal" href="file_cppdocs_generated_include_slint_internal.h.html#file-cppdocs-generated-include-slint-internal-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">cppdocs/generated_include/slint_internal.h</span></code>)</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma once</span>
 
-<span class="cm">/* Generated with cbindgen:0.29.0 */</span>
+<span class="cm">/* Generated with cbindgen:0.29.2 */</span>
 
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cstdarg&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cstdint&gt;</span>
@@ -464,6 +464,33 @@
 
 <span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uintptr_t</span><span class="w"> </span><span class="n">PHYSICAL_REGION_MAX_SIZE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
 
+<span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">TraversalOrder</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">BackToFront</span><span class="p">,</span>
+<span class="w">    </span><span class="n">FrontToBack</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">InputEventResult</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">EventAccepted</span><span class="p">,</span>
+<span class="w">    </span><span class="n">EventIgnored</span><span class="p">,</span>
+<span class="w">    </span><span class="n">GrabMouse</span><span class="p">,</span>
+<span class="w">    </span><span class="n">StartDrag</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">FocusEventResult</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">FocusAccepted</span><span class="p">,</span>
+<span class="w">    </span><span class="n">FocusIgnored</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">KeyEventResult</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">EventAccepted</span><span class="p">,</span>
+<span class="w">    </span><span class="n">EventIgnored</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">RenderingResult</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">ContinueRenderingChildren</span><span class="p">,</span>
+<span class="w">    </span><span class="n">ContinueRenderingWithoutChildren</span><span class="p">,</span>
+<span class="p">};</span>
+
 <span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">AccessibleStringProperty</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">Checkable</span><span class="p">,</span>
 <span class="w">    </span><span class="n">Checked</span><span class="p">,</span>
@@ -485,26 +512,9 @@
 <span class="w">    </span><span class="n">ValueStep</span><span class="p">,</span>
 <span class="p">};</span>
 
-<span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Clipboard</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">DefaultClipboard</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
-<span class="w">    </span><span class="n">SelectionClipboard</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-<span class="p">};</span>
-
-<span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">FocusEventResult</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">FocusAccepted</span><span class="p">,</span>
-<span class="w">    </span><span class="n">FocusIgnored</span><span class="p">,</span>
-<span class="p">};</span>
-
-<span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">InputEventResult</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">EventAccepted</span><span class="p">,</span>
-<span class="w">    </span><span class="n">EventIgnored</span><span class="p">,</span>
-<span class="w">    </span><span class="n">GrabMouse</span><span class="p">,</span>
-<span class="w">    </span><span class="n">StartDrag</span><span class="p">,</span>
-<span class="p">};</span>
-
-<span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">KeyEventResult</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">EventAccepted</span><span class="p">,</span>
-<span class="w">    </span><span class="n">EventIgnored</span><span class="p">,</span>
+<span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">UndoItemKind</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">TextInsert</span><span class="p">,</span>
+<span class="w">    </span><span class="n">TextRemove</span><span class="p">,</span>
 <span class="p">};</span>
 
 <span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">KeyEventType</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="p">{</span>
@@ -514,19 +524,9 @@
 <span class="w">    </span><span class="n">CommitComposition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
 <span class="p">};</span>
 
-<span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">RenderingResult</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">ContinueRenderingChildren</span><span class="p">,</span>
-<span class="w">    </span><span class="n">ContinueRenderingWithoutChildren</span><span class="p">,</span>
-<span class="p">};</span>
-
-<span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">TraversalOrder</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">BackToFront</span><span class="p">,</span>
-<span class="w">    </span><span class="n">FrontToBack</span><span class="p">,</span>
-<span class="p">};</span>
-
-<span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">UndoItemKind</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">TextInsert</span><span class="p">,</span>
-<span class="w">    </span><span class="n">TextRemove</span><span class="p">,</span>
+<span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Clipboard</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">DefaultClipboard</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="n">SelectionClipboard</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
 <span class="p">};</span>
 
 <span class="k">struct</span><span class="w"> </span><span class="nc">ChangeTracker</span><span class="p">;</span>

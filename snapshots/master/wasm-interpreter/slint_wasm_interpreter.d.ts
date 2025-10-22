@@ -111,8 +111,8 @@ export interface InitOutput {
   readonly __externref_table_dealloc: (a: number) => void;
   readonly closure173_externref_shim: (a: number, b: number, c: any) => void;
   readonly closure601_externref_shim: (a: number, b: number, c: any) => void;
-  readonly closure435_externref_shim: (a: number, b: number, c: any, d: any) => void;
-  readonly wasm_bindgen__convert__closures_____invoke__h1e5c8a315357cb17: (a: number, b: number) => void;
+  readonly wasm_bindgen__convert__closures_____invoke__hac52570822fd1b3b: (a: number, b: number) => void;
+  readonly closure436_externref_shim: (a: number, b: number, c: any, d: any) => void;
   readonly __wbindgen_start: () => void;
 }
 

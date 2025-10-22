@@ -12,7 +12,7 @@ Program Listing for File slint_internal.h
 
    #pragma once
    
-   /* Generated with cbindgen:0.29.0 */
+   /* Generated with cbindgen:0.29.2 */
    
    #include <cstdarg>
    #include <cstdint>
@@ -58,6 +58,33 @@ Program Listing for File slint_internal.h
    
    constexpr static const uintptr_t PHYSICAL_REGION_MAX_SIZE = 3;
    
+   enum class TraversalOrder : uint8_t {
+       BackToFront,
+       FrontToBack,
+   };
+   
+   enum class InputEventResult : uint8_t {
+       EventAccepted,
+       EventIgnored,
+       GrabMouse,
+       StartDrag,
+   };
+   
+   enum class FocusEventResult : uint8_t {
+       FocusAccepted,
+       FocusIgnored,
+   };
+   
+   enum class KeyEventResult : uint8_t {
+       EventAccepted,
+       EventIgnored,
+   };
+   
+   enum class RenderingResult {
+       ContinueRenderingChildren,
+       ContinueRenderingWithoutChildren,
+   };
+   
    enum class AccessibleStringProperty : uint32_t {
        Checkable,
        Checked,
@@ -79,26 +106,9 @@ Program Listing for File slint_internal.h
        ValueStep,
    };
    
-   enum class Clipboard : uint8_t {
-       DefaultClipboard = 0,
-       SelectionClipboard = 1,
-   };
-   
-   enum class FocusEventResult : uint8_t {
-       FocusAccepted,
-       FocusIgnored,
-   };
-   
-   enum class InputEventResult : uint8_t {
-       EventAccepted,
-       EventIgnored,
-       GrabMouse,
-       StartDrag,
-   };
-   
-   enum class KeyEventResult : uint8_t {
-       EventAccepted,
-       EventIgnored,
+   enum class UndoItemKind {
+       TextInsert,
+       TextRemove,
    };
    
    enum class KeyEventType : uint8_t {
@@ -108,19 +118,9 @@ Program Listing for File slint_internal.h
        CommitComposition = 3,
    };
    
-   enum class RenderingResult {
-       ContinueRenderingChildren,
-       ContinueRenderingWithoutChildren,
-   };
-   
-   enum class TraversalOrder : uint8_t {
-       BackToFront,
-       FrontToBack,
-   };
-   
-   enum class UndoItemKind {
-       TextInsert,
-       TextRemove,
+   enum class Clipboard : uint8_t {
+       DefaultClipboard = 0,
+       SelectionClipboard = 1,
    };
    
    struct ChangeTracker;

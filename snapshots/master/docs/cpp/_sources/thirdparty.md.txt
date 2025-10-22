@@ -5,7 +5,7 @@ This page lists the licenses of the dependencies used by Slint.
 
 ## Overview of licenses
 
-- [MIT License](#MIT) (356)
+- [MIT License](#MIT) (351)
 - [Apache License 2.0](#Apache-2.0) (17)
 - [BSD 3-Clause &quot;New&quot; or &quot;Revised&quot; License](#BSD-3-Clause) (6)
 - [Unicode License v3](#Unicode-3.0) (5)
@@ -4160,7 +4160,7 @@ SOFTWARE.
 
 #### Used by:
 
-- [memmap2 0.9.8]( https://github.com/RazrFalcon/memmap2-rs )
+- [memmap2 0.9.9]( https://github.com/RazrFalcon/memmap2-rs )
 
 #### License Text
 
@@ -4468,14 +4468,11 @@ DEALINGS IN THE SOFTWARE.
 
 #### Used by:
 
-- [serde_spanned 0.6.9]( https://github.com/toml-rs/toml )
-- [toml 0.8.23]( https://github.com/toml-rs/toml )
-- [toml_datetime 0.6.11]( https://github.com/toml-rs/toml )
+- [serde_spanned 1.0.3]( https://github.com/toml-rs/toml )
+- [toml 0.9.8]( https://github.com/toml-rs/toml )
 - [toml_datetime 0.7.3]( https://github.com/toml-rs/toml )
-- [toml_edit 0.22.27]( https://github.com/toml-rs/toml )
 - [toml_edit 0.23.7]( https://github.com/toml-rs/toml )
 - [toml_parser 1.0.4]( https://github.com/toml-rs/toml )
-- [toml_write 0.1.2]( https://github.com/toml-rs/toml )
 
 #### License Text
 
@@ -4837,8 +4834,6 @@ SOFTWARE.
 #### Used by:
 
 - [unicode-properties 0.1.3]( https://github.com/unicode-rs/unicode-properties )
-- [unicode-segmentation 1.12.0]( https://github.com/unicode-rs/unicode-segmentation )
-- [unicode-xid 0.2.6]( https://github.com/unicode-rs/unicode-xid )
 
 #### License Text
 
@@ -6001,7 +5996,7 @@ DEALINGS IN THE SOFTWARE.
 - [thiserror-impl 2.0.17]( https://github.com/dtolnay/thiserror )
 - [thiserror 1.0.69]( https://github.com/dtolnay/thiserror )
 - [thiserror 2.0.17]( https://github.com/dtolnay/thiserror )
-- [unicode-ident 1.0.19]( https://github.com/dtolnay/unicode-ident )
+- [unicode-ident 1.0.20]( https://github.com/dtolnay/unicode-ident )
 - [x11-dl 2.21.0]( https://github.com/AltF02/x11-rs.git )
 - [zvariant_utils 3.2.1]( https://github.com/dbus2/zbus/ )
 
@@ -6985,7 +6980,7 @@ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
 
 #### Used by:
 
-- [cbindgen 0.29.0]( https://github.com/mozilla/cbindgen )
+- [cbindgen 0.29.2]( https://github.com/mozilla/cbindgen )
 
 #### License Text
 
@@ -7373,7 +7368,7 @@ Exhibit B - &quot;Incompatible With Secondary Licenses&quot; Notice
 - [icu_locale_core 2.0.0]( https://github.com/unicode-org/icu4x )
 - [litemap 0.8.0]( https://github.com/unicode-org/icu4x )
 - [tinystr 0.8.1]( https://github.com/unicode-org/icu4x )
-- [unicode-ident 1.0.19]( https://github.com/dtolnay/unicode-ident )
+- [unicode-ident 1.0.20]( https://github.com/dtolnay/unicode-ident )
 - [writeable 0.6.1]( https://github.com/unicode-org/icu4x )
 
 #### License Text

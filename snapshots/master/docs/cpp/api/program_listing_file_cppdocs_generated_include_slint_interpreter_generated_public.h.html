@@ -418,7 +418,7 @@
 <p>↰ <a class="reference internal" href="file_cppdocs_generated_include_slint_interpreter_generated_public.h.html#file-cppdocs-generated-include-slint-interpreter-generated-public-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">cppdocs/generated_include/slint_interpreter_generated_public.h</span></code>)</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma once</span>
 
-<span class="cm">/* Generated with cbindgen:0.29.0 */</span>
+<span class="cm">/* Generated with cbindgen:0.29.2 */</span>
 
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cstdarg&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cstdint&gt;</span>
@@ -428,11 +428,6 @@
 
 <span class="k">namespace</span><span class="w"> </span><span class="nn">slint</span><span class="w"> </span><span class="p">{</span>
 <span class="k">namespace</span><span class="w"> </span><span class="nn">interpreter</span><span class="w"> </span><span class="p">{</span>
-
-<span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">DiagnosticLevel</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">Error</span><span class="p">,</span>
-<span class="w">    </span><span class="n">Warning</span><span class="p">,</span>
-<span class="p">};</span>
 
 <span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">ValueType</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">int8_t</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">Void</span><span class="p">,</span>
@@ -444,6 +439,11 @@
 <span class="w">    </span><span class="n">Brush</span><span class="p">,</span>
 <span class="w">    </span><span class="n">Image</span><span class="p">,</span>
 <span class="w">    </span><span class="n">Other</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">DiagnosticLevel</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Error</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Warning</span><span class="p">,</span>
 <span class="p">};</span>
 
 <span class="k">struct</span><span class="w"> </span><span class="nc">Diagnostic</span><span class="w"> </span><span class="p">{</span>

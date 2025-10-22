@@ -12,7 +12,7 @@ Program Listing for File slint_generated_public.h
 
    #pragma once
    
-   /* Generated with cbindgen:0.29.0 */
+   /* Generated with cbindgen:0.29.2 */
    
    #include <cstdarg>
    #include <cstdint>
@@ -44,16 +44,6 @@ Program Listing for File slint_generated_public.h
    
    namespace slint {
    
-   enum class CloseRequestResponse : uint8_t {
-       HideWindow = 0,
-       KeepWindowShown = 1,
-   };
-   
-   enum class GraphicsAPI : uint8_t {
-       NativeOpenGL,
-       Inaccessible,
-   };
-   
    enum class RenderingState : uint8_t {
        RenderingSetup,
        BeforeRendering,
@@ -61,9 +51,19 @@ Program Listing for File slint_generated_public.h
        RenderingTeardown,
    };
    
+   enum class GraphicsAPI : uint8_t {
+       NativeOpenGL,
+       Inaccessible,
+   };
+   
    enum class SetRenderingNotifierError : uint8_t {
        Unsupported,
        AlreadySet,
+   };
+   
+   enum class CloseRequestResponse : uint8_t {
+       HideWindow = 0,
+       KeepWindowShown = 1,
    };
    
    struct Rgba8Pixel {
