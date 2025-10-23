@@ -1,0 +1,396 @@
+
+.. _program_listing_file__home_runner_work_slint_slint_api_cpp_include_slint.h:
+
+Program Listing for File slint.h
+================================
+
+|exhale_lsh| :ref:`Return to documentation for file <file__home_runner_work_slint_slint_api_cpp_include_slint.h>` (``/home/runner/work/slint/slint/api/cpp/include/slint.h``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   // Copyright © SixtyFPS GmbH <info@slint.dev>
+   // SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0
+   
+   #pragma once
+   
+   #include "slint_internal.h"
+   #include "slint_platform_internal.h"
+   #include "slint_qt_internal.h"
+   #include "slint_window.h"
+   #include "slint_models.h"
+   #include "slint_item_tree.h"
+   
+   #include <vector>
+   #include <chrono>
+   #include <span>
+   #include <concepts>
+   
+   #ifndef SLINT_FEATURE_FREESTANDING
+   #    include <mutex>
+   #    include <condition_variable>
+   #endif
+   
+   namespace slint {
+   
+   namespace private_api {
+   
+   inline cbindgen_private::Rect convert_anonymous_rect(std::tuple<float, float, float, float> tuple)
+   {
+       // alphabetical order
+       auto [h, w, x, y] = tuple;
+       return cbindgen_private::Rect { .x = x, .y = y, .width = w, .height = h };
+   }
+   
+   inline void dealloc(const ItemTreeVTable *vtable, uint8_t *ptr,
+                       [[maybe_unused]] vtable::Layout layout)
+   {
+       vtable::dealloc(vtable, ptr, layout);
+   }
+   
+   template<typename T>
+   inline vtable::Layout drop_in_place(ItemTreeRef item_tree)
+   {
+       return vtable::drop_in_place<ItemTreeVTable, T>(item_tree);
+   }
+   
+   #if !defined(DOXYGEN)
+   #    if defined(_WIN32) || defined(_WIN64)
+   // On Windows cross-dll data relocations are not supported:
+   //     https://docs.microsoft.com/en-us/cpp/c-language/rules-and-limitations-for-dllimport-dllexport?view=msvc-160
+   // so we have a relocation to a function that returns the address we seek. That
+   // relocation will be resolved to the locally linked stub library, the implementation of
+   // which will be patched.
+   #        define SLINT_GET_ITEM_VTABLE(VTableName) slint::private_api::slint_get_##VTableName()
+   #    else
+   #        define SLINT_GET_ITEM_VTABLE(VTableName) (&slint::private_api::VTableName)
+   #    endif
+   #endif // !defined(DOXYGEN)
+   
+   inline std::optional<cbindgen_private::ItemRc>
+   upgrade_item_weak(const cbindgen_private::ItemWeak &item_weak)
+   {
+       if (auto item_tree_strong = item_weak.item_tree.lock()) {
+           return { { *item_tree_strong, item_weak.index } };
+       } else {
+           return std::nullopt;
+       }
+   }
+   
+   inline void debug(const SharedString &str)
+   {
+       cbindgen_private::slint_debug(&str);
+   }
+   
+   } // namespace private_api
+   
+   namespace cbindgen_private {
+   inline LayoutInfo LayoutInfo::merge(const LayoutInfo &other) const
+   {
+       // Note: This "logic" is duplicated from LayoutInfo::merge in layout.rs.
+       return LayoutInfo { std::min(max, other.max),
+                           std::min(max_percent, other.max_percent),
+                           std::max(min, other.min),
+                           std::max(min_percent, other.min_percent),
+                           std::max(preferred, other.preferred),
+                           std::min(stretch, other.stretch) };
+   }
+   inline bool operator==(const EasingCurve &a, const EasingCurve &b)
+   {
+       if (a.tag != b.tag) {
+           return false;
+       } else if (a.tag == EasingCurve::Tag::CubicBezier) {
+           return std::equal(a.cubic_bezier._0, a.cubic_bezier._0 + 4, b.cubic_bezier._0);
+       }
+       return true;
+   }
+   }
+   
+   namespace private_api {
+   
+   inline static void register_item_tree(const vtable::VRc<ItemTreeVTable> *c,
+                                         const std::optional<slint::Window> &maybe_window)
+   {
+       const cbindgen_private::WindowAdapterRcOpaque *window_ptr =
+               maybe_window.has_value() ? &maybe_window->window_handle().handle() : nullptr;
+       cbindgen_private::slint_register_item_tree(c, window_ptr);
+   }
+   
+   inline SharedVector<float> solve_box_layout(const cbindgen_private::BoxLayoutData &data,
+                                               cbindgen_private::Slice<int> repeater_indexes)
+   {
+       SharedVector<float> result;
+       cbindgen_private::Slice<uint32_t> ri =
+               make_slice(reinterpret_cast<uint32_t *>(repeater_indexes.ptr), repeater_indexes.len);
+       cbindgen_private::slint_solve_box_layout(&data, ri, &result);
+       return result;
+   }
+   
+   inline SharedVector<float> solve_grid_layout(const cbindgen_private::GridLayoutData &data)
+   {
+       SharedVector<float> result;
+       cbindgen_private::slint_solve_grid_layout(&data, &result);
+       return result;
+   }
+   
+   inline cbindgen_private::LayoutInfo
+   grid_layout_info(cbindgen_private::Slice<cbindgen_private::GridLayoutCellData> cells, float spacing,
+                    const cbindgen_private::Padding &padding)
+   {
+       return cbindgen_private::slint_grid_layout_info(cells, spacing, &padding);
+   }
+   
+   inline cbindgen_private::LayoutInfo
+   box_layout_info(cbindgen_private::Slice<cbindgen_private::BoxLayoutCellData> cells, float spacing,
+                   const cbindgen_private::Padding &padding,
+                   cbindgen_private::LayoutAlignment alignment)
+   {
+       return cbindgen_private::slint_box_layout_info(cells, spacing, &padding, alignment);
+   }
+   
+   inline cbindgen_private::LayoutInfo
+   box_layout_info_ortho(cbindgen_private::Slice<cbindgen_private::BoxLayoutCellData> cells,
+                         const cbindgen_private::Padding &padding)
+   {
+       return cbindgen_private::slint_box_layout_info_ortho(cells, &padding);
+   }
+   
+   inline float layout_cache_access(const SharedVector<float> &cache, int offset, int repeater_index)
+   {
+       size_t idx = size_t(cache[offset]) + repeater_index * 2;
+       return idx < cache.size() ? cache[idx] : 0;
+   }
+   
+   template<typename VT, typename ItemType>
+   inline cbindgen_private::LayoutInfo
+   item_layout_info(VT *itemvtable, ItemType *item_ptr, cbindgen_private::Orientation orientation,
+                    WindowAdapterRc *window_adapter, const ItemTreeRc &component_rc,
+                    uint32_t item_index)
+   {
+       cbindgen_private::ItemRc item_rc { component_rc, item_index };
+       return itemvtable->layout_info({ itemvtable, item_ptr }, orientation, window_adapter, &item_rc);
+   }
+   } // namespace private_api
+   
+   namespace private_api {
+   
+   template<typename T>
+   union MaybeUninitialized {
+       T value;
+       ~MaybeUninitialized() { }
+       MaybeUninitialized() { }
+       T take()
+       {
+           T result = std::move(value);
+           value.~T();
+           return result;
+       }
+   };
+   
+   inline vtable::VRc<cbindgen_private::MenuVTable>
+   create_menu_wrapper(const ItemTreeRc &menu_item_tree,
+                       bool (*condition)(const ItemTreeRc *menu_tree) = nullptr)
+   {
+       MaybeUninitialized<vtable::VRc<cbindgen_private::MenuVTable>> maybe;
+       cbindgen_private::slint_menus_create_wrapper(&menu_item_tree, &maybe.value, condition);
+       return maybe.take();
+   }
+   
+   inline void setup_popup_menu_from_menu_item_tree(
+           const vtable::VRc<cbindgen_private::MenuVTable> &shared,
+           Property<std::shared_ptr<Model<cbindgen_private::MenuEntry>>> &entries,
+           Callback<std::shared_ptr<Model<cbindgen_private::MenuEntry>>(cbindgen_private::MenuEntry)>
+                   &sub_menu,
+           Callback<void(cbindgen_private::MenuEntry)> &activated)
+   {
+       using cbindgen_private::MenuEntry;
+       entries.set_binding([shared] {
+           SharedVector<MenuEntry> entries_sv;
+           shared.vtable()->sub_menu(shared.borrow(), nullptr, &entries_sv);
+           std::vector<MenuEntry> entries_vec(entries_sv.begin(), entries_sv.end());
+           return std::make_shared<VectorModel<MenuEntry>>(std::move(entries_vec));
+       });
+       sub_menu.set_handler([shared](const auto &entry) {
+           SharedVector<MenuEntry> entries_sv;
+           shared.vtable()->sub_menu(shared.borrow(), &entry, &entries_sv);
+           std::vector<MenuEntry> entries_vec(entries_sv.begin(), entries_sv.end());
+           return std::make_shared<VectorModel<MenuEntry>>(std::move(entries_vec));
+       });
+       activated.set_handler(
+               [shared](const auto &entry) { shared.vtable()->activate(shared.borrow(), &entry); });
+   }
+   
+   inline SharedString translate(const SharedString &original, const SharedString &context,
+                                 const SharedString &domain,
+                                 cbindgen_private::Slice<SharedString> arguments, int n,
+                                 const SharedString &plural)
+   {
+       SharedString result = original;
+       cbindgen_private::slint_translate(&result, &context, &domain, arguments, n, &plural);
+       return result;
+   }
+   
+   inline SharedString translate_from_bundle(std::span<const char8_t *const> strs,
+                                             cbindgen_private::Slice<SharedString> arguments)
+   {
+       SharedString result;
+       cbindgen_private::slint_translate_from_bundle(
+               make_slice((reinterpret_cast<char const *const *>(strs.data())), strs.size()),
+               arguments, &result);
+       return result;
+   }
+   inline SharedString
+   translate_from_bundle_with_plural(std::span<const char8_t *const> strs,
+                                     std::span<const uint32_t> indices,
+                                     std::span<uintptr_t (*const)(int32_t)> plural_rules,
+                                     cbindgen_private::Slice<SharedString> arguments, int n)
+   {
+       SharedString result;
+       cbindgen_private::Slice<const char *> strs_slice =
+               make_slice(reinterpret_cast<char const *const *>(strs.data()), strs.size());
+       cbindgen_private::Slice<uint32_t> indices_slice =
+               make_slice(reinterpret_cast<const uint32_t *>(indices.data()), indices.size());
+       cbindgen_private::Slice<uintptr_t (*)(int32_t)> plural_rules_slice =
+               make_slice(reinterpret_cast<uintptr_t (*const *)(int32_t)>(plural_rules.data()),
+                          plural_rules.size());
+       cbindgen_private::slint_translate_from_bundle_with_plural(
+               strs_slice, indices_slice, plural_rules_slice, arguments, n, &result);
+       return result;
+   }
+   
+   template<typename Component>
+   inline float get_resolved_default_font_size(const Component &component)
+   {
+       ItemTreeRc item_tree_rc = (*component.self_weak.lock()).into_dyn();
+       return slint::cbindgen_private::slint_windowrc_resolved_default_font_size(&item_tree_rc);
+   }
+   
+   } // namespace private_api
+   
+   #ifdef SLINT_FEATURE_GETTEXT
+   inline void update_all_translations()
+   {
+       cbindgen_private::slint_translations_mark_dirty();
+   }
+   #endif
+   
+   inline bool select_bundled_translation(std::string_view language)
+   {
+       return cbindgen_private::slint_translate_select_bundled_translation(
+               slint::private_api::string_to_slice(language));
+   }
+   
+   #if !defined(DOXYGEN)
+   cbindgen_private::Flickable::Flickable()
+   {
+       slint_flickable_data_init(&data);
+   }
+   cbindgen_private::Flickable::~Flickable()
+   {
+       slint_flickable_data_free(&data);
+   }
+   
+   cbindgen_private::NativeStyleMetrics::NativeStyleMetrics(void *)
+   {
+       slint_native_style_metrics_init(this);
+   }
+   
+   cbindgen_private::NativeStyleMetrics::~NativeStyleMetrics()
+   {
+       slint_native_style_metrics_deinit(this);
+   }
+   
+   cbindgen_private::NativePalette::NativePalette(void *)
+   {
+       slint_native_palette_init(this);
+   }
+   
+   cbindgen_private::NativePalette::~NativePalette()
+   {
+       slint_native_palette_deinit(this);
+   }
+   #endif // !defined(DOXYGEN)
+   
+   namespace private_api {
+   // Was used in Slint <= 1.1.0 to have an error message in case of mismatch
+   template<int Major, int Minor, int Patch>
+   struct [[deprecated]] VersionCheckHelper
+   {
+   };
+   }
+   
+   enum class EventLoopMode {
+       QuitOnLastWindowClosed,
+   
+       RunUntilQuit
+   };
+   
+   inline void run_event_loop(EventLoopMode mode = EventLoopMode::QuitOnLastWindowClosed)
+   {
+       private_api::assert_main_thread();
+       cbindgen_private::slint_run_event_loop(mode == EventLoopMode::QuitOnLastWindowClosed);
+   }
+   
+   inline void quit_event_loop()
+   {
+       cbindgen_private::slint_quit_event_loop();
+   }
+   
+   template<std::invocable Functor>
+   void invoke_from_event_loop(Functor f)
+   {
+       cbindgen_private::slint_post_event(
+               [](void *data) { (*reinterpret_cast<Functor *>(data))(); }, new Functor(std::move(f)),
+               [](void *data) { delete reinterpret_cast<Functor *>(data); });
+   }
+   
+   #if !defined(SLINT_FEATURE_FREESTANDING) || defined(DOXYGEN)
+   
+   template<std::invocable Functor>
+   auto blocking_invoke_from_event_loop(Functor f) -> std::invoke_result_t<Functor>
+   {
+       std::optional<std::invoke_result_t<Functor>> result;
+       std::mutex mtx;
+       std::condition_variable cv;
+       invoke_from_event_loop([&] {
+           auto r = f();
+           std::unique_lock lock(mtx);
+           result = std::move(r);
+           cv.notify_one();
+       });
+       std::unique_lock lock(mtx);
+       cv.wait(lock, [&] { return result.has_value(); });
+       return std::move(*result);
+   }
+   
+   #    if !defined(DOXYGEN) // Doxygen doesn't see this as an overload of the previous one
+   // clang-format off
+   template<std::invocable Functor>
+       requires(std::is_void_v<std::invoke_result_t<Functor>>)
+   void blocking_invoke_from_event_loop(Functor f)
+   // clang-format on
+   {
+       std::mutex mtx;
+       std::condition_variable cv;
+       bool ok = false;
+       invoke_from_event_loop([&] {
+           f();
+           std::unique_lock lock(mtx);
+           ok = true;
+           cv.notify_one();
+       });
+       std::unique_lock lock(mtx);
+       cv.wait(lock, [&] { return ok; });
+   }
+   #    endif
+   #endif
+   
+   inline void set_xdg_app_id(std::string_view xdg_app_id)
+   {
+       private_api::assert_main_thread();
+       SharedString s = xdg_app_id;
+       cbindgen_private::slint_set_xdg_app_id(&s);
+   }
+   
+   } // namespace slint

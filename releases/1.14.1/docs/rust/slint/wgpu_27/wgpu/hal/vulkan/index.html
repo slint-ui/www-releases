@@ -1,0 +1,141 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Vulkan API internals."><title>slint::wgpu_27::wgpu::hal::vulkan - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../../../static.files/rustdoc-ca0dd0c4.css"><meta name="rustdoc-vars" data-root-path="../../../../../" data-static-root-path="../../../../../static.files/" data-current-crate="slint" data-themes="" data-resource-suffix="" data-rustdoc-version="1.92.0-nightly (1d23d0680 2025-10-22)" data-channel="nightly" data-search-js="search-d69d8955.js" data-stringdex-js="stringdex-c3e638e9.js" data-settings-js="settings-c38705f0.js" ><script src="../../../../../static.files/storage-e2aeef58.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../../../static.files/main-ce535bd0.js"></script><noscript><link rel="stylesheet" href="../../../../../static.files/noscript-263c88ec.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../../../static.files/favicon-044be391.svg"><!--
+    This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
+    It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
+    in sphinx and via head.hbs in mdbook.
+-->
+<link rel="stylesheet" href="https://slint.dev/resources/highlightjs/11.0.1/default.min.css">
+<script src="https://slint.dev/resources/highlightjs/11.0.1/highlight.min.js"></script>
+<script>
+  function highlight_slint(hljs) {
+    const KEYWORDS = {
+      keyword:
+        "animate callback changed component enum export for function global if import in in-out inherits out parent private property public pure root self states struct",
+      literal: "false true",
+      built_in:
+        "ArcTo Clip Close Colors CubicTo Flickable FocusScope GridLayout HorizontalLayout Image LineTo Math MoveTo Path PopupWindow QuadraticTo Rectangle Row Text TextInput TouchArea VerticalLayout Window animation-tick debug",
+      type: "bool duration easing float int length logical-length relative-font-size string",
+    };
+
+    return {
+      name: 'slint',
+      case_insensitive: false,
+      keywords: KEYWORDS,
+      contains: [
+        hljs.QUOTE_STRING_MODE,
+        hljs.C_LINE_COMMENT_MODE,
+        hljs.C_BLOCK_COMMENT_MODE,
+        hljs.COMMENT('/\\*', '\\*/', {
+          contains: ['self']
+        }),
+        {
+          className: 'number',
+          begin: '\\b\\d+(\\.\\d+)?(\\w+)?',
+          relevance: 0
+        },
+        {
+          className: 'title',
+          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]* *:=',
+        },
+        {
+          className: 'symbol',
+          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]*(:| *=>)',
+        },
+        {
+          className: 'built_in',
+          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]*!',
+        },
+      ],
+      illegal: /@/
+    };
+  };
+
+  // Tags used in fenced code blocks
+  for (let tag of ["slint", "slint,no-preview", "slint,no-auto-preview", "slint,ignore"]) {
+    hljs.registerLanguage(tag, highlight_slint);
+  }
+
+
+  window.addEventListener("DOMContentLoaded", () => {
+    const rustDoc = document.querySelector('meta[name="generator"]')?.content == "rustdoc";
+    if (rustDoc) {
+      // Only highlight .slint blocks, leave the others to rustdoc
+      for (slintBlock of document.querySelectorAll("[class*=language-slint]")) {
+        hljs.highlightElement(slintBlock)
+      }
+
+      // Some of the rustdoc selectors require the pre element to have the rust class
+      for (codeBlock of document.querySelectorAll(".language-slint.hljs")) {
+        codeBlock.classList.add("rust");
+        codeBlock.classList.remove("hljs");
+      }
+
+      // Change the hljs generated classes to the rustdoc
+      // ones, so that the highlighting adjusts to the theme correctly.
+      const highlightJSToRustDoc = [
+        ["comment", "comment"],
+        ["number", "number"],
+        ["symbol", "struct"], // width:
+        ["keyword", "kw"],
+        ["built_in", "primitive"],
+        ["string", "string"],
+        ["title", "fnname"], // Foo :=
+        ["type", "type"]
+      ];
+
+      for ([hljs_class, rustdoc_class] of highlightJSToRustDoc) {
+        for (titleElement of document.querySelectorAll(`.hljs-${hljs_class}`)) {
+          titleElement.classList.remove(`hljs-${hljs_class}`);
+          titleElement.classList.add(rustdoc_class);
+        }
+      }
+    } else {
+      // For use with the mdbook Tutorial
+      hljs.highlightAll();
+
+      // The Sphinx/my_st generated HTML for code blocks doesn't use <code> tags, so highlight.js'
+      // default selector "pre code" doesn't match. Let's do it by hand:
+      for (block of document.querySelectorAll("div[class*=highlight-slint] div.highlight pre")) {
+        hljs.highlightElement(block)
+      }
+    }
+
+    // Fix up links that sphinx handles but for rustdoc we need to resolve manually:
+    {
+      let target_url = null;
+      if (document.location.hostname == "snapshots.slint.dev") {
+        target_url = `https://snapshots.slint.dev/master/docs/slint/`;
+      } else {
+        let version = document.querySelector("span.version");
+        if (version !== null) {
+          target_url = `https://slint.dev/releases/${version.innerText}/docs/slint/`;
+        }
+      }
+
+      if (target_url !== null) {
+        for (let link of document.querySelectorAll("a[href^='slint-reference:']")) {
+          link.href = link.href.replace("slint-reference:", target_url);
+        }
+      }
+    }
+  });
+</script>
+
+</head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module vulkan</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><a class="logo-container" href="../../../../../slint/index.html"><img src="https://slint.dev/logo/slint-logo-square-light.svg" alt="logo"></a><h2><a href="../../../../../slint/index.html">slint</a><span class="version">1.14.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module vulkan</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#vulkan-api-internals" title="Vulkan API internals.">Vulkan API internals.</a><ul><li><a href="#stack-memory" title="Stack memory">Stack memory</a></li><li><a href="#framebuffers-and-render-passes" title="Framebuffers and Render passes">Framebuffers and Render passes</a></li><li><a href="#fences" title="Fences">Fences</a></li></ul></li></ul><h3><a href="#structs">Module Items</a></h3><ul class="block"><li><a href="#structs" title="Structs">Structs</a></li><li><a href="#enums" title="Enums">Enums</a></li><li><a href="#types" title="Type Aliases">Type Aliases</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In slint::<wbr>wgpu_<wbr>27::<wbr>wgpu::<wbr>hal</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../../../index.html">slint</a>::<wbr><a href="../../../index.html">wgpu_27</a>::<wbr><a href="../../index.html">wgpu</a>::<wbr><a href="../index.html">hal</a></div><h1>Module <span>vulkan</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"></span></div><span class="item-info"><div class="stab portability">Available on <strong>crate feature <code>unstable-wgpu-27</code></strong> only.</div></span><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Vulkan API internals.</p>
+<h2 id="vulkan-api-internals"><a class="doc-anchor" href="#vulkan-api-internals">§</a>Vulkan API internals.</h2><h3 id="stack-memory"><a class="doc-anchor" href="#stack-memory">§</a>Stack memory</h3>
+<p>Ash expects slices, which we don’t generally have available.
+We cope with this requirement by the combination of the following ways:</p>
+<ul>
+<li>temporarily allocating <code>Vec</code> on heap, where overhead is permitted</li>
+<li>growing temporary local storage</li>
+</ul>
+<h3 id="framebuffers-and-render-passes"><a class="doc-anchor" href="#framebuffers-and-render-passes">§</a>Framebuffers and Render passes</h3>
+<p>Render passes are cached on the device and kept forever.</p>
+<p>Framebuffers are also cached on the device, but they are removed when
+any of the image views (they have) gets removed.
+If Vulkan supports image-less framebuffers,
+then the actual views are excluded from the framebuffer key.</p>
+<h3 id="fences"><a class="doc-anchor" href="#fences">§</a>Fences</h3>
+<p>If timeline semaphores are available, they are used 1:1 with wgpu-hal fences.
+Otherwise, we manage a pool of <code>VkFence</code> objects behind each <code>hal::Fence</code>.</p>
+<p>!</p>
+</div></details><h2 id="structs" class="section-header">Structs<a href="#structs" class="anchor">§</a></h2><dl class="item-table"><dt><a class="struct" href="struct.AccelerationStructure.html" title="struct slint::wgpu_27::wgpu::hal::vulkan::AccelerationStructure">Acceleration<wbr>Structure</a></dt><dt><a class="struct" href="struct.Adapter.html" title="struct slint::wgpu_27::wgpu::hal::vulkan::Adapter">Adapter</a></dt><dt><a class="struct" href="struct.Api.html" title="struct slint::wgpu_27::wgpu::hal::vulkan::Api">Api</a></dt><dt><a class="struct" href="struct.BindGroup.html" title="struct slint::wgpu_27::wgpu::hal::vulkan::BindGroup">Bind<wbr>Group</a></dt><dt><a class="struct" href="struct.BindGroupLayout.html" title="struct slint::wgpu_27::wgpu::hal::vulkan::BindGroupLayout">Bind<wbr>Group<wbr>Layout</a></dt><dt><a class="struct" href="struct.Buffer.html" title="struct slint::wgpu_27::wgpu::hal::vulkan::Buffer">Buffer</a></dt><dt><a class="struct" href="struct.CommandBuffer.html" title="struct slint::wgpu_27::wgpu::hal::vulkan::CommandBuffer">Command<wbr>Buffer</a></dt><dt><a class="struct" href="struct.CommandEncoder.html" title="struct slint::wgpu_27::wgpu::hal::vulkan::CommandEncoder">Command<wbr>Encoder</a></dt><dt><a class="struct" href="struct.ComputePipeline.html" title="struct slint::wgpu_27::wgpu::hal::vulkan::ComputePipeline">Compute<wbr>Pipeline</a></dt><dt><a class="struct" href="struct.CreateDeviceCallbackArgs.html" title="struct slint::wgpu_27::wgpu::hal::vulkan::CreateDeviceCallbackArgs">Create<wbr>Device<wbr>Callback<wbr>Args</a></dt><dd>Arguments to the <a href="type.CreateDeviceCallback.html" title="type slint::wgpu_27::wgpu::hal::vulkan::CreateDeviceCallback"><code>CreateDeviceCallback</code></a>.</dd><dt><a class="struct" href="struct.CreateInstanceCallbackArgs.html" title="struct slint::wgpu_27::wgpu::hal::vulkan::CreateInstanceCallbackArgs">Create<wbr>Instance<wbr>Callback<wbr>Args</a></dt><dd>Arguments to the <a href="type.CreateInstanceCallback.html" title="type slint::wgpu_27::wgpu::hal::vulkan::CreateInstanceCallback"><code>CreateInstanceCallback</code></a>.</dd><dt><a class="struct" href="struct.DebugUtilsCreateInfo.html" title="struct slint::wgpu_27::wgpu::hal::vulkan::DebugUtilsCreateInfo">Debug<wbr>Utils<wbr>Create<wbr>Info</a></dt><dt><a class="struct" href="struct.DebugUtilsMessengerUserData.html" title="struct slint::wgpu_27::wgpu::hal::vulkan::DebugUtilsMessengerUserData">Debug<wbr>Utils<wbr>Messenger<wbr>User<wbr>Data</a></dt><dd>User data needed by <code>instance::debug_utils_messenger_callback</code>.</dd><dt><a class="struct" href="struct.Device.html" title="struct slint::wgpu_27::wgpu::hal::vulkan::Device">Device</a></dt><dt><a class="struct" href="struct.Instance.html" title="struct slint::wgpu_27::wgpu::hal::vulkan::Instance">Instance</a></dt><dt><a class="struct" href="struct.InstanceShared.html" title="struct slint::wgpu_27::wgpu::hal::vulkan::InstanceShared">Instance<wbr>Shared</a></dt><dt><a class="struct" href="struct.PhysicalDeviceFeatures.html" title="struct slint::wgpu_27::wgpu::hal::vulkan::PhysicalDeviceFeatures">Physical<wbr>Device<wbr>Features</a></dt><dd>Features supported by a [<code>vk::PhysicalDevice</code>] and its extensions.</dd><dt><a class="struct" href="struct.PipelineCache.html" title="struct slint::wgpu_27::wgpu::hal::vulkan::PipelineCache">Pipeline<wbr>Cache</a></dt><dt><a class="struct" href="struct.PipelineLayout.html" title="struct slint::wgpu_27::wgpu::hal::vulkan::PipelineLayout">Pipeline<wbr>Layout</a></dt><dt><a class="struct" href="struct.QuerySet.html" title="struct slint::wgpu_27::wgpu::hal::vulkan::QuerySet">Query<wbr>Set</a></dt><dt><a class="struct" href="struct.Queue.html" title="struct slint::wgpu_27::wgpu::hal::vulkan::Queue">Queue</a></dt><dt><a class="struct" href="struct.RenderPipeline.html" title="struct slint::wgpu_27::wgpu::hal::vulkan::RenderPipeline">Render<wbr>Pipeline</a></dt><dt><a class="struct" href="struct.Sampler.html" title="struct slint::wgpu_27::wgpu::hal::vulkan::Sampler">Sampler</a></dt><dt><a class="struct" href="struct.Surface.html" title="struct slint::wgpu_27::wgpu::hal::vulkan::Surface">Surface</a></dt><dt><a class="struct" href="struct.SurfaceTexture.html" title="struct slint::wgpu_27::wgpu::hal::vulkan::SurfaceTexture">Surface<wbr>Texture</a></dt><dt><a class="struct" href="struct.Texture.html" title="struct slint::wgpu_27::wgpu::hal::vulkan::Texture">Texture</a></dt><dt><a class="struct" href="struct.TextureView.html" title="struct slint::wgpu_27::wgpu::hal::vulkan::TextureView">Texture<wbr>View</a></dt><dt><a class="struct" href="struct.Workarounds.html" title="struct slint::wgpu_27::wgpu::hal::vulkan::Workarounds">Workarounds</a></dt><dd>Workaround flags.</dd></dl><h2 id="enums" class="section-header">Enums<a href="#enums" class="anchor">§</a></h2><dl class="item-table"><dt><a class="enum" href="enum.Fence.html" title="enum slint::wgpu_27::wgpu::hal::vulkan::Fence">Fence</a></dt><dd>The <a href="../trait.Api.html#associatedtype.Fence" title="associated type slint::wgpu_27::wgpu::hal::Api::Fence"><code>Api::Fence</code></a> type for <a href="../../wgc/api/struct.Vulkan.html" title="struct slint::wgpu_27::wgpu::wgc::api::Vulkan"><code>vulkan::Api</code></a>.</dd><dt><a class="enum" href="enum.ShaderModule.html" title="enum slint::wgpu_27::wgpu::hal::vulkan::ShaderModule">Shader<wbr>Module</a></dt></dl><h2 id="types" class="section-header">Type Aliases<a href="#types" class="anchor">§</a></h2><dl class="item-table"><dt><a class="type" href="type.CreateDeviceCallback.html" title="type slint::wgpu_27::wgpu::hal::vulkan::CreateDeviceCallback">Create<wbr>Device<wbr>Callback</a></dt><dd>Callback to allow changing the vulkan device creation parameters.</dd><dt><a class="type" href="type.CreateInstanceCallback.html" title="type slint::wgpu_27::wgpu::hal::vulkan::CreateInstanceCallback">Create<wbr>Instance<wbr>Callback</a></dt><dd>Callback to allow changing the vulkan instance creation parameters.</dd></dl></section></div></main></body></html>

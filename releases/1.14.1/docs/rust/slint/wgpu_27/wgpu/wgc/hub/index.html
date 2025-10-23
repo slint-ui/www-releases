@@ -1,0 +1,201 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Allocating resource ids, and tracking the resources they refer to."><title>slint::wgpu_27::wgpu::wgc::hub - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../../../static.files/rustdoc-ca0dd0c4.css"><meta name="rustdoc-vars" data-root-path="../../../../../" data-static-root-path="../../../../../static.files/" data-current-crate="slint" data-themes="" data-resource-suffix="" data-rustdoc-version="1.92.0-nightly (1d23d0680 2025-10-22)" data-channel="nightly" data-search-js="search-d69d8955.js" data-stringdex-js="stringdex-c3e638e9.js" data-settings-js="settings-c38705f0.js" ><script src="../../../../../static.files/storage-e2aeef58.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../../../static.files/main-ce535bd0.js"></script><noscript><link rel="stylesheet" href="../../../../../static.files/noscript-263c88ec.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../../../static.files/favicon-044be391.svg"><!--
+    This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
+    It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
+    in sphinx and via head.hbs in mdbook.
+-->
+<link rel="stylesheet" href="https://slint.dev/resources/highlightjs/11.0.1/default.min.css">
+<script src="https://slint.dev/resources/highlightjs/11.0.1/highlight.min.js"></script>
+<script>
+  function highlight_slint(hljs) {
+    const KEYWORDS = {
+      keyword:
+        "animate callback changed component enum export for function global if import in in-out inherits out parent private property public pure root self states struct",
+      literal: "false true",
+      built_in:
+        "ArcTo Clip Close Colors CubicTo Flickable FocusScope GridLayout HorizontalLayout Image LineTo Math MoveTo Path PopupWindow QuadraticTo Rectangle Row Text TextInput TouchArea VerticalLayout Window animation-tick debug",
+      type: "bool duration easing float int length logical-length relative-font-size string",
+    };
+
+    return {
+      name: 'slint',
+      case_insensitive: false,
+      keywords: KEYWORDS,
+      contains: [
+        hljs.QUOTE_STRING_MODE,
+        hljs.C_LINE_COMMENT_MODE,
+        hljs.C_BLOCK_COMMENT_MODE,
+        hljs.COMMENT('/\\*', '\\*/', {
+          contains: ['self']
+        }),
+        {
+          className: 'number',
+          begin: '\\b\\d+(\\.\\d+)?(\\w+)?',
+          relevance: 0
+        },
+        {
+          className: 'title',
+          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]* *:=',
+        },
+        {
+          className: 'symbol',
+          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]*(:| *=>)',
+        },
+        {
+          className: 'built_in',
+          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]*!',
+        },
+      ],
+      illegal: /@/
+    };
+  };
+
+  // Tags used in fenced code blocks
+  for (let tag of ["slint", "slint,no-preview", "slint,no-auto-preview", "slint,ignore"]) {
+    hljs.registerLanguage(tag, highlight_slint);
+  }
+
+
+  window.addEventListener("DOMContentLoaded", () => {
+    const rustDoc = document.querySelector('meta[name="generator"]')?.content == "rustdoc";
+    if (rustDoc) {
+      // Only highlight .slint blocks, leave the others to rustdoc
+      for (slintBlock of document.querySelectorAll("[class*=language-slint]")) {
+        hljs.highlightElement(slintBlock)
+      }
+
+      // Some of the rustdoc selectors require the pre element to have the rust class
+      for (codeBlock of document.querySelectorAll(".language-slint.hljs")) {
+        codeBlock.classList.add("rust");
+        codeBlock.classList.remove("hljs");
+      }
+
+      // Change the hljs generated classes to the rustdoc
+      // ones, so that the highlighting adjusts to the theme correctly.
+      const highlightJSToRustDoc = [
+        ["comment", "comment"],
+        ["number", "number"],
+        ["symbol", "struct"], // width:
+        ["keyword", "kw"],
+        ["built_in", "primitive"],
+        ["string", "string"],
+        ["title", "fnname"], // Foo :=
+        ["type", "type"]
+      ];
+
+      for ([hljs_class, rustdoc_class] of highlightJSToRustDoc) {
+        for (titleElement of document.querySelectorAll(`.hljs-${hljs_class}`)) {
+          titleElement.classList.remove(`hljs-${hljs_class}`);
+          titleElement.classList.add(rustdoc_class);
+        }
+      }
+    } else {
+      // For use with the mdbook Tutorial
+      hljs.highlightAll();
+
+      // The Sphinx/my_st generated HTML for code blocks doesn't use <code> tags, so highlight.js'
+      // default selector "pre code" doesn't match. Let's do it by hand:
+      for (block of document.querySelectorAll("div[class*=highlight-slint] div.highlight pre")) {
+        hljs.highlightElement(block)
+      }
+    }
+
+    // Fix up links that sphinx handles but for rustdoc we need to resolve manually:
+    {
+      let target_url = null;
+      if (document.location.hostname == "snapshots.slint.dev") {
+        target_url = `https://snapshots.slint.dev/master/docs/slint/`;
+      } else {
+        let version = document.querySelector("span.version");
+        if (version !== null) {
+          target_url = `https://slint.dev/releases/${version.innerText}/docs/slint/`;
+        }
+      }
+
+      if (target_url !== null) {
+        for (let link of document.querySelectorAll("a[href^='slint-reference:']")) {
+          link.href = link.href.replace("slint-reference:", target_url);
+        }
+      }
+    }
+  });
+</script>
+
+</head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module hub</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><a class="logo-container" href="../../../../../slint/index.html"><img src="https://slint.dev/logo/slint-logo-square-light.svg" alt="logo"></a><h2><a href="../../../../../slint/index.html">slint</a><span class="version">1.14.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module hub</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#assigning-ids-to-resources" title="Assigning ids to resources">Assigning ids to resources</a></li><li><a href="#id-allocation-and-streaming" title="Id allocation and streaming">Id allocation and streaming</a></li></ul><h3><a href="#structs">Module Items</a></h3><ul class="block"><li><a href="#structs" title="Structs">Structs</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In slint::<wbr>wgpu_<wbr>27::<wbr>wgpu::<wbr>wgc</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../../../index.html">slint</a>::<wbr><a href="../../../index.html">wgpu_27</a>::<wbr><a href="../../index.html">wgpu</a>::<wbr><a href="../index.html">wgc</a></div><h1>Module <span>hub</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"></span></div><span class="item-info"><div class="stab portability">Available on <strong>crate feature <code>unstable-wgpu-27</code></strong> only.</div></span><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Allocating resource ids, and tracking the resources they refer to.</p>
+<p>The <code>wgpu_core</code> API uses identifiers of type <a href="../id/struct.Id.html" title="struct slint::wgpu_27::wgpu::wgc::id::Id"><code>Id&lt;R&gt;</code></a> to refer to
+resources of type <code>R</code>. For example, <a href="../id/type.DeviceId.html" title="type slint::wgpu_27::wgpu::wgc::id::DeviceId"><code>id::DeviceId</code></a> is an alias for
+<code>Id&lt;markers::Device&gt;</code>, and <a href="../id/type.BufferId.html" title="type slint::wgpu_27::wgpu::wgc::id::BufferId"><code>id::BufferId</code></a> is an alias for
+<code>Id&lt;markers::Buffer&gt;</code>. <code>Id</code> implements <code>Copy</code>, <code>Hash</code>, <code>Eq</code>, <code>Ord</code>, and
+of course <code>Debug</code>.</p>
+<p>Each <code>Id</code> contains not only an index for the resource it denotes but
+also a Backend indicating which <code>wgpu</code> backend it belongs to.</p>
+<p><code>Id</code>s also incorporate a generation number, for additional validation.</p>
+<p>The resources to which identifiers refer are freed explicitly.
+Attempting to use an identifier for a resource that has been freed
+elicits an error result.</p>
+<h3 id="assigning-ids-to-resources"><a class="doc-anchor" href="#assigning-ids-to-resources">§</a>Assigning ids to resources</h3>
+<p>The users of <code>wgpu_core</code> generally want resource ids to be assigned
+in one of two ways:</p>
+<ul>
+<li>
+<p>Users like <code>wgpu</code> want <code>wgpu_core</code> to assign ids to resources itself.
+For example, <code>wgpu</code> expects to call <code>Global::device_create_buffer</code>
+and have the return value indicate the newly created buffer’s id.</p>
+</li>
+<li>
+<p>Users like <code>player</code> and Firefox want to allocate ids themselves, and
+pass <code>Global::device_create_buffer</code> and friends the id to assign the
+new resource.</p>
+</li>
+</ul>
+<p>To accommodate either pattern, <code>wgpu_core</code> methods that create
+resources all expect an <code>id_in</code> argument that the caller can use to
+specify the id, and they all return the id used. For example, the
+declaration of <code>Global::device_create_buffer</code> looks like this:</p>
+
+<div class="example-wrap ignore"><a href="#" class="tooltip" title="This example is not tested">ⓘ</a><pre class="rust rust-example-rendered"><code><span class="kw">impl </span>Global {
+    <span class="comment">/* ... */
+    </span><span class="kw">pub fn </span>device_create_buffer&lt;A: HalApi&gt;(
+        <span class="kw-2">&amp;</span><span class="self">self</span>,
+        device_id: id::DeviceId,
+        desc: <span class="kw-2">&amp;</span>resource::BufferDescriptor,
+        id_in: Input&lt;G&gt;,
+    ) -&gt; (id::BufferId, <span class="prelude-ty">Option</span>&lt;resource::CreateBufferError&gt;) {
+        <span class="comment">/* ... */
+    </span>}
+    <span class="comment">/* ... */
+</span>}</code></pre></div>
+<p>Users that want to assign resource ids themselves pass in the id they
+want as the <code>id_in</code> argument, whereas users that want <code>wgpu_core</code>
+itself to choose ids always pass <code>()</code>. In either case, the id
+ultimately assigned is returned as the first element of the tuple.</p>
+<p>Producing true identifiers from <code>id_in</code> values is the job of an
+<a href="../identity/struct.IdentityManager.html" title="struct slint::wgpu_27::wgpu::wgc::identity::IdentityManager"><code>crate::identity::IdentityManager</code></a> or ids will be received from outside through <code>Option&lt;Id&gt;</code> arguments.</p>
+<h3 id="id-allocation-and-streaming"><a class="doc-anchor" href="#id-allocation-and-streaming">§</a>Id allocation and streaming</h3>
+<p>Perhaps surprisingly, allowing users to assign resource ids themselves
+enables major performance improvements in some applications.</p>
+<p>The <code>wgpu_core</code> API is designed for use by Firefox’s <a href="https://www.w3.org/TR/webgpu/">WebGPU</a>
+implementation. For security, web content and GPU use must be kept
+segregated in separate processes, with all interaction between them
+mediated by an inter-process communication protocol. As web content uses
+the WebGPU API, the content process sends messages to the GPU process,
+which interacts with the platform’s GPU APIs on content’s behalf,
+occasionally sending results back.</p>
+<p>In a classic Rust API, a resource allocation function takes parameters
+describing the resource to create, and if creation succeeds, it returns
+the resource id in a <code>Result::Ok</code> value. However, this design is a poor
+fit for the split-process design described above: content must wait for
+the reply to its buffer-creation message (say) before it can know which
+id it can use in the next message that uses that buffer. On a common
+usage pattern, the classic Rust design imposes the latency of a full
+cross-process round trip.</p>
+<p>We can avoid incurring these round-trip latencies simply by letting the
+content process assign resource ids itself. With this approach, content
+can choose an id for the new buffer, send a message to create the
+buffer, and then immediately send the next message operating on that
+buffer, since it already knows its id. Allowing content and GPU process
+activity to be pipelined greatly improves throughput.</p>
+<p>To help propagate errors correctly in this style of usage, when resource
+creation fails, the id supplied for that resource is marked to indicate
+as much, allowing subsequent operations using that id to be properly
+flagged as errors as well.</p>
+</div></details><h2 id="structs" class="section-header">Structs<a href="#structs" class="anchor">§</a></h2><dl class="item-table"><dt><a class="struct" href="struct.Hub.html" title="struct slint::wgpu_27::wgpu::wgc::hub::Hub">Hub</a></dt><dd>All the resources tracked by a <a href="../global/struct.Global.html" title="struct slint::wgpu_27::wgpu::wgc::global::Global"><code>crate::global::Global</code></a>.</dd><dt><a class="struct" href="struct.HubReport.html" title="struct slint::wgpu_27::wgpu::wgc::hub::HubReport">HubReport</a></dt></dl></section></div></main></body></html>
