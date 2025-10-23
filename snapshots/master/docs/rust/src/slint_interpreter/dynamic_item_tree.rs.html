@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/dynamic_item_tree.rs`."><title>dynamic_item_tree.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-ca0dd0c4.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.92.0-nightly (695857bc3 2025-10-21)" data-channel="nightly" data-search-js="search-d69d8955.js" data-stringdex-js="stringdex-c3e638e9.js" data-settings-js="settings-c38705f0.js" ><script src="../../static.files/storage-e2aeef58.js"></script><script defer src="../../static.files/src-script-813739b1.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-ce535bd0.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-263c88ec.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/dynamic_item_tree.rs`."><title>dynamic_item_tree.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-ca0dd0c4.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.92.0-nightly (1d23d0680 2025-10-22)" data-channel="nightly" data-search-js="search-d69d8955.js" data-stringdex-js="stringdex-c3e638e9.js" data-settings-js="settings-c38705f0.js" ><script src="../../static.files/storage-e2aeef58.js"></script><script defer src="../../static.files/src-script-813739b1.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-ce535bd0.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-263c88ec.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -407,7 +407,7 @@
 <a href=#285 id=285 data-nosnippet>285</a>
 <a href=#286 id=286 data-nosnippet>286</a></a><span class="kw">pub type </span><a href="value_model.rs.html#64">DynamicComponentVRc = vtable::VRc&lt;ItemTreeVTable, <a href="#1773">ErasedItemTreeBox</a>&gt;;
 <a href=#287 id=287 data-nosnippet>287</a>
-<a href=#288 id=288 data-nosnippet>288</a></a><span class="attr">#[derive(<a href="#289-293">Default</a>)]
+<a href=#288 id=288 data-nosnippet>288</a></a><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/default/macro.Default.html">Default</a>)]
 <a href=#289 id=289 data-nosnippet>289</a></span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">struct </span><a href="value_model.rs.html#64">ComponentExtraData {
 <a href=#290 id=290 data-nosnippet>290</a>    </a><span class="kw">pub</span>(<span class="kw">crate</span><a href="value_model.rs.html#64">) globals: OnceCell&lt;<span class="kw">crate</span>::global_component::<a href="global_component.rs.html#62-66">GlobalStorage</a>&gt;,
 <a href=#291 id=291 data-nosnippet>291</a>    </a><span class="kw">pub</span>(<span class="kw">crate</span><a href="value_model.rs.html#64">) self_weak: OnceCell&lt;<a href="#84">ErasedItemTreeBoxWeak</a>&gt;,
@@ -453,7 +453,7 @@
 <a href=#331 id=331 data-nosnippet>331</a>
 <a href=#332 id=332 data-nosnippet>332</a><span class="kw">type </span><a href="value_model.rs.html#64">Callback = i_slint_core::Callback&lt;[<a href="api.rs.html#97-131">Value</a>], <a href="api.rs.html#97-131">Value</a>&gt;;
 <a href=#333 id=333 data-nosnippet>333</a>
-<a href=#334 id=334 data-nosnippet>334</a></a><span class="attr">#[derive(<a href="#335">Clone</a>)]
+<a href=#334 id=334 data-nosnippet>334</a></a><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/clone/macro.Clone.html">Clone</a>)]
 <a href=#335 id=335 data-nosnippet>335</a></span><span class="kw">pub struct </span><a href="value_model.rs.html#64">ErasedItemTreeDescription(<a href="https://doc.rust-lang.org/nightly/alloc/rc/struct.Rc.html">Rc</a>&lt;<a href="#368-422">ItemTreeDescription</a>&lt;</a><span class="lifetime">'static</span>&gt;&gt;);
 <a href=#336 id=336 data-nosnippet>336</a><span class="kw">impl </span><a href="value_model.rs.html#64"><a href="#335">ErasedItemTreeDescription</a> {
 <a href=#337 id=337 data-nosnippet>337</a>    </a><span class="kw">pub fn </span><a href="value_model.rs.html#64">unerase&lt;</a><span class="lifetime">'a</span>, <span class="lifetime">'id</span>&gt;(
@@ -543,7 +543,7 @@
 <a href=#421 id=421 data-nosnippet>421</a>    &gt;,
 <a href=#422 id=422 data-nosnippet>422</a>}
 <a href=#423 id=423 data-nosnippet>423</a>
-<a href=#424 id=424 data-nosnippet>424</a></a><span class="attr">#[derive(<a href="#425-428">Clone</a>, derive_more::From)]
+<a href=#424 id=424 data-nosnippet>424</a></a><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/clone/macro.Clone.html">Clone</a>, derive_more::From)]
 <a href=#425 id=425 data-nosnippet>425</a></span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">enum </span><a href="value_model.rs.html#64"><a href="#425-428">PopupMenuDescription</a> {
 <a href=#426 id=426 data-nosnippet>426</a>    Rc(<a href="https://doc.rust-lang.org/nightly/alloc/rc/struct.Rc.html">Rc</a>&lt;<a href="#335">ErasedItemTreeDescription</a>&gt;),
 <a href=#427 id=427 data-nosnippet>427</a>    Weak(<a href="https://doc.rust-lang.org/nightly/alloc/rc/struct.Weak.html">Weak</a>&lt;<a href="#335">ErasedItemTreeDescription</a>&gt;),
@@ -580,7 +580,7 @@
 <a href=#458 id=458 data-nosnippet>458</a>    })
 <a href=#459 id=459 data-nosnippet>459</a>}
 <a href=#460 id=460 data-nosnippet>460</a>
-<a href=#461 id=461 data-nosnippet>461</a></a><span class="attr">#[derive(<a href="#462-470">Default</a>)]
+<a href=#461 id=461 data-nosnippet>461</a></a><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/default/macro.Default.html">Default</a>)]
 <a href=#462 id=462 data-nosnippet>462</a></span><span class="kw">pub enum </span><a href="value_model.rs.html#64">WindowOptions {
 <a href=#463 id=463 data-nosnippet>463</a>    </a><span class="attr">#[default]
 <a href=#464 id=464 data-nosnippet>464</a>    </span><a href="value_model.rs.html#64">CreateNewWindow,
@@ -2364,7 +2364,7 @@
 <a href=#2242 id=2242 data-nosnippet>2242</a>    std::alloc::<a href="https://doc.rust-lang.org/nightly/alloc/alloc/fn.dealloc.html">dealloc</a>(<a href="#2241">ptr</a>, <a href="#2241">layout</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#tymethod.try_into">try_into</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>());
 <a href=#2243 id=2243 data-nosnippet>2243</a>}
 <a href=#2244 id=2244 data-nosnippet>2244</a>
-<a href=#2245 id=2245 data-nosnippet>2245</a></a><span class="attr">#[derive(<a href="#2246-2249">Copy</a>, <a href="#2246-2249">Clone</a>)]
+<a href=#2245 id=2245 data-nosnippet>2245</a></a><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/marker/macro.Copy.html">Copy</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/macro.Clone.html">Clone</a>)]
 <a href=#2246 id=2246 data-nosnippet>2246</a></span><span class="kw">pub struct </span><a href="value_model.rs.html#64">InstanceRef&lt;</a><span class="lifetime">'a</span>, <span class="lifetime">'id</span>&gt; {
 <a href=#2247 id=2247 data-nosnippet>2247</a>    <span class="kw">pub </span><a href="value_model.rs.html#64">instance: <a href="https://doc.rust-lang.org/nightly/core/pin/struct.Pin.html">Pin</a>&lt;</a><span class="kw-2">&amp;</span><span class="lifetime">'a </span><a href="value_model.rs.html#64"><a href="dynamic_type.rs.html#183-186">Instance</a>&lt;</a><span class="lifetime">'id</span>&gt;&gt;,
 <a href=#2248 id=2248 data-nosnippet>2248</a>    <span class="kw">pub </span><a href="value_model.rs.html#64">description: </a><span class="kw-2">&amp;</span><span class="lifetime">'a </span><a href="value_model.rs.html#64"><a href="#368-422">ItemTreeDescription</a>&lt;</a><span class="lifetime">'id</span>&gt;,
