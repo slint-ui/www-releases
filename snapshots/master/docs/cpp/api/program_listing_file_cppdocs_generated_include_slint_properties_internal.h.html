@@ -7,7 +7,7 @@
         <link rel="prefetch" href="https://slint.dev/logo/slint-logo-small-light.svg" as="image">
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2025.09.25 -->
-        <title>Program Listing for File slint_properties_internal.h - Slint 1.14.1 C++ API documentation</title>
+        <title>Program Listing for File slint_properties_internal.h - Slint 1.15.0 C++ API documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d111a655" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=580074bf" />
     <link rel="stylesheet" type="text/css" href="../_static/theme_tweak.css?v=ca455ff5" />
@@ -164,7 +164,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../index.html"><div class="brand">Slint 1.14.1 C++ API  documentation</div></a>
+      <a href="../index.html"><div class="brand">Slint 1.15.0 C++ API  documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -188,7 +188,7 @@
     <img class="sidebar-logo" src="https://slint.dev/logo/slint-logo-small-light.svg" alt="Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">Slint 1.14.1 C++ API  documentation</span>
+  <span class="sidebar-brand-text">Slint 1.15.0 C++ API  documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -493,6 +493,10 @@
 <span class="w">                                </span><span class="kt">bool</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">intercept_set_binding</span><span class="p">)(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">user_data</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">new_binding</span><span class="p">));</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">slint_property_set_binding_internal</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">PropertyHandleOpaque</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">binding</span><span class="p">);</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">slint_property_delete_binding</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">binding</span><span class="p">);</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">slint_property_evaluate_binding</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">binding</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">value</span><span class="p">);</span>
 
 <span class="kt">bool</span><span class="w"> </span><span class="nf">slint_property_is_dirty</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">PropertyHandleOpaque</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">);</span>
 

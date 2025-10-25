@@ -7,7 +7,7 @@
         <link rel="prefetch" href="https://slint.dev/logo/slint-logo-small-light.svg" as="image">
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2025.09.25 -->
-        <title>Program Listing for File slint_internal.h - Slint 1.14.1 C++ API documentation</title>
+        <title>Program Listing for File slint_internal.h - Slint 1.15.0 C++ API documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d111a655" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=580074bf" />
     <link rel="stylesheet" type="text/css" href="../_static/theme_tweak.css?v=ca455ff5" />
@@ -164,7 +164,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../index.html"><div class="brand">Slint 1.14.1 C++ API  documentation</div></a>
+      <a href="../index.html"><div class="brand">Slint 1.15.0 C++ API  documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -188,7 +188,7 @@
     <img class="sidebar-logo" src="https://slint.dev/logo/slint-logo-small-light.svg" alt="Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">Slint 1.14.1 C++ API  documentation</span>
+  <span class="sidebar-brand-text">Slint 1.15.0 C++ API  documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -941,6 +941,17 @@
 
 <span class="k">using</span><span class="w"> </span><span class="n">IntSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Size2D</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="p">;</span>
 
+<span class="k">struct</span><span class="w"> </span><span class="nc">LogicalInset</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">top</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">bottom</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">left</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">right</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">InternalToken</span><span class="w"> </span><span class="p">{</span>
+
+<span class="p">};</span>
+
 <span class="k">union</span><span class="w"> </span><span class="nc">WindowEvent</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Tag</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">PointerPressed</span><span class="p">,</span>
@@ -953,6 +964,7 @@
 <span class="w">        </span><span class="n">KeyReleased</span><span class="p">,</span>
 <span class="w">        </span><span class="n">ScaleFactorChanged</span><span class="p">,</span>
 <span class="w">        </span><span class="n">Resized</span><span class="p">,</span>
+<span class="w">        </span><span class="n">SafeAreaChanged</span><span class="p">,</span>
 <span class="w">        </span><span class="n">CloseRequested</span><span class="p">,</span>
 <span class="w">        </span><span class="n">WindowActiveChanged</span><span class="p">,</span>
 <span class="w">    </span><span class="p">};</span>
@@ -1006,6 +1018,12 @@
 <span class="w">        </span><span class="n">LogicalSize</span><span class="w"> </span><span class="n">size</span><span class="p">;</span>
 <span class="w">    </span><span class="p">};</span>
 
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">SafeAreaChanged_Body</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Tag</span><span class="w"> </span><span class="n">tag</span><span class="p">;</span>
+<span class="w">        </span><span class="n">LogicalInset</span><span class="w"> </span><span class="n">inset</span><span class="p">;</span>
+<span class="w">        </span><span class="n">InternalToken</span><span class="w"> </span><span class="n">token</span><span class="p">;</span>
+<span class="w">    </span><span class="p">};</span>
+
 <span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">WindowActiveChanged_Body</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">Tag</span><span class="w"> </span><span class="n">tag</span><span class="p">;</span>
 <span class="w">        </span><span class="kt">bool</span><span class="w"> </span><span class="n">_0</span><span class="p">;</span>
@@ -1023,6 +1041,7 @@
 <span class="w">    </span><span class="n">KeyReleased_Body</span><span class="w"> </span><span class="n">key_released</span><span class="p">;</span>
 <span class="w">    </span><span class="n">ScaleFactorChanged_Body</span><span class="w"> </span><span class="n">scale_factor_changed</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Resized_Body</span><span class="w"> </span><span class="n">resized</span><span class="p">;</span>
+<span class="w">    </span><span class="n">SafeAreaChanged_Body</span><span class="w"> </span><span class="n">safe_area_changed</span><span class="p">;</span>
 <span class="w">    </span><span class="n">WindowActiveChanged_Body</span><span class="w"> </span><span class="n">window_active_changed</span><span class="p">;</span>
 <span class="cm">/* Some members of the WindowEvent enum have destructors (with SharedString), but thankfully we don&#39;t use these so we can have an empty constructor */</span>
 <span class="w">    </span><span class="o">~</span><span class="n">WindowEvent</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span>
@@ -1269,6 +1288,10 @@
 <span class="k">struct</span><span class="w"> </span><span class="nc">WindowItem</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">width</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">height</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">safe_area_inset_top</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">safe_area_inset_bottom</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">safe_area_inset_left</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">safe_area_inset_right</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">Brush</span><span class="o">&gt;</span><span class="w"> </span><span class="n">background</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">SharedString</span><span class="o">&gt;</span><span class="w"> </span><span class="n">title</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="w"> </span><span class="n">no_frame</span><span class="p">;</span>
@@ -1474,6 +1497,10 @@
 <span class="w">                                </span><span class="kt">bool</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">intercept_set_binding</span><span class="p">)(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">user_data</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">new_binding</span><span class="p">));</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">slint_property_set_binding_internal</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">PropertyHandleOpaque</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">binding</span><span class="p">);</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">slint_property_delete_binding</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">binding</span><span class="p">);</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">slint_property_evaluate_binding</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">binding</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">value</span><span class="p">);</span>
 
 <span class="kt">bool</span><span class="w"> </span><span class="nf">slint_property_is_dirty</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">PropertyHandleOpaque</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">);</span>
 

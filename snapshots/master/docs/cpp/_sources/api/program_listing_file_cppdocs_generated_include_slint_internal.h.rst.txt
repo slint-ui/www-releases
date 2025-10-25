@@ -535,6 +535,17 @@ Program Listing for File slint_internal.h
    
    using IntSize = Size2D<uint32_t>;
    
+   struct LogicalInset {
+       float top;
+       float bottom;
+       float left;
+       float right;
+   };
+   
+   struct InternalToken {
+   
+   };
+   
    union WindowEvent {
        enum class Tag : uint32_t {
            PointerPressed,
@@ -547,6 +558,7 @@ Program Listing for File slint_internal.h
            KeyReleased,
            ScaleFactorChanged,
            Resized,
+           SafeAreaChanged,
            CloseRequested,
            WindowActiveChanged,
        };
@@ -600,6 +612,12 @@ Program Listing for File slint_internal.h
            LogicalSize size;
        };
    
+       struct SafeAreaChanged_Body {
+           Tag tag;
+           LogicalInset inset;
+           InternalToken token;
+       };
+   
        struct WindowActiveChanged_Body {
            Tag tag;
            bool _0;
@@ -617,6 +635,7 @@ Program Listing for File slint_internal.h
        KeyReleased_Body key_released;
        ScaleFactorChanged_Body scale_factor_changed;
        Resized_Body resized;
+       SafeAreaChanged_Body safe_area_changed;
        WindowActiveChanged_Body window_active_changed;
    /* Some members of the WindowEvent enum have destructors (with SharedString), but thankfully we don't use these so we can have an empty constructor */
        ~WindowEvent() {}
@@ -863,6 +882,10 @@ Program Listing for File slint_internal.h
    struct WindowItem {
        Property<LogicalLength> width;
        Property<LogicalLength> height;
+       Property<LogicalLength> safe_area_inset_top;
+       Property<LogicalLength> safe_area_inset_bottom;
+       Property<LogicalLength> safe_area_inset_left;
+       Property<LogicalLength> safe_area_inset_right;
        Property<Brush> background;
        Property<SharedString> title;
        Property<bool> no_frame;
@@ -1068,6 +1091,10 @@ Program Listing for File slint_internal.h
                                    bool (*intercept_set_binding)(void *user_data, void *new_binding));
    
    void slint_property_set_binding_internal(const PropertyHandleOpaque *handle, void *binding);
+   
+   void slint_property_delete_binding(void *binding);
+   
+   void slint_property_evaluate_binding(void *binding, void *value);
    
    bool slint_property_is_dirty(const PropertyHandleOpaque *handle);
    

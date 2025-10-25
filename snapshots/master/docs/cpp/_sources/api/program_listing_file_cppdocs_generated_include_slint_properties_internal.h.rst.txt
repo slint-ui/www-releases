@@ -88,6 +88,10 @@ Program Listing for File slint_properties_internal.h
    
    void slint_property_set_binding_internal(const PropertyHandleOpaque *handle, void *binding);
    
+   void slint_property_delete_binding(void *binding);
+   
+   void slint_property_evaluate_binding(void *binding, void *value);
+   
    bool slint_property_is_dirty(const PropertyHandleOpaque *handle);
    
    void slint_property_mark_dirty(const PropertyHandleOpaque *handle);
