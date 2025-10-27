@@ -29,8 +29,8 @@ export const __wbindgen_realloc: (a: number, b: number, c: number, d: number) =>
 export const __wbindgen_free: (a: number, b: number, c: number) => void;
 export const __wbindgen_export_6: WebAssembly.Table;
 export const __externref_table_dealloc: (a: number) => void;
-export const closure435_externref_shim: (a: number, b: number, c: any, d: any) => void;
 export const closure601_externref_shim: (a: number, b: number, c: any) => void;
+export const wasm_bindgen__convert__closures_____invoke__h41fd4f24ca8bb058: (a: number, b: number) => void;
 export const closure172_externref_shim: (a: number, b: number, c: any) => void;
-export const wasm_bindgen__convert__closures_____invoke__h56b20c5a75825150: (a: number, b: number) => void;
+export const closure436_externref_shim: (a: number, b: number, c: any, d: any) => void;
 export const __wbindgen_start: () => void;

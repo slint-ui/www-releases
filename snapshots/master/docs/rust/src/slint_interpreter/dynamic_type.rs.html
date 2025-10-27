@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/dynamic_type.rs`."><title>dynamic_type.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-ca0dd0c4.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.93.0-nightly (34f954f9b 2025-10-25)" data-channel="nightly" data-search-js="search-d69d8955.js" data-stringdex-js="stringdex-c3e638e9.js" data-settings-js="settings-c38705f0.js" ><script src="../../static.files/storage-e2aeef58.js"></script><script defer src="../../static.files/src-script-813739b1.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-ce535bd0.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-263c88ec.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/dynamic_type.rs`."><title>dynamic_type.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-ca0dd0c4.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.93.0-nightly (f37aa9955 2025-10-26)" data-channel="nightly" data-search-js="search-d69d8955.js" data-stringdex-js="stringdex-c3e638e9.js" data-settings-js="settings-c38705f0.js" ><script src="../../static.files/storage-e2aeef58.js"></script><script defer src="../../static.files/src-script-813739b1.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-ce535bd0.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-263c88ec.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -129,217 +129,218 @@
 <a href=#7 id=7 data-nosnippet>7</a> The main entry point for this module is the TypeBuilder
 <a href=#8 id=8 data-nosnippet>8</a>*/
 <a href=#9 id=9 data-nosnippet>9</a>
-<a href=#10 id=10 data-nosnippet>10</a></span><span class="kw">use </span><a href="value_model.rs.html#64"><a href="https://doc.rust-lang.org/nightly/core/alloc/layout/struct.Layout.html">core::alloc::Layout</a>;
-<a href=#11 id=11 data-nosnippet>11</a></a><span class="kw">use </span><a href="value_model.rs.html#64">generativity::Id;
-<a href=#12 id=12 data-nosnippet>12</a></a><span class="kw">use </span><a href="value_model.rs.html#64">i_slint_core::rtti::FieldOffset;
-<a href=#13 id=13 data-nosnippet>13</a></a><span class="kw">use </span><a href="value_model.rs.html#64"><a href="https://doc.rust-lang.org/nightly/alloc/rc/struct.Rc.html">std::rc::Rc</a>;
+<a href=#10 id=10 data-nosnippet>10</a></span><span class="kw">use </span><a href="https://doc.rust-lang.org/nightly/core/alloc/layout/struct.Layout.html">core::alloc::Layout</a>;
+<a href=#11 id=11 data-nosnippet>11</a><span class="kw">use </span>generativity::Id;
+<a href=#12 id=12 data-nosnippet>12</a><span class="kw">use </span>i_slint_core::rtti::FieldOffset;
+<a href=#13 id=13 data-nosnippet>13</a><span class="kw">use </span><a href="https://doc.rust-lang.org/nightly/alloc/rc/struct.Rc.html">std::rc::Rc</a>;
 <a href=#14 id=14 data-nosnippet>14</a>
-<a href=#15 id=15 data-nosnippet>15</a></a><span class="kw">unsafe fn </span><a href="value_model.rs.html#64">construct_fn&lt;T: <a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html">Default</a>&gt;(ptr: </a><span class="kw-2">*mut </span><a href="value_model.rs.html#64"><a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>) {
-<a href=#16 id=16 data-nosnippet>16</a>    core::ptr::<a href="https://doc.rust-lang.org/nightly/core/ptr/fn.write.html">write</a>(<a href="#15">ptr</a> </a><span class="kw">as </span><span class="kw-2">*mut </span><a href="value_model.rs.html#64">T, T::<a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default">default</a>());
+<a href=#15 id=15 data-nosnippet>15</a><span class="kw">unsafe fn </span>construct_fn&lt;T: <a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html">Default</a>&gt;(ptr: <span class="kw-2">*mut </span><a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>) {
+<a href=#16 id=16 data-nosnippet>16</a>    core::ptr::<a href="https://doc.rust-lang.org/nightly/core/ptr/fn.write.html">write</a>(<a href="#15">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T, T::<a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default">default</a>());
 <a href=#17 id=17 data-nosnippet>17</a>}
-<a href=#18 id=18 data-nosnippet>18</a></a><span class="kw">unsafe fn </span><a href="value_model.rs.html#64">drop_fn&lt;T&gt;(ptr: </a><span class="kw-2">*mut </span><a href="value_model.rs.html#64"><a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>) {
-<a href=#19 id=19 data-nosnippet>19</a>    core::ptr::<a href="https://doc.rust-lang.org/nightly/core/ptr/fn.drop_in_place.html">drop_in_place</a>(<a href="#18">ptr</a> </a><span class="kw">as </span><span class="kw-2">*mut </span><a href="value_model.rs.html#64">T);
+<a href=#18 id=18 data-nosnippet>18</a><span class="kw">unsafe fn </span>drop_fn&lt;T&gt;(ptr: <span class="kw-2">*mut </span><a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>) {
+<a href=#19 id=19 data-nosnippet>19</a>    core::ptr::<a href="https://doc.rust-lang.org/nightly/core/ptr/fn.drop_in_place.html">drop_in_place</a>(<a href="#18">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>T);
 <a href=#20 id=20 data-nosnippet>20</a>}
 <a href=#21 id=21 data-nosnippet>21</a>
-<a href=#22 id=22 data-nosnippet>22</a></a><span class="doccomment">/// Information for type that can be added to a dynamic type.
+<a href=#22 id=22 data-nosnippet>22</a><span class="doccomment">/// Information for type that can be added to a dynamic type.
 <a href=#23 id=23 data-nosnippet>23</a>///
 <a href=#24 id=24 data-nosnippet>24</a>/// Let the builder know how to construct and build these fields
 <a href=#25 id=25 data-nosnippet>25</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/marker/macro.Copy.html">Copy</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/macro.Clone.html">Clone</a>)]
-<a href=#26 id=26 data-nosnippet>26</a></span><span class="kw">pub struct </span><a href="value_model.rs.html#64">StaticTypeInfo {
-<a href=#27 id=27 data-nosnippet>27</a>    </a><span class="doccomment">/// Invariant: this function must be safe to call on a uninitialized memory matching `mem_layout`.
+<a href=#26 id=26 data-nosnippet>26</a></span><span class="kw">pub struct </span>StaticTypeInfo {
+<a href=#27 id=27 data-nosnippet>27</a>    <span class="doccomment">/// Invariant: this function must be safe to call on a uninitialized memory matching `mem_layout`.
 <a href=#28 id=28 data-nosnippet>28</a>    /// Can only be None if the field is meant to be initialized by another mean (e.g, the type pointer
 <a href=#29 id=29 data-nosnippet>29</a>    /// allocated at the beginning of the type)
-<a href=#30 id=30 data-nosnippet>30</a>    </span><a href="value_model.rs.html#64">construct: </a><a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<span class="kw">unsafe fn</span>(<span class="kw-2">*mut </span><a href="value_model.rs.html#64"><a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>)&gt;,
-<a href=#31 id=31 data-nosnippet>31</a>    </a><span class="doccomment">/// Invariant: this function must be safe to call on an instance created by the `construct` function.
+<a href=#30 id=30 data-nosnippet>30</a>    </span>construct: <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<span class="kw">unsafe fn</span>(<span class="kw-2">*mut </span><a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>)&gt;,
+<a href=#31 id=31 data-nosnippet>31</a>    <span class="doccomment">/// Invariant: this function must be safe to call on an instance created by the `construct` function.
 <a href=#32 id=32 data-nosnippet>32</a>    /// If None, the type does not need drop.
-<a href=#33 id=33 data-nosnippet>33</a>    </span><a href="value_model.rs.html#64">drop: </a><a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<span class="kw">unsafe fn</span>(<span class="kw-2">*mut </span><a href="value_model.rs.html#64"><a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>)&gt;,
-<a href=#34 id=34 data-nosnippet>34</a>    </a><span class="doccomment">/// Memory layout of the type
-<a href=#35 id=35 data-nosnippet>35</a>    </span><a href="value_model.rs.html#64">mem_layout: <a href="https://doc.rust-lang.org/nightly/core/alloc/layout/struct.Layout.html">Layout</a>,
+<a href=#33 id=33 data-nosnippet>33</a>    </span>drop: <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<span class="kw">unsafe fn</span>(<span class="kw-2">*mut </span><a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>)&gt;,
+<a href=#34 id=34 data-nosnippet>34</a>    <span class="doccomment">/// Memory layout of the type
+<a href=#35 id=35 data-nosnippet>35</a>    </span>mem_layout: <a href="https://doc.rust-lang.org/nightly/core/alloc/layout/struct.Layout.html">Layout</a>,
 <a href=#36 id=36 data-nosnippet>36</a>}
 <a href=#37 id=37 data-nosnippet>37</a>
-<a href=#38 id=38 data-nosnippet>38</a></a><span class="kw">impl </span><a href="value_model.rs.html#64"><a href="#26-36">StaticTypeInfo</a> {
-<a href=#39 id=39 data-nosnippet>39</a>    </a><span class="doccomment">/// Returns a StaticTypeInfo suitable for the type `T`
-<a href=#40 id=40 data-nosnippet>40</a>    </span><span class="kw">pub fn </span><a href="value_model.rs.html#64">new&lt;T: <a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html">Default</a>&gt;() -&gt; <a href="#26-36">StaticTypeInfo</a> {
-<a href=#41 id=41 data-nosnippet>41</a>        </a><span class="kw">let </span><a href="value_model.rs.html#64">drop = </a><span class="kw">if </span><a href="value_model.rs.html#64">core::mem::<a href="https://doc.rust-lang.org/nightly/core/mem/fn.needs_drop.html">needs_drop</a>::&lt;T&gt;() { </a><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a><a href="value_model.rs.html#64">(<a href="#18-20">drop_fn</a>::&lt;T&gt; </a><span class="kw">as _</span>) } <span class="kw">else </span>{ <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None"><a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a> </a><a href="value_model.rs.html#64">};
-<a href=#42 id=42 data-nosnippet>42</a>        <a href="#26-36">StaticTypeInfo</a> { construct: </a><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a><a href="value_model.rs.html#64">(<a href="#15-17">construct_fn</a>::&lt;T&gt;), <a href="#41">drop</a>, mem_layout: <a href="https://doc.rust-lang.org/nightly/core/alloc/layout/struct.Layout.html">Layout</a>::<a href="https://doc.rust-lang.org/nightly/core/alloc/layout/struct.Layout.html#method.new">new</a>::&lt;T&gt;() }
+<a href=#38 id=38 data-nosnippet>38</a><span class="kw">impl </span><a href="#26-36">StaticTypeInfo</a> {
+<a href=#39 id=39 data-nosnippet>39</a>    <span class="doccomment">/// Returns a StaticTypeInfo suitable for the type `T`
+<a href=#40 id=40 data-nosnippet>40</a>    </span><span class="kw">pub fn </span>new&lt;T: <a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html">Default</a>&gt;() -&gt; <a href="#26-36">StaticTypeInfo</a> {
+<a href=#41 id=41 data-nosnippet>41</a>        <span class="kw">let </span>drop = <span class="kw">if </span>core::mem::<a href="https://doc.rust-lang.org/nightly/core/mem/fn.needs_drop.html">needs_drop</a>::&lt;T&gt;() { <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(<a href="#18-20">drop_fn</a>::&lt;T&gt; <span class="kw">as _</span>) } <span class="kw">else </span>{ <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a> };
+<a href=#42 id=42 data-nosnippet>42</a>        <a href="#26-36">StaticTypeInfo</a> { construct: <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(<a href="#15-17">construct_fn</a>::&lt;T&gt;), <a href="#41">drop</a>, mem_layout: <a href="https://doc.rust-lang.org/nightly/core/alloc/layout/struct.Layout.html">Layout</a>::<a href="https://doc.rust-lang.org/nightly/core/alloc/layout/struct.Layout.html#method.new">new</a>::&lt;T&gt;() }
 <a href=#43 id=43 data-nosnippet>43</a>    }
 <a href=#44 id=44 data-nosnippet>44</a>}
 <a href=#45 id=45 data-nosnippet>45</a>
-<a href=#46 id=46 data-nosnippet>46</a></a><span class="doccomment">/// Internal structure representing a field within a dynamic type
-<a href=#47 id=47 data-nosnippet>47</a></span><span class="kw">struct </span><a href="value_model.rs.html#64">FieldInfo {
-<a href=#48 id=48 data-nosnippet>48</a>    construct: </a><a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<span class="kw">unsafe fn</span>(<span class="kw-2">*mut </span><a href="value_model.rs.html#64"><a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>)&gt;,
-<a href=#49 id=49 data-nosnippet>49</a>    drop: </a><a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<span class="kw">unsafe fn</span>(<span class="kw-2">*mut </span><a href="value_model.rs.html#64"><a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>)&gt;,
+<a href=#46 id=46 data-nosnippet>46</a><span class="doccomment">/// Internal structure representing a field within a dynamic type
+<a href=#47 id=47 data-nosnippet>47</a></span><span class="kw">struct </span>FieldInfo {
+<a href=#48 id=48 data-nosnippet>48</a>    construct: <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<span class="kw">unsafe fn</span>(<span class="kw-2">*mut </span><a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>)&gt;,
+<a href=#49 id=49 data-nosnippet>49</a>    drop: <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<span class="kw">unsafe fn</span>(<span class="kw-2">*mut </span><a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>)&gt;,
 <a href=#50 id=50 data-nosnippet>50</a>    offset: <a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>,
 <a href=#51 id=51 data-nosnippet>51</a>}
 <a href=#52 id=52 data-nosnippet>52</a>
-<a href=#53 id=53 data-nosnippet>53</a></a><span class="doccomment">/// A TypeInfo represents the metadata required to create and drop dynamic type
+<a href=#53 id=53 data-nosnippet>53</a><span class="doccomment">/// A TypeInfo represents the metadata required to create and drop dynamic type
 <a href=#54 id=54 data-nosnippet>54</a>///
 <a href=#55 id=55 data-nosnippet>55</a>/// It needs to be built with the TypeBuilder.
-<a href=#56 id=56 data-nosnippet>56</a></span><span class="kw">pub struct </span><a href="value_model.rs.html#64">TypeInfo&lt;</a><span class="lifetime">'id</span><a href="value_model.rs.html#64">&gt; {
+<a href=#56 id=56 data-nosnippet>56</a></span><span class="kw">pub struct </span>TypeInfo&lt;<span class="lifetime">'id</span>&gt; {
 <a href=#57 id=57 data-nosnippet>57</a>    mem_layout: core::alloc::<a href="https://doc.rust-lang.org/nightly/core/alloc/layout/struct.Layout.html">Layout</a>,
-<a href=#58 id=58 data-nosnippet>58</a>    </a><span class="doccomment">/// Invariant: each field must represent a valid field within the `mem_layout`
+<a href=#58 id=58 data-nosnippet>58</a>    <span class="doccomment">/// Invariant: each field must represent a valid field within the `mem_layout`
 <a href=#59 id=59 data-nosnippet>59</a>    /// and the construct and drop function must be valid so that each field can
 <a href=#60 id=60 data-nosnippet>60</a>    /// be constructed and dropped correctly.
 <a href=#61 id=61 data-nosnippet>61</a>    /// The first FieldInfo must be related to the `Rc&lt;TypeInfo&gt;` member at the beginning
-<a href=#62 id=62 data-nosnippet>62</a>    </span><a href="value_model.rs.html#64">fields: <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="#47-51">FieldInfo</a>&gt;,
+<a href=#62 id=62 data-nosnippet>62</a>    </span>fields: <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="#47-51">FieldInfo</a>&gt;,
 <a href=#63 id=63 data-nosnippet>63</a>
-<a href=#64 id=64 data-nosnippet>64</a>    </a><span class="attr">#[allow(unused)]
-<a href=#65 id=65 data-nosnippet>65</a>    </span><a href="value_model.rs.html#64">id: Id&lt;</a><span class="lifetime">'id</span>&gt;,
+<a href=#64 id=64 data-nosnippet>64</a>    <span class="attr">#[allow(unused)]
+<a href=#65 id=65 data-nosnippet>65</a>    </span>id: Id&lt;<span class="lifetime">'id</span>&gt;,
 <a href=#66 id=66 data-nosnippet>66</a>}
 <a href=#67 id=67 data-nosnippet>67</a>
 <a href=#68 id=68 data-nosnippet>68</a><span class="doccomment">/// A builder for a dynamic type.
 <a href=#69 id=69 data-nosnippet>69</a>///
 <a href=#70 id=70 data-nosnippet>70</a>/// Call `add_field()` for each type, and then `build()` to return a TypeInfo
-<a href=#71 id=71 data-nosnippet>71</a></span><span class="kw">pub struct </span><a href="value_model.rs.html#64">TypeBuilder&lt;</a><span class="lifetime">'id</span>&gt; {
+<a href=#71 id=71 data-nosnippet>71</a></span><span class="kw">pub struct </span>TypeBuilder&lt;<span class="lifetime">'id</span>&gt; {
 <a href=#72 id=72 data-nosnippet>72</a>    <span class="doccomment">/// max alignment in byte of the types
-<a href=#73 id=73 data-nosnippet>73</a>    </span><a href="value_model.rs.html#64">align: <a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>,
-<a href=#74 id=74 data-nosnippet>74</a>    </a><span class="doccomment">/// Size in byte of the type so far (not including the trailing padding)
-<a href=#75 id=75 data-nosnippet>75</a>    </span><a href="value_model.rs.html#64">size: <a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>,
+<a href=#73 id=73 data-nosnippet>73</a>    </span>align: <a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>,
+<a href=#74 id=74 data-nosnippet>74</a>    <span class="doccomment">/// Size in byte of the type so far (not including the trailing padding)
+<a href=#75 id=75 data-nosnippet>75</a>    </span>size: <a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>,
 <a href=#76 id=76 data-nosnippet>76</a>    fields: <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="#47-51">FieldInfo</a>&gt;,
-<a href=#77 id=77 data-nosnippet>77</a>    id: Id&lt;</a><span class="lifetime">'id</span>&gt;,
+<a href=#77 id=77 data-nosnippet>77</a>    id: Id&lt;<span class="lifetime">'id</span>&gt;,
 <a href=#78 id=78 data-nosnippet>78</a>}
 <a href=#79 id=79 data-nosnippet>79</a>
-<a href=#80 id=80 data-nosnippet>80</a><span class="kw">impl</span>&lt;<span class="lifetime">'id</span><a href="value_model.rs.html#64">&gt; <a href="#71-78">TypeBuilder</a>&lt;</a><span class="lifetime">'id</span>&gt; {
-<a href=#81 id=81 data-nosnippet>81</a>    <span class="kw">pub fn </span><a href="value_model.rs.html#64">new(id: generativity::Guard&lt;</a><span class="lifetime">'id</span>&gt;) -&gt; <a class="self" href="value_model.rs.html#64">Self </a>{
-<a href=#82 id=82 data-nosnippet>82</a>        <span class="kw">let </span><span class="kw-2">mut </span><a href="value_model.rs.html#64">s = </a><a class="self" href="value_model.rs.html#64">Self </a><a href="value_model.rs.html#64">{ align: </a><span class="number">1</span><a href="value_model.rs.html#64">, size: </a><span class="number">0</span><a href="value_model.rs.html#64">, fields: </a><a class="macro" href="https://doc.rust-lang.org/nightly/alloc/macro.vec.html">vec!</a><a href="value_model.rs.html#64">[], id: <a href="#81">id</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html#tymethod.into">into</a>() };
-<a href=#83 id=83 data-nosnippet>83</a>        </a><span class="kw">type </span><a href="value_model.rs.html#64">T&lt;</a><span class="lifetime">'id</span><a href="value_model.rs.html#64">&gt; = <a href="https://doc.rust-lang.org/nightly/alloc/rc/struct.Rc.html">Rc</a>&lt;<a href="#56-66">TypeInfo</a>&lt;</a><span class="lifetime">'id</span><a href="value_model.rs.html#64">&gt;&gt;;
+<a href=#80 id=80 data-nosnippet>80</a><span class="kw">impl</span>&lt;<span class="lifetime">'id</span>&gt; <a href="#71-78">TypeBuilder</a>&lt;<span class="lifetime">'id</span>&gt; {
+<a href=#81 id=81 data-nosnippet>81</a>    <span class="kw">pub fn </span>new(id: generativity::Guard&lt;<span class="lifetime">'id</span>&gt;) -&gt; <span class="self">Self </span>{
+<a href=#82 id=82 data-nosnippet>82</a>        <span class="kw">let </span><span class="kw-2">mut </span>s = <span class="self">Self </span>{ align: <span class="number">1</span>, size: <span class="number">0</span>, fields: <a href="https://doc.rust-lang.org/nightly/alloc/macro.vec.html">vec!</a>[], id: <a href="#81">id</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html#tymethod.into">into</a>() };
+<a href=#83 id=83 data-nosnippet>83</a>        <span class="kw">type </span>T&lt;<span class="lifetime">'id</span>&gt; = <a href="https://doc.rust-lang.org/nightly/alloc/rc/struct.Rc.html">Rc</a>&lt;<a href="#56-66">TypeInfo</a>&lt;<span class="lifetime">'id</span>&gt;&gt;;
 <a href=#84 id=84 data-nosnippet>84</a>        <a href="#82">s</a>.<a href="#101-113">add_field</a>(<a href="#26-36">StaticTypeInfo</a> {
-<a href=#85 id=85 data-nosnippet>85</a>            construct: </a><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a><a href="value_model.rs.html#64">,
-<a href=#86 id=86 data-nosnippet>86</a>            drop: </a><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a><a href="value_model.rs.html#64">(<a href="#18-20">drop_fn</a>::&lt;<a href="#83">T</a>&lt;</a><span class="lifetime">'id</span><a href="value_model.rs.html#64">&gt;&gt;),
-<a href=#87 id=87 data-nosnippet>87</a>            mem_layout: <a href="https://doc.rust-lang.org/nightly/core/alloc/layout/struct.Layout.html">Layout</a>::<a href="https://doc.rust-lang.org/nightly/core/alloc/layout/struct.Layout.html#method.new">new</a>::&lt;<a href="#83">T</a>&lt;</a><span class="lifetime">'id</span><a href="value_model.rs.html#64">&gt;&gt;(),
+<a href=#85 id=85 data-nosnippet>85</a>            construct: <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a>,
+<a href=#86 id=86 data-nosnippet>86</a>            drop: <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(<a href="#18-20">drop_fn</a>::&lt;<a href="#83">T</a>&lt;<span class="lifetime">'id</span>&gt;&gt;),
+<a href=#87 id=87 data-nosnippet>87</a>            mem_layout: <a href="https://doc.rust-lang.org/nightly/core/alloc/layout/struct.Layout.html">Layout</a>::<a href="https://doc.rust-lang.org/nightly/core/alloc/layout/struct.Layout.html#method.new">new</a>::&lt;<a href="#83">T</a>&lt;<span class="lifetime">'id</span>&gt;&gt;(),
 <a href=#88 id=88 data-nosnippet>88</a>        });
 <a href=#89 id=89 data-nosnippet>89</a>        <a href="#82">s</a>
 <a href=#90 id=90 data-nosnippet>90</a>    }
 <a href=#91 id=91 data-nosnippet>91</a>
-<a href=#92 id=92 data-nosnippet>92</a>    </a><span class="doccomment">/// Convenience to call add_field with the StaticTypeInfo for a field
-<a href=#93 id=93 data-nosnippet>93</a>    </span><span class="kw">pub fn </span><a href="value_model.rs.html#64">add_field_type&lt;T: <a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html">Default</a>&gt;(</a><span class="kw-2">&amp;mut </span><span class="self">self</span><a href="value_model.rs.html#64">) -&gt; FieldOffset&lt;<a href="#183-186">Instance</a>&lt;</a><span class="lifetime">'id</span><a href="value_model.rs.html#64">&gt;, T&gt; {
-<a href=#94 id=94 data-nosnippet>94</a>        </a><span class="kw">unsafe </span><a href="value_model.rs.html#64">{ FieldOffset::new_from_offset_pinned(</a><a class="self" href="#93">self</a><a href="value_model.rs.html#64">.<a href="#101-113">add_field</a>(<a href="#26-36">StaticTypeInfo</a>::<a href="#40-43">new</a>::&lt;T&gt;())) }
+<a href=#92 id=92 data-nosnippet>92</a>    <span class="doccomment">/// Convenience to call add_field with the StaticTypeInfo for a field
+<a href=#93 id=93 data-nosnippet>93</a>    </span><span class="kw">pub fn </span>add_field_type&lt;T: <a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html">Default</a>&gt;(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; FieldOffset&lt;<a href="#183-186">Instance</a>&lt;<span class="lifetime">'id</span>&gt;, T&gt; {
+<a href=#94 id=94 data-nosnippet>94</a>        <span class="kw">unsafe </span>{ FieldOffset::new_from_offset_pinned(<a class="self" href="#93">self</a>.<a href="#101-113">add_field</a>(<a href="#26-36">StaticTypeInfo</a>::<a href="#40-43">new</a>::&lt;T&gt;())) }
 <a href=#95 id=95 data-nosnippet>95</a>    }
 <a href=#96 id=96 data-nosnippet>96</a>
-<a href=#97 id=97 data-nosnippet>97</a>    </a><span class="doccomment">/// Add a field in this dynamic type.
+<a href=#97 id=97 data-nosnippet>97</a>    <span class="doccomment">/// Add a field in this dynamic type.
 <a href=#98 id=98 data-nosnippet>98</a>    ///
 <a href=#99 id=99 data-nosnippet>99</a>    /// Returns the offset, in bytes, of the added field in within the dynamic type.
 <a href=#100 id=100 data-nosnippet>100</a>    /// This takes care of alignment of the types.
-<a href=#101 id=101 data-nosnippet>101</a>    </span><span class="kw">pub fn </span><a href="value_model.rs.html#64">add_field(</a><span class="kw-2">&amp;mut </span><span class="self">self</span><a href="value_model.rs.html#64">, ty: <a href="#26-36">StaticTypeInfo</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a> {
-<a href=#102 id=102 data-nosnippet>102</a>        </a><span class="kw">let </span><a href="value_model.rs.html#64">align = <a href="#101">ty</a>.mem_layout.<a href="https://doc.rust-lang.org/nightly/core/alloc/layout/struct.Layout.html#method.align">align</a>();
-<a href=#103 id=103 data-nosnippet>103</a>        </a><span class="kw">let </span><a href="value_model.rs.html#64">len_rounded_up = </a><a class="self" href="#101">self</a><a href="value_model.rs.html#64">.size.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.num.html#method.wrapping_add">wrapping_add</a>(<a href="#102">align</a>).<a href="https://doc.rust-lang.org/nightly/core/foreigntype.num.html#method.wrapping_sub">wrapping_sub</a>(</a><span class="number">1</span><a href="value_model.rs.html#64">) &amp; !<a href="#102">align</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.num.html#method.wrapping_sub">wrapping_sub</a>(</a><span class="number">1</span>);
+<a href=#101 id=101 data-nosnippet>101</a>    </span><span class="kw">pub fn </span>add_field(<span class="kw-2">&amp;mut </span><span class="self">self</span>, ty: <a href="#26-36">StaticTypeInfo</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a> {
+<a href=#102 id=102 data-nosnippet>102</a>        <span class="kw">let </span>align = <a href="#101">ty</a>.mem_layout.<a href="https://doc.rust-lang.org/nightly/core/alloc/layout/struct.Layout.html#method.align">align</a>();
+<a href=#103 id=103 data-nosnippet>103</a>        <span class="kw">let </span>len_rounded_up = <a class="self" href="#101">self</a>.size.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.num.html#method.wrapping_add">wrapping_add</a>(<a href="#102">align</a>).<a href="https://doc.rust-lang.org/nightly/core/foreigntype.num.html#method.wrapping_sub">wrapping_sub</a>(<span class="number">1</span>) &amp; !<a href="#102">align</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.num.html#method.wrapping_sub">wrapping_sub</a>(<span class="number">1</span>);
 <a href=#104 id=104 data-nosnippet>104</a>
-<a href=#105 id=105 data-nosnippet>105</a>        <a class="self" href="#101">self</a><a href="value_model.rs.html#64">.fields.<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.push">push</a>(<a href="#47-51">FieldInfo</a> {
+<a href=#105 id=105 data-nosnippet>105</a>        <a class="self" href="#101">self</a>.fields.<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.push">push</a>(<a href="#47-51">FieldInfo</a> {
 <a href=#106 id=106 data-nosnippet>106</a>            construct: <a href="#101">ty</a>.construct,
 <a href=#107 id=107 data-nosnippet>107</a>            drop: <a href="#101">ty</a>.drop,
 <a href=#108 id=108 data-nosnippet>108</a>            offset: <a href="#103">len_rounded_up</a>,
 <a href=#109 id=109 data-nosnippet>109</a>        });
-<a href=#110 id=110 data-nosnippet>110</a>        </a><a class="self" href="#101">self</a><a href="value_model.rs.html#64">.size = <a href="#103">len_rounded_up</a> + <a href="#101">ty</a>.mem_layout.<a href="https://doc.rust-lang.org/nightly/core/alloc/layout/struct.Layout.html#method.size">size</a>();
-<a href=#111 id=111 data-nosnippet>111</a>        </a><a class="self" href="#101">self</a><a href="value_model.rs.html#64">.align = </a><a class="self" href="#101">self</a><a href="value_model.rs.html#64">.align.<a href="https://doc.rust-lang.org/nightly/core/cmp/trait.Ord.html#tymethod.max">max</a>(<a href="#102">align</a>);
+<a href=#110 id=110 data-nosnippet>110</a>        <a class="self" href="#101">self</a>.size = <a href="#103">len_rounded_up</a> + <a href="#101">ty</a>.mem_layout.<a href="https://doc.rust-lang.org/nightly/core/alloc/layout/struct.Layout.html#method.size">size</a>();
+<a href=#111 id=111 data-nosnippet>111</a>        <a class="self" href="#101">self</a>.align = <a class="self" href="#101">self</a>.align.<a href="https://doc.rust-lang.org/nightly/core/cmp/trait.Ord.html#tymethod.max">max</a>(<a href="#102">align</a>);
 <a href=#112 id=112 data-nosnippet>112</a>        <a href="#103">len_rounded_up</a>
 <a href=#113 id=113 data-nosnippet>113</a>    }
 <a href=#114 id=114 data-nosnippet>114</a>
-<a href=#115 id=115 data-nosnippet>115</a>    </a><span class="kw">pub fn </span><a href="value_model.rs.html#64">build(</a><span class="self">self</span><a href="value_model.rs.html#64">) -&gt; <a href="https://doc.rust-lang.org/nightly/alloc/rc/struct.Rc.html">Rc</a>&lt;<a href="#56-66">TypeInfo</a>&lt;</a><span class="lifetime">'id</span>&gt;&gt; {
-<a href=#116 id=116 data-nosnippet>116</a>        <span class="kw">let </span><a href="value_model.rs.html#64">size = </a><a class="self" href="#115">self</a><a href="value_model.rs.html#64">.size.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.num.html#method.wrapping_add">wrapping_add</a>(</a><a class="self" href="#115">self</a><a href="value_model.rs.html#64">.align).<a href="https://doc.rust-lang.org/nightly/core/foreigntype.num.html#method.wrapping_sub">wrapping_sub</a>(</a><span class="number">1</span>) &amp; !<a class="self" href="#115">self</a><a href="value_model.rs.html#64">.align.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.num.html#method.wrapping_sub">wrapping_sub</a>(</a><span class="number">1</span><a href="value_model.rs.html#64">);
+<a href=#115 id=115 data-nosnippet>115</a>    <span class="kw">pub fn </span>build(<span class="self">self</span>) -&gt; <a href="https://doc.rust-lang.org/nightly/alloc/rc/struct.Rc.html">Rc</a>&lt;<a href="#56-66">TypeInfo</a>&lt;<span class="lifetime">'id</span>&gt;&gt; {
+<a href=#116 id=116 data-nosnippet>116</a>        <span class="kw">let </span>size = <a class="self" href="#115">self</a>.size.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.num.html#method.wrapping_add">wrapping_add</a>(<a class="self" href="#115">self</a>.align).<a href="https://doc.rust-lang.org/nightly/core/foreigntype.num.html#method.wrapping_sub">wrapping_sub</a>(<span class="number">1</span>) &amp; !<a class="self" href="#115">self</a>.align.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.num.html#method.wrapping_sub">wrapping_sub</a>(<span class="number">1</span>);
 <a href=#117 id=117 data-nosnippet>117</a>        <a href="https://doc.rust-lang.org/nightly/alloc/rc/struct.Rc.html">Rc</a>::<a href="https://doc.rust-lang.org/nightly/alloc/rc/struct.Rc.html#method.new">new</a>(<a href="#56-66">TypeInfo</a> {
-<a href=#118 id=118 data-nosnippet>118</a>            mem_layout: core::alloc::<a href="https://doc.rust-lang.org/nightly/core/alloc/layout/struct.Layout.html">Layout</a>::<a href="https://doc.rust-lang.org/nightly/core/alloc/layout/struct.Layout.html#method.from_size_align">from_size_align</a>(<a href="#116">size</a>, </a><a class="self" href="#115">self</a><a href="value_model.rs.html#64">.align).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>(),
-<a href=#119 id=119 data-nosnippet>119</a>            fields: </a><a class="self" href="#115">self</a><a href="value_model.rs.html#64">.fields,
-<a href=#120 id=120 data-nosnippet>120</a>            id: </a><a class="self" href="#115">self</a><a href="value_model.rs.html#64">.id,
+<a href=#118 id=118 data-nosnippet>118</a>            mem_layout: core::alloc::<a href="https://doc.rust-lang.org/nightly/core/alloc/layout/struct.Layout.html">Layout</a>::<a href="https://doc.rust-lang.org/nightly/core/alloc/layout/struct.Layout.html#method.from_size_align">from_size_align</a>(<a href="#116">size</a>, <a class="self" href="#115">self</a>.align).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>(),
+<a href=#119 id=119 data-nosnippet>119</a>            fields: <a class="self" href="#115">self</a>.fields,
+<a href=#120 id=120 data-nosnippet>120</a>            id: <a class="self" href="#115">self</a>.id,
 <a href=#121 id=121 data-nosnippet>121</a>        })
 <a href=#122 id=122 data-nosnippet>122</a>    }
 <a href=#123 id=123 data-nosnippet>123</a>}
 <a href=#124 id=124 data-nosnippet>124</a>
-<a href=#125 id=125 data-nosnippet>125</a></a><span class="kw">impl</span>&lt;<span class="lifetime">'id</span><a href="value_model.rs.html#64">&gt; <a href="#56-66">TypeInfo</a>&lt;</a><span class="lifetime">'id</span>&gt; {
+<a href=#125 id=125 data-nosnippet>125</a><span class="kw">impl</span>&lt;<span class="lifetime">'id</span>&gt; <a href="#56-66">TypeInfo</a>&lt;<span class="lifetime">'id</span>&gt; {
 <a href=#126 id=126 data-nosnippet>126</a>    <span class="doccomment">/// Create an instance of this type.
 <a href=#127 id=127 data-nosnippet>127</a>    ///
 <a href=#128 id=128 data-nosnippet>128</a>    /// The instance will be allocated on the heap.
 <a href=#129 id=129 data-nosnippet>129</a>    /// The instance must be freed with `delete_instance`
-<a href=#130 id=130 data-nosnippet>130</a>    </span><span class="kw">pub fn </span><a href="value_model.rs.html#64">create_instance(</a><span class="self">self</span><a href="value_model.rs.html#64">: <a href="https://doc.rust-lang.org/nightly/alloc/rc/struct.Rc.html">Rc</a>&lt;</a><span class="self">Self</span><a href="value_model.rs.html#64">&gt;) -&gt; <a href="#202">InstanceBox</a>&lt;</a><span class="lifetime">'id</span>&gt; {
+<a href=#130 id=130 data-nosnippet>130</a>    </span><span class="kw">pub fn </span>create_instance(<span class="self">self</span>: <a href="https://doc.rust-lang.org/nightly/alloc/rc/struct.Rc.html">Rc</a>&lt;<span class="self">Self</span>&gt;) -&gt; <a href="#202">InstanceBox</a>&lt;<span class="lifetime">'id</span>&gt; {
 <a href=#131 id=131 data-nosnippet>131</a>        <span class="kw">unsafe </span>{
-<a href=#132 id=132 data-nosnippet>132</a>            <span class="kw">let </span><a href="value_model.rs.html#64">mem = std::alloc::<a href="https://doc.rust-lang.org/nightly/alloc/alloc/fn.alloc.html">alloc</a>(</a><a class="self" href="#130">self</a><a href="value_model.rs.html#64">.mem_layout) </a><span class="kw">as </span><span class="kw-2">*mut </span><a href="value_model.rs.html#64"><a href="#183-186">Instance</a>;
-<a href=#133 id=133 data-nosnippet>133</a>            </a><a class="self" href="#130">self</a><a href="value_model.rs.html#64">.<a href="#142-151">create_instance_in_place</a>(<a href="#132">mem</a>);
+<a href=#132 id=132 data-nosnippet>132</a>            <span class="kw">let </span>mem = std::alloc::<a href="https://doc.rust-lang.org/nightly/alloc/alloc/fn.alloc.html">alloc</a>(<a class="self" href="#130">self</a>.mem_layout) <span class="kw">as </span><span class="kw-2">*mut </span><a href="#183-186">Instance</a>;
+<a href=#133 id=133 data-nosnippet>133</a>            <a class="self" href="#130">self</a>.<a href="#142-151">create_instance_in_place</a>(<a href="#132">mem</a>);
 <a href=#134 id=134 data-nosnippet>134</a>            <a href="#202">InstanceBox</a>(core::ptr::<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html">NonNull</a>::<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.new_unchecked">new_unchecked</a>(<a href="#132">mem</a>))
 <a href=#135 id=135 data-nosnippet>135</a>        }
 <a href=#136 id=136 data-nosnippet>136</a>    }
 <a href=#137 id=137 data-nosnippet>137</a>
-<a href=#138 id=138 data-nosnippet>138</a>    </a><span class="doccomment">/// Create an instance of this type.
+<a href=#138 id=138 data-nosnippet>138</a>    <span class="doccomment">/// Create an instance of this type.
 <a href=#139 id=139 data-nosnippet>139</a>    ///
 <a href=#140 id=140 data-nosnippet>140</a>    /// Safety: The memory must point to a region large enough to fit [`Self::layout()`]
 <a href=#141 id=141 data-nosnippet>141</a>    /// that can safely be overwritten
-<a href=#142 id=142 data-nosnippet>142</a>    </span><span class="kw">pub unsafe fn </span><a href="value_model.rs.html#64">create_instance_in_place(</a><span class="self">self</span><a href="value_model.rs.html#64">: <a href="https://doc.rust-lang.org/nightly/alloc/rc/struct.Rc.html">Rc</a>&lt;</a><span class="self">Self</span><a href="value_model.rs.html#64">&gt;, mem: </a><span class="kw-2">*mut </span><a href="value_model.rs.html#64"><a href="#183-186">Instance</a>&lt;</a><span class="lifetime">'id</span>&gt;) {
+<a href=#142 id=142 data-nosnippet>142</a>    </span><span class="kw">pub unsafe fn </span>create_instance_in_place(<span class="self">self</span>: <a href="https://doc.rust-lang.org/nightly/alloc/rc/struct.Rc.html">Rc</a>&lt;<span class="self">Self</span>&gt;, mem: <span class="kw-2">*mut </span><a href="#183-186">Instance</a>&lt;<span class="lifetime">'id</span>&gt;) {
 <a href=#143 id=143 data-nosnippet>143</a>        <span class="comment">// Safety: the TypeInfo invariant means that the constructor can be called
-<a href=#144 id=144 data-nosnippet>144</a>        </span><span class="kw">let </span><a href="value_model.rs.html#64">mem = <a href="#142">mem</a> </a><span class="kw">as </span><span class="kw-2">*mut </span><a href="value_model.rs.html#64"><a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>;
-<a href=#145 id=145 data-nosnippet>145</a>        std::ptr::<a href="https://doc.rust-lang.org/nightly/core/ptr/fn.write.html">write</a>(<a href="#144">mem</a> </a><span class="kw">as </span><span class="kw-2">*mut </span><a href="value_model.rs.html#64"><a href="https://doc.rust-lang.org/nightly/alloc/rc/struct.Rc.html">Rc</a>&lt;</a><span class="kw">_</span>&gt;, <a class="self" href="#142">self</a><a href="value_model.rs.html#64">.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>());
-<a href=#146 id=146 data-nosnippet>146</a>        </a><span class="kw">for </span><a href="value_model.rs.html#64">f </a><span class="kw">in </span><span class="kw-2">&amp;</span><span class="self">self</span><a href="value_model.rs.html#64">.fields {
-<a href=#147 id=147 data-nosnippet>147</a>            </a><span class="kw">if let </span><span class="prelude-val">Some</span><a href="value_model.rs.html#64">(ctor) = f.construct {
+<a href=#144 id=144 data-nosnippet>144</a>        </span><span class="kw">let </span>mem = <a href="#142">mem</a> <span class="kw">as </span><span class="kw-2">*mut </span><a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>;
+<a href=#145 id=145 data-nosnippet>145</a>        std::ptr::<a href="https://doc.rust-lang.org/nightly/core/ptr/fn.write.html">write</a>(<a href="#144">mem</a> <span class="kw">as </span><span class="kw-2">*mut </span><a href="https://doc.rust-lang.org/nightly/alloc/rc/struct.Rc.html">Rc</a>&lt;<span class="kw">_</span>&gt;, <a class="self" href="#142">self</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>());
+<a href=#146 id=146 data-nosnippet>146</a>        <span class="kw">for </span>f <span class="kw">in </span><span class="kw-2">&amp;</span><span class="self">self</span>.fields {
+<a href=#147 id=147 data-nosnippet>147</a>            <span class="kw">if let </span><span class="prelude-val">Some</span>(ctor) = f.construct {
 <a href=#148 id=148 data-nosnippet>148</a>                ctor(mem.add(f.offset));
 <a href=#149 id=149 data-nosnippet>149</a>            }
 <a href=#150 id=150 data-nosnippet>150</a>        }
 <a href=#151 id=151 data-nosnippet>151</a>    }
 <a href=#152 id=152 data-nosnippet>152</a>
-<a href=#153 id=153 data-nosnippet>153</a>    </a><span class="doccomment">/// Drop and free the memory of this instance
+<a href=#153 id=153 data-nosnippet>153</a>    <span class="doccomment">/// Drop and free the memory of this instance
 <a href=#154 id=154 data-nosnippet>154</a>    ///
 <a href=#155 id=155 data-nosnippet>155</a>    /// Safety, the instance must have been created by `TypeInfo::create_instance_in_place`
-<a href=#156 id=156 data-nosnippet>156</a>    </span><span class="kw">pub unsafe fn </span><a href="value_model.rs.html#64">drop_in_place(instance: </a><span class="kw-2">*mut </span><a href="value_model.rs.html#64"><a href="#183-186">Instance</a>) {
-<a href=#157 id=157 data-nosnippet>157</a>        </a><span class="kw">let </span><a href="value_model.rs.html#64">type_info = (</a><span class="kw-2">*</span><a href="value_model.rs.html#64"><a href="#156">instance</a>).type_info.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>();
-<a href=#158 id=158 data-nosnippet>158</a>        </a><span class="kw">let </span><a href="value_model.rs.html#64">mem = <a href="#156">instance</a> </a><span class="kw">as </span><span class="kw-2">*mut </span><a href="value_model.rs.html#64"><a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>;
-<a href=#159 id=159 data-nosnippet>159</a>        </a><span class="kw">for </span><a href="value_model.rs.html#64">f </a><span class="kw">in </span><span class="kw-2">&amp;</span><a href="value_model.rs.html#64">type_info.fields {
-<a href=#160 id=160 data-nosnippet>160</a>            </a><span class="kw">if let </span><span class="prelude-val">Some</span><a href="value_model.rs.html#64">(dtor) = f.drop {
+<a href=#156 id=156 data-nosnippet>156</a>    </span><span class="kw">pub unsafe fn </span>drop_in_place(instance: <span class="kw-2">*mut </span><a href="#183-186">Instance</a>) {
+<a href=#157 id=157 data-nosnippet>157</a>        <span class="kw">let </span>type_info = (<span class="kw-2">*</span><a href="#156">instance</a>).type_info.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>();
+<a href=#158 id=158 data-nosnippet>158</a>        <span class="kw">let </span>mem = <a href="#156">instance</a> <span class="kw">as </span><span class="kw-2">*mut </span><a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>;
+<a href=#159 id=159 data-nosnippet>159</a>        <span class="kw">for </span>f <span class="kw">in </span><span class="kw-2">&amp;</span>type_info.fields {
+<a href=#160 id=160 data-nosnippet>160</a>            <span class="kw">if let </span><span class="prelude-val">Some</span>(dtor) = f.drop {
 <a href=#161 id=161 data-nosnippet>161</a>                dtor(mem.add(f.offset));
 <a href=#162 id=162 data-nosnippet>162</a>            }
 <a href=#163 id=163 data-nosnippet>163</a>        }
 <a href=#164 id=164 data-nosnippet>164</a>    }
 <a href=#165 id=165 data-nosnippet>165</a>
-<a href=#166 id=166 data-nosnippet>166</a>    </a><span class="doccomment">/// Drop and free the memory of this instance
+<a href=#166 id=166 data-nosnippet>166</a>    <span class="doccomment">/// Drop and free the memory of this instance
 <a href=#167 id=167 data-nosnippet>167</a>    ///
 <a href=#168 id=168 data-nosnippet>168</a>    /// Safety, the instance must have been created by `TypeInfo::create_instance`
-<a href=#169 id=169 data-nosnippet>169</a>    </span><span class="kw">unsafe fn </span><a href="value_model.rs.html#64">delete_instance(instance: </a><span class="kw-2">*mut </span><a href="value_model.rs.html#64"><a href="#183-186">Instance</a>) {
-<a href=#170 id=170 data-nosnippet>170</a>        </a><span class="kw">let </span><a href="value_model.rs.html#64">mem_layout = (</a><span class="kw-2">&amp;</span>(<span class="kw-2">*</span><a href="value_model.rs.html#64"><a href="#169">instance</a>).type_info).mem_layout;
+<a href=#169 id=169 data-nosnippet>169</a>    </span><span class="kw">unsafe fn </span>delete_instance(instance: <span class="kw-2">*mut </span><a href="#183-186">Instance</a>) {
+<a href=#170 id=170 data-nosnippet>170</a>        <span class="kw">let </span>mem_layout = (<span class="kw-2">&amp;</span>(<span class="kw-2">*</span><a href="#169">instance</a>).type_info).mem_layout;
 <a href=#171 id=171 data-nosnippet>171</a>        <span class="self">Self</span>::<a href="#156-164">drop_in_place</a>(<a href="#169">instance</a>);
-<a href=#172 id=172 data-nosnippet>172</a>        </a><span class="kw">let </span><a href="value_model.rs.html#64">mem = <a href="#169">instance</a> </a><span class="kw">as </span><span class="kw-2">*mut </span><a href="value_model.rs.html#64"><a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>;
+<a href=#172 id=172 data-nosnippet>172</a>        <span class="kw">let </span>mem = <a href="#169">instance</a> <span class="kw">as </span><span class="kw-2">*mut </span><a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>;
 <a href=#173 id=173 data-nosnippet>173</a>        std::alloc::<a href="https://doc.rust-lang.org/nightly/alloc/alloc/fn.dealloc.html">dealloc</a>(<a href="#172">mem</a>, <a href="#170">mem_layout</a>);
 <a href=#174 id=174 data-nosnippet>174</a>    }
 <a href=#175 id=175 data-nosnippet>175</a>
-<a href=#176 id=176 data-nosnippet>176</a>    </a><span class="kw">pub fn </span><a href="value_model.rs.html#64">layout(</a><span class="kw-2">&amp;</span><span class="self">self</span><a href="value_model.rs.html#64">) -&gt; core::alloc::<a href="https://doc.rust-lang.org/nightly/core/alloc/layout/struct.Layout.html">Layout</a> {
-<a href=#177 id=177 data-nosnippet>177</a>        </a><a class="self" href="#176">self</a><a href="value_model.rs.html#64">.mem_layout
+<a href=#176 id=176 data-nosnippet>176</a>    <span class="kw">pub fn </span>layout(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; core::alloc::<a href="https://doc.rust-lang.org/nightly/core/alloc/layout/struct.Layout.html">Layout</a> {
+<a href=#177 id=177 data-nosnippet>177</a>        <a class="self" href="#176">self</a>.mem_layout
 <a href=#178 id=178 data-nosnippet>178</a>    }
 <a href=#179 id=179 data-nosnippet>179</a>}
 <a href=#180 id=180 data-nosnippet>180</a>
-<a href=#181 id=181 data-nosnippet>181</a></a><span class="doccomment">/// Opaque type that represents something created with `TypeInfo::create_instance`
+<a href=#181 id=181 data-nosnippet>181</a><span class="doccomment">/// Opaque type that represents something created with `TypeInfo::create_instance`
 <a href=#182 id=182 data-nosnippet>182</a></span><span class="attr">#[repr(C)]
-<a href=#183 id=183 data-nosnippet>183</a></span><span class="kw">pub struct </span><a href="value_model.rs.html#64">Instance&lt;</a><span class="lifetime">'id</span><a href="value_model.rs.html#64">&gt; {
-<a href=#184 id=184 data-nosnippet>184</a>    type_info: <a href="https://doc.rust-lang.org/nightly/alloc/rc/struct.Rc.html">Rc</a>&lt;<a href="#56-66">TypeInfo</a>&lt;</a><span class="lifetime">'id</span><a href="value_model.rs.html#64">&gt;&gt;,
-<a href=#185 id=185 data-nosnippet>185</a>    _opaque: [<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>; </a><span class="number">0</span>],
+<a href=#183 id=183 data-nosnippet>183</a></span><span class="kw">pub struct </span>Instance&lt;<span class="lifetime">'id</span>&gt; {
+<a href=#184 id=184 data-nosnippet>184</a>    type_info: <a href="https://doc.rust-lang.org/nightly/alloc/rc/struct.Rc.html">Rc</a>&lt;<a href="#56-66">TypeInfo</a>&lt;<span class="lifetime">'id</span>&gt;&gt;,
+<a href=#185 id=185 data-nosnippet>185</a>    _opaque: [<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>; <span class="number">0</span>],
 <a href=#186 id=186 data-nosnippet>186</a>}
 <a href=#187 id=187 data-nosnippet>187</a>
-<a href=#188 id=188 data-nosnippet>188</a><span class="kw">impl</span>&lt;<span class="lifetime">'id</span><a href="value_model.rs.html#64">&gt; <a href="#183-186">Instance</a>&lt;</a><span class="lifetime">'id</span>&gt; {
+<a href=#188 id=188 data-nosnippet>188</a><span class="kw">impl</span>&lt;<span class="lifetime">'id</span>&gt; <a href="#183-186">Instance</a>&lt;<span class="lifetime">'id</span>&gt; {
 <a href=#189 id=189 data-nosnippet>189</a>    <span class="doccomment">/// return the TypeInfo which build this instance
-<a href=#190 id=190 data-nosnippet>190</a>    </span><span class="kw">pub fn </span><a href="value_model.rs.html#64">type_info(</a><span class="kw-2">&amp;</span><span class="self">self</span><a href="value_model.rs.html#64">) -&gt; <a href="https://doc.rust-lang.org/nightly/alloc/rc/struct.Rc.html">Rc</a>&lt;<a href="#56-66">TypeInfo</a>&lt;</a><span class="lifetime">'id</span>&gt;&gt; {
-<a href=#191 id=191 data-nosnippet>191</a>        <a class="self" href="#190">self</a><a href="value_model.rs.html#64">.type_info.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>()
+<a href=#190 id=190 data-nosnippet>190</a>    </span><span class="kw">pub fn </span>type_info(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="https://doc.rust-lang.org/nightly/alloc/rc/struct.Rc.html">Rc</a>&lt;<a href="#56-66">TypeInfo</a>&lt;<span class="lifetime">'id</span>&gt;&gt; {
+<a href=#191 id=191 data-nosnippet>191</a>        <a class="self" href="#190">self</a>.type_info.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>()
 <a href=#192 id=192 data-nosnippet>192</a>    }
 <a href=#193 id=193 data-nosnippet>193</a>}
 <a href=#194 id=194 data-nosnippet>194</a>
-<a href=#195 id=195 data-nosnippet>195</a></a><span class="kw">impl </span><a href="value_model.rs.html#64"><a href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html">core::fmt::Debug</a> </a><span class="kw">for </span><a href="value_model.rs.html#64"><a href="#183-186">Instance</a>&lt;</a><span class="lifetime">'_</span>&gt; {
-<a href=#196 id=196 data-nosnippet>196</a>    <span class="kw">fn </span><a href="value_model.rs.html#64">fmt(</a><span class="kw-2">&amp;</span><span class="self">self</span><a href="value_model.rs.html#64">, f: </a><span class="kw-2">&amp;mut </span><a href="value_model.rs.html#64">std::fmt::<a href="https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html">Formatter</a>&lt;</a><span class="lifetime">'_</span><a href="value_model.rs.html#64">&gt;) -&gt; std::fmt::<a href="https://doc.rust-lang.org/nightly/core/fmt/type.Result.html">Result</a> {
-<a href=#197 id=197 data-nosnippet>197</a>        </a><a class="macro" href="https://doc.rust-lang.org/nightly/core/macro.write.html">write!</a><a href="value_model.rs.html#64">(<a href="#196">f</a>, </a><span class="string">"Instance({self:p})"</span>)
+<a href=#195 id=195 data-nosnippet>195</a><span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html">core::fmt::Debug</a> <span class="kw">for </span><a href="#183-186">Instance</a>&lt;<span class="lifetime">'_</span>&gt; {
+<a href=#196 id=196 data-nosnippet>196</a>    <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>std::fmt::<a href="https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html">Formatter</a>&lt;<span class="lifetime">'_</span>&gt;) -&gt; std::fmt::<a href="https://doc.rust-lang.org/nightly/core/fmt/type.Result.html">Result</a> {
+<a href=#197 id=197 data-nosnippet>197</a>        <a href="https://doc.rust-lang.org/nightly/core/macro.write.html">write!</a>(<a href="#196">f</a>, <span class="string">"Instance({self:p})"</span>)
 <a href=#198 id=198 data-nosnippet>198</a>    }
 <a href=#199 id=199 data-nosnippet>199</a>}
 <a href=#200 id=200 data-nosnippet>200</a>
 <a href=#201 id=201 data-nosnippet>201</a><span class="doccomment">/// A pointer to an Instance that automatically frees the memory after use
-<a href=#202 id=202 data-nosnippet>202</a></span><span class="kw">pub struct </span><a href="value_model.rs.html#64">InstanceBox&lt;</a><span class="lifetime">'id</span><a href="value_model.rs.html#64">&gt;(core::ptr::<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html">NonNull</a>&lt;<a href="#183-186">Instance</a>&lt;</a><span class="lifetime">'id</span>&gt;&gt;);
+<a href=#202 id=202 data-nosnippet>202</a></span><span class="kw">pub struct </span>InstanceBox&lt;<span class="lifetime">'id</span>&gt;(core::ptr::<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html">NonNull</a>&lt;<a href="#183-186">Instance</a>&lt;<span class="lifetime">'id</span>&gt;&gt;);
 <a href=#203 id=203 data-nosnippet>203</a>
-<a href=#204 id=204 data-nosnippet>204</a><span class="kw">impl</span>&lt;<span class="lifetime">'id</span><a href="value_model.rs.html#64">&gt; <a href="#202">InstanceBox</a>&lt;</a><span class="lifetime">'id</span>&gt; {
+<a href=#204 id=204 data-nosnippet>204</a><span class="kw">impl</span>&lt;<span class="lifetime">'id</span>&gt; <a href="#202">InstanceBox</a>&lt;<span class="lifetime">'id</span>&gt; {
 <a href=#205 id=205 data-nosnippet>205</a>    <span class="doccomment">/// return a pointer to the instance
-<a href=#206 id=206 data-nosnippet>206</a>    </span><span class="kw">pub fn </span><a href="value_model.rs.html#64">as_ptr(</a><span class="kw-2">&amp;</span><span class="self">self</span><a href="value_model.rs.html#64">) -&gt; core::ptr::<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html">NonNull</a>&lt;<a href="#183-186">Instance</a>&lt;</a><span class="lifetime">'id</span>&gt;&gt; {
+<a href=#206 id=206 data-nosnippet>206</a>    </span><span class="kw">pub fn </span>as_ptr(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; core::ptr::<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html">NonNull</a>&lt;<a href="#183-186">Instance</a>&lt;<span class="lifetime">'id</span>&gt;&gt; {
 <a href=#207 id=207 data-nosnippet>207</a>        <a class="self" href="#206">self</a>.<span class="number">0
 <a href=#208 id=208 data-nosnippet>208</a>    </span>}
 <a href=#209 id=209 data-nosnippet>209</a>
-<a href=#210 id=210 data-nosnippet>210</a>    <span class="kw">pub fn </span><a href="value_model.rs.html#64">as_pin_ref(</a><span class="kw-2">&amp;</span><span class="self">self</span><a href="value_model.rs.html#64">) -&gt; core::pin::<a href="https://doc.rust-lang.org/nightly/core/pin/struct.Pin.html">Pin</a>&lt;</a><span class="kw-2">&amp;</span><a href="value_model.rs.html#64"><a href="#183-186">Instance</a>&lt;</a><span class="lifetime">'id</span>&gt;&gt; {
-<a href=#211 id=211 data-nosnippet>211</a>        <span class="kw">unsafe </span><a href="value_model.rs.html#64">{ core::pin::<a href="https://doc.rust-lang.org/nightly/core/pin/struct.Pin.html">Pin</a>::<a href="https://doc.rust-lang.org/nightly/core/pin/struct.Pin.html#method.new_unchecked">new_unchecked</a>(</a><a class="self" href="#210">self</a>.<span class="number">0</span><a href="value_model.rs.html#64">.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>()) }
+<a href=#210 id=210 data-nosnippet>210</a>    <span class="kw">pub fn </span>as_pin_ref(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; core::pin::<a href="https://doc.rust-lang.org/nightly/core/pin/struct.Pin.html">Pin</a>&lt;<span class="kw-2">&amp;</span><a href="#183-186">Instance</a>&lt;<span class="lifetime">'id</span>&gt;&gt; {
+<a href=#211 id=211 data-nosnippet>211</a>        <span class="kw">unsafe </span>{ core::pin::<a href="https://doc.rust-lang.org/nightly/core/pin/struct.Pin.html">Pin</a>::<a href="https://doc.rust-lang.org/nightly/core/pin/struct.Pin.html#method.new_unchecked">new_unchecked</a>(<a class="self" href="#210">self</a>.<span class="number">0</span>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_ref">as_ref</a>()) }
 <a href=#212 id=212 data-nosnippet>212</a>    }
 <a href=#213 id=213 data-nosnippet>213</a>
-<a href=#214 id=214 data-nosnippet>214</a>    </a><span class="kw">pub fn </span><a href="value_model.rs.html#64">as_mut(</a><span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;mut </span><a href="value_model.rs.html#64"><a href="#183-186">Instance</a>&lt;</a><span class="lifetime">'id</span>&gt; {
-<a href=#215 id=215 data-nosnippet>215</a>        <span class="kw">unsafe </span>{ <a class="self" href="#214">self</a>.<span class="number">0</span><a href="value_model.rs.html#64">.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_mut">as_mut</a>() }
+<a href=#214 id=214 data-nosnippet>214</a>    <span class="kw">pub fn </span>as_mut(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;mut </span><a href="#183-186">Instance</a>&lt;<span class="lifetime">'id</span>&gt; {
+<a href=#215 id=215 data-nosnippet>215</a>        <span class="kw">unsafe </span>{ <a class="self" href="#214">self</a>.<span class="number">0</span>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_mut">as_mut</a>() }
 <a href=#216 id=216 data-nosnippet>216</a>    }
 <a href=#217 id=217 data-nosnippet>217</a>}
 <a href=#218 id=218 data-nosnippet>218</a>
-<a href=#219 id=219 data-nosnippet>219</a></a><span class="kw">impl </span><a href="value_model.rs.html#64"><a href="https://doc.rust-lang.org/nightly/core/ops/drop/trait.Drop.html">Drop</a> </a><span class="kw">for </span><a href="value_model.rs.html#64"><a href="#202">InstanceBox</a>&lt;</a><span class="lifetime">'_</span>&gt; {
-<a href=#220 id=220 data-nosnippet>220</a>    <span class="kw">fn </span><a href="value_model.rs.html#64">drop(</a><span class="kw-2">&amp;mut </span><span class="self">self</span>) {
-<a href=#221 id=221 data-nosnippet>221</a>        <span class="kw">unsafe </span><a href="value_model.rs.html#64">{ <a href="#56-66">TypeInfo</a>::<a href="#169-174">delete_instance</a>(</a><a class="self" href="#220">self</a>.<span class="number">0</span><a href="value_model.rs.html#64">.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_mut">as_mut</a>()) }
+<a href=#219 id=219 data-nosnippet>219</a><span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/ops/drop/trait.Drop.html">Drop</a> <span class="kw">for </span><a href="#202">InstanceBox</a>&lt;<span class="lifetime">'_</span>&gt; {
+<a href=#220 id=220 data-nosnippet>220</a>    <span class="kw">fn </span>drop(<span class="kw-2">&amp;mut </span><span class="self">self</span>) {
+<a href=#221 id=221 data-nosnippet>221</a>        <span class="kw">unsafe </span>{ <a href="#56-66">TypeInfo</a>::<a href="#169-174">delete_instance</a>(<a class="self" href="#220">self</a>.<span class="number">0</span>.<a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html#method.as_mut">as_mut</a>()) }
 <a href=#222 id=222 data-nosnippet>222</a>    }
-<a href=#223 id=223 data-nosnippet>223</a>}</a></code></pre></div></section></main></body></html>
+<a href=#223 id=223 data-nosnippet>223</a>}
+</code></pre></div></section></main></body></html>
