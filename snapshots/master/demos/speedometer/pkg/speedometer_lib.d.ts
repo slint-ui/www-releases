@@ -13,17 +13,19 @@ export interface InitOutput {
   readonly slint_send_mouse_click: (a: number, b: number, c: number) => void;
   readonly slint_send_keyboard_char: (a: number, b: number, c: number) => void;
   readonly send_keyboard_string_sequence: (a: number, b: number) => void;
-  readonly __externref_table_alloc: () => number;
-  readonly __wbindgen_export_1: WebAssembly.Table;
-  readonly __wbindgen_exn_store: (a: number) => void;
+  readonly wasm_bindgen__convert__closures_____invoke__h9f6916dce5f77390: (a: number, b: number) => void;
+  readonly wasm_bindgen__closure__destroy__h0aeeb0e63c3f73a9: (a: number, b: number) => void;
+  readonly wasm_bindgen__convert__closures_____invoke__h22ea48c3799d3047: (a: number, b: number, c: any) => void;
+  readonly wasm_bindgen__convert__closures_____invoke__hb3d57ef464f86e67: (a: number, b: number, c: any) => void;
+  readonly wasm_bindgen__closure__destroy__h278f0e081c8c227a: (a: number, b: number) => void;
+  readonly wasm_bindgen__convert__closures_____invoke__h040e161f19b46121: (a: number, b: number, c: any) => void;
+  readonly wasm_bindgen__closure__destroy__h35d35ed269aae222: (a: number, b: number) => void;
+  readonly wasm_bindgen__convert__closures_____invoke__hf05e9dc619e80864: (a: number, b: number, c: any, d: any) => void;
   readonly __wbindgen_malloc: (a: number, b: number) => number;
   readonly __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;
-  readonly __wbindgen_export_5: WebAssembly.Table;
-  readonly closure1109_externref_shim: (a: number, b: number, c: any) => void;
-  readonly closure1046_externref_shim: (a: number, b: number, c: any) => void;
-  readonly closure700_externref_shim: (a: number, b: number, c: any) => void;
-  readonly closure1047_externref_shim: (a: number, b: number, c: any, d: any) => void;
-  readonly wasm_bindgen__convert__closures_____invoke__h5bc0b69b412dba59: (a: number, b: number) => void;
+  readonly __externref_table_alloc: () => number;
+  readonly __wbindgen_externrefs: WebAssembly.Table;
+  readonly __wbindgen_exn_store: (a: number) => void;
   readonly __wbindgen_start: () => void;
 }
 
