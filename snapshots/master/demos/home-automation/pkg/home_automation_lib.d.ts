@@ -13,8 +13,8 @@ export interface InitOutput {
   readonly slint_send_mouse_click: (a: number, b: number, c: number) => void;
   readonly slint_send_keyboard_char: (a: number, b: number, c: number) => void;
   readonly send_keyboard_string_sequence: (a: number, b: number) => void;
-  readonly wasm_bindgen__convert__closures_____invoke__h040e161f19b46121: (a: number, b: number, c: any) => void;
-  readonly wasm_bindgen__closure__destroy__h35d35ed269aae222: (a: number, b: number) => void;
+  readonly wasm_bindgen__convert__closures_____invoke__h071428db9609690a: (a: number, b: number, c: any) => void;
+  readonly wasm_bindgen__closure__destroy__h52a6d30bbd6c2caf: (a: number, b: number) => void;
   readonly wasm_bindgen__convert__closures_____invoke__h22ea48c3799d3047: (a: number, b: number, c: any) => void;
   readonly wasm_bindgen__closure__destroy__h0aeeb0e63c3f73a9: (a: number, b: number) => void;
   readonly wasm_bindgen__convert__closures_____invoke__hb3d57ef464f86e67: (a: number, b: number, c: any) => void;

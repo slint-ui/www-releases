@@ -15,8 +15,8 @@ export interface InitOutput {
   readonly send_keyboard_string_sequence: (a: number, b: number) => void;
   readonly wasm_bindgen__convert__closures_____invoke__h22ea48c3799d3047: (a: number, b: number, c: any) => void;
   readonly wasm_bindgen__closure__destroy__h0aeeb0e63c3f73a9: (a: number, b: number) => void;
-  readonly wasm_bindgen__convert__closures_____invoke__h94cda3a0c8a8e5b1: (a: number, b: number, c: any) => void;
-  readonly wasm_bindgen__closure__destroy__h02ef28b0a2804cd8: (a: number, b: number) => void;
+  readonly wasm_bindgen__convert__closures_____invoke__h19165f13cedc51c8: (a: number, b: number, c: any) => void;
+  readonly wasm_bindgen__closure__destroy__h1d2a56c3e1f7de67: (a: number, b: number) => void;
   readonly wasm_bindgen__convert__closures_____invoke__hf05e9dc619e80864: (a: number, b: number, c: any, d: any) => void;
   readonly wasm_bindgen__convert__closures_____invoke__hb3d57ef464f86e67: (a: number, b: number, c: any) => void;
   readonly wasm_bindgen__closure__destroy__h278f0e081c8c227a: (a: number, b: number) => void;

@@ -48,16 +48,19 @@ Program Listing for File slint_events_internal.h
            LogicalPoint position;
            PointerEventButton button;
            uint8_t click_count;
+           bool is_touch;
    
            bool operator==(const Pressed_Body& other) const {
                return position == other.position &&
                       button == other.button &&
-                      click_count == other.click_count;
+                      click_count == other.click_count &&
+                      is_touch == other.is_touch;
            }
            bool operator!=(const Pressed_Body& other) const {
                return position != other.position ||
                       button != other.button ||
-                      click_count != other.click_count;
+                      click_count != other.click_count ||
+                      is_touch != other.is_touch;
            }
        };
    
@@ -65,27 +68,33 @@ Program Listing for File slint_events_internal.h
            LogicalPoint position;
            PointerEventButton button;
            uint8_t click_count;
+           bool is_touch;
    
            bool operator==(const Released_Body& other) const {
                return position == other.position &&
                       button == other.button &&
-                      click_count == other.click_count;
+                      click_count == other.click_count &&
+                      is_touch == other.is_touch;
            }
            bool operator!=(const Released_Body& other) const {
                return position != other.position ||
                       button != other.button ||
-                      click_count != other.click_count;
+                      click_count != other.click_count ||
+                      is_touch != other.is_touch;
            }
        };
    
        struct Moved_Body {
            LogicalPoint position;
+           bool is_touch;
    
            bool operator==(const Moved_Body& other) const {
-               return position == other.position;
+               return position == other.position &&
+                      is_touch == other.is_touch;
            }
            bool operator!=(const Moved_Body& other) const {
-               return position != other.position;
+               return position != other.position ||
+                      is_touch != other.is_touch;
            }
        };
    
@@ -140,11 +149,13 @@ Program Listing for File slint_events_internal.h
    
        static MouseEvent Pressed(const LogicalPoint &position,
                                  const PointerEventButton &button,
-                                 const uint8_t &click_count) {
+                                 const uint8_t &click_count,
+                                 const bool &is_touch) {
            MouseEvent result;
            ::new (&result.pressed.position) (LogicalPoint)(position);
            ::new (&result.pressed.button) (PointerEventButton)(button);
            ::new (&result.pressed.click_count) (uint8_t)(click_count);
+           ::new (&result.pressed.is_touch) (bool)(is_touch);
            result.tag = Tag::Pressed;
            return result;
        }
@@ -155,11 +166,13 @@ Program Listing for File slint_events_internal.h
    
        static MouseEvent Released(const LogicalPoint &position,
                                   const PointerEventButton &button,
-                                  const uint8_t &click_count) {
+                                  const uint8_t &click_count,
+                                  const bool &is_touch) {
            MouseEvent result;
            ::new (&result.released.position) (LogicalPoint)(position);
            ::new (&result.released.button) (PointerEventButton)(button);
            ::new (&result.released.click_count) (uint8_t)(click_count);
+           ::new (&result.released.is_touch) (bool)(is_touch);
            result.tag = Tag::Released;
            return result;
        }
@@ -168,9 +181,11 @@ Program Listing for File slint_events_internal.h
            return tag == Tag::Released;
        }
    
-       static MouseEvent Moved(const LogicalPoint &position) {
+       static MouseEvent Moved(const LogicalPoint &position,
+                               const bool &is_touch) {
            MouseEvent result;
            ::new (&result.moved.position) (LogicalPoint)(position);
+           ::new (&result.moved.is_touch) (bool)(is_touch);
            result.tag = Tag::Moved;
            return result;
        }

@@ -957,6 +957,9 @@
 <span class="w">        </span><span class="n">PointerPressed</span><span class="p">,</span>
 <span class="w">        </span><span class="n">PointerReleased</span><span class="p">,</span>
 <span class="w">        </span><span class="n">PointerMoved</span><span class="p">,</span>
+<span class="w">        </span><span class="n">TouchPressed</span><span class="p">,</span>
+<span class="w">        </span><span class="n">TouchReleased</span><span class="p">,</span>
+<span class="w">        </span><span class="n">TouchMoved</span><span class="p">,</span>
 <span class="w">        </span><span class="n">PointerScrolled</span><span class="p">,</span>
 <span class="w">        </span><span class="n">PointerExited</span><span class="p">,</span>
 <span class="w">        </span><span class="n">KeyPressed</span><span class="p">,</span>
@@ -983,6 +986,24 @@
 
 <span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">PointerMoved_Body</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">Tag</span><span class="w"> </span><span class="n">tag</span><span class="p">;</span>
+<span class="w">        </span><span class="n">LogicalPosition</span><span class="w"> </span><span class="n">position</span><span class="p">;</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">TouchPressed_Body</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Tag</span><span class="w"> </span><span class="n">tag</span><span class="p">;</span>
+<span class="w">        </span><span class="kt">int32_t</span><span class="w"> </span><span class="n">touch_id</span><span class="p">;</span>
+<span class="w">        </span><span class="n">LogicalPosition</span><span class="w"> </span><span class="n">position</span><span class="p">;</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">TouchReleased_Body</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Tag</span><span class="w"> </span><span class="n">tag</span><span class="p">;</span>
+<span class="w">        </span><span class="kt">int32_t</span><span class="w"> </span><span class="n">touch_id</span><span class="p">;</span>
+<span class="w">        </span><span class="n">LogicalPosition</span><span class="w"> </span><span class="n">position</span><span class="p">;</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">TouchMoved_Body</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Tag</span><span class="w"> </span><span class="n">tag</span><span class="p">;</span>
+<span class="w">        </span><span class="kt">int32_t</span><span class="w"> </span><span class="n">touch_id</span><span class="p">;</span>
 <span class="w">        </span><span class="n">LogicalPosition</span><span class="w"> </span><span class="n">position</span><span class="p">;</span>
 <span class="w">    </span><span class="p">};</span>
 
@@ -1035,6 +1056,9 @@
 <span class="w">    </span><span class="n">PointerPressed_Body</span><span class="w"> </span><span class="n">pointer_pressed</span><span class="p">;</span>
 <span class="w">    </span><span class="n">PointerReleased_Body</span><span class="w"> </span><span class="n">pointer_released</span><span class="p">;</span>
 <span class="w">    </span><span class="n">PointerMoved_Body</span><span class="w"> </span><span class="n">pointer_moved</span><span class="p">;</span>
+<span class="w">    </span><span class="n">TouchPressed_Body</span><span class="w"> </span><span class="n">touch_pressed</span><span class="p">;</span>
+<span class="w">    </span><span class="n">TouchReleased_Body</span><span class="w"> </span><span class="n">touch_released</span><span class="p">;</span>
+<span class="w">    </span><span class="n">TouchMoved_Body</span><span class="w"> </span><span class="n">touch_moved</span><span class="p">;</span>
 <span class="w">    </span><span class="n">PointerScrolled_Body</span><span class="w"> </span><span class="n">pointer_scrolled</span><span class="p">;</span>
 <span class="w">    </span><span class="n">KeyPressed_Body</span><span class="w"> </span><span class="n">key_pressed</span><span class="p">;</span>
 <span class="w">    </span><span class="n">KeyPressRepeated_Body</span><span class="w"> </span><span class="n">key_press_repeated</span><span class="p">;</span>

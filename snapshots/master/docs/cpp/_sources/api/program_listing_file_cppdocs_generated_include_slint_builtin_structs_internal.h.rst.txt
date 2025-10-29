@@ -30,6 +30,7 @@ Program Listing for File slint_builtin_structs_internal.h
        PointerEventButton button;
        PointerEventKind kind;
        KeyboardModifiers modifiers;
+       bool is_touch;
        friend bool operator==(const PointerEvent&, const PointerEvent&) = default;
        friend bool operator!=(const PointerEvent&, const PointerEvent&) = default;
    };

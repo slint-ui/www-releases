@@ -551,6 +551,9 @@ Program Listing for File slint_internal.h
            PointerPressed,
            PointerReleased,
            PointerMoved,
+           TouchPressed,
+           TouchReleased,
+           TouchMoved,
            PointerScrolled,
            PointerExited,
            KeyPressed,
@@ -577,6 +580,24 @@ Program Listing for File slint_internal.h
    
        struct PointerMoved_Body {
            Tag tag;
+           LogicalPosition position;
+       };
+   
+       struct TouchPressed_Body {
+           Tag tag;
+           int32_t touch_id;
+           LogicalPosition position;
+       };
+   
+       struct TouchReleased_Body {
+           Tag tag;
+           int32_t touch_id;
+           LogicalPosition position;
+       };
+   
+       struct TouchMoved_Body {
+           Tag tag;
+           int32_t touch_id;
            LogicalPosition position;
        };
    
@@ -629,6 +650,9 @@ Program Listing for File slint_internal.h
        PointerPressed_Body pointer_pressed;
        PointerReleased_Body pointer_released;
        PointerMoved_Body pointer_moved;
+       TouchPressed_Body touch_pressed;
+       TouchReleased_Body touch_released;
+       TouchMoved_Body touch_moved;
        PointerScrolled_Body pointer_scrolled;
        KeyPressed_Body key_pressed;
        KeyPressRepeated_Body key_press_repeated;
