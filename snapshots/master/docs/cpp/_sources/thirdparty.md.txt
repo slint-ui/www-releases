@@ -5997,7 +5997,7 @@ DEALINGS IN THE SOFTWARE.
 - [thiserror-impl 2.0.17]( https://github.com/dtolnay/thiserror )
 - [thiserror 1.0.69]( https://github.com/dtolnay/thiserror )
 - [thiserror 2.0.17]( https://github.com/dtolnay/thiserror )
-- [unicode-ident 1.0.20]( https://github.com/dtolnay/unicode-ident )
+- [unicode-ident 1.0.22]( https://github.com/dtolnay/unicode-ident )
 - [x11-dl 2.21.0]( https://github.com/AltF02/x11-rs.git )
 - [zvariant_utils 3.2.1]( https://github.com/dbus2/zbus/ )
 
@@ -7365,7 +7365,7 @@ Exhibit B - &quot;Incompatible With Secondary Licenses&quot; Notice
 
 #### Used by:
 
-- [unicode-ident 1.0.20]( https://github.com/dtolnay/unicode-ident )
+- [unicode-ident 1.0.22]( https://github.com/dtolnay/unicode-ident )
 
 #### License Text
 
