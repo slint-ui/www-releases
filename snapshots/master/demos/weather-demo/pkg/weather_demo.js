@@ -341,20 +341,20 @@ export function main() {
     wasm.main();
 }
 
-function wasm_bindgen__convert__closures_____invoke__h2c81104e5efc43bd(arg0, arg1, arg2) {
-    wasm.wasm_bindgen__convert__closures_____invoke__h2c81104e5efc43bd(arg0, arg1, arg2);
-}
-
-function wasm_bindgen__convert__closures_____invoke__h4051dd34cc088253(arg0, arg1) {
-    wasm.wasm_bindgen__convert__closures_____invoke__h4051dd34cc088253(arg0, arg1);
-}
-
 function wasm_bindgen__convert__closures_____invoke__h0434cc616f6a9224(arg0, arg1, arg2) {
     wasm.wasm_bindgen__convert__closures_____invoke__h0434cc616f6a9224(arg0, arg1, arg2);
 }
 
 function wasm_bindgen__convert__closures_____invoke__h8c96da7a88d0ec24(arg0, arg1, arg2) {
     wasm.wasm_bindgen__convert__closures_____invoke__h8c96da7a88d0ec24(arg0, arg1, arg2);
+}
+
+function wasm_bindgen__convert__closures_____invoke__h4051dd34cc088253(arg0, arg1) {
+    wasm.wasm_bindgen__convert__closures_____invoke__h4051dd34cc088253(arg0, arg1);
+}
+
+function wasm_bindgen__convert__closures_____invoke__h2c81104e5efc43bd(arg0, arg1, arg2) {
+    wasm.wasm_bindgen__convert__closures_____invoke__h2c81104e5efc43bd(arg0, arg1, arg2);
 }
 
 function wasm_bindgen__convert__closures_____invoke__hf80a326f01c55baf(arg0, arg1, arg2, arg3) {
