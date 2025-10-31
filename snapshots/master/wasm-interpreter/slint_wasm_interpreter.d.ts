@@ -1,22 +1,22 @@
 /* tslint:disable */
 /* eslint-disable */
-/**
- * Compile the content of a string.
- *
- * Returns a promise to a compiled component which can be run with ".run()"
- */
-export function compile_from_string(source: string, base_url: string, optional_import_callback?: ImportCallbackFunction | null): Promise<CompilationResult>;
-/**
- * Same as [`compile_from_string`], but also takes a style parameter
- */
-export function compile_from_string_with_style(source: string, base_url: string, style: string, optional_import_callback?: ImportCallbackFunction | null): Promise<CompilationResult>;
+export function init(): void;
 /**
  * Register DOM event handlers on all instance and set up the event loop for that.
  * You can call this function only once. It will throw an exception but that is safe
  * to ignore.
  */
 export function run_event_loop(): void;
-export function init(): void;
+/**
+ * Same as [`compile_from_string`], but also takes a style parameter
+ */
+export function compile_from_string_with_style(source: string, base_url: string, style: string, optional_import_callback?: ImportCallbackFunction | null): Promise<CompilationResult>;
+/**
+ * Compile the content of a string.
+ *
+ * Returns a promise to a compiled component which can be run with ".run()"
+ */
+export function compile_from_string(source: string, base_url: string, optional_import_callback?: ImportCallbackFunction | null): Promise<CompilationResult>;
 
 type ImportCallbackFunction = (url: string) => Promise<string>;
 type CurrentElementInformationCallbackFunction = (url: string, start_line: number, start_column: number, end_line: number, end_column: number) => void;
@@ -26,14 +26,23 @@ export class CompilationResult {
   private constructor();
   free(): void;
   [Symbol.dispose](): void;
-  readonly component: WrappedCompiledComp | undefined;
   readonly diagnostics: Array<any>;
   readonly error_string: string;
+  readonly component: WrappedCompiledComp | undefined;
 }
 export class WrappedCompiledComp {
   private constructor();
   free(): void;
   [Symbol.dispose](): void;
+  /**
+   * Creates this compiled component in the canvas of the provided instance, wrapped in a promise.
+   * For this to work, the provided instance needs to be visible (show() must've been
+   * called) and the event loop must be running (`slint.run_event_loop()`). After this
+   * call the provided instance is not rendered anymore and can be discarded.
+   *
+   * Note that the promise will only be resolved after calling `slint.run_event_loop()`.
+   */
+  create_with_existing_window(instance: WrappedInstance): Promise<WrappedInstance>;
   /**
    * Run this compiled component in a canvas.
    * The HTML must contains a <canvas> element with the given `canvas_id`
@@ -49,64 +58,55 @@ export class WrappedCompiledComp {
    * Note that the promise will only be resolved after calling `slint.run_event_loop()`.
    */
   create(canvas_id: string): Promise<WrappedInstance>;
-  /**
-   * Creates this compiled component in the canvas of the provided instance, wrapped in a promise.
-   * For this to work, the provided instance needs to be visible (show() must've been
-   * called) and the event loop must be running (`slint.run_event_loop()`). After this
-   * call the provided instance is not rendered anymore and can be discarded.
-   *
-   * Note that the promise will only be resolved after calling `slint.run_event_loop()`.
-   */
-  create_with_existing_window(instance: WrappedInstance): Promise<WrappedInstance>;
 }
 export class WrappedInstance {
   private constructor();
   free(): void;
   [Symbol.dispose](): void;
   /**
-   * Marks this instance for rendering and input handling.
-   *
-   * Note that the promise will only be resolved after calling `slint.run_event_loop()`.
-   */
-  show(): Promise<any>;
-  /**
    * Hides this instance and prevents further updates of the canvas element.
    *
    * Note that the promise will only be resolved after calling `slint.run_event_loop()`.
    */
   hide(): Promise<any>;
+  /**
+   * Marks this instance for rendering and input handling.
+   *
+   * Note that the promise will only be resolved after calling `slint.run_event_loop()`.
+   */
+  show(): Promise<any>;
 }
 
 export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembly.Module;
 
 export interface InitOutput {
   readonly memory: WebAssembly.Memory;
-  readonly slint_mock_elapsed_time: (a: bigint) => void;
-  readonly slint_get_mocked_time: () => bigint;
-  readonly slint_send_mouse_click: (a: number, b: number, c: number) => void;
-  readonly slint_send_keyboard_char: (a: number, b: number, c: number) => void;
   readonly send_keyboard_string_sequence: (a: number, b: number) => void;
+  readonly slint_get_mocked_time: () => bigint;
+  readonly slint_mock_elapsed_time: (a: bigint) => void;
+  readonly slint_send_keyboard_char: (a: number, b: number, c: number) => void;
+  readonly slint_send_mouse_click: (a: number, b: number, c: number) => void;
   readonly __wbg_compilationresult_free: (a: number, b: number) => void;
+  readonly __wbg_wrappedcompiledcomp_free: (a: number, b: number) => void;
+  readonly __wbg_wrappedinstance_free: (a: number, b: number) => void;
   readonly compilationresult_component: (a: number) => number;
   readonly compilationresult_diagnostics: (a: number) => any;
   readonly compilationresult_error_string: (a: number) => [number, number];
   readonly compile_from_string: (a: number, b: number, c: number, d: number, e: number) => any;
   readonly compile_from_string_with_style: (a: number, b: number, c: number, d: number, e: number, f: number, g: number) => any;
-  readonly __wbg_wrappedcompiledcomp_free: (a: number, b: number) => void;
-  readonly wrappedcompiledcomp_run: (a: number, b: number, c: number) => void;
+  readonly init: () => void;
+  readonly run_event_loop: () => [number, number];
   readonly wrappedcompiledcomp_create: (a: number, b: number, c: number) => [number, number, number];
   readonly wrappedcompiledcomp_create_with_existing_window: (a: number, b: number) => [number, number, number];
-  readonly __wbg_wrappedinstance_free: (a: number, b: number) => void;
-  readonly wrappedinstance_show: (a: number) => [number, number, number];
+  readonly wrappedcompiledcomp_run: (a: number, b: number, c: number) => void;
   readonly wrappedinstance_hide: (a: number) => [number, number, number];
-  readonly run_event_loop: () => [number, number];
-  readonly init: () => void;
-  readonly wasm_bindgen__convert__closures_____invoke__h2a17bb1e93b44e17: (a: number, b: number, c: any) => void;
-  readonly wasm_bindgen__closure__destroy__h052872f967315c09: (a: number, b: number) => void;
-  readonly wasm_bindgen__convert__closures_____invoke__h070387b6c7b7b585: (a: number, b: number) => void;
-  readonly wasm_bindgen__convert__closures_____invoke__h173a14ea010dcb87: (a: number, b: number, c: any) => void;
-  readonly wasm_bindgen__closure__destroy__h177fd0f277415975: (a: number, b: number) => void;
-  readonly wasm_bindgen__convert__closures_____invoke__h3f9e4d56587fa550: (a: number, b: number, c: any, d: any) => void;
+  readonly wrappedinstance_show: (a: number) => [number, number, number];
+  readonly wasm_bindgen__convert__closures_____invoke__h0f91ad28f0d3b602: (a: number, b: number, c: any) => void;
+  readonly wasm_bindgen__closure__destroy__h018c3736d576bc3f: (a: number, b: number) => void;
+  readonly wasm_bindgen__convert__closures_____invoke__h07bb00907a7884e3: (a: number, b: number, c: any) => void;
+  readonly wasm_bindgen__convert__closures_____invoke__h43239b0bf47e3c74: (a: number, b: number, c: any, d: any) => void;
+  readonly wasm_bindgen__convert__closures_____invoke__h08a86ca2b9a7fd0d: (a: number, b: number) => void;
+  readonly wasm_bindgen__closure__destroy__hb863fcbe02cfbecb: (a: number, b: number) => void;
   readonly __wbindgen_malloc: (a: number, b: number) => number;
   readonly __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;
   readonly __externref_table_alloc: () => number;

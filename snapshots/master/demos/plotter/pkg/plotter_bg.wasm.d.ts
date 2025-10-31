@@ -2,18 +2,17 @@
 /* eslint-disable */
 export const memory: WebAssembly.Memory;
 export const slint_qt_get_widget: (a: number) => number;
-export const slint_mock_elapsed_time: (a: bigint) => void;
-export const slint_get_mocked_time: () => bigint;
-export const slint_send_mouse_click: (a: number, b: number, c: number) => void;
-export const slint_send_keyboard_char: (a: number, b: number, c: number) => void;
 export const send_keyboard_string_sequence: (a: number, b: number) => void;
+export const slint_get_mocked_time: () => bigint;
+export const slint_mock_elapsed_time: (a: bigint) => void;
+export const slint_send_keyboard_char: (a: number, b: number, c: number) => void;
+export const slint_send_mouse_click: (a: number, b: number, c: number) => void;
 export const main: () => void;
-export const wasm_bindgen__convert__closures_____invoke__h1a4a92e252d894a1: (a: number, b: number, c: any) => void;
-export const wasm_bindgen__closure__destroy__h1378a4ea024cfbc4: (a: number, b: number) => void;
-export const wasm_bindgen__convert__closures_____invoke__h55da8c5befba5c5b: (a: number, b: number) => void;
-export const wasm_bindgen__convert__closures_____invoke__h76c44799544d00e8: (a: number, b: number, c: any) => void;
-export const wasm_bindgen__closure__destroy__h053b92c332e5b426: (a: number, b: number) => void;
-export const wasm_bindgen__convert__closures_____invoke__h459060b22d350203: (a: number, b: number, c: any, d: any) => void;
+export const wasm_bindgen__convert__closures_____invoke__h64948e1ac18570d4: (a: number, b: number, c: any) => void;
+export const wasm_bindgen__closure__destroy__h4306e6bf77dd7a7f: (a: number, b: number) => void;
+export const wasm_bindgen__convert__closures_____invoke__h2d65f762f264a45e: (a: number, b: number) => void;
+export const wasm_bindgen__convert__closures_____invoke__h5643fba5c76aa87b: (a: number, b: number, c: any, d: any) => void;
+export const wasm_bindgen__convert__closures_____invoke__h04e2c9c94ee2a6b8: (a: number, b: number, c: any) => void;
 export const __wbindgen_malloc: (a: number, b: number) => number;
 export const __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;
 export const __externref_table_alloc: () => number;
