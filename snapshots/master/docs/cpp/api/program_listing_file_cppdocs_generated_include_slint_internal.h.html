@@ -540,6 +540,8 @@
 
 <span class="k">struct</span><span class="w"> </span><span class="nc">PhysicalPx</span><span class="p">;</span>
 
+<span class="k">struct</span><span class="w"> </span><span class="nc">StringArg</span><span class="p">;</span>
+
 <span class="k">using</span><span class="w"> </span><span class="n">VisitChildrenResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">uint64_t</span><span class="p">;</span>
 <span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">VisitChildrenResult</span><span class="w"> </span><span class="n">VisitChildrenResult_CONTINUE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UINT64_MAX</span><span class="p">;</span>
 
@@ -1282,6 +1284,7 @@
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">Brush</span><span class="o">&gt;</span><span class="w"> </span><span class="n">color</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">TextHorizontalAlignment</span><span class="o">&gt;</span><span class="w"> </span><span class="n">horizontal_alignment</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">TextVerticalAlignment</span><span class="o">&gt;</span><span class="w"> </span><span class="n">vertical_alignment</span><span class="p">;</span>
+<span class="w">    </span><span class="n">private_api</span><span class="o">::</span><span class="n">CallbackHelper</span><span class="o">&lt;</span><span class="n">StringArg</span><span class="o">&gt;</span><span class="w"> </span><span class="n">link_clicked</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">SharedString</span><span class="o">&gt;</span><span class="w"> </span><span class="n">font_family</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="w"> </span><span class="n">font_italic</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">TextWrap</span><span class="o">&gt;</span><span class="w"> </span><span class="n">wrap</span><span class="p">;</span>
