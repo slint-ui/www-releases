@@ -318,12 +318,12 @@ export function compile_from_string(source, base_url, optional_import_callback) 
     return ret;
 }
 
-function wasm_bindgen__convert__closures_____invoke__h0f91ad28f0d3b602(arg0, arg1, arg2) {
-    wasm.wasm_bindgen__convert__closures_____invoke__h0f91ad28f0d3b602(arg0, arg1, arg2);
-}
-
 function wasm_bindgen__convert__closures_____invoke__h07bb00907a7884e3(arg0, arg1, arg2) {
     wasm.wasm_bindgen__convert__closures_____invoke__h07bb00907a7884e3(arg0, arg1, arg2);
+}
+
+function wasm_bindgen__convert__closures_____invoke__h0f91ad28f0d3b602(arg0, arg1, arg2) {
+    wasm.wasm_bindgen__convert__closures_____invoke__h0f91ad28f0d3b602(arg0, arg1, arg2);
 }
 
 function wasm_bindgen__convert__closures_____invoke__h43239b0bf47e3c74(arg0, arg1, arg2, arg3) {
