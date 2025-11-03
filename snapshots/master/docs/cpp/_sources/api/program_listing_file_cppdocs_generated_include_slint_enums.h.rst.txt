@@ -42,6 +42,7 @@ Program Listing for File slint_enums.h
        TextInput,
        Switch,
        ListItem,
+       RadioButton,
    };
    }
    }
