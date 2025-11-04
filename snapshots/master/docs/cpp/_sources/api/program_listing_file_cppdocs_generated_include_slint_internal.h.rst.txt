@@ -887,6 +887,7 @@ Program Listing for File slint_internal.h
        Property<Brush> stroke;
        Property<LogicalLength> stroke_width;
        Property<TextStrokeStyle> stroke_style;
+       Property<Color> link_color;
        CachedRenderingData cached_rendering_data;
    };
    
@@ -897,6 +898,7 @@ Program Listing for File slint_internal.h
        Property<Brush> stroke;
        Property<LogicalLength> stroke_width;
        Property<LineCap> stroke_line_cap;
+       Property<LineJoin> stroke_line_join;
        Property<float> viewbox_x;
        Property<float> viewbox_y;
        Property<float> viewbox_width;

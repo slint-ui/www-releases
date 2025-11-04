@@ -196,6 +196,11 @@ Program Listing for File slint_enums_internal.h
        Round,
        Square,
    };
+   enum class LineJoin {
+       Miter,
+       Round,
+       Bevel,
+   };
    enum class OperatingSystemType {
        Android,
        Ios,
