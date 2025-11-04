@@ -1296,7 +1296,7 @@ Program Listing for File slint_internal.h
    
    float slint_windowrc_get_scale_factor(const WindowAdapterRcOpaque *handle);
    
-   void slint_windowrc_set_scale_factor(const WindowAdapterRcOpaque *handle, float value);
+   void slint_windowrc_set_const_scale_factor(const WindowAdapterRcOpaque *handle, float value);
    
    bool slint_windowrc_get_text_input_focused(const WindowAdapterRcOpaque *handle);
    
