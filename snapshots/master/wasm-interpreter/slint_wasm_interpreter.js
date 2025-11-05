@@ -317,12 +317,12 @@ export function compile_from_string_with_style(source, base_url, style, optional
     return ret;
 }
 
-function wasm_bindgen__convert__closures_____invoke__h0b9fde67bd3725b7(arg0, arg1, arg2) {
-    wasm.wasm_bindgen__convert__closures_____invoke__h0b9fde67bd3725b7(arg0, arg1, arg2);
-}
-
 function wasm_bindgen__convert__closures_____invoke__h0f91ad28f0d3b602(arg0, arg1, arg2) {
     wasm.wasm_bindgen__convert__closures_____invoke__h0f91ad28f0d3b602(arg0, arg1, arg2);
+}
+
+function wasm_bindgen__convert__closures_____invoke__h0b9fde67bd3725b7(arg0, arg1, arg2) {
+    wasm.wasm_bindgen__convert__closures_____invoke__h0b9fde67bd3725b7(arg0, arg1, arg2);
 }
 
 function wasm_bindgen__convert__closures_____invoke__h31deeaee381847bd(arg0, arg1) {
