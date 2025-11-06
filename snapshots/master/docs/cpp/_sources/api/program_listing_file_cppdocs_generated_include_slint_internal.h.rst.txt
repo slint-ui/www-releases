@@ -93,6 +93,7 @@ Program Listing for File slint_internal.h
        Enabled,
        Expandable,
        Expanded,
+       Id,
        ItemCount,
        ItemIndex,
        ItemSelectable,

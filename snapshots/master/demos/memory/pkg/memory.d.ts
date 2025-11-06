@@ -13,11 +13,12 @@ export interface InitOutput {
   readonly slint_send_keyboard_char: (a: number, b: number, c: number) => void;
   readonly slint_send_mouse_click: (a: number, b: number, c: number) => void;
   readonly main: () => void;
-  readonly wasm_bindgen__convert__closures_____invoke__h342b503fce7fd3e9: (a: number, b: number, c: any) => void;
-  readonly wasm_bindgen__closure__destroy__h2dcc63275e617695: (a: number, b: number) => void;
-  readonly wasm_bindgen__convert__closures_____invoke__h64948e1ac18570d4: (a: number, b: number, c: any) => void;
-  readonly wasm_bindgen__convert__closures_____invoke__h5643fba5c76aa87b: (a: number, b: number, c: any, d: any) => void;
-  readonly wasm_bindgen__convert__closures_____invoke__h2d65f762f264a45e: (a: number, b: number) => void;
+  readonly wasm_bindgen__convert__closures_____invoke__h290f2e92da2434bd: (a: number, b: number, c: any) => void;
+  readonly wasm_bindgen__closure__destroy__h032396b591c24c46: (a: number, b: number) => void;
+  readonly wasm_bindgen__convert__closures_____invoke__h3d83f76d11489504: (a: number, b: number, c: any) => void;
+  readonly wasm_bindgen__closure__destroy__h44bbf2065be9e275: (a: number, b: number) => void;
+  readonly wasm_bindgen__convert__closures_____invoke__hfa2da5ae583c4bca: (a: number, b: number) => void;
+  readonly wasm_bindgen__convert__closures_____invoke__h1282a7091056372a: (a: number, b: number, c: any, d: any) => void;
   readonly __wbindgen_malloc: (a: number, b: number) => number;
   readonly __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;
   readonly __externref_table_alloc: () => number;

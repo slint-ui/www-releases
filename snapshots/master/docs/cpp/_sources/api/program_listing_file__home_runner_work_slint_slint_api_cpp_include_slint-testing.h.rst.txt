@@ -185,6 +185,11 @@ Program Listing for File slint-testing.h
                    cbindgen_private::AccessibleStringProperty::Description);
        }
    
+       std::optional<SharedString> accessible_id() const
+       {
+           return get_accessible_string_property(cbindgen_private::AccessibleStringProperty::Id);
+       }
+   
        std::optional<float> accessible_value_maximum() const
        {
            if (auto result = get_accessible_string_property(
