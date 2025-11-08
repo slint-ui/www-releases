@@ -13,10 +13,9 @@ export interface InitOutput {
   readonly slint_send_keyboard_char: (a: number, b: number, c: number) => void;
   readonly slint_send_mouse_click: (a: number, b: number, c: number) => void;
   readonly main: () => void;
-  readonly wasm_bindgen__convert__closures_____invoke__h322e6e1c7aa3c235: (a: number, b: number, c: any) => void;
-  readonly wasm_bindgen__closure__destroy__h0a9eb73ddbef6420: (a: number, b: number) => void;
   readonly wasm_bindgen__convert__closures_____invoke__h59ecb9c19d892358: (a: number, b: number, c: any) => void;
   readonly wasm_bindgen__closure__destroy__h093faaf0e1d51279: (a: number, b: number) => void;
+  readonly wasm_bindgen__convert__closures_____invoke__h00269795733ff67f: (a: number, b: number, c: any) => void;
   readonly wasm_bindgen__convert__closures_____invoke__h1213c53346905fa6: (a: number, b: number, c: any, d: any) => void;
   readonly wasm_bindgen__convert__closures_____invoke__hb8d9137402b3b99d: (a: number, b: number) => void;
   readonly __wbindgen_malloc: (a: number, b: number) => number;
