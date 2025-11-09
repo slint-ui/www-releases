@@ -15,8 +15,8 @@ export interface InitOutput {
   readonly slint_send_mouse_click: (a: number, b: number, c: number) => void;
   readonly wasm_bindgen__convert__closures_____invoke__h360f7910b0d231ea: (a: number, b: number, c: any) => void;
   readonly wasm_bindgen__closure__destroy__h274a58044b0aee11: (a: number, b: number) => void;
-  readonly wasm_bindgen__convert__closures_____invoke__h36f3c6ee4af73cc1: (a: number, b: number, c: any) => void;
-  readonly wasm_bindgen__closure__destroy__h008e30b3a71fee6a: (a: number, b: number) => void;
+  readonly wasm_bindgen__convert__closures_____invoke__h304859ba4130d4e5: (a: number, b: number, c: any) => void;
+  readonly wasm_bindgen__closure__destroy__h37833a67c028d743: (a: number, b: number) => void;
   readonly wasm_bindgen__convert__closures_____invoke__hb34eb4f90ebbc268: (a: number, b: number) => void;
   readonly wasm_bindgen__convert__closures_____invoke__hf1b60cd5e5ffa619: (a: number, b: number, c: any, d: any) => void;
   readonly wasm_bindgen__convert__closures_____invoke__ha378674db535775a: (a: number, b: number, c: any) => void;

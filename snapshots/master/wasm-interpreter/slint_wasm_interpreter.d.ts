@@ -1,9 +1,5 @@
 /* tslint:disable */
 /* eslint-disable */
-/**
- * Same as [`compile_from_string`], but also takes a style parameter
- */
-export function compile_from_string_with_style(source: string, base_url: string, style: string, optional_import_callback?: ImportCallbackFunction | null): Promise<CompilationResult>;
 export function init(): void;
 /**
  * Compile the content of a string.
@@ -11,6 +7,10 @@ export function init(): void;
  * Returns a promise to a compiled component which can be run with ".run()"
  */
 export function compile_from_string(source: string, base_url: string, optional_import_callback?: ImportCallbackFunction | null): Promise<CompilationResult>;
+/**
+ * Same as [`compile_from_string`], but also takes a style parameter
+ */
+export function compile_from_string_with_style(source: string, base_url: string, style: string, optional_import_callback?: ImportCallbackFunction | null): Promise<CompilationResult>;
 /**
  * Register DOM event handlers on all instance and set up the event loop for that.
  * You can call this function only once. It will throw an exception but that is safe
@@ -103,10 +103,10 @@ export interface InitOutput {
   readonly wrappedinstance_show: (a: number) => [number, number, number];
   readonly wasm_bindgen__convert__closures_____invoke__h0124750a43e40aeb: (a: number, b: number, c: any) => void;
   readonly wasm_bindgen__closure__destroy__h163508a44bc476dd: (a: number, b: number) => void;
-  readonly wasm_bindgen__convert__closures_____invoke__h268f0574318cc69f: (a: number, b: number, c: any) => void;
   readonly wasm_bindgen__convert__closures_____invoke__h25229648288d047c: (a: number, b: number) => void;
+  readonly wasm_bindgen__closure__destroy__hd743fa5f3fb3bd01: (a: number, b: number) => void;
+  readonly wasm_bindgen__convert__closures_____invoke__h30104a3c44896dd3: (a: number, b: number, c: any) => void;
   readonly wasm_bindgen__convert__closures_____invoke__h5f413f0080aa0314: (a: number, b: number, c: any, d: any) => void;
-  readonly wasm_bindgen__closure__destroy__h92c7b506afdb3cf9: (a: number, b: number) => void;
   readonly __wbindgen_malloc: (a: number, b: number) => number;
   readonly __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;
   readonly __externref_table_alloc: () => number;

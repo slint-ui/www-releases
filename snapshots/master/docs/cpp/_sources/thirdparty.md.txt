@@ -21,8 +21,6 @@ This page lists the licenses of the dependencies used by Slint.
 
 #### Used by:
 
-- [ab_glyph 0.2.32]( https://github.com/alexheretic/ab-glyph )
-- [ab_glyph_rasterizer 0.1.10]( https://github.com/alexheretic/ab-glyph )
 - [owned_ttf_parser 0.25.1]( https://github.com/alexheretic/owned-ttf-parser )
 
 #### License Text
@@ -1469,6 +1467,8 @@ Apache License
 
 #### Used by:
 
+- [ab_glyph 0.2.32]( https://github.com/alexheretic/ab-glyph )
+- [ab_glyph_rasterizer 0.1.10]( https://github.com/alexheretic/ab-glyph )
 - [gl_generator 0.14.0]( https://github.com/brendanzab/gl-rs/ )
 - [khronos_api 3.1.0]( https://github.com/brendanzab/gl-rs/ )
 
@@ -6937,7 +6937,7 @@ SOFTWARE.
 
 #### Used by:
 
-- [weezl 0.1.10]( https://github.com/image-rs/weezl )
+- [weezl 0.1.11]( https://github.com/image-rs/weezl )
 
 #### License Text
 
