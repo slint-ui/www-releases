@@ -1493,7 +1493,7 @@ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #### Used by:
 
-- [exr 1.73.0]( https://github.com/johannesvollmer/exrs )
+- [exr 1.74.0]( https://github.com/johannesvollmer/exrs )
 
 #### License Text
 
@@ -6352,7 +6352,7 @@ SOFTWARE.
 
 #### Used by:
 
-- [weezl 0.1.11]( https://github.com/image-rs/weezl )
+- [weezl 0.1.12]( https://github.com/image-rs/weezl )
 
 #### License Text
 
