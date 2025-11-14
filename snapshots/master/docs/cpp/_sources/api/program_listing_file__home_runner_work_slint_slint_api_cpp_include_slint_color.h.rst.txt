@@ -21,6 +21,7 @@ Program Listing for File slint_color.h
    
    namespace private_api {
    class LinearGradientBrush;
+   class ConicGradientBrush;
    }
    
    class Color;
@@ -164,6 +165,7 @@ Program Listing for File slint_color.h
    private:
        cbindgen_private::types::Color inner;
        friend class private_api::LinearGradientBrush;
+       friend class private_api::ConicGradientBrush;
        friend class Brush;
    };
    

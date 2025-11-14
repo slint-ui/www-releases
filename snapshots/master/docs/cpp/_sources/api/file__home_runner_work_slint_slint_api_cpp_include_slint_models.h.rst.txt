@@ -35,6 +35,8 @@ Includes
 
 - ``slint_item_tree.h`` (:ref:`file__home_runner_work_slint_slint_api_cpp_include_slint_item_tree.h`)
 
+- ``vector`` (:ref:`file__home_runner_work_slint_slint_api_cpp_include_slint_sharedvector.h`)
+
 
 
 Included By

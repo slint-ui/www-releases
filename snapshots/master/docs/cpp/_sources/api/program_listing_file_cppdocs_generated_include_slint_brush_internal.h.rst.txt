@@ -39,11 +39,11 @@ Program Listing for File slint_brush_internal.h
        }
    };
    
+   using ConicGradientBrush = SharedVector<GradientStop>;
+   
    using LinearGradientBrush = SharedVector<GradientStop>;
    
    using RadialGradientBrush = SharedVector<GradientStop>;
-   
-   using ConicGradientBrush = SharedVector<GradientStop>;
    
    struct Brush {
        enum class Tag {
@@ -202,6 +202,14 @@ Program Listing for File slint_brush_internal.h
            return *this;
        }
    };
+   
+   extern "C" {
+   
+   void slint_conic_gradient_normalize_stops(ConicGradientBrush *gradient);
+   
+   void slint_conic_gradient_apply_rotation(ConicGradientBrush *gradient, float angle_degrees);
+   
+   }  // extern "C"
    
    }  // namespace types
    }  // namespace cbindgen_private

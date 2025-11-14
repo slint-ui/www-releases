@@ -916,6 +916,10 @@ Program Listing for File slint_internal.h
        Property<LogicalLength> safe_area_inset_bottom;
        Property<LogicalLength> safe_area_inset_left;
        Property<LogicalLength> safe_area_inset_right;
+       Property<LogicalLength> virtual_keyboard_x;
+       Property<LogicalLength> virtual_keyboard_y;
+       Property<LogicalLength> virtual_keyboard_width;
+       Property<LogicalLength> virtual_keyboard_height;
        Property<Brush> background;
        Property<SharedString> title;
        Property<bool> no_frame;
