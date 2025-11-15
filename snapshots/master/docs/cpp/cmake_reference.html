@@ -444,6 +444,10 @@ the slint-compiler. If you want to speed up compilation of the generated <code c
 than 1 to create multiple <code class="docutils literal notranslate"><span class="pre">.cpp</span></code> files. These can be compiled in parallel, which might speed up overall build times. However, splitting the generated code
 across multiple <code class="docutils literal notranslate"><span class="pre">.cpp</span></code> files decreases the compiler’s visibility and thus ability to perform optimizations. You can also pass <code class="docutils literal notranslate"><span class="pre">COMPILATION_UNITS</span> <span class="pre">0</span></code> to generate
 only one single <code class="docutils literal notranslate"><span class="pre">.h</span></code> file.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Compiling multiple .slint files with the same namespace may create conflicting symbols. Avoid this by putting each .slint file in its own namespace.</p>
+</div>
 </section>
 <section id="resource-embedding">
 <h2>Resource Embedding<a class="headerlink" href="#resource-embedding" title="Permalink to this heading">¶</a></h2>
