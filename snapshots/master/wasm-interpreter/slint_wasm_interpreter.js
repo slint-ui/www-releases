@@ -318,16 +318,16 @@ export function run_event_loop() {
     }
 }
 
-function wasm_bindgen__convert__closures_____invoke__h0e811e9153a6519b(arg0, arg1, arg2) {
-    wasm.wasm_bindgen__convert__closures_____invoke__h0e811e9153a6519b(arg0, arg1, arg2);
-}
-
 function wasm_bindgen__convert__closures_____invoke__h608dc5510c700823(arg0, arg1, arg2) {
     wasm.wasm_bindgen__convert__closures_____invoke__h608dc5510c700823(arg0, arg1, arg2);
 }
 
 function wasm_bindgen__convert__closures_____invoke__h5375c1b95ae9edfa(arg0, arg1) {
     wasm.wasm_bindgen__convert__closures_____invoke__h5375c1b95ae9edfa(arg0, arg1);
+}
+
+function wasm_bindgen__convert__closures_____invoke__h0e811e9153a6519b(arg0, arg1, arg2) {
+    wasm.wasm_bindgen__convert__closures_____invoke__h0e811e9153a6519b(arg0, arg1, arg2);
 }
 
 function wasm_bindgen__convert__closures_____invoke__h444de9821affcae7(arg0, arg1, arg2, arg3) {
