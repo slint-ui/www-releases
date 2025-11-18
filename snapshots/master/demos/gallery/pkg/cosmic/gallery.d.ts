@@ -1,11 +1,13 @@
 /* tslint:disable */
 /* eslint-disable */
+export function load_font_from_bytes(font_data: Uint8Array): void;
 export function main(): void;
 
 export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembly.Module;
 
 export interface InitOutput {
   readonly memory: WebAssembly.Memory;
+  readonly load_font_from_bytes: (a: number, b: number) => [number, number];
   readonly main: () => void;
   readonly slint_qt_get_widget: (a: number) => number;
   readonly send_keyboard_string_sequence: (a: number, b: number) => void;
@@ -13,16 +15,17 @@ export interface InitOutput {
   readonly slint_mock_elapsed_time: (a: bigint) => void;
   readonly slint_send_keyboard_char: (a: number, b: number, c: number) => void;
   readonly slint_send_mouse_click: (a: number, b: number, c: number) => void;
-  readonly wasm_bindgen__convert__closures_____invoke__h04bbaee16b8d7c67: (a: number, b: number) => void;
-  readonly wasm_bindgen__closure__destroy__h0b9b74899367c007: (a: number, b: number) => void;
-  readonly wasm_bindgen__convert__closures_____invoke__h10c93fdd55f761f9: (a: number, b: number, c: any) => void;
-  readonly wasm_bindgen__convert__closures_____invoke__h145502dda38335d1: (a: number, b: number, c: any) => void;
+  readonly wasm_bindgen__convert__closures_____invoke__h157a5876b97cf95d: (a: number, b: number, c: any) => void;
+  readonly wasm_bindgen__closure__destroy__h136d97b753a87564: (a: number, b: number) => void;
+  readonly wasm_bindgen__convert__closures_____invoke__h49744928ff94e036: (a: number, b: number) => void;
   readonly wasm_bindgen__convert__closures_____invoke__h1bf32ca51724f862: (a: number, b: number, c: any, d: any) => void;
+  readonly wasm_bindgen__convert__closures_____invoke__h0038b08070e0221f: (a: number, b: number, c: any) => void;
   readonly __wbindgen_malloc: (a: number, b: number) => number;
   readonly __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;
   readonly __externref_table_alloc: () => number;
   readonly __wbindgen_externrefs: WebAssembly.Table;
   readonly __wbindgen_exn_store: (a: number) => void;
+  readonly __externref_table_dealloc: (a: number) => void;
   readonly __wbindgen_start: () => void;
 }
 
