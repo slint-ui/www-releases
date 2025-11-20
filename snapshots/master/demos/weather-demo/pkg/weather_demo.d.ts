@@ -13,14 +13,14 @@ export interface InitOutput {
   readonly slint_mock_elapsed_time: (a: bigint) => void;
   readonly slint_send_keyboard_char: (a: number, b: number, c: number) => void;
   readonly slint_send_mouse_click: (a: number, b: number, c: number) => void;
-  readonly wasm_bindgen__convert__closures_____invoke__h7afc8c90aa0e890e: (a: number, b: number, c: any, d: any) => void;
-  readonly wasm_bindgen__closure__destroy__h14a07c73bdfd4770: (a: number, b: number) => void;
   readonly wasm_bindgen__convert__closures_____invoke__h17c1e7b096dc380f: (a: number, b: number, c: any) => void;
+  readonly wasm_bindgen__closure__destroy__h14a07c73bdfd4770: (a: number, b: number) => void;
+  readonly wasm_bindgen__convert__closures_____invoke__h18e7199966e8307e: (a: number, b: number) => void;
   readonly wasm_bindgen__convert__closures_____invoke__h2e8abb77d6744c9b: (a: number, b: number, c: any) => void;
   readonly wasm_bindgen__closure__destroy__h06634e190c2c65fb: (a: number, b: number) => void;
+  readonly wasm_bindgen__convert__closures_____invoke__h7afc8c90aa0e890e: (a: number, b: number, c: any, d: any) => void;
   readonly wasm_bindgen__convert__closures_____invoke__h74d43840e04e1504: (a: number, b: number, c: any) => void;
   readonly wasm_bindgen__closure__destroy__h2d59ee4c750e955c: (a: number, b: number) => void;
-  readonly wasm_bindgen__convert__closures_____invoke__h18e7199966e8307e: (a: number, b: number) => void;
   readonly __wbindgen_malloc: (a: number, b: number) => number;
   readonly __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;
   readonly __externref_table_alloc: () => number;

@@ -271,8 +271,8 @@ export function main() {
     wasm.main();
 }
 
-function wasm_bindgen__convert__closures_____invoke__h5567ec9bd2d4043b(arg0, arg1) {
-    wasm.wasm_bindgen__convert__closures_____invoke__h5567ec9bd2d4043b(arg0, arg1);
+function wasm_bindgen__convert__closures_____invoke__h1d651615ddb02c26(arg0, arg1, arg2) {
+    wasm.wasm_bindgen__convert__closures_____invoke__h1d651615ddb02c26(arg0, arg1, arg2);
 }
 
 function wasm_bindgen__convert__closures_____invoke__h025e728d02075dae(arg0, arg1, arg2) {
@@ -283,8 +283,8 @@ function wasm_bindgen__convert__closures_____invoke__h1bf32ca51724f862(arg0, arg
     wasm.wasm_bindgen__convert__closures_____invoke__h1bf32ca51724f862(arg0, arg1, arg2, arg3);
 }
 
-function wasm_bindgen__convert__closures_____invoke__h1d651615ddb02c26(arg0, arg1, arg2) {
-    wasm.wasm_bindgen__convert__closures_____invoke__h1d651615ddb02c26(arg0, arg1, arg2);
+function wasm_bindgen__convert__closures_____invoke__h5567ec9bd2d4043b(arg0, arg1) {
+    wasm.wasm_bindgen__convert__closures_____invoke__h5567ec9bd2d4043b(arg0, arg1);
 }
 
 const __wbindgen_enum_ResizeObserverBoxOptions = ["border-box", "content-box", "device-pixel-content-box"];
