@@ -267,6 +267,10 @@ function getArrayU8FromWasm0(ptr, len) {
     return getUint8ArrayMemory0().subarray(ptr / 1, ptr / 1 + len);
 }
 
+export function main() {
+    wasm.main();
+}
+
 function passArray8ToWasm0(arg, malloc) {
     const ptr = malloc(arg.length * 1, 1) >>> 0;
     getUint8ArrayMemory0().set(arg, ptr / 1);
@@ -291,16 +295,12 @@ export function load_font_from_bytes(font_data) {
     }
 }
 
-export function main() {
-    wasm.main();
+function wasm_bindgen__convert__closures_____invoke__h157a5876b97cf95d(arg0, arg1, arg2) {
+    wasm.wasm_bindgen__convert__closures_____invoke__h157a5876b97cf95d(arg0, arg1, arg2);
 }
 
 function wasm_bindgen__convert__closures_____invoke__h0038b08070e0221f(arg0, arg1, arg2) {
     wasm.wasm_bindgen__convert__closures_____invoke__h0038b08070e0221f(arg0, arg1, arg2);
-}
-
-function wasm_bindgen__convert__closures_____invoke__h157a5876b97cf95d(arg0, arg1, arg2) {
-    wasm.wasm_bindgen__convert__closures_____invoke__h157a5876b97cf95d(arg0, arg1, arg2);
 }
 
 function wasm_bindgen__convert__closures_____invoke__h49744928ff94e036(arg0, arg1) {

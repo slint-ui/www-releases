@@ -341,12 +341,16 @@ export function main() {
     wasm.main();
 }
 
+function wasm_bindgen__convert__closures_____invoke__h11f6e11adfe61e3e(arg0, arg1, arg2) {
+    wasm.wasm_bindgen__convert__closures_____invoke__h11f6e11adfe61e3e(arg0, arg1, arg2);
+}
+
 function wasm_bindgen__convert__closures_____invoke__h0d2a4ea712357b4a(arg0, arg1, arg2) {
     wasm.wasm_bindgen__convert__closures_____invoke__h0d2a4ea712357b4a(arg0, arg1, arg2);
 }
 
-function wasm_bindgen__convert__closures_____invoke__h11f6e11adfe61e3e(arg0, arg1, arg2) {
-    wasm.wasm_bindgen__convert__closures_____invoke__h11f6e11adfe61e3e(arg0, arg1, arg2);
+function wasm_bindgen__convert__closures_____invoke__h4d6503de742a8e96(arg0, arg1, arg2, arg3) {
+    wasm.wasm_bindgen__convert__closures_____invoke__h4d6503de742a8e96(arg0, arg1, arg2, arg3);
 }
 
 function wasm_bindgen__convert__closures_____invoke__h924edd6003b104d9(arg0, arg1) {
@@ -355,10 +359,6 @@ function wasm_bindgen__convert__closures_____invoke__h924edd6003b104d9(arg0, arg
 
 function wasm_bindgen__convert__closures_____invoke__h2668ed85e1e78dba(arg0, arg1, arg2) {
     wasm.wasm_bindgen__convert__closures_____invoke__h2668ed85e1e78dba(arg0, arg1, arg2);
-}
-
-function wasm_bindgen__convert__closures_____invoke__h4d6503de742a8e96(arg0, arg1, arg2, arg3) {
-    wasm.wasm_bindgen__convert__closures_____invoke__h4d6503de742a8e96(arg0, arg1, arg2, arg3);
 }
 
 const __wbindgen_enum_ResizeObserverBoxOptions = ["border-box", "content-box", "device-pixel-content-box"];

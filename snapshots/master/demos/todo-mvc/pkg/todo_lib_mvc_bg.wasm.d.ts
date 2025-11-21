@@ -12,8 +12,8 @@ export const wasm_bindgen__convert__closures_____invoke__h62e397a482ceaa24: (a: 
 export const wasm_bindgen__closure__destroy__h4466f42bb07cf3a7: (a: number, b: number) => void;
 export const wasm_bindgen__convert__closures_____invoke__h11f6e11adfe61e3e: (a: number, b: number, c: any) => void;
 export const wasm_bindgen__closure__destroy__h0aca2b4971de2311: (a: number, b: number) => void;
-export const wasm_bindgen__convert__closures_____invoke__h924edd6003b104d9: (a: number, b: number) => void;
 export const wasm_bindgen__convert__closures_____invoke__h4d6503de742a8e96: (a: number, b: number, c: any, d: any) => void;
+export const wasm_bindgen__convert__closures_____invoke__h924edd6003b104d9: (a: number, b: number) => void;
 export const wasm_bindgen__convert__closures_____invoke__h2668ed85e1e78dba: (a: number, b: number, c: any) => void;
 export const wasm_bindgen__closure__destroy__he1481d84f2667f22: (a: number, b: number) => void;
 export const __wbindgen_malloc: (a: number, b: number) => number;

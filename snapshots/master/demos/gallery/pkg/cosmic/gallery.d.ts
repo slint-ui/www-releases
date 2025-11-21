@@ -1,7 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
-export function load_font_from_bytes(font_data: Uint8Array): void;
 export function main(): void;
+export function load_font_from_bytes(font_data: Uint8Array): void;
 
 export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembly.Module;
 

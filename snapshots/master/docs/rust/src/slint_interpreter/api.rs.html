@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/api.rs`."><title>api.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-ca0dd0c4.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.93.0-nightly (07bdbaedc 2025-11-19)" data-channel="nightly" data-search-js="search-680b2199.js" data-stringdex-js="stringdex-a3946164.js" data-settings-js="settings-c38705f0.js" ><script src="../../static.files/storage-e2aeef58.js"></script><script defer src="../../static.files/src-script-813739b1.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-a410ff4d.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-263c88ec.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/api.rs`."><title>api.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-ca0dd0c4.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.93.0-nightly (53732d5e0 2025-11-20)" data-channel="nightly" data-search-js="search-680b2199.js" data-stringdex-js="stringdex-a3946164.js" data-settings-js="settings-c38705f0.js" ><script src="../../static.files/storage-e2aeef58.js"></script><script defer src="../../static.files/src-script-813739b1.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-a410ff4d.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-263c88ec.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -2227,130 +2227,129 @@
 <a href=#2105 id=2105 data-nosnippet>2105</a>        ValueType::from(LangType::Struct(Rc::new(LangStruct {
 <a href=#2106 id=2106 data-nosnippet>2106</a>            fields: BTreeMap::default(),
 <a href=#2107 id=2107 data-nosnippet>2107</a>            name: i_slint_compiler::langtype::StructName::None,
-<a href=#2108 id=2108 data-nosnippet>2108</a>            rust_attributes: <span class="prelude-val">None
-<a href=#2109 id=2109 data-nosnippet>2109</a>        </span>}))),
-<a href=#2110 id=2110 data-nosnippet>2110</a>        ValueType::Struct
-<a href=#2111 id=2111 data-nosnippet>2111</a>    );
-<a href=#2112 id=2112 data-nosnippet>2112</a>    <span class="macro">assert_eq!</span>(ValueType::from(LangType::Image), ValueType::Image);
-<a href=#2113 id=2113 data-nosnippet>2113</a>}
-<a href=#2114 id=2114 data-nosnippet>2114</a>
-<a href=#2115 id=2115 data-nosnippet>2115</a><span class="attr">#[test]
-<a href=#2116 id=2116 data-nosnippet>2116</a></span><span class="kw">fn </span>test_multi_components() {
-<a href=#2117 id=2117 data-nosnippet>2117</a>    <span class="kw">let </span>result = spin_on::spin_on(
-<a href=#2118 id=2118 data-nosnippet>2118</a>        Compiler::default().build_from_source(
-<a href=#2119 id=2119 data-nosnippet>2119</a>            <span class="string">r#"
-<a href=#2120 id=2120 data-nosnippet>2120</a>        export struct Settings {
-<a href=#2121 id=2121 data-nosnippet>2121</a>            string_value: string,
-<a href=#2122 id=2122 data-nosnippet>2122</a>        }
-<a href=#2123 id=2123 data-nosnippet>2123</a>        export global ExpGlo { in-out property &lt;int&gt; test: 42; }
-<a href=#2124 id=2124 data-nosnippet>2124</a>        component Common {
-<a href=#2125 id=2125 data-nosnippet>2125</a>            in-out property &lt;Settings&gt; settings: { string_value: "Hello", };
-<a href=#2126 id=2126 data-nosnippet>2126</a>        }
-<a href=#2127 id=2127 data-nosnippet>2127</a>        export component Xyz inherits Window {
-<a href=#2128 id=2128 data-nosnippet>2128</a>            in-out property &lt;int&gt; aaa: 8;
-<a href=#2129 id=2129 data-nosnippet>2129</a>        }
-<a href=#2130 id=2130 data-nosnippet>2130</a>        export component Foo {
-<a href=#2131 id=2131 data-nosnippet>2131</a>
-<a href=#2132 id=2132 data-nosnippet>2132</a>            in-out property &lt;int&gt; test: 42;
-<a href=#2133 id=2133 data-nosnippet>2133</a>            c := Common {}
-<a href=#2134 id=2134 data-nosnippet>2134</a>        }
-<a href=#2135 id=2135 data-nosnippet>2135</a>        export component Bar inherits Window {
-<a href=#2136 id=2136 data-nosnippet>2136</a>            in-out property &lt;int&gt; blah: 78;
-<a href=#2137 id=2137 data-nosnippet>2137</a>            c := Common {}
-<a href=#2138 id=2138 data-nosnippet>2138</a>        }
-<a href=#2139 id=2139 data-nosnippet>2139</a>        "#
-<a href=#2140 id=2140 data-nosnippet>2140</a>            </span>.into(),
-<a href=#2141 id=2141 data-nosnippet>2141</a>            PathBuf::from(<span class="string">"hello.slint"</span>),
-<a href=#2142 id=2142 data-nosnippet>2142</a>        ),
-<a href=#2143 id=2143 data-nosnippet>2143</a>    );
-<a href=#2144 id=2144 data-nosnippet>2144</a>
-<a href=#2145 id=2145 data-nosnippet>2145</a>    <span class="macro">assert!</span>(!result.has_errors(), <span class="string">"Error {:?}"</span>, result.diagnostics().collect::&lt;Vec&lt;<span class="kw">_</span>&gt;&gt;());
-<a href=#2146 id=2146 data-nosnippet>2146</a>    <span class="kw">let </span><span class="kw-2">mut </span>components = result.component_names().collect::&lt;Vec&lt;<span class="kw">_</span>&gt;&gt;();
-<a href=#2147 id=2147 data-nosnippet>2147</a>    components.sort();
-<a href=#2148 id=2148 data-nosnippet>2148</a>    <span class="macro">assert_eq!</span>(components, <span class="macro">vec!</span>[<span class="string">"Bar"</span>, <span class="string">"Xyz"</span>]);
-<a href=#2149 id=2149 data-nosnippet>2149</a>    <span class="kw">let </span>diag = result.diagnostics().collect::&lt;Vec&lt;<span class="kw">_</span>&gt;&gt;();
-<a href=#2150 id=2150 data-nosnippet>2150</a>    <span class="macro">assert_eq!</span>(diag.len(), <span class="number">1</span>);
-<a href=#2151 id=2151 data-nosnippet>2151</a>    <span class="macro">assert_eq!</span>(diag[<span class="number">0</span>].level(), DiagnosticLevel::Warning);
-<a href=#2152 id=2152 data-nosnippet>2152</a>    <span class="macro">assert_eq!</span>(
-<a href=#2153 id=2153 data-nosnippet>2153</a>        diag[<span class="number">0</span>].message(),
-<a href=#2154 id=2154 data-nosnippet>2154</a>        <span class="string">"Exported component 'Foo' doesn't inherit Window. No code will be generated for it"
-<a href=#2155 id=2155 data-nosnippet>2155</a>    </span>);
-<a href=#2156 id=2156 data-nosnippet>2156</a>
-<a href=#2157 id=2157 data-nosnippet>2157</a>    <span class="kw">let </span>comp1 = result.component(<span class="string">"Xyz"</span>).unwrap();
-<a href=#2158 id=2158 data-nosnippet>2158</a>    <span class="macro">assert_eq!</span>(comp1.name(), <span class="string">"Xyz"</span>);
-<a href=#2159 id=2159 data-nosnippet>2159</a>    <span class="kw">let </span>instance1a = comp1.create().unwrap();
-<a href=#2160 id=2160 data-nosnippet>2160</a>    <span class="kw">let </span>comp2 = result.component(<span class="string">"Bar"</span>).unwrap();
-<a href=#2161 id=2161 data-nosnippet>2161</a>    <span class="kw">let </span>instance2 = comp2.create().unwrap();
-<a href=#2162 id=2162 data-nosnippet>2162</a>    <span class="kw">let </span>instance1b = comp1.create().unwrap();
-<a href=#2163 id=2163 data-nosnippet>2163</a>
-<a href=#2164 id=2164 data-nosnippet>2164</a>    <span class="comment">// globals are not shared between instances
-<a href=#2165 id=2165 data-nosnippet>2165</a>    </span><span class="macro">assert_eq!</span>(instance1a.get_global_property(<span class="string">"ExpGlo"</span>, <span class="string">"test"</span>), <span class="prelude-val">Ok</span>(Value::Number(<span class="number">42.0</span>)));
-<a href=#2166 id=2166 data-nosnippet>2166</a>    <span class="macro">assert_eq!</span>(instance1a.set_global_property(<span class="string">"ExpGlo"</span>, <span class="string">"test"</span>, Value::Number(<span class="number">88.0</span>)), <span class="prelude-val">Ok</span>(()));
-<a href=#2167 id=2167 data-nosnippet>2167</a>    <span class="macro">assert_eq!</span>(instance2.get_global_property(<span class="string">"ExpGlo"</span>, <span class="string">"test"</span>), <span class="prelude-val">Ok</span>(Value::Number(<span class="number">42.0</span>)));
-<a href=#2168 id=2168 data-nosnippet>2168</a>    <span class="macro">assert_eq!</span>(instance1b.get_global_property(<span class="string">"ExpGlo"</span>, <span class="string">"test"</span>), <span class="prelude-val">Ok</span>(Value::Number(<span class="number">42.0</span>)));
-<a href=#2169 id=2169 data-nosnippet>2169</a>    <span class="macro">assert_eq!</span>(instance1a.get_global_property(<span class="string">"ExpGlo"</span>, <span class="string">"test"</span>), <span class="prelude-val">Ok</span>(Value::Number(<span class="number">88.0</span>)));
-<a href=#2170 id=2170 data-nosnippet>2170</a>
-<a href=#2171 id=2171 data-nosnippet>2171</a>    <span class="macro">assert!</span>(result.component(<span class="string">"Settings"</span>).is_none());
-<a href=#2172 id=2172 data-nosnippet>2172</a>    <span class="macro">assert!</span>(result.component(<span class="string">"Foo"</span>).is_none());
-<a href=#2173 id=2173 data-nosnippet>2173</a>    <span class="macro">assert!</span>(result.component(<span class="string">"Common"</span>).is_none());
-<a href=#2174 id=2174 data-nosnippet>2174</a>    <span class="macro">assert!</span>(result.component(<span class="string">"ExpGlo"</span>).is_none());
-<a href=#2175 id=2175 data-nosnippet>2175</a>    <span class="macro">assert!</span>(result.component(<span class="string">"xyz"</span>).is_none());
-<a href=#2176 id=2176 data-nosnippet>2176</a>}
-<a href=#2177 id=2177 data-nosnippet>2177</a>
-<a href=#2178 id=2178 data-nosnippet>2178</a><span class="attr">#[cfg(all(test, feature = <span class="string">"internal-highlight"</span>))]
-<a href=#2179 id=2179 data-nosnippet>2179</a></span><span class="kw">fn </span>compile(code: <span class="kw-2">&amp;</span>str) -&gt; (ComponentInstance, PathBuf) {
-<a href=#2180 id=2180 data-nosnippet>2180</a>    i_slint_backend_testing::init_no_event_loop();
-<a href=#2181 id=2181 data-nosnippet>2181</a>    <span class="kw">let </span><span class="kw-2">mut </span>compiler = Compiler::default();
-<a href=#2182 id=2182 data-nosnippet>2182</a>    compiler.set_style(<span class="string">"fluent"</span>.into());
-<a href=#2183 id=2183 data-nosnippet>2183</a>    <span class="kw">let </span>path = PathBuf::from(<span class="string">"/tmp/test.slint"</span>);
-<a href=#2184 id=2184 data-nosnippet>2184</a>
-<a href=#2185 id=2185 data-nosnippet>2185</a>    <span class="kw">let </span>compile_result =
-<a href=#2186 id=2186 data-nosnippet>2186</a>        spin_on::spin_on(compiler.build_from_source(code.to_string(), path.clone()));
-<a href=#2187 id=2187 data-nosnippet>2187</a>
-<a href=#2188 id=2188 data-nosnippet>2188</a>    <span class="kw">for </span>d <span class="kw">in </span><span class="kw-2">&amp;</span>compile_result.diagnostics {
-<a href=#2189 id=2189 data-nosnippet>2189</a>        <span class="macro">eprintln!</span>(<span class="string">"{d}"</span>);
-<a href=#2190 id=2190 data-nosnippet>2190</a>    }
-<a href=#2191 id=2191 data-nosnippet>2191</a>
-<a href=#2192 id=2192 data-nosnippet>2192</a>    <span class="macro">assert!</span>(!compile_result.has_errors());
-<a href=#2193 id=2193 data-nosnippet>2193</a>
-<a href=#2194 id=2194 data-nosnippet>2194</a>    <span class="kw">let </span>definition = compile_result.components().next().unwrap();
-<a href=#2195 id=2195 data-nosnippet>2195</a>    <span class="kw">let </span>instance = definition.create().unwrap();
-<a href=#2196 id=2196 data-nosnippet>2196</a>
-<a href=#2197 id=2197 data-nosnippet>2197</a>    (instance, path)
-<a href=#2198 id=2198 data-nosnippet>2198</a>}
-<a href=#2199 id=2199 data-nosnippet>2199</a>
-<a href=#2200 id=2200 data-nosnippet>2200</a><span class="attr">#[cfg(feature = <span class="string">"internal-highlight"</span>)]
-<a href=#2201 id=2201 data-nosnippet>2201</a>#[test]
-<a href=#2202 id=2202 data-nosnippet>2202</a></span><span class="kw">fn </span>test_element_node_at_source_code_position() {
-<a href=#2203 id=2203 data-nosnippet>2203</a>    <span class="kw">let </span>code = <span class="string">r#"
-<a href=#2204 id=2204 data-nosnippet>2204</a>component Bar1 {}
-<a href=#2205 id=2205 data-nosnippet>2205</a>
-<a href=#2206 id=2206 data-nosnippet>2206</a>component Foo1 {
-<a href=#2207 id=2207 data-nosnippet>2207</a>}
-<a href=#2208 id=2208 data-nosnippet>2208</a>
-<a href=#2209 id=2209 data-nosnippet>2209</a>export component Foo2 inherits Window  {
-<a href=#2210 id=2210 data-nosnippet>2210</a>    Bar1 {}
-<a href=#2211 id=2211 data-nosnippet>2211</a>    Foo1   {}
-<a href=#2212 id=2212 data-nosnippet>2212</a>}"#</span>;
-<a href=#2213 id=2213 data-nosnippet>2213</a>
-<a href=#2214 id=2214 data-nosnippet>2214</a>    <span class="kw">let </span>(handle, path) = compile(code);
-<a href=#2215 id=2215 data-nosnippet>2215</a>
-<a href=#2216 id=2216 data-nosnippet>2216</a>    <span class="kw">for </span>i <span class="kw">in </span><span class="number">0</span>..code.len() <span class="kw">as </span>u32 {
-<a href=#2217 id=2217 data-nosnippet>2217</a>        <span class="kw">let </span>elements = handle.element_node_at_source_code_position(<span class="kw-2">&amp;</span>path, i);
-<a href=#2218 id=2218 data-nosnippet>2218</a>        <span class="macro">eprintln!</span>(<span class="string">"{i}: {}"</span>, code.as_bytes()[i <span class="kw">as </span>usize] <span class="kw">as </span>char);
-<a href=#2219 id=2219 data-nosnippet>2219</a>        <span class="kw">match </span>i {
-<a href=#2220 id=2220 data-nosnippet>2220</a>            <span class="number">16 </span>=&gt; <span class="macro">assert_eq!</span>(elements.len(), <span class="number">1</span>),       <span class="comment">// Bar1 (def)
-<a href=#2221 id=2221 data-nosnippet>2221</a>            </span><span class="number">35 </span>=&gt; <span class="macro">assert_eq!</span>(elements.len(), <span class="number">1</span>),       <span class="comment">// Foo1 (def)
-<a href=#2222 id=2222 data-nosnippet>2222</a>            </span><span class="number">71</span>..=<span class="number">78 </span>=&gt; <span class="macro">assert_eq!</span>(elements.len(), <span class="number">1</span>),  <span class="comment">// Window + WS (from Foo2)
-<a href=#2223 id=2223 data-nosnippet>2223</a>            </span><span class="number">85</span>..=<span class="number">89 </span>=&gt; <span class="macro">assert_eq!</span>(elements.len(), <span class="number">1</span>),  <span class="comment">// Bar1 + WS (use)
-<a href=#2224 id=2224 data-nosnippet>2224</a>            </span><span class="number">97</span>..=<span class="number">103 </span>=&gt; <span class="macro">assert_eq!</span>(elements.len(), <span class="number">1</span>), <span class="comment">// Foo1 + WS (use)
-<a href=#2225 id=2225 data-nosnippet>2225</a>            </span><span class="kw">_ </span>=&gt; <span class="macro">assert!</span>(elements.is_empty()),
-<a href=#2226 id=2226 data-nosnippet>2226</a>        }
-<a href=#2227 id=2227 data-nosnippet>2227</a>    }
-<a href=#2228 id=2228 data-nosnippet>2228</a>}
-<a href=#2229 id=2229 data-nosnippet>2229</a>
-<a href=#2230 id=2230 data-nosnippet>2230</a><span class="attr">#[cfg(feature = <span class="string">"ffi"</span>)]
-<a href=#2231 id=2231 data-nosnippet>2231</a>#[allow(missing_docs)]
-<a href=#2232 id=2232 data-nosnippet>2232</a>#[path = <span class="string">"ffi.rs"</span>]
-<a href=#2233 id=2233 data-nosnippet>2233</a></span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">mod </span><a href="ffi.rs.html#4-1014">ffi</a>;
+<a href=#2108 id=2108 data-nosnippet>2108</a>        }))),
+<a href=#2109 id=2109 data-nosnippet>2109</a>        ValueType::Struct
+<a href=#2110 id=2110 data-nosnippet>2110</a>    );
+<a href=#2111 id=2111 data-nosnippet>2111</a>    <span class="macro">assert_eq!</span>(ValueType::from(LangType::Image), ValueType::Image);
+<a href=#2112 id=2112 data-nosnippet>2112</a>}
+<a href=#2113 id=2113 data-nosnippet>2113</a>
+<a href=#2114 id=2114 data-nosnippet>2114</a><span class="attr">#[test]
+<a href=#2115 id=2115 data-nosnippet>2115</a></span><span class="kw">fn </span>test_multi_components() {
+<a href=#2116 id=2116 data-nosnippet>2116</a>    <span class="kw">let </span>result = spin_on::spin_on(
+<a href=#2117 id=2117 data-nosnippet>2117</a>        Compiler::default().build_from_source(
+<a href=#2118 id=2118 data-nosnippet>2118</a>            <span class="string">r#"
+<a href=#2119 id=2119 data-nosnippet>2119</a>        export struct Settings {
+<a href=#2120 id=2120 data-nosnippet>2120</a>            string_value: string,
+<a href=#2121 id=2121 data-nosnippet>2121</a>        }
+<a href=#2122 id=2122 data-nosnippet>2122</a>        export global ExpGlo { in-out property &lt;int&gt; test: 42; }
+<a href=#2123 id=2123 data-nosnippet>2123</a>        component Common {
+<a href=#2124 id=2124 data-nosnippet>2124</a>            in-out property &lt;Settings&gt; settings: { string_value: "Hello", };
+<a href=#2125 id=2125 data-nosnippet>2125</a>        }
+<a href=#2126 id=2126 data-nosnippet>2126</a>        export component Xyz inherits Window {
+<a href=#2127 id=2127 data-nosnippet>2127</a>            in-out property &lt;int&gt; aaa: 8;
+<a href=#2128 id=2128 data-nosnippet>2128</a>        }
+<a href=#2129 id=2129 data-nosnippet>2129</a>        export component Foo {
+<a href=#2130 id=2130 data-nosnippet>2130</a>
+<a href=#2131 id=2131 data-nosnippet>2131</a>            in-out property &lt;int&gt; test: 42;
+<a href=#2132 id=2132 data-nosnippet>2132</a>            c := Common {}
+<a href=#2133 id=2133 data-nosnippet>2133</a>        }
+<a href=#2134 id=2134 data-nosnippet>2134</a>        export component Bar inherits Window {
+<a href=#2135 id=2135 data-nosnippet>2135</a>            in-out property &lt;int&gt; blah: 78;
+<a href=#2136 id=2136 data-nosnippet>2136</a>            c := Common {}
+<a href=#2137 id=2137 data-nosnippet>2137</a>        }
+<a href=#2138 id=2138 data-nosnippet>2138</a>        "#
+<a href=#2139 id=2139 data-nosnippet>2139</a>            </span>.into(),
+<a href=#2140 id=2140 data-nosnippet>2140</a>            PathBuf::from(<span class="string">"hello.slint"</span>),
+<a href=#2141 id=2141 data-nosnippet>2141</a>        ),
+<a href=#2142 id=2142 data-nosnippet>2142</a>    );
+<a href=#2143 id=2143 data-nosnippet>2143</a>
+<a href=#2144 id=2144 data-nosnippet>2144</a>    <span class="macro">assert!</span>(!result.has_errors(), <span class="string">"Error {:?}"</span>, result.diagnostics().collect::&lt;Vec&lt;<span class="kw">_</span>&gt;&gt;());
+<a href=#2145 id=2145 data-nosnippet>2145</a>    <span class="kw">let </span><span class="kw-2">mut </span>components = result.component_names().collect::&lt;Vec&lt;<span class="kw">_</span>&gt;&gt;();
+<a href=#2146 id=2146 data-nosnippet>2146</a>    components.sort();
+<a href=#2147 id=2147 data-nosnippet>2147</a>    <span class="macro">assert_eq!</span>(components, <span class="macro">vec!</span>[<span class="string">"Bar"</span>, <span class="string">"Xyz"</span>]);
+<a href=#2148 id=2148 data-nosnippet>2148</a>    <span class="kw">let </span>diag = result.diagnostics().collect::&lt;Vec&lt;<span class="kw">_</span>&gt;&gt;();
+<a href=#2149 id=2149 data-nosnippet>2149</a>    <span class="macro">assert_eq!</span>(diag.len(), <span class="number">1</span>);
+<a href=#2150 id=2150 data-nosnippet>2150</a>    <span class="macro">assert_eq!</span>(diag[<span class="number">0</span>].level(), DiagnosticLevel::Warning);
+<a href=#2151 id=2151 data-nosnippet>2151</a>    <span class="macro">assert_eq!</span>(
+<a href=#2152 id=2152 data-nosnippet>2152</a>        diag[<span class="number">0</span>].message(),
+<a href=#2153 id=2153 data-nosnippet>2153</a>        <span class="string">"Exported component 'Foo' doesn't inherit Window. No code will be generated for it"
+<a href=#2154 id=2154 data-nosnippet>2154</a>    </span>);
+<a href=#2155 id=2155 data-nosnippet>2155</a>
+<a href=#2156 id=2156 data-nosnippet>2156</a>    <span class="kw">let </span>comp1 = result.component(<span class="string">"Xyz"</span>).unwrap();
+<a href=#2157 id=2157 data-nosnippet>2157</a>    <span class="macro">assert_eq!</span>(comp1.name(), <span class="string">"Xyz"</span>);
+<a href=#2158 id=2158 data-nosnippet>2158</a>    <span class="kw">let </span>instance1a = comp1.create().unwrap();
+<a href=#2159 id=2159 data-nosnippet>2159</a>    <span class="kw">let </span>comp2 = result.component(<span class="string">"Bar"</span>).unwrap();
+<a href=#2160 id=2160 data-nosnippet>2160</a>    <span class="kw">let </span>instance2 = comp2.create().unwrap();
+<a href=#2161 id=2161 data-nosnippet>2161</a>    <span class="kw">let </span>instance1b = comp1.create().unwrap();
+<a href=#2162 id=2162 data-nosnippet>2162</a>
+<a href=#2163 id=2163 data-nosnippet>2163</a>    <span class="comment">// globals are not shared between instances
+<a href=#2164 id=2164 data-nosnippet>2164</a>    </span><span class="macro">assert_eq!</span>(instance1a.get_global_property(<span class="string">"ExpGlo"</span>, <span class="string">"test"</span>), <span class="prelude-val">Ok</span>(Value::Number(<span class="number">42.0</span>)));
+<a href=#2165 id=2165 data-nosnippet>2165</a>    <span class="macro">assert_eq!</span>(instance1a.set_global_property(<span class="string">"ExpGlo"</span>, <span class="string">"test"</span>, Value::Number(<span class="number">88.0</span>)), <span class="prelude-val">Ok</span>(()));
+<a href=#2166 id=2166 data-nosnippet>2166</a>    <span class="macro">assert_eq!</span>(instance2.get_global_property(<span class="string">"ExpGlo"</span>, <span class="string">"test"</span>), <span class="prelude-val">Ok</span>(Value::Number(<span class="number">42.0</span>)));
+<a href=#2167 id=2167 data-nosnippet>2167</a>    <span class="macro">assert_eq!</span>(instance1b.get_global_property(<span class="string">"ExpGlo"</span>, <span class="string">"test"</span>), <span class="prelude-val">Ok</span>(Value::Number(<span class="number">42.0</span>)));
+<a href=#2168 id=2168 data-nosnippet>2168</a>    <span class="macro">assert_eq!</span>(instance1a.get_global_property(<span class="string">"ExpGlo"</span>, <span class="string">"test"</span>), <span class="prelude-val">Ok</span>(Value::Number(<span class="number">88.0</span>)));
+<a href=#2169 id=2169 data-nosnippet>2169</a>
+<a href=#2170 id=2170 data-nosnippet>2170</a>    <span class="macro">assert!</span>(result.component(<span class="string">"Settings"</span>).is_none());
+<a href=#2171 id=2171 data-nosnippet>2171</a>    <span class="macro">assert!</span>(result.component(<span class="string">"Foo"</span>).is_none());
+<a href=#2172 id=2172 data-nosnippet>2172</a>    <span class="macro">assert!</span>(result.component(<span class="string">"Common"</span>).is_none());
+<a href=#2173 id=2173 data-nosnippet>2173</a>    <span class="macro">assert!</span>(result.component(<span class="string">"ExpGlo"</span>).is_none());
+<a href=#2174 id=2174 data-nosnippet>2174</a>    <span class="macro">assert!</span>(result.component(<span class="string">"xyz"</span>).is_none());
+<a href=#2175 id=2175 data-nosnippet>2175</a>}
+<a href=#2176 id=2176 data-nosnippet>2176</a>
+<a href=#2177 id=2177 data-nosnippet>2177</a><span class="attr">#[cfg(all(test, feature = <span class="string">"internal-highlight"</span>))]
+<a href=#2178 id=2178 data-nosnippet>2178</a></span><span class="kw">fn </span>compile(code: <span class="kw-2">&amp;</span>str) -&gt; (ComponentInstance, PathBuf) {
+<a href=#2179 id=2179 data-nosnippet>2179</a>    i_slint_backend_testing::init_no_event_loop();
+<a href=#2180 id=2180 data-nosnippet>2180</a>    <span class="kw">let </span><span class="kw-2">mut </span>compiler = Compiler::default();
+<a href=#2181 id=2181 data-nosnippet>2181</a>    compiler.set_style(<span class="string">"fluent"</span>.into());
+<a href=#2182 id=2182 data-nosnippet>2182</a>    <span class="kw">let </span>path = PathBuf::from(<span class="string">"/tmp/test.slint"</span>);
+<a href=#2183 id=2183 data-nosnippet>2183</a>
+<a href=#2184 id=2184 data-nosnippet>2184</a>    <span class="kw">let </span>compile_result =
+<a href=#2185 id=2185 data-nosnippet>2185</a>        spin_on::spin_on(compiler.build_from_source(code.to_string(), path.clone()));
+<a href=#2186 id=2186 data-nosnippet>2186</a>
+<a href=#2187 id=2187 data-nosnippet>2187</a>    <span class="kw">for </span>d <span class="kw">in </span><span class="kw-2">&amp;</span>compile_result.diagnostics {
+<a href=#2188 id=2188 data-nosnippet>2188</a>        <span class="macro">eprintln!</span>(<span class="string">"{d}"</span>);
+<a href=#2189 id=2189 data-nosnippet>2189</a>    }
+<a href=#2190 id=2190 data-nosnippet>2190</a>
+<a href=#2191 id=2191 data-nosnippet>2191</a>    <span class="macro">assert!</span>(!compile_result.has_errors());
+<a href=#2192 id=2192 data-nosnippet>2192</a>
+<a href=#2193 id=2193 data-nosnippet>2193</a>    <span class="kw">let </span>definition = compile_result.components().next().unwrap();
+<a href=#2194 id=2194 data-nosnippet>2194</a>    <span class="kw">let </span>instance = definition.create().unwrap();
+<a href=#2195 id=2195 data-nosnippet>2195</a>
+<a href=#2196 id=2196 data-nosnippet>2196</a>    (instance, path)
+<a href=#2197 id=2197 data-nosnippet>2197</a>}
+<a href=#2198 id=2198 data-nosnippet>2198</a>
+<a href=#2199 id=2199 data-nosnippet>2199</a><span class="attr">#[cfg(feature = <span class="string">"internal-highlight"</span>)]
+<a href=#2200 id=2200 data-nosnippet>2200</a>#[test]
+<a href=#2201 id=2201 data-nosnippet>2201</a></span><span class="kw">fn </span>test_element_node_at_source_code_position() {
+<a href=#2202 id=2202 data-nosnippet>2202</a>    <span class="kw">let </span>code = <span class="string">r#"
+<a href=#2203 id=2203 data-nosnippet>2203</a>component Bar1 {}
+<a href=#2204 id=2204 data-nosnippet>2204</a>
+<a href=#2205 id=2205 data-nosnippet>2205</a>component Foo1 {
+<a href=#2206 id=2206 data-nosnippet>2206</a>}
+<a href=#2207 id=2207 data-nosnippet>2207</a>
+<a href=#2208 id=2208 data-nosnippet>2208</a>export component Foo2 inherits Window  {
+<a href=#2209 id=2209 data-nosnippet>2209</a>    Bar1 {}
+<a href=#2210 id=2210 data-nosnippet>2210</a>    Foo1   {}
+<a href=#2211 id=2211 data-nosnippet>2211</a>}"#</span>;
+<a href=#2212 id=2212 data-nosnippet>2212</a>
+<a href=#2213 id=2213 data-nosnippet>2213</a>    <span class="kw">let </span>(handle, path) = compile(code);
+<a href=#2214 id=2214 data-nosnippet>2214</a>
+<a href=#2215 id=2215 data-nosnippet>2215</a>    <span class="kw">for </span>i <span class="kw">in </span><span class="number">0</span>..code.len() <span class="kw">as </span>u32 {
+<a href=#2216 id=2216 data-nosnippet>2216</a>        <span class="kw">let </span>elements = handle.element_node_at_source_code_position(<span class="kw-2">&amp;</span>path, i);
+<a href=#2217 id=2217 data-nosnippet>2217</a>        <span class="macro">eprintln!</span>(<span class="string">"{i}: {}"</span>, code.as_bytes()[i <span class="kw">as </span>usize] <span class="kw">as </span>char);
+<a href=#2218 id=2218 data-nosnippet>2218</a>        <span class="kw">match </span>i {
+<a href=#2219 id=2219 data-nosnippet>2219</a>            <span class="number">16 </span>=&gt; <span class="macro">assert_eq!</span>(elements.len(), <span class="number">1</span>),       <span class="comment">// Bar1 (def)
+<a href=#2220 id=2220 data-nosnippet>2220</a>            </span><span class="number">35 </span>=&gt; <span class="macro">assert_eq!</span>(elements.len(), <span class="number">1</span>),       <span class="comment">// Foo1 (def)
+<a href=#2221 id=2221 data-nosnippet>2221</a>            </span><span class="number">71</span>..=<span class="number">78 </span>=&gt; <span class="macro">assert_eq!</span>(elements.len(), <span class="number">1</span>),  <span class="comment">// Window + WS (from Foo2)
+<a href=#2222 id=2222 data-nosnippet>2222</a>            </span><span class="number">85</span>..=<span class="number">89 </span>=&gt; <span class="macro">assert_eq!</span>(elements.len(), <span class="number">1</span>),  <span class="comment">// Bar1 + WS (use)
+<a href=#2223 id=2223 data-nosnippet>2223</a>            </span><span class="number">97</span>..=<span class="number">103 </span>=&gt; <span class="macro">assert_eq!</span>(elements.len(), <span class="number">1</span>), <span class="comment">// Foo1 + WS (use)
+<a href=#2224 id=2224 data-nosnippet>2224</a>            </span><span class="kw">_ </span>=&gt; <span class="macro">assert!</span>(elements.is_empty()),
+<a href=#2225 id=2225 data-nosnippet>2225</a>        }
+<a href=#2226 id=2226 data-nosnippet>2226</a>    }
+<a href=#2227 id=2227 data-nosnippet>2227</a>}
+<a href=#2228 id=2228 data-nosnippet>2228</a>
+<a href=#2229 id=2229 data-nosnippet>2229</a><span class="attr">#[cfg(feature = <span class="string">"ffi"</span>)]
+<a href=#2230 id=2230 data-nosnippet>2230</a>#[allow(missing_docs)]
+<a href=#2231 id=2231 data-nosnippet>2231</a>#[path = <span class="string">"ffi.rs"</span>]
+<a href=#2232 id=2232 data-nosnippet>2232</a></span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">mod </span><a href="ffi.rs.html#4-1014">ffi</a>;
 </code></pre></div></section></main></body></html>
