@@ -32,6 +32,7 @@ Program Listing for File slint_interpreter_generated_public.h
        Struct,
        Brush,
        Image,
+       StyledText,
        Other = -1,
    };
    

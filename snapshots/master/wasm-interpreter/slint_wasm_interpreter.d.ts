@@ -1,9 +1,11 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * Same as [`compile_from_string`], but also takes a style parameter
+ * Register DOM event handlers on all instance and set up the event loop for that.
+ * You can call this function only once. It will throw an exception but that is safe
+ * to ignore.
  */
-export function compile_from_string_with_style(source: string, base_url: string, style: string, optional_import_callback?: ImportCallbackFunction | null): Promise<CompilationResult>;
+export function run_event_loop(): void;
 /**
  * Compile the content of a string.
  *
@@ -12,11 +14,9 @@ export function compile_from_string_with_style(source: string, base_url: string,
 export function compile_from_string(source: string, base_url: string, optional_import_callback?: ImportCallbackFunction | null): Promise<CompilationResult>;
 export function init(): void;
 /**
- * Register DOM event handlers on all instance and set up the event loop for that.
- * You can call this function only once. It will throw an exception but that is safe
- * to ignore.
+ * Same as [`compile_from_string`], but also takes a style parameter
  */
-export function run_event_loop(): void;
+export function compile_from_string_with_style(source: string, base_url: string, style: string, optional_import_callback?: ImportCallbackFunction | null): Promise<CompilationResult>;
 
 type ImportCallbackFunction = (url: string) => Promise<string>;
 type CurrentElementInformationCallbackFunction = (url: string, start_line: number, start_column: number, end_line: number, end_column: number) => void;
@@ -101,12 +101,12 @@ export interface InitOutput {
   readonly wrappedcompiledcomp_run: (a: number, b: number, c: number) => void;
   readonly wrappedinstance_hide: (a: number) => [number, number, number];
   readonly wrappedinstance_show: (a: number) => [number, number, number];
-  readonly wasm_bindgen__convert__closures_____invoke__h0d1c6d73f6497e06: (a: number, b: number, c: any) => void;
-  readonly wasm_bindgen__closure__destroy__h02aa84ac44f65313: (a: number, b: number) => void;
   readonly wasm_bindgen__convert__closures_____invoke__h6175a243de8c1047: (a: number, b: number, c: any) => void;
-  readonly wasm_bindgen__convert__closures_____invoke__h444de9821affcae7: (a: number, b: number, c: any, d: any) => void;
+  readonly wasm_bindgen__closure__destroy__h02aa84ac44f65313: (a: number, b: number) => void;
   readonly wasm_bindgen__convert__closures_____invoke__h19a07ed06813624b: (a: number, b: number) => void;
-  readonly wasm_bindgen__closure__destroy__hc5bc5b9e9e025526: (a: number, b: number) => void;
+  readonly wasm_bindgen__convert__closures_____invoke__h06c5b93f1b3c457b: (a: number, b: number, c: any) => void;
+  readonly wasm_bindgen__closure__destroy__h3f86539d65672e5f: (a: number, b: number) => void;
+  readonly wasm_bindgen__convert__closures_____invoke__h444de9821affcae7: (a: number, b: number, c: any, d: any) => void;
   readonly __wbindgen_malloc: (a: number, b: number) => number;
   readonly __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;
   readonly __externref_table_alloc: () => number;
