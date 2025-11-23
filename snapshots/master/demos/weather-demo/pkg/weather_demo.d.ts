@@ -17,10 +17,10 @@ export interface InitOutput {
   readonly wasm_bindgen__closure__destroy__h14a07c73bdfd4770: (a: number, b: number) => void;
   readonly wasm_bindgen__convert__closures_____invoke__h212a057939dd622b: (a: number, b: number, c: any) => void;
   readonly wasm_bindgen__closure__destroy__h081ba24c97008460: (a: number, b: number) => void;
-  readonly wasm_bindgen__convert__closures_____invoke__h7afc8c90aa0e890e: (a: number, b: number, c: any, d: any) => void;
   readonly wasm_bindgen__convert__closures_____invoke__h18e7199966e8307e: (a: number, b: number) => void;
   readonly wasm_bindgen__convert__closures_____invoke__h74d43840e04e1504: (a: number, b: number, c: any) => void;
   readonly wasm_bindgen__closure__destroy__h2d59ee4c750e955c: (a: number, b: number) => void;
+  readonly wasm_bindgen__convert__closures_____invoke__h7afc8c90aa0e890e: (a: number, b: number, c: any, d: any) => void;
   readonly __wbindgen_malloc: (a: number, b: number) => number;
   readonly __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;
   readonly __externref_table_alloc: () => number;
