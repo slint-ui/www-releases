@@ -101,11 +101,11 @@ export interface InitOutput {
   readonly wrappedcompiledcomp_run: (a: number, b: number, c: number) => void;
   readonly wrappedinstance_hide: (a: number) => [number, number, number];
   readonly wrappedinstance_show: (a: number) => [number, number, number];
-  readonly wasm_bindgen__convert__closures_____invoke__h2aeedf37a5137682: (a: number, b: number, c: any) => void;
-  readonly wasm_bindgen__closure__destroy__h06e02538bea4742f: (a: number, b: number) => void;
   readonly wasm_bindgen__convert__closures_____invoke__h0300dc251d16c725: (a: number, b: number, c: any) => void;
-  readonly wasm_bindgen__convert__closures_____invoke__h3258071a0e7b2e71: (a: number, b: number) => void;
+  readonly wasm_bindgen__closure__destroy__h06e02538bea4742f: (a: number, b: number) => void;
+  readonly wasm_bindgen__convert__closures_____invoke__h2aeedf37a5137682: (a: number, b: number, c: any) => void;
   readonly wasm_bindgen__convert__closures_____invoke__h1303a8e928205af4: (a: number, b: number, c: any, d: any) => void;
+  readonly wasm_bindgen__convert__closures_____invoke__h3258071a0e7b2e71: (a: number, b: number) => void;
   readonly wasm_bindgen__closure__destroy__hd34c7f86895fd3f7: (a: number, b: number) => void;
   readonly __wbindgen_malloc: (a: number, b: number) => number;
   readonly __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;
