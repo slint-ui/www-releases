@@ -341,12 +341,16 @@ export function main() {
     wasm.main();
 }
 
+function wasm_bindgen__convert__closures_____invoke__h05c17dba125395fc(arg0, arg1, arg2) {
+    wasm.wasm_bindgen__convert__closures_____invoke__h05c17dba125395fc(arg0, arg1, arg2);
+}
+
 function wasm_bindgen__convert__closures_____invoke__h261c9996047ac8b7(arg0, arg1, arg2) {
     wasm.wasm_bindgen__convert__closures_____invoke__h261c9996047ac8b7(arg0, arg1, arg2);
 }
 
-function wasm_bindgen__convert__closures_____invoke__h05c17dba125395fc(arg0, arg1, arg2) {
-    wasm.wasm_bindgen__convert__closures_____invoke__h05c17dba125395fc(arg0, arg1, arg2);
+function wasm_bindgen__convert__closures_____invoke__h14ce167de30e8d75(arg0, arg1, arg2) {
+    wasm.wasm_bindgen__convert__closures_____invoke__h14ce167de30e8d75(arg0, arg1, arg2);
 }
 
 function wasm_bindgen__convert__closures_____invoke__hb0d5c414153a37b2(arg0, arg1, arg2, arg3) {
@@ -355,10 +359,6 @@ function wasm_bindgen__convert__closures_____invoke__hb0d5c414153a37b2(arg0, arg
 
 function wasm_bindgen__convert__closures_____invoke__hef2084c45deb5475(arg0, arg1) {
     wasm.wasm_bindgen__convert__closures_____invoke__hef2084c45deb5475(arg0, arg1);
-}
-
-function wasm_bindgen__convert__closures_____invoke__h14ce167de30e8d75(arg0, arg1, arg2) {
-    wasm.wasm_bindgen__convert__closures_____invoke__h14ce167de30e8d75(arg0, arg1, arg2);
 }
 
 const __wbindgen_enum_ResizeObserverBoxOptions = ["border-box", "content-box", "device-pixel-content-box"];

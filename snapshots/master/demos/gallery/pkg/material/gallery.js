@@ -303,12 +303,12 @@ function wasm_bindgen__convert__closures_____invoke__h071c2d57cb5aac9c(arg0, arg
     wasm.wasm_bindgen__convert__closures_____invoke__h071c2d57cb5aac9c(arg0, arg1, arg2);
 }
 
-function wasm_bindgen__convert__closures_____invoke__h3796a7a841296679(arg0, arg1) {
-    wasm.wasm_bindgen__convert__closures_____invoke__h3796a7a841296679(arg0, arg1);
-}
-
 function wasm_bindgen__convert__closures_____invoke__h17511755da474b80(arg0, arg1, arg2, arg3) {
     wasm.wasm_bindgen__convert__closures_____invoke__h17511755da474b80(arg0, arg1, arg2, arg3);
+}
+
+function wasm_bindgen__convert__closures_____invoke__h3796a7a841296679(arg0, arg1) {
+    wasm.wasm_bindgen__convert__closures_____invoke__h3796a7a841296679(arg0, arg1);
 }
 
 const __wbindgen_enum_ResizeObserverBoxOptions = ["border-box", "content-box", "device-pixel-content-box"];
