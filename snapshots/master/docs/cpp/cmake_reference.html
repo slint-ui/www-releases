@@ -496,6 +496,12 @@ to point to a directory containing translations. The translations must be in the
 Use the <code class="docutils literal notranslate"><span class="pre">SLINT_TRANSLATION_DOMAIN</span></code> target property to override this and use the specified value as domain, instead.
 This is useful in build environments where the target name is given and not suitable, such as esp-idf.</p>
 </section>
+<section id="disable-default-translation-context">
+<h2>Disable Default Translation Context<a class="headerlink" href="#disable-default-translation-context" title="Permalink to this heading">¶</a></h2>
+<p>Unless explicitly specified with the <code class="docutils literal notranslate"><span class="pre">&#64;tr(&quot;context&quot;</span> <span class="pre">=&gt;</span> <span class="pre">...)</span></code>, the default translation context is the component name.
+Set the <code class="docutils literal notranslate"><span class="pre">SLINT_NO_DEFAULT_TRANSLATION_CONTEXT</span></code> target property to disable the default translation context.
+When doing that, the <code class="docutils literal notranslate"><span class="pre">--no-default-translation-context</span></code> flag must be passed to <code class="docutils literal notranslate"><span class="pre">slint-tr-extractor</span></code>.</p>
+</section>
 </section>
 
         </article>
@@ -559,6 +565,7 @@ This is useful in build environments where the target name is given and not suit
 <li><a class="reference internal" href="#scale-factor-for-microcontrollers">Scale Factor for Microcontrollers</a></li>
 <li><a class="reference internal" href="#bundle-translations">Bundle Translations</a></li>
 <li><a class="reference internal" href="#translation-domain">Translation Domain</a></li>
+<li><a class="reference internal" href="#disable-default-translation-context">Disable Default Translation Context</a></li>
 </ul>
 </li>
 </ul>

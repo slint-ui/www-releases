@@ -84,16 +84,16 @@
                                 <a class="function" href="#Image.load_from_array">load_from_array</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Image.height">height</a>
-                        </li>
-                        <li>
-                                <a class="variable" href="#Image.size">size</a>
+                                <a class="variable" href="#Image.width">width</a>
                         </li>
                         <li>
                                 <a class="variable" href="#Image.path">path</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Image.width">width</a>
+                                <a class="variable" href="#Image.height">height</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Image.size">size</a>
                         </li>
                 </ul>
 
@@ -117,7 +117,7 @@
                                 <a class="function" href="#Color.with_alpha">with_alpha</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Color.red">red</a>
+                                <a class="variable" href="#Color.blue">blue</a>
                         </li>
                         <li>
                                 <a class="variable" href="#Color.green">green</a>
@@ -126,7 +126,7 @@
                                 <a class="variable" href="#Color.alpha">alpha</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Color.blue">blue</a>
+                                <a class="variable" href="#Color.red">red</a>
                         </li>
                 </ul>
 
@@ -1758,6 +1758,32 @@ reflected in a previously created Image.</p>
 
 
                             </div>
+                            <div id="Image.width" class="classattr">
+                                <div class="attr variable">
+            <span class="name">width</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Image.width"></a>
+    
+            <div class="docstring"><p>The width of the image in pixels.</p>
+</div>
+
+
+                            </div>
+                            <div id="Image.path" class="classattr">
+                                <div class="attr variable">
+            <span class="name">path</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Image.path"></a>
+    
+            <div class="docstring"><p>The path of the image if it was loaded from disk, or None.</p>
+</div>
+
+
+                            </div>
                             <div id="Image.height" class="classattr">
                                 <div class="attr variable">
             <span class="name">height</span>
@@ -1780,32 +1806,6 @@ reflected in a previously created Image.</p>
     <a class="headerlink" href="#Image.size"></a>
     
             <div class="docstring"><p>The size of the image as tuple of <code><a href="#Image.width">width</a></code> and <code><a href="#Image.height">height</a></code>.</p>
-</div>
-
-
-                            </div>
-                            <div id="Image.path" class="classattr">
-                                <div class="attr variable">
-            <span class="name">path</span>
-
-        
-    </div>
-    <a class="headerlink" href="#Image.path"></a>
-    
-            <div class="docstring"><p>The path of the image if it was loaded from disk, or None.</p>
-</div>
-
-
-                            </div>
-                            <div id="Image.width" class="classattr">
-                                <div class="attr variable">
-            <span class="name">width</span>
-
-        
-    </div>
-    <a class="headerlink" href="#Image.width"></a>
-    
-            <div class="docstring"><p>The width of the image in pixels.</p>
 </div>
 
 
@@ -1907,15 +1907,15 @@ is applied to <code>other</code>.</p>
 
 
                             </div>
-                            <div id="Color.red" class="classattr">
+                            <div id="Color.blue" class="classattr">
                                 <div class="attr variable">
-            <span class="name">red</span>
+            <span class="name">blue</span>
 
         
     </div>
-    <a class="headerlink" href="#Color.red"></a>
+    <a class="headerlink" href="#Color.blue"></a>
     
-            <div class="docstring"><p>The red channel.</p>
+            <div class="docstring"><p>The blue channel.</p>
 </div>
 
 
@@ -1946,15 +1946,15 @@ is applied to <code>other</code>.</p>
 
 
                             </div>
-                            <div id="Color.blue" class="classattr">
+                            <div id="Color.red" class="classattr">
                                 <div class="attr variable">
-            <span class="name">blue</span>
+            <span class="name">red</span>
 
         
     </div>
-    <a class="headerlink" href="#Color.blue"></a>
+    <a class="headerlink" href="#Color.red"></a>
     
-            <div class="docstring"><p>The blue channel.</p>
+            <div class="docstring"><p>The red channel.</p>
 </div>
 
 
@@ -2302,8 +2302,8 @@ Re-implement this method in a sub-class to provide the data.</p>
 </span><span id="ListModel-88"><a href="#ListModel-88"><span class="linenos"> 88</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">row_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="n">T</span><span class="p">]:</span>
 </span><span id="ListModel-89"><a href="#ListModel-89"><span class="linenos"> 89</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="p">[</span><span class="n">row</span><span class="p">]</span>
 </span><span id="ListModel-90"><a href="#ListModel-90"><span class="linenos"> 90</span></a>
-</span><span id="ListModel-91"><a href="#ListModel-91"><span class="linenos"> 91</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">set_row_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="ListModel-92"><a href="#ListModel-92"><span class="linenos"> 92</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="p">[</span><span class="n">row</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span>
+</span><span id="ListModel-91"><a href="#ListModel-91"><span class="linenos"> 91</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">set_row_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="ListModel-92"><a href="#ListModel-92"><span class="linenos"> 92</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="p">[</span><span class="n">row</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
 </span><span id="ListModel-93"><a href="#ListModel-93"><span class="linenos"> 93</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">notify_row_changed</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
 </span><span id="ListModel-94"><a href="#ListModel-94"><span class="linenos"> 94</span></a>
 </span><span id="ListModel-95"><a href="#ListModel-95"><span class="linenos"> 95</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__delitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">slice</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -2409,14 +2409,14 @@ Re-implement this method in a sub-class to provide the data.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">set_row_data</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">row</span><span class="p">:</span> <span class="nb">int</span>, </span><span class="param"><span class="n">data</span><span class="p">:</span> <span class="n">T</span></span><span class="return-annotation">) -> <span class="kc">None</span>:</span></span>
+        <span class="name">set_row_data</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">row</span><span class="p">:</span> <span class="nb">int</span>, </span><span class="param"><span class="n">value</span><span class="p">:</span> <span class="n">T</span></span><span class="return-annotation">) -> <span class="kc">None</span>:</span></span>
 
                 <label class="view-source-button" for="ListModel.set_row_data-view-source"><span>View Source</span></label>
 
     </div>
     <a class="headerlink" href="#ListModel.set_row_data"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="ListModel.set_row_data-91"><a href="#ListModel.set_row_data-91"><span class="linenos">91</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">set_row_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="ListModel.set_row_data-92"><a href="#ListModel.set_row_data-92"><span class="linenos">92</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="p">[</span><span class="n">row</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="ListModel.set_row_data-91"><a href="#ListModel.set_row_data-91"><span class="linenos">91</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">set_row_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="ListModel.set_row_data-92"><a href="#ListModel.set_row_data-92"><span class="linenos">92</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="p">[</span><span class="n">row</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
 </span><span id="ListModel.set_row_data-93"><a href="#ListModel.set_row_data-93"><span class="linenos">93</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">notify_row_changed</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
 </span></pre></div>
 

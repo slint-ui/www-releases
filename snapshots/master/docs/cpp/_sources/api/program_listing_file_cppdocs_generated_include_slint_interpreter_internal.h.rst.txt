@@ -288,7 +288,8 @@ Program Listing for File slint_interpreter_internal.h
                                                              const SharedVector<SharedString> *include_paths,
                                                              const SharedVector<SharedString> *library_paths,
                                                              Slice<uint8_t> style,
-                                                             Slice<uint8_t> translation_domain);
+                                                             Slice<uint8_t> translation_domain,
+                                                             bool no_default_translation_context);
    
    void slint_live_preview_clone(const LiveReloadingComponentInner *component);
    
