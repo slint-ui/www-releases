@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `api/rs/slint/lib.rs`."><title>lib.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-ca0dd0c4.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint" data-themes="" data-resource-suffix="" data-rustdoc-version="1.93.0-nightly (1be6b13be 2025-11-26)" data-channel="nightly" data-search-js="search-680b2199.js" data-stringdex-js="stringdex-a3946164.js" data-settings-js="settings-c38705f0.js" ><script src="../../static.files/storage-e2aeef58.js"></script><script defer src="../../static.files/src-script-813739b1.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-a410ff4d.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-263c88ec.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `api/rs/slint/lib.rs`."><title>lib.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-ca0dd0c4.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint" data-themes="" data-resource-suffix="" data-rustdoc-version="1.93.0-nightly (c86564c41 2025-11-27)" data-channel="nightly" data-search-js="search-b9c1cd9b.js" data-stringdex-js="stringdex-a3946164.js" data-settings-js="settings-c38705f0.js" ><script src="../../static.files/storage-e2aeef58.js"></script><script defer src="../../static.files/src-script-813739b1.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-a410ff4d.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-263c88ec.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -338,13 +338,13 @@
 <a href=#216 id=216 data-nosnippet>216</a></span><span class="kw">pub use </span>i_slint_core::component_factory::ComponentFactory;
 <a href=#217 id=217 data-nosnippet>217</a><span class="attr">#[cfg(not(target_arch = <span class="string">"wasm32"</span>))]
 <a href=#218 id=218 data-nosnippet>218</a></span><span class="kw">pub use </span>i_slint_core::graphics::{<a href="../../slint/struct.BorrowedOpenGLTextureBuilder.html">BorrowedOpenGLTextureBuilder</a>, <a href="../../slint/enum.BorrowedOpenGLTextureOrigin.html">BorrowedOpenGLTextureOrigin</a>};
-<a href=#219 id=219 data-nosnippet>219</a><span class="kw">pub use </span>i_slint_core::translations::{<a href="../../slint/fn.select_bundled_translation.html">select_bundled_translation</a>, <a href="../../slint/enum.SelectBundledTranslationError.html">SelectBundledTranslationError</a>};
+<a href=#219 id=219 data-nosnippet>219</a><span class="kw">pub use </span>i_slint_core::translations::{<a href="../../slint/enum.SelectBundledTranslationError.html">SelectBundledTranslationError</a>, <a href="../../slint/fn.select_bundled_translation.html">select_bundled_translation</a>};
 <a href=#220 id=220 data-nosnippet>220</a>
 <a href=#221 id=221 data-nosnippet>221</a><span class="comment">// keep in sync with internal/interpreter/api.rs
 <a href=#222 id=222 data-nosnippet>222</a></span><span class="kw">pub use </span>i_slint_backend_selector::api::<span class="kw-2">*</span>;
 <a href=#223 id=223 data-nosnippet>223</a><span class="attr">#[cfg(feature = <span class="string">"std"</span>)]
 <a href=#224 id=224 data-nosnippet>224</a></span><span class="kw">pub use </span>i_slint_common::sharedfontique::{
-<a href=#225 id=225 data-nosnippet>225</a>    <a href="../../slint/fn.register_font_from_memory.html">register_font_from_memory</a>, <a href="../../slint/struct.FontHandle.html">FontHandle</a>, <a href="../../slint/enum.RegisterFontError.html">RegisterFontError</a>,
+<a href=#225 id=225 data-nosnippet>225</a>    <a href="../../slint/struct.FontHandle.html">FontHandle</a>, <a href="../../slint/enum.RegisterFontError.html">RegisterFontError</a>, <a href="../../slint/fn.register_font_from_memory.html">register_font_from_memory</a>,
 <a href=#226 id=226 data-nosnippet>226</a>};
 <a href=#227 id=227 data-nosnippet>227</a><span class="kw">pub use </span>i_slint_core::api::<span class="kw-2">*</span>;
 <a href=#228 id=228 data-nosnippet>228</a><span class="kw">pub use </span>i_slint_core::graphics::{
@@ -389,7 +389,7 @@
 <a href=#267 id=267 data-nosnippet>267</a>    })
 <a href=#268 id=268 data-nosnippet>268</a>}
 <a href=#269 id=269 data-nosnippet>269</a>
-<a href=#270 id=270 data-nosnippet>270</a><span class="doccomment">/// Spawns a [`Future`](core::future::Future) to execute in the Slint event loop.
+<a href=#270 id=270 data-nosnippet>270</a><span class="doccomment">/// Spawns a [`Future`] to execute in the Slint event loop.
 <a href=#271 id=271 data-nosnippet>271</a>///
 <a href=#272 id=272 data-nosnippet>272</a>/// This function is intended to be invoked only from the main Slint thread that runs the event loop.
 <a href=#273 id=273 data-nosnippet>273</a>///
@@ -544,8 +544,8 @@
 <a href=#422 id=422 data-nosnippet>422</a>    /// It is only enabled when the `renderer-femtovg` Slint feature is enabled.
 <a href=#423 id=423 data-nosnippet>423</a>    </span><span class="attr">#[cfg(all(feature = <span class="string">"renderer-femtovg"</span>, not(target_os = <span class="string">"android"</span>)))]
 <a href=#424 id=424 data-nosnippet>424</a>    </span><span class="kw">pub mod </span><a href="../../slint/platform/femtovg_renderer/index.html">femtovg_renderer</a> {
-<a href=#425 id=425 data-nosnippet>425</a>        <span class="kw">pub use </span><a href="../../slint/platform/femtovg_renderer/trait.OpenGLInterface.html">i_slint_renderer_femtovg::opengl::OpenGLInterface</a>;
-<a href=#426 id=426 data-nosnippet>426</a>        <span class="kw">pub use </span><a href="../../slint/platform/femtovg_renderer/type.FemtoVGRenderer.html">i_slint_renderer_femtovg::FemtoVGOpenGLRenderer</a> <span class="kw">as </span>FemtoVGRenderer;
+<a href=#425 id=425 data-nosnippet>425</a>        <span class="kw">pub use </span><a href="../../slint/platform/femtovg_renderer/type.FemtoVGRenderer.html">i_slint_renderer_femtovg::FemtoVGOpenGLRenderer</a> <span class="kw">as </span>FemtoVGRenderer;
+<a href=#426 id=426 data-nosnippet>426</a>        <span class="kw">pub use </span><a href="../../slint/platform/femtovg_renderer/trait.OpenGLInterface.html">i_slint_renderer_femtovg::opengl::OpenGLInterface</a>;
 <a href=#427 id=427 data-nosnippet>427</a>    }
 <a href=#428 id=428 data-nosnippet>428</a>}
 <a href=#429 id=429 data-nosnippet>429</a>
@@ -832,8 +832,8 @@
 <a href=#710 id=710 data-nosnippet>710</a>    //! and [`BackendSelector::with_winit_window_attributes_hook()`](crate::BackendSelector::with_winit_window_attributes_hook()).
 <a href=#711 id=711 data-nosnippet>711</a>
 <a href=#712 id=712 data-nosnippet>712</a>    </span><span class="kw">pub use </span>i_slint_backend_winit::{
-<a href=#713 id=713 data-nosnippet>713</a>        <a href="https://docs.rs/winit/0.30/winit/index.html">winit</a>, <a href="../../slint/winit_030/trait.CustomApplicationHandler.html">CustomApplicationHandler</a>, <a href="../../slint/winit_030/type.EventLoopBuilder.html">EventLoopBuilder</a>, <a href="../../slint/winit_030/enum.EventResult.html">EventResult</a>, <a href="../../slint/winit_030/struct.SlintEvent.html">SlintEvent</a>,
-<a href=#714 id=714 data-nosnippet>714</a>        <a href="../../slint/winit_030/trait.WinitWindowAccessor.html">WinitWindowAccessor</a>,
+<a href=#713 id=713 data-nosnippet>713</a>        <a href="../../slint/winit_030/trait.CustomApplicationHandler.html">CustomApplicationHandler</a>, <a href="../../slint/winit_030/type.EventLoopBuilder.html">EventLoopBuilder</a>, <a href="../../slint/winit_030/enum.EventResult.html">EventResult</a>, <a href="../../slint/winit_030/struct.SlintEvent.html">SlintEvent</a>, <a href="../../slint/winit_030/trait.WinitWindowAccessor.html">WinitWindowAccessor</a>,
+<a href=#714 id=714 data-nosnippet>714</a>        <a href="https://docs.rs/winit/0.30/winit/index.html">winit</a>,
 <a href=#715 id=715 data-nosnippet>715</a>    };
 <a href=#716 id=716 data-nosnippet>716</a>
 <a href=#717 id=717 data-nosnippet>717</a>    <span class="attr">#[deprecated(note = <span class="string">"Renamed to `EventResult`"</span>)]

@@ -1,25 +1,9 @@
 /* tslint:disable */
 /* eslint-disable */
-/**
- * Compile the content of a string.
- *
- * Returns a promise to a compiled component which can be run with ".run()"
- */
-export function compile_from_string(source: string, base_url: string, optional_import_callback?: ImportCallbackFunction | null): Promise<CompilationResult>;
-/**
- * Same as [`compile_from_string`], but also takes a style parameter
- */
-export function compile_from_string_with_style(source: string, base_url: string, style: string, optional_import_callback?: ImportCallbackFunction | null): Promise<CompilationResult>;
-/**
- * Register DOM event handlers on all instance and set up the event loop for that.
- * You can call this function only once. It will throw an exception but that is safe
- * to ignore.
- */
-export function run_event_loop(): void;
-export function init(): void;
 
 type ImportCallbackFunction = (url: string) => Promise<string>;
 type CurrentElementInformationCallbackFunction = (url: string, start_line: number, start_column: number, end_line: number, end_column: number) => void;
+
 
 
 export class CompilationResult {
@@ -30,6 +14,7 @@ export class CompilationResult {
   readonly error_string: string;
   readonly component: WrappedCompiledComp | undefined;
 }
+
 export class WrappedCompiledComp {
   private constructor();
   free(): void;
@@ -59,6 +44,7 @@ export class WrappedCompiledComp {
    */
   create(canvas_id: string): Promise<WrappedInstance>;
 }
+
 export class WrappedInstance {
   private constructor();
   free(): void;
@@ -76,6 +62,27 @@ export class WrappedInstance {
    */
   show(): Promise<any>;
 }
+
+/**
+ * Compile the content of a string.
+ *
+ * Returns a promise to a compiled component which can be run with ".run()"
+ */
+export function compile_from_string(source: string, base_url: string, optional_import_callback?: ImportCallbackFunction | null): Promise<CompilationResult>;
+
+/**
+ * Same as [`compile_from_string`], but also takes a style parameter
+ */
+export function compile_from_string_with_style(source: string, base_url: string, style: string, optional_import_callback?: ImportCallbackFunction | null): Promise<CompilationResult>;
+
+export function init(): void;
+
+/**
+ * Register DOM event handlers on all instance and set up the event loop for that.
+ * You can call this function only once. It will throw an exception but that is safe
+ * to ignore.
+ */
+export function run_event_loop(): void;
 
 export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembly.Module;
 
@@ -101,12 +108,12 @@ export interface InitOutput {
   readonly wrappedcompiledcomp_run: (a: number, b: number, c: number) => void;
   readonly wrappedinstance_hide: (a: number) => [number, number, number];
   readonly wrappedinstance_show: (a: number) => [number, number, number];
-  readonly wasm_bindgen__convert__closures_____invoke__h0b486eb067e61f24: (a: number, b: number, c: any) => void;
-  readonly wasm_bindgen__closure__destroy__h04286291e2397413: (a: number, b: number) => void;
-  readonly wasm_bindgen__convert__closures_____invoke__h00320eb1c02731a9: (a: number, b: number, c: any) => void;
-  readonly wasm_bindgen__convert__closures_____invoke__h82b1f1a5d5777581: (a: number, b: number) => void;
-  readonly wasm_bindgen__closure__destroy__h1133fb3a4ce52e38: (a: number, b: number) => void;
-  readonly wasm_bindgen__convert__closures_____invoke__h1303a8e928205af4: (a: number, b: number, c: any, d: any) => void;
+  readonly wasm_bindgen__convert__closures_____invoke__h2fdad6000d9bdb5e: (a: number, b: number) => void;
+  readonly wasm_bindgen__closure__destroy__h121fa3533cdd742b: (a: number, b: number) => void;
+  readonly wasm_bindgen__convert__closures_____invoke__h4d059e07a56858e4: (a: number, b: number, c: any) => void;
+  readonly wasm_bindgen__convert__closures_____invoke__h07d1ebdbee824f1b: (a: number, b: number, c: any) => void;
+  readonly wasm_bindgen__convert__closures_____invoke__h15ef6086b1cdeecc: (a: number, b: number, c: any, d: any) => void;
+  readonly wasm_bindgen__closure__destroy__h8143ea7e10719d58: (a: number, b: number) => void;
   readonly __wbindgen_malloc: (a: number, b: number) => number;
   readonly __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;
   readonly __externref_table_alloc: () => number;
@@ -118,6 +125,7 @@ export interface InitOutput {
 }
 
 export type SyncInitInput = BufferSource | WebAssembly.Module;
+
 /**
 * Instantiates the given `module`, which can either be bytes or
 * a precompiled `WebAssembly.Module`.

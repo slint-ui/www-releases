@@ -1,5 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
+
 export function main(): void;
 
 export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembly.Module;
@@ -13,11 +14,11 @@ export interface InitOutput {
   readonly slint_send_keyboard_char: (a: number, b: number, c: number) => void;
   readonly slint_send_mouse_click: (a: number, b: number, c: number) => void;
   readonly main: () => void;
-  readonly wasm_bindgen__convert__closures_____invoke__h0886fba214e761a7: (a: number, b: number, c: any) => void;
-  readonly wasm_bindgen__closure__destroy__h0abb242833b95e1a: (a: number, b: number) => void;
-  readonly wasm_bindgen__convert__closures_____invoke__h008b765deba6161b: (a: number, b: number, c: any) => void;
-  readonly wasm_bindgen__convert__closures_____invoke__h6a9f00b01c3b47b0: (a: number, b: number) => void;
-  readonly wasm_bindgen__convert__closures_____invoke__h263fd82f0c7d531c: (a: number, b: number, c: any, d: any) => void;
+  readonly wasm_bindgen__convert__closures_____invoke__hb0bf0305dc2620ff: (a: number, b: number, c: any) => void;
+  readonly wasm_bindgen__closure__destroy__h0229b22a4bcb289b: (a: number, b: number) => void;
+  readonly wasm_bindgen__convert__closures_____invoke__h435017e0a57170d9: (a: number, b: number, c: any) => void;
+  readonly wasm_bindgen__convert__closures_____invoke__h21ba90e87070a478: (a: number, b: number) => void;
+  readonly wasm_bindgen__convert__closures_____invoke__h0a005c7c47da16ea: (a: number, b: number, c: any, d: any) => void;
   readonly __wbindgen_malloc: (a: number, b: number) => number;
   readonly __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;
   readonly __externref_table_alloc: () => number;
@@ -27,6 +28,7 @@ export interface InitOutput {
 }
 
 export type SyncInitInput = BufferSource | WebAssembly.Module;
+
 /**
 * Instantiates the given `module`, which can either be bytes or
 * a precompiled `WebAssembly.Module`.

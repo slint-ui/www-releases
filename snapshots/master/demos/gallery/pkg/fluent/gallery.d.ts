@@ -1,7 +1,9 @@
 /* tslint:disable */
 /* eslint-disable */
-export function main(): void;
+
 export function load_font_from_bytes(font_data: Uint8Array): void;
+
+export function main(): void;
 
 export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembly.Module;
 
@@ -15,11 +17,11 @@ export interface InitOutput {
   readonly slint_mock_elapsed_time: (a: bigint) => void;
   readonly slint_send_keyboard_char: (a: number, b: number, c: number) => void;
   readonly slint_send_mouse_click: (a: number, b: number, c: number) => void;
-  readonly wasm_bindgen__convert__closures_____invoke__h14d22c0c41acd60f: (a: number, b: number, c: any) => void;
-  readonly wasm_bindgen__closure__destroy__h01efb9511e5c7d25: (a: number, b: number) => void;
-  readonly wasm_bindgen__convert__closures_____invoke__h14b55cac57baab04: (a: number, b: number, c: any) => void;
-  readonly wasm_bindgen__convert__closures_____invoke__h890377fd39e28adc: (a: number, b: number) => void;
-  readonly wasm_bindgen__convert__closures_____invoke__h263fd82f0c7d531c: (a: number, b: number, c: any, d: any) => void;
+  readonly wasm_bindgen__convert__closures_____invoke__h0567e6291dba7743: (a: number, b: number, c: any) => void;
+  readonly wasm_bindgen__closure__destroy__h14cab4d16ed43965: (a: number, b: number) => void;
+  readonly wasm_bindgen__convert__closures_____invoke__h74c5333ece82a0ed: (a: number, b: number, c: any, d: any) => void;
+  readonly wasm_bindgen__convert__closures_____invoke__h21b0ce65fbc06349: (a: number, b: number, c: any) => void;
+  readonly wasm_bindgen__convert__closures_____invoke__h87edfd8adab32bed: (a: number, b: number) => void;
   readonly __wbindgen_malloc: (a: number, b: number) => number;
   readonly __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;
   readonly __externref_table_alloc: () => number;
@@ -30,6 +32,7 @@ export interface InitOutput {
 }
 
 export type SyncInitInput = BufferSource | WebAssembly.Module;
+
 /**
 * Instantiates the given `module`, which can either be bytes or
 * a precompiled `WebAssembly.Module`.

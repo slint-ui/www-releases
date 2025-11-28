@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `api/rs/slint/private_unstable_api.rs`."><title>private_unstable_api.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-ca0dd0c4.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint" data-themes="" data-resource-suffix="" data-rustdoc-version="1.93.0-nightly (1be6b13be 2025-11-26)" data-channel="nightly" data-search-js="search-680b2199.js" data-stringdex-js="stringdex-a3946164.js" data-settings-js="settings-c38705f0.js" ><script src="../../static.files/storage-e2aeef58.js"></script><script defer src="../../static.files/src-script-813739b1.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-a410ff4d.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-263c88ec.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `api/rs/slint/private_unstable_api.rs`."><title>private_unstable_api.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-ca0dd0c4.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint" data-themes="" data-resource-suffix="" data-rustdoc-version="1.93.0-nightly (c86564c41 2025-11-27)" data-channel="nightly" data-search-js="search-b9c1cd9b.js" data-stringdex-js="stringdex-a3946164.js" data-settings-js="settings-c38705f0.js" ><script src="../../static.files/storage-e2aeef58.js"></script><script defer src="../../static.files/src-script-813739b1.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-a410ff4d.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-263c88ec.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -264,8 +264,8 @@
 <a href=#142 id=142 data-nosnippet>142</a>}
 <a href=#143 id=143 data-nosnippet>143</a>
 <a href=#144 id=144 data-nosnippet>144</a><span class="doccomment">/// Creates a new window to render components in.
-<a href=#145 id=145 data-nosnippet>145</a></span><span class="kw">pub fn </span>create_window_adapter(
-<a href=#146 id=146 data-nosnippet>146</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;alloc::rc::<a href="https://doc.rust-lang.org/nightly/alloc/rc/struct.Rc.html">Rc</a>&lt;<span class="kw">dyn </span><a href="../../slint/platform/trait.WindowAdapter.html">i_slint_core::window::WindowAdapter</a>&gt;, <span class="kw">crate</span>::<a href="../../slint/enum.PlatformError.html">PlatformError</a>&gt; {
+<a href=#145 id=145 data-nosnippet>145</a></span><span class="kw">pub fn </span>create_window_adapter()
+<a href=#146 id=146 data-nosnippet>146</a>-&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;alloc::rc::<a href="https://doc.rust-lang.org/nightly/alloc/rc/struct.Rc.html">Rc</a>&lt;<span class="kw">dyn </span><a href="../../slint/platform/trait.WindowAdapter.html">i_slint_core::window::WindowAdapter</a>&gt;, <span class="kw">crate</span>::<a href="../../slint/enum.PlatformError.html">PlatformError</a>&gt; {
 <a href=#147 id=147 data-nosnippet>147</a>    i_slint_backend_selector::with_platform(|b| <a href="#147">b</a>.<a href="../../slint/platform/trait.Platform.html">create_window_adapter</a>())
 <a href=#148 id=148 data-nosnippet>148</a>}
 <a href=#149 id=149 data-nosnippet>149</a>
@@ -308,33 +308,33 @@
 <a href=#186 id=186 data-nosnippet>186</a>    <span class="kw">pub use </span>i_slint_core::accessibility::{
 <a href=#187 id=187 data-nosnippet>187</a>        AccessibilityAction, AccessibleStringProperty, SupportedAccessibilityAction,
 <a href=#188 id=188 data-nosnippet>188</a>    };
-<a href=#189 id=189 data-nosnippet>189</a>    <span class="kw">pub use </span>i_slint_core::animations::{animation_tick, EasingCurve};
+<a href=#189 id=189 data-nosnippet>189</a>    <span class="kw">pub use </span>i_slint_core::animations::{EasingCurve, animation_tick};
 <a href=#190 id=190 data-nosnippet>190</a>    <span class="kw">pub use </span><a href="../../slint/struct.LogicalPosition.html">i_slint_core::api::LogicalPosition</a>;
 <a href=#191 id=191 data-nosnippet>191</a>    <span class="kw">pub use </span>i_slint_core::callbacks::Callback;
 <a href=#192 id=192 data-nosnippet>192</a>    <span class="kw">pub use </span>i_slint_core::date_time::<span class="kw-2">*</span>;
 <a href=#193 id=193 data-nosnippet>193</a>    <span class="kw">pub use </span>i_slint_core::detect_operating_system;
 <a href=#194 id=194 data-nosnippet>194</a>    <span class="kw">pub use </span>i_slint_core::graphics::<span class="kw-2">*</span>;
 <a href=#195 id=195 data-nosnippet>195</a>    <span class="kw">pub use </span>i_slint_core::input::{
-<a href=#196 id=196 data-nosnippet>196</a>        <a href="../../slint/platform/enum.Key.html">key_codes::Key</a>, FocusEvent, FocusReason, InputEventResult, KeyEvent, KeyEventResult,
-<a href=#197 id=197 data-nosnippet>197</a>        KeyboardModifiers, MouseEvent,
+<a href=#196 id=196 data-nosnippet>196</a>        FocusEvent, FocusReason, InputEventResult, KeyEvent, KeyEventResult, KeyboardModifiers,
+<a href=#197 id=197 data-nosnippet>197</a>        MouseEvent, <a href="../../slint/platform/enum.Key.html">key_codes::Key</a>,
 <a href=#198 id=198 data-nosnippet>198</a>    };
 <a href=#199 id=199 data-nosnippet>199</a>    <span class="kw">pub use </span>i_slint_core::item_tree::{
-<a href=#200 id=200 data-nosnippet>200</a>        register_item_tree, unregister_item_tree, IndexRange, ItemTree, ItemTreeRefPin,
-<a href=#201 id=201 data-nosnippet>201</a>        ItemTreeVTable, ItemTreeWeak,
+<a href=#200 id=200 data-nosnippet>200</a>        IndexRange, ItemTree, ItemTreeRefPin, ItemTreeVTable, ItemTreeWeak, register_item_tree,
+<a href=#201 id=201 data-nosnippet>201</a>        unregister_item_tree,
 <a href=#202 id=202 data-nosnippet>202</a>    };
 <a href=#203 id=203 data-nosnippet>203</a>    <span class="kw">pub use </span>i_slint_core::item_tree::{
-<a href=#204 id=204 data-nosnippet>204</a>        visit_item_tree, ItemTreeNode, ItemVisitorRefMut, ItemVisitorVTable, ItemWeak,
-<a href=#205 id=205 data-nosnippet>205</a>        TraversalOrder, VisitChildrenResult,
+<a href=#204 id=204 data-nosnippet>204</a>        ItemTreeNode, ItemVisitorRefMut, ItemVisitorVTable, ItemWeak, TraversalOrder,
+<a href=#205 id=205 data-nosnippet>205</a>        VisitChildrenResult, visit_item_tree,
 <a href=#206 id=206 data-nosnippet>206</a>    };
 <a href=#207 id=207 data-nosnippet>207</a>    <span class="kw">pub use </span>i_slint_core::items::{Transform, <span class="kw-2">*</span>};
 <a href=#208 id=208 data-nosnippet>208</a>    <span class="kw">pub use </span>i_slint_core::layout::<span class="kw-2">*</span>;
 <a href=#209 id=209 data-nosnippet>209</a>    <span class="kw">pub use </span>i_slint_core::lengths::{
-<a href=#210 id=210 data-nosnippet>210</a>        logical_position_to_api, LogicalLength, LogicalPoint, LogicalRect,
+<a href=#210 id=210 data-nosnippet>210</a>        LogicalLength, LogicalPoint, LogicalRect, logical_position_to_api,
 <a href=#211 id=211 data-nosnippet>211</a>    };
 <a href=#212 id=212 data-nosnippet>212</a>    <span class="kw">pub use </span>i_slint_core::menus::{Menu, MenuFromItemTree, MenuVTable};
 <a href=#213 id=213 data-nosnippet>213</a>    <span class="kw">pub use </span>i_slint_core::model::<span class="kw-2">*</span>;
 <a href=#214 id=214 data-nosnippet>214</a>    <span class="kw">pub use </span>i_slint_core::properties::{
-<a href=#215 id=215 data-nosnippet>215</a>        set_state_binding, ChangeTracker, Property, PropertyTracker, StateInfo,
+<a href=#215 id=215 data-nosnippet>215</a>        ChangeTracker, Property, PropertyTracker, StateInfo, set_state_binding,
 <a href=#216 id=216 data-nosnippet>216</a>    };
 <a href=#217 id=217 data-nosnippet>217</a>    <span class="kw">pub use </span>i_slint_core::slice::Slice;
 <a href=#218 id=218 data-nosnippet>218</a>    <span class="kw">pub use </span>i_slint_core::string::shared_string_from_number;
