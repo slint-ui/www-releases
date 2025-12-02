@@ -64,6 +64,8 @@ Classes
 
 - :ref:`exhale_struct_structslint_1_1StandardListViewItem`
 
+- :ref:`exhale_struct_structslint_1_1StyledText`
+
 - :ref:`exhale_struct_structslint_1_1Timer`
 
 - :ref:`exhale_class_classslint_1_1Brush`

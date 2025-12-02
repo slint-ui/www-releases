@@ -254,6 +254,7 @@
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1SharedVector.html">Template Struct SharedVector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1Size.html">Template Struct Size</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1StandardListViewItem.html">Struct StandardListViewItem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="structslint_1_1StyledText.html">Struct StyledText</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1Timer.html">Struct Timer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="classslint_1_1Brush.html">Class Brush</a></li>
 <li class="toctree-l2"><a class="reference internal" href="classslint_1_1Color.html">Class Color</a></li>
@@ -657,6 +658,20 @@
 <span class="p">{</span>
 <span class="w">    </span><span class="n">SharedString</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">original</span><span class="p">;</span>
 <span class="w">    </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_translate</span><span class="p">(</span><span class="o">&amp;</span><span class="n">result</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">domain</span><span class="p">,</span><span class="w"> </span><span class="n">arguments</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">plural</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="n">SharedString</span><span class="w"> </span><span class="n">escape_markdown</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">SharedString</span><span class="w"> </span><span class="o">&amp;</span><span class="n">text</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">SharedString</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">text</span><span class="p">;</span>
+<span class="w">    </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_escape_markdown</span><span class="p">(</span><span class="o">&amp;</span><span class="n">result</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="n">StyledText</span><span class="w"> </span><span class="n">parse_markdown</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">SharedString</span><span class="w"> </span><span class="o">&amp;</span><span class="n">text</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">StyledText</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
+<span class="w">    </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_parse_markdown</span><span class="p">(</span><span class="o">&amp;</span><span class="n">text</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">result</span><span class="p">);</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
 <span class="p">}</span>
 

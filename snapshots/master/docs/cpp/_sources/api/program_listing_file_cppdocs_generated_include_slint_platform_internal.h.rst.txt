@@ -150,7 +150,11 @@ Program Listing for File slint_platform_internal.h
    
    OperatingSystemType slint_detect_operating_system();
    
-   void open_url(const SharedString *url);
+   void slint_open_url(const SharedString *url);
+   
+   const SharedString *slint_escape_markdown(SharedString *text);
+   
+   void slint_parse_markdown(const SharedString *text, StyledText *out);
    
    void slint_window_properties_get_title(const WindowProperties *wp, SharedString *out);
    

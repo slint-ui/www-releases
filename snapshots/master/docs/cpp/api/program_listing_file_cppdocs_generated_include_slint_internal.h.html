@@ -254,6 +254,7 @@
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1SharedVector.html">Template Struct SharedVector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1Size.html">Template Struct Size</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1StandardListViewItem.html">Struct StandardListViewItem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="structslint_1_1StyledText.html">Struct StyledText</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1Timer.html">Struct Timer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="classslint_1_1Brush.html">Class Brush</a></li>
 <li class="toctree-l2"><a class="reference internal" href="classslint_1_1Color.html">Class Color</a></li>
@@ -540,8 +541,6 @@
 <span class="k">struct</span><span class="w"> </span><span class="nc">Option</span><span class="p">;</span>
 
 <span class="k">struct</span><span class="w"> </span><span class="nc">PhysicalPx</span><span class="p">;</span>
-
-<span class="k">struct</span><span class="w"> </span><span class="nc">StringArg</span><span class="p">;</span>
 
 <span class="k">using</span><span class="w"> </span><span class="n">VisitChildrenResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">uint64_t</span><span class="p">;</span>
 <span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">VisitChildrenResult</span><span class="w"> </span><span class="n">VisitChildrenResult_CONTINUE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UINT64_MAX</span><span class="p">;</span>
@@ -1280,28 +1279,6 @@
 <span class="w">    </span><span class="n">CachedRenderingData</span><span class="w"> </span><span class="n">cached_rendering_data</span><span class="p">;</span>
 <span class="p">};</span>
 
-<span class="k">struct</span><span class="w"> </span><span class="nc">MarkdownText</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">width</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">height</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">SharedString</span><span class="o">&gt;</span><span class="w"> </span><span class="n">text</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">font_size</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="kt">int32_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">font_weight</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">Brush</span><span class="o">&gt;</span><span class="w"> </span><span class="n">color</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">TextHorizontalAlignment</span><span class="o">&gt;</span><span class="w"> </span><span class="n">horizontal_alignment</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">TextVerticalAlignment</span><span class="o">&gt;</span><span class="w"> </span><span class="n">vertical_alignment</span><span class="p">;</span>
-<span class="w">    </span><span class="n">private_api</span><span class="o">::</span><span class="n">CallbackHelper</span><span class="o">&lt;</span><span class="n">StringArg</span><span class="o">&gt;</span><span class="w"> </span><span class="n">link_clicked</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">SharedString</span><span class="o">&gt;</span><span class="w"> </span><span class="n">font_family</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="w"> </span><span class="n">font_italic</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">TextWrap</span><span class="o">&gt;</span><span class="w"> </span><span class="n">wrap</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">TextOverflow</span><span class="o">&gt;</span><span class="w"> </span><span class="n">overflow</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">letter_spacing</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">Brush</span><span class="o">&gt;</span><span class="w"> </span><span class="n">stroke</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">stroke_width</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">TextStrokeStyle</span><span class="o">&gt;</span><span class="w"> </span><span class="n">stroke_style</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">Color</span><span class="o">&gt;</span><span class="w"> </span><span class="n">link_color</span><span class="p">;</span>
-<span class="w">    </span><span class="n">CachedRenderingData</span><span class="w"> </span><span class="n">cached_rendering_data</span><span class="p">;</span>
-<span class="p">};</span>
-
 <span class="k">struct</span><span class="w"> </span><span class="nc">Path</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">PathData</span><span class="o">&gt;</span><span class="w"> </span><span class="n">elements</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">Brush</span><span class="o">&gt;</span><span class="w"> </span><span class="n">fill</span><span class="p">;</span>
@@ -1391,6 +1368,14 @@
 <span class="p">};</span>
 
 <span class="k">extern</span><span class="w"> </span><span class="s">&quot;C&quot;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">slint_styled_text_new</span><span class="p">(</span><span class="n">StyledText</span><span class="w"> </span><span class="o">*</span><span class="n">out</span><span class="p">);</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">slint_styled_text_drop</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">StyledText</span><span class="w"> </span><span class="o">*</span><span class="n">text</span><span class="p">);</span>
+
+<span class="kt">bool</span><span class="w"> </span><span class="nf">slint_styled_text_eq</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">StyledText</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">StyledText</span><span class="w"> </span><span class="o">*</span><span class="n">b</span><span class="p">);</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">slint_styled_text_clone</span><span class="p">(</span><span class="n">StyledText</span><span class="w"> </span><span class="o">*</span><span class="n">out</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">StyledText</span><span class="w"> </span><span class="o">*</span><span class="n">ss</span><span class="p">);</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">slint_callback_init</span><span class="p">(</span><span class="n">CallbackOpaque</span><span class="w"> </span><span class="o">*</span><span class="n">out</span><span class="p">);</span>
 
@@ -1839,7 +1824,6 @@
 <span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">Flickable</span><span class="p">);</span>
 <span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">SimpleText</span><span class="p">);</span>
 <span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">ComplexText</span><span class="p">);</span>
-<span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">MarkdownText</span><span class="p">);</span>
 <span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">Path</span><span class="p">);</span>
 <span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">WindowItem</span><span class="p">);</span>
 <span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">TextInput</span><span class="p">);</span>

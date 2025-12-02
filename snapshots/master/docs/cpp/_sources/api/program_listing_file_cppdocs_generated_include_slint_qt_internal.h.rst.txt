@@ -121,6 +121,7 @@ Program Listing for File slint_qt_internal.h
    
    struct NativeSpinBox {
        Property<bool> enabled;
+       Property<bool> read_only;
        Property<bool> has_focus;
        Property<int32_t> value;
        Property<int32_t> minimum;
@@ -278,6 +279,7 @@ Program Listing for File slint_qt_internal.h
        Property<LogicalLength> tabbar_preferred_width;
        Property<int32_t> current_index;
        Property<int32_t> current_focused;
+       Property<Orientation> orientation;
        Property<LogicalLength> content_x;
        Property<LogicalLength> content_y;
        Property<LogicalLength> content_height;
