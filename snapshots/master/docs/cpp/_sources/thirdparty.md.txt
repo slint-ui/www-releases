@@ -5,7 +5,7 @@ This page lists the licenses of the dependencies used by Slint.
 
 ## Overview of licenses
 
-- [MIT License](#MIT) (379)
+- [MIT License](#MIT) (378)
 - [Unicode License v3](#Unicode-3.0) (19)
 - [Apache License 2.0](#Apache-2.0) (17)
 - [BSD 3-Clause &quot;New&quot; or &quot;Revised&quot; License](#BSD-3-Clause) (6)
@@ -5076,7 +5076,6 @@ according to those terms.
 
 #### Used by:
 
-- [cgl 0.3.2]( https://github.com/servo/cgl-rs )
 - [core-graphics 0.23.2]( https://github.com/servo/core-foundation-rs )
 - [euclid 0.22.11]( https://github.com/servo/euclid )
 
@@ -6163,7 +6162,7 @@ SOFTWARE.
 
 #### Used by:
 
-- [unicode-script 0.5.7]( https://github.com/unicode-rs/unicode-script )
+- [unicode-script 0.5.8]( https://github.com/unicode-rs/unicode-script )
 
 #### License Text
 
@@ -6675,7 +6674,7 @@ THE SOFTWARE.
 #### Used by:
 
 - [gif 0.13.3]( https://github.com/image-rs/image-gif )
-- [gif 0.14.0]( https://github.com/image-rs/image-gif )
+- [gif 0.14.1]( https://github.com/image-rs/image-gif )
 
 #### License Text
 
