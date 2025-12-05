@@ -21,11 +21,11 @@ export const wrappedcompiledcomp_create_with_existing_window: (a: number, b: num
 export const wrappedcompiledcomp_run: (a: number, b: number, c: number) => void;
 export const wrappedinstance_hide: (a: number) => [number, number, number];
 export const wrappedinstance_show: (a: number) => [number, number, number];
-export const wasm_bindgen__convert__closures_____invoke__h1d5d8bd7322b4292: (a: number, b: number, c: any) => void;
+export const wasm_bindgen__convert__closures_____invoke__h2e5a3b8defc2b4e2: (a: number, b: number, c: any) => void;
 export const wasm_bindgen__closure__destroy__h062d46fdb63f87d9: (a: number, b: number) => void;
 export const wasm_bindgen__convert__closures_____invoke__h12d5919282a85602: (a: number, b: number) => void;
 export const wasm_bindgen__closure__destroy__h3118bbb6cd792daa: (a: number, b: number) => void;
-export const wasm_bindgen__convert__closures_____invoke__h2e5a3b8defc2b4e2: (a: number, b: number, c: any) => void;
+export const wasm_bindgen__convert__closures_____invoke__h1d5d8bd7322b4292: (a: number, b: number, c: any) => void;
 export const wasm_bindgen__convert__closures_____invoke__h15ef6086b1cdeecc: (a: number, b: number, c: any, d: any) => void;
 export const __wbindgen_malloc: (a: number, b: number) => number;
 export const __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;
