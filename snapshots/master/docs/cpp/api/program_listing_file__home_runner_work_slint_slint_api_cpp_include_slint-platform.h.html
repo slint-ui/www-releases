@@ -912,9 +912,11 @@ public:
     }
 
     template&lt;typename PixelType, typename Callback&gt;
+#    if !defined(__clang__) || __clang_major__ &gt;= 17
         requires requires(Callback callback) {
-            callback(size_t(0), size_t(0), size_t(0), [&amp;callback](std::span&lt;PixelType&gt;) { });
+            callback(size_t(0), size_t(0), size_t(0), [&amp;callback](std::span&lt;PixelType&gt;) {});
         }
+#    endif
     PhysicalRegion render_by_line(Callback process_line_callback) const
     {
         auto process_line_fn = [](void *process_line_callback_ptr, uintptr_t line,
@@ -1032,7 +1034,7 @@ public:
     }
 
 #    endif
-#    if (!defined(__APPLE__) &amp;&amp; (defined(_WIN32) || !defined(_WIN64))) || defined(DOXYGEN)
+#    if (!defined(__APPLE__) &amp;&amp; (defined(_WIN32) || defined(_WIN64))) || defined(DOXYGEN)
 
     static NativeWindowHandle from_win32(void *hwnd, void *hinstance)
     {
