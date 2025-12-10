@@ -28,6 +28,7 @@ Program Listing for File slint_platform_internal.h
        using slint::cbindgen_private::types::TexturePixelFormat;
        struct DrawTextureArgs;
        struct DrawRectangleArgs;
+       using types::PhysicalRegion;
    }
    
    
@@ -277,10 +278,6 @@ Program Listing for File slint_platform_internal.h
    void slint_skia_renderer_render(SkiaRendererOpaque r);
    
    RendererPtr slint_skia_renderer_handle(SkiaRendererOpaque r);
-   
-   extern void free(void *p);
-   
-   extern void *malloc(uintptr_t size);
    
    }  // extern "C"
    

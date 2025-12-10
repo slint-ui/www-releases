@@ -428,11 +428,13 @@
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;new&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;slint_enums_internal.h&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;slint_color.h&quot;</span>
-<span class="k">namespace</span><span class="w"> </span><span class="nn">slint</span><span class="o">::</span><span class="nn">cbindgen_private</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">ParsedSVG</span><span class="p">{};</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">HTMLImage</span><span class="p">{};</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">vtable</span><span class="p">;</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">types</span><span class="p">{</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">NineSliceImage</span><span class="p">{};</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">slint</span><span class="o">::</span><span class="nn">cbindgen_private</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">ParsedSVG</span><span class="p">{};</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">HTMLImage</span><span class="p">{};</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">PhysicalPx</span><span class="p">;</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">vtable</span><span class="p">;</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">types</span><span class="p">{</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">NineSliceImage</span><span class="p">{};</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
 
 <span class="k">namespace</span><span class="w"> </span><span class="nn">slint</span><span class="w"> </span><span class="p">{</span>
 <span class="k">namespace</span><span class="w"> </span><span class="nn">cbindgen_private</span><span class="w"> </span><span class="p">{</span>
 <span class="k">namespace</span><span class="w"> </span><span class="nn">types</span><span class="w"> </span><span class="p">{</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uintptr_t</span><span class="w"> </span><span class="n">PHYSICAL_REGION_MAX_SIZE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
 
 <span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">TexturePixelFormat</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">Rgb</span><span class="p">,</span>
@@ -1211,6 +1213,26 @@
 <span class="k">using</span><span class="w"> </span><span class="n">Image</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ImageInner</span><span class="p">;</span>
 
 <span class="k">using</span><span class="w"> </span><span class="n">Size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Size2D</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">U</span><span class="o">&gt;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">Box2D</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Point2D</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">min</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Point2D</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">max</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="k">operator</span><span class="o">==</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Box2D</span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">min</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="n">min</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">               </span><span class="n">max</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="n">max</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="k">operator</span><span class="o">!=</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Box2D</span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">min</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="n">min</span><span class="w"> </span><span class="o">||</span>
+<span class="w">               </span><span class="n">max</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="n">max</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">PhysicalRegion</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Box2D</span><span class="o">&lt;</span><span class="kt">int16_t</span><span class="p">,</span><span class="w"> </span><span class="n">PhysicalPx</span><span class="o">&gt;</span><span class="w"> </span><span class="n">rectangles</span><span class="p">[</span><span class="n">PHYSICAL_REGION_MAX_SIZE</span><span class="p">];</span>
+<span class="w">    </span><span class="kt">uintptr_t</span><span class="w"> </span><span class="n">count</span><span class="p">;</span>
+<span class="p">};</span>
 
 <span class="k">extern</span><span class="w"> </span><span class="s">&quot;C&quot;</span><span class="w"> </span><span class="p">{</span>
 

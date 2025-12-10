@@ -21,11 +21,13 @@ Program Listing for File slint_image_internal.h
    #include <new>
    #include "slint_enums_internal.h"
    #include "slint_color.h"
-   namespace slint::cbindgen_private { struct ParsedSVG{}; struct HTMLImage{}; using namespace vtable; namespace types{ struct NineSliceImage{}; } }
+   namespace slint::cbindgen_private { struct ParsedSVG{}; struct HTMLImage{}; struct PhysicalPx; using namespace vtable; namespace types{ struct NineSliceImage{}; } }
    
    namespace slint {
    namespace cbindgen_private {
    namespace types {
+   
+   constexpr static const uintptr_t PHYSICAL_REGION_MAX_SIZE = 3;
    
    enum class TexturePixelFormat : uint8_t {
        Rgb,
@@ -804,6 +806,26 @@ Program Listing for File slint_image_internal.h
    using Image = ImageInner;
    
    using Size = Size2D<float>;
+   
+   template<typename T, typename U>
+   struct Box2D {
+       Point2D<T> min;
+       Point2D<T> max;
+   
+       bool operator==(const Box2D& other) const {
+           return min == other.min &&
+                  max == other.max;
+       }
+       bool operator!=(const Box2D& other) const {
+           return min != other.min ||
+                  max != other.max;
+       }
+   };
+   
+   struct PhysicalRegion {
+       Box2D<int16_t, PhysicalPx> rectangles[PHYSICAL_REGION_MAX_SIZE];
+       uintptr_t count;
+   };
    
    extern "C" {
    

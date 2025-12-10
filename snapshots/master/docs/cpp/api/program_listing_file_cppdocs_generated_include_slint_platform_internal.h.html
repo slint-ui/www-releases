@@ -435,6 +435,7 @@
 <span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="n">slint</span><span class="o">::</span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">types</span><span class="o">::</span><span class="n">TexturePixelFormat</span><span class="p">;</span>
 <span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">DrawTextureArgs</span><span class="p">;</span>
 <span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">DrawRectangleArgs</span><span class="p">;</span>
+<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="n">types</span><span class="o">::</span><span class="n">PhysicalRegion</span><span class="p">;</span>
 <span class="p">}</span>
 
 
@@ -684,10 +685,6 @@
 <span class="kt">void</span><span class="w"> </span><span class="nf">slint_skia_renderer_render</span><span class="p">(</span><span class="n">SkiaRendererOpaque</span><span class="w"> </span><span class="n">r</span><span class="p">);</span>
 
 <span class="n">RendererPtr</span><span class="w"> </span><span class="nf">slint_skia_renderer_handle</span><span class="p">(</span><span class="n">SkiaRendererOpaque</span><span class="w"> </span><span class="n">r</span><span class="p">);</span>
-
-<span class="k">extern</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">free</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">);</span>
-
-<span class="k">extern</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="nf">malloc</span><span class="p">(</span><span class="kt">uintptr_t</span><span class="w"> </span><span class="n">size</span><span class="p">);</span>
 
 <span class="p">}</span><span class="w">  </span><span class="c1">// extern &quot;C&quot;</span>
 
