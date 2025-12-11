@@ -1,0 +1,14 @@
+.. _exhale_typedef_slint__window_8h_1a7f3344c2e6584dc06f9353fdf74bff8f:
+
+Typedef HINSTANCE
+=================
+
+- Defined in :ref:`file__home_runner_work_slint_slint_api_cpp_include_slint_window.h`
+
+
+Typedef Documentation
+---------------------
+
+
+.. doxygentypedef:: HINSTANCE
+   :project: Slint

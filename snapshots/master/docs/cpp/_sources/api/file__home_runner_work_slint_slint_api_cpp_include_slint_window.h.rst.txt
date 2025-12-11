@@ -53,3 +53,14 @@ Classes
 
 - :ref:`exhale_class_classslint_1_1Window`
 
+
+Typedefs
+--------
+
+
+- :ref:`exhale_typedef_slint__window_8h_1a7f3344c2e6584dc06f9353fdf74bff8f`
+
+- :ref:`exhale_typedef_slint__window_8h_1a9c0170498651e0a0608f2327c314a6e3`
+
+- :ref:`exhale_typedef_slint__window_8h_1a332610d117d0fb1a77cdaa07765155fb`
+

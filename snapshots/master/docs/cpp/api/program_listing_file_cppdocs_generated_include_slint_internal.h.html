@@ -372,6 +372,9 @@
 <li class="toctree-l2"><a class="reference internal" href="define_slint__generated__public_8h_1aba0d27c0c821a27a3726baa609646ea9.html">Define SLINT_VERSION_MINOR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="define_slint__generated__public_8h_1a498ec177f96b7bce248660a6dd795d8d.html">Define SLINT_VERSION_PATCH</a></li>
 <li class="toctree-l2"><a class="reference internal" href="define_slint__generated__public_8h_1a6b7f049a8c7176edc87c4cffddfc1bbd.html">Define SLINT_VERSION_STRING</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_slint__window_8h_1a7f3344c2e6584dc06f9353fdf74bff8f.html">Typedef HINSTANCE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_slint__window_8h_1a9c0170498651e0a0608f2327c314a6e3.html">Typedef HWND</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_slint__window_8h_1a332610d117d0fb1a77cdaa07765155fb.html">Typedef NSView</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../cmake_reference.html">CMake Reference</a></li>
@@ -879,7 +882,7 @@
 <span class="w">    </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">rowspan</span><span class="p">;</span>
 <span class="p">};</span>
 
-<span class="k">using</span><span class="w"> </span><span class="n">GridLayoutOrganizedData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SharedVector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="n">GridLayoutOrganizedData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SharedVector</span><span class="o">&lt;</span><span class="kt">uint16_t</span><span class="o">&gt;</span><span class="p">;</span>
 
 <span class="k">struct</span><span class="w"> </span><span class="nc">Padding</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">begin</span><span class="p">;</span>
@@ -1784,6 +1787,16 @@
 <span class="w">                                  </span><span class="n">SharedVector</span><span class="o">&lt;</span><span class="n">Rgba8Pixel</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">data</span><span class="p">,</span>
 <span class="w">                                  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="o">*</span><span class="n">width</span><span class="p">,</span>
 <span class="w">                                  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="o">*</span><span class="n">height</span><span class="p">);</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="nf">slint_windowrc_hwnd_win32</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">WindowAdapterRcOpaque</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">);</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="nf">slint_windowrc_hinstance_win32</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">WindowAdapterRcOpaque</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">);</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="nf">slint_windowrc_wlsurface_wayland</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">WindowAdapterRcOpaque</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">);</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="nf">slint_windowrc_wldisplay_wayland</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">WindowAdapterRcOpaque</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">);</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="nf">slint_windowrc_nsview_appkit</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">WindowAdapterRcOpaque</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">);</span>
 
 <span class="p">}</span><span class="w">  </span><span class="c1">// extern &quot;C&quot;</span>
 

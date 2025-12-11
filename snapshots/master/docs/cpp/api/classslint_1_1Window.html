@@ -372,6 +372,9 @@
 <li class="toctree-l2"><a class="reference internal" href="define_slint__generated__public_8h_1aba0d27c0c821a27a3726baa609646ea9.html">Define SLINT_VERSION_MINOR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="define_slint__generated__public_8h_1a498ec177f96b7bce248660a6dd795d8d.html">Define SLINT_VERSION_PATCH</a></li>
 <li class="toctree-l2"><a class="reference internal" href="define_slint__generated__public_8h_1a6b7f049a8c7176edc87c4cffddfc1bbd.html">Define SLINT_VERSION_STRING</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_slint__window_8h_1a7f3344c2e6584dc06f9353fdf74bff8f.html">Typedef HINSTANCE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_slint__window_8h_1a9c0170498651e0a0608f2327c314a6e3.html">Typedef HWND</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_slint__window_8h_1a332610d117d0fb1a77cdaa07765155fb.html">Typedef NSView</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../cmake_reference.html">CMake Reference</a></li>
@@ -673,6 +676,41 @@
 <span id="_CPPv3NK5slint6Window13take_snapshotEv"></span><span id="_CPPv2NK5slint6Window13take_snapshotEv"></span><span id="slint::Window::take_snapshotC"></span><span class="target" id="classslint_1_1Window_1ab37b453fc69ea8880e5a0526d6d1c058"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">optional</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="structslint_1_1SharedPixelBuffer.html#_CPPv4I0EN5slint17SharedPixelBufferE" title="slint::SharedPixelBuffer"><span class="n"><span class="pre">SharedPixelBuffer</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="structslint_1_1Rgba8Pixel.html#_CPPv4N5slint10Rgba8PixelE" title="slint::Rgba8Pixel"><span class="n"><span class="pre">Rgba8Pixel</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">take_snapshot</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5slint6Window13take_snapshotEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Takes a snapshot of the window contents and returns it as RGBA8 encoded pixel buffer.</p>
 <p>Note that this function may be slow to call as it may need to re-render the scene. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5slint6Window15wayland_surfaceEv">
+<span id="_CPPv3NK5slint6Window15wayland_surfaceEv"></span><span id="_CPPv2NK5slint6Window15wayland_surfaceEv"></span><span id="slint::Window::wayland_surfaceC"></span><span class="target" id="classslint_1_1Window_1ad5f48e2978f9e3f40068b985d8e9dd47"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">wl_surface</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">wayland_surface</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5slint6Window15wayland_surfaceEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns the wl_surface for this window.</p>
+<p>If the underlying window handle hasn’t been created yet or isn’t applicable for the platform, this will return nullptr. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5slint6Window15wayland_displayEv">
+<span id="_CPPv3NK5slint6Window15wayland_displayEv"></span><span id="_CPPv2NK5slint6Window15wayland_displayEv"></span><span id="slint::Window::wayland_displayC"></span><span class="target" id="classslint_1_1Window_1a7cd2494bba4ab6e4375feba9a531e79b"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">wl_display</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">wayland_display</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5slint6Window15wayland_displayEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns the wl_display for this window.</p>
+<p>If the underlying window handle hasn’t been created yet or isn’t applicable for the platform, this will return nullptr. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5slint6Window11appkit_viewEv">
+<span id="_CPPv3NK5slint6Window11appkit_viewEv"></span><span id="_CPPv2NK5slint6Window11appkit_viewEv"></span><span id="slint::Window::appkit_viewC"></span><span class="target" id="classslint_1_1Window_1a2fa4a7418149dda977bc5098d8c6a8c0"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><a class="reference internal" href="typedef_slint__window_8h_1a332610d117d0fb1a77cdaa07765155fb.html#_CPPv46NSView" title="NSView"><span class="n"><span class="pre">NSView</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">appkit_view</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5slint6Window11appkit_viewEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns the NSView for this window.</p>
+<p>If the underlying window handle hasn’t been created yet or isn’t applicable for the platform, this will return nullptr. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5slint6Window10win32_hwndEv">
+<span id="_CPPv3NK5slint6Window10win32_hwndEv"></span><span id="_CPPv2NK5slint6Window10win32_hwndEv"></span><span id="slint::Window::win32_hwndC"></span><span class="target" id="classslint_1_1Window_1a6854b68a5a553671af58a2cfe70122de"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><a class="reference internal" href="typedef_slint__window_8h_1a9c0170498651e0a0608f2327c314a6e3.html#_CPPv44HWND" title="HWND"><span class="n"><span class="pre">HWND</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">win32_hwnd</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5slint6Window10win32_hwndEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns the HINSTANCE for this window.</p>
+<p>If the underlying window handle hasn’t been created yet or isn’t applicable for the platform, this will return nullptr. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5slint6Window15win32_hinstanceEv">
+<span id="_CPPv3NK5slint6Window15win32_hinstanceEv"></span><span id="_CPPv2NK5slint6Window15win32_hinstanceEv"></span><span id="slint::Window::win32_hinstanceC"></span><span class="target" id="classslint_1_1Window_1abdc79a8c8c90cf6d448e1973e994945f"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><a class="reference internal" href="typedef_slint__window_8h_1a7f3344c2e6584dc06f9353fdf74bff8f.html#_CPPv49HINSTANCE" title="HINSTANCE"><span class="n"><span class="pre">HINSTANCE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">win32_hinstance</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5slint6Window15win32_hinstanceEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns the HINSTANCE for this window.</p>
+<p>If the underlying window handle hasn’t been created yet or isn’t applicable for the platform, this will return nullptr. </p>
 </dd></dl>
 
 </div>

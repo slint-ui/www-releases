@@ -472,7 +472,7 @@ Program Listing for File slint_internal.h
        uint16_t rowspan;
    };
    
-   using GridLayoutOrganizedData = SharedVector<float>;
+   using GridLayoutOrganizedData = SharedVector<uint16_t>;
    
    struct Padding {
        float begin;
@@ -1377,6 +1377,16 @@ Program Listing for File slint_internal.h
                                      SharedVector<Rgba8Pixel> *data,
                                      uint32_t *width,
                                      uint32_t *height);
+   
+   void *slint_windowrc_hwnd_win32(const WindowAdapterRcOpaque *handle);
+   
+   void *slint_windowrc_hinstance_win32(const WindowAdapterRcOpaque *handle);
+   
+   void *slint_windowrc_wlsurface_wayland(const WindowAdapterRcOpaque *handle);
+   
+   void *slint_windowrc_wldisplay_wayland(const WindowAdapterRcOpaque *handle);
+   
+   void *slint_windowrc_nsview_appkit(const WindowAdapterRcOpaque *handle);
    
    }  // extern "C"
    

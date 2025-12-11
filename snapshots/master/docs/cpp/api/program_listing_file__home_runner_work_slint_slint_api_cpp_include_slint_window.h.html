@@ -372,6 +372,9 @@
 <li class="toctree-l2"><a class="reference internal" href="define_slint__generated__public_8h_1aba0d27c0c821a27a3726baa609646ea9.html">Define SLINT_VERSION_MINOR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="define_slint__generated__public_8h_1a498ec177f96b7bce248660a6dd795d8d.html">Define SLINT_VERSION_PATCH</a></li>
 <li class="toctree-l2"><a class="reference internal" href="define_slint__generated__public_8h_1a6b7f049a8c7176edc87c4cffddfc1bbd.html">Define SLINT_VERSION_STRING</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_slint__window_8h_1a7f3344c2e6584dc06f9353fdf74bff8f.html">Typedef HINSTANCE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_slint__window_8h_1a9c0170498651e0a0608f2327c314a6e3.html">Typedef HWND</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_slint__window_8h_1a332610d117d0fb1a77cdaa07765155fb.html">Typedef NSView</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../cmake_reference.html">CMake Reference</a></li>
@@ -417,517 +420,593 @@
           <section id="program-listing-for-file-slint-window-h">
 <span id="program-listing-file-home-runner-work-slint-slint-api-cpp-include-slint-window-h"></span><h1>Program Listing for File slint_window.h<a class="headerlink" href="#program-listing-for-file-slint-window-h" title="Permalink to this heading">¶</a></h1>
 <p>↰ <a class="reference internal" href="file__home_runner_work_slint_slint_api_cpp_include_slint_window.h.html#file-home-runner-work-slint-slint-api-cpp-include-slint-window-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">/home/runner/work/slint/slint/api/cpp/include/slint_window.h</span></code>)</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Copyright © SixtyFPS GmbH &lt;info@slint.dev&gt;</span>
-<span class="c1">// SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0</span>
-
-<span class="cp">#pragma once</span>
-
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;slint_internal.h&quot;</span>
-
-<span class="k">namespace</span><span class="w"> </span><span class="nn">slint</span><span class="w"> </span><span class="p">{</span>
-<span class="cp">#if !defined(DOXYGEN)</span>
-<span class="k">namespace</span><span class="w"> </span><span class="nn">platform</span><span class="w"> </span><span class="p">{</span>
-<span class="k">class</span><span class="w"> </span><span class="nc">SkiaRenderer</span><span class="p">;</span>
-<span class="k">class</span><span class="w"> </span><span class="nc">SoftwareRenderer</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="cp">#endif</span>
-
-<span class="k">namespace</span><span class="w"> </span><span class="nn">private_api</span><span class="w"> </span><span class="p">{</span>
-<span class="k">using</span><span class="w"> </span><span class="n">ItemTreeRc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vtable</span><span class="o">::</span><span class="n">VRc</span><span class="o">&lt;</span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">ItemTreeVTable</span><span class="o">&gt;</span><span class="p">;</span>
-<span class="k">using</span><span class="w"> </span><span class="n">slint</span><span class="o">::</span><span class="n">LogicalPosition</span><span class="p">;</span>
-
-<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">F</span><span class="o">&gt;</span>
-<span class="k">auto</span><span class="w"> </span><span class="n">optional_transform</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">o</span><span class="p">,</span><span class="w"> </span><span class="n">F</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="n">f</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">decltype</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">o</span><span class="p">)))</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">o</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">o</span><span class="p">));</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">nullopt</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">F</span><span class="o">&gt;</span>
-<span class="kt">void</span><span class="w"> </span><span class="n">optional_then</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">o</span><span class="p">,</span><span class="w"> </span><span class="n">F</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="n">f</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">o</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">o</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-
-<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">F</span><span class="o">&gt;</span>
-<span class="k">auto</span><span class="w"> </span><span class="n">optional_and_then</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">o</span><span class="p">,</span><span class="w"> </span><span class="n">F</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="n">f</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">decltype</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">o</span><span class="p">))</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">o</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">o</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">nullopt</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
-<span class="n">T</span><span class="w"> </span><span class="n">optional_or_default</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">o</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">o</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">*</span><span class="n">o</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{};</span>
-<span class="p">}</span>
-
-<span class="k">class</span><span class="w"> </span><span class="nc">WindowAdapterRc</span>
-<span class="p">{</span>
-<span class="k">public</span><span class="o">:</span>
-<span class="w">    </span><span class="k">explicit</span><span class="w"> </span><span class="n">WindowAdapterRc</span><span class="p">(</span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">WindowAdapterRcOpaque</span><span class="w"> </span><span class="n">adopted_inner</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">assert_main_thread</span><span class="p">();</span>
-<span class="w">        </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_windowrc_clone</span><span class="p">(</span><span class="o">&amp;</span><span class="n">adopted_inner</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">inner</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="n">WindowAdapterRc</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_windowrc_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inner</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="o">~</span><span class="n">WindowAdapterRc</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_windowrc_drop</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inner</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="n">WindowAdapterRc</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">WindowAdapterRc</span><span class="w"> </span><span class="o">&amp;</span><span class="n">other</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">WindowAdapterRc</span><span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="n">inner</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="n">WindowAdapterRc</span><span class="p">(</span><span class="n">WindowAdapterRc</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span><span class="p">;</span>
-<span class="w">    </span><span class="n">WindowAdapterRc</span><span class="w"> </span><span class="o">&amp;</span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="n">WindowAdapterRc</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span><span class="p">;</span>
-<span class="w">    </span><span class="n">WindowAdapterRc</span><span class="w"> </span><span class="o">&amp;</span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">WindowAdapterRc</span><span class="w"> </span><span class="o">&amp;</span><span class="n">other</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">assert_main_thread</span><span class="p">();</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">other</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_windowrc_drop</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inner</span><span class="p">);</span>
-<span class="w">            </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_windowrc_clone</span><span class="p">(</span><span class="o">&amp;</span><span class="n">other</span><span class="p">.</span><span class="n">inner</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">inner</span><span class="p">);</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">*</span><span class="k">this</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">show</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">slint_windowrc_show</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inner</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">hide</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">slint_windowrc_hide</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inner</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">is_visible</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">slint_windowrc_is_visible</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inner</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">scale_factor</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">slint_windowrc_get_scale_factor</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inner</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">set_const_scale_factor</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">slint_windowrc_set_const_scale_factor</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inner</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">ColorScheme</span><span class="w"> </span><span class="n">color_scheme</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">slint_windowrc_color_scheme</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inner</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">supports_native_menu_bar</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">slint_windowrc_supports_native_menu_bar</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inner</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">text_input_focused</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">slint_windowrc_get_text_input_focused</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inner</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">set_text_input_focused</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">slint_windowrc_set_text_input_focused</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inner</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">Component</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">ItemArray</span><span class="o">&gt;</span>
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">unregister_item_tree</span><span class="p">(</span><span class="n">Component</span><span class="w"> </span><span class="o">*</span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">ItemArray</span><span class="w"> </span><span class="n">items</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_unregister_item_tree</span><span class="p">(</span>
-<span class="w">                </span><span class="n">vtable</span><span class="o">::</span><span class="n">VRef</span><span class="o">&lt;</span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">ItemTreeVTable</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">&amp;</span><span class="n">Component</span><span class="o">::</span><span class="n">static_vtable</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="p">},</span>
-<span class="w">                </span><span class="n">items</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">inner</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">set_focus_item</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">ItemTreeRc</span><span class="w"> </span><span class="o">&amp;</span><span class="n">component_rc</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">item_index</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">set_focus</span><span class="p">,</span>
-<span class="w">                        </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">FocusReason</span><span class="w"> </span><span class="n">reason</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">ItemRc</span><span class="w"> </span><span class="n">item_rc</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">component_rc</span><span class="p">,</span><span class="w"> </span><span class="n">item_index</span><span class="w"> </span><span class="p">};</span>
-<span class="w">        </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_windowrc_set_focus_item</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inner</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">item_rc</span><span class="p">,</span><span class="w"> </span><span class="n">set_focus</span><span class="p">,</span><span class="w"> </span><span class="n">reason</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">set_component</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">ItemTreeWeak</span><span class="w"> </span><span class="o">&amp;</span><span class="n">weak</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">item_tree_rc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">weak</span><span class="p">.</span><span class="n">lock</span><span class="p">()).</span><span class="n">into_dyn</span><span class="p">();</span>
-<span class="w">        </span><span class="n">slint_windowrc_set_component</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inner</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">item_tree_rc</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">Component</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">Parent</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">PosGetter</span><span class="o">&gt;</span>
-<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">show_popup</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Parent</span><span class="w"> </span><span class="o">*</span><span class="n">parent_component</span><span class="p">,</span><span class="w"> </span><span class="n">PosGetter</span><span class="w"> </span><span class="n">pos</span><span class="p">,</span>
-<span class="w">                        </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">PopupClosePolicy</span><span class="w"> </span><span class="n">close_policy</span><span class="p">,</span>
-<span class="w">                        </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">ItemRc</span><span class="w"> </span><span class="n">parent_item</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">popup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Component</span><span class="o">::</span><span class="n">create</span><span class="p">(</span><span class="n">parent_component</span><span class="p">);</span>
-<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pos</span><span class="p">(</span><span class="n">popup</span><span class="p">);</span>
-<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">popup_dyn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">popup</span><span class="p">.</span><span class="n">into_dyn</span><span class="p">();</span>
-<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_windowrc_show_popup</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inner</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">popup_dyn</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">close_policy</span><span class="p">,</span>
-<span class="w">                                                              </span><span class="o">&amp;</span><span class="n">parent_item</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
-<span class="w">        </span><span class="n">popup</span><span class="o">-&gt;</span><span class="n">user_init</span><span class="p">();</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">close_popup</span><span class="p">(</span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">popup_id</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">popup_id</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_windowrc_close_popup</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inner</span><span class="p">,</span><span class="w"> </span><span class="n">popup_id</span><span class="p">);</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">Component</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">SharedGlobals</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">InitFn</span><span class="o">&gt;</span>
-<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">show_popup_menu</span><span class="p">(</span>
-<span class="w">            </span><span class="n">SharedGlobals</span><span class="w"> </span><span class="o">*</span><span class="n">globals</span><span class="p">,</span><span class="w"> </span><span class="n">LogicalPosition</span><span class="w"> </span><span class="n">pos</span><span class="p">,</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">ItemRc</span><span class="w"> </span><span class="n">context_menu_rc</span><span class="p">,</span>
-<span class="w">            </span><span class="n">InitFn</span><span class="w"> </span><span class="n">init</span><span class="p">,</span>
-<span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">vtable</span><span class="o">::</span><span class="n">VRc</span><span class="o">&lt;</span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">MenuVTable</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">menu</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">nullopt</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">menu</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_windowrc_show_native_popup_menu</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inner</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">menu</span><span class="p">.</span><span class="n">value</span><span class="p">(),</span><span class="w"> </span><span class="n">pos</span><span class="p">,</span>
-<span class="w">                                                                        </span><span class="o">&amp;</span><span class="n">context_menu_rc</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">        </span><span class="p">}</span>
-
-<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">popup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Component</span><span class="o">::</span><span class="n">create</span><span class="p">(</span><span class="n">globals</span><span class="p">);</span>
-<span class="w">        </span><span class="n">init</span><span class="p">(</span><span class="o">&amp;*</span><span class="n">popup</span><span class="p">);</span>
-<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">popup_dyn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">popup</span><span class="p">.</span><span class="n">into_dyn</span><span class="p">();</span>
-<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_windowrc_show_popup</span><span class="p">(</span>
-<span class="w">                </span><span class="o">&amp;</span><span class="n">inner</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">popup_dyn</span><span class="p">,</span><span class="w"> </span><span class="n">pos</span><span class="p">,</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">PopupClosePolicy</span><span class="o">::</span><span class="n">CloseOnClickOutside</span><span class="p">,</span>
-<span class="w">                </span><span class="o">&amp;</span><span class="n">context_menu_rc</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
-<span class="w">        </span><span class="n">popup</span><span class="o">-&gt;</span><span class="n">user_init</span><span class="p">();</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="k">template</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">invocable</span><span class="o">&lt;</span><span class="n">RenderingState</span><span class="p">,</span><span class="w"> </span><span class="n">GraphicsAPI</span><span class="o">&gt;</span><span class="w"> </span><span class="n">F</span><span class="o">&gt;</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">SetRenderingNotifierError</span><span class="o">&gt;</span><span class="w"> </span><span class="n">set_rendering_notifier</span><span class="p">(</span><span class="n">F</span><span class="w"> </span><span class="n">callback</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">actual_cb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[](</span><span class="n">RenderingState</span><span class="w"> </span><span class="n">state</span><span class="p">,</span><span class="w"> </span><span class="n">GraphicsAPI</span><span class="w"> </span><span class="n">graphics_api</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="p">(</span><span class="o">*</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="n">F</span><span class="w"> </span><span class="o">*&gt;</span><span class="p">(</span><span class="n">data</span><span class="p">))(</span><span class="n">state</span><span class="p">,</span><span class="w"> </span><span class="n">graphics_api</span><span class="p">);</span>
-<span class="w">        </span><span class="p">};</span>
-<span class="w">        </span><span class="n">SetRenderingNotifierError</span><span class="w"> </span><span class="n">err</span><span class="p">;</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_windowrc_set_rendering_notifier</span><span class="p">(</span>
-<span class="w">                    </span><span class="o">&amp;</span><span class="n">inner</span><span class="p">,</span><span class="w"> </span><span class="n">actual_cb</span><span class="p">,</span>
-<span class="w">                    </span><span class="p">[](</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">user_data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">delete</span><span class="w"> </span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="n">F</span><span class="w"> </span><span class="o">*&gt;</span><span class="p">(</span><span class="n">user_data</span><span class="p">);</span><span class="w"> </span><span class="p">},</span>
-<span class="w">                    </span><span class="k">new</span><span class="w"> </span><span class="n">F</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">callback</span><span class="p">)),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">err</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="p">{};</span>
-<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">err</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="c1">// clang-format off</span>
-<span class="w">    </span><span class="k">template</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">invocable</span><span class="w"> </span><span class="n">F</span><span class="o">&gt;</span>
-<span class="w">        </span><span class="k">requires</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">is_convertible_v</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">invoke_result_t</span><span class="o">&lt;</span><span class="n">F</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">CloseRequestResponse</span><span class="o">&gt;</span><span class="p">)</span>
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">on_close_requested</span><span class="p">(</span><span class="n">F</span><span class="w"> </span><span class="n">callback</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
-<span class="w">    </span><span class="c1">// clang-format on</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">actual_cb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[](</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="n">F</span><span class="w"> </span><span class="o">*&gt;</span><span class="p">(</span><span class="n">data</span><span class="p">))();</span><span class="w"> </span><span class="p">};</span>
-<span class="w">        </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_windowrc_on_close_requested</span><span class="p">(</span>
-<span class="w">                </span><span class="o">&amp;</span><span class="n">inner</span><span class="p">,</span><span class="w"> </span><span class="n">actual_cb</span><span class="p">,</span><span class="w"> </span><span class="p">[](</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">user_data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">delete</span><span class="w"> </span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="n">F</span><span class="w"> </span><span class="o">*&gt;</span><span class="p">(</span><span class="n">user_data</span><span class="p">);</span><span class="w"> </span><span class="p">},</span>
-<span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="n">F</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">callback</span><span class="p">)));</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">request_redraw</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_windowrc_request_redraw</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inner</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
-
-<span class="w">    </span><span class="n">slint</span><span class="o">::</span><span class="n">PhysicalPosition</span><span class="w"> </span><span class="n">position</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">slint</span><span class="o">::</span><span class="n">PhysicalPosition</span><span class="w"> </span><span class="n">pos</span><span class="p">;</span>
-<span class="w">        </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_windowrc_position</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inner</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">pos</span><span class="p">);</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">pos</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">set_logical_position</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">slint</span><span class="o">::</span><span class="n">LogicalPosition</span><span class="w"> </span><span class="o">&amp;</span><span class="n">pos</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_windowrc_set_logical_position</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inner</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">pos</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">set_physical_position</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">slint</span><span class="o">::</span><span class="n">PhysicalPosition</span><span class="w"> </span><span class="o">&amp;</span><span class="n">pos</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_windowrc_set_physical_position</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inner</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">pos</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="n">slint</span><span class="o">::</span><span class="n">PhysicalSize</span><span class="w"> </span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">slint</span><span class="o">::</span><span class="n">PhysicalSize</span><span class="p">(</span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_windowrc_size</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inner</span><span class="p">));</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">set_logical_size</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">slint</span><span class="o">::</span><span class="n">LogicalSize</span><span class="w"> </span><span class="o">&amp;</span><span class="n">size</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_windowrc_set_logical_size</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inner</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">size</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">set_physical_size</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">slint</span><span class="o">::</span><span class="n">PhysicalSize</span><span class="w"> </span><span class="o">&amp;</span><span class="n">size</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_windowrc_set_physical_size</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inner</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">size</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">dispatch_pointer_event</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">MouseEvent</span><span class="w"> </span><span class="o">&amp;</span><span class="n">event</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
-<span class="w">        </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_windowrc_dispatch_pointer_event</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inner</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">event</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">SharedString</span><span class="o">&gt;</span><span class="w"> </span><span class="n">register_font_from_path</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">SharedString</span><span class="w"> </span><span class="o">&amp;</span><span class="n">path</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">SharedString</span><span class="w"> </span><span class="n">maybe_err</span><span class="p">;</span>
-<span class="w">        </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_register_font_from_path</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inner</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">maybe_err</span><span class="p">);</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">maybe_err</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">maybe_err</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="p">{};</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">SharedString</span><span class="o">&gt;</span><span class="w"> </span><span class="n">register_font_from_data</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="w"> </span><span class="n">len</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">SharedString</span><span class="w"> </span><span class="n">maybe_err</span><span class="p">;</span>
-<span class="w">        </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_register_font_from_data</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inner</span><span class="p">,</span><span class="w"> </span><span class="n">make_slice</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">len</span><span class="p">),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">maybe_err</span><span class="p">);</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">maybe_err</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">maybe_err</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="p">{};</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">register_bitmap_font</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">BitmapFont</span><span class="w"> </span><span class="o">&amp;</span><span class="n">font</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_register_bitmap_font</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inner</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">font</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">WindowAdapterRcOpaque</span><span class="w"> </span><span class="o">&amp;</span><span class="n">handle</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">inner</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-
-<span class="k">private</span><span class="o">:</span>
-<span class="w">    </span><span class="k">friend</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">slint</span><span class="o">::</span><span class="n">platform</span><span class="o">::</span><span class="n">SkiaRenderer</span><span class="p">;</span>
-<span class="w">    </span><span class="k">friend</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">slint</span><span class="o">::</span><span class="n">platform</span><span class="o">::</span><span class="n">SoftwareRenderer</span><span class="p">;</span>
-<span class="w">    </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">WindowAdapterRcOpaque</span><span class="w"> </span><span class="n">inner</span><span class="p">;</span>
-<span class="p">};</span>
-
-<span class="p">}</span>
-
-<span class="k">class</span><span class="w"> </span><span class="nc">Window</span>
-<span class="p">{</span>
-<span class="k">public</span><span class="o">:</span>
-<span class="w">    </span><span class="k">explicit</span><span class="w"> </span><span class="n">Window</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">private_api</span><span class="o">::</span><span class="n">WindowAdapterRc</span><span class="w"> </span><span class="o">&amp;</span><span class="n">windowrc</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">inner</span><span class="p">(</span><span class="n">windowrc</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="n">Window</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Window</span><span class="w"> </span><span class="o">&amp;</span><span class="n">other</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Window</span><span class="w"> </span><span class="o">&amp;</span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Window</span><span class="w"> </span><span class="o">&amp;</span><span class="n">other</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Window</span><span class="p">(</span><span class="n">Window</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="n">other</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Window</span><span class="w"> </span><span class="o">&amp;</span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="n">Window</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="n">other</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span><span class="p">;</span>
-<span class="w">    </span><span class="o">~</span><span class="n">Window</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span>
-
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">show</span><span class="p">()</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
-<span class="w">        </span><span class="n">inner</span><span class="p">.</span><span class="n">show</span><span class="p">();</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">hide</span><span class="p">()</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
-<span class="w">        </span><span class="n">inner</span><span class="p">.</span><span class="n">hide</span><span class="p">();</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">is_visible</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">inner</span><span class="p">.</span><span class="n">is_visible</span><span class="p">();</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="k">template</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">invocable</span><span class="o">&lt;</span><span class="n">RenderingState</span><span class="p">,</span><span class="w"> </span><span class="n">GraphicsAPI</span><span class="o">&gt;</span><span class="w"> </span><span class="n">F</span><span class="o">&gt;</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">SetRenderingNotifierError</span><span class="o">&gt;</span><span class="w"> </span><span class="n">set_rendering_notifier</span><span class="p">(</span><span class="n">F</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="n">callback</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">inner</span><span class="p">.</span><span class="n">set_rendering_notifier</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">forward</span><span class="o">&lt;</span><span class="n">F</span><span class="o">&gt;</span><span class="p">(</span><span class="n">callback</span><span class="p">));</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="c1">// clang-format off</span>
-<span class="w">    </span><span class="k">template</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">invocable</span><span class="w"> </span><span class="n">F</span><span class="o">&gt;</span>
-<span class="w">        </span><span class="k">requires</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">is_convertible_v</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">invoke_result_t</span><span class="o">&lt;</span><span class="n">F</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">CloseRequestResponse</span><span class="o">&gt;</span><span class="p">)</span>
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">on_close_requested</span><span class="p">(</span><span class="n">F</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="n">callback</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
-<span class="w">    </span><span class="c1">// clang-format on</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">inner</span><span class="p">.</span><span class="n">on_close_requested</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">forward</span><span class="o">&lt;</span><span class="n">F</span><span class="o">&gt;</span><span class="p">(</span><span class="n">callback</span><span class="p">));</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">request_redraw</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
-<span class="w">        </span><span class="n">inner</span><span class="p">.</span><span class="n">request_redraw</span><span class="p">();</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="n">slint</span><span class="o">::</span><span class="n">PhysicalPosition</span><span class="w"> </span><span class="n">position</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">inner</span><span class="p">.</span><span class="n">position</span><span class="p">();</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">set_position</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">slint</span><span class="o">::</span><span class="n">LogicalPosition</span><span class="w"> </span><span class="o">&amp;</span><span class="n">pos</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
-<span class="w">        </span><span class="n">inner</span><span class="p">.</span><span class="n">set_logical_position</span><span class="p">(</span><span class="n">pos</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">set_position</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">slint</span><span class="o">::</span><span class="n">PhysicalPosition</span><span class="w"> </span><span class="o">&amp;</span><span class="n">pos</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
-<span class="w">        </span><span class="n">inner</span><span class="p">.</span><span class="n">set_physical_position</span><span class="p">(</span><span class="n">pos</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="n">slint</span><span class="o">::</span><span class="n">PhysicalSize</span><span class="w"> </span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">inner</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">set_size</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">slint</span><span class="o">::</span><span class="n">LogicalSize</span><span class="w"> </span><span class="o">&amp;</span><span class="n">size</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
-<span class="w">        </span><span class="n">inner</span><span class="p">.</span><span class="n">set_logical_size</span><span class="p">(</span><span class="n">size</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">set_size</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">slint</span><span class="o">::</span><span class="n">PhysicalSize</span><span class="w"> </span><span class="o">&amp;</span><span class="n">size</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
-<span class="w">        </span><span class="n">inner</span><span class="p">.</span><span class="n">set_physical_size</span><span class="p">(</span><span class="n">size</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">scale_factor</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">inner</span><span class="p">.</span><span class="n">scale_factor</span><span class="p">();</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">is_fullscreen</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_windowrc_is_fullscreen</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inner</span><span class="p">.</span><span class="n">handle</span><span class="p">());</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">set_fullscreen</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">fullscreen</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
-<span class="w">        </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_windowrc_set_fullscreen</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inner</span><span class="p">.</span><span class="n">handle</span><span class="p">(),</span><span class="w"> </span><span class="n">fullscreen</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">is_maximized</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_windowrc_is_maximized</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inner</span><span class="p">.</span><span class="n">handle</span><span class="p">());</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">set_maximized</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">maximized</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
-<span class="w">        </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_windowrc_set_maximized</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inner</span><span class="p">.</span><span class="n">handle</span><span class="p">(),</span><span class="w"> </span><span class="n">maximized</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">is_minimized</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_windowrc_is_minimized</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inner</span><span class="p">.</span><span class="n">handle</span><span class="p">());</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">set_minimized</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">minimized</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
-<span class="w">        </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_windowrc_set_minimized</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inner</span><span class="p">.</span><span class="n">handle</span><span class="p">(),</span><span class="w"> </span><span class="n">minimized</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">dispatch_key_press_event</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">SharedString</span><span class="w"> </span><span class="o">&amp;</span><span class="n">text</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
-<span class="w">        </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_windowrc_dispatch_key_event</span><span class="p">(</span>
-<span class="w">                </span><span class="o">&amp;</span><span class="n">inner</span><span class="p">.</span><span class="n">handle</span><span class="p">(),</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">KeyEventType</span><span class="o">::</span><span class="n">KeyPressed</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">text</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">dispatch_key_press_repeat_event</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">SharedString</span><span class="w"> </span><span class="o">&amp;</span><span class="n">text</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
-<span class="w">        </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_windowrc_dispatch_key_event</span><span class="p">(</span>
-<span class="w">                </span><span class="o">&amp;</span><span class="n">inner</span><span class="p">.</span><span class="n">handle</span><span class="p">(),</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">KeyEventType</span><span class="o">::</span><span class="n">KeyPressed</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">text</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">dispatch_key_release_event</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">SharedString</span><span class="w"> </span><span class="o">&amp;</span><span class="n">text</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
-<span class="w">        </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_windowrc_dispatch_key_event</span><span class="p">(</span>
-<span class="w">                </span><span class="o">&amp;</span><span class="n">inner</span><span class="p">.</span><span class="n">handle</span><span class="p">(),</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">KeyEventType</span><span class="o">::</span><span class="n">KeyReleased</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">text</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">dispatch_pointer_press_event</span><span class="p">(</span><span class="n">LogicalPosition</span><span class="w"> </span><span class="n">pos</span><span class="p">,</span><span class="w"> </span><span class="n">PointerEventButton</span><span class="w"> </span><span class="n">button</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
-<span class="w">        </span><span class="n">inner</span><span class="p">.</span><span class="n">dispatch_pointer_event</span><span class="p">(</span>
-<span class="w">                </span><span class="n">slint</span><span class="o">::</span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">MouseEvent</span><span class="o">::</span><span class="n">Pressed</span><span class="p">({</span><span class="w"> </span><span class="n">pos</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">pos</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="n">button</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">));</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">dispatch_pointer_release_event</span><span class="p">(</span><span class="n">LogicalPosition</span><span class="w"> </span><span class="n">pos</span><span class="p">,</span><span class="w"> </span><span class="n">PointerEventButton</span><span class="w"> </span><span class="n">button</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
-<span class="w">        </span><span class="n">inner</span><span class="p">.</span><span class="n">dispatch_pointer_event</span><span class="p">(</span>
-<span class="w">                </span><span class="n">slint</span><span class="o">::</span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">MouseEvent</span><span class="o">::</span><span class="n">Released</span><span class="p">({</span><span class="w"> </span><span class="n">pos</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">pos</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="n">button</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">));</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">dispatch_pointer_exit_event</span><span class="p">()</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
-<span class="w">        </span><span class="n">inner</span><span class="p">.</span><span class="n">dispatch_pointer_event</span><span class="p">(</span><span class="n">slint</span><span class="o">::</span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">MouseEvent</span><span class="o">::</span><span class="n">Exit</span><span class="p">());</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">dispatch_pointer_move_event</span><span class="p">(</span><span class="n">LogicalPosition</span><span class="w"> </span><span class="n">pos</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
-<span class="w">        </span><span class="n">inner</span><span class="p">.</span><span class="n">dispatch_pointer_event</span><span class="p">(</span>
-<span class="w">                </span><span class="n">slint</span><span class="o">::</span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">MouseEvent</span><span class="o">::</span><span class="n">Moved</span><span class="p">({</span><span class="w"> </span><span class="n">pos</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">pos</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nb">false</span><span class="p">));</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">dispatch_pointer_scroll_event</span><span class="p">(</span><span class="n">LogicalPosition</span><span class="w"> </span><span class="n">pos</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">delta_x</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">delta_y</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
-<span class="w">        </span><span class="n">inner</span><span class="p">.</span><span class="n">dispatch_pointer_event</span><span class="p">(</span>
-<span class="w">                </span><span class="n">slint</span><span class="o">::</span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">MouseEvent</span><span class="o">::</span><span class="n">Wheel</span><span class="p">({</span><span class="w"> </span><span class="n">pos</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">pos</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="n">delta_x</span><span class="p">,</span><span class="w"> </span><span class="n">delta_y</span><span class="p">));</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">dispatch_resize_event</span><span class="p">(</span><span class="n">slint</span><span class="o">::</span><span class="n">LogicalSize</span><span class="w"> </span><span class="n">s</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
-<span class="w">        </span><span class="k">using</span><span class="w"> </span><span class="n">slint</span><span class="o">::</span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">WindowEvent</span><span class="p">;</span>
-<span class="w">        </span><span class="n">WindowEvent</span><span class="w"> </span><span class="n">event</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">.</span><span class="n">resized</span><span class="w"> </span><span class="o">=</span>
-<span class="w">                                    </span><span class="n">WindowEvent</span><span class="o">::</span><span class="n">Resized_Body</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">.</span><span class="n">tag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">WindowEvent</span><span class="o">::</span><span class="n">Tag</span><span class="o">::</span><span class="n">Resized</span><span class="p">,</span>
-<span class="w">                                                                </span><span class="p">.</span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">width</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">height</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">};</span>
-<span class="w">        </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_windowrc_dispatch_event</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inner</span><span class="p">.</span><span class="n">handle</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">event</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">dispatch_scale_factor_change_event</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">factor</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
-<span class="w">        </span><span class="k">using</span><span class="w"> </span><span class="n">slint</span><span class="o">::</span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">WindowEvent</span><span class="p">;</span>
-<span class="w">        </span><span class="n">WindowEvent</span><span class="w"> </span><span class="n">event</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">.</span><span class="n">scale_factor_changed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">WindowEvent</span><span class="o">::</span><span class="n">ScaleFactorChanged_Body</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                                    </span><span class="p">.</span><span class="n">tag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">WindowEvent</span><span class="o">::</span><span class="n">Tag</span><span class="o">::</span><span class="n">ScaleFactorChanged</span><span class="p">,</span>
-<span class="w">                                    </span><span class="p">.</span><span class="n">scale_factor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">factor</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">};</span>
-<span class="w">        </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_windowrc_dispatch_event</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inner</span><span class="p">.</span><span class="n">handle</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">event</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">dispatch_window_active_changed_event</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">active</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
-<span class="w">        </span><span class="k">using</span><span class="w"> </span><span class="n">slint</span><span class="o">::</span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">WindowEvent</span><span class="p">;</span>
-<span class="w">        </span><span class="n">WindowEvent</span><span class="w"> </span><span class="n">event</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">.</span><span class="n">window_active_changed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">WindowEvent</span><span class="o">::</span><span class="n">WindowActiveChanged_Body</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                                    </span><span class="p">.</span><span class="n">tag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">WindowEvent</span><span class="o">::</span><span class="n">Tag</span><span class="o">::</span><span class="n">WindowActiveChanged</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="n">_0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">active</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">};</span>
-<span class="w">        </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_windowrc_dispatch_event</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inner</span><span class="p">.</span><span class="n">handle</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">event</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">dispatch_close_requested_event</span><span class="p">()</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
-<span class="w">        </span><span class="k">using</span><span class="w"> </span><span class="n">slint</span><span class="o">::</span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">WindowEvent</span><span class="p">;</span>
-<span class="w">        </span><span class="n">WindowEvent</span><span class="w"> </span><span class="n">event</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">.</span><span class="n">tag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">WindowEvent</span><span class="o">::</span><span class="n">Tag</span><span class="o">::</span><span class="n">CloseRequested</span><span class="w"> </span><span class="p">};</span>
-<span class="w">        </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_windowrc_dispatch_event</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inner</span><span class="p">.</span><span class="n">handle</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">event</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">has_active_animations</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">private_api</span><span class="o">::</span><span class="n">assert_main_thread</span><span class="p">();</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_windowrc_has_active_animations</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inner</span><span class="p">.</span><span class="n">handle</span><span class="p">());</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">SharedPixelBuffer</span><span class="o">&lt;</span><span class="n">Rgba8Pixel</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">take_snapshot</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">SharedPixelBuffer</span><span class="o">&lt;</span><span class="n">Rgba8Pixel</span><span class="o">&gt;</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_windowrc_take_snapshot</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inner</span><span class="p">.</span><span class="n">handle</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">result</span><span class="p">.</span><span class="n">m_data</span><span class="p">,</span>
-<span class="w">                                                           </span><span class="o">&amp;</span><span class="n">result</span><span class="p">.</span><span class="n">m_width</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">result</span><span class="p">.</span><span class="n">m_height</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="p">{};</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="n">private_api</span><span class="o">::</span><span class="n">WindowAdapterRc</span><span class="w"> </span><span class="o">&amp;</span><span class="n">window_handle</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">inner</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">private_api</span><span class="o">::</span><span class="n">WindowAdapterRc</span><span class="w"> </span><span class="o">&amp;</span><span class="n">window_handle</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">inner</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-
-<span class="k">private</span><span class="o">:</span>
-<span class="w">    </span><span class="n">private_api</span><span class="o">::</span><span class="n">WindowAdapterRc</span><span class="w"> </span><span class="n">inner</span><span class="p">;</span>
-<span class="p">};</span>
-
-<span class="p">}</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>// Copyright © SixtyFPS GmbH &lt;info@slint.dev&gt;
+// SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0
+
+#pragma once
+
+#include &quot;slint_internal.h&quot;
+
+#if (!defined(__APPLE__) &amp;&amp; !defined(_WIN32) &amp;&amp; !defined(_WIN64)                                   \
+     &amp;&amp; !defined(SLINT_FEATURE_FREESTANDING))                                                      \
+        || defined(DOXYGEN)
+
+struct wl_surface;
+struct wl_display;
+
+#endif
+#if (defined(__APPLE__) &amp;&amp; !defined(_WIN32) &amp;&amp; !defined(_WIN64)                                    \
+     &amp;&amp; !defined(SLINT_FEATURE_FREESTANDING))                                                      \
+        || defined(DOXYGEN)
+
+#    ifdef __OBJC__
+@class NSView;
+#    else
+typedef struct objc_object NSView;
+#    endif
+
+#endif
+#if (!defined(__APPLE__) &amp;&amp; (defined(_WIN32) || defined(_WIN64))                                   \
+     &amp;&amp; !defined(SLINT_FEATURE_FREESTANDING))                                                      \
+        || defined(DOXYGEN)
+
+class HINSTANCE__;
+typedef HINSTANCE__ *HINSTANCE;
+
+class HWND__;
+typedef HWND__ *HWND;
+
+#endif
+
+namespace slint {
+#if !defined(DOXYGEN)
+namespace platform {
+class SkiaRenderer;
+class SoftwareRenderer;
+}
+#endif
+
+namespace private_api {
+using ItemTreeRc = vtable::VRc&lt;cbindgen_private::ItemTreeVTable&gt;;
+using slint::LogicalPosition;
+
+template&lt;typename T, typename F&gt;
+auto optional_transform(const std::optional&lt;T&gt; &amp;o, F &amp;&amp;f) -&gt; decltype(std::optional(f(*o)))
+{
+    if (o) {
+        return std::optional(f(*o));
+    }
+    return std::nullopt;
+}
+
+template&lt;typename T, typename F&gt;
+void optional_then(const std::optional&lt;T&gt; &amp;o, F &amp;&amp;f)
+{
+    if (o) {
+        f(*o);
+    }
+}
+
+template&lt;typename T, typename F&gt;
+auto optional_and_then(const std::optional&lt;T&gt; &amp;o, F &amp;&amp;f) -&gt; decltype(f(*o))
+{
+    if (o) {
+        return f(*o);
+    }
+    return std::nullopt;
+}
+
+template&lt;typename T&gt;
+T optional_or_default(const std::optional&lt;T&gt; &amp;o)
+{
+    if (o) {
+        return *o;
+    }
+    return {};
+}
+
+class WindowAdapterRc
+{
+public:
+    explicit WindowAdapterRc(cbindgen_private::WindowAdapterRcOpaque adopted_inner)
+    {
+        assert_main_thread();
+        cbindgen_private::slint_windowrc_clone(&amp;adopted_inner, &amp;inner);
+    }
+    WindowAdapterRc() { cbindgen_private::slint_windowrc_init(&amp;inner); }
+    ~WindowAdapterRc() { cbindgen_private::slint_windowrc_drop(&amp;inner); }
+    WindowAdapterRc(const WindowAdapterRc &amp;other) : WindowAdapterRc(other.inner) { }
+    WindowAdapterRc(WindowAdapterRc &amp;&amp;) = delete;
+    WindowAdapterRc &amp;operator=(WindowAdapterRc &amp;&amp;) = delete;
+    WindowAdapterRc &amp;operator=(const WindowAdapterRc &amp;other)
+    {
+        assert_main_thread();
+        if (this != &amp;other) {
+            cbindgen_private::slint_windowrc_drop(&amp;inner);
+            cbindgen_private::slint_windowrc_clone(&amp;other.inner, &amp;inner);
+        }
+        return *this;
+    }
+
+    void show() const { slint_windowrc_show(&amp;inner); }
+    void hide() const { slint_windowrc_hide(&amp;inner); }
+    bool is_visible() const { return slint_windowrc_is_visible(&amp;inner); }
+
+    float scale_factor() const { return slint_windowrc_get_scale_factor(&amp;inner); }
+    void set_const_scale_factor(float value) const
+    {
+        slint_windowrc_set_const_scale_factor(&amp;inner, value);
+    }
+
+    cbindgen_private::ColorScheme color_scheme() const
+    {
+        return slint_windowrc_color_scheme(&amp;inner);
+    }
+    bool supports_native_menu_bar() const
+    {
+        return slint_windowrc_supports_native_menu_bar(&amp;inner);
+    }
+
+    bool text_input_focused() const { return slint_windowrc_get_text_input_focused(&amp;inner); }
+    void set_text_input_focused(bool value) const
+    {
+        slint_windowrc_set_text_input_focused(&amp;inner, value);
+    }
+
+    template&lt;typename Component, typename ItemArray&gt;
+    void unregister_item_tree(Component *c, ItemArray items) const
+    {
+        cbindgen_private::slint_unregister_item_tree(
+                vtable::VRef&lt;cbindgen_private::ItemTreeVTable&gt; { &amp;Component::static_vtable, c },
+                items, &amp;inner);
+    }
+
+    void set_focus_item(const ItemTreeRc &amp;component_rc, uint32_t item_index, bool set_focus,
+                        cbindgen_private::FocusReason reason)
+    {
+        cbindgen_private::ItemRc item_rc { component_rc, item_index };
+        cbindgen_private::slint_windowrc_set_focus_item(&amp;inner, &amp;item_rc, set_focus, reason);
+    }
+
+    void set_component(const cbindgen_private::ItemTreeWeak &amp;weak) const
+    {
+        auto item_tree_rc = (*weak.lock()).into_dyn();
+        slint_windowrc_set_component(&amp;inner, &amp;item_tree_rc);
+    }
+
+    template&lt;typename Component, typename Parent, typename PosGetter&gt;
+    uint32_t show_popup(const Parent *parent_component, PosGetter pos,
+                        cbindgen_private::PopupClosePolicy close_policy,
+                        cbindgen_private::ItemRc parent_item) const
+    {
+        auto popup = Component::create(parent_component);
+        auto p = pos(popup);
+        auto popup_dyn = popup.into_dyn();
+        auto id = cbindgen_private::slint_windowrc_show_popup(&amp;inner, &amp;popup_dyn, p, close_policy,
+                                                              &amp;parent_item, false);
+        popup-&gt;user_init();
+        return id;
+    }
+
+    void close_popup(uint32_t popup_id) const
+    {
+        if (popup_id &gt; 0) {
+            cbindgen_private::slint_windowrc_close_popup(&amp;inner, popup_id);
+        }
+    }
+
+    template&lt;typename Component, typename SharedGlobals, typename InitFn&gt;
+    uint32_t show_popup_menu(
+            SharedGlobals *globals, LogicalPosition pos, cbindgen_private::ItemRc context_menu_rc,
+            InitFn init,
+            std::optional&lt;vtable::VRc&lt;cbindgen_private::MenuVTable&gt;&gt; menu = std::nullopt) const
+    {
+        if (menu) {
+            if (cbindgen_private::slint_windowrc_show_native_popup_menu(&amp;inner, &amp;menu.value(), pos,
+                                                                        &amp;context_menu_rc)) {
+                return 0;
+            }
+        }
+
+        auto popup = Component::create(globals);
+        init(&amp;*popup);
+        auto popup_dyn = popup.into_dyn();
+        auto id = cbindgen_private::slint_windowrc_show_popup(
+                &amp;inner, &amp;popup_dyn, pos, cbindgen_private::PopupClosePolicy::CloseOnClickOutside,
+                &amp;context_menu_rc, true);
+        popup-&gt;user_init();
+        return id;
+    }
+
+    template&lt;std::invocable&lt;RenderingState, GraphicsAPI&gt; F&gt;
+    std::optional&lt;SetRenderingNotifierError&gt; set_rendering_notifier(F callback) const
+    {
+        auto actual_cb = [](RenderingState state, GraphicsAPI graphics_api, void *data) {
+            (*reinterpret_cast&lt;F *&gt;(data))(state, graphics_api);
+        };
+        SetRenderingNotifierError err;
+        if (cbindgen_private::slint_windowrc_set_rendering_notifier(
+                    &amp;inner, actual_cb,
+                    [](void *user_data) { delete reinterpret_cast&lt;F *&gt;(user_data); },
+                    new F(std::move(callback)), &amp;err)) {
+            return {};
+        } else {
+            return err;
+        }
+    }
+
+    // clang-format off
+    template&lt;std::invocable F&gt;
+        requires(std::is_convertible_v&lt;std::invoke_result_t&lt;F&gt;, CloseRequestResponse&gt;)
+    void on_close_requested(F callback) const
+    // clang-format on
+    {
+        auto actual_cb = [](void *data) { return (*reinterpret_cast&lt;F *&gt;(data))(); };
+        cbindgen_private::slint_windowrc_on_close_requested(
+                &amp;inner, actual_cb, [](void *user_data) { delete reinterpret_cast&lt;F *&gt;(user_data); },
+                new F(std::move(callback)));
+    }
+
+    void request_redraw() const { cbindgen_private::slint_windowrc_request_redraw(&amp;inner); }
+
+    slint::PhysicalPosition position() const
+    {
+        slint::PhysicalPosition pos;
+        cbindgen_private::slint_windowrc_position(&amp;inner, &amp;pos);
+        return pos;
+    }
+
+    void set_logical_position(const slint::LogicalPosition &amp;pos)
+    {
+        cbindgen_private::slint_windowrc_set_logical_position(&amp;inner, &amp;pos);
+    }
+
+    void set_physical_position(const slint::PhysicalPosition &amp;pos)
+    {
+        cbindgen_private::slint_windowrc_set_physical_position(&amp;inner, &amp;pos);
+    }
+
+    slint::PhysicalSize size() const
+    {
+        return slint::PhysicalSize(cbindgen_private::slint_windowrc_size(&amp;inner));
+    }
+
+    void set_logical_size(const slint::LogicalSize &amp;size)
+    {
+        cbindgen_private::slint_windowrc_set_logical_size(&amp;inner, &amp;size);
+    }
+
+    void set_physical_size(const slint::PhysicalSize &amp;size)
+    {
+        cbindgen_private::slint_windowrc_set_physical_size(&amp;inner, &amp;size);
+    }
+
+    void dispatch_pointer_event(const cbindgen_private::MouseEvent &amp;event)
+    {
+        private_api::assert_main_thread();
+        cbindgen_private::slint_windowrc_dispatch_pointer_event(&amp;inner, &amp;event);
+    }
+
+    inline std::optional&lt;SharedString&gt; register_font_from_path(const SharedString &amp;path)
+    {
+        SharedString maybe_err;
+        cbindgen_private::slint_register_font_from_path(&amp;inner, &amp;path, &amp;maybe_err);
+        if (!maybe_err.empty()) {
+            return maybe_err;
+        } else {
+            return {};
+        }
+    }
+
+    inline std::optional&lt;SharedString&gt; register_font_from_data(const uint8_t *data, std::size_t len)
+    {
+        SharedString maybe_err;
+        cbindgen_private::slint_register_font_from_data(&amp;inner, make_slice(data, len), &amp;maybe_err);
+        if (!maybe_err.empty()) {
+            return maybe_err;
+        } else {
+            return {};
+        }
+    }
+
+    inline void register_bitmap_font(const cbindgen_private::BitmapFont &amp;font)
+    {
+        cbindgen_private::slint_register_bitmap_font(&amp;inner, &amp;font);
+    }
+
+    const cbindgen_private::WindowAdapterRcOpaque &amp;handle() const { return inner; }
+
+private:
+    friend class slint::platform::SkiaRenderer;
+    friend class slint::platform::SoftwareRenderer;
+    cbindgen_private::WindowAdapterRcOpaque inner;
+};
+
+}
+
+class Window
+{
+public:
+    explicit Window(const private_api::WindowAdapterRc &amp;windowrc) : inner(windowrc) { }
+    Window(const Window &amp;other) = delete;
+    Window &amp;operator=(const Window &amp;other) = delete;
+    Window(Window &amp;&amp;other) = delete;
+    Window &amp;operator=(Window &amp;&amp;other) = delete;
+    ~Window() = default;
+
+    void show()
+    {
+        private_api::assert_main_thread();
+        inner.show();
+    }
+    void hide()
+    {
+        private_api::assert_main_thread();
+        inner.hide();
+    }
+
+    bool is_visible() const
+    {
+        private_api::assert_main_thread();
+        return inner.is_visible();
+    }
+
+    template&lt;std::invocable&lt;RenderingState, GraphicsAPI&gt; F&gt;
+    std::optional&lt;SetRenderingNotifierError&gt; set_rendering_notifier(F &amp;&amp;callback) const
+    {
+        private_api::assert_main_thread();
+        return inner.set_rendering_notifier(std::forward&lt;F&gt;(callback));
+    }
+
+    // clang-format off
+    template&lt;std::invocable F&gt;
+        requires(std::is_convertible_v&lt;std::invoke_result_t&lt;F&gt;, CloseRequestResponse&gt;)
+    void on_close_requested(F &amp;&amp;callback) const
+    // clang-format on
+    {
+        private_api::assert_main_thread();
+        return inner.on_close_requested(std::forward&lt;F&gt;(callback));
+    }
+
+    void request_redraw() const
+    {
+        private_api::assert_main_thread();
+        inner.request_redraw();
+    }
+
+    slint::PhysicalPosition position() const
+    {
+        private_api::assert_main_thread();
+        return inner.position();
+    }
+
+    void set_position(const slint::LogicalPosition &amp;pos)
+    {
+        private_api::assert_main_thread();
+        inner.set_logical_position(pos);
+    }
+    void set_position(const slint::PhysicalPosition &amp;pos)
+    {
+        private_api::assert_main_thread();
+        inner.set_physical_position(pos);
+    }
+
+    slint::PhysicalSize size() const
+    {
+        private_api::assert_main_thread();
+        return inner.size();
+    }
+
+    void set_size(const slint::LogicalSize &amp;size)
+    {
+        private_api::assert_main_thread();
+        inner.set_logical_size(size);
+    }
+    void set_size(const slint::PhysicalSize &amp;size)
+    {
+        private_api::assert_main_thread();
+        inner.set_physical_size(size);
+    }
+
+    float scale_factor() const
+    {
+        private_api::assert_main_thread();
+        return inner.scale_factor();
+    }
+
+    bool is_fullscreen() const
+    {
+        private_api::assert_main_thread();
+        return cbindgen_private::slint_windowrc_is_fullscreen(&amp;inner.handle());
+    }
+    void set_fullscreen(bool fullscreen)
+    {
+        private_api::assert_main_thread();
+        cbindgen_private::slint_windowrc_set_fullscreen(&amp;inner.handle(), fullscreen);
+    }
+
+    bool is_maximized() const
+    {
+        private_api::assert_main_thread();
+        return cbindgen_private::slint_windowrc_is_maximized(&amp;inner.handle());
+    }
+    void set_maximized(bool maximized)
+    {
+        private_api::assert_main_thread();
+        cbindgen_private::slint_windowrc_set_maximized(&amp;inner.handle(), maximized);
+    }
+
+    bool is_minimized() const
+    {
+        private_api::assert_main_thread();
+        return cbindgen_private::slint_windowrc_is_minimized(&amp;inner.handle());
+    }
+    void set_minimized(bool minimized)
+    {
+        private_api::assert_main_thread();
+        cbindgen_private::slint_windowrc_set_minimized(&amp;inner.handle(), minimized);
+    }
+
+    void dispatch_key_press_event(const SharedString &amp;text)
+    {
+        private_api::assert_main_thread();
+        cbindgen_private::slint_windowrc_dispatch_key_event(
+                &amp;inner.handle(), cbindgen_private::KeyEventType::KeyPressed, &amp;text, false);
+    }
+
+    void dispatch_key_press_repeat_event(const SharedString &amp;text)
+    {
+        private_api::assert_main_thread();
+        cbindgen_private::slint_windowrc_dispatch_key_event(
+                &amp;inner.handle(), cbindgen_private::KeyEventType::KeyPressed, &amp;text, true);
+    }
+
+    void dispatch_key_release_event(const SharedString &amp;text)
+    {
+        private_api::assert_main_thread();
+        cbindgen_private::slint_windowrc_dispatch_key_event(
+                &amp;inner.handle(), cbindgen_private::KeyEventType::KeyReleased, &amp;text, false);
+    }
+
+    void dispatch_pointer_press_event(LogicalPosition pos, PointerEventButton button)
+    {
+        private_api::assert_main_thread();
+        inner.dispatch_pointer_event(
+                slint::cbindgen_private::MouseEvent::Pressed({ pos.x, pos.y }, button, 0, false));
+    }
+    void dispatch_pointer_release_event(LogicalPosition pos, PointerEventButton button)
+    {
+        private_api::assert_main_thread();
+        inner.dispatch_pointer_event(
+                slint::cbindgen_private::MouseEvent::Released({ pos.x, pos.y }, button, 0, false));
+    }
+    void dispatch_pointer_exit_event()
+    {
+        private_api::assert_main_thread();
+        inner.dispatch_pointer_event(slint::cbindgen_private::MouseEvent::Exit());
+    }
+
+    void dispatch_pointer_move_event(LogicalPosition pos)
+    {
+        private_api::assert_main_thread();
+        inner.dispatch_pointer_event(
+                slint::cbindgen_private::MouseEvent::Moved({ pos.x, pos.y }, false));
+    }
+
+    void dispatch_pointer_scroll_event(LogicalPosition pos, float delta_x, float delta_y)
+    {
+        private_api::assert_main_thread();
+        inner.dispatch_pointer_event(
+                slint::cbindgen_private::MouseEvent::Wheel({ pos.x, pos.y }, delta_x, delta_y));
+    }
+
+    void dispatch_resize_event(slint::LogicalSize s)
+    {
+        private_api::assert_main_thread();
+        using slint::cbindgen_private::WindowEvent;
+        WindowEvent event { .resized =
+                                    WindowEvent::Resized_Body { .tag = WindowEvent::Tag::Resized,
+                                                                .size = { s.width, s.height } } };
+        cbindgen_private::slint_windowrc_dispatch_event(&amp;inner.handle(), &amp;event);
+    }
+
+    void dispatch_scale_factor_change_event(float factor)
+    {
+        private_api::assert_main_thread();
+        using slint::cbindgen_private::WindowEvent;
+        WindowEvent event { .scale_factor_changed = WindowEvent::ScaleFactorChanged_Body {
+                                    .tag = WindowEvent::Tag::ScaleFactorChanged,
+                                    .scale_factor = factor } };
+        cbindgen_private::slint_windowrc_dispatch_event(&amp;inner.handle(), &amp;event);
+    }
+
+    void dispatch_window_active_changed_event(bool active)
+    {
+        private_api::assert_main_thread();
+        using slint::cbindgen_private::WindowEvent;
+        WindowEvent event { .window_active_changed = WindowEvent::WindowActiveChanged_Body {
+                                    .tag = WindowEvent::Tag::WindowActiveChanged, ._0 = active } };
+        cbindgen_private::slint_windowrc_dispatch_event(&amp;inner.handle(), &amp;event);
+    }
+
+    void dispatch_close_requested_event()
+    {
+        private_api::assert_main_thread();
+        using slint::cbindgen_private::WindowEvent;
+        WindowEvent event { .tag = WindowEvent::Tag::CloseRequested };
+        cbindgen_private::slint_windowrc_dispatch_event(&amp;inner.handle(), &amp;event);
+    }
+
+    bool has_active_animations() const
+    {
+        private_api::assert_main_thread();
+        return cbindgen_private::slint_windowrc_has_active_animations(&amp;inner.handle());
+    }
+
+    std::optional&lt;SharedPixelBuffer&lt;Rgba8Pixel&gt;&gt; take_snapshot() const
+    {
+        SharedPixelBuffer&lt;Rgba8Pixel&gt; result;
+        if (cbindgen_private::slint_windowrc_take_snapshot(&amp;inner.handle(), &amp;result.m_data,
+                                                           &amp;result.m_width, &amp;result.m_height)) {
+            return result;
+        } else {
+            return {};
+        }
+    }
+
+#if (!defined(__APPLE__) &amp;&amp; !defined(_WIN32) &amp;&amp; !defined(_WIN64)                                   \
+     &amp;&amp; !defined(SLINT_FEATURE_FREESTANDING))                                                      \
+        || defined(DOXYGEN)
+
+    wl_surface *wayland_surface() const
+    {
+        return static_cast&lt;wl_surface *&gt;(
+                cbindgen_private::slint_windowrc_wlsurface_wayland(&amp;inner.handle()));
+    }
+
+    wl_display *wayland_display() const
+    {
+        return static_cast&lt;wl_display *&gt;(
+                cbindgen_private::slint_windowrc_wldisplay_wayland(&amp;inner.handle()));
+    }
+
+#endif
+#if (defined(__APPLE__) &amp;&amp; !defined(_WIN32) &amp;&amp; !defined(_WIN64)                                    \
+     &amp;&amp; !defined(SLINT_FEATURE_FREESTANDING))                                                      \
+        || defined(DOXYGEN)
+
+    NSView *appkit_view() const
+    {
+        return static_cast&lt;NSView *&gt;(
+                cbindgen_private::slint_windowrc_nsview_appkit(&amp;inner.handle()));
+    }
+
+#endif
+#if (!defined(__APPLE__) &amp;&amp; (defined(_WIN32) || defined(_WIN64))                                   \
+     &amp;&amp; !defined(SLINT_FEATURE_FREESTANDING))                                                      \
+        || defined(DOXYGEN)
+
+    HWND win32_hwnd() const
+    {
+        return static_cast&lt;HWND&gt;(cbindgen_private::slint_windowrc_hwnd_win32(&amp;inner.handle()));
+    }
+
+    HINSTANCE win32_hinstance() const
+    {
+        return static_cast&lt;HINSTANCE&gt;(
+                cbindgen_private::slint_windowrc_hinstance_win32(&amp;inner.handle()));
+    }
+
+#endif
+
+    private_api::WindowAdapterRc &amp;window_handle() { return inner; }
+    const private_api::WindowAdapterRc &amp;window_handle() const { return inner; }
+
+private:
+    private_api::WindowAdapterRc inner;
+};
+
+}
 </pre></div>
 </div>
 </section>
