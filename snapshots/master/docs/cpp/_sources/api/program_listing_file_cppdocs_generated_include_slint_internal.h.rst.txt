@@ -949,14 +949,6 @@ Program Listing for File slint_internal.h
    
    extern "C" {
    
-   void slint_styled_text_new(StyledText *out);
-   
-   void slint_styled_text_drop(const StyledText *text);
-   
-   bool slint_styled_text_eq(const StyledText *a, const StyledText *b);
-   
-   void slint_styled_text_clone(StyledText *out, const StyledText *ss);
-   
    void slint_callback_init(CallbackOpaque *out);
    
    void slint_callback_call(const CallbackOpaque *sig, const void *arg, void *ret);
@@ -1082,7 +1074,7 @@ Program Listing for File slint_internal.h
                                      Orientation orientation);
    
    void slint_solve_box_layout(const BoxLayoutData *data,
-                               Slice<uint32_t> repeater_indexes,
+                               Slice<uint32_t> repeater_indices,
                                SharedVector<float> *result);
    
    LayoutInfo slint_box_layout_info(Slice<BoxLayoutCellData> cells,
@@ -1234,6 +1226,14 @@ Program Listing for File slint_internal.h
    void slint_shared_string_to_lowercase(SharedString *out, const SharedString *ss);
    
    void slint_shared_string_to_uppercase(SharedString *out, const SharedString *ss);
+   
+   void slint_styled_text_new(StyledText *out);
+   
+   void slint_styled_text_drop(const StyledText *text);
+   
+   bool slint_styled_text_eq(const StyledText *a, const StyledText *b);
+   
+   void slint_styled_text_clone(StyledText *out, const StyledText *ss);
    
    void slint_mock_elapsed_time(uint64_t time_in_ms);
    

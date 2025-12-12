@@ -2095,7 +2095,7 @@
 <a href=#1973 id=1973 data-nosnippet>1973</a>    </span><span class="kw">let </span>instance_ref = <span class="kw">unsafe </span>{ <a href="#2354-2357">InstanceRef</a>::<a href="#2360-2374">from_pin_ref</a>(<a href="#1970">component</a>, <a href="#1971">guard</a>) };
 <a href=#1974 id=1974 data-nosnippet>1974</a>    <span class="kw">let </span>orientation = <span class="kw">crate</span>::eval_layout::<a href="eval_layout.rs.html#29-34">from_runtime</a>(<a href="#1970">orientation</a>);
 <a href=#1975 id=1975 data-nosnippet>1975</a>
-<a href=#1976 id=1976 data-nosnippet>1976</a>    <span class="kw">let </span><span class="kw-2">mut </span>result = <span class="kw">crate</span>::eval_layout::<a href="eval_layout.rs.html#383-408">get_layout_info</a>(
+<a href=#1976 id=1976 data-nosnippet>1976</a>    <span class="kw">let </span><span class="kw-2">mut </span>result = <span class="kw">crate</span>::eval_layout::<a href="eval_layout.rs.html#387-412">get_layout_info</a>(
 <a href=#1977 id=1977 data-nosnippet>1977</a>        <span class="kw-2">&amp;</span><a href="#1973">instance_ref</a>.description.original.root_element,
 <a href=#1978 id=1978 data-nosnippet>1978</a>        <a href="#1973">instance_ref</a>,
 <a href=#1979 id=1979 data-nosnippet>1979</a>        <span class="kw-2">&amp;</span><a href="#1973">instance_ref</a>.<a href="#2403-2416">window_adapter</a>(),
@@ -2104,7 +2104,7 @@
 <a href=#1982 id=1982 data-nosnippet>1982</a>
 <a href=#1983 id=1983 data-nosnippet>1983</a>    <span class="kw">let </span>constraints = <a href="#1973">instance_ref</a>.description.original.root_constraints.<a href="https://doc.rust-lang.org/nightly/core/cell/struct.RefCell.html#method.borrow">borrow</a>();
 <a href=#1984 id=1984 data-nosnippet>1984</a>    <span class="kw">if </span><a href="#1983">constraints</a>.has_explicit_restrictions(<a href="#1974">orientation</a>) {
-<a href=#1985 id=1985 data-nosnippet>1985</a>        <span class="kw">crate</span>::eval_layout::<a href="eval_layout.rs.html#325-380">fill_layout_info_constraints</a>(
+<a href=#1985 id=1985 data-nosnippet>1985</a>        <span class="kw">crate</span>::eval_layout::<a href="eval_layout.rs.html#329-384">fill_layout_info_constraints</a>(
 <a href=#1986 id=1986 data-nosnippet>1986</a>            <span class="kw-2">&amp;mut </span><a href="#1976">result</a>,
 <a href=#1987 id=1987 data-nosnippet>1987</a>            <span class="kw-2">&amp;</span><a href="#1983">constraints</a>,
 <a href=#1988 id=1988 data-nosnippet>1988</a>            <a href="#1974">orientation</a>,
