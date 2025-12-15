@@ -17,11 +17,11 @@ export interface InitOutput {
   readonly slint_mock_elapsed_time: (a: bigint) => void;
   readonly slint_send_keyboard_char: (a: number, b: number, c: number) => void;
   readonly slint_send_mouse_click: (a: number, b: number, c: number) => void;
-  readonly wasm_bindgen__convert__closures_____invoke__h0d3c86dd579ca316: (a: number, b: number, c: any) => void;
-  readonly wasm_bindgen__closure__destroy__h18725943fa55f831: (a: number, b: number) => void;
   readonly wasm_bindgen__convert__closures_____invoke__h29b8947005e6d646: (a: number, b: number, c: any) => void;
   readonly wasm_bindgen__closure__destroy__h11742d09ebc23520: (a: number, b: number) => void;
   readonly wasm_bindgen__convert__closures_____invoke__h7eb4a232f2c5a66c: (a: number, b: number, c: any, d: any) => void;
+  readonly wasm_bindgen__convert__closures_____invoke__h0de3cd391af3e756: (a: number, b: number, c: any) => void;
+  readonly wasm_bindgen__closure__destroy__h08f73647a9e08e10: (a: number, b: number) => void;
   readonly wasm_bindgen__convert__closures_____invoke__h5e4fc0b2b23106bc: (a: number, b: number) => void;
   readonly __wbindgen_malloc: (a: number, b: number) => number;
   readonly __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;
