@@ -3300,7 +3300,7 @@ SOFTWARE.
 
 #### Used by:
 
-- [aligned 0.4.2]( https://github.com/rust-embedded-community/aligned )
+- [aligned 0.4.3]( https://github.com/rust-embedded-community/aligned )
 
 #### License Text
 
