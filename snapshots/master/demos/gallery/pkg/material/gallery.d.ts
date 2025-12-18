@@ -19,10 +19,10 @@ export interface InitOutput {
   readonly slint_send_mouse_click: (a: number, b: number, c: number) => void;
   readonly wasm_bindgen__convert__closures_____invoke__h17f9311f65356d69: (a: number, b: number, c: any) => void;
   readonly wasm_bindgen__closure__destroy__h240e7f987e1b1d09: (a: number, b: number) => void;
-  readonly wasm_bindgen__convert__closures_____invoke__h4fbeac941df926a4: (a: number, b: number, c: any, d: any) => void;
-  readonly wasm_bindgen__closure__destroy__h368e3b69b4b0ec5f: (a: number, b: number) => void;
   readonly wasm_bindgen__convert__closures_____invoke__h294377d6e860f9ac: (a: number, b: number, c: any) => void;
+  readonly wasm_bindgen__closure__destroy__h368e3b69b4b0ec5f: (a: number, b: number) => void;
   readonly wasm_bindgen__convert__closures_____invoke__ha25a88e50901bc28: (a: number, b: number) => void;
+  readonly wasm_bindgen__convert__closures_____invoke__h4fbeac941df926a4: (a: number, b: number, c: any, d: any) => void;
   readonly __wbindgen_malloc: (a: number, b: number) => number;
   readonly __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;
   readonly __externref_table_alloc: () => number;
