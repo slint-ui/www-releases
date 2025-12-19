@@ -4011,8 +4011,8 @@ DEALINGS IN THE SOFTWARE.
 #### Used by:
 
 - [tracing-attributes 0.1.31]( https://github.com/tokio-rs/tracing )
-- [tracing-core 0.1.35]( https://github.com/tokio-rs/tracing )
-- [tracing 0.1.43]( https://github.com/tokio-rs/tracing )
+- [tracing-core 0.1.36]( https://github.com/tokio-rs/tracing )
+- [tracing 0.1.44]( https://github.com/tokio-rs/tracing )
 
 #### License Text
 
@@ -4600,10 +4600,10 @@ DEALINGS IN THE SOFTWARE.
 #### Used by:
 
 - [serde_spanned 1.0.4]( https://github.com/toml-rs/toml )
-- [toml 0.9.9+spec-1.0.0]( https://github.com/toml-rs/toml )
-- [toml_datetime 0.7.4+spec-1.0.0]( https://github.com/toml-rs/toml )
+- [toml 0.9.10+spec-1.1.0]( https://github.com/toml-rs/toml )
+- [toml_datetime 0.7.5+spec-1.1.0]( https://github.com/toml-rs/toml )
 - [toml_edit 0.23.10+spec-1.0.0]( https://github.com/toml-rs/toml )
-- [toml_parser 1.0.5+spec-1.0.0]( https://github.com/toml-rs/toml )
+- [toml_parser 1.0.6+spec-1.1.0]( https://github.com/toml-rs/toml )
 
 #### License Text
 

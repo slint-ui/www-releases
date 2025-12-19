@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `api/rs/slint/docs.rs`."><title>docs.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-80aa586b.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint" data-themes="" data-resource-suffix="" data-rustdoc-version="1.94.0-nightly (f794a0873 2025-12-17)" data-channel="nightly" data-search-js="search-9e2438ea.js" data-stringdex-js="stringdex-a3946164.js" data-settings-js="settings-c38705f0.js" ><script src="../../static.files/storage-e2aeef58.js"></script><script defer src="../../static.files/src-script-813739b1.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-3e30299d.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-ffcac47a.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `api/rs/slint/docs.rs`."><title>docs.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-80aa586b.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint" data-themes="" data-resource-suffix="" data-rustdoc-version="1.94.0-nightly (fcf67da03 2025-12-18)" data-channel="nightly" data-search-js="search-9e2438ea.js" data-stringdex-js="stringdex-a3946164.js" data-settings-js="settings-c38705f0.js" ><script src="../../static.files/storage-e2aeef58.js"></script><script defer src="../../static.files/src-script-813739b1.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-3e30299d.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-ffcac47a.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -270,10 +270,10 @@
 <a href=#148 id=148 data-nosnippet>148</a><span class="kw">pub mod </span><a href="../../slint/docs/mcu/index.html">mcu</a> {
 <a href=#149 id=149 data-nosnippet>149</a>    <span class="attr">#![doc = <span class="macro">include_str!</span>(<span class="string">"mcu.md"</span>)]
 <a href=#150 id=150 data-nosnippet>150</a>    #[cfg(feature = <span class="string">"renderer-software"</span>)]
-<a href=#151 id=151 data-nosnippet>151</a>    </span><span class="kw">use </span><a href="lib.rs.html#433-435"><span class="kw">crate</span>::platform::software_renderer</a>::<span class="kw-2">*</span>;
-<a href=#152 id=152 data-nosnippet>152</a>    <span class="kw">use </span><a href="lib.rs.html#417-436"><span class="kw">crate</span>::platform</a>::<span class="kw-2">*</span>;
+<a href=#151 id=151 data-nosnippet>151</a>    </span><span class="kw">use </span><span class="kw">crate</span>::platform::software_renderer::<span class="kw-2">*</span>;
+<a href=#152 id=152 data-nosnippet>152</a>    <span class="kw">use </span><span class="kw">crate</span>::platform::<span class="kw-2">*</span>;
 <a href=#153 id=153 data-nosnippet>153</a>    <span class="kw">mod </span>slint {
-<a href=#154 id=154 data-nosnippet>154</a>        <span class="kw">pub use crate</span>::<span class="kw-2">*</span>;
+<a href=#154 id=154 data-nosnippet>154</a>        <span class="kw">pub use </span>crate::<span class="kw-2">*</span>;
 <a href=#155 id=155 data-nosnippet>155</a>    }
 <a href=#156 id=156 data-nosnippet>156</a>}
 <a href=#157 id=157 data-nosnippet>157</a>
@@ -286,11 +286,11 @@
 <a href=#164 id=164 data-nosnippet>164</a>    </span><span class="doccomment">//!
 <a href=#165 id=165 data-nosnippet>165</a>    //! More information about the backend and renderers is available in the
 <a href=#166 id=166 data-nosnippet>166</a>    //![Slint Documentation](slint:backends_and_renderers)")]
-<a href=#167 id=167 data-nosnippet>167</a>    </span><span class="kw">use crate</span>::<span class="kw-2">*</span>;
+<a href=#167 id=167 data-nosnippet>167</a>    </span><span class="kw">use </span>crate::<span class="kw-2">*</span>;
 <a href=#168 id=168 data-nosnippet>168</a>}
 <a href=#169 id=169 data-nosnippet>169</a>
 <a href=#170 id=170 data-nosnippet>170</a><span class="kw">pub mod </span><a href="../../slint/docs/type_mappings/index.html">type_mappings</a> {
 <a href=#171 id=171 data-nosnippet>171</a>    <span class="attr">#![doc = <span class="macro">include_str!</span>(<span class="string">"type-mappings.md"</span>)]
-<a href=#172 id=172 data-nosnippet>172</a>    </span><span class="kw">use crate</span>::<span class="kw-2">*</span>;
+<a href=#172 id=172 data-nosnippet>172</a>    </span><span class="kw">use </span>crate::<span class="kw-2">*</span>;
 <a href=#173 id=173 data-nosnippet>173</a>}
 </code></pre></div></section></main></body></html>
