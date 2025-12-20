@@ -2271,7 +2271,7 @@ DEALINGS IN THE SOFTWARE.
 
 #### Used by:
 
-- [cc 1.2.49]( https://github.com/rust-lang/cc-rs )
+- [cc 1.2.50]( https://github.com/rust-lang/cc-rs )
 - [cfg-if 1.0.4]( https://github.com/rust-lang/cfg-if )
 - [find-msvc-tools 0.1.5]( https://github.com/rust-lang/cc-rs )
 - [pkg-config 0.3.32]( https://github.com/rust-lang/pkg-config-rs )
@@ -6302,7 +6302,7 @@ DEALINGS IN THE SOFTWARE.
 - [pin-project 1.1.10]( https://github.com/taiki-e/pin-project )
 - [piper 0.2.4]( https://github.com/smol-rs/piper )
 - [polling 3.11.0]( https://github.com/smol-rs/polling )
-- [portable-atomic 1.11.1]( https://github.com/taiki-e/portable-atomic )
+- [portable-atomic 1.12.0]( https://github.com/taiki-e/portable-atomic )
 - [proc-macro-crate 3.4.0]( https://github.com/bkchr/proc-macro-crate )
 - [proc-macro2 1.0.103]( https://github.com/dtolnay/proc-macro2 )
 - [quote 1.0.42]( https://github.com/dtolnay/quote )
