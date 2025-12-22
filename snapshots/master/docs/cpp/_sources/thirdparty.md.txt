@@ -6086,7 +6086,7 @@ DEALINGS IN THE SOFTWARE.
 - [async-channel 2.5.0]( https://github.com/smol-rs/async-channel )
 - [async-executor 1.13.3]( https://github.com/smol-rs/async-executor )
 - [async-io 2.6.0]( https://github.com/smol-rs/async-io )
-- [async-lock 3.4.1]( https://github.com/smol-rs/async-lock )
+- [async-lock 3.4.2]( https://github.com/smol-rs/async-lock )
 - [async-process 2.5.0]( https://github.com/smol-rs/async-process )
 - [async-signal 0.2.13]( https://github.com/smol-rs/async-signal )
 - [async-task 4.7.1]( https://github.com/smol-rs/async-task )
