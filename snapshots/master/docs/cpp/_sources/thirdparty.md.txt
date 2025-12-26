@@ -3285,7 +3285,7 @@ SOFTWARE.
 
 #### Used by:
 
-- [signal-hook-registry 1.4.7]( https://github.com/vorner/signal-hook )
+- [signal-hook-registry 1.4.8]( https://github.com/vorner/signal-hook )
 
 #### License Text
 
@@ -6134,7 +6134,7 @@ DEALINGS IN THE SOFTWARE.
 - [thiserror 2.0.17]( https://github.com/dtolnay/thiserror )
 - [unicode-ident 1.0.22]( https://github.com/dtolnay/unicode-ident )
 - [x11-dl 2.21.0]( https://github.com/AltF02/x11-rs.git )
-- [zmij 0.1.8]( https://github.com/dtolnay/zmij )
+- [zmij 0.1.9]( https://github.com/dtolnay/zmij )
 - [zvariant_utils 3.2.1]( https://github.com/dbus2/zbus/ )
 
 #### License Text
