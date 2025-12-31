@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"struct":["LiveReloadingComponent"]};
+window.SIDEBAR_ITEMS = {"enum":["DefaultTranslationContext"],"struct":["LiveReloadingComponent"]};

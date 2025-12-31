@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"enum":["CompileError","EmbedResourcesKind"],"fn":["compile","compile_with_config","compile_with_output_path","print_rustc_flags"],"struct":["CompilerConfiguration"]};
+window.SIDEBAR_ITEMS = {"enum":["CompileError","DefaultTranslationContext","EmbedResourcesKind"],"fn":["compile","compile_with_config","compile_with_output_path","print_rustc_flags"],"struct":["CompilerConfiguration"]};
