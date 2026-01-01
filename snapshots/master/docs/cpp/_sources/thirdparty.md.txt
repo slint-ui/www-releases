@@ -6103,7 +6103,7 @@ DEALINGS IN THE SOFTWARE.
 - [thiserror 2.0.17]( https://github.com/dtolnay/thiserror )
 - [unicode-ident 1.0.22]( https://github.com/dtolnay/unicode-ident )
 - [x11-dl 2.21.0]( https://github.com/AltF02/x11-rs.git )
-- [zmij 1.0.5]( https://github.com/dtolnay/zmij )
+- [zmij 1.0.6]( https://github.com/dtolnay/zmij )
 - [zvariant_utils 3.2.1]( https://github.com/dbus2/zbus/ )
 
 #### License Text
