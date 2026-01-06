@@ -466,10 +466,10 @@ Program Listing for File slint_internal.h
    
    struct GridLayoutInputData {
        bool new_row;
-       uint16_t col;
-       uint16_t row;
-       uint16_t colspan;
-       uint16_t rowspan;
+       float col;
+       float row;
+       float colspan;
+       float rowspan;
    };
    
    using GridLayoutOrganizedData = SharedVector<uint16_t>;
@@ -486,7 +486,7 @@ Program Listing for File slint_internal.h
        GridLayoutOrganizedData organized_data;
    };
    
-   struct BoxLayoutCellData {
+   struct LayoutItemInfo {
        LayoutInfo constraint;
    };
    
@@ -495,7 +495,7 @@ Program Listing for File slint_internal.h
        float spacing;
        Padding padding;
        LayoutAlignment alignment;
-       Slice<BoxLayoutCellData> cells;
+       Slice<LayoutItemInfo> cells;
    };
    
    struct MenuVTable {
@@ -1056,6 +1056,7 @@ Program Listing for File slint_internal.h
                                          uint32_t self_index);
    
    void slint_organize_grid_layout(Slice<GridLayoutInputData> input_data,
+                                   Slice<uint32_t> repeater_indices,
                                    GridLayoutOrganizedData *result);
    
    void slint_organize_dialog_button_layout(Slice<GridLayoutInputData> input_data,
@@ -1063,12 +1064,14 @@ Program Listing for File slint_internal.h
                                             GridLayoutOrganizedData *result);
    
    void slint_solve_grid_layout(const GridLayoutData *data,
-                                Slice<LayoutInfo> constraints,
+                                Slice<LayoutItemInfo> constraints,
                                 Orientation orientation,
+                                Slice<uint32_t> repeater_indices,
                                 SharedVector<float> *result);
    
    LayoutInfo slint_grid_layout_info(const GridLayoutOrganizedData *organized_data,
-                                     Slice<LayoutInfo> constraints,
+                                     Slice<LayoutItemInfo> constraints,
+                                     Slice<uint32_t> repeater_indices,
                                      float spacing,
                                      const Padding *padding,
                                      Orientation orientation);
@@ -1077,12 +1080,12 @@ Program Listing for File slint_internal.h
                                Slice<uint32_t> repeater_indices,
                                SharedVector<float> *result);
    
-   LayoutInfo slint_box_layout_info(Slice<BoxLayoutCellData> cells,
+   LayoutInfo slint_box_layout_info(Slice<LayoutItemInfo> cells,
                                     float spacing,
                                     const Padding *padding,
                                     LayoutAlignment alignment);
    
-   LayoutInfo slint_box_layout_info_ortho(Slice<BoxLayoutCellData> cells, const Padding *padding);
+   LayoutInfo slint_box_layout_info_ortho(Slice<LayoutItemInfo> cells, const Padding *padding);
    
    void slint_menus_create_wrapper(const ItemTreeRc *menu_tree,
                                    VRc<MenuVTable> *result,

@@ -876,10 +876,10 @@
 
 <span class="k">struct</span><span class="w"> </span><span class="nc">GridLayoutInputData</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">new_row</span><span class="p">;</span>
-<span class="w">    </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">col</span><span class="p">;</span>
-<span class="w">    </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">row</span><span class="p">;</span>
-<span class="w">    </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">colspan</span><span class="p">;</span>
-<span class="w">    </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">rowspan</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">col</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">row</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">colspan</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">rowspan</span><span class="p">;</span>
 <span class="p">};</span>
 
 <span class="k">using</span><span class="w"> </span><span class="n">GridLayoutOrganizedData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SharedVector</span><span class="o">&lt;</span><span class="kt">uint16_t</span><span class="o">&gt;</span><span class="p">;</span>
@@ -896,7 +896,7 @@
 <span class="w">    </span><span class="n">GridLayoutOrganizedData</span><span class="w"> </span><span class="n">organized_data</span><span class="p">;</span>
 <span class="p">};</span>
 
-<span class="k">struct</span><span class="w"> </span><span class="nc">BoxLayoutCellData</span><span class="w"> </span><span class="p">{</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">LayoutItemInfo</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">LayoutInfo</span><span class="w"> </span><span class="n">constraint</span><span class="p">;</span>
 <span class="p">};</span>
 
@@ -905,7 +905,7 @@
 <span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">spacing</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Padding</span><span class="w"> </span><span class="n">padding</span><span class="p">;</span>
 <span class="w">    </span><span class="n">LayoutAlignment</span><span class="w"> </span><span class="n">alignment</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Slice</span><span class="o">&lt;</span><span class="n">BoxLayoutCellData</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cells</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Slice</span><span class="o">&lt;</span><span class="n">LayoutItemInfo</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cells</span><span class="p">;</span>
 <span class="p">};</span>
 
 <span class="k">struct</span><span class="w"> </span><span class="nc">MenuVTable</span><span class="w"> </span><span class="p">{</span>
@@ -1466,6 +1466,7 @@
 <span class="w">                                      </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">self_index</span><span class="p">);</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">slint_organize_grid_layout</span><span class="p">(</span><span class="n">Slice</span><span class="o">&lt;</span><span class="n">GridLayoutInputData</span><span class="o">&gt;</span><span class="w"> </span><span class="n">input_data</span><span class="p">,</span>
+<span class="w">                                </span><span class="n">Slice</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">repeater_indices</span><span class="p">,</span>
 <span class="w">                                </span><span class="n">GridLayoutOrganizedData</span><span class="w"> </span><span class="o">*</span><span class="n">result</span><span class="p">);</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">slint_organize_dialog_button_layout</span><span class="p">(</span><span class="n">Slice</span><span class="o">&lt;</span><span class="n">GridLayoutInputData</span><span class="o">&gt;</span><span class="w"> </span><span class="n">input_data</span><span class="p">,</span>
@@ -1473,12 +1474,14 @@
 <span class="w">                                         </span><span class="n">GridLayoutOrganizedData</span><span class="w"> </span><span class="o">*</span><span class="n">result</span><span class="p">);</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">slint_solve_grid_layout</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">GridLayoutData</span><span class="w"> </span><span class="o">*</span><span class="n">data</span><span class="p">,</span>
-<span class="w">                             </span><span class="n">Slice</span><span class="o">&lt;</span><span class="n">LayoutInfo</span><span class="o">&gt;</span><span class="w"> </span><span class="n">constraints</span><span class="p">,</span>
+<span class="w">                             </span><span class="n">Slice</span><span class="o">&lt;</span><span class="n">LayoutItemInfo</span><span class="o">&gt;</span><span class="w"> </span><span class="n">constraints</span><span class="p">,</span>
 <span class="w">                             </span><span class="n">Orientation</span><span class="w"> </span><span class="n">orientation</span><span class="p">,</span>
+<span class="w">                             </span><span class="n">Slice</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">repeater_indices</span><span class="p">,</span>
 <span class="w">                             </span><span class="n">SharedVector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">result</span><span class="p">);</span>
 
 <span class="n">LayoutInfo</span><span class="w"> </span><span class="nf">slint_grid_layout_info</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">GridLayoutOrganizedData</span><span class="w"> </span><span class="o">*</span><span class="n">organized_data</span><span class="p">,</span>
-<span class="w">                                  </span><span class="n">Slice</span><span class="o">&lt;</span><span class="n">LayoutInfo</span><span class="o">&gt;</span><span class="w"> </span><span class="n">constraints</span><span class="p">,</span>
+<span class="w">                                  </span><span class="n">Slice</span><span class="o">&lt;</span><span class="n">LayoutItemInfo</span><span class="o">&gt;</span><span class="w"> </span><span class="n">constraints</span><span class="p">,</span>
+<span class="w">                                  </span><span class="n">Slice</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">repeater_indices</span><span class="p">,</span>
 <span class="w">                                  </span><span class="kt">float</span><span class="w"> </span><span class="n">spacing</span><span class="p">,</span>
 <span class="w">                                  </span><span class="k">const</span><span class="w"> </span><span class="n">Padding</span><span class="w"> </span><span class="o">*</span><span class="n">padding</span><span class="p">,</span>
 <span class="w">                                  </span><span class="n">Orientation</span><span class="w"> </span><span class="n">orientation</span><span class="p">);</span>
@@ -1487,12 +1490,12 @@
 <span class="w">                            </span><span class="n">Slice</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">repeater_indices</span><span class="p">,</span>
 <span class="w">                            </span><span class="n">SharedVector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">result</span><span class="p">);</span>
 
-<span class="n">LayoutInfo</span><span class="w"> </span><span class="nf">slint_box_layout_info</span><span class="p">(</span><span class="n">Slice</span><span class="o">&lt;</span><span class="n">BoxLayoutCellData</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cells</span><span class="p">,</span>
+<span class="n">LayoutInfo</span><span class="w"> </span><span class="nf">slint_box_layout_info</span><span class="p">(</span><span class="n">Slice</span><span class="o">&lt;</span><span class="n">LayoutItemInfo</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cells</span><span class="p">,</span>
 <span class="w">                                 </span><span class="kt">float</span><span class="w"> </span><span class="n">spacing</span><span class="p">,</span>
 <span class="w">                                 </span><span class="k">const</span><span class="w"> </span><span class="n">Padding</span><span class="w"> </span><span class="o">*</span><span class="n">padding</span><span class="p">,</span>
 <span class="w">                                 </span><span class="n">LayoutAlignment</span><span class="w"> </span><span class="n">alignment</span><span class="p">);</span>
 
-<span class="n">LayoutInfo</span><span class="w"> </span><span class="nf">slint_box_layout_info_ortho</span><span class="p">(</span><span class="n">Slice</span><span class="o">&lt;</span><span class="n">BoxLayoutCellData</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cells</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Padding</span><span class="w"> </span><span class="o">*</span><span class="n">padding</span><span class="p">);</span>
+<span class="n">LayoutInfo</span><span class="w"> </span><span class="nf">slint_box_layout_info_ortho</span><span class="p">(</span><span class="n">Slice</span><span class="o">&lt;</span><span class="n">LayoutItemInfo</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cells</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Padding</span><span class="w"> </span><span class="o">*</span><span class="n">padding</span><span class="p">);</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">slint_menus_create_wrapper</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">ItemTreeRc</span><span class="w"> </span><span class="o">*</span><span class="n">menu_tree</span><span class="p">,</span>
 <span class="w">                                </span><span class="n">VRc</span><span class="o">&lt;</span><span class="n">MenuVTable</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">result</span><span class="p">,</span>
