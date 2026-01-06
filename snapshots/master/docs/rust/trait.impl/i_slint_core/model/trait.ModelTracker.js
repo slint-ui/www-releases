@@ -1,9 +1,9 @@
 (function() {
-    const implementors = Object.fromEntries([["slint",[]],["slint_interpreter",[]]]);
+    const implementors = Object.fromEntries([["slint",[]]]);
     if (window.register_implementors) {
         window.register_implementors(implementors);
     } else {
         window.pending_implementors = implementors;
     }
 })()
-//{"start":59,"fragment_lengths":[12,25]}
+//{"start":59,"fragment_lengths":[12]}
