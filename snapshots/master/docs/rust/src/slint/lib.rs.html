@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `api/rs/slint/lib.rs`."><title>lib.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-2eb46af5.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint" data-themes="" data-resource-suffix="" data-rustdoc-version="1.94.0-nightly (fecb335cb 2026-01-07)" data-channel="nightly" data-search-js="search-9e2438ea.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-c38705f0.js" ><script src="../../static.files/storage-e2aeef58.js"></script><script defer src="../../static.files/src-script-813739b1.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-7bab91a1.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-ffcac47a.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `api/rs/slint/lib.rs`."><title>lib.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-2eb46af5.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint" data-themes="" data-resource-suffix="" data-rustdoc-version="1.94.0-nightly (31cd367b9 2026-01-08)" data-channel="nightly" data-search-js="search-9e2438ea.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-c38705f0.js" ><script src="../../static.files/storage-e2aeef58.js"></script><script defer src="../../static.files/src-script-813739b1.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-7bab91a1.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-ffcac47a.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -599,7 +599,7 @@
 <a href=#477 id=477 data-nosnippet>477</a>    //!
 <a href=#478 id=478 data-nosnippet>478</a>    //! `Cargo.toml`:
 <a href=#479 id=479 data-nosnippet>479</a>    //! ```toml
-<a href=#480 id=480 data-nosnippet>480</a>    //! slint = { version = "~1.13", features = ["unstable-wgpu-26"] }
+<a href=#480 id=480 data-nosnippet>480</a>    //! slint = { version = "~1.15", features = ["unstable-wgpu-26"] }
 <a href=#481 id=481 data-nosnippet>481</a>    //! ```
 <a href=#482 id=482 data-nosnippet>482</a>    //!
 <a href=#483 id=483 data-nosnippet>483</a>    //! `main.rs`:
@@ -696,7 +696,7 @@
 <a href=#574 id=574 data-nosnippet>574</a>    //!
 <a href=#575 id=575 data-nosnippet>575</a>    //! `Cargo.toml`:
 <a href=#576 id=576 data-nosnippet>576</a>    //! ```toml
-<a href=#577 id=577 data-nosnippet>577</a>    //! slint = { version = "~1.14", features = ["unstable-wgpu-27"] }
+<a href=#577 id=577 data-nosnippet>577</a>    //! slint = { version = "~1.15", features = ["unstable-wgpu-27"] }
 <a href=#578 id=578 data-nosnippet>578</a>    //! ```
 <a href=#579 id=579 data-nosnippet>579</a>    //!
 <a href=#580 id=580 data-nosnippet>580</a>    //! `main.rs`:
@@ -783,7 +783,7 @@
 <a href=#661 id=661 data-nosnippet>661</a>    //!
 <a href=#662 id=662 data-nosnippet>662</a>    //! `Cargo.toml`:
 <a href=#663 id=663 data-nosnippet>663</a>    //! ```toml
-<a href=#664 id=664 data-nosnippet>664</a>    //! slint = { version = "~1.12", features = ["unstable-winit-030"] }
+<a href=#664 id=664 data-nosnippet>664</a>    //! slint = { version = "~1.15", features = ["unstable-winit-030"] }
 <a href=#665 id=665 data-nosnippet>665</a>    //! ```
 <a href=#666 id=666 data-nosnippet>666</a>    //!
 <a href=#667 id=667 data-nosnippet>667</a>    //! `main.rs`:
