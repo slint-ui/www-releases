@@ -7,7 +7,7 @@ This page lists the licenses of the dependencies used by Slint.
 
 ## Overview of licenses
 
-- [MIT License](#MIT) (379)
+- [MIT License](#MIT) (378)
 - [Unicode License v3](#Unicode-3.0) (19)
 - [Apache License 2.0](#Apache-2.0) (16)
 - [BSD 3-Clause &quot;New&quot; or &quot;Revised&quot; License](#BSD-3-Clause) (6)
@@ -2083,9 +2083,9 @@ DEALINGS IN THE SOFTWARE.
 
 #### Used by:
 
-- [cc 1.2.51]( https://github.com/rust-lang/cc-rs )
+- [cc 1.2.52]( https://github.com/rust-lang/cc-rs )
 - [cfg-if 1.0.4]( https://github.com/rust-lang/cfg-if )
-- [find-msvc-tools 0.1.6]( https://github.com/rust-lang/cc-rs )
+- [find-msvc-tools 0.1.7]( https://github.com/rust-lang/cc-rs )
 - [pkg-config 0.3.32]( https://github.com/rust-lang/pkg-config-rs )
 - [scoped-tls 1.0.1]( https://github.com/alexcrichton/scoped-tls )
 
@@ -4370,11 +4370,11 @@ SOFTWARE.
 
 #### Used by:
 
-- [zbus 5.12.0]( https://github.com/z-galaxy/zbus/ )
-- [zbus_macros 5.12.0]( https://github.com/z-galaxy/zbus/ )
-- [zbus_names 4.2.0]( https://github.com/dbus2/zbus/ )
-- [zvariant 5.8.0]( https://github.com/dbus2/zbus/ )
-- [zvariant_derive 5.8.0]( https://github.com/dbus2/zbus/ )
+- [zbus 5.13.0]( https://github.com/z-galaxy/zbus/ )
+- [zbus_macros 5.13.0]( https://github.com/z-galaxy/zbus/ )
+- [zbus_names 4.3.1]( https://github.com/z-galaxy/zbus/ )
+- [zvariant 5.9.0]( https://github.com/z-galaxy/zbus/ )
+- [zvariant_derive 5.9.0]( https://github.com/z-galaxy/zbus/ )
 
 #### License Text
 
@@ -4412,7 +4412,7 @@ DEALINGS IN THE SOFTWARE.
 #### Used by:
 
 - [serde_spanned 1.0.4]( https://github.com/toml-rs/toml )
-- [toml 0.9.10+spec-1.1.0]( https://github.com/toml-rs/toml )
+- [toml 0.9.11+spec-1.1.0]( https://github.com/toml-rs/toml )
 - [toml_datetime 0.7.5+spec-1.1.0]( https://github.com/toml-rs/toml )
 - [toml_edit 0.23.10+spec-1.0.0]( https://github.com/toml-rs/toml )
 - [toml_parser 1.0.6+spec-1.1.0]( https://github.com/toml-rs/toml )
@@ -6104,7 +6104,7 @@ DEALINGS IN THE SOFTWARE.
 - [unicode-ident 1.0.22]( https://github.com/dtolnay/unicode-ident )
 - [x11-dl 2.21.0]( https://github.com/AltF02/x11-rs.git )
 - [zmij 1.0.12]( https://github.com/dtolnay/zmij )
-- [zvariant_utils 3.2.1]( https://github.com/dbus2/zbus/ )
+- [zvariant_utils 3.3.0]( https://github.com/z-galaxy/zbus/ )
 
 #### License Text
 
@@ -6399,39 +6399,6 @@ THE SOFTWARE.
 The MIT License (MIT)
 
 Copyright (c) 2015 Andrew Gallant
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the &quot;Software&quot;), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-
-```
-
-### <a id="MIT"></a> MIT License
-
-#### Used by:
-
-- [nix 0.30.1]( https://github.com/nix-rust/nix )
-
-#### License Text
-
-```
-The MIT License (MIT)
-
-Copyright (c) 2015 Carl Lerche + nix-rust Authors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the &quot;Software&quot;), to deal
@@ -7626,8 +7593,6 @@ Exhibit B - &quot;Incompatible With Secondary Licenses&quot; Notice
 - [writeable 0.6.2]( https://github.com/unicode-org/icu4x )
 - [yoke-derive 0.8.1]( https://github.com/unicode-org/icu4x )
 - [yoke 0.8.1]( https://github.com/unicode-org/icu4x )
-- [zerofrom-derive 0.1.6]( https://github.com/unicode-org/icu4x )
-- [zerofrom 0.1.6]( https://github.com/unicode-org/icu4x )
 - [zerotrie 0.2.3]( https://github.com/unicode-org/icu4x )
 - [zerovec-derive 0.11.2]( https://github.com/unicode-org/icu4x )
 - [zerovec 0.11.5]( https://github.com/unicode-org/icu4x )
@@ -7683,6 +7648,8 @@ authorization of the copyright holder.
 
 - [icu_properties 2.1.2]( https://github.com/unicode-org/icu4x )
 - [icu_properties_data 2.1.2]( https://github.com/unicode-org/icu4x )
+- [zerofrom-derive 0.1.6]( https://github.com/unicode-org/icu4x )
+- [zerofrom 0.1.6]( https://github.com/unicode-org/icu4x )
 
 #### License Text
 
