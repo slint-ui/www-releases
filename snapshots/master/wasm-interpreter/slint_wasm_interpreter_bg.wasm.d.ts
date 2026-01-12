@@ -21,12 +21,12 @@ export const wrappedcompiledcomp_create_with_existing_window: (a: number, b: num
 export const wrappedcompiledcomp_run: (a: number, b: number, c: number) => void;
 export const wrappedinstance_hide: (a: number) => [number, number, number];
 export const wrappedinstance_show: (a: number) => [number, number, number];
-export const wasm_bindgen__convert__closures_____invoke__h232633819d19bab3: (a: number, b: number, c: any) => void;
+export const wasm_bindgen__convert__closures_____invoke__h09117d60e58b3597: (a: number, b: number, c: any) => void;
 export const wasm_bindgen__closure__destroy__h189892c9acaa5854: (a: number, b: number) => void;
-export const wasm_bindgen__convert__closures_____invoke__h0a5ab83d65448dca: (a: number, b: number, c: any) => void;
-export const wasm_bindgen__convert__closures_____invoke__h2af914ad78b3e4bf: (a: number, b: number, c: any, d: any) => void;
+export const wasm_bindgen__convert__closures_____invoke__h232633819d19bab3: (a: number, b: number, c: any) => void;
 export const wasm_bindgen__convert__closures_____invoke__h2555a56f0364938f: (a: number, b: number) => void;
-export const wasm_bindgen__closure__destroy__hcb046687585d9781: (a: number, b: number) => void;
+export const wasm_bindgen__closure__destroy__hc3b4b78b4ed05759: (a: number, b: number) => void;
+export const wasm_bindgen__convert__closures_____invoke__h2af914ad78b3e4bf: (a: number, b: number, c: any, d: any) => void;
 export const __wbindgen_malloc: (a: number, b: number) => number;
 export const __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;
 export const __externref_table_alloc: () => number;

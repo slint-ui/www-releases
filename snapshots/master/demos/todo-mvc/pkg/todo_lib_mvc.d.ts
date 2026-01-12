@@ -14,8 +14,8 @@ export interface InitOutput {
   readonly slint_mock_elapsed_time: (a: bigint) => void;
   readonly slint_send_keyboard_char: (a: number, b: number, c: number) => void;
   readonly slint_send_mouse_click: (a: number, b: number, c: number) => void;
-  readonly wasm_bindgen__convert__closures_____invoke__h34908db51e02a2de: (a: number, b: number, c: any) => void;
-  readonly wasm_bindgen__closure__destroy__h0d05b655ab34b569: (a: number, b: number) => void;
+  readonly wasm_bindgen__convert__closures_____invoke__h1d27d6464357f9e4: (a: number, b: number, c: any) => void;
+  readonly wasm_bindgen__closure__destroy__h2d88213c0d636f33: (a: number, b: number) => void;
   readonly wasm_bindgen__convert__closures_____invoke__hd65441fc3e2e55bb: (a: number, b: number, c: any, d: any) => void;
   readonly wasm_bindgen__closure__destroy__h3abf4075b2c548f8: (a: number, b: number) => void;
   readonly wasm_bindgen__convert__closures_____invoke__h01e7837806fd2ec8: (a: number, b: number, c: any) => void;

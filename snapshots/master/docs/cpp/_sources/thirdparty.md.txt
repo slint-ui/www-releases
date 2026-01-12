@@ -7,7 +7,7 @@ This page lists the licenses of the dependencies used by Slint.
 
 ## Overview of licenses
 
-- [MIT License](#MIT) (377)
+- [MIT License](#MIT) (378)
 - [Unicode License v3](#Unicode-3.0) (19)
 - [Apache License 2.0](#Apache-2.0) (16)
 - [BSD 3-Clause &quot;New&quot; or &quot;Revised&quot; License](#BSD-3-Clause) (6)
@@ -1783,6 +1783,7 @@ THIS SOFTWARE.
 #### Used by:
 
 - [rustybuzz 0.20.1]( https://github.com/harfbuzz/rustybuzz )
+- [windows-collections 0.3.2]( https://github.com/microsoft/windows-rs )
 - [windows-core 0.58.0]( https://github.com/microsoft/windows-rs )
 - [windows-core 0.62.2]( https://github.com/microsoft/windows-rs )
 - [windows-future 0.3.2]( https://github.com/microsoft/windows-rs )
@@ -1803,6 +1804,8 @@ THIS SOFTWARE.
 - [windows-targets 0.52.6]( https://github.com/microsoft/windows-rs )
 - [windows-targets 0.53.5]( https://github.com/microsoft/windows-rs )
 - [windows-threading 0.2.1]( https://github.com/microsoft/windows-rs )
+- [windows 0.58.0]( https://github.com/microsoft/windows-rs )
+- [windows 0.62.2]( https://github.com/microsoft/windows-rs )
 - [windows_x86_64_gnu 0.52.6]( https://github.com/microsoft/windows-rs )
 - [windows_x86_64_gnu 0.53.1]( https://github.com/microsoft/windows-rs )
 - [windows_x86_64_msvc 0.52.6]( https://github.com/microsoft/windows-rs )
@@ -1865,6 +1868,23 @@ THIS SOFTWARE.
     LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE
+
+```
+
+### <a id="MIT"></a> MIT License
+
+#### Used by:
+
+- [winapi 0.3.9]( https://github.com/retep998/winapi-rs )
+
+#### License Text
+
+```
+// Licensed under the Apache License, Version 2.0
+// &lt;LICENSE-APACHE or http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license
+// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your option.
+// All files in the project carrying such notice may not be copied, modified, or distributed
+// except according to those terms.
 
 ```
 
@@ -4350,8 +4370,8 @@ SOFTWARE.
 
 #### Used by:
 
-- [zbus 5.13.0]( https://github.com/z-galaxy/zbus/ )
-- [zbus_macros 5.13.0]( https://github.com/z-galaxy/zbus/ )
+- [zbus 5.13.1]( https://github.com/z-galaxy/zbus/ )
+- [zbus_macros 5.13.1]( https://github.com/z-galaxy/zbus/ )
 - [zbus_names 4.3.1]( https://github.com/z-galaxy/zbus/ )
 - [zvariant 5.9.1]( https://github.com/z-galaxy/zbus/ )
 - [zvariant_derive 5.9.1]( https://github.com/z-galaxy/zbus/ )
@@ -5667,9 +5687,6 @@ SOFTWARE.
 - [qttypes 0.2.12]( https://github.com/woboq/qmetaobject-rs )
 - [simd_helpers 0.1.0]( https://github.com/lu-zero/simd_helpers )
 - [siphasher 1.0.1]( https://github.com/jedisct1/rust-siphash )
-- [windows-collections 0.3.2]( https://github.com/microsoft/windows-rs )
-- [windows 0.58.0]( https://github.com/microsoft/windows-rs )
-- [windows 0.62.2]( https://github.com/microsoft/windows-rs )
 - [zune-core 0.4.12](
 https://crates.io/crates/zune-core )
 - [zune-inflate 0.2.54](
@@ -6086,7 +6103,7 @@ DEALINGS IN THE SOFTWARE.
 - [thiserror 2.0.17]( https://github.com/dtolnay/thiserror )
 - [unicode-ident 1.0.22]( https://github.com/dtolnay/unicode-ident )
 - [x11-dl 2.21.0]( https://github.com/AltF02/x11-rs.git )
-- [zmij 1.0.12]( https://github.com/dtolnay/zmij )
+- [zmij 1.0.13]( https://github.com/dtolnay/zmij )
 - [zvariant_utils 3.3.0]( https://github.com/z-galaxy/zbus/ )
 
 #### License Text
