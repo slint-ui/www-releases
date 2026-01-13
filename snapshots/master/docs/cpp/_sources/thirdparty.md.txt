@@ -2347,7 +2347,7 @@ DEALINGS IN THE SOFTWARE.
 
 #### Used by:
 
-- [flate2 1.1.5]( https://github.com/rust-lang/flate2-rs )
+- [flate2 1.1.8]( https://github.com/rust-lang/flate2-rs )
 
 #### License Text
 
