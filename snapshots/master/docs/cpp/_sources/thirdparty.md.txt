@@ -4373,8 +4373,8 @@ SOFTWARE.
 - [zbus 5.13.1]( https://github.com/z-galaxy/zbus/ )
 - [zbus_macros 5.13.1]( https://github.com/z-galaxy/zbus/ )
 - [zbus_names 4.3.1]( https://github.com/z-galaxy/zbus/ )
-- [zvariant 5.9.1]( https://github.com/z-galaxy/zbus/ )
-- [zvariant_derive 5.9.1]( https://github.com/z-galaxy/zbus/ )
+- [zvariant 5.9.2]( https://github.com/z-galaxy/zbus/ )
+- [zvariant_derive 5.9.2]( https://github.com/z-galaxy/zbus/ )
 
 #### License Text
 
@@ -5746,7 +5746,7 @@ SOFTWARE.
 #### Used by:
 
 - [zune-core 0.5.1]( https://github.com/etemesi254/zune-image )
-- [zune-jpeg 0.5.9]( https://github.com/etemesi254/zune-image/tree/dev/crates/zune-jpeg )
+- [zune-jpeg 0.5.10]( https://github.com/etemesi254/zune-image/tree/dev/crates/zune-jpeg )
 
 #### License Text
 
@@ -6098,9 +6098,9 @@ DEALINGS IN THE SOFTWARE.
 - [smol_str 0.2.2]( https://github.com/rust-analyzer/smol_str )
 - [syn 2.0.114]( https://github.com/dtolnay/syn )
 - [thiserror-impl 1.0.69]( https://github.com/dtolnay/thiserror )
-- [thiserror-impl 2.0.17]( https://github.com/dtolnay/thiserror )
+- [thiserror-impl 2.0.18]( https://github.com/dtolnay/thiserror )
 - [thiserror 1.0.69]( https://github.com/dtolnay/thiserror )
-- [thiserror 2.0.17]( https://github.com/dtolnay/thiserror )
+- [thiserror 2.0.18]( https://github.com/dtolnay/thiserror )
 - [unicode-ident 1.0.22]( https://github.com/dtolnay/unicode-ident )
 - [x11-dl 2.21.0]( https://github.com/AltF02/x11-rs.git )
 - [zmij 1.0.15]( https://github.com/dtolnay/zmij )
