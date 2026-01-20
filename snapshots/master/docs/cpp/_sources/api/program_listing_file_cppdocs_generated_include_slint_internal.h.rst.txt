@@ -133,6 +133,8 @@ Program Listing for File slint_internal.h
    template<typename T = void>
    struct Option;
    
+   struct StringArg;
+   
    using VisitChildrenResult = uint64_t;
    constexpr static const VisitChildrenResult VisitChildrenResult_CONTINUE = UINT64_MAX;
    
@@ -375,6 +377,30 @@ Program Listing for File slint_internal.h
        uintptr_t cache_index;
        uintptr_t cache_generation;
        constexpr CachedRenderingData() : cache_index{}, cache_generation{} {}
+   };
+   
+   struct WindowItem {
+       Property<LogicalLength> width;
+       Property<LogicalLength> height;
+       Property<LogicalLength> safe_area_inset_top;
+       Property<LogicalLength> safe_area_inset_bottom;
+       Property<LogicalLength> safe_area_inset_left;
+       Property<LogicalLength> safe_area_inset_right;
+       Property<LogicalLength> virtual_keyboard_x;
+       Property<LogicalLength> virtual_keyboard_y;
+       Property<LogicalLength> virtual_keyboard_width;
+       Property<LogicalLength> virtual_keyboard_height;
+       Property<Brush> background;
+       Property<SharedString> title;
+       Property<bool> no_frame;
+       Property<LogicalLength> resize_border_width;
+       Property<bool> always_on_top;
+       Property<bool> full_screen;
+       Property<Image> icon;
+       Property<SharedString> default_font_family;
+       Property<LogicalLength> default_font_size;
+       Property<int32_t> default_font_weight;
+       CachedRenderingData cached_rendering_data;
    };
    
    struct ContextMenu {
@@ -839,6 +865,28 @@ Program Listing for File slint_internal.h
        CachedRenderingData cached_rendering_data;
    };
    
+   struct StyledTextItem {
+       Property<LogicalLength> width;
+       Property<LogicalLength> height;
+       Property<StyledText> text;
+       Property<LogicalLength> font_size;
+       Property<int32_t> font_weight;
+       Property<Brush> color;
+       Property<TextHorizontalAlignment> horizontal_alignment;
+       Property<TextVerticalAlignment> vertical_alignment;
+       private_api::CallbackHelper<StringArg> link_clicked;
+       Property<SharedString> font_family;
+       Property<bool> font_italic;
+       Property<TextWrap> wrap;
+       Property<TextOverflow> overflow;
+       Property<LogicalLength> letter_spacing;
+       Property<Brush> stroke;
+       Property<LogicalLength> stroke_width;
+       Property<TextStrokeStyle> stroke_style;
+       Property<Color> link_color;
+       CachedRenderingData cached_rendering_data;
+   };
+   
    struct ComplexText {
        Property<LogicalLength> width;
        Property<LogicalLength> height;
@@ -873,30 +921,6 @@ Program Listing for File slint_internal.h
        Property<float> viewbox_height;
        Property<bool> clip;
        Property<bool> anti_alias;
-       CachedRenderingData cached_rendering_data;
-   };
-   
-   struct WindowItem {
-       Property<LogicalLength> width;
-       Property<LogicalLength> height;
-       Property<LogicalLength> safe_area_inset_top;
-       Property<LogicalLength> safe_area_inset_bottom;
-       Property<LogicalLength> safe_area_inset_left;
-       Property<LogicalLength> safe_area_inset_right;
-       Property<LogicalLength> virtual_keyboard_x;
-       Property<LogicalLength> virtual_keyboard_y;
-       Property<LogicalLength> virtual_keyboard_width;
-       Property<LogicalLength> virtual_keyboard_height;
-       Property<Brush> background;
-       Property<SharedString> title;
-       Property<bool> no_frame;
-       Property<LogicalLength> resize_border_width;
-       Property<bool> always_on_top;
-       Property<bool> full_screen;
-       Property<Image> icon;
-       Property<SharedString> default_font_family;
-       Property<LogicalLength> default_font_size;
-       Property<int32_t> default_font_weight;
        CachedRenderingData cached_rendering_data;
    };
    
@@ -997,6 +1021,11 @@ Program Listing for File slint_internal.h
                                                                                   VRefMut<ItemVisitorVTable> visitor,
                                                                                   uint32_t dyn_index));
    
+   void slint_windowitem_hide(Pin<const WindowItem*> window_item,
+                              const WindowAdapterRcOpaque *window_adapter,
+                              const VRc<ItemTreeVTable> *_self_component,
+                              uint32_t _self_index);
+   
    void slint_contextmenu_close(Pin<const ContextMenu*> s,
                                 const WindowAdapterRcOpaque *window_adapter,
                                 const VRc<ItemTreeVTable> *self_component,
@@ -1057,6 +1086,7 @@ Program Listing for File slint_internal.h
    
    void slint_organize_grid_layout(Slice<GridLayoutInputData> input_data,
                                    Slice<uint32_t> repeater_indices,
+                                   Slice<uint32_t> repeater_steps,
                                    GridLayoutOrganizedData *result);
    
    void slint_organize_dialog_button_layout(Slice<GridLayoutInputData> input_data,
@@ -1067,11 +1097,13 @@ Program Listing for File slint_internal.h
                                 Slice<LayoutItemInfo> constraints,
                                 Orientation orientation,
                                 Slice<uint32_t> repeater_indices,
+                                Slice<uint32_t> repeater_steps,
                                 SharedVector<float> *result);
    
    LayoutInfo slint_grid_layout_info(const GridLayoutOrganizedData *organized_data,
                                      Slice<LayoutItemInfo> constraints,
                                      Slice<uint32_t> repeater_indices,
+                                     Slice<uint32_t> repeater_steps,
                                      float spacing,
                                      const Padding *padding,
                                      Orientation orientation);
@@ -1142,33 +1174,29 @@ Program Listing for File slint_internal.h
                                                 void (*binding)(void*, int*),
                                                 void *user_data,
                                                 void (*drop_user_data)(void*),
-                                                const PropertyAnimation *animation_data,
                                                 PropertyAnimation (*transition_data)(void *user_data,
-                                                                                     uint64_t *start_instant));
+                                                                                     uint64_t **start_instant));
    
    void slint_property_set_animated_binding_float(const PropertyHandleOpaque *handle,
                                                   void (*binding)(void*, float*),
                                                   void *user_data,
                                                   void (*drop_user_data)(void*),
-                                                  const PropertyAnimation *animation_data,
                                                   PropertyAnimation (*transition_data)(void *user_data,
-                                                                                       uint64_t *start_instant));
+                                                                                       uint64_t **start_instant));
    
    void slint_property_set_animated_binding_color(const PropertyHandleOpaque *handle,
                                                   void (*binding)(void*, Color*),
                                                   void *user_data,
                                                   void (*drop_user_data)(void*),
-                                                  const PropertyAnimation *animation_data,
                                                   PropertyAnimation (*transition_data)(void *user_data,
-                                                                                       uint64_t *start_instant));
+                                                                                       uint64_t **start_instant));
    
    void slint_property_set_animated_binding_brush(const PropertyHandleOpaque *handle,
                                                   void (*binding)(void*, Brush*),
                                                   void *user_data,
                                                   void (*drop_user_data)(void*),
-                                                  const PropertyAnimation *animation_data,
                                                   PropertyAnimation (*transition_data)(void *user_data,
-                                                                                       uint64_t *start_instant));
+                                                                                       uint64_t **start_instant));
    
    void slint_property_set_state_binding(const PropertyHandleOpaque *handle,
                                          int32_t (*binding)(void*),
@@ -1416,6 +1444,7 @@ Program Listing for File slint_internal.h
    SLINT_DECL_ITEM(SwipeGestureHandler);
    SLINT_DECL_ITEM(Flickable);
    SLINT_DECL_ITEM(SimpleText);
+   SLINT_DECL_ITEM(StyledTextItem);
    SLINT_DECL_ITEM(ComplexText);
    SLINT_DECL_ITEM(Path);
    SLINT_DECL_ITEM(WindowItem);

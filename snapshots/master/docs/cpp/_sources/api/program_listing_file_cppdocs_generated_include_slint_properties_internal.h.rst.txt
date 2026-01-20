@@ -124,33 +124,29 @@ Program Listing for File slint_properties_internal.h
                                                 void (*binding)(void*, int*),
                                                 void *user_data,
                                                 void (*drop_user_data)(void*),
-                                                const PropertyAnimation *animation_data,
                                                 PropertyAnimation (*transition_data)(void *user_data,
-                                                                                     uint64_t *start_instant));
+                                                                                     uint64_t **start_instant));
    
    void slint_property_set_animated_binding_float(const PropertyHandleOpaque *handle,
                                                   void (*binding)(void*, float*),
                                                   void *user_data,
                                                   void (*drop_user_data)(void*),
-                                                  const PropertyAnimation *animation_data,
                                                   PropertyAnimation (*transition_data)(void *user_data,
-                                                                                       uint64_t *start_instant));
+                                                                                       uint64_t **start_instant));
    
    void slint_property_set_animated_binding_color(const PropertyHandleOpaque *handle,
                                                   void (*binding)(void*, Color*),
                                                   void *user_data,
                                                   void (*drop_user_data)(void*),
-                                                  const PropertyAnimation *animation_data,
                                                   PropertyAnimation (*transition_data)(void *user_data,
-                                                                                       uint64_t *start_instant));
+                                                                                       uint64_t **start_instant));
    
    void slint_property_set_animated_binding_brush(const PropertyHandleOpaque *handle,
                                                   void (*binding)(void*, Brush*),
                                                   void *user_data,
                                                   void (*drop_user_data)(void*),
-                                                  const PropertyAnimation *animation_data,
                                                   PropertyAnimation (*transition_data)(void *user_data,
-                                                                                       uint64_t *start_instant));
+                                                                                       uint64_t **start_instant));
    
    void slint_property_set_state_binding(const PropertyHandleOpaque *handle,
                                          int32_t (*binding)(void*),

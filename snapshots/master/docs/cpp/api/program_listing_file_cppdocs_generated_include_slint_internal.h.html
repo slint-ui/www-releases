@@ -237,6 +237,7 @@
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1interpreter_1_1Struct_1_1iterator.html">Struct Struct::iterator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1LogicalPosition.html">Struct LogicalPosition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1LogicalSize.html">Struct LogicalSize</a></li>
+<li class="toctree-l2"><a class="reference internal" href="structslint_1_1OklchColor.html">Struct OklchColor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1PhysicalPosition.html">Struct PhysicalPosition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1PhysicalSize.html">Struct PhysicalSize</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1platform_1_1Rgb565Pixel.html">Struct Rgb565Pixel</a></li>
@@ -543,6 +544,8 @@
 <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">void</span><span class="o">&gt;</span>
 <span class="k">struct</span><span class="w"> </span><span class="nc">Option</span><span class="p">;</span>
 
+<span class="k">struct</span><span class="w"> </span><span class="nc">StringArg</span><span class="p">;</span>
+
 <span class="k">using</span><span class="w"> </span><span class="n">VisitChildrenResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">uint64_t</span><span class="p">;</span>
 <span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">VisitChildrenResult</span><span class="w"> </span><span class="n">VisitChildrenResult_CONTINUE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UINT64_MAX</span><span class="p">;</span>
 
@@ -785,6 +788,30 @@
 <span class="w">    </span><span class="kt">uintptr_t</span><span class="w"> </span><span class="n">cache_index</span><span class="p">;</span>
 <span class="w">    </span><span class="kt">uintptr_t</span><span class="w"> </span><span class="n">cache_generation</span><span class="p">;</span>
 <span class="w">    </span><span class="k">constexpr</span><span class="w"> </span><span class="n">CachedRenderingData</span><span class="p">()</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">cache_index</span><span class="p">{},</span><span class="w"> </span><span class="n">cache_generation</span><span class="p">{}</span><span class="w"> </span><span class="p">{}</span>
+<span class="p">};</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">WindowItem</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">width</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">height</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">safe_area_inset_top</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">safe_area_inset_bottom</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">safe_area_inset_left</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">safe_area_inset_right</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">virtual_keyboard_x</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">virtual_keyboard_y</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">virtual_keyboard_width</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">virtual_keyboard_height</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">Brush</span><span class="o">&gt;</span><span class="w"> </span><span class="n">background</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">SharedString</span><span class="o">&gt;</span><span class="w"> </span><span class="n">title</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="w"> </span><span class="n">no_frame</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">resize_border_width</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="w"> </span><span class="n">always_on_top</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="w"> </span><span class="n">full_screen</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">Image</span><span class="o">&gt;</span><span class="w"> </span><span class="n">icon</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">SharedString</span><span class="o">&gt;</span><span class="w"> </span><span class="n">default_font_family</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">default_font_size</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="kt">int32_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">default_font_weight</span><span class="p">;</span>
+<span class="w">    </span><span class="n">CachedRenderingData</span><span class="w"> </span><span class="n">cached_rendering_data</span><span class="p">;</span>
 <span class="p">};</span>
 
 <span class="k">struct</span><span class="w"> </span><span class="nc">ContextMenu</span><span class="w"> </span><span class="p">{</span>
@@ -1249,6 +1276,28 @@
 <span class="w">    </span><span class="n">CachedRenderingData</span><span class="w"> </span><span class="n">cached_rendering_data</span><span class="p">;</span>
 <span class="p">};</span>
 
+<span class="k">struct</span><span class="w"> </span><span class="nc">StyledTextItem</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">width</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">height</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">StyledText</span><span class="o">&gt;</span><span class="w"> </span><span class="n">text</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">font_size</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="kt">int32_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">font_weight</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">Brush</span><span class="o">&gt;</span><span class="w"> </span><span class="n">color</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">TextHorizontalAlignment</span><span class="o">&gt;</span><span class="w"> </span><span class="n">horizontal_alignment</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">TextVerticalAlignment</span><span class="o">&gt;</span><span class="w"> </span><span class="n">vertical_alignment</span><span class="p">;</span>
+<span class="w">    </span><span class="n">private_api</span><span class="o">::</span><span class="n">CallbackHelper</span><span class="o">&lt;</span><span class="n">StringArg</span><span class="o">&gt;</span><span class="w"> </span><span class="n">link_clicked</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">SharedString</span><span class="o">&gt;</span><span class="w"> </span><span class="n">font_family</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="w"> </span><span class="n">font_italic</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">TextWrap</span><span class="o">&gt;</span><span class="w"> </span><span class="n">wrap</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">TextOverflow</span><span class="o">&gt;</span><span class="w"> </span><span class="n">overflow</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">letter_spacing</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">Brush</span><span class="o">&gt;</span><span class="w"> </span><span class="n">stroke</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">stroke_width</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">TextStrokeStyle</span><span class="o">&gt;</span><span class="w"> </span><span class="n">stroke_style</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">Color</span><span class="o">&gt;</span><span class="w"> </span><span class="n">link_color</span><span class="p">;</span>
+<span class="w">    </span><span class="n">CachedRenderingData</span><span class="w"> </span><span class="n">cached_rendering_data</span><span class="p">;</span>
+<span class="p">};</span>
+
 <span class="k">struct</span><span class="w"> </span><span class="nc">ComplexText</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">width</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">height</span><span class="p">;</span>
@@ -1283,30 +1332,6 @@
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">viewbox_height</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="w"> </span><span class="n">clip</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="w"> </span><span class="n">anti_alias</span><span class="p">;</span>
-<span class="w">    </span><span class="n">CachedRenderingData</span><span class="w"> </span><span class="n">cached_rendering_data</span><span class="p">;</span>
-<span class="p">};</span>
-
-<span class="k">struct</span><span class="w"> </span><span class="nc">WindowItem</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">width</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">height</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">safe_area_inset_top</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">safe_area_inset_bottom</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">safe_area_inset_left</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">safe_area_inset_right</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">virtual_keyboard_x</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">virtual_keyboard_y</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">virtual_keyboard_width</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">virtual_keyboard_height</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">Brush</span><span class="o">&gt;</span><span class="w"> </span><span class="n">background</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">SharedString</span><span class="o">&gt;</span><span class="w"> </span><span class="n">title</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="w"> </span><span class="n">no_frame</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">resize_border_width</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="w"> </span><span class="n">always_on_top</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="w"> </span><span class="n">full_screen</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">Image</span><span class="o">&gt;</span><span class="w"> </span><span class="n">icon</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">SharedString</span><span class="o">&gt;</span><span class="w"> </span><span class="n">default_font_family</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">default_font_size</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="kt">int32_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">default_font_weight</span><span class="p">;</span>
 <span class="w">    </span><span class="n">CachedRenderingData</span><span class="w"> </span><span class="n">cached_rendering_data</span><span class="p">;</span>
 <span class="p">};</span>
 
@@ -1407,6 +1432,11 @@
 <span class="w">                                                                               </span><span class="n">VRefMut</span><span class="o">&lt;</span><span class="n">ItemVisitorVTable</span><span class="o">&gt;</span><span class="w"> </span><span class="n">visitor</span><span class="p">,</span>
 <span class="w">                                                                               </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">dyn_index</span><span class="p">));</span>
 
+<span class="kt">void</span><span class="w"> </span><span class="nf">slint_windowitem_hide</span><span class="p">(</span><span class="n">Pin</span><span class="o">&lt;</span><span class="k">const</span><span class="w"> </span><span class="n">WindowItem</span><span class="o">*&gt;</span><span class="w"> </span><span class="n">window_item</span><span class="p">,</span>
+<span class="w">                           </span><span class="k">const</span><span class="w"> </span><span class="n">WindowAdapterRcOpaque</span><span class="w"> </span><span class="o">*</span><span class="n">window_adapter</span><span class="p">,</span>
+<span class="w">                           </span><span class="k">const</span><span class="w"> </span><span class="n">VRc</span><span class="o">&lt;</span><span class="n">ItemTreeVTable</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">_self_component</span><span class="p">,</span>
+<span class="w">                           </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">_self_index</span><span class="p">);</span>
+
 <span class="kt">void</span><span class="w"> </span><span class="nf">slint_contextmenu_close</span><span class="p">(</span><span class="n">Pin</span><span class="o">&lt;</span><span class="k">const</span><span class="w"> </span><span class="n">ContextMenu</span><span class="o">*&gt;</span><span class="w"> </span><span class="n">s</span><span class="p">,</span>
 <span class="w">                             </span><span class="k">const</span><span class="w"> </span><span class="n">WindowAdapterRcOpaque</span><span class="w"> </span><span class="o">*</span><span class="n">window_adapter</span><span class="p">,</span>
 <span class="w">                             </span><span class="k">const</span><span class="w"> </span><span class="n">VRc</span><span class="o">&lt;</span><span class="n">ItemTreeVTable</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">self_component</span><span class="p">,</span>
@@ -1467,6 +1497,7 @@
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">slint_organize_grid_layout</span><span class="p">(</span><span class="n">Slice</span><span class="o">&lt;</span><span class="n">GridLayoutInputData</span><span class="o">&gt;</span><span class="w"> </span><span class="n">input_data</span><span class="p">,</span>
 <span class="w">                                </span><span class="n">Slice</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">repeater_indices</span><span class="p">,</span>
+<span class="w">                                </span><span class="n">Slice</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">repeater_steps</span><span class="p">,</span>
 <span class="w">                                </span><span class="n">GridLayoutOrganizedData</span><span class="w"> </span><span class="o">*</span><span class="n">result</span><span class="p">);</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">slint_organize_dialog_button_layout</span><span class="p">(</span><span class="n">Slice</span><span class="o">&lt;</span><span class="n">GridLayoutInputData</span><span class="o">&gt;</span><span class="w"> </span><span class="n">input_data</span><span class="p">,</span>
@@ -1477,11 +1508,13 @@
 <span class="w">                             </span><span class="n">Slice</span><span class="o">&lt;</span><span class="n">LayoutItemInfo</span><span class="o">&gt;</span><span class="w"> </span><span class="n">constraints</span><span class="p">,</span>
 <span class="w">                             </span><span class="n">Orientation</span><span class="w"> </span><span class="n">orientation</span><span class="p">,</span>
 <span class="w">                             </span><span class="n">Slice</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">repeater_indices</span><span class="p">,</span>
+<span class="w">                             </span><span class="n">Slice</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">repeater_steps</span><span class="p">,</span>
 <span class="w">                             </span><span class="n">SharedVector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">result</span><span class="p">);</span>
 
 <span class="n">LayoutInfo</span><span class="w"> </span><span class="nf">slint_grid_layout_info</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">GridLayoutOrganizedData</span><span class="w"> </span><span class="o">*</span><span class="n">organized_data</span><span class="p">,</span>
 <span class="w">                                  </span><span class="n">Slice</span><span class="o">&lt;</span><span class="n">LayoutItemInfo</span><span class="o">&gt;</span><span class="w"> </span><span class="n">constraints</span><span class="p">,</span>
 <span class="w">                                  </span><span class="n">Slice</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">repeater_indices</span><span class="p">,</span>
+<span class="w">                                  </span><span class="n">Slice</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">repeater_steps</span><span class="p">,</span>
 <span class="w">                                  </span><span class="kt">float</span><span class="w"> </span><span class="n">spacing</span><span class="p">,</span>
 <span class="w">                                  </span><span class="k">const</span><span class="w"> </span><span class="n">Padding</span><span class="w"> </span><span class="o">*</span><span class="n">padding</span><span class="p">,</span>
 <span class="w">                                  </span><span class="n">Orientation</span><span class="w"> </span><span class="n">orientation</span><span class="p">);</span>
@@ -1552,33 +1585,29 @@
 <span class="w">                                             </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">binding</span><span class="p">)(</span><span class="kt">void</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">*</span><span class="p">),</span>
 <span class="w">                                             </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">user_data</span><span class="p">,</span>
 <span class="w">                                             </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">drop_user_data</span><span class="p">)(</span><span class="kt">void</span><span class="o">*</span><span class="p">),</span>
-<span class="w">                                             </span><span class="k">const</span><span class="w"> </span><span class="n">PropertyAnimation</span><span class="w"> </span><span class="o">*</span><span class="n">animation_data</span><span class="p">,</span>
 <span class="w">                                             </span><span class="n">PropertyAnimation</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">transition_data</span><span class="p">)(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">user_data</span><span class="p">,</span>
-<span class="w">                                                                                  </span><span class="kt">uint64_t</span><span class="w"> </span><span class="o">*</span><span class="n">start_instant</span><span class="p">));</span>
+<span class="w">                                                                                  </span><span class="kt">uint64_t</span><span class="w"> </span><span class="o">**</span><span class="n">start_instant</span><span class="p">));</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">slint_property_set_animated_binding_float</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">PropertyHandleOpaque</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">,</span>
 <span class="w">                                               </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">binding</span><span class="p">)(</span><span class="kt">void</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="o">*</span><span class="p">),</span>
 <span class="w">                                               </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">user_data</span><span class="p">,</span>
 <span class="w">                                               </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">drop_user_data</span><span class="p">)(</span><span class="kt">void</span><span class="o">*</span><span class="p">),</span>
-<span class="w">                                               </span><span class="k">const</span><span class="w"> </span><span class="n">PropertyAnimation</span><span class="w"> </span><span class="o">*</span><span class="n">animation_data</span><span class="p">,</span>
 <span class="w">                                               </span><span class="n">PropertyAnimation</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">transition_data</span><span class="p">)(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">user_data</span><span class="p">,</span>
-<span class="w">                                                                                    </span><span class="kt">uint64_t</span><span class="w"> </span><span class="o">*</span><span class="n">start_instant</span><span class="p">));</span>
+<span class="w">                                                                                    </span><span class="kt">uint64_t</span><span class="w"> </span><span class="o">**</span><span class="n">start_instant</span><span class="p">));</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">slint_property_set_animated_binding_color</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">PropertyHandleOpaque</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">,</span>
 <span class="w">                                               </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">binding</span><span class="p">)(</span><span class="kt">void</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">Color</span><span class="o">*</span><span class="p">),</span>
 <span class="w">                                               </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">user_data</span><span class="p">,</span>
 <span class="w">                                               </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">drop_user_data</span><span class="p">)(</span><span class="kt">void</span><span class="o">*</span><span class="p">),</span>
-<span class="w">                                               </span><span class="k">const</span><span class="w"> </span><span class="n">PropertyAnimation</span><span class="w"> </span><span class="o">*</span><span class="n">animation_data</span><span class="p">,</span>
 <span class="w">                                               </span><span class="n">PropertyAnimation</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">transition_data</span><span class="p">)(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">user_data</span><span class="p">,</span>
-<span class="w">                                                                                    </span><span class="kt">uint64_t</span><span class="w"> </span><span class="o">*</span><span class="n">start_instant</span><span class="p">));</span>
+<span class="w">                                                                                    </span><span class="kt">uint64_t</span><span class="w"> </span><span class="o">**</span><span class="n">start_instant</span><span class="p">));</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">slint_property_set_animated_binding_brush</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">PropertyHandleOpaque</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">,</span>
 <span class="w">                                               </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">binding</span><span class="p">)(</span><span class="kt">void</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">Brush</span><span class="o">*</span><span class="p">),</span>
 <span class="w">                                               </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">user_data</span><span class="p">,</span>
 <span class="w">                                               </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">drop_user_data</span><span class="p">)(</span><span class="kt">void</span><span class="o">*</span><span class="p">),</span>
-<span class="w">                                               </span><span class="k">const</span><span class="w"> </span><span class="n">PropertyAnimation</span><span class="w"> </span><span class="o">*</span><span class="n">animation_data</span><span class="p">,</span>
 <span class="w">                                               </span><span class="n">PropertyAnimation</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">transition_data</span><span class="p">)(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">user_data</span><span class="p">,</span>
-<span class="w">                                                                                    </span><span class="kt">uint64_t</span><span class="w"> </span><span class="o">*</span><span class="n">start_instant</span><span class="p">));</span>
+<span class="w">                                                                                    </span><span class="kt">uint64_t</span><span class="w"> </span><span class="o">**</span><span class="n">start_instant</span><span class="p">));</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">slint_property_set_state_binding</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">PropertyHandleOpaque</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">,</span>
 <span class="w">                                      </span><span class="kt">int32_t</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">binding</span><span class="p">)(</span><span class="kt">void</span><span class="o">*</span><span class="p">),</span>
@@ -1826,6 +1855,7 @@
 <span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">SwipeGestureHandler</span><span class="p">);</span>
 <span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">Flickable</span><span class="p">);</span>
 <span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">SimpleText</span><span class="p">);</span>
+<span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">StyledTextItem</span><span class="p">);</span>
 <span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">ComplexText</span><span class="p">);</span>
 <span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">Path</span><span class="p">);</span>
 <span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">WindowItem</span><span class="p">);</span>

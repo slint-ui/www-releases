@@ -171,13 +171,19 @@ Program Listing for File slint_string.h
            return *this;
        }
    
+       StyledText &operator=(StyledText &&other)
+       {
+           std::swap(inner, other.inner);
+           return *this;
+       }
+   
        friend bool operator==(const StyledText &a, const StyledText &b)
        {
            return cbindgen_private::slint_styled_text_eq(&a, &b);
        }
    
    private:
-       void *paragraphs;
+       void *inner;
    };
    namespace private_api {
    

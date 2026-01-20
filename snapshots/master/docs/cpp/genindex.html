@@ -235,6 +235,7 @@
 <li class="toctree-l2"><a class="reference internal" href="api/structslint_1_1interpreter_1_1Struct_1_1iterator.html">Struct Struct::iterator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/structslint_1_1LogicalPosition.html">Struct LogicalPosition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/structslint_1_1LogicalSize.html">Struct LogicalSize</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/structslint_1_1OklchColor.html">Struct OklchColor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/structslint_1_1PhysicalPosition.html">Struct PhysicalPosition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/structslint_1_1PhysicalSize.html">Struct PhysicalSize</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/structslint_1_1platform_1_1Rgb565Pixel.html">Struct Rgb565Pixel</a></li>
@@ -416,7 +417,7 @@
           
 <section class="genindex-section">
   <h1 id="index">Index</h1>
-  <div class="genindex-jumpbox"><a href="#A"><strong>A</strong></a> | <a href="#B"><strong>B</strong></a> | <a href="#C"><strong>C</strong></a> | <a href="#D"><strong>D</strong></a> | <a href="#E"><strong>E</strong></a> | <a href="#F"><strong>F</strong></a> | <a href="#G"><strong>G</strong></a> | <a href="#H"><strong>H</strong></a> | <a href="#I"><strong>I</strong></a> | <a href="#L"><strong>L</strong></a> | <a href="#M"><strong>M</strong></a> | <a href="#N"><strong>N</strong></a> | <a href="#P"><strong>P</strong></a> | <a href="#Q"><strong>Q</strong></a> | <a href="#R"><strong>R</strong></a> | <a href="#S"><strong>S</strong></a> | <a href="#T"><strong>T</strong></a> | <a href="#U"><strong>U</strong></a> | <a href="#V"><strong>V</strong></a> | <a href="#W"><strong>W</strong></a></div>
+  <div class="genindex-jumpbox"><a href="#A"><strong>A</strong></a> | <a href="#B"><strong>B</strong></a> | <a href="#C"><strong>C</strong></a> | <a href="#D"><strong>D</strong></a> | <a href="#E"><strong>E</strong></a> | <a href="#F"><strong>F</strong></a> | <a href="#G"><strong>G</strong></a> | <a href="#H"><strong>H</strong></a> | <a href="#I"><strong>I</strong></a> | <a href="#L"><strong>L</strong></a> | <a href="#M"><strong>M</strong></a> | <a href="#N"><strong>N</strong></a> | <a href="#O"><strong>O</strong></a> | <a href="#P"><strong>P</strong></a> | <a href="#Q"><strong>Q</strong></a> | <a href="#R"><strong>R</strong></a> | <a href="#S"><strong>S</strong></a> | <a href="#T"><strong>T</strong></a> | <a href="#U"><strong>U</strong></a> | <a href="#V"><strong>V</strong></a> | <a href="#W"><strong>W</strong></a></div>
 </section>
 <section id="A" class="genindex-section">
   <h2>A</h2>
@@ -490,6 +491,8 @@
 </li>
         <li><a href="api/classslint_1_1Color.html#_CPPv4N5slint5Color9from_hsvaEffff">Color::from_hsva (C++ function)</a>
 </li>
+        <li><a href="api/classslint_1_1Color.html#_CPPv4N5slint5Color10from_oklchEffff">Color::from_oklch (C++ function)</a>
+</li>
         <li><a href="api/classslint_1_1Color.html#_CPPv4N5slint5Color14from_rgb_floatEfff">Color::from_rgb_float (C++ function)</a>
 </li>
         <li><a href="api/classslint_1_1Color.html#_CPPv4N5slint5Color14from_rgb_uint8E7uint8_t7uint8_t7uint8_t">Color::from_rgb_uint8 (C++ function)</a>
@@ -509,6 +512,8 @@
         <li><a href="api/classslint_1_1Color.html#_CPPv4NK5slint5Color12to_argb_uintEv">Color::to_argb_uint (C++ function)</a>
 </li>
         <li><a href="api/classslint_1_1Color.html#_CPPv4NK5slint5Color7to_hsvaEv">Color::to_hsva (C++ function)</a>
+</li>
+        <li><a href="api/classslint_1_1Color.html#_CPPv4NK5slint5Color8to_oklchEv">Color::to_oklch (C++ function)</a>
 </li>
         <li><a href="api/classslint_1_1Color.html#_CPPv4NK5slint5Color14transparentizeEf">Color::transparentize (C++ function)</a>
 </li>
@@ -532,10 +537,10 @@
 </li>
         <li><a href="api/classslint_1_1interpreter_1_1ComponentCompiler.html#_CPPv4N5slint11interpreter17ComponentCompiler22set_translation_domainENSt11string_viewE">ComponentCompiler::set_translation_domain (C++ function)</a>
 </li>
-        <li><a href="api/classslint_1_1interpreter_1_1ComponentCompiler.html#_CPPv4NK5slint11interpreter17ComponentCompiler5styleEv">ComponentCompiler::style (C++ function)</a>
-</li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api/classslint_1_1interpreter_1_1ComponentCompiler.html#_CPPv4NK5slint11interpreter17ComponentCompiler5styleEv">ComponentCompiler::style (C++ function)</a>
+</li>
         <li><a href="api/classslint_1_1interpreter_1_1ComponentCompiler.html#_CPPv4N5slint11interpreter17ComponentCompilerD0Ev">ComponentCompiler::~ComponentCompiler (C++ function)</a>
 </li>
         <li><a href="api/classslint_1_1interpreter_1_1ComponentDefinition.html#_CPPv4N5slint11interpreter19ComponentDefinitionE">ComponentDefinition (C++ class)</a>
@@ -841,6 +846,26 @@
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/typedef_slint__window_8h_1a332610d117d0fb1a77cdaa07765155fb.html#_CPPv46NSView">NSView (C++ type)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="O" class="genindex-section">
+  <h2>O</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api/structslint_1_1OklchColor.html#_CPPv4N5slint10OklchColorE">OklchColor (C++ struct)</a>
+</li>
+        <li><a href="api/structslint_1_1OklchColor.html#_CPPv4N5slint10OklchColor5alphaE">OklchColor::alpha (C++ member)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api/structslint_1_1OklchColor.html#_CPPv4N5slint10OklchColor6chromaE">OklchColor::chroma (C++ member)</a>
+</li>
+        <li><a href="api/structslint_1_1OklchColor.html#_CPPv4N5slint10OklchColor3hueE">OklchColor::hue (C++ member)</a>
+</li>
+        <li><a href="api/structslint_1_1OklchColor.html#_CPPv4N5slint10OklchColor9lightnessE">OklchColor::lightness (C++ member)</a>
 </li>
     </ul></td>
   </tr></table>
@@ -1384,7 +1409,7 @@
 </li>
         <li><a href="api/structslint_1_1StyledText.html#_CPPv4N5slint10StyledTextE">StyledText (C++ struct)</a>
 </li>
-        <li><a href="api/structslint_1_1StyledText.html#_CPPv4N5slint10StyledTextaSERK10StyledText">StyledText::operator= (C++ function)</a>
+        <li><a href="api/structslint_1_1StyledText.html#_CPPv4N5slint10StyledTextaSERK10StyledText">StyledText::operator= (C++ function)</a>, <a href="api/structslint_1_1StyledText.html#_CPPv4N5slint10StyledTextaSERR10StyledText">[1]</a>
 </li>
         <li><a href="api/structslint_1_1StyledText.html#_CPPv4N5slint10StyledTexteqERK10StyledTextRK10StyledText">StyledText::operator== (C++ function)</a>
 </li>

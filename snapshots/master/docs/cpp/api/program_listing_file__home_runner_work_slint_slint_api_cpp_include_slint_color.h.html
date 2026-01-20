@@ -237,6 +237,7 @@
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1interpreter_1_1Struct_1_1iterator.html">Struct Struct::iterator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1LogicalPosition.html">Struct LogicalPosition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1LogicalSize.html">Struct LogicalSize</a></li>
+<li class="toctree-l2"><a class="reference internal" href="structslint_1_1OklchColor.html">Struct OklchColor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1PhysicalPosition.html">Struct PhysicalPosition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1PhysicalSize.html">Struct PhysicalSize</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1platform_1_1Rgb565Pixel.html">Struct Rgb565Pixel</a></li>
@@ -455,6 +456,14 @@
 <span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">alpha</span><span class="p">;</span>
 <span class="p">};</span>
 
+<span class="k">struct</span><span class="w"> </span><span class="nc">OklchColor</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">lightness</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">chroma</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">hue</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">alpha</span><span class="p">;</span>
+<span class="p">};</span>
+
 <span class="k">class</span><span class="w"> </span><span class="nc">Color</span>
 <span class="p">{</span>
 <span class="k">public</span><span class="o">:</span>
@@ -538,6 +547,21 @@
 <span class="w">        </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">types</span><span class="o">::</span><span class="n">slint_color_to_hsva</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inner</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">hsv</span><span class="p">.</span><span class="n">hue</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">hsv</span><span class="p">.</span><span class="n">saturation</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">hsv</span><span class="p">.</span><span class="n">value</span><span class="p">,</span>
 <span class="w">                                                     </span><span class="o">&amp;</span><span class="n">hsv</span><span class="p">.</span><span class="n">alpha</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">hsv</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="n">Color</span><span class="w"> </span><span class="n">from_oklch</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">l</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">a</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Color</span><span class="w"> </span><span class="n">ret</span><span class="p">;</span>
+<span class="w">        </span><span class="n">ret</span><span class="p">.</span><span class="n">inner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">types</span><span class="o">::</span><span class="n">slint_color_from_oklch</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">ret</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span><span class="w"> </span><span class="n">OklchColor</span><span class="w"> </span><span class="n">to_oklch</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">OklchColor</span><span class="w"> </span><span class="n">oklch</span><span class="w"> </span><span class="p">{};</span>
+<span class="w">        </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">types</span><span class="o">::</span><span class="n">slint_color_to_oklch</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inner</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">oklch</span><span class="p">.</span><span class="n">lightness</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">oklch</span><span class="p">.</span><span class="n">chroma</span><span class="p">,</span>
+<span class="w">                                                      </span><span class="o">&amp;</span><span class="n">oklch</span><span class="p">.</span><span class="n">hue</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">oklch</span><span class="p">.</span><span class="n">alpha</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">oklch</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">red</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">inner</span><span class="p">.</span><span class="n">red</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>

@@ -55,6 +55,8 @@ Classes
 
 - :ref:`exhale_struct_structslint_1_1HsvaColor`
 
+- :ref:`exhale_struct_structslint_1_1OklchColor`
+
 - :ref:`exhale_struct_structslint_1_1RgbaColor`
 
 - :ref:`exhale_class_classslint_1_1Color`

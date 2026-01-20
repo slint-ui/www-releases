@@ -237,6 +237,7 @@
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1interpreter_1_1Struct_1_1iterator.html">Struct Struct::iterator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1LogicalPosition.html">Struct LogicalPosition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1LogicalSize.html">Struct LogicalSize</a></li>
+<li class="toctree-l2"><a class="reference internal" href="structslint_1_1OklchColor.html">Struct OklchColor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1PhysicalPosition.html">Struct PhysicalPosition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1PhysicalSize.html">Struct PhysicalSize</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1platform_1_1Rgb565Pixel.html">Struct Rgb565Pixel</a></li>
@@ -478,6 +479,17 @@
 </dd></dl>
 
 <dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5slint5Color8to_oklchEv">
+<span id="_CPPv3NK5slint5Color8to_oklchEv"></span><span id="_CPPv2NK5slint5Color8to_oklchEv"></span><span id="slint::Color::to_oklchC"></span><span class="target" id="classslint_1_1Color_1ac6ce7efaccf3b737d7ca6d2019a3d39b"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><a class="reference internal" href="structslint_1_1OklchColor.html#_CPPv4N5slint10OklchColorE" title="slint::OklchColor"><span class="n"><span class="pre">OklchColor</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">to_oklch</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5slint5Color8to_oklchEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Convert this color to the Oklch color space. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>a new <a class="reference internal" href="structslint_1_1OklchColor.html#structslint_1_1OklchColor"><span class="std std-ref">OklchColor</span></a>. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4NK5slint5Color3redEv">
 <span id="_CPPv3NK5slint5Color3redEv"></span><span id="_CPPv2NK5slint5Color3redEv"></span><span id="slint::Color::redC"></span><span class="target" id="classslint_1_1Color_1a7c1dbc3c0c9af7cf570e5f8f840ebec6"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">red</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5slint5Color3redEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Returns the red channel of the color as u8 in the range 0..255. </p>
@@ -569,6 +581,12 @@
 <dt class="sig sig-object cpp" id="_CPPv4N5slint5Color9from_hsvaEffff">
 <span id="_CPPv3N5slint5Color9from_hsvaEffff"></span><span id="_CPPv2N5slint5Color9from_hsvaEffff"></span><span id="slint::Color::from_hsva__float.float.float.float"></span><span class="target" id="classslint_1_1Color_1a83c20a225fc2ec2c348c4acc9b60c373"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5slint5ColorE" title="slint::Color"><span class="n"><span class="pre">Color</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">from_hsva</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">h</span></span>, <span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">s</span></span>, <span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">v</span></span>, <span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">a</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5slint5Color9from_hsvaEffff" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Construct a color from the HSV color space components. The hue is expected to be in the range between 0 and 360, and the other parameters between 0 and 1. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5slint5Color10from_oklchEffff">
+<span id="_CPPv3N5slint5Color10from_oklchEffff"></span><span id="_CPPv2N5slint5Color10from_oklchEffff"></span><span id="slint::Color::from_oklch__float.float.float.float"></span><span class="target" id="classslint_1_1Color_1a8368609740683e93bf4472e9c5523b9e"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5slint5ColorE" title="slint::Color"><span class="n"><span class="pre">Color</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">from_oklch</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">l</span></span>, <span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">c</span></span>, <span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">h</span></span>, <span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">a</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5slint5Color10from_oklchEffff" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Construct a color from the Oklch color space components. Oklch is a perceptually uniform color space. The lightness is expected to be in the range between 0 and 1, chroma typically between 0 and 0.4, hue between 0 and 360, and alpha between 0 and 1. </p>
 </dd></dl>
 
 </div>

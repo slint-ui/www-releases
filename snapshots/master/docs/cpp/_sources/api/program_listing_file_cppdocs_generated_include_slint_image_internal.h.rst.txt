@@ -843,6 +843,10 @@ Program Listing for File slint_image_internal.h
    
    Color slint_color_from_hsva(float h, float s, float v, float a);
    
+   Color slint_color_from_oklch(float l, float c, float h, float a);
+   
+   void slint_color_to_oklch(const Color *col, float *l, float *c, float *h, float *a);
+   
    void slint_image_load_from_path(const SharedString *path, Image *image);
    
    void slint_image_load_from_embedded_data(Slice<uint8_t> data, Slice<uint8_t> format, Image *image);
