@@ -7,7 +7,7 @@ This page lists the licenses of the dependencies used by Slint.
 
 ## Overview of licenses
 
-- [MIT License](#MIT) (376)
+- [MIT License](#MIT) (377)
 - [Unicode License v3](#Unicode-3.0) (19)
 - [Apache License 2.0](#Apache-2.0) (16)
 - [BSD 3-Clause &quot;New&quot; or &quot;Revised&quot; License](#BSD-3-Clause) (6)
@@ -23,6 +23,8 @@ This page lists the licenses of the dependencies used by Slint.
 
 #### Used by:
 
+- [ab_glyph 0.2.32]( https://github.com/alexheretic/ab-glyph )
+- [ab_glyph_rasterizer 0.1.10]( https://github.com/alexheretic/ab-glyph )
 - [owned_ttf_parser 0.25.1]( https://github.com/alexheretic/owned-ttf-parser )
 
 #### License Text
@@ -1281,8 +1283,6 @@ Apache License
 
 #### Used by:
 
-- [ab_glyph 0.2.32]( https://github.com/alexheretic/ab-glyph )
-- [ab_glyph_rasterizer 0.1.10]( https://github.com/alexheretic/ab-glyph )
 - [gl_generator 0.14.0]( https://github.com/brendanzab/gl-rs/ )
 - [khronos_api 3.1.0]( https://github.com/brendanzab/gl-rs/ )
 
@@ -7159,6 +7159,7 @@ DEALINGS IN THE SOFTWARE.
 
 #### Used by:
 
+- [aho-corasick 1.1.4]( https://github.com/BurntSushi/aho-corasick )
 - [byteorder 1.5.0]( https://github.com/BurntSushi/byteorder )
 - [memchr 2.7.6]( https://github.com/BurntSushi/memchr )
 
