@@ -7,10 +7,10 @@ This page lists the licenses of the dependencies used by Slint.
 
 ## Overview of licenses
 
-- [MIT License](#MIT) (377)
-- [Unicode License v3](#Unicode-3.0) (19)
+- [MIT License](#MIT) (369)
 - [Apache License 2.0](#Apache-2.0) (16)
 - [BSD 3-Clause &quot;New&quot; or &quot;Revised&quot; License](#BSD-3-Clause) (6)
+- [Unicode License v3](#Unicode-3.0) (5)
 - [BSD 2-Clause &quot;Simplified&quot; License](#BSD-2-Clause) (4)
 - [Boost Software License 1.0](#BSL-1.0) (2)
 - [zlib License](#Zlib) (2)
@@ -1933,7 +1933,6 @@ DEALINGS IN THE SOFTWARE.
 
 - [cgl 0.3.2]( https://github.com/servo/cgl-rs )
 - [core-foundation-sys 0.8.7]( https://github.com/servo/core-foundation-rs )
-- [core-foundation 0.10.1]( https://github.com/servo/core-foundation-rs )
 - [core-foundation 0.9.4]( https://github.com/servo/core-foundation-rs )
 - [core-graphics-types 0.1.3]( https://github.com/servo/core-foundation-rs )
 - [core-graphics 0.23.2]( https://github.com/servo/core-foundation-rs )
@@ -2006,47 +2005,8 @@ SOFTWARE.
 
 #### Used by:
 
-- [form_urlencoded 1.2.2]( https://github.com/servo/rust-url )
-
-#### License Text
-
-```
-Copyright (c) 2013-2016 The rust-url developers
-
-Permission is hereby granted, free of charge, to any
-person obtaining a copy of this software and associated
-documentation files (the &quot;Software&quot;), to deal in the
-Software without restriction, including without
-limitation the rights to use, copy, modify, merge,
-publish, distribute, sublicense, and/or sell copies of
-the Software, and to permit persons to whom the Software
-is furnished to do so, subject to the following
-conditions:
-
-The above copyright notice and this permission notice
-shall be included in all copies or substantial portions
-of the Software.
-
-THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF
-ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
-TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
-PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
-SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
-IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-DEALINGS IN THE SOFTWARE.
-
-```
-
-### <a id="MIT"></a> MIT License
-
-#### Used by:
-
 - [data-url 0.3.2]( https://github.com/servo/rust-url )
-- [idna 1.1.0]( https://github.com/servo/rust-url/ )
 - [percent-encoding 2.3.2]( https://github.com/servo/rust-url/ )
-- [url 2.5.8]( https://github.com/servo/rust-url )
 
 #### License Text
 
@@ -4446,43 +4406,6 @@ SOFTWARE.
 
 #### Used by:
 
-- [idna_adapter 1.2.1]( https://github.com/hsivonen/idna_adapter )
-
-#### License Text
-
-```
-Copyright (c) The rust-url developers
-
-Permission is hereby granted, free of charge, to any
-person obtaining a copy of this software and associated
-documentation files (the &quot;Software&quot;), to deal in the
-Software without restriction, including without
-limitation the rights to use, copy, modify, merge,
-publish, distribute, sublicense, and/or sell copies of
-the Software, and to permit persons to whom the Software
-is furnished to do so, subject to the following
-conditions:
-
-The above copyright notice and this permission notice
-shall be included in all copies or substantial portions
-of the Software.
-
-THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF
-ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
-TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
-PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
-SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
-IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-DEALINGS IN THE SOFTWARE.
-
-```
-
-### <a id="MIT"></a> MIT License
-
-#### Used by:
-
 - [arrayvec 0.7.6]( https://github.com/bluss/arrayvec )
 
 #### License Text
@@ -4513,25 +4436,6 @@ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
 IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
-
-```
-
-### <a id="MIT"></a> MIT License
-
-#### Used by:
-
-- [synstructure 0.13.2]( https://github.com/mystor/synstructure )
-
-#### License Text
-
-```
-Copyright 2016 Nika Layzell
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the &quot;Software&quot;), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ```
 
@@ -4770,43 +4674,6 @@ DEALINGS IN THE SOFTWARE.
 
 ```
 Copyright 2024 the Parley Authors
-
-Permission is hereby granted, free of charge, to any
-person obtaining a copy of this software and associated
-documentation files (the &quot;Software&quot;), to deal in the
-Software without restriction, including without
-limitation the rights to use, copy, modify, merge,
-publish, distribute, sublicense, and/or sell copies of
-the Software, and to permit persons to whom the Software
-is furnished to do so, subject to the following
-conditions:
-
-The above copyright notice and this permission notice
-shall be included in all copies or substantial portions
-of the Software.
-
-THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF
-ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
-TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
-PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
-SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
-IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-DEALINGS IN THE SOFTWARE.
-
-```
-
-### <a id="MIT"></a> MIT License
-
-#### Used by:
-
-- [utf8_iter 1.0.4]( https://github.com/hsivonen/utf8_iter )
-
-#### License Text
-
-```
-Copyright Mozilla Foundation
 
 Permission is hereby granted, free of charge, to any
 person obtaining a copy of this software and associated
@@ -6524,45 +6391,6 @@ SOFTWARE.
 
 #### Used by:
 
-- [webbrowser 1.0.6]( https://github.com/amodm/webbrowser-rs )
-
-#### License Text
-
-```
-The MIT License (MIT)
-
-Copyright (c) 2015-2022 Amod Malviya
-
-Permission is hereby granted, free of charge, to any
-person obtaining a copy of this software and associated
-documentation files (the &quot;Software&quot;), to deal in the
-Software without restriction, including without
-limitation the rights to use, copy, modify, merge,
-publish, distribute, sublicense, and/or sell copies of
-the Software, and to permit persons to whom the Software
-is furnished to do so, subject to the following
-conditions:
-
-The above copyright notice and this permission notice
-shall be included in all copies or substantial portions
-of the Software.
-
-THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF
-ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
-TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
-PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
-SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
-IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-DEALINGS IN THE SOFTWARE.
-
-```
-
-### <a id="MIT"></a> MIT License
-
-#### Used by:
-
 - [derive_more-impl 2.1.1]( https://github.com/JelteF/derive_more )
 - [derive_more 2.1.1]( https://github.com/JelteF/derive_more )
 
@@ -7631,24 +7459,10 @@ authorization of the copyright holder.
 
 #### Used by:
 
-- [icu_collections 2.1.1]( https://github.com/unicode-org/icu4x )
 - [icu_locale_core 2.1.1]( https://github.com/unicode-org/icu4x )
-- [icu_normalizer 2.1.1]( https://github.com/unicode-org/icu4x )
-- [icu_normalizer_data 2.1.1]( https://github.com/unicode-org/icu4x )
-- [icu_properties 2.1.2]( https://github.com/unicode-org/icu4x )
-- [icu_properties_data 2.1.2]( https://github.com/unicode-org/icu4x )
-- [icu_provider 2.1.1]( https://github.com/unicode-org/icu4x )
 - [litemap 0.8.1]( https://github.com/unicode-org/icu4x )
-- [potential_utf 0.1.4]( https://github.com/unicode-org/icu4x )
 - [tinystr 0.8.2]( https://github.com/unicode-org/icu4x )
 - [writeable 0.6.2]( https://github.com/unicode-org/icu4x )
-- [yoke-derive 0.8.1]( https://github.com/unicode-org/icu4x )
-- [yoke 0.8.1]( https://github.com/unicode-org/icu4x )
-- [zerofrom-derive 0.1.6]( https://github.com/unicode-org/icu4x )
-- [zerofrom 0.1.6]( https://github.com/unicode-org/icu4x )
-- [zerotrie 0.2.3]( https://github.com/unicode-org/icu4x )
-- [zerovec-derive 0.11.2]( https://github.com/unicode-org/icu4x )
-- [zerovec 0.11.5]( https://github.com/unicode-org/icu4x )
 
 #### License Text
 
