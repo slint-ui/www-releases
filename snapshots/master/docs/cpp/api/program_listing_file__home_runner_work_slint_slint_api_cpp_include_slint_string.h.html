@@ -255,7 +255,6 @@
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1SharedVector.html">Template Struct SharedVector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1Size.html">Template Struct Size</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1StandardListViewItem.html">Struct StandardListViewItem</a></li>
-<li class="toctree-l2"><a class="reference internal" href="structslint_1_1StyledText.html">Struct StyledText</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1Timer.html">Struct Timer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="classslint_1_1Brush.html">Class Brush</a></li>
 <li class="toctree-l2"><a class="reference internal" href="classslint_1_1Color.html">Class Color</a></li>
@@ -567,6 +566,8 @@
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">inner</span><span class="p">;</span><span class="w"> </span><span class="c1">// opaque</span>
 <span class="p">};</span>
 
+<span class="k">namespace</span><span class="w"> </span><span class="nn">private_api</span><span class="w"> </span><span class="p">{</span>
+
 <span class="k">struct</span><span class="w"> </span><span class="nc">StyledText</span>
 <span class="p">{</span>
 <span class="k">public</span><span class="o">:</span>
@@ -596,7 +597,6 @@
 <span class="k">private</span><span class="o">:</span>
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">inner</span><span class="p">;</span>
 <span class="p">};</span>
-<span class="k">namespace</span><span class="w"> </span><span class="nn">private_api</span><span class="w"> </span><span class="p">{</span>
 
 <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
 <span class="kr">inline</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">Slice</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">make_slice</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">*</span><span class="n">ptr</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">len</span><span class="p">)</span>
@@ -619,7 +619,6 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">make_slice</span><span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="k">const</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*&gt;</span><span class="p">(</span><span class="n">str</span><span class="p">.</span><span class="n">data</span><span class="p">()),</span><span class="w"> </span><span class="n">str</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
 <span class="p">}</span>
 <span class="p">}</span>
-
 <span class="p">}</span>
 </pre></div>
 </div>

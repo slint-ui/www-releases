@@ -19,7 +19,7 @@ Program Listing for File slint_string_internal.h
    #include <cstdlib>
    #include <ostream>
    #include <new>
-   namespace slint { struct SharedString; struct StyledText; }
+   namespace slint { struct SharedString; namespace private_api { struct StyledText; } namespace cbindgen_private { using private_api::StyledText; }}
    
    namespace slint {
    namespace cbindgen_private {

@@ -61,5 +61,3 @@ Classes
 
 - :ref:`exhale_struct_structslint_1_1SharedString`
 
-- :ref:`exhale_struct_structslint_1_1StyledText`
-

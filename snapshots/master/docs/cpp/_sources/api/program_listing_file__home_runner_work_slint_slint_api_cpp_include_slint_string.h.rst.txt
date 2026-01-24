@@ -156,6 +156,8 @@ Program Listing for File slint_string.h
        void *inner; // opaque
    };
    
+   namespace private_api {
+   
    struct StyledText
    {
    public:
@@ -185,7 +187,6 @@ Program Listing for File slint_string.h
    private:
        void *inner;
    };
-   namespace private_api {
    
    template<typename T>
    inline cbindgen_private::Slice<T> make_slice(const T *ptr, size_t len)
@@ -208,5 +209,4 @@ Program Listing for File slint_string.h
        return make_slice(reinterpret_cast<const uint8_t *>(str.data()), str.size());
    }
    }
-   
    }
