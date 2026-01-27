@@ -974,25 +974,11 @@
 
 <span class="k">using</span><span class="w"> </span><span class="n">IntSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Size2D</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="p">;</span>
 
-<span class="k">struct</span><span class="w"> </span><span class="nc">LogicalInset</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">top</span><span class="p">;</span>
-<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">bottom</span><span class="p">;</span>
-<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">left</span><span class="p">;</span>
-<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">right</span><span class="p">;</span>
-<span class="p">};</span>
-
-<span class="k">struct</span><span class="w"> </span><span class="nc">InternalToken</span><span class="w"> </span><span class="p">{</span>
-
-<span class="p">};</span>
-
 <span class="k">union</span><span class="w"> </span><span class="nc">WindowEvent</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Tag</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">PointerPressed</span><span class="p">,</span>
 <span class="w">        </span><span class="n">PointerReleased</span><span class="p">,</span>
 <span class="w">        </span><span class="n">PointerMoved</span><span class="p">,</span>
-<span class="w">        </span><span class="n">TouchPressed</span><span class="p">,</span>
-<span class="w">        </span><span class="n">TouchReleased</span><span class="p">,</span>
-<span class="w">        </span><span class="n">TouchMoved</span><span class="p">,</span>
 <span class="w">        </span><span class="n">PointerScrolled</span><span class="p">,</span>
 <span class="w">        </span><span class="n">PointerExited</span><span class="p">,</span>
 <span class="w">        </span><span class="n">KeyPressed</span><span class="p">,</span>
@@ -1000,7 +986,6 @@
 <span class="w">        </span><span class="n">KeyReleased</span><span class="p">,</span>
 <span class="w">        </span><span class="n">ScaleFactorChanged</span><span class="p">,</span>
 <span class="w">        </span><span class="n">Resized</span><span class="p">,</span>
-<span class="w">        </span><span class="n">SafeAreaChanged</span><span class="p">,</span>
 <span class="w">        </span><span class="n">CloseRequested</span><span class="p">,</span>
 <span class="w">        </span><span class="n">WindowActiveChanged</span><span class="p">,</span>
 <span class="w">    </span><span class="p">};</span>
@@ -1019,24 +1004,6 @@
 
 <span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">PointerMoved_Body</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">Tag</span><span class="w"> </span><span class="n">tag</span><span class="p">;</span>
-<span class="w">        </span><span class="n">LogicalPosition</span><span class="w"> </span><span class="n">position</span><span class="p">;</span>
-<span class="w">    </span><span class="p">};</span>
-
-<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">TouchPressed_Body</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">Tag</span><span class="w"> </span><span class="n">tag</span><span class="p">;</span>
-<span class="w">        </span><span class="kt">int32_t</span><span class="w"> </span><span class="n">touch_id</span><span class="p">;</span>
-<span class="w">        </span><span class="n">LogicalPosition</span><span class="w"> </span><span class="n">position</span><span class="p">;</span>
-<span class="w">    </span><span class="p">};</span>
-
-<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">TouchReleased_Body</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">Tag</span><span class="w"> </span><span class="n">tag</span><span class="p">;</span>
-<span class="w">        </span><span class="kt">int32_t</span><span class="w"> </span><span class="n">touch_id</span><span class="p">;</span>
-<span class="w">        </span><span class="n">LogicalPosition</span><span class="w"> </span><span class="n">position</span><span class="p">;</span>
-<span class="w">    </span><span class="p">};</span>
-
-<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">TouchMoved_Body</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">Tag</span><span class="w"> </span><span class="n">tag</span><span class="p">;</span>
-<span class="w">        </span><span class="kt">int32_t</span><span class="w"> </span><span class="n">touch_id</span><span class="p">;</span>
 <span class="w">        </span><span class="n">LogicalPosition</span><span class="w"> </span><span class="n">position</span><span class="p">;</span>
 <span class="w">    </span><span class="p">};</span>
 
@@ -1072,12 +1039,6 @@
 <span class="w">        </span><span class="n">LogicalSize</span><span class="w"> </span><span class="n">size</span><span class="p">;</span>
 <span class="w">    </span><span class="p">};</span>
 
-<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">SafeAreaChanged_Body</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">Tag</span><span class="w"> </span><span class="n">tag</span><span class="p">;</span>
-<span class="w">        </span><span class="n">LogicalInset</span><span class="w"> </span><span class="n">inset</span><span class="p">;</span>
-<span class="w">        </span><span class="n">InternalToken</span><span class="w"> </span><span class="n">token</span><span class="p">;</span>
-<span class="w">    </span><span class="p">};</span>
-
 <span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">WindowActiveChanged_Body</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">Tag</span><span class="w"> </span><span class="n">tag</span><span class="p">;</span>
 <span class="w">        </span><span class="kt">bool</span><span class="w"> </span><span class="n">_0</span><span class="p">;</span>
@@ -1089,16 +1050,12 @@
 <span class="w">    </span><span class="n">PointerPressed_Body</span><span class="w"> </span><span class="n">pointer_pressed</span><span class="p">;</span>
 <span class="w">    </span><span class="n">PointerReleased_Body</span><span class="w"> </span><span class="n">pointer_released</span><span class="p">;</span>
 <span class="w">    </span><span class="n">PointerMoved_Body</span><span class="w"> </span><span class="n">pointer_moved</span><span class="p">;</span>
-<span class="w">    </span><span class="n">TouchPressed_Body</span><span class="w"> </span><span class="n">touch_pressed</span><span class="p">;</span>
-<span class="w">    </span><span class="n">TouchReleased_Body</span><span class="w"> </span><span class="n">touch_released</span><span class="p">;</span>
-<span class="w">    </span><span class="n">TouchMoved_Body</span><span class="w"> </span><span class="n">touch_moved</span><span class="p">;</span>
 <span class="w">    </span><span class="n">PointerScrolled_Body</span><span class="w"> </span><span class="n">pointer_scrolled</span><span class="p">;</span>
 <span class="w">    </span><span class="n">KeyPressed_Body</span><span class="w"> </span><span class="n">key_pressed</span><span class="p">;</span>
 <span class="w">    </span><span class="n">KeyPressRepeated_Body</span><span class="w"> </span><span class="n">key_press_repeated</span><span class="p">;</span>
 <span class="w">    </span><span class="n">KeyReleased_Body</span><span class="w"> </span><span class="n">key_released</span><span class="p">;</span>
 <span class="w">    </span><span class="n">ScaleFactorChanged_Body</span><span class="w"> </span><span class="n">scale_factor_changed</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Resized_Body</span><span class="w"> </span><span class="n">resized</span><span class="p">;</span>
-<span class="w">    </span><span class="n">SafeAreaChanged_Body</span><span class="w"> </span><span class="n">safe_area_changed</span><span class="p">;</span>
 <span class="w">    </span><span class="n">WindowActiveChanged_Body</span><span class="w"> </span><span class="n">window_active_changed</span><span class="p">;</span>
 <span class="cm">/* Some members of the WindowEvent enum have destructors (with SharedString), but thankfully we don&#39;t use these so we can have an empty constructor */</span>
 <span class="w">    </span><span class="o">~</span><span class="n">WindowEvent</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span>

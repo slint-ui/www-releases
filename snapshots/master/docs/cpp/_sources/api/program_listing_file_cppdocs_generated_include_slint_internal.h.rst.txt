@@ -564,25 +564,11 @@ Program Listing for File slint_internal.h
    
    using IntSize = Size2D<uint32_t>;
    
-   struct LogicalInset {
-       float top;
-       float bottom;
-       float left;
-       float right;
-   };
-   
-   struct InternalToken {
-   
-   };
-   
    union WindowEvent {
        enum class Tag : uint32_t {
            PointerPressed,
            PointerReleased,
            PointerMoved,
-           TouchPressed,
-           TouchReleased,
-           TouchMoved,
            PointerScrolled,
            PointerExited,
            KeyPressed,
@@ -590,7 +576,6 @@ Program Listing for File slint_internal.h
            KeyReleased,
            ScaleFactorChanged,
            Resized,
-           SafeAreaChanged,
            CloseRequested,
            WindowActiveChanged,
        };
@@ -609,24 +594,6 @@ Program Listing for File slint_internal.h
    
        struct PointerMoved_Body {
            Tag tag;
-           LogicalPosition position;
-       };
-   
-       struct TouchPressed_Body {
-           Tag tag;
-           int32_t touch_id;
-           LogicalPosition position;
-       };
-   
-       struct TouchReleased_Body {
-           Tag tag;
-           int32_t touch_id;
-           LogicalPosition position;
-       };
-   
-       struct TouchMoved_Body {
-           Tag tag;
-           int32_t touch_id;
            LogicalPosition position;
        };
    
@@ -662,12 +629,6 @@ Program Listing for File slint_internal.h
            LogicalSize size;
        };
    
-       struct SafeAreaChanged_Body {
-           Tag tag;
-           LogicalInset inset;
-           InternalToken token;
-       };
-   
        struct WindowActiveChanged_Body {
            Tag tag;
            bool _0;
@@ -679,16 +640,12 @@ Program Listing for File slint_internal.h
        PointerPressed_Body pointer_pressed;
        PointerReleased_Body pointer_released;
        PointerMoved_Body pointer_moved;
-       TouchPressed_Body touch_pressed;
-       TouchReleased_Body touch_released;
-       TouchMoved_Body touch_moved;
        PointerScrolled_Body pointer_scrolled;
        KeyPressed_Body key_pressed;
        KeyPressRepeated_Body key_press_repeated;
        KeyReleased_Body key_released;
        ScaleFactorChanged_Body scale_factor_changed;
        Resized_Body resized;
-       SafeAreaChanged_Body safe_area_changed;
        WindowActiveChanged_Body window_active_changed;
    /* Some members of the WindowEvent enum have destructors (with SharedString), but thankfully we don't use these so we can have an empty constructor */
        ~WindowEvent() {}
