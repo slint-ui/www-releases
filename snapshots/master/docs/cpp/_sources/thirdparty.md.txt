@@ -4593,7 +4593,7 @@ DEALINGS IN THE SOFTWARE.
 
 #### Used by:
 
-- [femtovg 0.19.3]( https://github.com/femtovg/femtovg )
+- [femtovg 0.20.1]( https://github.com/femtovg/femtovg )
 
 #### License Text
 

@@ -1,0 +1,239 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Equivalent to `RenderCommand` with the Ids resolved into resource Arcs."><title>ArcRenderCommand in slint::wgpu_28::wgpu::wgc::command - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../../../static.files/rustdoc-0bd2dfd4.css"><meta name="rustdoc-vars" data-root-path="../../../../../" data-static-root-path="../../../../../static.files/" data-current-crate="slint" data-themes="" data-resource-suffix="" data-rustdoc-version="1.95.0-nightly (e96bb7e44 2026-01-27)" data-channel="nightly" data-search-js="search-86d08462.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-170eb4bf.js" ><script src="../../../../../static.files/storage-f9617a14.js"></script><script defer src="sidebar-items.js"></script><script defer src="../../../../../static.files/main-12f88f4f.js"></script><noscript><link rel="stylesheet" href="../../../../../static.files/noscript-ffcac47a.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../../../static.files/favicon-044be391.svg"><!--
+    This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
+    It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
+    in sphinx and via head.hbs in mdbook.
+-->
+<link rel="stylesheet" href="https://slint.dev/resources/highlightjs/11.0.1/default.min.css">
+<script src="https://slint.dev/resources/highlightjs/11.0.1/highlight.min.js"></script>
+<script>
+  function highlight_slint(hljs) {
+    const KEYWORDS = {
+      keyword:
+        "animate callback changed component enum export for function global if import in in-out inherits out parent private property public pure root self states struct",
+      literal: "false true",
+      built_in:
+        "ArcTo Clip Close Colors CubicTo Flickable FocusScope GridLayout HorizontalLayout Image LineTo Math MoveTo Path PopupWindow QuadraticTo Rectangle Row Text TextInput TouchArea VerticalLayout Window animation-tick debug",
+      type: "bool duration easing float int length logical-length relative-font-size string",
+    };
+
+    return {
+      name: 'slint',
+      case_insensitive: false,
+      keywords: KEYWORDS,
+      contains: [
+        hljs.QUOTE_STRING_MODE,
+        hljs.C_LINE_COMMENT_MODE,
+        hljs.C_BLOCK_COMMENT_MODE,
+        hljs.COMMENT('/\\*', '\\*/', {
+          contains: ['self']
+        }),
+        {
+          className: 'number',
+          begin: '\\b\\d+(\\.\\d+)?(\\w+)?',
+          relevance: 0
+        },
+        {
+          className: 'title',
+          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]* *:=',
+        },
+        {
+          className: 'symbol',
+          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]*(:| *=>)',
+        },
+        {
+          className: 'built_in',
+          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]*!',
+        },
+      ],
+      illegal: /@/
+    };
+  };
+
+  // Tags used in fenced code blocks
+  for (const tag of ["slint", "slint,no-preview", "slint,no-auto-preview", "slint,ignore"]) {
+    hljs.registerLanguage(tag, highlight_slint);
+  }
+
+
+  window.addEventListener("DOMContentLoaded", () => {
+    const rustDoc = document.querySelector('meta[name="generator"]')?.content == "rustdoc";
+    if (rustDoc) {
+      // Only highlight .slint blocks, leave the others to rustdoc
+      for (slintBlock of document.querySelectorAll("[class*=language-slint]")) {
+        hljs.highlightElement(slintBlock)
+      }
+
+      // Some of the rustdoc selectors require the pre element to have the rust class
+      for (codeBlock of document.querySelectorAll(".language-slint.hljs")) {
+        codeBlock.classList.add("rust");
+        codeBlock.classList.remove("hljs");
+      }
+
+      // Change the hljs generated classes to the rustdoc
+      // ones, so that the highlighting adjusts to the theme correctly.
+      const highlightJSToRustDoc = [
+        ["comment", "comment"],
+        ["number", "number"],
+        ["symbol", "struct"], // width:
+        ["keyword", "kw"],
+        ["built_in", "primitive"],
+        ["string", "string"],
+        ["title", "fnname"], // Foo :=
+        ["type", "type"]
+      ];
+
+      for ([hljs_class, rustdoc_class] of highlightJSToRustDoc) {
+        for (titleElement of document.querySelectorAll(`.hljs-${hljs_class}`)) {
+          titleElement.classList.remove(`hljs-${hljs_class}`);
+          titleElement.classList.add(rustdoc_class);
+        }
+      }
+    } else {
+      // For use with the mdbook Tutorial
+      hljs.highlightAll();
+
+      // The Sphinx/my_st generated HTML for code blocks doesn't use <code> tags, so highlight.js'
+      // default selector "pre code" doesn't match. Let's do it by hand:
+      for (block of document.querySelectorAll("div[class*=highlight-slint] div.highlight pre")) {
+        hljs.highlightElement(block)
+      }
+    }
+
+    // Fix up links that sphinx handles but for rustdoc we need to resolve manually:
+    {
+      let target_url = null;
+      if (document.location.hostname == "snapshots.slint.dev") {
+        target_url = "https://snapshots.slint.dev/master/docs/slint/";
+      } else {
+        const version = document.querySelector("span.version");
+        if (version !== null) {
+          target_url = `https://slint.dev/releases/${version.innerText}/docs/slint/`;
+        }
+      }
+
+      if (target_url !== null) {
+        for (const link of document.querySelectorAll("a[href^='slint-reference:']")) {
+          link.href = link.href.replace("slint-reference:", target_url);
+        }
+      }
+    }
+  });
+</script>
+
+</head><body class="rustdoc type"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">ArcRenderCommand</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><a class="logo-container" href="../../../../../slint/index.html"><img src="https://slint.dev/logo/slint-logo-square-light.svg" alt="logo"></a><h2><a href="../../../../../slint/index.html">slint</a><span class="version">1.15.0</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">ArcRender<wbr>Command</a></h2><h3><a href="#aliased-type">Aliased Type</a></h3><h3><a href="#variants">Variants</a></h3><ul class="block variant"><li><a href="#variant.BeginOcclusionQuery" title="BeginOcclusionQuery">BeginOcclusionQuery</a></li><li><a href="#variant.BeginPipelineStatisticsQuery" title="BeginPipelineStatisticsQuery">BeginPipelineStatisticsQuery</a></li><li><a href="#variant.Draw" title="Draw">Draw</a></li><li><a href="#variant.DrawIndexed" title="DrawIndexed">DrawIndexed</a></li><li><a href="#variant.DrawIndirect" title="DrawIndirect">DrawIndirect</a></li><li><a href="#variant.DrawMeshTasks" title="DrawMeshTasks">DrawMeshTasks</a></li><li><a href="#variant.EndOcclusionQuery" title="EndOcclusionQuery">EndOcclusionQuery</a></li><li><a href="#variant.EndPipelineStatisticsQuery" title="EndPipelineStatisticsQuery">EndPipelineStatisticsQuery</a></li><li><a href="#variant.ExecuteBundle" title="ExecuteBundle">ExecuteBundle</a></li><li><a href="#variant.InsertDebugMarker" title="InsertDebugMarker">InsertDebugMarker</a></li><li><a href="#variant.MultiDrawIndirectCount" title="MultiDrawIndirectCount">MultiDrawIndirectCount</a></li><li><a href="#variant.PopDebugGroup" title="PopDebugGroup">PopDebugGroup</a></li><li><a href="#variant.PushDebugGroup" title="PushDebugGroup">PushDebugGroup</a></li><li><a href="#variant.SetBindGroup" title="SetBindGroup">SetBindGroup</a></li><li><a href="#variant.SetBlendConstant" title="SetBlendConstant">SetBlendConstant</a></li><li><a href="#variant.SetImmediate" title="SetImmediate">SetImmediate</a></li><li><a href="#variant.SetIndexBuffer" title="SetIndexBuffer">SetIndexBuffer</a></li><li><a href="#variant.SetPipeline" title="SetPipeline">SetPipeline</a></li><li><a href="#variant.SetScissor" title="SetScissor">SetScissor</a></li><li><a href="#variant.SetStencilReference" title="SetStencilReference">SetStencilReference</a></li><li><a href="#variant.SetVertexBuffer" title="SetVertexBuffer">SetVertexBuffer</a></li><li><a href="#variant.SetViewport" title="SetViewport">SetViewport</a></li><li><a href="#variant.WriteTimestamp" title="WriteTimestamp">WriteTimestamp</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="index.html">In slint::<wbr>wgpu_<wbr>28::<wbr>wgpu::<wbr>wgc::<wbr>command</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../../../index.html">slint</a>::<wbr><a href="../../../index.html">wgpu_28</a>::<wbr><a href="../../index.html">wgpu</a>::<wbr><a href="../index.html">wgc</a>::<wbr><a href="index.html">command</a></div><h1>Type Alias <span class="type">ArcRender<wbr>Command</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"></span></div><pre class="rust item-decl"><code>pub type ArcRenderCommand = RenderCommand&lt;<a class="struct" href="struct.ArcReferences.html" title="struct slint::wgpu_28::wgpu::wgc::command::ArcReferences">ArcReferences</a>&gt;;</code></pre><span class="item-info"><div class="stab portability">Available on <strong>crate feature <code>unstable-wgpu-28</code></strong> only.</div></span><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Equivalent to <code>RenderCommand</code> with the Ids resolved into resource Arcs.</p>
+<p>In a render pass, commands are stored in this format between when they are
+added to the pass, and when the pass is <code>end()</code>ed and the commands are
+replayed to the HAL encoder. Validation occurs when the pass is ended, which
+means that parameters stored in an <code>ArcRenderCommand</code> for a pass operation
+have generally not been validated.</p>
+<p>In a render bundle, commands are stored in this format between when the bundle
+is <code>finish()</code>ed and when the bundle is executed. Validation occurs when the
+bundle is finished, which means that parameters stored in an <code>ArcRenderCommand</code>
+for a render bundle operation must have been validated.</p>
+<p>cbindgen:ignore</p>
+</div></details><h2 id="aliased-type" class="section-header">Aliased Type<a href="#aliased-type" class="anchor">§</a></h2><pre class="rust item-decl"><code>pub enum ArcRenderCommand {
+<details class="toggle type-contents-toggle"><summary class="hideme"><span>Show 23 variants</span></summary>    SetBindGroup {
+        index: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
+        num_dynamic_offsets: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>,
+        bind_group: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html" title="struct alloc::sync::Arc">Arc</a>&lt;<a class="struct" href="../binding_model/struct.BindGroup.html" title="struct slint::wgpu_28::wgpu::wgc::binding_model::BindGroup">BindGroup</a>&gt;&gt;,
+    },
+    SetPipeline(<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html" title="struct alloc::sync::Arc">Arc</a>&lt;<a class="struct" href="../pipeline/struct.RenderPipeline.html" title="struct slint::wgpu_28::wgpu::wgc::pipeline::RenderPipeline">RenderPipeline</a>&gt;),
+    SetIndexBuffer {
+        buffer: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html" title="struct alloc::sync::Arc">Arc</a>&lt;<a class="struct" href="../resource/struct.Buffer.html" title="struct slint::wgpu_28::wgpu::wgc::resource::Buffer">Buffer</a>&gt;,
+        index_format: <a class="enum" href="../../enum.IndexFormat.html" title="enum slint::wgpu_28::wgpu::IndexFormat">IndexFormat</a>,
+        offset: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>,
+        size: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/core/num/nonzero/struct.NonZero.html" title="struct core::num::nonzero::NonZero">NonZero</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>&gt;&gt;,
+    },
+    SetVertexBuffer {
+        slot: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
+        buffer: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html" title="struct alloc::sync::Arc">Arc</a>&lt;<a class="struct" href="../resource/struct.Buffer.html" title="struct slint::wgpu_28::wgpu::wgc::resource::Buffer">Buffer</a>&gt;,
+        offset: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>,
+        size: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/core/num/nonzero/struct.NonZero.html" title="struct core::num::nonzero::NonZero">NonZero</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>&gt;&gt;,
+    },
+    SetBlendConstant(<a class="struct" href="../../struct.Color.html" title="struct slint::wgpu_28::wgpu::Color">Color</a>),
+    SetStencilReference(<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>),
+    SetViewport {
+        rect: <a class="struct" href="struct.Rect.html" title="struct slint::wgpu_28::wgpu::wgc::command::Rect">Rect</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>&gt;,
+        depth_min: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>,
+        depth_max: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>,
+    },
+    SetScissor(<a class="struct" href="struct.Rect.html" title="struct slint::wgpu_28::wgpu::wgc::command::Rect">Rect</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>&gt;),
+    SetImmediate {
+        offset: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
+        size_bytes: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
+        values_offset: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>&gt;,
+    },
+    Draw {
+        vertex_count: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
+        instance_count: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
+        first_vertex: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
+        first_instance: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
+    },
+    DrawIndexed {
+        index_count: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
+        instance_count: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
+        first_index: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
+        base_vertex: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>,
+        first_instance: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
+    },
+    DrawMeshTasks {
+        group_count_x: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
+        group_count_y: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
+        group_count_z: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
+    },
+    DrawIndirect {
+        buffer: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html" title="struct alloc::sync::Arc">Arc</a>&lt;<a class="struct" href="../resource/struct.Buffer.html" title="struct slint::wgpu_28::wgpu::wgc::resource::Buffer">Buffer</a>&gt;,
+        offset: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>,
+        count: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
+        family: <a class="enum" href="enum.DrawCommandFamily.html" title="enum slint::wgpu_28::wgpu::wgc::command::DrawCommandFamily">DrawCommandFamily</a>,
+        vertex_or_index_limit: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>&gt;,
+        instance_limit: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>&gt;,
+    },
+    MultiDrawIndirectCount {
+        buffer: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html" title="struct alloc::sync::Arc">Arc</a>&lt;<a class="struct" href="../resource/struct.Buffer.html" title="struct slint::wgpu_28::wgpu::wgc::resource::Buffer">Buffer</a>&gt;,
+        offset: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>,
+        count_buffer: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html" title="struct alloc::sync::Arc">Arc</a>&lt;<a class="struct" href="../resource/struct.Buffer.html" title="struct slint::wgpu_28::wgpu::wgc::resource::Buffer">Buffer</a>&gt;,
+        count_buffer_offset: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>,
+        max_count: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
+        family: <a class="enum" href="enum.DrawCommandFamily.html" title="enum slint::wgpu_28::wgpu::wgc::command::DrawCommandFamily">DrawCommandFamily</a>,
+    },
+    PushDebugGroup {
+        color: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
+        len: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>,
+    },
+    PopDebugGroup,
+    InsertDebugMarker {
+        color: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
+        len: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>,
+    },
+    WriteTimestamp {
+        query_set: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html" title="struct alloc::sync::Arc">Arc</a>&lt;<a class="struct" href="../resource/struct.QuerySet.html" title="struct slint::wgpu_28::wgpu::wgc::resource::QuerySet">QuerySet</a>&gt;,
+        query_index: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
+    },
+    BeginOcclusionQuery {
+        query_index: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
+    },
+    EndOcclusionQuery,
+    BeginPipelineStatisticsQuery {
+        query_set: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html" title="struct alloc::sync::Arc">Arc</a>&lt;<a class="struct" href="../resource/struct.QuerySet.html" title="struct slint::wgpu_28::wgpu::wgc::resource::QuerySet">QuerySet</a>&gt;,
+        query_index: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
+    },
+    EndPipelineStatisticsQuery,
+    ExecuteBundle(<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html" title="struct alloc::sync::Arc">Arc</a>&lt;<a class="struct" href="struct.RenderBundle.html" title="struct slint::wgpu_28::wgpu::wgc::command::RenderBundle">RenderBundle</a>&gt;),
+</details>}</code></pre><h2 id="variants" class="variants section-header">Variants<a href="#variants" class="anchor">§</a></h2><div class="variants"><section id="variant.SetBindGroup" class="variant"><a href="#variant.SetBindGroup" class="anchor">§</a><h3 class="code-header">SetBindGroup</h3></section><div class="sub-variant" id="variant.SetBindGroup.fields"><h4>Fields</h4><div class="sub-variant-field"><span id="variant.SetBindGroup.field.index" class="section-header"><a href="#variant.SetBindGroup.field.index" class="anchor field">§</a><code>index: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code></span></div><div class="sub-variant-field"><span id="variant.SetBindGroup.field.num_dynamic_offsets" class="section-header"><a href="#variant.SetBindGroup.field.num_dynamic_offsets" class="anchor field">§</a><code>num_dynamic_offsets: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a></code></span></div><div class="sub-variant-field"><span id="variant.SetBindGroup.field.bind_group" class="section-header"><a href="#variant.SetBindGroup.field.bind_group" class="anchor field">§</a><code>bind_group: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html" title="struct alloc::sync::Arc">Arc</a>&lt;<a class="struct" href="../binding_model/struct.BindGroup.html" title="struct slint::wgpu_28::wgpu::wgc::binding_model::BindGroup">BindGroup</a>&gt;&gt;</code></span></div></div><section id="variant.SetPipeline" class="variant"><a href="#variant.SetPipeline" class="anchor">§</a><h3 class="code-header">SetPipeline(<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html" title="struct alloc::sync::Arc">Arc</a>&lt;<a class="struct" href="../pipeline/struct.RenderPipeline.html" title="struct slint::wgpu_28::wgpu::wgc::pipeline::RenderPipeline">RenderPipeline</a>&gt;)</h3></section><section id="variant.SetIndexBuffer" class="variant"><a href="#variant.SetIndexBuffer" class="anchor">§</a><h3 class="code-header">SetIndexBuffer</h3></section><div class="sub-variant" id="variant.SetIndexBuffer.fields"><h4>Fields</h4><div class="sub-variant-field"><span id="variant.SetIndexBuffer.field.buffer" class="section-header"><a href="#variant.SetIndexBuffer.field.buffer" class="anchor field">§</a><code>buffer: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html" title="struct alloc::sync::Arc">Arc</a>&lt;<a class="struct" href="../resource/struct.Buffer.html" title="struct slint::wgpu_28::wgpu::wgc::resource::Buffer">Buffer</a>&gt;</code></span></div><div class="sub-variant-field"><span id="variant.SetIndexBuffer.field.index_format" class="section-header"><a href="#variant.SetIndexBuffer.field.index_format" class="anchor field">§</a><code>index_format: <a class="enum" href="../../enum.IndexFormat.html" title="enum slint::wgpu_28::wgpu::IndexFormat">IndexFormat</a></code></span></div><div class="sub-variant-field"><span id="variant.SetIndexBuffer.field.offset" class="section-header"><a href="#variant.SetIndexBuffer.field.offset" class="anchor field">§</a><code>offset: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a></code></span></div><div class="sub-variant-field"><span id="variant.SetIndexBuffer.field.size" class="section-header"><a href="#variant.SetIndexBuffer.field.size" class="anchor field">§</a><code>size: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/core/num/nonzero/struct.NonZero.html" title="struct core::num::nonzero::NonZero">NonZero</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>&gt;&gt;</code></span></div></div><section id="variant.SetVertexBuffer" class="variant"><a href="#variant.SetVertexBuffer" class="anchor">§</a><h3 class="code-header">SetVertexBuffer</h3></section><div class="sub-variant" id="variant.SetVertexBuffer.fields"><h4>Fields</h4><div class="sub-variant-field"><span id="variant.SetVertexBuffer.field.slot" class="section-header"><a href="#variant.SetVertexBuffer.field.slot" class="anchor field">§</a><code>slot: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code></span></div><div class="sub-variant-field"><span id="variant.SetVertexBuffer.field.buffer" class="section-header"><a href="#variant.SetVertexBuffer.field.buffer" class="anchor field">§</a><code>buffer: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html" title="struct alloc::sync::Arc">Arc</a>&lt;<a class="struct" href="../resource/struct.Buffer.html" title="struct slint::wgpu_28::wgpu::wgc::resource::Buffer">Buffer</a>&gt;</code></span></div><div class="sub-variant-field"><span id="variant.SetVertexBuffer.field.offset" class="section-header"><a href="#variant.SetVertexBuffer.field.offset" class="anchor field">§</a><code>offset: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a></code></span></div><div class="sub-variant-field"><span id="variant.SetVertexBuffer.field.size" class="section-header"><a href="#variant.SetVertexBuffer.field.size" class="anchor field">§</a><code>size: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/core/num/nonzero/struct.NonZero.html" title="struct core::num::nonzero::NonZero">NonZero</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>&gt;&gt;</code></span></div></div><section id="variant.SetBlendConstant" class="variant"><a href="#variant.SetBlendConstant" class="anchor">§</a><h3 class="code-header">SetBlendConstant(<a class="struct" href="../../struct.Color.html" title="struct slint::wgpu_28::wgpu::Color">Color</a>)</h3></section><section id="variant.SetStencilReference" class="variant"><a href="#variant.SetStencilReference" class="anchor">§</a><h3 class="code-header">SetStencilReference(<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>)</h3></section><section id="variant.SetViewport" class="variant"><a href="#variant.SetViewport" class="anchor">§</a><h3 class="code-header">SetViewport</h3></section><div class="sub-variant" id="variant.SetViewport.fields"><h4>Fields</h4><div class="sub-variant-field"><span id="variant.SetViewport.field.rect" class="section-header"><a href="#variant.SetViewport.field.rect" class="anchor field">§</a><code>rect: <a class="struct" href="struct.Rect.html" title="struct slint::wgpu_28::wgpu::wgc::command::Rect">Rect</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>&gt;</code></span></div><div class="sub-variant-field"><span id="variant.SetViewport.field.depth_min" class="section-header"><a href="#variant.SetViewport.field.depth_min" class="anchor field">§</a><code>depth_min: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a></code></span></div><div class="sub-variant-field"><span id="variant.SetViewport.field.depth_max" class="section-header"><a href="#variant.SetViewport.field.depth_max" class="anchor field">§</a><code>depth_max: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a></code></span></div></div><section id="variant.SetScissor" class="variant"><a href="#variant.SetScissor" class="anchor">§</a><h3 class="code-header">SetScissor(<a class="struct" href="struct.Rect.html" title="struct slint::wgpu_28::wgpu::wgc::command::Rect">Rect</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>&gt;)</h3></section><section id="variant.SetImmediate" class="variant"><a href="#variant.SetImmediate" class="anchor">§</a><h3 class="code-header">SetImmediate</h3></section><div class="docblock"><p>Set a range of immediates to values stored in [<code>BasePass::immediates_data</code>].</p>
+<p>See [<code>wgpu::RenderPass::set_immediates</code>] for a detailed explanation
+of the restrictions these commands must satisfy.</p>
+</div><div class="sub-variant" id="variant.SetImmediate.fields"><h4>Fields</h4><div class="sub-variant-field"><span id="variant.SetImmediate.field.offset" class="section-header"><a href="#variant.SetImmediate.field.offset" class="anchor field">§</a><code>offset: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code></span><div class="docblock"><p>The byte offset within the immediate data storage to write to.  This
+must be a multiple of four.</p>
+</div></div><div class="sub-variant-field"><span id="variant.SetImmediate.field.size_bytes" class="section-header"><a href="#variant.SetImmediate.field.size_bytes" class="anchor field">§</a><code>size_bytes: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code></span><div class="docblock"><p>The number of bytes to write. This must be a multiple of four.</p>
+</div></div><div class="sub-variant-field"><span id="variant.SetImmediate.field.values_offset" class="section-header"><a href="#variant.SetImmediate.field.values_offset" class="anchor field">§</a><code>values_offset: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>&gt;</code></span><div class="docblock"><p>Index in [<code>BasePass::immediates_data</code>] of the start of the data
+to be written.</p>
+<p>Note: this is not a byte offset like <code>offset</code>. Rather, it is the
+index of the first <code>u32</code> element in <code>immediates_data</code> to read.</p>
+<p><code>None</code> means zeros should be written to the destination range, and
+there is no corresponding data in <code>immediates_data</code>. This is used
+by render bundles, which explicitly clear out any state that
+post-bundle code might see.</p>
+</div></div></div><section id="variant.Draw" class="variant"><a href="#variant.Draw" class="anchor">§</a><h3 class="code-header">Draw</h3></section><div class="sub-variant" id="variant.Draw.fields"><h4>Fields</h4><div class="sub-variant-field"><span id="variant.Draw.field.vertex_count" class="section-header"><a href="#variant.Draw.field.vertex_count" class="anchor field">§</a><code>vertex_count: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code></span></div><div class="sub-variant-field"><span id="variant.Draw.field.instance_count" class="section-header"><a href="#variant.Draw.field.instance_count" class="anchor field">§</a><code>instance_count: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code></span></div><div class="sub-variant-field"><span id="variant.Draw.field.first_vertex" class="section-header"><a href="#variant.Draw.field.first_vertex" class="anchor field">§</a><code>first_vertex: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code></span></div><div class="sub-variant-field"><span id="variant.Draw.field.first_instance" class="section-header"><a href="#variant.Draw.field.first_instance" class="anchor field">§</a><code>first_instance: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code></span></div></div><section id="variant.DrawIndexed" class="variant"><a href="#variant.DrawIndexed" class="anchor">§</a><h3 class="code-header">DrawIndexed</h3></section><div class="sub-variant" id="variant.DrawIndexed.fields"><h4>Fields</h4><div class="sub-variant-field"><span id="variant.DrawIndexed.field.index_count" class="section-header"><a href="#variant.DrawIndexed.field.index_count" class="anchor field">§</a><code>index_count: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code></span></div><div class="sub-variant-field"><span id="variant.DrawIndexed.field.instance_count" class="section-header"><a href="#variant.DrawIndexed.field.instance_count" class="anchor field">§</a><code>instance_count: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code></span></div><div class="sub-variant-field"><span id="variant.DrawIndexed.field.first_index" class="section-header"><a href="#variant.DrawIndexed.field.first_index" class="anchor field">§</a><code>first_index: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code></span></div><div class="sub-variant-field"><span id="variant.DrawIndexed.field.base_vertex" class="section-header"><a href="#variant.DrawIndexed.field.base_vertex" class="anchor field">§</a><code>base_vertex: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a></code></span></div><div class="sub-variant-field"><span id="variant.DrawIndexed.field.first_instance" class="section-header"><a href="#variant.DrawIndexed.field.first_instance" class="anchor field">§</a><code>first_instance: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code></span></div></div><section id="variant.DrawMeshTasks" class="variant"><a href="#variant.DrawMeshTasks" class="anchor">§</a><h3 class="code-header">DrawMeshTasks</h3></section><div class="sub-variant" id="variant.DrawMeshTasks.fields"><h4>Fields</h4><div class="sub-variant-field"><span id="variant.DrawMeshTasks.field.group_count_x" class="section-header"><a href="#variant.DrawMeshTasks.field.group_count_x" class="anchor field">§</a><code>group_count_x: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code></span></div><div class="sub-variant-field"><span id="variant.DrawMeshTasks.field.group_count_y" class="section-header"><a href="#variant.DrawMeshTasks.field.group_count_y" class="anchor field">§</a><code>group_count_y: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code></span></div><div class="sub-variant-field"><span id="variant.DrawMeshTasks.field.group_count_z" class="section-header"><a href="#variant.DrawMeshTasks.field.group_count_z" class="anchor field">§</a><code>group_count_z: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code></span></div></div><section id="variant.DrawIndirect" class="variant"><a href="#variant.DrawIndirect" class="anchor">§</a><h3 class="code-header">DrawIndirect</h3></section><div class="sub-variant" id="variant.DrawIndirect.fields"><h4>Fields</h4><div class="sub-variant-field"><span id="variant.DrawIndirect.field.buffer" class="section-header"><a href="#variant.DrawIndirect.field.buffer" class="anchor field">§</a><code>buffer: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html" title="struct alloc::sync::Arc">Arc</a>&lt;<a class="struct" href="../resource/struct.Buffer.html" title="struct slint::wgpu_28::wgpu::wgc::resource::Buffer">Buffer</a>&gt;</code></span></div><div class="sub-variant-field"><span id="variant.DrawIndirect.field.offset" class="section-header"><a href="#variant.DrawIndirect.field.offset" class="anchor field">§</a><code>offset: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a></code></span></div><div class="sub-variant-field"><span id="variant.DrawIndirect.field.count" class="section-header"><a href="#variant.DrawIndirect.field.count" class="anchor field">§</a><code>count: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code></span></div><div class="sub-variant-field"><span id="variant.DrawIndirect.field.family" class="section-header"><a href="#variant.DrawIndirect.field.family" class="anchor field">§</a><code>family: <a class="enum" href="enum.DrawCommandFamily.html" title="enum slint::wgpu_28::wgpu::wgc::command::DrawCommandFamily">DrawCommandFamily</a></code></span></div><div class="sub-variant-field"><span id="variant.DrawIndirect.field.vertex_or_index_limit" class="section-header"><a href="#variant.DrawIndirect.field.vertex_or_index_limit" class="anchor field">§</a><code>vertex_or_index_limit: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>&gt;</code></span><div class="docblock"><p>This limit is only populated for commands in a finished [<code>RenderBundle</code>].</p>
+</div></div><div class="sub-variant-field"><span id="variant.DrawIndirect.field.instance_limit" class="section-header"><a href="#variant.DrawIndirect.field.instance_limit" class="anchor field">§</a><code>instance_limit: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>&gt;</code></span><div class="docblock"><p>This limit is only populated for commands in a finished [<code>RenderBundle</code>].</p>
+</div></div></div><section id="variant.MultiDrawIndirectCount" class="variant"><a href="#variant.MultiDrawIndirectCount" class="anchor">§</a><h3 class="code-header">MultiDrawIndirectCount</h3></section><div class="sub-variant" id="variant.MultiDrawIndirectCount.fields"><h4>Fields</h4><div class="sub-variant-field"><span id="variant.MultiDrawIndirectCount.field.buffer" class="section-header"><a href="#variant.MultiDrawIndirectCount.field.buffer" class="anchor field">§</a><code>buffer: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html" title="struct alloc::sync::Arc">Arc</a>&lt;<a class="struct" href="../resource/struct.Buffer.html" title="struct slint::wgpu_28::wgpu::wgc::resource::Buffer">Buffer</a>&gt;</code></span></div><div class="sub-variant-field"><span id="variant.MultiDrawIndirectCount.field.offset" class="section-header"><a href="#variant.MultiDrawIndirectCount.field.offset" class="anchor field">§</a><code>offset: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a></code></span></div><div class="sub-variant-field"><span id="variant.MultiDrawIndirectCount.field.count_buffer" class="section-header"><a href="#variant.MultiDrawIndirectCount.field.count_buffer" class="anchor field">§</a><code>count_buffer: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html" title="struct alloc::sync::Arc">Arc</a>&lt;<a class="struct" href="../resource/struct.Buffer.html" title="struct slint::wgpu_28::wgpu::wgc::resource::Buffer">Buffer</a>&gt;</code></span></div><div class="sub-variant-field"><span id="variant.MultiDrawIndirectCount.field.count_buffer_offset" class="section-header"><a href="#variant.MultiDrawIndirectCount.field.count_buffer_offset" class="anchor field">§</a><code>count_buffer_offset: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a></code></span></div><div class="sub-variant-field"><span id="variant.MultiDrawIndirectCount.field.max_count" class="section-header"><a href="#variant.MultiDrawIndirectCount.field.max_count" class="anchor field">§</a><code>max_count: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code></span></div><div class="sub-variant-field"><span id="variant.MultiDrawIndirectCount.field.family" class="section-header"><a href="#variant.MultiDrawIndirectCount.field.family" class="anchor field">§</a><code>family: <a class="enum" href="enum.DrawCommandFamily.html" title="enum slint::wgpu_28::wgpu::wgc::command::DrawCommandFamily">DrawCommandFamily</a></code></span></div></div><section id="variant.PushDebugGroup" class="variant"><a href="#variant.PushDebugGroup" class="anchor">§</a><h3 class="code-header">PushDebugGroup</h3></section><div class="sub-variant" id="variant.PushDebugGroup.fields"><h4>Fields</h4><div class="sub-variant-field"><span id="variant.PushDebugGroup.field.color" class="section-header"><a href="#variant.PushDebugGroup.field.color" class="anchor field">§</a><code>color: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code></span></div><div class="sub-variant-field"><span id="variant.PushDebugGroup.field.len" class="section-header"><a href="#variant.PushDebugGroup.field.len" class="anchor field">§</a><code>len: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a></code></span></div></div><section id="variant.PopDebugGroup" class="variant"><a href="#variant.PopDebugGroup" class="anchor">§</a><h3 class="code-header">PopDebugGroup</h3></section><section id="variant.InsertDebugMarker" class="variant"><a href="#variant.InsertDebugMarker" class="anchor">§</a><h3 class="code-header">InsertDebugMarker</h3></section><div class="sub-variant" id="variant.InsertDebugMarker.fields"><h4>Fields</h4><div class="sub-variant-field"><span id="variant.InsertDebugMarker.field.color" class="section-header"><a href="#variant.InsertDebugMarker.field.color" class="anchor field">§</a><code>color: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code></span></div><div class="sub-variant-field"><span id="variant.InsertDebugMarker.field.len" class="section-header"><a href="#variant.InsertDebugMarker.field.len" class="anchor field">§</a><code>len: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a></code></span></div></div><section id="variant.WriteTimestamp" class="variant"><a href="#variant.WriteTimestamp" class="anchor">§</a><h3 class="code-header">WriteTimestamp</h3></section><div class="sub-variant" id="variant.WriteTimestamp.fields"><h4>Fields</h4><div class="sub-variant-field"><span id="variant.WriteTimestamp.field.query_set" class="section-header"><a href="#variant.WriteTimestamp.field.query_set" class="anchor field">§</a><code>query_set: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html" title="struct alloc::sync::Arc">Arc</a>&lt;<a class="struct" href="../resource/struct.QuerySet.html" title="struct slint::wgpu_28::wgpu::wgc::resource::QuerySet">QuerySet</a>&gt;</code></span></div><div class="sub-variant-field"><span id="variant.WriteTimestamp.field.query_index" class="section-header"><a href="#variant.WriteTimestamp.field.query_index" class="anchor field">§</a><code>query_index: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code></span></div></div><section id="variant.BeginOcclusionQuery" class="variant"><a href="#variant.BeginOcclusionQuery" class="anchor">§</a><h3 class="code-header">BeginOcclusionQuery</h3></section><div class="sub-variant" id="variant.BeginOcclusionQuery.fields"><h4>Fields</h4><div class="sub-variant-field"><span id="variant.BeginOcclusionQuery.field.query_index" class="section-header"><a href="#variant.BeginOcclusionQuery.field.query_index" class="anchor field">§</a><code>query_index: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code></span></div></div><section id="variant.EndOcclusionQuery" class="variant"><a href="#variant.EndOcclusionQuery" class="anchor">§</a><h3 class="code-header">EndOcclusionQuery</h3></section><section id="variant.BeginPipelineStatisticsQuery" class="variant"><a href="#variant.BeginPipelineStatisticsQuery" class="anchor">§</a><h3 class="code-header">BeginPipelineStatisticsQuery</h3></section><div class="sub-variant" id="variant.BeginPipelineStatisticsQuery.fields"><h4>Fields</h4><div class="sub-variant-field"><span id="variant.BeginPipelineStatisticsQuery.field.query_set" class="section-header"><a href="#variant.BeginPipelineStatisticsQuery.field.query_set" class="anchor field">§</a><code>query_set: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html" title="struct alloc::sync::Arc">Arc</a>&lt;<a class="struct" href="../resource/struct.QuerySet.html" title="struct slint::wgpu_28::wgpu::wgc::resource::QuerySet">QuerySet</a>&gt;</code></span></div><div class="sub-variant-field"><span id="variant.BeginPipelineStatisticsQuery.field.query_index" class="section-header"><a href="#variant.BeginPipelineStatisticsQuery.field.query_index" class="anchor field">§</a><code>query_index: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code></span></div></div><section id="variant.EndPipelineStatisticsQuery" class="variant"><a href="#variant.EndPipelineStatisticsQuery" class="anchor">§</a><h3 class="code-header">EndPipelineStatisticsQuery</h3></section><section id="variant.ExecuteBundle" class="variant"><a href="#variant.ExecuteBundle" class="anchor">§</a><h3 class="code-header">ExecuteBundle(<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html" title="struct alloc::sync::Arc">Arc</a>&lt;<a class="struct" href="struct.RenderBundle.html" title="struct slint::wgpu_28::wgpu::wgc::command::RenderBundle">RenderBundle</a>&gt;)</h3></section></div><script src="../../../../../type.impl/wgpu_core/command/render_command/enum.RenderCommand.js" data-self-path="slint::wgpu_28::wgpu::wgc::command::ArcRenderCommand" async></script></section></div></main></body></html>

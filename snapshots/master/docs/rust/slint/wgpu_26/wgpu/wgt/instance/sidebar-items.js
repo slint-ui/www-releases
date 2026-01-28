@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"enum":["Dx12Compiler","DxcShaderModel","GlFenceBehavior","Gles3MinorVersion"],"struct":["BackendOptions","Dx12BackendOptions","GlBackendOptions","InstanceDescriptor","InstanceFlags","MemoryBudgetThresholds","NoopBackendOptions"]};

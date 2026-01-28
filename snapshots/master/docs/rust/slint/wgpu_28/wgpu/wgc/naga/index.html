@@ -1,0 +1,190 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Naga can be used to translate source code written in one shading language to another."><title>slint::wgpu_28::wgpu::wgc::naga - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../../../static.files/rustdoc-0bd2dfd4.css"><meta name="rustdoc-vars" data-root-path="../../../../../" data-static-root-path="../../../../../static.files/" data-current-crate="slint" data-themes="" data-resource-suffix="" data-rustdoc-version="1.95.0-nightly (e96bb7e44 2026-01-27)" data-channel="nightly" data-search-js="search-86d08462.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-170eb4bf.js" ><script src="../../../../../static.files/storage-f9617a14.js"></script><script defer src="../../../../../crates.js"></script><script defer src="../../../../../static.files/main-12f88f4f.js"></script><noscript><link rel="stylesheet" href="../../../../../static.files/noscript-ffcac47a.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../../../static.files/favicon-044be391.svg"><!--
+    This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
+    It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
+    in sphinx and via head.hbs in mdbook.
+-->
+<link rel="stylesheet" href="https://slint.dev/resources/highlightjs/11.0.1/default.min.css">
+<script src="https://slint.dev/resources/highlightjs/11.0.1/highlight.min.js"></script>
+<script>
+  function highlight_slint(hljs) {
+    const KEYWORDS = {
+      keyword:
+        "animate callback changed component enum export for function global if import in in-out inherits out parent private property public pure root self states struct",
+      literal: "false true",
+      built_in:
+        "ArcTo Clip Close Colors CubicTo Flickable FocusScope GridLayout HorizontalLayout Image LineTo Math MoveTo Path PopupWindow QuadraticTo Rectangle Row Text TextInput TouchArea VerticalLayout Window animation-tick debug",
+      type: "bool duration easing float int length logical-length relative-font-size string",
+    };
+
+    return {
+      name: 'slint',
+      case_insensitive: false,
+      keywords: KEYWORDS,
+      contains: [
+        hljs.QUOTE_STRING_MODE,
+        hljs.C_LINE_COMMENT_MODE,
+        hljs.C_BLOCK_COMMENT_MODE,
+        hljs.COMMENT('/\\*', '\\*/', {
+          contains: ['self']
+        }),
+        {
+          className: 'number',
+          begin: '\\b\\d+(\\.\\d+)?(\\w+)?',
+          relevance: 0
+        },
+        {
+          className: 'title',
+          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]* *:=',
+        },
+        {
+          className: 'symbol',
+          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]*(:| *=>)',
+        },
+        {
+          className: 'built_in',
+          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]*!',
+        },
+      ],
+      illegal: /@/
+    };
+  };
+
+  // Tags used in fenced code blocks
+  for (const tag of ["slint", "slint,no-preview", "slint,no-auto-preview", "slint,ignore"]) {
+    hljs.registerLanguage(tag, highlight_slint);
+  }
+
+
+  window.addEventListener("DOMContentLoaded", () => {
+    const rustDoc = document.querySelector('meta[name="generator"]')?.content == "rustdoc";
+    if (rustDoc) {
+      // Only highlight .slint blocks, leave the others to rustdoc
+      for (slintBlock of document.querySelectorAll("[class*=language-slint]")) {
+        hljs.highlightElement(slintBlock)
+      }
+
+      // Some of the rustdoc selectors require the pre element to have the rust class
+      for (codeBlock of document.querySelectorAll(".language-slint.hljs")) {
+        codeBlock.classList.add("rust");
+        codeBlock.classList.remove("hljs");
+      }
+
+      // Change the hljs generated classes to the rustdoc
+      // ones, so that the highlighting adjusts to the theme correctly.
+      const highlightJSToRustDoc = [
+        ["comment", "comment"],
+        ["number", "number"],
+        ["symbol", "struct"], // width:
+        ["keyword", "kw"],
+        ["built_in", "primitive"],
+        ["string", "string"],
+        ["title", "fnname"], // Foo :=
+        ["type", "type"]
+      ];
+
+      for ([hljs_class, rustdoc_class] of highlightJSToRustDoc) {
+        for (titleElement of document.querySelectorAll(`.hljs-${hljs_class}`)) {
+          titleElement.classList.remove(`hljs-${hljs_class}`);
+          titleElement.classList.add(rustdoc_class);
+        }
+      }
+    } else {
+      // For use with the mdbook Tutorial
+      hljs.highlightAll();
+
+      // The Sphinx/my_st generated HTML for code blocks doesn't use <code> tags, so highlight.js'
+      // default selector "pre code" doesn't match. Let's do it by hand:
+      for (block of document.querySelectorAll("div[class*=highlight-slint] div.highlight pre")) {
+        hljs.highlightElement(block)
+      }
+    }
+
+    // Fix up links that sphinx handles but for rustdoc we need to resolve manually:
+    {
+      let target_url = null;
+      if (document.location.hostname == "snapshots.slint.dev") {
+        target_url = "https://snapshots.slint.dev/master/docs/slint/";
+      } else {
+        const version = document.querySelector("span.version");
+        if (version !== null) {
+          target_url = `https://slint.dev/releases/${version.innerText}/docs/slint/`;
+        }
+      }
+
+      if (target_url !== null) {
+        for (const link of document.querySelectorAll("a[href^='slint-reference:']")) {
+          link.href = link.href.replace("slint-reference:", target_url);
+        }
+      }
+    }
+  });
+</script>
+
+</head><body class="rustdoc mod crate"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Crate naga</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><a class="logo-container" href="../../../../../slint/index.html"><img src="https://slint.dev/logo/slint-logo-square-light.svg" alt="logo"></a><h2><a href="../../../../../slint/index.html">slint</a><span class="version">1.15.0</span></h2></div><div class="sidebar-elems"><ul class="block"><li><a id="all-types" href="all.html">All Items</a></li></ul><section id="rustdoc-toc"><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#example" title="Example">Example</a></li></ul><h3><a href="#modules">Crate Items</a></h3><ul class="block"><li><a href="#modules" title="Modules">Modules</a></li><li><a href="#structs" title="Structs">Structs</a></li><li><a href="#enums" title="Enums">Enums</a></li><li><a href="#constants" title="Constants">Constants</a></li><li><a href="#types" title="Type Aliases">Type Aliases</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In slint::<wbr>wgpu_<wbr>28::<wbr>wgpu::<wbr>wgc</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../../../index.html">slint</a>::<wbr><a href="../../../index.html">wgpu_28</a>::<wbr><a href="../../index.html">wgpu</a>::<wbr><a href="../index.html">wgc</a></div><h1>Crate <span>naga</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"></span></div><span class="item-info"><div class="stab portability">Available on <strong>crate feature <code>unstable-wgpu-28</code></strong> only.</div></span><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Naga can be used to translate source code written in one shading language to another.</p>
+<h2 id="example"><a class="doc-anchor" href="#example">§</a>Example</h2>
+<p>The following example translates WGSL to GLSL.
+It requires the features <code>"wgsl-in"</code> and <code>"glsl-out"</code> to be enabled.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span>wgsl_source = <span class="string">"
+@fragment
+fn main_fs() -&gt; @location(0) vec4&lt;f32&gt; {
+    return vec4&lt;f32&gt;(1.0, 1.0, 1.0, 1.0);
+}
+"</span>;
+
+<span class="comment">// Parse the source into a Module.
+</span><span class="kw">let </span>module: naga::Module = naga::front::wgsl::parse_str(wgsl_source)<span class="question-mark">?</span>;
+
+<span class="comment">// Validate the module.
+// Validation can be made less restrictive by changing the ValidationFlags.
+</span><span class="kw">let </span>module_info: naga::valid::ModuleInfo =
+    naga::valid::Validator::new(
+        naga::valid::ValidationFlags::all(),
+        naga::valid::Capabilities::all(),
+    )
+    .subgroup_stages(naga::valid::ShaderStages::all())
+    .subgroup_operations(naga::valid::SubgroupOperationSet::all())
+    .validate(<span class="kw-2">&amp;</span>module)<span class="question-mark">?</span>;
+
+<span class="comment">// Translate the module.
+</span><span class="kw">use </span>naga::back::glsl;
+<span class="kw">let </span><span class="kw-2">mut </span>glsl_source = String::new();
+glsl::Writer::new(
+    <span class="kw-2">&amp;mut </span>glsl_source,
+    <span class="kw-2">&amp;</span>module,
+    <span class="kw-2">&amp;</span>module_info,
+    <span class="kw-2">&amp;</span>glsl::Options::default(),
+    <span class="kw-2">&amp;</span>glsl::PipelineOptions {
+        entry_point: <span class="string">"main_fs"</span>.into(),
+        shader_stage: naga::ShaderStage::Fragment,
+        multiview: <span class="prelude-val">None</span>,
+    },
+    naga::proc::BoundsCheckPolicies::default(),
+)<span class="question-mark">?</span>.write()<span class="question-mark">?</span>;
+
+<span class="macro">assert_eq!</span>(glsl_source, <span class="string">"\
+#version 310 es
+
+precision highp float;
+precision highp int;
+
+layout(location = 0) out vec4 _fs2p_location0;
+
+void main() {
+    _fs2p_location0 = vec4(1.0, 1.0, 1.0, 1.0);
+    return;
+}
+
+"</span>);
+</code></pre></div></div></details><h2 id="modules" class="section-header">Modules<a href="#modules" class="anchor">§</a></h2><dl class="item-table"><dt><a class="mod" href="back/index.html" title="mod slint::wgpu_28::wgpu::wgc::naga::back">back</a></dt><dd>Backend functions that export shader <a href="struct.Module.html" title="struct slint::wgpu_28::wgpu::wgc::naga::Module"><code>Module</code></a>s into binary and text formats.</dd><dt><a class="mod" href="common/index.html" title="mod slint::wgpu_28::wgpu::wgc::naga::common">common</a></dt><dd>Code common to the front and backends for specific languages.</dd><dt><a class="mod" href="compact/index.html" title="mod slint::wgpu_28::wgpu::wgc::naga::compact">compact</a></dt><dt><a class="mod" href="diagnostic_filter/index.html" title="mod slint::wgpu_28::wgpu::wgc::naga::diagnostic_filter">diagnostic_<wbr>filter</a></dt><dd><a href="diagnostic_filter/struct.DiagnosticFilter.html" title="struct slint::wgpu_28::wgpu::wgc::naga::diagnostic_filter::DiagnosticFilter"><code>DiagnosticFilter</code></a>s and supporting functionality.</dd><dt><a class="mod" href="error/index.html" title="mod slint::wgpu_28::wgpu::wgc::naga::error">error</a></dt><dt><a class="mod" href="front/index.html" title="mod slint::wgpu_28::wgpu::wgc::naga::front">front</a></dt><dd>Frontend parsers that consume binary and text shaders and load them into <a href="struct.Module.html" title="struct slint::wgpu_28::wgpu::wgc::naga::Module"><code>Module</code></a>s.</dd><dt><a class="mod" href="ir/index.html" title="mod slint::wgpu_28::wgpu::wgc::naga::ir">ir</a></dt><dd>The Intermediate Representation shared by all frontends and backends.</dd><dt><a class="mod" href="keywords/index.html" title="mod slint::wgpu_28::wgpu::wgc::naga::keywords">keywords</a></dt><dd>Lists of reserved keywords for each shading language with a <a href="front/index.html" title="mod slint::wgpu_28::wgpu::wgc::naga::front">frontend</a> or <a href="back/index.html" title="mod slint::wgpu_28::wgpu::wgc::naga::back">backend</a>.</dd><dt><a class="mod" href="proc/index.html" title="mod slint::wgpu_28::wgpu::wgc::naga::proc">proc</a></dt><dd><a href="struct.Module.html" title="struct slint::wgpu_28::wgpu::wgc::naga::Module"><code>Module</code></a> processing functionality.</dd><dt><a class="mod" href="valid/index.html" title="mod slint::wgpu_28::wgpu::wgc::naga::valid">valid</a></dt><dd>Shader validator.</dd></dl><h2 id="structs" class="section-header">Structs<a href="#structs" class="anchor">§</a></h2><dl class="item-table"><dt><a class="struct" href="struct.Arena.html" title="struct slint::wgpu_28::wgpu::wgc::naga::Arena">Arena</a></dt><dd>An arena holding some kind of component (e.g., type, constant,
+instruction, etc.) that can be referenced.</dd><dt><a class="struct" href="struct.Barrier.html" title="struct slint::wgpu_28::wgpu::wgc::naga::Barrier">Barrier</a></dt><dd>Memory barrier flags.</dd><dt><a class="struct" href="struct.Block.html" title="struct slint::wgpu_28::wgpu::wgc::naga::Block">Block</a></dt><dd>A code block is a vector of statements, with maybe a vector of spans.</dd><dt><a class="struct" href="struct.Constant.html" title="struct slint::wgpu_28::wgpu::wgc::naga::Constant">Constant</a></dt><dd>Constant value.</dd><dt><a class="struct" href="struct.DocComments.html" title="struct slint::wgpu_28::wgpu::wgc::naga::DocComments">DocComments</a></dt><dd>Doc comments preceding items.</dd><dt><a class="struct" href="struct.EntryPoint.html" title="struct slint::wgpu_28::wgpu::wgc::naga::EntryPoint">Entry<wbr>Point</a></dt><dd>The main function for a pipeline stage.</dd><dt><a class="struct" href="struct.Function.html" title="struct slint::wgpu_28::wgpu::wgc::naga::Function">Function</a></dt><dd>A function defined in the module.</dd><dt><a class="struct" href="struct.FunctionArgument.html" title="struct slint::wgpu_28::wgpu::wgc::naga::FunctionArgument">Function<wbr>Argument</a></dt><dd>A function argument.</dd><dt><a class="struct" href="struct.FunctionResult.html" title="struct slint::wgpu_28::wgpu::wgc::naga::FunctionResult">Function<wbr>Result</a></dt><dd>A function result.</dd><dt><a class="struct" href="struct.GlobalVariable.html" title="struct slint::wgpu_28::wgpu::wgc::naga::GlobalVariable">Global<wbr>Variable</a></dt><dd>Variable defined at module level.</dd><dt><a class="struct" href="struct.Handle.html" title="struct slint::wgpu_28::wgpu::wgc::naga::Handle">Handle</a></dt><dd>A strongly typed reference to an arena item.</dd><dt><a class="struct" href="struct.LocalVariable.html" title="struct slint::wgpu_28::wgpu::wgc::naga::LocalVariable">Local<wbr>Variable</a></dt><dd>Variable defined at function level.</dd><dt><a class="struct" href="struct.MeshStageInfo.html" title="struct slint::wgpu_28::wgpu::wgc::naga::MeshStageInfo">Mesh<wbr>Stage<wbr>Info</a></dt><dd>Information specific to mesh shader entry points.</dd><dt><a class="struct" href="struct.Module.html" title="struct slint::wgpu_28::wgpu::wgc::naga::Module">Module</a></dt><dd>Shader module.</dd><dt><a class="struct" href="struct.Override.html" title="struct slint::wgpu_28::wgpu::wgc::naga::Override">Override</a></dt><dd>Pipeline-overridable constant.</dd><dt><a class="struct" href="struct.Range.html" title="struct slint::wgpu_28::wgpu::wgc::naga::Range">Range</a></dt><dd>A strongly typed range of handles.</dd><dt><a class="struct" href="struct.RayFlag.html" title="struct slint::wgpu_28::wgpu::wgc::naga::RayFlag">RayFlag</a></dt><dd>Ray flags used when casting rays.
+Matching vulkan constants can be found in
+https://github.com/KhronosGroup/SPIRV-Registry/blob/main/extensions/KHR/ray_common/ray_flags_section.txt</dd><dt><a class="struct" href="struct.ResourceBinding.html" title="struct slint::wgpu_28::wgpu::wgc::naga::ResourceBinding">Resource<wbr>Binding</a></dt><dd>Pipeline binding information for global resources.</dd><dt><a class="struct" href="struct.Scalar.html" title="struct slint::wgpu_28::wgpu::wgc::naga::Scalar">Scalar</a></dt><dd>Characteristics of a scalar type.</dd><dt><a class="struct" href="struct.SourceLocation.html" title="struct slint::wgpu_28::wgpu::wgc::naga::SourceLocation">Source<wbr>Location</a></dt><dd>A human-readable representation for a span, tailored for text source.</dd><dt><a class="struct" href="struct.Span.html" title="struct slint::wgpu_28::wgpu::wgc::naga::Span">Span</a></dt><dd>A source code span, used for error reporting.</dd><dt><a class="struct" href="struct.SpecialTypes.html" title="struct slint::wgpu_28::wgpu::wgc::naga::SpecialTypes">Special<wbr>Types</a></dt><dd>Set of special types that can be optionally generated by the frontends.</dd><dt><a class="struct" href="struct.StorageAccess.html" title="struct slint::wgpu_28::wgpu::wgc::naga::StorageAccess">Storage<wbr>Access</a></dt><dd>Flags describing an image.</dd><dt><a class="struct" href="struct.StructMember.html" title="struct slint::wgpu_28::wgpu::wgc::naga::StructMember">Struct<wbr>Member</a></dt><dd>Member of a user-defined structure.</dd><dt><a class="struct" href="struct.SwitchCase.html" title="struct slint::wgpu_28::wgpu::wgc::naga::SwitchCase">Switch<wbr>Case</a></dt><dd>A case for a switch statement.</dd><dt><a class="struct" href="struct.Type.html" title="struct slint::wgpu_28::wgpu::wgc::naga::Type">Type</a></dt><dd>A data type declared in the module.</dd><dt><a class="struct" href="struct.UniqueArena.html" title="struct slint::wgpu_28::wgpu::wgc::naga::UniqueArena">Unique<wbr>Arena</a></dt><dd>An arena whose elements are guaranteed to be unique.</dd><dt><a class="struct" href="struct.WithSpan.html" title="struct slint::wgpu_28::wgpu::wgc::naga::WithSpan">With<wbr>Span</a></dt><dd>Wrapper class for <a href="https://doc.rust-lang.org/nightly/core/error/trait.Error.html" title="trait core::error::Error"><code>Error</code></a>, augmenting it with a list of <a href="type.SpanContext.html" title="type slint::wgpu_28::wgpu::wgc::naga::SpanContext"><code>SpanContext</code></a>s.</dd></dl><h2 id="enums" class="section-header">Enums<a href="#enums" class="anchor">§</a></h2><dl class="item-table"><dt><a class="enum" href="enum.AddressSpace.html" title="enum slint::wgpu_28::wgpu::wgc::naga::AddressSpace">Address<wbr>Space</a></dt><dd>Addressing space of variables.</dd><dt><a class="enum" href="enum.ArraySize.html" title="enum slint::wgpu_28::wgpu::wgc::naga::ArraySize">Array<wbr>Size</a></dt><dd>Size of an array.</dd><dt><a class="enum" href="enum.AtomicFunction.html" title="enum slint::wgpu_28::wgpu::wgc::naga::AtomicFunction">Atomic<wbr>Function</a></dt><dd>Function on an atomic value.</dd><dt><a class="enum" href="enum.BinaryOperator.html" title="enum slint::wgpu_28::wgpu::wgc::naga::BinaryOperator">Binary<wbr>Operator</a></dt><dd>Operation that can be applied on two values.</dd><dt><a class="enum" href="enum.Binding.html" title="enum slint::wgpu_28::wgpu::wgc::naga::Binding">Binding</a></dt><dd>Describes how an input/output variable is to be bound.</dd><dt><a class="enum" href="enum.BuiltIn.html" title="enum slint::wgpu_28::wgpu::wgc::naga::BuiltIn">BuiltIn</a></dt><dd>Built-in inputs and outputs.</dd><dt><a class="enum" href="enum.CollectiveOperation.html" title="enum slint::wgpu_28::wgpu::wgc::naga::CollectiveOperation">Collective<wbr>Operation</a></dt><dt><a class="enum" href="enum.ConservativeDepth.html" title="enum slint::wgpu_28::wgpu::wgc::naga::ConservativeDepth">Conservative<wbr>Depth</a></dt><dd>Enables adjusting depth without disabling early Z.</dd><dt><a class="enum" href="enum.DerivativeAxis.html" title="enum slint::wgpu_28::wgpu::wgc::naga::DerivativeAxis">Derivative<wbr>Axis</a></dt><dd>Axis on which to compute a derivative.</dd><dt><a class="enum" href="enum.DerivativeControl.html" title="enum slint::wgpu_28::wgpu::wgc::naga::DerivativeControl">Derivative<wbr>Control</a></dt><dd>Hint at which precision to compute a derivative.</dd><dt><a class="enum" href="enum.Direction.html" title="enum slint::wgpu_28::wgpu::wgc::naga::Direction">Direction</a></dt><dt><a class="enum" href="enum.EarlyDepthTest.html" title="enum slint::wgpu_28::wgpu::wgc::naga::EarlyDepthTest">Early<wbr>Depth<wbr>Test</a></dt><dd>Explicitly allows early depth/stencil tests.</dd><dt><a class="enum" href="enum.Expression.html" title="enum slint::wgpu_28::wgpu::wgc::naga::Expression">Expression</a></dt><dd>An expression that can be evaluated to obtain a value.</dd><dt><a class="enum" href="enum.GatherMode.html" title="enum slint::wgpu_28::wgpu::wgc::naga::GatherMode">Gather<wbr>Mode</a></dt><dd>The specific behavior of a <a href="enum.Statement.html#variant.SubgroupGather" title="variant slint::wgpu_28::wgpu::wgc::naga::Statement::SubgroupGather"><code>SubgroupGather</code></a> statement.</dd><dt><a class="enum" href="enum.ImageClass.html" title="enum slint::wgpu_28::wgpu::wgc::naga::ImageClass">Image<wbr>Class</a></dt><dd>Sub-class of the image type.</dd><dt><a class="enum" href="enum.ImageDimension.html" title="enum slint::wgpu_28::wgpu::wgc::naga::ImageDimension">Image<wbr>Dimension</a></dt><dd>The number of dimensions an image has.</dd><dt><a class="enum" href="enum.ImageQuery.html" title="enum slint::wgpu_28::wgpu::wgc::naga::ImageQuery">Image<wbr>Query</a></dt><dd>Type of an image query.</dd><dt><a class="enum" href="enum.Interpolation.html" title="enum slint::wgpu_28::wgpu::wgc::naga::Interpolation">Interpolation</a></dt><dd>The interpolation qualifier of a binding or struct field.</dd><dt><a class="enum" href="enum.Literal.html" title="enum slint::wgpu_28::wgpu::wgc::naga::Literal">Literal</a></dt><dt><a class="enum" href="enum.MathFunction.html" title="enum slint::wgpu_28::wgpu::wgc::naga::MathFunction">Math<wbr>Function</a></dt><dd>Built-in shader function for math.</dd><dt><a class="enum" href="enum.MeshOutputTopology.html" title="enum slint::wgpu_28::wgpu::wgc::naga::MeshOutputTopology">Mesh<wbr>Output<wbr>Topology</a></dt><dd>The output topology for a mesh shader. Note that mesh shaders don’t allow things like triangle-strips.</dd><dt><a class="enum" href="enum.PredeclaredType.html" title="enum slint::wgpu_28::wgpu::wgc::naga::PredeclaredType">Predeclared<wbr>Type</a></dt><dd>Return types predeclared for the frexp, modf, and atomicCompareExchangeWeak built-in functions.</dd><dt><a class="enum" href="enum.RayQueryFunction.html" title="enum slint::wgpu_28::wgpu::wgc::naga::RayQueryFunction">RayQuery<wbr>Function</a></dt><dd>An operation that a <a href="enum.Statement.html#variant.RayQuery" title="variant slint::wgpu_28::wgpu::wgc::naga::Statement::RayQuery"><code>RayQuery</code> statement</a> applies to its <a href="enum.Statement.html#variant.RayQuery.field.query" title="field slint::wgpu_28::wgpu::wgc::naga::Statement::query"><code>query</code></a> operand.</dd><dt><a class="enum" href="enum.RayQueryIntersection.html" title="enum slint::wgpu_28::wgpu::wgc::naga::RayQueryIntersection">RayQuery<wbr>Intersection</a></dt><dd>Type of a ray query intersection.
+Matching vulkan constants can be found in
+<a href="https://github.com/KhronosGroup/SPIRV-Registry/blob/main/extensions/KHR/SPV_KHR_ray_query.asciidoc">https://github.com/KhronosGroup/SPIRV-Registry/blob/main/extensions/KHR/SPV_KHR_ray_query.asciidoc</a>
+but the actual values are different for candidate intersections.</dd><dt><a class="enum" href="enum.RelationalFunction.html" title="enum slint::wgpu_28::wgpu::wgc::naga::RelationalFunction">Relational<wbr>Function</a></dt><dd>Built-in shader function for testing relation between values.</dd><dt><a class="enum" href="enum.SampleLevel.html" title="enum slint::wgpu_28::wgpu::wgc::naga::SampleLevel">Sample<wbr>Level</a></dt><dd>Sampling modifier to control the level of detail.</dd><dt><a class="enum" href="enum.Sampling.html" title="enum slint::wgpu_28::wgpu::wgc::naga::Sampling">Sampling</a></dt><dd>The sampling qualifiers of a binding or struct field.</dd><dt><a class="enum" href="enum.ScalarKind.html" title="enum slint::wgpu_28::wgpu::wgc::naga::ScalarKind">Scalar<wbr>Kind</a></dt><dd>Primitive type for a scalar.</dd><dt><a class="enum" href="enum.ShaderStage.html" title="enum slint::wgpu_28::wgpu::wgc::naga::ShaderStage">Shader<wbr>Stage</a></dt><dd>Stage of the programmable pipeline.</dd><dt><a class="enum" href="enum.Statement.html" title="enum slint::wgpu_28::wgpu::wgc::naga::Statement">Statement</a></dt><dd>Instructions which make up an executable block.</dd><dt><a class="enum" href="enum.StorageFormat.html" title="enum slint::wgpu_28::wgpu::wgc::naga::StorageFormat">Storage<wbr>Format</a></dt><dd>Image storage format.</dd><dt><a class="enum" href="enum.SubgroupOperation.html" title="enum slint::wgpu_28::wgpu::wgc::naga::SubgroupOperation">Subgroup<wbr>Operation</a></dt><dt><a class="enum" href="enum.SwitchValue.html" title="enum slint::wgpu_28::wgpu::wgc::naga::SwitchValue">Switch<wbr>Value</a></dt><dd>The value of the switch case.</dd><dt><a class="enum" href="enum.SwizzleComponent.html" title="enum slint::wgpu_28::wgpu::wgc::naga::SwizzleComponent">Swizzle<wbr>Component</a></dt><dd>Component selection for a vector swizzle.</dd><dt><a class="enum" href="enum.TypeInner.html" title="enum slint::wgpu_28::wgpu::wgc::naga::TypeInner">Type<wbr>Inner</a></dt><dd>Enum with additional information, depending on the kind of type.</dd><dt><a class="enum" href="enum.UnaryOperator.html" title="enum slint::wgpu_28::wgpu::wgc::naga::UnaryOperator">Unary<wbr>Operator</a></dt><dd>Operation that can be applied on a single value.</dd><dt><a class="enum" href="enum.VectorSize.html" title="enum slint::wgpu_28::wgpu::wgc::naga::VectorSize">Vector<wbr>Size</a></dt><dd>Number of components in a vector.</dd></dl><h2 id="constants" class="section-header">Constants<a href="#constants" class="anchor">§</a></h2><dl class="item-table"><dt><a class="constant" href="constant.ABSTRACT_WIDTH.html" title="constant slint::wgpu_28::wgpu::wgc::naga::ABSTRACT_WIDTH">ABSTRACT_<wbr>WIDTH</a></dt><dd>Width of abstract types, in bytes.</dd><dt><a class="constant" href="constant.BOOL_WIDTH.html" title="constant slint::wgpu_28::wgpu::wgc::naga::BOOL_WIDTH">BOOL_<wbr>WIDTH</a></dt><dd>Width of a boolean type, in bytes.</dd></dl><h2 id="types" class="section-header">Type Aliases<a href="#types" class="anchor">§</a></h2><dl class="item-table"><dt><a class="type" href="type.Bytes.html" title="type slint::wgpu_28::wgpu::wgc::naga::Bytes">Bytes</a></dt><dd>Number of bytes per scalar.</dd><dt><a class="type" href="type.FastHashMap.html" title="type slint::wgpu_28::wgpu::wgc::naga::FastHashMap">Fast<wbr>Hash<wbr>Map</a></dt><dd>Hash map that is faster but not resilient to DoS attacks.
+(Similar to rustc_hash::FxHashMap but using hashbrown::HashMap instead of alloc::collections::HashMap.)
+To construct a new instance: <code>FastHashMap::default()</code></dd><dt><a class="type" href="type.FastHashSet.html" title="type slint::wgpu_28::wgpu::wgc::naga::FastHashSet">Fast<wbr>Hash<wbr>Set</a></dt><dd>Hash set that is faster but not resilient to DoS attacks.
+(Similar to rustc_hash::FxHashSet but using hashbrown::HashSet instead of alloc::collections::HashMap.)</dd><dt><a class="type" href="type.FastIndexMap.html" title="type slint::wgpu_28::wgpu::wgc::naga::FastIndexMap">Fast<wbr>Index<wbr>Map</a></dt><dd>Insertion-order-preserving hash map (<code>IndexMap&lt;K, V&gt;</code>), but with the same
+hasher as <code>FastHashMap&lt;K, V&gt;</code> (faster but not resilient to DoS attacks).</dd><dt><a class="type" href="type.FastIndexSet.html" title="type slint::wgpu_28::wgpu::wgc::naga::FastIndexSet">Fast<wbr>Index<wbr>Set</a></dt><dd>Insertion-order-preserving hash set (<code>IndexSet&lt;K&gt;</code>), but with the same
+hasher as <code>FastHashSet&lt;K&gt;</code> (faster but not resilient to DoS attacks).</dd><dt><a class="type" href="type.SpanContext.html" title="type slint::wgpu_28::wgpu::wgc::naga::SpanContext">Span<wbr>Context</a></dt><dd>A source code span together with “context”, a user-readable description of what part of the error it refers to.</dd></dl></section></div></main></body></html>
