@@ -373,6 +373,13 @@ Program Listing for File slint_internal.h
    
    using ItemTreeRefPin = Pin<ItemTreeRef>;
    
+   struct LogicalEdges {
+       float top;
+       float bottom;
+       float left;
+       float right;
+   };
+   
    struct CachedRenderingData {
        uintptr_t cache_index;
        uintptr_t cache_generation;
@@ -382,14 +389,9 @@ Program Listing for File slint_internal.h
    struct WindowItem {
        Property<LogicalLength> width;
        Property<LogicalLength> height;
-       Property<LogicalLength> safe_area_inset_top;
-       Property<LogicalLength> safe_area_inset_bottom;
-       Property<LogicalLength> safe_area_inset_left;
-       Property<LogicalLength> safe_area_inset_right;
-       Property<LogicalLength> virtual_keyboard_x;
-       Property<LogicalLength> virtual_keyboard_y;
-       Property<LogicalLength> virtual_keyboard_width;
-       Property<LogicalLength> virtual_keyboard_height;
+       Property<LogicalEdges> safe_area_insets;
+       Property<LogicalPoint> virtual_keyboard_position;
+       Property<LogicalSize> virtual_keyboard_size;
        Property<Brush> background;
        Property<SharedString> title;
        Property<bool> no_frame;
