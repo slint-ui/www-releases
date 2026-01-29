@@ -1,0 +1,14 @@
+.. _exhale_define_slint__generated__public_8h_1af7931a7cf2a1073d5f0174b38af28364:
+
+Define SLINT_FEATURE_BACKEND_WINIT
+==================================
+
+- Defined in :ref:`file_cppdocs_generated_include_slint_generated_public.h`
+
+
+Define Documentation
+--------------------
+
+
+.. doxygendefine:: SLINT_FEATURE_BACKEND_WINIT
+   :project: Slint

@@ -1,0 +1,14 @@
+.. _exhale_typedef_slint__window_8h_1a332610d117d0fb1a77cdaa07765155fb:
+
+Typedef NSView
+==============
+
+- Defined in :ref:`file__home_runner_work_slint_slint_api_cpp_include_slint_window.h`
+
+
+Typedef Documentation
+---------------------
+
+
+.. doxygentypedef:: NSView
+   :project: Slint

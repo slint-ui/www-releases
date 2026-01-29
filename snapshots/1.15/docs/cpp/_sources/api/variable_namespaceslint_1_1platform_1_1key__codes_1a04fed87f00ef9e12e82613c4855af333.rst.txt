@@ -1,0 +1,14 @@
+.. _exhale_variable_namespaceslint_1_1platform_1_1key__codes_1a04fed87f00ef9e12e82613c4855af333:
+
+Variable slint::platform::key_codes::Space
+==========================================
+
+- Defined in :ref:`file_cppdocs_generated_include_slint_enums.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: slint::platform::key_codes::Space
+   :project: Slint

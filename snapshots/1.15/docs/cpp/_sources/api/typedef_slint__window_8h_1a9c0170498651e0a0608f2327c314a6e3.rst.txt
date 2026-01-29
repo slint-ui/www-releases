@@ -1,0 +1,14 @@
+.. _exhale_typedef_slint__window_8h_1a9c0170498651e0a0608f2327c314a6e3:
+
+Typedef HWND
+============
+
+- Defined in :ref:`file__home_runner_work_slint_slint_api_cpp_include_slint_window.h`
+
+
+Typedef Documentation
+---------------------
+
+
+.. doxygentypedef:: HWND
+   :project: Slint

@@ -1,0 +1,14 @@
+.. _exhale_define_slint__generated__public_8h_1a7cafd723338e5b25a8d69039ce408cf9:
+
+Define SLINT_FEATURE_RENDERER_FEMTOVG
+=====================================
+
+- Defined in :ref:`file_cppdocs_generated_include_slint_generated_public.h`
+
+
+Define Documentation
+--------------------
+
+
+.. doxygendefine:: SLINT_FEATURE_RENDERER_FEMTOVG
+   :project: Slint
