@@ -95,8 +95,9 @@ These parameters can be referenced by their names within the function body. Para
 value.</p>
 <p>Functions can also return a value. The return type is specified after <code dir="auto">-></code> in the function
 signature. The return type is <code dir="auto">void</code> if no return type is specified. The <code dir="auto">return</code> keyword is used
-within the function body to return an expression of the declared type. If a function does not have
-an explicit return statement, the value of the last statement is returned by default.</p>
+within the function body to return an expression of the declared type. If a function expects a
+return value and does not have an explicit return statement then the value of the last statement is
+returned by default.</p>
 <p>Functions can be annotated with the <code dir="auto">pure</code> keyword.
 This indicates that the function does not cause any side effects.
 More details can be found in the <a href="/master/docs/slint/guide/language/concepts/reactivity/"><span>Purity</span></a> chapter.</p>

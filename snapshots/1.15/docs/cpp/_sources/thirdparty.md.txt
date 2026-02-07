@@ -2043,9 +2043,9 @@ DEALINGS IN THE SOFTWARE.
 
 #### Used by:
 
-- [cc 1.2.54]( https://github.com/rust-lang/cc-rs )
+- [cc 1.2.55]( https://github.com/rust-lang/cc-rs )
 - [cfg-if 1.0.4]( https://github.com/rust-lang/cfg-if )
-- [find-msvc-tools 0.1.8]( https://github.com/rust-lang/cc-rs )
+- [find-msvc-tools 0.1.9]( https://github.com/rust-lang/cc-rs )
 - [pkg-config 0.3.32]( https://github.com/rust-lang/pkg-config-rs )
 - [scoped-tls 1.0.1]( https://github.com/alexcrichton/scoped-tls )
 
@@ -2130,9 +2130,9 @@ DEALINGS IN THE SOFTWARE.
 - [num-integer 0.1.46]( https://github.com/rust-num/num-integer )
 - [num-rational 0.4.2]( https://github.com/rust-num/num-rational )
 - [num-traits 0.2.19]( https://github.com/rust-num/num-traits )
-- [regex-automata 0.4.13]( https://github.com/rust-lang/regex )
-- [regex-syntax 0.8.8]( https://github.com/rust-lang/regex )
-- [regex 1.12.2]( https://github.com/rust-lang/regex )
+- [regex-automata 0.4.14]( https://github.com/rust-lang/regex )
+- [regex-syntax 0.8.9]( https://github.com/rust-lang/regex )
+- [regex 1.12.3]( https://github.com/rust-lang/regex )
 
 #### License Text
 
@@ -2307,12 +2307,12 @@ DEALINGS IN THE SOFTWARE.
 
 #### Used by:
 
-- [flate2 1.1.8]( https://github.com/rust-lang/flate2-rs )
+- [flate2 1.1.9]( https://github.com/rust-lang/flate2-rs )
 
 #### License Text
 
 ```
-Copyright (c) 2014-2025 Alex Crichton
+Copyright (c) 2014-2026 Alex Crichton
 
 Permission is hereby granted, free of charge, to any
 person obtaining a copy of this software and associated
@@ -3706,7 +3706,7 @@ DEALINGS IN THE SOFTWARE.
 
 #### Used by:
 
-- [slab 0.4.11]( https://github.com/tokio-rs/slab )
+- [slab 0.4.12]( https://github.com/tokio-rs/slab )
 
 #### License Text
 
@@ -3853,7 +3853,7 @@ THE SOFTWARE.
 
 #### Used by:
 
-- [iana-time-zone 0.1.64]( https://github.com/strawlab/iana-time-zone )
+- [iana-time-zone 0.1.65]( https://github.com/strawlab/iana-time-zone )
 
 #### License Text
 
@@ -4629,8 +4629,8 @@ DEALINGS IN THE SOFTWARE.
 
 #### Used by:
 
-- [zerocopy-derive 0.8.34]( https://github.com/google/zerocopy )
-- [zerocopy 0.8.34]( https://github.com/google/zerocopy )
+- [zerocopy-derive 0.8.39]( https://github.com/google/zerocopy )
+- [zerocopy 0.8.39]( https://github.com/google/zerocopy )
 
 #### License Text
 
@@ -4973,7 +4973,7 @@ SOFTWARE.
 
 #### Used by:
 
-- [bytemuck 1.24.0]( https://github.com/Lokathor/bytemuck )
+- [bytemuck 1.25.0]( https://github.com/Lokathor/bytemuck )
 - [bytemuck_derive 1.10.2]( https://github.com/Lokathor/bytemuck )
 
 #### License Text
@@ -5552,7 +5552,7 @@ SOFTWARE.
 - [profiling 1.0.17]( https://github.com/aclysma/profiling )
 - [qttypes 0.2.12]( https://github.com/woboq/qmetaobject-rs )
 - [simd_helpers 0.1.0]( https://github.com/lu-zero/simd_helpers )
-- [siphasher 1.0.1]( https://github.com/jedisct1/rust-siphash )
+- [siphasher 1.0.2]( https://github.com/jedisct1/rust-siphash )
 - [zune-core 0.4.12](
 https://crates.io/crates/zune-core )
 - [zune-inflate 0.2.54](
@@ -5612,7 +5612,7 @@ SOFTWARE.
 #### Used by:
 
 - [zune-core 0.5.1]( https://github.com/etemesi254/zune-image )
-- [zune-jpeg 0.5.11]( https://github.com/etemesi254/zune-image/tree/dev/crates/zune-jpeg )
+- [zune-jpeg 0.5.12]( https://github.com/etemesi254/zune-image/tree/dev/crates/zune-jpeg )
 
 #### License Text
 
@@ -5916,7 +5916,7 @@ DEALINGS IN THE SOFTWARE.
 #### Used by:
 
 - [adler2 2.0.1]( https://github.com/oyvindln/adler2 )
-- [anyhow 1.0.100]( https://github.com/dtolnay/anyhow )
+- [anyhow 1.0.101]( https://github.com/dtolnay/anyhow )
 - [async-channel 2.5.0]( https://github.com/smol-rs/async-channel )
 - [async-executor 1.13.3]( https://github.com/smol-rs/async-executor )
 - [async-io 2.6.0]( https://github.com/smol-rs/async-io )
@@ -5949,7 +5949,7 @@ DEALINGS IN THE SOFTWARE.
 - [pin-project 1.1.10]( https://github.com/taiki-e/pin-project )
 - [piper 0.2.4]( https://github.com/smol-rs/piper )
 - [polling 3.11.0]( https://github.com/smol-rs/polling )
-- [portable-atomic 1.13.0]( https://github.com/taiki-e/portable-atomic )
+- [portable-atomic 1.13.1]( https://github.com/taiki-e/portable-atomic )
 - [proc-macro-crate 3.4.0]( https://github.com/bkchr/proc-macro-crate )
 - [proc-macro2 1.0.106]( https://github.com/dtolnay/proc-macro2 )
 - [quote 1.0.44]( https://github.com/dtolnay/quote )
@@ -5969,7 +5969,7 @@ DEALINGS IN THE SOFTWARE.
 - [thiserror 2.0.18]( https://github.com/dtolnay/thiserror )
 - [unicode-ident 1.0.22]( https://github.com/dtolnay/unicode-ident )
 - [x11-dl 2.21.0]( https://github.com/AltF02/x11-rs.git )
-- [zmij 1.0.17]( https://github.com/dtolnay/zmij )
+- [zmij 1.0.19]( https://github.com/dtolnay/zmij )
 - [zvariant_utils 3.3.0]( https://github.com/z-galaxy/zbus/ )
 
 #### License Text
