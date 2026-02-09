@@ -1,12 +1,12 @@
 [
     {
-        "version": "v1.15.1",
+        "version": "1.16.0",
         "name": "development snapshot",
         "url": "https://snapshots.slint.dev/master/docs/slint"
     },
     {
         "preferred": true,
-        "version": "1.15.1",
+        "version": "1.15.0",
         "url": "https://releases.slint.dev/1.15.0/docs/slint"
     },
     {
