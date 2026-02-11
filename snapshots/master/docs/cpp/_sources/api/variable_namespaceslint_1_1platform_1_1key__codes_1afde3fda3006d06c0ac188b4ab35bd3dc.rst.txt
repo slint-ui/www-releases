@@ -1,0 +1,14 @@
+.. _exhale_variable_namespaceslint_1_1platform_1_1key__codes_1afde3fda3006d06c0ac188b4ab35bd3dc:
+
+Variable slint::platform::key_codes::Digit8
+===========================================
+
+- Defined in :ref:`file_cppdocs_generated_include_slint_enums.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: slint::platform::key_codes::Digit8
+   :project: Slint

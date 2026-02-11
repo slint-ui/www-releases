@@ -1,0 +1,14 @@
+.. _exhale_variable_namespaceslint_1_1platform_1_1key__codes_1a8df75327f49ae59fc9cb6aeb5c764862:
+
+Variable slint::platform::key_codes::Colon
+==========================================
+
+- Defined in :ref:`file_cppdocs_generated_include_slint_enums.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: slint::platform::key_codes::Colon
+   :project: Slint

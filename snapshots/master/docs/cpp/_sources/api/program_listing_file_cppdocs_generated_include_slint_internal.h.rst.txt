@@ -49,6 +49,7 @@ Program Listing for File slint_internal.h
            using types::IntRect;
            using types::Size;
            using types::MouseEvent;
+           using types::KeyboardShortcut;
        }
        template<typename ModelData> class Model;
    }
@@ -962,6 +963,19 @@ Program Listing for File slint_internal.h
                                    int32_t *d,
                                    int32_t *m,
                                    int32_t *y);
+   
+   void slint_keyboard_shortcut(const SharedString *key,
+                                bool alt,
+                                bool control,
+                                bool shift,
+                                bool meta,
+                                bool ignore_shift,
+                                bool ignore_alt,
+                                KeyboardShortcut *out);
+   
+   void slint_keyboard_shortcut_to_string(const KeyboardShortcut *shortcut, SharedString *out);
+   
+   bool slint_keyboard_shortcut_matches(const KeyboardShortcut *shortcut, const KeyEvent *key_event);
    
    void slint_register_item_tree(const ItemTreeRc *item_tree_rc,
                                  const WindowAdapterRcOpaque *window_handle);
