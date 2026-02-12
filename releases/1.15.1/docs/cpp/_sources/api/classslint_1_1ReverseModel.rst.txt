@@ -1,0 +1,26 @@
+.. _exhale_class_classslint_1_1ReverseModel:
+
+Template Class ReverseModel
+===========================
+
+- Defined in :ref:`file__home_runner_work_slint_slint_api_cpp_include_slint_models.h`
+
+
+Inheritance Relationships
+-------------------------
+
+Base Type
+*********
+
+- ``public slint::Model< ModelData >`` (:ref:`exhale_class_classslint_1_1Model`)
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: slint::ReverseModel
+   :project: Slint
+   :members:
+   :protected-members:
+   :undoc-members:

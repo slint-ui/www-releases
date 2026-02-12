@@ -1,0 +1,14 @@
+.. _exhale_enum_namespaceslint_1a8bec56d112d5490780fa52c77326d290:
+
+Enum EventLoopMode
+==================
+
+- Defined in :ref:`file__home_runner_work_slint_slint_api_cpp_include_slint.h`
+
+
+Enum Documentation
+------------------
+
+
+.. doxygenenum:: slint::EventLoopMode
+   :project: Slint
