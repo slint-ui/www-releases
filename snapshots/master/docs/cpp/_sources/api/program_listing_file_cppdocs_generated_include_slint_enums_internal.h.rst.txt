@@ -152,6 +152,12 @@ Program Listing for File slint_enums_internal.h
        SpaceAround,
        SpaceEvenly,
    };
+   enum class FlexDirection {
+       Row,
+       RowReverse,
+       Column,
+       ColumnReverse,
+   };
    enum class PathEvent {
        Begin,
        Line,

@@ -197,6 +197,29 @@ Program Listing for File slint.h
        return cbindgen_private::slint_box_layout_info_ortho(cells, &padding);
    }
    
+   inline SharedVector<float> solve_flexbox_layout(const cbindgen_private::FlexBoxLayoutData &data,
+                                                   cbindgen_private::Slice<int> repeater_indices)
+   {
+       SharedVector<float> result;
+       cbindgen_private::Slice<uint32_t> ri =
+               make_slice(reinterpret_cast<uint32_t *>(repeater_indices.ptr), repeater_indices.len);
+       cbindgen_private::slint_solve_flexbox_layout(&data, ri, &result);
+       return result;
+   }
+   
+   inline cbindgen_private::LayoutInfo
+   flexbox_layout_info(cbindgen_private::Slice<cbindgen_private::LayoutItemInfo> cells_h,
+                       cbindgen_private::Slice<cbindgen_private::LayoutItemInfo> cells_v,
+                       float spacing_h, float spacing_v, const cbindgen_private::Padding &padding_h,
+                       const cbindgen_private::Padding &padding_v,
+                       cbindgen_private::Orientation orientation,
+                       cbindgen_private::FlexDirection direction, float constraint_size)
+   {
+       return cbindgen_private::slint_flexbox_layout_info(cells_h, cells_v, spacing_h, spacing_v,
+                                                          &padding_h, &padding_v, orientation,
+                                                          direction, constraint_size);
+   }
+   
    template<typename T>
    inline T layout_cache_access(const SharedVector<T> &cache, int offset, int repeater_index,
                                 int entries_per_item)
