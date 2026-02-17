@@ -538,6 +538,8 @@ Program Listing for File slint_internal.h
        Padding padding_v;
        LayoutAlignment alignment;
        FlexDirection direction;
+       FlexAlignContent align_content;
+       FlexAlignItems align_items;
        Slice<LayoutItemInfo> cells_h;
        Slice<LayoutItemInfo> cells_v;
    };

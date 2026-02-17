@@ -158,6 +158,18 @@ Program Listing for File slint_enums_internal.h
        Column,
        ColumnReverse,
    };
+   enum class FlexAlignContent {
+       Stretch,
+       Start,
+       End,
+       Center,
+   };
+   enum class FlexAlignItems {
+       Stretch,
+       Start,
+       End,
+       Center,
+   };
    enum class PathEvent {
        Begin,
        Line,
