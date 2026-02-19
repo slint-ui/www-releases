@@ -818,6 +818,18 @@ Program Listing for File slint_internal.h
        CachedRenderingData cached_rendering_data;
    };
    
+   struct PinchGestureHandler {
+       Property<bool> enabled;
+       Property<bool> active;
+       Property<float> scale;
+       Property<LogicalPosition> center;
+       private_api::CallbackHelper<void> started;
+       private_api::CallbackHelper<void> updated;
+       private_api::CallbackHelper<void> ended;
+       private_api::CallbackHelper<void> cancelled;
+       CachedRenderingData cached_rendering_data;
+   };
+   
    struct Flickable {
        Property<LogicalLength> viewport_x;
        Property<LogicalLength> viewport_y;
@@ -1446,6 +1458,7 @@ Program Listing for File slint_internal.h
    SLINT_DECL_ITEM(TouchArea);
    SLINT_DECL_ITEM(FocusScope);
    SLINT_DECL_ITEM(SwipeGestureHandler);
+   SLINT_DECL_ITEM(PinchGestureHandler);
    SLINT_DECL_ITEM(Flickable);
    SLINT_DECL_ITEM(SimpleText);
    SLINT_DECL_ITEM(StyledTextItem);

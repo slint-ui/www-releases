@@ -33,6 +33,13 @@ Program Listing for File slint_events_internal.h
    namespace cbindgen_private {
    namespace types {
    
+   enum class TouchPhase : uint8_t {
+       Started,
+       Moved,
+       Ended,
+       Cancelled,
+   };
+   
    struct MouseEvent {
        enum class Tag {
            Pressed,
@@ -41,6 +48,7 @@ Program Listing for File slint_events_internal.h
            Wheel,
            DragMove,
            Drop,
+           PinchGesture,
            Exit,
        };
    
@@ -137,6 +145,23 @@ Program Listing for File slint_events_internal.h
            }
        };
    
+       struct PinchGesture_Body {
+           LogicalPoint position;
+           float delta;
+           TouchPhase phase;
+   
+           bool operator==(const PinchGesture_Body& other) const {
+               return position == other.position &&
+                      delta == other.delta &&
+                      phase == other.phase;
+           }
+           bool operator!=(const PinchGesture_Body& other) const {
+               return position != other.position ||
+                      delta != other.delta ||
+                      phase != other.phase;
+           }
+       };
+   
        Tag tag;
        union {
            Pressed_Body pressed;
@@ -145,6 +170,7 @@ Program Listing for File slint_events_internal.h
            Wheel_Body wheel;
            DragMove_Body drag_move;
            Drop_Body drop;
+           PinchGesture_Body pinch_gesture;
        };
    
        static MouseEvent Pressed(const LogicalPoint &position,
@@ -231,6 +257,21 @@ Program Listing for File slint_events_internal.h
            return tag == Tag::Drop;
        }
    
+       static MouseEvent PinchGesture(const LogicalPoint &position,
+                                      const float &delta,
+                                      const TouchPhase &phase) {
+           MouseEvent result;
+           ::new (&result.pinch_gesture.position) (LogicalPoint)(position);
+           ::new (&result.pinch_gesture.delta) (float)(delta);
+           ::new (&result.pinch_gesture.phase) (TouchPhase)(phase);
+           result.tag = Tag::PinchGesture;
+           return result;
+       }
+   
+       bool IsPinchGesture() const {
+           return tag == Tag::PinchGesture;
+       }
+   
        static MouseEvent Exit() {
            MouseEvent result;
            result.tag = Tag::Exit;
@@ -252,6 +293,7 @@ Program Listing for File slint_events_internal.h
                case Tag::Wheel: return wheel == other.wheel;
                case Tag::DragMove: return drag_move == other.drag_move;
                case Tag::Drop: return drop == other.drop;
+               case Tag::PinchGesture: return pinch_gesture == other.pinch_gesture;
                default: break;
            }
            return true;
@@ -276,6 +318,7 @@ Program Listing for File slint_events_internal.h
                case Tag::Wheel: wheel.~Wheel_Body(); break;
                case Tag::DragMove: drag_move.~DragMove_Body(); break;
                case Tag::Drop: drop.~Drop_Body(); break;
+               case Tag::PinchGesture: pinch_gesture.~PinchGesture_Body(); break;
                default: break;
            }
        }
@@ -289,6 +332,7 @@ Program Listing for File slint_events_internal.h
                case Tag::Wheel: ::new (&wheel) (Wheel_Body)(other.wheel); break;
                case Tag::DragMove: ::new (&drag_move) (DragMove_Body)(other.drag_move); break;
                case Tag::Drop: ::new (&drop) (Drop_Body)(other.drop); break;
+               case Tag::PinchGesture: ::new (&pinch_gesture) (PinchGesture_Body)(other.pinch_gesture); break;
                default: break;
            }
        }
