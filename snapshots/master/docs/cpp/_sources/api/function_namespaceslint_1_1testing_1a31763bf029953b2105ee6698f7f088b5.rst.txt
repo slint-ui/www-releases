@@ -1,0 +1,14 @@
+.. _exhale_function_namespaceslint_1_1testing_1a31763bf029953b2105ee6698f7f088b5:
+
+Function slint::testing::configure_test_fonts
+=============================================
+
+- Defined in :ref:`file__home_runner_work_slint_slint_api_cpp_include_slint-testing.h`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: slint::testing::configure_test_fonts()
+   :project: Slint

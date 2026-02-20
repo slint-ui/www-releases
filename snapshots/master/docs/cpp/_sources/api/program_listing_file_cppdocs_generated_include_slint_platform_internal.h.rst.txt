@@ -151,7 +151,9 @@ Program Listing for File slint_platform_internal.h
    
    OperatingSystemType slint_detect_operating_system();
    
-   void slint_parse_markdown(SharedString format_string, Slice<SharedString> args, StyledText *out);
+   void slint_parse_markdown(SharedString format_string, Slice<StyledText> args, StyledText *out);
+   
+   void slint_string_to_styled_text(SharedString text, StyledText *out);
    
    void slint_window_properties_get_title(const WindowProperties *wp, SharedString *out);
    

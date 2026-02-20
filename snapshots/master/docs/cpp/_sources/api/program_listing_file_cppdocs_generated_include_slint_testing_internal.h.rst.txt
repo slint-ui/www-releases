@@ -33,6 +33,8 @@ Program Listing for File slint_testing_internal.h
    
    void slint_testing_init_backend();
    
+   void slint_testing_configure_test_fonts();
+   
    bool slint_testing_element_visit_elements(const ItemTreeRc *root,
                                              void *user_data,
                                              bool (*visitor)(void*, const ElementHandle*));

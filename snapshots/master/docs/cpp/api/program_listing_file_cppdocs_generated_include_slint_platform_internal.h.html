@@ -297,6 +297,7 @@
 <li class="toctree-l2"><a class="reference internal" href="function_namespaceslint_1ad900fe1e670815101871442dc17aa74b.html">Function slint::run_event_loop</a></li>
 <li class="toctree-l2"><a class="reference internal" href="function_namespaceslint_1a18aba736373254f5be3362941f3ddbcd.html">Function slint::select_bundled_translation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="function_namespaceslint_1a05cdd874b2b12d4bedad124e0023d9f3.html">Function slint::set_xdg_app_id</a></li>
+<li class="toctree-l2"><a class="reference internal" href="function_namespaceslint_1_1testing_1a31763bf029953b2105ee6698f7f088b5.html">Function slint::testing::configure_test_fonts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="function_namespaceslint_1_1testing_1afcc3fa8289264ede59668796cf0341b4.html">Function slint::testing::init</a></li>
 <li class="toctree-l2"><a class="reference internal" href="function_namespaceslint_1aefd8612f7c509003040eddfaf7a38505.html">Function slint::update_all_translations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="variable_namespaceslint_1_1platform_1_1key__codes_1a4b773ed9f7185901575e7133586bd4bf.html">Variable slint::platform::key_codes::A</a></li>
@@ -629,7 +630,9 @@
 
 <span class="n">OperatingSystemType</span><span class="w"> </span><span class="nf">slint_detect_operating_system</span><span class="p">();</span>
 
-<span class="kt">void</span><span class="w"> </span><span class="nf">slint_parse_markdown</span><span class="p">(</span><span class="n">SharedString</span><span class="w"> </span><span class="n">format_string</span><span class="p">,</span><span class="w"> </span><span class="n">Slice</span><span class="o">&lt;</span><span class="n">SharedString</span><span class="o">&gt;</span><span class="w"> </span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="n">StyledText</span><span class="w"> </span><span class="o">*</span><span class="n">out</span><span class="p">);</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">slint_parse_markdown</span><span class="p">(</span><span class="n">SharedString</span><span class="w"> </span><span class="n">format_string</span><span class="p">,</span><span class="w"> </span><span class="n">Slice</span><span class="o">&lt;</span><span class="n">StyledText</span><span class="o">&gt;</span><span class="w"> </span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="n">StyledText</span><span class="w"> </span><span class="o">*</span><span class="n">out</span><span class="p">);</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">slint_string_to_styled_text</span><span class="p">(</span><span class="n">SharedString</span><span class="w"> </span><span class="n">text</span><span class="p">,</span><span class="w"> </span><span class="n">StyledText</span><span class="w"> </span><span class="o">*</span><span class="n">out</span><span class="p">);</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">slint_window_properties_get_title</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">WindowProperties</span><span class="w"> </span><span class="o">*</span><span class="n">wp</span><span class="p">,</span><span class="w"> </span><span class="n">SharedString</span><span class="w"> </span><span class="o">*</span><span class="n">out</span><span class="p">);</span>
 
