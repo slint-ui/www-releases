@@ -39,6 +39,7 @@ Program Listing for File slint_interpreter_generated_public.h
    enum class DiagnosticLevel : uint8_t {
        Error,
        Warning,
+       Note,
    };
    
    struct Diagnostic {

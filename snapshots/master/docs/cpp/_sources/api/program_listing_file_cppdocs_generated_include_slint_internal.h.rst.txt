@@ -134,6 +134,8 @@ Program Listing for File slint_internal.h
    template<typename T = void>
    struct Option;
    
+   struct ShortcutList;
+   
    struct StringArg;
    
    using VisitChildrenResult = uint64_t;
@@ -495,6 +497,11 @@ Program Listing for File slint_internal.h
        CachedRenderingData cached_rendering_data;
    };
    
+   struct MaybeShortcutList {
+   struct ShortcutList;
+       const ShortcutList *_0;
+   };
+   
    struct GridLayoutInputData {
        bool new_row;
        float col;
@@ -815,6 +822,14 @@ Program Listing for File slint_internal.h
        private_api::CallbackHelper<FocusReason> focus_changed_event;
        private_api::CallbackHelper<FocusReason> focus_gained;
        private_api::CallbackHelper<FocusReason> focus_lost;
+       MaybeShortcutList shortcuts;
+       CachedRenderingData cached_rendering_data;
+       inline FocusScope(); inline ~FocusScope();
+   };
+   
+   struct Shortcut {
+       Property<KeyboardShortcut> keys;
+       private_api::CallbackHelper<void> activated;
        CachedRenderingData cached_rendering_data;
    };
    
@@ -822,11 +837,13 @@ Program Listing for File slint_internal.h
        Property<bool> enabled;
        Property<bool> active;
        Property<float> scale;
+       Property<float> rotation;
        Property<LogicalPosition> center;
        private_api::CallbackHelper<void> started;
        private_api::CallbackHelper<void> updated;
        private_api::CallbackHelper<void> ended;
        private_api::CallbackHelper<void> cancelled;
+       private_api::CallbackHelper<void> smart_magnify;
        CachedRenderingData cached_rendering_data;
    };
    
@@ -1088,6 +1105,10 @@ Program Listing for File slint_internal.h
                                          const WindowAdapterRcOpaque *window_adapter,
                                          const VRc<ItemTreeVTable> *self_component,
                                          uint32_t self_index);
+   
+   void slint_maybe_shortcut_list_init(MaybeShortcutList *list);
+   
+   void slint_maybe_shortcut_list_free(MaybeShortcutList *list);
    
    void slint_organize_grid_layout(Slice<GridLayoutInputData> input_data,
                                    Slice<uint32_t> repeater_indices,
@@ -1460,6 +1481,7 @@ Program Listing for File slint_internal.h
    SLINT_DECL_ITEM(ClippedImage);
    SLINT_DECL_ITEM(TouchArea);
    SLINT_DECL_ITEM(FocusScope);
+   SLINT_DECL_ITEM(Shortcut);
    SLINT_DECL_ITEM(SwipeGestureHandler);
    SLINT_DECL_ITEM(PinchGestureHandler);
    SLINT_DECL_ITEM(Flickable);

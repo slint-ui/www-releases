@@ -851,6 +851,15 @@
 <span class="w">    </span><span class="n">slint_flickable_data_free</span><span class="p">(</span><span class="o">&amp;</span><span class="n">data</span><span class="p">);</span>
 <span class="p">}</span>
 
+<span class="n">cbindgen_private</span><span class="o">::</span><span class="n">FocusScope</span><span class="o">::</span><span class="n">FocusScope</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">slint_maybe_shortcut_list_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">shortcuts</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="n">cbindgen_private</span><span class="o">::</span><span class="n">FocusScope</span><span class="o">::~</span><span class="n">FocusScope</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">slint_maybe_shortcut_list_free</span><span class="p">(</span><span class="o">&amp;</span><span class="n">shortcuts</span><span class="p">);</span>
+<span class="p">}</span>
+
 <span class="n">cbindgen_private</span><span class="o">::</span><span class="n">NativeStyleMetrics</span><span class="o">::</span><span class="n">NativeStyleMetrics</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="n">slint_native_style_metrics_init</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>

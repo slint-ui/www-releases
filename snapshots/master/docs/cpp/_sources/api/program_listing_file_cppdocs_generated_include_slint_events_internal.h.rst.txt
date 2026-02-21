@@ -49,6 +49,8 @@ Program Listing for File slint_events_internal.h
            DragMove,
            Drop,
            PinchGesture,
+           RotationGesture,
+           DoubleTapGesture,
            Exit,
        };
    
@@ -162,6 +164,34 @@ Program Listing for File slint_events_internal.h
            }
        };
    
+       struct RotationGesture_Body {
+           LogicalPoint position;
+           float delta;
+           TouchPhase phase;
+   
+           bool operator==(const RotationGesture_Body& other) const {
+               return position == other.position &&
+                      delta == other.delta &&
+                      phase == other.phase;
+           }
+           bool operator!=(const RotationGesture_Body& other) const {
+               return position != other.position ||
+                      delta != other.delta ||
+                      phase != other.phase;
+           }
+       };
+   
+       struct DoubleTapGesture_Body {
+           LogicalPoint position;
+   
+           bool operator==(const DoubleTapGesture_Body& other) const {
+               return position == other.position;
+           }
+           bool operator!=(const DoubleTapGesture_Body& other) const {
+               return position != other.position;
+           }
+       };
+   
        Tag tag;
        union {
            Pressed_Body pressed;
@@ -171,6 +201,8 @@ Program Listing for File slint_events_internal.h
            DragMove_Body drag_move;
            Drop_Body drop;
            PinchGesture_Body pinch_gesture;
+           RotationGesture_Body rotation_gesture;
+           DoubleTapGesture_Body double_tap_gesture;
        };
    
        static MouseEvent Pressed(const LogicalPoint &position,
@@ -272,6 +304,32 @@ Program Listing for File slint_events_internal.h
            return tag == Tag::PinchGesture;
        }
    
+       static MouseEvent RotationGesture(const LogicalPoint &position,
+                                         const float &delta,
+                                         const TouchPhase &phase) {
+           MouseEvent result;
+           ::new (&result.rotation_gesture.position) (LogicalPoint)(position);
+           ::new (&result.rotation_gesture.delta) (float)(delta);
+           ::new (&result.rotation_gesture.phase) (TouchPhase)(phase);
+           result.tag = Tag::RotationGesture;
+           return result;
+       }
+   
+       bool IsRotationGesture() const {
+           return tag == Tag::RotationGesture;
+       }
+   
+       static MouseEvent DoubleTapGesture(const LogicalPoint &position) {
+           MouseEvent result;
+           ::new (&result.double_tap_gesture.position) (LogicalPoint)(position);
+           result.tag = Tag::DoubleTapGesture;
+           return result;
+       }
+   
+       bool IsDoubleTapGesture() const {
+           return tag == Tag::DoubleTapGesture;
+       }
+   
        static MouseEvent Exit() {
            MouseEvent result;
            result.tag = Tag::Exit;
@@ -294,6 +352,8 @@ Program Listing for File slint_events_internal.h
                case Tag::DragMove: return drag_move == other.drag_move;
                case Tag::Drop: return drop == other.drop;
                case Tag::PinchGesture: return pinch_gesture == other.pinch_gesture;
+               case Tag::RotationGesture: return rotation_gesture == other.rotation_gesture;
+               case Tag::DoubleTapGesture: return double_tap_gesture == other.double_tap_gesture;
                default: break;
            }
            return true;
@@ -319,6 +379,8 @@ Program Listing for File slint_events_internal.h
                case Tag::DragMove: drag_move.~DragMove_Body(); break;
                case Tag::Drop: drop.~Drop_Body(); break;
                case Tag::PinchGesture: pinch_gesture.~PinchGesture_Body(); break;
+               case Tag::RotationGesture: rotation_gesture.~RotationGesture_Body(); break;
+               case Tag::DoubleTapGesture: double_tap_gesture.~DoubleTapGesture_Body(); break;
                default: break;
            }
        }
@@ -333,6 +395,8 @@ Program Listing for File slint_events_internal.h
                case Tag::DragMove: ::new (&drag_move) (DragMove_Body)(other.drag_move); break;
                case Tag::Drop: ::new (&drop) (Drop_Body)(other.drop); break;
                case Tag::PinchGesture: ::new (&pinch_gesture) (PinchGesture_Body)(other.pinch_gesture); break;
+               case Tag::RotationGesture: ::new (&rotation_gesture) (RotationGesture_Body)(other.rotation_gesture); break;
+               case Tag::DoubleTapGesture: ::new (&double_tap_gesture) (DoubleTapGesture_Body)(other.double_tap_gesture); break;
                default: break;
            }
        }
