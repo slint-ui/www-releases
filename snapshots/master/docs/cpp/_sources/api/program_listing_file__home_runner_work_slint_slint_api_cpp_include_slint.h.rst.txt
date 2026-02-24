@@ -340,6 +340,13 @@ Program Listing for File slint.h
        return result;
    }
    
+   inline SharedString keyboard_shortcut_to_string(const cbindgen_private::KeyboardShortcut &shortcut)
+   {
+       SharedString result;
+       cbindgen_private::slint_keyboard_shortcut_to_string(&shortcut, &result);
+       return result;
+   }
+   
    template<typename Component>
    inline float get_resolved_default_font_size(const Component &component)
    {
