@@ -7,7 +7,7 @@ This page lists the licenses of the dependencies used by Slint.
 
 ## Overview of licenses
 
-- [MIT License](#MIT) (367)
+- [MIT License](#MIT) (368)
 - [Apache License 2.0](#Apache-2.0) (16)
 - [BSD 3-Clause &quot;New&quot; or &quot;Revised&quot; License](#BSD-3-Clause) (6)
 - [Unicode License v3](#Unicode-3.0) (5)
@@ -7025,6 +7025,7 @@ DEALINGS IN THE SOFTWARE.
 #### Used by:
 
 - [aho-corasick 1.1.4]( https://github.com/BurntSushi/aho-corasick )
+- [byteorder 1.5.0]( https://github.com/BurntSushi/byteorder )
 
 #### License Text
 
