@@ -136,8 +136,6 @@ Program Listing for File slint_internal.h
    
    struct ShortcutList;
    
-   struct StringArg;
-   
    using VisitChildrenResult = uint64_t;
    constexpr static const VisitChildrenResult VisitChildrenResult_CONTINUE = UINT64_MAX;
    
@@ -880,7 +878,7 @@ Program Listing for File slint_internal.h
        Property<Brush> color;
        Property<TextHorizontalAlignment> horizontal_alignment;
        Property<TextVerticalAlignment> vertical_alignment;
-       private_api::CallbackHelper<StringArg> link_clicked;
+       private_api::CallbackHelper<slint::SharedString> link_clicked;
        Property<SharedString> font_family;
        Property<bool> font_italic;
        Property<TextWrap> wrap;
