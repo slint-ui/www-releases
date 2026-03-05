@@ -38,10 +38,12 @@ Namespaces
 
 - :ref:`namespace_slint`
 
+- :ref:`namespace_slint__language`
+
 
 Classes
 -------
 
 
-- :ref:`exhale_struct_structslint_1_1StandardListViewItem`
+- :ref:`exhale_struct_structslint_1_1language_1_1StandardListViewItem`
 

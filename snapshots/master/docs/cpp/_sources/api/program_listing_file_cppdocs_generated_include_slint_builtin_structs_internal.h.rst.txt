@@ -61,7 +61,7 @@ Program Listing for File slint_builtin_structs_internal.h
        friend bool operator==(const DropEvent&, const DropEvent&) = default;
        friend bool operator!=(const DropEvent&, const DropEvent&) = default;
    };
-   using slint::StandardListViewItem;
+   using slint::language::StandardListViewItem;
    struct TableColumn {
        SharedString title;
        float min_width;

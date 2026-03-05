@@ -12,10 +12,11 @@ Program Listing for File slint_builtin_structs.h
 
    #pragma once
    // This file is auto-generated from xtask/src/../../api/cpp/cbindgen.rs
-   namespace slint {
+   namespace slint::language {
    struct StandardListViewItem {
        SharedString text;
        friend bool operator==(const StandardListViewItem&, const StandardListViewItem&) = default;
        friend bool operator!=(const StandardListViewItem&, const StandardListViewItem&) = default;
    };
    }
+   namespace slint { using slint::language::StandardListViewItem; }

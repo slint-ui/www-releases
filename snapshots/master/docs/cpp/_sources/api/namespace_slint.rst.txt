@@ -25,6 +25,8 @@ Namespaces
 
 - :ref:`namespace_slint__interpreter`
 
+- :ref:`namespace_slint__language`
+
 - :ref:`namespace_slint__platform`
 
 - :ref:`namespace_slint__testing`
@@ -63,8 +65,6 @@ Classes
 - :ref:`exhale_struct_structslint_1_1SharedVector`
 
 - :ref:`exhale_struct_structslint_1_1Size`
-
-- :ref:`exhale_struct_structslint_1_1StandardListViewItem`
 
 - :ref:`exhale_struct_structslint_1_1Timer`
 
