@@ -26,6 +26,7 @@ Program Listing for File slint-testing.h
    namespace slint::testing {
    
    using slint::cbindgen_private::AccessibleRole;
+   using slint::cbindgen_private::LayoutKind;
    
    inline void init()
    {
@@ -148,6 +149,16 @@ Program Listing for File slint-testing.h
            SharedVector<SharedString> bases;
            if (cbindgen_private::slint_testing_element_bases(&inner, &bases)) {
                return bases;
+           } else {
+               return std::nullopt;
+           }
+       }
+   
+       std::optional<slint::testing::LayoutKind> layout_kind() const
+       {
+           LayoutKind kind {};
+           if (cbindgen_private::slint_testing_element_layout_kind(&inner, &kind)) {
+               return kind;
            } else {
                return std::nullopt;
            }

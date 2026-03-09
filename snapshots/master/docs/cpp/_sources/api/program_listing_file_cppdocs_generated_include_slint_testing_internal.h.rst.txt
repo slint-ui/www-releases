@@ -24,6 +24,13 @@ Program Listing for File slint_testing_internal.h
    namespace slint {
    namespace cbindgen_private {
    
+   enum class LayoutKind : uint8_t {
+       HorizontalLayout,
+       VerticalLayout,
+       GridLayout,
+       FlexBox,
+   };
+   
    struct ElementHandle {
        ItemWeak item;
        uintptr_t element_index;
@@ -56,6 +63,8 @@ Program Listing for File slint_testing_internal.h
    bool slint_testing_element_type_name(const ElementHandle *element, SharedString *out);
    
    bool slint_testing_element_bases(const ElementHandle *element, SharedVector<SharedString> *out);
+   
+   bool slint_testing_element_layout_kind(const ElementHandle *element, LayoutKind *out);
    
    }  // extern "C"
    
