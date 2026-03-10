@@ -18,14 +18,7 @@ Program Listing for File slint_builtin_structs_internal.h
    #include "slint_image.h"
    namespace slint::cbindgen_private {
    enum class KeyEventType : uint8_t;
-   struct KeyboardModifiers {
-       bool alt;
-       bool control;
-       bool shift;
-       bool meta;
-       friend bool operator==(const KeyboardModifiers&, const KeyboardModifiers&) = default;
-       friend bool operator!=(const KeyboardModifiers&, const KeyboardModifiers&) = default;
-   };
+   using slint::language::KeyboardModifiers;
    struct PointerEvent {
        PointerEventButton button;
        PointerEventKind kind;

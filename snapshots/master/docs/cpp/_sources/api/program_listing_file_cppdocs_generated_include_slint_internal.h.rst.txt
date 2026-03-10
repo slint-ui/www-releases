@@ -827,6 +827,7 @@ Program Listing for File slint_internal.h
    
    struct Shortcut {
        Property<KeyboardShortcut> keys;
+       Property<bool> enabled;
        private_api::CallbackHelper<void> activated;
        CachedRenderingData cached_rendering_data;
    };

@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"enum":["ColorScheme"],"struct":["StandardListViewItem"]};
+window.SIDEBAR_ITEMS = {"enum":["ColorScheme"],"struct":["KeyboardModifiers","StandardListViewItem"]};
