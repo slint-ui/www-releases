@@ -7,7 +7,7 @@ This page lists the licenses of the dependencies used by Slint.
 
 ## Overview of licenses
 
-- [MIT License](#MIT) (374)
+- [MIT License](#MIT) (371)
 - [Apache License 2.0](#Apache-2.0) (16)
 - [BSD 3-Clause &quot;New&quot; or &quot;Revised&quot; License](#BSD-3-Clause) (6)
 - [Unicode License v3](#Unicode-3.0) (5)
@@ -214,7 +214,7 @@ This page lists the licenses of the dependencies used by Slint.
 #### Used by:
 
 - [moxcms 0.7.11]( https://github.com/awxkee/moxcms.git )
-- [pxfm 0.1.27]( https://github.com/awxkee/pxfm )
+- [pxfm 0.1.28]( https://github.com/awxkee/pxfm )
 
 #### License Text
 
@@ -1071,7 +1071,7 @@ Apache License
 #### Used by:
 
 - [dpi 0.1.2]( https://github.com/rust-windowing/winit )
-- [winit 0.30.12]( https://github.com/rust-windowing/winit )
+- [winit 0.30.13]( https://github.com/rust-windowing/winit )
 
 #### License Text
 
@@ -1842,7 +1842,7 @@ THIS SOFTWARE.
 
 #### Used by:
 
-- [uds_windows 1.1.0]( https://github.com/haraldh/rust_uds_windows )
+- [uds_windows 1.2.0]( https://github.com/haraldh/rust_uds_windows )
 
 #### License Text
 
@@ -1868,23 +1868,6 @@ THIS SOFTWARE.
     LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE
-
-```
-
-### <a id="MIT"></a> MIT License
-
-#### Used by:
-
-- [winapi 0.3.9]( https://github.com/retep998/winapi-rs )
-
-#### License Text
-
-```
-// Licensed under the Apache License, Version 2.0
-// &lt;LICENSE-APACHE or http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license
-// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your option.
-// All files in the project carrying such notice may not be copied, modified, or distributed
-// except according to those terms.
 
 ```
 
@@ -2122,7 +2105,7 @@ DEALINGS IN THE SOFTWARE.
 #### Used by:
 
 - [bitflags 1.3.2]( https://github.com/bitflags/bitflags )
-- [bitflags 2.10.0]( https://github.com/bitflags/bitflags )
+- [bitflags 2.11.0]( https://github.com/bitflags/bitflags )
 - [getopts 0.2.24]( https://github.com/rust-lang/getopts )
 - [log 0.4.29]( https://github.com/rust-lang/log )
 - [num-bigint 0.4.6]( https://github.com/rust-num/num-bigint )
@@ -2131,7 +2114,7 @@ DEALINGS IN THE SOFTWARE.
 - [num-rational 0.4.2]( https://github.com/rust-num/num-rational )
 - [num-traits 0.2.19]( https://github.com/rust-num/num-traits )
 - [regex-automata 0.4.14]( https://github.com/rust-lang/regex )
-- [regex-syntax 0.8.9]( https://github.com/rust-lang/regex )
+- [regex-syntax 0.8.10]( https://github.com/rust-lang/regex )
 - [regex 1.12.3]( https://github.com/rust-lang/regex )
 
 #### License Text
@@ -2169,7 +2152,7 @@ DEALINGS IN THE SOFTWARE.
 
 #### Used by:
 
-- [uuid 1.20.0]( https://github.com/uuid-rs/uuid )
+- [uuid 1.21.0]( https://github.com/uuid-rs/uuid )
 
 #### License Text
 
@@ -2454,7 +2437,7 @@ DEALINGS IN THE SOFTWARE.
 
 #### Used by:
 
-- [tempfile 3.25.0]( https://github.com/Stebalien/tempfile )
+- [tempfile 3.26.0]( https://github.com/Stebalien/tempfile )
 
 #### License Text
 
@@ -2564,7 +2547,7 @@ SOFTWARE.
 
 #### Used by:
 
-- [dlib 0.5.2]( https://github.com/elinorbgr/dlib )
+- [dlib 0.5.3]( https://github.com/elinorbgr/dlib )
 
 #### License Text
 
@@ -2595,7 +2578,7 @@ THE SOFTWARE.
 #### Used by:
 
 - [png 0.17.16]( https://github.com/image-rs/image-png )
-- [png 0.18.0]( https://github.com/image-rs/image-png )
+- [png 0.18.1]( https://github.com/image-rs/image-png )
 
 #### License Text
 
@@ -2632,46 +2615,15 @@ DEALINGS IN THE SOFTWARE.
 
 #### Used by:
 
-- [winapi 0.3.9]( https://github.com/retep998/winapi-rs )
-
-#### License Text
-
-```
-Copyright (c) 2015-2018 The winapi-rs Developers
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the &quot;Software&quot;), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-```
-
-### <a id="MIT"></a> MIT License
-
-#### Used by:
-
-- [futures-channel 0.3.31]( https://github.com/rust-lang/futures-rs )
-- [futures-core 0.3.31]( https://github.com/rust-lang/futures-rs )
-- [futures-executor 0.3.31]( https://github.com/rust-lang/futures-rs )
-- [futures-io 0.3.31]( https://github.com/rust-lang/futures-rs )
-- [futures-macro 0.3.31]( https://github.com/rust-lang/futures-rs )
-- [futures-sink 0.3.31]( https://github.com/rust-lang/futures-rs )
-- [futures-task 0.3.31]( https://github.com/rust-lang/futures-rs )
-- [futures-util 0.3.31]( https://github.com/rust-lang/futures-rs )
-- [futures 0.3.31]( https://github.com/rust-lang/futures-rs )
+- [futures-channel 0.3.32]( https://github.com/rust-lang/futures-rs )
+- [futures-core 0.3.32]( https://github.com/rust-lang/futures-rs )
+- [futures-executor 0.3.32]( https://github.com/rust-lang/futures-rs )
+- [futures-io 0.3.32]( https://github.com/rust-lang/futures-rs )
+- [futures-macro 0.3.32]( https://github.com/rust-lang/futures-rs )
+- [futures-sink 0.3.32]( https://github.com/rust-lang/futures-rs )
+- [futures-task 0.3.32]( https://github.com/rust-lang/futures-rs )
+- [futures-util 0.3.32]( https://github.com/rust-lang/futures-rs )
+- [futures 0.3.32]( https://github.com/rust-lang/futures-rs )
 
 #### License Text
 
@@ -3461,43 +3413,6 @@ DEALINGS IN THE SOFTWARE.
 
 #### Used by:
 
-- [pin-utils 0.1.0]( https://github.com/rust-lang-nursery/pin-utils )
-
-#### License Text
-
-```
-Copyright (c) 2018 The pin-utils authors
-
-Permission is hereby granted, free of charge, to any
-person obtaining a copy of this software and associated
-documentation files (the &quot;Software&quot;), to deal in the
-Software without restriction, including without
-limitation the rights to use, copy, modify, merge,
-publish, distribute, sublicense, and/or sell copies of
-the Software, and to permit persons to whom the Software
-is furnished to do so, subject to the following
-conditions:
-
-The above copyright notice and this permission notice
-shall be included in all copies or substantial portions
-of the Software.
-
-THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF
-ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
-TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
-PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
-SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
-IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-DEALINGS IN THE SOFTWARE.
-
-```
-
-### <a id="MIT"></a> MIT License
-
-#### Used by:
-
 - [ahash 0.8.12]( https://github.com/tkaitchuck/ahash )
 
 #### License Text
@@ -3567,7 +3482,7 @@ THE SOFTWARE.
 #### Used by:
 
 - [calloop 0.13.0]( https://github.com/Smithay/calloop )
-- [calloop 0.14.3]( https://github.com/Smithay/calloop )
+- [calloop 0.14.4]( https://github.com/Smithay/calloop )
 
 #### License Text
 
@@ -3669,7 +3584,7 @@ DEALINGS IN THE SOFTWARE.
 
 #### Used by:
 
-- [getrandom 0.4.1]( https://github.com/rust-random/getrandom )
+- [getrandom 0.4.2]( https://github.com/rust-random/getrandom )
 
 #### License Text
 
@@ -4099,7 +4014,7 @@ SOFTWARE.
 
 #### Used by:
 
-- [memmap2 0.9.9]( https://github.com/RazrFalcon/memmap2-rs )
+- [memmap2 0.9.10]( https://github.com/RazrFalcon/memmap2-rs )
 
 #### License Text
 
@@ -4137,7 +4052,7 @@ DEALINGS IN THE SOFTWARE.
 
 #### Used by:
 
-- [clru 0.6.2]( https://github.com/marmeladema/clru-rs )
+- [clru 0.6.3]( https://github.com/marmeladema/clru-rs )
 
 #### License Text
 
@@ -4398,11 +4313,11 @@ SOFTWARE.
 
 #### Used by:
 
-- [zbus 5.13.2]( https://github.com/z-galaxy/zbus/ )
-- [zbus_macros 5.13.2]( https://github.com/z-galaxy/zbus/ )
+- [zbus 5.14.0]( https://github.com/z-galaxy/zbus/ )
+- [zbus_macros 5.14.0]( https://github.com/z-galaxy/zbus/ )
 - [zbus_names 4.3.1]( https://github.com/z-galaxy/zbus/ )
-- [zvariant 5.9.2]( https://github.com/z-galaxy/zbus/ )
-- [zvariant_derive 5.9.2]( https://github.com/z-galaxy/zbus/ )
+- [zvariant 5.10.0]( https://github.com/z-galaxy/zbus/ )
+- [zvariant_derive 5.10.0]( https://github.com/z-galaxy/zbus/ )
 
 #### License Text
 
@@ -4442,8 +4357,9 @@ DEALINGS IN THE SOFTWARE.
 - [serde_spanned 1.0.4]( https://github.com/toml-rs/toml )
 - [toml 0.9.12+spec-1.1.0]( https://github.com/toml-rs/toml )
 - [toml_datetime 0.7.5+spec-1.1.0]( https://github.com/toml-rs/toml )
-- [toml_edit 0.23.10+spec-1.0.0]( https://github.com/toml-rs/toml )
-- [toml_parser 1.0.8+spec-1.1.0]( https://github.com/toml-rs/toml )
+- [toml_datetime 1.0.0+spec-1.1.0]( https://github.com/toml-rs/toml )
+- [toml_edit 0.25.3+spec-1.1.0]( https://github.com/toml-rs/toml )
+- [toml_parser 1.0.9+spec-1.1.0]( https://github.com/toml-rs/toml )
 
 #### License Text
 
@@ -4734,8 +4650,8 @@ DEALINGS IN THE SOFTWARE.
 
 #### Used by:
 
-- [zerocopy-derive 0.8.39]( https://github.com/google/zerocopy )
-- [zerocopy 0.8.39]( https://github.com/google/zerocopy )
+- [zerocopy-derive 0.8.40]( https://github.com/google/zerocopy )
+- [zerocopy 0.8.40]( https://github.com/google/zerocopy )
 
 #### License Text
 
@@ -5100,7 +5016,7 @@ THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRES
 
 #### Used by:
 
-- [rgb 0.8.52]( https://github.com/kornelski/rust-rgb )
+- [rgb 0.8.53]( https://github.com/kornelski/rust-rgb )
 
 #### License Text
 
@@ -5622,12 +5538,12 @@ SOFTWARE.
 - [vtable-macro 0.3.0]( https://github.com/slint-ui/slint )
 - [block2 0.5.1]( https://github.com/madsmtm/objc2 )
 - [block2 0.6.2]( https://github.com/madsmtm/objc2 )
-- [chrono 0.4.43]( https://github.com/chronotope/chrono )
+- [chrono 0.4.44]( https://github.com/chronotope/chrono )
 - [cpp 0.5.10]( https://github.com/mystor/rust-cpp )
 - [cpp_build 0.5.10]( https://github.com/mystor/rust-cpp )
 - [cpp_common 0.5.10]( https://github.com/mystor/rust-cpp )
 - [cpp_macros 0.5.10]( https://github.com/mystor/rust-cpp )
-- [dispatch2 0.3.0]( https://github.com/madsmtm/objc2 )
+- [dispatch2 0.3.1]( https://github.com/madsmtm/objc2 )
 - [dispatch 0.2.0]( http://github.com/SSheldon/rust-dispatch )
 - [dpi 0.1.2]( https://github.com/rust-windowing/winit )
 - [fax 0.2.6]( https://github.com/pdf-rs/fax )
@@ -5654,7 +5570,7 @@ SOFTWARE.
 - [objc2-foundation 0.3.2]( https://github.com/madsmtm/objc2 )
 - [objc2-quartz-core 0.3.2]( https://github.com/madsmtm/objc2 )
 - [objc2 0.5.2]( https://github.com/madsmtm/objc2 )
-- [objc2 0.6.3]( https://github.com/madsmtm/objc2 )
+- [objc2 0.6.4]( https://github.com/madsmtm/objc2 )
 - [profiling-procmacros 1.0.17]( https://github.com/aclysma/profiling )
 - [profiling 1.0.17]( https://github.com/aclysma/profiling )
 - [qttypes 0.2.12]( https://github.com/woboq/qmetaobject-rs )
@@ -6024,9 +5940,9 @@ DEALINGS IN THE SOFTWARE.
 #### Used by:
 
 - [adler2 2.0.1]( https://github.com/oyvindln/adler2 )
-- [anyhow 1.0.101]( https://github.com/dtolnay/anyhow )
+- [anyhow 1.0.102]( https://github.com/dtolnay/anyhow )
 - [async-channel 2.5.0]( https://github.com/smol-rs/async-channel )
-- [async-executor 1.13.3]( https://github.com/smol-rs/async-executor )
+- [async-executor 1.14.0]( https://github.com/smol-rs/async-executor )
 - [async-io 2.6.0]( https://github.com/smol-rs/async-io )
 - [async-lock 3.4.2]( https://github.com/smol-rs/async-lock )
 - [async-process 2.5.0]( https://github.com/smol-rs/async-process )
@@ -6034,10 +5950,10 @@ DEALINGS IN THE SOFTWARE.
 - [async-task 4.7.1]( https://github.com/smol-rs/async-task )
 - [async-trait 0.1.89]( https://github.com/dtolnay/async-trait )
 - [atomic-waker 1.1.2]( https://github.com/smol-rs/atomic-waker )
-- [auto_enums 0.8.7]( https://github.com/taiki-e/auto_enums )
+- [auto_enums 0.8.8]( https://github.com/taiki-e/auto_enums )
 - [blocking 1.6.2]( https://github.com/smol-rs/blocking )
 - [concurrent-queue 2.5.0]( https://github.com/smol-rs/concurrent-queue )
-- [derive_utils 0.15.0]( https://github.com/taiki-e/derive_utils )
+- [derive_utils 0.15.1]( https://github.com/taiki-e/derive_utils )
 - [displaydoc 0.2.5]( https://github.com/yaahc/displaydoc )
 - [endi 1.1.1]( https://github.com/zeenix/endi )
 - [event-listener-strategy 0.5.4]( https://github.com/smol-rs/event-listener-strategy )
@@ -6045,24 +5961,24 @@ DEALINGS IN THE SOFTWARE.
 - [fastrand 2.3.0]( https://github.com/smol-rs/fastrand )
 - [futures-lite 2.6.1]( https://github.com/smol-rs/futures-lite )
 - [itoa 1.0.17]( https://github.com/dtolnay/itoa )
-- [linux-raw-sys 0.11.0]( https://github.com/sunfishcode/linux-raw-sys )
+- [linux-raw-sys 0.12.1]( https://github.com/sunfishcode/linux-raw-sys )
 - [linux-raw-sys 0.4.15]( https://github.com/sunfishcode/linux-raw-sys )
 - [once_cell 1.21.3]( https://github.com/matklad/once_cell )
 - [ordered-stream 0.2.0]( https://github.com/danieldg/ordered-stream )
 - [parking 2.2.1]( https://github.com/smol-rs/parking )
 - [paste 1.0.15]( https://github.com/dtolnay/paste )
 - [pastey 0.1.1]( https://github.com/as1100k/pastey )
-- [pin-project-internal 1.1.10]( https://github.com/taiki-e/pin-project )
-- [pin-project-lite 0.2.16]( https://github.com/taiki-e/pin-project-lite )
-- [pin-project 1.1.10]( https://github.com/taiki-e/pin-project )
-- [piper 0.2.4]( https://github.com/smol-rs/piper )
+- [pin-project-internal 1.1.11]( https://github.com/taiki-e/pin-project )
+- [pin-project-lite 0.2.17]( https://github.com/taiki-e/pin-project-lite )
+- [pin-project 1.1.11]( https://github.com/taiki-e/pin-project )
+- [piper 0.2.5]( https://github.com/smol-rs/piper )
 - [polling 3.11.0]( https://github.com/smol-rs/polling )
 - [portable-atomic 1.13.1]( https://github.com/taiki-e/portable-atomic )
-- [proc-macro-crate 3.4.0]( https://github.com/bkchr/proc-macro-crate )
+- [proc-macro-crate 3.5.0]( https://github.com/bkchr/proc-macro-crate )
 - [proc-macro2 1.0.106]( https://github.com/dtolnay/proc-macro2 )
-- [quote 1.0.44]( https://github.com/dtolnay/quote )
+- [quote 1.0.45]( https://github.com/dtolnay/quote )
 - [rustix 0.38.44]( https://github.com/bytecodealliance/rustix )
-- [rustix 1.1.3]( https://github.com/bytecodealliance/rustix )
+- [rustix 1.1.4]( https://github.com/bytecodealliance/rustix )
 - [semver 1.0.27]( https://github.com/dtolnay/semver )
 - [serde 1.0.228]( https://github.com/serde-rs/serde )
 - [serde_core 1.0.228]( https://github.com/serde-rs/serde )
@@ -6070,12 +5986,12 @@ DEALINGS IN THE SOFTWARE.
 - [serde_json 1.0.149]( https://github.com/serde-rs/json )
 - [serde_repr 0.1.20]( https://github.com/dtolnay/serde-repr )
 - [smol_str 0.2.2]( https://github.com/rust-analyzer/smol_str )
-- [syn 2.0.115]( https://github.com/dtolnay/syn )
+- [syn 2.0.117]( https://github.com/dtolnay/syn )
 - [thiserror-impl 1.0.69]( https://github.com/dtolnay/thiserror )
 - [thiserror-impl 2.0.18]( https://github.com/dtolnay/thiserror )
 - [thiserror 1.0.69]( https://github.com/dtolnay/thiserror )
 - [thiserror 2.0.18]( https://github.com/dtolnay/thiserror )
-- [unicode-ident 1.0.23]( https://github.com/dtolnay/unicode-ident )
+- [unicode-ident 1.0.24]( https://github.com/dtolnay/unicode-ident )
 - [x11-dl 2.21.0]( https://github.com/AltF02/x11-rs.git )
 - [zmij 1.0.21]( https://github.com/dtolnay/zmij )
 - [zvariant_utils 3.3.0]( https://github.com/z-galaxy/zbus/ )
@@ -6230,7 +6146,7 @@ THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRES
 #### Used by:
 
 - [pulldown-cmark-escape 0.11.0]( https://github.com/raphlinus/pulldown-cmark )
-- [pulldown-cmark 0.13.0]( https://github.com/raphlinus/pulldown-cmark )
+- [pulldown-cmark 0.13.1]( https://github.com/raphlinus/pulldown-cmark )
 
 #### License Text
 
@@ -7010,90 +6926,6 @@ SOFTWARE.
 
 #### Used by:
 
-- [uds_windows 1.1.0]( https://github.com/haraldh/rust_uds_windows )
-
-#### License Text
-
-```
-Third Party Notices
-
-***
-
-rust
-Copyright 2016 The Rust Project Developers
-Permission is hereby granted, free of charge, to any
-person obtaining a copy of this software and associated
-documentation files (the &quot;Software&quot;), to deal in the
-Software without restriction, including without
-limitation the rights to use, copy, modify, merge,
-publish, distribute, sublicense, and/or sell copies of
-the Software, and to permit persons to whom the Software
-is furnished to do so, subject to the following
-conditions:
-The above copyright notice and this permission notice
-shall be included in all copies or substantial portions
-of the Software.
-THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF
-ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
-TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
-PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
-SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
-IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-DEALINGS IN THE SOFTWARE.
-
-***
-
-mio
-Copyright (c) 2014 Carl Lerche and other MIO contributors
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the &quot;Software&quot;), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-
-***
-
-miow
-Copyright (c) 2014 Alex Crichton
-Permission is hereby granted, free of charge, to any
-person obtaining a copy of this software and associated
-documentation files (the &quot;Software&quot;), to deal in the
-Software without restriction, including without
-limitation the rights to use, copy, modify, merge,
-publish, distribute, sublicense, and/or sell copies of
-the Software, and to permit persons to whom the Software
-is furnished to do so, subject to the following
-conditions:
-The above copyright notice and this permission notice
-shall be included in all copies or substantial portions
-of the Software.
-THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF
-ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
-TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
-PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
-SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
-IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-DEALINGS IN THE SOFTWARE.
-```
-
-### <a id="MIT"></a> MIT License
-
-#### Used by:
-
 - [aho-corasick 1.1.4]( https://github.com/BurntSushi/aho-corasick )
 - [byteorder 1.5.0]( https://github.com/BurntSushi/byteorder )
 - [memchr 2.8.0]( https://github.com/BurntSushi/memchr )
@@ -7515,7 +7347,7 @@ Exhibit B - &quot;Incompatible With Secondary Licenses&quot; Notice
 
 #### Used by:
 
-- [unicode-ident 1.0.23]( https://github.com/dtolnay/unicode-ident )
+- [unicode-ident 1.0.24]( https://github.com/dtolnay/unicode-ident )
 
 #### License Text
 
