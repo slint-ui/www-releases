@@ -1310,6 +1310,10 @@ Program Listing for File slint_internal.h
    
    void slint_send_mouse_click(float x, float y, const WindowAdapterRc *window_adapter);
    
+   void slint_send_keyboard_key_text(const SharedString *text,
+                                     bool pressed,
+                                     const WindowAdapterRc *window_adapter);
+   
    void slint_send_keyboard_char(const SharedString *string,
                                  bool pressed,
                                  const WindowAdapterRc *window_adapter);
