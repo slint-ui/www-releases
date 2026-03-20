@@ -511,6 +511,8 @@
 <span class="cp">#ifndef SLINT_FEATURE_FREESTANDING</span>
 <span class="cp">#</span><span class="w">    </span><span class="cp">include</span><span class="w"> </span><span class="cpf">&lt;mutex&gt;</span>
 <span class="cp">#</span><span class="w">    </span><span class="cp">include</span><span class="w"> </span><span class="cpf">&lt;condition_variable&gt;</span>
+<span class="cp">#</span><span class="w">    </span><span class="cp">include</span><span class="w"> </span><span class="cpf">&lt;cstdint&gt;</span>
+<span class="cp">#</span><span class="w">    </span><span class="cp">include</span><span class="w"> </span><span class="cpf">&lt;memory&gt;</span>
 <span class="cp">#endif</span>
 
 <span class="k">namespace</span><span class="w"> </span><span class="nn">slint</span><span class="w"> </span><span class="p">{</span>
@@ -694,11 +696,12 @@
 <span class="w">                    </span><span class="kt">float</span><span class="w"> </span><span class="n">spacing_h</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">spacing_v</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">Padding</span><span class="w"> </span><span class="o">&amp;</span><span class="n">padding_h</span><span class="p">,</span>
 <span class="w">                    </span><span class="k">const</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">Padding</span><span class="w"> </span><span class="o">&amp;</span><span class="n">padding_v</span><span class="p">,</span>
 <span class="w">                    </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">Orientation</span><span class="w"> </span><span class="n">orientation</span><span class="p">,</span>
-<span class="w">                    </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">FlexDirection</span><span class="w"> </span><span class="n">direction</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">constraint_size</span><span class="p">)</span>
+<span class="w">                    </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">FlexDirection</span><span class="w"> </span><span class="n">direction</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">constraint_size</span><span class="p">,</span>
+<span class="w">                    </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">FlexWrap</span><span class="w"> </span><span class="n">flex_wrap</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_flexbox_layout_info</span><span class="p">(</span><span class="n">cells_h</span><span class="p">,</span><span class="w"> </span><span class="n">cells_v</span><span class="p">,</span><span class="w"> </span><span class="n">spacing_h</span><span class="p">,</span><span class="w"> </span><span class="n">spacing_v</span><span class="p">,</span>
 <span class="w">                                                       </span><span class="o">&amp;</span><span class="n">padding_h</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">padding_v</span><span class="p">,</span><span class="w"> </span><span class="n">orientation</span><span class="p">,</span>
-<span class="w">                                                       </span><span class="n">direction</span><span class="p">,</span><span class="w"> </span><span class="n">constraint_size</span><span class="p">);</span>
+<span class="w">                                                       </span><span class="n">direction</span><span class="p">,</span><span class="w"> </span><span class="n">constraint_size</span><span class="p">,</span><span class="w"> </span><span class="n">flex_wrap</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
@@ -847,12 +850,64 @@
 
 <span class="p">}</span><span class="w"> </span><span class="c1">// namespace private_api</span>
 
-<span class="cp">#ifdef SLINT_FEATURE_GETTEXT</span>
+<span class="c1">// Translator API is currently considered experimental due to discussions</span>
+<span class="c1">// about the returned string type (SharedString vs. Cow&lt;str&gt; etc.). Also it</span>
+<span class="c1">// is not available with no_std due to the tr crate.</span>
+<span class="c1">// See dicussion in https://github.com/slint-ui/slint/pull/10979.</span>
+<span class="cp">#if defined(SLINT_FEATURE_EXPERIMENTAL) &amp;&amp; !defined(SLINT_FEATURE_FREESTANDING)</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">Translator</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="o">~</span><span class="n">Translator</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="n">SharedString</span><span class="w"> </span><span class="n">translate</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="n">SharedString</span><span class="w"> </span><span class="nf">ntranslate</span><span class="p">(</span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">singular</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">plural</span><span class="p">,</span>
+<span class="w">                                    </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">namespace</span><span class="w"> </span><span class="nn">private_api</span><span class="w"> </span><span class="p">{</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">TranslatorDispatcher</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">drop</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">obj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">delete</span><span class="w"> </span><span class="n">cast</span><span class="p">(</span><span class="n">obj</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">translate</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">obj</span><span class="p">,</span><span class="w"> </span><span class="n">private_api</span><span class="o">::</span><span class="n">Slice</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="p">,</span>
+<span class="w">                          </span><span class="n">private_api</span><span class="o">::</span><span class="n">Slice</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">slint</span><span class="o">::</span><span class="n">SharedString</span><span class="w"> </span><span class="o">*</span><span class="n">out</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="o">*</span><span class="n">out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cast</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">translate</span><span class="p">(</span><span class="n">private_api</span><span class="o">::</span><span class="n">slice_to_string_view</span><span class="p">(</span><span class="n">string</span><span class="p">),</span>
+<span class="w">                                    </span><span class="n">private_api</span><span class="o">::</span><span class="n">slice_to_string_view</span><span class="p">(</span><span class="n">context</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">ntranslate</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">obj</span><span class="p">,</span><span class="w"> </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">private_api</span><span class="o">::</span><span class="n">Slice</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">singular</span><span class="p">,</span>
+<span class="w">                           </span><span class="n">private_api</span><span class="o">::</span><span class="n">Slice</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">plural</span><span class="p">,</span><span class="w"> </span><span class="n">private_api</span><span class="o">::</span><span class="n">Slice</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">context</span><span class="p">,</span>
+<span class="w">                           </span><span class="n">slint</span><span class="o">::</span><span class="n">SharedString</span><span class="w"> </span><span class="o">*</span><span class="n">out</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="o">*</span><span class="n">out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cast</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">ntranslate</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">private_api</span><span class="o">::</span><span class="n">slice_to_string_view</span><span class="p">(</span><span class="n">singular</span><span class="p">),</span>
+<span class="w">                                     </span><span class="n">private_api</span><span class="o">::</span><span class="n">slice_to_string_view</span><span class="p">(</span><span class="n">plural</span><span class="p">),</span>
+<span class="w">                                     </span><span class="n">private_api</span><span class="o">::</span><span class="n">slice_to_string_view</span><span class="p">(</span><span class="n">context</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Translator</span><span class="w"> </span><span class="o">*</span><span class="n">cast</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">obj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="k">const</span><span class="w"> </span><span class="n">Translator</span><span class="w"> </span><span class="o">*&gt;</span><span class="p">(</span><span class="n">obj</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<span class="p">};</span>
+
+<span class="p">}</span><span class="w"> </span><span class="c1">// namespace private_api</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">set_translator</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">Translator</span><span class="o">&gt;</span><span class="w"> </span><span class="n">obj</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_translate_set_translator</span><span class="p">(</span>
+<span class="w">            </span><span class="n">obj</span><span class="p">.</span><span class="n">get</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">private_api</span><span class="o">::</span><span class="n">TranslatorDispatcher</span><span class="o">::</span><span class="n">drop</span><span class="p">,</span>
+<span class="w">            </span><span class="o">&amp;</span><span class="n">private_api</span><span class="o">::</span><span class="n">TranslatorDispatcher</span><span class="o">::</span><span class="n">translate</span><span class="p">,</span>
+<span class="w">            </span><span class="o">&amp;</span><span class="n">private_api</span><span class="o">::</span><span class="n">TranslatorDispatcher</span><span class="o">::</span><span class="n">ntranslate</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">success</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">obj</span><span class="p">.</span><span class="n">release</span><span class="p">();</span><span class="w"> </span><span class="c1">// Ownership is moved to Rust.</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">success</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">#endif</span>
+
 <span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">update_all_translations</span><span class="p">()</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_translations_mark_dirty</span><span class="p">();</span>
 <span class="p">}</span>
-<span class="cp">#endif</span>
 
 <span class="kr">inline</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">select_bundled_translation</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">language</span><span class="p">)</span>
 <span class="p">{</span>

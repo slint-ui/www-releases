@@ -30,6 +30,8 @@ Program Listing for File slint.h
    #ifndef SLINT_FEATURE_FREESTANDING
    #    include <mutex>
    #    include <condition_variable>
+   #    include <cstdint>
+   #    include <memory>
    #endif
    
    namespace slint {
@@ -213,11 +215,12 @@ Program Listing for File slint.h
                        float spacing_h, float spacing_v, const cbindgen_private::Padding &padding_h,
                        const cbindgen_private::Padding &padding_v,
                        cbindgen_private::Orientation orientation,
-                       cbindgen_private::FlexDirection direction, float constraint_size)
+                       cbindgen_private::FlexDirection direction, float constraint_size,
+                       cbindgen_private::FlexWrap flex_wrap)
    {
        return cbindgen_private::slint_flexbox_layout_info(cells_h, cells_v, spacing_h, spacing_v,
                                                           &padding_h, &padding_v, orientation,
-                                                          direction, constraint_size);
+                                                          direction, constraint_size, flex_wrap);
    }
    
    template<typename T>
@@ -366,12 +369,64 @@ Program Listing for File slint.h
    
    } // namespace private_api
    
-   #ifdef SLINT_FEATURE_GETTEXT
+   // Translator API is currently considered experimental due to discussions
+   // about the returned string type (SharedString vs. Cow<str> etc.). Also it
+   // is not available with no_std due to the tr crate.
+   // See dicussion in https://github.com/slint-ui/slint/pull/10979.
+   #if defined(SLINT_FEATURE_EXPERIMENTAL) && !defined(SLINT_FEATURE_FREESTANDING)
+   struct Translator
+   {
+       virtual ~Translator() { }
+       virtual SharedString translate(std::string_view string, std::string_view context) const = 0;
+       virtual SharedString ntranslate(uint64_t n, std::string_view singular, std::string_view plural,
+                                       std::string_view context) const = 0;
+   };
+   
+   namespace private_api {
+   
+   struct TranslatorDispatcher
+   {
+       static void drop(const void *obj) { delete cast(obj); }
+   
+       static void translate(const void *obj, private_api::Slice<uint8_t> string,
+                             private_api::Slice<uint8_t> context, slint::SharedString *out)
+       {
+           *out = cast(obj)->translate(private_api::slice_to_string_view(string),
+                                       private_api::slice_to_string_view(context));
+       }
+   
+       static void ntranslate(const void *obj, uint64_t n, private_api::Slice<uint8_t> singular,
+                              private_api::Slice<uint8_t> plural, private_api::Slice<uint8_t> context,
+                              slint::SharedString *out)
+       {
+           *out = cast(obj)->ntranslate(n, private_api::slice_to_string_view(singular),
+                                        private_api::slice_to_string_view(plural),
+                                        private_api::slice_to_string_view(context));
+       }
+   
+   private:
+       static const Translator *cast(const void *obj) { return static_cast<const Translator *>(obj); }
+   };
+   
+   } // namespace private_api
+   
+   inline bool set_translator(std::unique_ptr<Translator> obj)
+   {
+       const bool success = cbindgen_private::slint_translate_set_translator(
+               obj.get(), &private_api::TranslatorDispatcher::drop,
+               &private_api::TranslatorDispatcher::translate,
+               &private_api::TranslatorDispatcher::ntranslate);
+       if (success) {
+           obj.release(); // Ownership is moved to Rust.
+       }
+       return success;
+   }
+   #endif
+   
    inline void update_all_translations()
    {
        cbindgen_private::slint_translations_mark_dirty();
    }
-   #endif
    
    inline bool select_bundled_translation(std::string_view language)
    {

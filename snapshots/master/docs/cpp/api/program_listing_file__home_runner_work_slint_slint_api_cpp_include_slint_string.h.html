@@ -690,6 +690,12 @@
 <span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">make_slice</span><span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="k">const</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*&gt;</span><span class="p">(</span><span class="n">str</span><span class="p">.</span><span class="n">data</span><span class="p">()),</span><span class="w"> </span><span class="n">str</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
 <span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">slice_to_string_view</span><span class="p">(</span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">Slice</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">str</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*&gt;</span><span class="p">(</span><span class="n">str</span><span class="p">.</span><span class="n">ptr</span><span class="p">),</span><span class="w"> </span><span class="n">str</span><span class="p">.</span><span class="n">len</span><span class="p">);</span>
+<span class="p">}</span>
+
 <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>

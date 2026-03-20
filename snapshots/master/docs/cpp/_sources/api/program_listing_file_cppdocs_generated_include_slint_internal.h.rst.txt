@@ -545,6 +545,7 @@ Program Listing for File slint_internal.h
        FlexDirection direction;
        FlexAlignContent align_content;
        FlexAlignItems align_items;
+       FlexWrap flex_wrap;
        Slice<LayoutItemInfo> cells_h;
        Slice<LayoutItemInfo> cells_v;
    };
@@ -924,6 +925,7 @@ Program Listing for File slint_internal.h
        Property<float> viewbox_y;
        Property<float> viewbox_width;
        Property<float> viewbox_height;
+       Property<ImageFit> fit_style;
        Property<bool> clip;
        Property<bool> anti_alias;
        CachedRenderingData cached_rendering_data;
@@ -1155,7 +1157,8 @@ Program Listing for File slint_internal.h
                                         const Padding *padding_v,
                                         Orientation orientation,
                                         FlexDirection direction,
-                                        float constraint_size);
+                                        float constraint_size,
+                                        FlexWrap flex_wrap);
    
    void slint_menus_create_wrapper(const ItemTreeRc *menu_tree,
                                    VRc<MenuVTable> *result,

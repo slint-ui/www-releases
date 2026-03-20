@@ -15,6 +15,8 @@ Program Listing for File slint_enums_internal.h
    #include "slint_enums.h"
    namespace slint::cbindgen_private {
    enum class TextHorizontalAlignment {
+       Start,
+       End,
        Left,
        Center,
        Right,
@@ -169,6 +171,11 @@ Program Listing for File slint_enums_internal.h
        Start,
        End,
        Center,
+   };
+   enum class FlexWrap {
+       Wrap,
+       NoWrap,
+       WrapReverse,
    };
    enum class PathEvent {
        Begin,

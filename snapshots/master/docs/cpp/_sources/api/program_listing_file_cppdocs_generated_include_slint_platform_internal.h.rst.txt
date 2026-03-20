@@ -115,6 +115,20 @@ Program Listing for File slint_platform_internal.h
    
    using SkiaRendererOpaque = const void*;
    
+   using DropCallback = void(*)(const void *obj);
+   
+   using TranslateCallback = void(*)(const void *obj,
+                                     Slice<uint8_t> string,
+                                     Slice<uint8_t> context,
+                                     SharedString *out);
+   
+   using NTranslateCallback = void(*)(const void *obj,
+                                      uint64_t n,
+                                      Slice<uint8_t> singular,
+                                      Slice<uint8_t> plural,
+                                      Slice<uint8_t> context,
+                                      SharedString *out);
+   
    extern "C" {
    
    void slint_windowrc_init(WindowAdapterRcOpaque *out);
@@ -278,6 +292,11 @@ Program Listing for File slint_platform_internal.h
    void slint_skia_renderer_render(SkiaRendererOpaque r);
    
    RendererPtr slint_skia_renderer_handle(SkiaRendererOpaque r);
+   
+   bool slint_translate_set_translator(const void *obj,
+                                       DropCallback drop,
+                                       TranslateCallback translate,
+                                       NTranslateCallback ntranslate);
    
    }  // extern "C"
    

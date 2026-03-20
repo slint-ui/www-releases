@@ -94,23 +94,27 @@
     </div>
     <a class="headerlink" href="#KeyboardModifiers"></a>
     
-            <div class="docstring"><p>Indicates which modifier keys are pressed during an event.</p>
+            <div class="docstring"><p>The <code><a href="#KeyboardModifiers">KeyboardModifiers</a></code> struct provides booleans to indicate possible modifier keys on a keyboard, such as Shift, Control, etc.
+ It is provided as part of <code>KeyEvent</code>'s <code>modifiers</code> field.</p>
 
-<p>On macOS, the Command key (⌘) is mapped to <code><a href="#KeyboardModifiers.control">control</a></code> and the Control key is mapped to <code><a href="#KeyboardModifiers.meta">meta</a></code>.
-On Windows, the Windows key is mapped to <code><a href="#KeyboardModifiers.meta">meta</a></code>.</p>
+<p>Keyboard shortcuts on Apple platforms typically use the Command key (⌘), such as Command+C for "Copy". On other platforms
+ the same shortcut is typically represented using Control+C. To make it easier to develop cross-platform applications, on macOS,
+ Slint maps the Command key to the control modifier, and the Control key to the meta modifier.</p>
+
+<p>On Windows, the Windows key is mapped to the meta modifier.</p>
 </div>
 
 
                             <div id="KeyboardModifiers.__init__" class="classattr">
                                 <div class="attr function">
             
-        <span class="name">KeyboardModifiers</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">shift</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">control</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">alt</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">meta</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span>)</span>
+        <span class="name">KeyboardModifiers</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">alt</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">control</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">shift</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">meta</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span>)</span>
 
         
     </div>
     <a class="headerlink" href="#KeyboardModifiers.__init__"></a>
     
-            <div class="docstring"><p>Create new instance of KeyboardModifiers(shift, control, alt, meta)</p>
+            <div class="docstring"><p>Create new instance of KeyboardModifiers(alt, control, shift, meta)</p>
 </div>
 
 
@@ -162,7 +166,7 @@ On Windows, the Windows key is mapped to <code><a href="#KeyboardModifiers.meta"
     </div>
     <a class="headerlink" href="#KeyboardModifiers.meta"></a>
     
-            <div class="docstring"><p>Indicates the Control key on macOS, and the Windows key on Windows.</p>
+            <div class="docstring"><p>Indicates the Control key on macos, and the Windows key on Windows.</p>
 </div>
 
 
