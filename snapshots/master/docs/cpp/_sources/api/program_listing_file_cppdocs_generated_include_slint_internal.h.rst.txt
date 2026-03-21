@@ -49,7 +49,7 @@ Program Listing for File slint_internal.h
            using types::IntRect;
            using types::Size;
            using types::MouseEvent;
-           using types::KeyboardShortcut;
+           using types::Keys;
        }
        template<typename ModelData> class Model;
    }
@@ -496,7 +496,6 @@ Program Listing for File slint_internal.h
    };
    
    struct MaybeShortcutList {
-   struct ShortcutList;
        const ShortcutList *_0;
    };
    
@@ -826,8 +825,8 @@ Program Listing for File slint_internal.h
        inline FocusScope(); inline ~FocusScope();
    };
    
-   struct Shortcut {
-       Property<KeyboardShortcut> keys;
+   struct KeyBinding {
+       Property<Keys> keys;
        Property<bool> enabled;
        private_api::CallbackHelper<void> activated;
        CachedRenderingData cached_rendering_data;
@@ -1011,20 +1010,18 @@ Program Listing for File slint_internal.h
                                    int32_t *m,
                                    int32_t *y);
    
-   void slint_keyboard_shortcut(const SharedString *key,
-                                bool alt,
-                                bool control,
-                                bool shift,
-                                bool meta,
-                                bool ignore_shift,
-                                bool ignore_alt,
-                                KeyboardShortcut *out);
+   void slint_keys(const SharedString *key,
+                   bool alt,
+                   bool control,
+                   bool shift,
+                   bool meta,
+                   bool ignore_shift,
+                   bool ignore_alt,
+                   Keys *out);
    
-   void slint_keyboard_shortcut_debug_string(const KeyboardShortcut *shortcut, SharedString *out);
+   void slint_keys_debug_string(const Keys *shortcut, SharedString *out);
    
-   void slint_keyboard_shortcut_to_string(const KeyboardShortcut *shortcut, SharedString *out);
-   
-   bool slint_keyboard_shortcut_matches(const KeyboardShortcut *shortcut, const KeyEvent *key_event);
+   void slint_keys_to_string(const Keys *shortcut, SharedString *out);
    
    void slint_register_item_tree(const ItemTreeRc *item_tree_rc,
                                  const WindowAdapterRcOpaque *window_handle);
@@ -1486,7 +1483,7 @@ Program Listing for File slint_internal.h
    SLINT_DECL_ITEM(ClippedImage);
    SLINT_DECL_ITEM(TouchArea);
    SLINT_DECL_ITEM(FocusScope);
-   SLINT_DECL_ITEM(Shortcut);
+   SLINT_DECL_ITEM(KeyBinding);
    SLINT_DECL_ITEM(SwipeGestureHandler);
    SLINT_DECL_ITEM(PinchGestureHandler);
    SLINT_DECL_ITEM(Flickable);

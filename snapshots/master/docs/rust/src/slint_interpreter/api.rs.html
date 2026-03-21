@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/api.rs`."><title>api.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-17e0aaed.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.96.0-nightly (bcf3d36c9 2026-03-19)" data-channel="nightly" data-search-js="search-63369b7b.js" data-stringdex-js="stringdex-2da4960a.js" data-settings-js="settings-170eb4bf.js" ><script src="../../static.files/storage-41dd4d93.js"></script><script defer src="../../static.files/src-script-813739b1.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-5013f961.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/api.rs`."><title>api.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-17e0aaed.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.96.0-nightly (ac7f9ec7d 2026-03-20)" data-channel="nightly" data-search-js="search-63369b7b.js" data-stringdex-js="stringdex-2da4960a.js" data-settings-js="settings-170eb4bf.js" ><script src="../../static.files/storage-41dd4d93.js"></script><script defer src="../../static.files/src-script-813739b1.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-5013f961.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -130,7 +130,7 @@
 <a href=#8 id=8 data-nosnippet>8</a><span class="attr">#[cfg(feature = <span class="string">"internal"</span>)]
 <a href=#9 id=9 data-nosnippet>9</a></span><span class="kw">use </span>i_slint_core::component_factory::FactoryContext;
 <a href=#10 id=10 data-nosnippet>10</a><span class="kw">use </span>i_slint_core::graphics::euclid::approxeq::ApproxEq <span class="kw">as _</span>;
-<a href=#11 id=11 data-nosnippet>11</a><span class="kw">use </span>i_slint_core::input::KeyboardShortcut;
+<a href=#11 id=11 data-nosnippet>11</a><span class="kw">use </span>i_slint_core::input::Keys;
 <a href=#12 id=12 data-nosnippet>12</a><span class="kw">use </span>i_slint_core::items::<span class="kw-2">*</span>;
 <a href=#13 id=13 data-nosnippet>13</a><span class="kw">use </span>i_slint_core::model::{Model, ModelExt, ModelRc};
 <a href=#14 id=14 data-nosnippet>14</a><span class="kw">use </span>i_slint_core::styled_text::StyledText;
@@ -260,8 +260,8 @@
 <a href=#138 id=138 data-nosnippet>138</a>    </span>StyledText(StyledText) = <span class="number">13</span>,
 <a href=#139 id=139 data-nosnippet>139</a>    <span class="attr">#[doc(hidden)]
 <a href=#140 id=140 data-nosnippet>140</a>    </span>ArrayOfU16(<a href="../../slint_interpreter/struct.SharedVector.html">SharedVector</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u16.html">u16</a>&gt;) = <span class="number">14</span>,
-<a href=#141 id=141 data-nosnippet>141</a>    <span class="doccomment">/// Correspond to the `keyboard-shortcut` type in .slint
-<a href=#142 id=142 data-nosnippet>142</a>    </span>KeyboardShortcut(KeyboardShortcut) = <span class="number">15</span>,
+<a href=#141 id=141 data-nosnippet>141</a>    <span class="doccomment">/// Correspond to the `keys` type in .slint
+<a href=#142 id=142 data-nosnippet>142</a>    </span>Keys(Keys) = <span class="number">15</span>,
 <a href=#143 id=143 data-nosnippet>143</a>}
 <a href=#144 id=144 data-nosnippet>144</a>
 <a href=#145 id=145 data-nosnippet>145</a><span class="kw">impl </span><a href="#102-143">Value</a> {
@@ -311,8 +311,8 @@
 <a href=#189 id=189 data-nosnippet>189</a>            Value::<a href="#138">StyledText</a>(lhs) =&gt; {
 <a href=#190 id=190 data-nosnippet>190</a>                <a href="https://doc.rust-lang.org/nightly/core/macro.matches.html">matches!</a>(other, Value::StyledText(rhs) <span class="kw">if </span>lhs == rhs)
 <a href=#191 id=191 data-nosnippet>191</a>            }
-<a href=#192 id=192 data-nosnippet>192</a>            Value::<a href="#142">KeyboardShortcut</a>(lhs) =&gt; {
-<a href=#193 id=193 data-nosnippet>193</a>                <a href="https://doc.rust-lang.org/nightly/core/macro.matches.html">matches!</a>(other, Value::KeyboardShortcut(rhs) <span class="kw">if </span>lhs == rhs)
+<a href=#192 id=192 data-nosnippet>192</a>            Value::<a href="#142">Keys</a>(lhs) =&gt; {
+<a href=#193 id=193 data-nosnippet>193</a>                <a href="https://doc.rust-lang.org/nightly/core/macro.matches.html">matches!</a>(other, Value::Keys(rhs) <span class="kw">if </span>lhs == rhs)
 <a href=#194 id=194 data-nosnippet>194</a>            }
 <a href=#195 id=195 data-nosnippet>195</a>        }
 <a href=#196 id=196 data-nosnippet>196</a>    }
@@ -342,7 +342,7 @@
 <a href=#220 id=220 data-nosnippet>220</a>            Value::<a href="#140">ArrayOfU16</a>(data) =&gt; {
 <a href=#221 id=221 data-nosnippet>221</a>                <a href="https://doc.rust-lang.org/nightly/core/macro.write.html">write!</a>(<a href="#200">f</a>, <span class="string">"Value::ArrayOfU16({data:?})"</span>)
 <a href=#222 id=222 data-nosnippet>222</a>            }
-<a href=#223 id=223 data-nosnippet>223</a>            Value::<a href="#142">KeyboardShortcut</a>(ks) =&gt; <a href="https://doc.rust-lang.org/nightly/core/macro.write.html">write!</a>(<a href="#200">f</a>, <span class="string">"Value::KeyboardShortcut({ks:?})"</span>),
+<a href=#223 id=223 data-nosnippet>223</a>            Value::<a href="#142">Keys</a>(ks) =&gt; <a href="https://doc.rust-lang.org/nightly/core/macro.write.html">write!</a>(<a href="#200">f</a>, <span class="string">"Value::Keys({ks:?})"</span>),
 <a href=#224 id=224 data-nosnippet>224</a>        }
 <a href=#225 id=225 data-nosnippet>225</a>    }
 <a href=#226 id=226 data-nosnippet>226</a>}
@@ -387,7 +387,7 @@
 <a href=#265 id=265 data-nosnippet>265</a><a href="#236-255">declare_value_conversion!</a>(ComponentFactory =&gt; [ComponentFactory] );
 <a href=#266 id=266 data-nosnippet>266</a><a href="#236-255">declare_value_conversion!</a>(StyledText =&gt; [StyledText] );
 <a href=#267 id=267 data-nosnippet>267</a><a href="#236-255">declare_value_conversion!</a>(ArrayOfU16 =&gt; [<a href="../../slint_interpreter/struct.SharedVector.html">SharedVector</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u16.html">u16</a>&gt;] );
-<a href=#268 id=268 data-nosnippet>268</a><a href="#236-255">declare_value_conversion!</a>(KeyboardShortcut =&gt; [KeyboardShortcut]);
+<a href=#268 id=268 data-nosnippet>268</a><a href="#236-255">declare_value_conversion!</a>(Keys =&gt; [Keys]);
 <a href=#269 id=269 data-nosnippet>269</a>
 <a href=#270 id=270 data-nosnippet>270</a><span class="doccomment">/// Implement From / TryFrom for Value that convert a `struct` to/from `Value::Struct`
 <a href=#271 id=271 data-nosnippet>271</a></span><span class="macro">macro_rules!</span> declare_value_struct_conversion {

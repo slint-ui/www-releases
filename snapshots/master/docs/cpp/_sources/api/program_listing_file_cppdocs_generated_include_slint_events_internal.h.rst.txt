@@ -409,19 +409,19 @@ Program Listing for File slint_events_internal.h
        }
    };
    
-   struct KeyboardShortcut {
+   struct Keys {
        SharedString key;
        KeyboardModifiers modifiers;
        bool ignore_shift;
        bool ignore_alt;
    
-       bool operator==(const KeyboardShortcut& other) const {
+       bool operator==(const Keys& other) const {
            return key == other.key &&
                   modifiers == other.modifiers &&
                   ignore_shift == other.ignore_shift &&
                   ignore_alt == other.ignore_alt;
        }
-       bool operator!=(const KeyboardShortcut& other) const {
+       bool operator!=(const Keys& other) const {
            return key != other.key ||
                   modifiers != other.modifiers ||
                   ignore_shift != other.ignore_shift ||

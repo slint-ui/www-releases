@@ -834,10 +834,10 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="kr">inline</span><span class="w"> </span><span class="n">SharedString</span><span class="w"> </span><span class="n">keyboard_shortcut_to_string</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">KeyboardShortcut</span><span class="w"> </span><span class="o">&amp;</span><span class="n">shortcut</span><span class="p">)</span>
+<span class="kr">inline</span><span class="w"> </span><span class="n">SharedString</span><span class="w"> </span><span class="n">keys_to_string</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">Keys</span><span class="w"> </span><span class="o">&amp;</span><span class="n">keys</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="n">SharedString</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
-<span class="w">    </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_keyboard_shortcut_to_string</span><span class="p">(</span><span class="o">&amp;</span><span class="n">shortcut</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">result</span><span class="p">);</span>
+<span class="w">    </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_keys_to_string</span><span class="p">(</span><span class="o">&amp;</span><span class="n">keys</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">result</span><span class="p">);</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
 <span class="p">}</span>
 
