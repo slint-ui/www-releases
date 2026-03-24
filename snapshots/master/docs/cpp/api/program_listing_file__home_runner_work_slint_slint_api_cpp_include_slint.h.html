@@ -496,12 +496,12 @@
 
 <span class="cp">#pragma once</span>
 
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;slint_internal.h&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;slint_platform_internal.h&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;slint_qt_internal.h&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;slint_window.h&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;slint_models.h&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;slint_item_tree.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;private/slint_internal.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;private/slint_platform_internal.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;private/slint_qt_internal.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;private/slint_window.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;private/slint_models.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;private/slint_item_tree.h&quot;</span>
 
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;chrono&gt;</span>
@@ -927,11 +927,11 @@
 
 <span class="n">cbindgen_private</span><span class="o">::</span><span class="n">FocusScope</span><span class="o">::</span><span class="n">FocusScope</span><span class="p">()</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="n">slint_maybe_shortcut_list_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">shortcuts</span><span class="p">);</span>
+<span class="w">    </span><span class="n">slint_maybe_key_binding_list_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">key_bindings</span><span class="p">);</span>
 <span class="p">}</span>
 <span class="n">cbindgen_private</span><span class="o">::</span><span class="n">FocusScope</span><span class="o">::~</span><span class="n">FocusScope</span><span class="p">()</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="n">slint_maybe_shortcut_list_free</span><span class="p">(</span><span class="o">&amp;</span><span class="n">shortcuts</span><span class="p">);</span>
+<span class="w">    </span><span class="n">slint_maybe_key_binding_list_free</span><span class="p">(</span><span class="o">&amp;</span><span class="n">key_bindings</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="n">cbindgen_private</span><span class="o">::</span><span class="n">NativeStyleMetrics</span><span class="o">::</span><span class="n">NativeStyleMetrics</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">)</span>

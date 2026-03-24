@@ -26,12 +26,22 @@ Directories
 .. toctree::
    :maxdepth: 5
 
+   dir__home_runner_work_slint_slint_api_cpp_include_private.rst
+
+.. toctree::
+   :maxdepth: 5
+
    dir_cppdocs.rst
 
 .. toctree::
    :maxdepth: 5
 
    dir_cppdocs_generated_include.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir_cppdocs_generated_include_private.rst
 
 Files
 *****
@@ -60,77 +70,77 @@ Files
 .. toctree::
    :maxdepth: 5
 
-   file__home_runner_work_slint_slint_api_cpp_include_slint_brush.h.rst
+   file__home_runner_work_slint_slint_api_cpp_include_private_slint_brush.h.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_cppdocs_generated_include_slint_brush_internal.h.rst
+   file_cppdocs_generated_include_private_slint_brush_internal.h.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_cppdocs_generated_include_slint_builtin_structs.h.rst
+   file_cppdocs_generated_include_private_slint_builtin_structs.h.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_cppdocs_generated_include_slint_builtin_structs_internal.h.rst
+   file_cppdocs_generated_include_private_slint_builtin_structs_internal.h.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file__home_runner_work_slint_slint_api_cpp_include_slint_callbacks.h.rst
+   file__home_runner_work_slint_slint_api_cpp_include_private_slint_callbacks.h.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file__home_runner_work_slint_slint_api_cpp_include_slint_color.h.rst
+   file__home_runner_work_slint_slint_api_cpp_include_private_slint_color.h.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_cppdocs_generated_include_slint_color_internal.h.rst
+   file_cppdocs_generated_include_private_slint_color_internal.h.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file__home_runner_work_slint_slint_api_cpp_include_slint_config.h.rst
+   file__home_runner_work_slint_slint_api_cpp_include_private_slint_config.h.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_cppdocs_generated_include_slint_enums.h.rst
+   file_cppdocs_generated_include_private_slint_enums.h.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_cppdocs_generated_include_slint_enums_internal.h.rst
+   file_cppdocs_generated_include_private_slint_enums_internal.h.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_cppdocs_generated_include_slint_events_internal.h.rst
+   file_cppdocs_generated_include_private_slint_events_internal.h.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_cppdocs_generated_include_slint_generated_public.h.rst
+   file_cppdocs_generated_include_private_slint_generated_public.h.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file__home_runner_work_slint_slint_api_cpp_include_slint_image.h.rst
+   file__home_runner_work_slint_slint_api_cpp_include_private_slint_image.h.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_cppdocs_generated_include_slint_image_internal.h.rst
+   file_cppdocs_generated_include_private_slint_image_internal.h.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_cppdocs_generated_include_slint_internal.h.rst
+   file_cppdocs_generated_include_private_slint_internal.h.rst
 
 .. toctree::
    :maxdepth: 5
@@ -140,112 +150,117 @@ Files
 .. toctree::
    :maxdepth: 5
 
-   file_cppdocs_generated_include_slint_interpreter_generated_public.h.rst
+   file_cppdocs_generated_include_private_slint_interpreter_generated_public.h.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_cppdocs_generated_include_slint_interpreter_internal.h.rst
+   file_cppdocs_generated_include_private_slint_interpreter_internal.h.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file__home_runner_work_slint_slint_api_cpp_include_slint_item_tree.h.rst
+   file__home_runner_work_slint_slint_api_cpp_include_private_slint_item_tree.h.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file__home_runner_work_slint_slint_api_cpp_include_slint_live_preview.h.rst
+   file__home_runner_work_slint_slint_api_cpp_include_private_slint_live_preview.h.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file__home_runner_work_slint_slint_api_cpp_include_slint_models.h.rst
+   file__home_runner_work_slint_slint_api_cpp_include_private_slint_models.h.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file__home_runner_work_slint_slint_api_cpp_include_slint_pathdata.h.rst
+   file__home_runner_work_slint_slint_api_cpp_include_private_slint_pathdata.h.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_cppdocs_generated_include_slint_pathdata_internal.h.rst
+   file_cppdocs_generated_include_private_slint_pathdata_internal.h.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_cppdocs_generated_include_slint_platform_internal.h.rst
+   file_cppdocs_generated_include_private_slint_platform_internal.h.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file__home_runner_work_slint_slint_api_cpp_include_slint_point.h.rst
+   file__home_runner_work_slint_slint_api_cpp_include_private_slint_point.h.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file__home_runner_work_slint_slint_api_cpp_include_slint_properties.h.rst
+   file__home_runner_work_slint_slint_api_cpp_include_private_slint_properties.h.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_cppdocs_generated_include_slint_properties_internal.h.rst
+   file_cppdocs_generated_include_private_slint_properties_internal.h.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_cppdocs_generated_include_slint_qt_internal.h.rst
+   file_cppdocs_generated_include_private_slint_qt_internal.h.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file__home_runner_work_slint_slint_api_cpp_include_slint_sharedvector.h.rst
+   file__home_runner_work_slint_slint_api_cpp_include_private_slint_sharedvector.h.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_cppdocs_generated_include_slint_sharedvector_internal.h.rst
+   file_cppdocs_generated_include_private_slint_sharedvector_internal.h.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file__home_runner_work_slint_slint_api_cpp_include_slint_size.h.rst
+   file__home_runner_work_slint_slint_api_cpp_include_private_slint_size.h.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file__home_runner_work_slint_slint_api_cpp_include_slint_string.h.rst
+   file__home_runner_work_slint_slint_api_cpp_include_private_slint_string.h.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_cppdocs_generated_include_slint_string_internal.h.rst
+   file_cppdocs_generated_include_private_slint_string_internal.h.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_cppdocs_generated_include_slint_testing_internal.h.rst
+   file_cppdocs_generated_include_private_slint_testing_internal.h.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file__home_runner_work_slint_slint_api_cpp_include_slint_tests_helpers.h.rst
+   file__home_runner_work_slint_slint_api_cpp_include_private_slint_tests_helpers.h.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file__home_runner_work_slint_slint_api_cpp_include_slint_timer.h.rst
+   file__home_runner_work_slint_slint_api_cpp_include_private_slint_timer.h.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_cppdocs_generated_include_slint_timer_internal.h.rst
+   file_cppdocs_generated_include_private_slint_timer_internal.h.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file__home_runner_work_slint_slint_api_cpp_include_slint_window.h.rst
+   file__home_runner_work_slint_slint_api_cpp_include_private_slint_window.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file__home_runner_work_slint_slint_api_cpp_include_private_vtable.h.rst
 
 Pages
 *****

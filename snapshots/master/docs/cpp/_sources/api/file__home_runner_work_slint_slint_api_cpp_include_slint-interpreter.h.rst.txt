@@ -27,9 +27,9 @@ Includes
 
 - ``optional``
 
-- ``slint.h`` (:ref:`file__home_runner_work_slint_slint_api_cpp_include_slint.h`)
+- ``private/slint_interpreter_internal.h`` (:ref:`file_cppdocs_generated_include_private_slint_interpreter_internal.h`)
 
-- ``slint_interpreter_internal.h`` (:ref:`file_cppdocs_generated_include_slint_interpreter_internal.h`)
+- ``slint.h`` (:ref:`file__home_runner_work_slint_slint_api_cpp_include_slint.h`)
 
 
 

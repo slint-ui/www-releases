@@ -1,0 +1,38 @@
+.. _dir__home_runner_work_slint_slint_api_cpp_include_private:
+
+
+Directory private
+=================
+
+
+|exhale_lsh| :ref:`Parent directory <dir__home_runner_work_slint_slint_api_cpp_include>` (``/home/runner/work/slint/slint/api/cpp/include``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+
+*Directory path:* ``/home/runner/work/slint/slint/api/cpp/include/private``
+
+
+Files
+-----
+
+- :ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_brush.h`
+- :ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_callbacks.h`
+- :ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_color.h`
+- :ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_config.h`
+- :ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_image.h`
+- :ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_item_tree.h`
+- :ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_live_preview.h`
+- :ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_models.h`
+- :ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_pathdata.h`
+- :ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_point.h`
+- :ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_properties.h`
+- :ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_sharedvector.h`
+- :ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_size.h`
+- :ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_string.h`
+- :ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_tests_helpers.h`
+- :ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_timer.h`
+- :ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_window.h`
+- :ref:`file__home_runner_work_slint_slint_api_cpp_include_private_vtable.h`
+
+

@@ -3,7 +3,7 @@
 Template Struct Point
 =====================
 
-- Defined in :ref:`file__home_runner_work_slint_slint_api_cpp_include_slint_point.h`
+- Defined in :ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_point.h`
 
 
 Struct Documentation

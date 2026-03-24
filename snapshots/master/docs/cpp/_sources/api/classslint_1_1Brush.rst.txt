@@ -3,7 +3,7 @@
 Class Brush
 ===========
 
-- Defined in :ref:`file__home_runner_work_slint_slint_api_cpp_include_slint_brush.h`
+- Defined in :ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_brush.h`
 
 
 Class Documentation

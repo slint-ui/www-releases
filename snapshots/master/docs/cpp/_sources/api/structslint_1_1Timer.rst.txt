@@ -3,7 +3,7 @@
 Struct Timer
 ============
 
-- Defined in :ref:`file__home_runner_work_slint_slint_api_cpp_include_slint_timer.h`
+- Defined in :ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_timer.h`
 
 
 Struct Documentation

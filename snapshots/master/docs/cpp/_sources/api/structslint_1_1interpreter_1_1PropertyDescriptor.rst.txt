@@ -3,7 +3,7 @@
 Struct PropertyDescriptor
 =========================
 
-- Defined in :ref:`file_cppdocs_generated_include_slint_interpreter_generated_public.h`
+- Defined in :ref:`file_cppdocs_generated_include_private_slint_interpreter_generated_public.h`
 
 
 Struct Documentation

@@ -29,21 +29,21 @@ Includes
 
 - ``concepts``
 
-- ``slint_internal.h`` (:ref:`file_cppdocs_generated_include_slint_internal.h`)
+- ``private/slint_internal.h`` (:ref:`file_cppdocs_generated_include_private_slint_internal.h`)
 
-- ``slint_item_tree.h`` (:ref:`file__home_runner_work_slint_slint_api_cpp_include_slint_item_tree.h`)
+- ``private/slint_item_tree.h`` (:ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_item_tree.h`)
 
-- ``slint_models.h`` (:ref:`file__home_runner_work_slint_slint_api_cpp_include_slint_models.h`)
+- ``private/slint_models.h`` (:ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_models.h`)
 
-- ``slint_platform_internal.h`` (:ref:`file_cppdocs_generated_include_slint_platform_internal.h`)
+- ``private/slint_platform_internal.h`` (:ref:`file_cppdocs_generated_include_private_slint_platform_internal.h`)
 
-- ``slint_qt_internal.h`` (:ref:`file_cppdocs_generated_include_slint_qt_internal.h`)
+- ``private/slint_qt_internal.h`` (:ref:`file_cppdocs_generated_include_private_slint_qt_internal.h`)
 
-- ``slint_window.h`` (:ref:`file__home_runner_work_slint_slint_api_cpp_include_slint_window.h`)
+- ``private/slint_window.h`` (:ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_window.h`)
 
 - ``span``
 
-- ``vector`` (:ref:`file__home_runner_work_slint_slint_api_cpp_include_slint_sharedvector.h`)
+- ``vector`` (:ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_sharedvector.h`)
 
 
 
@@ -51,7 +51,7 @@ Included By
 -----------
 
 
-- :ref:`file__home_runner_work_slint_slint_api_cpp_include_slint_live_preview.h`
+- :ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_live_preview.h`
 
 
 

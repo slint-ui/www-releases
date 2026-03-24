@@ -3,7 +3,7 @@
 Typedef NSView
 ==============
 
-- Defined in :ref:`file__home_runner_work_slint_slint_api_cpp_include_slint_window.h`
+- Defined in :ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_window.h`
 
 
 Typedef Documentation

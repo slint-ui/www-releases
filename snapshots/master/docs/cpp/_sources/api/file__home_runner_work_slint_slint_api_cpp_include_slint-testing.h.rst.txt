@@ -29,9 +29,9 @@ Includes
 
 - ``optional``
 
-- ``slint.h`` (:ref:`file__home_runner_work_slint_slint_api_cpp_include_slint.h`)
+- ``private/slint_testing_internal.h`` (:ref:`file_cppdocs_generated_include_private_slint_testing_internal.h`)
 
-- ``slint_testing_internal.h`` (:ref:`file_cppdocs_generated_include_slint_testing_internal.h`)
+- ``slint.h`` (:ref:`file__home_runner_work_slint_slint_api_cpp_include_slint.h`)
 
 - ``string_view``
 
@@ -43,7 +43,7 @@ Included By
 -----------
 
 
-- :ref:`file__home_runner_work_slint_slint_api_cpp_include_slint_tests_helpers.h`
+- :ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_tests_helpers.h`
 
 
 

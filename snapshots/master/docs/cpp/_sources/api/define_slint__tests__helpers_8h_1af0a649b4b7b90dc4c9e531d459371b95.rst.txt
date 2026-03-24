@@ -3,7 +3,7 @@
 Define assert_eq
 ================
 
-- Defined in :ref:`file__home_runner_work_slint_slint_api_cpp_include_slint_tests_helpers.h`
+- Defined in :ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_tests_helpers.h`
 
 
 Define Documentation

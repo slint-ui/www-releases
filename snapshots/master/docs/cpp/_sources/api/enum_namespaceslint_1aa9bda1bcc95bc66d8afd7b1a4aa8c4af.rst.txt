@@ -3,7 +3,7 @@
 Enum RenderingState
 ===================
 
-- Defined in :ref:`file_cppdocs_generated_include_slint_generated_public.h`
+- Defined in :ref:`file_cppdocs_generated_include_private_slint_generated_public.h`
 
 
 Enum Documentation
