@@ -169,6 +169,8 @@ Program Listing for File slint_platform_internal.h
                              Slice<StyledText> args,
                              StyledText *out);
    
+   void slint_open_url(const SharedString *url, const WindowAdapterRcOpaque *win);
+   
    void slint_string_to_styled_text(SharedString text, StyledText *out);
    
    void slint_window_properties_get_title(const WindowProperties *wp, SharedString *out);

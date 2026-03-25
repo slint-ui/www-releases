@@ -21,6 +21,13 @@ Program Listing for File slint_builtin_structs.h
        friend bool operator==(const KeyboardModifiers&, const KeyboardModifiers&) = default;
        friend bool operator!=(const KeyboardModifiers&, const KeyboardModifiers&) = default;
    };
+   struct KeyEvent {
+       SharedString text;
+       KeyboardModifiers modifiers;
+       bool repeat;
+       friend bool operator==(const KeyEvent&, const KeyEvent&) = default;
+       friend bool operator!=(const KeyEvent&, const KeyEvent&) = default;
+   };
    struct StandardListViewItem {
        SharedString text;
        friend bool operator==(const StandardListViewItem&, const StandardListViewItem&) = default;

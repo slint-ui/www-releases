@@ -129,6 +129,8 @@ Program Listing for File slint_internal.h
    
    struct FlickableData;
    
+   struct InternalKeyEvent;
+   
    struct ItemRendererRef;
    
    struct KeyBindingList;
@@ -225,11 +227,11 @@ Program Listing for File slint_internal.h
                                        const WindowAdapterRc *window_adapter,
                                        const ItemRc *self_rc);
        KeyEventResult (*capture_key_event)(Pin<VRef<ItemVTable>>,
-                                           const KeyEvent*,
+                                           const InternalKeyEvent*,
                                            const WindowAdapterRc *window_adapter,
                                            const ItemRc *self_rc);
        KeyEventResult (*key_event)(Pin<VRef<ItemVTable>>,
-                                   const KeyEvent*,
+                                   const InternalKeyEvent*,
                                    const WindowAdapterRc *window_adapter,
                                    const ItemRc *self_rc);
        RenderingResult (*render)(Pin<VRef<ItemVTable>>,

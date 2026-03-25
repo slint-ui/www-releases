@@ -52,6 +52,24 @@
 
             </li>
             <li>
+                    <a class="class" href="#KeyEvent">KeyEvent</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="function" href="#KeyEvent.__init__">KeyEvent</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#KeyEvent.text">text</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#KeyEvent.modifiers">modifiers</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#KeyEvent.repeat">repeat</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
                     <a class="class" href="#StandardListViewItem">StandardListViewItem</a>
                             <ul class="memberlist">
                         <li>
@@ -95,7 +113,7 @@
     <a class="headerlink" href="#KeyboardModifiers"></a>
     
             <div class="docstring"><p>The <code><a href="#KeyboardModifiers">KeyboardModifiers</a></code> struct provides booleans to indicate possible modifier keys on a keyboard, such as Shift, Control, etc.
- It is provided as part of <code>KeyEvent</code>'s <code>modifiers</code> field.</p>
+ It is provided as part of <code><a href="#KeyEvent">KeyEvent</a></code>'s <code>modifiers</code> field.</p>
 
 <p>Keyboard shortcuts on Apple platforms typically use the Command key (⌘), such as Command+C for "Copy". On other platforms
  the same shortcut is typically represented using Control+C. To make it easier to develop cross-platform applications, on macOS,
@@ -167,6 +185,75 @@
     <a class="headerlink" href="#KeyboardModifiers.meta"></a>
     
             <div class="docstring"><p>Indicates the Control key on macos, and the Windows key on Windows.</p>
+</div>
+
+
+                            </div>
+                </section>
+                <section id="KeyEvent">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">KeyEvent</span><wbr>(<span class="base">builtins.tuple</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#KeyEvent"></a>
+    
+            <div class="docstring"><p>This structure is generated and passed to the key press and release callbacks of the <code>FocusScope</code> element.</p>
+</div>
+
+
+                            <div id="KeyEvent.__init__" class="classattr">
+                                <div class="attr function">
+            
+        <span class="name">KeyEvent</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">text</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>, </span><span class="param"><span class="n">modifiers</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="kc">None</span>, </span><span class="param"><span class="n">repeat</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span>)</span>
+
+        
+    </div>
+    <a class="headerlink" href="#KeyEvent.__init__"></a>
+    
+            <div class="docstring"><p>Create new instance of KeyEvent(text, modifiers, repeat)</p>
+</div>
+
+
+                            </div>
+                            <div id="KeyEvent.text" class="classattr">
+                                <div class="attr variable">
+            <span class="name">text</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#KeyEvent.text"></a>
+    
+            <div class="docstring"><p>The unicode representation of the key pressed.</p>
+</div>
+
+
+                            </div>
+                            <div id="KeyEvent.modifiers" class="classattr">
+                                <div class="attr variable">
+            <span class="name">modifiers</span><span class="annotation">: Any</span>
+
+        
+    </div>
+    <a class="headerlink" href="#KeyEvent.modifiers"></a>
+    
+            <div class="docstring"><p>The keyboard modifiers active at the time of the key press event.</p>
+</div>
+
+
+                            </div>
+                            <div id="KeyEvent.repeat" class="classattr">
+                                <div class="attr variable">
+            <span class="name">repeat</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#KeyEvent.repeat"></a>
+    
+            <div class="docstring"><p>This field is set to true for key press events that are repeated,
+ i.e. the key is held down. It's always false for key release events.</p>
 </div>
 
 

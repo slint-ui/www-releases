@@ -34,19 +34,7 @@ Program Listing for File slint_builtin_structs_internal.h
        friend bool operator==(const PointerScrollEvent&, const PointerScrollEvent&) = default;
        friend bool operator!=(const PointerScrollEvent&, const PointerScrollEvent&) = default;
    };
-   struct KeyEvent {
-       SharedString text;
-       KeyboardModifiers modifiers;
-       bool repeat;
-       KeyEventType event_type;
-       std::tuple<int32_t, int32_t, int32_t> replacement_range;
-       SharedString preedit_text;
-       std::tuple<int32_t, int32_t, int32_t> preedit_selection;
-       std::pair<int32_t, int32_t> cursor_position;
-       std::pair<int32_t, int32_t> anchor_position;
-       friend bool operator==(const KeyEvent&, const KeyEvent&) = default;
-       friend bool operator!=(const KeyEvent&, const KeyEvent&) = default;
-   };
+   using slint::language::KeyEvent;
    struct DropEvent {
        SharedString mime_type;
        SharedString data;
