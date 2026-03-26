@@ -71,6 +71,23 @@ Program Listing for File slint_properties_internal.h
        }
    };
    
+   struct StateInfo {
+       int32_t current_state;
+       int32_t previous_state;
+       uint64_t change_time;
+   
+       bool operator==(const StateInfo& other) const {
+           return current_state == other.current_state &&
+                  previous_state == other.previous_state &&
+                  change_time == other.change_time;
+       }
+       bool operator!=(const StateInfo& other) const {
+           return current_state != other.current_state ||
+                  previous_state != other.previous_state ||
+                  change_time != other.change_time;
+       }
+   };
+   
    extern "C" {
    
    void slint_property_init(PropertyHandleOpaque *out);

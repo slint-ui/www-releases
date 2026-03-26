@@ -800,11 +800,16 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="kr">inline</span><span class="w"> </span><span class="n">StyledText</span><span class="w"> </span><span class="n">string_to_styled_text</span><span class="p">(</span><span class="n">SharedString</span><span class="w"> </span><span class="n">text</span><span class="p">)</span>
+<span class="kr">inline</span><span class="w"> </span><span class="n">StyledText</span><span class="w"> </span><span class="n">string_to_styled_text</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">SharedString</span><span class="w"> </span><span class="o">&amp;</span><span class="n">text</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="n">StyledText</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
-<span class="w">    </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_string_to_styled_text</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">result</span><span class="p">);</span>
+<span class="w">    </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_string_to_styled_text</span><span class="p">(</span><span class="o">&amp;</span><span class="n">text</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">result</span><span class="p">);</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">open_url</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">SharedString</span><span class="w"> </span><span class="o">&amp;</span><span class="n">url</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">WindowAdapterRc</span><span class="w"> </span><span class="o">&amp;</span><span class="n">window_adapter</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_open_url</span><span class="p">(</span><span class="o">&amp;</span><span class="n">url</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">window_adapter</span><span class="p">.</span><span class="n">handle</span><span class="p">());</span>
 <span class="p">}</span>
 
 <span class="kr">inline</span><span class="w"> </span><span class="n">SharedString</span><span class="w"> </span><span class="n">translate_from_bundle</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">span</span><span class="o">&lt;</span><span class="k">const</span><span class="w"> </span><span class="kt">char8_t</span><span class="w"> </span><span class="o">*</span><span class="k">const</span><span class="o">&gt;</span><span class="w"> </span><span class="n">strs</span><span class="p">,</span>

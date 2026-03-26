@@ -52,13 +52,6 @@ Program Listing for File slint_builtin_structs_internal.h
        friend bool operator==(const TableColumn&, const TableColumn&) = default;
        friend bool operator!=(const TableColumn&, const TableColumn&) = default;
    };
-   struct StateInfo {
-       int32_t current_state;
-       int32_t previous_state;
-       uint64_t change_time;
-       friend bool operator==(const StateInfo&, const StateInfo&) = default;
-       friend bool operator!=(const StateInfo&, const StateInfo&) = default;
-   };
    struct FontMetrics {
        float ascent;
        float descent;
