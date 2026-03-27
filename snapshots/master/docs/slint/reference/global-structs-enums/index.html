@@ -261,6 +261,9 @@ depends on the role and the platform.</p>
 <li><strong><code>start</code></strong>:  Lines are placed at the start of the cross axis.</li>
 <li><strong><code>end</code></strong>:  Lines are placed at the end of the cross axis.</li>
 <li><strong><code>center</code></strong>:  Lines are centered along the cross axis.</li>
+<li><strong><code>space-between</code></strong>:  Equal gaps between lines, no gap at the edges.</li>
+<li><strong><code>space-around</code></strong>:  Equal gaps around each line (half-size at edges).</li>
+<li><strong><code>space-evenly</code></strong>:  Equal gaps between lines and at the edges.</li>
 </ul>
 <div class="sl-heading-wrapper level-h3"><h3 id="flexalignitems">FlexAlignItems</h3><a class="sl-anchor-link" href="#flexalignitems"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “FlexAlignItems”</span></a></div>
 <!-- Generated with `cargo xtask slintdocs` from internal/commons/enums.rs -->
@@ -305,12 +308,12 @@ depends on the role and the platform.</p>
 <div class="sl-heading-wrapper level-h3"><h3 id="imagefit">ImageFit</h3><a class="sl-anchor-link" href="#imagefit"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “ImageFit”</span></a></div>
 <!-- Generated with `cargo xtask slintdocs` from internal/commons/enums.rs -->
 <p><code>ImageFit</code></p>
-<p>This enum defines how the source image shall fit into an <code>Image</code> element.</p>
+<p>This enum defines how the source image or path shall fit into an <code>Image</code> or <code>Path</code> element.</p>
 <ul>
-<li><strong><code>fill</code></strong>:  Scales and stretches the source image to fit the width and height of the <code>Image</code> element.</li>
-<li><strong><code>contain</code></strong>:  The source image is scaled to fit into the <code>Image</code> element’s dimension while preserving the aspect ratio.</li>
-<li><strong><code>cover</code></strong>:  The source image is scaled to cover into the <code>Image</code> element’s dimension while preserving the aspect ratio. If the aspect ratio of the source image doesn’t match the element’s one, then the image will be clipped to fit.</li>
-<li><strong><code>preserve</code></strong>:  Preserves the size of the source image in logical pixels. The source image will still be scaled by the scale factor that applies to all elements in the window. Any extra space will be left blank.</li>
+<li><strong><code>fill</code></strong>:  Scales and stretches the source to fit the width and height of the element.</li>
+<li><strong><code>contain</code></strong>:  The source is scaled to fit into the element’s dimensions while preserving the aspect ratio.</li>
+<li><strong><code>cover</code></strong>:  The source is scaled to cover the element’s dimensions while preserving the aspect ratio. If the aspect ratios don’t match, the source will be clipped to fit.</li>
+<li><strong><code>preserve</code></strong>:  Preserves the size of the source in logical pixels. The source will still be scaled by the scale factor that applies to all elements in the window. Any extra space will be left blank.</li>
 </ul>
 <div class="sl-heading-wrapper level-h3"><h3 id="imagehorizontalalignment">ImageHorizontalAlignment</h3><a class="sl-anchor-link" href="#imagehorizontalalignment"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “ImageHorizontalAlignment”</span></a></div>
 <!-- Generated with `cargo xtask slintdocs` from internal/commons/enums.rs -->
