@@ -4715,7 +4715,7 @@ DEALINGS IN THE SOFTWARE.
 
 #### Used by:
 
-- [femtovg 0.21.0]( https://github.com/femtovg/femtovg )
+- [femtovg 0.22.0]( https://github.com/femtovg/femtovg )
 
 #### License Text
 

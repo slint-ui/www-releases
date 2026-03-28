@@ -526,6 +526,9 @@ Program Listing for File slint_internal.h
    
    struct LayoutItemInfo {
        LayoutInfo constraint;
+       float flex_grow;
+       float flex_shrink;
+       float flex_basis;
    };
    
    struct BoxLayoutData {
@@ -835,7 +838,7 @@ Program Listing for File slint_internal.h
        CachedRenderingData cached_rendering_data;
    };
    
-   struct PinchGestureHandler {
+   struct ScaleRotateGestureHandler {
        Property<bool> enabled;
        Property<bool> active;
        Property<float> scale;
@@ -845,7 +848,6 @@ Program Listing for File slint_internal.h
        private_api::CallbackHelper<void> updated;
        private_api::CallbackHelper<void> ended;
        private_api::CallbackHelper<void> cancelled;
-       private_api::CallbackHelper<void> smart_magnify;
        CachedRenderingData cached_rendering_data;
    };
    
@@ -927,7 +929,7 @@ Program Listing for File slint_internal.h
        Property<float> viewbox_y;
        Property<float> viewbox_width;
        Property<float> viewbox_height;
-       Property<ImageFit> fit_style;
+       Property<ImageFit> fit;
        Property<bool> clip;
        Property<bool> anti_alias;
        CachedRenderingData cached_rendering_data;
@@ -1488,7 +1490,7 @@ Program Listing for File slint_internal.h
    SLINT_DECL_ITEM(FocusScope);
    SLINT_DECL_ITEM(KeyBinding);
    SLINT_DECL_ITEM(SwipeGestureHandler);
-   SLINT_DECL_ITEM(PinchGestureHandler);
+   SLINT_DECL_ITEM(ScaleRotateGestureHandler);
    SLINT_DECL_ITEM(Flickable);
    SLINT_DECL_ITEM(SimpleText);
    SLINT_DECL_ITEM(StyledTextItem);

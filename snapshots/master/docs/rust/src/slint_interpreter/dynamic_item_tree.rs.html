@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/dynamic_item_tree.rs`."><title>dynamic_item_tree.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-17e0aaed.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.96.0-nightly (23903d01c 2026-03-26)" data-channel="nightly" data-search-js="search-63369b7b.js" data-stringdex-js="stringdex-2da4960a.js" data-settings-js="settings-170eb4bf.js" ><script src="../../static.files/storage-41dd4d93.js"></script><script defer src="../../static.files/src-script-813739b1.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-5013f961.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/dynamic_item_tree.rs`."><title>dynamic_item_tree.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-17e0aaed.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.96.0-nightly (fda6d37bb 2026-03-27)" data-channel="nightly" data-search-js="search-63369b7b.js" data-stringdex-js="stringdex-2da4960a.js" data-settings-js="settings-170eb4bf.js" ><script src="../../static.files/storage-41dd4d93.js"></script><script defer src="../../static.files/src-script-813739b1.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-5013f961.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -310,13 +310,13 @@
 <a href=#188 id=188 data-nosnippet>188</a>            <span class="kw">let </span>children = <a href="#186">root_element</a>.<a href="https://doc.rust-lang.org/nightly/core/cell/struct.RefCell.html#method.borrow">borrow</a>().children.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>();
 <a href=#189 id=189 data-nosnippet>189</a>            <span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(child_elem) = <a href="#188">children</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.get">get</a>(<a href="#184">index</a>) {
 <a href=#190 id=190 data-nosnippet>190</a>                <span class="comment">// Get the layout info for this child element
-<a href=#191 id=191 data-nosnippet>191</a>                </span><span class="kw">let </span>layout_info = <span class="kw">crate</span>::eval_layout::<a href="eval_layout.rs.html#884-909">get_layout_info</a>(
+<a href=#191 id=191 data-nosnippet>191</a>                </span><span class="kw">let </span>layout_info = <span class="kw">crate</span>::eval_layout::<a href="eval_layout.rs.html#903-928">get_layout_info</a>(
 <a href=#192 id=192 data-nosnippet>192</a>                    <a href="#189">child_elem</a>,
 <a href=#193 id=193 data-nosnippet>193</a>                    <a href="#185">instance_ref</a>,
 <a href=#194 id=194 data-nosnippet>194</a>                    <span class="kw-2">&amp;</span><a href="#185">instance_ref</a>.<a href="#2444-2457">window_adapter</a>(),
 <a href=#195 id=195 data-nosnippet>195</a>                    <span class="kw">crate</span>::eval_layout::<a href="eval_layout.rs.html#30-35">from_runtime</a>(<a href="#178">o</a>),
 <a href=#196 id=196 data-nosnippet>196</a>                );
-<a href=#197 id=197 data-nosnippet>197</a>                <span class="kw">return </span>LayoutItemInfo { constraint: <a href="#191">layout_info</a> };
+<a href=#197 id=197 data-nosnippet>197</a>                <span class="kw">return </span>LayoutItemInfo { constraint: <a href="#191">layout_info</a>, ..Default::<a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default">default</a>() };
 <a href=#198 id=198 data-nosnippet>198</a>            } <span class="kw">else </span>{
 <a href=#199 id=199 data-nosnippet>199</a>                <a href="https://doc.rust-lang.org/nightly/std/macro.panic.html">panic!</a>(
 <a href=#200 id=200 data-nosnippet>200</a>                    <span class="string">"child_index {} out of bounds for repeated item {}"</span>,
@@ -326,7 +326,7 @@
 <a href=#204 id=204 data-nosnippet>204</a>            }
 <a href=#205 id=205 data-nosnippet>205</a>        }
 <a href=#206 id=206 data-nosnippet>206</a>
-<a href=#207 id=207 data-nosnippet>207</a>        LayoutItemInfo { constraint: <a class="self" href="#177">self</a>.<a href="#1930-1933">borrow</a>().<a href="https://doc.rust-lang.org/nightly/core/pin/struct.Pin.html#method.as_ref">as_ref</a>().layout_info(<a href="#178">o</a>) }
+<a href=#207 id=207 data-nosnippet>207</a>        LayoutItemInfo { constraint: <a class="self" href="#177">self</a>.<a href="#1930-1933">borrow</a>().<a href="https://doc.rust-lang.org/nightly/core/pin/struct.Pin.html#method.as_ref">as_ref</a>().layout_info(<a href="#178">o</a>), ..Default::<a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default">default</a>() }
 <a href=#208 id=208 data-nosnippet>208</a>    }
 <a href=#209 id=209 data-nosnippet>209</a>}
 <a href=#210 id=210 data-nosnippet>210</a>
@@ -1158,7 +1158,7 @@
 <a href=#1036 id=1036 data-nosnippet>1036</a>            rtti_for::&lt;FocusScope&gt;(),
 <a href=#1037 id=1037 data-nosnippet>1037</a>            rtti_for::&lt;KeyBinding&gt;(),
 <a href=#1038 id=1038 data-nosnippet>1038</a>            rtti_for::&lt;SwipeGestureHandler&gt;(),
-<a href=#1039 id=1039 data-nosnippet>1039</a>            rtti_for::&lt;PinchGestureHandler&gt;(),
+<a href=#1039 id=1039 data-nosnippet>1039</a>            rtti_for::&lt;ScaleRotateGestureHandler&gt;(),
 <a href=#1040 id=1040 data-nosnippet>1040</a>            rtti_for::&lt;Path&gt;(),
 <a href=#1041 id=1041 data-nosnippet>1041</a>            rtti_for::&lt;Flickable&gt;(),
 <a href=#1042 id=1042 data-nosnippet>1042</a>            rtti_for::&lt;WindowItem&gt;(),
@@ -2136,7 +2136,7 @@
 <a href=#2014 id=2014 data-nosnippet>2014</a>    </span><span class="kw">let </span>instance_ref = <span class="kw">unsafe </span>{ <a href="#2395-2398">InstanceRef</a>::<a href="#2401-2415">from_pin_ref</a>(<a href="#2011">component</a>, <a href="#2012">guard</a>) };
 <a href=#2015 id=2015 data-nosnippet>2015</a>    <span class="kw">let </span>orientation = <span class="kw">crate</span>::eval_layout::<a href="eval_layout.rs.html#30-35">from_runtime</a>(<a href="#2011">orientation</a>);
 <a href=#2016 id=2016 data-nosnippet>2016</a>
-<a href=#2017 id=2017 data-nosnippet>2017</a>    <span class="kw">let </span><span class="kw-2">mut </span>result = <span class="kw">crate</span>::eval_layout::<a href="eval_layout.rs.html#884-909">get_layout_info</a>(
+<a href=#2017 id=2017 data-nosnippet>2017</a>    <span class="kw">let </span><span class="kw-2">mut </span>result = <span class="kw">crate</span>::eval_layout::<a href="eval_layout.rs.html#903-928">get_layout_info</a>(
 <a href=#2018 id=2018 data-nosnippet>2018</a>        <span class="kw-2">&amp;</span><a href="#2014">instance_ref</a>.description.original.root_element,
 <a href=#2019 id=2019 data-nosnippet>2019</a>        <a href="#2014">instance_ref</a>,
 <a href=#2020 id=2020 data-nosnippet>2020</a>        <span class="kw-2">&amp;</span><a href="#2014">instance_ref</a>.<a href="#2444-2457">window_adapter</a>(),
@@ -2145,7 +2145,7 @@
 <a href=#2023 id=2023 data-nosnippet>2023</a>
 <a href=#2024 id=2024 data-nosnippet>2024</a>    <span class="kw">let </span>constraints = <a href="#2014">instance_ref</a>.description.original.root_constraints.<a href="https://doc.rust-lang.org/nightly/core/cell/struct.RefCell.html#method.borrow">borrow</a>();
 <a href=#2025 id=2025 data-nosnippet>2025</a>    <span class="kw">if </span><a href="#2024">constraints</a>.has_explicit_restrictions(<a href="#2015">orientation</a>) {
-<a href=#2026 id=2026 data-nosnippet>2026</a>        <span class="kw">crate</span>::eval_layout::<a href="eval_layout.rs.html#826-881">fill_layout_info_constraints</a>(
+<a href=#2026 id=2026 data-nosnippet>2026</a>        <span class="kw">crate</span>::eval_layout::<a href="eval_layout.rs.html#845-900">fill_layout_info_constraints</a>(
 <a href=#2027 id=2027 data-nosnippet>2027</a>            <span class="kw-2">&amp;mut </span><a href="#2017">result</a>,
 <a href=#2028 id=2028 data-nosnippet>2028</a>            <span class="kw-2">&amp;</span><a href="#2024">constraints</a>,
 <a href=#2029 id=2029 data-nosnippet>2029</a>            <a href="#2015">orientation</a>,

@@ -1008,6 +1008,9 @@
 
 <span class="k">struct</span><span class="w"> </span><span class="nc">LayoutItemInfo</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">LayoutInfo</span><span class="w"> </span><span class="n">constraint</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">flex_grow</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">flex_shrink</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">flex_basis</span><span class="p">;</span>
 <span class="p">};</span>
 
 <span class="k">struct</span><span class="w"> </span><span class="nc">BoxLayoutData</span><span class="w"> </span><span class="p">{</span>
@@ -1317,7 +1320,7 @@
 <span class="w">    </span><span class="n">CachedRenderingData</span><span class="w"> </span><span class="n">cached_rendering_data</span><span class="p">;</span>
 <span class="p">};</span>
 
-<span class="k">struct</span><span class="w"> </span><span class="nc">PinchGestureHandler</span><span class="w"> </span><span class="p">{</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">ScaleRotateGestureHandler</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="w"> </span><span class="n">enabled</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="w"> </span><span class="n">active</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">scale</span><span class="p">;</span>
@@ -1327,7 +1330,6 @@
 <span class="w">    </span><span class="n">private_api</span><span class="o">::</span><span class="n">CallbackHelper</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;</span><span class="w"> </span><span class="n">updated</span><span class="p">;</span>
 <span class="w">    </span><span class="n">private_api</span><span class="o">::</span><span class="n">CallbackHelper</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ended</span><span class="p">;</span>
 <span class="w">    </span><span class="n">private_api</span><span class="o">::</span><span class="n">CallbackHelper</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cancelled</span><span class="p">;</span>
-<span class="w">    </span><span class="n">private_api</span><span class="o">::</span><span class="n">CallbackHelper</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;</span><span class="w"> </span><span class="n">smart_magnify</span><span class="p">;</span>
 <span class="w">    </span><span class="n">CachedRenderingData</span><span class="w"> </span><span class="n">cached_rendering_data</span><span class="p">;</span>
 <span class="p">};</span>
 
@@ -1409,7 +1411,7 @@
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">viewbox_y</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">viewbox_width</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">viewbox_height</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">ImageFit</span><span class="o">&gt;</span><span class="w"> </span><span class="n">fit_style</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">ImageFit</span><span class="o">&gt;</span><span class="w"> </span><span class="n">fit</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="w"> </span><span class="n">clip</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="w"> </span><span class="n">anti_alias</span><span class="p">;</span>
 <span class="w">    </span><span class="n">CachedRenderingData</span><span class="w"> </span><span class="n">cached_rendering_data</span><span class="p">;</span>
@@ -1970,7 +1972,7 @@
 <span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">FocusScope</span><span class="p">);</span>
 <span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">KeyBinding</span><span class="p">);</span>
 <span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">SwipeGestureHandler</span><span class="p">);</span>
-<span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">PinchGestureHandler</span><span class="p">);</span>
+<span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">ScaleRotateGestureHandler</span><span class="p">);</span>
 <span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">Flickable</span><span class="p">);</span>
 <span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">SimpleText</span><span class="p">);</span>
 <span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">StyledTextItem</span><span class="p">);</span>
