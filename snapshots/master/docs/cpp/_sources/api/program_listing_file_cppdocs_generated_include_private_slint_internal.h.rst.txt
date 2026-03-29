@@ -526,9 +526,6 @@ Program Listing for File slint_internal.h
    
    struct LayoutItemInfo {
        LayoutInfo constraint;
-       float flex_grow;
-       float flex_shrink;
-       float flex_basis;
    };
    
    struct BoxLayoutData {
@@ -537,6 +534,15 @@ Program Listing for File slint_internal.h
        Padding padding;
        LayoutAlignment alignment;
        Slice<LayoutItemInfo> cells;
+   };
+   
+   struct FlexBoxLayoutItemInfo {
+       LayoutInfo constraint;
+       float flex_grow;
+       float flex_shrink;
+       float flex_basis;
+       FlexAlignSelf flex_align_self;
+       int32_t flex_order;
    };
    
    struct FlexBoxLayoutData {
@@ -551,8 +557,8 @@ Program Listing for File slint_internal.h
        FlexAlignContent align_content;
        FlexAlignItems align_items;
        FlexWrap flex_wrap;
-       Slice<LayoutItemInfo> cells_h;
-       Slice<LayoutItemInfo> cells_v;
+       Slice<FlexBoxLayoutItemInfo> cells_h;
+       Slice<FlexBoxLayoutItemInfo> cells_v;
    };
    
    struct MenuVTable {
@@ -925,6 +931,7 @@ Program Listing for File slint_internal.h
        Property<LogicalLength> stroke_width;
        Property<LineCap> stroke_line_cap;
        Property<LineJoin> stroke_line_join;
+       Property<float> stroke_miter_limit;
        Property<float> viewbox_x;
        Property<float> viewbox_y;
        Property<float> viewbox_width;
@@ -1151,8 +1158,8 @@ Program Listing for File slint_internal.h
                                    Slice<uint32_t> repeater_indices,
                                    SharedVector<float> *result);
    
-   LayoutInfo slint_flexbox_layout_info(Slice<LayoutItemInfo> cells_h,
-                                        Slice<LayoutItemInfo> cells_v,
+   LayoutInfo slint_flexbox_layout_info(Slice<FlexBoxLayoutItemInfo> cells_h,
+                                        Slice<FlexBoxLayoutItemInfo> cells_v,
                                         float spacing_h,
                                         float spacing_v,
                                         const Padding *padding_h,

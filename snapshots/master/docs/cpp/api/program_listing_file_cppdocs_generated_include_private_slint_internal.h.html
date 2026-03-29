@@ -1008,9 +1008,6 @@
 
 <span class="k">struct</span><span class="w"> </span><span class="nc">LayoutItemInfo</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">LayoutInfo</span><span class="w"> </span><span class="n">constraint</span><span class="p">;</span>
-<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">flex_grow</span><span class="p">;</span>
-<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">flex_shrink</span><span class="p">;</span>
-<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">flex_basis</span><span class="p">;</span>
 <span class="p">};</span>
 
 <span class="k">struct</span><span class="w"> </span><span class="nc">BoxLayoutData</span><span class="w"> </span><span class="p">{</span>
@@ -1019,6 +1016,15 @@
 <span class="w">    </span><span class="n">Padding</span><span class="w"> </span><span class="n">padding</span><span class="p">;</span>
 <span class="w">    </span><span class="n">LayoutAlignment</span><span class="w"> </span><span class="n">alignment</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Slice</span><span class="o">&lt;</span><span class="n">LayoutItemInfo</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cells</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">FlexBoxLayoutItemInfo</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">LayoutInfo</span><span class="w"> </span><span class="n">constraint</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">flex_grow</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">flex_shrink</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">flex_basis</span><span class="p">;</span>
+<span class="w">    </span><span class="n">FlexAlignSelf</span><span class="w"> </span><span class="n">flex_align_self</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int32_t</span><span class="w"> </span><span class="n">flex_order</span><span class="p">;</span>
 <span class="p">};</span>
 
 <span class="k">struct</span><span class="w"> </span><span class="nc">FlexBoxLayoutData</span><span class="w"> </span><span class="p">{</span>
@@ -1033,8 +1039,8 @@
 <span class="w">    </span><span class="n">FlexAlignContent</span><span class="w"> </span><span class="n">align_content</span><span class="p">;</span>
 <span class="w">    </span><span class="n">FlexAlignItems</span><span class="w"> </span><span class="n">align_items</span><span class="p">;</span>
 <span class="w">    </span><span class="n">FlexWrap</span><span class="w"> </span><span class="n">flex_wrap</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Slice</span><span class="o">&lt;</span><span class="n">LayoutItemInfo</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cells_h</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Slice</span><span class="o">&lt;</span><span class="n">LayoutItemInfo</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cells_v</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Slice</span><span class="o">&lt;</span><span class="n">FlexBoxLayoutItemInfo</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cells_h</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Slice</span><span class="o">&lt;</span><span class="n">FlexBoxLayoutItemInfo</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cells_v</span><span class="p">;</span>
 <span class="p">};</span>
 
 <span class="k">struct</span><span class="w"> </span><span class="nc">MenuVTable</span><span class="w"> </span><span class="p">{</span>
@@ -1407,6 +1413,7 @@
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">stroke_width</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LineCap</span><span class="o">&gt;</span><span class="w"> </span><span class="n">stroke_line_cap</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LineJoin</span><span class="o">&gt;</span><span class="w"> </span><span class="n">stroke_line_join</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">stroke_miter_limit</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">viewbox_x</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">viewbox_y</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">viewbox_width</span><span class="p">;</span>
@@ -1633,8 +1640,8 @@
 <span class="w">                                </span><span class="n">Slice</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">repeater_indices</span><span class="p">,</span>
 <span class="w">                                </span><span class="n">SharedVector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">result</span><span class="p">);</span>
 
-<span class="n">LayoutInfo</span><span class="w"> </span><span class="nf">slint_flexbox_layout_info</span><span class="p">(</span><span class="n">Slice</span><span class="o">&lt;</span><span class="n">LayoutItemInfo</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cells_h</span><span class="p">,</span>
-<span class="w">                                     </span><span class="n">Slice</span><span class="o">&lt;</span><span class="n">LayoutItemInfo</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cells_v</span><span class="p">,</span>
+<span class="n">LayoutInfo</span><span class="w"> </span><span class="nf">slint_flexbox_layout_info</span><span class="p">(</span><span class="n">Slice</span><span class="o">&lt;</span><span class="n">FlexBoxLayoutItemInfo</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cells_h</span><span class="p">,</span>
+<span class="w">                                     </span><span class="n">Slice</span><span class="o">&lt;</span><span class="n">FlexBoxLayoutItemInfo</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cells_v</span><span class="p">,</span>
 <span class="w">                                     </span><span class="kt">float</span><span class="w"> </span><span class="n">spacing_h</span><span class="p">,</span>
 <span class="w">                                     </span><span class="kt">float</span><span class="w"> </span><span class="n">spacing_v</span><span class="p">,</span>
 <span class="w">                                     </span><span class="k">const</span><span class="w"> </span><span class="n">Padding</span><span class="w"> </span><span class="o">*</span><span class="n">padding_h</span><span class="p">,</span>

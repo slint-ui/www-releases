@@ -175,6 +175,13 @@ Program Listing for File slint_enums_internal.h
        End,
        Center,
    };
+   enum class FlexAlignSelf {
+       Auto,
+       Stretch,
+       Start,
+       End,
+       Center,
+   };
    enum class FlexWrap {
        Wrap,
        NoWrap,
