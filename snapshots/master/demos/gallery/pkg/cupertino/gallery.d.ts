@@ -11,7 +11,6 @@ export interface InitOutput {
     readonly memory: WebAssembly.Memory;
     readonly load_font_from_bytes: (a: any, b: number, c: number) => [number, number];
     readonly main: () => void;
-    readonly slint_qt_get_widget: (a: number) => number;
     readonly send_keyboard_string_sequence: (a: number, b: number) => void;
     readonly slint_get_mocked_time: () => bigint;
     readonly slint_mock_elapsed_time: (a: bigint) => void;

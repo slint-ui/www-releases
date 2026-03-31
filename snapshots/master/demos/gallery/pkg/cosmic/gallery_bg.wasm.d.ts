@@ -3,7 +3,6 @@
 export const memory: WebAssembly.Memory;
 export const load_font_from_bytes: (a: any, b: number, c: number) => [number, number];
 export const main: () => void;
-export const slint_qt_get_widget: (a: number) => number;
 export const send_keyboard_string_sequence: (a: number, b: number) => void;
 export const slint_get_mocked_time: () => bigint;
 export const slint_mock_elapsed_time: (a: bigint) => void;

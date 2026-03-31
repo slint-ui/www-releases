@@ -541,7 +541,7 @@ Program Listing for File slint_internal.h
        float flex_grow;
        float flex_shrink;
        float flex_basis;
-       FlexAlignSelf flex_align_self;
+       FlexboxLayoutAlignSelf flex_align_self;
        int32_t flex_order;
    };
    
@@ -553,10 +553,10 @@ Program Listing for File slint_internal.h
        Padding padding_h;
        Padding padding_v;
        LayoutAlignment alignment;
-       FlexDirection direction;
-       FlexAlignContent align_content;
-       FlexAlignItems align_items;
-       FlexWrap flex_wrap;
+       FlexboxLayoutDirection direction;
+       FlexboxLayoutAlignContent align_content;
+       FlexboxLayoutAlignItems align_items;
+       FlexboxLayoutWrap flex_wrap;
        Slice<FlexboxLayoutItemInfo> cells_h;
        Slice<FlexboxLayoutItemInfo> cells_v;
    };
@@ -1155,9 +1155,9 @@ Program Listing for File slint_internal.h
                                         const Padding *padding_h,
                                         const Padding *padding_v,
                                         Orientation orientation,
-                                        FlexDirection direction,
+                                        FlexboxLayoutDirection direction,
                                         float constraint_size,
-                                        FlexWrap flex_wrap);
+                                        FlexboxLayoutWrap flex_wrap);
    
    void slint_menus_create_wrapper(const ItemTreeRc *menu_tree,
                                    VRc<MenuVTable> *result,

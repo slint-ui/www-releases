@@ -1,7 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
 export const memory: WebAssembly.Memory;
-export const slint_qt_get_widget: (a: number) => number;
 export const send_keyboard_string_sequence: (a: number, b: number) => void;
 export const slint_get_mocked_time: () => bigint;
 export const slint_mock_elapsed_time: (a: bigint) => void;

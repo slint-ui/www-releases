@@ -113,8 +113,8 @@ export interface InitOutput {
     readonly wasm_bindgen__closure__destroy__hbee17615241beb40: (a: number, b: number) => void;
     readonly wasm_bindgen__convert__closures_____invoke__hcc86e885de049fa8: (a: number, b: number, c: any) => [number, number];
     readonly wasm_bindgen__convert__closures_____invoke__h0cf83d0bd2bb167b: (a: number, b: number, c: any, d: any) => void;
-    readonly wasm_bindgen__convert__closures_____invoke__h0cf83d0bd2bb167b_17: (a: number, b: number, c: any, d: any) => void;
     readonly wasm_bindgen__convert__closures_____invoke__h0cf83d0bd2bb167b_18: (a: number, b: number, c: any, d: any) => void;
+    readonly wasm_bindgen__convert__closures_____invoke__h0cf83d0bd2bb167b_19: (a: number, b: number, c: any, d: any) => void;
     readonly wasm_bindgen__convert__closures_____invoke__h1121c9af9c107426: (a: number, b: number, c: any) => void;
     readonly wasm_bindgen__convert__closures_____invoke__h1121c9af9c107426_3: (a: number, b: number, c: any) => void;
     readonly wasm_bindgen__convert__closures_____invoke__h144b7f2d31c75226: (a: number, b: number, c: any) => void;
@@ -129,6 +129,7 @@ export interface InitOutput {
     readonly wasm_bindgen__convert__closures_____invoke__h1121c9af9c107426_13: (a: number, b: number, c: any) => void;
     readonly wasm_bindgen__convert__closures_____invoke__h144b7f2d31c75226_14: (a: number, b: number, c: any) => void;
     readonly wasm_bindgen__convert__closures_____invoke__h1121c9af9c107426_15: (a: number, b: number, c: any) => void;
+    readonly wasm_bindgen__convert__closures_____invoke__h73260f4499411046: (a: number, b: number) => void;
     readonly wasm_bindgen__convert__closures_____invoke__h4545717828f74220: (a: number, b: number) => void;
     readonly __wbindgen_malloc: (a: number, b: number) => number;
     readonly __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;

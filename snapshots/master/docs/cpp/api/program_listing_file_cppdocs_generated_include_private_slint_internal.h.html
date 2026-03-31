@@ -1023,7 +1023,7 @@
 <span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">flex_grow</span><span class="p">;</span>
 <span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">flex_shrink</span><span class="p">;</span>
 <span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">flex_basis</span><span class="p">;</span>
-<span class="w">    </span><span class="n">FlexAlignSelf</span><span class="w"> </span><span class="n">flex_align_self</span><span class="p">;</span>
+<span class="w">    </span><span class="n">FlexboxLayoutAlignSelf</span><span class="w"> </span><span class="n">flex_align_self</span><span class="p">;</span>
 <span class="w">    </span><span class="kt">int32_t</span><span class="w"> </span><span class="n">flex_order</span><span class="p">;</span>
 <span class="p">};</span>
 
@@ -1035,10 +1035,10 @@
 <span class="w">    </span><span class="n">Padding</span><span class="w"> </span><span class="n">padding_h</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Padding</span><span class="w"> </span><span class="n">padding_v</span><span class="p">;</span>
 <span class="w">    </span><span class="n">LayoutAlignment</span><span class="w"> </span><span class="n">alignment</span><span class="p">;</span>
-<span class="w">    </span><span class="n">FlexDirection</span><span class="w"> </span><span class="n">direction</span><span class="p">;</span>
-<span class="w">    </span><span class="n">FlexAlignContent</span><span class="w"> </span><span class="n">align_content</span><span class="p">;</span>
-<span class="w">    </span><span class="n">FlexAlignItems</span><span class="w"> </span><span class="n">align_items</span><span class="p">;</span>
-<span class="w">    </span><span class="n">FlexWrap</span><span class="w"> </span><span class="n">flex_wrap</span><span class="p">;</span>
+<span class="w">    </span><span class="n">FlexboxLayoutDirection</span><span class="w"> </span><span class="n">direction</span><span class="p">;</span>
+<span class="w">    </span><span class="n">FlexboxLayoutAlignContent</span><span class="w"> </span><span class="n">align_content</span><span class="p">;</span>
+<span class="w">    </span><span class="n">FlexboxLayoutAlignItems</span><span class="w"> </span><span class="n">align_items</span><span class="p">;</span>
+<span class="w">    </span><span class="n">FlexboxLayoutWrap</span><span class="w"> </span><span class="n">flex_wrap</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Slice</span><span class="o">&lt;</span><span class="n">FlexboxLayoutItemInfo</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cells_h</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Slice</span><span class="o">&lt;</span><span class="n">FlexboxLayoutItemInfo</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cells_v</span><span class="p">;</span>
 <span class="p">};</span>
@@ -1637,9 +1637,9 @@
 <span class="w">                                     </span><span class="k">const</span><span class="w"> </span><span class="n">Padding</span><span class="w"> </span><span class="o">*</span><span class="n">padding_h</span><span class="p">,</span>
 <span class="w">                                     </span><span class="k">const</span><span class="w"> </span><span class="n">Padding</span><span class="w"> </span><span class="o">*</span><span class="n">padding_v</span><span class="p">,</span>
 <span class="w">                                     </span><span class="n">Orientation</span><span class="w"> </span><span class="n">orientation</span><span class="p">,</span>
-<span class="w">                                     </span><span class="n">FlexDirection</span><span class="w"> </span><span class="n">direction</span><span class="p">,</span>
+<span class="w">                                     </span><span class="n">FlexboxLayoutDirection</span><span class="w"> </span><span class="n">direction</span><span class="p">,</span>
 <span class="w">                                     </span><span class="kt">float</span><span class="w"> </span><span class="n">constraint_size</span><span class="p">,</span>
-<span class="w">                                     </span><span class="n">FlexWrap</span><span class="w"> </span><span class="n">flex_wrap</span><span class="p">);</span>
+<span class="w">                                     </span><span class="n">FlexboxLayoutWrap</span><span class="w"> </span><span class="n">flex_wrap</span><span class="p">);</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">slint_menus_create_wrapper</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">ItemTreeRc</span><span class="w"> </span><span class="o">*</span><span class="n">menu_tree</span><span class="p">,</span>
 <span class="w">                                </span><span class="n">VRc</span><span class="o">&lt;</span><span class="n">MenuVTable</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">result</span><span class="p">,</span>

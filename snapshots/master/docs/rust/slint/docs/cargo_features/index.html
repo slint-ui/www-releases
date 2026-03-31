@@ -186,12 +186,13 @@ Instead, use the <code>--features</code> command line argument like so when buil
 </ul>
 <h4 id="backends"><a class="doc-anchor" href="#backends">§</a>Backends</h4>
 <p>Slint needs a backend that will act as liaison between Slint and the OS.
-By default, Slint will use the Qt backend, if Qt is installed, otherwise, it
-will use <a href="https://crates.io/crates/winit">Winit</a> with <a href="https://crates.io/crates/femtovg">FemtoVG</a>.
-Both backends are compiled in. If you want to not compile one of these you need
-to disable the default feature and re-enable one backend. It is also possible
-to use Slint without backend if you provide the platform abstraction yourself
-with <a href="../../platform/fn.set_platform.html" title="fn slint::platform::set_platform"><code>platform::set_platform()</code></a>.</p>
+By default, Slint will use the <a href="https://crates.io/crates/winit">Winit</a> backend
+with <a href="https://crates.io/crates/femtovg">FemtoVG</a>.
+You can also enable the Qt backend with the <code>backend-qt</code> feature.
+If you want to use a different backend,
+disable the default feature and re-enable the desired backend.
+It is also possible to use Slint without a backend if you provide
+the platform abstraction yourself with <a href="../../platform/fn.set_platform.html" title="fn slint::platform::set_platform"><code>platform::set_platform()</code></a>.</p>
 <p>If you enable the Winit backend, you need to also include a renderer.
 <code>renderer-femtovg</code> is the default renderer.</p>
 <p>It is also possible to select the backend and renderer at runtime when several
@@ -227,8 +228,7 @@ with support for the X Window System on Unix.</p>
 with support for the Wayland window system on Unix.</p>
 </li>
 <li>
-<p><strong><code>backend-default</code></strong> <em>(enabled by default)</em> —  Alias to a backend and renderer that depends on the platform.
-Will select the Qt backend on linux if present, and the winit otherwise</p>
+<p><strong><code>backend-default</code></strong> <em>(enabled by default)</em> —  Alias to a backend and renderer that depends on the platform.</p>
 </li>
 <li>
 <p><strong><code>renderer-femtovg</code></strong> <em>(enabled by default)</em> —  Render using the <a href="https://crates.io/crates/femtovg">FemtoVG</a> crate.</p>

@@ -154,13 +154,13 @@ Program Listing for File slint_enums_internal.h
        SpaceAround,
        SpaceEvenly,
    };
-   enum class FlexDirection {
+   enum class FlexboxLayoutDirection {
        Row,
        RowReverse,
        Column,
        ColumnReverse,
    };
-   enum class FlexAlignContent {
+   enum class FlexboxLayoutAlignContent {
        Stretch,
        Start,
        End,
@@ -169,20 +169,20 @@ Program Listing for File slint_enums_internal.h
        SpaceAround,
        SpaceEvenly,
    };
-   enum class FlexAlignItems {
+   enum class FlexboxLayoutAlignItems {
        Stretch,
        Start,
        End,
        Center,
    };
-   enum class FlexAlignSelf {
+   enum class FlexboxLayoutAlignSelf {
        Auto,
        Stretch,
        Start,
        End,
        Center,
    };
-   enum class FlexWrap {
+   enum class FlexboxLayoutWrap {
        Wrap,
        NoWrap,
        WrapReverse,
