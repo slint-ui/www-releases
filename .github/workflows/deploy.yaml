@@ -1,0 +1,43 @@
+
+name: CI
+
+on:
+  push:
+
+jobs:
+  files-changed:
+    runs-on: ubuntu-latest
+    outputs:
+      releases: ${{ steps.filter.outputs.releases }}
+      snapshots: ${{ steps.filter.outputs.snapshots }}
+      slintpad: ${{ steps.filter.outputs.slintpad }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dorny/paths-filter@v4
+        id: filter
+        with:
+          filters: |
+            releases:
+              - 'releases/**'
+            snapshots:
+              - 'snapshots/**'
+            slintpad:
+              - 'slintpad/**'
+
+  deploy-releases:
+    needs: files-changed
+    if: needs.files-changed.outputs.releases == 'true'
+    uses: ./.github/workflows/deploy-releases.yml
+    secrets: inherit
+
+  deploy-snapshots:
+    needs: files-changed
+    if: needs.files-changed.outputs.snapshots == 'true'
+    uses: ./.github/workflows/deploy-snapshots.yml
+    secrets: inherit
+
+  deploy-slintpad:
+    needs: files-changed
+    if: needs.files-changed.outputs.slintpad == 'true'
+    uses: ./.github/workflows/deploy-slintpad.yml
+    secrets: inherit
