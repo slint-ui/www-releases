@@ -27,7 +27,7 @@ Program Listing for File slint_testing_internal.h
        HorizontalLayout,
        VerticalLayout,
        GridLayout,
-       FlexBox,
+       FlexboxLayout,
    };
    
    struct ElementHandle {

@@ -536,7 +536,7 @@ Program Listing for File slint_internal.h
        Slice<LayoutItemInfo> cells;
    };
    
-   struct FlexBoxLayoutItemInfo {
+   struct FlexboxLayoutItemInfo {
        LayoutInfo constraint;
        float flex_grow;
        float flex_shrink;
@@ -545,7 +545,7 @@ Program Listing for File slint_internal.h
        int32_t flex_order;
    };
    
-   struct FlexBoxLayoutData {
+   struct FlexboxLayoutData {
        float width;
        float height;
        float spacing_h;
@@ -557,8 +557,8 @@ Program Listing for File slint_internal.h
        FlexAlignContent align_content;
        FlexAlignItems align_items;
        FlexWrap flex_wrap;
-       Slice<FlexBoxLayoutItemInfo> cells_h;
-       Slice<FlexBoxLayoutItemInfo> cells_v;
+       Slice<FlexboxLayoutItemInfo> cells_h;
+       Slice<FlexboxLayoutItemInfo> cells_v;
    };
    
    struct MenuVTable {
@@ -885,20 +885,10 @@ Program Listing for File slint_internal.h
        Property<LogicalLength> width;
        Property<LogicalLength> height;
        Property<StyledText> text;
-       Property<LogicalLength> font_size;
-       Property<int32_t> font_weight;
-       Property<Brush> color;
+       Property<Brush> default_color;
        Property<TextHorizontalAlignment> horizontal_alignment;
        Property<TextVerticalAlignment> vertical_alignment;
        private_api::CallbackHelper<slint::SharedString> link_clicked;
-       Property<SharedString> font_family;
-       Property<bool> font_italic;
-       Property<TextWrap> wrap;
-       Property<TextOverflow> overflow;
-       Property<LogicalLength> letter_spacing;
-       Property<Brush> stroke;
-       Property<LogicalLength> stroke_width;
-       Property<TextStrokeStyle> stroke_style;
        Property<Color> link_color;
        CachedRenderingData cached_rendering_data;
    };
@@ -1154,12 +1144,12 @@ Program Listing for File slint_internal.h
    
    LayoutInfo slint_box_layout_info_ortho(Slice<LayoutItemInfo> cells, const Padding *padding);
    
-   void slint_solve_flexbox_layout(const FlexBoxLayoutData *data,
+   void slint_solve_flexbox_layout(const FlexboxLayoutData *data,
                                    Slice<uint32_t> repeater_indices,
                                    SharedVector<float> *result);
    
-   LayoutInfo slint_flexbox_layout_info(Slice<FlexBoxLayoutItemInfo> cells_h,
-                                        Slice<FlexBoxLayoutItemInfo> cells_v,
+   LayoutInfo slint_flexbox_layout_info(Slice<FlexboxLayoutItemInfo> cells_h,
+                                        Slice<FlexboxLayoutItemInfo> cells_v,
                                         float spacing_h,
                                         float spacing_v,
                                         const Padding *padding_h,

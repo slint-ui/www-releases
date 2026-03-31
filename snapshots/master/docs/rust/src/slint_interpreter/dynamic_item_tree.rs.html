@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/dynamic_item_tree.rs`."><title>dynamic_item_tree.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-17e0aaed.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.96.0-nightly (a25435bcf 2026-03-29)" data-channel="nightly" data-search-js="search-63369b7b.js" data-stringdex-js="stringdex-2da4960a.js" data-settings-js="settings-170eb4bf.js" ><script src="../../static.files/storage-41dd4d93.js"></script><script defer src="../../static.files/src-script-813739b1.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-5013f961.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/dynamic_item_tree.rs`."><title>dynamic_item_tree.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-17e0aaed.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.96.0-nightly (cf7da0b72 2026-03-30)" data-channel="nightly" data-search-js="search-63369b7b.js" data-stringdex-js="stringdex-2da4960a.js" data-settings-js="settings-170eb4bf.js" ><script src="../../static.files/storage-41dd4d93.js"></script><script defer src="../../static.files/src-script-813739b1.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-5013f961.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -123,7 +123,7 @@
 </head><body class="rustdoc src"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><h1><div class="sub-heading">slint_interpreter/</div>dynamic_item_tree.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap digits-4"><pre class="rust"><code><a href=#1 id=1 data-nosnippet>1</a><span class="comment">// Copyright © SixtyFPS GmbH &lt;info@slint.dev&gt;
 <a href=#2 id=2 data-nosnippet>2</a>// SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0
 <a href=#3 id=3 data-nosnippet>3</a>
-<a href=#4 id=4 data-nosnippet>4</a></span><span class="kw">use </span><span class="kw">crate</span>::api::{<a href="api.rs.html#1002-1010">CompilationResult</a>, <a href="api.rs.html#1091-1093">ComponentDefinition</a>, <a href="api.rs.html#102-143">Value</a>};
+<a href=#4 id=4 data-nosnippet>4</a></span><span class="kw">use </span><span class="kw">crate</span>::api::{<a href="api.rs.html#998-1006">CompilationResult</a>, <a href="api.rs.html#1087-1089">ComponentDefinition</a>, <a href="api.rs.html#98-139">Value</a>};
 <a href=#5 id=5 data-nosnippet>5</a><span class="kw">use </span><a href="global_component.rs.html#21-27"><span class="kw">crate</span>::global_component::CompiledGlobalCollection</a>;
 <a href=#6 id=6 data-nosnippet>6</a><span class="kw">use </span>crate::{<a href="lib.rs.html#83">dynamic_type</a>, <a href="lib.rs.html#84">eval</a>};
 <a href=#7 id=7 data-nosnippet>7</a><span class="kw">use </span><a href="https://doc.rust-lang.org/nightly/core/ptr/non_null/struct.NonNull.html">core::ptr::NonNull</a>;
@@ -172,7 +172,7 @@
 <a href=#50 id=50 data-nosnippet>50</a><span class="kw">pub const </span>SPECIAL_PROPERTY_INDEX: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a> = <span class="string">"$index"</span>;
 <a href=#51 id=51 data-nosnippet>51</a><span class="kw">pub const </span>SPECIAL_PROPERTY_MODEL_DATA: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a> = <span class="string">"$model_data"</span>;
 <a href=#52 id=52 data-nosnippet>52</a>
-<a href=#53 id=53 data-nosnippet>53</a><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">type </span>CallbackHandler = <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box</a>&lt;<span class="kw">dyn </span><a href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html">Fn</a>(<span class="kw-2">&amp;</span>[<a href="api.rs.html#102-143">Value</a>]) -&gt; <a href="api.rs.html#102-143">Value</a>&gt;;
+<a href=#53 id=53 data-nosnippet>53</a><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">type </span>CallbackHandler = <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box</a>&lt;<span class="kw">dyn </span><a href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html">Fn</a>(<span class="kw-2">&amp;</span>[<a href="api.rs.html#98-139">Value</a>]) -&gt; <a href="api.rs.html#98-139">Value</a>&gt;;
 <a href=#54 id=54 data-nosnippet>54</a>
 <a href=#55 id=55 data-nosnippet>55</a><span class="kw">pub struct </span>ItemTreeBox&lt;<span class="lifetime">'id</span>&gt; {
 <a href=#56 id=56 data-nosnippet>56</a>    instance: <a href="dynamic_type.rs.html#206">InstanceBox</a>&lt;<span class="lifetime">'id</span>&gt;,
@@ -234,7 +234,7 @@
 <a href=#112 id=112 data-nosnippet>112</a>
 <a href=#113 id=113 data-nosnippet>113</a><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">struct </span>PropertiesWithinComponent {
 <a href=#114 id=114 data-nosnippet>114</a>    <span class="kw">pub</span>(<span class="kw">crate</span>) offset: <a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>,
-<a href=#115 id=115 data-nosnippet>115</a>    <span class="kw">pub</span>(<span class="kw">crate</span>) prop: <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box</a>&lt;<span class="kw">dyn </span>PropertyInfo&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>, <a href="api.rs.html#102-143">Value</a>&gt;&gt;,
+<a href=#115 id=115 data-nosnippet>115</a>    <span class="kw">pub</span>(<span class="kw">crate</span>) prop: <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box</a>&lt;<span class="kw">dyn </span>PropertyInfo&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>, <a href="api.rs.html#98-139">Value</a>&gt;&gt;,
 <a href=#116 id=116 data-nosnippet>116</a>}
 <a href=#117 id=117 data-nosnippet>117</a>
 <a href=#118 id=118 data-nosnippet>118</a><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">struct </span>RepeaterWithinItemTree&lt;<span class="lifetime">'par_id</span>, <span class="lifetime">'sub_id</span>&gt; {
@@ -250,7 +250,7 @@
 <a href=#128 id=128 data-nosnippet>128</a>}
 <a href=#129 id=129 data-nosnippet>129</a>
 <a href=#130 id=130 data-nosnippet>130</a><span class="kw">impl </span>RepeatedItemTree <span class="kw">for </span><a href="#1958">ErasedItemTreeBox</a> {
-<a href=#131 id=131 data-nosnippet>131</a>    <span class="kw">type </span>Data = <a href="api.rs.html#102-143">Value</a>;
+<a href=#131 id=131 data-nosnippet>131</a>    <span class="kw">type </span>Data = <a href="api.rs.html#98-139">Value</a>;
 <a href=#132 id=132 data-nosnippet>132</a>
 <a href=#133 id=133 data-nosnippet>133</a>    <span class="kw">fn </span>update(<span class="kw-2">&amp;</span><span class="self">self</span>, index: <a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>, data: <span class="self">Self</span>::Data) {
 <a href=#134 id=134 data-nosnippet>134</a>        <span class="macro">generativity::make_guard!</span>(guard);
@@ -278,7 +278,7 @@
 <a href=#156 id=156 data-nosnippet>156</a>            <a href="#151">s</a>.<a href="#71-73">borrow_instance</a>(),
 <a href=#157 id=157 data-nosnippet>157</a>            <span class="kw-2">&amp;</span><a href="#153">geom</a>.y.element(),
 <a href=#158 id=158 data-nosnippet>158</a>            <a href="#153">geom</a>.y.name(),
-<a href=#159 id=159 data-nosnippet>159</a>            Value::<a href="api.rs.html#108">Number</a>(<a href="#149">offset_y</a>.get() <span class="kw">as </span><a href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>),
+<a href=#159 id=159 data-nosnippet>159</a>            Value::<a href="api.rs.html#104">Number</a>(<a href="#149">offset_y</a>.get() <span class="kw">as </span><a href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>),
 <a href=#160 id=160 data-nosnippet>160</a>        )
 <a href=#161 id=161 data-nosnippet>161</a>        .<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.expect">expect</a>(<span class="string">"cannot set y"</span>);
 <a href=#162 id=162 data-nosnippet>162</a>
@@ -333,7 +333,7 @@
 <a href=#211 id=211 data-nosnippet>211</a>        <span class="self">self</span>: <a href="https://doc.rust-lang.org/nightly/core/pin/struct.Pin.html">Pin</a>&lt;<span class="kw-2">&amp;</span><span class="self">Self</span>&gt;,
 <a href=#212 id=212 data-nosnippet>212</a>        o: Orientation,
 <a href=#213 id=213 data-nosnippet>213</a>        child_index: <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>&gt;,
-<a href=#214 id=214 data-nosnippet>214</a>    ) -&gt; i_slint_core::layout::FlexBoxLayoutItemInfo {
+<a href=#214 id=214 data-nosnippet>214</a>    ) -&gt; i_slint_core::layout::FlexboxLayoutItemInfo {
 <a href=#215 id=215 data-nosnippet>215</a>        <span class="macro">generativity::make_guard!</span>(guard);
 <a href=#216 id=216 data-nosnippet>216</a>        <span class="kw">let </span>s = <a class="self" href="#211">self</a>.<a href="#1960-1968">unerase</a>(<a href="#215">guard</a>);
 <a href=#217 id=217 data-nosnippet>217</a>        <span class="kw">let </span>instance_ref = <a href="#216">s</a>.<a href="#71-73">borrow_instance</a>();
@@ -359,7 +359,7 @@
 <a href=#237 id=237 data-nosnippet>237</a>            .<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap_or">unwrap_or</a>(i_slint_core::items::FlexAlignSelf::Auto);
 <a href=#238 id=238 data-nosnippet>238</a>        <span class="kw">let </span>flex_order = <a href="#220">load_f32</a>(<span class="string">"flex-order"</span>) <span class="kw">as </span><a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>;
 <a href=#239 id=239 data-nosnippet>239</a>
-<a href=#240 id=240 data-nosnippet>240</a>        i_slint_core::layout::FlexBoxLayoutItemInfo {
+<a href=#240 id=240 data-nosnippet>240</a>        i_slint_core::layout::FlexboxLayoutItemInfo {
 <a href=#241 id=241 data-nosnippet>241</a>            constraint: <a class="self" href="#211">self</a>.layout_item_info(<a href="#212">o</a>, <a href="#213">child_index</a>).constraint,
 <a href=#242 id=242 data-nosnippet>242</a>            <a href="#227">flex_grow</a>,
 <a href=#243 id=243 data-nosnippet>243</a>            <a href="#228">flex_shrink</a>,
@@ -533,7 +533,7 @@
 <a href=#411 id=411 data-nosnippet>411</a>    </span>}
 <a href=#412 id=412 data-nosnippet>412</a>}
 <a href=#413 id=413 data-nosnippet>413</a>
-<a href=#414 id=414 data-nosnippet>414</a><span class="kw">type </span>Callback = i_slint_core::Callback&lt;[<a href="api.rs.html#102-143">Value</a>], <a href="api.rs.html#102-143">Value</a>&gt;;
+<a href=#414 id=414 data-nosnippet>414</a><span class="kw">type </span>Callback = i_slint_core::Callback&lt;[<a href="api.rs.html#98-139">Value</a>], <a href="api.rs.html#98-139">Value</a>&gt;;
 <a href=#415 id=415 data-nosnippet>415</a>
 <a href=#416 id=416 data-nosnippet>416</a><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>)]
 <a href=#417 id=417 data-nosnippet>417</a></span><span class="kw">pub struct </span><a href="#417">ErasedItemTreeDescription</a>(<a href="https://doc.rust-lang.org/nightly/alloc/rc/struct.Rc.html">Rc</a>&lt;<a href="#450-502">ItemTreeDescription</a>&lt;<span class="lifetime">'static</span>&gt;&gt;);
@@ -717,7 +717,7 @@
 <a href=#595 id=595 data-nosnippet>595</a>    &gt; {
 <a href=#596 id=596 data-nosnippet>596</a>        <span class="kw">let </span>g = <a class="self" href="#585">self</a>.compiled_globals.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.as_ref">as_ref</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.expect">expect</a>(<span class="string">"Root component should have globals"</span>);
 <a href=#597 id=597 data-nosnippet>597</a>        <a href="#596">g</a>.exported_globals_by_name
-<a href=#598 id=598 data-nosnippet>598</a>            .<a href="https://doc.rust-lang.org/nightly/alloc/collections/btree/map/struct.BTreeMap.html#method.get">get</a>(<span class="kw-2">&amp;</span><span class="kw">crate</span>::<a href="api.rs.html#625-627">normalize_identifier</a>(<a href="#586">name</a>))
+<a href=#598 id=598 data-nosnippet>598</a>            .<a href="https://doc.rust-lang.org/nightly/alloc/collections/btree/map/struct.BTreeMap.html#method.get">get</a>(<span class="kw-2">&amp;</span><span class="kw">crate</span>::<a href="api.rs.html#621-623">normalize_identifier</a>(<a href="#586">name</a>))
 <a href=#599 id=599 data-nosnippet>599</a>            .<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(|global_idx| <a href="#596">g</a>.compiled_globals.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.get">get</a>(<span class="kw-2">*</span><a href="#599">global_idx</a>))
 <a href=#600 id=600 data-nosnippet>600</a>            .<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(|global| <a href="#518-539">internal_properties_to_public</a>(<a href="#600">global</a>.<a href="global_component.rs.html#139-144">public_properties</a>()))
 <a href=#601 id=601 data-nosnippet>601</a>    }
@@ -750,8 +750,8 @@
 <a href=#628 id=628 data-nosnippet>628</a>        <span class="kw-2">&amp;</span><span class="self">self</span>,
 <a href=#629 id=629 data-nosnippet>629</a>        component: ItemTreeRefPin,
 <a href=#630 id=630 data-nosnippet>630</a>        name: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>,
-<a href=#631 id=631 data-nosnippet>631</a>        value: <a href="api.rs.html#102-143">Value</a>,
-<a href=#632 id=632 data-nosnippet>632</a>    ) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), <span class="kw">crate</span>::api::<a href="api.rs.html#1740-1754">SetPropertyError</a>&gt; {
+<a href=#631 id=631 data-nosnippet>631</a>        value: <a href="api.rs.html#98-139">Value</a>,
+<a href=#632 id=632 data-nosnippet>632</a>    ) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), <span class="kw">crate</span>::api::<a href="api.rs.html#1736-1750">SetPropertyError</a>&gt; {
 <a href=#633 id=633 data-nosnippet>633</a>        <span class="kw">if </span>!core::ptr::<a href="https://doc.rust-lang.org/nightly/core/ptr/fn.eq.html">eq</a>((<span class="kw-2">&amp;</span><a class="self" href="#628">self</a>.ct) <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>, <a href="#629">component</a>.get_vtable() <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>) {
 <a href=#634 id=634 data-nosnippet>634</a>            <a href="https://doc.rust-lang.org/nightly/std/macro.panic.html">panic!</a>(<span class="string">"mismatch instance and vtable"</span>);
 <a href=#635 id=635 data-nosnippet>635</a>        }
@@ -779,7 +779,7 @@
 <a href=#657 id=657 data-nosnippet>657</a>        <span class="kw-2">&amp;</span><span class="self">self</span>,
 <a href=#658 id=658 data-nosnippet>658</a>        component: ItemTreeRefPin,
 <a href=#659 id=659 data-nosnippet>659</a>        name: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>,
-<a href=#660 id=660 data-nosnippet>660</a>        binding: <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box</a>&lt;<span class="kw">dyn </span><a href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html">Fn</a>() -&gt; <a href="api.rs.html#102-143">Value</a>&gt;,
+<a href=#660 id=660 data-nosnippet>660</a>        binding: <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box</a>&lt;<span class="kw">dyn </span><a href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html">Fn</a>() -&gt; <a href="api.rs.html#98-139">Value</a>&gt;,
 <a href=#661 id=661 data-nosnippet>661</a>    ) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), ()&gt; {
 <a href=#662 id=662 data-nosnippet>662</a>        <span class="kw">if </span>!core::ptr::<a href="https://doc.rust-lang.org/nightly/core/ptr/fn.eq.html">eq</a>((<span class="kw-2">&amp;</span><a class="self" href="#657">self</a>.ct) <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>, <a href="#658">component</a>.get_vtable() <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>) {
 <a href=#663 id=663 data-nosnippet>663</a>            <span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(());
@@ -801,7 +801,7 @@
 <a href=#679 id=679 data-nosnippet>679</a>    ///
 <a href=#680 id=680 data-nosnippet>680</a>    /// Returns an error if the component is not an instance corresponding to this ItemTreeDescription,
 <a href=#681 id=681 data-nosnippet>681</a>    /// or if a callback with this name does not exist
-<a href=#682 id=682 data-nosnippet>682</a>    </span><span class="kw">pub fn </span>get_property(<span class="kw-2">&amp;</span><span class="self">self</span>, component: ItemTreeRefPin, name: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="api.rs.html#102-143">Value</a>, ()&gt; {
+<a href=#682 id=682 data-nosnippet>682</a>    </span><span class="kw">pub fn </span>get_property(<span class="kw-2">&amp;</span><span class="self">self</span>, component: ItemTreeRefPin, name: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="api.rs.html#98-139">Value</a>, ()&gt; {
 <a href=#683 id=683 data-nosnippet>683</a>        <span class="kw">if </span>!core::ptr::<a href="https://doc.rust-lang.org/nightly/core/ptr/fn.eq.html">eq</a>((<span class="kw-2">&amp;</span><a class="self" href="#682">self</a>.ct) <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>, <a href="#682">component</a>.get_vtable() <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>) {
 <a href=#684 id=684 data-nosnippet>684</a>            <span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(());
 <a href=#685 id=685 data-nosnippet>685</a>        }
@@ -864,8 +864,8 @@
 <a href=#742 id=742 data-nosnippet>742</a>        <span class="kw-2">&amp;</span><span class="self">self</span>,
 <a href=#743 id=743 data-nosnippet>743</a>        component: ItemTreeRefPin,
 <a href=#744 id=744 data-nosnippet>744</a>        name: <span class="kw-2">&amp;</span>SmolStr,
-<a href=#745 id=745 data-nosnippet>745</a>        args: <span class="kw-2">&amp;</span>[<a href="api.rs.html#102-143">Value</a>],
-<a href=#746 id=746 data-nosnippet>746</a>    ) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="api.rs.html#102-143">Value</a>, ()&gt; {
+<a href=#745 id=745 data-nosnippet>745</a>        args: <span class="kw-2">&amp;</span>[<a href="api.rs.html#98-139">Value</a>],
+<a href=#746 id=746 data-nosnippet>746</a>    ) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="api.rs.html#98-139">Value</a>, ()&gt; {
 <a href=#747 id=747 data-nosnippet>747</a>        <span class="kw">if </span>!core::ptr::<a href="https://doc.rust-lang.org/nightly/core/ptr/fn.eq.html">eq</a>((<span class="kw-2">&amp;</span><a class="self" href="#742">self</a>.ct) <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>, <a href="#743">component</a>.get_vtable() <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>) {
 <a href=#748 id=748 data-nosnippet>748</a>            <span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(());
 <a href=#749 id=749 data-nosnippet>749</a>        }
@@ -1387,10 +1387,10 @@
 <a href=#1265 id=1265 data-nosnippet>1265</a>
 <a href=#1266 id=1266 data-nosnippet>1266</a>    <span class="kw">let </span><span class="kw-2">mut </span>custom_properties = <a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">HashMap</a>::<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.new">new</a>();
 <a href=#1267 id=1267 data-nosnippet>1267</a>    <span class="kw">let </span><span class="kw-2">mut </span>custom_callbacks = <a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">HashMap</a>::<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.new">new</a>();
-<a href=#1268 id=1268 data-nosnippet>1268</a>    <span class="kw">fn </span>property_info&lt;T&gt;() -&gt; (<a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box</a>&lt;<span class="kw">dyn </span>PropertyInfo&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>, <a href="api.rs.html#102-143">Value</a>&gt;&gt;, dynamic_type::<a href="dynamic_type.rs.html#26-36">StaticTypeInfo</a>)
+<a href=#1268 id=1268 data-nosnippet>1268</a>    <span class="kw">fn </span>property_info&lt;T&gt;() -&gt; (<a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box</a>&lt;<span class="kw">dyn </span>PropertyInfo&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>, <a href="api.rs.html#98-139">Value</a>&gt;&gt;, dynamic_type::<a href="dynamic_type.rs.html#26-36">StaticTypeInfo</a>)
 <a href=#1269 id=1269 data-nosnippet>1269</a>    <span class="kw">where
-<a href=#1270 id=1270 data-nosnippet>1270</a>        </span>T: <a href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html">PartialEq</a> + <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html">Clone</a> + <a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html">Default</a> + <a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html">std::convert::TryInto</a>&lt;<a href="api.rs.html#102-143">Value</a>&gt; + <span class="lifetime">'static</span>,
-<a href=#1271 id=1271 data-nosnippet>1271</a>        <a href="api.rs.html#102-143">Value</a>: <a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html">std::convert::TryInto</a>&lt;T&gt;,
+<a href=#1270 id=1270 data-nosnippet>1270</a>        </span>T: <a href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html">PartialEq</a> + <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html">Clone</a> + <a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html">Default</a> + <a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html">std::convert::TryInto</a>&lt;<a href="api.rs.html#98-139">Value</a>&gt; + <span class="lifetime">'static</span>,
+<a href=#1271 id=1271 data-nosnippet>1271</a>        <a href="api.rs.html#98-139">Value</a>: <a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html">std::convert::TryInto</a>&lt;T&gt;,
 <a href=#1272 id=1272 data-nosnippet>1272</a>    {
 <a href=#1273 id=1273 data-nosnippet>1273</a>        <span class="comment">// Fixme: using u8 in PropertyInfo&lt;&gt; is not sound, we would need to materialize a type for out component
 <a href=#1274 id=1274 data-nosnippet>1274</a>        </span>(
@@ -1401,10 +1401,10 @@
 <a href=#1279 id=1279 data-nosnippet>1279</a>        )
 <a href=#1280 id=1280 data-nosnippet>1280</a>    }
 <a href=#1281 id=1281 data-nosnippet>1281</a>    <span class="kw">fn </span>animated_property_info&lt;T&gt;()
-<a href=#1282 id=1282 data-nosnippet>1282</a>    -&gt; (<a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box</a>&lt;<span class="kw">dyn </span>PropertyInfo&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>, <a href="api.rs.html#102-143">Value</a>&gt;&gt;, dynamic_type::<a href="dynamic_type.rs.html#26-36">StaticTypeInfo</a>)
+<a href=#1282 id=1282 data-nosnippet>1282</a>    -&gt; (<a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box</a>&lt;<span class="kw">dyn </span>PropertyInfo&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>, <a href="api.rs.html#98-139">Value</a>&gt;&gt;, dynamic_type::<a href="dynamic_type.rs.html#26-36">StaticTypeInfo</a>)
 <a href=#1283 id=1283 data-nosnippet>1283</a>    <span class="kw">where
-<a href=#1284 id=1284 data-nosnippet>1284</a>        </span>T: <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html">Clone</a> + <a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html">Default</a> + InterpolatedPropertyValue + <a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html">std::convert::TryInto</a>&lt;<a href="api.rs.html#102-143">Value</a>&gt; + <span class="lifetime">'static</span>,
-<a href=#1285 id=1285 data-nosnippet>1285</a>        <a href="api.rs.html#102-143">Value</a>: <a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html">std::convert::TryInto</a>&lt;T&gt;,
+<a href=#1284 id=1284 data-nosnippet>1284</a>        </span>T: <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html">Clone</a> + <a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html">Default</a> + InterpolatedPropertyValue + <a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html">std::convert::TryInto</a>&lt;<a href="api.rs.html#98-139">Value</a>&gt; + <span class="lifetime">'static</span>,
+<a href=#1285 id=1285 data-nosnippet>1285</a>        <a href="api.rs.html#98-139">Value</a>: <a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html">std::convert::TryInto</a>&lt;T&gt;,
 <a href=#1286 id=1286 data-nosnippet>1286</a>    {
 <a href=#1287 id=1287 data-nosnippet>1287</a>        <span class="comment">// Fixme: using u8 in PropertyInfo&lt;&gt; is not sound, we would need to materialize a type for out component
 <a href=#1288 id=1288 data-nosnippet>1288</a>        </span>(
@@ -1420,7 +1420,7 @@
 <a href=#1298 id=1298 data-nosnippet>1298</a>    <span class="kw">fn </span>property_info_for_type(
 <a href=#1299 id=1299 data-nosnippet>1299</a>        ty: <span class="kw-2">&amp;</span>Type,
 <a href=#1300 id=1300 data-nosnippet>1300</a>        name: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>,
-<a href=#1301 id=1301 data-nosnippet>1301</a>    ) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;(<a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box</a>&lt;<span class="kw">dyn </span>PropertyInfo&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>, <a href="api.rs.html#102-143">Value</a>&gt;&gt;, dynamic_type::<a href="dynamic_type.rs.html#26-36">StaticTypeInfo</a>)&gt; {
+<a href=#1301 id=1301 data-nosnippet>1301</a>    ) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;(<a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box</a>&lt;<span class="kw">dyn </span>PropertyInfo&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>, <a href="api.rs.html#98-139">Value</a>&gt;&gt;, dynamic_type::<a href="dynamic_type.rs.html#26-36">StaticTypeInfo</a>)&gt; {
 <a href=#1302 id=1302 data-nosnippet>1302</a>        <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(<span class="kw">match </span><a href="#1299">ty</a> {
 <a href=#1303 id=1303 data-nosnippet>1303</a>            Type::Float32 =&gt; animated_property_info::&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>&gt;(),
 <a href=#1304 id=1304 data-nosnippet>1304</a>            Type::Int32 =&gt; animated_property_info::&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>&gt;(),
@@ -1443,8 +1443,8 @@
 <a href=#1321 id=1321 data-nosnippet>1321</a>            {
 <a href=#1322 id=1322 data-nosnippet>1322</a>                property_info::&lt;i_slint_core::properties::StateInfo&gt;()
 <a href=#1323 id=1323 data-nosnippet>1323</a>            }
-<a href=#1324 id=1324 data-nosnippet>1324</a>            Type::Struct(<span class="kw">_</span>) =&gt; property_info::&lt;<a href="api.rs.html#102-143">Value</a>&gt;(),
-<a href=#1325 id=1325 data-nosnippet>1325</a>            Type::Array(<span class="kw">_</span>) =&gt; property_info::&lt;<a href="api.rs.html#102-143">Value</a>&gt;(),
+<a href=#1324 id=1324 data-nosnippet>1324</a>            Type::Struct(<span class="kw">_</span>) =&gt; property_info::&lt;<a href="api.rs.html#98-139">Value</a>&gt;(),
+<a href=#1325 id=1325 data-nosnippet>1325</a>            Type::Array(<span class="kw">_</span>) =&gt; property_info::&lt;<a href="api.rs.html#98-139">Value</a>&gt;(),
 <a href=#1326 id=1326 data-nosnippet>1326</a>            Type::Easing =&gt; property_info::&lt;i_slint_core::animations::EasingCurve&gt;(),
 <a href=#1327 id=1327 data-nosnippet>1327</a>            Type::Percent =&gt; animated_property_info::&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>&gt;(),
 <a href=#1328 id=1328 data-nosnippet>1328</a>            Type::Enumeration(e) =&gt; {
@@ -1459,7 +1459,7 @@
 <a href=#1337 id=1337 data-nosnippet>1337</a>                    }
 <a href=#1338 id=1338 data-nosnippet>1338</a>                }
 <a href=#1339 id=1339 data-nosnippet>1339</a>                <span class="kw">if </span><a href="#1328">e</a>.node.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.is_some">is_some</a>() {
-<a href=#1340 id=1340 data-nosnippet>1340</a>                    property_info::&lt;<a href="api.rs.html#102-143">Value</a>&gt;()
+<a href=#1340 id=1340 data-nosnippet>1340</a>                    property_info::&lt;<a href="api.rs.html#98-139">Value</a>&gt;()
 <a href=#1341 id=1341 data-nosnippet>1341</a>                } <span class="kw">else </span>{
 <a href=#1342 id=1342 data-nosnippet>1342</a>                    <span class="macro">i_slint_common::for_each_enums!</span>(match_enum_type)
 <a href=#1343 id=1343 data-nosnippet>1343</a>                }
@@ -1685,7 +1685,7 @@
 <a href=#1563 id=1563 data-nosnippet>1563</a><span class="kw">fn </span>make_callback_eval_closure(
 <a href=#1564 id=1564 data-nosnippet>1564</a>    expr: Expression,
 <a href=#1565 id=1565 data-nosnippet>1565</a>    self_weak: <a href="#86">ErasedItemTreeBoxWeak</a>,
-<a href=#1566 id=1566 data-nosnippet>1566</a>) -&gt; <span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html">Fn</a>(<span class="kw-2">&amp;</span>[<a href="api.rs.html#102-143">Value</a>]) -&gt; <a href="api.rs.html#102-143">Value</a> {
+<a href=#1566 id=1566 data-nosnippet>1566</a>) -&gt; <span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html">Fn</a>(<span class="kw-2">&amp;</span>[<a href="api.rs.html#98-139">Value</a>]) -&gt; <a href="api.rs.html#98-139">Value</a> {
 <a href=#1567 id=1567 data-nosnippet>1567</a>    <span class="kw">move </span>|args| {
 <a href=#1568 id=1568 data-nosnippet>1568</a>        <span class="kw">let </span>self_rc = <a href="#1565">self_weak</a>.upgrade().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap">unwrap</a>();
 <a href=#1569 id=1569 data-nosnippet>1569</a>        <span class="macro">generativity::make_guard!</span>(guard);
@@ -1700,7 +1700,7 @@
 <a href=#1578 id=1578 data-nosnippet>1578</a><span class="kw">fn </span>make_binding_eval_closure(
 <a href=#1579 id=1579 data-nosnippet>1579</a>    expr: Expression,
 <a href=#1580 id=1580 data-nosnippet>1580</a>    self_weak: <a href="#86">ErasedItemTreeBoxWeak</a>,
-<a href=#1581 id=1581 data-nosnippet>1581</a>) -&gt; <span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html">Fn</a>() -&gt; <a href="api.rs.html#102-143">Value</a> {
+<a href=#1581 id=1581 data-nosnippet>1581</a>) -&gt; <span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html">Fn</a>() -&gt; <a href="api.rs.html#98-139">Value</a> {
 <a href=#1582 id=1582 data-nosnippet>1582</a>    <span class="kw">move </span>|| {
 <a href=#1583 id=1583 data-nosnippet>1583</a>        <span class="kw">let </span>self_rc = <a href="#1580">self_weak</a>.upgrade().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap">unwrap</a>();
 <a href=#1584 id=1584 data-nosnippet>1584</a>        <span class="macro">generativity::make_guard!</span>(guard);
@@ -1972,7 +1972,7 @@
 <a href=#1850 id=1850 data-nosnippet>1850</a><span class="kw">fn </span>prepare_for_two_way_binding(
 <a href=#1851 id=1851 data-nosnippet>1851</a>    instance_ref: <a href="#2435-2438">InstanceRef</a>,
 <a href=#1852 id=1852 data-nosnippet>1852</a>    twb: <span class="kw-2">&amp;</span>i_slint_compiler::expression_tree::TwoWayBinding,
-<a href=#1853 id=1853 data-nosnippet>1853</a>) -&gt; (<a href="https://doc.rust-lang.org/nightly/core/pin/struct.Pin.html">Pin</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/rc/struct.Rc.html">Rc</a>&lt;Property&lt;<a href="api.rs.html#102-143">Value</a>&gt;&gt;&gt;, <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/rc/struct.Rc.html">Rc</a>&lt;<span class="kw">dyn </span>rtti::TwoWayBindingMapping&lt;<a href="api.rs.html#102-143">Value</a>&gt;&gt;&gt;) {
+<a href=#1853 id=1853 data-nosnippet>1853</a>) -&gt; (<a href="https://doc.rust-lang.org/nightly/core/pin/struct.Pin.html">Pin</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/rc/struct.Rc.html">Rc</a>&lt;Property&lt;<a href="api.rs.html#98-139">Value</a>&gt;&gt;&gt;, <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/rc/struct.Rc.html">Rc</a>&lt;<span class="kw">dyn </span>rtti::TwoWayBindingMapping&lt;<a href="api.rs.html#98-139">Value</a>&gt;&gt;&gt;) {
 <a href=#1854 id=1854 data-nosnippet>1854</a>    <span class="kw">let </span>element = <a href="#1852">twb</a>.property.element();
 <a href=#1855 id=1855 data-nosnippet>1855</a>    <span class="kw">let </span>name = <a href="#1852">twb</a>.property.name();
 <a href=#1856 id=1856 data-nosnippet>1856</a>    <span class="macro">generativity::make_guard!</span>(guard);
@@ -1981,12 +1981,12 @@
 <a href=#1859 id=1859 data-nosnippet>1859</a>        <span class="kw-2">&amp;</span>eval::ComponentInstance::<a href="eval.rs.html#125">InstanceRef</a>(<a href="#1851">instance_ref</a>),
 <a href=#1860 id=1860 data-nosnippet>1860</a>        <a href="#1856">guard</a>,
 <a href=#1861 id=1861 data-nosnippet>1861</a>    );
-<a href=#1862 id=1862 data-nosnippet>1862</a>    <span class="kw">let </span>map: <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/rc/struct.Rc.html">Rc</a>&lt;<span class="kw">dyn </span>rtti::TwoWayBindingMapping&lt;<a href="api.rs.html#102-143">Value</a>&gt;&gt;&gt; = <span class="kw">if </span><a href="#1852">twb</a>.field_access.<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.is_empty">is_empty</a>() {
+<a href=#1862 id=1862 data-nosnippet>1862</a>    <span class="kw">let </span>map: <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/rc/struct.Rc.html">Rc</a>&lt;<span class="kw">dyn </span>rtti::TwoWayBindingMapping&lt;<a href="api.rs.html#98-139">Value</a>&gt;&gt;&gt; = <span class="kw">if </span><a href="#1852">twb</a>.field_access.<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.is_empty">is_empty</a>() {
 <a href=#1863 id=1863 data-nosnippet>1863</a>        <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a>
 <a href=#1864 id=1864 data-nosnippet>1864</a>    } <span class="kw">else </span>{
 <a href=#1865 id=1865 data-nosnippet>1865</a>        <span class="kw">struct </span>FieldAccess(<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;SmolStr&gt;);
-<a href=#1866 id=1866 data-nosnippet>1866</a>        <span class="kw">impl </span>rtti::TwoWayBindingMapping&lt;<a href="api.rs.html#102-143">Value</a>&gt; <span class="kw">for </span><a href="#1865">FieldAccess</a> {
-<a href=#1867 id=1867 data-nosnippet>1867</a>            <span class="kw">fn </span>map_to(<span class="kw-2">&amp;</span><span class="self">self</span>, value: <span class="kw-2">&amp;</span><a href="api.rs.html#102-143">Value</a>) -&gt; <a href="api.rs.html#102-143">Value</a> {
+<a href=#1866 id=1866 data-nosnippet>1866</a>        <span class="kw">impl </span>rtti::TwoWayBindingMapping&lt;<a href="api.rs.html#98-139">Value</a>&gt; <span class="kw">for </span><a href="#1865">FieldAccess</a> {
+<a href=#1867 id=1867 data-nosnippet>1867</a>            <span class="kw">fn </span>map_to(<span class="kw-2">&amp;</span><span class="self">self</span>, value: <span class="kw-2">&amp;</span><a href="api.rs.html#98-139">Value</a>) -&gt; <a href="api.rs.html#98-139">Value</a> {
 <a href=#1868 id=1868 data-nosnippet>1868</a>                <span class="kw">let </span><span class="kw-2">mut </span>value = <a href="#1867">value</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>();
 <a href=#1869 id=1869 data-nosnippet>1869</a>                <span class="kw">for </span>f <span class="kw">in </span><span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0 </span>{
 <a href=#1870 id=1870 data-nosnippet>1870</a>                    <span class="kw">match </span>value {
@@ -1997,7 +1997,7 @@
 <a href=#1875 id=1875 data-nosnippet>1875</a>                }
 <a href=#1876 id=1876 data-nosnippet>1876</a>                <a href="#1868">value</a>
 <a href=#1877 id=1877 data-nosnippet>1877</a>            }
-<a href=#1878 id=1878 data-nosnippet>1878</a>            <span class="kw">fn </span>map_from(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="kw-2">mut </span>value: <span class="kw-2">&amp;mut </span><a href="api.rs.html#102-143">Value</a>, from: <span class="kw-2">&amp;</span><a href="api.rs.html#102-143">Value</a>) {
+<a href=#1878 id=1878 data-nosnippet>1878</a>            <span class="kw">fn </span>map_from(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="kw-2">mut </span>value: <span class="kw-2">&amp;mut </span><a href="api.rs.html#98-139">Value</a>, from: <span class="kw-2">&amp;</span><a href="api.rs.html#98-139">Value</a>) {
 <a href=#1879 id=1879 data-nosnippet>1879</a>                <span class="kw">for </span>f <span class="kw">in </span><span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0 </span>{
 <a href=#1880 id=1880 data-nosnippet>1880</a>                    <span class="kw">match </span>value {
 <a href=#1881 id=1881 data-nosnippet>1881</a>                        Value::Struct(o) =&gt; {
@@ -2437,9 +2437,9 @@
 <a href=#2315 id=2315 data-nosnippet>2315</a>    <span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(nr) = <a href="#2309">nr</a> {
 <a href=#2316 id=2316 data-nosnippet>2316</a>        <span class="kw">let </span>value = <span class="kw">crate</span>::eval::<a href="eval.rs.html#1852-1854">load_property</a>(<a href="#2307">instance_ref</a>, <span class="kw-2">&amp;</span><a href="#2315">nr</a>.element(), <a href="#2315">nr</a>.name()).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>();
 <a href=#2317 id=2317 data-nosnippet>2317</a>        <span class="kw">match </span><a href="#2316">value</a> {
-<a href=#2318 id=2318 data-nosnippet>2318</a>            Value::<a href="api.rs.html#110">String</a>(s) =&gt; <span class="kw-2">*</span><a href="#2304">result</a> = <a href="#2318">s</a>,
-<a href=#2319 id=2319 data-nosnippet>2319</a>            Value::<a href="api.rs.html#112">Bool</a>(b) =&gt; <span class="kw-2">*</span><a href="#2304">result</a> = <span class="kw">if </span><a href="#2319">b</a> { <span class="string">"true" </span>} <span class="kw">else </span>{ <span class="string">"false" </span>}.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html#tymethod.into">into</a>(),
-<a href=#2320 id=2320 data-nosnippet>2320</a>            Value::<a href="api.rs.html#108">Number</a>(x) =&gt; <span class="kw-2">*</span><a href="#2304">result</a> = <a href="#2320">x</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>().<a href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html#tymethod.into">into</a>(),
+<a href=#2318 id=2318 data-nosnippet>2318</a>            Value::<a href="api.rs.html#106">String</a>(s) =&gt; <span class="kw-2">*</span><a href="#2304">result</a> = <a href="#2318">s</a>,
+<a href=#2319 id=2319 data-nosnippet>2319</a>            Value::<a href="api.rs.html#108">Bool</a>(b) =&gt; <span class="kw-2">*</span><a href="#2304">result</a> = <span class="kw">if </span><a href="#2319">b</a> { <span class="string">"true" </span>} <span class="kw">else </span>{ <span class="string">"false" </span>}.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html#tymethod.into">into</a>(),
+<a href=#2320 id=2320 data-nosnippet>2320</a>            Value::<a href="api.rs.html#104">Number</a>(x) =&gt; <span class="kw-2">*</span><a href="#2304">result</a> = <a href="#2320">x</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>().<a href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html#tymethod.into">into</a>(),
 <a href=#2321 id=2321 data-nosnippet>2321</a>            <span class="kw">_ </span>=&gt; <a href="https://doc.rust-lang.org/nightly/core/macro.unimplemented.html">unimplemented!</a>(<span class="string">"invalid type for accessible_string_property"</span>),
 <a href=#2322 id=2322 data-nosnippet>2322</a>        };
 <a href=#2323 id=2323 data-nosnippet>2323</a>        <span class="bool-val">true
@@ -2454,7 +2454,7 @@
 <a href=#2332 id=2332 data-nosnippet>2332</a>    item_index: <a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
 <a href=#2333 id=2333 data-nosnippet>2333</a>    action: <span class="kw-2">&amp;</span>AccessibilityAction,
 <a href=#2334 id=2334 data-nosnippet>2334</a>) {
-<a href=#2335 id=2335 data-nosnippet>2335</a>    <span class="kw">let </span>perform = |prop_name, args: <span class="kw-2">&amp;</span>[<a href="api.rs.html#102-143">Value</a>]| {
+<a href=#2335 id=2335 data-nosnippet>2335</a>    <span class="kw">let </span>perform = |prop_name, args: <span class="kw-2">&amp;</span>[<a href="api.rs.html#98-139">Value</a>]| {
 <a href=#2336 id=2336 data-nosnippet>2336</a>        <span class="macro">generativity::make_guard!</span>(guard);
 <a href=#2337 id=2337 data-nosnippet>2337</a>        <span class="kw">let </span>instance_ref = <span class="kw">unsafe </span>{ <a href="#2435-2438">InstanceRef</a>::<a href="#2441-2455">from_pin_ref</a>(<a href="#2331">component</a>, <a href="#2336">guard</a>) };
 <a href=#2338 id=2338 data-nosnippet>2338</a>        <span class="kw">let </span>nr = <a href="#2337">instance_ref</a>.description.original_elements[<a href="#2332">item_index</a> <span class="kw">as </span><a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>]
@@ -2481,7 +2481,7 @@
 <a href=#2359 id=2359 data-nosnippet>2359</a>            </span>);
 <a href=#2360 id=2360 data-nosnippet>2360</a>        }
 <a href=#2361 id=2361 data-nosnippet>2361</a>        AccessibilityAction::SetValue(a) =&gt; {
-<a href=#2362 id=2362 data-nosnippet>2362</a>            <a href="#2335">perform</a>(<span class="string">"accessible-action-set-value"</span>, <span class="kw-2">&amp;</span>[Value::<a href="api.rs.html#110">String</a>(<a href="#2361">a</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>())])
+<a href=#2362 id=2362 data-nosnippet>2362</a>            <a href="#2335">perform</a>(<span class="string">"accessible-action-set-value"</span>, <span class="kw-2">&amp;</span>[Value::<a href="api.rs.html#106">String</a>(<a href="#2361">a</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>())])
 <a href=#2363 id=2363 data-nosnippet>2363</a>        }
 <a href=#2364 id=2364 data-nosnippet>2364</a>    };
 <a href=#2365 id=2365 data-nosnippet>2365</a>}
