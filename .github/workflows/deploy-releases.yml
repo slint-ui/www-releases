@@ -2,8 +2,13 @@
 name: Deploy to releases.slint.dev
 
 on:
-  push:
-    paths: 'releases/**'
+  workflow_call:
+    inputs:
+      new_release:
+        description: "Is this a new release? True means Cloudflare redirects will be updated and Docs will be scraped"
+        required: false
+        default: false
+        type: boolean
   workflow_dispatch:
     inputs:
       new_release:
