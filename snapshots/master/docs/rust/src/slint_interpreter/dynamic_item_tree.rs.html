@@ -751,7 +751,7 @@
 <a href=#629 id=629 data-nosnippet>629</a>        component: ItemTreeRefPin,
 <a href=#630 id=630 data-nosnippet>630</a>        name: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>,
 <a href=#631 id=631 data-nosnippet>631</a>        value: <a href="api.rs.html#98-139">Value</a>,
-<a href=#632 id=632 data-nosnippet>632</a>    ) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), <span class="kw">crate</span>::api::<a href="api.rs.html#1736-1750">SetPropertyError</a>&gt; {
+<a href=#632 id=632 data-nosnippet>632</a>    ) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), <span class="kw">crate</span>::api::<a href="api.rs.html#1738-1752">SetPropertyError</a>&gt; {
 <a href=#633 id=633 data-nosnippet>633</a>        <span class="kw">if </span>!core::ptr::<a href="https://doc.rust-lang.org/nightly/core/ptr/fn.eq.html">eq</a>((<span class="kw-2">&amp;</span><a class="self" href="#628">self</a>.ct) <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>, <a href="#629">component</a>.get_vtable() <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>) {
 <a href=#634 id=634 data-nosnippet>634</a>            <a href="https://doc.rust-lang.org/nightly/std/macro.panic.html">panic!</a>(<span class="string">"mismatch instance and vtable"</span>);
 <a href=#635 id=635 data-nosnippet>635</a>        }

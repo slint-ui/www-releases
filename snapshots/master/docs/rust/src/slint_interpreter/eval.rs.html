@@ -123,7 +123,7 @@
 </head><body class="rustdoc src"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><h1><div class="sub-heading">slint_interpreter/</div>eval.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap digits-4"><pre class="rust"><code><a href=#1 id=1 data-nosnippet>1</a><span class="comment">// Copyright © SixtyFPS GmbH &lt;info@slint.dev&gt;
 <a href=#2 id=2 data-nosnippet>2</a>// SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0
 <a href=#3 id=3 data-nosnippet>3</a>
-<a href=#4 id=4 data-nosnippet>4</a></span><span class="kw">use </span><span class="kw">crate</span>::api::{<a href="api.rs.html#1736-1750">SetPropertyError</a>, <a href="api.rs.html#647">Struct</a>, <a href="api.rs.html#98-139">Value</a>};
+<a href=#4 id=4 data-nosnippet>4</a></span><span class="kw">use </span><span class="kw">crate</span>::api::{<a href="api.rs.html#1738-1752">SetPropertyError</a>, <a href="api.rs.html#647">Struct</a>, <a href="api.rs.html#98-139">Value</a>};
 <a href=#5 id=5 data-nosnippet>5</a><span class="kw">use </span><span class="kw">crate</span>::dynamic_item_tree::{<a href="dynamic_item_tree.rs.html#53">CallbackHandler</a>, <a href="dynamic_item_tree.rs.html#2435-2438">InstanceRef</a>};
 <a href=#6 id=6 data-nosnippet>6</a><span class="kw">use </span><a href="https://doc.rust-lang.org/nightly/core/pin/struct.Pin.html">core::pin::Pin</a>;
 <a href=#7 id=7 data-nosnippet>7</a><span class="kw">use </span>corelib::graphics::{
@@ -2012,7 +2012,7 @@
 <a href=#1890 id=1890 data-nosnippet>1890</a>    element: <span class="kw-2">&amp;</span>ElementRc,
 <a href=#1891 id=1891 data-nosnippet>1891</a>    name: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>,
 <a href=#1892 id=1892 data-nosnippet>1892</a>    <span class="kw-2">mut </span>value: <a href="api.rs.html#98-139">Value</a>,
-<a href=#1893 id=1893 data-nosnippet>1893</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), <a href="api.rs.html#1736-1750">SetPropertyError</a>&gt; {
+<a href=#1893 id=1893 data-nosnippet>1893</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), <a href="api.rs.html#1738-1752">SetPropertyError</a>&gt; {
 <a href=#1894 id=1894 data-nosnippet>1894</a>    <span class="macro">generativity::make_guard!</span>(guard);
 <a href=#1895 id=1895 data-nosnippet>1895</a>    <span class="kw">match </span><a href="#2147-2178">enclosing_component_instance_for_element</a>(
 <a href=#1896 id=1896 data-nosnippet>1896</a>        <a href="#1890">element</a>,
@@ -2043,7 +2043,7 @@
 <a href=#1921 id=1921 data-nosnippet>1921</a>                    {
 <a href=#1922 id=1922 data-nosnippet>1922</a>                        <span class="comment">// Do an extra type checking because PropertyInfo::set won't do it for custom structures or array
 <a href=#1923 id=1923 data-nosnippet>1923</a>                        </span><span class="kw">if </span>!<a href="#1952-2006">check_value_type</a>(<span class="kw-2">&amp;mut </span><a href="#1892">value</a>, <span class="kw-2">&amp;</span><a href="#1914">orig_decl</a>.property_type) {
-<a href=#1924 id=1924 data-nosnippet>1924</a>                            <span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(SetPropertyError::<a href="api.rs.html#1746">WrongType</a>);
+<a href=#1924 id=1924 data-nosnippet>1924</a>                            <span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(SetPropertyError::<a href="api.rs.html#1748">WrongType</a>);
 <a href=#1925 id=1925 data-nosnippet>1925</a>                        }
 <a href=#1926 id=1926 data-nosnippet>1926</a>                    }
 <a href=#1927 id=1927 data-nosnippet>1927</a>                    <span class="kw">unsafe </span>{
@@ -2051,17 +2051,17 @@
 <a href=#1929 id=1929 data-nosnippet>1929</a>                        <span class="kw">return </span><a href="#1913">x</a>
 <a href=#1930 id=1930 data-nosnippet>1930</a>                            .prop
 <a href=#1931 id=1931 data-nosnippet>1931</a>                            .set(<a href="#1928">p</a>, <a href="#1892">value</a>, <a href="#1901">maybe_animation</a>.as_animation())
-<a href=#1932 id=1932 data-nosnippet>1932</a>                            .<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|()| SetPropertyError::<a href="api.rs.html#1746">WrongType</a>);
+<a href=#1932 id=1932 data-nosnippet>1932</a>                            .<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|()| SetPropertyError::<a href="api.rs.html#1748">WrongType</a>);
 <a href=#1933 id=1933 data-nosnippet>1933</a>                    }
 <a href=#1934 id=1934 data-nosnippet>1934</a>                } <span class="kw">else if </span><a href="#1900">enclosing_component</a>.description.original.is_global() {
-<a href=#1935 id=1935 data-nosnippet>1935</a>                    <span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(SetPropertyError::<a href="api.rs.html#1739">NoSuchProperty</a>);
+<a href=#1935 id=1935 data-nosnippet>1935</a>                    <span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(SetPropertyError::<a href="api.rs.html#1741">NoSuchProperty</a>);
 <a href=#1936 id=1936 data-nosnippet>1936</a>                }
 <a href=#1937 id=1937 data-nosnippet>1937</a>            };
 <a href=#1938 id=1938 data-nosnippet>1938</a>            <span class="kw">let </span>item_info = <span class="kw-2">&amp;</span><a href="#1900">enclosing_component</a>.description.items[<a href="#1890">element</a>.<a href="https://doc.rust-lang.org/nightly/core/cell/struct.RefCell.html#method.borrow">borrow</a>().id.as_str()];
 <a href=#1939 id=1939 data-nosnippet>1939</a>            <span class="kw">let </span>item = <span class="kw">unsafe </span>{ <a href="#1938">item_info</a>.<a href="dynamic_item_tree.rs.html#96-106">item_from_item_tree</a>(<a href="#1900">enclosing_component</a>.<a href="dynamic_item_tree.rs.html#2457-2459">as_ptr</a>()) };
-<a href=#1940 id=1940 data-nosnippet>1940</a>            <span class="kw">let </span>p = <span class="kw-2">&amp;</span><a href="#1938">item_info</a>.rtti.properties.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.get">get</a>(<a href="#1891">name</a>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.ok_or">ok_or</a>(SetPropertyError::<a href="api.rs.html#1739">NoSuchProperty</a>)<span class="question-mark">?</span>;
+<a href=#1940 id=1940 data-nosnippet>1940</a>            <span class="kw">let </span>p = <span class="kw-2">&amp;</span><a href="#1938">item_info</a>.rtti.properties.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.get">get</a>(<a href="#1891">name</a>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.ok_or">ok_or</a>(SetPropertyError::<a href="api.rs.html#1741">NoSuchProperty</a>)<span class="question-mark">?</span>;
 <a href=#1941 id=1941 data-nosnippet>1941</a>            <a href="#1940">p</a>.<a href="#32-37">set</a>(<a href="#1939">item</a>, <a href="#1892">value</a>, <a href="#1901">maybe_animation</a>.as_animation())
-<a href=#1942 id=1942 data-nosnippet>1942</a>                .<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|()| SetPropertyError::<a href="api.rs.html#1746">WrongType</a>)<span class="question-mark">?</span>;
+<a href=#1942 id=1942 data-nosnippet>1942</a>                .<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|()| SetPropertyError::<a href="api.rs.html#1748">WrongType</a>)<span class="question-mark">?</span>;
 <a href=#1943 id=1943 data-nosnippet>1943</a>        }
 <a href=#1944 id=1944 data-nosnippet>1944</a>        ComponentInstance::<a href="#126">GlobalComponent</a>(glob) =&gt; {
 <a href=#1945 id=1945 data-nosnippet>1945</a>            <a href="#1944">glob</a>.<a href="https://doc.rust-lang.org/nightly/core/pin/struct.Pin.html#method.as_ref">as_ref</a>().<a href="global_component.rs.html#170-174">set_property</a>(<a href="#1891">name</a>, <a href="#1892">value</a>)<span class="question-mark">?</span>;
