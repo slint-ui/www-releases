@@ -31,6 +31,8 @@ Includes
 
 - ``private/slint_image.h`` (:ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_image.h`)
 
+- ``private/slint_keys.h`` (:ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_keys.h`)
+
 - ``private/slint_point.h`` (:ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_point.h`)
 
 
@@ -40,6 +42,8 @@ Included By
 
 
 - :ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_properties.h`
+
+- :ref:`file_cppdocs_generated_include_private_slint_events_internal.h`
 
 - :ref:`file_cppdocs_generated_include_private_slint_internal.h`
 

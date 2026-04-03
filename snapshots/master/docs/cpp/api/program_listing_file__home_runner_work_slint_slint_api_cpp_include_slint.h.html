@@ -268,6 +268,7 @@
 <li class="toctree-l2"><a class="reference internal" href="classslint_1_1interpreter_1_1ComponentDefinition.html">Class ComponentDefinition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="classslint_1_1interpreter_1_1ComponentInstance.html">Class ComponentInstance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="classslint_1_1interpreter_1_1Value.html">Class Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classslint_1_1Keys.html">Class Keys</a></li>
 <li class="toctree-l2"><a class="reference internal" href="classslint_1_1MapModel.html">Template Class MapModel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="classslint_1_1Model.html">Template Class Model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="classslint_1_1platform_1_1AbstractRenderer.html">Class AbstractRenderer</a></li>
@@ -502,6 +503,7 @@
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;private/slint_window.h&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;private/slint_models.h&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;private/slint_item_tree.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;private/slint_keys.h&quot;</span>
 
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;chrono&gt;</span>
@@ -836,13 +838,6 @@
 <span class="w">                       </span><span class="n">plural_rules</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
 <span class="w">    </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_translate_from_bundle_with_plural</span><span class="p">(</span>
 <span class="w">            </span><span class="n">strs_slice</span><span class="p">,</span><span class="w"> </span><span class="n">indices_slice</span><span class="p">,</span><span class="w"> </span><span class="n">plural_rules_slice</span><span class="p">,</span><span class="w"> </span><span class="n">arguments</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">result</span><span class="p">);</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kr">inline</span><span class="w"> </span><span class="n">SharedString</span><span class="w"> </span><span class="n">keys_to_string</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">Keys</span><span class="w"> </span><span class="o">&amp;</span><span class="n">keys</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="n">SharedString</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
-<span class="w">    </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_keys_to_string</span><span class="p">(</span><span class="o">&amp;</span><span class="n">keys</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">result</span><span class="p">);</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
 <span class="p">}</span>
 

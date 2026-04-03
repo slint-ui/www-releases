@@ -16,6 +16,7 @@ Program Listing for File slint_builtin_structs_internal.h
    #include "private/slint_enums_internal.h"
    #include "private/slint_point.h"
    #include "private/slint_image.h"
+   #include "private/slint_keys.h"
    namespace slint::cbindgen_private {
    enum class KeyEventType : uint8_t;
    using slint::language::KeyboardModifiers;
@@ -69,6 +70,7 @@ Program Listing for File slint_builtin_structs_internal.h
        bool checked;
        bool has_sub_menu;
        bool is_separator;
+       Keys shortcut;
        friend bool operator==(const MenuEntry&, const MenuEntry&) = default;
        friend bool operator!=(const MenuEntry&, const MenuEntry&) = default;
    };

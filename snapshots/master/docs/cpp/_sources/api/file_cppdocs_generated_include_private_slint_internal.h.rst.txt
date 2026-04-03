@@ -53,6 +53,8 @@ Includes
 
 - ``private/slint_image.h`` (:ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_image.h`)
 
+- ``private/slint_keys.h`` (:ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_keys.h`)
+
 - ``private/slint_pathdata.h`` (:ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_pathdata.h`)
 
 - ``private/slint_point.h`` (:ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_point.h`)

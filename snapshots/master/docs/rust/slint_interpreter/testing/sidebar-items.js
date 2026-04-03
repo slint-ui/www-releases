@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["send_keyboard_char","send_keyboard_string_sequence","send_mouse_click"]};
+window.SIDEBAR_ITEMS = {"fn":["send_key_combo","send_keyboard_char","send_keyboard_string_sequence","send_mouse_click"]};

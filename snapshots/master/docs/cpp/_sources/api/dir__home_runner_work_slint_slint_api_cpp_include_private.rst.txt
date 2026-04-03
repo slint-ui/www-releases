@@ -22,6 +22,7 @@ Files
 - :ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_config.h`
 - :ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_image.h`
 - :ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_item_tree.h`
+- :ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_keys.h`
 - :ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_live_preview.h`
 - :ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_models.h`
 - :ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_pathdata.h`

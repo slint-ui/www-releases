@@ -28,6 +28,7 @@ Files
 - :ref:`file_cppdocs_generated_include_private_slint_internal.h`
 - :ref:`file_cppdocs_generated_include_private_slint_interpreter_generated_public.h`
 - :ref:`file_cppdocs_generated_include_private_slint_interpreter_internal.h`
+- :ref:`file_cppdocs_generated_include_private_slint_keys_internal.h`
 - :ref:`file_cppdocs_generated_include_private_slint_pathdata_internal.h`
 - :ref:`file_cppdocs_generated_include_private_slint_platform_internal.h`
 - :ref:`file_cppdocs_generated_include_private_slint_properties_internal.h`

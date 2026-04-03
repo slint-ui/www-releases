@@ -268,6 +268,7 @@
 <li class="toctree-l2"><a class="reference internal" href="classslint_1_1interpreter_1_1ComponentDefinition.html">Class ComponentDefinition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="classslint_1_1interpreter_1_1ComponentInstance.html">Class ComponentInstance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="classslint_1_1interpreter_1_1Value.html">Class Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classslint_1_1Keys.html">Class Keys</a></li>
 <li class="toctree-l2"><a class="reference internal" href="classslint_1_1MapModel.html">Template Class MapModel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="classslint_1_1Model.html">Template Class Model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="classslint_1_1platform_1_1AbstractRenderer.html">Class AbstractRenderer</a></li>
@@ -502,6 +503,7 @@
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;new&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;private/slint_enums_internal.h&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;private/slint_point.h&quot;</span>
+<span class="w">            </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;private/slint_builtin_structs_internal.h&quot;</span>
 <span class="w">            </span><span class="k">namespace</span><span class="w"> </span><span class="nn">slint</span><span class="o">::</span><span class="nn">cbindgen_private</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                </span><span class="k">struct</span><span class="w"> </span><span class="nc">PointerEvent</span><span class="p">;</span>
 <span class="w">                </span><span class="k">struct</span><span class="w"> </span><span class="nc">Rect</span><span class="p">;</span>
@@ -860,26 +862,6 @@
 <span class="w">            </span><span class="k">new</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">)</span><span class="w"> </span><span class="n">MouseEvent</span><span class="p">(</span><span class="n">other</span><span class="p">);</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">*</span><span class="k">this</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">};</span>
-
-<span class="k">struct</span><span class="w"> </span><span class="nc">Keys</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">SharedString</span><span class="w"> </span><span class="n">key</span><span class="p">;</span>
-<span class="w">    </span><span class="n">KeyboardModifiers</span><span class="w"> </span><span class="n">modifiers</span><span class="p">;</span>
-<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">ignore_shift</span><span class="p">;</span>
-<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">ignore_alt</span><span class="p">;</span>
-
-<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="k">operator</span><span class="o">==</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Keys</span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="n">key</span><span class="w"> </span><span class="o">&amp;&amp;</span>
-<span class="w">               </span><span class="n">modifiers</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="n">modifiers</span><span class="w"> </span><span class="o">&amp;&amp;</span>
-<span class="w">               </span><span class="n">ignore_shift</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="n">ignore_shift</span><span class="w"> </span><span class="o">&amp;&amp;</span>
-<span class="w">               </span><span class="n">ignore_alt</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="n">ignore_alt</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="k">operator</span><span class="o">!=</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Keys</span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="n">key</span><span class="w"> </span><span class="o">||</span>
-<span class="w">               </span><span class="n">modifiers</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="n">modifiers</span><span class="w"> </span><span class="o">||</span>
-<span class="w">               </span><span class="n">ignore_shift</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="n">ignore_shift</span><span class="w"> </span><span class="o">||</span>
-<span class="w">               </span><span class="n">ignore_alt</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="n">ignore_alt</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">};</span>
 

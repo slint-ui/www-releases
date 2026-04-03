@@ -268,6 +268,7 @@
 <li class="toctree-l2"><a class="reference internal" href="classslint_1_1interpreter_1_1ComponentDefinition.html">Class ComponentDefinition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="classslint_1_1interpreter_1_1ComponentInstance.html">Class ComponentInstance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="classslint_1_1interpreter_1_1Value.html">Class Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classslint_1_1Keys.html">Class Keys</a></li>
 <li class="toctree-l2"><a class="reference internal" href="classslint_1_1MapModel.html">Template Class MapModel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="classslint_1_1Model.html">Template Class Model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="classslint_1_1platform_1_1AbstractRenderer.html">Class AbstractRenderer</a></li>
@@ -504,6 +505,7 @@
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;private/vtable.h&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;private/slint_string.h&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;private/slint_sharedvector.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;private/slint_keys.h&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;private/slint_properties.h&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;private/slint_callbacks.h&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;private/slint_color.h&quot;</span>
@@ -530,7 +532,6 @@
 <span class="w">        </span><span class="k">using</span><span class="w"> </span><span class="n">types</span><span class="o">::</span><span class="n">IntRect</span><span class="p">;</span>
 <span class="w">        </span><span class="k">using</span><span class="w"> </span><span class="n">types</span><span class="o">::</span><span class="n">Size</span><span class="p">;</span>
 <span class="w">        </span><span class="k">using</span><span class="w"> </span><span class="n">types</span><span class="o">::</span><span class="n">MouseEvent</span><span class="p">;</span>
-<span class="w">        </span><span class="k">using</span><span class="w"> </span><span class="n">types</span><span class="o">::</span><span class="n">Keys</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">ModelData</span><span class="o">&gt;</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Model</span><span class="p">;</span>
 <span class="p">}</span>
@@ -1458,6 +1459,7 @@
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="w"> </span><span class="n">checkable</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="w"> </span><span class="n">checked</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">Image</span><span class="o">&gt;</span><span class="w"> </span><span class="n">icon</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">Keys</span><span class="o">&gt;</span><span class="w"> </span><span class="n">shortcut</span><span class="p">;</span>
 <span class="p">};</span>
 
 <span class="k">extern</span><span class="w"> </span><span class="s">&quot;C&quot;</span><span class="w"> </span><span class="p">{</span>
@@ -1493,18 +1495,7 @@
 <span class="w">                                </span><span class="kt">int32_t</span><span class="w"> </span><span class="o">*</span><span class="n">m</span><span class="p">,</span>
 <span class="w">                                </span><span class="kt">int32_t</span><span class="w"> </span><span class="o">*</span><span class="n">y</span><span class="p">);</span>
 
-<span class="kt">void</span><span class="w"> </span><span class="nf">slint_keys</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">SharedString</span><span class="w"> </span><span class="o">*</span><span class="n">key</span><span class="p">,</span>
-<span class="w">                </span><span class="kt">bool</span><span class="w"> </span><span class="n">alt</span><span class="p">,</span>
-<span class="w">                </span><span class="kt">bool</span><span class="w"> </span><span class="n">control</span><span class="p">,</span>
-<span class="w">                </span><span class="kt">bool</span><span class="w"> </span><span class="n">shift</span><span class="p">,</span>
-<span class="w">                </span><span class="kt">bool</span><span class="w"> </span><span class="n">meta</span><span class="p">,</span>
-<span class="w">                </span><span class="kt">bool</span><span class="w"> </span><span class="n">ignore_shift</span><span class="p">,</span>
-<span class="w">                </span><span class="kt">bool</span><span class="w"> </span><span class="n">ignore_alt</span><span class="p">,</span>
-<span class="w">                </span><span class="n">Keys</span><span class="w"> </span><span class="o">*</span><span class="n">out</span><span class="p">);</span>
-
 <span class="kt">void</span><span class="w"> </span><span class="nf">slint_keys_debug_string</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Keys</span><span class="w"> </span><span class="o">*</span><span class="n">shortcut</span><span class="p">,</span><span class="w"> </span><span class="n">SharedString</span><span class="w"> </span><span class="o">*</span><span class="n">out</span><span class="p">);</span>
-
-<span class="kt">void</span><span class="w"> </span><span class="nf">slint_keys_to_string</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Keys</span><span class="w"> </span><span class="o">*</span><span class="n">shortcut</span><span class="p">,</span><span class="w"> </span><span class="n">SharedString</span><span class="w"> </span><span class="o">*</span><span class="n">out</span><span class="p">);</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">slint_register_item_tree</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">ItemTreeRc</span><span class="w"> </span><span class="o">*</span><span class="n">item_tree_rc</span><span class="p">,</span>
 <span class="w">                              </span><span class="k">const</span><span class="w"> </span><span class="n">WindowAdapterRcOpaque</span><span class="w"> </span><span class="o">*</span><span class="n">window_handle</span><span class="p">);</span>
@@ -1895,10 +1886,15 @@
 
 <span class="n">ColorScheme</span><span class="w"> </span><span class="nf">slint_windowrc_color_scheme</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">WindowAdapterRcOpaque</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">);</span>
 
+<span class="kt">void</span><span class="w"> </span><span class="nf">slint_windowrc_accent_color</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">WindowAdapterRcOpaque</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="n">Color</span><span class="w"> </span><span class="o">*</span><span class="n">out</span><span class="p">);</span>
+
 <span class="kt">bool</span><span class="w"> </span><span class="nf">slint_windowrc_supports_native_menu_bar</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">WindowAdapterRcOpaque</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">);</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">slint_windowrc_setup_native_menu_bar</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">WindowAdapterRcOpaque</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">,</span>
 <span class="w">                                          </span><span class="k">const</span><span class="w"> </span><span class="n">VRc</span><span class="o">&lt;</span><span class="n">MenuVTable</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">menu_instance</span><span class="p">);</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">slint_windowrc_setup_menu_bar_shortcuts</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">WindowAdapterRcOpaque</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">,</span>
+<span class="w">                                             </span><span class="k">const</span><span class="w"> </span><span class="n">VRc</span><span class="o">&lt;</span><span class="n">MenuVTable</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">menu_instance</span><span class="p">);</span>
 
 <span class="kt">bool</span><span class="w"> </span><span class="nf">slint_windowrc_show_native_popup_menu</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">WindowAdapterRcOpaque</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">,</span>
 <span class="w">                                           </span><span class="k">const</span><span class="w"> </span><span class="n">VRc</span><span class="o">&lt;</span><span class="n">MenuVTable</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">context_menu</span><span class="p">,</span>

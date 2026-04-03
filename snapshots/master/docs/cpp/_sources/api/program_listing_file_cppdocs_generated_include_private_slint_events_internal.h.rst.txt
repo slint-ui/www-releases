@@ -21,6 +21,7 @@ Program Listing for File slint_events_internal.h
    #include <new>
    #include "private/slint_enums_internal.h"
    #include "private/slint_point.h"
+               #include "private/slint_builtin_structs_internal.h"
                namespace slint::cbindgen_private {
                    struct PointerEvent;
                    struct Rect;
@@ -379,26 +380,6 @@ Program Listing for File slint_events_internal.h
                new (this) MouseEvent(other);
            }
            return *this;
-       }
-   };
-   
-   struct Keys {
-       SharedString key;
-       KeyboardModifiers modifiers;
-       bool ignore_shift;
-       bool ignore_alt;
-   
-       bool operator==(const Keys& other) const {
-           return key == other.key &&
-                  modifiers == other.modifiers &&
-                  ignore_shift == other.ignore_shift &&
-                  ignore_alt == other.ignore_alt;
-       }
-       bool operator!=(const Keys& other) const {
-           return key != other.key ||
-                  modifiers != other.modifiers ||
-                  ignore_shift != other.ignore_shift ||
-                  ignore_alt != other.ignore_alt;
        }
    };
    

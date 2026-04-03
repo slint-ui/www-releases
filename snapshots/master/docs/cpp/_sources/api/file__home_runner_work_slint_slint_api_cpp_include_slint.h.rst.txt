@@ -33,6 +33,8 @@ Includes
 
 - ``private/slint_item_tree.h`` (:ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_item_tree.h`)
 
+- ``private/slint_keys.h`` (:ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_keys.h`)
+
 - ``private/slint_models.h`` (:ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_models.h`)
 
 - ``private/slint_platform_internal.h`` (:ref:`file_cppdocs_generated_include_private_slint_platform_internal.h`)

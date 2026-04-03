@@ -93,13 +93,13 @@
                                 <a class="variable" href="#Image.size">size</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Image.path">path</a>
-                        </li>
-                        <li>
                                 <a class="variable" href="#Image.width">width</a>
                         </li>
                         <li>
                                 <a class="variable" href="#Image.height">height</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Image.path">path</a>
                         </li>
                 </ul>
 
@@ -123,16 +123,16 @@
                                 <a class="function" href="#Color.with_alpha">with_alpha</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Color.blue">blue</a>
-                        </li>
-                        <li>
-                                <a class="variable" href="#Color.alpha">alpha</a>
-                        </li>
-                        <li>
                                 <a class="variable" href="#Color.red">red</a>
                         </li>
                         <li>
                                 <a class="variable" href="#Color.green">green</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Color.blue">blue</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Color.alpha">alpha</a>
                         </li>
                 </ul>
 
@@ -161,6 +161,12 @@
                         <li>
                                 <a class="variable" href="#Brush.color">color</a>
                         </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#Keys">Keys</a>
+                            <ul class="memberlist">
                 </ul>
 
             </li>
@@ -222,10 +228,10 @@
                                 <a class="function" href="#Timer.restart">restart</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Timer.running">running</a>
+                                <a class="variable" href="#Timer.interval">interval</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Timer.interval">interval</a>
+                                <a class="variable" href="#Timer.running">running</a>
                         </li>
                 </ul>
 
@@ -774,7 +780,7 @@ export component AppWindow inherits Window {
 </span><span id="L-17"><a href="#L-17"><span class="linenos"> 17</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
 </span><span id="L-18"><a href="#L-18"><span class="linenos"> 18</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">pathlib</span>
 </span><span id="L-19"><a href="#L-19"><span class="linenos"> 19</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">ListModel</span><span class="p">,</span> <span class="n">Model</span>
-</span><span id="L-20"><a href="#L-20"><span class="linenos"> 20</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">.slint</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">Color</span><span class="p">,</span> <span class="n">Brush</span><span class="p">,</span> <span class="n">Timer</span><span class="p">,</span> <span class="n">TimerMode</span>
+</span><span id="L-20"><a href="#L-20"><span class="linenos"> 20</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">.slint</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">Color</span><span class="p">,</span> <span class="n">Brush</span><span class="p">,</span> <span class="n">Keys</span><span class="p">,</span> <span class="n">Timer</span><span class="p">,</span> <span class="n">TimerMode</span>
 </span><span id="L-21"><a href="#L-21"><span class="linenos"> 21</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">.loop</span><span class="w"> </span><span class="kn">import</span> <span class="n">SlintEventLoop</span>
 </span><span id="L-22"><a href="#L-22"><span class="linenos"> 22</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 </span><span id="L-23"><a href="#L-23"><span class="linenos"> 23</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Coroutine</span>
@@ -1385,17 +1391,18 @@ export component AppWindow inherits Window {
 </span><span id="L-628"><a href="#L-628"><span class="linenos">628</span></a>    <span class="s2">&quot;Image&quot;</span><span class="p">,</span>
 </span><span id="L-629"><a href="#L-629"><span class="linenos">629</span></a>    <span class="s2">&quot;Color&quot;</span><span class="p">,</span>
 </span><span id="L-630"><a href="#L-630"><span class="linenos">630</span></a>    <span class="s2">&quot;Brush&quot;</span><span class="p">,</span>
-</span><span id="L-631"><a href="#L-631"><span class="linenos">631</span></a>    <span class="s2">&quot;Model&quot;</span><span class="p">,</span>
-</span><span id="L-632"><a href="#L-632"><span class="linenos">632</span></a>    <span class="s2">&quot;ListModel&quot;</span><span class="p">,</span>
-</span><span id="L-633"><a href="#L-633"><span class="linenos">633</span></a>    <span class="s2">&quot;Timer&quot;</span><span class="p">,</span>
-</span><span id="L-634"><a href="#L-634"><span class="linenos">634</span></a>    <span class="s2">&quot;TimerMode&quot;</span><span class="p">,</span>
-</span><span id="L-635"><a href="#L-635"><span class="linenos">635</span></a>    <span class="s2">&quot;set_xdg_app_id&quot;</span><span class="p">,</span>
-</span><span id="L-636"><a href="#L-636"><span class="linenos">636</span></a>    <span class="s2">&quot;callback&quot;</span><span class="p">,</span>
-</span><span id="L-637"><a href="#L-637"><span class="linenos">637</span></a>    <span class="s2">&quot;run_event_loop&quot;</span><span class="p">,</span>
-</span><span id="L-638"><a href="#L-638"><span class="linenos">638</span></a>    <span class="s2">&quot;quit_event_loop&quot;</span><span class="p">,</span>
-</span><span id="L-639"><a href="#L-639"><span class="linenos">639</span></a>    <span class="s2">&quot;init_translations&quot;</span><span class="p">,</span>
-</span><span id="L-640"><a href="#L-640"><span class="linenos">640</span></a>    <span class="s2">&quot;language&quot;</span><span class="p">,</span>
-</span><span id="L-641"><a href="#L-641"><span class="linenos">641</span></a><span class="p">]</span>
+</span><span id="L-631"><a href="#L-631"><span class="linenos">631</span></a>    <span class="s2">&quot;Keys&quot;</span><span class="p">,</span>
+</span><span id="L-632"><a href="#L-632"><span class="linenos">632</span></a>    <span class="s2">&quot;Model&quot;</span><span class="p">,</span>
+</span><span id="L-633"><a href="#L-633"><span class="linenos">633</span></a>    <span class="s2">&quot;ListModel&quot;</span><span class="p">,</span>
+</span><span id="L-634"><a href="#L-634"><span class="linenos">634</span></a>    <span class="s2">&quot;Timer&quot;</span><span class="p">,</span>
+</span><span id="L-635"><a href="#L-635"><span class="linenos">635</span></a>    <span class="s2">&quot;TimerMode&quot;</span><span class="p">,</span>
+</span><span id="L-636"><a href="#L-636"><span class="linenos">636</span></a>    <span class="s2">&quot;set_xdg_app_id&quot;</span><span class="p">,</span>
+</span><span id="L-637"><a href="#L-637"><span class="linenos">637</span></a>    <span class="s2">&quot;callback&quot;</span><span class="p">,</span>
+</span><span id="L-638"><a href="#L-638"><span class="linenos">638</span></a>    <span class="s2">&quot;run_event_loop&quot;</span><span class="p">,</span>
+</span><span id="L-639"><a href="#L-639"><span class="linenos">639</span></a>    <span class="s2">&quot;quit_event_loop&quot;</span><span class="p">,</span>
+</span><span id="L-640"><a href="#L-640"><span class="linenos">640</span></a>    <span class="s2">&quot;init_translations&quot;</span><span class="p">,</span>
+</span><span id="L-641"><a href="#L-641"><span class="linenos">641</span></a>    <span class="s2">&quot;language&quot;</span><span class="p">,</span>
+</span><span id="L-642"><a href="#L-642"><span class="linenos">642</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -1781,19 +1788,6 @@ reflected in a previously created Image.</p>
 
 
                             </div>
-                            <div id="Image.path" class="classattr">
-                                <div class="attr variable">
-            <span class="name">path</span>
-
-        
-    </div>
-    <a class="headerlink" href="#Image.path"></a>
-    
-            <div class="docstring"><p>The path of the image if it was loaded from disk, or None.</p>
-</div>
-
-
-                            </div>
                             <div id="Image.width" class="classattr">
                                 <div class="attr variable">
             <span class="name">width</span>
@@ -1816,6 +1810,19 @@ reflected in a previously created Image.</p>
     <a class="headerlink" href="#Image.height"></a>
     
             <div class="docstring"><p>The height of the image in pixels.</p>
+</div>
+
+
+                            </div>
+                            <div id="Image.path" class="classattr">
+                                <div class="attr variable">
+            <span class="name">path</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Image.path"></a>
+    
+            <div class="docstring"><p>The path of the image if it was loaded from disk, or None.</p>
 </div>
 
 
@@ -1917,32 +1924,6 @@ is applied to <code>other</code>.</p>
 
 
                             </div>
-                            <div id="Color.blue" class="classattr">
-                                <div class="attr variable">
-            <span class="name">blue</span>
-
-        
-    </div>
-    <a class="headerlink" href="#Color.blue"></a>
-    
-            <div class="docstring"><p>The blue channel.</p>
-</div>
-
-
-                            </div>
-                            <div id="Color.alpha" class="classattr">
-                                <div class="attr variable">
-            <span class="name">alpha</span>
-
-        
-    </div>
-    <a class="headerlink" href="#Color.alpha"></a>
-    
-            <div class="docstring"><p>The alpha channel.</p>
-</div>
-
-
-                            </div>
                             <div id="Color.red" class="classattr">
                                 <div class="attr variable">
             <span class="name">red</span>
@@ -1965,6 +1946,32 @@ is applied to <code>other</code>.</p>
     <a class="headerlink" href="#Color.green"></a>
     
             <div class="docstring"><p>The green channel.</p>
+</div>
+
+
+                            </div>
+                            <div id="Color.blue" class="classattr">
+                                <div class="attr variable">
+            <span class="name">blue</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Color.blue"></a>
+    
+            <div class="docstring"><p>The blue channel.</p>
+</div>
+
+
+                            </div>
+                            <div id="Color.alpha" class="classattr">
+                                <div class="attr variable">
+            <span class="name">alpha</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Color.alpha"></a>
+    
+            <div class="docstring"><p>The alpha channel.</p>
 </div>
 
 
@@ -2101,6 +2108,24 @@ set to <code>alpha</code>.</p>
 
 
                             </div>
+                </section>
+                <section id="Keys">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">Keys</span>:
+
+        
+    </div>
+    <a class="headerlink" href="#Keys"></a>
+    
+            <div class="docstring"><p>Represents a key binding created by the <code>@keys(...)</code> macro in Slint.</p>
+
+<p>This is an opaque type. Use <code>str()</code> to get a platform-native representation
+of the key binding (e.g. "Ctrl+A" on Linux/Windows, "⌘A" on macOS).</p>
+</div>
+
+
                 </section>
                 <section id="Model">
                             <input id="Model-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
@@ -2585,19 +2610,6 @@ is re-calculated to be in the specified duration relative to when this function 
 
 
                             </div>
-                            <div id="Timer.running" class="classattr">
-                                <div class="attr variable">
-            <span class="name">running</span>
-
-        
-    </div>
-    <a class="headerlink" href="#Timer.running"></a>
-    
-            <div class="docstring"><p>Set to true if the timer is running; false otherwise.</p>
-</div>
-
-
-                            </div>
                             <div id="Timer.interval" class="classattr">
                                 <div class="attr variable">
             <span class="name">interval</span>
@@ -2611,6 +2623,19 @@ is re-calculated to be in the specified duration relative to when this function 
 <p>When setting this property and the timer is running (see <code><a href="#Timer.running">Timer.running</a></code>),
 then the time when the callback will be next invoked is re-calculated to be in the
 specified duration relative to when this property is set.</p>
+</div>
+
+
+                            </div>
+                            <div id="Timer.running" class="classattr">
+                                <div class="attr variable">
+            <span class="name">running</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Timer.running"></a>
+    
+            <div class="docstring"><p>Set to true if the timer is running; false otherwise.</p>
 </div>
 
 

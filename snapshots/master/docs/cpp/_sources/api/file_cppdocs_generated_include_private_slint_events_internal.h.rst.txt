@@ -35,6 +35,8 @@ Includes
 
 - ``ostream``
 
+- ``private/slint_builtin_structs_internal.h`` (:ref:`file_cppdocs_generated_include_private_slint_builtin_structs_internal.h`)
+
 - ``private/slint_enums_internal.h`` (:ref:`file_cppdocs_generated_include_private_slint_enums_internal.h`)
 
 - ``private/slint_point.h`` (:ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_point.h`)
