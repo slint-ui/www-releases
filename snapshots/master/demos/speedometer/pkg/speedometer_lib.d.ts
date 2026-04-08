@@ -16,7 +16,7 @@ export interface InitOutput {
     readonly slint_send_mouse_click: (a: number, b: number, c: number) => void;
     readonly wasm_bindgen__closure__destroy__h0bbee2846678d818: (a: number, b: number) => void;
     readonly wasm_bindgen__closure__destroy__h773eec01dbb105be: (a: number, b: number) => void;
-    readonly wasm_bindgen__closure__destroy__h0f750bdf66d07a23: (a: number, b: number) => void;
+    readonly wasm_bindgen__closure__destroy__h6b1458a6170c2bae: (a: number, b: number) => void;
     readonly wasm_bindgen__convert__closures_____invoke__h93436a75db4b310e: (a: number, b: number, c: any, d: any) => void;
     readonly wasm_bindgen__convert__closures_____invoke__h8dab98e812d46fbe: (a: number, b: number, c: any) => [number, number];
     readonly wasm_bindgen__convert__closures_____invoke__h1b2035226970a5d9: (a: number, b: number, c: any) => void;
@@ -27,12 +27,12 @@ export interface InitOutput {
     readonly wasm_bindgen__convert__closures_____invoke__h1b2035226970a5d9_6: (a: number, b: number, c: any) => void;
     readonly wasm_bindgen__convert__closures_____invoke__h1b2035226970a5d9_7: (a: number, b: number, c: any) => void;
     readonly wasm_bindgen__convert__closures_____invoke__h1b2035226970a5d9_8: (a: number, b: number, c: any) => void;
-    readonly wasm_bindgen__convert__closures_____invoke__h2e4a9096bed573a8: (a: number, b: number, c: any) => void;
-    readonly wasm_bindgen__convert__closures_____invoke__h2e4a9096bed573a8_12: (a: number, b: number, c: any) => void;
-    readonly wasm_bindgen__convert__closures_____invoke__h2e4a9096bed573a8_13: (a: number, b: number, c: any) => void;
-    readonly wasm_bindgen__convert__closures_____invoke__h2e4a9096bed573a8_14: (a: number, b: number, c: any) => void;
-    readonly wasm_bindgen__convert__closures_____invoke__h2e4a9096bed573a8_15: (a: number, b: number, c: any) => void;
-    readonly wasm_bindgen__convert__closures_____invoke__h2e4a9096bed573a8_16: (a: number, b: number, c: any) => void;
+    readonly wasm_bindgen__convert__closures_____invoke__h1799cacae33b03c5: (a: number, b: number, c: any) => void;
+    readonly wasm_bindgen__convert__closures_____invoke__h1799cacae33b03c5_12: (a: number, b: number, c: any) => void;
+    readonly wasm_bindgen__convert__closures_____invoke__h1799cacae33b03c5_13: (a: number, b: number, c: any) => void;
+    readonly wasm_bindgen__convert__closures_____invoke__h1799cacae33b03c5_14: (a: number, b: number, c: any) => void;
+    readonly wasm_bindgen__convert__closures_____invoke__h1799cacae33b03c5_15: (a: number, b: number, c: any) => void;
+    readonly wasm_bindgen__convert__closures_____invoke__h1799cacae33b03c5_16: (a: number, b: number, c: any) => void;
     readonly wasm_bindgen__convert__closures_____invoke__h1153b71acdcd84ac: (a: number, b: number) => void;
     readonly __wbindgen_malloc: (a: number, b: number) => number;
     readonly __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;

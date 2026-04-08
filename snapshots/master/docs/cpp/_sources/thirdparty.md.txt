@@ -5663,10 +5663,10 @@ SOFTWARE.
 
 #### Used by:
 
-- [const-field-offset 0.1.5]( https://github.com/slint-ui/slint )
-- [const-field-offset-macro 0.1.5]( https://github.com/slint-ui/slint )
-- [vtable 0.3.0]( https://github.com/slint-ui/slint )
-- [vtable-macro 0.3.0]( https://github.com/slint-ui/slint )
+- [const-field-offset 0.2.0]( https://github.com/slint-ui/slint )
+- [const-field-offset-macro 0.2.0]( https://github.com/slint-ui/slint )
+- [vtable 0.4.0]( https://github.com/slint-ui/slint )
+- [vtable-macro 0.4.0]( https://github.com/slint-ui/slint )
 - [block2 0.5.1]( https://github.com/madsmtm/objc2 )
 - [block2 0.6.2]( https://github.com/madsmtm/objc2 )
 - [chrono 0.4.44]( https://github.com/chronotope/chrono )
