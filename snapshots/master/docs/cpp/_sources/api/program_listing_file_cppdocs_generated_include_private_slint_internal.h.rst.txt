@@ -568,6 +568,23 @@ Program Listing for File slint_internal.h
        void (*dealloc)(const MenuVTable*, uint8_t *ptr, Layout layout);
    };
    
+   struct RepeaterInstanceOpsVTable {
+       void *user_data;
+       uintptr_t (*len)(void *user_data);
+       void (*splice)(void *user_data, uintptr_t position, uintptr_t remove, uintptr_t add);
+       bool (*ensure_updated)(void *user_data, uintptr_t instance_idx, uintptr_t row);
+       float (*height)(void *user_data, uintptr_t instance_idx);
+       float (*listview_layout)(void *user_data, uintptr_t instance_idx, float *y);
+       void (*init)(void *user_data, uintptr_t instance_idx);
+   };
+   
+   struct RepeaterLayoutState {
+       uintptr_t offset;
+       float cached_item_height;
+       float previous_viewport_y;
+       float anchor_y;
+   };
+   
    struct EasingCurve {
        enum class Tag : uint32_t {
            Linear,
@@ -1152,6 +1169,19 @@ Program Listing for File slint_internal.h
    void slint_menus_create_wrapper(const ItemTreeRc *menu_tree,
                                    VRc<MenuVTable> *result,
                                    bool (*condition)(const ItemTreeRc *menu_tree));
+   
+   void slint_repeater_ensure_updated(RepeaterInstanceOpsVTable *ops,
+                                      uintptr_t offset,
+                                      uintptr_t count);
+   
+   void slint_repeater_ensure_updated_listview(RepeaterInstanceOpsVTable *ops,
+                                               RepeaterLayoutState *state,
+                                               uintptr_t row_count,
+                                               Pin<const Property<LogicalLength>*> viewport_width,
+                                               Pin<const Property<LogicalLength>*> viewport_height,
+                                               Pin<const Property<LogicalLength>*> viewport_y,
+                                               LogicalLength listview_width,
+                                               LogicalLength listview_height);
    
    void slint_property_init(PropertyHandleOpaque *out);
    

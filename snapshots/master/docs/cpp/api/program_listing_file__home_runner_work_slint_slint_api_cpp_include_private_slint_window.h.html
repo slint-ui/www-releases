@@ -971,11 +971,13 @@ public:
                 slint::cbindgen_private::MouseEvent::Moved({ pos.x, pos.y }, false));
     }
 
-    void dispatch_pointer_scroll_event(LogicalPosition pos, float delta_x, float delta_y)
+    void dispatch_pointer_scroll_event(LogicalPosition pos, float delta_x, float delta_y,
+                                       slint::cbindgen_private::types::TouchPhase scroll_phase =
+                                               slint::cbindgen_private::types::TouchPhase::Moved)
     {
         private_api::assert_main_thread();
-        inner.dispatch_pointer_event(
-                slint::cbindgen_private::MouseEvent::Wheel({ pos.x, pos.y }, delta_x, delta_y));
+        inner.dispatch_pointer_event(slint::cbindgen_private::MouseEvent::Wheel(
+                { pos.x, pos.y }, delta_x, delta_y, scroll_phase));
     }
 
     void dispatch_resize_event(slint::LogicalSize s)

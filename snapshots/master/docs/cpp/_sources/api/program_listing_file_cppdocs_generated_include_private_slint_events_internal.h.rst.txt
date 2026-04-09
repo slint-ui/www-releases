@@ -112,16 +112,19 @@ Program Listing for File slint_events_internal.h
            LogicalPoint position;
            float delta_x;
            float delta_y;
+           TouchPhase phase;
    
            bool operator==(const Wheel_Body& other) const {
                return position == other.position &&
                       delta_x == other.delta_x &&
-                      delta_y == other.delta_y;
+                      delta_y == other.delta_y &&
+                      phase == other.phase;
            }
            bool operator!=(const Wheel_Body& other) const {
                return position != other.position ||
                       delta_x != other.delta_x ||
-                      delta_y != other.delta_y;
+                      delta_y != other.delta_y ||
+                      phase != other.phase;
            }
        };
    
@@ -242,11 +245,13 @@ Program Listing for File slint_events_internal.h
    
        static MouseEvent Wheel(const LogicalPoint &position,
                                const float &delta_x,
-                               const float &delta_y) {
+                               const float &delta_y,
+                               const TouchPhase &phase) {
            MouseEvent result;
            ::new (&result.wheel.position) (LogicalPoint)(position);
            ::new (&result.wheel.delta_x) (float)(delta_x);
            ::new (&result.wheel.delta_y) (float)(delta_y);
+           ::new (&result.wheel.phase) (TouchPhase)(phase);
            result.tag = Tag::Wheel;
            return result;
        }

@@ -564,17 +564,19 @@
 
 <span class="k">using</span><span class="w"> </span><span class="n">QAccessible_Text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="p">;</span>
 
-<span class="k">using</span><span class="w"> </span><span class="n">Qt_KeyboardModifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="p">;</span>
-
 <span class="k">using</span><span class="w"> </span><span class="n">Qt_AlignmentFlag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="p">;</span>
 
 <span class="k">using</span><span class="w"> </span><span class="n">Qt_TextFlag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="p">;</span>
 
 <span class="k">using</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="p">;</span>
 
+<span class="k">using</span><span class="w"> </span><span class="n">Qt_KeyboardModifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="p">;</span>
+
 <span class="k">using</span><span class="w"> </span><span class="n">Qt_CursorShape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="p">;</span>
 
 <span class="k">using</span><span class="w"> </span><span class="n">Qt_FillRule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="p">;</span>
+
+<span class="k">using</span><span class="w"> </span><span class="n">Qt_ScrollPhase</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="p">;</span>
 
 <span class="k">struct</span><span class="w"> </span><span class="nc">NativeButton</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">SharedString</span><span class="o">&gt;</span><span class="w"> </span><span class="n">text</span><span class="p">;</span>
@@ -1251,22 +1253,6 @@
 
 <span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">QAccessible_Text</span><span class="w"> </span><span class="n">QAccessible_Text_UserText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">65535</span><span class="p">;</span>
 
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_KeyboardModifier</span><span class="w"> </span><span class="n">Qt_KeyboardModifier_NoModifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_KeyboardModifier</span><span class="w"> </span><span class="n">Qt_KeyboardModifier_ShiftModifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">33554432</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_KeyboardModifier</span><span class="w"> </span><span class="n">Qt_KeyboardModifier_ControlModifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">67108864</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_KeyboardModifier</span><span class="w"> </span><span class="n">Qt_KeyboardModifier_AltModifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">134217728</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_KeyboardModifier</span><span class="w"> </span><span class="n">Qt_KeyboardModifier_MetaModifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">268435456</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_KeyboardModifier</span><span class="w"> </span><span class="n">Qt_KeyboardModifier_KeypadModifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">536870912</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_KeyboardModifier</span><span class="w"> </span><span class="n">Qt_KeyboardModifier_GroupSwitchModifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1073741824</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_KeyboardModifier</span><span class="w"> </span><span class="n">Qt_KeyboardModifier_KeyboardModifierMask</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4261412864</span><span class="p">;</span>
-
 <span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_AlignmentFlag</span><span class="w"> </span><span class="n">Qt_AlignmentFlag_AlignLeft</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 
 <span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_AlignmentFlag</span><span class="w"> </span><span class="n">Qt_AlignmentFlag_AlignLeading</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
@@ -1320,148 +1306,6 @@
 <span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_TextFlag</span><span class="w"> </span><span class="n">Qt_TextFlag_TextForceRightToLeft</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">262144</span><span class="p">;</span>
 
 <span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_TextFlag</span><span class="w"> </span><span class="n">Qt_TextFlag_TextLongestVariant</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">524288</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_TextFlag</span><span class="w"> </span><span class="n">Qt_TextFlag_TextBypassShaping</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1048576</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_Escape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777216</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_Tab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777217</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_Backtab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777218</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_Backspace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777219</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_Return</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777220</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_Enter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777221</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_Insert</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777222</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_Delete</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777223</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_Pause</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777224</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_Print</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777225</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_SysReq</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777226</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_Clear</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777227</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_Home</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777232</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_End</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777233</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_Left</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777234</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_Up</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777235</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_Right</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777236</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_Down</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777237</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_PageUp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777238</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_PageDown</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777239</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_Shift</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777248</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_Control</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777249</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_Meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777250</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_Alt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777251</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_CapsLock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777252</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_NumLock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777253</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_ScrollLock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777254</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777264</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777265</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777266</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777267</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F5</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777268</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F6</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777269</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F7</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777270</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F8</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777271</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F9</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777272</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F10</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777273</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F11</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777274</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F12</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777275</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F13</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777276</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F14</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777277</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F15</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777278</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F16</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777279</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F17</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777280</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F18</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777281</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F19</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777282</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F20</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777283</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F21</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777284</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F22</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777285</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F23</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777286</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F24</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777287</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F25</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777288</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F26</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777289</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F27</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777290</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F28</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777291</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F29</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777292</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F30</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777293</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F31</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777294</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F32</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777295</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F33</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777296</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F34</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777297</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F35</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777298</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_Super_L</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777299</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_Super_R</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777300</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_Menu</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777301</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_Hyper_L</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777302</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_Hyper_R</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777303</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_Help</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777304</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_Direction_L</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777305</span><span class="p">;</span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_Direction_R</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777312</span><span class="p">;</span>
 
 <span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_Space</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="p">;</span>
 
@@ -1645,6 +1489,8 @@
 
 <span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_acute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">180</span><span class="p">;</span>
 
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_micro</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">181</span><span class="p">;</span>
+
 <span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_mu</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">181</span><span class="p">;</span>
 
 <span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_paragraph</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">182</span><span class="p">;</span>
@@ -1734,6 +1580,146 @@
 <span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_division</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">247</span><span class="p">;</span>
 
 <span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_ydiaeresis</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">255</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_Escape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777216</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_Tab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777217</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_Backtab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777218</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_Backspace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777219</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_Return</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777220</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_Enter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777221</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_Insert</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777222</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_Delete</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777223</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_Pause</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777224</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_Print</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777225</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_SysReq</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777226</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_Clear</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777227</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_Home</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777232</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_End</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777233</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_Left</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777234</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_Up</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777235</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_Right</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777236</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_Down</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777237</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_PageUp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777238</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_PageDown</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777239</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_Shift</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777248</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_Control</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777249</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_Meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777250</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_Alt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777251</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_CapsLock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777252</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_NumLock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777253</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_ScrollLock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777254</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777264</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777265</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777266</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777267</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F5</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777268</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F6</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777269</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F7</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777270</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F8</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777271</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F9</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777272</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F10</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777273</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F11</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777274</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F12</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777275</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F13</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777276</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F14</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777277</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F15</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777278</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F16</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777279</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F17</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777280</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F18</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777281</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F19</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777282</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F20</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777283</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F21</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777284</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F22</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777285</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F23</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777286</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F24</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777287</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F25</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777288</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F26</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777289</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F27</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777290</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F28</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777291</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F29</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777292</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F30</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777293</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F31</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777294</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F32</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777295</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F33</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777296</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F34</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777297</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_F35</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777298</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_Super_L</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777299</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_Super_R</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777300</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_Menu</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777301</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_Hyper_L</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777302</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_Hyper_R</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777303</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_Help</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777304</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_Direction_L</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777305</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_Direction_R</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16777312</span><span class="p">;</span>
 
 <span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_AltGr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16781571</span><span class="p">;</span>
 
@@ -2261,6 +2247,22 @@
 
 <span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_Key</span><span class="w"> </span><span class="n">Qt_Key_Key_unknown</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">33554431</span><span class="p">;</span>
 
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_KeyboardModifier</span><span class="w"> </span><span class="n">Qt_KeyboardModifier_NoModifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_KeyboardModifier</span><span class="w"> </span><span class="n">Qt_KeyboardModifier_ShiftModifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">33554432</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_KeyboardModifier</span><span class="w"> </span><span class="n">Qt_KeyboardModifier_ControlModifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">67108864</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_KeyboardModifier</span><span class="w"> </span><span class="n">Qt_KeyboardModifier_AltModifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">134217728</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_KeyboardModifier</span><span class="w"> </span><span class="n">Qt_KeyboardModifier_MetaModifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">268435456</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_KeyboardModifier</span><span class="w"> </span><span class="n">Qt_KeyboardModifier_KeypadModifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">536870912</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_KeyboardModifier</span><span class="w"> </span><span class="n">Qt_KeyboardModifier_GroupSwitchModifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1073741824</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_KeyboardModifier</span><span class="w"> </span><span class="n">Qt_KeyboardModifier_KeyboardModifierMask</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4261412864</span><span class="p">;</span>
+
 <span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_CursorShape</span><span class="w"> </span><span class="n">Qt_CursorShape_ArrowCursor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 
 <span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_CursorShape</span><span class="w"> </span><span class="n">Qt_CursorShape_UpArrowCursor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
@@ -2314,6 +2316,16 @@
 <span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_FillRule</span><span class="w"> </span><span class="n">Qt_FillRule_OddEvenFill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 
 <span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_FillRule</span><span class="w"> </span><span class="n">Qt_FillRule_WindingFill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_ScrollPhase</span><span class="w"> </span><span class="n">Qt_ScrollPhase_NoScrollPhase</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_ScrollPhase</span><span class="w"> </span><span class="n">Qt_ScrollPhase_ScrollBegin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_ScrollPhase</span><span class="w"> </span><span class="n">Qt_ScrollPhase_ScrollUpdate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_ScrollPhase</span><span class="w"> </span><span class="n">Qt_ScrollPhase_ScrollEnd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Qt_ScrollPhase</span><span class="w"> </span><span class="n">Qt_ScrollPhase_ScrollMomentum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
 
 <span class="k">extern</span><span class="w"> </span><span class="s">&quot;C&quot;</span><span class="w"> </span><span class="p">{</span>
 
