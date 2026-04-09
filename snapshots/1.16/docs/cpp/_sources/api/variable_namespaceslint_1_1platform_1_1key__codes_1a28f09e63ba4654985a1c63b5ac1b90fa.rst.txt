@@ -1,0 +1,14 @@
+.. _exhale_variable_namespaceslint_1_1platform_1_1key__codes_1a28f09e63ba4654985a1c63b5ac1b90fa:
+
+Variable slint::platform::key_codes::OpenParen
+==============================================
+
+- Defined in :ref:`file_cppdocs_generated_include_private_slint_enums.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: slint::platform::key_codes::OpenParen
+   :project: Slint

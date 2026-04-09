@@ -1,0 +1,14 @@
+.. _exhale_variable_namespaceslint_1_1platform_1_1key__codes_1acce86ee00969663fa9b3f24bb8ae6608:
+
+Variable slint::platform::key_codes::R
+======================================
+
+- Defined in :ref:`file_cppdocs_generated_include_private_slint_enums.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: slint::platform::key_codes::R
+   :project: Slint
