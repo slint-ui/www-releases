@@ -586,7 +586,7 @@
 <a href=#464 id=464 data-nosnippet>464</a>            core::mem::size_of::&lt;i_slint_core::window::ffi::WindowAdapterRcOpaque&gt;()
 <a href=#465 id=465 data-nosnippet>465</a>        );
 <a href=#466 id=466 data-nosnippet>466</a>        <span class="kw">let </span>borrow = <a href="#459">component</a>.<a href="https://doc.rust-lang.org/nightly/core/cell/struct.RefCell.html#method.borrow">borrow</a>();
-<a href=#467 id=467 data-nosnippet>467</a>        <span class="kw">let </span>adapter = <a href="#466">borrow</a>.<a href="#160-162">instance</a>().inner.<a href="dynamic_item_tree.rs.html#1972-1974">window_adapter_ref</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>();
+<a href=#467 id=467 data-nosnippet>467</a>        <span class="kw">let </span>adapter = <a href="#466">borrow</a>.<a href="#160-162">instance</a>().inner.<a href="dynamic_item_tree.rs.html#1995-1997">window_adapter_ref</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>();
 <a href=#468 id=468 data-nosnippet>468</a>        <span class="kw">unsafe </span>{ core::ptr::<a href="https://doc.rust-lang.org/nightly/core/ptr/fn.write.html">write</a>(<a href="#460">out</a> <span class="kw">as </span><span class="kw-2">*mut *const </span><a href="https://doc.rust-lang.org/nightly/alloc/rc/struct.Rc.html">Rc</a>&lt;<span class="kw">dyn </span>WindowAdapter&gt;, <a href="#467">adapter</a> <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>) };
 <a href=#469 id=469 data-nosnippet>469</a>    }
 <a href=#470 id=470 data-nosnippet>470</a>}
