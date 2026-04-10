@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/eval_layout.rs`."><title>eval_layout.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-17e0aaed.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.96.0-nightly (900485642 2026-04-08)" data-channel="nightly" data-search-js="search-b5634cc7.js" data-stringdex-js="stringdex-2da4960a.js" data-settings-js="settings-170eb4bf.js" ><script src="../../static.files/storage-41dd4d93.js"></script><script defer src="../../static.files/src-script-813739b1.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-5013f961.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/eval_layout.rs`."><title>eval_layout.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-17e0aaed.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.96.0-nightly (f5eca4fcf 2026-04-09)" data-channel="nightly" data-search-js="search-b5634cc7.js" data-stringdex-js="stringdex-2da4960a.js" data-settings-js="settings-170eb4bf.js" ><script src="../../static.files/storage-41dd4d93.js"></script><script defer src="../../static.files/src-script-813739b1.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-5013f961.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -124,8 +124,8 @@
 <a href=#2 id=2 data-nosnippet>2</a>// SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0
 <a href=#3 id=3 data-nosnippet>3</a>
 <a href=#4 id=4 data-nosnippet>4</a></span><span class="kw">use </span><a href="api.rs.html#97-138"><span class="kw">crate</span>::Value</a>;
-<a href=#5 id=5 data-nosnippet>5</a><span class="kw">use </span><a href="dynamic_item_tree.rs.html#2432-2435"><span class="kw">crate</span>::dynamic_item_tree::InstanceRef</a>;
-<a href=#6 id=6 data-nosnippet>6</a><span class="kw">use </span><span class="kw">crate</span>::eval::{<a class="self" href="lib.rs.html#84">self</a>, <a href="eval.rs.html#130-136">EvalLocalContext</a>};
+<a href=#5 id=5 data-nosnippet>5</a><span class="kw">use </span><a href="dynamic_item_tree.rs.html#2455-2458"><span class="kw">crate</span>::dynamic_item_tree::InstanceRef</a>;
+<a href=#6 id=6 data-nosnippet>6</a><span class="kw">use </span><span class="kw">crate</span>::eval::{<a class="self" href="lib.rs.html#84">self</a>, <a href="eval.rs.html#137-143">EvalLocalContext</a>};
 <a href=#7 id=7 data-nosnippet>7</a><span class="kw">use </span>i_slint_compiler::expression_tree::Expression;
 <a href=#8 id=8 data-nosnippet>8</a><span class="kw">use </span>i_slint_compiler::langtype::Type;
 <a href=#9 id=9 data-nosnippet>9</a><span class="kw">use </span>i_slint_compiler::layout::{
@@ -160,11 +160,11 @@
 <a href=#38 id=38 data-nosnippet>38</a>    grid_layout: <span class="kw-2">&amp;</span>GridLayout,
 <a href=#39 id=39 data-nosnippet>39</a>    organized_data: <span class="kw-2">&amp;</span>GridLayoutOrganizedData,
 <a href=#40 id=40 data-nosnippet>40</a>    orientation: Orientation,
-<a href=#41 id=41 data-nosnippet>41</a>    local_context: <span class="kw-2">&amp;mut </span><a href="eval.rs.html#130-136">EvalLocalContext</a>,
+<a href=#41 id=41 data-nosnippet>41</a>    local_context: <span class="kw-2">&amp;mut </span><a href="eval.rs.html#137-143">EvalLocalContext</a>,
 <a href=#42 id=42 data-nosnippet>42</a>) -&gt; <a href="api.rs.html#97-138">Value</a> {
 <a href=#43 id=43 data-nosnippet>43</a>    <span class="kw">let </span>component = <a href="#41">local_context</a>.component_instance;
 <a href=#44 id=44 data-nosnippet>44</a>    <span class="kw">let </span>expr_eval = |nr: <span class="kw-2">&amp;</span>NamedReference| -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a> {
-<a href=#45 id=45 data-nosnippet>45</a>        eval::<a href="eval.rs.html#1860-1862">load_property</a>(<a href="#43">component</a>, <span class="kw-2">&amp;</span><a href="#44">nr</a>.element(), <a href="#44">nr</a>.name()).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>().<a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#tymethod.try_into">try_into</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>()
+<a href=#45 id=45 data-nosnippet>45</a>        eval::<a href="eval.rs.html#1867-1869">load_property</a>(<a href="#43">component</a>, <span class="kw-2">&amp;</span><a href="#44">nr</a>.element(), <a href="#44">nr</a>.name()).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>().<a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#tymethod.try_into">try_into</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>()
 <a href=#46 id=46 data-nosnippet>46</a>    };
 <a href=#47 id=47 data-nosnippet>47</a>    <span class="kw">let </span>(padding, spacing) = <a href="#446-456">padding_and_spacing</a>(<span class="kw-2">&amp;</span><a href="#38">grid_layout</a>.geometry, <a href="#40">orientation</a>, <span class="kw-2">&amp;</span><a href="#44">expr_eval</a>);
 <a href=#48 id=48 data-nosnippet>48</a>    <span class="kw">let </span>repeater_steps = <a href="#641-674">grid_repeater_steps</a>(<a href="#38">grid_layout</a>, <a href="#41">local_context</a>);
@@ -187,11 +187,11 @@
 <a href=#65 id=65 data-nosnippet>65</a></span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>compute_box_layout_info(
 <a href=#66 id=66 data-nosnippet>66</a>    box_layout: <span class="kw-2">&amp;</span>BoxLayout,
 <a href=#67 id=67 data-nosnippet>67</a>    orientation: Orientation,
-<a href=#68 id=68 data-nosnippet>68</a>    local_context: <span class="kw-2">&amp;mut </span><a href="eval.rs.html#130-136">EvalLocalContext</a>,
+<a href=#68 id=68 data-nosnippet>68</a>    local_context: <span class="kw-2">&amp;mut </span><a href="eval.rs.html#137-143">EvalLocalContext</a>,
 <a href=#69 id=69 data-nosnippet>69</a>) -&gt; <a href="api.rs.html#97-138">Value</a> {
 <a href=#70 id=70 data-nosnippet>70</a>    <span class="kw">let </span>component = <a href="#68">local_context</a>.component_instance;
 <a href=#71 id=71 data-nosnippet>71</a>    <span class="kw">let </span>expr_eval = |nr: <span class="kw-2">&amp;</span>NamedReference| -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a> {
-<a href=#72 id=72 data-nosnippet>72</a>        eval::<a href="eval.rs.html#1860-1862">load_property</a>(<a href="#70">component</a>, <span class="kw-2">&amp;</span><a href="#71">nr</a>.element(), <a href="#71">nr</a>.name()).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>().<a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#tymethod.try_into">try_into</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>()
+<a href=#72 id=72 data-nosnippet>72</a>        eval::<a href="eval.rs.html#1867-1869">load_property</a>(<a href="#70">component</a>, <span class="kw-2">&amp;</span><a href="#71">nr</a>.element(), <a href="#71">nr</a>.name()).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>().<a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#tymethod.try_into">try_into</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>()
 <a href=#73 id=73 data-nosnippet>73</a>    };
 <a href=#74 id=74 data-nosnippet>74</a>    <span class="kw">let </span>(cells, alignment) = <a href="#808-855">box_layout_data</a>(<a href="#66">box_layout</a>, <a href="#67">orientation</a>, <a href="#70">component</a>, <span class="kw-2">&amp;</span><a href="#71">expr_eval</a>, <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a>);
 <a href=#75 id=75 data-nosnippet>75</a>    <span class="kw">let </span>(padding, spacing) = <a href="#446-456">padding_and_spacing</a>(<span class="kw-2">&amp;</span><a href="#66">box_layout</a>.geometry, <a href="#67">orientation</a>, <span class="kw-2">&amp;</span><a href="#71">expr_eval</a>);
@@ -205,7 +205,7 @@
 <a href=#83 id=83 data-nosnippet>83</a>
 <a href=#84 id=84 data-nosnippet>84</a><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>organize_grid_layout(
 <a href=#85 id=85 data-nosnippet>85</a>    layout: <span class="kw-2">&amp;</span>GridLayout,
-<a href=#86 id=86 data-nosnippet>86</a>    local_context: <span class="kw-2">&amp;mut </span><a href="eval.rs.html#130-136">EvalLocalContext</a>,
+<a href=#86 id=86 data-nosnippet>86</a>    local_context: <span class="kw-2">&amp;mut </span><a href="eval.rs.html#137-143">EvalLocalContext</a>,
 <a href=#87 id=87 data-nosnippet>87</a>) -&gt; <a href="api.rs.html#97-138">Value</a> {
 <a href=#88 id=88 data-nosnippet>88</a>    <span class="kw">let </span>repeater_steps = <a href="#641-674">grid_repeater_steps</a>(<a href="#85">layout</a>, <a href="#86">local_context</a>);
 <a href=#89 id=89 data-nosnippet>89</a>    <span class="kw">let </span>cells = <a href="#478-597">grid_layout_input_data</a>(<a href="#85">layout</a>, <a href="#86">local_context</a>, <span class="kw-2">&amp;</span><a href="#88">repeater_steps</a>);
@@ -234,11 +234,11 @@
 <a href=#112 id=112 data-nosnippet>112</a>    organized_data: <span class="kw-2">&amp;</span>GridLayoutOrganizedData,
 <a href=#113 id=113 data-nosnippet>113</a>    grid_layout: <span class="kw-2">&amp;</span>GridLayout,
 <a href=#114 id=114 data-nosnippet>114</a>    orientation: Orientation,
-<a href=#115 id=115 data-nosnippet>115</a>    local_context: <span class="kw-2">&amp;mut </span><a href="eval.rs.html#130-136">EvalLocalContext</a>,
+<a href=#115 id=115 data-nosnippet>115</a>    local_context: <span class="kw-2">&amp;mut </span><a href="eval.rs.html#137-143">EvalLocalContext</a>,
 <a href=#116 id=116 data-nosnippet>116</a>) -&gt; <a href="api.rs.html#97-138">Value</a> {
 <a href=#117 id=117 data-nosnippet>117</a>    <span class="kw">let </span>component = <a href="#115">local_context</a>.component_instance;
 <a href=#118 id=118 data-nosnippet>118</a>    <span class="kw">let </span>expr_eval = |nr: <span class="kw-2">&amp;</span>NamedReference| -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a> {
-<a href=#119 id=119 data-nosnippet>119</a>        eval::<a href="eval.rs.html#1860-1862">load_property</a>(<a href="#117">component</a>, <span class="kw-2">&amp;</span><a href="#118">nr</a>.element(), <a href="#118">nr</a>.name()).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>().<a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#tymethod.try_into">try_into</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>()
+<a href=#119 id=119 data-nosnippet>119</a>        eval::<a href="eval.rs.html#1867-1869">load_property</a>(<a href="#117">component</a>, <span class="kw-2">&amp;</span><a href="#118">nr</a>.element(), <a href="#118">nr</a>.name()).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>().<a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#tymethod.try_into">try_into</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>()
 <a href=#120 id=120 data-nosnippet>120</a>    };
 <a href=#121 id=121 data-nosnippet>121</a>    <span class="kw">let </span>repeater_steps = <a href="#641-674">grid_repeater_steps</a>(<a href="#113">grid_layout</a>, <a href="#115">local_context</a>);
 <a href=#122 id=122 data-nosnippet>122</a>    <span class="kw">let </span>repeater_indices = <a href="#617-639">grid_repeater_indices</a>(<a href="#113">grid_layout</a>, <a href="#115">local_context</a>, <span class="kw-2">&amp;</span><a href="#121">repeater_steps</a>);
@@ -268,11 +268,11 @@
 <a href=#146 id=146 data-nosnippet>146</a><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>solve_box_layout(
 <a href=#147 id=147 data-nosnippet>147</a>    box_layout: <span class="kw-2">&amp;</span>BoxLayout,
 <a href=#148 id=148 data-nosnippet>148</a>    orientation: Orientation,
-<a href=#149 id=149 data-nosnippet>149</a>    local_context: <span class="kw-2">&amp;mut </span><a href="eval.rs.html#130-136">EvalLocalContext</a>,
+<a href=#149 id=149 data-nosnippet>149</a>    local_context: <span class="kw-2">&amp;mut </span><a href="eval.rs.html#137-143">EvalLocalContext</a>,
 <a href=#150 id=150 data-nosnippet>150</a>) -&gt; <a href="api.rs.html#97-138">Value</a> {
 <a href=#151 id=151 data-nosnippet>151</a>    <span class="kw">let </span>component = <a href="#149">local_context</a>.component_instance;
 <a href=#152 id=152 data-nosnippet>152</a>    <span class="kw">let </span>expr_eval = |nr: <span class="kw-2">&amp;</span>NamedReference| -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a> {
-<a href=#153 id=153 data-nosnippet>153</a>        eval::<a href="eval.rs.html#1860-1862">load_property</a>(<a href="#151">component</a>, <span class="kw-2">&amp;</span><a href="#152">nr</a>.element(), <a href="#152">nr</a>.name()).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>().<a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#tymethod.try_into">try_into</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>()
+<a href=#153 id=153 data-nosnippet>153</a>        eval::<a href="eval.rs.html#1867-1869">load_property</a>(<a href="#151">component</a>, <span class="kw-2">&amp;</span><a href="#152">nr</a>.element(), <a href="#152">nr</a>.name()).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>().<a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#tymethod.try_into">try_into</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>()
 <a href=#154 id=154 data-nosnippet>154</a>    };
 <a href=#155 id=155 data-nosnippet>155</a>
 <a href=#156 id=156 data-nosnippet>156</a>    <span class="kw">let </span><span class="kw-2">mut </span>repeated_indices = <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>::<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.new">new</a>();
@@ -303,11 +303,11 @@
 <a href=#181 id=181 data-nosnippet>181</a>
 <a href=#182 id=182 data-nosnippet>182</a><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>solve_flexbox_layout(
 <a href=#183 id=183 data-nosnippet>183</a>    flexbox_layout: <span class="kw-2">&amp;</span>i_slint_compiler::layout::FlexboxLayout,
-<a href=#184 id=184 data-nosnippet>184</a>    local_context: <span class="kw-2">&amp;mut </span><a href="eval.rs.html#130-136">EvalLocalContext</a>,
+<a href=#184 id=184 data-nosnippet>184</a>    local_context: <span class="kw-2">&amp;mut </span><a href="eval.rs.html#137-143">EvalLocalContext</a>,
 <a href=#185 id=185 data-nosnippet>185</a>) -&gt; <a href="api.rs.html#97-138">Value</a> {
 <a href=#186 id=186 data-nosnippet>186</a>    <span class="kw">let </span>component = <a href="#184">local_context</a>.component_instance;
 <a href=#187 id=187 data-nosnippet>187</a>    <span class="kw">let </span>expr_eval = |nr: <span class="kw-2">&amp;</span>NamedReference| -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a> {
-<a href=#188 id=188 data-nosnippet>188</a>        eval::<a href="eval.rs.html#1860-1862">load_property</a>(<a href="#186">component</a>, <span class="kw-2">&amp;</span><a href="#187">nr</a>.element(), <a href="#187">nr</a>.name()).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>().<a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#tymethod.try_into">try_into</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>()
+<a href=#188 id=188 data-nosnippet>188</a>        eval::<a href="eval.rs.html#1867-1869">load_property</a>(<a href="#186">component</a>, <span class="kw-2">&amp;</span><a href="#187">nr</a>.element(), <a href="#187">nr</a>.name()).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>().<a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#tymethod.try_into">try_into</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>()
 <a href=#189 id=189 data-nosnippet>189</a>    };
 <a href=#190 id=190 data-nosnippet>190</a>
 <a href=#191 id=191 data-nosnippet>191</a>    <span class="kw">let </span>(cells_h, cells_v, repeated_indices) =
@@ -320,26 +320,26 @@
 <a href=#198 id=198 data-nosnippet>198</a>        .alignment
 <a href=#199 id=199 data-nosnippet>199</a>        .<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.as_ref">as_ref</a>()
 <a href=#200 id=200 data-nosnippet>200</a>        .<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map_or">map_or</a>(i_slint_core::items::LayoutAlignment::<a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default">default</a>(), |nr| {
-<a href=#201 id=201 data-nosnippet>201</a>            eval::<a href="eval.rs.html#1860-1862">load_property</a>(<a href="#186">component</a>, <span class="kw-2">&amp;</span><a href="#200">nr</a>.element(), <a href="#200">nr</a>.name()).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>().<a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#tymethod.try_into">try_into</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>()
+<a href=#201 id=201 data-nosnippet>201</a>            eval::<a href="eval.rs.html#1867-1869">load_property</a>(<a href="#186">component</a>, <span class="kw-2">&amp;</span><a href="#200">nr</a>.element(), <a href="#200">nr</a>.name()).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>().<a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#tymethod.try_into">try_into</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>()
 <a href=#202 id=202 data-nosnippet>202</a>        });
 <a href=#203 id=203 data-nosnippet>203</a>    <span class="kw">let </span>direction = <a href="#249-273">flexbox_layout_direction</a>(<a href="#183">flexbox_layout</a>, <a href="#184">local_context</a>);
 <a href=#204 id=204 data-nosnippet>204</a>    <span class="kw">let </span>align_content = <a href="#183">flexbox_layout</a>
 <a href=#205 id=205 data-nosnippet>205</a>        .align_content
 <a href=#206 id=206 data-nosnippet>206</a>        .<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.as_ref">as_ref</a>()
 <a href=#207 id=207 data-nosnippet>207</a>        .<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map_or">map_or</a>(i_slint_core::items::FlexboxLayoutAlignContent::<a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default">default</a>(), |nr| {
-<a href=#208 id=208 data-nosnippet>208</a>            eval::<a href="eval.rs.html#1860-1862">load_property</a>(<a href="#186">component</a>, <span class="kw-2">&amp;</span><a href="#207">nr</a>.element(), <a href="#207">nr</a>.name()).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>().<a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#tymethod.try_into">try_into</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>()
+<a href=#208 id=208 data-nosnippet>208</a>            eval::<a href="eval.rs.html#1867-1869">load_property</a>(<a href="#186">component</a>, <span class="kw-2">&amp;</span><a href="#207">nr</a>.element(), <a href="#207">nr</a>.name()).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>().<a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#tymethod.try_into">try_into</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>()
 <a href=#209 id=209 data-nosnippet>209</a>        });
 <a href=#210 id=210 data-nosnippet>210</a>    <span class="kw">let </span>align_items = <a href="#183">flexbox_layout</a>
 <a href=#211 id=211 data-nosnippet>211</a>        .align_items
 <a href=#212 id=212 data-nosnippet>212</a>        .<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.as_ref">as_ref</a>()
 <a href=#213 id=213 data-nosnippet>213</a>        .<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map_or">map_or</a>(i_slint_core::items::FlexboxLayoutAlignItems::<a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default">default</a>(), |nr| {
-<a href=#214 id=214 data-nosnippet>214</a>            eval::<a href="eval.rs.html#1860-1862">load_property</a>(<a href="#186">component</a>, <span class="kw-2">&amp;</span><a href="#213">nr</a>.element(), <a href="#213">nr</a>.name()).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>().<a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#tymethod.try_into">try_into</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>()
+<a href=#214 id=214 data-nosnippet>214</a>            eval::<a href="eval.rs.html#1867-1869">load_property</a>(<a href="#186">component</a>, <span class="kw-2">&amp;</span><a href="#213">nr</a>.element(), <a href="#213">nr</a>.name()).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>().<a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#tymethod.try_into">try_into</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>()
 <a href=#215 id=215 data-nosnippet>215</a>        });
 <a href=#216 id=216 data-nosnippet>216</a>    <span class="kw">let </span>flex_wrap = <a href="#183">flexbox_layout</a>
 <a href=#217 id=217 data-nosnippet>217</a>        .flex_wrap
 <a href=#218 id=218 data-nosnippet>218</a>        .<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.as_ref">as_ref</a>()
 <a href=#219 id=219 data-nosnippet>219</a>        .<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map_or">map_or</a>(i_slint_core::items::FlexboxLayoutWrap::<a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default">default</a>(), |nr| {
-<a href=#220 id=220 data-nosnippet>220</a>            eval::<a href="eval.rs.html#1860-1862">load_property</a>(<a href="#186">component</a>, <span class="kw-2">&amp;</span><a href="#219">nr</a>.element(), <a href="#219">nr</a>.name()).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>().<a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#tymethod.try_into">try_into</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>()
+<a href=#220 id=220 data-nosnippet>220</a>            eval::<a href="eval.rs.html#1867-1869">load_property</a>(<a href="#186">component</a>, <span class="kw-2">&amp;</span><a href="#219">nr</a>.element(), <a href="#219">nr</a>.name()).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>().<a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#tymethod.try_into">try_into</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>()
 <a href=#221 id=221 data-nosnippet>221</a>        });
 <a href=#222 id=222 data-nosnippet>222</a>
 <a href=#223 id=223 data-nosnippet>223</a>    <span class="kw">let </span>(padding_h, spacing_h) =
@@ -370,14 +370,14 @@
 <a href=#248 id=248 data-nosnippet>248</a>
 <a href=#249 id=249 data-nosnippet>249</a><span class="kw">fn </span>flexbox_layout_direction(
 <a href=#250 id=250 data-nosnippet>250</a>    flexbox_layout: <span class="kw-2">&amp;</span>i_slint_compiler::layout::FlexboxLayout,
-<a href=#251 id=251 data-nosnippet>251</a>    local_context: <span class="kw-2">&amp;</span><a href="eval.rs.html#130-136">EvalLocalContext</a>,
+<a href=#251 id=251 data-nosnippet>251</a>    local_context: <span class="kw-2">&amp;</span><a href="eval.rs.html#137-143">EvalLocalContext</a>,
 <a href=#252 id=252 data-nosnippet>252</a>) -&gt; FlexboxLayoutDirection {
 <a href=#253 id=253 data-nosnippet>253</a>    <a href="#250">flexbox_layout</a>
 <a href=#254 id=254 data-nosnippet>254</a>        .direction
 <a href=#255 id=255 data-nosnippet>255</a>        .<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.as_ref">as_ref</a>()
 <a href=#256 id=256 data-nosnippet>256</a>        .<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(|nr| {
 <a href=#257 id=257 data-nosnippet>257</a>            <span class="kw">let </span>value =
-<a href=#258 id=258 data-nosnippet>258</a>                eval::<a href="eval.rs.html#1860-1862">load_property</a>(<a href="#251">local_context</a>.component_instance, <span class="kw-2">&amp;</span><a href="#256">nr</a>.element(), <a href="#256">nr</a>.name())
+<a href=#258 id=258 data-nosnippet>258</a>                eval::<a href="eval.rs.html#1867-1869">load_property</a>(<a href="#251">local_context</a>.component_instance, <span class="kw-2">&amp;</span><a href="#256">nr</a>.element(), <a href="#256">nr</a>.name())
 <a href=#259 id=259 data-nosnippet>259</a>                    .<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.ok">ok</a>()<span class="question-mark">?</span>;
 <a href=#260 id=260 data-nosnippet>260</a>            <span class="kw">if let </span>Value::<a href="api.rs.html#125">EnumerationValue</a>(<span class="kw">_</span>, variant) = <span class="kw-2">&amp;</span><a href="#257">value</a> {
 <a href=#261 id=261 data-nosnippet>261</a>                <span class="kw">match </span><a href="#260">variant</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html#method.as_str">as_str</a>() {
@@ -397,11 +397,11 @@
 <a href=#275 id=275 data-nosnippet>275</a><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>compute_flexbox_layout_info(
 <a href=#276 id=276 data-nosnippet>276</a>    flexbox_layout: <span class="kw-2">&amp;</span>i_slint_compiler::layout::FlexboxLayout,
 <a href=#277 id=277 data-nosnippet>277</a>    orientation: Orientation,
-<a href=#278 id=278 data-nosnippet>278</a>    local_context: <span class="kw-2">&amp;mut </span><a href="eval.rs.html#130-136">EvalLocalContext</a>,
+<a href=#278 id=278 data-nosnippet>278</a>    local_context: <span class="kw-2">&amp;mut </span><a href="eval.rs.html#137-143">EvalLocalContext</a>,
 <a href=#279 id=279 data-nosnippet>279</a>) -&gt; <a href="api.rs.html#97-138">Value</a> {
 <a href=#280 id=280 data-nosnippet>280</a>    <span class="kw">let </span>component = <a href="#278">local_context</a>.component_instance;
 <a href=#281 id=281 data-nosnippet>281</a>    <span class="kw">let </span>expr_eval = |nr: <span class="kw-2">&amp;</span>NamedReference| -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a> {
-<a href=#282 id=282 data-nosnippet>282</a>        eval::<a href="eval.rs.html#1860-1862">load_property</a>(<a href="#280">component</a>, <span class="kw-2">&amp;</span><a href="#281">nr</a>.element(), <a href="#281">nr</a>.name()).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>().<a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#tymethod.try_into">try_into</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>()
+<a href=#282 id=282 data-nosnippet>282</a>        eval::<a href="eval.rs.html#1867-1869">load_property</a>(<a href="#280">component</a>, <span class="kw-2">&amp;</span><a href="#281">nr</a>.element(), <a href="#281">nr</a>.name()).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>().<a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#tymethod.try_into">try_into</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>()
 <a href=#283 id=283 data-nosnippet>283</a>    };
 <a href=#284 id=284 data-nosnippet>284</a>
 <a href=#285 id=285 data-nosnippet>285</a>    <span class="kw">let </span>(cells_h, cells_v, _repeated_indices) =
@@ -429,7 +429,7 @@
 <a href=#307 id=307 data-nosnippet>307</a>        .flex_wrap
 <a href=#308 id=308 data-nosnippet>308</a>        .<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.as_ref">as_ref</a>()
 <a href=#309 id=309 data-nosnippet>309</a>        .<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map_or">map_or</a>(i_slint_core::items::FlexboxLayoutWrap::<a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default">default</a>(), |nr| {
-<a href=#310 id=310 data-nosnippet>310</a>            eval::<a href="eval.rs.html#1860-1862">load_property</a>(<a href="#280">component</a>, <span class="kw-2">&amp;</span><a href="#309">nr</a>.element(), <a href="#309">nr</a>.name()).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>().<a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#tymethod.try_into">try_into</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>()
+<a href=#310 id=310 data-nosnippet>310</a>            eval::<a href="eval.rs.html#1867-1869">load_property</a>(<a href="#280">component</a>, <span class="kw-2">&amp;</span><a href="#309">nr</a>.element(), <a href="#309">nr</a>.name()).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>().<a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#tymethod.try_into">try_into</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>()
 <a href=#311 id=311 data-nosnippet>311</a>        });
 <a href=#312 id=312 data-nosnippet>312</a>
 <a href=#313 id=313 data-nosnippet>313</a>    <span class="kw">if </span><a href="#292">is_main_axis</a> {
@@ -482,11 +482,11 @@
 <a href=#360 id=360 data-nosnippet>360</a>
 <a href=#361 id=361 data-nosnippet>361</a><span class="kw">fn </span>flexbox_layout_data(
 <a href=#362 id=362 data-nosnippet>362</a>    flexbox_layout: <span class="kw-2">&amp;</span>i_slint_compiler::layout::FlexboxLayout,
-<a href=#363 id=363 data-nosnippet>363</a>    component: <a href="dynamic_item_tree.rs.html#2432-2435">InstanceRef</a>,
+<a href=#363 id=363 data-nosnippet>363</a>    component: <a href="dynamic_item_tree.rs.html#2455-2458">InstanceRef</a>,
 <a href=#364 id=364 data-nosnippet>364</a>    expr_eval: <span class="kw-2">&amp;</span><span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html">Fn</a>(<span class="kw-2">&amp;</span>NamedReference) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>,
-<a href=#365 id=365 data-nosnippet>365</a>    _local_context: <span class="kw-2">&amp;mut </span><a href="eval.rs.html#130-136">EvalLocalContext</a>,
+<a href=#365 id=365 data-nosnippet>365</a>    _local_context: <span class="kw-2">&amp;mut </span><a href="eval.rs.html#137-143">EvalLocalContext</a>,
 <a href=#366 id=366 data-nosnippet>366</a>) -&gt; (<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;core_layout::FlexboxLayoutItemInfo&gt;, <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;core_layout::FlexboxLayoutItemInfo&gt;, <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>&gt;) {
-<a href=#367 id=367 data-nosnippet>367</a>    <span class="kw">let </span>window_adapter = <a href="#363">component</a>.<a href="dynamic_item_tree.rs.html#2481-2494">window_adapter</a>();
+<a href=#367 id=367 data-nosnippet>367</a>    <span class="kw">let </span>window_adapter = <a href="#363">component</a>.<a href="dynamic_item_tree.rs.html#2504-2517">window_adapter</a>();
 <a href=#368 id=368 data-nosnippet>368</a>    <span class="kw">let </span><span class="kw-2">mut </span>cells_h = <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>::<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.with_capacity">with_capacity</a>(<a href="#362">flexbox_layout</a>.elems.<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.len">len</a>());
 <a href=#369 id=369 data-nosnippet>369</a>    <span class="kw">let </span><span class="kw-2">mut </span>cells_v = <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>::<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.with_capacity">with_capacity</a>(<a href="#362">flexbox_layout</a>.elems.<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.len">len</a>());
 <a href=#370 id=370 data-nosnippet>370</a>    <span class="kw">let </span><span class="kw-2">mut </span>repeated_indices = <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>::<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.new">new</a>();
@@ -578,17 +578,17 @@
 <a href=#456 id=456 data-nosnippet>456</a>}
 <a href=#457 id=457 data-nosnippet>457</a>
 <a href=#458 id=458 data-nosnippet>458</a><span class="kw">fn </span>repeater_instances(
-<a href=#459 id=459 data-nosnippet>459</a>    component: <a href="dynamic_item_tree.rs.html#2432-2435">InstanceRef</a>,
+<a href=#459 id=459 data-nosnippet>459</a>    component: <a href="dynamic_item_tree.rs.html#2455-2458">InstanceRef</a>,
 <a href=#460 id=460 data-nosnippet>460</a>    elem: <span class="kw-2">&amp;</span>ElementRc,
 <a href=#461 id=461 data-nosnippet>461</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<span class="kw">crate</span>::dynamic_item_tree::<a href="dynamic_item_tree.rs.html#368">DynamicComponentVRc</a>&gt; {
 <a href=#462 id=462 data-nosnippet>462</a>    <span class="macro">generativity::make_guard!</span>(guard);
 <a href=#463 id=463 data-nosnippet>463</a>    <span class="kw">let </span>rep =
-<a href=#464 id=464 data-nosnippet>464</a>        <span class="kw">crate</span>::dynamic_item_tree::<a href="dynamic_item_tree.rs.html#2037-2045">get_repeater_by_name</a>(<a href="#459">component</a>, <a href="#460">elem</a>.<a href="https://doc.rust-lang.org/nightly/core/cell/struct.RefCell.html#method.borrow">borrow</a>().id.as_str(), <a href="#462">guard</a>);
-<a href=#465 id=465 data-nosnippet>465</a>    <span class="kw">let </span>extra_data = <a href="#459">component</a>.description.extra_data_offset.apply(<a href="#459">component</a>.<a href="dynamic_item_tree.rs.html#2458-2460">as_ref</a>());
+<a href=#464 id=464 data-nosnippet>464</a>        <span class="kw">crate</span>::dynamic_item_tree::<a href="dynamic_item_tree.rs.html#2060-2068">get_repeater_by_name</a>(<a href="#459">component</a>, <a href="#460">elem</a>.<a href="https://doc.rust-lang.org/nightly/core/cell/struct.RefCell.html#method.borrow">borrow</a>().id.as_str(), <a href="#462">guard</a>);
+<a href=#465 id=465 data-nosnippet>465</a>    <span class="kw">let </span>extra_data = <a href="#459">component</a>.description.extra_data_offset.apply(<a href="#459">component</a>.<a href="dynamic_item_tree.rs.html#2481-2483">as_ref</a>());
 <a href=#466 id=466 data-nosnippet>466</a>    <a href="#463">rep</a>.<span class="number">0</span>.<a href="https://doc.rust-lang.org/nightly/core/pin/struct.Pin.html#method.as_ref">as_ref</a>().ensure_updated(|| {
-<a href=#467 id=467 data-nosnippet>467</a>        <span class="kw">crate</span>::dynamic_item_tree::<a href="dynamic_item_tree.rs.html#1591-1845">instantiate</a>(
+<a href=#467 id=467 data-nosnippet>467</a>        <span class="kw">crate</span>::dynamic_item_tree::<a href="dynamic_item_tree.rs.html#1591-1868">instantiate</a>(
 <a href=#468 id=468 data-nosnippet>468</a>            <a href="#463">rep</a>.<span class="number">1</span>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>(),
-<a href=#469 id=469 data-nosnippet>469</a>            <a href="#459">component</a>.<a href="dynamic_item_tree.rs.html#2472-2475">self_weak</a>().get().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.cloned">cloned</a>(),
+<a href=#469 id=469 data-nosnippet>469</a>            <a href="#459">component</a>.<a href="dynamic_item_tree.rs.html#2495-2498">self_weak</a>().get().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.cloned">cloned</a>(),
 <a href=#470 id=470 data-nosnippet>470</a>            <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a>,
 <a href=#471 id=471 data-nosnippet>471</a>            <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a>,
 <a href=#472 id=472 data-nosnippet>472</a>            <a href="#465">extra_data</a>.globals.get().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap">unwrap</a>().<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>(),
@@ -599,7 +599,7 @@
 <a href=#477 id=477 data-nosnippet>477</a>
 <a href=#478 id=478 data-nosnippet>478</a><span class="kw">fn </span>grid_layout_input_data(
 <a href=#479 id=479 data-nosnippet>479</a>    grid_layout: <span class="kw-2">&amp;</span>i_slint_compiler::layout::GridLayout,
-<a href=#480 id=480 data-nosnippet>480</a>    ctx: <span class="kw-2">&amp;</span><a href="eval.rs.html#130-136">EvalLocalContext</a>,
+<a href=#480 id=480 data-nosnippet>480</a>    ctx: <span class="kw-2">&amp;</span><a href="eval.rs.html#137-143">EvalLocalContext</a>,
 <a href=#481 id=481 data-nosnippet>481</a>    repeater_steps: <span class="kw-2">&amp;</span>[<a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>],
 <a href=#482 id=482 data-nosnippet>482</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;GridLayoutInputData&gt; {
 <a href=#483 id=483 data-nosnippet>483</a>    <span class="kw">let </span>component = <a href="#480">ctx</a>.component_instance;
@@ -723,7 +723,7 @@
 <a href=#601 id=601 data-nosnippet>601</a>/// For rows with inner repeaters, the Repeated template expands to actual inner instances.
 <a href=#602 id=602 data-nosnippet>602</a></span><span class="kw">fn </span>row_runtime_child_count(
 <a href=#603 id=603 data-nosnippet>603</a>    child_items: <span class="kw-2">&amp;</span>[i_slint_compiler::layout::RowChildTemplate],
-<a href=#604 id=604 data-nosnippet>604</a>    sub_instance_ref: <a href="dynamic_item_tree.rs.html#2432-2435">InstanceRef</a>,
+<a href=#604 id=604 data-nosnippet>604</a>    sub_instance_ref: <a href="dynamic_item_tree.rs.html#2455-2458">InstanceRef</a>,
 <a href=#605 id=605 data-nosnippet>605</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a> {
 <a href=#606 id=606 data-nosnippet>606</a>    <span class="kw">let </span><span class="kw-2">mut </span>count = <span class="number">0</span>;
 <a href=#607 id=607 data-nosnippet>607</a>    <span class="kw">for </span>child <span class="kw">in </span>child_items {
@@ -738,7 +738,7 @@
 <a href=#616 id=616 data-nosnippet>616</a>
 <a href=#617 id=617 data-nosnippet>617</a><span class="kw">fn </span>grid_repeater_indices(
 <a href=#618 id=618 data-nosnippet>618</a>    grid_layout: <span class="kw-2">&amp;</span>i_slint_compiler::layout::GridLayout,
-<a href=#619 id=619 data-nosnippet>619</a>    ctx: <span class="kw-2">&amp;mut </span><a href="eval.rs.html#130-136">EvalLocalContext</a>,
+<a href=#619 id=619 data-nosnippet>619</a>    ctx: <span class="kw-2">&amp;mut </span><a href="eval.rs.html#137-143">EvalLocalContext</a>,
 <a href=#620 id=620 data-nosnippet>620</a>    repeater_steps: <span class="kw-2">&amp;</span>[<a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>],
 <a href=#621 id=621 data-nosnippet>621</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>&gt; {
 <a href=#622 id=622 data-nosnippet>622</a>    <span class="kw">let </span>component = <a href="#619">ctx</a>.component_instance;
@@ -762,7 +762,7 @@
 <a href=#640 id=640 data-nosnippet>640</a>
 <a href=#641 id=641 data-nosnippet>641</a><span class="kw">fn </span>grid_repeater_steps(
 <a href=#642 id=642 data-nosnippet>642</a>    grid_layout: <span class="kw-2">&amp;</span>i_slint_compiler::layout::GridLayout,
-<a href=#643 id=643 data-nosnippet>643</a>    ctx: <span class="kw-2">&amp;mut </span><a href="eval.rs.html#130-136">EvalLocalContext</a>,
+<a href=#643 id=643 data-nosnippet>643</a>    ctx: <span class="kw-2">&amp;mut </span><a href="eval.rs.html#137-143">EvalLocalContext</a>,
 <a href=#644 id=644 data-nosnippet>644</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>&gt; {
 <a href=#645 id=645 data-nosnippet>645</a>    <span class="kw">let </span>component = <a href="#643">ctx</a>.component_instance;
 <a href=#646 id=646 data-nosnippet>646</a>    <span class="kw">let </span><span class="kw-2">mut </span>repeater_steps = <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>::<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.new">new</a>();
@@ -798,12 +798,12 @@
 <a href=#676 id=676 data-nosnippet>676</a><span class="kw">fn </span>grid_layout_constraints(
 <a href=#677 id=677 data-nosnippet>677</a>    grid_layout: <span class="kw-2">&amp;</span>i_slint_compiler::layout::GridLayout,
 <a href=#678 id=678 data-nosnippet>678</a>    orientation: Orientation,
-<a href=#679 id=679 data-nosnippet>679</a>    ctx: <span class="kw-2">&amp;mut </span><a href="eval.rs.html#130-136">EvalLocalContext</a>,
+<a href=#679 id=679 data-nosnippet>679</a>    ctx: <span class="kw-2">&amp;mut </span><a href="eval.rs.html#137-143">EvalLocalContext</a>,
 <a href=#680 id=680 data-nosnippet>680</a>    repeater_steps: <span class="kw-2">&amp;</span>[<a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>],
 <a href=#681 id=681 data-nosnippet>681</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;core_layout::LayoutItemInfo&gt; {
 <a href=#682 id=682 data-nosnippet>682</a>    <span class="kw">let </span>component = <a href="#679">ctx</a>.component_instance;
 <a href=#683 id=683 data-nosnippet>683</a>    <span class="kw">let </span>expr_eval = |nr: <span class="kw-2">&amp;</span>NamedReference| -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a> {
-<a href=#684 id=684 data-nosnippet>684</a>        eval::<a href="eval.rs.html#1860-1862">load_property</a>(<a href="#682">component</a>, <span class="kw-2">&amp;</span><a href="#683">nr</a>.element(), <a href="#683">nr</a>.name()).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>().<a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#tymethod.try_into">try_into</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>()
+<a href=#684 id=684 data-nosnippet>684</a>        eval::<a href="eval.rs.html#1867-1869">load_property</a>(<a href="#682">component</a>, <span class="kw-2">&amp;</span><a href="#683">nr</a>.element(), <a href="#683">nr</a>.name()).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>().<a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#tymethod.try_into">try_into</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>()
 <a href=#685 id=685 data-nosnippet>685</a>    };
 <a href=#686 id=686 data-nosnippet>686</a>    <span class="kw">let </span><span class="kw-2">mut </span>constraints = <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>::<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.with_capacity">with_capacity</a>(<a href="#677">grid_layout</a>.elems.<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.len">len</a>());
 <a href=#687 id=687 data-nosnippet>687</a>
@@ -930,11 +930,11 @@
 <a href=#808 id=808 data-nosnippet>808</a></span><span class="kw">fn </span>box_layout_data(
 <a href=#809 id=809 data-nosnippet>809</a>    box_layout: <span class="kw-2">&amp;</span>i_slint_compiler::layout::BoxLayout,
 <a href=#810 id=810 data-nosnippet>810</a>    orientation: Orientation,
-<a href=#811 id=811 data-nosnippet>811</a>    component: <a href="dynamic_item_tree.rs.html#2432-2435">InstanceRef</a>,
+<a href=#811 id=811 data-nosnippet>811</a>    component: <a href="dynamic_item_tree.rs.html#2455-2458">InstanceRef</a>,
 <a href=#812 id=812 data-nosnippet>812</a>    expr_eval: <span class="kw-2">&amp;</span><span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html">Fn</a>(<span class="kw-2">&amp;</span>NamedReference) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>,
 <a href=#813 id=813 data-nosnippet>813</a>    <span class="kw-2">mut </span>repeater_indices: <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<span class="kw-2">&amp;mut </span><a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>&gt;&gt;,
 <a href=#814 id=814 data-nosnippet>814</a>) -&gt; (<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;core_layout::LayoutItemInfo&gt;, i_slint_core::items::LayoutAlignment) {
-<a href=#815 id=815 data-nosnippet>815</a>    <span class="kw">let </span>window_adapter = <a href="#811">component</a>.<a href="dynamic_item_tree.rs.html#2481-2494">window_adapter</a>();
+<a href=#815 id=815 data-nosnippet>815</a>    <span class="kw">let </span>window_adapter = <a href="#811">component</a>.<a href="dynamic_item_tree.rs.html#2504-2517">window_adapter</a>();
 <a href=#816 id=816 data-nosnippet>816</a>    <span class="kw">let </span><span class="kw-2">mut </span>cells = <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>::<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.with_capacity">with_capacity</a>(<a href="#809">box_layout</a>.elems.<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.len">len</a>());
 <a href=#817 id=817 data-nosnippet>817</a>    <span class="kw">for </span>cell <span class="kw">in </span><span class="kw-2">&amp;</span>box_layout.elems {
 <a href=#818 id=818 data-nosnippet>818</a>        <span class="kw">if </span>cell.element.borrow().repeated.is_some() {
@@ -967,7 +967,7 @@
 <a href=#845 id=845 data-nosnippet>845</a>        .alignment
 <a href=#846 id=846 data-nosnippet>846</a>        .<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.as_ref">as_ref</a>()
 <a href=#847 id=847 data-nosnippet>847</a>        .<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(|nr| {
-<a href=#848 id=848 data-nosnippet>848</a>            eval::<a href="eval.rs.html#1860-1862">load_property</a>(<a href="#811">component</a>, <span class="kw-2">&amp;</span><a href="#847">nr</a>.element(), <a href="#847">nr</a>.name())
+<a href=#848 id=848 data-nosnippet>848</a>            eval::<a href="eval.rs.html#1867-1869">load_property</a>(<a href="#811">component</a>, <span class="kw-2">&amp;</span><a href="#847">nr</a>.element(), <a href="#847">nr</a>.name())
 <a href=#849 id=849 data-nosnippet>849</a>                .<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>()
 <a href=#850 id=850 data-nosnippet>850</a>                .<a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#tymethod.try_into">try_into</a>()
 <a href=#851 id=851 data-nosnippet>851</a>                .<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap_or_default">unwrap_or_default</a>()
@@ -1036,23 +1036,23 @@
 <a href=#914 id=914 data-nosnippet>914</a><span class="doccomment">/// Get the layout info for an element based on the layout_info_prop or the builtin item layout_info
 <a href=#915 id=915 data-nosnippet>915</a></span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>get_layout_info(
 <a href=#916 id=916 data-nosnippet>916</a>    elem: <span class="kw-2">&amp;</span>ElementRc,
-<a href=#917 id=917 data-nosnippet>917</a>    component: <a href="dynamic_item_tree.rs.html#2432-2435">InstanceRef</a>,
+<a href=#917 id=917 data-nosnippet>917</a>    component: <a href="dynamic_item_tree.rs.html#2455-2458">InstanceRef</a>,
 <a href=#918 id=918 data-nosnippet>918</a>    window_adapter: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/alloc/rc/struct.Rc.html">Rc</a>&lt;<span class="kw">dyn </span>WindowAdapter&gt;,
 <a href=#919 id=919 data-nosnippet>919</a>    orientation: Orientation,
 <a href=#920 id=920 data-nosnippet>920</a>) -&gt; core_layout::LayoutInfo {
 <a href=#921 id=921 data-nosnippet>921</a>    <span class="kw">let </span>elem = <a href="#916">elem</a>.<a href="https://doc.rust-lang.org/nightly/core/cell/struct.RefCell.html#method.borrow">borrow</a>();
 <a href=#922 id=922 data-nosnippet>922</a>    <span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(nr) = <a href="#921">elem</a>.layout_info_prop(<a href="#919">orientation</a>) {
-<a href=#923 id=923 data-nosnippet>923</a>        eval::<a href="eval.rs.html#1860-1862">load_property</a>(<a href="#917">component</a>, <span class="kw-2">&amp;</span><a href="#922">nr</a>.element(), <a href="#922">nr</a>.name()).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>().<a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#tymethod.try_into">try_into</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>()
+<a href=#923 id=923 data-nosnippet>923</a>        eval::<a href="eval.rs.html#1867-1869">load_property</a>(<a href="#917">component</a>, <span class="kw-2">&amp;</span><a href="#922">nr</a>.element(), <a href="#922">nr</a>.name()).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>().<a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#tymethod.try_into">try_into</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>()
 <a href=#924 id=924 data-nosnippet>924</a>    } <span class="kw">else </span>{
 <a href=#925 id=925 data-nosnippet>925</a>        <span class="kw">let </span>item = <span class="kw-2">&amp;</span><a href="#917">component</a>
 <a href=#926 id=926 data-nosnippet>926</a>            .description
 <a href=#927 id=927 data-nosnippet>927</a>            .items
 <a href=#928 id=928 data-nosnippet>928</a>            .<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.get">get</a>(<a href="#921">elem</a>.id.as_str())
 <a href=#929 id=929 data-nosnippet>929</a>            .<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap_or_else">unwrap_or_else</a>(|| <a href="https://doc.rust-lang.org/nightly/std/macro.panic.html">panic!</a>(<span class="string">"Internal error: Item {} not found"</span>, elem.id));
-<a href=#930 id=930 data-nosnippet>930</a>        <span class="kw">let </span>item_comp = <a href="#917">component</a>.<a href="dynamic_item_tree.rs.html#2472-2475">self_weak</a>().get().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap">unwrap</a>().upgrade().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap">unwrap</a>();
+<a href=#930 id=930 data-nosnippet>930</a>        <span class="kw">let </span>item_comp = <a href="#917">component</a>.<a href="dynamic_item_tree.rs.html#2495-2498">self_weak</a>().get().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap">unwrap</a>().upgrade().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap">unwrap</a>();
 <a href=#931 id=931 data-nosnippet>931</a>
 <a href=#932 id=932 data-nosnippet>932</a>        <span class="kw">unsafe </span>{
-<a href=#933 id=933 data-nosnippet>933</a>            <a href="#925">item</a>.<a href="dynamic_item_tree.rs.html#96-106">item_from_item_tree</a>(<a href="#917">component</a>.<a href="dynamic_item_tree.rs.html#2454-2456">as_ptr</a>()).<a href="https://doc.rust-lang.org/nightly/core/pin/struct.Pin.html#method.as_ref">as_ref</a>().layout_info(
+<a href=#933 id=933 data-nosnippet>933</a>            <a href="#925">item</a>.<a href="dynamic_item_tree.rs.html#96-106">item_from_item_tree</a>(<a href="#917">component</a>.<a href="dynamic_item_tree.rs.html#2477-2479">as_ptr</a>()).<a href="https://doc.rust-lang.org/nightly/core/pin/struct.Pin.html#method.as_ref">as_ref</a>().layout_info(
 <a href=#934 id=934 data-nosnippet>934</a>                <a href="#23-28">to_runtime</a>(<a href="#919">orientation</a>),
 <a href=#935 id=935 data-nosnippet>935</a>                <a href="#918">window_adapter</a>,
 <a href=#936 id=936 data-nosnippet>936</a>                <span class="kw-2">&amp;</span>ItemRc::new(vtable::VRc::into_dyn(<a href="#930">item_comp</a>), <a href="#925">item</a>.<a href="dynamic_item_tree.rs.html#108-110">item_index</a>()),
