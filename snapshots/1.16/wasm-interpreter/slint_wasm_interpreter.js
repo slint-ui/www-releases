@@ -1671,12 +1671,12 @@ function __wbg_get_imports() {
             return ret;
         },
         __wbindgen_cast_0000000000000011: function(arg0, arg1) {
-            // Cast intrinsic for `Closure(Closure { dtor_idx: 163, function: Function { arguments: [], shim_idx: 421, ret: Unit, inner_ret: Some(Unit) }, mutable: true }) -> Externref`.
+            // Cast intrinsic for `Closure(Closure { dtor_idx: 163, function: Function { arguments: [], shim_idx: 418, ret: Unit, inner_ret: Some(Unit) }, mutable: true }) -> Externref`.
             const ret = makeMutClosure(arg0, arg1, wasm.wasm_bindgen__closure__destroy__h17cb04cf2f8ab537, wasm_bindgen__convert__closures_____invoke__h73260f4499411046);
             return ret;
         },
         __wbindgen_cast_0000000000000012: function(arg0, arg1) {
-            // Cast intrinsic for `Closure(Closure { dtor_idx: 420, function: Function { arguments: [], shim_idx: 421, ret: Unit, inner_ret: Some(Unit) }, mutable: true }) -> Externref`.
+            // Cast intrinsic for `Closure(Closure { dtor_idx: 417, function: Function { arguments: [], shim_idx: 418, ret: Unit, inner_ret: Some(Unit) }, mutable: true }) -> Externref`.
             const ret = makeMutClosure(arg0, arg1, wasm.wasm_bindgen__closure__destroy__hf078db5ea0bb7cf7, wasm_bindgen__convert__closures_____invoke__h73260f4499411046);
             return ret;
         },

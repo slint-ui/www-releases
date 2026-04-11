@@ -23,6 +23,8 @@ This page lists the licenses of the dependencies used by Slint.
 
 #### Used by:
 
+- [ab_glyph 0.2.32]( https://github.com/alexheretic/ab-glyph )
+- [ab_glyph_rasterizer 0.1.10]( https://github.com/alexheretic/ab-glyph )
 - [owned_ttf_parser 0.25.1]( https://github.com/alexheretic/owned-ttf-parser )
 
 #### License Text
@@ -1281,8 +1283,6 @@ Apache License
 
 #### Used by:
 
-- [ab_glyph 0.2.32]( https://github.com/alexheretic/ab-glyph )
-- [ab_glyph_rasterizer 0.1.10]( https://github.com/alexheretic/ab-glyph )
 - [gl_generator 0.14.0]( https://github.com/brendanzab/gl-rs/ )
 - [khronos_api 3.1.0]( https://github.com/brendanzab/gl-rs/ )
 
@@ -6928,40 +6928,6 @@ SOFTWARE.
 
 #### Used by:
 
-- [rustybuzz 0.20.1]( https://github.com/harfbuzz/rustybuzz )
-
-#### License Text
-
-```
-The MIT License (MIT)
-
-Copyright (c) HarfBuzz developers
-Copyright (c) 2020 Yevhenii Reizner
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the &quot;Software&quot;), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-```
-
-### <a id="MIT"></a> MIT License
-
-#### Used by:
-
 - [weezl 0.1.12]( https://github.com/image-rs/weezl )
 
 #### License Text
@@ -7146,6 +7112,7 @@ DEALINGS IN THE SOFTWARE.
 
 #### Used by:
 
+- [aho-corasick 1.1.4]( https://github.com/BurntSushi/aho-corasick )
 - [byteorder 1.5.0]( https://github.com/BurntSushi/byteorder )
 - [memchr 2.8.0]( https://github.com/BurntSushi/memchr )
 
