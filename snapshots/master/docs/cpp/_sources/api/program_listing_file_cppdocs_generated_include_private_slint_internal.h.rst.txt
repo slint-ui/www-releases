@@ -210,6 +210,7 @@ Program Listing for File slint_internal.h
        uintptr_t cached_rendering_data_offset;
        LayoutInfo (*layout_info)(Pin<VRef<ItemVTable>>,
                                  Orientation orientation,
+                                 float cross_axis_constraint,
                                  const WindowAdapterRc *window_adapter,
                                  const ItemRc *self_rc);
        InputEventFilterResult (*input_event_filter_before_children)(Pin<VRef<ItemVTable>>,
@@ -1153,18 +1154,24 @@ Program Listing for File slint_internal.h
    
    void slint_solve_flexbox_layout(const FlexboxLayoutData *data,
                                    Slice<uint32_t> repeater_indices,
-                                   SharedVector<float> *result);
+                                   SharedVector<float> *result,
+                                   const void *measure_fn,
+                                   void *measure_user_data);
    
-   LayoutInfo slint_flexbox_layout_info(Slice<FlexboxLayoutItemInfo> cells_h,
-                                        Slice<FlexboxLayoutItemInfo> cells_v,
-                                        float spacing_h,
-                                        float spacing_v,
-                                        const Padding *padding_h,
-                                        const Padding *padding_v,
-                                        Orientation orientation,
-                                        FlexboxLayoutDirection direction,
-                                        float constraint_size,
-                                        FlexboxLayoutWrap flex_wrap);
+   LayoutInfo slint_flexbox_layout_info_main_axis(Slice<FlexboxLayoutItemInfo> cells,
+                                                  float spacing,
+                                                  const Padding *padding,
+                                                  FlexboxLayoutWrap flex_wrap);
+   
+   LayoutInfo slint_flexbox_layout_info_cross_axis(Slice<FlexboxLayoutItemInfo> cells_h,
+                                                   Slice<FlexboxLayoutItemInfo> cells_v,
+                                                   float spacing_h,
+                                                   float spacing_v,
+                                                   const Padding *padding_h,
+                                                   const Padding *padding_v,
+                                                   FlexboxLayoutDirection direction,
+                                                   FlexboxLayoutWrap flex_wrap,
+                                                   float constraint_size);
    
    void slint_menus_create_wrapper(const ItemTreeRc *menu_tree,
                                    VRc<MenuVTable> *result,

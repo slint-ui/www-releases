@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="NOTE: This library is an internal crate of the Slint project. This crate should not be used directly by applications using Slint. You should use the `slint` crate instead."><title>i_slint_backend_testing - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../static.files/rustdoc-17e0aaed.css"><meta name="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="i_slint_backend_testing" data-themes="" data-resource-suffix="" data-rustdoc-version="1.97.0-nightly (14196dbfa 2026-04-12)" data-channel="nightly" data-search-js="search-b5634cc7.js" data-stringdex-js="stringdex-2da4960a.js" data-settings-js="settings-170eb4bf.js" ><script src="../static.files/storage-41dd4d93.js"></script><script defer src="../crates.js"></script><script defer src="../static.files/main-5013f961.js"></script><noscript><link rel="stylesheet" href="../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../static.files/favicon-044be391.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="NOTE: This library is an internal crate of the Slint project. This crate should not be used directly by applications using Slint. You should use the `slint` crate instead."><title>i_slint_backend_testing - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../static.files/rustdoc-17e0aaed.css"><meta name="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="i_slint_backend_testing" data-themes="" data-resource-suffix="" data-rustdoc-version="1.97.0-nightly (17584a181 2026-04-13)" data-channel="nightly" data-search-js="search-b5634cc7.js" data-stringdex-js="stringdex-2da4960a.js" data-settings-js="settings-170eb4bf.js" ><script src="../static.files/storage-41dd4d93.js"></script><script defer src="../crates.js"></script><script defer src="../static.files/main-5013f961.js"></script><noscript><link rel="stylesheet" href="../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../static.files/favicon-044be391.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -263,22 +263,29 @@ the event loop is started, and that will start polling the async closure passed 
 will keep running the event loop until the click is complete, and then continue with the test function.</p>
 <h3 id="embedded-mcp-server"><a class="doc-anchor" href="#embedded-mcp-server">§</a>Embedded MCP Server</h3>
 <p>The testing backend includes an embedded <a href="https://modelcontextprotocol.io/">MCP (Model Context Protocol)</a>
-server that allows MCP clients — such as Claude Code — to inspect and interact with a running Slint
-application in real time over HTTP.</p>
+server that allows AI agents to inspect and interact with a running Slint application in real time.
+The server provides tools for exploring the UI tree, taking screenshots, clicking elements, dragging,
+typing, and more. Agents discover the available tools and usage instructions automatically via the
+MCP protocol — no additional configuration is needed beyond enabling the server.</p>
 <h4 id="enabling-the-mcp-server"><a class="doc-anchor" href="#enabling-the-mcp-server">§</a>Enabling the MCP Server</h4>
-<p>The MCP server requires the <code>mcp</code> Cargo feature on the backend selector crate. Since this feature is
-not exposed through the public <code>slint</code> crate, enable it on <code>i-slint-backend-selector</code> directly:</p>
+<p>Add the <code>mcp</code> feature to the backend selector crate:</p>
 <div class="example-wrap"><pre class="language-toml"><code>[dependencies]
 slint = &quot;x.y.z&quot;
 i-slint-backend-selector = { version = &quot;=x.y.z&quot;, features = [&quot;mcp&quot;] }</code></pre></div>
-<p>Then set the <code>SLINT_MCP_PORT</code> environment variable when running your application:</p>
-<div class="example-wrap"><pre class="language-sh"><code>SLINT_MCP_PORT=8080 cargo run -p my-slint-app</code></pre></div>
-<p>The server starts automatically when the backend initializes. If <code>SLINT_MCP_PORT</code> is not set,
-the server is not started and there is no runtime overhead.</p>
-<h4 id="connecting-an-mcp-client"><a class="doc-anchor" href="#connecting-an-mcp-client">§</a>Connecting an MCP Client</h4>
-<p>Once the application is running with the MCP server enabled, connect any MCP client to
-<code>http://localhost:&lt;port&gt;/mcp</code> using the Streamable HTTP transport. For example, in Claude Code’s
-MCP configuration:</p>
+<p>Then set the following environment variables when running your application:</p>
+<div class="example-wrap"><pre class="language-sh"><code>SLINT_EMIT_DEBUG_INFO=1 SLINT_MCP_PORT=8080 cargo run -p my-slint-app</code></pre></div>
+<p><code>SLINT_EMIT_DEBUG_INFO=1</code> is required for element introspection to work (it embeds element
+metadata into the compiled UI). <code>SLINT_MCP_PORT</code> controls which port the MCP server listens on.
+If <code>SLINT_MCP_PORT</code> is not set, no server is started and there is no runtime overhead.</p>
+<h4 id="usage-with-ai-agents"><a class="doc-anchor" href="#usage-with-ai-agents">§</a>Usage with AI Agents</h4>
+<p>The simplest approach is to tell the agent to run the application with both environment variables
+set and then interact with it. For example, in Claude Code:</p>
+<blockquote>
+<p>“Run <code>SLINT_EMIT_DEBUG_INFO=1 SLINT_MCP_PORT=8080 cargo run -p my-app</code> in the background. The
+app includes a built-in MCP server. Connect to it and toggle the dark mode switch.”</p>
+</blockquote>
+<p>The agent will discover the MCP endpoint, connect, and use the tools to accomplish the task.
+You can also register the server in your MCP client’s configuration if you prefer:</p>
 <div class="example-wrap"><pre class="language-json"><code>{
   &quot;mcpServers&quot;: {
     &quot;my-slint-app&quot;: {
@@ -286,31 +293,8 @@ MCP configuration:</p>
       &quot;url&quot;: &quot;http://localhost:8080/mcp&quot;
     }
   }
-}</code></pre></div><h4 id="available-tools"><a class="doc-anchor" href="#available-tools">§</a>Available Tools</h4>
-<p>The MCP server exposes 11 tools for UI introspection and interaction:</p>
-<div><table><thead><tr><th>Tool</th><th>Description</th></tr></thead><tbody>
-<tr><td><code>list_windows</code></td><td>List all open windows and their handles</td></tr>
-<tr><td><code>get_window_properties</code></td><td>Get window size, position, state, and root element handle</td></tr>
-<tr><td><code>get_element_tree</code></td><td>Get a flat list of elements in a subtree with types, IDs, and accessibility info</td></tr>
-<tr><td><code>get_element_properties</code></td><td>Get full details of a single element</td></tr>
-<tr><td><code>find_elements_by_id</code></td><td>Find elements by qualified ID (e.g. <code>App::my-button</code>)</td></tr>
-<tr><td><code>query_element_descendants</code></td><td>Search descendants using a query pipeline (by type, ID, or role)</td></tr>
-<tr><td><code>take_screenshot</code></td><td>Capture a PNG screenshot of a window</td></tr>
-<tr><td><code>click_element</code></td><td>Simulate a mouse click on an element</td></tr>
-<tr><td><code>invoke_accessibility_action</code></td><td>Invoke a semantic action (Default, Increment, Decrement, Expand)</td></tr>
-<tr><td><code>set_element_value</code></td><td>Set the accessible value of an element (text, slider value, etc.)</td></tr>
-<tr><td><code>dispatch_key_event</code></td><td>Send a keyboard event to a window</td></tr>
-</tbody></table>
-</div><h4 id="typical-workflow"><a class="doc-anchor" href="#typical-workflow">§</a>Typical Workflow</h4>
-<ol>
-<li><code>list_windows</code> → discover available windows</li>
-<li><code>get_window_properties</code> → get the <code>rootElementHandle</code></li>
-<li><code>get_element_tree</code> → explore the UI hierarchy</li>
-<li><code>query_element_descendants</code> or <code>find_elements_by_id</code> → locate specific elements</li>
-<li><code>click_element</code> / <code>set_element_value</code> / <code>invoke_accessibility_action</code> → interact</li>
-<li><code>take_screenshot</code> → verify the visual result</li>
-</ol>
-<p>For a detailed description of the architecture and internals, see
+}</code></pre></div>
+<p>For architecture and internals, see
 <a href="../../../docs/development/mcp-server.md">docs/development/mcp-server.md</a>.</p>
 </div></details><h2 id="structs" class="section-header">Structs<a href="#structs" class="anchor">§</a></h2><dl class="item-table"><dt><a class="struct" href="struct.ElementHandle.html" title="struct i_slint_backend_testing::ElementHandle">Element<wbr>Handle</a></dt><dd><code>ElementHandle</code> wraps an existing element in a Slint UI. An ElementHandle does not keep
 the corresponding element in the UI alive. Use <a href="struct.ElementHandle.html#method.is_valid" title="method i_slint_backend_testing::ElementHandle::is_valid"><code>Self::is_valid()</code></a> to verify that
