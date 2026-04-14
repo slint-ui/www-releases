@@ -4708,7 +4708,7 @@ DEALINGS IN THE SOFTWARE.
 
 #### Used by:
 
-- [femtovg 0.23.1]( https://github.com/femtovg/femtovg )
+- [femtovg 0.23.2]( https://github.com/femtovg/femtovg )
 
 #### License Text
 
