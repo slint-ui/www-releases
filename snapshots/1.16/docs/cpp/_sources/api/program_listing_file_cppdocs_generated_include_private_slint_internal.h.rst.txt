@@ -207,6 +207,7 @@ Program Listing for File slint_internal.h
    
    struct ItemVTable {
        void (*init)(Pin<VRef<ItemVTable>>, const ItemRc *my_item);
+       void (*deinit)(Pin<VRef<ItemVTable>>, const WindowAdapterRc *window_adapter);
        uintptr_t cached_rendering_data_offset;
        LayoutInfo (*layout_info)(Pin<VRef<ItemVTable>>,
                                  Orientation orientation,

@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `api/rs/build/lib.rs`."><title>lib.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-17e0aaed.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_build" data-themes="" data-resource-suffix="" data-rustdoc-version="1.97.0-nightly (17584a181 2026-04-13)" data-channel="nightly" data-search-js="search-b5634cc7.js" data-stringdex-js="stringdex-2da4960a.js" data-settings-js="settings-170eb4bf.js" ><script src="../../static.files/storage-41dd4d93.js"></script><script defer src="../../static.files/src-script-813739b1.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-5013f961.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `api/rs/build/lib.rs`."><title>lib.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-17e0aaed.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_build" data-themes="" data-resource-suffix="" data-rustdoc-version="1.97.0-nightly (a5c825cd8 2026-04-14)" data-channel="nightly" data-search-js="search-b5634cc7.js" data-stringdex-js="stringdex-2da4960a.js" data-settings-js="settings-170eb4bf.js" ><script src="../../static.files/storage-41dd4d93.js"></script><script defer src="../../static.files/src-script-813739b1.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-5013f961.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -639,7 +639,7 @@
 <a href=#517 id=517 data-nosnippet>517</a>        }
 <a href=#518 id=518 data-nosnippet>518</a>    }
 <a href=#519 id=519 data-nosnippet>519</a>    <span class="kw">let </span>paths_dependencies =
-<a href=#520 id=520 data-nosnippet>520</a>        <a href="#551-615">compile_with_output_path</a>(<a href="#497">path</a>, <a href="#499">absolute_rust_output_file_path</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>(), <a href="#495">config</a>)<span class="question-mark">?</span>;
+<a href=#520 id=520 data-nosnippet>520</a>        <a href="#551-617">compile_with_output_path</a>(<a href="#497">path</a>, <a href="#499">absolute_rust_output_file_path</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>(), <a href="#495">config</a>)<span class="question-mark">?</span>;
 <a href=#521 id=521 data-nosnippet>521</a>
 <a href=#522 id=522 data-nosnippet>522</a>    <span class="kw">for </span>path_dependency <span class="kw">in </span>paths_dependencies {
 <a href=#523 id=523 data-nosnippet>523</a>        <span class="macro">println!</span>(<span class="string">"cargo:rerun-if-changed={}"</span>, path_dependency.display());
@@ -725,95 +725,97 @@
 <a href=#603 id=603 data-nosnippet>603</a>    <a href="https://doc.rust-lang.org/nightly/core/macro.write.html">write!</a>(<a href="#584">code_formatter</a>, <span class="string">"{generated}"</span>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(CompileError::<a href="#308">SaveError</a>)<span class="question-mark">?</span>;
 <a href=#604 id=604 data-nosnippet>604</a>    <a href="#588">dependencies</a>.<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.push">push</a>(<a href="#552">input_slint_file_path</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>().<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.to_path_buf">to_path_buf</a>());
 <a href=#605 id=605 data-nosnippet>605</a>
-<a href=#606 id=606 data-nosnippet>606</a>    <span class="kw">for </span>resource <span class="kw">in </span>doc.embedded_file_resources.borrow().keys() {
-<a href=#607 id=607 data-nosnippet>607</a>        <span class="kw">if </span>!resource.starts_with(<span class="string">"builtin:"</span>) {
-<a href=#608 id=608 data-nosnippet>608</a>            dependencies.push(Path::new(resource).to_path_buf());
-<a href=#609 id=609 data-nosnippet>609</a>        }
-<a href=#610 id=610 data-nosnippet>610</a>    }
-<a href=#611 id=611 data-nosnippet>611</a>
-<a href=#612 id=612 data-nosnippet>612</a>    <a href="#584">code_formatter</a>.sink.<a href="https://doc.rust-lang.org/nightly/std/io/trait.Write.html#tymethod.flush">flush</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(CompileError::<a href="#308">SaveError</a>)<span class="question-mark">?</span>;
+<a href=#606 id=606 data-nosnippet>606</a>    <span class="kw">for </span>er <span class="kw">in </span>doc.embedded_file_resources.borrow().iter() {
+<a href=#607 id=607 data-nosnippet>607</a>        <span class="kw">if let </span><span class="prelude-val">Some</span>(resource) = er.path.as_deref()
+<a href=#608 id=608 data-nosnippet>608</a>            &amp;&amp; !resource.starts_with(<span class="string">"builtin:"</span>)
+<a href=#609 id=609 data-nosnippet>609</a>        {
+<a href=#610 id=610 data-nosnippet>610</a>            dependencies.push(Path::new(resource).to_path_buf());
+<a href=#611 id=611 data-nosnippet>611</a>        }
+<a href=#612 id=612 data-nosnippet>612</a>    }
 <a href=#613 id=613 data-nosnippet>613</a>
-<a href=#614 id=614 data-nosnippet>614</a>    <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<a href="#588">dependencies</a>)
-<a href=#615 id=615 data-nosnippet>615</a>}
-<a href=#616 id=616 data-nosnippet>616</a>
-<a href=#617 id=617 data-nosnippet>617</a><span class="doccomment">/// This function is for use the application's build script, in order to print any device specific
-<a href=#618 id=618 data-nosnippet>618</a>/// build flags reported by the backend
-<a href=#619 id=619 data-nosnippet>619</a></span><span class="kw">pub fn </span><a href="../../slint_build/fn.print_rustc_flags.html">print_rustc_flags</a>() -&gt; std::io::<a href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html">Result</a>&lt;()&gt; {
-<a href=#620 id=620 data-nosnippet>620</a>    <span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(board_config_path) =
-<a href=#621 id=621 data-nosnippet>621</a>        std::env::<a href="https://doc.rust-lang.org/nightly/std/env/fn.var_os.html">var_os</a>(<span class="string">"DEP_MCU_BOARD_SUPPORT_BOARD_CONFIG_PATH"</span>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(std::path::<a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>::<a href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html#tymethod.from">from</a>)
-<a href=#622 id=622 data-nosnippet>622</a>    {
-<a href=#623 id=623 data-nosnippet>623</a>        <span class="kw">let </span>config = std::fs::<a href="https://doc.rust-lang.org/nightly/std/fs/fn.read_to_string.html">read_to_string</a>(<a href="#620">board_config_path</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html#method.as_path">as_path</a>())<span class="question-mark">?</span>;
-<a href=#624 id=624 data-nosnippet>624</a>        <span class="kw">let </span>toml = <a href="#623">config</a>.parse::&lt;toml_edit::DocumentMut&gt;().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.expect">expect</a>(<span class="string">"invalid board config toml"</span>);
-<a href=#625 id=625 data-nosnippet>625</a>
-<a href=#626 id=626 data-nosnippet>626</a>        <span class="kw">for </span>link_arg <span class="kw">in
-<a href=#627 id=627 data-nosnippet>627</a>            </span>toml.get(<span class="string">"link_args"</span>).and_then(toml_edit::Item::as_array).into_iter().flatten()
-<a href=#628 id=628 data-nosnippet>628</a>        {
-<a href=#629 id=629 data-nosnippet>629</a>            <span class="kw">if let </span><span class="prelude-val">Some</span>(option) = link_arg.as_str() {
-<a href=#630 id=630 data-nosnippet>630</a>                <span class="macro">println!</span>(<span class="string">"cargo:rustc-link-arg={option}"</span>);
-<a href=#631 id=631 data-nosnippet>631</a>            }
-<a href=#632 id=632 data-nosnippet>632</a>        }
-<a href=#633 id=633 data-nosnippet>633</a>
-<a href=#634 id=634 data-nosnippet>634</a>        <span class="kw">for </span>link_search_path <span class="kw">in
-<a href=#635 id=635 data-nosnippet>635</a>            </span>toml.get(<span class="string">"link_search_path"</span>).and_then(toml_edit::Item::as_array).into_iter().flatten()
-<a href=#636 id=636 data-nosnippet>636</a>        {
-<a href=#637 id=637 data-nosnippet>637</a>            <span class="kw">if let </span><span class="prelude-val">Some</span>(<span class="kw-2">mut </span>path) = link_search_path.as_str().map(std::path::PathBuf::from) {
-<a href=#638 id=638 data-nosnippet>638</a>                <span class="kw">if </span>path.is_relative() {
-<a href=#639 id=639 data-nosnippet>639</a>                    path = board_config_path.parent().unwrap().join(path);
-<a href=#640 id=640 data-nosnippet>640</a>                }
-<a href=#641 id=641 data-nosnippet>641</a>                <span class="macro">println!</span>(<span class="string">"cargo:rustc-link-search={}"</span>, path.to_string_lossy());
-<a href=#642 id=642 data-nosnippet>642</a>            }
-<a href=#643 id=643 data-nosnippet>643</a>        }
-<a href=#644 id=644 data-nosnippet>644</a>        <a href="https://doc.rust-lang.org/nightly/std/macro.println.html">println!</a>(<span class="string">"cargo:rerun-if-env-changed=DEP_MCU_BOARD_SUPPORT_MCU_BOARD_CONFIG_PATH"</span>);
-<a href=#645 id=645 data-nosnippet>645</a>        <a href="https://doc.rust-lang.org/nightly/std/macro.println.html">println!</a>(<span class="string">"cargo:rerun-if-changed={}"</span>, board_config_path.display());
-<a href=#646 id=646 data-nosnippet>646</a>    }
-<a href=#647 id=647 data-nosnippet>647</a>
-<a href=#648 id=648 data-nosnippet>648</a>    <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
-<a href=#649 id=649 data-nosnippet>649</a>}
-<a href=#650 id=650 data-nosnippet>650</a>
-<a href=#651 id=651 data-nosnippet>651</a><span class="attr">#[cfg(test)]
-<a href=#652 id=652 data-nosnippet>652</a></span><span class="kw">fn </span>root_path_prefix() -&gt; std::path::PathBuf {
-<a href=#653 id=653 data-nosnippet>653</a>    <span class="attr">#[cfg(windows)]
-<a href=#654 id=654 data-nosnippet>654</a>    </span><span class="kw">return </span>std::path::PathBuf::from(<span class="string">"C:/"</span>);
-<a href=#655 id=655 data-nosnippet>655</a>    <span class="attr">#[cfg(not(windows))]
-<a href=#656 id=656 data-nosnippet>656</a>    </span><span class="kw">return </span>std::path::PathBuf::from(<span class="string">"/"</span>);
-<a href=#657 id=657 data-nosnippet>657</a>}
-<a href=#658 id=658 data-nosnippet>658</a>
-<a href=#659 id=659 data-nosnippet>659</a><span class="attr">#[test]
-<a href=#660 id=660 data-nosnippet>660</a></span><span class="kw">fn </span>with_absolute_library_paths_test() {
-<a href=#661 id=661 data-nosnippet>661</a>    <span class="kw">use </span>std::path::PathBuf;
-<a href=#662 id=662 data-nosnippet>662</a>
-<a href=#663 id=663 data-nosnippet>663</a>    <span class="kw">let </span>library_paths = std::collections::HashMap::from([
-<a href=#664 id=664 data-nosnippet>664</a>        (<span class="string">"relative"</span>.to_string(), PathBuf::from(<span class="string">"some/relative/path"</span>)),
-<a href=#665 id=665 data-nosnippet>665</a>        (<span class="string">"absolute"</span>.to_string(), root_path_prefix().join(<span class="string">"some/absolute/path"</span>)),
-<a href=#666 id=666 data-nosnippet>666</a>    ]);
-<a href=#667 id=667 data-nosnippet>667</a>    <span class="kw">let </span>config = CompilerConfiguration::new().with_library_paths(library_paths);
-<a href=#668 id=668 data-nosnippet>668</a>
-<a href=#669 id=669 data-nosnippet>669</a>    <span class="kw">let </span>manifest_path = root_path_prefix().join(<span class="string">"path/to/manifest"</span>);
-<a href=#670 id=670 data-nosnippet>670</a>    <span class="kw">let </span>absolute_config = config.clone().with_absolute_paths(<span class="kw-2">&amp;</span>manifest_path);
-<a href=#671 id=671 data-nosnippet>671</a>    <span class="kw">let </span>relative = <span class="kw-2">&amp;</span>absolute_config.config.library_paths[<span class="string">"relative"</span>];
-<a href=#672 id=672 data-nosnippet>672</a>    <span class="macro">assert!</span>(relative.is_absolute());
-<a href=#673 id=673 data-nosnippet>673</a>    <span class="macro">assert!</span>(relative.starts_with(<span class="kw-2">&amp;</span>manifest_path));
-<a href=#674 id=674 data-nosnippet>674</a>
-<a href=#675 id=675 data-nosnippet>675</a>    <span class="macro">assert!</span>(!absolute_config.config.library_paths[<span class="string">"absolute"</span>].starts_with(<span class="kw-2">&amp;</span>manifest_path));
-<a href=#676 id=676 data-nosnippet>676</a>}
-<a href=#677 id=677 data-nosnippet>677</a>
-<a href=#678 id=678 data-nosnippet>678</a><span class="attr">#[test]
-<a href=#679 id=679 data-nosnippet>679</a></span><span class="kw">fn </span>with_absolute_include_paths_test() {
-<a href=#680 id=680 data-nosnippet>680</a>    <span class="kw">use </span>std::path::PathBuf;
-<a href=#681 id=681 data-nosnippet>681</a>
-<a href=#682 id=682 data-nosnippet>682</a>    <span class="kw">let </span>config = CompilerConfiguration::new().with_include_paths(Vec::from([
-<a href=#683 id=683 data-nosnippet>683</a>        root_path_prefix().join(<span class="string">"some/absolute/path"</span>),
-<a href=#684 id=684 data-nosnippet>684</a>        PathBuf::from(<span class="string">"some/relative/path"</span>),
-<a href=#685 id=685 data-nosnippet>685</a>    ]));
-<a href=#686 id=686 data-nosnippet>686</a>
-<a href=#687 id=687 data-nosnippet>687</a>    <span class="kw">let </span>manifest_path = root_path_prefix().join(<span class="string">"path/to/manifest"</span>);
-<a href=#688 id=688 data-nosnippet>688</a>    <span class="kw">let </span>absolute_config = config.clone().with_absolute_paths(<span class="kw-2">&amp;</span>manifest_path);
-<a href=#689 id=689 data-nosnippet>689</a>    <span class="macro">assert_eq!</span>(
-<a href=#690 id=690 data-nosnippet>690</a>        absolute_config.config.include_paths,
-<a href=#691 id=691 data-nosnippet>691</a>        Vec::from([
-<a href=#692 id=692 data-nosnippet>692</a>            root_path_prefix().join(<span class="string">"some/absolute/path"</span>),
-<a href=#693 id=693 data-nosnippet>693</a>            manifest_path.join(<span class="string">"some/relative/path"</span>),
-<a href=#694 id=694 data-nosnippet>694</a>        ])
-<a href=#695 id=695 data-nosnippet>695</a>    )
-<a href=#696 id=696 data-nosnippet>696</a>}
+<a href=#614 id=614 data-nosnippet>614</a>    <a href="#584">code_formatter</a>.sink.<a href="https://doc.rust-lang.org/nightly/std/io/trait.Write.html#tymethod.flush">flush</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(CompileError::<a href="#308">SaveError</a>)<span class="question-mark">?</span>;
+<a href=#615 id=615 data-nosnippet>615</a>
+<a href=#616 id=616 data-nosnippet>616</a>    <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<a href="#588">dependencies</a>)
+<a href=#617 id=617 data-nosnippet>617</a>}
+<a href=#618 id=618 data-nosnippet>618</a>
+<a href=#619 id=619 data-nosnippet>619</a><span class="doccomment">/// This function is for use the application's build script, in order to print any device specific
+<a href=#620 id=620 data-nosnippet>620</a>/// build flags reported by the backend
+<a href=#621 id=621 data-nosnippet>621</a></span><span class="kw">pub fn </span><a href="../../slint_build/fn.print_rustc_flags.html">print_rustc_flags</a>() -&gt; std::io::<a href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html">Result</a>&lt;()&gt; {
+<a href=#622 id=622 data-nosnippet>622</a>    <span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(board_config_path) =
+<a href=#623 id=623 data-nosnippet>623</a>        std::env::<a href="https://doc.rust-lang.org/nightly/std/env/fn.var_os.html">var_os</a>(<span class="string">"DEP_MCU_BOARD_SUPPORT_BOARD_CONFIG_PATH"</span>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(std::path::<a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>::<a href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html#tymethod.from">from</a>)
+<a href=#624 id=624 data-nosnippet>624</a>    {
+<a href=#625 id=625 data-nosnippet>625</a>        <span class="kw">let </span>config = std::fs::<a href="https://doc.rust-lang.org/nightly/std/fs/fn.read_to_string.html">read_to_string</a>(<a href="#622">board_config_path</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html#method.as_path">as_path</a>())<span class="question-mark">?</span>;
+<a href=#626 id=626 data-nosnippet>626</a>        <span class="kw">let </span>toml = <a href="#625">config</a>.parse::&lt;toml_edit::DocumentMut&gt;().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.expect">expect</a>(<span class="string">"invalid board config toml"</span>);
+<a href=#627 id=627 data-nosnippet>627</a>
+<a href=#628 id=628 data-nosnippet>628</a>        <span class="kw">for </span>link_arg <span class="kw">in
+<a href=#629 id=629 data-nosnippet>629</a>            </span>toml.get(<span class="string">"link_args"</span>).and_then(toml_edit::Item::as_array).into_iter().flatten()
+<a href=#630 id=630 data-nosnippet>630</a>        {
+<a href=#631 id=631 data-nosnippet>631</a>            <span class="kw">if let </span><span class="prelude-val">Some</span>(option) = link_arg.as_str() {
+<a href=#632 id=632 data-nosnippet>632</a>                <span class="macro">println!</span>(<span class="string">"cargo:rustc-link-arg={option}"</span>);
+<a href=#633 id=633 data-nosnippet>633</a>            }
+<a href=#634 id=634 data-nosnippet>634</a>        }
+<a href=#635 id=635 data-nosnippet>635</a>
+<a href=#636 id=636 data-nosnippet>636</a>        <span class="kw">for </span>link_search_path <span class="kw">in
+<a href=#637 id=637 data-nosnippet>637</a>            </span>toml.get(<span class="string">"link_search_path"</span>).and_then(toml_edit::Item::as_array).into_iter().flatten()
+<a href=#638 id=638 data-nosnippet>638</a>        {
+<a href=#639 id=639 data-nosnippet>639</a>            <span class="kw">if let </span><span class="prelude-val">Some</span>(<span class="kw-2">mut </span>path) = link_search_path.as_str().map(std::path::PathBuf::from) {
+<a href=#640 id=640 data-nosnippet>640</a>                <span class="kw">if </span>path.is_relative() {
+<a href=#641 id=641 data-nosnippet>641</a>                    path = board_config_path.parent().unwrap().join(path);
+<a href=#642 id=642 data-nosnippet>642</a>                }
+<a href=#643 id=643 data-nosnippet>643</a>                <span class="macro">println!</span>(<span class="string">"cargo:rustc-link-search={}"</span>, path.to_string_lossy());
+<a href=#644 id=644 data-nosnippet>644</a>            }
+<a href=#645 id=645 data-nosnippet>645</a>        }
+<a href=#646 id=646 data-nosnippet>646</a>        <a href="https://doc.rust-lang.org/nightly/std/macro.println.html">println!</a>(<span class="string">"cargo:rerun-if-env-changed=DEP_MCU_BOARD_SUPPORT_MCU_BOARD_CONFIG_PATH"</span>);
+<a href=#647 id=647 data-nosnippet>647</a>        <a href="https://doc.rust-lang.org/nightly/std/macro.println.html">println!</a>(<span class="string">"cargo:rerun-if-changed={}"</span>, board_config_path.display());
+<a href=#648 id=648 data-nosnippet>648</a>    }
+<a href=#649 id=649 data-nosnippet>649</a>
+<a href=#650 id=650 data-nosnippet>650</a>    <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
+<a href=#651 id=651 data-nosnippet>651</a>}
+<a href=#652 id=652 data-nosnippet>652</a>
+<a href=#653 id=653 data-nosnippet>653</a><span class="attr">#[cfg(test)]
+<a href=#654 id=654 data-nosnippet>654</a></span><span class="kw">fn </span>root_path_prefix() -&gt; std::path::PathBuf {
+<a href=#655 id=655 data-nosnippet>655</a>    <span class="attr">#[cfg(windows)]
+<a href=#656 id=656 data-nosnippet>656</a>    </span><span class="kw">return </span>std::path::PathBuf::from(<span class="string">"C:/"</span>);
+<a href=#657 id=657 data-nosnippet>657</a>    <span class="attr">#[cfg(not(windows))]
+<a href=#658 id=658 data-nosnippet>658</a>    </span><span class="kw">return </span>std::path::PathBuf::from(<span class="string">"/"</span>);
+<a href=#659 id=659 data-nosnippet>659</a>}
+<a href=#660 id=660 data-nosnippet>660</a>
+<a href=#661 id=661 data-nosnippet>661</a><span class="attr">#[test]
+<a href=#662 id=662 data-nosnippet>662</a></span><span class="kw">fn </span>with_absolute_library_paths_test() {
+<a href=#663 id=663 data-nosnippet>663</a>    <span class="kw">use </span>std::path::PathBuf;
+<a href=#664 id=664 data-nosnippet>664</a>
+<a href=#665 id=665 data-nosnippet>665</a>    <span class="kw">let </span>library_paths = std::collections::HashMap::from([
+<a href=#666 id=666 data-nosnippet>666</a>        (<span class="string">"relative"</span>.to_string(), PathBuf::from(<span class="string">"some/relative/path"</span>)),
+<a href=#667 id=667 data-nosnippet>667</a>        (<span class="string">"absolute"</span>.to_string(), root_path_prefix().join(<span class="string">"some/absolute/path"</span>)),
+<a href=#668 id=668 data-nosnippet>668</a>    ]);
+<a href=#669 id=669 data-nosnippet>669</a>    <span class="kw">let </span>config = CompilerConfiguration::new().with_library_paths(library_paths);
+<a href=#670 id=670 data-nosnippet>670</a>
+<a href=#671 id=671 data-nosnippet>671</a>    <span class="kw">let </span>manifest_path = root_path_prefix().join(<span class="string">"path/to/manifest"</span>);
+<a href=#672 id=672 data-nosnippet>672</a>    <span class="kw">let </span>absolute_config = config.clone().with_absolute_paths(<span class="kw-2">&amp;</span>manifest_path);
+<a href=#673 id=673 data-nosnippet>673</a>    <span class="kw">let </span>relative = <span class="kw-2">&amp;</span>absolute_config.config.library_paths[<span class="string">"relative"</span>];
+<a href=#674 id=674 data-nosnippet>674</a>    <span class="macro">assert!</span>(relative.is_absolute());
+<a href=#675 id=675 data-nosnippet>675</a>    <span class="macro">assert!</span>(relative.starts_with(<span class="kw-2">&amp;</span>manifest_path));
+<a href=#676 id=676 data-nosnippet>676</a>
+<a href=#677 id=677 data-nosnippet>677</a>    <span class="macro">assert!</span>(!absolute_config.config.library_paths[<span class="string">"absolute"</span>].starts_with(<span class="kw-2">&amp;</span>manifest_path));
+<a href=#678 id=678 data-nosnippet>678</a>}
+<a href=#679 id=679 data-nosnippet>679</a>
+<a href=#680 id=680 data-nosnippet>680</a><span class="attr">#[test]
+<a href=#681 id=681 data-nosnippet>681</a></span><span class="kw">fn </span>with_absolute_include_paths_test() {
+<a href=#682 id=682 data-nosnippet>682</a>    <span class="kw">use </span>std::path::PathBuf;
+<a href=#683 id=683 data-nosnippet>683</a>
+<a href=#684 id=684 data-nosnippet>684</a>    <span class="kw">let </span>config = CompilerConfiguration::new().with_include_paths(Vec::from([
+<a href=#685 id=685 data-nosnippet>685</a>        root_path_prefix().join(<span class="string">"some/absolute/path"</span>),
+<a href=#686 id=686 data-nosnippet>686</a>        PathBuf::from(<span class="string">"some/relative/path"</span>),
+<a href=#687 id=687 data-nosnippet>687</a>    ]));
+<a href=#688 id=688 data-nosnippet>688</a>
+<a href=#689 id=689 data-nosnippet>689</a>    <span class="kw">let </span>manifest_path = root_path_prefix().join(<span class="string">"path/to/manifest"</span>);
+<a href=#690 id=690 data-nosnippet>690</a>    <span class="kw">let </span>absolute_config = config.clone().with_absolute_paths(<span class="kw-2">&amp;</span>manifest_path);
+<a href=#691 id=691 data-nosnippet>691</a>    <span class="macro">assert_eq!</span>(
+<a href=#692 id=692 data-nosnippet>692</a>        absolute_config.config.include_paths,
+<a href=#693 id=693 data-nosnippet>693</a>        Vec::from([
+<a href=#694 id=694 data-nosnippet>694</a>            root_path_prefix().join(<span class="string">"some/absolute/path"</span>),
+<a href=#695 id=695 data-nosnippet>695</a>            manifest_path.join(<span class="string">"some/relative/path"</span>),
+<a href=#696 id=696 data-nosnippet>696</a>        ])
+<a href=#697 id=697 data-nosnippet>697</a>    )
+<a href=#698 id=698 data-nosnippet>698</a>}
 </code></pre></div></section></main></body></html>
