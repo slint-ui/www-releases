@@ -1,0 +1,14 @@
+.. _exhale_variable_namespaceslint_1_1platform_1_1key__codes_1a0f545a3a80eb278880fe80bf0c0b0775:
+
+Variable slint::platform::key_codes::Semicolon
+==============================================
+
+- Defined in :ref:`file_cppdocs_generated_include_private_slint_enums.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: slint::platform::key_codes::Semicolon
+   :project: Slint

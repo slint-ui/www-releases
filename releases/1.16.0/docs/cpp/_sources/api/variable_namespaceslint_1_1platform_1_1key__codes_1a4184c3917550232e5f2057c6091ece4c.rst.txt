@@ -1,0 +1,14 @@
+.. _exhale_variable_namespaceslint_1_1platform_1_1key__codes_1a4184c3917550232e5f2057c6091ece4c:
+
+Variable slint::platform::key_codes::OpenCurlyBracket
+=====================================================
+
+- Defined in :ref:`file_cppdocs_generated_include_private_slint_enums.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: slint::platform::key_codes::OpenCurlyBracket
+   :project: Slint

@@ -1,0 +1,17 @@
+.. _exhale_class_classslint_1_1Keys:
+
+Class Keys
+==========
+
+- Defined in :ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_keys.h`
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: slint::Keys
+   :project: Slint
+   :members:
+   :protected-members:
+   :undoc-members:

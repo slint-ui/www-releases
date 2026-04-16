@@ -1,0 +1,14 @@
+.. _exhale_variable_namespaceslint_1_1platform_1_1key__codes_1ab7cc06f67cd68869c79a82cc8f913829:
+
+Variable slint::platform::key_codes::Underscore
+===============================================
+
+- Defined in :ref:`file_cppdocs_generated_include_private_slint_enums.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: slint::platform::key_codes::Underscore
+   :project: Slint

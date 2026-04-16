@@ -1,0 +1,14 @@
+.. _exhale_variable_namespaceslint_1_1platform_1_1key__codes_1a89a50aa6643d2959a20a263220433593:
+
+Variable slint::platform::key_codes::CloseParen
+===============================================
+
+- Defined in :ref:`file_cppdocs_generated_include_private_slint_enums.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: slint::platform::key_codes::CloseParen
+   :project: Slint

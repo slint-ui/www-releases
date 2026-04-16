@@ -1,0 +1,98 @@
+
+.. _file_cppdocs_generated_include_private_slint_internal.h:
+
+File slint_internal.h
+=====================
+
+|exhale_lsh| :ref:`Parent directory <dir_cppdocs_generated_include_private>` (``cppdocs/generated_include/private``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+Definition (``cppdocs/generated_include/private/slint_internal.h``)
+-------------------------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_cppdocs_generated_include_private_slint_internal.h.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``cstdarg``
+
+- ``cstdint``
+
+- ``cstdlib``
+
+- ``new``
+
+- ``ostream``
+
+- ``private/slint_brush.h`` (:ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_brush.h`)
+
+- ``private/slint_builtin_structs_internal.h`` (:ref:`file_cppdocs_generated_include_private_slint_builtin_structs_internal.h`)
+
+- ``private/slint_callbacks.h`` (:ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_callbacks.h`)
+
+- ``private/slint_color.h`` (:ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_color.h`)
+
+- ``private/slint_config.h`` (:ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_config.h`)
+
+- ``private/slint_enums_internal.h`` (:ref:`file_cppdocs_generated_include_private_slint_enums_internal.h`)
+
+- ``private/slint_events_internal.h`` (:ref:`file_cppdocs_generated_include_private_slint_events_internal.h`)
+
+- ``private/slint_generated_public.h`` (:ref:`file_cppdocs_generated_include_private_slint_generated_public.h`)
+
+- ``private/slint_image.h`` (:ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_image.h`)
+
+- ``private/slint_keys.h`` (:ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_keys.h`)
+
+- ``private/slint_pathdata.h`` (:ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_pathdata.h`)
+
+- ``private/slint_point.h`` (:ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_point.h`)
+
+- ``private/slint_properties.h`` (:ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_properties.h`)
+
+- ``private/slint_sharedvector.h`` (:ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_sharedvector.h`)
+
+- ``private/slint_string.h`` (:ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_string.h`)
+
+- ``private/slint_timer.h`` (:ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_timer.h`)
+
+- ``private/vtable.h`` (:ref:`file__home_runner_work_slint_slint_api_cpp_include_private_vtable.h`)
+
+
+
+Included By
+-----------
+
+
+- :ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_item_tree.h`
+
+- :ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_window.h`
+
+- :ref:`file__home_runner_work_slint_slint_api_cpp_include_slint.h`
+
+- :ref:`file_cppdocs_generated_include_private_slint_interpreter_internal.h`
+
+- :ref:`file_cppdocs_generated_include_private_slint_platform_internal.h`
+
+- :ref:`file_cppdocs_generated_include_private_slint_qt_internal.h`
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_slint`
+

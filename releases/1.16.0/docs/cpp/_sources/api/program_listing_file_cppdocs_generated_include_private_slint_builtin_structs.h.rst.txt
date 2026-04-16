@@ -1,0 +1,37 @@
+
+.. _program_listing_file_cppdocs_generated_include_private_slint_builtin_structs.h:
+
+Program Listing for File slint_builtin_structs.h
+================================================
+
+|exhale_lsh| :ref:`Return to documentation for file <file_cppdocs_generated_include_private_slint_builtin_structs.h>` (``cppdocs/generated_include/private/slint_builtin_structs.h``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   #pragma once
+   // This file is auto-generated from xtask/src/../../api/cpp/cbindgen.rs
+   namespace slint::language {
+   struct KeyboardModifiers {
+       bool alt;
+       bool control;
+       bool shift;
+       bool meta;
+       friend bool operator==(const KeyboardModifiers&, const KeyboardModifiers&) = default;
+       friend bool operator!=(const KeyboardModifiers&, const KeyboardModifiers&) = default;
+   };
+   struct KeyEvent {
+       SharedString text;
+       KeyboardModifiers modifiers;
+       bool repeat;
+       friend bool operator==(const KeyEvent&, const KeyEvent&) = default;
+       friend bool operator!=(const KeyEvent&, const KeyEvent&) = default;
+   };
+   struct StandardListViewItem {
+       SharedString text;
+       friend bool operator==(const StandardListViewItem&, const StandardListViewItem&) = default;
+       friend bool operator!=(const StandardListViewItem&, const StandardListViewItem&) = default;
+   };
+   }
+   namespace slint { using slint::language::StandardListViewItem; }
