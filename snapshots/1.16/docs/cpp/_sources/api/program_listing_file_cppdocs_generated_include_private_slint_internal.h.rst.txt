@@ -905,6 +905,8 @@ Program Listing for File slint_internal.h
        Property<LogicalLength> height;
        Property<StyledText> text;
        Property<Brush> default_color;
+       Property<LogicalLength> default_font_size;
+       Property<SharedString> default_font_family;
        Property<TextHorizontalAlignment> horizontal_alignment;
        Property<TextVerticalAlignment> vertical_alignment;
        private_api::CallbackHelper<slint::SharedString> link_clicked;
