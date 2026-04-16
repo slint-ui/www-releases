@@ -1045,7 +1045,7 @@ function __wbg_get_imports() {
                     const a = state0.a;
                     state0.a = 0;
                     try {
-                        return wasm_bindgen__convert__closures_____invoke__h2c1ba12c67ac641b_18(a, state0.b, arg0, arg1);
+                        return wasm_bindgen__convert__closures_____invoke__h2c1ba12c67ac641b_17(a, state0.b, arg0, arg1);
                     } finally {
                         state0.a = a;
                     }
@@ -1107,7 +1107,7 @@ function __wbg_get_imports() {
                     const a = state0.a;
                     state0.a = 0;
                     try {
-                        return wasm_bindgen__convert__closures_____invoke__h2c1ba12c67ac641b_19(a, state0.b, arg0, arg1);
+                        return wasm_bindgen__convert__closures_____invoke__h2c1ba12c67ac641b_18(a, state0.b, arg0, arg1);
                     } finally {
                         state0.a = a;
                     }
@@ -1671,25 +1671,20 @@ function __wbg_get_imports() {
         },
         __wbindgen_cast_0000000000000011: function(arg0, arg1) {
             // Cast intrinsic for `Closure(Closure { owned: true, function: Function { arguments: [], shim_idx: 422, ret: Unit, inner_ret: Some(Unit) }, mutable: true }) -> Externref`.
-            const ret = makeMutClosure(arg0, arg1, wasm_bindgen__convert__closures_____invoke__hea03a62c09dc87f9);
-            return ret;
-        },
-        __wbindgen_cast_0000000000000012: function(arg0, arg1) {
-            // Cast intrinsic for `Closure(Closure { owned: true, function: Function { arguments: [], shim_idx: 727, ret: Unit, inner_ret: Some(Unit) }, mutable: true }) -> Externref`.
             const ret = makeMutClosure(arg0, arg1, wasm_bindgen__convert__closures_____invoke__h0d1ccd4394d2525f);
             return ret;
         },
-        __wbindgen_cast_0000000000000013: function(arg0) {
+        __wbindgen_cast_0000000000000012: function(arg0) {
             // Cast intrinsic for `F64 -> Externref`.
             const ret = arg0;
             return ret;
         },
-        __wbindgen_cast_0000000000000014: function(arg0, arg1) {
+        __wbindgen_cast_0000000000000013: function(arg0, arg1) {
             // Cast intrinsic for `Ref(Slice(U8)) -> NamedExternref("Uint8Array")`.
             const ret = getArrayU8FromWasm0(arg0, arg1);
             return ret;
         },
-        __wbindgen_cast_0000000000000015: function(arg0, arg1) {
+        __wbindgen_cast_0000000000000014: function(arg0, arg1) {
             // Cast intrinsic for `Ref(String) -> Externref`.
             const ret = getStringFromWasm0(arg0, arg1);
             return ret;
@@ -1708,10 +1703,6 @@ function __wbg_get_imports() {
         __proto__: null,
         "./slint_wasm_interpreter_bg.js": import0,
     };
-}
-
-function wasm_bindgen__convert__closures_____invoke__hea03a62c09dc87f9(arg0, arg1) {
-    wasm.wasm_bindgen__convert__closures_____invoke__hea03a62c09dc87f9(arg0, arg1);
 }
 
 function wasm_bindgen__convert__closures_____invoke__h0d1ccd4394d2525f(arg0, arg1) {
@@ -1785,12 +1776,12 @@ function wasm_bindgen__convert__closures_____invoke__h2c1ba12c67ac641b(arg0, arg
     wasm.wasm_bindgen__convert__closures_____invoke__h2c1ba12c67ac641b(arg0, arg1, arg2, arg3);
 }
 
-function wasm_bindgen__convert__closures_____invoke__h2c1ba12c67ac641b_18(arg0, arg1, arg2, arg3) {
-    wasm.wasm_bindgen__convert__closures_____invoke__h2c1ba12c67ac641b_18(arg0, arg1, arg2, arg3);
+function wasm_bindgen__convert__closures_____invoke__h2c1ba12c67ac641b_17(arg0, arg1, arg2, arg3) {
+    wasm.wasm_bindgen__convert__closures_____invoke__h2c1ba12c67ac641b_17(arg0, arg1, arg2, arg3);
 }
 
-function wasm_bindgen__convert__closures_____invoke__h2c1ba12c67ac641b_19(arg0, arg1, arg2, arg3) {
-    wasm.wasm_bindgen__convert__closures_____invoke__h2c1ba12c67ac641b_19(arg0, arg1, arg2, arg3);
+function wasm_bindgen__convert__closures_____invoke__h2c1ba12c67ac641b_18(arg0, arg1, arg2, arg3) {
+    wasm.wasm_bindgen__convert__closures_____invoke__h2c1ba12c67ac641b_18(arg0, arg1, arg2, arg3);
 }
 
 

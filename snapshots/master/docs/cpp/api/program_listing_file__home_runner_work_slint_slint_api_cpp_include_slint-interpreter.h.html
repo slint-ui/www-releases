@@ -427,6 +427,7 @@
 <li class="toctree-l2"><a class="reference internal" href="variable_namespaceslint_1_1platform_1_1key__codes_1a213df8dc9a0a3893372586303acbe341.html">Variable slint::platform::key_codes::Y</a></li>
 <li class="toctree-l2"><a class="reference internal" href="variable_namespaceslint_1_1platform_1_1key__codes_1aa566fe68c8ef610d7516fb1a90fcc041.html">Variable slint::platform::key_codes::Z</a></li>
 <li class="toctree-l2"><a class="reference internal" href="define_slint__tests__helpers_8h_1af0a649b4b7b90dc4c9e531d459371b95.html">Define assert_eq</a></li>
+<li class="toctree-l2"><a class="reference internal" href="define_slint__config_8h_1a4fed596dac46678ccc0df1c1265b1194.html">Define SLINT_DELETED_FUNCTION</a></li>
 <li class="toctree-l2"><a class="reference internal" href="define_slint__generated__public_8h_1a9aa08b9d77373aeed64c2f2507e28552.html">Define SLINT_FEATURE_ACCESSIBILITY</a></li>
 <li class="toctree-l2"><a class="reference internal" href="define_slint__generated__public_8h_1a5484a031a9ff5f3bbb6de5464f4090a4.html">Define SLINT_FEATURE_BACKEND_LINUXKMS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="define_slint__generated__public_8h_1a059d07f7089fb5d27b24d13e381db0a7.html">Define SLINT_FEATURE_BACKEND_QT</a></li>
@@ -758,7 +759,8 @@
 <span class="w">    </span><span class="p">}</span>
 
 <span class="k">private</span><span class="o">:</span>
-<span class="w">    </span><span class="kr">inline</span><span class="w"> </span><span class="n">Value</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span><span class="p">;</span><span class="w"> </span><span class="c1">// Avoid that for example Value(&quot;foo&quot;) turns to Value(bool)</span>
+<span class="w">    </span><span class="kr">inline</span><span class="w"> </span><span class="n">Value</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="o">=</span>
+<span class="w">            </span><span class="n">SLINT_DELETED_FUNCTION</span><span class="p">(</span><span class="s">&quot;pointers would otherwise implicitly convert to Value(bool)&quot;</span><span class="p">);</span>
 <span class="w">    </span><span class="n">slint</span><span class="o">::</span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">Value</span><span class="w"> </span><span class="o">*</span><span class="n">inner</span><span class="p">;</span>
 <span class="w">    </span><span class="k">friend</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">Struct</span><span class="p">;</span>
 <span class="w">    </span><span class="k">friend</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">ComponentInstance</span><span class="p">;</span>

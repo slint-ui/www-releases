@@ -1,0 +1,14 @@
+.. _exhale_define_slint__config_8h_1a4fed596dac46678ccc0df1c1265b1194:
+
+Define SLINT_DELETED_FUNCTION
+=============================
+
+- Defined in :ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_config.h`
+
+
+Define Documentation
+--------------------
+
+
+.. doxygendefine:: SLINT_DELETED_FUNCTION
+   :project: Slint

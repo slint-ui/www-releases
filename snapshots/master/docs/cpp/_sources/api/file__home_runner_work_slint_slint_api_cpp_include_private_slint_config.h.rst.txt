@@ -37,3 +37,10 @@ Included By
 
 
 
+
+Defines
+-------
+
+
+- :ref:`exhale_define_slint__config_8h_1a4fed596dac46678ccc0df1c1265b1194`
+
