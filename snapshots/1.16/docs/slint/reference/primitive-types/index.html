@@ -148,7 +148,8 @@ It returns a platform-native description of the key combination.</p><div class="
 The address within the <code dir="auto">@image-url</code> function must be a string literal and the image is resolved at compile time.</p><p>Slint looks for images in the following places:</p><ol>
 <li>The absolute path or the path relative to the current <code dir="auto">.slint</code> file.</li>
 <li>The include path used by the compiler to look up <code dir="auto">.slint</code> files.</li>
-</ol><p>Loading image from <code dir="auto">http</code> is only supported in <a href="https://slintpad.com" target="_blank" rel="noopener">SlintPad<span> ↗</span></a>.</p><p>Supported format are SVG, and formats supported by the <a href="https://crates.io/crates/image" target="_blank" rel="noopener"><code dir="auto">image</code> crate<span> ↗</span></a>:
+</ol><p>Loading image from <code dir="auto">http</code> is only supported in <a href="https://slintpad.com" target="_blank" rel="noopener">SlintPad<span> ↗</span></a>.</p><p>Images can also be loaded from <a href="https://developer.mozilla.org/en-US/docs/Web/URI/Reference/Schemes/data" target="_blank" rel="noopener"><code dir="auto">data:</code> URIs<span> ↗</span></a>, with either base64 or URL-encoded content.
+For example: <code dir="auto">@image-url(&quot;data:image/png;base64,iVBORw0KGgo...&quot;)</code>.</p><p>Supported format are SVG, and formats supported by the <a href="https://crates.io/crates/image" target="_blank" rel="noopener"><code dir="auto">image</code> crate<span> ↗</span></a>:
 AVIF, BMP, DDS, Farbfeld, GIF, HDR, ICO, JPEG, EXR, PNG, PNM, QOI, TGA, TIFF, WebP.</p><p>For Rust applications, not all formats are enabled by default. Enable them with the <code dir="auto">image-default-formats</code> Cargo feature.</p><script>
 (() => {
 	class StarlightTabsRestore extends HTMLElement {
