@@ -538,6 +538,13 @@ Program Listing for File slint_internal.h
        Slice<LayoutItemInfo> cells;
    };
    
+   struct BoxLayoutOrthoData {
+       float size;
+       Padding padding;
+       LayoutAlignItems align_items;
+       Slice<LayoutItemInfo> cells;
+   };
+   
    struct FlexboxLayoutItemInfo {
        LayoutInfo constraint;
        float flex_grow;
@@ -557,7 +564,7 @@ Program Listing for File slint_internal.h
        LayoutAlignment alignment;
        FlexboxLayoutDirection direction;
        FlexboxLayoutAlignContent align_content;
-       FlexboxLayoutAlignItems align_items;
+       LayoutAlignItems align_items;
        FlexboxLayoutWrap flex_wrap;
        Slice<FlexboxLayoutItemInfo> cells_h;
        Slice<FlexboxLayoutItemInfo> cells_v;
@@ -1147,6 +1154,10 @@ Program Listing for File slint_internal.h
    void slint_solve_box_layout(const BoxLayoutData *data,
                                Slice<uint32_t> repeater_indices,
                                SharedVector<float> *result);
+   
+   void slint_solve_box_layout_ortho(const BoxLayoutOrthoData *data,
+                                     Slice<uint32_t> repeater_indices,
+                                     SharedVector<float> *result);
    
    LayoutInfo slint_box_layout_info(Slice<LayoutItemInfo> cells,
                                     float spacing,

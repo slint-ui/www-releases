@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `api/rs/slint/lib.rs`."><title>lib.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-17e0aaed.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint" data-themes="" data-resource-suffix="" data-rustdoc-version="1.97.0-nightly (e8e4541ff 2026-04-15)" data-channel="nightly" data-search-js="search-b5634cc7.js" data-stringdex-js="stringdex-2da4960a.js" data-settings-js="settings-170eb4bf.js" ><script src="../../static.files/storage-41dd4d93.js"></script><script defer src="../../static.files/src-script-813739b1.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-5013f961.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `api/rs/slint/lib.rs`."><title>lib.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-17e0aaed.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint" data-themes="" data-resource-suffix="" data-rustdoc-version="1.97.0-nightly (7af3402cd 2026-04-16)" data-channel="nightly" data-search-js="search-b5634cc7.js" data-stringdex-js="stringdex-2da4960a.js" data-settings-js="settings-170eb4bf.js" ><script src="../../static.files/storage-41dd4d93.js"></script><script defer src="../../static.files/src-script-813739b1.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-5013f961.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -598,7 +598,7 @@
 <a href=#476 id=476 data-nosnippet>476</a><span class="doccomment">/// Helper type that helps checking that the generated code is generated for the right version
 <a href=#477 id=477 data-nosnippet>477</a></span><span class="attr">#[doc(hidden)]
 <a href=#478 id=478 data-nosnippet>478</a>#[allow(non_camel_case_types)]
-<a href=#479 id=479 data-nosnippet>479</a></span><span class="kw">pub struct </span>VersionCheck_1_16_0;
+<a href=#479 id=479 data-nosnippet>479</a></span><span class="kw">pub struct </span>VersionCheck_1_17_0;
 <a href=#480 id=480 data-nosnippet>480</a>
 <a href=#481 id=481 data-nosnippet>481</a><span class="attr">#[cfg(doctest)]
 <a href=#482 id=482 data-nosnippet>482</a></span><span class="kw">mod </span>compile_fail_tests;
@@ -630,7 +630,7 @@
 <a href=#508 id=508 data-nosnippet>508</a>    //!
 <a href=#509 id=509 data-nosnippet>509</a>    //! `Cargo.toml`:
 <a href=#510 id=510 data-nosnippet>510</a>    //! ```toml
-<a href=#511 id=511 data-nosnippet>511</a>    //! slint = { version = "~1.16", features = ["unstable-wgpu-27"] }
+<a href=#511 id=511 data-nosnippet>511</a>    //! slint = { version = "~1.17", features = ["unstable-wgpu-27"] }
 <a href=#512 id=512 data-nosnippet>512</a>    //! ```
 <a href=#513 id=513 data-nosnippet>513</a>    //!
 <a href=#514 id=514 data-nosnippet>514</a>    //! `main.rs`:
@@ -726,7 +726,7 @@
 <a href=#604 id=604 data-nosnippet>604</a>    //!
 <a href=#605 id=605 data-nosnippet>605</a>    //! `Cargo.toml`:
 <a href=#606 id=606 data-nosnippet>606</a>    //! ```toml
-<a href=#607 id=607 data-nosnippet>607</a>    //! slint = { version = "~1.16", features = ["unstable-wgpu-28"] }
+<a href=#607 id=607 data-nosnippet>607</a>    //! slint = { version = "~1.17", features = ["unstable-wgpu-28"] }
 <a href=#608 id=608 data-nosnippet>608</a>    //! ```
 <a href=#609 id=609 data-nosnippet>609</a>    //!
 <a href=#610 id=610 data-nosnippet>610</a>    //! `main.rs`:
@@ -813,7 +813,7 @@
 <a href=#691 id=691 data-nosnippet>691</a>    //!
 <a href=#692 id=692 data-nosnippet>692</a>    //! `Cargo.toml`:
 <a href=#693 id=693 data-nosnippet>693</a>    //! ```toml
-<a href=#694 id=694 data-nosnippet>694</a>    //! slint = { version = "~1.16", features = ["unstable-winit-030"] }
+<a href=#694 id=694 data-nosnippet>694</a>    //! slint = { version = "~1.17", features = ["unstable-winit-030"] }
 <a href=#695 id=695 data-nosnippet>695</a>    //! ```
 <a href=#696 id=696 data-nosnippet>696</a>    //!
 <a href=#697 id=697 data-nosnippet>697</a>    //! `main.rs`:
@@ -894,7 +894,7 @@
 <a href=#772 id=772 data-nosnippet>772</a>    ///
 <a href=#773 id=773 data-nosnippet>773</a>    /// `Cargo.toml`:
 <a href=#774 id=774 data-nosnippet>774</a>    /// ```toml
-<a href=#775 id=775 data-nosnippet>775</a>    /// slint = { version = "~1.16", features = ["unstable-fontique-08"] }
+<a href=#775 id=775 data-nosnippet>775</a>    /// slint = { version = "~1.17", features = ["unstable-fontique-08"] }
 <a href=#776 id=776 data-nosnippet>776</a>    /// ```
 <a href=#777 id=777 data-nosnippet>777</a>    ///
 <a href=#778 id=778 data-nosnippet>778</a>    /// `main.rs`:

@@ -169,7 +169,7 @@ Program Listing for File slint_enums_internal.h
        SpaceAround,
        SpaceEvenly,
    };
-   enum class FlexboxLayoutAlignItems {
+   enum class LayoutAlignItems {
        Stretch,
        Start,
        End,

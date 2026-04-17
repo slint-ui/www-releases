@@ -7,7 +7,7 @@
         <link rel="prefetch" href="https://slint.dev/logo/slint-logo-small-light.svg" as="image">
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2025.12.19 -->
-        <title>Program Listing for File slint_internal.h - Slint 1.16.0 C++ API documentation</title>
+        <title>Program Listing for File slint_internal.h - Slint 1.17.0 C++ API documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d111a655" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="../_static/theme_tweak.css?v=ca455ff5" />
@@ -164,7 +164,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../index.html"><div class="brand">Slint 1.16.0 C++ API  documentation</div></a>
+      <a href="../index.html"><div class="brand">Slint 1.17.0 C++ API  documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -188,7 +188,7 @@
     <img class="sidebar-logo" src="https://slint.dev/logo/slint-logo-small-light.svg" alt="Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">Slint 1.16.0 C++ API  documentation</span>
+  <span class="sidebar-brand-text">Slint 1.17.0 C++ API  documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -1021,6 +1021,13 @@
 <span class="w">    </span><span class="n">Slice</span><span class="o">&lt;</span><span class="n">LayoutItemInfo</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cells</span><span class="p">;</span>
 <span class="p">};</span>
 
+<span class="k">struct</span><span class="w"> </span><span class="nc">BoxLayoutOrthoData</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">size</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Padding</span><span class="w"> </span><span class="n">padding</span><span class="p">;</span>
+<span class="w">    </span><span class="n">LayoutAlignItems</span><span class="w"> </span><span class="n">align_items</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Slice</span><span class="o">&lt;</span><span class="n">LayoutItemInfo</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cells</span><span class="p">;</span>
+<span class="p">};</span>
+
 <span class="k">struct</span><span class="w"> </span><span class="nc">FlexboxLayoutItemInfo</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">LayoutInfo</span><span class="w"> </span><span class="n">constraint</span><span class="p">;</span>
 <span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">flex_grow</span><span class="p">;</span>
@@ -1040,7 +1047,7 @@
 <span class="w">    </span><span class="n">LayoutAlignment</span><span class="w"> </span><span class="n">alignment</span><span class="p">;</span>
 <span class="w">    </span><span class="n">FlexboxLayoutDirection</span><span class="w"> </span><span class="n">direction</span><span class="p">;</span>
 <span class="w">    </span><span class="n">FlexboxLayoutAlignContent</span><span class="w"> </span><span class="n">align_content</span><span class="p">;</span>
-<span class="w">    </span><span class="n">FlexboxLayoutAlignItems</span><span class="w"> </span><span class="n">align_items</span><span class="p">;</span>
+<span class="w">    </span><span class="n">LayoutAlignItems</span><span class="w"> </span><span class="n">align_items</span><span class="p">;</span>
 <span class="w">    </span><span class="n">FlexboxLayoutWrap</span><span class="w"> </span><span class="n">flex_wrap</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Slice</span><span class="o">&lt;</span><span class="n">FlexboxLayoutItemInfo</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cells_h</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Slice</span><span class="o">&lt;</span><span class="n">FlexboxLayoutItemInfo</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cells_v</span><span class="p">;</span>
@@ -1630,6 +1637,10 @@
 <span class="kt">void</span><span class="w"> </span><span class="nf">slint_solve_box_layout</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">BoxLayoutData</span><span class="w"> </span><span class="o">*</span><span class="n">data</span><span class="p">,</span>
 <span class="w">                            </span><span class="n">Slice</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">repeater_indices</span><span class="p">,</span>
 <span class="w">                            </span><span class="n">SharedVector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">result</span><span class="p">);</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">slint_solve_box_layout_ortho</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">BoxLayoutOrthoData</span><span class="w"> </span><span class="o">*</span><span class="n">data</span><span class="p">,</span>
+<span class="w">                                  </span><span class="n">Slice</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">repeater_indices</span><span class="p">,</span>
+<span class="w">                                  </span><span class="n">SharedVector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">result</span><span class="p">);</span>
 
 <span class="n">LayoutInfo</span><span class="w"> </span><span class="nf">slint_box_layout_info</span><span class="p">(</span><span class="n">Slice</span><span class="o">&lt;</span><span class="n">LayoutItemInfo</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cells</span><span class="p">,</span>
 <span class="w">                                 </span><span class="kt">float</span><span class="w"> </span><span class="n">spacing</span><span class="p">,</span>
