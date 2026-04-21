@@ -24,8 +24,8 @@ export const wrappedinstance_hide: (a: number) => [number, number, number];
 export const wrappedinstance_show: (a: number) => [number, number, number];
 export const wasm_bindgen__convert__closures_____invoke__hc476302223169ae8: (a: number, b: number, c: any) => [number, number];
 export const wasm_bindgen__convert__closures_____invoke__h32ce7c5784b6cddc: (a: number, b: number, c: any, d: any) => void;
-export const wasm_bindgen__convert__closures_____invoke__h32ce7c5784b6cddc_17: (a: number, b: number, c: any, d: any) => void;
 export const wasm_bindgen__convert__closures_____invoke__h32ce7c5784b6cddc_18: (a: number, b: number, c: any, d: any) => void;
+export const wasm_bindgen__convert__closures_____invoke__h32ce7c5784b6cddc_19: (a: number, b: number, c: any, d: any) => void;
 export const wasm_bindgen__convert__closures_____invoke__h349b776ac74c8adb: (a: number, b: number, c: any) => void;
 export const wasm_bindgen__convert__closures_____invoke__h349b776ac74c8adb_3: (a: number, b: number, c: any) => void;
 export const wasm_bindgen__convert__closures_____invoke__h367108492889f3a7: (a: number, b: number, c: any) => void;
@@ -40,6 +40,7 @@ export const wasm_bindgen__convert__closures_____invoke__h349b776ac74c8adb_12: (
 export const wasm_bindgen__convert__closures_____invoke__h349b776ac74c8adb_13: (a: number, b: number, c: any) => void;
 export const wasm_bindgen__convert__closures_____invoke__h367108492889f3a7_14: (a: number, b: number, c: any) => void;
 export const wasm_bindgen__convert__closures_____invoke__h349b776ac74c8adb_15: (a: number, b: number, c: any) => void;
+export const wasm_bindgen__convert__closures_____invoke__hb9e3aca2ecc63d9e: (a: number, b: number) => void;
 export const wasm_bindgen__convert__closures_____invoke__h332dd6cb4ca464de: (a: number, b: number) => void;
 export const __wbindgen_malloc: (a: number, b: number) => number;
 export const __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;
