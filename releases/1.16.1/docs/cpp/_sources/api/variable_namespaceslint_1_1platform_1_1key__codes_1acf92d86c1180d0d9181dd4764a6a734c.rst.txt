@@ -1,0 +1,14 @@
+.. _exhale_variable_namespaceslint_1_1platform_1_1key__codes_1acf92d86c1180d0d9181dd4764a6a734c:
+
+Variable slint::platform::key_codes::Circumflex
+===============================================
+
+- Defined in :ref:`file_cppdocs_generated_include_private_slint_enums.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: slint::platform::key_codes::Circumflex
+   :project: Slint

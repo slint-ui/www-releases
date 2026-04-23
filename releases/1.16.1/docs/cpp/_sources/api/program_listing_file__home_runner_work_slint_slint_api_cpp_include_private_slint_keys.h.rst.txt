@@ -1,0 +1,75 @@
+
+.. _program_listing_file__home_runner_work_slint_slint_api_cpp_include_private_slint_keys.h:
+
+Program Listing for File slint_keys.h
+=====================================
+
+|exhale_lsh| :ref:`Return to documentation for file <file__home_runner_work_slint_slint_api_cpp_include_private_slint_keys.h>` (``/home/runner/work/slint/slint/api/cpp/include/private/slint_keys.h``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   // Copyright © SixtyFPS GmbH <info@slint.dev>
+   // SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0
+   
+   #pragma once
+   #include "private/slint_keys_internal.h"
+   #include "private/slint_string.h"
+   
+   namespace slint {
+   
+   class Keys;
+   
+   namespace private_api {
+   
+   void make_keys(Keys &out, const slint::SharedString &key, bool alt, bool control, bool shift,
+                  bool meta, bool ignoreShift, bool ignoreAlt);
+   
+   } // namespace private_api
+   
+   class Keys
+   {
+   public:
+       Keys() = default;
+       Keys(const Keys &) = default;
+       Keys(Keys &&) = default;
+   
+       slint::Keys &operator=(const Keys &) = default;
+       slint::Keys &operator=(Keys &&) = default;
+   
+       friend bool operator==(const Keys &a, const Keys &b) { return a.data == b.data; }
+       friend bool operator!=(const Keys &a, const Keys &b) { return a.data != b.data; }
+   
+       inline SharedString to_string() const
+       {
+           SharedString out;
+           cbindgen_private::types::slint_keys_to_string(&data, &out);
+           return out;
+       }
+   
+   private:
+       // Use only one instance of the actual Rust struct as the inner data.
+       // This way this class has the same binary representation and can be used interchangibly
+       cbindgen_private::types::Keys data;
+   
+       Keys(cbindgen_private::types::Keys &&data) : data(std::move(data)) { }
+       friend void private_api::make_keys(Keys &out, const slint::SharedString &key, bool alt,
+                                          bool control, bool shift, bool meta, bool ignoreShift,
+                                          bool ignoreAlt);
+   };
+   
+   namespace private_api {
+   
+   // We need to use Keys& out so that we can forward-declare this and then use it as a friend
+   // Otherwise the size of `Keys` is not yet known.
+   inline void make_keys(Keys &out, const slint::SharedString &key, bool alt, bool control, bool shift,
+                         bool meta, bool ignoreShift, bool ignoreAlt)
+   {
+       ::slint::cbindgen_private::types::slint_keys(&key, alt, control, shift, meta, ignoreShift,
+                                                    ignoreAlt, &out.data);
+   }
+   
+   } // namespace private_api
+   
+   } // namespace slint

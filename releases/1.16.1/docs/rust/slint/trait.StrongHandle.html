@@ -1,0 +1,222 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="This trait marks types that hold a strong reference to a Slint component."><title>StrongHandle in slint - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../static.files/rustdoc-17e0aaed.css"><meta name="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="slint" data-themes="" data-resource-suffix="" data-rustdoc-version="1.97.0-nightly (913e4bea8 2026-04-22)" data-channel="nightly" data-search-js="search-b5634cc7.js" data-stringdex-js="stringdex-2da4960a.js" data-settings-js="settings-170eb4bf.js" ><script src="../static.files/storage-41dd4d93.js"></script><script defer src="sidebar-items.js"></script><script defer src="../static.files/main-aa4d37ac.js"></script><noscript><link rel="stylesheet" href="../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../static.files/favicon-044be391.svg"><!--
+    This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
+    It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
+    in sphinx and via head.hbs in mdbook.
+-->
+<link rel="stylesheet" href="https://slint.dev/resources/highlightjs/11.0.1/default.min.css">
+<script src="https://slint.dev/resources/highlightjs/11.0.1/highlight.min.js"></script>
+<script>
+  function highlight_slint(hljs) {
+    const KEYWORDS = {
+      keyword:
+        "animate callback changed component enum export for function global if import in in-out inherits out parent private property public pure root self states struct",
+      literal: "false true",
+      built_in:
+        "ArcTo Clip Close Colors CubicTo Flickable FocusScope GridLayout HorizontalLayout Image LineTo Math MoveTo Path PopupWindow QuadraticTo Rectangle Row Text TextInput TouchArea VerticalLayout Window animation-tick debug",
+      type: "bool duration easing float int length logical-length relative-font-size string",
+    };
+
+    return {
+      name: 'slint',
+      case_insensitive: false,
+      keywords: KEYWORDS,
+      contains: [
+        hljs.QUOTE_STRING_MODE,
+        hljs.C_LINE_COMMENT_MODE,
+        hljs.C_BLOCK_COMMENT_MODE,
+        hljs.COMMENT('/\\*', '\\*/', {
+          contains: ['self']
+        }),
+        {
+          className: 'number',
+          begin: '\\b\\d+(\\.\\d+)?(\\w+)?',
+          relevance: 0
+        },
+        {
+          className: 'title',
+          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]* *:=',
+        },
+        {
+          className: 'symbol',
+          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]*(:| *=>)',
+        },
+        {
+          className: 'built_in',
+          begin: '\\b[_a-zA-Z][_\\-a-zA-Z0-9]*!',
+        },
+      ],
+      illegal: /@/
+    };
+  };
+
+  // Tags used in fenced code blocks
+  for (const tag of ["slint", "slint,no-preview", "slint,no-auto-preview", "slint,ignore"]) {
+    hljs.registerLanguage(tag, highlight_slint);
+  }
+
+
+  window.addEventListener("DOMContentLoaded", () => {
+    const rustDoc = document.querySelector('meta[name="generator"]')?.content == "rustdoc";
+    if (rustDoc) {
+      // Only highlight .slint blocks, leave the others to rustdoc
+      for (slintBlock of document.querySelectorAll("[class*=language-slint]")) {
+        hljs.highlightElement(slintBlock)
+      }
+
+      // Some of the rustdoc selectors require the pre element to have the rust class
+      for (codeBlock of document.querySelectorAll(".language-slint.hljs")) {
+        codeBlock.classList.add("rust");
+        codeBlock.classList.remove("hljs");
+      }
+
+      // Change the hljs generated classes to the rustdoc
+      // ones, so that the highlighting adjusts to the theme correctly.
+      const highlightJSToRustDoc = [
+        ["comment", "comment"],
+        ["number", "number"],
+        ["symbol", "struct"], // width:
+        ["keyword", "kw"],
+        ["built_in", "primitive"],
+        ["string", "string"],
+        ["title", "fnname"], // Foo :=
+        ["type", "type"]
+      ];
+
+      for ([hljs_class, rustdoc_class] of highlightJSToRustDoc) {
+        for (titleElement of document.querySelectorAll(`.hljs-${hljs_class}`)) {
+          titleElement.classList.remove(`hljs-${hljs_class}`);
+          titleElement.classList.add(rustdoc_class);
+        }
+      }
+    } else {
+      // For use with the mdbook Tutorial
+      hljs.highlightAll();
+
+      // The Sphinx/my_st generated HTML for code blocks doesn't use <code> tags, so highlight.js'
+      // default selector "pre code" doesn't match. Let's do it by hand:
+      for (block of document.querySelectorAll("div[class*=highlight-slint] div.highlight pre")) {
+        hljs.highlightElement(block)
+      }
+    }
+
+    // Fix up links that sphinx handles but for rustdoc we need to resolve manually:
+    {
+      let target_url = null;
+      if (document.location.hostname == "snapshots.slint.dev") {
+        target_url = "https://snapshots.slint.dev/master/docs/slint/";
+      } else {
+        const version = document.querySelector("span.version");
+        if (version !== null) {
+          target_url = `../../slint/`;
+        }
+      }
+
+      if (target_url !== null) {
+        for (const link of document.querySelectorAll("a[href^='slint-reference:']")) {
+          link.href = link.href.replace("slint-reference:", target_url);
+        }
+      }
+    }
+  });
+</script>
+
+</head><body class="rustdoc trait"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">StrongHandle</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><a class="logo-container" href="../slint/index.html"><img src="https://slint.dev/logo/slint-logo-square-light.svg" alt="logo"></a><h2><a href="../slint/index.html">slint</a><span class="version">1.16.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Strong<wbr>Handle</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#common-issues" title="Common issues">Common issues</a></li></ul><h3><a href="#foreign-impls">Implementations on Foreign Types</a></h3><ul class="block"><li><a href="#impl-StrongHandle-for-ComponentInstance" title="ComponentInstance">ComponentInstance</a></li></ul><h3><a href="#implementors">Implementors</a></h3></section><div id="rustdoc-modnav"><h2 class="in-crate"><a href="index.html">In crate slint</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="index.html">slint</a></div><h1>Trait <span class="trait">Strong<wbr>Handle</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"></span></div><pre class="rust item-decl"><code>pub trait StrongHandle { }</code></pre><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>This trait marks types that hold a strong reference to a Slint component.</p>
+<p>The Slint compiler automatically implements this trait for <a href="index.html#generated-components">generated components</a> and the <code>'static</code> variant of <a href="index.html#exported-global-singletons">generated Globals</a>.
+Do not try to implement it manually.</p>
+<p>All types that implement this trait can be used in a <a href="struct.Weak.html" title="struct slint::Weak"><code>Weak</code></a> reference.</p>
+<blockquote>
+<p>⚠️ Strong references should not be captured by a lambda given to a callback,
+as this would produce a reference loop and leak the component.
+Instead, the callback function should capture a <a href="struct.Weak.html" title="struct slint::Weak"><code>Weak</code></a> reference.</p>
+</blockquote>
+<p><strong>Example:</strong></p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="macro">slint::slint!</span>{
+    export component App inherits Window {
+        <span class="kw">in</span>-out property &lt;int&gt; counter: <span class="number">0</span>;
+        callback do_something;
+    }
+}
+
+<span class="kw">let </span>app = App::new().unwrap();
+<span class="comment">// ⚠️ Incorrect: This will capture a strong reference to the app in the closure,
+// which will never be released and leak the app!
+</span>app.on_do_something({
+    <span class="kw">let </span>app = app.clone_strong();
+    <span class="kw">move </span>|| {
+        app.set_counter(app.get_counter() + <span class="number">1</span>);
+    }
+});
+
+<span class="comment">// Correct: Use a weak reference to the app, which will be released
+// when the app is dropped.
+</span>app.on_do_something({
+    <span class="kw">let </span>app = app.as_weak();
+    <span class="kw">move </span>|| {
+        <span class="kw">let </span><span class="prelude-val">Some</span>(app) = app.upgrade() <span class="kw">else </span>{
+            <span class="kw">return</span>;
+        };
+        app.set_counter(app.get_counter() + <span class="number">1</span>);
+    }
+});</code></pre></div><h2 id="common-issues"><a class="doc-anchor" href="#common-issues">§</a>Common issues</h2>
+<p>To use a global with a <a href="struct.Weak.html" title="struct slint::Weak"><code>Weak</code></a> reference, you need to use the <code>'static</code> variant of the Global.</p>
+<p><strong>Example:</strong></p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="macro">slint::slint!</span>{
+   export global MyGlobal {}
+
+   export component App inherits Window {}
+}
+<span class="kw">struct </span>MyStruct {
+   <span class="comment">// Use the 'static variant of MyGlobal, which implements
+   // StrongHandle and can be used in a Weak reference.
+   </span>global: slint::Weak&lt;MyGlobal&lt;<span class="lifetime">'static</span>&gt;&gt;,
+}
+
+<span class="kw">let </span>app = App::new().unwrap();
+<span class="kw">let </span>my_global: MyGlobal = app.global();
+
+<span class="kw">let </span>my_struct = MyStruct {
+    <span class="comment">// Calling as_weak() on the global automatically converts it to 'static
+    </span>global: my_global.as_weak()
+};</code></pre></div>
+<p>Otherwise you may encounter issues like this:</p>
+<div class="example-wrap"><pre class="language-text"><code>error[E0106]: missing lifetime specifier
+  --&gt; /path/to/file.rs:10:19
+   |
+10 |         global: Weak&lt;MyGlobal&gt;,
+   |                      ^^^^^^^^ expected named lifetime parameter
+   |
+help: consider introducing a named lifetime parameter
+   |
+ 9 ~     struct MyStruct&lt;&#39;a&gt; {
+10 ~         global: Weak&lt;MyGlobal&lt;&#39;a&gt;&gt;,</code></pre></div>
+<p>The compiler suggests to introduce a lifetime parameter for the struct,
+This is not correct - use a <code>'static</code> lifetime instead!</p>
+<p>Otherwise you will run into the following error:</p>
+<div class="example-wrap"><pre class="language-text"><code>error: incompatible lifetime on type
+  --&gt; /path/to/file.rs:9:10
+   |
+ 9 |     global: slint::Weak&lt;MyGlobal&lt;&#39;a&gt;&gt;,
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+note: because this has an unmet lifetime requirement
+  --&gt; slint/internal/core/api.rs:954:24
+   |
+954 |     pub struct Weak&lt;T: StrongHandle&gt; {
+   |                        ^^^^^^^^^^^^ introduces a `&#39;static` lifetime requirement
+note: the lifetime `&#39;a` as defined here...
+  --&gt; /path/to/file.rs:8:17
+   |
+ 8 | struct MyStruct&lt;&#39;a&gt; {
+   |                 ^^
+note: ...does not necessarily outlive the static lifetime introduced by the compatible `impl`
+  --&gt; /path/to/file.rs:246:6
+   |
+246 |      impl slint :: StrongHandle for r#MyGlobal &lt; &#39;static &gt; {</code></pre></div></div></details><h2 id="foreign-impls" class="section-header">Implementations on Foreign Types<a href="#foreign-impls" class="anchor">§</a></h2><section id="impl-StrongHandle-for-ComponentInstance" class="impl"><a class="src rightside" href="../src/slint_interpreter/api.rs.html#1671">Source</a><a href="#impl-StrongHandle-for-ComponentInstance" class="anchor">§</a><h3 class="code-header">impl <a class="trait" href="trait.StrongHandle.html" title="trait slint::StrongHandle">StrongHandle</a> for <a class="struct" href="../slint_interpreter/api/struct.ComponentInstance.html" title="struct slint_interpreter::api::ComponentInstance">ComponentInstance</a></h3></section><h2 id="implementors" class="section-header">Implementors<a href="#implementors" class="anchor">§</a></h2><div id="implementors-list"><div class="negative-marker"></div><section id="impl-StrongHandle-for-SampleComponent" class="impl"><a class="src rightside" href="../src/slint/docs.rs.html#98-106">Source</a><a href="#impl-StrongHandle-for-SampleComponent" class="anchor">§</a><h3 class="code-header">impl <a class="trait" href="trait.StrongHandle.html" title="trait slint::StrongHandle">StrongHandle</a> for <a class="struct" href="docs/generated_code/struct.SampleComponent.html" title="struct slint::docs::generated_code::SampleComponent">SampleComponent</a></h3><div class="docblock"><p>The <code>StrongHandle</code> trait is implemented for each component.
+It marks this component as holding a strong reference to the Slint element tree
+and allows using this component with a Weak reference.</p>
+</div></section><section id="impl-StrongHandle-for-SampleGlobal%3C'static%3E" class="impl"><a class="src rightside" href="../src/slint/docs.rs.html#190-198">Source</a><a href="#impl-StrongHandle-for-SampleGlobal%3C'static%3E" class="anchor">§</a><h3 class="code-header">impl <a class="trait" href="trait.StrongHandle.html" title="trait slint::StrongHandle">StrongHandle</a> for <a class="struct" href="docs/generated_code/struct.SampleGlobal.html" title="struct slint::docs::generated_code::SampleGlobal">SampleGlobal</a>&lt;'static&gt;</h3><div class="docblock"><p>The <code>StrongHandle</code> trait is implemented for each global.
+It marks this component as holding a strong reference to the Slint element tree
+and allows using this component with a Weak reference.</p>
+</div></section></div><script src="../trait.impl/i_slint_core/api/trait.StrongHandle.js" data-ignore-extern-crates="slint_interpreter" async></script></section></div></main></body></html>
