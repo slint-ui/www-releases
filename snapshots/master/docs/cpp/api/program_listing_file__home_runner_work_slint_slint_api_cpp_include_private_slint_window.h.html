@@ -658,7 +658,16 @@ public:
                         cbindgen_private::PopupClosePolicy close_policy,
                         cbindgen_private::ItemRc parent_item) const
     {
-        auto popup = Component::create(parent_component);
+        using SharedGlobals = decltype(parent_component-&gt;globals);
+        SharedGlobals _own_globals = nullptr;
+        if (auto _popup_adapter = create_popup_window_adapter()) {
+            _own_globals = parent_component-&gt;globals-&gt;clone_with_window_adapter(*_popup_adapter);
+        }
+        if (!_own_globals) {
+            _own_globals = parent_component-&gt;globals;
+        }
+
+        auto popup = Component::create(parent_component, _own_globals);
         auto p = pos(popup);
         auto popup_dyn = popup.into_dyn();
         auto id = cbindgen_private::slint_windowrc_show_popup(&amp;inner, &amp;popup_dyn, p, close_policy,
@@ -672,6 +681,18 @@ public:
         if (popup_id &gt; 0) {
             cbindgen_private::slint_windowrc_close_popup(&amp;inner, popup_id);
         }
+    }
+
+    std::optional&lt;WindowAdapterRc&gt; create_popup_window_adapter() const
+    {
+        cbindgen_private::WindowAdapterRcOpaque raw_result;
+        if (cbindgen_private::slint_windowrc_create_popup_window_adapter(&amp;inner, &amp;raw_result)) {
+            std::optional&lt;WindowAdapterRc&gt; result;
+            result.emplace(raw_result); // clone: refcount = 2
+            cbindgen_private::slint_windowrc_drop(&amp;raw_result); // drop original: refcount = 1
+            return result;
+        }
+        return std::nullopt;
     }
 
     template&lt;typename Component, typename SharedGlobals, typename InitFn&gt;

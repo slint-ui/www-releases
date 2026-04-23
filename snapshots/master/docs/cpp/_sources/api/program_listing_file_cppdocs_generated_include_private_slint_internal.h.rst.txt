@@ -1422,6 +1422,9 @@ Program Listing for File slint_internal.h
                                       const ItemRc *parent_item,
                                       bool is_menu);
    
+   bool slint_windowrc_create_popup_window_adapter(const WindowAdapterRcOpaque *handle,
+                                                   WindowAdapterRcOpaque *result);
+   
    void slint_windowrc_close_popup(const WindowAdapterRcOpaque *handle, uint32_t popup_id);
    
    bool slint_windowrc_set_rendering_notifier(const WindowAdapterRcOpaque *handle,
