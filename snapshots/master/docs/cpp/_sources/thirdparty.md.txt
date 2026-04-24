@@ -7,7 +7,7 @@ This page lists the licenses of the dependencies used by Slint.
 
 ## Overview of licenses
 
-- [MIT License](#MIT) (375)
+- [MIT License](#MIT) (377)
 - [Unicode License v3](#Unicode-3.0) (22)
 - [Apache License 2.0](#Apache-2.0) (16)
 - [BSD 3-Clause &quot;New&quot; or &quot;Revised&quot; License](#BSD-3-Clause) (8)
@@ -3697,7 +3697,9 @@ DEALINGS IN THE SOFTWARE.
 
 - [font-types 0.11.3]( https://github.com/googlefonts/fontations )
 - [read-fonts 0.37.0]( https://github.com/googlefonts/fontations )
+- [read-fonts 0.39.1]( https://github.com/googlefonts/fontations )
 - [skrifa 0.40.0]( https://github.com/googlefonts/fontations )
+- [skrifa 0.42.0]( https://github.com/googlefonts/fontations )
 
 #### License Text
 
@@ -4670,8 +4672,8 @@ DEALINGS IN THE SOFTWARE.
 #### Used by:
 
 - [parlance 0.1.0]( https://github.com/linebender/parley )
-- [parley 0.8.0]( https://github.com/linebender/parley )
-- [parley_data 0.8.0]( https://github.com/linebender/parley )
+- [parley 0.9.0]( https://github.com/linebender/parley )
+- [parley_data 0.9.0]( https://github.com/linebender/parley )
 
 #### License Text
 
@@ -4783,7 +4785,7 @@ DEALINGS IN THE SOFTWARE.
 
 #### Used by:
 
-- [fontique 0.8.0]( https://github.com/linebender/parley )
+- [fontique 0.9.0]( https://github.com/linebender/parley )
 
 #### License Text
 
@@ -5678,7 +5680,7 @@ SOFTWARE.
 - [dpi 0.1.2]( https://github.com/rust-windowing/winit )
 - [fax 0.2.6]( https://github.com/pdf-rs/fax )
 - [fax_derive 0.2.0]( https://github.com/pdf-rs/fax )
-- [harfrust 0.5.2]( https://github.com/harfbuzz/harfrust )
+- [harfrust 0.6.0]( https://github.com/harfbuzz/harfrust )
 - [include_dir 0.7.4]( https://github.com/Michael-F-Bryan/include_dir )
 - [include_dir_macros 0.7.4]( https://github.com/Michael-F-Bryan/include_dir )
 - [libm 0.2.16]( https://github.com/rust-lang/compiler-builtins )
