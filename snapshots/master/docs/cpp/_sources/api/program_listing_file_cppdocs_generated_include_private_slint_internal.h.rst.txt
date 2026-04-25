@@ -1223,6 +1223,8 @@ Program Listing for File slint_internal.h
    
    void slint_property_evaluate_binding(void *binding, void *value);
    
+   bool slint_property_intercept_set_binding(void *binding, const void *value);
+   
    bool slint_property_is_dirty(const PropertyHandleOpaque *handle);
    
    void slint_property_mark_dirty(const PropertyHandleOpaque *handle);
