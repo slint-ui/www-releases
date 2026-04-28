@@ -1349,23 +1349,6 @@ Program Listing for File slint_internal.h
    
    void slint_styled_text_clone(StyledText *out, const StyledText *ss);
    
-   void slint_mock_elapsed_time(uint64_t time_in_ms);
-   
-   uint64_t slint_get_mocked_time();
-   
-   void slint_send_mouse_click(float x, float y, const WindowAdapterRc *window_adapter);
-   
-   void slint_send_keyboard_key_text(const SharedString *text,
-                                     bool pressed,
-                                     const WindowAdapterRc *window_adapter);
-   
-   void slint_send_keyboard_char(const SharedString *string,
-                                 bool pressed,
-                                 const WindowAdapterRc *window_adapter);
-   
-   void send_keyboard_string_sequence(const SharedString *sequence,
-                                      const WindowAdapterRc *window_adapter);
-   
    uint64_t slint_timer_interval(uintptr_t id);
    
    void slint_translate(SharedString *to_translate,

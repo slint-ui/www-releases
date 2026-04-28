@@ -1,12 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
 export const memory: WebAssembly.Memory;
-export const send_keyboard_string_sequence: (a: number, b: number) => void;
-export const slint_get_mocked_time: () => bigint;
-export const slint_mock_elapsed_time: (a: bigint) => void;
-export const slint_send_keyboard_char: (a: number, b: number, c: number) => void;
-export const slint_send_keyboard_key_text: (a: number, b: number, c: number) => void;
-export const slint_send_mouse_click: (a: number, b: number, c: number) => void;
 export const __wbg_compilationresult_free: (a: number, b: number) => void;
 export const __wbg_wrappedcompiledcomp_free: (a: number, b: number) => void;
 export const __wbg_wrappedinstance_free: (a: number, b: number) => void;

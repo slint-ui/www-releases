@@ -11,12 +11,6 @@ export interface InitOutput {
     readonly memory: WebAssembly.Memory;
     readonly load_font_from_bytes: (a: any, b: number, c: number) => [number, number];
     readonly main: () => void;
-    readonly send_keyboard_string_sequence: (a: number, b: number) => void;
-    readonly slint_get_mocked_time: () => bigint;
-    readonly slint_mock_elapsed_time: (a: bigint) => void;
-    readonly slint_send_keyboard_char: (a: number, b: number, c: number) => void;
-    readonly slint_send_keyboard_key_text: (a: number, b: number, c: number) => void;
-    readonly slint_send_mouse_click: (a: number, b: number, c: number) => void;
     readonly wasm_bindgen__convert__closures_____invoke__h4b68a650e08ff1d4: (a: number, b: number, c: any) => [number, number];
     readonly wasm_bindgen__convert__closures_____invoke__h0087bbe320fe3f34: (a: number, b: number, c: any, d: any) => void;
     readonly wasm_bindgen__convert__closures_____invoke__h10343dfba8d9814b: (a: number, b: number, c: any) => void;

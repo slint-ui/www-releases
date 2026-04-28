@@ -2,12 +2,6 @@
 /* eslint-disable */
 export const memory: WebAssembly.Memory;
 export const main: () => void;
-export const send_keyboard_string_sequence: (a: number, b: number) => void;
-export const slint_get_mocked_time: () => bigint;
-export const slint_mock_elapsed_time: (a: bigint) => void;
-export const slint_send_keyboard_char: (a: number, b: number, c: number) => void;
-export const slint_send_keyboard_key_text: (a: number, b: number, c: number) => void;
-export const slint_send_mouse_click: (a: number, b: number, c: number) => void;
 export const wasm_bindgen__convert__closures_____invoke__h5cf5510a5a9d8a44: (a: number, b: number, c: any) => [number, number];
 export const wasm_bindgen__convert__closures_____invoke__hc4394095660c49c9: (a: number, b: number, c: any, d: any) => void;
 export const wasm_bindgen__convert__closures_____invoke__h47127090ad03c842: (a: number, b: number, c: any) => void;

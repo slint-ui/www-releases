@@ -8,12 +8,6 @@ export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembl
 export interface InitOutput {
     readonly memory: WebAssembly.Memory;
     readonly main: () => void;
-    readonly send_keyboard_string_sequence: (a: number, b: number) => void;
-    readonly slint_get_mocked_time: () => bigint;
-    readonly slint_mock_elapsed_time: (a: bigint) => void;
-    readonly slint_send_keyboard_char: (a: number, b: number, c: number) => void;
-    readonly slint_send_keyboard_key_text: (a: number, b: number, c: number) => void;
-    readonly slint_send_mouse_click: (a: number, b: number, c: number) => void;
     readonly wasm_bindgen__convert__closures_____invoke__hadce75eaa8fd8880: (a: number, b: number, c: any) => [number, number];
     readonly wasm_bindgen__convert__closures_____invoke__h5d4c55fb034395a5: (a: number, b: number, c: any, d: any) => void;
     readonly wasm_bindgen__convert__closures_____invoke__h168ab211ce65b8fc: (a: number, b: number, c: any) => void;
