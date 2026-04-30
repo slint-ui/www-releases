@@ -245,7 +245,8 @@ Program Listing for File slint_properties.h
                    &prop->inner,
                    [](void *user_data, void *value) {
                        auto self = reinterpret_cast<ModelTwoWayBinding *>(user_data);
-                       *reinterpret_cast<T *>(value) = self->getter();
+                       if (auto v = self->getter())
+                           *reinterpret_cast<T *>(value) = *std::move(v);
                    },
                    new ModelTwoWayBinding { std::move(getter), std::move(setter) },
                    [](void *user_data) { delete reinterpret_cast<ModelTwoWayBinding *>(user_data); },
