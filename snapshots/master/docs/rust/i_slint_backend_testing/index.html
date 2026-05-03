@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="NOTE: This library is an internal crate of the Slint project. This crate should not be used directly by applications using Slint. You should use the `slint` crate instead."><title>i_slint_backend_testing - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../static.files/rustdoc-17e0aaed.css"><meta name="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="i_slint_backend_testing" data-themes="" data-resource-suffix="" data-rustdoc-version="1.97.0-nightly (f53b654a8 2026-04-30)" data-channel="nightly" data-search-js="search-b5634cc7.js" data-stringdex-js="stringdex-2da4960a.js" data-settings-js="settings-170eb4bf.js" ><script src="../static.files/storage-41dd4d93.js"></script><script defer src="../crates.js"></script><script defer src="../static.files/main-aa4d37ac.js"></script><noscript><link rel="stylesheet" href="../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../static.files/favicon-044be391.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="NOTE: This library is an internal crate of the Slint project. This crate should not be used directly by applications using Slint. You should use the `slint` crate instead."><title>i_slint_backend_testing - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../static.files/rustdoc-17e0aaed.css"><meta name="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="i_slint_backend_testing" data-themes="" data-resource-suffix="" data-rustdoc-version="1.97.0-nightly (20de910db 2026-05-02)" data-channel="nightly" data-search-js="search-b5634cc7.js" data-stringdex-js="stringdex-2da4960a.js" data-settings-js="settings-170eb4bf.js" ><script src="../static.files/storage-41dd4d93.js"></script><script defer src="../crates.js"></script><script defer src="../static.files/main-aa4d37ac.js"></script><noscript><link rel="stylesheet" href="../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../static.files/favicon-044be391.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -283,8 +283,24 @@ set and then interact with it. For example, in Claude Code:</p>
 <p>“Run <code>SLINT_EMIT_DEBUG_INFO=1 SLINT_MCP_PORT=8080 cargo run -p my-app --features slint/mcp</code> in the background. The
 app includes a built-in MCP server. Connect to it and toggle the dark mode switch.”</p>
 </blockquote>
-<p>The agent will discover the MCP endpoint, connect, and use the tools to accomplish the task.
-You can also register the server in your MCP client’s configuration if you prefer:</p>
+<p>The agent will discover the MCP endpoint, connect, and use the tools to accomplish the task.</p>
+<p>When scripting or testing from the command line, use <code>curl</code> to call tools directly — it is
+the most reliable way to send JSON-RPC requests to the server:</p>
+<div class="example-wrap"><pre class="language-sh"><code># Initialize (confirms the server is up and prints available tools)
+curl -s -X POST http://127.0.0.1:8080/mcp \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;method&quot;:&quot;initialize&quot;,&quot;params&quot;:{&quot;protocolVersion&quot;:&quot;2024-11-05&quot;,&quot;capabilities&quot;:{},&quot;clientInfo&quot;:{&quot;name&quot;:&quot;test&quot;,&quot;version&quot;:&quot;1.0&quot;}}}&#39;
+
+# List windows
+curl -s -X POST http://127.0.0.1:8080/mcp \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:2,&quot;method&quot;:&quot;tools/call&quot;,&quot;params&quot;:{&quot;name&quot;:&quot;list_windows&quot;,&quot;arguments&quot;:{}}}&#39;
+
+# Take a screenshot (response contains a base64-encoded PNG in the &quot;data&quot; field)
+curl -s -X POST http://127.0.0.1:8080/mcp \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:3,&quot;method&quot;:&quot;tools/call&quot;,&quot;params&quot;:{&quot;name&quot;:&quot;take_screenshot&quot;,&quot;arguments&quot;:{&quot;windowHandle&quot;:{&quot;index&quot;:&quot;1&quot;,&quot;generation&quot;:&quot;1&quot;}}}}&#39;</code></pre></div>
+<p>You can also register the server in your MCP client’s configuration if you prefer:</p>
 <div class="example-wrap"><pre class="language-json"><code>{
   &quot;mcpServers&quot;: {
     &quot;my-slint-app&quot;: {
