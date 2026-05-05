@@ -45,6 +45,10 @@ Program Listing for File slint_enums.h
        RadioButton,
    };
    }
+   enum class Orientation {
+       Horizontal,
+       Vertical,
+   };
    }
    
    namespace slint::platform::key_codes {

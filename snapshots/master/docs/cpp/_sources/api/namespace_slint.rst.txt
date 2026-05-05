@@ -103,6 +103,8 @@ Enums
 
 - :ref:`exhale_enum_namespaceslint_1a90c0ddbfdc375daafbcf91361293538b`
 
+- :ref:`exhale_enum_namespaceslint_1a43d65cb829bc6478686e05d79b4f6c31`
+
 - :ref:`exhale_enum_namespaceslint_1a88e5489a21965b1a271bf90ee12f1c6e`
 
 - :ref:`exhale_enum_namespaceslint_1aa9bda1bcc95bc66d8afd7b1a4aa8c4af`

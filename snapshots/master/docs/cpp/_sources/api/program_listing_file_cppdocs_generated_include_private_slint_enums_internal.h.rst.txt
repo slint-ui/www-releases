@@ -201,10 +201,7 @@ Program Listing for File slint_enums_internal.h
        Ascending,
        Descending,
    };
-   enum class Orientation {
-       Horizontal,
-       Vertical,
-   };
+   using slint::Orientation;
    enum class ColorScheme {
        Unknown,
        Dark,

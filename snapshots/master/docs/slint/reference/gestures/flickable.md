@@ -72,7 +72,7 @@ If the Flickable can't scroll in the direction of the event, the event will be f
 
 ### interactive
 <SlintProperty propName="interactive" typeName="bool" defaultValue="true">
-<CodeSnippetMD imagePath="/src/assets/generated/flickable-interactive.png"  imageWidth="200" imageHeight="200"  imageAlt='flickable interactive'>
+<CodeSnippetMD imagePath="/src/assets/generated/flickable-1.png" imageAlt="flickable interactive" imageWidth="200" imageHeight="200">
 ```slint
 Flickable {
     interactive: false;
@@ -80,7 +80,6 @@ Flickable {
 ```
 </CodeSnippetMD>
 When true, the viewport can be scrolled by clicking on it and dragging it with the cursor.
-
 </SlintProperty>
 
 ### viewport-width

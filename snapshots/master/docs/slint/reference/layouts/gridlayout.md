@@ -13,8 +13,7 @@ space, unless their size constraints&mdash;like, e.g., `min-height` or
 `max-width`&mdash;work against this.
 
 
-<CodeSnippetMD imagePath="/src/assets/generated/gridlayout-example1.png"  imageWidth="200" imageHeight="100"  imageAlt='gridlayout example'>
-
+<CodeSnippetMD imagePath="/src/assets/generated/grid-layout-1.png" imageAlt="gridlayout example" imageWidth="200" imageHeight="100">
 ```slint playground
 // This example uses the `Row` element
 export component Foo inherits Window {
@@ -36,8 +35,7 @@ export component Foo inherits Window {
 </CodeSnippetMD>
 
 
-<CodeSnippetMD imagePath="/src/assets/generated/gridlayout-example2.png"  imageWidth="200" imageHeight="100"  imageAlt='gridlayout example2'>
-
+<CodeSnippetMD imagePath="/src/assets/generated/grid-layout-2.png" imageAlt="gridlayout example2" imageWidth="200" imageHeight="100">
 ```slint playground
 // This example uses the `col` and `row` properties
 export component Foo inherits Window {
@@ -53,7 +51,6 @@ export component Foo inherits Window {
 }
 ```
 </CodeSnippetMD>
-
 
 ## Spacing Properties
 
@@ -90,7 +87,6 @@ To target specific sides with different values use the following properties:
 
 ### padding-bottom
 <SlintProperty propName="padding-bottom" typeName="length"/>
-
 
 ## Cell elements
 Cell elements inside a `GridLayout` obtain the following new properties. Any bindings to these properties must be compile-time constants:

@@ -100,6 +100,7 @@ Program Listing for File slint_internal.h
        ItemSelectable,
        ItemSelected,
        Label,
+       Orientation,
        PlaceholderText,
        ReadOnly,
        Value,

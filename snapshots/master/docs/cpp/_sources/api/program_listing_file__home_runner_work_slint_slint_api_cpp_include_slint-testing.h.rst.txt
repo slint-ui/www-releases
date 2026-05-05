@@ -298,6 +298,18 @@ Program Listing for File slint-testing.h
            return get_accessible_bool_property(cbindgen_private::AccessibleStringProperty::ReadOnly);
        }
    
+       std::optional<Orientation> accessible_orientation() const
+       {
+           if (auto str = get_accessible_string_property(
+                       cbindgen_private::AccessibleStringProperty::Orientation)) {
+               if (*str == "horizontal")
+                   return Orientation::Horizontal;
+               if (*str == "vertical")
+                   return Orientation::Vertical;
+           }
+           return std::nullopt;
+       }
+   
        void invoke_accessible_expand_action() const
        {
            if (inner.element_index != 0)

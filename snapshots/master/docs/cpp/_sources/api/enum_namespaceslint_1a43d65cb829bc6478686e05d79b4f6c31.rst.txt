@@ -1,0 +1,14 @@
+.. _exhale_enum_namespaceslint_1a43d65cb829bc6478686e05d79b4f6c31:
+
+Enum Orientation
+================
+
+- Defined in :ref:`file_cppdocs_generated_include_private_slint_enums.h`
+
+
+Enum Documentation
+------------------
+
+
+.. doxygenenum:: slint::Orientation
+   :project: Slint

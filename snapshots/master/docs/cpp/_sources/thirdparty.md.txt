@@ -7,7 +7,7 @@ This page lists the licenses of the dependencies used by Slint.
 
 ## Overview of licenses
 
-- [MIT License](#MIT) (376)
+- [MIT License](#MIT) (374)
 - [Unicode License v3](#Unicode-3.0) (22)
 - [Apache License 2.0](#Apache-2.0) (16)
 - [BSD 3-Clause &quot;New&quot; or &quot;Revised&quot; License](#BSD-3-Clause) (8)
@@ -23,8 +23,6 @@ This page lists the licenses of the dependencies used by Slint.
 
 #### Used by:
 
-- [ab_glyph 0.2.32]( https://github.com/alexheretic/ab-glyph )
-- [ab_glyph_rasterizer 0.1.10]( https://github.com/alexheretic/ab-glyph )
 - [owned_ttf_parser 0.25.1]( https://github.com/alexheretic/owned-ttf-parser )
 
 #### License Text
@@ -427,7 +425,7 @@ This page lists the licenses of the dependencies used by Slint.
 
 #### Used by:
 
-- [imgref 1.12.0]( https://github.com/kornelski/imgref )
+- [imgref 1.12.1]( https://github.com/kornelski/imgref )
 - [unicode-linebreak 0.1.5]( https://github.com/axelf4/unicode-linebreak )
 
 #### License Text
@@ -1283,6 +1281,8 @@ Apache License
 
 #### Used by:
 
+- [ab_glyph 0.2.32]( https://github.com/alexheretic/ab-glyph )
+- [ab_glyph_rasterizer 0.1.10]( https://github.com/alexheretic/ab-glyph )
 - [gl_generator 0.14.0]( https://github.com/brendanzab/gl-rs/ )
 - [khronos_api 3.1.0]( https://github.com/brendanzab/gl-rs/ )
 
@@ -4354,8 +4354,8 @@ SOFTWARE.
 - [zbus 5.15.0]( https://github.com/z-galaxy/zbus/ )
 - [zbus_macros 5.15.0]( https://github.com/z-galaxy/zbus/ )
 - [zbus_names 4.3.2]( https://github.com/z-galaxy/zbus/ )
-- [zvariant 5.10.1]( https://github.com/z-galaxy/zbus/ )
-- [zvariant_derive 5.10.1]( https://github.com/z-galaxy/zbus/ )
+- [zvariant 5.11.0]( https://github.com/z-galaxy/zbus/ )
+- [zvariant_derive 5.11.0]( https://github.com/z-galaxy/zbus/ )
 
 #### License Text
 
@@ -5701,7 +5701,7 @@ SOFTWARE.
 - [include_dir 0.7.4]( https://github.com/Michael-F-Bryan/include_dir )
 - [include_dir_macros 0.7.4]( https://github.com/Michael-F-Bryan/include_dir )
 - [libm 0.2.16]( https://github.com/rust-lang/compiler-builtins )
-- [lyon_algorithms 1.0.19]( https://github.com/nical/lyon )
+- [lyon_algorithms 1.0.20]( https://github.com/nical/lyon )
 - [lyon_extra 1.1.0]( https://github.com/nical/lyon )
 - [lyon_geom 1.0.19]( https://github.com/nical/lyon )
 - [lyon_path 1.0.19]( https://github.com/nical/lyon )
@@ -5721,11 +5721,11 @@ SOFTWARE.
 - [objc2-quartz-core 0.3.2]( https://github.com/madsmtm/objc2 )
 - [objc2 0.5.2]( https://github.com/madsmtm/objc2 )
 - [objc2 0.6.4]( https://github.com/madsmtm/objc2 )
-- [profiling-procmacros 1.0.17]( https://github.com/aclysma/profiling )
-- [profiling 1.0.17]( https://github.com/aclysma/profiling )
+- [profiling-procmacros 1.0.18]( https://github.com/aclysma/profiling )
+- [profiling 1.0.18]( https://github.com/aclysma/profiling )
 - [qttypes 0.2.12]( https://github.com/woboq/qmetaobject-rs )
 - [simd_helpers 0.1.0]( https://github.com/lu-zero/simd_helpers )
-- [siphasher 1.0.2]( https://github.com/jedisct1/rust-siphash )
+- [siphasher 1.0.3]( https://github.com/jedisct1/rust-siphash )
 - [taffy 0.9.2]( https://github.com/DioxusLabs/taffy )
 - [tr 0.1.11]( https://github.com/woboq/tr )
 - [zune-inflate 0.2.54](
@@ -7045,7 +7045,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #### Used by:
 
-- [quick-xml 0.39.2]( https://github.com/tafia/quick-xml )
+- [quick-xml 0.39.3]( https://github.com/tafia/quick-xml )
 
 #### License Text
 
@@ -7164,8 +7164,6 @@ DEALINGS IN THE SOFTWARE.
 
 #### Used by:
 
-- [aho-corasick 1.1.4]( https://github.com/BurntSushi/aho-corasick )
-- [byteorder 1.5.0]( https://github.com/BurntSushi/byteorder )
 - [memchr 2.8.0]( https://github.com/BurntSushi/memchr )
 
 #### License Text

@@ -1,9 +1,8 @@
 ---
 title: "TextInputInterface"
-description: "TextInputInterface"
+description: "TextInputInterface Namespace"
 ---
 import SlintProperty from '@slint/common-files/src/components/SlintProperty.astro';
-import Link from '@slint/common-files/src/components/Link.astro';
 
 ```slint
 import { LineEdit } from "std-widgets.slint";

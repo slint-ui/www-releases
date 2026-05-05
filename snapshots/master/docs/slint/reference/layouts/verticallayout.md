@@ -30,12 +30,14 @@ The distance between the elements in the layout.
 </SlintProperty>
 
 ## Padding Properties
+
 ### padding
 <SlintProperty propName="padding" typeName="length">
 The padding within the layout as a whole. This single value is applied to all sides.
 </SlintProperty>
 
 To target specific sides with different values use the following properties:
+
 ### padding-left
 <SlintProperty propName="padding-left" typeName="length"/>
 
@@ -49,6 +51,7 @@ To target specific sides with different values use the following properties:
 <SlintProperty propName="padding-bottom" typeName="length"/>
 
 ## Alignment Properties
+
 ### alignment
 <SlintProperty propName="alignment" typeName="enum" enumName="LayoutAlignment">
 Set the alignment along the main (vertical) axis. Matches the CSS flex box.
