@@ -1,0 +1,116 @@
+---
+title: "FocusScope"
+description: "FocusScope element api."
+---
+import SlintProperty from '@slint/common-files/src/components/SlintProperty.astro';
+import Link from '@slint/common-files/src/components/Link.astro';
+
+```slint playground
+export component Example inherits Window {
+    width: 100px;
+    height: 100px;
+    forward-focus: my-key-handler;
+    my-key-handler := FocusScope {
+        key-pressed(event) => {
+            debug(event.text);
+            if (event.modifiers.control) {
+                debug("control was pressed during this event");
+            }
+            if (event.text == Key.Escape) {
+                debug("Esc key was pressed")
+            }
+            accept
+        }
+
+        KeyBinding {
+            keys: @keys(Control + X);
+            activated => {
+                debug("Control + X pressed")
+            }
+        }
+    }
+}
+```
+
+The `FocusScope` can react to [keyboard shortcuts](/master/docs/slint/reference/keyboard-input/overview.md#key-bindings) using the [KeyBinding element](/master/docs/slint/reference/generated/keyboard-input/focus-scope.md#keybinding), and exposes callbacks to handle key events manually.
+Note that `FocusScope` will only handle key events when it either `has-focus`, or when it surrounds another FocusScope that `has-focus` (see [Key Event Delivery](#key-event-delivery))
+
+The [KeyEvent](/master/docs/slint/reference/keyboard-input/overview.md) has a text property, which is a character of the key entered.
+When a non-printable key is pressed, the character will be either a control character,
+or it will be mapped to a private unicode character. The mapping of these non-printable, special characters is available in the [KeyEvent](/master/docs/slint/reference/keyboard-input/overview.md) namespace
+
+## Key Event Delivery
+
+Key events are delivered to the element that `has-focus`.
+
+Before attempting to deliver the `KeyEvent`, it is checked whether some other element wants to intercept the `KeyEvent`.
+Visiting all the elements starting at the Window, going down toward the focused element, `capture_key_pressed` or `capture_key_released` is called.
+If any of these returns `EventResult::accept`, then key event processing stops at this point. If `EventResult::reject` is returned,
+then event delivery continues.
+
+If no element captures the `KeyEvent`, then the `KeyEvent` is delivered to the focused element by calling `key-pressed` or `key-released`.
+If these callbacks return `EventResult::accept`, then event delivery is finished and the event has been handled. Otherwise, (recursively) try
+to deliver the key event to the parent element.
+
+## Properties
+
+### has-focus
+<SlintProperty propName="has-focus" typeName="bool" propertyVisibility="out">
+Is `true` when the element has keyboard focus.
+</SlintProperty>
+
+### enabled
+<SlintProperty propName="enabled" typeName="bool" defaultValue="true">
+When false, the FocusScope will not accept focus, neither via click nor via tab focus traversal, not even programmatically.
+
+A parent `FocusScope` will still receive key events from child `FocusScope`s that were rejected, even if `enabled` is set to false.
+</SlintProperty>
+
+### focus-on-click
+<SlintProperty propName="focus-on-click" typeName="bool" defaultValue="true">
+When true, the `FocusScope` will make itself the focused element when clicked.
+
+This property has no effect if the `enabled` property is set to false.
+</SlintProperty>
+
+### focus-on-tab-navigation
+<SlintProperty propName="focus-on-tab-navigation" typeName="bool" defaultValue="true">
+When true, the `FocusScope` will accept focus as part of the tab focus traversal.
+
+This property has no effect if the `enabled` property is set to false.
+</SlintProperty>
+
+## Functions
+
+### focus()
+Call this function to transfer keyboard focus to this `FocusScope`, to receive future [KeyEvent](/master/docs/slint/reference/keyboard-input/overview.md)s.
+
+### clear-focus()
+Call this function to remove keyboard focus from this `FocusScope` if it currently has the focus. See also [FocusHandling](/master/docs/slint/guide/development/focus.md).
+
+## Callbacks
+
+### capture-key-pressed(event: KeyEvent) -> EventResult
+This function is called during key event handling, *before* `key-pressed` is called. Use this to intercept key press events. The returned [EventResult](/master/docs/slint/reference/generated/global-structs-enums.md#eventresult)
+indicates whether to accept or reject the event. Rejected events are forwarded to the parent element.
+
+### capture-key-released(event: KeyEvent) -> EventResult
+This function is called during key event handling, *before* `key-released` is called. Use this to intercept key release events. The returned [EventResult](/master/docs/slint/reference/generated/global-structs-enums.md#eventresult)
+indicates whether to accept or reject the event. Rejected events are forwarded to the parent element.
+
+### key-pressed(event: KeyEvent) -> EventResult
+Invoked when a key is pressed, the argument is a [KeyEvent](/master/docs/slint/reference/keyboard-input/overview.md) struct. The returned [EventResult](/master/docs/slint/reference/generated/global-structs-enums.md#eventresult)
+indicates whether to accept or reject the event. Rejected events are forwarded to the parent element.
+
+### key-released(event: KeyEvent) -> EventResult
+Invoked when a key is released, the argument is a [KeyEvent](/master/docs/slint/reference/keyboard-input/overview.md) struct. The returned [EventResult](/master/docs/slint/reference/generated/global-structs-enums.md#eventresult)
+indicates whether to accept or reject the event. Rejected events are forwarded to the parent element.
+
+### focus-changed-event(reason: FocusReason)
+Invoked when the focus on the `FocusScope` has changed. The argument is a a [FocusReason](/master/docs/slint/reference/generated/global-structs-enums.md#focusreason) enum containing the reason for focus change.
+
+### focus-gained(reason: FocusReason)
+Invoked when the `FocusScope` gains focus. The argument is a a [FocusReason](/master/docs/slint/reference/generated/global-structs-enums.md#focusreason) enum containing the reason for focus gain.
+
+### focus-lost(reason: FocusReason)
+Invoked when the `FocusScope` loses focus. The argument is a a [FocusReason](/master/docs/slint/reference/generated/global-structs-enums.md#focusreason) enum containing the reason for focus loss.

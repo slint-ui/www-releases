@@ -135,134 +135,103 @@ were first drawn into an intermediate layer, and then the whole layer is rendere
 The following example demonstrates the opacity property with children. Note the software renderer does
 not support layer opacity and this will result in a different end result as shown.
 
-<CodeSnippetMD noScreenShot imagePath="/src/assets/generated/layer-opacity.png" imageWidth="150" imageHeight="390"  imageAlt='layer opacity'>
+<CodeSnippetMD imagePath="/src/assets/generated/layer-opacity.png" scale="3" imageWidth="150" imageHeight="390"  imageAlt='layer opacity'>
 ```slint playground
- Rectangle {
-        opacity: 50%;
-        Rectangle {
-            x: 0;
-            y: 0;
-            width: 100px;
-            height: 100px;
-            background: blue;
-        }
-
-        Rectangle {
-            x: 50px;
-            y: 50px;
-            width: 100px;
-            height: 100px;
-            background: green;
-        }
-    }
-```
-</CodeSnippetMD>
-
-
-<CodeSnippetMD skip="true" imagePath="/src/assets/generated/layer-opacity.png" scale="3" imageWidth="150" imageHeight="390"  imageAlt='layer opacity'>
-```slint playground
-export component CheckerBoardRow inherits HorizontalLayout {
-    property <length> size: 15px;
-    property <int> columns: root.width / size;
-    in property <bool> isOdd: true;
-    property <int> isModOdd: isOdd ? 1 : 0;
-
-    height: size;
-    width: 200px;
-    for i in columns : Rectangle {
-        width: size;
-        height: size;
-        background: i.mod(2) == isModOdd ? #262626 : #2c2c2e;
-    }
-}
-
-export component CheckerBoard inherits VerticalLayout {
-    in property <length> size: 15px;
-    property <int> rows: root.height / size;
-
-    width: 200px;
-    height: 400px;
-    for i in rows : CheckerBoardRow {
-        isOdd: i.mod(2) != 0;
-
-    }
-}
-export component ExportedComponent2 inherits Window {
-    width: 150px;
-    height: 410px;
-    background: transparent;
-    CheckerBoard {
-        width: parent.width;
-        height: parent.height;
+# export component CheckerBoardRow inherits HorizontalLayout {
+#     property <length> size: 15px;
+#     property <int> columns: root.width / size;
+#     in property <bool> isOdd: true;
+#     property <int> isModOdd: isOdd ? 1 : 0;
+#
+#     height: size;
+#     width: 200px;
+#     for i in columns : Rectangle {
+#         width: size;
+#         height: size;
+#         background: i.mod(2) == isModOdd ? #262626 : #2c2c2e;
+#     }
+# }
+#
+# export component CheckerBoard inherits VerticalLayout {
+#     in property <length> size: 15px;
+#     property <int> rows: root.height / size;
+#
+#     width: 200px;
+#     height: 400px;
+#     for i in rows : CheckerBoardRow {
+#         isOdd: i.mod(2) != 0;
+#     }
+# }
+# export component ExportedComponent2 inherits Window {
+#     width: 150px;
+#     height: 410px;
+#     background: transparent;
+#     CheckerBoard {
+#         width: parent.width;
+#         height: parent.height;
+#     }
+#     VerticalLayout {
+#         spacing: 15px;
+#         padding-top: 10px;
+#         padding-bottom: 10px;
+#         VerticalLayout {
+#             spacing: 5px;
+Rectangle {
+    width: 100px;
+    height: 150px;
+    opacity: 50%;
+    Rectangle {
+        x: 0;
+        y: 0;
+        width: 100px;
+        height: 100px;
+        background: blue;
     }
 
-    VerticalLayout {
-        spacing: 15px;
-        padding-top: 10px;
-        padding-bottom: 10px;
-
-        VerticalLayout {
-            spacing: 5px;
-            Rectangle {
-                width: 100px;
-                height: 150px;
-                opacity: 50%;
-                Rectangle {
-                    x: 0;
-                    y: 0;
-                    width: 100px;
-                    height: 100px;
-                    background: blue;
-                }
-
-                Rectangle {
-                    x: 50px;
-                    y: 50px;
-                    width: 100px;
-                    height: 100px;
-                    background: green;
-                }
-            }
-
-            Text {
-                text: "With Layer Opacity";
-                color: white;
-                horizontal-alignment: center;
-            }
-        }
-
-        VerticalLayout {
-            spacing: 5px;
-            Rectangle {
-                width: 100px;
-                height: 150px;
-                Rectangle {
-                    x: 0;
-                    y: 0;
-                    width: 100px;
-                    height: 100px;
-                    background: blue;
-                    opacity: 50%;
-                }
-
-                Rectangle {
-                    x: 50px;
-                    y: 50px;
-                    width: 100px;
-                    height: 100px;
-                    background: green;
-                    opacity: 50%;
-                }
-            }
-
-            Text {
-                text: "Without Layer Opacity\n(Software Renderer Only)";
-                color: white;
-                horizontal-alignment: center;
-            }
-        }
+    Rectangle {
+        x: 50px;
+        y: 50px;
+        width: 100px;
+        height: 100px;
+        background: green;
     }
 }
+#             Text {
+#                 text: "With Layer Opacity";
+#                 color: white;
+#                 horizontal-alignment: center;
+#             }
+#         }
+#         VerticalLayout {
+#             spacing: 5px;
+#             Rectangle {
+#                 width: 100px;
+#                 height: 150px;
+#                 Rectangle {
+#                     x: 0;
+#                     y: 0;
+#                     width: 100px;
+#                     height: 100px;
+#                     background: blue;
+#                     opacity: 50%;
+#                 }
+#                 Rectangle {
+#                     x: 50px;
+#                     y: 50px;
+#                     width: 100px;
+#                     height: 100px;
+#                     background: green;
+#                     opacity: 50%;
+#                 }
+#             }
+#             Text {
+#                 text: "Without Layer Opacity\n(Software Renderer Only)";
+#                 color: white;
+#                 horizontal-alignment: center;
+#             }
+#         }
+#     }
+# }
 ```
 </CodeSnippetMD>
 
@@ -281,7 +250,7 @@ will still take up layout space within any layout container.
 A common issue is that in a UI with many nested components it's useful to know their (x,y)position relative to
 the main window or screen. This convenience property gives easy read only access to that value.
 
-It represents a point specifying the absolute position within the enclosing [Window](/master/docs/slint/reference/window/window.md) or [PopupWindow](/master/docs/slint/reference/window/popupwindow.md).
+It represents a point specifying the absolute position within the enclosing [Window](/master/docs/slint/reference/generated/window/window.md) or [PopupWindow](/master/docs/slint/reference/generated/window/popup-window.md).
 It defines coordinates (x,y) relative to the enclosing Window or PopupWindow, but the reference frame is unspecified
 (could be screen, window, or popup coordinates).
 </SlintProperty>
