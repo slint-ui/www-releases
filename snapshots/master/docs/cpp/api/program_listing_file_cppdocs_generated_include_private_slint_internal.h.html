@@ -283,6 +283,7 @@
 <li class="toctree-l2"><a class="reference internal" href="classslint_1_1testing_1_1ElementHandle.html">Class ElementHandle</a></li>
 <li class="toctree-l2"><a class="reference internal" href="classslint_1_1VectorModel.html">Template Class VectorModel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="classslint_1_1Window.html">Class Window</a></li>
+<li class="toctree-l2"><a class="reference internal" href="enum_namespaceslint_1a69f72f940f7266dd0c5be75d8d820c62.html">Enum AccessibleLive</a></li>
 <li class="toctree-l2"><a class="reference internal" href="enum_namespaceslint_1abb2b0aa4769a501e7cdeaccae964a64c.html">Enum CloseRequestResponse</a></li>
 <li class="toctree-l2"><a class="reference internal" href="enum_namespaceslint_1a8bec56d112d5490780fa52c77326d290.html">Enum EventLoopMode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="enum_namespaceslint_1a90c0ddbfdc375daafbcf91361293538b.html">Enum GraphicsAPI</a></li>
@@ -584,6 +585,7 @@
 <span class="w">    </span><span class="n">ItemSelectable</span><span class="p">,</span>
 <span class="w">    </span><span class="n">ItemSelected</span><span class="p">,</span>
 <span class="w">    </span><span class="n">Label</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Live</span><span class="p">,</span>
 <span class="w">    </span><span class="n">Orientation</span><span class="p">,</span>
 <span class="w">    </span><span class="n">PlaceholderText</span><span class="p">,</span>
 <span class="w">    </span><span class="n">ReadOnly</span><span class="p">,</span>
@@ -622,6 +624,8 @@
 
 <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">void</span><span class="o">&gt;</span>
 <span class="k">struct</span><span class="w"> </span><span class="nc">Option</span><span class="p">;</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">SystemTrayIconData</span><span class="p">;</span>
 
 <span class="k">using</span><span class="w"> </span><span class="n">VisitChildrenResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">uint64_t</span><span class="p">;</span>
 <span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">VisitChildrenResult</span><span class="w"> </span><span class="n">VisitChildrenResult_CONTINUE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UINT64_MAX</span><span class="p">;</span>
@@ -989,6 +993,29 @@
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">KeyBindingList</span><span class="w"> </span><span class="o">*</span><span class="n">_0</span><span class="p">;</span>
 <span class="p">};</span>
 
+<span class="k">struct</span><span class="w"> </span><span class="nc">SystemTrayIconDataBox</span><span class="w"> </span><span class="p">{</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">SystemTrayIconData</span><span class="p">;</span>
+<span class="w">    </span><span class="n">SystemTrayIconData</span><span class="w"> </span><span class="o">*</span><span class="n">_0</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">SystemTrayIcon</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">Image</span><span class="o">&gt;</span><span class="w"> </span><span class="n">icon</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">SharedString</span><span class="o">&gt;</span><span class="w"> </span><span class="n">tooltip</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">SharedString</span><span class="o">&gt;</span><span class="w"> </span><span class="n">title</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="w"> </span><span class="n">visible</span><span class="p">;</span>
+<span class="w">    </span><span class="n">private_api</span><span class="o">::</span><span class="n">CallbackHelper</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;</span><span class="w"> </span><span class="n">activated</span><span class="p">;</span>
+<span class="w">    </span><span class="n">CachedRenderingData</span><span class="w"> </span><span class="n">cached_rendering_data</span><span class="p">;</span>
+<span class="w">    </span><span class="n">SystemTrayIconDataBox</span><span class="w"> </span><span class="n">data</span><span class="p">;</span>
+<span class="w">    </span><span class="kr">inline</span><span class="w"> </span><span class="n">SystemTrayIcon</span><span class="p">();</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="o">~</span><span class="n">SystemTrayIcon</span><span class="p">();</span>
+<span class="p">};</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">MenuVTable</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">sub_menu</span><span class="p">)(</span><span class="n">VRef</span><span class="o">&lt;</span><span class="n">MenuVTable</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">MenuEntry</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">SharedVector</span><span class="o">&lt;</span><span class="n">MenuEntry</span><span class="o">&gt;*</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">activate</span><span class="p">)(</span><span class="n">VRef</span><span class="o">&lt;</span><span class="n">MenuVTable</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">MenuEntry</span><span class="o">*</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Layout</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">drop_in_place</span><span class="p">)(</span><span class="n">VRefMut</span><span class="o">&lt;</span><span class="n">MenuVTable</span><span class="o">&gt;</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">dealloc</span><span class="p">)(</span><span class="k">const</span><span class="w"> </span><span class="n">MenuVTable</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">ptr</span><span class="p">,</span><span class="w"> </span><span class="n">Layout</span><span class="w"> </span><span class="n">layout</span><span class="p">);</span>
+<span class="p">};</span>
+
 <span class="k">struct</span><span class="w"> </span><span class="nc">GridLayoutInputData</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">new_row</span><span class="p">;</span>
 <span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">col</span><span class="p">;</span>
@@ -1053,13 +1080,6 @@
 <span class="w">    </span><span class="n">FlexboxLayoutWrap</span><span class="w"> </span><span class="n">flex_wrap</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Slice</span><span class="o">&lt;</span><span class="n">FlexboxLayoutItemInfo</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cells_h</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Slice</span><span class="o">&lt;</span><span class="n">FlexboxLayoutItemInfo</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cells_v</span><span class="p">;</span>
-<span class="p">};</span>
-
-<span class="k">struct</span><span class="w"> </span><span class="nc">MenuVTable</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">sub_menu</span><span class="p">)(</span><span class="n">VRef</span><span class="o">&lt;</span><span class="n">MenuVTable</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">MenuEntry</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">SharedVector</span><span class="o">&lt;</span><span class="n">MenuEntry</span><span class="o">&gt;*</span><span class="p">);</span>
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">activate</span><span class="p">)(</span><span class="n">VRef</span><span class="o">&lt;</span><span class="n">MenuVTable</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">MenuEntry</span><span class="o">*</span><span class="p">);</span>
-<span class="w">    </span><span class="n">Layout</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">drop_in_place</span><span class="p">)(</span><span class="n">VRefMut</span><span class="o">&lt;</span><span class="n">MenuVTable</span><span class="o">&gt;</span><span class="p">);</span>
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">dealloc</span><span class="p">)(</span><span class="k">const</span><span class="w"> </span><span class="n">MenuVTable</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">ptr</span><span class="p">,</span><span class="w"> </span><span class="n">Layout</span><span class="w"> </span><span class="n">layout</span><span class="p">);</span>
 <span class="p">};</span>
 
 <span class="k">struct</span><span class="w"> </span><span class="nc">RepeaterInstanceOpsVTable</span><span class="w"> </span><span class="p">{</span>
@@ -1612,6 +1632,14 @@
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">slint_maybe_key_binding_list_free</span><span class="p">(</span><span class="n">MaybeKeyBindingList</span><span class="w"> </span><span class="o">*</span><span class="n">list</span><span class="p">);</span>
 
+<span class="kt">void</span><span class="w"> </span><span class="nf">slint_system_tray_icon_data_init</span><span class="p">(</span><span class="n">SystemTrayIconDataBox</span><span class="w"> </span><span class="o">*</span><span class="n">data</span><span class="p">);</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">slint_system_tray_icon_data_free</span><span class="p">(</span><span class="n">SystemTrayIconDataBox</span><span class="w"> </span><span class="o">*</span><span class="n">data</span><span class="p">);</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">slint_system_tray_icon_set_menu</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">SystemTrayIcon</span><span class="w"> </span><span class="o">*</span><span class="n">system_tray</span><span class="p">,</span>
+<span class="w">                                     </span><span class="k">const</span><span class="w"> </span><span class="n">ItemRc</span><span class="w"> </span><span class="o">*</span><span class="n">item_rc</span><span class="p">,</span>
+<span class="w">                                     </span><span class="k">const</span><span class="w"> </span><span class="n">VRc</span><span class="o">&lt;</span><span class="n">MenuVTable</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">menu_vrc</span><span class="p">);</span>
+
 <span class="kt">void</span><span class="w"> </span><span class="nf">slint_organize_grid_layout</span><span class="p">(</span><span class="n">Slice</span><span class="o">&lt;</span><span class="n">GridLayoutInputData</span><span class="o">&gt;</span><span class="w"> </span><span class="n">input_data</span><span class="p">,</span>
 <span class="w">                                </span><span class="n">Slice</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">repeater_indices</span><span class="p">,</span>
 <span class="w">                                </span><span class="n">Slice</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">repeater_steps</span><span class="p">,</span>
@@ -2021,6 +2049,7 @@
 <span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">Layer</span><span class="p">);</span>
 <span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">ContextMenu</span><span class="p">);</span>
 <span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">MenuItem</span><span class="p">);</span>
+<span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">SystemTrayIcon</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="cp">#undef SLINT_DECL_ITEM</span>

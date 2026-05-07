@@ -49,6 +49,8 @@ Enums
 -----
 
 
+- :ref:`exhale_enum_namespaceslint_1a69f72f940f7266dd0c5be75d8d820c62`
+
 - :ref:`exhale_enum_namespaceslint_1a43d65cb829bc6478686e05d79b4f6c31`
 
 - :ref:`exhale_enum_namespaceslint_1a88e5489a21965b1a271bf90ee12f1c6e`

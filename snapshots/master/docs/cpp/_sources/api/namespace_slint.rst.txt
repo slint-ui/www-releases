@@ -97,6 +97,8 @@ Enums
 -----
 
 
+- :ref:`exhale_enum_namespaceslint_1a69f72f940f7266dd0c5be75d8d820c62`
+
 - :ref:`exhale_enum_namespaceslint_1abb2b0aa4769a501e7cdeaccae964a64c`
 
 - :ref:`exhale_enum_namespaceslint_1a8bec56d112d5490780fa52c77326d290`

@@ -100,6 +100,7 @@ Program Listing for File slint_internal.h
        ItemSelectable,
        ItemSelected,
        Label,
+       Live,
        Orientation,
        PlaceholderText,
        ReadOnly,
@@ -138,6 +139,8 @@ Program Listing for File slint_internal.h
    
    template<typename T = void>
    struct Option;
+   
+   struct SystemTrayIconData;
    
    using VisitChildrenResult = uint64_t;
    constexpr static const VisitChildrenResult VisitChildrenResult_CONTINUE = UINT64_MAX;
@@ -505,6 +508,29 @@ Program Listing for File slint_internal.h
        const KeyBindingList *_0;
    };
    
+   struct SystemTrayIconDataBox {
+   struct SystemTrayIconData;
+       SystemTrayIconData *_0;
+   };
+   
+   struct SystemTrayIcon {
+       Property<Image> icon;
+       Property<SharedString> tooltip;
+       Property<SharedString> title;
+       Property<bool> visible;
+       private_api::CallbackHelper<void> activated;
+       CachedRenderingData cached_rendering_data;
+       SystemTrayIconDataBox data;
+       inline SystemTrayIcon(); inline ~SystemTrayIcon();
+   };
+   
+   struct MenuVTable {
+       void (*sub_menu)(VRef<MenuVTable>, const MenuEntry*, SharedVector<MenuEntry>*);
+       void (*activate)(VRef<MenuVTable>, const MenuEntry*);
+       Layout (*drop_in_place)(VRefMut<MenuVTable>);
+       void (*dealloc)(const MenuVTable*, uint8_t *ptr, Layout layout);
+   };
+   
    struct GridLayoutInputData {
        bool new_row;
        float col;
@@ -569,13 +595,6 @@ Program Listing for File slint_internal.h
        FlexboxLayoutWrap flex_wrap;
        Slice<FlexboxLayoutItemInfo> cells_h;
        Slice<FlexboxLayoutItemInfo> cells_v;
-   };
-   
-   struct MenuVTable {
-       void (*sub_menu)(VRef<MenuVTable>, const MenuEntry*, SharedVector<MenuEntry>*);
-       void (*activate)(VRef<MenuVTable>, const MenuEntry*);
-       Layout (*drop_in_place)(VRefMut<MenuVTable>);
-       void (*dealloc)(const MenuVTable*, uint8_t *ptr, Layout layout);
    };
    
    struct RepeaterInstanceOpsVTable {
@@ -1128,6 +1147,14 @@ Program Listing for File slint_internal.h
    
    void slint_maybe_key_binding_list_free(MaybeKeyBindingList *list);
    
+   void slint_system_tray_icon_data_init(SystemTrayIconDataBox *data);
+   
+   void slint_system_tray_icon_data_free(SystemTrayIconDataBox *data);
+   
+   void slint_system_tray_icon_set_menu(const SystemTrayIcon *system_tray,
+                                        const ItemRc *item_rc,
+                                        const VRc<MenuVTable> *menu_vrc);
+   
    void slint_organize_grid_layout(Slice<GridLayoutInputData> input_data,
                                    Slice<uint32_t> repeater_indices,
                                    Slice<uint32_t> repeater_steps,
@@ -1537,6 +1564,7 @@ Program Listing for File slint_internal.h
    SLINT_DECL_ITEM(Layer);
    SLINT_DECL_ITEM(ContextMenu);
    SLINT_DECL_ITEM(MenuItem);
+   SLINT_DECL_ITEM(SystemTrayIcon);
    }
    
    #undef SLINT_DECL_ITEM

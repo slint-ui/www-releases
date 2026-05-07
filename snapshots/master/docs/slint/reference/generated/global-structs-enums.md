@@ -14,6 +14,7 @@ import Size from "/src/content/docs/reference/generated/structs/Size.md"
 import StandardListViewItem from "/src/content/docs/reference/generated/structs/StandardListViewItem.md"
 import TableColumn from "/src/content/docs/reference/generated/structs/TableColumn.md"
 
+import AccessibleLive from "/src/content/docs/reference/generated/enums/AccessibleLive.md"
 import AccessibleRole from "/src/content/docs/reference/generated/enums/AccessibleRole.md"
 import AnimationDirection from "/src/content/docs/reference/generated/enums/AnimationDirection.md"
 import ColorScheme from "/src/content/docs/reference/generated/enums/ColorScheme.md"
@@ -87,6 +88,9 @@ import TextWrap from "/src/content/docs/reference/generated/enums/TextWrap.md"
 <TableColumn />
 
 ## Enums
+
+### AccessibleLive
+<AccessibleLive />
 
 ### AccessibleRole
 <AccessibleRole />

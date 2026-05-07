@@ -196,6 +196,7 @@ Program Listing for File slint_enums_internal.h
        EndClosed,
    };
    using slint::testing::AccessibleRole;
+   using slint::AccessibleLive;
    enum class SortOrder {
        Unsorted,
        Ascending,

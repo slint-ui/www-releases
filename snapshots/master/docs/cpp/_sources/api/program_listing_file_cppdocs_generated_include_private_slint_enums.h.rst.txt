@@ -45,6 +45,11 @@ Program Listing for File slint_enums.h
        RadioButton,
    };
    }
+   enum class AccessibleLive {
+       Off,
+       Polite,
+       Assertive,
+   };
    enum class Orientation {
        Horizontal,
        Vertical,
