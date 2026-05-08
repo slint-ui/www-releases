@@ -238,6 +238,8 @@
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1interpreter_1_1Struct_1_1iterator.html">Struct Struct::iterator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1language_1_1KeyboardModifiers.html">Struct KeyboardModifiers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1language_1_1KeyEvent.html">Struct KeyEvent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="structslint_1_1language_1_1PointerEvent.html">Struct PointerEvent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="structslint_1_1language_1_1PointerScrollEvent.html">Struct PointerScrollEvent</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1language_1_1StandardListViewItem.html">Struct StandardListViewItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1LogicalPosition.html">Struct LogicalPosition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1LogicalSize.html">Struct LogicalSize</a></li>
@@ -291,6 +293,7 @@
 <li class="toctree-l2"><a class="reference internal" href="enum_namespaceslint_1_1interpreter_1a6221319f778c7369e1b76672690926e0.html">Enum ValueType</a></li>
 <li class="toctree-l2"><a class="reference internal" href="enum_namespaceslint_1a43d65cb829bc6478686e05d79b4f6c31.html">Enum Orientation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="enum_namespaceslint_1a88e5489a21965b1a271bf90ee12f1c6e.html">Enum PointerEventButton</a></li>
+<li class="toctree-l2"><a class="reference internal" href="enum_namespaceslint_1a9ddf8a9e84d7f1f562c2aa1fc364eda1.html">Enum PointerEventKind</a></li>
 <li class="toctree-l2"><a class="reference internal" href="enum_namespaceslint_1aa9bda1bcc95bc66d8afd7b1a4aa8c4af.html">Enum RenderingState</a></li>
 <li class="toctree-l2"><a class="reference internal" href="enum_namespaceslint_1a435dcad112c13fd7fefb2de66e83d1b1.html">Enum SetRenderingNotifierError</a></li>
 <li class="toctree-l2"><a class="reference internal" href="enum_namespaceslint_1_1testing_1a4de74a3a436a7a3fd9a228930f69274d.html">Enum AccessibleRole</a></li>
@@ -505,21 +508,8 @@
 <span class="k">namespace</span><span class="w"> </span><span class="nn">slint</span><span class="o">::</span><span class="nn">cbindgen_private</span><span class="w"> </span><span class="p">{</span>
 <span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">KeyEventType</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">uint8_t</span><span class="p">;</span>
 <span class="k">using</span><span class="w"> </span><span class="n">slint</span><span class="o">::</span><span class="n">language</span><span class="o">::</span><span class="n">KeyboardModifiers</span><span class="p">;</span>
-<span class="k">struct</span><span class="w"> </span><span class="nc">PointerEvent</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">PointerEventButton</span><span class="w"> </span><span class="n">button</span><span class="p">;</span>
-<span class="w">    </span><span class="n">PointerEventKind</span><span class="w"> </span><span class="n">kind</span><span class="p">;</span>
-<span class="w">    </span><span class="n">KeyboardModifiers</span><span class="w"> </span><span class="n">modifiers</span><span class="p">;</span>
-<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">is_touch</span><span class="p">;</span>
-<span class="w">    </span><span class="k">friend</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="k">operator</span><span class="o">==</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">PointerEvent</span><span class="o">&amp;</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">PointerEvent</span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span>
-<span class="w">    </span><span class="k">friend</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="k">operator</span><span class="o">!=</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">PointerEvent</span><span class="o">&amp;</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">PointerEvent</span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span>
-<span class="p">};</span>
-<span class="k">struct</span><span class="w"> </span><span class="nc">PointerScrollEvent</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">delta_x</span><span class="p">;</span>
-<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">delta_y</span><span class="p">;</span>
-<span class="w">    </span><span class="n">KeyboardModifiers</span><span class="w"> </span><span class="n">modifiers</span><span class="p">;</span>
-<span class="w">    </span><span class="k">friend</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="k">operator</span><span class="o">==</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">PointerScrollEvent</span><span class="o">&amp;</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">PointerScrollEvent</span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span>
-<span class="w">    </span><span class="k">friend</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="k">operator</span><span class="o">!=</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">PointerScrollEvent</span><span class="o">&amp;</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">PointerScrollEvent</span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span>
-<span class="p">};</span>
+<span class="k">using</span><span class="w"> </span><span class="n">slint</span><span class="o">::</span><span class="n">language</span><span class="o">::</span><span class="n">PointerEvent</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="n">slint</span><span class="o">::</span><span class="n">language</span><span class="o">::</span><span class="n">PointerScrollEvent</span><span class="p">;</span>
 <span class="k">using</span><span class="w"> </span><span class="n">slint</span><span class="o">::</span><span class="n">language</span><span class="o">::</span><span class="n">KeyEvent</span><span class="p">;</span>
 <span class="k">struct</span><span class="w"> </span><span class="nc">DropEvent</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">SharedString</span><span class="w"> </span><span class="n">mime_type</span><span class="p">;</span>

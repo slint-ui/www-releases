@@ -12,6 +12,7 @@ Program Listing for File slint_builtin_structs.h
 
    #pragma once
    // This file is auto-generated from xtask/src/../../api/cpp/cbindgen.rs
+   #include "private/slint_enums.h"
    namespace slint::language {
    struct KeyboardModifiers {
        bool alt;
@@ -20,6 +21,21 @@ Program Listing for File slint_builtin_structs.h
        bool meta;
        friend bool operator==(const KeyboardModifiers&, const KeyboardModifiers&) = default;
        friend bool operator!=(const KeyboardModifiers&, const KeyboardModifiers&) = default;
+   };
+   struct PointerEvent {
+       PointerEventButton button;
+       PointerEventKind kind;
+       KeyboardModifiers modifiers;
+       int32_t touch_finger_id;
+       friend bool operator==(const PointerEvent&, const PointerEvent&) = default;
+       friend bool operator!=(const PointerEvent&, const PointerEvent&) = default;
+   };
+   struct PointerScrollEvent {
+       float delta_x;
+       float delta_y;
+       KeyboardModifiers modifiers;
+       friend bool operator==(const PointerScrollEvent&, const PointerScrollEvent&) = default;
+       friend bool operator!=(const PointerScrollEvent&, const PointerScrollEvent&) = default;
    };
    struct KeyEvent {
        SharedString text;

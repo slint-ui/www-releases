@@ -489,13 +489,13 @@ Program Listing for File slint_window.h
        {
            private_api::assert_main_thread();
            inner.dispatch_pointer_event(
-                   slint::cbindgen_private::MouseEvent::Pressed({ pos.x, pos.y }, button, 0, false));
+                   slint::cbindgen_private::MouseEvent::Pressed({ pos.x, pos.y }, button, 0, 0));
        }
        void dispatch_pointer_release_event(LogicalPosition pos, PointerEventButton button)
        {
            private_api::assert_main_thread();
            inner.dispatch_pointer_event(
-                   slint::cbindgen_private::MouseEvent::Released({ pos.x, pos.y }, button, 0, false));
+                   slint::cbindgen_private::MouseEvent::Released({ pos.x, pos.y }, button, 0, 0));
        }
        void dispatch_pointer_exit_event()
        {
@@ -507,7 +507,7 @@ Program Listing for File slint_window.h
        {
            private_api::assert_main_thread();
            inner.dispatch_pointer_event(
-                   slint::cbindgen_private::MouseEvent::Moved({ pos.x, pos.y }, false));
+                   slint::cbindgen_private::MouseEvent::Moved({ pos.x, pos.y }, 0));
        }
    
        void dispatch_pointer_scroll_event(LogicalPosition pos, float delta_x, float delta_y,

@@ -236,6 +236,8 @@
 <li class="toctree-l2"><a class="reference internal" href="api/structslint_1_1interpreter_1_1Struct_1_1iterator.html">Struct Struct::iterator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/structslint_1_1language_1_1KeyboardModifiers.html">Struct KeyboardModifiers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/structslint_1_1language_1_1KeyEvent.html">Struct KeyEvent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/structslint_1_1language_1_1PointerEvent.html">Struct PointerEvent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/structslint_1_1language_1_1PointerScrollEvent.html">Struct PointerScrollEvent</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/structslint_1_1language_1_1StandardListViewItem.html">Struct StandardListViewItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/structslint_1_1LogicalPosition.html">Struct LogicalPosition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/structslint_1_1LogicalSize.html">Struct LogicalSize</a></li>
@@ -289,6 +291,7 @@
 <li class="toctree-l2"><a class="reference internal" href="api/enum_namespaceslint_1_1interpreter_1a6221319f778c7369e1b76672690926e0.html">Enum ValueType</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/enum_namespaceslint_1a43d65cb829bc6478686e05d79b4f6c31.html">Enum Orientation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/enum_namespaceslint_1a88e5489a21965b1a271bf90ee12f1c6e.html">Enum PointerEventButton</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/enum_namespaceslint_1a9ddf8a9e84d7f1f562c2aa1fc364eda1.html">Enum PointerEventKind</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/enum_namespaceslint_1aa9bda1bcc95bc66d8afd7b1a4aa8c4af.html">Enum RenderingState</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/enum_namespaceslint_1a435dcad112c13fd7fefb2de66e83d1b1.html">Enum SetRenderingNotifierError</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/enum_namespaceslint_1_1testing_1a4de74a3a436a7a3fd9a228930f69274d.html">Enum AccessibleRole</a></li>
@@ -897,11 +900,29 @@
 </li>
         <li><a href="api/structslint_1_1language_1_1KeyEvent.html#_CPPv4N5slint8language8KeyEvent9modifiersE">language::KeyEvent::modifiers (C++ member)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/structslint_1_1language_1_1KeyEvent.html#_CPPv4N5slint8language8KeyEvent6repeatE">language::KeyEvent::repeat (C++ member)</a>
 </li>
         <li><a href="api/structslint_1_1language_1_1KeyEvent.html#_CPPv4N5slint8language8KeyEvent4textE">language::KeyEvent::text (C++ member)</a>
+</li>
+        <li><a href="api/structslint_1_1language_1_1PointerEvent.html#_CPPv4N5slint8language12PointerEventE">language::PointerEvent (C++ struct)</a>
+</li>
+        <li><a href="api/structslint_1_1language_1_1PointerEvent.html#_CPPv4N5slint8language12PointerEvent6buttonE">language::PointerEvent::button (C++ member)</a>
+</li>
+        <li><a href="api/structslint_1_1language_1_1PointerEvent.html#_CPPv4N5slint8language12PointerEvent4kindE">language::PointerEvent::kind (C++ member)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api/structslint_1_1language_1_1PointerEvent.html#_CPPv4N5slint8language12PointerEvent9modifiersE">language::PointerEvent::modifiers (C++ member)</a>
+</li>
+        <li><a href="api/structslint_1_1language_1_1PointerEvent.html#_CPPv4N5slint8language12PointerEvent15touch_finger_idE">language::PointerEvent::touch_finger_id (C++ member)</a>
+</li>
+        <li><a href="api/structslint_1_1language_1_1PointerScrollEvent.html#_CPPv4N5slint8language18PointerScrollEventE">language::PointerScrollEvent (C++ struct)</a>
+</li>
+        <li><a href="api/structslint_1_1language_1_1PointerScrollEvent.html#_CPPv4N5slint8language18PointerScrollEvent7delta_xE">language::PointerScrollEvent::delta_x (C++ member)</a>
+</li>
+        <li><a href="api/structslint_1_1language_1_1PointerScrollEvent.html#_CPPv4N5slint8language18PointerScrollEvent7delta_yE">language::PointerScrollEvent::delta_y (C++ member)</a>
+</li>
+        <li><a href="api/structslint_1_1language_1_1PointerScrollEvent.html#_CPPv4N5slint8language18PointerScrollEvent9modifiersE">language::PointerScrollEvent::modifiers (C++ member)</a>
 </li>
         <li><a href="api/structslint_1_1language_1_1StandardListViewItem.html#_CPPv4N5slint8language20StandardListViewItemE">language::StandardListViewItem (C++ struct)</a>
 </li>
@@ -1131,14 +1152,14 @@
 </li>
         <li><a href="api/classslint_1_1platform_1_1SoftwareRenderer.html#_CPPv4N5slint8platform16SoftwareRenderer14PhysicalRegion4Rect4sizeE">platform::SoftwareRenderer::PhysicalRegion::Rect::size (C++ member)</a>, <a href="api/structslint_1_1platform_1_1SoftwareRenderer_1_1PhysicalRegion.html#_CPPv4N5slint8platform16SoftwareRenderer14PhysicalRegion4Rect4sizeE">[1]</a>, <a href="api/structslint_1_1platform_1_1SoftwareRenderer_1_1PhysicalRegion_1_1Rect.html#_CPPv4N5slint8platform16SoftwareRenderer14PhysicalRegion4Rect4sizeE">[2]</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/classslint_1_1platform_1_1SoftwareRenderer.html#_CPPv4NK5slint8platform16SoftwareRenderer14PhysicalRegion10rectanglesEv">platform::SoftwareRenderer::PhysicalRegion::rectangles (C++ function)</a>, <a href="api/structslint_1_1platform_1_1SoftwareRenderer_1_1PhysicalRegion.html#_CPPv4NK5slint8platform16SoftwareRenderer14PhysicalRegion10rectanglesEv">[1]</a>
 </li>
         <li><a href="api/classslint_1_1platform_1_1SoftwareRenderer.html#_CPPv4NK5slint8platform16SoftwareRenderer6renderENSt4spanI11Rgb565PixelEENSt6size_tE">platform::SoftwareRenderer::render (C++ function)</a>, <a href="api/classslint_1_1platform_1_1SoftwareRenderer.html#_CPPv4NK5slint8platform16SoftwareRenderer6renderENSt4spanIN5slint9Rgb8PixelEEENSt6size_tE">[1]</a>, <a href="api/classslint_1_1platform_1_1SoftwareRenderer.html#_CPPv4NK5slint8platform16SoftwareRenderer6renderEP17TargetPixelBufferI11Rgb565PixelE">[2]</a>, <a href="api/classslint_1_1platform_1_1SoftwareRenderer.html#_CPPv4NK5slint8platform16SoftwareRenderer6renderEP17TargetPixelBufferI9Rgb8PixelE">[3]</a>
 </li>
         <li><a href="api/classslint_1_1platform_1_1SoftwareRenderer.html#_CPPv4I00ENK5slint8platform16SoftwareRenderer14render_by_lineE14PhysicalRegion8Callback">platform::SoftwareRenderer::render_by_line (C++ function)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/classslint_1_1platform_1_1SoftwareRenderer.html#_CPPv4N5slint8platform16SoftwareRenderer17RenderingRotationE">platform::SoftwareRenderer::RenderingRotation (C++ enum)</a>
 </li>
         <li><a href="api/classslint_1_1platform_1_1SoftwareRenderer.html#_CPPv4N5slint8platform16SoftwareRenderer17RenderingRotation10NoRotationE">platform::SoftwareRenderer::RenderingRotation::NoRotation (C++ enumerator)</a>
@@ -1248,6 +1269,16 @@
         <li><a href="api/enum_namespaceslint_1a88e5489a21965b1a271bf90ee12f1c6e.html#_CPPv4N5slint18PointerEventButton5OtherE">PointerEventButton::Other (C++ enumerator)</a>
 </li>
         <li><a href="api/enum_namespaceslint_1a88e5489a21965b1a271bf90ee12f1c6e.html#_CPPv4N5slint18PointerEventButton5RightE">PointerEventButton::Right (C++ enumerator)</a>
+</li>
+        <li><a href="api/enum_namespaceslint_1a9ddf8a9e84d7f1f562c2aa1fc364eda1.html#_CPPv4N5slint16PointerEventKindE">PointerEventKind (C++ enum)</a>
+</li>
+        <li><a href="api/enum_namespaceslint_1a9ddf8a9e84d7f1f562c2aa1fc364eda1.html#_CPPv4N5slint16PointerEventKind6CancelE">PointerEventKind::Cancel (C++ enumerator)</a>
+</li>
+        <li><a href="api/enum_namespaceslint_1a9ddf8a9e84d7f1f562c2aa1fc364eda1.html#_CPPv4N5slint16PointerEventKind4DownE">PointerEventKind::Down (C++ enumerator)</a>
+</li>
+        <li><a href="api/enum_namespaceslint_1a9ddf8a9e84d7f1f562c2aa1fc364eda1.html#_CPPv4N5slint16PointerEventKind4MoveE">PointerEventKind::Move (C++ enumerator)</a>
+</li>
+        <li><a href="api/enum_namespaceslint_1a9ddf8a9e84d7f1f562c2aa1fc364eda1.html#_CPPv4N5slint16PointerEventKind2UpE">PointerEventKind::Up (C++ enumerator)</a>
 </li>
         <li><a href="api/structslint_1_1interpreter_1_1PropertyDescriptor.html#_CPPv4N5slint11interpreter18PropertyDescriptorE">PropertyDescriptor (C++ struct)</a>
 </li>

@@ -94,7 +94,7 @@ export component StringToFloat {
 ### styled-text
 <SlintProperty propName="styled-text" typeName="styled-text" defaultValue='""'>
 
-A property that is used with the [StyledText element](/master/docs/slint/reference/generated/elements/styled-text.md).
+A property that is used with the [StyledText element](/master/docs/slint/reference/elements/styledtext.md).
 
 Create styled text with the `@markdown()` macro. For example: `@markdown("Hello **Bold**")`.
 
@@ -279,7 +279,7 @@ export component Example inherits Window {
 }
 ```
 
-See also the [Image element](/master/docs/slint/reference/generated/elements/image.md).
+See also the [Image element](/master/docs/slint/reference/elements/image.md).
 
 </SlintProperty>
 

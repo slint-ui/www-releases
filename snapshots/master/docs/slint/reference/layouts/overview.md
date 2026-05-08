@@ -11,12 +11,12 @@ These properties are valid on all visible items and can be used to specify const
 
 ### col, row
 <SlintProperty propName="col, row" typeName="int" default="0">
-See [GridLayout](/master/docs/slint/reference/generated/layouts/grid-layout.md).
+See [GridLayout](/master/docs/slint/reference/layouts/gridlayout.md).
 </SlintProperty>
 
 ### colspan, rowspan
 <SlintProperty propName="colspan, rowspan" typeName="int">
-See [GridLayout](/master/docs/slint/reference/generated/layouts/grid-layout.md).
+See [GridLayout](/master/docs/slint/reference/layouts/gridlayout.md).
 </SlintProperty>
 
 ### horizontal-stretch, vertical-stretch

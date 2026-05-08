@@ -13,6 +13,12 @@ Program Listing for File slint_enums.h
    #pragma once
    // This file is auto-generated from xtask/src/../../api/cpp/cbindgen.rs
    namespace slint {
+   enum class PointerEventKind {
+       Cancel,
+       Down,
+       Up,
+       Move,
+   };
    enum class PointerEventButton {
        Other,
        Left,

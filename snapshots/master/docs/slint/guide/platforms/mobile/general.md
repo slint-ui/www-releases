@@ -55,7 +55,7 @@ border inside the application's window which should only contain background elem
 color). This safe area can also change in size at runtime, for example on Android when the navigation buttons at the
 bottom are shown and hidden.
 
-In Slint, this area is exposed with the [Window.safe-area-insets](/master/docs/slint/reference/generated/window/window.md#safe-area-insets) property on the [Window](/master/docs/slint/reference/generated/window/window.md) element.
+In Slint, this area is exposed with the [Window.safe-area-insets](/master/docs/slint/reference/window/window.md#safe-area-insets) property on the [Window](/master/docs/slint/reference/window/window.md) element.
 
 If you want to place a rectangle to visualize the safe area, for example for debugging, you can do it like this:
 
@@ -85,10 +85,10 @@ The virtual keyboard is placed on top of the application that requires text inpu
 space even further. While there are split keyboards, floating keyboards, and more, operating systems always treat the
 virtual keyboard as a single rectangle overlaying the application window.
 
-The way Slint exposes this is by these two properties defining a rectangle on the [Window](/master/docs/slint/reference/generated/window/window.md) element:
+The way Slint exposes this is by these two properties defining a rectangle on the [Window](/master/docs/slint/reference/window/window.md) element:
 
-* [Window.virtual-keyboard-position](/master/docs/slint/reference/generated/window/window.md#virtual-keyboard-position)
-* [Window.virtual-keyboard-size](/master/docs/slint/reference/generated/window/window.md#virtual-keyboard-size)
+* [Window.virtual-keyboard-position](/master/docs/slint/reference/window/window.md#virtual-keyboard-position)
+* [Window.virtual-keyboard-size](/master/docs/slint/reference/window/window.md#virtual-keyboard-size)
 
 Slint calls on the operating system to open and hide the virtual keyboard transparently when focusing a text input element.
 The operating system decides whether to actually show it, which depends on system settings and whether a hardware keyboard
@@ -120,7 +120,7 @@ Slint can automatically handle this by scrolling, but the application has to be 
 work.
 
 When the keyboard is shown, the element currently in focus tries to stay visible. It does that by searching for a
-scrollable area ([Flickable](/master/docs/slint/reference/generated/gestures/flickable.md)) in its parent element chain (up to the window). If it finds one, that area is
+scrollable area ([Flickable](/master/docs/slint/reference/gestures/flickable.md)) in its parent element chain (up to the window). If it finds one, that area is
 instructed to scroll in a way that it doesn't overlap the keyboard with the minimal offset possible. The bounds check
 of the scroll area is reduced by the overlap with the keyboard, which means that the area can be scrolled further than
 normal. This overscroll is automatically fixed when the keyboard is hidden again.

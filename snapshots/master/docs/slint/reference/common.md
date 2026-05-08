@@ -250,7 +250,7 @@ will still take up layout space within any layout container.
 A common issue is that in a UI with many nested components it's useful to know their (x,y)position relative to
 the main window or screen. This convenience property gives easy read only access to that value.
 
-It represents a point specifying the absolute position within the enclosing [Window](/master/docs/slint/reference/generated/window/window.md) or [PopupWindow](/master/docs/slint/reference/generated/window/popup-window.md).
+It represents a point specifying the absolute position within the enclosing [Window](/master/docs/slint/reference/window/window.md) or [PopupWindow](/master/docs/slint/reference/window/popupwindow.md).
 It defines coordinates (x,y) relative to the enclosing Window or PopupWindow, but the reference frame is unspecified
 (could be screen, window, or popup coordinates).
 </SlintProperty>

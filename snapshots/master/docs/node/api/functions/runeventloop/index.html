@@ -178,7 +178,7 @@ You are viewing contents of an older version. Switch to <a href="https://docs.sl
 </div>   <div class="content-panel astro-4r574wmc"> <div class="sl-container astro-4r574wmc"> <h1 id="_top" class="astro-7wrulwsq">runEventLoop</h1> </div> </div> <div class="content-panel astro-4r574wmc"> <div class="sl-container astro-4r574wmc"> <div class="sl-markdown-content"> <blockquote>
 <p><strong>runEventLoop</strong>(<code dir="auto">args?</code>): <code dir="auto">Promise</code>&#x3C;<code dir="auto">unknown</code>></p>
 </blockquote>
-<p>Defined in: <a href="https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L771" target="_blank" rel="noopener">api/node/typescript/index.ts:771<span> ↗</span></a></p>
+<p>Defined in: <a href="https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L807" target="_blank" rel="noopener">api/node/typescript/index.ts:807<span> ↗</span></a></p>
 <p>Spins the Slint event loop and returns a promise that resolves when the loop terminates.</p>
 <p>If the event loop is already running, then this function returns the same promise as from
 the earlier invocation.</p>
@@ -198,11 +198,14 @@ and the last visible system tray icon is hidden; otherwise it runs until
 <a href="/master/docs/node/api/functions/quiteventloop/">quitEventLoop</a> is called. A visible SystemTrayIcon keeps the loop alive
 on its own under the default, so set this to <code dir="auto">false</code> only when an
 application must run without any visible UI. (default true).</p>
-<p>Note that the event loop integration with Node.js is slightly imperfect. Due to conflicting
-implementation details between Slint’s and Node.js’ event loop, the two loops are merged
-by spinning one after the other, at 16 millisecond intervals. This means that when the
-application is idle, it continues to consume a low amount of CPU cycles, checking if either
-event loop has any pending events.</p>
+<p>On Linux and macOS with Node.js,
+Slint uses an efficient event loop integration that watches libuv’s backend
+file descriptor from a background thread.
+This provides zero idle CPU usage and near-instant response to both UI and
+JavaScript events.</p>
+<p>On Windows and other runtimes (Deno),
+the integration falls back to polling at 16 millisecond intervals,
+which consumes a small amount of CPU when idle.</p>
 <div class="sl-heading-wrapper level-h5"><h5 id="runningcallback">runningCallback?</h5><a class="sl-anchor-link" href="#runningcallback"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “runningCallback?”</span></a></div>
 <p><code dir="auto">Function</code></p>
 <p>Optional callback that’s invoked once when the event loop is running.

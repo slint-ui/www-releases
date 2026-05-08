@@ -12,7 +12,7 @@ encoded in a string.
 Use the [`Key` namespace](#key-namespace) to identify known named keys.
 
 See the [Key Bindings](#key-bindings) section for how to handle key bindings declaratively with
-Slint's [KeyBinding](/master/docs/slint/reference/generated/keyboard-input/focus-scope.md#keybinding) elements and the built-in [keys](/master/docs/slint/reference/primitive-types.md#keys) type, which is constructed from the `@keys` macro.
+Slint's [KeyBinding](/master/docs/slint/reference/keyboard-input/focusscope.md#keybinding) elements and the built-in [keys](/master/docs/slint/reference/primitive-types.md#keys) type, which is constructed from the `@keys` macro.
 
 ## KeyEvent
 
@@ -24,7 +24,7 @@ Slint's [KeyBinding](/master/docs/slint/reference/generated/keyboard-input/focus
 
 ## Key Bindings
 
-Use the [KeyBinding element](/master/docs/slint/reference/generated/keyboard-input/focus-scope.md#keybinding) inside a `FocusScope` to declare key bindings (or keyboard shortcuts).
+Use the [KeyBinding element](/master/docs/slint/reference/keyboard-input/focusscope.md#keybinding) inside a `FocusScope` to declare key bindings (or keyboard shortcuts).
 The `KeyBinding`'s `keys` property takes an instance of the [keys type](/master/docs/slint/reference/primitive-types.md#keys) and invokes the `activated` callback when the key combination is detected.
 
 The `keys` type represents a key, combined with modifiers and is constructed with the `@keys` macro.

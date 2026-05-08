@@ -20,21 +20,8 @@ Program Listing for File slint_builtin_structs_internal.h
    namespace slint::cbindgen_private {
    enum class KeyEventType : uint8_t;
    using slint::language::KeyboardModifiers;
-   struct PointerEvent {
-       PointerEventButton button;
-       PointerEventKind kind;
-       KeyboardModifiers modifiers;
-       bool is_touch;
-       friend bool operator==(const PointerEvent&, const PointerEvent&) = default;
-       friend bool operator!=(const PointerEvent&, const PointerEvent&) = default;
-   };
-   struct PointerScrollEvent {
-       float delta_x;
-       float delta_y;
-       KeyboardModifiers modifiers;
-       friend bool operator==(const PointerScrollEvent&, const PointerScrollEvent&) = default;
-       friend bool operator!=(const PointerScrollEvent&, const PointerScrollEvent&) = default;
-   };
+   using slint::language::PointerEvent;
+   using slint::language::PointerScrollEvent;
    using slint::language::KeyEvent;
    struct DropEvent {
        SharedString mime_type;

@@ -76,12 +76,7 @@ Program Listing for File slint_enums_internal.h
        PopupActivation,
        WindowActivation,
    };
-   enum class PointerEventKind {
-       Cancel,
-       Down,
-       Up,
-       Move,
-   };
+   using slint::PointerEventKind;
    using slint::PointerEventButton;
    enum class MouseCursor {
        Default,

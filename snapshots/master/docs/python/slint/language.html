@@ -52,6 +52,45 @@
 
             </li>
             <li>
+                    <a class="class" href="#PointerEvent">PointerEvent</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="function" href="#PointerEvent.__init__">PointerEvent</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PointerEvent.button">button</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PointerEvent.kind">kind</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PointerEvent.modifiers">modifiers</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PointerEvent.touch_finger_id">touch_finger_id</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#PointerScrollEvent">PointerScrollEvent</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="function" href="#PointerScrollEvent.__init__">PointerScrollEvent</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PointerScrollEvent.delta_x">delta_x</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PointerScrollEvent.delta_y">delta_y</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PointerScrollEvent.modifiers">modifiers</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
                     <a class="class" href="#KeyEvent">KeyEvent</a>
                             <ul class="memberlist">
                         <li>
@@ -185,6 +224,157 @@
     <a class="headerlink" href="#KeyboardModifiers.meta"></a>
     
             <div class="docstring"><p>Indicates the Control key on macos, and the Windows key on Windows.</p>
+</div>
+
+
+                            </div>
+                </section>
+                <section id="PointerEvent">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">PointerEvent</span><wbr>(<span class="base">builtins.tuple</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#PointerEvent"></a>
+    
+            <div class="docstring"><p>Represents a Pointer event sent by the windowing system.
+ This structure is passed to the <code>pointer-event</code> callback of the <code>TouchArea</code> element.</p>
+</div>
+
+
+                            <div id="PointerEvent.__init__" class="classattr">
+                                <div class="attr function">
+            
+        <span class="name">PointerEvent</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">button</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">kind</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">modifiers</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">touch_finger_id</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span></span>)</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PointerEvent.__init__"></a>
+    
+            <div class="docstring"><p>Create new instance of PointerEvent(button, kind, modifiers, touch_finger_id)</p>
+</div>
+
+
+                            </div>
+                            <div id="PointerEvent.button" class="classattr">
+                                <div class="attr variable">
+            <span class="name">button</span><span class="annotation">: Any</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PointerEvent.button"></a>
+    
+            <div class="docstring"><p>The button that was pressed or released</p>
+</div>
+
+
+                            </div>
+                            <div id="PointerEvent.kind" class="classattr">
+                                <div class="attr variable">
+            <span class="name">kind</span><span class="annotation">: Any</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PointerEvent.kind"></a>
+    
+            <div class="docstring"><p>The kind of the event</p>
+</div>
+
+
+                            </div>
+                            <div id="PointerEvent.modifiers" class="classattr">
+                                <div class="attr variable">
+            <span class="name">modifiers</span><span class="annotation">: Any</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PointerEvent.modifiers"></a>
+    
+            <div class="docstring"><p>The keyboard modifiers pressed during the event</p>
+</div>
+
+
+                            </div>
+                            <div id="PointerEvent.touch_finger_id" class="classattr">
+                                <div class="attr variable">
+            <span class="name">touch_finger_id</span><span class="annotation">: int</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PointerEvent.touch_finger_id"></a>
+    
+            <div class="docstring"><p>The unique ID of the touch point, indicating the finger ID. 0 means it's not a touch event (e.g., mouse).</p>
+</div>
+
+
+                            </div>
+                </section>
+                <section id="PointerScrollEvent">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">PointerScrollEvent</span><wbr>(<span class="base">builtins.tuple</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#PointerScrollEvent"></a>
+    
+            <div class="docstring"><p>Represents a Pointer scroll (or wheel) event sent by the windowing system.
+ This structure is passed to the <code>scroll-event</code> callback of the <code>TouchArea</code> element.</p>
+</div>
+
+
+                            <div id="PointerScrollEvent.__init__" class="classattr">
+                                <div class="attr function">
+            
+        <span class="name">PointerScrollEvent</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">delta_x</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span>, </span><span class="param"><span class="n">delta_y</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span>, </span><span class="param"><span class="n">modifiers</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="kc">None</span></span>)</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PointerScrollEvent.__init__"></a>
+    
+            <div class="docstring"><p>Create new instance of PointerScrollEvent(delta_x, delta_y, modifiers)</p>
+</div>
+
+
+                            </div>
+                            <div id="PointerScrollEvent.delta_x" class="classattr">
+                                <div class="attr variable">
+            <span class="name">delta_x</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PointerScrollEvent.delta_x"></a>
+    
+            <div class="docstring"><p>The amount of pixel in the horizontal direction</p>
+</div>
+
+
+                            </div>
+                            <div id="PointerScrollEvent.delta_y" class="classattr">
+                                <div class="attr variable">
+            <span class="name">delta_y</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PointerScrollEvent.delta_y"></a>
+    
+            <div class="docstring"><p>The amount of pixel in the vertical direction</p>
+</div>
+
+
+                            </div>
+                            <div id="PointerScrollEvent.modifiers" class="classattr">
+                                <div class="attr variable">
+            <span class="name">modifiers</span><span class="annotation">: Any</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PointerScrollEvent.modifiers"></a>
+    
+            <div class="docstring"><p>The keyboard modifiers pressed during the event</p>
 </div>
 
 

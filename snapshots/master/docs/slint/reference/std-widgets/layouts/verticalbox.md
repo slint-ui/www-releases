@@ -4,5 +4,5 @@ description: "VerticalBox - a VerticalLayout with theme-appropriate spacing and 
 ---
 import Link from '@slint/common-files/src/components/Link.astro';
 
-A `VerticalBox` is a [VerticalLayout](/master/docs/slint/reference/generated/layouts/vertical-layout.md) with default `padding` and `spacing` from [StyleMetrics](/master/docs/slint/reference/std-widgets/globals/stylemetrics.md),
+A `VerticalBox` is a [VerticalLayout](/master/docs/slint/reference/layouts/verticallayout.md) with default `padding` and `spacing` from [StyleMetrics](/master/docs/slint/reference/std-widgets/globals/stylemetrics.md),
 providing theme-appropriate values. Use `VerticalLayout` directly when you need full control over spacing and padding.

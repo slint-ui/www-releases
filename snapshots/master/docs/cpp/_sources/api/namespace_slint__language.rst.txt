@@ -14,4 +14,8 @@ Classes
 
 - :ref:`exhale_struct_structslint_1_1language_1_1KeyEvent`
 
+- :ref:`exhale_struct_structslint_1_1language_1_1PointerEvent`
+
+- :ref:`exhale_struct_structslint_1_1language_1_1PointerScrollEvent`
+
 - :ref:`exhale_struct_structslint_1_1language_1_1StandardListViewItem`

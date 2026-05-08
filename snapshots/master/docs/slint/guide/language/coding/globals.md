@@ -108,7 +108,7 @@ app.Logic.the_value = 42
 </Tabs>
 
 :::note[Note]
-Global singletons aren't shared between separate windows, or between a window and a [SystemTrayIcon](/master/docs/slint/reference/generated/window/system-tray-icon.md) exported alongside it.
+Global singletons aren't shared between separate windows, or between a window and a [SystemTrayIcon](/master/docs/slint/reference/window/systemtrayicon.md) exported alongside it.
 You may need to initialize the global callbacks and properties for each instance you create.
 :::
 
