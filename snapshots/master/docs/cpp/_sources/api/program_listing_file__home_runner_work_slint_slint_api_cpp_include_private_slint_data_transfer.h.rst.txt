@@ -1,0 +1,36 @@
+
+.. _program_listing_file__home_runner_work_slint_slint_api_cpp_include_private_slint_data_transfer.h:
+
+Program Listing for File slint_data_transfer.h
+==============================================
+
+|exhale_lsh| :ref:`Return to documentation for file <file__home_runner_work_slint_slint_api_cpp_include_private_slint_data_transfer.h>` (``/home/runner/work/slint/slint/api/cpp/include/private/slint_data_transfer.h``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   // Copyright © SixtyFPS GmbH <info@slint.dev>
+   // SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0
+   
+   #pragma once
+   
+   #include "private/slint_image_internal.h"
+   #include "private/slint_data_transfer_internal.h"
+   
+   namespace slint {
+   struct DataTransfer
+   {
+   public:
+       DataTransfer() = default;
+   
+       explicit DataTransfer(const SharedString &string) { (void)string; }
+   
+       explicit DataTransfer(const Image &image) { (void)image; }
+   
+       friend bool operator==(const DataTransfer &a, const DataTransfer &b) = default;
+   
+   private:
+       cbindgen_private::types::DataTransferOpaque _inner;
+   };
+   }

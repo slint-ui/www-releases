@@ -20,6 +20,7 @@ Files
 - :ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_callbacks.h`
 - :ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_color.h`
 - :ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_config.h`
+- :ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_data_transfer.h`
 - :ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_image.h`
 - :ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_item_tree.h`
 - :ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_keys.h`

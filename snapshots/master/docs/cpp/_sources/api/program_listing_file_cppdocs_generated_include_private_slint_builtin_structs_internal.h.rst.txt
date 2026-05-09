@@ -16,6 +16,7 @@ Program Listing for File slint_builtin_structs_internal.h
    #include "private/slint_enums_internal.h"
    #include "private/slint_point.h"
    #include "private/slint_image.h"
+   #include "private/slint_data_transfer.h"
    #include "private/slint_keys.h"
    namespace slint::cbindgen_private {
    enum class KeyEventType : uint8_t;
@@ -24,8 +25,7 @@ Program Listing for File slint_builtin_structs_internal.h
    using slint::language::PointerScrollEvent;
    using slint::language::KeyEvent;
    struct DropEvent {
-       SharedString mime_type;
-       SharedString data;
+       DataTransfer data;
        LogicalPosition position;
        friend bool operator==(const DropEvent&, const DropEvent&) = default;
        friend bool operator!=(const DropEvent&, const DropEvent&) = default;

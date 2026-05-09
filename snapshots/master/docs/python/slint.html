@@ -90,13 +90,13 @@
                                 <a class="function" href="#Image.load_from_array">load_from_array</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Image.height">height</a>
+                                <a class="variable" href="#Image.size">size</a>
                         </li>
                         <li>
                                 <a class="variable" href="#Image.width">width</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Image.size">size</a>
+                                <a class="variable" href="#Image.height">height</a>
                         </li>
                         <li>
                                 <a class="variable" href="#Image.path">path</a>
@@ -126,13 +126,13 @@
                                 <a class="variable" href="#Color.green">green</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Color.alpha">alpha</a>
-                        </li>
-                        <li>
                                 <a class="variable" href="#Color.red">red</a>
                         </li>
                         <li>
                                 <a class="variable" href="#Color.blue">blue</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Color.alpha">alpha</a>
                         </li>
                 </ul>
 
@@ -166,6 +166,12 @@
             </li>
             <li>
                     <a class="class" href="#Keys">Keys</a>
+                            <ul class="memberlist">
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#DataTransfer">DataTransfer</a>
                             <ul class="memberlist">
                 </ul>
 
@@ -780,7 +786,7 @@ export component AppWindow inherits Window {
 </span><span id="L-17"><a href="#L-17"><span class="linenos"> 17</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
 </span><span id="L-18"><a href="#L-18"><span class="linenos"> 18</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">pathlib</span>
 </span><span id="L-19"><a href="#L-19"><span class="linenos"> 19</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">ListModel</span><span class="p">,</span> <span class="n">Model</span>
-</span><span id="L-20"><a href="#L-20"><span class="linenos"> 20</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">.slint</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">Color</span><span class="p">,</span> <span class="n">Brush</span><span class="p">,</span> <span class="n">Keys</span><span class="p">,</span> <span class="n">Timer</span><span class="p">,</span> <span class="n">TimerMode</span>
+</span><span id="L-20"><a href="#L-20"><span class="linenos"> 20</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">.slint</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">Color</span><span class="p">,</span> <span class="n">Brush</span><span class="p">,</span> <span class="n">Keys</span><span class="p">,</span> <span class="n">DataTransfer</span><span class="p">,</span> <span class="n">Timer</span><span class="p">,</span> <span class="n">TimerMode</span>
 </span><span id="L-21"><a href="#L-21"><span class="linenos"> 21</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">.loop</span><span class="w"> </span><span class="kn">import</span> <span class="n">SlintEventLoop</span>
 </span><span id="L-22"><a href="#L-22"><span class="linenos"> 22</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 </span><span id="L-23"><a href="#L-23"><span class="linenos"> 23</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Coroutine</span>
@@ -1392,17 +1398,18 @@ export component AppWindow inherits Window {
 </span><span id="L-629"><a href="#L-629"><span class="linenos">629</span></a>    <span class="s2">&quot;Color&quot;</span><span class="p">,</span>
 </span><span id="L-630"><a href="#L-630"><span class="linenos">630</span></a>    <span class="s2">&quot;Brush&quot;</span><span class="p">,</span>
 </span><span id="L-631"><a href="#L-631"><span class="linenos">631</span></a>    <span class="s2">&quot;Keys&quot;</span><span class="p">,</span>
-</span><span id="L-632"><a href="#L-632"><span class="linenos">632</span></a>    <span class="s2">&quot;Model&quot;</span><span class="p">,</span>
-</span><span id="L-633"><a href="#L-633"><span class="linenos">633</span></a>    <span class="s2">&quot;ListModel&quot;</span><span class="p">,</span>
-</span><span id="L-634"><a href="#L-634"><span class="linenos">634</span></a>    <span class="s2">&quot;Timer&quot;</span><span class="p">,</span>
-</span><span id="L-635"><a href="#L-635"><span class="linenos">635</span></a>    <span class="s2">&quot;TimerMode&quot;</span><span class="p">,</span>
-</span><span id="L-636"><a href="#L-636"><span class="linenos">636</span></a>    <span class="s2">&quot;set_xdg_app_id&quot;</span><span class="p">,</span>
-</span><span id="L-637"><a href="#L-637"><span class="linenos">637</span></a>    <span class="s2">&quot;callback&quot;</span><span class="p">,</span>
-</span><span id="L-638"><a href="#L-638"><span class="linenos">638</span></a>    <span class="s2">&quot;run_event_loop&quot;</span><span class="p">,</span>
-</span><span id="L-639"><a href="#L-639"><span class="linenos">639</span></a>    <span class="s2">&quot;quit_event_loop&quot;</span><span class="p">,</span>
-</span><span id="L-640"><a href="#L-640"><span class="linenos">640</span></a>    <span class="s2">&quot;init_translations&quot;</span><span class="p">,</span>
-</span><span id="L-641"><a href="#L-641"><span class="linenos">641</span></a>    <span class="s2">&quot;language&quot;</span><span class="p">,</span>
-</span><span id="L-642"><a href="#L-642"><span class="linenos">642</span></a><span class="p">]</span>
+</span><span id="L-632"><a href="#L-632"><span class="linenos">632</span></a>    <span class="s2">&quot;DataTransfer&quot;</span><span class="p">,</span>
+</span><span id="L-633"><a href="#L-633"><span class="linenos">633</span></a>    <span class="s2">&quot;Model&quot;</span><span class="p">,</span>
+</span><span id="L-634"><a href="#L-634"><span class="linenos">634</span></a>    <span class="s2">&quot;ListModel&quot;</span><span class="p">,</span>
+</span><span id="L-635"><a href="#L-635"><span class="linenos">635</span></a>    <span class="s2">&quot;Timer&quot;</span><span class="p">,</span>
+</span><span id="L-636"><a href="#L-636"><span class="linenos">636</span></a>    <span class="s2">&quot;TimerMode&quot;</span><span class="p">,</span>
+</span><span id="L-637"><a href="#L-637"><span class="linenos">637</span></a>    <span class="s2">&quot;set_xdg_app_id&quot;</span><span class="p">,</span>
+</span><span id="L-638"><a href="#L-638"><span class="linenos">638</span></a>    <span class="s2">&quot;callback&quot;</span><span class="p">,</span>
+</span><span id="L-639"><a href="#L-639"><span class="linenos">639</span></a>    <span class="s2">&quot;run_event_loop&quot;</span><span class="p">,</span>
+</span><span id="L-640"><a href="#L-640"><span class="linenos">640</span></a>    <span class="s2">&quot;quit_event_loop&quot;</span><span class="p">,</span>
+</span><span id="L-641"><a href="#L-641"><span class="linenos">641</span></a>    <span class="s2">&quot;init_translations&quot;</span><span class="p">,</span>
+</span><span id="L-642"><a href="#L-642"><span class="linenos">642</span></a>    <span class="s2">&quot;language&quot;</span><span class="p">,</span>
+</span><span id="L-643"><a href="#L-643"><span class="linenos">643</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -1775,15 +1782,15 @@ reflected in a previously created Image.</p>
 
 
                             </div>
-                            <div id="Image.height" class="classattr">
+                            <div id="Image.size" class="classattr">
                                 <div class="attr variable">
-            <span class="name">height</span>
+            <span class="name">size</span>
 
         
     </div>
-    <a class="headerlink" href="#Image.height"></a>
+    <a class="headerlink" href="#Image.size"></a>
     
-            <div class="docstring"><p>The height of the image in pixels.</p>
+            <div class="docstring"><p>The size of the image as tuple of <code><a href="#Image.width">width</a></code> and <code><a href="#Image.height">height</a></code>.</p>
 </div>
 
 
@@ -1801,15 +1808,15 @@ reflected in a previously created Image.</p>
 
 
                             </div>
-                            <div id="Image.size" class="classattr">
+                            <div id="Image.height" class="classattr">
                                 <div class="attr variable">
-            <span class="name">size</span>
+            <span class="name">height</span>
 
         
     </div>
-    <a class="headerlink" href="#Image.size"></a>
+    <a class="headerlink" href="#Image.height"></a>
     
-            <div class="docstring"><p>The size of the image as tuple of <code><a href="#Image.width">width</a></code> and <code><a href="#Image.height">height</a></code>.</p>
+            <div class="docstring"><p>The height of the image in pixels.</p>
 </div>
 
 
@@ -1937,19 +1944,6 @@ is applied to <code>other</code>.</p>
 
 
                             </div>
-                            <div id="Color.alpha" class="classattr">
-                                <div class="attr variable">
-            <span class="name">alpha</span>
-
-        
-    </div>
-    <a class="headerlink" href="#Color.alpha"></a>
-    
-            <div class="docstring"><p>The alpha channel.</p>
-</div>
-
-
-                            </div>
                             <div id="Color.red" class="classattr">
                                 <div class="attr variable">
             <span class="name">red</span>
@@ -1972,6 +1966,19 @@ is applied to <code>other</code>.</p>
     <a class="headerlink" href="#Color.blue"></a>
     
             <div class="docstring"><p>The blue channel.</p>
+</div>
+
+
+                            </div>
+                            <div id="Color.alpha" class="classattr">
+                                <div class="attr variable">
+            <span class="name">alpha</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Color.alpha"></a>
+    
+            <div class="docstring"><p>The alpha channel.</p>
 </div>
 
 
@@ -2123,6 +2130,22 @@ set to <code>alpha</code>.</p>
 
 <p>This is an opaque type. Use <code>str()</code> to get a platform-native representation
 of the key binding (e.g. "Ctrl+A" on Linux/Windows, "⌘A" on macOS).</p>
+</div>
+
+
+                </section>
+                <section id="DataTransfer">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">DataTransfer</span>:
+
+        
+    </div>
+    <a class="headerlink" href="#DataTransfer"></a>
+    
+            <div class="docstring"><p>Python representation of some form of type-indexed possibly-lazy data transfer.
+Used for accessing the platform clipboard and drag-and-drop APIs.</p>
 </div>
 
 

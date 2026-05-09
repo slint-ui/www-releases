@@ -110,6 +110,16 @@ Files
 .. toctree::
    :maxdepth: 5
 
+   file__home_runner_work_slint_slint_api_cpp_include_private_slint_data_transfer.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_cppdocs_generated_include_private_slint_data_transfer_internal.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file_cppdocs_generated_include_private_slint_enums.h.rst
 
 .. toctree::

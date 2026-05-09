@@ -108,7 +108,7 @@ Program Listing for File slint_timer.h
        }
    
    private:
-       uint64_t id = 0;
+       uintptr_t id = 0;
    };
    
    } // namespace slint

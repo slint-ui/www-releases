@@ -230,6 +230,7 @@
 <li class="toctree-l2"><a class="reference internal" href="namespace_slint__platform.html">Namespace slint::platform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="namespace_slint__platform__key_codes.html">Namespace slint::platform::key_codes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="namespace_slint__testing.html">Namespace slint::testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="structslint_1_1DataTransfer.html">Struct DataTransfer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1HsvaColor.html">Struct HsvaColor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1Image.html">Struct Image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1interpreter_1_1Diagnostic.html">Struct Diagnostic</a></li>
@@ -581,6 +582,8 @@
 <span class="kt">void</span><span class="w"> </span><span class="nf">slint_property_init</span><span class="p">(</span><span class="n">PropertyHandleOpaque</span><span class="w"> </span><span class="o">*</span><span class="n">out</span><span class="p">);</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">slint_property_update</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">PropertyHandleOpaque</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">val</span><span class="p">);</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">slint_property_register_as_dependency</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">PropertyHandleOpaque</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">);</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">slint_property_set_changed</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">PropertyHandleOpaque</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">value</span><span class="p">);</span>
 

@@ -94,6 +94,8 @@ Program Listing for File slint_properties_internal.h
    
    void slint_property_update(const PropertyHandleOpaque *handle, void *val);
    
+   void slint_property_register_as_dependency(const PropertyHandleOpaque *handle);
+   
    void slint_property_set_changed(const PropertyHandleOpaque *handle, const void *value);
    
    void slint_property_set_binding(const PropertyHandleOpaque *handle,

@@ -230,6 +230,7 @@
 <li class="toctree-l2"><a class="reference internal" href="namespace_slint__platform.html">Namespace slint::platform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="namespace_slint__platform__key_codes.html">Namespace slint::platform::key_codes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="namespace_slint__testing.html">Namespace slint::testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="structslint_1_1DataTransfer.html">Struct DataTransfer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1HsvaColor.html">Struct HsvaColor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1Image.html">Struct Image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1interpreter_1_1Diagnostic.html">Struct Diagnostic</a></li>
@@ -618,6 +619,10 @@
 <span class="w">                                   </span><span class="n">SharedString</span><span class="w"> </span><span class="o">*</span><span class="n">out</span><span class="p">);</span>
 
 <span class="k">extern</span><span class="w"> </span><span class="s">&quot;C&quot;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">slint_context_accent_color</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">ItemTreeRc</span><span class="w"> </span><span class="o">*</span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="n">Color</span><span class="w"> </span><span class="o">*</span><span class="n">out</span><span class="p">);</span>
+
+<span class="n">ColorScheme</span><span class="w"> </span><span class="nf">slint_context_color_scheme</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">ItemTreeRc</span><span class="w"> </span><span class="o">*</span><span class="n">root</span><span class="p">);</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">slint_windowrc_init</span><span class="p">(</span><span class="n">WindowAdapterRcOpaque</span><span class="w"> </span><span class="o">*</span><span class="n">out</span><span class="p">);</span>
 

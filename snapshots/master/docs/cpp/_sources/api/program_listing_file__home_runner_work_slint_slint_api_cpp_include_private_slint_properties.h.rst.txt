@@ -100,6 +100,11 @@ Program Listing for File slint_properties.h
            return value;
        }
    
+       void register_as_dependency() const
+       {
+           cbindgen_private::slint_property_register_as_dependency(&inner);
+       }
+   
        template<typename F>
        void set_binding(F binding) const
        {

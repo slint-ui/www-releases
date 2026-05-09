@@ -20,6 +20,7 @@ Files
 - :ref:`file_cppdocs_generated_include_private_slint_builtin_structs.h`
 - :ref:`file_cppdocs_generated_include_private_slint_builtin_structs_internal.h`
 - :ref:`file_cppdocs_generated_include_private_slint_color_internal.h`
+- :ref:`file_cppdocs_generated_include_private_slint_data_transfer_internal.h`
 - :ref:`file_cppdocs_generated_include_private_slint_enums.h`
 - :ref:`file_cppdocs_generated_include_private_slint_enums_internal.h`
 - :ref:`file_cppdocs_generated_include_private_slint_events_internal.h`

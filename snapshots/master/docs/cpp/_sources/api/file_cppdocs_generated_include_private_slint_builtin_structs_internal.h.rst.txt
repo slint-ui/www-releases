@@ -27,6 +27,8 @@ Includes
 
 - ``private/slint_builtin_structs.h`` (:ref:`file_cppdocs_generated_include_private_slint_builtin_structs.h`)
 
+- ``private/slint_data_transfer.h`` (:ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_data_transfer.h`)
+
 - ``private/slint_enums_internal.h`` (:ref:`file_cppdocs_generated_include_private_slint_enums_internal.h`)
 
 - ``private/slint_image.h`` (:ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_image.h`)

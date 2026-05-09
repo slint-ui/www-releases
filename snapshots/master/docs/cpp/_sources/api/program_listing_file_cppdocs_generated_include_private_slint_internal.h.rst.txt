@@ -36,6 +36,8 @@ Program Listing for File slint_internal.h
    #include "private/slint_timer.h"
    #include "private/slint_builtin_structs_internal.h"
    #include "private/slint_events_internal.h"
+   #include "private/slint_data_transfer_internal.h"
+   #include "private/slint_data_transfer.h"
    
    namespace slint {
        namespace private_api { class WindowAdapterRc; }
@@ -354,6 +356,7 @@ Program Listing for File slint_internal.h
                                uint32_t parent_item_tree_index);
        uintptr_t (*subtree_index)(Pin<VRef<ItemTreeVTable>>);
        LayoutInfo (*layout_info)(Pin<VRef<ItemTreeVTable>>, Orientation);
+       bool (*ensure_instantiated)(Pin<VRef<ItemTreeVTable>>);
        LogicalRect (*item_geometry)(Pin<VRef<ItemTreeVTable>>, uint32_t item_index);
        AccessibleRole (*accessible_role)(Pin<VRef<ItemTreeVTable>>, uint32_t item_index);
        bool (*accessible_string_property)(Pin<VRef<ItemTreeVTable>>,
@@ -518,6 +521,7 @@ Program Listing for File slint_internal.h
        Property<SharedString> tooltip;
        Property<SharedString> title;
        Property<bool> visible;
+       Property<ColorScheme> color_scheme;
        private_api::CallbackHelper<void> activated;
        CachedRenderingData cached_rendering_data;
        SystemTrayIconDataBox data;
@@ -805,8 +809,7 @@ Program Listing for File slint_internal.h
    
    struct DragArea {
        Property<bool> enabled;
-       Property<SharedString> mime_type;
-       Property<SharedString> data;
+       Property<DataTransfer> data;
        bool pressed;
        LogicalPoint pressed_position;
        CachedRenderingData cached_rendering_data;
@@ -1223,7 +1226,7 @@ Program Listing for File slint_internal.h
                                       uintptr_t offset,
                                       uintptr_t count);
    
-   void slint_repeater_ensure_updated_listview(RepeaterInstanceOpsVTable *ops,
+   bool slint_repeater_ensure_updated_listview(RepeaterInstanceOpsVTable *ops,
                                                RepeaterLayoutState *state,
                                                uintptr_t row_count,
                                                Pin<const Property<LogicalLength>*> viewport_width,
@@ -1235,6 +1238,8 @@ Program Listing for File slint_internal.h
    void slint_property_init(PropertyHandleOpaque *out);
    
    void slint_property_update(const PropertyHandleOpaque *handle, void *val);
+   
+   void slint_property_register_as_dependency(const PropertyHandleOpaque *handle);
    
    void slint_property_set_changed(const PropertyHandleOpaque *handle, const void *value);
    
@@ -1407,6 +1412,8 @@ Program Listing for File slint_internal.h
    
    void slint_windowrc_clone(const WindowAdapterRcOpaque *source, WindowAdapterRcOpaque *target);
    
+   void slint_windowrc_ensure_tree_instantiated(const WindowAdapterRcOpaque *handle);
+   
    void slint_windowrc_show(const WindowAdapterRcOpaque *handle);
    
    void slint_windowrc_hide(const WindowAdapterRcOpaque *handle);
@@ -1468,10 +1475,6 @@ Program Listing for File slint_internal.h
    void slint_windowrc_set_physical_size(const WindowAdapterRcOpaque *handle, const IntSize *size);
    
    void slint_windowrc_set_logical_size(const WindowAdapterRcOpaque *handle, const Size *size);
-   
-   ColorScheme slint_windowrc_color_scheme(const WindowAdapterRcOpaque *handle);
-   
-   void slint_windowrc_accent_color(const WindowAdapterRcOpaque *handle, Color *out);
    
    bool slint_windowrc_supports_native_menu_bar(const WindowAdapterRcOpaque *handle);
    

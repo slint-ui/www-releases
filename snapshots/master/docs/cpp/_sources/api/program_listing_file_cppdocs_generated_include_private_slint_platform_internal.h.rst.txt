@@ -131,6 +131,10 @@ Program Listing for File slint_platform_internal.h
    
    extern "C" {
    
+   void slint_context_accent_color(const ItemTreeRc *root, Color *out);
+   
+   ColorScheme slint_context_color_scheme(const ItemTreeRc *root);
+   
    void slint_windowrc_init(WindowAdapterRcOpaque *out);
    
    void slint_ensure_backend();

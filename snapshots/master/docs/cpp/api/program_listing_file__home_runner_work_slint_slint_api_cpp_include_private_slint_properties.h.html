@@ -230,6 +230,7 @@
 <li class="toctree-l2"><a class="reference internal" href="namespace_slint__platform.html">Namespace slint::platform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="namespace_slint__platform__key_codes.html">Namespace slint::platform::key_codes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="namespace_slint__testing.html">Namespace slint::testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="structslint_1_1DataTransfer.html">Struct DataTransfer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1HsvaColor.html">Struct HsvaColor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1Image.html">Struct Image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1interpreter_1_1Diagnostic.html">Struct Diagnostic</a></li>
@@ -586,6 +587,11 @@
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_property_update</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inner</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">value</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">value</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">register_as_dependency</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_property_register_as_dependency</span><span class="p">(</span><span class="o">&amp;</span><span class="n">inner</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">F</span><span class="o">&gt;</span>
