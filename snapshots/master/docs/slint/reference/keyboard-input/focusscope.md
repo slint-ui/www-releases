@@ -114,3 +114,27 @@ Invoked when the `FocusScope` gains focus. The argument is a a [FocusReason](/ma
 
 ### focus-lost(reason: FocusReason)
 Invoked when the `FocusScope` loses focus. The argument is a a [FocusReason](/master/docs/slint/reference/global-structs-enums.md#focusreason) enum containing the reason for focus loss.
+
+## `KeyBinding`
+
+Place `KeyBinding` elements inside a `FocusScope` to declare keyboard shortcuts.
+KeyBindings use **logical keys**, based on the character a key produces, not physical key positions.
+
+See [Key Bindings](/master/docs/slint/reference/keyboard-input/overview.md#key-bindings) for details.
+
+### Properties of `KeyBinding`
+
+#### keys
+<SlintProperty propName="keys" typeName="keys">
+The [keys](/master/docs/slint/reference/primitive-types.md#keys) to match against incoming key events.
+</SlintProperty>
+
+#### enabled
+<SlintProperty propName="enabled" typeName="bool" defaultValue="true">
+Whether this KeyBinding is currently enabled. Disabled KeyBinding elements don't consume key events and never invoke their `activated()` callback.
+</SlintProperty>
+
+### Callbacks of `KeyBinding`
+
+#### activated()
+Invoked when the parent `FocusScope` receives a key event that matches the `keys` of this `KeyBinding`.

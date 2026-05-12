@@ -283,6 +283,18 @@ See also the [Image element](/master/docs/slint/reference/elements/image.md).
 
 </SlintProperty>
 
+### data-transfer
+<SlintProperty propName="data" typeName="data-transfer" defaultValue='an empty data-transfer'>
+
+A `data-transfer` value is the payload carried by drag-and-drop and clipboard operations.
+It abstracts over the file-type transfer mechanisms supported by each platform.
+
+The type is opaque in Slint code:
+construct a `data-transfer` value and read its content via callbacks implemented in the host language.
+See [DragAndDrop](/master/docs/slint/guide/development/drag-and-drop.md) for an end-to-end example.
+
+</SlintProperty>
+
 ## Animation
 ### easing
 <SlintProperty propName="easing" typeName="easing" defaultValue='linear'>

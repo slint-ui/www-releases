@@ -504,20 +504,120 @@
 
 <span class="cp">#pragma once</span>
 
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;private/slint_image_internal.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;optional&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;utility&gt;</span>
+
+<span class="cp">#ifndef SLINT_FEATURE_FREESTANDING</span>
+<span class="cp">#</span><span class="w">    </span><span class="cp">include</span><span class="w"> </span><span class="cpf">&lt;any&gt;</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;private/slint_image.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;private/slint_string.h&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;private/slint_data_transfer_internal.h&quot;</span>
 
 <span class="k">namespace</span><span class="w"> </span><span class="nn">slint</span><span class="w"> </span><span class="p">{</span>
 <span class="k">struct</span><span class="w"> </span><span class="nc">DataTransfer</span>
 <span class="p">{</span>
 <span class="k">public</span><span class="o">:</span>
-<span class="w">    </span><span class="n">DataTransfer</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span>
+<span class="w">    </span><span class="n">DataTransfer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">types</span><span class="o">::</span><span class="n">slint_data_transfer_init_default</span><span class="p">(</span><span class="k">this</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
 
-<span class="w">    </span><span class="k">explicit</span><span class="w"> </span><span class="n">DataTransfer</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">SharedString</span><span class="w"> </span><span class="o">&amp;</span><span class="n">string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">string</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="k">explicit</span><span class="w"> </span><span class="n">DataTransfer</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">SharedString</span><span class="w"> </span><span class="o">&amp;</span><span class="n">string</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">DataTransfer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">set_plaintext</span><span class="p">(</span><span class="n">string</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
 
-<span class="w">    </span><span class="k">explicit</span><span class="w"> </span><span class="n">DataTransfer</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Image</span><span class="w"> </span><span class="o">&amp;</span><span class="n">image</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">image</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="k">explicit</span><span class="w"> </span><span class="n">DataTransfer</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Image</span><span class="w"> </span><span class="o">&amp;</span><span class="n">image</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">DataTransfer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">set_image</span><span class="p">(</span><span class="n">image</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
 
-<span class="w">    </span><span class="k">friend</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="k">operator</span><span class="o">==</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">DataTransfer</span><span class="w"> </span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">DataTransfer</span><span class="w"> </span><span class="o">&amp;</span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span>
+<span class="w">    </span><span class="o">~</span><span class="n">DataTransfer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">types</span><span class="o">::</span><span class="n">slint_data_transfer_drop</span><span class="p">(</span><span class="k">this</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">DataTransfer</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">DataTransfer</span><span class="w"> </span><span class="o">&amp;</span><span class="n">other</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">types</span><span class="o">::</span><span class="n">slint_data_transfer_clone</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">other</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">DataTransfer</span><span class="w"> </span><span class="o">&amp;</span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">DataTransfer</span><span class="w"> </span><span class="o">&amp;</span><span class="n">other</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">other</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">types</span><span class="o">::</span><span class="n">slint_data_transfer_drop</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+<span class="w">            </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">types</span><span class="o">::</span><span class="n">slint_data_transfer_clone</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">other</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">*</span><span class="k">this</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">DataTransfer</span><span class="p">(</span><span class="n">DataTransfer</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="n">other</span><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">types</span><span class="o">::</span><span class="n">slint_data_transfer_init_default</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">swap</span><span class="p">(</span><span class="n">_inner</span><span class="p">,</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="n">_inner</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">DataTransfer</span><span class="w"> </span><span class="o">&amp;</span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="n">DataTransfer</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="n">other</span><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">swap</span><span class="p">(</span><span class="n">_inner</span><span class="p">,</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="n">_inner</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">*</span><span class="k">this</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">set_plaintext</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">SharedString</span><span class="w"> </span><span class="o">&amp;</span><span class="n">text</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">types</span><span class="o">::</span><span class="n">slint_data_transfer_set_plaintext</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">text</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">set_image</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Image</span><span class="w"> </span><span class="o">&amp;</span><span class="n">image</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">types</span><span class="o">::</span><span class="n">slint_data_transfer_set_image</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">image</span><span class="p">.</span><span class="n">data</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">has_plaintext</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">types</span><span class="o">::</span><span class="n">slint_data_transfer_has_plaintext</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">has_image</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">types</span><span class="o">::</span><span class="n">slint_data_transfer_has_image</span><span class="p">(</span><span class="k">this</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">SharedString</span><span class="o">&gt;</span><span class="w"> </span><span class="n">fetch_plaintext</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">SharedString</span><span class="w"> </span><span class="n">out</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">types</span><span class="o">::</span><span class="n">slint_data_transfer_fetch_plaintext</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">out</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">out</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">nullopt</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">Image</span><span class="o">&gt;</span><span class="w"> </span><span class="n">fetch_image</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Image</span><span class="w"> </span><span class="n">out</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">types</span><span class="o">::</span><span class="n">slint_data_transfer_fetch_image</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">out</span><span class="p">.</span><span class="n">data</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">out</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">nullopt</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="cp">#if !defined(SLINT_FEATURE_FREESTANDING) || defined(DOXYGEN)</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">set_user_data</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">any</span><span class="w"> </span><span class="n">value</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="o">*</span><span class="n">box</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">any</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">value</span><span class="p">));</span>
+<span class="w">        </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">types</span><span class="o">::</span><span class="n">slint_data_transfer_set_user_data</span><span class="p">(</span>
+<span class="w">                </span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">box</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="p">[](</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">delete</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">any</span><span class="w"> </span><span class="o">*&gt;</span><span class="p">(</span><span class="n">h</span><span class="p">);</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">any</span><span class="w"> </span><span class="n">user_data</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">nullptr</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">types</span><span class="o">::</span><span class="n">slint_data_transfer_user_data</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">out</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="p">{};</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">*</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">any</span><span class="w"> </span><span class="o">*&gt;</span><span class="p">(</span><span class="n">out</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="cp">#endif</span>
+
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">has_user_data</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">nullptr</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">types</span><span class="o">::</span><span class="n">slint_data_transfer_user_data</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">out</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">clear_user_data</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">types</span><span class="o">::</span><span class="n">slint_data_transfer_clear_user_data</span><span class="p">(</span><span class="k">this</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">friend</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="k">operator</span><span class="o">==</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">DataTransfer</span><span class="w"> </span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">DataTransfer</span><span class="w"> </span><span class="o">&amp;</span><span class="n">b</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">types</span><span class="o">::</span><span class="n">slint_data_transfer_eq</span><span class="p">(</span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">b</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
 
 <span class="k">private</span><span class="o">:</span>
 <span class="w">    </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">types</span><span class="o">::</span><span class="n">DataTransferOpaque</span><span class="w"> </span><span class="n">_inner</span><span class="p">;</span>

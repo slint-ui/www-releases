@@ -45,8 +45,6 @@ Included By
 -----------
 
 
-- :ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_data_transfer.h`
-
 - :ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_image.h`
 
 - :ref:`file_cppdocs_generated_include_private_slint_platform_internal.h`

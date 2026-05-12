@@ -75,7 +75,7 @@ The horizontal alignment of the text.
 </SlintProperty>
 
 ### link-color
-<SlintProperty propName="link-color" typeName="color" defaultValue="#00f">
+<SlintProperty propName="link-color" typeName="color" defaultValue="#0000ff">
 The color used for rendering links in the text.
 </SlintProperty>
 

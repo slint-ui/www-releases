@@ -20,6 +20,7 @@ Program Listing for File slint_data_transfer_internal.h
    #include <ostream>
    #include <new>
    #include "private/slint_enums_internal.h"
+   namespace slint { struct DataTransfer; struct SharedString; }
    
    namespace slint {
    namespace cbindgen_private {
@@ -41,6 +42,36 @@ Program Listing for File slint_data_transfer_internal.h
                   _rc_any_1 != other._rc_any_1;
        }
    };
+   
+   extern "C" {
+   
+   void slint_data_transfer_init_default(DataTransfer *out);
+   
+   void slint_data_transfer_drop(DataTransfer *d);
+   
+   void slint_data_transfer_clone(DataTransfer *out, const DataTransfer *src);
+   
+   bool slint_data_transfer_eq(const DataTransfer *a, const DataTransfer *b);
+   
+   void slint_data_transfer_set_plaintext(DataTransfer *d, const SharedString *text);
+   
+   void slint_data_transfer_set_image(DataTransfer *d, const Image *image);
+   
+   bool slint_data_transfer_has_plaintext(const DataTransfer *d);
+   
+   bool slint_data_transfer_has_image(const DataTransfer *d);
+   
+   bool slint_data_transfer_fetch_plaintext(const DataTransfer *d, SharedString *out);
+   
+   bool slint_data_transfer_fetch_image(const DataTransfer *d, Image *out);
+   
+   void slint_data_transfer_set_user_data(DataTransfer *d, void *handle, void (*drop_fn)(void*));
+   
+   bool slint_data_transfer_user_data(const DataTransfer *d, const void **out_handle);
+   
+   void slint_data_transfer_clear_user_data(DataTransfer *d);
+   
+   }  // extern "C"
    
    }  // namespace types
    }  // namespace cbindgen_private

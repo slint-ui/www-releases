@@ -94,7 +94,7 @@ What counts as activation, and whether it's invoked at all, depends on the platf
 ## Menu
 
 The child `Menu` defines the menu that is shown when the user clicks or right-clicks the tray
-icon. Its structure is the same as for [MenuBar](/master/docs/slint/reference/window/menubar.md) and `ContextMenuArea`: use
+icon. Its structure is the same as for [MenuBar](/master/docs/slint/reference/window/window.md#menubar) and `ContextMenuArea`: use
 `MenuItem` for entries, nested `Menu` elements for sub-menus, and `MenuSeparator` for
 separators. See [Menu](/master/docs/slint/reference/window/contextmenuarea.md#menu) for the properties and callbacks available on those
 elements.

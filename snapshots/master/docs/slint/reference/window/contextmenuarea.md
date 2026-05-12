@@ -32,6 +32,76 @@ Close the context menu if it's currently open.
 When disabled, the `Menu` is not showing.
 </SlintProperty>
 
+## `Menu`
+
+Place the `Menu` element in a [MenuBar](/master/docs/slint/reference/window/window.md#menubar), a `ContextMenuArea`, or within another `Menu`.
+Use `MenuItem` children of individual menu items, `Menu` children to create sub-menus, and `MenuSeparator` to create separators.
+
+### title
+<SlintProperty propName="title" typeName="string" defaultValue="&quot;&quot;">
+This is the label of the menu as written in the menu bar or in the parent menu.
+</SlintProperty>
+
+### enabled
+<SlintProperty propName="enabled" typeName="bool" defaultValue="true">
+When disabled, the `Menu` can be selected but not activated.
+</SlintProperty>
+
+### icon
+<SlintProperty propName="icon" typeName="image">
+The icon shown next to the title when in a parent menu.
+</SlintProperty>
+
+## `MenuItem`
+
+A `MenuItem` represents a single menu entry. It must be a child of a `Menu` element.
+
+### Properties of `MenuItem`
+
+#### title
+<SlintProperty propName="title" typeName="string" defaultValue="&quot;&quot;">
+The title shown for this menu item.
+</SlintProperty>
+
+#### enabled
+<SlintProperty propName="enabled" typeName="bool" defaultValue="true">
+When disabled, the `MenuItem` can be selected but not activated.
+</SlintProperty>
+
+#### checkable
+<SlintProperty propName="checkable" typeName="bool" defaultValue="false">
+When true, the `MenuItem` can be checked. The value of the `checked` property is toggled when the user activates the menu item.
+</SlintProperty>
+
+#### shortcut
+<SlintProperty propName="shortcut" typeName="keys">
+The keyboard shortcut for this `MenuItem`.
+
+This property can only be set in a `MenuItem` that is part of a [MenuBar](/master/docs/slint/reference/window/window.md#menubar).
+</SlintProperty>
+
+#### checked
+<SlintProperty propName="checked" typeName="bool" propertyVisibility="in-out" defaultValue="false">
+When true, a checkmark will be shown next to the title of the `MenuItem`.
+</SlintProperty>
+
+#### icon
+<SlintProperty propName="icon" typeName="image">
+The icon shown next to the title.
+</SlintProperty>
+
+### Callbacks of `MenuItem`
+
+#### activated()
+Invoked when the menu entry is activated.
+
+## `MenuSeparator`
+
+A `MenuSeparator` represents a separator in a menu.
+It cannot have children, and doesn't have properties or callbacks.
+MenuSeparator at the beginning or end of a menu will not be visible.
+Consecutive `MenuSeparator`s will be merged into one.
+
 ## Example
 
 ```slint

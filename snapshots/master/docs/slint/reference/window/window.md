@@ -11,7 +11,7 @@ The `Window` geometry will be restricted by its layout constraints: Setting the 
 and the window manager will respect the `min-width` and `max-width` so the window can't be resized bigger
 or smaller. The initial width can be controlled with the `preferred-width` property. The same applies to the `Window`s height.
 
-Use the [MenuBar](/master/docs/slint/reference/window/menubar.md) element to declare a menu bar for the window.
+Use the [MenuBar](/master/docs/slint/reference/window/window.md#menubar) element to declare a menu bar for the window.
 
 ## Properties
 
@@ -87,3 +87,68 @@ On mobile devices, virtual keyboards (aka software keyboards or onscreen keyboar
 
 ### hide()
 Hide this window.
+
+## `MenuBar`
+
+Use the `MenuBar` element in a [Window](/master/docs/slint/reference/window/window.md) to declare the structure of a menu bar, including the actual
+menus and sub-menus.
+
+:::note{Note}
+There can only be one `MenuBar` element in a `Window` and it must not be in a `for` or a `if`.
+:::
+
+The `MenuBar` doesn't have properties, but it must contain [Menu](/master/docs/slint/reference/window/contextmenuarea.md#menu) as children that represent top level entries in the menu bar.
+
+Depending on the platform, the menu bar might be native or rendered by Slint.
+This means that for example, on macOS, the menu bar will be at the top of the screen.
+The `width` and `height` property of the [Window](/master/docs/slint/reference/window/window.md) define the client area, excluding the menu bar.
+The `x` and `y` properties of `Window` children are also relative to the client area.
+
+### Example
+
+```slint
+export component Example inherits Window {
+    MenuBar {
+        Menu {
+            title: @tr("File");
+            MenuItem {
+                title: @tr("New");
+                activated => { file-new(); }
+                shortcut: @keys(Control + N);
+            }
+            MenuItem {
+                title: @tr("Open");
+                activated => { file-open(); }
+                shortcut: @keys(Control + O);
+            }
+        }
+        Menu {
+            title: @tr("Edit");
+            MenuItem {
+                title: @tr("Copy");
+            }
+            MenuItem {
+                title: @tr("Paste");
+            }
+            MenuSeparator {}
+            Menu {
+                title: @tr("Find");
+                MenuItem {
+                    title: @tr("Find in document...");
+                }
+                MenuItem {
+                    title: @tr("Find Next");
+                }
+                MenuItem {
+                    title: @tr("Find Previous");
+                }
+            }
+        }
+    }
+
+    callback file-new();
+    callback file-open();
+
+    // ... actual window content goes here
+}
+```

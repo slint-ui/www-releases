@@ -15,20 +15,120 @@ Program Listing for File slint_data_transfer.h
    
    #pragma once
    
-   #include "private/slint_image_internal.h"
+   #include <optional>
+   #include <utility>
+   
+   #ifndef SLINT_FEATURE_FREESTANDING
+   #    include <any>
+   #endif
+   
+   #include "private/slint_image.h"
+   #include "private/slint_string.h"
    #include "private/slint_data_transfer_internal.h"
    
    namespace slint {
    struct DataTransfer
    {
    public:
-       DataTransfer() = default;
+       DataTransfer() { cbindgen_private::types::slint_data_transfer_init_default(this); }
    
-       explicit DataTransfer(const SharedString &string) { (void)string; }
+       explicit DataTransfer(const SharedString &string) : DataTransfer() { set_plaintext(string); }
    
-       explicit DataTransfer(const Image &image) { (void)image; }
+       explicit DataTransfer(const Image &image) : DataTransfer() { set_image(image); }
    
-       friend bool operator==(const DataTransfer &a, const DataTransfer &b) = default;
+       ~DataTransfer() { cbindgen_private::types::slint_data_transfer_drop(this); }
+   
+       DataTransfer(const DataTransfer &other)
+       {
+           cbindgen_private::types::slint_data_transfer_clone(this, &other);
+       }
+   
+       DataTransfer &operator=(const DataTransfer &other)
+       {
+           if (this != &other) {
+               cbindgen_private::types::slint_data_transfer_drop(this);
+               cbindgen_private::types::slint_data_transfer_clone(this, &other);
+           }
+           return *this;
+       }
+   
+       DataTransfer(DataTransfer &&other) noexcept
+       {
+           cbindgen_private::types::slint_data_transfer_init_default(this);
+           std::swap(_inner, other._inner);
+       }
+   
+       DataTransfer &operator=(DataTransfer &&other) noexcept
+       {
+           std::swap(_inner, other._inner);
+           return *this;
+       }
+   
+       void set_plaintext(const SharedString &text)
+       {
+           cbindgen_private::types::slint_data_transfer_set_plaintext(this, &text);
+       }
+   
+       void set_image(const Image &image)
+       {
+           cbindgen_private::types::slint_data_transfer_set_image(this, &image.data);
+       }
+   
+       bool has_plaintext() const
+       {
+           return cbindgen_private::types::slint_data_transfer_has_plaintext(this);
+       }
+   
+       bool has_image() const { return cbindgen_private::types::slint_data_transfer_has_image(this); }
+   
+       std::optional<SharedString> fetch_plaintext() const
+       {
+           SharedString out;
+           if (cbindgen_private::types::slint_data_transfer_fetch_plaintext(this, &out)) {
+               return out;
+           }
+           return std::nullopt;
+       }
+   
+       std::optional<Image> fetch_image() const
+       {
+           Image out;
+           if (cbindgen_private::types::slint_data_transfer_fetch_image(this, &out.data)) {
+               return out;
+           }
+           return std::nullopt;
+       }
+   
+   #if !defined(SLINT_FEATURE_FREESTANDING) || defined(DOXYGEN)
+       void set_user_data(std::any value)
+       {
+           auto *box = new std::any(std::move(value));
+           cbindgen_private::types::slint_data_transfer_set_user_data(
+                   this, box, +[](void *h) { delete static_cast<std::any *>(h); });
+       }
+   
+       std::any user_data() const
+       {
+           const void *out = nullptr;
+           if (!cbindgen_private::types::slint_data_transfer_user_data(this, &out)) {
+               return {};
+           }
+           return *static_cast<const std::any *>(out);
+       }
+   #endif
+   
+       bool has_user_data() const
+       {
+           const void *out = nullptr;
+           return cbindgen_private::types::slint_data_transfer_user_data(this, &out);
+       }
+   
+       void clear_user_data() { cbindgen_private::types::slint_data_transfer_clear_user_data(this); }
+   
+       friend bool operator==(const DataTransfer &a, const DataTransfer &b)
+       {
+           return cbindgen_private::types::slint_data_transfer_eq(&a, &b);
+       }
    
    private:
        cbindgen_private::types::DataTransferOpaque _inner;
