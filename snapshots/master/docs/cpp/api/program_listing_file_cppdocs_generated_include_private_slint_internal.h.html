@@ -261,6 +261,7 @@
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1SharedString.html">Struct SharedString</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1SharedVector.html">Template Struct SharedVector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1Size.html">Template Struct Size</a></li>
+<li class="toctree-l2"><a class="reference internal" href="structslint_1_1StyledText.html">Struct StyledText</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1Timer.html">Struct Timer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="classslint_1_1Brush.html">Class Brush</a></li>
 <li class="toctree-l2"><a class="reference internal" href="classslint_1_1Color.html">Class Color</a></li>
@@ -1871,7 +1872,13 @@
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">slint_styled_text_clone</span><span class="p">(</span><span class="n">StyledText</span><span class="w"> </span><span class="o">*</span><span class="n">out</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">StyledText</span><span class="w"> </span><span class="o">*</span><span class="n">ss</span><span class="p">);</span>
 
+<span class="kt">void</span><span class="w"> </span><span class="nf">slint_styled_text_from_plain_text</span><span class="p">(</span><span class="n">Slice</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">text</span><span class="p">,</span><span class="w"> </span><span class="n">StyledText</span><span class="w"> </span><span class="o">*</span><span class="n">out</span><span class="p">);</span>
+
+<span class="kt">bool</span><span class="w"> </span><span class="nf">slint_styled_text_from_markdown</span><span class="p">(</span><span class="n">Slice</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">markdown</span><span class="p">,</span><span class="w"> </span><span class="n">StyledText</span><span class="w"> </span><span class="o">*</span><span class="n">out</span><span class="p">);</span>
+
 <span class="kt">uint64_t</span><span class="w"> </span><span class="nf">slint_timer_interval</span><span class="p">(</span><span class="kt">uintptr_t</span><span class="w"> </span><span class="n">id</span><span class="p">);</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">slint_decimal_separator</span><span class="p">(</span><span class="n">SharedString</span><span class="w"> </span><span class="o">*</span><span class="n">out</span><span class="p">);</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">slint_translate</span><span class="p">(</span><span class="n">SharedString</span><span class="w"> </span><span class="o">*</span><span class="n">to_translate</span><span class="p">,</span>
 <span class="w">                     </span><span class="k">const</span><span class="w"> </span><span class="n">SharedString</span><span class="w"> </span><span class="o">*</span><span class="n">context</span><span class="p">,</span>
@@ -1893,7 +1900,8 @@
 <span class="w">                                             </span><span class="kt">int32_t</span><span class="w"> </span><span class="n">n</span><span class="p">,</span>
 <span class="w">                                             </span><span class="n">SharedString</span><span class="w"> </span><span class="o">*</span><span class="n">output</span><span class="p">);</span>
 
-<span class="kt">void</span><span class="w"> </span><span class="nf">slint_translate_set_bundled_languages</span><span class="p">(</span><span class="n">Slice</span><span class="o">&lt;</span><span class="n">Slice</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">languages</span><span class="p">);</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">slint_translate_set_bundled_languages</span><span class="p">(</span><span class="n">Slice</span><span class="o">&lt;</span><span class="n">Slice</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">languages</span><span class="p">,</span>
+<span class="w">                                           </span><span class="n">Slice</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">separators</span><span class="p">);</span>
 
 <span class="kt">bool</span><span class="w"> </span><span class="nf">slint_translate_select_bundled_translation</span><span class="p">(</span><span class="n">Slice</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">language</span><span class="p">);</span>
 

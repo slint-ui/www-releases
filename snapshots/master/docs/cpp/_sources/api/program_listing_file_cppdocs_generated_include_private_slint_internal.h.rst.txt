@@ -1382,7 +1382,13 @@ Program Listing for File slint_internal.h
    
    void slint_styled_text_clone(StyledText *out, const StyledText *ss);
    
+   void slint_styled_text_from_plain_text(Slice<uint8_t> text, StyledText *out);
+   
+   bool slint_styled_text_from_markdown(Slice<uint8_t> markdown, StyledText *out);
+   
    uint64_t slint_timer_interval(uintptr_t id);
+   
+   void slint_decimal_separator(SharedString *out);
    
    void slint_translate(SharedString *to_translate,
                         const SharedString *context,
@@ -1404,7 +1410,8 @@ Program Listing for File slint_internal.h
                                                 int32_t n,
                                                 SharedString *output);
    
-   void slint_translate_set_bundled_languages(Slice<Slice<uint8_t>> languages);
+   void slint_translate_set_bundled_languages(Slice<Slice<uint8_t>> languages,
+                                              Slice<uint32_t> separators);
    
    bool slint_translate_select_bundled_translation(Slice<uint8_t> language);
    

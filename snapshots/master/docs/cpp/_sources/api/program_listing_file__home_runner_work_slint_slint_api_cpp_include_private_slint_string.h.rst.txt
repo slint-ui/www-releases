@@ -14,6 +14,7 @@ Program Listing for File slint_string.h
    // SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0
    
    #pragma once
+   #include <optional>
    #include <string_view>
    #include <span>
    #include "private/slint_string_internal.h"
@@ -158,36 +159,6 @@ Program Listing for File slint_string.h
    
    namespace private_api {
    
-   struct StyledText
-   {
-   public:
-       StyledText() { cbindgen_private::slint_styled_text_new(this); }
-       ~StyledText() { cbindgen_private::slint_styled_text_drop(this); }
-   
-       StyledText(const StyledText &other) { cbindgen_private::slint_styled_text_clone(this, &other); }
-   
-       StyledText &operator=(const StyledText &other)
-       {
-           cbindgen_private::slint_styled_text_drop(this);
-           cbindgen_private::slint_styled_text_clone(this, &other);
-           return *this;
-       }
-   
-       StyledText &operator=(StyledText &&other)
-       {
-           std::swap(inner, other.inner);
-           return *this;
-       }
-   
-       friend bool operator==(const StyledText &a, const StyledText &b)
-       {
-           return cbindgen_private::slint_styled_text_eq(&a, &b);
-       }
-   
-   private:
-       void *inner;
-   };
-   
    template<typename T>
    inline cbindgen_private::Slice<T> make_slice(const T *ptr, size_t len)
    {
@@ -215,4 +186,55 @@ Program Listing for File slint_string.h
    }
    
    }
+   
+   struct StyledText
+   {
+   public:
+       StyledText() { cbindgen_private::slint_styled_text_new(this); }
+       ~StyledText() { cbindgen_private::slint_styled_text_drop(this); }
+   
+       StyledText(const StyledText &other) { cbindgen_private::slint_styled_text_clone(this, &other); }
+   
+       StyledText &operator=(const StyledText &other)
+       {
+           cbindgen_private::slint_styled_text_drop(this);
+           cbindgen_private::slint_styled_text_clone(this, &other);
+           return *this;
+       }
+   
+       StyledText &operator=(StyledText &&other)
+       {
+           std::swap(inner, other.inner);
+           return *this;
+       }
+   
+       friend bool operator==(const StyledText &a, const StyledText &b)
+       {
+           return cbindgen_private::slint_styled_text_eq(&a, &b);
+       }
+   
+   #if !defined(SLINT_FEATURE_FREESTANDING) || defined(DOXYGEN)
+       static StyledText from_plain_text(std::string_view text)
+       {
+           StyledText result;
+           cbindgen_private::slint_styled_text_from_plain_text(private_api::string_to_slice(text),
+                                                               &result);
+           return result;
+       }
+   
+       static std::optional<StyledText> from_markdown(std::string_view markdown)
+       {
+           StyledText result;
+           if (cbindgen_private::slint_styled_text_from_markdown(
+                       private_api::string_to_slice(markdown), &result)) {
+               return result;
+           }
+           return std::nullopt;
+       }
+   #endif
+   
+   private:
+       void *inner;
+   };
+   
    }

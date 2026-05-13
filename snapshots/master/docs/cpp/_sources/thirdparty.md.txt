@@ -8,7 +8,7 @@ This page lists the licenses of the dependencies used by Slint.
 ## Overview of licenses
 
 - [MIT License](#MIT) (377)
-- [Unicode License v3](#Unicode-3.0) (22)
+- [Unicode License v3](#Unicode-3.0) (25)
 - [Apache License 2.0](#Apache-2.0) (16)
 - [BSD 3-Clause &quot;New&quot; or &quot;Revised&quot; License](#BSD-3-Clause) (8)
 - [BSD 2-Clause &quot;Simplified&quot; License](#BSD-2-Clause) (4)
@@ -7659,7 +7659,10 @@ authorization of the copyright holder.
 
 #### Used by:
 
+- [fixed_decimal 0.7.2]( https://github.com/unicode-org/icu4x )
 - [icu_collections 2.2.0]( https://github.com/unicode-org/icu4x )
+- [icu_decimal 2.2.0]( https://github.com/unicode-org/icu4x )
+- [icu_decimal_data 2.2.0]( https://github.com/unicode-org/icu4x )
 - [icu_locale 2.2.0]( https://github.com/unicode-org/icu4x )
 - [icu_locale_core 2.2.0]( https://github.com/unicode-org/icu4x )
 - [icu_normalizer 2.2.0]( https://github.com/unicode-org/icu4x )

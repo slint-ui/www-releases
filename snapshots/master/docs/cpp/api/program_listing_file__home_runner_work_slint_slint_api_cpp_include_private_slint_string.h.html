@@ -261,6 +261,7 @@
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1SharedString.html">Struct SharedString</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1SharedVector.html">Template Struct SharedVector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1Size.html">Template Struct Size</a></li>
+<li class="toctree-l2"><a class="reference internal" href="structslint_1_1StyledText.html">Struct StyledText</a></li>
 <li class="toctree-l2"><a class="reference internal" href="structslint_1_1Timer.html">Struct Timer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="classslint_1_1Brush.html">Class Brush</a></li>
 <li class="toctree-l2"><a class="reference internal" href="classslint_1_1Color.html">Class Color</a></li>
@@ -503,6 +504,7 @@
 <span class="c1">// SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0</span>
 
 <span class="cp">#pragma once</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;optional&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string_view&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;span&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;private/slint_string_internal.h&quot;</span>
@@ -647,36 +649,6 @@
 
 <span class="k">namespace</span><span class="w"> </span><span class="nn">private_api</span><span class="w"> </span><span class="p">{</span>
 
-<span class="k">struct</span><span class="w"> </span><span class="nc">StyledText</span>
-<span class="p">{</span>
-<span class="k">public</span><span class="o">:</span>
-<span class="w">    </span><span class="n">StyledText</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_styled_text_new</span><span class="p">(</span><span class="k">this</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="o">~</span><span class="n">StyledText</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_styled_text_drop</span><span class="p">(</span><span class="k">this</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
-
-<span class="w">    </span><span class="n">StyledText</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">StyledText</span><span class="w"> </span><span class="o">&amp;</span><span class="n">other</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_styled_text_clone</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">other</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
-
-<span class="w">    </span><span class="n">StyledText</span><span class="w"> </span><span class="o">&amp;</span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">StyledText</span><span class="w"> </span><span class="o">&amp;</span><span class="n">other</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_styled_text_drop</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
-<span class="w">        </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_styled_text_clone</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">other</span><span class="p">);</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">*</span><span class="k">this</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="n">StyledText</span><span class="w"> </span><span class="o">&amp;</span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="n">StyledText</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="n">other</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">swap</span><span class="p">(</span><span class="n">inner</span><span class="p">,</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="n">inner</span><span class="p">);</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">*</span><span class="k">this</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="k">friend</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="k">operator</span><span class="o">==</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">StyledText</span><span class="w"> </span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">StyledText</span><span class="w"> </span><span class="o">&amp;</span><span class="n">b</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_styled_text_eq</span><span class="p">(</span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">b</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="k">private</span><span class="o">:</span>
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">inner</span><span class="p">;</span>
-<span class="p">};</span>
-
 <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
 <span class="kr">inline</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">Slice</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">make_slice</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">*</span><span class="n">ptr</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">len</span><span class="p">)</span>
 <span class="p">{</span>
@@ -704,6 +676,57 @@
 <span class="p">}</span>
 
 <span class="p">}</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">StyledText</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">StyledText</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_styled_text_new</span><span class="p">(</span><span class="k">this</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="o">~</span><span class="n">StyledText</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_styled_text_drop</span><span class="p">(</span><span class="k">this</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">StyledText</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">StyledText</span><span class="w"> </span><span class="o">&amp;</span><span class="n">other</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_styled_text_clone</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">other</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">StyledText</span><span class="w"> </span><span class="o">&amp;</span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">StyledText</span><span class="w"> </span><span class="o">&amp;</span><span class="n">other</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_styled_text_drop</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+<span class="w">        </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_styled_text_clone</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">other</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">*</span><span class="k">this</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">StyledText</span><span class="w"> </span><span class="o">&amp;</span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="n">StyledText</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="n">other</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">swap</span><span class="p">(</span><span class="n">inner</span><span class="p">,</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="n">inner</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">*</span><span class="k">this</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">friend</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="k">operator</span><span class="o">==</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">StyledText</span><span class="w"> </span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">StyledText</span><span class="w"> </span><span class="o">&amp;</span><span class="n">b</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_styled_text_eq</span><span class="p">(</span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">b</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="cp">#if !defined(SLINT_FEATURE_FREESTANDING) || defined(DOXYGEN)</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">StyledText</span><span class="w"> </span><span class="n">from_plain_text</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">text</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">StyledText</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
+<span class="w">        </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_styled_text_from_plain_text</span><span class="p">(</span><span class="n">private_api</span><span class="o">::</span><span class="n">string_to_slice</span><span class="p">(</span><span class="n">text</span><span class="p">),</span>
+<span class="w">                                                            </span><span class="o">&amp;</span><span class="n">result</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">StyledText</span><span class="o">&gt;</span><span class="w"> </span><span class="n">from_markdown</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">markdown</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">StyledText</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_styled_text_from_markdown</span><span class="p">(</span>
+<span class="w">                    </span><span class="n">private_api</span><span class="o">::</span><span class="n">string_to_slice</span><span class="p">(</span><span class="n">markdown</span><span class="p">),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">result</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">nullopt</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="cp">#endif</span>
+
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">inner</span><span class="p">;</span>
+<span class="p">};</span>
+
 <span class="p">}</span>
 </pre></div>
 </div>

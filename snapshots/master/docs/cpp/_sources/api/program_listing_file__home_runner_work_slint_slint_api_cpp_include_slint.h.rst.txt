@@ -330,6 +330,13 @@ Program Listing for File slint.h
        return result;
    }
    
+   inline SharedString decimal_separator()
+   {
+       SharedString out;
+       cbindgen_private::slint_decimal_separator(&out);
+       return out;
+   }
+   
    inline StyledText parse_markdown(const SharedString &format_string,
                                     cbindgen_private::Slice<StyledText> args)
    {

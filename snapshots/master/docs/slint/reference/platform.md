@@ -48,3 +48,9 @@ export component Example inherits Window {
     }
 }
 ```
+
+### decimal-separator
+<SlintProperty propName="decimal-separator" typeName="string" propertyVisibility="out">
+The decimal separator currently used for localized float to string and vice versa conversions
+For more information about localization and how to change the decimal separator see [translations page](/master/docs/slint/guide/development/translations.md).
+</SlintProperty>

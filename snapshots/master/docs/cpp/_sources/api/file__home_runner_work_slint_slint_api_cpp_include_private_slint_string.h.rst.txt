@@ -25,6 +25,8 @@ Includes
 --------
 
 
+- ``optional``
+
 - ``private/slint_string_internal.h`` (:ref:`file_cppdocs_generated_include_private_slint_string_internal.h`)
 
 - ``span``
@@ -64,4 +66,6 @@ Classes
 
 
 - :ref:`exhale_struct_structslint_1_1SharedString`
+
+- :ref:`exhale_struct_structslint_1_1StyledText`
 
