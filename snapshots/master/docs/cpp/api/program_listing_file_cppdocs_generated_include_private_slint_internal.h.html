@@ -1359,6 +1359,21 @@
 <span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">grabbed</span><span class="p">;</span>
 <span class="p">};</span>
 
+<span class="k">struct</span><span class="w"> </span><span class="nc">TooltipArea</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="w"> </span><span class="n">has_hover</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">mouse_x</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">mouse_y</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">SharedString</span><span class="o">&gt;</span><span class="w"> </span><span class="n">text</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">ToolTipPlacement</span><span class="o">&gt;</span><span class="w"> </span><span class="n">placement</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="kt">int64_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">delay</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="n">LogicalLength</span><span class="o">&gt;</span><span class="w"> </span><span class="n">offset</span><span class="p">;</span>
+<span class="w">    </span><span class="n">private_api</span><span class="o">::</span><span class="n">CallbackHelper</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;</span><span class="w"> </span><span class="n">show</span><span class="p">;</span>
+<span class="w">    </span><span class="n">private_api</span><span class="o">::</span><span class="n">CallbackHelper</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;</span><span class="w"> </span><span class="n">hide</span><span class="p">;</span>
+<span class="w">    </span><span class="n">CachedRenderingData</span><span class="w"> </span><span class="n">cached_rendering_data</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">popup_visible</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Timer</span><span class="w"> </span><span class="n">timer</span><span class="p">;</span>
+<span class="p">};</span>
+
 <span class="k">struct</span><span class="w"> </span><span class="nc">FocusScope</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="w"> </span><span class="n">enabled</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Property</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="w"> </span><span class="n">has_focus</span><span class="p">;</span>
@@ -1937,6 +1952,7 @@
 <span class="w">                                   </span><span class="n">LogicalPosition</span><span class="w"> </span><span class="n">position</span><span class="p">,</span>
 <span class="w">                                   </span><span class="n">PopupClosePolicy</span><span class="w"> </span><span class="n">close_policy</span><span class="p">,</span>
 <span class="w">                                   </span><span class="k">const</span><span class="w"> </span><span class="n">ItemRc</span><span class="w"> </span><span class="o">*</span><span class="n">parent_item</span><span class="p">,</span>
+<span class="w">                                   </span><span class="kt">bool</span><span class="w"> </span><span class="n">is_tooltip</span><span class="p">,</span>
 <span class="w">                                   </span><span class="kt">bool</span><span class="w"> </span><span class="n">is_menu</span><span class="p">);</span>
 
 <span class="kt">bool</span><span class="w"> </span><span class="nf">slint_windowrc_create_popup_window_adapter</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">WindowAdapterRcOpaque</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">,</span>
@@ -2046,6 +2062,8 @@
 <span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">ImageItem</span><span class="p">);</span>
 <span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">ClippedImage</span><span class="p">);</span>
 <span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">TouchArea</span><span class="p">);</span>
+<span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">TooltipArea</span><span class="p">);</span>
+<span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">ToolTip</span><span class="p">);</span>
 <span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">FocusScope</span><span class="p">);</span>
 <span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">KeyBinding</span><span class="p">);</span>
 <span class="n">SLINT_DECL_ITEM</span><span class="p">(</span><span class="n">SwipeGestureHandler</span><span class="p">);</span>

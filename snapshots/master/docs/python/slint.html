@@ -90,16 +90,16 @@
                                 <a class="function" href="#Image.load_from_array">load_from_array</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Image.size">size</a>
+                                <a class="variable" href="#Image.width">width</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Image.height">height</a>
+                                <a class="variable" href="#Image.size">size</a>
                         </li>
                         <li>
                                 <a class="variable" href="#Image.path">path</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Image.width">width</a>
+                                <a class="variable" href="#Image.height">height</a>
                         </li>
                 </ul>
 
@@ -123,16 +123,16 @@
                                 <a class="function" href="#Color.with_alpha">with_alpha</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Color.blue">blue</a>
-                        </li>
-                        <li>
                                 <a class="variable" href="#Color.green">green</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Color.alpha">alpha</a>
+                                <a class="variable" href="#Color.red">red</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Color.red">red</a>
+                                <a class="variable" href="#Color.blue">blue</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Color.alpha">alpha</a>
                         </li>
                 </ul>
 
@@ -173,6 +173,18 @@
             <li>
                     <a class="class" href="#DataTransfer">DataTransfer</a>
                             <ul class="memberlist">
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#StyledText">StyledText</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="function" href="#StyledText.from_plain_text">from_plain_text</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#StyledText.from_markdown">from_markdown</a>
+                        </li>
                 </ul>
 
             </li>
@@ -234,10 +246,10 @@
                                 <a class="function" href="#Timer.restart">restart</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Timer.interval">interval</a>
+                                <a class="variable" href="#Timer.running">running</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Timer.running">running</a>
+                                <a class="variable" href="#Timer.interval">interval</a>
                         </li>
                 </ul>
 
@@ -556,6 +568,11 @@ the mapping:</p>
   <td></td>
 </tr>
 <tr>
+  <td><code>styled-text</code></td>
+  <td><code><a href="#StyledText">slint.StyledText</a></code></td>
+  <td></td>
+</tr>
+<tr>
   <td><code>length</code></td>
   <td><code>float</code></td>
   <td></td>
@@ -786,7 +803,7 @@ export component AppWindow inherits Window {
 </span><span id="L-17"><a href="#L-17"><span class="linenos"> 17</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
 </span><span id="L-18"><a href="#L-18"><span class="linenos"> 18</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">pathlib</span>
 </span><span id="L-19"><a href="#L-19"><span class="linenos"> 19</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">ListModel</span><span class="p">,</span> <span class="n">Model</span>
-</span><span id="L-20"><a href="#L-20"><span class="linenos"> 20</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">.slint</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">Color</span><span class="p">,</span> <span class="n">Brush</span><span class="p">,</span> <span class="n">Keys</span><span class="p">,</span> <span class="n">DataTransfer</span><span class="p">,</span> <span class="n">Timer</span><span class="p">,</span> <span class="n">TimerMode</span>
+</span><span id="L-20"><a href="#L-20"><span class="linenos"> 20</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">.slint</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">Color</span><span class="p">,</span> <span class="n">Brush</span><span class="p">,</span> <span class="n">Keys</span><span class="p">,</span> <span class="n">DataTransfer</span><span class="p">,</span> <span class="n">StyledText</span><span class="p">,</span> <span class="n">Timer</span><span class="p">,</span> <span class="n">TimerMode</span>
 </span><span id="L-21"><a href="#L-21"><span class="linenos"> 21</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">.loop</span><span class="w"> </span><span class="kn">import</span> <span class="n">SlintEventLoop</span>
 </span><span id="L-22"><a href="#L-22"><span class="linenos"> 22</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 </span><span id="L-23"><a href="#L-23"><span class="linenos"> 23</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Coroutine</span>
@@ -1399,17 +1416,18 @@ export component AppWindow inherits Window {
 </span><span id="L-630"><a href="#L-630"><span class="linenos">630</span></a>    <span class="s2">&quot;Brush&quot;</span><span class="p">,</span>
 </span><span id="L-631"><a href="#L-631"><span class="linenos">631</span></a>    <span class="s2">&quot;Keys&quot;</span><span class="p">,</span>
 </span><span id="L-632"><a href="#L-632"><span class="linenos">632</span></a>    <span class="s2">&quot;DataTransfer&quot;</span><span class="p">,</span>
-</span><span id="L-633"><a href="#L-633"><span class="linenos">633</span></a>    <span class="s2">&quot;Model&quot;</span><span class="p">,</span>
-</span><span id="L-634"><a href="#L-634"><span class="linenos">634</span></a>    <span class="s2">&quot;ListModel&quot;</span><span class="p">,</span>
-</span><span id="L-635"><a href="#L-635"><span class="linenos">635</span></a>    <span class="s2">&quot;Timer&quot;</span><span class="p">,</span>
-</span><span id="L-636"><a href="#L-636"><span class="linenos">636</span></a>    <span class="s2">&quot;TimerMode&quot;</span><span class="p">,</span>
-</span><span id="L-637"><a href="#L-637"><span class="linenos">637</span></a>    <span class="s2">&quot;set_xdg_app_id&quot;</span><span class="p">,</span>
-</span><span id="L-638"><a href="#L-638"><span class="linenos">638</span></a>    <span class="s2">&quot;callback&quot;</span><span class="p">,</span>
-</span><span id="L-639"><a href="#L-639"><span class="linenos">639</span></a>    <span class="s2">&quot;run_event_loop&quot;</span><span class="p">,</span>
-</span><span id="L-640"><a href="#L-640"><span class="linenos">640</span></a>    <span class="s2">&quot;quit_event_loop&quot;</span><span class="p">,</span>
-</span><span id="L-641"><a href="#L-641"><span class="linenos">641</span></a>    <span class="s2">&quot;init_translations&quot;</span><span class="p">,</span>
-</span><span id="L-642"><a href="#L-642"><span class="linenos">642</span></a>    <span class="s2">&quot;language&quot;</span><span class="p">,</span>
-</span><span id="L-643"><a href="#L-643"><span class="linenos">643</span></a><span class="p">]</span>
+</span><span id="L-633"><a href="#L-633"><span class="linenos">633</span></a>    <span class="s2">&quot;StyledText&quot;</span><span class="p">,</span>
+</span><span id="L-634"><a href="#L-634"><span class="linenos">634</span></a>    <span class="s2">&quot;Model&quot;</span><span class="p">,</span>
+</span><span id="L-635"><a href="#L-635"><span class="linenos">635</span></a>    <span class="s2">&quot;ListModel&quot;</span><span class="p">,</span>
+</span><span id="L-636"><a href="#L-636"><span class="linenos">636</span></a>    <span class="s2">&quot;Timer&quot;</span><span class="p">,</span>
+</span><span id="L-637"><a href="#L-637"><span class="linenos">637</span></a>    <span class="s2">&quot;TimerMode&quot;</span><span class="p">,</span>
+</span><span id="L-638"><a href="#L-638"><span class="linenos">638</span></a>    <span class="s2">&quot;set_xdg_app_id&quot;</span><span class="p">,</span>
+</span><span id="L-639"><a href="#L-639"><span class="linenos">639</span></a>    <span class="s2">&quot;callback&quot;</span><span class="p">,</span>
+</span><span id="L-640"><a href="#L-640"><span class="linenos">640</span></a>    <span class="s2">&quot;run_event_loop&quot;</span><span class="p">,</span>
+</span><span id="L-641"><a href="#L-641"><span class="linenos">641</span></a>    <span class="s2">&quot;quit_event_loop&quot;</span><span class="p">,</span>
+</span><span id="L-642"><a href="#L-642"><span class="linenos">642</span></a>    <span class="s2">&quot;init_translations&quot;</span><span class="p">,</span>
+</span><span id="L-643"><a href="#L-643"><span class="linenos">643</span></a>    <span class="s2">&quot;language&quot;</span><span class="p">,</span>
+</span><span id="L-644"><a href="#L-644"><span class="linenos">644</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -1782,6 +1800,19 @@ reflected in a previously created Image.</p>
 
 
                             </div>
+                            <div id="Image.width" class="classattr">
+                                <div class="attr variable">
+            <span class="name">width</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Image.width"></a>
+    
+            <div class="docstring"><p>The width of the image in pixels.</p>
+</div>
+
+
+                            </div>
                             <div id="Image.size" class="classattr">
                                 <div class="attr variable">
             <span class="name">size</span>
@@ -1791,19 +1822,6 @@ reflected in a previously created Image.</p>
     <a class="headerlink" href="#Image.size"></a>
     
             <div class="docstring"><p>The size of the image as tuple of <code><a href="#Image.width">width</a></code> and <code><a href="#Image.height">height</a></code>.</p>
-</div>
-
-
-                            </div>
-                            <div id="Image.height" class="classattr">
-                                <div class="attr variable">
-            <span class="name">height</span>
-
-        
-    </div>
-    <a class="headerlink" href="#Image.height"></a>
-    
-            <div class="docstring"><p>The height of the image in pixels.</p>
 </div>
 
 
@@ -1821,15 +1839,15 @@ reflected in a previously created Image.</p>
 
 
                             </div>
-                            <div id="Image.width" class="classattr">
+                            <div id="Image.height" class="classattr">
                                 <div class="attr variable">
-            <span class="name">width</span>
+            <span class="name">height</span>
 
         
     </div>
-    <a class="headerlink" href="#Image.width"></a>
+    <a class="headerlink" href="#Image.height"></a>
     
-            <div class="docstring"><p>The width of the image in pixels.</p>
+            <div class="docstring"><p>The height of the image in pixels.</p>
 </div>
 
 
@@ -1931,19 +1949,6 @@ is applied to <code>other</code>.</p>
 
 
                             </div>
-                            <div id="Color.blue" class="classattr">
-                                <div class="attr variable">
-            <span class="name">blue</span>
-
-        
-    </div>
-    <a class="headerlink" href="#Color.blue"></a>
-    
-            <div class="docstring"><p>The blue channel.</p>
-</div>
-
-
-                            </div>
                             <div id="Color.green" class="classattr">
                                 <div class="attr variable">
             <span class="name">green</span>
@@ -1957,19 +1962,6 @@ is applied to <code>other</code>.</p>
 
 
                             </div>
-                            <div id="Color.alpha" class="classattr">
-                                <div class="attr variable">
-            <span class="name">alpha</span>
-
-        
-    </div>
-    <a class="headerlink" href="#Color.alpha"></a>
-    
-            <div class="docstring"><p>The alpha channel.</p>
-</div>
-
-
-                            </div>
                             <div id="Color.red" class="classattr">
                                 <div class="attr variable">
             <span class="name">red</span>
@@ -1979,6 +1971,32 @@ is applied to <code>other</code>.</p>
     <a class="headerlink" href="#Color.red"></a>
     
             <div class="docstring"><p>The red channel.</p>
+</div>
+
+
+                            </div>
+                            <div id="Color.blue" class="classattr">
+                                <div class="attr variable">
+            <span class="name">blue</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Color.blue"></a>
+    
+            <div class="docstring"><p>The blue channel.</p>
+</div>
+
+
+                            </div>
+                            <div id="Color.alpha" class="classattr">
+                                <div class="attr variable">
+            <span class="name">alpha</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Color.alpha"></a>
+    
+            <div class="docstring"><p>The alpha channel.</p>
 </div>
 
 
@@ -2149,6 +2167,53 @@ Used for accessing the platform clipboard and drag-and-drop APIs.</p>
 </div>
 
 
+                </section>
+                <section id="StyledText">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">StyledText</span>:
+
+        
+    </div>
+    <a class="headerlink" href="#StyledText"></a>
+    
+            <div class="docstring"><p>Python wrapper for Slint's <code>styled-text</code> type.</p>
+</div>
+
+
+                            <div id="StyledText.from_plain_text" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">from_plain_text</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">text</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#StyledText.from_plain_text"></a>
+    
+            <div class="docstring"><p>Creates styled text from plain text.</p>
+</div>
+
+
+                            </div>
+                            <div id="StyledText.from_markdown" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">from_markdown</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">markdown</span></span><span class="return-annotation">):</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#StyledText.from_markdown"></a>
+    
+            <div class="docstring"><p>Parses markdown and returns a StyledText object.</p>
+
+<p>Raises a ValueError if the markdown contains unsupported syntax.</p>
+</div>
+
+
+                            </div>
                 </section>
                 <section id="Model">
                             <input id="Model-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
@@ -2633,6 +2698,19 @@ is re-calculated to be in the specified duration relative to when this function 
 
 
                             </div>
+                            <div id="Timer.running" class="classattr">
+                                <div class="attr variable">
+            <span class="name">running</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Timer.running"></a>
+    
+            <div class="docstring"><p>Set to true if the timer is running; false otherwise.</p>
+</div>
+
+
+                            </div>
                             <div id="Timer.interval" class="classattr">
                                 <div class="attr variable">
             <span class="name">interval</span>
@@ -2646,19 +2724,6 @@ is re-calculated to be in the specified duration relative to when this function 
 <p>When setting this property and the timer is running (see <code><a href="#Timer.running">Timer.running</a></code>),
 then the time when the callback will be next invoked is re-calculated to be in the
 specified duration relative to when this property is set.</p>
-</div>
-
-
-                            </div>
-                            <div id="Timer.running" class="classattr">
-                                <div class="attr variable">
-            <span class="name">running</span>
-
-        
-    </div>
-    <a class="headerlink" href="#Timer.running"></a>
-    
-            <div class="docstring"><p>Set to true if the timer is running; false otherwise.</p>
 </div>
 
 

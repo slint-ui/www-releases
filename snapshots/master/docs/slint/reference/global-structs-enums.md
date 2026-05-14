@@ -51,6 +51,7 @@ import TextOverflow from "/src/content/docs/reference/generated/enums/TextOverfl
 import TextStrokeStyle from "/src/content/docs/reference/generated/enums/TextStrokeStyle.md"
 import TextVerticalAlignment from "/src/content/docs/reference/generated/enums/TextVerticalAlignment.md"
 import TextWrap from "/src/content/docs/reference/generated/enums/TextWrap.md"
+import ToolTipPlacement from "/src/content/docs/reference/generated/enums/ToolTipPlacement.md"
 
 ## Structs
 
@@ -199,3 +200,6 @@ import TextWrap from "/src/content/docs/reference/generated/enums/TextWrap.md"
 
 ### TextWrap
 <TextWrap />
+
+### ToolTipPlacement
+<ToolTipPlacement />

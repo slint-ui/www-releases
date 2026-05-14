@@ -869,6 +869,21 @@ Program Listing for File slint_internal.h
        bool grabbed;
    };
    
+   struct TooltipArea {
+       Property<bool> has_hover;
+       Property<LogicalLength> mouse_x;
+       Property<LogicalLength> mouse_y;
+       Property<SharedString> text;
+       Property<ToolTipPlacement> placement;
+       Property<int64_t> delay;
+       Property<LogicalLength> offset;
+       private_api::CallbackHelper<void> show;
+       private_api::CallbackHelper<void> hide;
+       CachedRenderingData cached_rendering_data;
+       bool popup_visible;
+       Timer timer;
+   };
+   
    struct FocusScope {
        Property<bool> enabled;
        Property<bool> has_focus;
@@ -1447,6 +1462,7 @@ Program Listing for File slint_internal.h
                                       LogicalPosition position,
                                       PopupClosePolicy close_policy,
                                       const ItemRc *parent_item,
+                                      bool is_tooltip,
                                       bool is_menu);
    
    bool slint_windowrc_create_popup_window_adapter(const WindowAdapterRcOpaque *handle,
@@ -1556,6 +1572,8 @@ Program Listing for File slint_internal.h
    SLINT_DECL_ITEM(ImageItem);
    SLINT_DECL_ITEM(ClippedImage);
    SLINT_DECL_ITEM(TouchArea);
+   SLINT_DECL_ITEM(TooltipArea);
+   SLINT_DECL_ITEM(ToolTip);
    SLINT_DECL_ITEM(FocusScope);
    SLINT_DECL_ITEM(KeyBinding);
    SLINT_DECL_ITEM(SwipeGestureHandler);

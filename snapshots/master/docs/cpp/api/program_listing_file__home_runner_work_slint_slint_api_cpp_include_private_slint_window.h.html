@@ -653,12 +653,15 @@ public:
     template&lt;typename Component, typename Parent, typename PosGetter&gt;
     uint32_t show_popup(const Parent *parent_component, PosGetter pos,
                         cbindgen_private::PopupClosePolicy close_policy,
-                        cbindgen_private::ItemRc parent_item) const
+                        cbindgen_private::ItemRc parent_item, bool is_tooltip = false) const
     {
         using SharedGlobals = decltype(parent_component-&gt;globals);
         SharedGlobals _own_globals = nullptr;
-        if (auto _popup_adapter = create_popup_window_adapter()) {
-            _own_globals = parent_component-&gt;globals-&gt;clone_with_window_adapter(*_popup_adapter);
+        if (!is_tooltip) {
+            if (auto _popup_adapter = create_popup_window_adapter()) {
+                _own_globals =
+                        parent_component-&gt;globals-&gt;clone_with_window_adapter(*_popup_adapter);
+            }
         }
         if (!_own_globals) {
             _own_globals = parent_component-&gt;globals;
@@ -668,7 +671,7 @@ public:
         auto p = pos(popup);
         auto popup_dyn = popup.into_dyn();
         auto id = cbindgen_private::slint_windowrc_show_popup(&amp;inner, &amp;popup_dyn, p, close_policy,
-                                                              &amp;parent_item, false);
+                                                              &amp;parent_item, is_tooltip, false);
         popup-&gt;user_init();
         return id;
     }
@@ -710,7 +713,7 @@ public:
         auto popup_dyn = popup.into_dyn();
         auto id = cbindgen_private::slint_windowrc_show_popup(
                 &amp;inner, &amp;popup_dyn, pos, cbindgen_private::PopupClosePolicy::CloseOnClickOutside,
-                &amp;context_menu_rc, true);
+                &amp;context_menu_rc, false, true);
         popup-&gt;user_init();
         return id;
     }

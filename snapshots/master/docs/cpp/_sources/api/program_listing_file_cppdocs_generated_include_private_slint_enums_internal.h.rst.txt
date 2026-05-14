@@ -219,6 +219,13 @@ Program Listing for File slint_enums_internal.h
        CloseOnClickOutside,
        NoAutoClose,
    };
+   enum class ToolTipPlacement {
+       Pointer,
+       AboveElement,
+       BelowElement,
+       LeftElement,
+       RightElement,
+   };
    enum class LineCap {
        Butt,
        Round,
