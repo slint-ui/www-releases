@@ -579,10 +579,7 @@ auto optional_and_then(const std::optional&lt;T&gt; &amp;o, F &amp;&amp;f) -&gt;
 template&lt;typename T&gt;
 T optional_or_default(const std::optional&lt;T&gt; &amp;o)
 {
-    if (o) {
-        return *o;
-    }
-    return {};
+    return o.value_or(T {});
 }
 
 class WindowAdapterRc
@@ -668,10 +665,23 @@ public:
         }
 
         auto popup = Component::create(parent_component, _own_globals);
-        auto p = pos(popup);
         auto popup_dyn = popup.into_dyn();
-        auto id = cbindgen_private::slint_windowrc_show_popup(&amp;inner, &amp;popup_dyn, p, close_policy,
-                                                              &amp;parent_item, is_tooltip, false);
+
+        struct PopupPositionData
+        {
+            PosGetter pos;
+            decltype(popup) popup_component;
+        };
+
+        auto position_data = new PopupPositionData { std::move(pos), popup };
+        auto id = cbindgen_private::slint_windowrc_show_popup(
+                &amp;inner, &amp;popup_dyn,
+                [](void *user_data, LogicalPosition *pos) {
+                    auto data = reinterpret_cast&lt;PopupPositionData *&gt;(user_data);
+                    *pos = data-&gt;pos(data-&gt;popup_component);
+                },
+                [](void *user_data) { delete reinterpret_cast&lt;PopupPositionData *&gt;(user_data); },
+                position_data, close_policy, &amp;parent_item, is_tooltip, false);
         popup-&gt;user_init();
         return id;
     }
@@ -711,8 +721,14 @@ public:
         auto popup = Component::create(globals);
         init(&amp;*popup);
         auto popup_dyn = popup.into_dyn();
+        auto position_data = new LogicalPosition(pos);
         auto id = cbindgen_private::slint_windowrc_show_popup(
-                &amp;inner, &amp;popup_dyn, pos, cbindgen_private::PopupClosePolicy::CloseOnClickOutside,
+                &amp;inner, &amp;popup_dyn,
+                [](void *user_data, LogicalPosition *pos) {
+                    *pos = *reinterpret_cast&lt;LogicalPosition *&gt;(user_data);
+                },
+                [](void *user_data) { delete reinterpret_cast&lt;LogicalPosition *&gt;(user_data); },
+                position_data, cbindgen_private::PopupClosePolicy::CloseOnClickOutside,
                 &amp;context_menu_rc, false, true);
         popup-&gt;user_init();
         return id;

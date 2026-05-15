@@ -1459,7 +1459,9 @@ Program Listing for File slint_internal.h
    
    uint32_t slint_windowrc_show_popup(const WindowAdapterRcOpaque *handle,
                                       const ItemTreeRc *popup,
-                                      LogicalPosition position,
+                                      void (*position)(void *user_data, LogicalPosition *pos),
+                                      void (*drop_user_data)(void *user_data),
+                                      void *user_data,
                                       PopupClosePolicy close_policy,
                                       const ItemRc *parent_item,
                                       bool is_tooltip,
