@@ -412,6 +412,8 @@ Program Listing for File slint_internal.h
        Property<LogicalLength> resize_border_width;
        Property<bool> always_on_top;
        Property<bool> full_screen;
+       Property<bool> minimized;
+       Property<bool> maximized;
        Property<Image> icon;
        Property<SharedString> default_font_family;
        Property<LogicalLength> default_font_size;
@@ -810,6 +812,9 @@ Program Listing for File slint_internal.h
    struct DragArea {
        Property<bool> enabled;
        Property<DataTransfer> data;
+       Property<Image> drag_image;
+       Property<int32_t> drag_image_offset_x;
+       Property<int32_t> drag_image_offset_y;
        bool pressed;
        LogicalPoint pressed_position;
        CachedRenderingData cached_rendering_data;
@@ -1098,10 +1103,15 @@ Program Listing for File slint_internal.h
                                                                                   VRefMut<ItemVisitorVTable> visitor,
                                                                                   uint32_t dyn_index));
    
+   bool slint_windowitem_close(Pin<const WindowItem*> window_item,
+                               const WindowAdapterRcOpaque *window_adapter,
+                               const VRc<ItemTreeVTable> *self_component,
+                               uint32_t self_index);
+   
    void slint_windowitem_hide(Pin<const WindowItem*> window_item,
                               const WindowAdapterRcOpaque *window_adapter,
-                              const VRc<ItemTreeVTable> *_self_component,
-                              uint32_t _self_index);
+                              const VRc<ItemTreeVTable> *self_component,
+                              uint32_t self_index);
    
    void slint_contextmenu_close(Pin<const ContextMenu*> s,
                                 const WindowAdapterRcOpaque *window_adapter,

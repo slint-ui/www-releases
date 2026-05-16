@@ -28,3 +28,21 @@ Events still reach the child elements.
 <SlintProperty propName="data" typeName="data-transfer">
 The payload that's transferred to a [DropArea](/master/docs/slint/reference/drag-and-drop/droparea.md) when a drop happens.
 </SlintProperty>
+
+### drag-image
+<SlintProperty propName="drag-image" typeName="image">
+Bitmap drawn under the cursor while a drag is in flight.
+When unset (the default empty image), no overlay is drawn.
+</SlintProperty>
+
+### drag-image-offset-x
+<SlintProperty propName="drag-image-offset-x" typeName="int">
+Horizontal hotspot within `drag-image` that aligns with the cursor, in image pixel coordinates.
+`0` puts the image's left edge at the cursor; following HTML5's `setDragImage(image, x, y)` convention.
+</SlintProperty>
+
+### drag-image-offset-y
+<SlintProperty propName="drag-image-offset-y" typeName="int">
+Vertical hotspot within `drag-image` that aligns with the cursor, in image pixel coordinates.
+`0` puts the image's top edge at the cursor.
+</SlintProperty>

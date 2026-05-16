@@ -25,6 +25,16 @@ Whether the window should be placed above all other windows on window managers s
 Whether to display the Window in full-screen mode. In full-screen mode the Window will occupy the entire screen, it will not be resizable, and it will not display the title bar.
 </SlintProperty>
 
+### minimized
+<SlintProperty propName="minimized" typeName="bool" propertyVisibility="in-out">
+Whether the window is minimized. Setting this to true minimizes the window.
+</SlintProperty>
+
+### maximized
+<SlintProperty propName="maximized" typeName="bool" propertyVisibility="in-out">
+Whether the window is maximized. Setting this to true maximizes the window.
+</SlintProperty>
+
 ### background
 <SlintProperty propName="background" typeName="brush" defaultValue="depends on the style">
 The background brush of the `Window`.
@@ -85,8 +95,14 @@ On mobile devices, virtual keyboards (aka software keyboards or onscreen keyboar
 
 ## Functions
 
+### close() -> bool
+Request that the window be closed. This triggers the `close-requested` callback,
+giving the application a chance to cancel the close. Returns `true` if the close
+was dispatched, or `false` if the application declined.
+
 ### hide()
-Hide this window.
+Hide this window. This also drops the strong reference on the window, so if this was
+the last reference, the event loop will quit.
 
 ## `MenuBar`
 

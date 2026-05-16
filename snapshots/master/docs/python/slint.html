@@ -96,10 +96,10 @@
                                 <a class="variable" href="#Image.size">size</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Image.height">height</a>
+                                <a class="variable" href="#Image.width">width</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Image.width">width</a>
+                                <a class="variable" href="#Image.height">height</a>
                         </li>
                 </ul>
 
@@ -123,13 +123,13 @@
                                 <a class="function" href="#Color.with_alpha">with_alpha</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Color.red">red</a>
+                                <a class="variable" href="#Color.green">green</a>
                         </li>
                         <li>
                                 <a class="variable" href="#Color.alpha">alpha</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Color.green">green</a>
+                                <a class="variable" href="#Color.red">red</a>
                         </li>
                         <li>
                                 <a class="variable" href="#Color.blue">blue</a>
@@ -173,6 +173,30 @@
             <li>
                     <a class="class" href="#DataTransfer">DataTransfer</a>
                             <ul class="memberlist">
+                        <li>
+                                <a class="function" href="#DataTransfer.__init__">DataTransfer</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#DataTransfer.set_plaintext">set_plaintext</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#DataTransfer.fetch_plaintext">fetch_plaintext</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#DataTransfer.set_image">set_image</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#DataTransfer.fetch_image">fetch_image</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DataTransfer.has_plaintext">has_plaintext</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DataTransfer.has_image">has_image</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DataTransfer.user_data">user_data</a>
+                        </li>
                 </ul>
 
             </li>
@@ -246,10 +270,10 @@
                                 <a class="function" href="#Timer.restart">restart</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Timer.interval">interval</a>
+                                <a class="variable" href="#Timer.running">running</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Timer.running">running</a>
+                                <a class="variable" href="#Timer.interval">interval</a>
                         </li>
                 </ul>
 
@@ -570,6 +594,11 @@ the mapping:</p>
 <tr>
   <td><code>styled-text</code></td>
   <td><code><a href="#StyledText">slint.StyledText</a></code></td>
+  <td></td>
+</tr>
+<tr>
+  <td><code>data-transfer</code></td>
+  <td><code><a href="#DataTransfer">slint.DataTransfer</a></code></td>
   <td></td>
 </tr>
 <tr>
@@ -1713,7 +1742,7 @@ objects from a path to an image file on disk.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">load_from_path</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">path</span></span><span class="return-annotation">):</span></span>
+        <span class="name">load_from_path</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">[</span><span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span></span><span class="return-annotation">) -> <span class="n"><a href="#Image">Image</a></span>:</span></span>
 
         
     </div>
@@ -1728,7 +1757,7 @@ objects from a path to an image file on disk.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">load_from_svg_data</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">data</span></span><span class="return-annotation">):</span></span>
+        <span class="name">load_from_svg_data</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">data</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span></span><span class="return-annotation">) -> <span class="n"><a href="#Image">Image</a></span>:</span></span>
 
         
     </div>
@@ -1743,7 +1772,7 @@ objects from a path to an image file on disk.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">load_from_array</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">array</span></span><span class="return-annotation">):</span></span>
+        <span class="name">load_from_array</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">array</span><span class="p">:</span> <span class="n">Buffer</span></span><span class="return-annotation">) -> <span class="n"><a href="#Image">Image</a></span>:</span></span>
 
         
     </div>
@@ -1760,9 +1789,6 @@ Use this function to import images created by third-party modules such as matplo
 <li>If a stride is defined, the row stride must be equal to width * bytes-per-pixel, and the column stride must equal the bytes-per-pixel.</li>
 <li>A value of 3 for bytes-per-pixel is interpreted as RGB image, a value of 4 means RGBA.</li>
 </ul>
-
-<p>The image is created by performing a deep copy of the array's data. Subsequent changes to the buffer are not automatically
-reflected in a previously created Image.</p>
 
 <p>Example of importing a matplot figure into an image:</p>
 
@@ -1802,7 +1828,7 @@ reflected in a previously created Image.</p>
                             </div>
                             <div id="Image.path" class="classattr">
                                 <div class="attr variable">
-            <span class="name">path</span>
+            <span class="name">path</span><span class="annotation">: Optional[pathlib.Path]</span>
 
         
     </div>
@@ -1815,7 +1841,7 @@ reflected in a previously created Image.</p>
                             </div>
                             <div id="Image.size" class="classattr">
                                 <div class="attr variable">
-            <span class="name">size</span>
+            <span class="name">size</span><span class="annotation">: tuple[int, int]</span>
 
         
     </div>
@@ -1826,28 +1852,28 @@ reflected in a previously created Image.</p>
 
 
                             </div>
-                            <div id="Image.height" class="classattr">
-                                <div class="attr variable">
-            <span class="name">height</span>
-
-        
-    </div>
-    <a class="headerlink" href="#Image.height"></a>
-    
-            <div class="docstring"><p>The height of the image in pixels.</p>
-</div>
-
-
-                            </div>
                             <div id="Image.width" class="classattr">
                                 <div class="attr variable">
-            <span class="name">width</span>
+            <span class="name">width</span><span class="annotation">: int</span>
 
         
     </div>
     <a class="headerlink" href="#Image.width"></a>
     
             <div class="docstring"><p>The width of the image in pixels.</p>
+</div>
+
+
+                            </div>
+                            <div id="Image.height" class="classattr">
+                                <div class="attr variable">
+            <span class="name">height</span><span class="annotation">: int</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Image.height"></a>
+    
+            <div class="docstring"><p>The height of the image in pixels.</p>
 </div>
 
 
@@ -1874,7 +1900,7 @@ as an 8-bit integer. The alpha channel is 0 for fully transparent and 255 for fu
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">brighter</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span>, </span><span class="param"><span class="n">factor</span></span><span class="return-annotation">):</span></span>
+        <span class="name">brighter</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">factor</span><span class="p">:</span> <span class="nb">float</span></span><span class="return-annotation">) -> <span class="n"><a href="#Color">Color</a></span>:</span></span>
 
         
     </div>
@@ -1889,7 +1915,7 @@ as an 8-bit integer. The alpha channel is 0 for fully transparent and 255 for fu
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">darker</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span>, </span><span class="param"><span class="n">factor</span></span><span class="return-annotation">):</span></span>
+        <span class="name">darker</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">factor</span><span class="p">:</span> <span class="nb">float</span></span><span class="return-annotation">) -> <span class="n"><a href="#Color">Color</a></span>:</span></span>
 
         
     </div>
@@ -1904,7 +1930,7 @@ as an 8-bit integer. The alpha channel is 0 for fully transparent and 255 for fu
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">transparentize</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span>, </span><span class="param"><span class="n">factor</span></span><span class="return-annotation">):</span></span>
+        <span class="name">transparentize</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">factor</span><span class="p">:</span> <span class="nb">float</span></span><span class="return-annotation">) -> <span class="n"><a href="#Color">Color</a></span>:</span></span>
 
         
     </div>
@@ -1921,7 +1947,7 @@ as an 8-bit integer. The alpha channel is 0 for fully transparent and 255 for fu
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">mix</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span>, </span><span class="param"><span class="n">other</span>, </span><span class="param"><span class="n">factor</span></span><span class="return-annotation">):</span></span>
+        <span class="name">mix</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">other</span><span class="p">:</span> <span class="n"><a href="#Image">Image</a></span>, </span><span class="param"><span class="n">factor</span><span class="p">:</span> <span class="nb">float</span></span><span class="return-annotation">) -> <span class="n"><a href="#Color">Color</a></span>:</span></span>
 
         
     </div>
@@ -1938,7 +1964,7 @@ is applied to <code>other</code>.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">with_alpha</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span>, </span><span class="param"><span class="n">alpha</span></span><span class="return-annotation">):</span></span>
+        <span class="name">with_alpha</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span></span><span class="return-annotation">) -> <span class="n"><a href="#Color">Color</a></span>:</span></span>
 
         
     </div>
@@ -1949,35 +1975,9 @@ is applied to <code>other</code>.</p>
 
 
                             </div>
-                            <div id="Color.red" class="classattr">
-                                <div class="attr variable">
-            <span class="name">red</span>
-
-        
-    </div>
-    <a class="headerlink" href="#Color.red"></a>
-    
-            <div class="docstring"><p>The red channel.</p>
-</div>
-
-
-                            </div>
-                            <div id="Color.alpha" class="classattr">
-                                <div class="attr variable">
-            <span class="name">alpha</span>
-
-        
-    </div>
-    <a class="headerlink" href="#Color.alpha"></a>
-    
-            <div class="docstring"><p>The alpha channel.</p>
-</div>
-
-
-                            </div>
                             <div id="Color.green" class="classattr">
                                 <div class="attr variable">
-            <span class="name">green</span>
+            <span class="name">green</span><span class="annotation">: int</span>
 
         
     </div>
@@ -1988,9 +1988,35 @@ is applied to <code>other</code>.</p>
 
 
                             </div>
+                            <div id="Color.alpha" class="classattr">
+                                <div class="attr variable">
+            <span class="name">alpha</span><span class="annotation">: int</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Color.alpha"></a>
+    
+            <div class="docstring"><p>The alpha channel.</p>
+</div>
+
+
+                            </div>
+                            <div id="Color.red" class="classattr">
+                                <div class="attr variable">
+            <span class="name">red</span><span class="annotation">: int</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Color.red"></a>
+    
+            <div class="docstring"><p>The red channel.</p>
+</div>
+
+
+                            </div>
                             <div id="Color.blue" class="classattr">
                                 <div class="attr variable">
-            <span class="name">blue</span>
+            <span class="name">blue</span><span class="annotation">: int</span>
 
         
     </div>
@@ -2025,7 +2051,7 @@ shall be filled. A brush can also be applied to the outline of a shape, that mea
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">is_transparent</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">is_transparent</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="nb">bool</span>:</span></span>
 
         
     </div>
@@ -2040,7 +2066,7 @@ shall be filled. A brush can also be applied to the outline of a shape, that mea
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">is_opaque</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">is_opaque</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="nb">bool</span>:</span></span>
 
         
     </div>
@@ -2055,7 +2081,7 @@ shall be filled. A brush can also be applied to the outline of a shape, that mea
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">brighter</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span>, </span><span class="param"><span class="n">factor</span></span><span class="return-annotation">):</span></span>
+        <span class="name">brighter</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">factor</span><span class="p">:</span> <span class="nb">float</span></span><span class="return-annotation">) -> <span class="n"><a href="#Brush">Brush</a></span>:</span></span>
 
         
     </div>
@@ -2072,7 +2098,7 @@ all the colors of this brush.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">darker</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span>, </span><span class="param"><span class="n">factor</span></span><span class="return-annotation">):</span></span>
+        <span class="name">darker</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">factor</span><span class="p">:</span> <span class="nb">float</span></span><span class="return-annotation">) -> <span class="n"><a href="#Brush">Brush</a></span>:</span></span>
 
         
     </div>
@@ -2089,7 +2115,7 @@ all the color of this brush.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">transparentize</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span>, </span><span class="param"><span class="n">amount</span></span><span class="return-annotation">):</span></span>
+        <span class="name">transparentize</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">amount</span><span class="p">:</span> <span class="nb">float</span></span><span class="return-annotation">) -> <span class="n"><a href="#Brush">Brush</a></span>:</span></span>
 
         
     </div>
@@ -2108,7 +2134,7 @@ all the color of this brush.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">with_alpha</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span>, </span><span class="param"><span class="n">alpha</span></span><span class="return-annotation">):</span></span>
+        <span class="name">with_alpha</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span></span><span class="return-annotation">) -> <span class="n"><a href="#Brush">Brush</a></span>:</span></span>
 
         
     </div>
@@ -2122,7 +2148,7 @@ set to <code>alpha</code>.</p>
                             </div>
                             <div id="Brush.color" class="classattr">
                                 <div class="attr variable">
-            <span class="name">color</span>
+            <span class="name">color</span><span class="annotation">: <a href="#Color">Color</a></span>
 
         
     </div>
@@ -2167,6 +2193,129 @@ Used for accessing the platform clipboard and drag-and-drop APIs.</p>
 </div>
 
 
+                            <div id="DataTransfer.__init__" class="classattr">
+                                <div class="attr function">
+            
+        <span class="name">DataTransfer</span><span class="signature pdoc-code condensed">()</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DataTransfer.__init__"></a>
+    
+            <div class="docstring"><p>Constructs an empty <code><a href="#DataTransfer">DataTransfer</a></code>.</p>
+</div>
+
+
+                            </div>
+                            <div id="DataTransfer.set_plaintext" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">set_plaintext</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">text</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="kc">None</span>:</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#DataTransfer.set_plaintext"></a>
+    
+            <div class="docstring"><p>Sets the plaintext representation of this <code><a href="#DataTransfer">DataTransfer</a></code>. Calling this again overwrites
+the previous plaintext.</p>
+</div>
+
+
+                            </div>
+                            <div id="DataTransfer.fetch_plaintext" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">fetch_plaintext</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>:</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#DataTransfer.fetch_plaintext"></a>
+    
+            <div class="docstring"><p>Returns the plaintext representation of this <code><a href="#DataTransfer">DataTransfer</a></code>, or <code>None</code> if no plaintext
+is available.</p>
+</div>
+
+
+                            </div>
+                            <div id="DataTransfer.set_image" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">set_image</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">image</span><span class="p">:</span> <span class="n"><a href="#Image">Image</a></span></span><span class="return-annotation">) -> <span class="kc">None</span>:</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#DataTransfer.set_image"></a>
+    
+            <div class="docstring"><p>Sets the image representation of this <code><a href="#DataTransfer">DataTransfer</a></code>. Calling this again overwrites the
+previous image.</p>
+</div>
+
+
+                            </div>
+                            <div id="DataTransfer.fetch_image" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">fetch_image</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="n">Optional</span><span class="p">[</span><span class="n"><a href="#Image">Image</a></span><span class="p">]</span>:</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#DataTransfer.fetch_image"></a>
+    
+            <div class="docstring"><p>Returns the image representation of this <code><a href="#DataTransfer">DataTransfer</a></code>, or <code>None</code> if no image is
+available.</p>
+</div>
+
+
+                            </div>
+                            <div id="DataTransfer.has_plaintext" class="classattr">
+                                <div class="attr variable">
+            <span class="name">has_plaintext</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DataTransfer.has_plaintext"></a>
+    
+            <div class="docstring"><p><code>True</code> if this <code><a href="#DataTransfer">DataTransfer</a></code> advertises a plaintext representation.</p>
+</div>
+
+
+                            </div>
+                            <div id="DataTransfer.has_image" class="classattr">
+                                <div class="attr variable">
+            <span class="name">has_image</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DataTransfer.has_image"></a>
+    
+            <div class="docstring"><p><code>True</code> if this <code><a href="#DataTransfer">DataTransfer</a></code> advertises an image representation.</p>
+</div>
+
+
+                            </div>
+                            <div id="DataTransfer.user_data" class="classattr">
+                                <div class="attr variable">
+            <span class="name">user_data</span><span class="annotation">: Optional[object]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DataTransfer.user_data"></a>
+    
+            <div class="docstring"><p>Application-internal user data attached to this <code><a href="#DataTransfer">DataTransfer</a></code>. Use this when the
+drag-and-drop or clipboard operation stays inside the current Python application and you
+want to avoid serializing to plaintext or an image.</p>
+
+<p>Reading returns the Python object previously assigned, or <code>None</code> if none was set (or the
+user data was set by a non-Python binding). Assigning <code>None</code> clears any previously attached
+Python user data.</p>
+</div>
+
+
+                            </div>
                 </section>
                 <section id="StyledText">
                     <div class="attr class">
@@ -2620,7 +2769,7 @@ fire if used in another thread.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">start</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span>, </span><span class="param"><span class="n">mode</span>, </span><span class="param"><span class="n">interval</span>, </span><span class="param"><span class="n">callback</span></span><span class="return-annotation">):</span></span>
+        <span class="name">start</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="bp">self</span>,</span><span class="param">	<span class="n">mode</span><span class="p">:</span> <span class="n"><a href="#TimerMode">TimerMode</a></span>,</span><span class="param">	<span class="n">interval</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span>,</span><span class="param">	<span class="n">callback</span><span class="p">:</span> <span class="n">Any</span></span><span class="return-annotation">) -> <span class="kc">None</span>:</span></span>
 
         
     </div>
@@ -2645,7 +2794,7 @@ for <code><a href="#TimerMode.Repeated">TimerMode.Repeated</a></code> timers.</l
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">single_shot</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">duration</span>, </span><span class="param"><span class="n">callback</span></span><span class="return-annotation">):</span></span>
+        <span class="name">single_shot</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">duration</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span>, </span><span class="param"><span class="n">callback</span><span class="p">:</span> <span class="n">Any</span></span><span class="return-annotation">) -> <span class="kc">None</span>:</span></span>
 
         
     </div>
@@ -2668,7 +2817,7 @@ timer fires. It is fired only once and then deleted.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">stop</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">stop</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="kc">None</span>:</span></span>
 
         
     </div>
@@ -2683,7 +2832,7 @@ timer fires. It is fired only once and then deleted.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">restart</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="o">/</span></span><span class="return-annotation">):</span></span>
+        <span class="name">restart</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="kc">None</span>:</span></span>
 
         
     </div>
@@ -2698,9 +2847,22 @@ is re-calculated to be in the specified duration relative to when this function 
 
 
                             </div>
+                            <div id="Timer.running" class="classattr">
+                                <div class="attr variable">
+            <span class="name">running</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Timer.running"></a>
+    
+            <div class="docstring"><p>Set to true if the timer is running; false otherwise.</p>
+</div>
+
+
+                            </div>
                             <div id="Timer.interval" class="classattr">
                                 <div class="attr variable">
-            <span class="name">interval</span>
+            <span class="name">interval</span><span class="annotation">: datetime.timedelta</span>
 
         
     </div>
@@ -2711,19 +2873,6 @@ is re-calculated to be in the specified duration relative to when this function 
 <p>When setting this property and the timer is running (see <code><a href="#Timer.running">Timer.running</a></code>),
 then the time when the callback will be next invoked is re-calculated to be in the
 specified duration relative to when this property is set.</p>
-</div>
-
-
-                            </div>
-                            <div id="Timer.running" class="classattr">
-                                <div class="attr variable">
-            <span class="name">running</span>
-
-        
-    </div>
-    <a class="headerlink" href="#Timer.running"></a>
-    
-            <div class="docstring"><p>Set to true if the timer is running; false otherwise.</p>
 </div>
 
 
