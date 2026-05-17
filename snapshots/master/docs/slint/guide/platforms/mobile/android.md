@@ -2,6 +2,8 @@
 title: "Android"
 description: "Android Platform Guide"
 ---
+{/* cSpell: ignore xbuild textfields */}
+
 import LangRefLink from '@slint/common-files/src/components/LangRefLink.astro';
 import { Image } from 'astro:assets';
 

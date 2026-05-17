@@ -198,7 +198,6 @@
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Getting Started On Desktop</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../cmake.html">Set Up Development Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started.html">First Steps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../live_preview.html">Live-Preview</a></li>
 </ul>
@@ -517,6 +516,10 @@
 <span class="k">struct</span><span class="w"> </span><span class="nc">DropEvent</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">DataTransfer</span><span class="w"> </span><span class="n">data</span><span class="p">;</span>
 <span class="w">    </span><span class="n">LogicalPosition</span><span class="w"> </span><span class="n">position</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">allow_copy</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">allow_move</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">allow_link</span><span class="p">;</span>
+<span class="w">    </span><span class="n">DragAction</span><span class="w"> </span><span class="n">proposed_action</span><span class="p">;</span>
 <span class="w">    </span><span class="k">friend</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="k">operator</span><span class="o">==</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">DropEvent</span><span class="o">&amp;</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">DropEvent</span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span>
 <span class="w">    </span><span class="k">friend</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="k">operator</span><span class="o">!=</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">DropEvent</span><span class="o">&amp;</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">DropEvent</span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span>
 <span class="p">};</span>

@@ -27,6 +27,10 @@ Program Listing for File slint_builtin_structs_internal.h
    struct DropEvent {
        DataTransfer data;
        LogicalPosition position;
+       bool allow_copy;
+       bool allow_move;
+       bool allow_link;
+       DragAction proposed_action;
        friend bool operator==(const DropEvent&, const DropEvent&) = default;
        friend bool operator!=(const DropEvent&, const DropEvent&) = default;
    };

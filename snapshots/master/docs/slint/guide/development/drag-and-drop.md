@@ -41,10 +41,11 @@ export component Example inherits Window {
             background: drop.contains-drag ? #80e080 : #a0a0a0;
             drop := DropArea {
                 can-drop(event) => {
-                    Api.can-drop(event.data)
+                    Api.can-drop(event.data) ? DragAction.copy : DragAction.none
                 }
                 dropped(event) => {
                     debug("Got: ", Api.transfer-to-string(event.data));
+                    return event.proposed-action;
                 }
             }
             Text { text: "Drop here"; }
@@ -52,6 +53,39 @@ export component Example inherits Window {
     }
 }
 ```
+
+Both `can-drop` and `dropped` return a [DragAction](/master/docs/slint/reference/global-structs-enums.md#dragaction): `DragAction.copy`, `DragAction.move`, `DragAction.link` to accept with that action, or `DragAction.none` to reject. `can-drop` runs during hover (drives the cursor and `current-action`); `dropped` runs on release and the returned action is what gets reported back to the source via `drag-finished`.
+
+## Drag actions
+
+A `DragArea` declares which actions it permits (`allow-copy`, `allow-move`, `allow-link`) and a `preferred-action` that applies when no modifier is pressed.
+The target picks the final action in `can-drop` (for hover) and `dropped` (final answer), the runtime clamps each against the source's allowed set, and when the drop completes the source's `drag-finished(action)` fires so a "move" source can remove the original data.
+
+```slint no-test
+DragArea {
+    data: Api.make-data();
+    allow-copy: false;
+    allow-move: true;
+    preferred-action: DragAction.move;
+    // Dim the source while the drag is in flight.
+    opacity: self.dragging ? 0.4 : 1.0;
+    drag-finished(action) => {
+        if action == DragAction.move {
+            Api.remove-source();
+        }
+    }
+}
+
+DropArea {
+    can-drop(event) => event.allow-move ? DragAction.move : DragAction.none;
+    dropped(event) => {
+        Api.accept-drop(event.data);
+        return event.proposed-action;
+    }
+}
+```
+
+The hovering target's chosen action is also exposed as `current-action`, useful for visual feedback (a different cursor, icon, or highlight per action).
 
 <Tabs syncKey="dev-language">
 <TabItem label="Rust">

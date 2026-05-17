@@ -2,6 +2,8 @@
 title: "Types"
 description: "All Slint types"
 ---
+{/* cSpell: ignore Farbfeld */}
+
 import SlintProperty from '@slint/common-files/src/components/SlintProperty.astro';
 import Link from '@slint/common-files/src/components/Link.astro';
 import { Tabs, TabItem } from '@astrojs/starlight/components';

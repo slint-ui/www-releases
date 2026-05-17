@@ -210,3 +210,35 @@ The horizontal distance of the shadow from the element's frame.
 ### drop-shadow-offset-y
 <SlintProperty propName="drop-shadow-offset-y" typeName="length"/>
 The vertical distance of the shadow from the element's frame.
+
+### drop-shadow-spread
+<SlintProperty propName="drop-shadow-spread" typeName="length"/>
+Grows (positive) or shrinks (negative) the shadow shape on all sides before the blur is applied.
+Equivalent to the spread radius in CSS `box-shadow`. Currently only supported by the Skia renderer.
+
+## Inset Shadows
+
+Inset shadows are rendered inside the element's geometry (inverted from drop shadows), giving
+the appearance of an inwards-cast shadow. They follow the same parameters as drop shadows.
+Currently only supported by the Skia renderer.
+
+### inset-shadow-blur
+<SlintProperty propName="inset-shadow-blur" typeName="length"/>
+The blur radius of the inset shadow.
+
+### inset-shadow-color
+<SlintProperty propName="inset-shadow-color" typeName="color"/>
+The base color of the inset shadow.
+
+### inset-shadow-offset-x
+<SlintProperty propName="inset-shadow-offset-x" typeName="length"/>
+Horizontal offset of the inset shadow inside the element.
+
+### inset-shadow-offset-y
+<SlintProperty propName="inset-shadow-offset-y" typeName="length"/>
+Vertical offset of the inset shadow inside the element.
+
+### inset-shadow-spread
+<SlintProperty propName="inset-shadow-spread" typeName="length"/>
+Positive spread thickens the shadow band along the element's interior boundary; negative spread
+thins it.

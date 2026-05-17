@@ -50,7 +50,7 @@ Program Listing for File slint_keys.h
    
    private:
        // Use only one instance of the actual Rust struct as the inner data.
-       // This way this class has the same binary representation and can be used interchangibly
+       // This way this class has the same binary representation and can be used interchangeably
        cbindgen_private::types::Keys data;
    
        Keys(cbindgen_private::types::Keys &&data) : data(std::move(data)) { }

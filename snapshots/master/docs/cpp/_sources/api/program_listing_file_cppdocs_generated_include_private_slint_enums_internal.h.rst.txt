@@ -236,6 +236,12 @@ Program Listing for File slint_enums_internal.h
        Round,
        Bevel,
    };
+   enum class DragAction {
+       None,
+       Copy,
+       Move,
+       Link,
+   };
    enum class OperatingSystemType {
        Android,
        Ios,

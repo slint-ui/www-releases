@@ -2,6 +2,8 @@
 title: "Translations"
 description: "Translations"
 ---
+{/* cSpell: ignore msgfmt msgctx msginit poedit Lokalize Transifex libintl bindtextdomain */}
+
 import { Tabs, TabItem, FileTree } from '@astrojs/starlight/components';
 import LangRefLink from '@slint/common-files/src/components/LangRefLink.astro';
 import Link from '@slint/common-files/src/components/Link.astro';

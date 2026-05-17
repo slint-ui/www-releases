@@ -183,4 +183,8 @@ You are viewing contents of an older version. Switch to <a href="https://docs.sl
 <ul>
 <li><strong><code dir="auto">data</code></strong> (<em>data-transfer</em>):  The payload set on the source <code dir="auto">DragArea</code>.</li>
 <li><strong><code dir="auto">position</code></strong> (<em>LogicalPosition</em>):  The cursor position in the <code dir="auto">DropArea</code>’s local coordinates.</li>
+<li><strong><code dir="auto">allow_copy</code></strong> (<em>bool</em>):  Mirrors <code dir="auto">DragArea.allow-copy</code>: true if the source allows the drop to copy the data.</li>
+<li><strong><code dir="auto">allow_move</code></strong> (<em>bool</em>):  Mirrors <code dir="auto">DragArea.allow-move</code>: true if the source allows the drop to move the data.</li>
+<li><strong><code dir="auto">allow_link</code></strong> (<em>bool</em>):  Mirrors <code dir="auto">DragArea.allow-link</code>: true if the source allows the drop to link to the data.</li>
+<li><strong><code dir="auto">proposed_action</code></strong> (<em>DragAction</em>):  The action negotiated from current modifier state and the source’s <code dir="auto">preferred-action</code>, clamped to the allowed set. Updated on every <code dir="auto">DragMove</code>. The target’s <code dir="auto">can-drop</code> callback can return this to honor the user’s modifier choice, or override with any other allowed action.</li>
 </ul> </div> <footer class="sl-flex astro-eifwj7ft"> <div class="meta sl-flex astro-eifwj7ft">   </div> <div class="pagination-links print:hidden astro-dyqvxwuo" dir="ltr">   </div>  </footer> <hr class="astro-j437entq"> <p class="astro-j437entq">&copy; 2026 SixtyFPS GmbH</p> </div> </div>  </main> </div> </div> </div> </div> </body></html>

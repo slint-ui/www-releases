@@ -49,6 +49,14 @@ export component Example inherits Window {
 }
 ```
 
+### bring-all-to-front()
+Brings all application windows to the front of the screen.
+
+On macOS this invokes `[NSApp arrangeInFront:]`, which raises every application window
+to the top of the window stack. On other platforms this function is a no-op.
+
+This corresponds to the standard macOS **Window › Bring All to Front** menu item.
+
 ### decimal-separator
 <SlintProperty propName="decimal-separator" typeName="string" propertyVisibility="out">
 The decimal separator currently used for localized float to string and vice versa conversions

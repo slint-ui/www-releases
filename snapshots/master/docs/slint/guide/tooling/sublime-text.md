@@ -2,6 +2,8 @@
 title: "Sublime Text"
 description: "Sublime Text Configuration for Slint"
 ---
+{/* cSpell: ignore sublimelsp */}
+
 import Link from '@slint/common-files/src/components/Link.astro';
 
 To install the Slint Language server, check the [LSP Documentation](/master/docs/slint/guide/tooling/manual-setup.md#slint-lsp).

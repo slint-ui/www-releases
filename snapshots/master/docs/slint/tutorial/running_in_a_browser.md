@@ -2,6 +2,8 @@
 title: "Running In A Browser"
 description: "Running In A Browser"
 ---
+{/* cSpell: ignore getrandom */}
+
 :::caution[Caution]
 Only Rust supports using Slint with WebAssembly.
 :::

@@ -198,7 +198,6 @@
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Getting Started On Desktop</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../cmake.html">Set Up Development Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started.html">First Steps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../live_preview.html">Live-Preview</a></li>
 </ul>
@@ -503,6 +502,7 @@
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Copyright © SixtyFPS GmbH &lt;info@slint.dev&gt;</span>
 <span class="c1">// SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0</span>
 
+<span class="c1">// cSpell:ignore itemvtable</span>
 <span class="cp">#pragma once</span>
 
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;private/slint_internal.h&quot;</span>
@@ -847,6 +847,11 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_open_url</span><span class="p">(</span><span class="o">&amp;</span><span class="n">url</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">window_adapter</span><span class="p">.</span><span class="n">handle</span><span class="p">());</span>
 <span class="p">}</span>
 
+<span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">bring_all_to_front</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_bring_all_to_front</span><span class="p">();</span>
+<span class="p">}</span>
+
 <span class="kr">inline</span><span class="w"> </span><span class="n">SharedString</span><span class="w"> </span><span class="n">translate_from_bundle</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">span</span><span class="o">&lt;</span><span class="k">const</span><span class="w"> </span><span class="kt">char8_t</span><span class="w"> </span><span class="o">*</span><span class="k">const</span><span class="o">&gt;</span><span class="w"> </span><span class="n">strs</span><span class="p">,</span>
 <span class="w">                                          </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">Slice</span><span class="o">&lt;</span><span class="n">SharedString</span><span class="o">&gt;</span><span class="w"> </span><span class="n">arguments</span><span class="p">)</span>
 <span class="p">{</span>
@@ -887,7 +892,7 @@
 <span class="c1">// Translator API is currently considered experimental due to discussions</span>
 <span class="c1">// about the returned string type (SharedString vs. Cow&lt;str&gt; etc.). Also it</span>
 <span class="c1">// is not available with no_std due to the tr crate.</span>
-<span class="c1">// See dicussion in https://github.com/slint-ui/slint/pull/10979.</span>
+<span class="c1">// See discussion in https://github.com/slint-ui/slint/pull/10979.</span>
 <span class="cp">#if defined(SLINT_FEATURE_EXPERIMENTAL) &amp;&amp; !defined(SLINT_FEATURE_FREESTANDING)</span>
 <span class="k">struct</span><span class="w"> </span><span class="nc">Translator</span>
 <span class="p">{</span>

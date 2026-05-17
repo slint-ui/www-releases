@@ -2,6 +2,8 @@
 title: "The `.slint` File"
 description: "The `.slint` File"
 ---
+{/* cSpell: ignore otherlib */}
+
 import CodeSnippetMD from '@slint/common-files/src/components/CodeSnippetMD.astro';
 import Link from '@slint/common-files/src/components/Link.astro';
 import LangRefLink from '@slint/common-files/src/components/LangRefLink.astro';

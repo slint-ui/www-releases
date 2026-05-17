@@ -2,6 +2,8 @@
 title: "Manual Setup"
 description: "Manually set up Slint for your editor"
 ---
+{/* cSpell: ignore libx libxcb libxkbcommon libinput libgbm */}
+
 import Link from '@slint/common-files/src/components/Link.astro';
 
 We provide extensions or configuration files for different editors to better support .slint files.

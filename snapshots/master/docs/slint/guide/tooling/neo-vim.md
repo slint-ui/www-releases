@@ -2,6 +2,8 @@
 title: "(Neo-)Vim"
 description: "Vim and Neovim Configuration for Slint"
 ---
+{/* cSpell: ignore vimrc nvim lspconfig kosayoda akioweh */}
+
 import Link from '@slint/common-files/src/components/Link.astro';
 
 ## Vim

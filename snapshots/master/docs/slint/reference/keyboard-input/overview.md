@@ -2,6 +2,8 @@
 title: "Key Handling Overview"
 description: "Key Handling Overview"
 ---
+{/* cSpell: ignore Backtab */}
+
 import Link from '@slint/common-files/src/components/Link.astro';
 import SpecialKeys from "/src/content/docs/reference/generated/enums/keys.md"
 

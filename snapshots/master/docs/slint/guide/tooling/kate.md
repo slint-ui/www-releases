@@ -2,6 +2,8 @@
 title: "Kate"
 description: "Kate Configuration for Slint"
 ---
+{/* cSpell: ignore ksyntaxhighlighter */}
+
 import Link from '@slint/common-files/src/components/Link.astro';
 
 Before we start, it's important to note that Kate relies on the presence of syntax highlighting file for the usage of the LSP.

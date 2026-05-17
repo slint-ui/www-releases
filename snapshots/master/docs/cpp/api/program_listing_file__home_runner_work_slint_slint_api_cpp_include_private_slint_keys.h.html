@@ -198,7 +198,6 @@
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Getting Started On Desktop</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../cmake.html">Set Up Development Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started.html">First Steps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../live_preview.html">Live-Preview</a></li>
 </ul>
@@ -540,7 +539,7 @@
 
 <span class="k">private</span><span class="o">:</span>
 <span class="w">    </span><span class="c1">// Use only one instance of the actual Rust struct as the inner data.</span>
-<span class="w">    </span><span class="c1">// This way this class has the same binary representation and can be used interchangibly</span>
+<span class="w">    </span><span class="c1">// This way this class has the same binary representation and can be used interchangeably</span>
 <span class="w">    </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">types</span><span class="o">::</span><span class="n">Keys</span><span class="w"> </span><span class="n">data</span><span class="p">;</span>
 
 <span class="w">    </span><span class="n">Keys</span><span class="p">(</span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">types</span><span class="o">::</span><span class="n">Keys</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">data</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">data</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>

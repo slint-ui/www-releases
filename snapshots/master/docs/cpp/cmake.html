@@ -7,7 +7,7 @@
         <link rel="prefetch" href="https://slint.dev/logo/slint-logo-small-light.svg" as="image">
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2025.12.19 -->
-        <title>Set Up Development Environment - Slint 1.17.0 C++ API documentation</title>
+        <title>&lt;no title&gt; - Slint 1.17.0 C++ API documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d111a655" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="_static/theme_tweak.css?v=ca455ff5" />
@@ -175,7 +175,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
         <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
       </label>
     </div>
@@ -197,8 +197,7 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Getting Started On Desktop</span></p>
-<ul class="current">
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Set Up Development Environment</a></li>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">First Steps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="live_preview.html">Live-Preview</a></li>
 </ul>
@@ -492,153 +491,174 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
             <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <!-- cSpell: ignore ccmake -->
-<section id="set-up-development-environment">
-<h1>Set Up Development Environment<a class="headerlink" href="#set-up-development-environment" title="Permalink to this heading">¶</a></h1>
-<section id="prerequisites">
-<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading">¶</a></h2>
-<ul class="simple">
-<li><p>A C++ compiler that supports C++20 (e.g., <strong>MSVC 2019 16.6</strong> on Windows)</p></li>
-<li><p><strong><a class="reference external" href="https://cmake.org/download/">cmake</a></strong> (3.21 or newer)</p>
-<ul>
-<li><p>Slint comes with a CMake integration that automates the compilation step of the <code class="docutils literal notranslate"><span class="pre">.slint</span></code> markup language files and offers a CMake target for convenient linkage.</p></li>
-<li><p><em>Note</em>: We recommend using the Ninja generator of CMake for the most efficient build and <code class="docutils literal notranslate"><span class="pre">.slint</span></code> dependency tracking. Install <a class="reference external" href="https://ninja-build.org">Ninja</a> and select the CMake Ninja backend by passing <code class="docutils literal notranslate"><span class="pre">-GNinja</span></code> or set the <code class="docutils literal notranslate"><span class="pre">CMAKE_GENERATOR</span></code> environment variable to <code class="docutils literal notranslate"><span class="pre">Ninja</span></code>.</p></li>
-</ul>
-</li>
-</ul>
-</section>
-<section id="install-slint">
-<h2>Install Slint<a class="headerlink" href="#install-slint" title="Permalink to this heading">¶</a></h2>
-<p>To install Slint, either download the <a class="reference internal" href="#install-binary-packages"><span class="xref myst">binary packages</span></a> or <a class="reference internal" href="#build-from-sources"><span class="xref myst">build from sources</span></a>.</p>
-<p><em>Note</em>: Binary packages are available for only Linux and Windows on x86-64 architecture. The recommended and most flexible way to use the C++ API is to build Slint from sources.</p>
-<section id="install-binary-packages">
-<h3>Install Binary Packages<a class="headerlink" href="#install-binary-packages" title="Permalink to this heading">¶</a></h3>
-<p>The Slint binary packages work without any Rust development environment.</p>
-<p>Steps:</p>
-<ol class="arabic simple">
-<li><p>Open <a class="reference external" href="https://github.com/slint-ui/slint/releases">https://github.com/slint-ui/slint/releases</a></p></li>
-<li><p>Click on the latest release</p></li>
-<li><p>From “Assets” (“XXX” refers to the version of the latest release),</p>
-<ul class="simple">
-<li><p>for Linux x86-64 architecture - download <code class="docutils literal notranslate"><span class="pre">slint-cpp-XXX-Linux-x86_64.tar.gz</span></code></p></li>
-<li><p>for Windows x86-64 architecture - download <code class="docutils literal notranslate"><span class="pre">slint-cpp-XXX-win64-MSVC.exe</span></code></p></li>
-</ul>
-</li>
-<li><p>Unpack the downloaded archive (Linux) or run the installer executable (Windows).</p></li>
-<li><p>Set environment variables</p>
-<ul class="simple">
-<li><p>set <code class="docutils literal notranslate"><span class="pre">CMAKE_PREFIX_PATH</span></code> to the installation directory of Slint. Alternatively you can pass <code class="docutils literal notranslate"><span class="pre">-DCMAKE_PREFIX_PATH=/path/to/installed/slint</span></code> argument when invoking cmake. This helps <code class="docutils literal notranslate"><span class="pre">find_package(Slint)</span></code> to find Slint from within a <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file.</p></li>
-<li><p>add the <code class="docutils literal notranslate"><span class="pre">lib</span></code> sub-directory in the installation directory of Slint to <code class="docutils literal notranslate"><span class="pre">LD_LIBRARY_PATH</span></code> (Linux) or to the <code class="docutils literal notranslate"><span class="pre">PATH</span></code> environment variable (Windows). This is necessary to find the Slint libraries when running a Slint program.</p></li>
-</ul>
-</li>
-</ol>
-<p>In the next section you will learn how to use the installed library in your application and how to work with <code class="docutils literal notranslate"><span class="pre">.slint</span></code> UI files.</p>
-</section>
-<section id="build-from-sources">
-<h3>Build From Sources<a class="headerlink" href="#build-from-sources" title="Permalink to this heading">¶</a></h3>
-<p>First you need to install the prerequisites:</p>
-<ul class="simple">
-<li><p>Install Rust by following the <a class="reference external" href="https://www.rust-lang.org/learn/get-started">Rust Getting Started Guide</a>. If you already
-have Rust installed, make sure that it’s at least version 1.92 or newer. You can check which version you have installed
-by running <code class="docutils literal notranslate"><span class="pre">rustc</span> <span class="pre">--version</span></code>. Once this is done, you should have the <code class="docutils literal notranslate"><span class="pre">rustc</span></code> compiler and the <code class="docutils literal notranslate"><span class="pre">cargo</span></code> build system installed in your path.</p></li>
-</ul>
-<p>You can either choose to compile Slint from source along with your application or include Slint as an external CMake package.</p>
-<ul class="simple">
-<li><p>To compile Slint along with your application, include Slint into your CMake project using CMake’s <a class="reference external" href="https://cmake.org/cmake/help/latest/module/FetchContent.html"><code class="docutils literal notranslate"><span class="pre">FetchContent</span></code></a> feature. Insert the following snippet into your <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> to make CMake download the latest released 1.x version, compile it, and make the CMake
-integration available:</p></li>
-</ul>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">include</span><span class="p">(</span><span class="s">FetchContent</span><span class="p">)</span>
-<span class="nb">FetchContent_Declare</span><span class="p">(</span>
-<span class="w">    </span><span class="s">Slint</span>
-<span class="w">    </span><span class="s">GIT_REPOSITORY</span><span class="w"> </span><span class="s">https://github.com/slint-ui/slint.git</span>
-<span class="w">    </span><span class="c"># `release/1` will auto-upgrade to the latest Slint &gt;= 1.0.0 and &lt; 2.0.0</span>
-<span class="w">    </span><span class="c"># `release/1.0` will auto-upgrade to the latest Slint &gt;= 1.0.0 and &lt; 1.1.0</span>
-<span class="w">    </span><span class="s">GIT_TAG</span><span class="w"> </span><span class="s">release/1</span>
-<span class="w">    </span><span class="s">SOURCE_SUBDIR</span><span class="w"> </span><span class="s">api/cpp</span>
-<span class="p">)</span>
-<span class="nb">FetchContent_MakeAvailable</span><span class="p">(</span><span class="s">Slint</span><span class="p">)</span>
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>To include Slint as an external CMake package, build Slint from source like a regular CMake project, install it into a prefix directory of your choice and use <code class="docutils literal notranslate"><span class="pre">find_package(Slint)</span></code> in your <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code>.</p></li>
-</ul>
-</section>
-<section id="features">
-<h3>Features<a class="headerlink" href="#features" title="Permalink to this heading">¶</a></h3>
-<p>The Slint library supports a set of features, not all of them enabled by default.
+          <!-- cSpell: ignore ccmake iconfigure
+
+# Set Up Development Environment
+
+## Prerequisites
+
+* A C++ compiler that supports C++20 (e.g., **MSVC 2019 16.6** on Windows)
+
+* **[cmake](https://cmake.org/download/)** (3.21 or newer)
+
+  * Slint comes with a CMake integration that automates the compilation step of the `.slint` markup language files and offers a CMake target for convenient linkage.
+
+  * *Note*: We recommend using the Ninja generator of CMake for the most efficient build and `.slint` dependency tracking. Install [Ninja](https://ninja-build.org) and select the CMake Ninja backend by passing `-GNinja` or set the `CMAKE_GENERATOR` environment variable to `Ninja`.
+
+## Install Slint
+
+To install Slint, either download the [binary packages](#install-binary-packages) or [build from sources](#build-from-sources).
+
+*Note*: Binary packages are available for only Linux and Windows on x86-64 architecture. The recommended and most flexible way to use the C++ API is to build Slint from sources.
+
+### Install Binary Packages
+
+The Slint binary packages work without any Rust development environment.
+
+Steps:
+
+1. Open <https://github.com/slint-ui/slint/releases>
+
+2. Click on the latest release
+
+3. From "Assets" ("XXX" refers to the version of the latest release),
+
+   * for Linux x86-64 architecture - download `slint-cpp-XXX-Linux-x86_64.tar.gz`
+   * for Windows x86-64 architecture - download `slint-cpp-XXX-win64-MSVC.exe`
+
+4. Unpack the downloaded archive (Linux) or run the installer executable (Windows).
+
+5. Set environment variables
+
+   * set `CMAKE_PREFIX_PATH` to the installation directory of Slint. Alternatively you can pass `-DCMAKE_PREFIX_PATH=/path/to/installed/slint` argument when invoking cmake. This helps `find_package(Slint)` to find Slint from within a `CMakeLists.txt` file.
+
+   * add the `lib` sub-directory in the installation directory of Slint to `LD_LIBRARY_PATH` (Linux) or to the `PATH` environment variable (Windows). This is necessary to find the Slint libraries when running a Slint program.
+
+In the next section you will learn how to use the installed library in your application and how to work with `.slint` UI files.
+
+### Build From Sources
+
+First you need to install the prerequisites:
+
+* Install Rust by following the [Rust Getting Started Guide](https://www.rust-lang.org/learn/get-started). If you already
+  have Rust installed, make sure that it's at least version 1.92 or newer. You can check which version you have installed
+  by running `rustc --version`. Once this is done, you should have the `rustc` compiler and the `cargo` build system installed in your path.
+
+You can either choose to compile Slint from source along with your application or include Slint as an external CMake package.
+
+* To compile Slint along with your application, include Slint into your CMake project using CMake's [`FetchContent`](https://cmake.org/cmake/help/latest/module/FetchContent.html) feature. Insert the following snippet into your `CMakeLists.txt` to make CMake download the latest released 1.x version, compile it, and make the CMake
+integration available:
+
+```cmake
+include(FetchContent)
+FetchContent_Declare(
+    Slint
+    GIT_REPOSITORY https://github.com/slint-ui/slint.git
+    # `release/1` will auto-upgrade to the latest Slint >= 1.0.0 and < 2.0.0
+    # `release/1.0` will auto-upgrade to the latest Slint >= 1.0.0 and < 1.1.0
+    GIT_TAG release/1
+    SOURCE_SUBDIR api/cpp
+)
+FetchContent_MakeAvailable(Slint)
+```
+
+* To include Slint as an external CMake package, build Slint from source like a regular CMake project, install it into a prefix directory of your choice and use `find_package(Slint)` in your `CMakeLists.txt`.
+
+
+### Features
+
+The Slint library supports a set of features, not all of them enabled by default.
 You might want to adapt the set of enabled features to optimize your binary
 size. For example you might want to support only the wayland stack on Linux.
-Enable the <code class="docutils literal notranslate"><span class="pre">backend-winit-wayland</span></code> feature while turning off the
-<code class="docutils literal notranslate"><span class="pre">backend-winit-x11</span></code> feature to do so.</p>
-<p>Slint’s CMake configuration uses CMake options prefixed with <code class="docutils literal notranslate"><span class="pre">SLINT_FEATURE_</span></code> to
-expose Slint’s feature flags at compile time. To have a wayland-only stack with
-the CMake setup you would for example use:</p>
-<p><code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">-DSLINT_FEATURE_BACKEND_WINIT=OFF</span> <span class="pre">-DSLINT_FEATURE_BACKEND_WINIT_WAYLAND=ON</span> <span class="pre">...</span></code></p>
-<p>Alternatively, you can use <code class="docutils literal notranslate"><span class="pre">cmake-gui</span></code> or <code class="docutils literal notranslate"><span class="pre">ccmake</span></code> for a more interactive way
-to discover and toggle features.</p>
-<p>This works when compiling Slint as a package, using <code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">--build</span></code> and
-<code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">--install</span></code>, or when including Slint using <code class="docutils literal notranslate"><span class="pre">FetchContent</span></code>.</p>
-<p>If you need to check in your application’s <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> whether a feature is enabled
-or disabled, read the <code class="docutils literal notranslate"><span class="pre">SLINT_ENABLED_FEATURES</span></code> and <code class="docutils literal notranslate"><span class="pre">SLINT_DISABLED_FEATURES</span></code> target
-properties from the <code class="docutils literal notranslate"><span class="pre">Slint::Slint</span></code> cmake target:</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span>get_target_property(slint_enabled_features Slint::Slint SLINT_ENABLED_FEATURES)
-if (&quot;BACKEND_WINIT&quot; IN_LIST slint_enabled_features)
+Enable the `backend-winit-wayland` feature while turning off the
+`backend-winit-x11` feature to do so.
+
+Slint's CMake configuration uses CMake options prefixed with `SLINT_FEATURE_` to
+expose Slint's feature flags at compile time. To have a wayland-only stack with
+the CMake setup you would for example use:
+
+   `cmake -DSLINT_FEATURE_BACKEND_WINIT=OFF -DSLINT_FEATURE_BACKEND_WINIT_WAYLAND=ON ...`
+
+Alternatively, you can use `cmake-gui` or `ccmake` for a more interactive way
+to discover and toggle features.
+
+This works when compiling Slint as a package, using `cmake --build` and
+`cmake --install`, or when including Slint using `FetchContent`.
+
+If you need to check in your application's `CMakeLists.txt` whether a feature is enabled
+or disabled, read the `SLINT_ENABLED_FEATURES` and `SLINT_DISABLED_FEATURES` target
+properties from the `Slint::Slint` cmake target:
+
+```cmake
+get_target_property(slint_enabled_features Slint::Slint SLINT_ENABLED_FEATURES)
+if ("BACKEND_WINIT" IN_LIST slint_enabled_features)
     ...
 endif()
-</pre></div>
-</div>
-<p>Similarly, if you need to check for features at compile-time, check for the existence
-of <code class="docutils literal notranslate"><span class="pre">SLINT_FEATURE_&lt;NAME&gt;</span></code> pre-processor macros:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include &lt;slint.h&gt;</span>
+```
 
-<span class="c1">#if defined(SLINT_FEATURE_BACKEND_WINIT)</span>
-<span class="o">//</span> <span class="o">...</span>
-<span class="c1">#endif</span>
-</pre></div>
-</div>
-</section>
-<section id="rust-flags">
-<h3>Rust Flags<a class="headerlink" href="#rust-flags" title="Permalink to this heading">¶</a></h3>
-<p>Slint uses <a class="reference external" href="https://github.com/corrosion-rs/corrosion">Corrosion</a> to build Slint, which is developed in Rust. You can utilize <a class="reference external" href="https://corrosion-rs.github.io/corrosion/usage.html#global-corrosion-options">Corrosion’s global CMake variables</a> to control certain aspects of the Rust build process.</p>
-<p>Furthermore, you can set the <code class="docutils literal notranslate"><span class="pre">SLINT_LIBRARY_CARGO_FLAGS</span></code> cache variable to specify additional flags for the Slint runtime during the build.</p>
-</section>
-<section id="platform-backends">
-<h3>Platform Backends<a class="headerlink" href="#platform-backends" title="Permalink to this heading">¶</a></h3>
-<p>In Slint, a backend is the module that encapsulates the interaction with the operating system,
+Similarly, if you need to check for features at compile-time, check for the existence
+of `SLINT_FEATURE_<NAME>` pre-processor macros:
+
+```
+#include <slint.h>
+
+#if defined(SLINT_FEATURE_BACKEND_WINIT)
+// ...
+#endif
+```
+
+### Rust Flags
+
+Slint uses [Corrosion](https://github.com/corrosion-rs/corrosion) to build Slint, which is developed in Rust. You can utilize [Corrosion's global CMake variables](https://corrosion-rs.github.io/corrosion/usage.html#global-corrosion-options) to control certain aspects of the Rust build process.
+
+Furthermore, you can set the `SLINT_LIBRARY_CARGO_FLAGS` cache variable to specify additional flags for the Slint runtime during the build.
+
+### Platform Backends
+
+In Slint, a backend is the module that encapsulates the interaction with the operating system,
 in particular the windowing sub-system. Multiple backends can be compiled into Slint and one
 backend is selected for use at run-time on application start-up. You can configure Slint without
-any built-in backends, and instead develop your own backend by implementing Slint’s platform
-abstraction and window adapter interfaces.</p>
-<p>For more information about the available backends, their system requirements, and configuration
-options, see the <a class="reference external" href="https://slint.dev/releases/1.17.0/docs/slint/guide/backends-and-renderers/backends_and_renderers/">Backend &amp; Renderers Documentation</a>.</p>
-<p>By default Slint will use the <a class="reference external" href="https://crates.io/crates/winit">winit</a> back-end.
-You can enable additional back-ends using the <code class="docutils literal notranslate"><span class="pre">SLINT_FEATURE_BACKEND_</span></code> features.
+any built-in backends, and instead develop your own backend by implementing Slint's platform
+abstraction and window adapter interfaces.
+
+For more information about the available backends, their system requirements, and configuration
+options, see the {{ '[Backend & Renderers Documentation]({})'.format(slint_href_backends_and_renderers) }}.
+
+By default Slint will use the [winit](https://crates.io/crates/winit) back-end.
+You can enable additional back-ends using the `SLINT_FEATURE_BACKEND_` features.
 For example, to enable the Qt back-end,
-set the <code class="docutils literal notranslate"><span class="pre">SLINT_FEATURE_BACKEND_QT</span></code> option in your CMake project configuration.</p>
-</section>
-<section id="cross-compiling">
-<h3>Cross-compiling<a class="headerlink" href="#cross-compiling" title="Permalink to this heading">¶</a></h3>
-<p>It’s possible to cross-compile Slint to a different target architecture when
+set the `SLINT_FEATURE_BACKEND_QT` option in your CMake project configuration.
+
+### Cross-compiling
+
+It's possible to cross-compile Slint to a different target architecture when
 building with CMake. You need to make sure your CMake setup is ready for
-cross-compilation, as documented in the <a class="reference external" href="https://cmake.org/cmake/help/latest/manual/cmake-toolchains.7.html#cross-compiling">upstream CMake documentation</a>.</p>
-<p>If you are building against a Yocto SDK, it is sufficient to source the SDK’s environment setup file.</p>
-<p>Since Slint is implemented using the Rust programming language, you need to
-determine which Rust target matches the target architecture that you’re
-compiling for. Please consult the <a class="reference external" href="https://doc.rust-lang.org/nightly/rustc/platform-support.html">upstream Rust documentation</a> to find the correct target name. Now you need to install the Rust toolchain:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>rustup<span class="w"> </span>target<span class="w"> </span>add<span class="w"> </span>&lt;target-name&gt;
-</pre></div>
-</div>
-<p>Then you’re ready to iconfigure your CMake project you need to add
-<code class="docutils literal notranslate"><span class="pre">-DRust_CARGO_TARGET=&lt;target</span> <span class="pre">name&gt;</span></code> to the CMake command line.
-This ensures that the Slint library is built for the correct architecture.</p>
-<p>For example if you are building against an embedded Linux Yocto SDK targeting
-an ARM64 board, the following commands show how to compile:</p>
-<p>Install the Rust target toolchain once:</p>
+cross-compilation, as documented in the [upstream CMake documentation](https://cmake.org/cmake/help/latest/manual/cmake-toolchains.7.html#cross-compiling).
+
+If you are building against a Yocto SDK, it is sufficient to source the SDK's environment setup file.
+
+Since Slint is implemented using the Rust programming language, you need to
+determine which Rust target matches the target architecture that you're
+compiling for. Please consult the [upstream Rust documentation](https://doc.rust-lang.org/nightly/rustc/platform-support.html) to find the correct target name. Now you need to install the Rust toolchain:
+
+```sh
+rustup target add <target-name>
+```
+
+Then you're ready to iconfigure your CMake project you need to add
+`-DRust_CARGO_TARGET=<target name>` to the CMake command line.
+This ensures that the Slint library is built for the correct architecture.
+
+For example if you are building against an embedded Linux Yocto SDK targeting
+an ARM64 board, the following commands show how to compile:
+
+Install the Rust target toolchain once:
+
 <!-- cSpell:disable -->
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>rustup<span class="w"> </span>target<span class="w"> </span>add<span class="w"> </span>aarch64-unknown-linux-gnu
 </pre></div>
@@ -655,9 +675,6 @@ cmake<span class="w"> </span>--build<span class="w"> </span>.
 cmake<span class="w"> </span>--install<span class="w"> </span>.
 </pre></div>
 </div>
-</section>
-</section>
-</section>
 
         </article>
       </div>
@@ -702,36 +719,8 @@ cmake<span class="w"> </span>--install<span class="w"> </span>.
         
       </footer>
     </div>
-    <aside class="toc-drawer">
+    <aside class="toc-drawer no-toc">
       
-      
-      <div class="toc-sticky toc-scroll">
-        <div class="toc-title-container">
-          <span class="toc-title">
-            On this page
-          </span>
-        </div>
-        <div class="toc-tree-container">
-          <div class="toc-tree">
-            <ul>
-<li><a class="reference internal" href="#">Set Up Development Environment</a><ul>
-<li><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
-<li><a class="reference internal" href="#install-slint">Install Slint</a><ul>
-<li><a class="reference internal" href="#install-binary-packages">Install Binary Packages</a></li>
-<li><a class="reference internal" href="#build-from-sources">Build From Sources</a></li>
-<li><a class="reference internal" href="#features">Features</a></li>
-<li><a class="reference internal" href="#rust-flags">Rust Flags</a></li>
-<li><a class="reference internal" href="#platform-backends">Platform Backends</a></li>
-<li><a class="reference internal" href="#cross-compiling">Cross-compiling</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-          </div>
-        </div>
-      </div>
       
       
     </aside>

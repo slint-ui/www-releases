@@ -2,6 +2,8 @@
 title: "Helix"
 description: "Helix Configuration for Slint"
 ---
+{/* cSpell: ignore Textobject */}
+
 import Link from '@slint/common-files/src/components/Link.astro';
 
 To install the Slint Language server, check the [LSP Documentation](/master/docs/slint/guide/tooling/manual-setup.md#slint-lsp).

@@ -19,6 +19,7 @@ import AccessibleRole from "/src/content/docs/reference/generated/enums/Accessib
 import AnimationDirection from "/src/content/docs/reference/generated/enums/AnimationDirection.md"
 import ColorScheme from "/src/content/docs/reference/generated/enums/ColorScheme.md"
 import DialogButtonRole from "/src/content/docs/reference/generated/enums/DialogButtonRole.md"
+import DragAction from "/src/content/docs/reference/generated/enums/DragAction.md"
 import EventResult from "/src/content/docs/reference/generated/enums/EventResult.md"
 import FillRule from "/src/content/docs/reference/generated/enums/FillRule.md"
 import FlexboxLayoutAlignContent from "/src/content/docs/reference/generated/enums/FlexboxLayoutAlignContent.md"
@@ -104,6 +105,9 @@ import ToolTipPlacement from "/src/content/docs/reference/generated/enums/ToolTi
 
 ### DialogButtonRole
 <DialogButtonRole />
+
+### DragAction
+<DragAction />
 
 ### EventResult
 <EventResult />

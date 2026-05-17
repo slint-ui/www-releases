@@ -90,13 +90,13 @@
                                 <a class="function" href="#Image.load_from_array">load_from_array</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Image.path">path</a>
-                        </li>
-                        <li>
                                 <a class="variable" href="#Image.size">size</a>
                         </li>
                         <li>
                                 <a class="variable" href="#Image.width">width</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Image.path">path</a>
                         </li>
                         <li>
                                 <a class="variable" href="#Image.height">height</a>
@@ -126,13 +126,13 @@
                                 <a class="variable" href="#Color.green">green</a>
                         </li>
                         <li>
+                                <a class="variable" href="#Color.blue">blue</a>
+                        </li>
+                        <li>
                                 <a class="variable" href="#Color.alpha">alpha</a>
                         </li>
                         <li>
                                 <a class="variable" href="#Color.red">red</a>
-                        </li>
-                        <li>
-                                <a class="variable" href="#Color.blue">blue</a>
                         </li>
                 </ul>
 
@@ -189,13 +189,13 @@
                                 <a class="function" href="#DataTransfer.fetch_image">fetch_image</a>
                         </li>
                         <li>
-                                <a class="variable" href="#DataTransfer.has_plaintext">has_plaintext</a>
-                        </li>
-                        <li>
                                 <a class="variable" href="#DataTransfer.has_image">has_image</a>
                         </li>
                         <li>
                                 <a class="variable" href="#DataTransfer.user_data">user_data</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DataTransfer.has_plaintext">has_plaintext</a>
                         </li>
                 </ul>
 
@@ -1781,7 +1781,7 @@ objects from a path to an image file on disk.</p>
             <div class="docstring"><p>Creates a new image from an array-like object that implements the <a href="https://docs.python.org/3/c-api/buffer.html">Buffer Protocol</a>.
 Use this function to import images created by third-party modules such as matplotlib or Pillow.</p>
 
-<p>The array must satisfy certain contraints to represent an image:</p>
+<p>The array must satisfy certain constraints to represent an image:</p>
 
 <ul>
 <li>The buffer's format needs to be <code>B</code> (unsigned char)</li>
@@ -1826,19 +1826,6 @@ Use this function to import images created by third-party modules such as matplo
 
 
                             </div>
-                            <div id="Image.path" class="classattr">
-                                <div class="attr variable">
-            <span class="name">path</span><span class="annotation">: Optional[pathlib.Path]</span>
-
-        
-    </div>
-    <a class="headerlink" href="#Image.path"></a>
-    
-            <div class="docstring"><p>The path of the image if it was loaded from disk, or None.</p>
-</div>
-
-
-                            </div>
                             <div id="Image.size" class="classattr">
                                 <div class="attr variable">
             <span class="name">size</span><span class="annotation">: tuple[int, int]</span>
@@ -1861,6 +1848,19 @@ Use this function to import images created by third-party modules such as matplo
     <a class="headerlink" href="#Image.width"></a>
     
             <div class="docstring"><p>The width of the image in pixels.</p>
+</div>
+
+
+                            </div>
+                            <div id="Image.path" class="classattr">
+                                <div class="attr variable">
+            <span class="name">path</span><span class="annotation">: Optional[pathlib.Path]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Image.path"></a>
+    
+            <div class="docstring"><p>The path of the image if it was loaded from disk, or None.</p>
 </div>
 
 
@@ -1988,6 +1988,19 @@ is applied to <code>other</code>.</p>
 
 
                             </div>
+                            <div id="Color.blue" class="classattr">
+                                <div class="attr variable">
+            <span class="name">blue</span><span class="annotation">: int</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Color.blue"></a>
+    
+            <div class="docstring"><p>The blue channel.</p>
+</div>
+
+
+                            </div>
                             <div id="Color.alpha" class="classattr">
                                 <div class="attr variable">
             <span class="name">alpha</span><span class="annotation">: int</span>
@@ -2014,19 +2027,6 @@ is applied to <code>other</code>.</p>
 
 
                             </div>
-                            <div id="Color.blue" class="classattr">
-                                <div class="attr variable">
-            <span class="name">blue</span><span class="annotation">: int</span>
-
-        
-    </div>
-    <a class="headerlink" href="#Color.blue"></a>
-    
-            <div class="docstring"><p>The blue channel.</p>
-</div>
-
-
-                            </div>
                 </section>
                 <section id="Brush">
                     <div class="attr class">
@@ -2043,7 +2043,7 @@ shall be filled. A brush can also be applied to the outline of a shape, that mea
 
 <p>Brushes can only be constructed from solid colors.</p>
 
-<p><strong>Note:</strong> In future, we plan to reduce this constraint and allow for declaring graidient brushes programmatically.</p>
+<p><strong>Note:</strong> In future, we plan to reduce this constraint and allow for declaring gradient brushes programmatically.</p>
 </div>
 
 
@@ -2271,19 +2271,6 @@ available.</p>
 
 
                             </div>
-                            <div id="DataTransfer.has_plaintext" class="classattr">
-                                <div class="attr variable">
-            <span class="name">has_plaintext</span><span class="annotation">: bool</span>
-
-        
-    </div>
-    <a class="headerlink" href="#DataTransfer.has_plaintext"></a>
-    
-            <div class="docstring"><p><code>True</code> if this <code><a href="#DataTransfer">DataTransfer</a></code> advertises a plaintext representation.</p>
-</div>
-
-
-                            </div>
                             <div id="DataTransfer.has_image" class="classattr">
                                 <div class="attr variable">
             <span class="name">has_image</span><span class="annotation">: bool</span>
@@ -2312,6 +2299,19 @@ want to avoid serializing to plaintext or an image.</p>
 <p>Reading returns the Python object previously assigned, or <code>None</code> if none was set (or the
 user data was set by a non-Python binding). Assigning <code>None</code> clears any previously attached
 Python user data.</p>
+</div>
+
+
+                            </div>
+                            <div id="DataTransfer.has_plaintext" class="classattr">
+                                <div class="attr variable">
+            <span class="name">has_plaintext</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DataTransfer.has_plaintext"></a>
+    
+            <div class="docstring"><p><code>True</code> if this <code><a href="#DataTransfer">DataTransfer</a></code> advertises a plaintext representation.</p>
 </div>
 
 
@@ -2782,7 +2782,7 @@ timer fires. If the timer has been started previously and not fired yet, then it
 
 <ul>
 <li><code>mode</code>: The timer mode to apply, i.e. whether to repeatedly fire the timer or just once.</li>
-<li><code><a href="#Timer.interval">interval</a></code>: The duration from now until when the timer should firethe first time, and subsequently
+<li><code><a href="#Timer.interval">interval</a></code>: The duration from now until when the timer should fire the first time, and subsequently
 for <code><a href="#TimerMode.Repeated">TimerMode.Repeated</a></code> timers.</li>
 <li><code><a href="#callback">callback</a></code>: The function to call when the time has been reached or exceeded.</li>
 </ul>

@@ -815,6 +815,12 @@ Program Listing for File slint_internal.h
        Property<Image> drag_image;
        Property<int32_t> drag_image_offset_x;
        Property<int32_t> drag_image_offset_y;
+       Property<bool> allow_copy;
+       Property<bool> allow_move;
+       Property<bool> allow_link;
+       Property<DragAction> preferred_action;
+       Property<bool> dragging;
+       private_api::CallbackHelper<DragAction> drag_finished;
        bool pressed;
        LogicalPoint pressed_position;
        CachedRenderingData cached_rendering_data;
@@ -823,8 +829,9 @@ Program Listing for File slint_internal.h
    struct DropArea {
        Property<bool> enabled;
        Property<bool> contains_drag;
-       private_api::CallbackHelper<DropEvent, bool> can_drop;
-       private_api::CallbackHelper<DropEvent> dropped;
+       Property<DragAction> current_action;
+       private_api::CallbackHelper<DropEvent, DragAction> can_drop;
+       private_api::CallbackHelper<DropEvent, DragAction> dropped;
        CachedRenderingData cached_rendering_data;
    };
    
@@ -1019,6 +1026,8 @@ Program Listing for File slint_internal.h
        Property<LogicalLength> offset_y;
        Property<Color> color;
        Property<LogicalLength> blur;
+       Property<LogicalLength> spread;
+       Property<bool> inset;
        CachedRenderingData cached_rendering_data;
    };
    

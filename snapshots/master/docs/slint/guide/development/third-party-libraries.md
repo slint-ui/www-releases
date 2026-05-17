@@ -2,6 +2,8 @@
 title: "Third Party Libraries"
 description: "Third Party Libraries"
 ---
+{/* cSpell: ignore Vivi Heng30 */}
+
 import Link from '@slint/common-files/src/components/Link.astro';
 
 This page is a selection of third party libraries and addons that can be useful to develop with Slint.

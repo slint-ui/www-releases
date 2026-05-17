@@ -2,6 +2,8 @@
 title: "Slint Language"
 description: "Slint Language"
 ---
+{/* cSpell: ignore GLloeHGWb3A */}
+
 import Link from '@slint/common-files/src/components/Link.astro';
 import CodeSnippetMD from '@slint/common-files/src/components/CodeSnippetMD.astro';
 import { YouTube } from 'astro-embed';

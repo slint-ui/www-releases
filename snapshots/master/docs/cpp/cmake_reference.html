@@ -198,7 +198,6 @@
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Getting Started On Desktop</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="cmake.html">Set Up Development Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">First Steps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="live_preview.html">Live-Preview</a></li>
 </ul>
@@ -534,7 +533,7 @@ only one single <code class="docutils literal notranslate"><span class="pre">.h<
 </section>
 <section id="resource-embedding">
 <h2>Resource Embedding<a class="headerlink" href="#resource-embedding" title="Permalink to this heading">¶</a></h2>
-<p>By default, images from <a class="reference external" href="https://slint.dev/releases/1.17.0/docs/slint/reference/primitive-types/#image"><code class="docutils literal notranslate"><span class="pre">&#64;image-url()</span></code></a> or fonts that your Slint files reference are loaded from disk at run-time. This minimises build times, but requires that the directory structure with the files remains stable. If you want to build a program that runs anywhere, then you can configure the Slint compiler to embed such sources into the binary.</p>
+<p>By default, images from <a class="reference external" href="https://slint.dev/releases/1.17.0/docs/slint/reference/primitive-types/#image"><code class="docutils literal notranslate"><span class="pre">&#64;image-url()</span></code></a> or fonts that your Slint files reference are loaded from disk at run-time. This minimizes build times, but requires that the directory structure with the files remains stable. If you want to build a program that runs anywhere, then you can configure the Slint compiler to embed such sources into the binary.</p>
 <p>Set the <code class="docutils literal notranslate"><span class="pre">SLINT_EMBED_RESOURCES</span></code> target property on your CMake target to one of the following values:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">embed-files</span></code>: The raw files are embedded in the application binary.</p></li>
@@ -544,7 +543,7 @@ This produces smaller binaries, but may result in slightly inferior visual outpu
 (Requires the <code class="docutils literal notranslate"><span class="pre">SLINT_FEATURE_SDF_FONTS</span></code> feature to be enabled.)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">as-absolute-path</span></code>: The paths of files are made absolute and will be used at run-time to load the resources from the file system. This is the default.</p></li>
 </ul>
-<p>This target property is initialised from the global <code class="docutils literal notranslate"><span class="pre">DEFAULT_SLINT_EMBED_RESOURCES</span></code> cache variable. Set it to configure the default for all CMake targets.</p>
+<p>This target property is initialized from the global <code class="docutils literal notranslate"><span class="pre">DEFAULT_SLINT_EMBED_RESOURCES</span></code> cache variable. Set it to configure the default for all CMake targets.</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Example: when building my_application, specify that the compiler should embed the resources in the binary</span>
 <span class="nb">set_property</span><span class="p">(</span><span class="s">TARGET</span><span class="w"> </span><span class="s">my_application</span><span class="w"> </span><span class="s">PROPERTY</span><span class="w"> </span><span class="s">SLINT_EMBED_RESOURCES</span><span class="w"> </span><span class="s">embed-files</span><span class="p">)</span>
 </pre></div>

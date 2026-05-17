@@ -2,6 +2,8 @@
 title: "TextEdit"
 description: "TextEdit api."
 ---
+{/* cSpell: ignore Lorem ipsum dolor sit amet consectetur adipisici elit */}
+
 import SlintProperty from '@slint/common-files/src/components/SlintProperty.astro';
 import CodeSnippetMD from '@slint/common-files/src/components/CodeSnippetMD.astro';
 import Link from '@slint/common-files/src/components/Link.astro';

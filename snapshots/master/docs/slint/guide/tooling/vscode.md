@@ -2,6 +2,8 @@
 title: "Visual Studio Code"
 description: "Get going VS Code"
 ---
+{/* cSpell: ignore Wwctiow */}
+
 import { Steps, Tabs, TabItem } from '@astrojs/starlight/components';
 import { YouTube } from 'astro-embed';
 import Link from '@slint/common-files/src/components/Link.astro';
