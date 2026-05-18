@@ -90,6 +90,9 @@
                                 <a class="function" href="#Image.load_from_array">load_from_array</a>
                         </li>
                         <li>
+                                <a class="variable" href="#Image.height">height</a>
+                        </li>
+                        <li>
                                 <a class="variable" href="#Image.size">size</a>
                         </li>
                         <li>
@@ -97,9 +100,6 @@
                         </li>
                         <li>
                                 <a class="variable" href="#Image.path">path</a>
-                        </li>
-                        <li>
-                                <a class="variable" href="#Image.height">height</a>
                         </li>
                 </ul>
 
@@ -123,7 +123,7 @@
                                 <a class="function" href="#Color.with_alpha">with_alpha</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Color.green">green</a>
+                                <a class="variable" href="#Color.red">red</a>
                         </li>
                         <li>
                                 <a class="variable" href="#Color.blue">blue</a>
@@ -132,7 +132,7 @@
                                 <a class="variable" href="#Color.alpha">alpha</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Color.red">red</a>
+                                <a class="variable" href="#Color.green">green</a>
                         </li>
                 </ul>
 
@@ -189,13 +189,13 @@
                                 <a class="function" href="#DataTransfer.fetch_image">fetch_image</a>
                         </li>
                         <li>
-                                <a class="variable" href="#DataTransfer.has_image">has_image</a>
-                        </li>
-                        <li>
                                 <a class="variable" href="#DataTransfer.user_data">user_data</a>
                         </li>
                         <li>
                                 <a class="variable" href="#DataTransfer.has_plaintext">has_plaintext</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DataTransfer.has_image">has_image</a>
                         </li>
                 </ul>
 
@@ -251,6 +251,9 @@
                         <li>
                                 <a class="function" href="#ListModel.append">append</a>
                         </li>
+                        <li>
+                                <a class="function" href="#ListModel.insert">insert</a>
+                        </li>
                 </ul>
 
             </li>
@@ -270,10 +273,10 @@
                                 <a class="function" href="#Timer.restart">restart</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Timer.running">running</a>
+                                <a class="variable" href="#Timer.interval">interval</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Timer.interval">interval</a>
+                                <a class="variable" href="#Timer.running">running</a>
                         </li>
                 </ul>
 
@@ -1826,6 +1829,19 @@ Use this function to import images created by third-party modules such as matplo
 
 
                             </div>
+                            <div id="Image.height" class="classattr">
+                                <div class="attr variable">
+            <span class="name">height</span><span class="annotation">: int</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Image.height"></a>
+    
+            <div class="docstring"><p>The height of the image in pixels.</p>
+</div>
+
+
+                            </div>
                             <div id="Image.size" class="classattr">
                                 <div class="attr variable">
             <span class="name">size</span><span class="annotation">: tuple[int, int]</span>
@@ -1861,19 +1877,6 @@ Use this function to import images created by third-party modules such as matplo
     <a class="headerlink" href="#Image.path"></a>
     
             <div class="docstring"><p>The path of the image if it was loaded from disk, or None.</p>
-</div>
-
-
-                            </div>
-                            <div id="Image.height" class="classattr">
-                                <div class="attr variable">
-            <span class="name">height</span><span class="annotation">: int</span>
-
-        
-    </div>
-    <a class="headerlink" href="#Image.height"></a>
-    
-            <div class="docstring"><p>The height of the image in pixels.</p>
 </div>
 
 
@@ -1975,15 +1978,15 @@ is applied to <code>other</code>.</p>
 
 
                             </div>
-                            <div id="Color.green" class="classattr">
+                            <div id="Color.red" class="classattr">
                                 <div class="attr variable">
-            <span class="name">green</span><span class="annotation">: int</span>
+            <span class="name">red</span><span class="annotation">: int</span>
 
         
     </div>
-    <a class="headerlink" href="#Color.green"></a>
+    <a class="headerlink" href="#Color.red"></a>
     
-            <div class="docstring"><p>The green channel.</p>
+            <div class="docstring"><p>The red channel.</p>
 </div>
 
 
@@ -2014,15 +2017,15 @@ is applied to <code>other</code>.</p>
 
 
                             </div>
-                            <div id="Color.red" class="classattr">
+                            <div id="Color.green" class="classattr">
                                 <div class="attr variable">
-            <span class="name">red</span><span class="annotation">: int</span>
+            <span class="name">green</span><span class="annotation">: int</span>
 
         
     </div>
-    <a class="headerlink" href="#Color.red"></a>
+    <a class="headerlink" href="#Color.green"></a>
     
-            <div class="docstring"><p>The red channel.</p>
+            <div class="docstring"><p>The green channel.</p>
 </div>
 
 
@@ -2271,19 +2274,6 @@ available.</p>
 
 
                             </div>
-                            <div id="DataTransfer.has_image" class="classattr">
-                                <div class="attr variable">
-            <span class="name">has_image</span><span class="annotation">: bool</span>
-
-        
-    </div>
-    <a class="headerlink" href="#DataTransfer.has_image"></a>
-    
-            <div class="docstring"><p><code>True</code> if this <code><a href="#DataTransfer">DataTransfer</a></code> advertises an image representation.</p>
-</div>
-
-
-                            </div>
                             <div id="DataTransfer.user_data" class="classattr">
                                 <div class="attr variable">
             <span class="name">user_data</span><span class="annotation">: Optional[object]</span>
@@ -2312,6 +2302,19 @@ Python user data.</p>
     <a class="headerlink" href="#DataTransfer.has_plaintext"></a>
     
             <div class="docstring"><p><code>True</code> if this <code><a href="#DataTransfer">DataTransfer</a></code> advertises a plaintext representation.</p>
+</div>
+
+
+                            </div>
+                            <div id="DataTransfer.has_image" class="classattr">
+                                <div class="attr variable">
+            <span class="name">has_image</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DataTransfer.has_image"></a>
+    
+            <div class="docstring"><p><code>True</code> if this <code><a href="#DataTransfer">DataTransfer</a></code> advertises an image representation.</p>
 </div>
 
 
@@ -2593,6 +2596,13 @@ Re-implement this method in a sub-class to provide the data.</p>
 </span><span id="ListModel-107"><a href="#ListModel-107"><span class="linenos">107</span></a>        <span class="n">index</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="p">)</span>
 </span><span id="ListModel-108"><a href="#ListModel-108"><span class="linenos">108</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
 </span><span id="ListModel-109"><a href="#ListModel-109"><span class="linenos">109</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">notify_row_added</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</span><span id="ListModel-110"><a href="#ListModel-110"><span class="linenos">110</span></a>
+</span><span id="ListModel-111"><a href="#ListModel-111"><span class="linenos">111</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">insert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="ListModel-112"><a href="#ListModel-112"><span class="linenos">112</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Inserts the value at the given index. Negative indices and indices</span>
+</span><span id="ListModel-113"><a href="#ListModel-113"><span class="linenos">113</span></a><span class="sd">        past the end of the list behave like `list.insert`.&quot;&quot;&quot;</span>
+</span><span id="ListModel-114"><a href="#ListModel-114"><span class="linenos">114</span></a>        <span class="n">clamped</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="p">)))</span>
+</span><span id="ListModel-115"><a href="#ListModel-115"><span class="linenos">115</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">clamped</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+</span><span id="ListModel-116"><a href="#ListModel-116"><span class="linenos">116</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">notify_row_added</span><span class="p">(</span><span class="n">clamped</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -2724,6 +2734,32 @@ Re-implement this method in a sub-class to handle the change.</p>
 
 
                             </div>
+                            <div id="ListModel.insert" class="classattr">
+                                        <input id="ListModel.insert-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">insert</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">index</span><span class="p">:</span> <span class="nb">int</span>, </span><span class="param"><span class="n">value</span><span class="p">:</span> <span class="n">T</span></span><span class="return-annotation">) -> <span class="kc">None</span>:</span></span>
+
+                <label class="view-source-button" for="ListModel.insert-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#ListModel.insert"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="ListModel.insert-111"><a href="#ListModel.insert-111"><span class="linenos">111</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">insert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="ListModel.insert-112"><a href="#ListModel.insert-112"><span class="linenos">112</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Inserts the value at the given index. Negative indices and indices</span>
+</span><span id="ListModel.insert-113"><a href="#ListModel.insert-113"><span class="linenos">113</span></a><span class="sd">        past the end of the list behave like `list.insert`.&quot;&quot;&quot;</span>
+</span><span id="ListModel.insert-114"><a href="#ListModel.insert-114"><span class="linenos">114</span></a>        <span class="n">clamped</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="p">)))</span>
+</span><span id="ListModel.insert-115"><a href="#ListModel.insert-115"><span class="linenos">115</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">clamped</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+</span><span id="ListModel.insert-116"><a href="#ListModel.insert-116"><span class="linenos">116</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">notify_row_added</span><span class="p">(</span><span class="n">clamped</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>Inserts the value at the given index. Negative indices and indices
+past the end of the list behave like <code>list.insert</code>.</p>
+</div>
+
+
+                            </div>
                 </section>
                 <section id="Timer">
                     <div class="attr class">
@@ -2847,19 +2883,6 @@ is re-calculated to be in the specified duration relative to when this function 
 
 
                             </div>
-                            <div id="Timer.running" class="classattr">
-                                <div class="attr variable">
-            <span class="name">running</span><span class="annotation">: bool</span>
-
-        
-    </div>
-    <a class="headerlink" href="#Timer.running"></a>
-    
-            <div class="docstring"><p>Set to true if the timer is running; false otherwise.</p>
-</div>
-
-
-                            </div>
                             <div id="Timer.interval" class="classattr">
                                 <div class="attr variable">
             <span class="name">interval</span><span class="annotation">: datetime.timedelta</span>
@@ -2873,6 +2896,19 @@ is re-calculated to be in the specified duration relative to when this function 
 <p>When setting this property and the timer is running (see <code><a href="#Timer.running">Timer.running</a></code>),
 then the time when the callback will be next invoked is re-calculated to be in the
 specified duration relative to when this property is set.</p>
+</div>
+
+
+                            </div>
+                            <div id="Timer.running" class="classattr">
+                                <div class="attr variable">
+            <span class="name">running</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Timer.running"></a>
+    
+            <div class="docstring"><p>Set to true if the timer is running; false otherwise.</p>
 </div>
 
 
