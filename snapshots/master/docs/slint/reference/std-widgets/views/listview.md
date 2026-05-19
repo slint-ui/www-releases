@@ -5,9 +5,11 @@ description: "ListView api."
 import CodeSnippetMD from '@slint/common-files/src/components/CodeSnippetMD.astro';
 import Link from '@slint/common-files/src/components/Link.astro';
 
-A ListView is like a Scrollview but it should have a `for` element, and the content are
+A ListView is like a [ScrollView](/master/docs/slint/reference/std-widgets/views/scrollview.md) but it should have a `for` element, and the contents are
 automatically laid out in a list.
-Elements are only instantiated if they are visible
+
+In a ListView, elements are only instantiated if they are visible, which guarantees stable performance with a practically unlimited number of items.
+[ScrollView](/master/docs/slint/reference/std-widgets/views/scrollview.md) is more suitable for free-form content.
 
 <CodeSnippetMD imagePath="/src/assets/generated/std-widgets-listview-example.png"  imageWidth="200" imageHeight="200"  imageAlt='listview example'>
 ```slint playground

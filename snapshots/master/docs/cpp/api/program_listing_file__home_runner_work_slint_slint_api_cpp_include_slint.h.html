@@ -842,6 +842,13 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
 <span class="p">}</span>
 
+<span class="kr">inline</span><span class="w"> </span><span class="n">StyledText</span><span class="w"> </span><span class="n">color_to_styled_text</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Color</span><span class="w"> </span><span class="o">&amp;</span><span class="n">color</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">StyledText</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
+<span class="w">    </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_color_to_styled_text</span><span class="p">(</span><span class="o">&amp;</span><span class="n">color</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">result</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
+<span class="p">}</span>
+
 <span class="kr">inline</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">open_url</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">SharedString</span><span class="w"> </span><span class="o">&amp;</span><span class="n">url</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">WindowAdapterRc</span><span class="w"> </span><span class="o">&amp;</span><span class="n">window_adapter</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_open_url</span><span class="p">(</span><span class="o">&amp;</span><span class="n">url</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">window_adapter</span><span class="p">.</span><span class="n">handle</span><span class="p">());</span>

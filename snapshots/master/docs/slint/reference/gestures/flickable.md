@@ -23,18 +23,21 @@ export component Example inherits Window {
 ```
 
 The `Flickable` is a low-level element that is the base for scrollable
-widgets, such as the [ScrollView](/master/docs/slint/reference/std-widgets/views/scrollview.md). When the `viewport-width` or the
-`viewport-height` is greater than the parent's `width` or `height`
-respectively, the element becomes scrollable. Note that the `Flickable`
-doesn't create a scrollbar. When unset, the `viewport-width` and `viewport-height` are
+widgets, such as the [ScrollView](/master/docs/slint/reference/std-widgets/views/scrollview.md) or [ListView](/master/docs/slint/reference/std-widgets/views/listview.md).
+When the `viewport-width` or the `viewport-height` is greater than the parent's `width` or `height`
+respectively, the element becomes scrollable.
+
+When unset, the `viewport-width` and `viewport-height` are
 calculated automatically based on the `Flickable`'s children. This isn't the
 case when using a `for` loop to populate the elements. This is a bug tracked in
 issue [#407](https://github.com/slint-ui/slint/issues/407).
 The maximum and preferred size of the `Flickable` are based on the viewport.
 
+Note that the `Flickable` doesn't create a scrollbar.
+You can use a [ScrollView](/master/docs/slint/reference/std-widgets/views/scrollview.md) instead or add your own scroll bars.
+
 When not part of a layout, its width or height defaults to 100% of the parent
 element when not specified.
-
 
 ## Pointer Event Interaction
 

@@ -179,6 +179,8 @@ Program Listing for File slint_platform_internal.h
    
    void slint_string_to_styled_text(const SharedString *text, StyledText *out);
    
+   void slint_color_to_styled_text(const Color *color, StyledText *out);
+   
    void slint_window_properties_get_title(const WindowProperties *wp, SharedString *out);
    
    void slint_window_properties_get_background(const WindowProperties *wp, Brush *out);

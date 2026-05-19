@@ -96,10 +96,10 @@
                                 <a class="variable" href="#Image.size">size</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Image.width">width</a>
+                                <a class="variable" href="#Image.path">path</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Image.path">path</a>
+                                <a class="variable" href="#Image.width">width</a>
                         </li>
                 </ul>
 
@@ -123,7 +123,7 @@
                                 <a class="function" href="#Color.with_alpha">with_alpha</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Color.red">red</a>
+                                <a class="variable" href="#Color.green">green</a>
                         </li>
                         <li>
                                 <a class="variable" href="#Color.blue">blue</a>
@@ -132,7 +132,7 @@
                                 <a class="variable" href="#Color.alpha">alpha</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Color.green">green</a>
+                                <a class="variable" href="#Color.red">red</a>
                         </li>
                 </ul>
 
@@ -189,10 +189,10 @@
                                 <a class="function" href="#DataTransfer.fetch_image">fetch_image</a>
                         </li>
                         <li>
-                                <a class="variable" href="#DataTransfer.user_data">user_data</a>
+                                <a class="variable" href="#DataTransfer.has_plaintext">has_plaintext</a>
                         </li>
                         <li>
-                                <a class="variable" href="#DataTransfer.has_plaintext">has_plaintext</a>
+                                <a class="variable" href="#DataTransfer.user_data">user_data</a>
                         </li>
                         <li>
                                 <a class="variable" href="#DataTransfer.has_image">has_image</a>
@@ -273,10 +273,10 @@
                                 <a class="function" href="#Timer.restart">restart</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Timer.interval">interval</a>
+                                <a class="variable" href="#Timer.running">running</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Timer.running">running</a>
+                                <a class="variable" href="#Timer.interval">interval</a>
                         </li>
                 </ul>
 
@@ -1855,19 +1855,6 @@ Use this function to import images created by third-party modules such as matplo
 
 
                             </div>
-                            <div id="Image.width" class="classattr">
-                                <div class="attr variable">
-            <span class="name">width</span><span class="annotation">: int</span>
-
-        
-    </div>
-    <a class="headerlink" href="#Image.width"></a>
-    
-            <div class="docstring"><p>The width of the image in pixels.</p>
-</div>
-
-
-                            </div>
                             <div id="Image.path" class="classattr">
                                 <div class="attr variable">
             <span class="name">path</span><span class="annotation">: Optional[pathlib.Path]</span>
@@ -1877,6 +1864,19 @@ Use this function to import images created by third-party modules such as matplo
     <a class="headerlink" href="#Image.path"></a>
     
             <div class="docstring"><p>The path of the image if it was loaded from disk, or None.</p>
+</div>
+
+
+                            </div>
+                            <div id="Image.width" class="classattr">
+                                <div class="attr variable">
+            <span class="name">width</span><span class="annotation">: int</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Image.width"></a>
+    
+            <div class="docstring"><p>The width of the image in pixels.</p>
 </div>
 
 
@@ -1978,15 +1978,15 @@ is applied to <code>other</code>.</p>
 
 
                             </div>
-                            <div id="Color.red" class="classattr">
+                            <div id="Color.green" class="classattr">
                                 <div class="attr variable">
-            <span class="name">red</span><span class="annotation">: int</span>
+            <span class="name">green</span><span class="annotation">: int</span>
 
         
     </div>
-    <a class="headerlink" href="#Color.red"></a>
+    <a class="headerlink" href="#Color.green"></a>
     
-            <div class="docstring"><p>The red channel.</p>
+            <div class="docstring"><p>The green channel.</p>
 </div>
 
 
@@ -2017,15 +2017,15 @@ is applied to <code>other</code>.</p>
 
 
                             </div>
-                            <div id="Color.green" class="classattr">
+                            <div id="Color.red" class="classattr">
                                 <div class="attr variable">
-            <span class="name">green</span><span class="annotation">: int</span>
+            <span class="name">red</span><span class="annotation">: int</span>
 
         
     </div>
-    <a class="headerlink" href="#Color.green"></a>
+    <a class="headerlink" href="#Color.red"></a>
     
-            <div class="docstring"><p>The green channel.</p>
+            <div class="docstring"><p>The red channel.</p>
 </div>
 
 
@@ -2274,6 +2274,19 @@ available.</p>
 
 
                             </div>
+                            <div id="DataTransfer.has_plaintext" class="classattr">
+                                <div class="attr variable">
+            <span class="name">has_plaintext</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DataTransfer.has_plaintext"></a>
+    
+            <div class="docstring"><p><code>True</code> if this <code><a href="#DataTransfer">DataTransfer</a></code> advertises a plaintext representation.</p>
+</div>
+
+
+                            </div>
                             <div id="DataTransfer.user_data" class="classattr">
                                 <div class="attr variable">
             <span class="name">user_data</span><span class="annotation">: Optional[object]</span>
@@ -2289,19 +2302,6 @@ want to avoid serializing to plaintext or an image.</p>
 <p>Reading returns the Python object previously assigned, or <code>None</code> if none was set (or the
 user data was set by a non-Python binding). Assigning <code>None</code> clears any previously attached
 Python user data.</p>
-</div>
-
-
-                            </div>
-                            <div id="DataTransfer.has_plaintext" class="classattr">
-                                <div class="attr variable">
-            <span class="name">has_plaintext</span><span class="annotation">: bool</span>
-
-        
-    </div>
-    <a class="headerlink" href="#DataTransfer.has_plaintext"></a>
-    
-            <div class="docstring"><p><code>True</code> if this <code><a href="#DataTransfer">DataTransfer</a></code> advertises a plaintext representation.</p>
 </div>
 
 
@@ -2883,6 +2883,19 @@ is re-calculated to be in the specified duration relative to when this function 
 
 
                             </div>
+                            <div id="Timer.running" class="classattr">
+                                <div class="attr variable">
+            <span class="name">running</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Timer.running"></a>
+    
+            <div class="docstring"><p>Set to true if the timer is running; false otherwise.</p>
+</div>
+
+
+                            </div>
                             <div id="Timer.interval" class="classattr">
                                 <div class="attr variable">
             <span class="name">interval</span><span class="annotation">: datetime.timedelta</span>
@@ -2896,19 +2909,6 @@ is re-calculated to be in the specified duration relative to when this function 
 <p>When setting this property and the timer is running (see <code><a href="#Timer.running">Timer.running</a></code>),
 then the time when the callback will be next invoked is re-calculated to be in the
 specified duration relative to when this property is set.</p>
-</div>
-
-
-                            </div>
-                            <div id="Timer.running" class="classattr">
-                                <div class="attr variable">
-            <span class="name">running</span><span class="annotation">: bool</span>
-
-        
-    </div>
-    <a class="headerlink" href="#Timer.running"></a>
-    
-            <div class="docstring"><p>Set to true if the timer is running; false otherwise.</p>
 </div>
 
 
