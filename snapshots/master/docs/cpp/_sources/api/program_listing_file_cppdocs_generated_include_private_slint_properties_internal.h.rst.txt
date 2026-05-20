@@ -24,7 +24,7 @@ Program Listing for File slint_properties_internal.h
    namespace slint {
    namespace cbindgen_private {
    
-   using PropertyHandle = uintptr_t;
+   using PropertyHandle = void*;
    
    struct PropertyHandleOpaque {
        PropertyHandle _0;

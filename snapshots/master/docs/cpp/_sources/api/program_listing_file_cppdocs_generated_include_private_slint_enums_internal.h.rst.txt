@@ -76,8 +76,8 @@ Program Listing for File slint_enums_internal.h
        PopupActivation,
        WindowActivation,
    };
-   using slint::PointerEventKind;
-   using slint::PointerEventButton;
+   using slint::language::PointerEventKind;
+   using slint::language::PointerEventButton;
    enum class MouseCursor {
        Default,
        None,
@@ -198,11 +198,7 @@ Program Listing for File slint_enums_internal.h
        Descending,
    };
    using slint::Orientation;
-   enum class ColorScheme {
-       Unknown,
-       Dark,
-       Light,
-   };
+   using slint::language::ColorScheme;
    enum class AnimationDirection {
        Normal,
        Reverse,
@@ -236,12 +232,7 @@ Program Listing for File slint_enums_internal.h
        Round,
        Bevel,
    };
-   enum class DragAction {
-       None,
-       Copy,
-       Move,
-       Link,
-   };
+   using slint::language::DragAction;
    enum class OperatingSystemType {
        Android,
        Ios,

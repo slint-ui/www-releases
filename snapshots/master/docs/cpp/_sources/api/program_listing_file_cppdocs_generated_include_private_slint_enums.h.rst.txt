@@ -13,6 +13,7 @@ Program Listing for File slint_enums.h
    #pragma once
    // This file is auto-generated from xtask/src/../../api/cpp/cbindgen.rs
    namespace slint {
+   namespace language {
    enum class PointerEventKind {
        Cancel,
        Down,
@@ -27,6 +28,20 @@ Program Listing for File slint_enums.h
        Back,
        Forward,
    };
+   enum class ColorScheme {
+       Unknown,
+       Dark,
+       Light,
+   };
+   enum class DragAction {
+       None,
+       Copy,
+       Move,
+       Link,
+   };
+   } // namespace language
+   using slint::language::PointerEventKind;
+   using slint::language::PointerEventButton;
    namespace testing {
    enum class AccessibleRole {
        None,

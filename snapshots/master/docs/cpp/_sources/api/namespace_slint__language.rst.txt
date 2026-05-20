@@ -19,3 +19,16 @@ Classes
 - :ref:`exhale_struct_structslint_1_1language_1_1PointerScrollEvent`
 
 - :ref:`exhale_struct_structslint_1_1language_1_1StandardListViewItem`
+
+
+Enums
+-----
+
+
+- :ref:`exhale_enum_slint__enums_8h_1aab3523da71f8ad7fef597f6484bf249c`
+
+- :ref:`exhale_enum_slint__enums_8h_1a4197b8f0840c72ec4f3fe1e79c9f5b81`
+
+- :ref:`exhale_enum_slint__enums_8h_1a9a2d277174fefdb282e335506fb36871`
+
+- :ref:`exhale_enum_slint__enums_8h_1a25cc1e270aab9f16293af557575e5dbe`

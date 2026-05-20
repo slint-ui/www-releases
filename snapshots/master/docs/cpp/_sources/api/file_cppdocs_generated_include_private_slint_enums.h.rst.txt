@@ -40,6 +40,8 @@ Namespaces
 
 - :ref:`namespace_slint`
 
+- :ref:`namespace_slint__language`
+
 - :ref:`namespace_slint__platform`
 
 - :ref:`namespace_slint__platform__key_codes`
@@ -53,11 +55,15 @@ Enums
 
 - :ref:`exhale_enum_namespaceslint_1a69f72f940f7266dd0c5be75d8d820c62`
 
+- :ref:`exhale_enum_slint__enums_8h_1aab3523da71f8ad7fef597f6484bf249c`
+
+- :ref:`exhale_enum_slint__enums_8h_1a4197b8f0840c72ec4f3fe1e79c9f5b81`
+
+- :ref:`exhale_enum_slint__enums_8h_1a9a2d277174fefdb282e335506fb36871`
+
+- :ref:`exhale_enum_slint__enums_8h_1a25cc1e270aab9f16293af557575e5dbe`
+
 - :ref:`exhale_enum_namespaceslint_1a43d65cb829bc6478686e05d79b4f6c31`
-
-- :ref:`exhale_enum_namespaceslint_1a88e5489a21965b1a271bf90ee12f1c6e`
-
-- :ref:`exhale_enum_namespaceslint_1a9ddf8a9e84d7f1f562c2aa1fc364eda1`
 
 - :ref:`exhale_enum_namespaceslint_1_1testing_1a4de74a3a436a7a3fd9a228930f69274d`
 

@@ -120,6 +120,81 @@
                 </ul>
 
             </li>
+            <li>
+                    <a class="class" href="#PointerEventKind">PointerEventKind</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#PointerEventKind.cancel">cancel</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PointerEventKind.down">down</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PointerEventKind.up">up</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PointerEventKind.move">move</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#PointerEventButton">PointerEventButton</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#PointerEventButton.other">other</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PointerEventButton.left">left</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PointerEventButton.right">right</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PointerEventButton.middle">middle</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PointerEventButton.back">back</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#PointerEventButton.forward">forward</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#ColorScheme">ColorScheme</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#ColorScheme.unknown">unknown</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ColorScheme.dark">dark</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ColorScheme.light">light</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#DragAction">DragAction</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#DragAction.none">none</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DragAction.copy">copy</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DragAction.move">move</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DragAction.link">link</a>
+                        </li>
+                </ul>
+
+            </li>
     </ul>
 
 
@@ -486,6 +561,316 @@
     <a class="headerlink" href="#StandardListViewItem.text"></a>
     
             <div class="docstring"><p>The text content of the item</p>
+</div>
+
+
+                            </div>
+                </section>
+                <section id="PointerEventKind">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">PointerEventKind</span><wbr>(<span class="base">enum.Enum</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#PointerEventKind"></a>
+    
+            <div class="docstring"><p>The enum reports what happened to the <code><a href="#PointerEventButton">PointerEventButton</a></code> in the event</p>
+</div>
+
+
+                            <div id="PointerEventKind.cancel" class="classattr">
+                                <div class="attr variable">
+            <span class="name">cancel</span>        =
+<span class="default_value">&lt;<a href="#PointerEventKind.cancel">PointerEventKind.cancel</a>: &#39;cancel&#39;&gt;</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PointerEventKind.cancel"></a>
+    
+            <div class="docstring"><p>The action was cancelled.</p>
+</div>
+
+
+                            </div>
+                            <div id="PointerEventKind.down" class="classattr">
+                                <div class="attr variable">
+            <span class="name">down</span>        =
+<span class="default_value">&lt;<a href="#PointerEventKind.down">PointerEventKind.down</a>: &#39;down&#39;&gt;</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PointerEventKind.down"></a>
+    
+            <div class="docstring"><p>The button was pressed.</p>
+</div>
+
+
+                            </div>
+                            <div id="PointerEventKind.up" class="classattr">
+                                <div class="attr variable">
+            <span class="name">up</span>        =
+<span class="default_value">&lt;<a href="#PointerEventKind.up">PointerEventKind.up</a>: &#39;up&#39;&gt;</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PointerEventKind.up"></a>
+    
+            <div class="docstring"><p>The button was released.</p>
+</div>
+
+
+                            </div>
+                            <div id="PointerEventKind.move" class="classattr">
+                                <div class="attr variable">
+            <span class="name">move</span>        =
+<span class="default_value">&lt;<a href="#PointerEventKind.move">PointerEventKind.move</a>: &#39;move&#39;&gt;</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PointerEventKind.move"></a>
+    
+            <div class="docstring"><p>The pointer has moved,</p>
+</div>
+
+
+                            </div>
+                </section>
+                <section id="PointerEventButton">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">PointerEventButton</span><wbr>(<span class="base">enum.Enum</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#PointerEventButton"></a>
+    
+            <div class="docstring"><p>This enum describes the different types of buttons for a pointer event,
+ typically on a mouse or a pencil.</p>
+</div>
+
+
+                            <div id="PointerEventButton.other" class="classattr">
+                                <div class="attr variable">
+            <span class="name">other</span>        =
+<span class="default_value">&lt;<a href="#PointerEventButton.other">PointerEventButton.other</a>: &#39;other&#39;&gt;</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PointerEventButton.other"></a>
+    
+            <div class="docstring"><p>A button that is none of left, right, middle, back or forward. For example,
+ this is used for the task button on a mouse with many buttons.</p>
+</div>
+
+
+                            </div>
+                            <div id="PointerEventButton.left" class="classattr">
+                                <div class="attr variable">
+            <span class="name">left</span>        =
+<span class="default_value">&lt;<a href="#PointerEventButton.left">PointerEventButton.left</a>: &#39;left&#39;&gt;</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PointerEventButton.left"></a>
+    
+            <div class="docstring"><p>The left button.</p>
+</div>
+
+
+                            </div>
+                            <div id="PointerEventButton.right" class="classattr">
+                                <div class="attr variable">
+            <span class="name">right</span>        =
+<span class="default_value">&lt;<a href="#PointerEventButton.right">PointerEventButton.right</a>: &#39;right&#39;&gt;</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PointerEventButton.right"></a>
+    
+            <div class="docstring"><p>The right button.</p>
+</div>
+
+
+                            </div>
+                            <div id="PointerEventButton.middle" class="classattr">
+                                <div class="attr variable">
+            <span class="name">middle</span>        =
+<span class="default_value">&lt;<a href="#PointerEventButton.middle">PointerEventButton.middle</a>: &#39;middle&#39;&gt;</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PointerEventButton.middle"></a>
+    
+            <div class="docstring"><p>The center button.</p>
+</div>
+
+
+                            </div>
+                            <div id="PointerEventButton.back" class="classattr">
+                                <div class="attr variable">
+            <span class="name">back</span>        =
+<span class="default_value">&lt;<a href="#PointerEventButton.back">PointerEventButton.back</a>: &#39;back&#39;&gt;</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PointerEventButton.back"></a>
+    
+            <div class="docstring"><p>The back button.</p>
+</div>
+
+
+                            </div>
+                            <div id="PointerEventButton.forward" class="classattr">
+                                <div class="attr variable">
+            <span class="name">forward</span>        =
+<span class="default_value">&lt;<a href="#PointerEventButton.forward">PointerEventButton.forward</a>: &#39;forward&#39;&gt;</span>
+
+        
+    </div>
+    <a class="headerlink" href="#PointerEventButton.forward"></a>
+    
+            <div class="docstring"><p>The forward button.</p>
+</div>
+
+
+                            </div>
+                </section>
+                <section id="ColorScheme">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">ColorScheme</span><wbr>(<span class="base">enum.Enum</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#ColorScheme"></a>
+    
+            <div class="docstring"><p>This enum indicates the color scheme used by the widget style. Use this to explicitly switch
+ between dark and light schemes, or choose Unknown to fall back to the system default.</p>
+</div>
+
+
+                            <div id="ColorScheme.unknown" class="classattr">
+                                <div class="attr variable">
+            <span class="name">unknown</span>        =
+<span class="default_value">&lt;<a href="#ColorScheme.unknown">ColorScheme.unknown</a>: &#39;unknown&#39;&gt;</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ColorScheme.unknown"></a>
+    
+            <div class="docstring"><p>The scheme is not known and a system wide setting configures this. This could mean that
+ the widgets are shown in a dark or light scheme, but it could also be a custom color scheme.</p>
+</div>
+
+
+                            </div>
+                            <div id="ColorScheme.dark" class="classattr">
+                                <div class="attr variable">
+            <span class="name">dark</span>        =
+<span class="default_value">&lt;<a href="#ColorScheme.dark">ColorScheme.dark</a>: &#39;dark&#39;&gt;</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ColorScheme.dark"></a>
+    
+            <div class="docstring"><p>The style chooses light colors for the background and dark for the foreground.</p>
+</div>
+
+
+                            </div>
+                            <div id="ColorScheme.light" class="classattr">
+                                <div class="attr variable">
+            <span class="name">light</span>        =
+<span class="default_value">&lt;<a href="#ColorScheme.light">ColorScheme.light</a>: &#39;light&#39;&gt;</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ColorScheme.light"></a>
+    
+            <div class="docstring"><p>The style chooses dark colors for the background and light for the foreground.</p>
+</div>
+
+
+                            </div>
+                </section>
+                <section id="DragAction">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">DragAction</span><wbr>(<span class="base">enum.Enum</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#DragAction"></a>
+    
+            <div class="docstring"><p>This enum describes the action negotiated between the source of a drag (<code>DragArea</code>)
+ and its target (<code>DropArea</code>) during a drag-and-drop operation. The source declares
+ which actions it permits, the target picks one in its <code>can-drop</code> callback, and the
+ chosen action is reported back to the source via <code>drag-finished</code> so that, for
+ example, a <code><a href="#DragAction.move">move</a></code> source can remove the original data. The same enum is used for
+ drags that come from another application or window once native drag-and-drop is
+ in play.</p>
+</div>
+
+
+                            <div id="DragAction.none" class="classattr">
+                                <div class="attr variable">
+            <span class="name">none</span>        =
+<span class="default_value">&lt;<a href="#DragAction.none">DragAction.none</a>: &#39;none&#39;&gt;</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DragAction.none"></a>
+    
+            <div class="docstring"><p>No action: the drag is rejected, no drop will be delivered.</p>
+</div>
+
+
+                            </div>
+                            <div id="DragAction.copy" class="classattr">
+                                <div class="attr variable">
+            <span class="name">copy</span>        =
+<span class="default_value">&lt;<a href="#DragAction.copy">DragAction.copy</a>: &#39;copy&#39;&gt;</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DragAction.copy"></a>
+    
+            <div class="docstring"><p>The data is copied to the target; the source retains it.</p>
+</div>
+
+
+                            </div>
+                            <div id="DragAction.move" class="classattr">
+                                <div class="attr variable">
+            <span class="name">move</span>        =
+<span class="default_value">&lt;<a href="#DragAction.move">DragAction.move</a>: &#39;move&#39;&gt;</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DragAction.move"></a>
+    
+            <div class="docstring"><p>The data is moved to the target; the source should remove it once the
+ operation completes.</p>
+</div>
+
+
+                            </div>
+                            <div id="DragAction.link" class="classattr">
+                                <div class="attr variable">
+            <span class="name">link</span>        =
+<span class="default_value">&lt;<a href="#DragAction.link">DragAction.link</a>: &#39;link&#39;&gt;</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DragAction.link"></a>
+    
+            <div class="docstring"><p>A link to the source data is created at the target; neither side gives
+ up ownership.</p>
 </div>
 
 

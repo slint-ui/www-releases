@@ -90,16 +90,16 @@
                                 <a class="function" href="#Image.load_from_array">load_from_array</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Image.height">height</a>
-                        </li>
-                        <li>
                                 <a class="variable" href="#Image.size">size</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Image.path">path</a>
+                                <a class="variable" href="#Image.width">width</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Image.width">width</a>
+                                <a class="variable" href="#Image.height">height</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Image.path">path</a>
                         </li>
                 </ul>
 
@@ -123,16 +123,16 @@
                                 <a class="function" href="#Color.with_alpha">with_alpha</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Color.green">green</a>
-                        </li>
-                        <li>
                                 <a class="variable" href="#Color.blue">blue</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Color.alpha">alpha</a>
+                                <a class="variable" href="#Color.green">green</a>
                         </li>
                         <li>
                                 <a class="variable" href="#Color.red">red</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Color.alpha">alpha</a>
                         </li>
                 </ul>
 
@@ -167,6 +167,9 @@
             <li>
                     <a class="class" href="#Keys">Keys</a>
                             <ul class="memberlist">
+                        <li>
+                                <a class="function" href="#Keys.from_parts">from_parts</a>
+                        </li>
                 </ul>
 
             </li>
@@ -189,13 +192,13 @@
                                 <a class="function" href="#DataTransfer.fetch_image">fetch_image</a>
                         </li>
                         <li>
+                                <a class="variable" href="#DataTransfer.has_image">has_image</a>
+                        </li>
+                        <li>
                                 <a class="variable" href="#DataTransfer.has_plaintext">has_plaintext</a>
                         </li>
                         <li>
                                 <a class="variable" href="#DataTransfer.user_data">user_data</a>
-                        </li>
-                        <li>
-                                <a class="variable" href="#DataTransfer.has_image">has_image</a>
                         </li>
                 </ul>
 
@@ -1829,19 +1832,6 @@ Use this function to import images created by third-party modules such as matplo
 
 
                             </div>
-                            <div id="Image.height" class="classattr">
-                                <div class="attr variable">
-            <span class="name">height</span><span class="annotation">: int</span>
-
-        
-    </div>
-    <a class="headerlink" href="#Image.height"></a>
-    
-            <div class="docstring"><p>The height of the image in pixels.</p>
-</div>
-
-
-                            </div>
                             <div id="Image.size" class="classattr">
                                 <div class="attr variable">
             <span class="name">size</span><span class="annotation">: tuple[int, int]</span>
@@ -1855,19 +1845,6 @@ Use this function to import images created by third-party modules such as matplo
 
 
                             </div>
-                            <div id="Image.path" class="classattr">
-                                <div class="attr variable">
-            <span class="name">path</span><span class="annotation">: Optional[pathlib.Path]</span>
-
-        
-    </div>
-    <a class="headerlink" href="#Image.path"></a>
-    
-            <div class="docstring"><p>The path of the image if it was loaded from disk, or None.</p>
-</div>
-
-
-                            </div>
                             <div id="Image.width" class="classattr">
                                 <div class="attr variable">
             <span class="name">width</span><span class="annotation">: int</span>
@@ -1877,6 +1854,32 @@ Use this function to import images created by third-party modules such as matplo
     <a class="headerlink" href="#Image.width"></a>
     
             <div class="docstring"><p>The width of the image in pixels.</p>
+</div>
+
+
+                            </div>
+                            <div id="Image.height" class="classattr">
+                                <div class="attr variable">
+            <span class="name">height</span><span class="annotation">: int</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Image.height"></a>
+    
+            <div class="docstring"><p>The height of the image in pixels.</p>
+</div>
+
+
+                            </div>
+                            <div id="Image.path" class="classattr">
+                                <div class="attr variable">
+            <span class="name">path</span><span class="annotation">: Optional[pathlib.Path]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Image.path"></a>
+    
+            <div class="docstring"><p>The path of the image if it was loaded from disk, or None.</p>
 </div>
 
 
@@ -1978,19 +1981,6 @@ is applied to <code>other</code>.</p>
 
 
                             </div>
-                            <div id="Color.green" class="classattr">
-                                <div class="attr variable">
-            <span class="name">green</span><span class="annotation">: int</span>
-
-        
-    </div>
-    <a class="headerlink" href="#Color.green"></a>
-    
-            <div class="docstring"><p>The green channel.</p>
-</div>
-
-
-                            </div>
                             <div id="Color.blue" class="classattr">
                                 <div class="attr variable">
             <span class="name">blue</span><span class="annotation">: int</span>
@@ -2004,15 +1994,15 @@ is applied to <code>other</code>.</p>
 
 
                             </div>
-                            <div id="Color.alpha" class="classattr">
+                            <div id="Color.green" class="classattr">
                                 <div class="attr variable">
-            <span class="name">alpha</span><span class="annotation">: int</span>
+            <span class="name">green</span><span class="annotation">: int</span>
 
         
     </div>
-    <a class="headerlink" href="#Color.alpha"></a>
+    <a class="headerlink" href="#Color.green"></a>
     
-            <div class="docstring"><p>The alpha channel.</p>
+            <div class="docstring"><p>The green channel.</p>
 </div>
 
 
@@ -2026,6 +2016,19 @@ is applied to <code>other</code>.</p>
     <a class="headerlink" href="#Color.red"></a>
     
             <div class="docstring"><p>The red channel.</p>
+</div>
+
+
+                            </div>
+                            <div id="Color.alpha" class="classattr">
+                                <div class="attr variable">
+            <span class="name">alpha</span><span class="annotation">: int</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Color.alpha"></a>
+    
+            <div class="docstring"><p>The alpha channel.</p>
 </div>
 
 
@@ -2180,6 +2183,23 @@ of the key binding (e.g. "Ctrl+A" on Linux/Windows, "⌘A" on macOS).</p>
 </div>
 
 
+                            <div id="Keys.from_parts" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">from_parts</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">parts</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span></span><span class="return-annotation">) -> <span class="n"><a href="#Keys">Keys</a></span>:</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#Keys.from_parts"></a>
+    
+            <div class="docstring"><p>Create a <code><a href="#Keys">Keys</a></code> from a list of string parts, e.g. <code>["Control", "Shift?", "Z"]</code>.</p>
+
+<p>Each element is either a modifier name or a key name. Raises ValueError on parse failure.</p>
+</div>
+
+
+                            </div>
                 </section>
                 <section id="DataTransfer">
                     <div class="attr class">
@@ -2274,6 +2294,19 @@ available.</p>
 
 
                             </div>
+                            <div id="DataTransfer.has_image" class="classattr">
+                                <div class="attr variable">
+            <span class="name">has_image</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DataTransfer.has_image"></a>
+    
+            <div class="docstring"><p><code>True</code> if this <code><a href="#DataTransfer">DataTransfer</a></code> advertises an image representation.</p>
+</div>
+
+
+                            </div>
                             <div id="DataTransfer.has_plaintext" class="classattr">
                                 <div class="attr variable">
             <span class="name">has_plaintext</span><span class="annotation">: bool</span>
@@ -2302,19 +2335,6 @@ want to avoid serializing to plaintext or an image.</p>
 <p>Reading returns the Python object previously assigned, or <code>None</code> if none was set (or the
 user data was set by a non-Python binding). Assigning <code>None</code> clears any previously attached
 Python user data.</p>
-</div>
-
-
-                            </div>
-                            <div id="DataTransfer.has_image" class="classattr">
-                                <div class="attr variable">
-            <span class="name">has_image</span><span class="annotation">: bool</span>
-
-        
-    </div>
-    <a class="headerlink" href="#DataTransfer.has_image"></a>
-    
-            <div class="docstring"><p><code>True</code> if this <code><a href="#DataTransfer">DataTransfer</a></code> advertises an image representation.</p>
 </div>
 
 

@@ -111,10 +111,6 @@ Enums
 
 - :ref:`exhale_enum_namespaceslint_1a43d65cb829bc6478686e05d79b4f6c31`
 
-- :ref:`exhale_enum_namespaceslint_1a88e5489a21965b1a271bf90ee12f1c6e`
-
-- :ref:`exhale_enum_namespaceslint_1a9ddf8a9e84d7f1f562c2aa1fc364eda1`
-
 - :ref:`exhale_enum_namespaceslint_1aa9bda1bcc95bc66d8afd7b1a4aa8c4af`
 
 - :ref:`exhale_enum_namespaceslint_1a435dcad112c13fd7fefb2de66e83d1b1`

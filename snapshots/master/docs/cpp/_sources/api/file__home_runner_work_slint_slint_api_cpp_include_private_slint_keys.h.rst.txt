@@ -25,9 +25,19 @@ Includes
 --------
 
 
+- ``optional``
+
 - ``private/slint_keys_internal.h`` (:ref:`file_cppdocs_generated_include_private_slint_keys_internal.h`)
 
+- ``private/slint_sharedvector.h`` (:ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_sharedvector.h`)
+
 - ``private/slint_string.h`` (:ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_string.h`)
+
+- ``span``
+
+- ``string_view``
+
+- ``vector`` (:ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_sharedvector.h`)
 
 
 

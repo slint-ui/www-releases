@@ -15,7 +15,13 @@ Program Listing for File slint_keys.h
    
    #pragma once
    #include "private/slint_keys_internal.h"
+   #include "private/slint_sharedvector.h"
    #include "private/slint_string.h"
+   
+   #include <optional>
+   #include <span>
+   #include <string_view>
+   #include <vector>
    
    namespace slint {
    
@@ -37,6 +43,28 @@ Program Listing for File slint_keys.h
    
        slint::Keys &operator=(const Keys &) = default;
        slint::Keys &operator=(Keys &&) = default;
+   
+       static std::optional<Keys> from_parts(std::span<const std::string_view> parts)
+       {
+           std::vector<SharedString> converted;
+           converted.reserve(parts.size());
+           for (const auto &sv : parts) {
+               converted.emplace_back(sv);
+           }
+           Keys result;
+           SharedString empty;
+           cbindgen_private::Slice<SharedString> slice { converted.empty() ? &empty : converted.data(),
+                                                         converted.size() };
+           if (cbindgen_private::types::slint_keys_from_parts(slice, &result.data)) {
+               return result;
+           }
+           return std::nullopt;
+       }
+   
+       static std::optional<Keys> from_parts(std::initializer_list<std::string_view> parts)
+       {
+           return from_parts(std::span<const std::string_view> { parts.begin(), parts.size() });
+       }
    
        friend bool operator==(const Keys &a, const Keys &b) { return a.data == b.data; }
        friend bool operator!=(const Keys &a, const Keys &b) { return a.data != b.data; }

@@ -73,6 +73,8 @@ Program Listing for File slint_keys_internal.h
    
    void slint_keys_to_string(const Keys *shortcut, SharedString *out);
    
+   bool slint_keys_from_parts(Slice<SharedString> parts, Keys *out);
+   
    }  // extern "C"
    
    }  // namespace types

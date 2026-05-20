@@ -94,6 +94,8 @@ Program Listing for File slint_qt_internal.h
    
    using Qt_FillRule = unsigned int;
    
+   using Qt_DropAction = unsigned int;
+   
    using Qt_ScrollPhase = unsigned int;
    
    struct NativeButton {
@@ -1834,6 +1836,18 @@ Program Listing for File slint_qt_internal.h
    constexpr static const Qt_FillRule Qt_FillRule_OddEvenFill = 0;
    
    constexpr static const Qt_FillRule Qt_FillRule_WindingFill = 1;
+   
+   constexpr static const Qt_DropAction Qt_DropAction_CopyAction = 1;
+   
+   constexpr static const Qt_DropAction Qt_DropAction_MoveAction = 2;
+   
+   constexpr static const Qt_DropAction Qt_DropAction_LinkAction = 4;
+   
+   constexpr static const Qt_DropAction Qt_DropAction_ActionMask = 255;
+   
+   constexpr static const Qt_DropAction Qt_DropAction_TargetMoveAction = 32770;
+   
+   constexpr static const Qt_DropAction Qt_DropAction_IgnoreAction = 0;
    
    constexpr static const Qt_ScrollPhase Qt_ScrollPhase_NoScrollPhase = 0;
    

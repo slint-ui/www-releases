@@ -292,9 +292,11 @@
 <li class="toctree-l2"><a class="reference internal" href="enum_namespaceslint_1a90c0ddbfdc375daafbcf91361293538b.html">Enum GraphicsAPI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="enum_namespaceslint_1_1interpreter_1ad2ba3b4dd1434535294d334a9daf502d.html">Enum DiagnosticLevel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="enum_namespaceslint_1_1interpreter_1a6221319f778c7369e1b76672690926e0.html">Enum ValueType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="enum_slint__enums_8h_1aab3523da71f8ad7fef597f6484bf249c.html">Enum ColorScheme</a></li>
+<li class="toctree-l2"><a class="reference internal" href="enum_slint__enums_8h_1a4197b8f0840c72ec4f3fe1e79c9f5b81.html">Enum DragAction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="enum_slint__enums_8h_1a9a2d277174fefdb282e335506fb36871.html">Enum PointerEventButton</a></li>
+<li class="toctree-l2"><a class="reference internal" href="enum_slint__enums_8h_1a25cc1e270aab9f16293af557575e5dbe.html">Enum PointerEventKind</a></li>
 <li class="toctree-l2"><a class="reference internal" href="enum_namespaceslint_1a43d65cb829bc6478686e05d79b4f6c31.html">Enum Orientation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="enum_namespaceslint_1a88e5489a21965b1a271bf90ee12f1c6e.html">Enum PointerEventButton</a></li>
-<li class="toctree-l2"><a class="reference internal" href="enum_namespaceslint_1a9ddf8a9e84d7f1f562c2aa1fc364eda1.html">Enum PointerEventKind</a></li>
 <li class="toctree-l2"><a class="reference internal" href="enum_namespaceslint_1aa9bda1bcc95bc66d8afd7b1a4aa8c4af.html">Enum RenderingState</a></li>
 <li class="toctree-l2"><a class="reference internal" href="enum_namespaceslint_1a435dcad112c13fd7fefb2de66e83d1b1.html">Enum SetRenderingNotifierError</a></li>
 <li class="toctree-l2"><a class="reference internal" href="enum_namespaceslint_1_1testing_1a4de74a3a436a7a3fd9a228930f69274d.html">Enum AccessibleRole</a></li>
@@ -502,6 +504,7 @@
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma once</span>
 <span class="c1">// This file is auto-generated from xtask/src/../../api/cpp/cbindgen.rs</span>
 <span class="k">namespace</span><span class="w"> </span><span class="nn">slint</span><span class="w"> </span><span class="p">{</span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">language</span><span class="w"> </span><span class="p">{</span>
 <span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">PointerEventKind</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">Cancel</span><span class="p">,</span>
 <span class="w">    </span><span class="n">Down</span><span class="p">,</span>
@@ -516,6 +519,20 @@
 <span class="w">    </span><span class="n">Back</span><span class="p">,</span>
 <span class="w">    </span><span class="n">Forward</span><span class="p">,</span>
 <span class="p">};</span>
+<span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">ColorScheme</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Unknown</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Dark</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Light</span><span class="p">,</span>
+<span class="p">};</span>
+<span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">DragAction</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">None</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Copy</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Move</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Link</span><span class="p">,</span>
+<span class="p">};</span>
+<span class="p">}</span><span class="w"> </span><span class="c1">// namespace language</span>
+<span class="k">using</span><span class="w"> </span><span class="n">slint</span><span class="o">::</span><span class="n">language</span><span class="o">::</span><span class="n">PointerEventKind</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="n">slint</span><span class="o">::</span><span class="n">language</span><span class="o">::</span><span class="n">PointerEventButton</span><span class="p">;</span>
 <span class="k">namespace</span><span class="w"> </span><span class="nn">testing</span><span class="w"> </span><span class="p">{</span>
 <span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">AccessibleRole</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">None</span><span class="p">,</span>

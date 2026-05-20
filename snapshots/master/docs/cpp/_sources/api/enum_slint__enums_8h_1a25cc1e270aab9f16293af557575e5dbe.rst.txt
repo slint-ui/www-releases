@@ -1,0 +1,14 @@
+.. _exhale_enum_slint__enums_8h_1a25cc1e270aab9f16293af557575e5dbe:
+
+Enum PointerEventKind
+=====================
+
+- Defined in :ref:`file_cppdocs_generated_include_private_slint_enums.h`
+
+
+Enum Documentation
+------------------
+
+
+.. doxygenenum:: slint::language::PointerEventKind
+   :project: Slint
