@@ -1,0 +1,17 @@
+.. _exhale_struct_structslint_1_1language_1_1RadioEntry:
+
+Struct RadioEntry
+=================
+
+- Defined in :ref:`file_cppdocs_generated_include_private_slint_builtin_structs.h`
+
+
+Struct Documentation
+--------------------
+
+
+.. doxygenstruct:: slint::language::RadioEntry
+   :project: Slint
+   :members:
+   :protected-members:
+   :undoc-members:

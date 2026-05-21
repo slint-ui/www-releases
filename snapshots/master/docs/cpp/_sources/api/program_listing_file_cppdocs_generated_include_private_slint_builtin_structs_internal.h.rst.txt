@@ -24,17 +24,9 @@ Program Listing for File slint_builtin_structs_internal.h
    using slint::language::PointerEvent;
    using slint::language::PointerScrollEvent;
    using slint::language::KeyEvent;
-   struct DropEvent {
-       DataTransfer data;
-       LogicalPosition position;
-       bool allow_copy;
-       bool allow_move;
-       bool allow_link;
-       DragAction proposed_action;
-       friend bool operator==(const DropEvent&, const DropEvent&) = default;
-       friend bool operator!=(const DropEvent&, const DropEvent&) = default;
-   };
+   using slint::language::DropEvent;
    using slint::language::StandardListViewItem;
+   using slint::language::RadioEntry;
    struct TableColumn {
        SharedString title;
        float min_width;

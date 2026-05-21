@@ -13,6 +13,8 @@ Program Listing for File slint_builtin_structs.h
    #pragma once
    // This file is auto-generated from xtask/src/../../api/cpp/cbindgen.rs
    #include "private/slint_enums.h"
+   #include "private/slint_point.h"
+   #include "private/slint_data_transfer.h"
    namespace slint::language {
    struct KeyboardModifiers {
        bool alt;
@@ -44,10 +46,26 @@ Program Listing for File slint_builtin_structs.h
        friend bool operator==(const KeyEvent&, const KeyEvent&) = default;
        friend bool operator!=(const KeyEvent&, const KeyEvent&) = default;
    };
+   struct DropEvent {
+       DataTransfer data;
+       LogicalPosition position;
+       bool allow_copy;
+       bool allow_move;
+       bool allow_link;
+       DragAction proposed_action;
+       friend bool operator==(const DropEvent&, const DropEvent&) = default;
+       friend bool operator!=(const DropEvent&, const DropEvent&) = default;
+   };
    struct StandardListViewItem {
        SharedString text;
        friend bool operator==(const StandardListViewItem&, const StandardListViewItem&) = default;
        friend bool operator!=(const StandardListViewItem&, const StandardListViewItem&) = default;
+   };
+   struct RadioEntry {
+       SharedString text;
+       bool disabled;
+       friend bool operator==(const RadioEntry&, const RadioEntry&) = default;
+       friend bool operator!=(const RadioEntry&, const RadioEntry&) = default;
    };
    }
    namespace slint { using slint::language::StandardListViewItem; }

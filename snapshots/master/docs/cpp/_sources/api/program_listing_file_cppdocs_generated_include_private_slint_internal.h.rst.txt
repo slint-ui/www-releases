@@ -533,6 +533,7 @@ Program Listing for File slint_internal.h
    struct MenuVTable {
        void (*sub_menu)(VRef<MenuVTable>, const MenuEntry*, SharedVector<MenuEntry>*);
        void (*activate)(VRef<MenuVTable>, const MenuEntry*);
+       bool (*visible)(VRef<MenuVTable>);
        Layout (*drop_in_place)(VRefMut<MenuVTable>);
        void (*dealloc)(const MenuVTable*, uint8_t *ptr, Layout layout);
    };
@@ -1254,7 +1255,8 @@ Program Listing for File slint_internal.h
    
    void slint_menus_create_wrapper(const ItemTreeRc *menu_tree,
                                    VRc<MenuVTable> *result,
-                                   bool (*condition)(const ItemTreeRc *menu_tree));
+                                   bool (*condition)(const ItemTreeRc *menu_tree),
+                                   bool (*visible)(const ItemTreeRc *menu_tree));
    
    void slint_repeater_ensure_updated(RepeaterInstanceOpsVTable *ops,
                                       uintptr_t offset,

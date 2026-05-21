@@ -29,3 +29,4 @@ description: "AccessibleRole content"
 * **`switch`**:  The element is a `Switch` or behaves like one.
 * **`list-item`**:  The element is an item in a `ListView`.
 * **`radio-button`**:  The element is a `RadioButton` or behaves like one.
+* **`radio-group`**:  The element is a container grouping related `RadioButton`s.

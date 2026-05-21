@@ -10,6 +10,8 @@ Classes
 -------
 
 
+- :ref:`exhale_struct_structslint_1_1language_1_1DropEvent`
+
 - :ref:`exhale_struct_structslint_1_1language_1_1KeyboardModifiers`
 
 - :ref:`exhale_struct_structslint_1_1language_1_1KeyEvent`
@@ -17,6 +19,8 @@ Classes
 - :ref:`exhale_struct_structslint_1_1language_1_1PointerEvent`
 
 - :ref:`exhale_struct_structslint_1_1language_1_1PointerScrollEvent`
+
+- :ref:`exhale_struct_structslint_1_1language_1_1RadioEntry`
 
 - :ref:`exhale_struct_structslint_1_1language_1_1StandardListViewItem`
 

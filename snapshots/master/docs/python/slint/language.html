@@ -109,6 +109,33 @@
 
             </li>
             <li>
+                    <a class="class" href="#DropEvent">DropEvent</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="function" href="#DropEvent.__init__">DropEvent</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DropEvent.data">data</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DropEvent.position">position</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DropEvent.allow_copy">allow_copy</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DropEvent.allow_move">allow_move</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DropEvent.allow_link">allow_link</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#DropEvent.proposed_action">proposed_action</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
                     <a class="class" href="#StandardListViewItem">StandardListViewItem</a>
                             <ul class="memberlist">
                         <li>
@@ -116,6 +143,21 @@
                         </li>
                         <li>
                                 <a class="variable" href="#StandardListViewItem.text">text</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#RadioEntry">RadioEntry</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="function" href="#RadioEntry.__init__">RadioEntry</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#RadioEntry.text">text</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#RadioEntry.disabled">disabled</a>
                         </li>
                 </ul>
 
@@ -524,6 +566,116 @@
 
                             </div>
                 </section>
+                <section id="DropEvent">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">DropEvent</span><wbr>(<span class="base">builtins.tuple</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#DropEvent"></a>
+    
+            <div class="docstring"><p>This structure is passed to the callbacks of the <code>DropArea</code> element</p>
+</div>
+
+
+                            <div id="DropEvent.__init__" class="classattr">
+                                <div class="attr function">
+            
+        <span class="name">DropEvent</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">data</span><span class="p">:</span> <span class="n">ForwardRef</span><span class="p">(</span><span class="s1">&#39;DataTransfer | None&#39;</span><span class="p">)</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">position</span><span class="p">:</span> <span class="n">ForwardRef</span><span class="p">(</span><span class="s1">&#39;LogicalPosition | None&#39;</span><span class="p">)</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">allow_copy</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">allow_move</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">allow_link</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">proposed_action</span><span class="p">:</span> <span class="n">ForwardRef</span><span class="p">(</span><span class="s1">&#39;DragAction | None&#39;</span><span class="p">)</span> <span class="o">=</span> <span class="kc">None</span></span>)</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DropEvent.__init__"></a>
+    
+            <div class="docstring"><p>Create new instance of DropEvent(data, position, allow_copy, allow_move, allow_link, proposed_action)</p>
+</div>
+
+
+                            </div>
+                            <div id="DropEvent.data" class="classattr">
+                                <div class="attr variable">
+            <span class="name">data</span><span class="annotation">: DataTransfer | None</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DropEvent.data"></a>
+    
+            <div class="docstring"><p>The payload set on the source <code>DragArea</code>.</p>
+</div>
+
+
+                            </div>
+                            <div id="DropEvent.position" class="classattr">
+                                <div class="attr variable">
+            <span class="name">position</span><span class="annotation">: LogicalPosition | None</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DropEvent.position"></a>
+    
+            <div class="docstring"><p>The cursor position in the <code>DropArea</code>'s local coordinates.</p>
+</div>
+
+
+                            </div>
+                            <div id="DropEvent.allow_copy" class="classattr">
+                                <div class="attr variable">
+            <span class="name">allow_copy</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DropEvent.allow_copy"></a>
+    
+            <div class="docstring"><p>Mirrors <code>DragArea.allow-copy</code>: true if the source allows the drop to copy the data.</p>
+</div>
+
+
+                            </div>
+                            <div id="DropEvent.allow_move" class="classattr">
+                                <div class="attr variable">
+            <span class="name">allow_move</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DropEvent.allow_move"></a>
+    
+            <div class="docstring"><p>Mirrors <code>DragArea.allow-move</code>: true if the source allows the drop to move the data.</p>
+</div>
+
+
+                            </div>
+                            <div id="DropEvent.allow_link" class="classattr">
+                                <div class="attr variable">
+            <span class="name">allow_link</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DropEvent.allow_link"></a>
+    
+            <div class="docstring"><p>Mirrors <code>DragArea.allow-link</code>: true if the source allows the drop to link to the data.</p>
+</div>
+
+
+                            </div>
+                            <div id="DropEvent.proposed_action" class="classattr">
+                                <div class="attr variable">
+            <span class="name">proposed_action</span><span class="annotation">: <a href="#DragAction">DragAction</a> | None</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DropEvent.proposed_action"></a>
+    
+            <div class="docstring"><p>The action negotiated from current modifier state and the source's <code>preferred-action</code>,
+ clamped to the allowed set. Updated on every <code>DragMove</code>. The target's <code>can-drop</code>
+ callback can return this to honor the user's modifier choice, or override with
+ any other allowed action.</p>
+</div>
+
+
+                            </div>
+                </section>
                 <section id="StandardListViewItem">
                     <div class="attr class">
             
@@ -561,6 +713,61 @@
     <a class="headerlink" href="#StandardListViewItem.text"></a>
     
             <div class="docstring"><p>The text content of the item</p>
+</div>
+
+
+                            </div>
+                </section>
+                <section id="RadioEntry">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">RadioEntry</span><wbr>(<span class="base">builtins.tuple</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#RadioEntry"></a>
+    
+            <div class="docstring"><p>Represents one option in a <code>RadioGroup</code>.</p>
+</div>
+
+
+                            <div id="RadioEntry.__init__" class="classattr">
+                                <div class="attr function">
+            
+        <span class="name">RadioEntry</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">text</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>, </span><span class="param"><span class="n">disabled</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span>)</span>
+
+        
+    </div>
+    <a class="headerlink" href="#RadioEntry.__init__"></a>
+    
+            <div class="docstring"><p>Create new instance of RadioEntry(text, disabled)</p>
+</div>
+
+
+                            </div>
+                            <div id="RadioEntry.text" class="classattr">
+                                <div class="attr variable">
+            <span class="name">text</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#RadioEntry.text"></a>
+    
+            <div class="docstring"><p>Label shown next to the radio button.</p>
+</div>
+
+
+                            </div>
+                            <div id="RadioEntry.disabled" class="classattr">
+                                <div class="attr variable">
+            <span class="name">disabled</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#RadioEntry.disabled"></a>
+    
+            <div class="docstring"><p>When <code>true</code>, this option is visible but not selectable.</p>
 </div>
 
 

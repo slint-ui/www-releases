@@ -168,3 +168,8 @@ export component Example inherits Window {
     // ... actual window content goes here
 }
 ```
+
+### visible
+<SlintProperty propName="visible" typeName="bool" defaultValue="true">
+Whether this menu bar should be visible.  If the menu bar is not visible, the menu bar will not take up any space but shortcuts will still function.
+</SlintProperty>

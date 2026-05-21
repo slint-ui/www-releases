@@ -64,6 +64,7 @@ Program Listing for File slint_enums.h
        Switch,
        ListItem,
        RadioButton,
+       RadioGroup,
    };
    }
    enum class AccessibleLive {

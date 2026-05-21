@@ -25,7 +25,11 @@ Includes
 --------
 
 
+- ``private/slint_data_transfer.h`` (:ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_data_transfer.h`)
+
 - ``private/slint_enums.h`` (:ref:`file_cppdocs_generated_include_private_slint_enums.h`)
+
+- ``private/slint_point.h`` (:ref:`file__home_runner_work_slint_slint_api_cpp_include_private_slint_point.h`)
 
 
 
@@ -53,6 +57,8 @@ Classes
 -------
 
 
+- :ref:`exhale_struct_structslint_1_1language_1_1DropEvent`
+
 - :ref:`exhale_struct_structslint_1_1language_1_1KeyboardModifiers`
 
 - :ref:`exhale_struct_structslint_1_1language_1_1KeyEvent`
@@ -60,6 +66,8 @@ Classes
 - :ref:`exhale_struct_structslint_1_1language_1_1PointerEvent`
 
 - :ref:`exhale_struct_structslint_1_1language_1_1PointerScrollEvent`
+
+- :ref:`exhale_struct_structslint_1_1language_1_1RadioEntry`
 
 - :ref:`exhale_struct_structslint_1_1language_1_1StandardListViewItem`
 
