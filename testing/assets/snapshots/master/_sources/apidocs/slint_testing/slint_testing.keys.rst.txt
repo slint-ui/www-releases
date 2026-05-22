@@ -1,0 +1,618 @@
+:orphan:
+
+:py:mod:`slint_testing.keys`
+============================
+
+.. py:module:: slint_testing.keys
+
+.. autodoc2-docstring:: slint_testing.keys
+   :parser: myst
+   :allowtitles:
+
+Module Contents
+---------------
+
+Data
+~~~~
+
+.. list-table::
+   :class: autosummary longtable
+   :align: left
+
+   * - :py:obj:`Backspace <slint_testing.keys.Backspace>`
+     - .. autodoc2-docstring:: slint_testing.keys.Backspace
+          :parser: myst
+          :summary:
+   * - :py:obj:`Tab <slint_testing.keys.Tab>`
+     - .. autodoc2-docstring:: slint_testing.keys.Tab
+          :parser: myst
+          :summary:
+   * - :py:obj:`Return <slint_testing.keys.Return>`
+     - .. autodoc2-docstring:: slint_testing.keys.Return
+          :parser: myst
+          :summary:
+   * - :py:obj:`Escape <slint_testing.keys.Escape>`
+     - .. autodoc2-docstring:: slint_testing.keys.Escape
+          :parser: myst
+          :summary:
+   * - :py:obj:`Backtab <slint_testing.keys.Backtab>`
+     - .. autodoc2-docstring:: slint_testing.keys.Backtab
+          :parser: myst
+          :summary:
+   * - :py:obj:`Delete <slint_testing.keys.Delete>`
+     - .. autodoc2-docstring:: slint_testing.keys.Delete
+          :parser: myst
+          :summary:
+   * - :py:obj:`Shift <slint_testing.keys.Shift>`
+     - .. autodoc2-docstring:: slint_testing.keys.Shift
+          :parser: myst
+          :summary:
+   * - :py:obj:`Control <slint_testing.keys.Control>`
+     - .. autodoc2-docstring:: slint_testing.keys.Control
+          :parser: myst
+          :summary:
+   * - :py:obj:`Alt <slint_testing.keys.Alt>`
+     - .. autodoc2-docstring:: slint_testing.keys.Alt
+          :parser: myst
+          :summary:
+   * - :py:obj:`AltGr <slint_testing.keys.AltGr>`
+     - .. autodoc2-docstring:: slint_testing.keys.AltGr
+          :parser: myst
+          :summary:
+   * - :py:obj:`CapsLock <slint_testing.keys.CapsLock>`
+     - .. autodoc2-docstring:: slint_testing.keys.CapsLock
+          :parser: myst
+          :summary:
+   * - :py:obj:`ShiftR <slint_testing.keys.ShiftR>`
+     - .. autodoc2-docstring:: slint_testing.keys.ShiftR
+          :parser: myst
+          :summary:
+   * - :py:obj:`ControlR <slint_testing.keys.ControlR>`
+     - .. autodoc2-docstring:: slint_testing.keys.ControlR
+          :parser: myst
+          :summary:
+   * - :py:obj:`Meta <slint_testing.keys.Meta>`
+     - .. autodoc2-docstring:: slint_testing.keys.Meta
+          :parser: myst
+          :summary:
+   * - :py:obj:`MetaR <slint_testing.keys.MetaR>`
+     - .. autodoc2-docstring:: slint_testing.keys.MetaR
+          :parser: myst
+          :summary:
+   * - :py:obj:`Space <slint_testing.keys.Space>`
+     - .. autodoc2-docstring:: slint_testing.keys.Space
+          :parser: myst
+          :summary:
+   * - :py:obj:`UpArrow <slint_testing.keys.UpArrow>`
+     - .. autodoc2-docstring:: slint_testing.keys.UpArrow
+          :parser: myst
+          :summary:
+   * - :py:obj:`DownArrow <slint_testing.keys.DownArrow>`
+     - .. autodoc2-docstring:: slint_testing.keys.DownArrow
+          :parser: myst
+          :summary:
+   * - :py:obj:`LeftArrow <slint_testing.keys.LeftArrow>`
+     - .. autodoc2-docstring:: slint_testing.keys.LeftArrow
+          :parser: myst
+          :summary:
+   * - :py:obj:`RightArrow <slint_testing.keys.RightArrow>`
+     - .. autodoc2-docstring:: slint_testing.keys.RightArrow
+          :parser: myst
+          :summary:
+   * - :py:obj:`F1 <slint_testing.keys.F1>`
+     - .. autodoc2-docstring:: slint_testing.keys.F1
+          :parser: myst
+          :summary:
+   * - :py:obj:`F2 <slint_testing.keys.F2>`
+     - .. autodoc2-docstring:: slint_testing.keys.F2
+          :parser: myst
+          :summary:
+   * - :py:obj:`F3 <slint_testing.keys.F3>`
+     - .. autodoc2-docstring:: slint_testing.keys.F3
+          :parser: myst
+          :summary:
+   * - :py:obj:`F4 <slint_testing.keys.F4>`
+     - .. autodoc2-docstring:: slint_testing.keys.F4
+          :parser: myst
+          :summary:
+   * - :py:obj:`F5 <slint_testing.keys.F5>`
+     - .. autodoc2-docstring:: slint_testing.keys.F5
+          :parser: myst
+          :summary:
+   * - :py:obj:`F6 <slint_testing.keys.F6>`
+     - .. autodoc2-docstring:: slint_testing.keys.F6
+          :parser: myst
+          :summary:
+   * - :py:obj:`F7 <slint_testing.keys.F7>`
+     - .. autodoc2-docstring:: slint_testing.keys.F7
+          :parser: myst
+          :summary:
+   * - :py:obj:`F8 <slint_testing.keys.F8>`
+     - .. autodoc2-docstring:: slint_testing.keys.F8
+          :parser: myst
+          :summary:
+   * - :py:obj:`F9 <slint_testing.keys.F9>`
+     - .. autodoc2-docstring:: slint_testing.keys.F9
+          :parser: myst
+          :summary:
+   * - :py:obj:`F10 <slint_testing.keys.F10>`
+     - .. autodoc2-docstring:: slint_testing.keys.F10
+          :parser: myst
+          :summary:
+   * - :py:obj:`F11 <slint_testing.keys.F11>`
+     - .. autodoc2-docstring:: slint_testing.keys.F11
+          :parser: myst
+          :summary:
+   * - :py:obj:`F12 <slint_testing.keys.F12>`
+     - .. autodoc2-docstring:: slint_testing.keys.F12
+          :parser: myst
+          :summary:
+   * - :py:obj:`F13 <slint_testing.keys.F13>`
+     - .. autodoc2-docstring:: slint_testing.keys.F13
+          :parser: myst
+          :summary:
+   * - :py:obj:`F14 <slint_testing.keys.F14>`
+     - .. autodoc2-docstring:: slint_testing.keys.F14
+          :parser: myst
+          :summary:
+   * - :py:obj:`F15 <slint_testing.keys.F15>`
+     - .. autodoc2-docstring:: slint_testing.keys.F15
+          :parser: myst
+          :summary:
+   * - :py:obj:`F16 <slint_testing.keys.F16>`
+     - .. autodoc2-docstring:: slint_testing.keys.F16
+          :parser: myst
+          :summary:
+   * - :py:obj:`F17 <slint_testing.keys.F17>`
+     - .. autodoc2-docstring:: slint_testing.keys.F17
+          :parser: myst
+          :summary:
+   * - :py:obj:`F18 <slint_testing.keys.F18>`
+     - .. autodoc2-docstring:: slint_testing.keys.F18
+          :parser: myst
+          :summary:
+   * - :py:obj:`F19 <slint_testing.keys.F19>`
+     - .. autodoc2-docstring:: slint_testing.keys.F19
+          :parser: myst
+          :summary:
+   * - :py:obj:`F20 <slint_testing.keys.F20>`
+     - .. autodoc2-docstring:: slint_testing.keys.F20
+          :parser: myst
+          :summary:
+   * - :py:obj:`F21 <slint_testing.keys.F21>`
+     - .. autodoc2-docstring:: slint_testing.keys.F21
+          :parser: myst
+          :summary:
+   * - :py:obj:`F22 <slint_testing.keys.F22>`
+     - .. autodoc2-docstring:: slint_testing.keys.F22
+          :parser: myst
+          :summary:
+   * - :py:obj:`F23 <slint_testing.keys.F23>`
+     - .. autodoc2-docstring:: slint_testing.keys.F23
+          :parser: myst
+          :summary:
+   * - :py:obj:`F24 <slint_testing.keys.F24>`
+     - .. autodoc2-docstring:: slint_testing.keys.F24
+          :parser: myst
+          :summary:
+   * - :py:obj:`Insert <slint_testing.keys.Insert>`
+     - .. autodoc2-docstring:: slint_testing.keys.Insert
+          :parser: myst
+          :summary:
+   * - :py:obj:`Home <slint_testing.keys.Home>`
+     - .. autodoc2-docstring:: slint_testing.keys.Home
+          :parser: myst
+          :summary:
+   * - :py:obj:`End <slint_testing.keys.End>`
+     - .. autodoc2-docstring:: slint_testing.keys.End
+          :parser: myst
+          :summary:
+   * - :py:obj:`PageUp <slint_testing.keys.PageUp>`
+     - .. autodoc2-docstring:: slint_testing.keys.PageUp
+          :parser: myst
+          :summary:
+   * - :py:obj:`PageDown <slint_testing.keys.PageDown>`
+     - .. autodoc2-docstring:: slint_testing.keys.PageDown
+          :parser: myst
+          :summary:
+   * - :py:obj:`ScrollLock <slint_testing.keys.ScrollLock>`
+     - .. autodoc2-docstring:: slint_testing.keys.ScrollLock
+          :parser: myst
+          :summary:
+   * - :py:obj:`Pause <slint_testing.keys.Pause>`
+     - .. autodoc2-docstring:: slint_testing.keys.Pause
+          :parser: myst
+          :summary:
+   * - :py:obj:`SysReq <slint_testing.keys.SysReq>`
+     - .. autodoc2-docstring:: slint_testing.keys.SysReq
+          :parser: myst
+          :summary:
+   * - :py:obj:`Stop <slint_testing.keys.Stop>`
+     - .. autodoc2-docstring:: slint_testing.keys.Stop
+          :parser: myst
+          :summary:
+   * - :py:obj:`Menu <slint_testing.keys.Menu>`
+     - .. autodoc2-docstring:: slint_testing.keys.Menu
+          :parser: myst
+          :summary:
+
+API
+~~~
+
+.. py:data:: Backspace
+   :canonical: slint_testing.keys.Backspace
+   :value: '\x08'
+
+   .. autodoc2-docstring:: slint_testing.keys.Backspace
+      :parser: myst
+
+.. py:data:: Tab
+   :canonical: slint_testing.keys.Tab
+   :value: '\t'
+
+   .. autodoc2-docstring:: slint_testing.keys.Tab
+      :parser: myst
+
+.. py:data:: Return
+   :canonical: slint_testing.keys.Return
+   :value: '\n'
+
+   .. autodoc2-docstring:: slint_testing.keys.Return
+      :parser: myst
+
+.. py:data:: Escape
+   :canonical: slint_testing.keys.Escape
+   :value: '\x1b'
+
+   .. autodoc2-docstring:: slint_testing.keys.Escape
+      :parser: myst
+
+.. py:data:: Backtab
+   :canonical: slint_testing.keys.Backtab
+   :value: '\x19'
+
+   .. autodoc2-docstring:: slint_testing.keys.Backtab
+      :parser: myst
+
+.. py:data:: Delete
+   :canonical: slint_testing.keys.Delete
+   :value: '\x7f'
+
+   .. autodoc2-docstring:: slint_testing.keys.Delete
+      :parser: myst
+
+.. py:data:: Shift
+   :canonical: slint_testing.keys.Shift
+   :value: '\x10'
+
+   .. autodoc2-docstring:: slint_testing.keys.Shift
+      :parser: myst
+
+.. py:data:: Control
+   :canonical: slint_testing.keys.Control
+   :value: '\x11'
+
+   .. autodoc2-docstring:: slint_testing.keys.Control
+      :parser: myst
+
+.. py:data:: Alt
+   :canonical: slint_testing.keys.Alt
+   :value: '\x12'
+
+   .. autodoc2-docstring:: slint_testing.keys.Alt
+      :parser: myst
+
+.. py:data:: AltGr
+   :canonical: slint_testing.keys.AltGr
+   :value: '\x13'
+
+   .. autodoc2-docstring:: slint_testing.keys.AltGr
+      :parser: myst
+
+.. py:data:: CapsLock
+   :canonical: slint_testing.keys.CapsLock
+   :value: '\x14'
+
+   .. autodoc2-docstring:: slint_testing.keys.CapsLock
+      :parser: myst
+
+.. py:data:: ShiftR
+   :canonical: slint_testing.keys.ShiftR
+   :value: '\x15'
+
+   .. autodoc2-docstring:: slint_testing.keys.ShiftR
+      :parser: myst
+
+.. py:data:: ControlR
+   :canonical: slint_testing.keys.ControlR
+   :value: '\x16'
+
+   .. autodoc2-docstring:: slint_testing.keys.ControlR
+      :parser: myst
+
+.. py:data:: Meta
+   :canonical: slint_testing.keys.Meta
+   :value: '\x17'
+
+   .. autodoc2-docstring:: slint_testing.keys.Meta
+      :parser: myst
+
+.. py:data:: MetaR
+   :canonical: slint_testing.keys.MetaR
+   :value: '\x18'
+
+   .. autodoc2-docstring:: slint_testing.keys.MetaR
+      :parser: myst
+
+.. py:data:: Space
+   :canonical: slint_testing.keys.Space
+   :value: ' '
+
+   .. autodoc2-docstring:: slint_testing.keys.Space
+      :parser: myst
+
+.. py:data:: UpArrow
+   :canonical: slint_testing.keys.UpArrow
+   :value: '\uf700'
+
+   .. autodoc2-docstring:: slint_testing.keys.UpArrow
+      :parser: myst
+
+.. py:data:: DownArrow
+   :canonical: slint_testing.keys.DownArrow
+   :value: '\uf701'
+
+   .. autodoc2-docstring:: slint_testing.keys.DownArrow
+      :parser: myst
+
+.. py:data:: LeftArrow
+   :canonical: slint_testing.keys.LeftArrow
+   :value: '\uf702'
+
+   .. autodoc2-docstring:: slint_testing.keys.LeftArrow
+      :parser: myst
+
+.. py:data:: RightArrow
+   :canonical: slint_testing.keys.RightArrow
+   :value: '\uf703'
+
+   .. autodoc2-docstring:: slint_testing.keys.RightArrow
+      :parser: myst
+
+.. py:data:: F1
+   :canonical: slint_testing.keys.F1
+   :value: '\uf704'
+
+   .. autodoc2-docstring:: slint_testing.keys.F1
+      :parser: myst
+
+.. py:data:: F2
+   :canonical: slint_testing.keys.F2
+   :value: '\uf705'
+
+   .. autodoc2-docstring:: slint_testing.keys.F2
+      :parser: myst
+
+.. py:data:: F3
+   :canonical: slint_testing.keys.F3
+   :value: '\uf706'
+
+   .. autodoc2-docstring:: slint_testing.keys.F3
+      :parser: myst
+
+.. py:data:: F4
+   :canonical: slint_testing.keys.F4
+   :value: '\uf707'
+
+   .. autodoc2-docstring:: slint_testing.keys.F4
+      :parser: myst
+
+.. py:data:: F5
+   :canonical: slint_testing.keys.F5
+   :value: '\uf708'
+
+   .. autodoc2-docstring:: slint_testing.keys.F5
+      :parser: myst
+
+.. py:data:: F6
+   :canonical: slint_testing.keys.F6
+   :value: '\uf709'
+
+   .. autodoc2-docstring:: slint_testing.keys.F6
+      :parser: myst
+
+.. py:data:: F7
+   :canonical: slint_testing.keys.F7
+   :value: '\uf70a'
+
+   .. autodoc2-docstring:: slint_testing.keys.F7
+      :parser: myst
+
+.. py:data:: F8
+   :canonical: slint_testing.keys.F8
+   :value: '\uf70b'
+
+   .. autodoc2-docstring:: slint_testing.keys.F8
+      :parser: myst
+
+.. py:data:: F9
+   :canonical: slint_testing.keys.F9
+   :value: '\uf70c'
+
+   .. autodoc2-docstring:: slint_testing.keys.F9
+      :parser: myst
+
+.. py:data:: F10
+   :canonical: slint_testing.keys.F10
+   :value: '\uf70d'
+
+   .. autodoc2-docstring:: slint_testing.keys.F10
+      :parser: myst
+
+.. py:data:: F11
+   :canonical: slint_testing.keys.F11
+   :value: '\uf70e'
+
+   .. autodoc2-docstring:: slint_testing.keys.F11
+      :parser: myst
+
+.. py:data:: F12
+   :canonical: slint_testing.keys.F12
+   :value: '\uf70f'
+
+   .. autodoc2-docstring:: slint_testing.keys.F12
+      :parser: myst
+
+.. py:data:: F13
+   :canonical: slint_testing.keys.F13
+   :value: '\uf710'
+
+   .. autodoc2-docstring:: slint_testing.keys.F13
+      :parser: myst
+
+.. py:data:: F14
+   :canonical: slint_testing.keys.F14
+   :value: '\uf711'
+
+   .. autodoc2-docstring:: slint_testing.keys.F14
+      :parser: myst
+
+.. py:data:: F15
+   :canonical: slint_testing.keys.F15
+   :value: '\uf712'
+
+   .. autodoc2-docstring:: slint_testing.keys.F15
+      :parser: myst
+
+.. py:data:: F16
+   :canonical: slint_testing.keys.F16
+   :value: '\uf713'
+
+   .. autodoc2-docstring:: slint_testing.keys.F16
+      :parser: myst
+
+.. py:data:: F17
+   :canonical: slint_testing.keys.F17
+   :value: '\uf714'
+
+   .. autodoc2-docstring:: slint_testing.keys.F17
+      :parser: myst
+
+.. py:data:: F18
+   :canonical: slint_testing.keys.F18
+   :value: '\uf715'
+
+   .. autodoc2-docstring:: slint_testing.keys.F18
+      :parser: myst
+
+.. py:data:: F19
+   :canonical: slint_testing.keys.F19
+   :value: '\uf716'
+
+   .. autodoc2-docstring:: slint_testing.keys.F19
+      :parser: myst
+
+.. py:data:: F20
+   :canonical: slint_testing.keys.F20
+   :value: '\uf717'
+
+   .. autodoc2-docstring:: slint_testing.keys.F20
+      :parser: myst
+
+.. py:data:: F21
+   :canonical: slint_testing.keys.F21
+   :value: '\uf718'
+
+   .. autodoc2-docstring:: slint_testing.keys.F21
+      :parser: myst
+
+.. py:data:: F22
+   :canonical: slint_testing.keys.F22
+   :value: '\uf719'
+
+   .. autodoc2-docstring:: slint_testing.keys.F22
+      :parser: myst
+
+.. py:data:: F23
+   :canonical: slint_testing.keys.F23
+   :value: '\uf71a'
+
+   .. autodoc2-docstring:: slint_testing.keys.F23
+      :parser: myst
+
+.. py:data:: F24
+   :canonical: slint_testing.keys.F24
+   :value: '\uf71b'
+
+   .. autodoc2-docstring:: slint_testing.keys.F24
+      :parser: myst
+
+.. py:data:: Insert
+   :canonical: slint_testing.keys.Insert
+   :value: '\uf727'
+
+   .. autodoc2-docstring:: slint_testing.keys.Insert
+      :parser: myst
+
+.. py:data:: Home
+   :canonical: slint_testing.keys.Home
+   :value: '\uf729'
+
+   .. autodoc2-docstring:: slint_testing.keys.Home
+      :parser: myst
+
+.. py:data:: End
+   :canonical: slint_testing.keys.End
+   :value: '\uf72b'
+
+   .. autodoc2-docstring:: slint_testing.keys.End
+      :parser: myst
+
+.. py:data:: PageUp
+   :canonical: slint_testing.keys.PageUp
+   :value: '\uf72c'
+
+   .. autodoc2-docstring:: slint_testing.keys.PageUp
+      :parser: myst
+
+.. py:data:: PageDown
+   :canonical: slint_testing.keys.PageDown
+   :value: '\uf72d'
+
+   .. autodoc2-docstring:: slint_testing.keys.PageDown
+      :parser: myst
+
+.. py:data:: ScrollLock
+   :canonical: slint_testing.keys.ScrollLock
+   :value: '\uf72f'
+
+   .. autodoc2-docstring:: slint_testing.keys.ScrollLock
+      :parser: myst
+
+.. py:data:: Pause
+   :canonical: slint_testing.keys.Pause
+   :value: '\uf730'
+
+   .. autodoc2-docstring:: slint_testing.keys.Pause
+      :parser: myst
+
+.. py:data:: SysReq
+   :canonical: slint_testing.keys.SysReq
+   :value: '\uf731'
+
+   .. autodoc2-docstring:: slint_testing.keys.SysReq
+      :parser: myst
+
+.. py:data:: Stop
+   :canonical: slint_testing.keys.Stop
+   :value: '\uf734'
+
+   .. autodoc2-docstring:: slint_testing.keys.Stop
+      :parser: myst
+
+.. py:data:: Menu
+   :canonical: slint_testing.keys.Menu
+   :value: '\uf735'
+
+   .. autodoc2-docstring:: slint_testing.keys.Menu
+      :parser: myst
