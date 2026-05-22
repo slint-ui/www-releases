@@ -1,0 +1,31 @@
+.. Slint UI Testing documentation master file, created by
+   sphinx-quickstart on Sat May 25 17:07:43 2024.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+Welcome to Slint UI Testing's documentation!
+============================================
+
+.. include:: introduction/index.md
+   :parser: myst_parser.sphinx_
+
+.. toctree::
+   :hidden:
+   :maxdepth: 2
+   :caption: Introduction
+
+   introduction/index.rst
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+   apidocs/slint_testing/slint_testing.rst
+   apidocs/slint_testing/slint_testing.keys.rst
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`

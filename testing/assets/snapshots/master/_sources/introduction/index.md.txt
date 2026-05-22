@@ -1,0 +1,68 @@
+
+Use the Slint UI Testing module to launch a Slint application locally or on a remote machine via SSH,
+inspect its UI, trigger actions, and verify correct behaviour.
+
+# Prerequisites
+
+ * [Python 3](https://python.org/)
+ * [pip](https://pypi.org/project/pip/)
+ * [Pipenv](https://pipenv.pypa.io/en/latest/installation.html#installing-pipenv)
+
+Your application needs to be built with system testing support:
+
+- For Rust applications, depend on the `i-slint-backend-selector` crate and enable the `system-testing` feature.
+- For C++ applications, set `SLINT_FEATURE_SYSTEM_TESTING=ON` and `SLINT_FEATURE_EXPERIMENTAL=ON` in your CMake configuration.
+
+# Installation
+
+At the moment the `slint_testing` package is only available via git:
+
+```shell
+pipenv install "git+https://github.com/slint-ui/ui-testing#subdirectory=python&egg=slint_testing"
+```
+
+# Usage
+
+```python
+import slint_testing
+
+with slint_testing.Application(["/path/to/my_app"]) as aut:
+   window = aut.first_window
+
+   root_element = window.root_element
+   celsius_field = root_element.query_descendants().match_id("App::celsius-input").find_first()
+   convert_button = root_element.query_descendants().match_id("App::convert-button").find_first()
+   convert
+   farenheit_field = root_element.query_descendants().match_id("App::farenheit-input").find_first()
+
+    celsius_field.accessible_value = "100"
+    convert_button.invoke_accessible_default_action()
+
+    assert farenheit_field.accessible_value == 212
+```
+
+The <project:#slint_testing> module provides an <project:#slint_testing.Application> class, which wraps the Application Under Test (AUT).
+Construct it with the command line arguments needed to launch the compiled application, and use it with
+Python's [with](https://docs.python.org/3/reference/compound_stmts.html#with) statement. Before entering
+your block, the application is launched and `slint_testing` waits until the first window is shown and connected.
+
+Fetch the <project:#slint_testing.Window> from the `Application`, and then its <project:#slint_testing.Window.root_element>.
+Use <project:#slint_testing.Element.query_descendants> to initiate a query into the entire tree of elements, refine it for
+example via <project:#slint_testing.ElementQuery.match_id> and finally obtain <project:#slint_testing.Element> references to the UI elements
+by calling <project:#slint_testing.ElementQuery.find_first> or <project:#slint_testing.ElementQuery.find_all>.
+
+Use <project:#slint_testing.Element>'s API to change state vi accessible actions, verify size and position, as well
+as accessible properties.
+
+# Networking
+
+The `slint_testing` module and the AUT are connected via a TCP connection and exchange messages.
+`slint_testing` creates a listening TCP socket and passes the address to the AUT via the `SLINT_TEST_SERVER` 
+environment variable. The AUT, when enabled for system testing, will automatically attempt to connect to the
+listening TCP socket when the first window is shown. This assumes readiness of the application, similar to
+visiblity on the screen indicates readiness to an end-user.
+
+When launched via SSH, `slint_testing` configures SSH to open a listening socket on the remote side at port 8091
+and configures a remote tunnel to forward to the local socket `slint_testing` created.
+
+
