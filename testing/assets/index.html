@@ -248,8 +248,7 @@ inspect its UI, trigger actions, and verify correct behaviour.</p>
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://python.org/">Python 3</a></p></li>
-<li><p><a class="reference external" href="https://pypi.org/project/pip/">pip</a></p></li>
-<li><p><a class="reference external" href="https://pipenv.pypa.io/en/latest/installation.html#installing-pipenv">Pipenv</a></p></li>
+<li><p><a class="reference external" href="https://docs.astral.sh/uv/">uv</a></p></li>
 </ul>
 <p>Your application needs to be built with system testing support:</p>
 <ul class="simple">
@@ -259,10 +258,27 @@ inspect its UI, trigger actions, and verify correct behaviour.</p>
 </section>
 <section id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Link to this heading">¶</a></h2>
-<p>At the moment the <code class="docutils literal notranslate"><span class="pre">slint_testing</span></code> package is only available via git:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pipenv<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;git+https://github.com/slint-ui/ui-testing#subdirectory=python&amp;egg=slint_testing&quot;</span>
+<p><code class="docutils literal notranslate"><span class="pre">slint_testing</span></code> is distributed through Slint’s commercial package index
+at <code class="docutils literal notranslate"><span class="pre">testing.slint.dev</span></code>. With your license you receive an access token;
+add the following to your project’s <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code>:</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[[tool.uv.index]]</span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;slint-private&quot;</span>
+<span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;https://testing.slint.dev/t/&lt;TOKEN&gt;/&quot;</span>
+<span class="n">explicit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+
+<span class="k">[tool.uv.sources]</span>
+<span class="n">slint-testing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;slint-private&quot;</span><span class="w"> </span><span class="p">}</span>
 </pre></div>
 </div>
+<p>Then install with:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>add<span class="w"> </span>slint-testing
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">explicit</span> <span class="pre">=</span> <span class="pre">true</span></code> keeps PyPI as the default for everything else; only
+<code class="docutils literal notranslate"><span class="pre">slint-testing</span></code> is resolved through Slint’s index.</p>
+<p>If your repository is public and you’d rather not commit the token URL,
+move the <code class="docutils literal notranslate"><span class="pre">[[tool.uv.index]]</span></code> block to <code class="docutils literal notranslate"><span class="pre">~/.config/uv/uv.toml</span></code> and leave
+the <code class="docutils literal notranslate"><span class="pre">[tool.uv.sources]</span></code> mapping in <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code>.</p>
 </section>
 <section id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Link to this heading">¶</a></h2>

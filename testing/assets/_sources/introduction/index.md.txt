@@ -5,8 +5,7 @@ inspect its UI, trigger actions, and verify correct behaviour.
 # Prerequisites
 
  * [Python 3](https://python.org/)
- * [pip](https://pypi.org/project/pip/)
- * [Pipenv](https://pipenv.pypa.io/en/latest/installation.html#installing-pipenv)
+ * [uv](https://docs.astral.sh/uv/)
 
 Your application needs to be built with system testing support:
 
@@ -15,11 +14,32 @@ Your application needs to be built with system testing support:
 
 # Installation
 
-At the moment the `slint_testing` package is only available via git:
+`slint_testing` is distributed through Slint's commercial package index
+at `testing.slint.dev`. With your license you receive an access token;
+add the following to your project's `pyproject.toml`:
+
+```toml
+[[tool.uv.index]]
+name = "slint-private"
+url = "https://testing.slint.dev/t/<TOKEN>/"
+explicit = true
+
+[tool.uv.sources]
+slint-testing = { index = "slint-private" }
+```
+
+Then install with:
 
 ```shell
-pipenv install "git+https://github.com/slint-ui/ui-testing#subdirectory=python&egg=slint_testing"
+uv add slint-testing
 ```
+
+`explicit = true` keeps PyPI as the default for everything else; only
+`slint-testing` is resolved through Slint's index.
+
+If your repository is public and you'd rather not commit the token URL,
+move the `[[tool.uv.index]]` block to `~/.config/uv/uv.toml` and leave
+the `[tool.uv.sources]` mapping in `pyproject.toml`.
 
 # Usage
 
