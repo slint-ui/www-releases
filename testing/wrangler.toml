@@ -1,0 +1,21 @@
+name = "ui-testing-site"
+main = "src/index.ts"
+compatibility_date = "2024-09-23"
+
+[[routes]]
+pattern = "testing.slint.dev"
+custom_domain = true
+
+[assets]
+directory = "./assets"
+binding = "ASSETS"
+# Worker runs first for these paths so it can validate tokens and block
+# direct access to _protected/. Anything else under assets/ (the public
+# landing page and its resources) is served directly by the asset CDN.
+run_worker_first = ["/t/*", "/_protected/*"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "ui-testing"
+database_id = "6c29fd42-90bf-44f8-8bec-28dab8c2d10f"
+migrations_dir = "migrations"
