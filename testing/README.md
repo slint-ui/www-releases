@@ -74,7 +74,7 @@ required. Edits to `assets/_protected/` show up on the next request.
 ## Managing packages
 
 ```sh
-pnpm publish:package /path/to/python    # uv build --wheel + copy + regen listings
+pnpm publish:package /path/to/pkg.whl    # copy a pre-built wheel + regen listings
 pnpm yank slint-testing <wheel>          # rm + regen listings
 git diff assets/_protected/              # review what would deploy
 git commit -m "publish slint-testing 0.2.0"
@@ -126,7 +126,7 @@ One-time:
 pnpm exec wrangler login                     # account must own slint.dev
 pnpm exec wrangler d1 create ui-testing      # paste database_id into wrangler.toml
 pnpm db:migrate:remote
-pnpm publish:package                          # stage the first package
+pnpm publish:package /path/to/pkg.whl        # stage the first package
 pnpm run deploy                               # uploads code + assets
 pnpm tokens:issue "Internal Test"            # smoke-test via printed URL
 ```
@@ -141,7 +141,7 @@ Ongoing:
 |---|---|
 | code change       | `pnpm run deploy` |
 | schema change     | new `migrations/NNNN_*.sql`, `pnpm db:migrate:remote && pnpm run deploy` |
-| publish a version | `pnpm publish:package`, commit, `pnpm run deploy` |
+| publish a version | `pnpm publish:package <wheel>`, commit, `pnpm run deploy` |
 | yank a version    | `pnpm yank <project> <wheel>`, commit, `pnpm run deploy` |
 | new customer      | `pnpm tokens:issue "Name"` |
 | revoke a customer | `pnpm tokens:revoke --customer "Name"` |
