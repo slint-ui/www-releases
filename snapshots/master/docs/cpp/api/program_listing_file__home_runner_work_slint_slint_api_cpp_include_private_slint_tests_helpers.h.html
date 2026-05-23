@@ -198,6 +198,7 @@
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Getting Started On Desktop</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../cmake.html">Set Up Development Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started.html">First Steps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../live_preview.html">Live-Preview</a></li>
 </ul>
@@ -563,6 +564,18 @@
 <span class="p">{</span>
 <span class="w">    </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_send_keyboard_string_sequence</span><span class="p">(</span><span class="o">&amp;</span><span class="n">str</span><span class="p">,</span>
 <span class="w">                                                          </span><span class="o">&amp;</span><span class="n">component</span><span class="o">-&gt;</span><span class="n">window</span><span class="p">().</span><span class="n">window_handle</span><span class="p">());</span>
+<span class="p">}</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">Component</span><span class="o">&gt;</span>
+<span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">set_use_native_popup</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Component</span><span class="w"> </span><span class="o">*</span><span class="n">component</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">native</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_testing_use_native_popup</span><span class="p">(</span><span class="o">&amp;</span><span class="n">component</span><span class="o">-&gt;</span><span class="n">window</span><span class="p">().</span><span class="n">window_handle</span><span class="p">(),</span><span class="w"> </span><span class="n">native</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">Component</span><span class="o">&gt;</span>
+<span class="kr">inline</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">active_popup_count</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Component</span><span class="w"> </span><span class="o">*</span><span class="n">component</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">cbindgen_private</span><span class="o">::</span><span class="n">slint_testing_active_popup_count</span><span class="p">(</span><span class="o">&amp;</span><span class="n">component</span><span class="o">-&gt;</span><span class="n">window</span><span class="p">().</span><span class="n">window_handle</span><span class="p">());</span>
 <span class="p">}</span>
 
 <span class="cp">#define assert_eq(A, B)                                                                            \</span>

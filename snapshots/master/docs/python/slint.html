@@ -90,13 +90,13 @@
                                 <a class="function" href="#Image.load_from_array">load_from_array</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Image.size">size</a>
+                                <a class="variable" href="#Image.width">width</a>
                         </li>
                         <li>
                                 <a class="variable" href="#Image.path">path</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Image.width">width</a>
+                                <a class="variable" href="#Image.size">size</a>
                         </li>
                         <li>
                                 <a class="variable" href="#Image.height">height</a>
@@ -123,16 +123,16 @@
                                 <a class="function" href="#Color.with_alpha">with_alpha</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Color.red">red</a>
-                        </li>
-                        <li>
-                                <a class="variable" href="#Color.alpha">alpha</a>
+                                <a class="variable" href="#Color.blue">blue</a>
                         </li>
                         <li>
                                 <a class="variable" href="#Color.green">green</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Color.blue">blue</a>
+                                <a class="variable" href="#Color.red">red</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Color.alpha">alpha</a>
                         </li>
                 </ul>
 
@@ -192,10 +192,10 @@
                                 <a class="function" href="#DataTransfer.fetch_image">fetch_image</a>
                         </li>
                         <li>
-                                <a class="variable" href="#DataTransfer.has_plaintext">has_plaintext</a>
+                                <a class="variable" href="#DataTransfer.has_image">has_image</a>
                         </li>
                         <li>
-                                <a class="variable" href="#DataTransfer.has_image">has_image</a>
+                                <a class="variable" href="#DataTransfer.has_plaintext">has_plaintext</a>
                         </li>
                         <li>
                                 <a class="variable" href="#DataTransfer.user_data">user_data</a>
@@ -207,10 +207,10 @@
                     <a class="class" href="#LogicalPosition">LogicalPosition</a>
                             <ul class="memberlist">
                         <li>
-                                <a class="variable" href="#LogicalPosition.x">x</a>
+                                <a class="variable" href="#LogicalPosition.y">y</a>
                         </li>
                         <li>
-                                <a class="variable" href="#LogicalPosition.y">y</a>
+                                <a class="variable" href="#LogicalPosition.x">x</a>
                         </li>
                 </ul>
 
@@ -1869,15 +1869,15 @@ Use this function to import images created by third-party modules such as matplo
 
 
                             </div>
-                            <div id="Image.size" class="classattr">
+                            <div id="Image.width" class="classattr">
                                 <div class="attr variable">
-            <span class="name">size</span><span class="annotation">: tuple[int, int]</span>
+            <span class="name">width</span><span class="annotation">: int</span>
 
         
     </div>
-    <a class="headerlink" href="#Image.size"></a>
+    <a class="headerlink" href="#Image.width"></a>
     
-            <div class="docstring"><p>The size of the image as tuple of <code><a href="#Image.width">width</a></code> and <code><a href="#Image.height">height</a></code>.</p>
+            <div class="docstring"><p>The width of the image in pixels.</p>
 </div>
 
 
@@ -1895,15 +1895,15 @@ Use this function to import images created by third-party modules such as matplo
 
 
                             </div>
-                            <div id="Image.width" class="classattr">
+                            <div id="Image.size" class="classattr">
                                 <div class="attr variable">
-            <span class="name">width</span><span class="annotation">: int</span>
+            <span class="name">size</span><span class="annotation">: tuple[int, int]</span>
 
         
     </div>
-    <a class="headerlink" href="#Image.width"></a>
+    <a class="headerlink" href="#Image.size"></a>
     
-            <div class="docstring"><p>The width of the image in pixels.</p>
+            <div class="docstring"><p>The size of the image as tuple of <code><a href="#Image.width">width</a></code> and <code><a href="#Image.height">height</a></code>.</p>
 </div>
 
 
@@ -2018,6 +2018,32 @@ is applied to <code>other</code>.</p>
 
 
                             </div>
+                            <div id="Color.blue" class="classattr">
+                                <div class="attr variable">
+            <span class="name">blue</span><span class="annotation">: int</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Color.blue"></a>
+    
+            <div class="docstring"><p>The blue channel.</p>
+</div>
+
+
+                            </div>
+                            <div id="Color.green" class="classattr">
+                                <div class="attr variable">
+            <span class="name">green</span><span class="annotation">: int</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Color.green"></a>
+    
+            <div class="docstring"><p>The green channel.</p>
+</div>
+
+
+                            </div>
                             <div id="Color.red" class="classattr">
                                 <div class="attr variable">
             <span class="name">red</span><span class="annotation">: int</span>
@@ -2040,32 +2066,6 @@ is applied to <code>other</code>.</p>
     <a class="headerlink" href="#Color.alpha"></a>
     
             <div class="docstring"><p>The alpha channel.</p>
-</div>
-
-
-                            </div>
-                            <div id="Color.green" class="classattr">
-                                <div class="attr variable">
-            <span class="name">green</span><span class="annotation">: int</span>
-
-        
-    </div>
-    <a class="headerlink" href="#Color.green"></a>
-    
-            <div class="docstring"><p>The green channel.</p>
-</div>
-
-
-                            </div>
-                            <div id="Color.blue" class="classattr">
-                                <div class="attr variable">
-            <span class="name">blue</span><span class="annotation">: int</span>
-
-        
-    </div>
-    <a class="headerlink" href="#Color.blue"></a>
-    
-            <div class="docstring"><p>The blue channel.</p>
 </div>
 
 
@@ -2331,19 +2331,6 @@ available.</p>
 
 
                             </div>
-                            <div id="DataTransfer.has_plaintext" class="classattr">
-                                <div class="attr variable">
-            <span class="name">has_plaintext</span><span class="annotation">: bool</span>
-
-        
-    </div>
-    <a class="headerlink" href="#DataTransfer.has_plaintext"></a>
-    
-            <div class="docstring"><p><code>True</code> if this <code><a href="#DataTransfer">DataTransfer</a></code> advertises a plaintext representation.</p>
-</div>
-
-
-                            </div>
                             <div id="DataTransfer.has_image" class="classattr">
                                 <div class="attr variable">
             <span class="name">has_image</span><span class="annotation">: bool</span>
@@ -2353,6 +2340,19 @@ available.</p>
     <a class="headerlink" href="#DataTransfer.has_image"></a>
     
             <div class="docstring"><p><code>True</code> if this <code><a href="#DataTransfer">DataTransfer</a></code> advertises an image representation.</p>
+</div>
+
+
+                            </div>
+                            <div id="DataTransfer.has_plaintext" class="classattr">
+                                <div class="attr variable">
+            <span class="name">has_plaintext</span><span class="annotation">: bool</span>
+
+        
+    </div>
+    <a class="headerlink" href="#DataTransfer.has_plaintext"></a>
+    
+            <div class="docstring"><p><code>True</code> if this <code><a href="#DataTransfer">DataTransfer</a></code> advertises a plaintext representation.</p>
 </div>
 
 
@@ -2391,19 +2391,6 @@ Python user data.</p>
 </div>
 
 
-                            <div id="LogicalPosition.x" class="classattr">
-                                <div class="attr variable">
-            <span class="name">x</span>
-
-        
-    </div>
-    <a class="headerlink" href="#LogicalPosition.x"></a>
-    
-            <div class="docstring"><p>The horizontal coordinate.</p>
-</div>
-
-
-                            </div>
                             <div id="LogicalPosition.y" class="classattr">
                                 <div class="attr variable">
             <span class="name">y</span>
@@ -2413,6 +2400,19 @@ Python user data.</p>
     <a class="headerlink" href="#LogicalPosition.y"></a>
     
             <div class="docstring"><p>The vertical coordinate.</p>
+</div>
+
+
+                            </div>
+                            <div id="LogicalPosition.x" class="classattr">
+                                <div class="attr variable">
+            <span class="name">x</span>
+
+        
+    </div>
+    <a class="headerlink" href="#LogicalPosition.x"></a>
+    
+            <div class="docstring"><p>The horizontal coordinate.</p>
 </div>
 
 

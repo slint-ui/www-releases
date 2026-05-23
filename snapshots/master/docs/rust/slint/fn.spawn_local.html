@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Spawns a `Future` to execute in the Slint event loop."><title>spawn_local in slint - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../static.files/rustdoc-17e0aaed.css"><meta name="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="slint" data-themes="" data-resource-suffix="" data-rustdoc-version="1.97.0-nightly (e96c36b6f 2026-05-21)" data-channel="nightly" data-search-js="search-fd9372ac.js" data-stringdex-js="stringdex-2da4960a.js" data-settings-js="settings-170eb4bf.js" ><script src="../static.files/storage-41dd4d93.js"></script><script defer src="sidebar-items.js"></script><script defer src="../static.files/main-fcd733ba.js"></script><noscript><link rel="stylesheet" href="../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../static.files/favicon-044be391.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Spawns a `Future` to execute in the Slint event loop."><title>spawn_local in slint - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../static.files/rustdoc-17e0aaed.css"><meta name="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="slint" data-themes="" data-resource-suffix="" data-rustdoc-version="1.98.0-nightly (54333ff07 2026-05-22)" data-channel="nightly" data-search-js="search-fd9372ac.js" data-stringdex-js="stringdex-2da4960a.js" data-settings-js="settings-170eb4bf.js" ><script src="../static.files/storage-41dd4d93.js"></script><script defer src="sidebar-items.js"></script><script defer src="../static.files/main-fcd733ba.js"></script><noscript><link rel="stylesheet" href="../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../static.files/favicon-044be391.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -120,7 +120,7 @@
   });
 </script>
 
-</head><body class="rustdoc fn"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">spawn_local</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><a class="logo-container" href="../slint/index.html"><img src="https://slint.dev/logo/slint-logo-square-light.svg" alt="logo"></a><h2><a href="../slint/index.html">slint</a><span class="version">1.17.0</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">spawn_<wbr>local</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#example" title="Example">Example</a></li><li><a href="#compatibility-with-tokio-and-other-runtimes" title="Compatibility with Tokio and other runtimes">Compatibility with Tokio and other runtimes</a></li></ul></section><div id="rustdoc-modnav"><h2 class="in-crate"><a href="index.html">In crate slint</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="index.html">slint</a></div><h1>Function <span class="fn">spawn_<wbr>local</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../src/slint/lib.rs.html#346-351">Source</a> </span></div><pre class="rust item-decl"><code>pub fn spawn_local&lt;F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/future/future/trait.Future.html" title="trait core::future::future::Future">Future</a> + 'static&gt;(
+</head><body class="rustdoc fn"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">spawn_local</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><a class="logo-container" href="../slint/index.html"><img src="https://slint.dev/logo/slint-logo-square-light.svg" alt="logo"></a><h2><a href="../slint/index.html">slint</a><span class="version">1.17.0</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">spawn_<wbr>local</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#example" title="Example">Example</a></li><li><a href="#compatibility-with-tokio-and-other-runtimes" title="Compatibility with Tokio and other runtimes">Compatibility with Tokio and other runtimes</a></li></ul></section><div id="rustdoc-modnav"><h2 class="in-crate"><a href="index.html">In crate slint</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="index.html">slint</a></div><h1>Function <span class="fn">spawn_<wbr>local</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../src/slint/lib.rs.html#348-353">Source</a> </span></div><pre class="rust item-decl"><code>pub fn spawn_local&lt;F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/future/future/trait.Future.html" title="trait core::future::future::Future">Future</a> + 'static&gt;(
     fut: F,
 ) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="struct.JoinHandle.html" title="struct slint::JoinHandle">JoinHandle</a>&lt;F::<a class="associatedtype" href="https://doc.rust-lang.org/nightly/core/future/future/trait.Future.html#associatedtype.Output" title="type core::future::future::Future::Output">Output</a>&gt;, <a class="enum" href="enum.EventLoopError.html" title="enum slint::EventLoopError">EventLoopError</a>&gt;</code></pre><span class="item-info"><div class="stab portability">Available on <strong><code>target_has_atomic=ptr</code></strong> only.</div></span><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Spawns a <a href="https://doc.rust-lang.org/nightly/core/future/future/trait.Future.html" title="trait core::future::future::Future"><code>Future</code></a> to execute in the Slint event loop.</p>
 <p>This function is intended to be invoked only from the main Slint thread that runs the event loop.</p>
@@ -152,31 +152,33 @@ to implicitly allocate a shared, multi-threaded Tokio runtime that will be used 
 read from a network socket. The entire future passed to <code>spawn_local()</code> is wrapped in <code>Compat::new()</code> to make it run:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="comment">// A dummy TCP server that once reports "Hello World"
-</span><span class="kw">use </span>std::io::Write;
+</span><span class="kw">fn </span>main() {
+    <span class="kw">use </span>std::io::Write;
 
-<span class="kw">let </span>listener = std::net::TcpListener::bind(<span class="string">"127.0.0.1:0"</span>).unwrap();
-<span class="kw">let </span>local_addr = listener.local_addr().unwrap();
-<span class="kw">let </span>server = std::thread::spawn(<span class="kw">move </span>|| {
-    <span class="kw">let </span><span class="kw-2">mut </span>stream = listener.incoming().next().unwrap().unwrap();
-    stream.write(<span class="string">"Hello World"</span>.as_bytes()).unwrap();
-});
+    <span class="kw">let </span>listener = std::net::TcpListener::bind(<span class="string">"127.0.0.1:0"</span>).unwrap();
+    <span class="kw">let </span>local_addr = listener.local_addr().unwrap();
+    <span class="kw">let </span>server = std::thread::spawn(<span class="kw">move </span>|| {
+        <span class="kw">let </span><span class="kw-2">mut </span>stream = listener.incoming().next().unwrap().unwrap();
+        stream.write(<span class="string">"Hello World"</span>.as_bytes()).unwrap();
+    });
 
-<span class="kw">let </span>slint_future = <span class="kw">async move </span>{
-    <span class="kw">use </span>tokio::io::AsyncReadExt;
-    <span class="kw">let </span><span class="kw-2">mut </span>stream = tokio::net::TcpStream::connect(local_addr).<span class="kw">await</span>.unwrap();
-    <span class="kw">let </span><span class="kw-2">mut </span>data = Vec::new();
-    stream.read_to_end(<span class="kw-2">&amp;mut </span>data).<span class="kw">await</span>.unwrap();
-    <span class="macro">assert_eq!</span>(data, <span class="string">"Hello World"</span>.as_bytes());
-    slint::quit_event_loop().unwrap();
-};
+    <span class="kw">let </span>slint_future = <span class="kw">async move </span>{
+        <span class="kw">use </span>tokio::io::AsyncReadExt;
+        <span class="kw">let </span><span class="kw-2">mut </span>stream = tokio::net::TcpStream::connect(local_addr).<span class="kw">await</span>.unwrap();
+        <span class="kw">let </span><span class="kw-2">mut </span>data = Vec::new();
+        stream.read_to_end(<span class="kw-2">&amp;mut </span>data).<span class="kw">await</span>.unwrap();
+        <span class="macro">assert_eq!</span>(data, <span class="string">"Hello World"</span>.as_bytes());
+        slint::quit_event_loop().unwrap();
+    };
 
-<span class="comment">// Wrap the future that includes Tokio futures in async_compat's `Compat` to ensure
-// presence of a Tokio run-time.
-</span>slint::spawn_local(async_compat::Compat::new(slint_future)).unwrap();
+    <span class="comment">// Wrap the future that includes Tokio futures in async_compat's `Compat` to ensure
+    // presence of a Tokio run-time.
+    </span>slint::spawn_local(async_compat::Compat::new(slint_future)).unwrap();
 
-slint::run_event_loop_until_quit().unwrap();
+    slint::run_event_loop_until_quit().unwrap();
 
-server.join().unwrap();</code></pre></div>
+    server.join().unwrap();
+}</code></pre></div>
 <p>The use of <code>#[tokio::main]</code> is <strong>not recommended</strong>. If it’s necessary to use though, wrap the call to enter the Slint
 event loop  in a call to <a href="https://docs.rs/tokio/latest/tokio/task/fn.block_in_place.html"><code>tokio::task::block_in_place</code></a>:</p>
 

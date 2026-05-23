@@ -58,6 +58,10 @@ Program Listing for File slint_testing_internal.h
    void slint_send_keyboard_string_sequence(const SharedString *sequence,
                                             const WindowAdapterRc *window_adapter);
    
+   void slint_testing_use_native_popup(const WindowAdapterRc *window_adapter, bool native);
+   
+   uintptr_t slint_testing_active_popup_count(const WindowAdapterRc *window_adapter);
+   
    bool slint_testing_element_visit_elements(const ItemTreeRc *root,
                                              void *user_data,
                                              bool (*visitor)(void*, const ElementHandle*));
