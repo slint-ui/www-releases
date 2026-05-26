@@ -1801,12 +1801,7 @@ THIS SOFTWARE.
 - [windows-sys 0.61.2]( https://github.com/microsoft/windows-rs )
 - [windows-targets 0.52.6]( https://github.com/microsoft/windows-rs )
 - [windows-targets 0.53.5]( https://github.com/microsoft/windows-rs )
-- [windows-threading 0.2.1]( https://github.com/microsoft/windows-rs )
 - [windows 0.62.2]( https://github.com/microsoft/windows-rs )
-- [windows_x86_64_gnu 0.52.6]( https://github.com/microsoft/windows-rs )
-- [windows_x86_64_gnu 0.53.1]( https://github.com/microsoft/windows-rs )
-- [windows_x86_64_msvc 0.52.6]( https://github.com/microsoft/windows-rs )
-- [windows_x86_64_msvc 0.53.1]( https://github.com/microsoft/windows-rs )
 
 #### License Text
 
@@ -5731,6 +5726,11 @@ SOFTWARE.
 - [siphasher 1.0.3]( https://github.com/jedisct1/rust-siphash )
 - [taffy 0.9.2]( https://github.com/DioxusLabs/taffy )
 - [tr 0.1.11]( https://github.com/woboq/tr )
+- [windows-threading 0.2.1]( https://github.com/microsoft/windows-rs )
+- [windows_x86_64_gnu 0.52.6]( https://github.com/microsoft/windows-rs )
+- [windows_x86_64_gnu 0.53.1]( https://github.com/microsoft/windows-rs )
+- [windows_x86_64_msvc 0.52.6]( https://github.com/microsoft/windows-rs )
+- [windows_x86_64_msvc 0.53.1]( https://github.com/microsoft/windows-rs )
 - [zune-inflate 0.2.54](
 https://crates.io/crates/zune-inflate )
 
