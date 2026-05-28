@@ -314,6 +314,12 @@ announced by assistive technologies.</p>
 <p><code dir="auto">AccessibleRole</code></p>
 <p>This enum represents the different values for the <code dir="auto">accessible-role</code> property, used to describe the
 role of an element in the context of assistive technology such as screen readers.</p>
+<p>In addition to widget roles, this enum includes <em>landmark</em> roles (<code dir="auto">banner</code>, <code dir="auto">complementary</code>,
+<code dir="auto">content-info</code>, <code dir="auto">form</code>, <code dir="auto">main</code>, <code dir="auto">navigation</code>, <code dir="auto">region</code>, <code dir="auto">search</code>).
+Landmarks identify large content areas that screen reader users can jump between,
+giving the application a navigable structure similar to headings in a document.
+See <a href="https://www.w3.org/WAI/ARIA/apg/practices/landmark-regions/" target="_blank" rel="noopener">WAI-ARIA Landmark Regions<span> ↗</span></a>
+for guidance on when and how to use them.</p>
 <ul>
 <li><strong><code dir="auto">none</code></strong>:  The element isn’t accessible.</li>
 <li><strong><code dir="auto">button</code></strong>:  The element is a <code dir="auto">Button</code> or behaves like one.</li>
@@ -336,6 +342,14 @@ role of an element in the context of assistive technology such as screen readers
 <li><strong><code dir="auto">list-item</code></strong>:  The element is an item in a <code dir="auto">ListView</code>.</li>
 <li><strong><code dir="auto">radio-button</code></strong>:  The element is a <code dir="auto">RadioButton</code> or behaves like one.</li>
 <li><strong><code dir="auto">radio-group</code></strong>:  The element is a container grouping related <code dir="auto">RadioButton</code>s.</li>
+<li><strong><code dir="auto">banner</code></strong>:  Landmark: the header area of the application, typically containing a logo, title, or global navigation.</li>
+<li><strong><code dir="auto">complementary</code></strong>:  Landmark: a supporting section that complements the main content, such as a sidebar.</li>
+<li><strong><code dir="auto">content-info</code></strong>:  Landmark: information about the application or its content, typically at the bottom (e.g. status bar, copyright).</li>
+<li><strong><code dir="auto">form</code></strong>:  Landmark: a region containing input fields and controls for submitting information.</li>
+<li><strong><code dir="auto">main</code></strong>:  Landmark: the primary content of the application. Each view should have exactly one <code dir="auto">main</code> landmark.</li>
+<li><strong><code dir="auto">navigation</code></strong>:  Landmark: a group of links or controls used for navigating the application.</li>
+<li><strong><code dir="auto">region</code></strong>:  Landmark: a generic section significant enough to be listed in a summary. Use a more specific landmark if one applies.</li>
+<li><strong><code dir="auto">search</code></strong>:  Landmark: a region containing controls for searching or filtering content.</li>
 </ul>
 <div class="sl-heading-wrapper level-h3"><h3 id="animationdirection">AnimationDirection</h3><a class="sl-anchor-link" href="#animationdirection"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “AnimationDirection”</span></a></div>
 <!-- Generated with slint-doc-generator from internal/commons/enums.rs -->

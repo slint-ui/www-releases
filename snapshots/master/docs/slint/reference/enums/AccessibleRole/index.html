@@ -181,6 +181,12 @@ You are viewing contents of an older version. Switch to <a href="https://docs.sl
 <p><code dir="auto">AccessibleRole</code></p>
 <p>This enum represents the different values for the <code dir="auto">accessible-role</code> property, used to describe the
 role of an element in the context of assistive technology such as screen readers.</p>
+<p>In addition to widget roles, this enum includes <em>landmark</em> roles (<code dir="auto">banner</code>, <code dir="auto">complementary</code>,
+<code dir="auto">content-info</code>, <code dir="auto">form</code>, <code dir="auto">main</code>, <code dir="auto">navigation</code>, <code dir="auto">region</code>, <code dir="auto">search</code>).
+Landmarks identify large content areas that screen reader users can jump between,
+giving the application a navigable structure similar to headings in a document.
+See <a href="https://www.w3.org/WAI/ARIA/apg/practices/landmark-regions/" target="_blank" rel="noopener">WAI-ARIA Landmark Regions<span> ↗</span></a>
+for guidance on when and how to use them.</p>
 <ul>
 <li><strong><code dir="auto">none</code></strong>:  The element isn’t accessible.</li>
 <li><strong><code dir="auto">button</code></strong>:  The element is a <code dir="auto">Button</code> or behaves like one.</li>
@@ -203,4 +209,12 @@ role of an element in the context of assistive technology such as screen readers
 <li><strong><code dir="auto">list-item</code></strong>:  The element is an item in a <code dir="auto">ListView</code>.</li>
 <li><strong><code dir="auto">radio-button</code></strong>:  The element is a <code dir="auto">RadioButton</code> or behaves like one.</li>
 <li><strong><code dir="auto">radio-group</code></strong>:  The element is a container grouping related <code dir="auto">RadioButton</code>s.</li>
+<li><strong><code dir="auto">banner</code></strong>:  Landmark: the header area of the application, typically containing a logo, title, or global navigation.</li>
+<li><strong><code dir="auto">complementary</code></strong>:  Landmark: a supporting section that complements the main content, such as a sidebar.</li>
+<li><strong><code dir="auto">content-info</code></strong>:  Landmark: information about the application or its content, typically at the bottom (e.g. status bar, copyright).</li>
+<li><strong><code dir="auto">form</code></strong>:  Landmark: a region containing input fields and controls for submitting information.</li>
+<li><strong><code dir="auto">main</code></strong>:  Landmark: the primary content of the application. Each view should have exactly one <code dir="auto">main</code> landmark.</li>
+<li><strong><code dir="auto">navigation</code></strong>:  Landmark: a group of links or controls used for navigating the application.</li>
+<li><strong><code dir="auto">region</code></strong>:  Landmark: a generic section significant enough to be listed in a summary. Use a more specific landmark if one applies.</li>
+<li><strong><code dir="auto">search</code></strong>:  Landmark: a region containing controls for searching or filtering content.</li>
 </ul> </div> <footer class="sl-flex astro-eifwj7ft"> <div class="meta sl-flex astro-eifwj7ft">   </div> <div class="pagination-links print:hidden astro-dyqvxwuo" dir="ltr">   </div>  </footer> <hr class="astro-j437entq"> <p class="astro-j437entq">&copy; 2026 SixtyFPS GmbH</p> </div> </div>  </main> </div> </div> </div> </div> </body></html>
