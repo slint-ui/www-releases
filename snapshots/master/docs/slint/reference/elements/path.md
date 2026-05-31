@@ -238,26 +238,20 @@ The target x position of the curve.
 The target y position of the curve.
 </SlintProperty>
 
-## `MoveTo`
+## `LineTo`
 
-The `MoveTo` sub-element closes the current sub-path, if present, and moves the current point
-to the location specified by the `x` and `y` properties. Subsequent elements such as `LineTo`
-will use this new position as their starting point, therefore this starts a new sub-path.
+The `LineTo` sub-element describes a line from the path's current position to the
+location specified by the `x` and `y` properties.
 
 ### x
 <SlintProperty propName="x" typeName="float">
-The x position of the new current point.
+The target x position of the line.
 </SlintProperty>
 
 ### y
 <SlintProperty propName="y" typeName="float">
-The y position of the new current point.
+The target y position of the line.
 </SlintProperty>
-
-## `Close`
-
-The `Close` element closes the current sub-path and draws a straight line from the current
-position to the beginning of the path.
 
 ## `CubicTo`
 
@@ -295,17 +289,23 @@ The target x position of the curve.
 The target y position of the curve.
 </SlintProperty>
 
-## `LineTo`
+## `MoveTo`
 
-The `LineTo` sub-element describes a line from the path's current position to the
-location specified by the `x` and `y` properties.
+The `MoveTo` sub-element closes the current sub-path, if present, and moves the current point
+to the location specified by the `x` and `y` properties. Subsequent elements such as `LineTo`
+will use this new position as their starting point, therefore this starts a new sub-path.
 
 ### x
 <SlintProperty propName="x" typeName="float">
-The target x position of the line.
+The x position of the new current point.
 </SlintProperty>
 
 ### y
 <SlintProperty propName="y" typeName="float">
-The target y position of the line.
+The y position of the new current point.
 </SlintProperty>
+
+## `Close`
+
+The `Close` element closes the current sub-path and draws a straight line from the current
+position to the beginning of the path.
