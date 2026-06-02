@@ -1,6 +1,6 @@
 ---
-title: "ToolTip"
-description: "ToolTip element api."
+title: "Tooltip"
+description: "Tooltip element api."
 ---
 import SlintProperty from '@slint/common-files/src/components/SlintProperty.astro';
 
@@ -17,7 +17,7 @@ export component Example inherits Window {
         Button {
             text: "Hover me";
 
-            ToolTip {
+            Tooltip {
                 text: "This is a tooltip";
             }
         }
@@ -25,13 +25,13 @@ export component Example inherits Window {
 }
 ```
 
-Place a `ToolTip` inside any element to show helpful information when hovering over it.
-The tooltip appears after a short delay and hides when the pointer leaves.
+Place a `Tooltip` inside any element to show helpful information when hovering over it.
+The tooltip appears after a short delay near the pointer and hides when the pointer leaves.
 
 Set the `text` property for a simple text tooltip,
 or add a child element instead for custom content.
 
-Each element can contain at most one `ToolTip`.
+Each element can contain at most one `Tooltip`.
 
 ## Properties
 
@@ -39,21 +39,6 @@ Each element can contain at most one `ToolTip`.
 <SlintProperty propName="text" typeName="string">
 The text to display in the tooltip.
 Don't set this property when using custom content.
-</SlintProperty>
-
-### placement
-<SlintProperty propName="placement" typeName="enum" enumName="ToolTipPlacement">
-Position relative to the hovered element or pointer.
-</SlintProperty>
-
-### delay
-<SlintProperty propName="delay" typeName="duration" defaultValue="500ms">
-How long to wait before showing the tooltip after hover begins.
-</SlintProperty>
-
-### offset
-<SlintProperty propName="offset" typeName="length" defaultValue="8px">
-Space between the tooltip and the pointer or hovered element.
 </SlintProperty>
 
 ## Custom Content
@@ -74,9 +59,7 @@ export component Example inherits Window {
         Button {
             text: "Custom tooltip";
 
-            ToolTip {
-                placement: above-element;
-
+            Tooltip {
                 VerticalBox {
                     padding: 10px;
                     spacing: 6px;

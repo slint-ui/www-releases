@@ -1,0 +1,19 @@
+{
+  "name": "dnd-kanban",
+  "type": "module",
+  "collaborators": [
+    "Slint Developers <info@slint.dev>"
+  ],
+  "version": "1.17.0",
+  "license": "MIT",
+  "files": [
+    "dnd_kanban_bg.wasm",
+    "dnd_kanban.js",
+    "dnd_kanban.d.ts"
+  ],
+  "main": "dnd_kanban.js",
+  "types": "dnd_kanban.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}

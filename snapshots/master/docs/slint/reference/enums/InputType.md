@@ -12,3 +12,4 @@ description: "InputType content"
 * **`password`**:  This will render all characters with a character that defaults to "*"
 * **`number`**:  This will only accept and render number characters (0-9)
 * **`decimal`**:  This will accept and render characters if it's valid part of a decimal
+* **`search`**:  This identifies the input field as a search box. Characters are rendered normally, but assistive technologies are informed that the field is used for searching or filtering content.

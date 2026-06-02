@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar class="astro-77jcyavj"> <head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Polishing the Tile | Slint Docs</title><link rel="canonical" href="https://snapshots.slint.dev/master/docs/slint/tutorial/polishing_the_tile/"/><link rel="sitemap" href="/master/docs/slint/sitemap-index.xml"/><link rel="icon" type="image/svg+xml" href="/master/docs/slint//favicon.svg"/><link rel="icon" type="image/png" sizes="32x32" href="/master/docs/slint//favicon-32x32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/master/docs/slint//favicon-16x16.png"/><link rel="icon" type="image/x-icon" href="/master/docs/slint//favicon.ico"/><link rel="mask-icon" href="/master/docs/slint//favicon.svg" color="#8D46E7"/><link rel="apple-touch-icon" sizes="180x180" href="/master/docs/slint//apple-touch-icon.png"/><link rel="shortcut icon" href="/master/docs/slint/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v6.3.3"/><meta name="generator" content="Starlight v0.39.2"/><meta property="og:title" content="Polishing the Tile"/><meta property="og:type" content="article"/><meta property="og:url" content="https://snapshots.slint.dev/master/docs/slint/tutorial/polishing_the_tile/"/><meta property="og:locale" content="en"/><meta property="og:description" content="Polishing the Tile"/><meta property="og:site_name" content="Slint Docs"/><meta name="twitter:card" content="summary_large_image"/><meta name="description" content="Polishing the Tile"/><meta name="twitter:site" content="@slint_ui"/><script>
+<!DOCTYPE html><html lang="en" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar class="astro-77jcyavj"> <head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Polishing the Tile | Slint Docs</title><link rel="canonical" href="https://snapshots.slint.dev/master/docs/slint/tutorial/polishing_the_tile/"/><link rel="sitemap" href="/master/docs/slint/sitemap-index.xml"/><link rel="icon" type="image/svg+xml" href="/master/docs/slint//favicon.svg"/><link rel="icon" type="image/png" sizes="32x32" href="/master/docs/slint//favicon-32x32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/master/docs/slint//favicon-16x16.png"/><link rel="icon" type="image/x-icon" href="/master/docs/slint//favicon.ico"/><link rel="mask-icon" href="/master/docs/slint//favicon.svg" color="#8D46E7"/><link rel="apple-touch-icon" sizes="180x180" href="/master/docs/slint//apple-touch-icon.png"/><link rel="shortcut icon" href="/master/docs/slint/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v6.4.2"/><meta name="generator" content="Starlight v0.39.2"/><meta property="og:title" content="Polishing the Tile"/><meta property="og:type" content="article"/><meta property="og:url" content="https://snapshots.slint.dev/master/docs/slint/tutorial/polishing_the_tile/"/><meta property="og:locale" content="en"/><meta property="og:description" content="Polishing the Tile"/><meta property="og:site_name" content="Slint Docs"/><meta name="twitter:card" content="summary_large_image"/><meta name="description" content="Polishing the Tile"/><meta name="twitter:site" content="@slint_ui"/><script>
 	window.StarlightThemeProvider = (() => {
 		const storedTheme =
 			typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme');
@@ -186,27 +186,10 @@ reacting to user input such as a mouse click or tap. The element forwards a call
 <p>The <em>MainWindow</em> reacts by flipping a custom <em>open_curtain</em> property.
 Property bindings for the animated width and x properties also use the custom <em>open_curtain</em> property.</p>
 <p>The following table shows more detail on the two states:</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table><thead><tr><th><em>open_curtain</em> value:</th><th>false</th><th>true</th></tr></thead><tbody><tr><td>Left curtain rectangle</td><td>Fill the left half by setting the width <em>width</em> to half the parent’s width</td><td>Width of zero makes the rectangle invisible</td></tr><tr><td>Right curtain rectangle</td><td>Fill the right half by setting <em>x</em> and <em>width</em> to half of the parent’s width</td><td><em>width</em> of zero makes the rectangle invisible. <em>x</em> moves to the right, sliding the curtain open when animated</td></tr></tbody></table>
+<p>| <em>open_curtain</em> value:   | false                                                                        | true                                                                                                          |
+| ----------------------- | ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| Left curtain rectangle  | Fill the left half by setting the width <em>width</em> to half the parent’s width   | Width of zero makes the rectangle invisible                                                                   |
+| Right curtain rectangle | Fill the right half by setting <em>x</em> and <em>width</em> to half of the parent’s width | <em>width</em> of zero makes the rectangle invisible. <em>x</em> moves to the right, sliding the curtain open when animated |</p>
 <p>To make the tile extensible, replace the hard-coded icon name with an <em>icon</em>
 property that can be set when instantiating the element.</p>
 <p>For the final polish, add a

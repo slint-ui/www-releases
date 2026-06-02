@@ -15,7 +15,7 @@ import Size from "/src/content/docs/reference/generated/structs/Size.md"
 import StandardListViewItem from "/src/content/docs/reference/generated/structs/StandardListViewItem.md"
 import TableColumn from "/src/content/docs/reference/generated/structs/TableColumn.md"
 
-import AccessibleLive from "/src/content/docs/reference/generated/enums/AccessibleLive.md"
+import AccessibleLiveRegion from "/src/content/docs/reference/generated/enums/AccessibleLiveRegion.md"
 import AccessibleRole from "/src/content/docs/reference/generated/enums/AccessibleRole.md"
 import AnimationDirection from "/src/content/docs/reference/generated/enums/AnimationDirection.md"
 import ColorScheme from "/src/content/docs/reference/generated/enums/ColorScheme.md"
@@ -53,7 +53,6 @@ import TextOverflow from "/src/content/docs/reference/generated/enums/TextOverfl
 import TextStrokeStyle from "/src/content/docs/reference/generated/enums/TextStrokeStyle.md"
 import TextVerticalAlignment from "/src/content/docs/reference/generated/enums/TextVerticalAlignment.md"
 import TextWrap from "/src/content/docs/reference/generated/enums/TextWrap.md"
-import ToolTipPlacement from "/src/content/docs/reference/generated/enums/ToolTipPlacement.md"
 
 ## Structs
 
@@ -95,8 +94,8 @@ import ToolTipPlacement from "/src/content/docs/reference/generated/enums/ToolTi
 
 ## Enums
 
-### AccessibleLive
-<AccessibleLive />
+### AccessibleLiveRegion
+<AccessibleLiveRegion />
 
 ### AccessibleRole
 <AccessibleRole />
@@ -208,6 +207,3 @@ import ToolTipPlacement from "/src/content/docs/reference/generated/enums/ToolTi
 
 ### TextWrap
 <TextWrap />
-
-### ToolTipPlacement
-<ToolTipPlacement />
