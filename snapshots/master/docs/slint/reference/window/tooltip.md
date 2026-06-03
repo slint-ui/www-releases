@@ -18,7 +18,7 @@ export component Example inherits Window {
             text: "Hover me";
 
             Tooltip {
-                text: "This is a tooltip";
+                text: @markdown("This is a tooltip");
             }
         }
     }
@@ -36,7 +36,7 @@ Each element can contain at most one `Tooltip`.
 ## Properties
 
 ### text
-<SlintProperty propName="text" typeName="string">
+<SlintProperty propName="text" typeName="styled-text">
 The text to display in the tooltip.
 Don't set this property when using custom content.
 </SlintProperty>

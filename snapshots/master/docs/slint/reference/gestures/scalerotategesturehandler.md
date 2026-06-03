@@ -64,7 +64,7 @@ When disabled, the `ScaleRotateGestureHandler` doesn't recognize any gestures an
 </SlintProperty>
 
 ### scale
-<SlintProperty propName="scale" typeName="float" propertyVisibility="out" defaultValue="1.0">
+<SlintProperty propName="scale" typeName="float" propertyVisibility="out">
 The cumulative scale factor of the gesture. Always starts at `1.0` when the gesture begins.
 A value greater than `1.0` means zooming in, less than `1.0` means zooming out.
 When the gesture is not active, the value is `1.0`.
