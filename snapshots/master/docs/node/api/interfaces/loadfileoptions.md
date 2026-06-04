@@ -1,7 +1,7 @@
 ---
 title: "LoadFileOptions"
 ---
-Defined in: [api/node/typescript/index.ts:247](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L247)
+Defined in: [api/node/typescript/index.ts:248](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L248)
 
 LoadFileOptions are used to defines different optional parameters that can be used to configure the compiler.
 
@@ -11,7 +11,7 @@ LoadFileOptions are used to defines different optional parameters that can be us
 
 > `optional` **includePaths?**: `string`[]
 
-Defined in: [api/node/typescript/index.ts:261](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L261)
+Defined in: [api/node/typescript/index.ts:262](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L262)
 
 Sets the include paths used for looking up `.slint` imports to the specified vector of paths.
 
@@ -21,7 +21,7 @@ Sets the include paths used for looking up `.slint` imports to the specified vec
 
 > `optional` **libraryPaths?**: `Record`\<`string`, `string`\>
 
-Defined in: [api/node/typescript/index.ts:266](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L266)
+Defined in: [api/node/typescript/index.ts:267](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L267)
 
 Sets library paths used for looking up `@library` imports to the specified map of library names to paths.
 
@@ -31,7 +31,7 @@ Sets library paths used for looking up `@library` imports to the specified map o
 
 > `optional` **quiet?**: `boolean`
 
-Defined in: [api/node/typescript/index.ts:251](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L251)
+Defined in: [api/node/typescript/index.ts:252](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L252)
 
 If set to true warnings from the compiler will not be printed to the console.
 
@@ -41,6 +41,6 @@ If set to true warnings from the compiler will not be printed to the console.
 
 > `optional` **style?**: `string`
 
-Defined in: [api/node/typescript/index.ts:256](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L256)
+Defined in: [api/node/typescript/index.ts:257](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L257)
 
 Sets the widget style the compiler is currently using when compiling .slint files.

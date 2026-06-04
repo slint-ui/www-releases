@@ -1,7 +1,7 @@
 ---
 title: "ComponentHandle"
 ---
-Defined in: [api/node/typescript/index.ts:134](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L134)
+Defined in: [api/node/typescript/index.ts:135](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L135)
 
 This interface describes the public API of a Slint component that is common to all instances. Use this to
 show() the window on the screen, access the window and subsequent window properties, or start the
@@ -13,7 +13,7 @@ Slint event loop with run().
 
 > `readonly` `optional` **window?**: [`Window`](/master/docs/node/api/interfaces/window/)
 
-Defined in: [api/node/typescript/index.ts:161](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L161)
+Defined in: [api/node/typescript/index.ts:162](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L162)
 
 Returns the [Window](/master/docs/node/api/interfaces/window/) associated with this component instance.
 The window API can be used to control different aspects of the integration into the windowing system, such as the position on the screen.
@@ -26,7 +26,7 @@ Not present on non-windowed components such as ones inheriting from `SystemTrayI
 
 > **hide**(): `void`
 
-Defined in: [api/node/typescript/index.ts:153](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L153)
+Defined in: [api/node/typescript/index.ts:154](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L154)
 
 Hides the component's window, so that it is not visible anymore.
 
@@ -40,7 +40,7 @@ Hides the component's window, so that it is not visible anymore.
 
 > **run**(): `Promise`\<`unknown`\>
 
-Defined in: [api/node/typescript/index.ts:143](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L143)
+Defined in: [api/node/typescript/index.ts:144](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L144)
 
 Shows the window and runs the event loop. The returned promise is resolved when the event loop
 is terminated, for example when the last window is closed and the last visible system tray
@@ -59,7 +59,7 @@ This function is a convenience for calling [show](/master/docs/node/api/interfac
 
 > **show**(): `void`
 
-Defined in: [api/node/typescript/index.ts:148](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L148)
+Defined in: [api/node/typescript/index.ts:149](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L149)
 
 Shows the component's window on the screen.
 

@@ -3,7 +3,7 @@ title: "loadSource"
 ---
 > **loadSource**(`source`, `filePath`, `options?`): `Object`
 
-Defined in: [api/node/typescript/index.ts:689](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L689)
+Defined in: [api/node/typescript/index.ts:690](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L690)
 
 Loads the given Slint source code and returns an object that contains a functions to construct the exported
 components of the Slint source code.

@@ -10,6 +10,3 @@ This module is still experimental - its API is subject to changes and not stabil
 
 ## Functions
 - [init](init/)
-
-## Enumerations
-- [AccessibleRole](accessiblerole/)

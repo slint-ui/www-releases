@@ -218,6 +218,8 @@ title: "Third-Party Licenses"
 
 #### Used by:
 
+- [ab_glyph 0.2.32](https://github.com/alexheretic/ab-glyph)
+- [ab_glyph_rasterizer 0.1.10](https://github.com/alexheretic/ab-glyph)
 - [linked_hash_set 0.1.6](https://github.com/alexheretic/linked-hash-set)
 - [owned_ttf_parser 0.25.1](https://github.com/alexheretic/owned-ttf-parser)
 
@@ -1472,8 +1474,6 @@ Apache License
 
 #### Used by:
 
-- [ab_glyph 0.2.32](https://github.com/alexheretic/ab-glyph)
-- [ab_glyph_rasterizer 0.1.10](https://github.com/alexheretic/ab-glyph)
 - [accesskit_winit 0.32.2](https://github.com/AccessKit/accesskit)
 - [gl_generator 0.14.0](https://github.com/brendanzab/gl-rs/)
 - [khronos_api 3.1.0](https://github.com/brendanzab/gl-rs/)

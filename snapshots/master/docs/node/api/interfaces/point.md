@@ -1,7 +1,7 @@
 ---
 title: "Point"
 ---
-Defined in: [api/node/typescript/index.ts:28](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L28)
+Defined in: [api/node/typescript/index.ts:29](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L29)
 
 Represents a two-dimensional point.
 
@@ -11,7 +11,7 @@ Represents a two-dimensional point.
 
 > **x**: `number`
 
-Defined in: [api/node/typescript/index.ts:32](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L32)
+Defined in: [api/node/typescript/index.ts:33](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L33)
 
 Defines the x coordinate of the point.
 
@@ -21,6 +21,6 @@ Defines the x coordinate of the point.
 
 > **y**: `number`
 
-Defined in: [api/node/typescript/index.ts:37](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L37)
+Defined in: [api/node/typescript/index.ts:38](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L38)
 
 Defines the y coordinate of the point.

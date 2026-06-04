@@ -14,6 +14,7 @@ title: "slint::language Namespace"
 ## Enumerations
 - [PointerEventKind](pointereventkind/)
 - [PointerEventButton](pointereventbutton/)
+- [AccessibleRole](accessiblerole/)
 - [SortOrder](sortorder/)
 - [ColorScheme](colorscheme/)
 - [DragAction](dragaction/)

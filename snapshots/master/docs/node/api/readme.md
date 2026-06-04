@@ -14,6 +14,7 @@ title: "slint-ui"
 - [ArrayModel](/master/docs/node/api/classes/arraymodel/)
 - [CompileError](/master/docs/node/api/classes/compileerror/)
 - [DataTransfer](/master/docs/node/api/classes/datatransfer/)
+- [Keys](/master/docs/node/api/classes/keys/)
 - [Model](/master/docs/node/api/classes/model/)
 - [StyledText](/master/docs/node/api/classes/styledtext/)
 

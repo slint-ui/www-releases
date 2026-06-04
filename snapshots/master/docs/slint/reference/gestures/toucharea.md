@@ -4,9 +4,9 @@ description: "TouchArea element api."
 ---
 import SlintProperty from '@slint/common-files/src/components/SlintProperty.astro';
 import CodeSnippetMD from '@slint/common-files/src/components/CodeSnippetMD.astro';
-import EventResult from '/src/content/docs/reference/generated/enums/EventResult.md';
-import PointerEvent from '/src/content/docs/reference/generated/structs/PointerEvent.md';
-import PointerScrollEvent from '/src/content/docs/reference/generated/structs/PointerScrollEvent.md';
+import EventResult from '/src/content/docs/reference/generated/enums/_EventResult.md';
+import PointerEvent from '/src/content/docs/reference/generated/structs/_PointerEvent.md';
+import PointerScrollEvent from '/src/content/docs/reference/generated/structs/_PointerScrollEvent.md';
 
 Use `TouchArea` to control what happens when the region it covers is touched or interacted with
 using the mouse.

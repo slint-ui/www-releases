@@ -3,7 +3,7 @@ title: "language"
 ---
 > `const` **language**: `object` = `_data`
 
-Defined in: api/node/typescript/generated/language.ts:201
+Defined in: api/node/typescript/generated/language.ts:332
 
 Built-in enums and structs from the Slint language.
 Enum values are accessed via `language.ColorScheme.Dark`; struct values via the
@@ -11,6 +11,196 @@ factory call `language.PointerEvent({ button: … })`. Enum and struct types are
 available in type position as `language.ColorScheme` / `language.PointerEvent`.
 
 ## Type Declaration
+
+### AccessibleRole
+
+> `readonly` **AccessibleRole**: `object`
+
+This enum represents the different values for the `accessible-role` property, used to describe the
+role of an element in the context of assistive technology such as screen readers.
+
+In addition to widget roles, this enum includes *landmark* roles (`banner`, `complementary`,
+`content-info`, `form`, `main`, `navigation`, `region`, `search`).
+Landmarks identify large content areas that screen reader users can jump between,
+giving the application a navigable structure similar to headings in a document.
+See [WAI-ARIA Landmark Regions](https://www.w3.org/WAI/ARIA/apg/practices/landmark-regions/)
+for guidance on when and how to use them.
+
+#### AccessibleRole.Banner
+
+> `readonly` **Banner**: `"banner"` = `"banner"`
+
+Landmark: the header area of the application, typically containing a logo, title, or global navigation.
+
+#### AccessibleRole.Button
+
+> `readonly` **Button**: `"button"` = `"button"`
+
+The element is a `Button` or behaves like one.
+
+#### AccessibleRole.Checkbox
+
+> `readonly` **Checkbox**: `"checkbox"` = `"checkbox"`
+
+The element is a `CheckBox` or behaves like one.
+
+#### AccessibleRole.Combobox
+
+> `readonly` **Combobox**: `"combobox"` = `"combobox"`
+
+The element is a `ComboBox` or behaves like one.
+
+#### AccessibleRole.Complementary
+
+> `readonly` **Complementary**: `"complementary"` = `"complementary"`
+
+Landmark: a supporting section that complements the main content, such as a sidebar.
+
+#### AccessibleRole.ContentInfo
+
+> `readonly` **ContentInfo**: `"content-info"` = `"content-info"`
+
+Landmark: information about the application or its content, typically at the bottom (e.g. status bar, copyright).
+
+#### AccessibleRole.Form
+
+> `readonly` **Form**: `"form"` = `"form"`
+
+Landmark: a region containing input fields and controls for submitting information.
+
+#### AccessibleRole.Groupbox
+
+> `readonly` **Groupbox**: `"groupbox"` = `"groupbox"`
+
+The element is a `GroupBox` or behaves like one.
+
+#### AccessibleRole.Image
+
+> `readonly` **Image**: `"image"` = `"image"`
+
+The element is an `Image` or behaves like one. This is automatically applied to `Image` elements.
+
+#### AccessibleRole.List
+
+> `readonly` **List**: `"list"` = `"list"`
+
+The element is a `ListView` or behaves like one.
+
+#### AccessibleRole.ListItem
+
+> `readonly` **ListItem**: `"list-item"` = `"list-item"`
+
+The element is an item in a `ListView`.
+
+#### AccessibleRole.Main
+
+> `readonly` **Main**: `"main"` = `"main"`
+
+Landmark: the primary content of the application. Each view should have exactly one `main` landmark.
+
+#### AccessibleRole.Navigation
+
+> `readonly` **Navigation**: `"navigation"` = `"navigation"`
+
+Landmark: a group of links or controls used for navigating the application.
+
+#### AccessibleRole.None
+
+> `readonly` **None**: `"none"` = `"none"`
+
+The element isn't accessible.
+
+#### AccessibleRole.ProgressIndicator
+
+> `readonly` **ProgressIndicator**: `"progress-indicator"` = `"progress-indicator"`
+
+The element is a `ProgressIndicator` or behaves like one.
+
+#### AccessibleRole.RadioButton
+
+> `readonly` **RadioButton**: `"radio-button"` = `"radio-button"`
+
+The element is a `RadioButton` or behaves like one.
+
+#### AccessibleRole.RadioGroup
+
+> `readonly` **RadioGroup**: `"radio-group"` = `"radio-group"`
+
+The element is a container grouping related `RadioButton`s.
+
+#### AccessibleRole.Region
+
+> `readonly` **Region**: `"region"` = `"region"`
+
+Landmark: a generic section significant enough to be listed in a summary.
+Use a more specific landmark if one applies.
+
+#### AccessibleRole.Search
+
+> `readonly` **Search**: `"search"` = `"search"`
+
+Landmark: a region containing controls for searching or filtering content.
+
+#### AccessibleRole.Slider
+
+> `readonly` **Slider**: `"slider"` = `"slider"`
+
+The element is a `Slider` or behaves like one.
+
+#### AccessibleRole.Spinbox
+
+> `readonly` **Spinbox**: `"spinbox"` = `"spinbox"`
+
+The element is a `SpinBox` or behaves like one.
+
+#### AccessibleRole.Switch
+
+> `readonly` **Switch**: `"switch"` = `"switch"`
+
+The element is a `Switch` or behaves like one.
+
+#### AccessibleRole.Tab
+
+> `readonly` **Tab**: `"tab"` = `"tab"`
+
+The element is a `Tab` or behaves like one.
+
+#### AccessibleRole.Table
+
+> `readonly` **Table**: `"table"` = `"table"`
+
+The role for a `TableView` or behaves like one.
+
+#### AccessibleRole.TabList
+
+> `readonly` **TabList**: `"tab-list"` = `"tab-list"`
+
+The element is similar to the tab bar in a `TabWidget`.
+
+#### AccessibleRole.TabPanel
+
+> `readonly` **TabPanel**: `"tab-panel"` = `"tab-panel"`
+
+The element is a container for tab content.
+
+#### AccessibleRole.Text
+
+> `readonly` **Text**: `"text"` = `"text"`
+
+The role for a `Text` element. This is automatically applied to `Text` elements.
+
+#### AccessibleRole.TextInput
+
+> `readonly` **TextInput**: `"text-input"` = `"text-input"`
+
+The role for widget with editable text such as a `LineEdit` or a `TextEdit`.
+This is automatically applied to `TextInput` elements.
+
+#### AccessibleRole.Tree
+
+> `readonly` **Tree**: `"tree"` = `"tree"`
+
+The role for a TreeView or behaves like one. (Not provided yet)
 
 ### ColorScheme
 
