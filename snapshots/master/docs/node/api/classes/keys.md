@@ -1,7 +1,7 @@
 ---
 title: "Keys"
 ---
-Defined in: api/node/rust-module.d.cts:139
+Defined in: api/node/rust-module.d.cts:141
 
 `Keys` represent a key combined with a list of modifiers (the `keys` type in the Slint language).
 
@@ -26,7 +26,7 @@ Use `toString()` to get a platform-native representation of the key binding
 
 > **equals**(`other`): `boolean`
 
-Defined in: api/node/rust-module.d.cts:149
+Defined in: api/node/rust-module.d.cts:151
 
 Returns `true` if this key binding is equal to `other`.
 
@@ -46,7 +46,7 @@ Returns `true` if this key binding is equal to `other`.
 
 > **toString**(): `string`
 
-Defined in: api/node/rust-module.d.cts:147
+Defined in: api/node/rust-module.d.cts:149
 
 Returns the platform-native string representation of this key binding.
 
@@ -60,7 +60,7 @@ Returns the platform-native string representation of this key binding.
 
 > `static` **fromParts**(`parts`): `Keys`
 
-Defined in: api/node/rust-module.d.cts:145
+Defined in: api/node/rust-module.d.cts:147
 
 Create a `Keys` from a list of string parts, e.g. `["Control", "Shift?", "Z"]`.
 

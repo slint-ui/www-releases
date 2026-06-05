@@ -3,7 +3,7 @@ title: "language"
 ---
 > `const` **language**: `object` = `_data`
 
-Defined in: api/node/typescript/generated/language.ts:332
+Defined in: api/node/typescript/generated/language.ts:325
 
 Built-in enums and structs from the Slint language.
 Enum values are accessed via `language.ColorScheme.Dark`; struct values via the
@@ -443,25 +443,6 @@ This structure is passed to the `scroll-event` callback of the `TouchArea` eleme
 #### Returns
 
 [`PointerScrollEvent`](/master/docs/node/api/slint-ui/namespaces/language/type-aliases/pointerscrollevent/)
-
-### RadioEntry
-
-> `readonly` **RadioEntry**: (`props?`) => [`RadioEntry`](/master/docs/node/api/slint-ui/namespaces/language/type-aliases/radioentry/)
-
-Build a value of this struct. Any field you omit takes a documented default,
-which lets Slint add fields later without breaking existing call-sites.
-
-Represents one option in a `RadioGroup`.
-
-#### Parameters
-
-##### props?
-
-`Partial`\<[`RadioEntry`](/master/docs/node/api/slint-ui/namespaces/language/type-aliases/radioentry/)\>
-
-#### Returns
-
-[`RadioEntry`](/master/docs/node/api/slint-ui/namespaces/language/type-aliases/radioentry/)
 
 ### SortOrder
 

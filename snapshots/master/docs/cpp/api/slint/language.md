@@ -7,7 +7,6 @@ title: "slint::language Namespace"
 - [KeyEvent](keyevent/)
 - [PointerEvent](pointerevent/)
 - [PointerScrollEvent](pointerscrollevent/)
-- [RadioEntry](radioentry/)
 - [StandardListViewItem](standardlistviewitem/)
 - [TableColumn](tablecolumn/)
 

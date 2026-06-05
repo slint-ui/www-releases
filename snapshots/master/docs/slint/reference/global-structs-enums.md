@@ -10,7 +10,6 @@ import KeyboardModifiers from "/src/content/docs/reference/generated/structs/_Ke
 import Point from "/src/content/docs/reference/generated/structs/_Point.md"
 import PointerEvent from "/src/content/docs/reference/generated/structs/_PointerEvent.md"
 import PointerScrollEvent from "/src/content/docs/reference/generated/structs/_PointerScrollEvent.md"
-import RadioEntry from "/src/content/docs/reference/generated/structs/_RadioEntry.md"
 import Size from "/src/content/docs/reference/generated/structs/_Size.md"
 import StandardListViewItem from "/src/content/docs/reference/generated/structs/_StandardListViewItem.md"
 import TableColumn from "/src/content/docs/reference/generated/structs/_TableColumn.md"
@@ -79,9 +78,6 @@ import TextWrap from "/src/content/docs/reference/generated/enums/_TextWrap.md"
 
 ### PointerScrollEvent
 <PointerScrollEvent />
-
-### RadioEntry
-<RadioEntry />
 
 ### Size
 <Size />

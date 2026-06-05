@@ -3,7 +3,7 @@ title: "PointerEvent"
 ---
 > **PointerEvent** = `object`
 
-Defined in: api/node/typescript/generated/language.ts:471
+Defined in: api/node/typescript/generated/language.ts:464
 
 Represents a Pointer event sent by the windowing system.
 This structure is passed to the `pointer-event` callback of the `TouchArea` element.
@@ -14,7 +14,7 @@ This structure is passed to the `pointer-event` callback of the `TouchArea` elem
 
 > **button**: [`PointerEventButton`](/master/docs/node/api/slint-ui/namespaces/language/type-aliases/pointereventbutton/)
 
-Defined in: api/node/typescript/generated/language.ts:475
+Defined in: api/node/typescript/generated/language.ts:468
 
 The button that was pressed or released
 
@@ -24,7 +24,7 @@ The button that was pressed or released
 
 > **kind**: [`PointerEventKind`](/master/docs/node/api/slint-ui/namespaces/language/type-aliases/pointereventkind/)
 
-Defined in: api/node/typescript/generated/language.ts:479
+Defined in: api/node/typescript/generated/language.ts:472
 
 The kind of the event
 
@@ -34,7 +34,7 @@ The kind of the event
 
 > **modifiers**: [`KeyboardModifiers`](/master/docs/node/api/slint-ui/namespaces/language/type-aliases/keyboardmodifiers/)
 
-Defined in: api/node/typescript/generated/language.ts:483
+Defined in: api/node/typescript/generated/language.ts:476
 
 The keyboard modifiers pressed during the event
 
@@ -44,6 +44,6 @@ The keyboard modifiers pressed during the event
 
 > **touch\_finger\_id**: `number`
 
-Defined in: api/node/typescript/generated/language.ts:487
+Defined in: api/node/typescript/generated/language.ts:480
 
 The unique ID of the touch point, indicating the finger ID. 0 means it's not a touch event (e.g., mouse).

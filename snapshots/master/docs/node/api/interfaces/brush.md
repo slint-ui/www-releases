@@ -1,7 +1,7 @@
 ---
 title: "Brush"
 ---
-Defined in: api/node/rust-module.d.cts:385
+Defined in: api/node/rust-module.d.cts:387
 
 A brush is a data structure that is used to describe how
 a shape, such as a rectangle, path or even text, shall be filled.
@@ -14,7 +14,7 @@ the fill of the outline itself.
 
 > `optional` **color?**: [`RgbaColor`](/master/docs/node/api/interfaces/rgbacolor/)
 
-Defined in: api/node/rust-module.d.cts:391
+Defined in: api/node/rust-module.d.cts:393
 
 Defines a solid color brush from rgba.
 

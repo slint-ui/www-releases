@@ -3,7 +3,7 @@ title: "ColorScheme"
 ---
 > **ColorScheme** = *typeof* [`ColorScheme`](/master/docs/node/api/variables/language/#colorscheme)\[keyof *typeof* [`ColorScheme`](/master/docs/node/api/variables/language/#colorscheme)\]
 
-Defined in: api/node/typescript/generated/language.ts:422
+Defined in: api/node/typescript/generated/language.ts:415
 
 This enum indicates the color scheme used by the widget style. Use this to explicitly switch
 between dark and light schemes, or choose Unknown to fall back to the system default.

@@ -1,7 +1,7 @@
 ---
 title: "StyledText"
 ---
-Defined in: api/node/rust-module.d.cts:312
+Defined in: api/node/rust-module.d.cts:314
 
 Styled text parsed from markdown or plain text.
 
@@ -24,7 +24,7 @@ Assign the result to a `styled-text` property in a Slint component to display it
 
 > **equals**(`other`): `boolean`
 
-Defined in: api/node/rust-module.d.cts:322
+Defined in: api/node/rust-module.d.cts:324
 
 Returns `true` if this styled text is equal to `other`.
 
@@ -44,7 +44,7 @@ Returns `true` if this styled text is equal to `other`.
 
 > `static` **fromMarkdown**(`markdown`): `StyledText`
 
-Defined in: api/node/rust-module.d.cts:320
+Defined in: api/node/rust-module.d.cts:322
 
 Parses markdown into styled text.
 
@@ -68,7 +68,7 @@ if the markdown contains unsupported syntax.
 
 > `static` **fromPlainText**(`text`): `StyledText`
 
-Defined in: api/node/rust-module.d.cts:314
+Defined in: api/node/rust-module.d.cts:316
 
 Creates styled text from plain text without applying markdown parsing.
 

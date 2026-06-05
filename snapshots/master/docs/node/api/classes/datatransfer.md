@@ -29,7 +29,7 @@ Constructs an empty `DataTransfer`.
 
 > **get** **hasImage**(): `boolean`
 
-Defined in: api/node/rust-module.d.cts:102
+Defined in: api/node/rust-module.d.cts:104
 
 `true` if this `DataTransfer` advertises an image representation.
 
@@ -39,19 +39,56 @@ Defined in: api/node/rust-module.d.cts:102
 
 ***
 
-### hasPlaintext
+### hasPlainText
 
 #### Get Signature
 
-> **get** **hasPlaintext**(): `boolean`
+> **get** **hasPlainText**(): `boolean`
 
-Defined in: api/node/rust-module.d.cts:90
+Defined in: api/node/rust-module.d.cts:91
 
-`true` if this `DataTransfer` advertises a plaintext representation.
+`true` if this `DataTransfer` advertises a plain text representation.
 
 ##### Returns
 
 `boolean`
+
+***
+
+### image
+
+#### Get Signature
+
+> **get** **image**(): `SlintImageData` \| `null`
+
+Defined in: api/node/rust-module.d.cts:96
+
+The image representation of this `DataTransfer`, or `null` if no
+image is available.
+
+##### Returns
+
+`SlintImageData` \| `null`
+
+#### Set Signature
+
+> **set** **image**(`image`): `void`
+
+Defined in: api/node/rust-module.d.cts:102
+
+Sets the image representation of this `DataTransfer`. Assigning `null`
+or `undefined` clears any previously-set image; assigning any other
+image overwrites it.
+
+##### Parameters
+
+###### image
+
+`SlintImageData` \| `null` \| `undefined`
+
+##### Returns
+
+`void`
 
 ***
 
@@ -61,14 +98,51 @@ Defined in: api/node/rust-module.d.cts:90
 
 > **get** **isEmpty**(): `boolean`
 
-Defined in: api/node/rust-module.d.cts:107
+Defined in: api/node/rust-module.d.cts:109
 
-`true` if this `DataTransfer` carries no data: no plaintext, no image, and no
+`true` if this `DataTransfer` carries no data: no plain text, no image, and no
 user data.
 
 ##### Returns
 
 `boolean`
+
+***
+
+### plainText
+
+#### Get Signature
+
+> **get** **plainText**(): `string` \| `null`
+
+Defined in: api/node/rust-module.d.cts:83
+
+The plain text representation of this `DataTransfer`, or `null` if no
+plain text is available.
+
+##### Returns
+
+`string` \| `null`
+
+#### Set Signature
+
+> **set** **plainText**(`text`): `void`
+
+Defined in: api/node/rust-module.d.cts:89
+
+Sets the plain text representation of this `DataTransfer`. Assigning
+`null`, `undefined`, or the empty string clears any previously-set
+plain text; assigning any other string overwrites it.
+
+##### Parameters
+
+###### text
+
+`string` \| `null` \| `undefined`
+
+##### Returns
+
+`void`
 
 ***
 
@@ -78,11 +152,11 @@ user data.
 
 > **get** **userData**(): `unknown`
 
-Defined in: api/node/rust-module.d.cts:119
+Defined in: api/node/rust-module.d.cts:121
 
 Application-internal user data attached to this `DataTransfer`. Use this
 when the drag-and-drop or clipboard operation stays inside the current
-JavaScript application and you want to avoid serializing to plaintext or
+JavaScript application and you want to avoid serializing to plain text or
 an image.
 
 Reading returns the JavaScript value previously assigned, or `null` if
@@ -98,7 +172,7 @@ data.
 
 > **set** **userData**(`value`): `void`
 
-Defined in: api/node/rust-module.d.cts:120
+Defined in: api/node/rust-module.d.cts:122
 
 ##### Parameters
 
@@ -116,11 +190,11 @@ Defined in: api/node/rust-module.d.cts:120
 
 > **equals**(`other`): `boolean`
 
-Defined in: api/node/rust-module.d.cts:127
+Defined in: api/node/rust-module.d.cts:129
 
 Returns `true` if this `DataTransfer` equals `other`. Two transfers
 compare equal when one is an unmodified clone of the other; any
-modification (including overwriting plaintext, image, or user data with
+modification (including overwriting plain text, image, or user data with
 the same value) makes them unequal.
 
 #### Parameters
@@ -132,75 +206,3 @@ the same value) makes them unequal.
 #### Returns
 
 `boolean`
-
-***
-
-### fetchImage()
-
-> **fetchImage**(): `SlintImageData` \| `null`
-
-Defined in: api/node/rust-module.d.cts:100
-
-Returns the image representation of this `DataTransfer`, or `null` if no
-image is available.
-
-#### Returns
-
-`SlintImageData` \| `null`
-
-***
-
-### fetchPlaintext()
-
-> **fetchPlaintext**(): `string` \| `null`
-
-Defined in: api/node/rust-module.d.cts:88
-
-Returns the plaintext representation of this `DataTransfer`, or `null` if no
-plaintext is available.
-
-#### Returns
-
-`string` \| `null`
-
-***
-
-### setImage()
-
-> **setImage**(`image`): `void`
-
-Defined in: api/node/rust-module.d.cts:95
-
-Sets the image representation of this `DataTransfer`. Calling this again
-overwrites the previous image.
-
-#### Parameters
-
-##### image
-
-`SlintImageData`
-
-#### Returns
-
-`void`
-
-***
-
-### setPlaintext()
-
-> **setPlaintext**(`text`): `void`
-
-Defined in: api/node/rust-module.d.cts:83
-
-Sets the plaintext representation of this `DataTransfer`. Calling this again
-overwrites the previous plaintext.
-
-#### Parameters
-
-##### text
-
-`string`
-
-#### Returns
-
-`void`

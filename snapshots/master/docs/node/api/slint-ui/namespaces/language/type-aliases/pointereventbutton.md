@@ -3,7 +3,7 @@ title: "PointerEventButton"
 ---
 > **PointerEventButton** = *typeof* [`PointerEventButton`](/master/docs/node/api/variables/language/#pointereventbutton)\[keyof *typeof* [`PointerEventButton`](/master/docs/node/api/variables/language/#pointereventbutton)\]
 
-Defined in: api/node/typescript/generated/language.ts:359
+Defined in: api/node/typescript/generated/language.ts:352
 
 This enum describes the different types of buttons for a pointer event,
 typically on a mouse or a pencil.
