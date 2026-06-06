@@ -7,18 +7,24 @@ This interface describes the public API of a Slint component that is common to a
 show() the window on the screen, access the window and subsequent window properties, or start the
 Slint event loop with run().
 
-## Properties
+## Accessors
 
-### window?
+### window
 
-> `readonly` `optional` **window?**: [`Window`](/master/docs/node/api/interfaces/window/)
+#### Get Signature
+
+> **get** **window**(): [`Window`](/master/docs/node/api/interfaces/window/)
 
 Defined in: [api/node/typescript/index.ts:162](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L162)
 
 Returns the [Window](/master/docs/node/api/interfaces/window/) associated with this component instance.
 The window API can be used to control different aspects of the integration into the windowing system, such as the position on the screen.
 
-Not present on non-windowed components such as ones inheriting from `SystemTrayIcon`.
+Throws an error when accessed on non-windowed components such as ones inheriting from `SystemTrayIcon`.
+
+##### Returns
+
+[`Window`](/master/docs/node/api/interfaces/window/)
 
 ## Methods
 

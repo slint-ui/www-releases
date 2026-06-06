@@ -1,7 +1,7 @@
 ---
 title: "CompileError"
 ---
-Defined in: [api/node/typescript/index.ts:215](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L215)
+Defined in: [api/node/typescript/index.ts:208](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L208)
 
 Represents an errors that can be emitted by the compiler.
 
@@ -15,7 +15,7 @@ Represents an errors that can be emitted by the compiler.
 
 > **new CompileError**(`message`, `diagnostics`): `CompileError`
 
-Defined in: [api/node/typescript/index.ts:227](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L227)
+Defined in: [api/node/typescript/index.ts:220](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L220)
 
 Creates a new CompileError.
 
@@ -59,7 +59,7 @@ Defined in: node\_modules/typescript/lib/lib.es2022.error.d.ts:24
 
 > **diagnostics**: [`Diagnostic`](/master/docs/node/api/interfaces/diagnostic/)[]
 
-Defined in: [api/node/typescript/index.ts:219](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L219)
+Defined in: [api/node/typescript/index.ts:212](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L212)
 
 List of [Diagnostic](/master/docs/node/api/interfaces/diagnostic/) items emitted while compiling .slint code.
 

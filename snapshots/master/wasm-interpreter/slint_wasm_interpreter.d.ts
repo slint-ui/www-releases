@@ -105,8 +105,8 @@ export interface InitOutput {
     readonly wrappedinstance_show: (a: number) => [number, number, number];
     readonly wasm_bindgen__convert__closures_____invoke__heb76ca16a12a2776: (a: number, b: number, c: any) => [number, number];
     readonly wasm_bindgen__convert__closures_____invoke__h761823c2c0a265f1: (a: number, b: number, c: any, d: any) => void;
-    readonly wasm_bindgen__convert__closures_____invoke__h761823c2c0a265f1_17: (a: number, b: number, c: any, d: any) => void;
     readonly wasm_bindgen__convert__closures_____invoke__h761823c2c0a265f1_18: (a: number, b: number, c: any, d: any) => void;
+    readonly wasm_bindgen__convert__closures_____invoke__h761823c2c0a265f1_19: (a: number, b: number, c: any, d: any) => void;
     readonly wasm_bindgen__convert__closures_____invoke__h0ae53cd55246f85c: (a: number, b: number, c: any) => void;
     readonly wasm_bindgen__convert__closures_____invoke__h0ae53cd55246f85c_3: (a: number, b: number, c: any) => void;
     readonly wasm_bindgen__convert__closures_____invoke__h1aae1eed6d4aab43: (a: number, b: number, c: any) => void;
@@ -122,6 +122,7 @@ export interface InitOutput {
     readonly wasm_bindgen__convert__closures_____invoke__h1aae1eed6d4aab43_14: (a: number, b: number, c: any) => void;
     readonly wasm_bindgen__convert__closures_____invoke__h0ae53cd55246f85c_15: (a: number, b: number, c: any) => void;
     readonly wasm_bindgen__convert__closures_____invoke__h8d8a5caa4199bf30: (a: number, b: number) => void;
+    readonly wasm_bindgen__convert__closures_____invoke__hb50dc4bf2a2ac309: (a: number, b: number) => void;
     readonly __wbindgen_malloc: (a: number, b: number) => number;
     readonly __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;
     readonly __externref_table_alloc: () => number;

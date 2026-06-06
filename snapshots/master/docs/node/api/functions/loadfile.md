@@ -3,7 +3,7 @@ title: "loadFile"
 ---
 > **loadFile**(`filePath`, `options?`): `Object`
 
-Defined in: [api/node/typescript/index.ts:650](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L650)
+Defined in: [api/node/typescript/index.ts:643](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L643)
 
 Loads the specified Slint file and returns an object containing functions to construct the exported
 components defined within the Slint file.

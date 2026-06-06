@@ -19,11 +19,15 @@ class Brush;
 
 Returns true if *a* is equal to *b*. If *a* holds a color, then *b* must also hold a color that is identical to *a's* color. If it holds a gradient, then the gradients must be identical. Returns false if the brushes differ in what they hold or their respective color or gradient are not equal.
 
+:::note
+Radial and conic gradient brushes store center and radius as fake header stops whose position fields use NaN as a sentinel for "use the bounding box default" and a negative value for the default radius. Two brushes with default (NaN / negative) metadata compare equal, matching the Rust `PartialEq` semantics. A plain memory comparison would treat NaN != NaN and give incorrect results, hence this custom function.
+:::
+
 ### <a id="operator-2"></a> `operator!=`
 
 <pre class="shiki shiki-themes light-plus dark-plus api-signature" style="--shiki-light:#000000;--shiki-dark:#D4D4D4;--shiki-light-bg:#FFFFFF;--shiki-dark-bg:#1E1E1E" tabindex="0"><code><span class="line"><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6">bool</span><span style="--shiki-light:#AF00DB;--shiki-dark:#C586C0"> operator!=</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">(</span><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6">const</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0"> </span><a style="--shiki-light:#267F99;--shiki-dark:#4EC9B0" href="./" class="api-link">Brush</a><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6"> &#x26;</span><span style="--shiki-light:#001080;--shiki-dark:#9CDCFE">a</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">, </span><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6">const</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0"> </span><a style="--shiki-light:#267F99;--shiki-dark:#4EC9B0" href="./" class="api-link">Brush</a><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6"> &#x26;</span><span style="--shiki-light:#001080;--shiki-dark:#9CDCFE">b</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">)</span></span></code></pre>
 
-Returns false if *is* not equal to *b*; true otherwise.
+Returns true if *a* is not equal to *b*; false otherwise.
 
 ## Public Functions
 
