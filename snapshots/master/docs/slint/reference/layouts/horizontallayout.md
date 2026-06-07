@@ -57,8 +57,8 @@ To target specific sides with different values use the following properties:
 Set the alignment along the main (horizontal) axis. Matches the CSS flex box.
 </SlintProperty>
 
-### align-items
-<SlintProperty propName="align-items" typeName="enum" enumName="LayoutAlignItems">
+### cross-axis-alignment
+<SlintProperty propName="cross-axis-alignment" typeName="enum" enumName="CrossAxisAlignment">
 Set the alignment of items along the cross (vertical) axis.
 The default is `stretch`, meaning each item fills the full height of the layout.
 The other values (`start`, `end`, `center`) size each
@@ -70,7 +70,7 @@ export component Example inherits Window {
     width: 200px;
     height: 100px;
     HorizontalLayout {
-        align-items: center;
+        cross-axis-alignment: center;
         Rectangle { background: red; preferred-width: 30px; preferred-height: 20px; }
         Rectangle { background: blue; preferred-width: 30px; preferred-height: 40px; }
         Rectangle { background: green; preferred-width: 30px; preferred-height: 60px; }

@@ -18,6 +18,7 @@ import AccessibleLiveRegion from "/src/content/docs/reference/generated/enums/_A
 import AccessibleRole from "/src/content/docs/reference/generated/enums/_AccessibleRole.md"
 import AnimationDirection from "/src/content/docs/reference/generated/enums/_AnimationDirection.md"
 import ColorScheme from "/src/content/docs/reference/generated/enums/_ColorScheme.md"
+import CrossAxisAlignment from "/src/content/docs/reference/generated/enums/_CrossAxisAlignment.md"
 import DialogButtonRole from "/src/content/docs/reference/generated/enums/_DialogButtonRole.md"
 import DragAction from "/src/content/docs/reference/generated/enums/_DragAction.md"
 import EventResult from "/src/content/docs/reference/generated/enums/_EventResult.md"
@@ -33,7 +34,6 @@ import ImageRendering from "/src/content/docs/reference/generated/enums/_ImageRe
 import ImageTiling from "/src/content/docs/reference/generated/enums/_ImageTiling.md"
 import ImageVerticalAlignment from "/src/content/docs/reference/generated/enums/_ImageVerticalAlignment.md"
 import InputType from "/src/content/docs/reference/generated/enums/_InputType.md"
-import LayoutAlignItems from "/src/content/docs/reference/generated/enums/_LayoutAlignItems.md"
 import LayoutAlignment from "/src/content/docs/reference/generated/enums/_LayoutAlignment.md"
 import LineCap from "/src/content/docs/reference/generated/enums/_LineCap.md"
 import LineJoin from "/src/content/docs/reference/generated/enums/_LineJoin.md"
@@ -102,6 +102,9 @@ import TextWrap from "/src/content/docs/reference/generated/enums/_TextWrap.md"
 ### ColorScheme
 <ColorScheme />
 
+### CrossAxisAlignment
+<CrossAxisAlignment />
+
 ### DialogButtonRole
 <DialogButtonRole />
 
@@ -146,9 +149,6 @@ import TextWrap from "/src/content/docs/reference/generated/enums/_TextWrap.md"
 
 ### InputType
 <InputType />
-
-### LayoutAlignItems
-<LayoutAlignItems />
 
 ### LayoutAlignment
 <LayoutAlignment />
