@@ -12,7 +12,7 @@ binding = "ASSETS"
 # Worker runs first for these paths so it can validate tokens and block
 # direct access to _protected/. Anything else under assets/ (the public
 # landing page and its resources) is served directly by the asset CDN.
-run_worker_first = ["/t/*", "/_protected/*"]
+run_worker_first = ["/t/*", "/simple/*", "/_protected/*"]
 
 [[d1_databases]]
 binding = "DB"
