@@ -12,8 +12,12 @@ set -euo pipefail
 #   5. Resolve & install through the token-gated index via:
 #        - `uv pip install --index-url …`   (pip-compat smoke)
 #        - `uv add` against a project that declares the index in pyproject.toml
+#        - `uv add` against the credential-free /simple/ endpoint, token
+#          supplied via UV_INDEX_<NAME>_PASSWORD — and assert the token never
+#          lands in uv.lock.
 #   6. Run a Python smoke import that exercises the cross-package dependency.
-#   7. Negative cases: bad token; revoked token. Both must fail.
+#   7. Negative cases: bad token; missing Basic-auth credentials; revoked
+#      token. All must fail.
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 E2E_DIR="$REPO_ROOT/test/e2e"
@@ -140,37 +144,76 @@ grep -q "localhost:$PORT"          "$CONSUMER/uv.lock"
 grep -q "slint-testing-e2e-leaf"   "$CONSUMER/uv.lock"
 grep -q "slint-testing-e2e-trunk"  "$CONSUMER/uv.lock"
 
-# --- Negative: bad token ---
+# --- Path C: /simple/ + Basic-auth credentials (token kept out of uv.lock) ---
 
-echo "→ Negative: bad token"
-if uv pip install \
-    --python "$TMP_DIR/.venv-pip/bin/python" \
-    --reinstall --refresh \
-    --index-url "http://localhost:$PORT/t/not-a-real-token/" \
-    slint-testing-e2e-trunk \
-    >"$TMP_DIR/bad-token.log" 2>&1; then
-  echo "FAIL: install succeeded with bad token" >&2
-  cat "$TMP_DIR/bad-token.log" >&2
+echo "→ Path C: uv add via /simple/ (credentials in env, not the URL)"
+SIMPLE_URL="http://localhost:$PORT/simple/"
+CONSUMER_BASIC="$TMP_DIR/consumer-basic"
+mkdir -p "$CONSUMER_BASIC"
+cat >"$CONSUMER_BASIC/pyproject.toml" <<EOF
+[project]
+name = "consumer-basic"
+version = "0.0.0"
+requires-python = ">=3.9"
+dependencies = []
+
+[[tool.uv.index]]
+name = "slint-private"
+url = "$SIMPLE_URL"
+default = true
+EOF
+
+(
+  cd "$CONSUMER_BASIC"
+  # uv derives the credential env-var names from the index name:
+  # slint-private → SLINT_PRIVATE.
+  export UV_INDEX_SLINT_PRIVATE_USERNAME=__token__
+  export UV_INDEX_SLINT_PRIVATE_PASSWORD="$TOKEN"
+  uv add slint-testing-e2e-trunk --quiet
+  uv run python "$E2E_DIR/smoke.py"
+)
+
+grep -q "localhost:$PORT/simple"   "$CONSUMER_BASIC/uv.lock"
+grep -q "slint-testing-e2e-leaf"   "$CONSUMER_BASIC/uv.lock"
+grep -q "slint-testing-e2e-trunk"  "$CONSUMER_BASIC/uv.lock"
+# The whole point: the token must NOT have leaked into the lockfile.
+if grep -q "$TOKEN" "$CONSUMER_BASIC/uv.lock"; then
+  echo "FAIL: token leaked into uv.lock" >&2
+  grep -n "$TOKEN" "$CONSUMER_BASIC/uv.lock" >&2
   exit 1
 fi
 
-# --- Negative: revoked token ---
+# --- Negative cases: every install below must be rejected by the index ---
 
-echo "→ Negative: revoked token"
+# Run `uv pip install` against an index that should reject us; fail the suite
+# if it unexpectedly succeeds.
+assert_install_fails() {
+  local label="$1" index_url="$2" log="$3"
+  echo "→ Negative: $label"
+  if uv pip install \
+      --python "$TMP_DIR/.venv-pip/bin/python" \
+      --reinstall --refresh \
+      --index-url "$index_url" \
+      slint-testing-e2e-trunk \
+      >"$log" 2>&1; then
+    echo "FAIL: install succeeded ($label)" >&2
+    cat "$log" >&2
+    exit 1
+  fi
+}
+
+assert_install_fails "/simple/ without credentials" \
+  "$SIMPLE_URL" "$TMP_DIR/no-creds.log"
+
+assert_install_fails "bad token" \
+  "http://localhost:$PORT/t/not-a-real-token/" "$TMP_DIR/bad-token.log"
+
+# Revoke the good token first, then confirm it stops working.
 pnpm exec wrangler d1 execute ui-testing --local --command \
   "UPDATE tokens SET revoked_at = unixepoch() WHERE token = '$TOKEN';" \
   >>"$WLOG" 2>&1
-
-if uv pip install \
-    --python "$TMP_DIR/.venv-pip/bin/python" \
-    --reinstall --refresh \
-    --index-url "$INDEX_URL" \
-    slint-testing-e2e-trunk \
-    >"$TMP_DIR/revoked-token.log" 2>&1; then
-  echo "FAIL: install succeeded with revoked token" >&2
-  cat "$TMP_DIR/revoked-token.log" >&2
-  exit 1
-fi
+assert_install_fails "revoked token" \
+  "$INDEX_URL" "$TMP_DIR/revoked-token.log"
 
 echo
 echo "✓ e2e passed"

@@ -22,12 +22,36 @@ If their repo is public, the `[[index]]` block goes in
 `~/.config/uv/uv.toml` instead (where the token URL isn't committed); the
 `[tool.uv.sources]` mapping stays in `pyproject.toml`.
 
+Alternatively, the token can travel out of band via HTTP Basic auth against
+the credential-free `/simple/` endpoint — this is what keeps it out of
+`uv.lock`:
+
+```toml
+[[tool.uv.index]]
+name = "slint-private"
+url = "https://testing.slint.dev/simple/"
+explicit = true
+
+[tool.uv.sources]
+slint-testing = { index = "slint-private" }
+```
+
+```sh
+export UV_INDEX_SLINT_PRIVATE_USERNAME=__token__
+export UV_INDEX_SLINT_PRIVATE_PASSWORD=<TOKEN>
+```
+
 ## Design
 
-**Token in the URL path, not in a header.** Means `--index-url` is the
-whole story on the customer side — no `~/.netrc`, no env vars, no
-per-tool auth glue. The token is opaque (32 random bytes, base64url) so
-URL-leakage is no worse than a leaked secret anywhere else.
+**Two front doors onto the same tree.** The token can ride in the URL path
+(`/t/<TOK>/`) or in an HTTP Basic password against `/simple/`. The path form
+makes `--index-url` the whole story — no env vars, no per-tool auth glue —
+but uv bakes the resolved URL (token included) into `uv.lock`. The `/simple/`
+form keeps the configured URL token-free, so credentials supplied via
+`UV_INDEX_<NAME>_USERNAME/_PASSWORD` never reach the lockfile. The token is
+opaque either way (32 random bytes, base64url). Both routes share the same
+D1 lookup and the same committed `_protected/` tree; only where the token is
+read differs.
 
 **Wheels and PEP 503 listings live under `assets/_protected/`**,
 committed to git, bundled into each Worker deploy. Nothing to
@@ -112,9 +136,12 @@ pnpm exec wrangler d1 execute ui-testing --local --command \
 
 ### How it behaves
 
-The Worker returns 404 (not 401) for missing/revoked tokens — `uv`/pip
-handle 404 cleanly, and we don't reveal which tokens exist. Revocation
-takes effect on the next request (D1 is strongly consistent).
+For path tokens (`/t/<TOK>/`) the Worker returns 404 (not 401) for
+missing/revoked tokens — `uv`/pip handle 404 cleanly, and we don't reveal
+which tokens exist. The Basic-auth route (`/simple/`) must answer 401 instead
+so `uv`/`curl` know to send or retry credentials; that response is uniform
+for missing and invalid tokens, so it still doesn't enumerate them.
+Revocation takes effect on the next request (D1 is strongly consistent).
 `last_used_at` is updated via `ctx.waitUntil(...)`, throttled to once
 per 60 s per token so the hot path stays cheap.
 
@@ -152,10 +179,12 @@ Ongoing:
 /                  →  assets/index.html                  (CDN, Worker not invoked)
 /t/<TOK>           →  301 /t/<TOK>/                      (so relative hrefs resolve)
 /t/<TOK>/<rest>    →  /_protected/<rest>                 (after validating <TOK> in D1)
+/simple/<rest>     →  /_protected/<rest>                 (after validating Basic-auth token in D1; 401 otherwise)
 /_protected/*      →  404                                (direct access blocked)
 ```
 
-`run_worker_first = ["/t/*", "/_protected/*"]` in `wrangler.toml` is
-what keeps the asset CDN from serving `_protected/` directly. The
-Worker also rewrites `Location` headers from asset-CDN 3xx responses so
-the internal `/_protected/` path never leaks.
+`run_worker_first = ["/t/*", "/simple/*", "/_protected/*"]` in
+`wrangler.toml` is what keeps the asset CDN from serving those paths
+directly. The Worker also rewrites `Location` headers from asset-CDN 3xx
+responses so the internal `/_protected/` path never leaks — for both the
+`/t/<TOK>/` and `/simple/` prefixes.

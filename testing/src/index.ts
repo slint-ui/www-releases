@@ -25,6 +25,21 @@ export default {
 
     if (url.pathname.startsWith("/_protected/")) return notFound();
 
+    // Credential-gated mirror of the index. The token rides in the HTTP Basic
+    // password (username conventionally "__token__"), not the URL path, so it
+    // never lands in the customer's uv.lock. uv supplies it via
+    // UV_INDEX_<NAME>_USERNAME / _PASSWORD; the configured index URL is the
+    // token-free https://testing.slint.dev/simple/.
+    const sm = url.pathname.match(/^\/simple\/(.*)$/);
+    if (sm) {
+      const token = basicAuthToken(req.headers.get("authorization"));
+      if (!token) return needAuth();
+      const row = await lookupToken(env.DB, token);
+      if (!row) return needAuth();
+      touchTokenAsync(env.DB, row, ctx);
+      return serveProtected(env, req, url, sm[1], "/simple/");
+    }
+
     // /t/<TOK> → /t/<TOK>/ so relative hrefs in the served listing resolve
     // correctly against the customer-visible URL.
     if (/^\/t\/[^/]+$/.test(url.pathname)) {
@@ -41,31 +56,67 @@ export default {
     if (!row) return notFound();
     touchTokenAsync(env.DB, row, ctx);
 
-    const inner = new URL(url);
-    inner.pathname = `/_protected/${rest}`;
-    const r = await env.ASSETS.fetch(new Request(inner, req));
-
-    // The asset CDN may issue redirects (e.g. /_protected/foo → /_protected/foo/)
-    // whose Location would point at the internal namespace. Translate the
-    // path prefix back to the customer-visible one.
-    if (r.status >= 300 && r.status < 400 && r.headers.has("location")) {
-      const loc = r.headers.get("location")!;
-      const newLoc = loc.replace(
-        /(^|\/\/[^/]+)\/_protected\//,
-        `$1/t/${token}/`,
-      );
-      if (newLoc !== loc) {
-        const headers = new Headers(r.headers);
-        headers.set("location", newLoc);
-        return new Response(r.body, { status: r.status, headers });
-      }
-    }
-    return r;
+    return serveProtected(env, req, url, rest, `/t/${token}/`);
   },
 } satisfies ExportedHandler<Env>;
 
+// Serve assets/_protected/<rest>, rewriting any asset-CDN redirect Location
+// from the internal /_protected/ namespace back to the customer-visible prefix
+// (/t/<TOK>/ for path tokens, /simple/ for Basic auth).
+async function serveProtected(
+  env: Env,
+  req: Request,
+  url: URL,
+  rest: string,
+  prefix: string,
+): Promise<Response> {
+  const inner = new URL(url);
+  inner.pathname = `/_protected/${rest}`;
+  const r = await env.ASSETS.fetch(new Request(inner, req));
+
+  // The asset CDN may issue redirects (e.g. /_protected/foo → /_protected/foo/)
+  // whose Location would point at the internal namespace. Translate the
+  // path prefix back to the customer-visible one.
+  if (r.status >= 300 && r.status < 400 && r.headers.has("location")) {
+    const loc = r.headers.get("location")!;
+    const newLoc = loc.replace(/(^|\/\/[^/]+)\/_protected\//, `$1${prefix}`);
+    if (newLoc !== loc) {
+      const headers = new Headers(r.headers);
+      headers.set("location", newLoc);
+      return new Response(r.body, { status: r.status, headers });
+    }
+  }
+  return r;
+}
+
+// Extract the token from an HTTP Basic Authorization header. Accepts the token
+// as either the password (preferred, username = "__token__") or the username
+// (so `curl -u <token>:` works too).
+function basicAuthToken(header: string | null): string | null {
+  if (!header?.startsWith("Basic ")) return null;
+  let decoded: string;
+  try {
+    decoded = atob(header.slice("Basic ".length).trim());
+  } catch {
+    return null;
+  }
+  const [user, ...rest] = decoded.split(":");
+  return rest.join(":") || user || null;
+}
+
 function notFound(): Response {
   return new Response("Not Found", { status: 404 });
+}
+
+// Unlike the path-token route (which 404s to avoid revealing token existence),
+// Basic auth must answer 401 so uv/curl know to send or retry credentials. The
+// response is uniform for missing and invalid tokens, so it still doesn't
+// enumerate which tokens exist.
+function needAuth(): Response {
+  return new Response("Unauthorized", {
+    status: 401,
+    headers: { "WWW-Authenticate": 'Basic realm="testing.slint.dev"' },
+  });
 }
 
 async function lookupToken(

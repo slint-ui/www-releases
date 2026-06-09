@@ -117,6 +117,99 @@ describe("token gating", () => {
   });
 });
 
+describe("basic-auth gating (/simple/)", () => {
+  const basic = (user: string, pass: string): Record<string, string> => ({
+    authorization: `Basic ${btoa(`${user}:${pass}`)}`,
+  });
+
+  it("returns 401 with no Authorization header", async () => {
+    await issueToken("ACME", "tok1");
+    const r = await SELF.fetch("https://example.com/simple/");
+    expect(r.status).toBe(401);
+    expect(r.headers.get("www-authenticate")).toMatch(/^Basic /);
+  });
+
+  it("returns 401 for an unknown token", async () => {
+    const r = await SELF.fetch("https://example.com/simple/", {
+      headers: basic("__token__", "nope"),
+    });
+    expect(r.status).toBe(401);
+  });
+
+  it("returns 401 for a revoked token", async () => {
+    await issueToken("ACME", "tok1");
+    await revokeToken("tok1");
+    const r = await SELF.fetch("https://example.com/simple/", {
+      headers: basic("__token__", "tok1"),
+    });
+    expect(r.status).toBe(401);
+  });
+
+  it("serves the root listing with the token as the password", async () => {
+    await issueToken("ACME", "tok1");
+    const r = await SELF.fetch("https://example.com/simple/", {
+      headers: basic("__token__", "tok1"),
+    });
+    expect(r.status).toBe(200);
+    expect(await r.text()).toContain("Simple Package Repository");
+  });
+
+  it("serves project listings with a valid token", async () => {
+    await issueToken("ACME", "tok1");
+    const r = await SELF.fetch("https://example.com/simple/foo/", {
+      headers: basic("__token__", "tok1"),
+    });
+    expect(r.status).toBe(200);
+    expect(await r.text()).toContain("Links for foo");
+  });
+
+  it("serves package files with a valid token", async () => {
+    await issueToken("ACME", "tok1");
+    const r = await SELF.fetch("https://example.com/simple/foo/foo-1.0.whl", {
+      headers: basic("__token__", "tok1"),
+    });
+    expect(r.status).toBe(200);
+    expect((await r.text()).trim()).toBe("fake-wheel-bytes");
+  });
+
+  it("accepts the token as the username too (curl -u <token>:)", async () => {
+    await issueToken("ACME", "tok1");
+    const r = await SELF.fetch("https://example.com/simple/", {
+      headers: basic("tok1", ""),
+    });
+    expect(r.status).toBe(200);
+    expect(await r.text()).toContain("Simple Package Repository");
+  });
+
+  it("rewrites asset-CDN redirect Location to the /simple/ prefix", async () => {
+    await issueToken("ACME", "tok1");
+    const r = await SELF.fetch("https://example.com/simple/foo", {
+      headers: basic("__token__", "tok1"),
+      redirect: "manual",
+    });
+    expect(r.status).toBeGreaterThanOrEqual(200);
+    if (r.status >= 300 && r.status < 400) {
+      const loc = r.headers.get("location") ?? "";
+      expect(loc).not.toContain("/_protected/");
+      expect(loc).toMatch(/\/simple\/foo\/?$/);
+    }
+  });
+
+  it("updates last_used_at on a valid request", async () => {
+    await issueToken("ACME", "tok1");
+    const r = await SELF.fetch("https://example.com/simple/", {
+      headers: basic("__token__", "tok1"),
+    });
+    expect(r.status).toBe(200);
+    const after = await env.DB.prepare(
+      "SELECT last_used_at FROM tokens WHERE token = ?",
+    )
+      .bind("tok1")
+      .first<{ last_used_at: number | null }>();
+    expect(after?.last_used_at).toBeTypeOf("number");
+  });
+});
+
 describe("protected namespace", () => {
   it("blocks direct access to /_protected/* paths", async () => {
     const r = await SELF.fetch("https://example.com/_protected/");
