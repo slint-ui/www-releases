@@ -49,7 +49,7 @@ export component Example inherits Window {
 }
 ```
 
-### bring-all-to-front()
+### macos-bring-all-windows-to-front()
 Brings all application windows to the front of the screen.
 
 On macOS this invokes `[NSApp arrangeInFront:]`, which raises every application window

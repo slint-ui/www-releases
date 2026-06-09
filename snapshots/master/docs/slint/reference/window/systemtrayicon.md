@@ -81,14 +81,14 @@ Where it actually shows up depends on the platform:
 
 ## Callbacks
 
-### activated()
-Invoked when the user activates the tray icon itself, as opposed to picking an entry from its menu.
-What counts as activation, and whether it's invoked at all, depends on the platform:
+### clicked()
+Invoked when the user left-clicks the tray icon itself, as opposed to picking an entry from its menu.
+Whether it's invoked at all depends on the platform:
 
-| Platform      | Activation behavior                                                                   |
+| Platform      | Click behavior                                                                        |
 | ------------- | ------------------------------------------------------------------------------------- |
 | Linux, \*BSD  | Invoked on a left-click of the icon. The exact gesture is decided by the desktop environment or shell extension hosting the tray. |
-| macOS         | Invoked on a click when no `Menu` is attached (or when an `if cond : Menu { ... }`'s condition is currently false). When a populated menu is attached, AppKit pops it open instead and `activated` doesn't fire. |
+| macOS         | Invoked on a left-click when no `Menu` is attached (or when an `if cond : Menu { ... }`'s condition is currently false). When a populated menu is attached, AppKit pops it open instead and `clicked` doesn't fire. |
 | Windows       | Invoked on a left-click of the icon. Right-click opens the menu.                      |
 
 ## Menu
@@ -122,7 +122,7 @@ and the platform backend translates that into the native tray API.
 A visible `SystemTrayIcon` keeps the event loop alive the same way a visible window does.
 
 A typical app instantiates both a main window and a tray, shows them, and runs the event loop.
-The snippets below also wire the built-in `activated` callback so a click on the tray icon
+The snippets below also wire the built-in `clicked` callback so a left-click on the tray icon
 brings the window back if the user has hidden it.
 
 <Tabs syncKey="dev-language">
@@ -133,7 +133,7 @@ fn main() -> Result<(), slint::PlatformError> {
     let tray = ExampleTray::new()?;
 
     let window_weak = window.as_weak();
-    tray.on_activated(move || {
+    tray.on_clicked(move || {
         if let Some(w) = window_weak.upgrade() {
             let _ = w.show();
         }
@@ -152,7 +152,7 @@ int main() {
     auto tray = ExampleTray::create();
 
     auto window_weak = slint::ComponentWeakHandle(window);
-    tray->on_activated([window_weak] {
+    tray->on_clicked([window_weak] {
         if (auto w = window_weak.lock()) {
             (*w)->show();
         }
@@ -168,7 +168,7 @@ int main() {
 ```js
 const window = new ui.MainWindow();
 const tray = new ui.ExampleTray();
-tray.activated = () => window.show();
+tray.clicked = () => window.show();
 window.show();
 tray.show();
 await slint.runEventLoop();
@@ -178,7 +178,7 @@ await slint.runEventLoop();
 ```python
 window = module.MainWindow()
 tray = module.ExampleTray()
-tray.activated = lambda: window.show()
+tray.clicked = lambda: window.show()
 window.show()
 tray.show()
 slint.run_event_loop()
