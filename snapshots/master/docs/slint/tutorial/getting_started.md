@@ -34,9 +34,16 @@ The `CMakeLists.txt` uses the line `add_executable(my_application src/main.cpp)`
 
 Replace the content of `src/main.cpp` with the following:
 
-import initialCpp from '/src/content/code/main_initial.cpp?raw'
 
-<Code code={extractLines(initialCpp, 7, 13)} lang="cpp" title="main_initial.cpp" />
+```cpp title="main_initial.cpp"
+#include "app-window.h" // generated header from ui/app-window.slint
+
+int main(int argc, char **argv)
+{
+    auto main_window = MainWindow::create();
+    main_window->run();
+}
+```
 
 Also in `CMakeLists.txt` the line
 `slint_target_sources(my_application ui/app-window.slint)` is a Slint function used to
@@ -44,9 +51,15 @@ add the `app-window.slint` file to the target.
 
 Replace the contents of `ui/app-window.slint` with the following:
 
-import appWindow from '/src/content/code/app-window.slint?raw'
 
-<Code code={extractLines(appWindow, 6, 11)} lang="slint" title="app-window.slint" />
+```slint title="app-window.slint"
+// ui/appwindow.slint
+export component MainWindow inherits Window {
+    Text {
+        text: "hello world";
+        color: green;
+    }
+```
 
 Configure with CMake:
 
@@ -110,17 +123,28 @@ The `package.json` file references `src/main.js` as the entry point for the appl
 
 Replace the contents of `src/main.js` with the following:
 
-import mainInitialJs from '/src/content/code/main_initial.js?raw'
 
-<Code code={extractLines(mainInitialJs, 6, 10)} lang="js" title="main_initial.js" />
+```js title="main_initial.js"
+import * as slint from "slint-ui";
+
+const ui = slint.loadFile(new URL("./ui/app-window.slint", import.meta.url));
+const mainWindow = new ui.MainWindow();
+await mainWindow.run();
+```
 
 The `slint.loadFile` method resolves files from the process's current working directory, so from the `package.json` file's location.
 
 Replace the contents of `ui/app-window.slint` with the following:
 
-import memorySlint from '/src/content/code/memory.slint?raw'
 
-<Code code={extractLines(memorySlint, 6, 11)} lang="slint" title="memory.slint" />
+```slint title="memory.slint"
+export component MainWindow inherits Window {
+    Text {
+        text: "hello world";
+        color: green;
+    }
+}
+```
 
 
 ### Run the application
@@ -156,7 +180,14 @@ fn main() -> Result<(), slint::PlatformError> {
 
 Replace the contents of `ui/app-window.slint` with the following:
 
-<Code code={extractLines(memorySlint, 6 ,11)} lang="slint" title="memory.slint" />
+```slint title="memory.slint"
+export component MainWindow inherits Window {
+    Text {
+        text: "hello world";
+        color: green;
+    }
+}
+```
 
 
 ### Run the application
@@ -184,15 +215,33 @@ The entry point for the application is `main.py`, the UI file is `app-window.sli
 
 Replace the contents of `main.py` with the following:
 
-import mainInitialPython from '/src/content/code/main_initial.py?raw'
 
-<Code code={extractLines(mainInitialPython, 3, 18)} lang="python" title="main.py" />
+```python title="main.py"
+
+import slint
+
+
+class MainWindow(slint.loader.ui.app_window.MainWindow):
+    pass
+
+
+main_window = MainWindow()
+main_window.show()
+main_window.run()
+```
 
 The `slint.loadFile` method resolves files from the process's current working directory, so from the `package.json` file's location.
 
 Replace the contents of `ui/app-window.slint` with the following:
 
-<Code code={extractLines(memorySlint, 6, 11)} lang="slint" title="memory.slint" />
+```slint title="memory.slint"
+export component MainWindow inherits Window {
+    Text {
+        text: "hello world";
+        color: green;
+    }
+}
+```
 
 ### Run the application
 

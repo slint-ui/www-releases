@@ -31,9 +31,61 @@ _solved_ property used to animate the color to a shade of green when a player fi
 
 Replace the code inside the `ui/app-window.slint` file with the following:
 
-import polishingTheTile from '/src/content/code/main_polishing_the_tile.rs?raw'
 
-<Code code={extractLines(polishingTheTile, 10, 61)} lang="slint" />
+```slint
+component MemoryTile inherits Rectangle {
+    callback clicked;
+    in property <bool> open_curtain;
+    in property <bool> solved;
+    in property <image> icon;
+
+    height: 64px;
+    width: 64px;
+    background: solved ? #34CE57 : #3960D5;
+    animate background { duration: 800ms; }
+
+    Image {
+        source: icon;
+        width: parent.width;
+        height: parent.height;
+    }
+
+    // Left curtain
+    Rectangle {
+        background: #193076;
+        x: 0px;
+        width: open_curtain ? 0px : (parent.width / 2);
+        height: parent.height;
+        animate width { duration: 250ms; easing: ease-in; }
+    }
+
+    // Right curtain
+    Rectangle {
+        background: #193076;
+        x: open_curtain ? parent.width : (parent.width / 2);
+        width: open_curtain ? 0px : (parent.width / 2);
+        height: parent.height;
+        animate width { duration: 250ms; easing: ease-in; }
+        animate x { duration: 250ms; easing: ease-in; }
+    }
+
+    TouchArea {
+        clicked => {
+            // Delegate to the user of this element
+            root.clicked();
+        }
+    }
+}
+
+export component MainWindow inherits Window {
+    MemoryTile {
+        icon: @image-url("icons/bus.png");
+        clicked => {
+            self.open_curtain = !self.open_curtain;
+        }
+    }
+}
+```
 
 The code uses `root` and `self`. `root` refers to the outermost
 element in the component, the <span class="hljs-title">MemoryTile</span> in this case. `self` refers

@@ -208,20 +208,54 @@ Set it to <code dir="auto">false</code> to hide the icon without dropping the co
 The <code dir="auto">show()</code> and <code dir="auto">hide()</code> methods on the language-binding side are convenience aliases that set this property.</p>   </div>
 <div class="sl-heading-wrapper level-h3"><h3 id="title">title</h3><a class="sl-anchor-link" href="#title"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “title”</span></a></div>
 <div class="sl-markdown-content slint-property"> <p> <a href="/master/docs/slint/reference/primitive-types/#string" dir="auto" class="no-underline"> <span class="sl-badge default large astro-jentkhzs" style="color:var(--sl-text-white);background-color:transparent;border-color:var(--badge-border-color);font-size:0.7rem;font-weight:bold">string</span> </a>  <span class="default-value">default: <code class="plain-code" dir="auto">&quot;&quot;</code></span><br> </p> <p>A descriptive name for the tray entry, separate from the hover tooltip.
-Where it actually shows up depends on the platform:</p><p>| Platform      | Where <code dir="auto">title</code> appears                                                                            |
-| ------------- | ------------------------------------------------------------------------------------------------ |
-| Linux, *BSD  | Used by accessibility tools and shown by some desktops when listing tray icons (e.g. an overflow menu). Set as the <a href="https://www.freedesktop.org/wiki/Specifications/StatusNotifierItem/StatusNotifierItem/" target="_blank" rel="noopener">StatusNotifierItem <code dir="auto">Title</code><span> ↗</span></a> property. |
-| macOS         | The visible text label rendered next to the icon in the menu bar (think battery percent, clock). |
-| Windows       | Has no visible effect; the notification area renders only the icon.                              |</p>   </div>
+Where it actually shows up depends on the platform:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Platform</th><th>Where <code dir="auto">title</code> appears</th></tr></thead><tbody><tr><td>Linux, *BSD</td><td>Used by accessibility tools and shown by some desktops when listing tray icons (e.g. an overflow menu). Set as the <a href="https://www.freedesktop.org/wiki/Specifications/StatusNotifierItem/StatusNotifierItem/" target="_blank" rel="noopener">StatusNotifierItem <code dir="auto">Title</code><span> ↗</span></a> property.</td></tr><tr><td>macOS</td><td>The visible text label rendered next to the icon in the menu bar (think battery percent, clock).</td></tr><tr><td>Windows</td><td>Has no visible effect; the notification area renders only the icon.</td></tr></tbody></table>   </div>
 <div class="sl-heading-wrapper level-h2"><h2 id="callbacks">Callbacks</h2><a class="sl-anchor-link" href="#callbacks"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Callbacks”</span></a></div>
 <div class="sl-heading-wrapper level-h3"><h3 id="clicked">clicked()</h3><a class="sl-anchor-link" href="#clicked"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “clicked()”</span></a></div>
 <p>Invoked when the user left-clicks the tray icon itself, as opposed to picking an entry from its menu.
 Whether it’s invoked at all depends on the platform:</p>
-<p>| Platform      | Click behavior                                                                        |
-| ------------- | ------------------------------------------------------------------------------------- |
-| Linux, *BSD  | Invoked on a left-click of the icon. The exact gesture is decided by the desktop environment or shell extension hosting the tray. |
-| macOS         | Invoked on a left-click when no <code dir="auto">Menu</code> is attached (or when an <code dir="auto">if cond : Menu { ... }</code>’s condition is currently false). When a populated menu is attached, AppKit pops it open instead and <code dir="auto">clicked</code> doesn’t fire. |
-| Windows       | Invoked on a left-click of the icon. Right-click opens the menu.                      |</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Platform</th><th>Click behavior</th></tr></thead><tbody><tr><td>Linux, *BSD</td><td>Invoked on a left-click of the icon. The exact gesture is decided by the desktop environment or shell extension hosting the tray.</td></tr><tr><td>macOS</td><td>Invoked on a left-click when no <code dir="auto">Menu</code> is attached (or when an <code dir="auto">if cond : Menu { ... }</code>’s condition is currently false). When a populated menu is attached, AppKit pops it open instead and <code dir="auto">clicked</code> doesn’t fire.</td></tr><tr><td>Windows</td><td>Invoked on a left-click of the icon. Right-click opens the menu.</td></tr></tbody></table>
 <div class="sl-heading-wrapper level-h2"><h2 id="menu">Menu</h2><a class="sl-anchor-link" href="#menu"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Menu”</span></a></div>
 <p>The child <code dir="auto">Menu</code> defines the menu that is shown when the user clicks or right-clicks the tray
 icon. Its structure is the same as for <a href="/master/docs/slint/reference/window/window/#menubar"><span>MenuBar</span></a> and <code dir="auto">ContextMenuArea</code>: use
@@ -237,10 +271,27 @@ not attached to a focused window, so there is nothing for the shortcut to fire a
 <p>The generated public API for a <code dir="auto">SystemTrayIcon</code>-rooted component is smaller than the one
 for a <code dir="auto">Window</code>-rooted component. Construction, property and callback accessors, and global
 access work the same way. Two things are missing:</p>
-<p>| Operation              | Window-rooted | SystemTrayIcon-rooted |
-| ---------------------- | :-----------: | :---------------: |
-| access the window      | yes           | <strong>no</strong>            |
-| run the event loop     | yes           | <strong>no</strong>            |</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Operation</th><th align="center">Window-rooted</th><th align="center">SystemTrayIcon-rooted</th></tr></thead><tbody><tr><td>access the window</td><td align="center">yes</td><td align="center"><strong>no</strong></td></tr><tr><td>run the event loop</td><td align="center">yes</td><td align="center"><strong>no</strong></td></tr></tbody></table>
 <p><code dir="auto">show</code> and <code dir="auto">hide</code> exist on both, but on a <code dir="auto">SystemTrayIcon</code> they set the <code dir="auto">visible</code> property,
 and the platform backend translates that into the native tray API.
 A visible <code dir="auto">SystemTrayIcon</code> keeps the event loop alive the same way a visible window does.</p>
@@ -285,11 +336,28 @@ brings the window back if the user has hidden it.</p>
 is called). No <code dir="auto">WindowAdapter</code> is created in that case — the platform backend is still
 selected the usual way, but no window opens.</p>
 <div class="sl-heading-wrapper level-h2"><h2 id="platform-support">Platform Support</h2><a class="sl-anchor-link" href="#platform-support"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Platform Support”</span></a></div>
-<p>| Platform      | Mechanism                                             |
-| ------------- | ----------------------------------------------------- |
-| Linux, *BSD  | <code dir="auto">StatusNotifierItem</code> / <code dir="auto">AppIndicator</code> on D-Bus        |
-| macOS         | <code dir="auto">NSStatusItem</code> in the menu bar                        |
-| Windows       | Shell notification area icon (<code dir="auto">Shell_NotifyIcon</code>)     |</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Platform</th><th>Mechanism</th></tr></thead><tbody><tr><td>Linux, *BSD</td><td><code dir="auto">StatusNotifierItem</code> / <code dir="auto">AppIndicator</code> on D-Bus</td></tr><tr><td>macOS</td><td><code dir="auto">NSStatusItem</code> in the menu bar</td></tr><tr><td>Windows</td><td>Shell notification area icon (<code dir="auto">Shell_NotifyIcon</code>)</td></tr></tbody></table>
 <p>On Linux, a desktop environment or shell extension that implements the <code dir="auto">StatusNotifierItem</code>
 specification is required; plain X11 system trays are not supported. GNOME, for example,
 needs an extension such as <em>AppIndicator and KStatusNotifierItem Support</em>.</p> </div> <footer class="sl-flex astro-eifwj7ft"> <div class="meta sl-flex astro-eifwj7ft">   </div> <div class="pagination-links print:hidden astro-dyqvxwuo" dir="ltr"> <a href="/master/docs/slint/reference/window/popupwindow/" rel="prev" class="astro-dyqvxwuo"> <svg aria-hidden="true" class="astro-dyqvxwuo astro-6uleiwf3" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg> <span class="astro-dyqvxwuo"> Previous <br class="astro-dyqvxwuo"> <span class="link-title astro-dyqvxwuo">PopupWindow</span> </span> </a> <a href="/master/docs/slint/reference/window/tooltip/" rel="next" class="astro-dyqvxwuo"> <svg aria-hidden="true" class="astro-dyqvxwuo astro-6uleiwf3" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17.92 11.62a1.001 1.001 0 0 0-.21-.33l-5-5a1.003 1.003 0 1 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1.002 1.002 0 0 0 .325 1.639 1 1 0 0 0 1.095-.219l5-5a1 1 0 0 0 .21-.33 1 1 0 0 0 0-.76Z"/></svg> <span class="astro-dyqvxwuo"> Next <br class="astro-dyqvxwuo"> <span class="link-title astro-dyqvxwuo">Tooltip</span> </span> </a> </div>  </footer> <hr class="astro-j437entq"> <p class="astro-j437entq">&copy; 2026 SixtyFPS GmbH</p> </div> </div>  </main> </div> </div> </div> </div> </body></html>

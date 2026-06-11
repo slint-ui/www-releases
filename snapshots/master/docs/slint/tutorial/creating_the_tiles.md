@@ -13,9 +13,28 @@ This step places the game tiles randomly.
   <TabItem label="C++" >
   Change the `main` function and includes in `src/main.cpp` to the following:
 
-import mainTilesFromCpp from '/src/content/code/main_tiles_from_cpp.cpp?raw'
 
-<Code code={extractLines(mainTilesFromCpp, 10, 28)} lang="cpp"/>
+```cpp
+#include <random> // Added
+
+int main()
+{
+    auto main_window = MainWindow::create();
+    auto old_tiles = main_window->get_memory_tiles();
+    std::vector<TileData> new_tiles;
+    new_tiles.reserve(old_tiles->row_count() * 2);
+    for (int i = 0; i < old_tiles->row_count(); ++i) {
+        new_tiles.push_back(*old_tiles->row_data(i));
+        new_tiles.push_back(*old_tiles->row_data(i));
+    }
+    std::default_random_engine rng {};
+    std::shuffle(new_tiles.begin(), new_tiles.end(), rng);
+    auto tiles_model = std::make_shared<slint::VectorModel<TileData>>(new_tiles);
+    main_window->set_memory_tiles(tiles_model);
+
+    main_window->run();
+}
+```
 
 
 The code takes the list of tiles, duplicates it, and shuffles it, accessing the `memory_tiles` property through the C++ code.
@@ -31,9 +50,27 @@ in a <LangRefLink lang="cpp" relpath="api/slint/vectormodel/">`slint::VectorMode
 
 Change `main.js` to the following:
 
-import mainTilesFromJs from '/src/content/code/main_tiles_from_js.js?raw'
 
-<Code code={extractLines(mainTilesFromJs, 6, 23)} lang="js"/>
+```js
+import * as slint from "slint-ui";
+const ui = slint.loadFile(new URL("./ui/app-window.slint", import.meta.url));
+const mainWindow = new ui.MainWindow();
+
+const initial_tiles = [...mainWindow.memory_tiles];
+const tiles = initial_tiles.concat(
+    initial_tiles.map((tile) => Object.assign({}, tile)),
+);
+
+for (let i = tiles.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * i);
+    [tiles[i], tiles[j]] = [tiles[j], tiles[i]];
+}
+
+const model = new slint.ArrayModel(tiles);
+mainWindow.memory_tiles = model;
+
+await mainWindow.run();
+```
 
 The code takes the list of tiles, duplicates it, and shuffles it, accessing the `memory_tiles` property through the JavaScript code.
 
@@ -51,9 +88,30 @@ in a <LangRefLink lang="nodejs" relpath="api/classes/ArrayModel/">`slint.ArrayMo
 
 Change the main function to the following:
 
-import mainTilesFromRust from '/src/content/code/main_tiles_from_rust.rs?raw'
 
-<Code code={extractLines(mainTilesFromRust, 6, 26)} lang="rust"/>
+```rust
+fn main() {
+    use slint::Model;
+
+    let main_window = MainWindow::new().unwrap();
+
+    // Fetch the tiles from the model
+    let mut tiles: Vec<TileData> = main_window.get_memory_tiles().iter().collect();
+    // Duplicate them to ensure that we have pairs
+    tiles.extend(tiles.clone());
+
+    // Randomly mix the tiles
+    use rand::seq::SliceRandom;
+    let mut rng = rand::rng();
+    tiles.shuffle(&mut rng);
+
+    // Assign the shuffled Vec to the model property
+    let tiles_model = std::rc::Rc::new(slint::VecModel::from(tiles));
+    main_window.set_memory_tiles(tiles_model.clone().into());
+
+    main_window.run().unwrap();
+}
+```
 
 The code takes the list of tiles, duplicates it, and shuffles it, accessing the `memory_tiles` property through the Rust code.
 
@@ -71,9 +129,35 @@ in a <LangRefLink lang="rust-slint" relpath="struct.VecModel">`VecModel`</LangRe
 
 Change `main.py` to the following:
 
-import mainTilesFromPython from '/src/content/code/main_tiles_from_python.py?raw'
 
-<Code code={extractLines(mainTilesFromPython, 3, 30)} lang="python"/>
+```python
+
+import slint
+import sys
+import os
+import random
+import itertools
+import copy
+import datetime
+
+
+class MainWindow(slint.loader.ui.app_window.MainWindow):
+    def __init__(self):
+        super().__init__()
+        initial_tiles = self.memory_tiles
+        tiles = slint.ListModel(
+            itertools.chain(
+                map(copy.copy, initial_tiles), map(copy.copy, initial_tiles)
+            )
+        )
+        random.shuffle(tiles)
+        self.memory_tiles = tiles
+
+
+main_window = MainWindow()
+main_window.show()
+main_window.run()
+```
 
 The code takes the list of tiles, duplicates it, and shuffles it, accessing the `memory_tiles` property through the Python code.
 

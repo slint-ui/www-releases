@@ -24,14 +24,48 @@ index with spacing between the tiles.
 
 First, add the tile data structure definition at the top of the `ui/app-window.slint` file:
 
-import multipleTiles from '/src/content/code/main_multiple_tiles.rs?raw'
 
-<Code code={extractLines(multipleTiles, 11, 15)} lang="slint" />
+```slint
+struct TileData {
+    image: image,
+    image_visible: bool,
+    solved: bool,
+}
+```
 
 
 Next, replace the _export component <span class="hljs-title">MainWindow</span> inherits Window \{ ... \} section at the bottom of the `ui/app-window.slint` file with the following:
 
-<Code code={extractLines(multipleTiles, 63, 90)} lang="slint" />
+```slint
+export component MainWindow inherits Window {
+    width: 326px;
+    height: 326px;
+
+    in property <[TileData]> memory_tiles: [
+        { image: @image-url("icons/at.png") },
+        { image: @image-url("icons/balance-scale.png") },
+        { image: @image-url("icons/bicycle.png") },
+        { image: @image-url("icons/bus.png") },
+        { image: @image-url("icons/cloud.png") },
+        { image: @image-url("icons/cogs.png") },
+        { image: @image-url("icons/motorcycle.png") },
+        { image: @image-url("icons/video.png") },
+    ];
+    for tile[i] in memory_tiles : MemoryTile {
+        x: mod(i, 4) * 74px;
+        y: floor(i / 4) * 74px;
+        width: 64px;
+        height: 64px;
+        icon: tile.image;
+        open_curtain: tile.image_visible || tile.solved;
+        // propagate the solved status from the model to the tile
+        solved: tile.solved;
+        clicked => {
+            tile.image_visible = !tile.image_visible;
+        }
+    }
+}
+```
 
 The <code><span class="hljs-keyword">for</span> tile\[i\] <span class="hljs-keyword">in</span> memory_tiles:</code> syntax declares a variable `tile` which contains the data of one element from the `memory_tiles` array,
 and a variable `i` which is the index of the tile. The code uses the `i` index to calculate the position of a tile, based on its row and column,

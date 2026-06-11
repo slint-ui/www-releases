@@ -177,26 +177,107 @@ This is the unreleased documentation for the <strong>next</strong> version of Sl
 You are viewing contents of an older version. Switch to <a href="https://docs.slint.dev">the latest released version</a>.
 </div>   <div class="content-panel astro-4r574wmc"> <div class="sl-container astro-4r574wmc"> <h1 id="_top" class="astro-7wrulwsq">Type Mappings</h1> </div> </div> <div class="content-panel astro-4r574wmc"> <div class="sl-container astro-4r574wmc"> <div class="sl-markdown-content"> <p>The types used for properties in <code dir="auto">.slint</code> design markup each translate to specific types in C++.
 The follow table summarizes the entire mapping. The <code dir="auto">.slint</code> types link to the Slint language reference:</p>
-<p>| <code dir="auto">.slint</code> Type | C++ Type | Note |
-| --- | --- | --- |
-| <a href="https://snapshots.slint.dev/master/docs/slint/reference/primitive-types/#int" target="_blank" rel="noopener"><code>int</code></a> | <code dir="auto">int</code> | |
-| <a href="https://snapshots.slint.dev/master/docs/slint/reference/primitive-types/#float" target="_blank" rel="noopener"><code>float</code></a> | <code dir="auto">float</code> | |
-| <a href="https://snapshots.slint.dev/master/docs/slint/reference/primitive-types/#bool" target="_blank" rel="noopener"><code>bool</code></a> | <code dir="auto">bool</code> | |
-| <a href="https://snapshots.slint.dev/master/docs/slint/reference/primitive-types/#string" target="_blank" rel="noopener"><code>string</code></a> | <a href="../api/slint/sharedstring/"><code dir="auto">slint::SharedString</code></a> | A reference-counted string type that uses UTF-8 encoding and can be easily converted to a <code dir="auto">std::string_view</code> or a <code dir="auto">const char *</code>. |
-| <a href="https://snapshots.slint.dev/master/docs/slint/reference/primitive-types/#color" target="_blank" rel="noopener"><code>color</code></a> | <a href="../api/slint/color/"><code dir="auto">slint::Color</code></a> | |
-| <a href="https://snapshots.slint.dev/master/docs/slint/reference/primitive-types/#brush" target="_blank" rel="noopener"><code>brush</code></a> | <a href="../api/slint/brush/"><code dir="auto">slint::Brush</code></a> | |
-| <a href="https://snapshots.slint.dev/master/docs/slint/reference/primitive-types/#image" target="_blank" rel="noopener"><code>image</code></a> | <a href="../api/slint/image/"><code dir="auto">slint::Image</code></a> | |
-| <a href="https://snapshots.slint.dev/master/docs/slint/reference/primitive-types/#physical-length" target="_blank" rel="noopener"><code>physical_length</code></a> | <code dir="auto">float</code> | The unit are physical pixels. |
-| <a href="https://snapshots.slint.dev/master/docs/slint/reference/primitive-types/#length" target="_blank" rel="noopener"><code>length</code></a> | <code dir="auto">float</code> | At run-time, logical lengths are automatically translated to physical pixels using the device pixel ratio. |
-| <a href="https://snapshots.slint.dev/master/docs/slint/reference/primitive-types/#duration" target="_blank" rel="noopener"><code>duration</code></a> | <code dir="auto">std::int64_t</code> | At run-time, durations are always represented as signed 64-bit integers with millisecond precision. |
-| <a href="https://snapshots.slint.dev/master/docs/slint/reference/primitive-types/#angle" target="_blank" rel="noopener"><code>angle</code></a> | <code dir="auto">float</code> | The angle in degrees. |
-| <a href="https://snapshots.slint.dev/master/docs/slint/reference/primitive-types/#relative-font-size" target="_blank" rel="noopener"><code>relative-font-size</code></a> | <code dir="auto">float</code> | Relative font size factor that is multiplied with the <code dir="auto">Window.default-font-size</code> and can be converted to a <code dir="auto">length</code>. |
-| <a href="https://snapshots.slint.dev/master/docs/slint/reference/global-structs-enums/" target="_blank" rel="noopener"><span>structure</span></a> | A <code dir="auto">class</code> of the same name | The order of the data member are in the same as in the slint declaration. |
-| anonymous object | A <code dir="auto">std::tuple</code> | The fields are in alphabetical order. |
-| <a href="https://snapshots.slint.dev/master/docs/slint/reference/global-structs-enums/" target="_blank" rel="noopener"><span>enum</span></a> | An <code dir="auto">enum class</code> | The values are always converted to CamelCase. The order of the values is the same as in the declaration. |
-| <a href="https://snapshots.slint.dev/master/docs/slint/reference/primitive-types/#data-transfer" target="_blank" rel="noopener"><code>data-transfer</code></a> | <a href="../api/slint/datatransfer/"><code dir="auto">slint::DataTransfer</code></a> | Data associated with a drag-drop transfer. |
-| <a href="https://snapshots.slint.dev/master/docs/slint/reference/primitive-types/#styled-text" target="_blank" rel="noopener"><code>styled-text</code></a> | <a href="../api/slint/styledtext/"><code dir="auto">slint::StyledText</code></a> | Styled text parsed from markdown or plain text. Use <code dir="auto">StyledText::from_markdown()</code> or <code dir="auto">StyledText::from_plain_text()</code> to create. |
-| <a href="https://snapshots.slint.dev/master/docs/slint/reference/global-structs-enums/#point" target="_blank" rel="noopener"><code>Point</code></a> | <a href="../api/slint/logicalposition/"><code dir="auto">slint::LogicalPosition</code></a> | A struct with <code dir="auto">x</code> and <code dir="auto">y</code> fields, representing logical coordinates. |</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th><code dir="auto">.slint</code> Type</th><th>C++ Type</th><th>Note</th></tr></thead><tbody><tr><td><a href="https://snapshots.slint.dev/master/docs/slint/reference/primitive-types/#int" target="_blank" rel="noopener"><code>int</code></a></td><td><code dir="auto">int</code></td><td></td></tr><tr><td><a href="https://snapshots.slint.dev/master/docs/slint/reference/primitive-types/#float" target="_blank" rel="noopener"><code>float</code></a></td><td><code dir="auto">float</code></td><td></td></tr><tr><td><a href="https://snapshots.slint.dev/master/docs/slint/reference/primitive-types/#bool" target="_blank" rel="noopener"><code>bool</code></a></td><td><code dir="auto">bool</code></td><td></td></tr><tr><td><a href="https://snapshots.slint.dev/master/docs/slint/reference/primitive-types/#string" target="_blank" rel="noopener"><code>string</code></a></td><td><a href="../api/slint/sharedstring/"><code dir="auto">slint::SharedString</code></a></td><td>A reference-counted string type that uses UTF-8 encoding and can be easily converted to a <code dir="auto">std::string_view</code> or a <code dir="auto">const char *</code>.</td></tr><tr><td><a href="https://snapshots.slint.dev/master/docs/slint/reference/primitive-types/#color" target="_blank" rel="noopener"><code>color</code></a></td><td><a href="../api/slint/color/"><code dir="auto">slint::Color</code></a></td><td></td></tr><tr><td><a href="https://snapshots.slint.dev/master/docs/slint/reference/primitive-types/#brush" target="_blank" rel="noopener"><code>brush</code></a></td><td><a href="../api/slint/brush/"><code dir="auto">slint::Brush</code></a></td><td></td></tr><tr><td><a href="https://snapshots.slint.dev/master/docs/slint/reference/primitive-types/#image" target="_blank" rel="noopener"><code>image</code></a></td><td><a href="../api/slint/image/"><code dir="auto">slint::Image</code></a></td><td></td></tr><tr><td><a href="https://snapshots.slint.dev/master/docs/slint/reference/primitive-types/#physical-length" target="_blank" rel="noopener"><code>physical_length</code></a></td><td><code dir="auto">float</code></td><td>The unit are physical pixels.</td></tr><tr><td><a href="https://snapshots.slint.dev/master/docs/slint/reference/primitive-types/#length" target="_blank" rel="noopener"><code>length</code></a></td><td><code dir="auto">float</code></td><td>At run-time, logical lengths are automatically translated to physical pixels using the device pixel ratio.</td></tr><tr><td><a href="https://snapshots.slint.dev/master/docs/slint/reference/primitive-types/#duration" target="_blank" rel="noopener"><code>duration</code></a></td><td><code dir="auto">std::int64_t</code></td><td>At run-time, durations are always represented as signed 64-bit integers with millisecond precision.</td></tr><tr><td><a href="https://snapshots.slint.dev/master/docs/slint/reference/primitive-types/#angle" target="_blank" rel="noopener"><code>angle</code></a></td><td><code dir="auto">float</code></td><td>The angle in degrees.</td></tr><tr><td><a href="https://snapshots.slint.dev/master/docs/slint/reference/primitive-types/#relative-font-size" target="_blank" rel="noopener"><code>relative-font-size</code></a></td><td><code dir="auto">float</code></td><td>Relative font size factor that is multiplied with the <code dir="auto">Window.default-font-size</code> and can be converted to a <code dir="auto">length</code>.</td></tr><tr><td><a href="https://snapshots.slint.dev/master/docs/slint/reference/global-structs-enums/" target="_blank" rel="noopener"><span>structure</span></a></td><td>A <code dir="auto">class</code> of the same name</td><td>The order of the data member are in the same as in the slint declaration.</td></tr><tr><td>anonymous object</td><td>A <code dir="auto">std::tuple</code></td><td>The fields are in alphabetical order.</td></tr><tr><td><a href="https://snapshots.slint.dev/master/docs/slint/reference/global-structs-enums/" target="_blank" rel="noopener"><span>enum</span></a></td><td>An <code dir="auto">enum class</code></td><td>The values are always converted to CamelCase. The order of the values is the same as in the declaration.</td></tr><tr><td><a href="https://snapshots.slint.dev/master/docs/slint/reference/primitive-types/#data-transfer" target="_blank" rel="noopener"><code>data-transfer</code></a></td><td><a href="../api/slint/datatransfer/"><code dir="auto">slint::DataTransfer</code></a></td><td>Data associated with a drag-drop transfer.</td></tr><tr><td><a href="https://snapshots.slint.dev/master/docs/slint/reference/primitive-types/#styled-text" target="_blank" rel="noopener"><code>styled-text</code></a></td><td><a href="../api/slint/styledtext/"><code dir="auto">slint::StyledText</code></a></td><td>Styled text parsed from markdown or plain text. Use <code dir="auto">StyledText::from_markdown()</code> or <code dir="auto">StyledText::from_plain_text()</code> to create.</td></tr><tr><td><a href="https://snapshots.slint.dev/master/docs/slint/reference/global-structs-enums/#point" target="_blank" rel="noopener"><code>Point</code></a></td><td><a href="../api/slint/logicalposition/"><code dir="auto">slint::LogicalPosition</code></a></td><td>A struct with <code dir="auto">x</code> and <code dir="auto">y</code> fields, representing logical coordinates.</td></tr></tbody></table>
 <div class="sl-heading-wrapper level-h2"><h2 id="structures">Structures</h2><a class="sl-anchor-link" href="#structures"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Structures”</span></a></div>
 <p>The Slint compiler generates a <code dir="auto">class</code> with all data members in
 the same order for any user-defined, exported <code dir="auto">struct</code> in the <code dir="auto">.slint</code>

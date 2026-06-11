@@ -14,10 +14,12 @@ The payload is a `data-transfer` value, which abstracts over the file-type trans
 `data-transfer` values are opaque in Slint code:
 construct and read them via callbacks implemented in the host language.
 
-The source declares which actions it permits via `allow-copy`, `allow-move`, and `allow-link`,
-and a `preferred-action` that applies when no modifier key is pressed. The target picks the final
-action from this set in its `can-drop` callback. Once a drop completes (or the drag is cancelled),
-`drag-finished(action)` fires so a "move" source can remove the original data.
+The source declares which actions it permits via `allow-copy`, `allow-move`, and `allow-link`.
+At least one must be set to true; a `DragArea` that permits no action never starts a drag.
+When no modifier key is pressed, the proposed action is the first allowed of move, copy, link;
+modifier keys request a specific action (Ctrl -> copy, Shift -> move, Ctrl+Shift -> link).
+The target picks the final action from this set in its `can-drop` callback. Once a drop completes
+(or the drag is cancelled), `drag-finished(action)` fires so a "move" source can remove the original data.
 
 See [DragAndDrop](/master/docs/slint/guide/development/drag-and-drop.md) for a usage guide and a complete example.
 
@@ -53,25 +55,19 @@ Vertical hot spot within `drag-image` that aligns with the cursor, in image pixe
 </SlintProperty>
 
 ### allow-copy
-<SlintProperty propName="allow-copy" typeName="bool" defaultValue="true">
+<SlintProperty propName="allow-copy" typeName="bool">
 Whether the source allows the drop to copy the data. The source retains the data.
 </SlintProperty>
 
 ### allow-move
-<SlintProperty propName="allow-move" typeName="bool" defaultValue="false">
+<SlintProperty propName="allow-move" typeName="bool">
 Whether the source allows the drop to move the data. The source should remove the
 original from its model in the `drag-finished` callback when the action is `move`.
 </SlintProperty>
 
 ### allow-link
-<SlintProperty propName="allow-link" typeName="bool" defaultValue="false">
+<SlintProperty propName="allow-link" typeName="bool">
 Whether the source allows the drop to link to the data. Neither side gives up ownership.
-</SlintProperty>
-
-### preferred-action
-<SlintProperty propName="preferred-action" typeName="enum" enumName="DragAction" defaultValue="copy">
-The action used when no modifier key is pressed. The runtime clamps it to the allowed set;
-if the named action isn't allowed, falls back to the first allowed of move, copy, link.
 </SlintProperty>
 
 ### dragging

@@ -18,9 +18,24 @@ mix values with different units attached to them.
 
 Copy the following code into `ui/app-window.slint` file, replacing the current content:
 
-import memoryTile from '/src/content/code/memory_tile.slint?raw'
 
-<Code code={extractLines(memoryTile, 5, 19)} lang="slint" />
+```slint
+component MemoryTile inherits Rectangle {
+    width: 64px;
+    height: 64px;
+    background: #3960D5;
+
+    Image {
+        source: @image-url("icons/bus.png");
+        width: parent.width;
+        height: parent.height;
+    }
+}
+
+export component MainWindow inherits Window {
+    MemoryTile {}
+}
+```
 
 This exports the <span class="hljs-title">MainWindow</span> component so that the game logic code can access it later.
 

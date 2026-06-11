@@ -179,14 +179,54 @@ This is the unreleased documentation for the <strong>next</strong> version of Sl
 You are viewing contents of an older version. Switch to <a href="https://docs.slint.dev">the latest released version</a>.
 </div>   <div class="content-panel astro-4r574wmc"> <div class="sl-container astro-4r574wmc"> <h1 id="_top" class="astro-7wrulwsq">Widget Styles</h1> </div> </div> <div class="content-panel astro-4r574wmc"> <div class="sl-container astro-4r574wmc"> <div class="sl-markdown-content"> <p>You can modify the look of these widgets by choosing a style.</p>
 <p>The styles available include:</p>
-<p>| Style Name | Light Variant | Dark Variant | Description |
-|------------|--------------|--------------|------------|
-| <code dir="auto">fluent</code>   | <code dir="auto">fluent-light</code>| <code dir="auto">fluent-dark</code>| These variants belong to the <strong>Fluent</strong> style, which is based on the <a href="https://fluent2.microsoft.design/" target="_blank" rel="noopener">Fluent Design System<span> ↗</span></a>. |
-| <code dir="auto">material</code> | <code dir="auto">material-light</code>| <code dir="auto">material-dark</code>| These variants are part of the <strong>Material</strong> style, which follows the <a href="https://m3.material.io" target="_blank" rel="noopener">Material Design<span> ↗</span></a>. |
-| <code dir="auto">cupertino</code>| <code dir="auto">cupertino-light</code>| <code dir="auto">cupertino-dark</code>| The <strong>Cupertino</strong> variants emulate the style used by macOS. |
-| <code dir="auto">cosmic</code>| <code dir="auto">cosmic-light</code>| <code dir="auto">cosmic-dark</code>| The <strong>Cosmic</strong> variants emulate the style used by <a href="https://github.com/pop-os/cosmic" target="_blank" rel="noopener">Cosmic Desktop<span> ↗</span></a>. |
-| <code dir="auto">qt</code>   | | | The <strong>Qt</strong> style uses <a href="https://en.wikipedia.org/wiki/Qt_(software)" target="_blank" rel="noopener">Qt<span> ↗</span></a> to render widgets. This style requires Qt to be installed on your system. |
-| <code dir="auto">native</code> | | | This is an alias to one of the other styles depending on the platform. It is <code dir="auto">cupertino</code> on macOS, <code dir="auto">fluent</code> on Windows, <code dir="auto">material</code> on Android, <code dir="auto">qt</code> on linux if Qt is available, or <code dir="auto">fluent</code> otherwise. |</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Style Name</th><th>Light Variant</th><th>Dark Variant</th><th>Description</th></tr></thead><tbody><tr><td><code dir="auto">fluent</code></td><td><code dir="auto">fluent-light</code></td><td><code dir="auto">fluent-dark</code></td><td>These variants belong to the <strong>Fluent</strong> style, which is based on the <a href="https://fluent2.microsoft.design/" target="_blank" rel="noopener">Fluent Design System<span> ↗</span></a>.</td></tr><tr><td><code dir="auto">material</code></td><td><code dir="auto">material-light</code></td><td><code dir="auto">material-dark</code></td><td>These variants are part of the <strong>Material</strong> style, which follows the <a href="https://m3.material.io" target="_blank" rel="noopener">Material Design<span> ↗</span></a>.</td></tr><tr><td><code dir="auto">cupertino</code></td><td><code dir="auto">cupertino-light</code></td><td><code dir="auto">cupertino-dark</code></td><td>The <strong>Cupertino</strong> variants emulate the style used by macOS.</td></tr><tr><td><code dir="auto">cosmic</code></td><td><code dir="auto">cosmic-light</code></td><td><code dir="auto">cosmic-dark</code></td><td>The <strong>Cosmic</strong> variants emulate the style used by <a href="https://github.com/pop-os/cosmic" target="_blank" rel="noopener">Cosmic Desktop<span> ↗</span></a>.</td></tr><tr><td><code dir="auto">qt</code></td><td></td><td></td><td>The <strong>Qt</strong> style uses <a href="https://en.wikipedia.org/wiki/Qt_(software)" target="_blank" rel="noopener">Qt<span> ↗</span></a> to render widgets. This style requires Qt to be installed on your system.</td></tr><tr><td><code dir="auto">native</code></td><td></td><td></td><td>This is an alias to one of the other styles depending on the platform. It is <code dir="auto">cupertino</code> on macOS, <code dir="auto">fluent</code> on Windows, <code dir="auto">material</code> on Android, <code dir="auto">qt</code> on linux if Qt is available, or <code dir="auto">fluent</code> otherwise.</td></tr></tbody></table>
 <p>By default, the styles automatically adapt to the system’s dark or light color setting. Select a <code dir="auto">-light</code> or <code dir="auto">-dark</code> variant to override the system setting and always show either dark or light colors.</p>
 <p>The widget style is determined at your project’s compile time. The method to select a style depends on how you use Slint.</p>
 <p>If no style is selected, <code dir="auto">native</code> is the default.</p>

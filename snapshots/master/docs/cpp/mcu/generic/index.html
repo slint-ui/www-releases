@@ -205,12 +205,32 @@ by running <code dir="auto">rustc --version</code>. Once this is done, you shoul
 </ul>
 <div class="sl-heading-wrapper level-h2"><h2 id="compiling-slint">Compiling Slint</h2><a class="sl-anchor-link" href="#compiling-slint"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Compiling Slint”</span></a></div>
 <p>To target an MCU environment, all of the following additional CMake configuration options must be set when compiling Slint:</p>
-<p>| Option                                                        | Description                                                          |
-|---------------------------------------------------------------|----------------------------------------------------------------------|
-| <code dir="auto">-DSLINT_FEATURE_FREESTANDING=ON</code>                             | Enables building for environments without a standard library.        |
-| <code dir="auto">-DBUILD_SHARED_LIBS=OFF</code>                                     | Disables shared library support and instead builds Slint statically. |
-| <code dir="auto">-DSLINT_FEATURE_RENDERER_SOFTWARE=ON</code>                        | Enable support for the software renderer.                            |
-| <code dir="auto">-DDEFAULT_SLINT_EMBED_RESOURCES=embed-for-software-renderer</code> | Default to pre-compiling images and fonts.                           |</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Option</th><th>Description</th></tr></thead><tbody><tr><td><code dir="auto">-DSLINT_FEATURE_FREESTANDING=ON</code></td><td>Enables building for environments without a standard library.</td></tr><tr><td><code dir="auto">-DBUILD_SHARED_LIBS=OFF</code></td><td>Disables shared library support and instead builds Slint statically.</td></tr><tr><td><code dir="auto">-DSLINT_FEATURE_RENDERER_SOFTWARE=ON</code></td><td>Enable support for the software renderer.</td></tr><tr><td><code dir="auto">-DDEFAULT_SLINT_EMBED_RESOURCES=embed-for-software-renderer</code></td><td>Default to pre-compiling images and fonts.</td></tr></tbody></table>
 <p>For example, if you’re targeting an MCU with a ARM Cortex-M processor, the complete command line for CMake could look like this:</p>
 <div class="expressive-code"><link rel="stylesheet" href="/master/docs/cpp/_astro/ec.386hp.css"><script type="module" src="/master/docs/cpp/_astro/ec.0vx5m.js"></script><figure class="frame is-terminal not-content"><figcaption class="header"><span class="title"></span><span class="sr-only">Terminal window</span></figcaption><pre data-language="sh"><code><div class="ec-line"><div class="code"><span style="--0:#DCDCAA;--1:#795E26">cmake</span><span style="--0:#D4D4D4;--1:#000000"> </span><span style="--0:#569CD6;--1:#0000FF">-DRust_CARGO_TARGET=thumbv7em-none-eabihf</span><span style="--0:#D4D4D4;--1:#000000"> </span><span style="--0:#569CD6;--1:#0000FF">-DSLINT_FEATURE_FREESTANDING=ON</span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#9CDCFE;--1:#001080">-DBUILD_SHARED_LIBS</span><span style="--0:#D4D4D4;--1:#000000">=</span><span style="--0:#CE9178;--1:#A31515">OFF</span><span style="--0:#D4D4D4;--1:#000000"> </span><span style="--0:#9CDCFE;--1:#001080">-DSLINT_FEATURE_RENDERER_SOFTWARE</span><span style="--0:#D4D4D4;--1:#000000">=</span><span style="--0:#CE9178;--1:#A31515">ON</span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#9CDCFE;--1:#001080">-DDEFAULT_SLINT_EMBED_RESOURCES</span><span style="--0:#D4D4D4;--1:#000000">=</span><span style="--0:#CE9178;--1:#A31515">embed-for-software-renderer</span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#DCDCAA;--1:#795E26">..</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="cmake -DRust_CARGO_TARGET=thumbv7em-none-eabihf -DSLINT_FEATURE_FREESTANDING=ON      -DBUILD_SHARED_LIBS=OFF -DSLINT_FEATURE_RENDERER_SOFTWARE=ON      -DDEFAULT_SLINT_EMBED_RESOURCES=embed-for-software-renderer      .."><div></div></button></div><div class="language-label">bash</div></figure></div>
 <div class="sl-heading-wrapper level-h2"><h2 id="next-steps">Next Steps</h2><a class="sl-anchor-link" href="#next-steps"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Next Steps”</span></a></div>

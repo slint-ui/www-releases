@@ -68,3 +68,8 @@ Can be any of the following. See [`easings.net`](https://easings.net/) for a vis
 <SlintProperty propName="direction" typeName="enum" enumName="AnimationDirection">
 Use this to set or change the direction of the animation.
 </SlintProperty>
+
+### enabled
+<SlintProperty propName="enabled" typeName="bool" defaultValue="true">
+Controls whether the animation runs. When set to `false`, the property value changes immediately to its target without delay, easing, or iterations.
+</SlintProperty>
