@@ -67,18 +67,18 @@ The inspector currently has 2 functions.  One is to inspect individual Figma obj
 ## Design-Token File Structure
 
 1. **Import**
-    ```slint
+    ```slint no-test
     // If separate files:
     import { Colors } from "colors.slint";
     import { Spacing } from "spacing.slint";
     ```
-    ```slint
+    ```slint no-test
     // If single file:
     import { Colors, Spacing } from "design-tokens.slint";
     ```
 
 2. **Use variables**
-    ```slint
+    ```slint no-test
     // Use the tokens:
     MyComponent := Rectangle {
         background: Colors.current.background.primary; // Access via .current for mode switching
@@ -89,7 +89,7 @@ The inspector currently has 2 functions.  One is to inspect individual Figma obj
 3.  **Mode Switching:** (For multi-mode collections)
    Modify the `current-mode` property of the imported global:
 
-    ```slint
+    ```slint no-test
     // Example: In your main component's logic
     init => {
         // Set initial mode
