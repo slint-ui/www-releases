@@ -170,37 +170,41 @@ export component Example inherits Path {
 Note how the coordinates of the path elements don't use units - they operate within the imaginary
 coordinate system of the scalable path.
 
-## `ArcTo`
+## `QuadraticTo`
 
-The `ArcTo` sub-element describes the portion of an ellipse. The arc is drawn from the path's
-current position to the location specified by the `x` and `y` properties. The remaining properties
-are modelled after the SVG specification and allow tuning visual features such as the direction
-or angle.
+The QuadraticTo sub-element describes a smooth Bézier from the path's current position to the
+location specified by the `x` and `y` properties, using the control points specified by the
+`control-x` and `control-y` properties.
 
-### large-arc
-<SlintProperty propName="large-arc" typeName="bool">
-Out of the two arcs of a closed ellipse, this flag selects that the larger arc is to be rendered. If the property is `false`, the shorter arc is rendered instead.
+### control-x
+<SlintProperty propName="control-x" typeName="float">
+The x coordinate of the curve's control point.
 </SlintProperty>
 
-### radius-x
-<SlintProperty propName="radius-x" typeName="float">
-The x-radius of the ellipse.
+### control-y
+<SlintProperty propName="control-y" typeName="float">
+The y coordinate of the curve's control point.
 </SlintProperty>
 
-### radius-y
-<SlintProperty propName="radius-y" typeName="float">
-The y-radius of the ellipse.
+### x
+<SlintProperty propName="x" typeName="float">
+The target x position of the curve.
 </SlintProperty>
 
-### sweep
-<SlintProperty propName="sweep" typeName="bool">
-If the property is `true`, the arc will be drawn as a clockwise turning arc; anti-clockwise otherwise.
+### y
+<SlintProperty propName="y" typeName="float">
+The target y position of the curve.
 </SlintProperty>
 
-### x-rotation
-<SlintProperty propName="x-rotation" typeName="float">
-The x-axis of the ellipse will be rotated by the value of this properties, specified in as angle in degrees from 0 to 360.
-</SlintProperty>
+## `Close`
+
+The `Close` element closes the current sub-path and draws a straight line from the current
+position to the beginning of the path.
+
+## `LineTo`
+
+The `LineTo` sub-element describes a line from the path's current position to the
+location specified by the `x` and `y` properties.
 
 ### x
 <SlintProperty propName="x" typeName="float">
@@ -210,22 +214,6 @@ The target x position of the line.
 ### y
 <SlintProperty propName="y" typeName="float">
 The target y position of the line.
-</SlintProperty>
-
-## `MoveTo`
-
-The `MoveTo` sub-element closes the current sub-path, if present, and moves the current point
-to the location specified by the `x` and `y` properties. Subsequent elements such as `LineTo`
-will use this new position as their starting point, therefore this starts a new sub-path.
-
-### x
-<SlintProperty propName="x" typeName="float">
-The x position of the new current point.
-</SlintProperty>
-
-### y
-<SlintProperty propName="y" typeName="float">
-The y position of the new current point.
 </SlintProperty>
 
 ## `CubicTo`
@@ -264,41 +252,53 @@ The target x position of the curve.
 The target y position of the curve.
 </SlintProperty>
 
-## `QuadraticTo`
+## `MoveTo`
 
-The QuadraticTo sub-element describes a smooth Bézier from the path's current position to the
-location specified by the `x` and `y` properties, using the control points specified by the
-`control-x` and `control-y` properties.
-
-### control-x
-<SlintProperty propName="control-x" typeName="float">
-The x coordinate of the curve's control point.
-</SlintProperty>
-
-### control-y
-<SlintProperty propName="control-y" typeName="float">
-The y coordinate of the curve's control point.
-</SlintProperty>
+The `MoveTo` sub-element closes the current sub-path, if present, and moves the current point
+to the location specified by the `x` and `y` properties. Subsequent elements such as `LineTo`
+will use this new position as their starting point, therefore this starts a new sub-path.
 
 ### x
 <SlintProperty propName="x" typeName="float">
-The target x position of the curve.
+The x position of the new current point.
 </SlintProperty>
 
 ### y
 <SlintProperty propName="y" typeName="float">
-The target y position of the curve.
+The y position of the new current point.
 </SlintProperty>
 
-## `Close`
+## `ArcTo`
 
-The `Close` element closes the current sub-path and draws a straight line from the current
-position to the beginning of the path.
+The `ArcTo` sub-element describes the portion of an ellipse. The arc is drawn from the path's
+current position to the location specified by the `x` and `y` properties. The remaining properties
+are modelled after the SVG specification and allow tuning visual features such as the direction
+or angle.
 
-## `LineTo`
+### large-arc
+<SlintProperty propName="large-arc" typeName="bool">
+Out of the two arcs of a closed ellipse, this flag selects that the larger arc is to be rendered. If the property is `false`, the shorter arc is rendered instead.
+</SlintProperty>
 
-The `LineTo` sub-element describes a line from the path's current position to the
-location specified by the `x` and `y` properties.
+### radius-x
+<SlintProperty propName="radius-x" typeName="float">
+The x-radius of the ellipse.
+</SlintProperty>
+
+### radius-y
+<SlintProperty propName="radius-y" typeName="float">
+The y-radius of the ellipse.
+</SlintProperty>
+
+### sweep
+<SlintProperty propName="sweep" typeName="bool">
+If the property is `true`, the arc will be drawn as a clockwise turning arc; anti-clockwise otherwise.
+</SlintProperty>
+
+### x-rotation
+<SlintProperty propName="x-rotation" typeName="float">
+The x-axis of the ellipse will be rotated by the value of this properties, specified in as angle in degrees from 0 to 360.
+</SlintProperty>
 
 ### x
 <SlintProperty propName="x" typeName="float">

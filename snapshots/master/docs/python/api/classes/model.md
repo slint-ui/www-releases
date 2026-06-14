@@ -14,7 +14,7 @@ Subclass Model to implement your own models, or use <XRef to="ListModel" /> to w
 
 Models are iterable and can be used in for loops.
 
-**Bases:** <XRef to="collections.abc.Iterable" plain />&#91;T&#93;
+**Bases:** native.PyModelBase, <XRef to="collections.abc.Iterable" plain />&#91;T&#93;
 
 ## Methods
 

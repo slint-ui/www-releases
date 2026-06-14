@@ -34,6 +34,14 @@ It isn't allowed to access properties of elements within the popup from outside 
 By default, a PopupWindow closes when the user clicks. Set this to false to prevent that behavior and close it manually using the `close()` function.
 </SlintProperty>
 
+### is-open
+<SlintProperty propName="is-open" typeName="bool" propertyVisibility="out">
+Use this read-only property to style the element that opened the popup, for example
+to rotate a ComboBox's arrow while the dropdown is open.
+`true` while the popup is shown on the screen, and `false` once it is closed, for example
+when dismissed by a click, by a selection, or by a programmatic `close()`.
+</SlintProperty>
+
 ## Functions
 
 ### show()

@@ -30,6 +30,13 @@ style name without the suffix. Use [Palette](/master/docs/slint/reference/std-wi
 determine the currently used scheme.
 </SlintProperty>
 
+### decimal-separator
+<SlintProperty propName="decimal-separator" typeName="string" propertyVisibility="out">
+The decimal separator used when converting between `float` and `string`.
+It defaults to the dot (`.`) and is determined by the locale.
+See the [translations guide](/master/docs/slint/guide/development/translations.md) for details.
+</SlintProperty>
+
 ## Functions
 
 ### open-url(url: string) -> bool
@@ -56,9 +63,3 @@ On macOS this invokes `[NSApp arrangeInFront:]`, which raises every application 
 to the top of the window stack. On other platforms this function is a no-op.
 
 This corresponds to the standard macOS **Window › Bring All to Front** menu item.
-
-### decimal-separator
-<SlintProperty propName="decimal-separator" typeName="string" propertyVisibility="out">
-The decimal separator currently used for localized float to string and vice versa conversions
-For more information about localization and how to change the decimal separator see [translations page](/master/docs/slint/guide/development/translations.md).
-</SlintProperty>

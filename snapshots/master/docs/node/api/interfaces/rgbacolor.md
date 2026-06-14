@@ -1,7 +1,7 @@
 ---
 title: "RgbaColor"
 ---
-Defined in: api/node/rust-module.d.cts:456
+Defined in: api/node/rust-module.d.cts:463
 
 RgbaColor represents a color in the Slint run-time, represented using 8-bit channels for red, green, blue and the alpha (opacity).
 
@@ -11,7 +11,7 @@ RgbaColor represents a color in the Slint run-time, represented using 8-bit chan
 
 > `optional` **alpha?**: `number`
 
-Defined in: api/node/rust-module.d.cts:464
+Defined in: api/node/rust-module.d.cts:471
 
 Represents the alpha channel of the color as u8 in the range 0..255.
 
@@ -21,7 +21,7 @@ Represents the alpha channel of the color as u8 in the range 0..255.
 
 > **blue**: `number`
 
-Defined in: api/node/rust-module.d.cts:462
+Defined in: api/node/rust-module.d.cts:469
 
 Represents the blue channel of the color as u8 in the range 0..255.
 
@@ -31,7 +31,7 @@ Represents the blue channel of the color as u8 in the range 0..255.
 
 > **green**: `number`
 
-Defined in: api/node/rust-module.d.cts:460
+Defined in: api/node/rust-module.d.cts:467
 
 Represents the green channel of the color as u8 in the range 0..255.
 
@@ -41,6 +41,6 @@ Represents the green channel of the color as u8 in the range 0..255.
 
 > **red**: `number`
 
-Defined in: api/node/rust-module.d.cts:458
+Defined in: api/node/rust-module.d.cts:465
 
 Represents the red channel of the color as u8 in the range 0..255.

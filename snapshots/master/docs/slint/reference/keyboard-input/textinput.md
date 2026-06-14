@@ -178,6 +178,12 @@ Copies the selected text to the clipboard.
 ### paste()
 Pastes the text content of the clipboard at the cursor position.
 
+### undo()
+Undoes the last text operation.
+
+### redo()
+Redoes the last undone text operation.
+
 ### focus()
 Call this function to focus the text input and make it receive future keyboard events.
 
