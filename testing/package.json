@@ -23,7 +23,10 @@
       "esbuild",
       "sharp",
       "workerd"
-    ]
+    ],
+    "overrides": {
+      "esbuild": "^0.28.1"
+    }
   },
   "devDependencies": {
     "@cloudflare/vitest-pool-workers": "^0.16.8",
