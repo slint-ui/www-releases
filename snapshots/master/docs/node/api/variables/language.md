@@ -3,7 +3,7 @@ title: "language"
 ---
 > `const` **language**: `object` = `_data`
 
-Defined in: api/node/typescript/generated/language.ts:325
+Defined in: api/node/typescript/generated/language.ts:360
 
 Built-in enums and structs from the Slint language.
 Enum values are accessed via `language.ColorScheme.Dark`; struct values via the
@@ -11,6 +11,35 @@ factory call `language.PointerEvent({ button: … })`. Enum and struct types are
 available in type position as `language.ColorScheme` / `language.PointerEvent`.
 
 ## Type Declaration
+
+### AccessibleLiveness
+
+> `readonly` **AccessibleLiveness**: `object`
+
+This enum represents the different values of the `accessible-live-region` property.
+It indicates that an element is a live region whose content changes should be
+announced by assistive technologies.
+
+#### AccessibleLiveness.Assertive
+
+> `readonly` **Assertive**: `"assertive"` = `"assertive"`
+
+Use in regions that present information that a user should know about right away.
+Assistive technologies are expected to announce to the user as soon as possible.
+
+#### AccessibleLiveness.Off
+
+> `readonly` **Off**: `"off"` = `"off"`
+
+Use in regions that present information that is of low-importance to the user.
+Assistive technologies are expected to not announce changes unless the user explicitly asks for it.
+
+#### AccessibleLiveness.Polite
+
+> `readonly` **Polite**: `"polite"` = `"polite"`
+
+Use in regions that present new information to users.
+Assistive technologies are expected to not interrupt the user to inform of changes to the live region.
 
 ### AccessibleRole
 
@@ -329,6 +358,24 @@ This structure is generated and passed to the key press and release callbacks of
 #### Returns
 
 [`KeyEvent`](/master/docs/node/api/slint-ui/namespaces/language/type-aliases/keyevent/)
+
+### Orientation
+
+> `readonly` **Orientation**: `object`
+
+Represents the orientation of an element or widget such as the `Slider`.
+
+#### Orientation.Horizontal
+
+> `readonly` **Horizontal**: `"horizontal"` = `"horizontal"`
+
+Element is oriented horizontally.
+
+#### Orientation.Vertical
+
+> `readonly` **Vertical**: `"vertical"` = `"vertical"`
+
+Element is oriented vertically.
 
 ### PointerEvent
 

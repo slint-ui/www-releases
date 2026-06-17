@@ -14,6 +14,8 @@ title: "slint::language Namespace"
 - [PointerEventKind](pointereventkind/)
 - [PointerEventButton](pointereventbutton/)
 - [AccessibleRole](accessiblerole/)
+- [AccessibleLiveness](accessibleliveness/)
 - [SortOrder](sortorder/)
+- [Orientation](orientation/)
 - [ColorScheme](colorscheme/)
 - [DragAction](dragaction/)

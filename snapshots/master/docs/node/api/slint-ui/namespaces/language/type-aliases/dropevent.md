@@ -3,7 +3,7 @@ title: "DropEvent"
 ---
 > **DropEvent** = `object`
 
-Defined in: api/node/typescript/generated/language.ts:521
+Defined in: api/node/typescript/generated/language.ts:575
 
 This structure is passed to the callbacks of the `DropArea` element
 
@@ -13,7 +13,7 @@ This structure is passed to the callbacks of the `DropArea` element
 
 > **allow\_copy**: `boolean`
 
-Defined in: api/node/typescript/generated/language.ts:533
+Defined in: api/node/typescript/generated/language.ts:587
 
 Mirrors `DragArea.allow-copy`: true if the source allows the drop to copy the data.
 
@@ -23,7 +23,7 @@ Mirrors `DragArea.allow-copy`: true if the source allows the drop to copy the da
 
 > **allow\_link**: `boolean`
 
-Defined in: api/node/typescript/generated/language.ts:541
+Defined in: api/node/typescript/generated/language.ts:595
 
 Mirrors `DragArea.allow-link`: true if the source allows the drop to link to the data.
 
@@ -33,7 +33,7 @@ Mirrors `DragArea.allow-link`: true if the source allows the drop to link to the
 
 > **allow\_move**: `boolean`
 
-Defined in: api/node/typescript/generated/language.ts:537
+Defined in: api/node/typescript/generated/language.ts:591
 
 Mirrors `DragArea.allow-move`: true if the source allows the drop to move the data.
 
@@ -43,7 +43,7 @@ Mirrors `DragArea.allow-move`: true if the source allows the drop to move the da
 
 > **data**: [`DataTransfer`](/master/docs/node/api/classes/datatransfer/)
 
-Defined in: api/node/typescript/generated/language.ts:525
+Defined in: api/node/typescript/generated/language.ts:579
 
 The payload set on the source `DragArea`.
 
@@ -53,7 +53,7 @@ The payload set on the source `DragArea`.
 
 > **position**: `object`
 
-Defined in: api/node/typescript/generated/language.ts:529
+Defined in: api/node/typescript/generated/language.ts:583
 
 The cursor position in the `DropArea`'s local coordinates.
 
@@ -71,7 +71,7 @@ The cursor position in the `DropArea`'s local coordinates.
 
 > **proposed\_action**: [`DragAction`](/master/docs/node/api/slint-ui/namespaces/language/type-aliases/dragaction/)
 
-Defined in: api/node/typescript/generated/language.ts:548
+Defined in: api/node/typescript/generated/language.ts:602
 
 The action negotiated from current modifier state, clamped to the allowed set;
 when no modifier is pressed, the first allowed of move, copy, link.

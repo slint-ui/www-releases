@@ -3,7 +3,7 @@ title: "KeyboardModifiers"
 ---
 > **KeyboardModifiers** = `object`
 
-Defined in: api/node/typescript/generated/language.ts:442
+Defined in: api/node/typescript/generated/language.ts:496
 
 The `KeyboardModifiers` struct provides booleans to indicate possible modifier keys on a keyboard, such as Shift, Control, etc.
 It is provided as part of `KeyEvent`'s `modifiers` field.
@@ -20,7 +20,7 @@ On Windows, the Windows key is mapped to the meta modifier.
 
 > **alt**: `boolean`
 
-Defined in: api/node/typescript/generated/language.ts:446
+Defined in: api/node/typescript/generated/language.ts:500
 
 Indicates the Alt key on a keyboard.
 
@@ -30,7 +30,7 @@ Indicates the Alt key on a keyboard.
 
 > **control**: `boolean`
 
-Defined in: api/node/typescript/generated/language.ts:450
+Defined in: api/node/typescript/generated/language.ts:504
 
 Indicates the Control key on a keyboard, except on macOS, where it is the Command key (⌘).
 
@@ -40,7 +40,7 @@ Indicates the Control key on a keyboard, except on macOS, where it is the Comman
 
 > **meta**: `boolean`
 
-Defined in: api/node/typescript/generated/language.ts:458
+Defined in: api/node/typescript/generated/language.ts:512
 
 Indicates the Control key on macos, and the Windows key on Windows.
 
@@ -50,6 +50,6 @@ Indicates the Control key on macos, and the Windows key on Windows.
 
 > **shift**: `boolean`
 
-Defined in: api/node/typescript/generated/language.ts:454
+Defined in: api/node/typescript/generated/language.ts:508
 
 Indicates the Shift key on a keyboard.

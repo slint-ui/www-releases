@@ -54,8 +54,6 @@ See the Overview documentation for the C++ integration and how to load `.slint` 
 
 ## Enumerations
 - [EventLoopMode](eventloopmode/)
-- [AccessibleLiveness](accessibleliveness/)
-- [Orientation](orientation/)
 - [WindowKind](windowkind/)
 - [RenderingState](renderingstate/)
 - [GraphicsAPI](graphicsapi/)
