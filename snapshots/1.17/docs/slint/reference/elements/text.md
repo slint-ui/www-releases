@@ -40,7 +40,7 @@ while the `preferred-width` and `preferred-height` remain unchanged.
 
 ### color
 <SlintProperty propName="color" typeName="brush" defaultValue="<depends on theme>">
-    The color of the text.
+The color of the text.
 
 <CodeSnippetMD imagePath="/src/assets/generated/text-1.png" imageAlt="text color" imageWidth="200" imageHeight="200" needsBackground="true">
 ```slint "color: #3586f4;"
