@@ -1,9 +1,0 @@
-Metadata-Version: 2.4
-Name: slint-testing
-Version: 0.2
-Requires-Dist: protobuf==5.28.1
-Provides-Extra: dev
-Requires-Dist: pytest; extra == "dev"
-Requires-Dist: pbs3; extra == "dev"
-Requires-Dist: types-protobuf; extra == "dev"
-Requires-Dist: pytesseract; extra == "dev"

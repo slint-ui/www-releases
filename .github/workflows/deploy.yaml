@@ -11,7 +11,6 @@ jobs:
       releases: ${{ steps.filter.outputs.releases }}
       snapshots: ${{ steps.filter.outputs.snapshots }}
       slintpad: ${{ steps.filter.outputs.slintpad }}
-      testing: ${{ steps.filter.outputs.testing }}
     steps:
       - uses: actions/checkout@v4
       - uses: dorny/paths-filter@v4
@@ -24,8 +23,6 @@ jobs:
               - 'snapshots/**'
             slintpad:
               - 'slintpad/**'
-            testing:
-              - 'testing/**'
 
   deploy-releases:
     needs: files-changed
@@ -43,10 +40,4 @@ jobs:
     needs: files-changed
     if: needs.files-changed.outputs.slintpad == 'true'
     uses: ./.github/workflows/deploy-slintpad.yml
-    secrets: inherit
-
-  deploy-testing:
-    needs: files-changed
-    if: needs.files-changed.outputs.testing == 'true'
-    uses: ./.github/workflows/deploy-testing.yml
     secrets: inherit
