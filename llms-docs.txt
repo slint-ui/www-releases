@@ -1,0 +1,15 @@
+# Slint Documentation
+
+> Machine-readable documentation index for Slint, a declarative GUI toolkit for
+> Rust, C++, JavaScript/TypeScript, and Python. Each language has its own
+> llms.txt (curated index) and llms-full.txt (full text).
+
+- [Slint language](https://docs.slint.dev/latest/docs/slint/llms.txt): the .slint language, built-in elements, widgets, and tutorials ([full text](https://docs.slint.dev/latest/docs/slint/llms-full.txt))
+- [Rust API](https://docs.slint.dev/latest/docs/rust/llms.txt): the native Rust API ([full text](https://docs.slint.dev/latest/docs/rust/llms-full.txt))
+- [C++ API](https://docs.slint.dev/latest/docs/cpp/llms.txt)
+- [JavaScript / TypeScript API](https://docs.slint.dev/latest/docs/node/llms.txt)
+- [Python API](https://docs.slint.dev/latest/docs/python/llms.txt)
+
+## Also
+- [Slint website](https://slint.dev/llms.txt)
+- [Slint on GitHub](https://github.com/slint-ui/slint)
