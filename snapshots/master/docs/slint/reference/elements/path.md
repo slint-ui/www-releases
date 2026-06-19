@@ -170,6 +170,37 @@ export component Example inherits Path {
 Note how the coordinates of the path elements don't use units - they operate within the imaginary
 coordinate system of the scalable path.
 
+## `MoveTo`
+
+The `MoveTo` sub-element closes the current sub-path, if present, and moves the current point
+to the location specified by the `x` and `y` properties. Subsequent elements such as `LineTo`
+will use this new position as their starting point, therefore this starts a new sub-path.
+
+### x
+<SlintProperty propName="x" typeName="float">
+The x position of the new current point.
+</SlintProperty>
+
+### y
+<SlintProperty propName="y" typeName="float">
+The y position of the new current point.
+</SlintProperty>
+
+## `LineTo`
+
+The `LineTo` sub-element describes a line from the path's current position to the
+location specified by the `x` and `y` properties.
+
+### x
+<SlintProperty propName="x" typeName="float">
+The target x position of the line.
+</SlintProperty>
+
+### y
+<SlintProperty propName="y" typeName="float">
+The target y position of the line.
+</SlintProperty>
+
 ## `CubicTo`
 
 The `CubicTo` sub-element describes a smooth Bézier from the path's current position to the
@@ -204,22 +235,6 @@ The target x position of the curve.
 ### y
 <SlintProperty propName="y" typeName="float">
 The target y position of the curve.
-</SlintProperty>
-
-## `MoveTo`
-
-The `MoveTo` sub-element closes the current sub-path, if present, and moves the current point
-to the location specified by the `x` and `y` properties. Subsequent elements such as `LineTo`
-will use this new position as their starting point, therefore this starts a new sub-path.
-
-### x
-<SlintProperty propName="x" typeName="float">
-The x position of the new current point.
-</SlintProperty>
-
-### y
-<SlintProperty propName="y" typeName="float">
-The y position of the new current point.
 </SlintProperty>
 
 ## `QuadraticTo`
@@ -284,21 +299,6 @@ If the property is `true`, the arc will be drawn as a clockwise turning arc; ant
 <SlintProperty propName="x-rotation" typeName="float">
 The x-axis of the ellipse will be rotated by the value of this properties, specified in as angle in degrees from 0 to 360.
 </SlintProperty>
-
-### x
-<SlintProperty propName="x" typeName="float">
-The target x position of the line.
-</SlintProperty>
-
-### y
-<SlintProperty propName="y" typeName="float">
-The target y position of the line.
-</SlintProperty>
-
-## `LineTo`
-
-The `LineTo` sub-element describes a line from the path's current position to the
-location specified by the `x` and `y` properties.
 
 ### x
 <SlintProperty propName="x" typeName="float">

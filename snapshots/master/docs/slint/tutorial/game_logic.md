@@ -18,7 +18,97 @@ considers them solved and they remain open. Otherwise, the game waits briefly so
 the location of the icons, and then closes the curtains again.
 
 <Tabs syncKey="dev-language">
-<TabItem label="C++">
+<TabItem label="Rust" icon="seti:rust">
+
+Add the following code inside the <span class="hljs-title">MainWindow</span> component to signal to the Rust code when the user clicks on a tile.
+
+```slint
+    export component MainWindow inherits Window {
+        width: 326px;
+        height: 326px;
+
+        callback check_if_pair_solved(); // Added
+        in property <bool> disable_tiles; // Added
+
+        in-out property <[TileData]> memory_tiles: [
+           { image: @image-url("icons/at.png") },
+```
+
+This change adds a way for the <span class="hljs-title">MainWindow</span> to call to the Rust code that it should
+check if a player has solved a pair of tiles. The Rust code needs an additional property to toggle to disable further
+tile interaction, to prevent the player from opening more tiles than allowed. No cheating allowed!
+
+The last change to the code is to act when the <span class="hljs-title">MemoryTile</span> signals that a player clicked it.
+
+Add the following handler in the <span class="hljs-title">MainWindow</span> `for` loop `clicked` handler:
+
+```slint
+        for tile[i] in memory_tiles : MemoryTile {
+            x: mod(i, 4) * 74px;
+            y: floor(i / 4) * 74px;
+            width: 64px;
+            height: 64px;
+            icon: tile.image;
+            open_curtain: tile.image_visible || tile.solved;
+            // propagate the solved status from the model to the tile
+            solved: tile.solved;
+            clicked => {
+                // old: tile.image_visible = !tile.image_visible;
+                // new:
+                if (!root.disable_tiles) {
+                    tile.image_visible = true;
+                    root.check_if_pair_solved();
+                }
+            }
+        }
+```
+
+On the Rust side, you can now add a handler to the `check_if_pair_solved` callback, that checks if a player opened two tiles.
+If they match, the code sets the `solved` property to true in the model. If they don't
+match, start a timer that closes the tiles after one second. While the timer is running, disable every tile so
+a player can't click anything during this time.
+
+Add this code before the `main_window.run().unwrap();` call:
+
+```rust
+    let main_window_weak = main_window.as_weak();
+    main_window.on_check_if_pair_solved(move || {
+        let mut flipped_tiles =
+            tiles_model.iter().enumerate().filter(|(_, tile)| tile.image_visible && !tile.solved);
+
+        if let (Some((t1_idx, mut t1)), Some((t2_idx, mut t2))) =
+            (flipped_tiles.next(), flipped_tiles.next())
+        {
+            let is_pair_solved = t1 == t2;
+            if is_pair_solved {
+                t1.solved = true;
+                tiles_model.set_row_data(t1_idx, t1);
+                t2.solved = true;
+                tiles_model.set_row_data(t2_idx, t2);
+            } else {
+                let main_window = main_window_weak.unwrap();
+                main_window.set_disable_tiles(true);
+                let tiles_model = tiles_model.clone();
+                slint::Timer::single_shot(std::time::Duration::from_secs(1), move || {
+                    main_window.set_disable_tiles(false);
+                    t1.image_visible = false;
+                    tiles_model.set_row_data(t1_idx, t1);
+                    t2.image_visible = false;
+                    tiles_model.set_row_data(t2_idx, t2);
+                });
+            }
+        }
+    });
+```
+
+The code uses a <LangRefLink lang="rust-slint" relpath="struct.Weak">Weak</LangRefLink> pointer of the `main_window`. This is
+important because capturing a copy of the `main_window` itself within the callback handler would result in circular ownership.
+The `MainWindow` owns the callback handler, which itself owns a reference to the `MainWindow`, which must be weak
+instead of strong to avoid a memory leak.
+
+</TabItem>
+
+<TabItem label="C++" icon="seti:cpp">
 
 Add the following code inside the <span class="hljs-title">MainWindow</span> component to signal to the C++ code when the user clicks on a tile.
 
@@ -120,7 +210,7 @@ The `MainWindow` owns the callback handler, which itself owns a reference to the
 instead of strong to avoid a memory leak.
 
 </TabItem>
-<TabItem label="NodeJS">
+<TabItem label="NodeJS" icon="node">
 
 Change the contents of `memory.slint` to signal to the JavaScript code when the user clicks on a tile.
 
@@ -210,97 +300,7 @@ mainWindow.check_if_pair_solved = function () {
 ```
 </TabItem>
 
-<TabItem label="Rust">
-
-Add the following code inside the <span class="hljs-title">MainWindow</span> component to signal to the Rust code when the user clicks on a tile.
-
-```slint
-    export component MainWindow inherits Window {
-        width: 326px;
-        height: 326px;
-
-        callback check_if_pair_solved(); // Added
-        in property <bool> disable_tiles; // Added
-
-        in-out property <[TileData]> memory_tiles: [
-           { image: @image-url("icons/at.png") },
-```
-
-This change adds a way for the <span class="hljs-title">MainWindow</span> to call to the Rust code that it should
-check if a player has solved a pair of tiles. The Rust code needs an additional property to toggle to disable further
-tile interaction, to prevent the player from opening more tiles than allowed. No cheating allowed!
-
-The last change to the code is to act when the <span class="hljs-title">MemoryTile</span> signals that a player clicked it.
-
-Add the following handler in the <span class="hljs-title">MainWindow</span> `for` loop `clicked` handler:
-
-```slint
-        for tile[i] in memory_tiles : MemoryTile {
-            x: mod(i, 4) * 74px;
-            y: floor(i / 4) * 74px;
-            width: 64px;
-            height: 64px;
-            icon: tile.image;
-            open_curtain: tile.image_visible || tile.solved;
-            // propagate the solved status from the model to the tile
-            solved: tile.solved;
-            clicked => {
-                // old: tile.image_visible = !tile.image_visible;
-                // new:
-                if (!root.disable_tiles) {
-                    tile.image_visible = true;
-                    root.check_if_pair_solved();
-                }
-            }
-        }
-```
-
-On the Rust side, you can now add a handler to the `check_if_pair_solved` callback, that checks if a player opened two tiles.
-If they match, the code sets the `solved` property to true in the model. If they don't
-match, start a timer that closes the tiles after one second. While the timer is running, disable every tile so
-a player can't click anything during this time.
-
-Add this code before the `main_window.run().unwrap();` call:
-
-```rust
-    let main_window_weak = main_window.as_weak();
-    main_window.on_check_if_pair_solved(move || {
-        let mut flipped_tiles =
-            tiles_model.iter().enumerate().filter(|(_, tile)| tile.image_visible && !tile.solved);
-
-        if let (Some((t1_idx, mut t1)), Some((t2_idx, mut t2))) =
-            (flipped_tiles.next(), flipped_tiles.next())
-        {
-            let is_pair_solved = t1 == t2;
-            if is_pair_solved {
-                t1.solved = true;
-                tiles_model.set_row_data(t1_idx, t1);
-                t2.solved = true;
-                tiles_model.set_row_data(t2_idx, t2);
-            } else {
-                let main_window = main_window_weak.unwrap();
-                main_window.set_disable_tiles(true);
-                let tiles_model = tiles_model.clone();
-                slint::Timer::single_shot(std::time::Duration::from_secs(1), move || {
-                    main_window.set_disable_tiles(false);
-                    t1.image_visible = false;
-                    tiles_model.set_row_data(t1_idx, t1);
-                    t2.image_visible = false;
-                    tiles_model.set_row_data(t2_idx, t2);
-                });
-            }
-        }
-    });
-```
-
-The code uses a <LangRefLink lang="rust-slint" relpath="struct.Weak">Weak</LangRefLink> pointer of the `main_window`. This is
-important because capturing a copy of the `main_window` itself within the callback handler would result in circular ownership.
-The `MainWindow` owns the callback handler, which itself owns a reference to the `MainWindow`, which must be weak
-instead of strong to avoid a memory leak.
-
-</TabItem>
-
-<TabItem label="Python">
+<TabItem label="Python" icon="seti:python">
 
 Change the contents of `memory.slint` to signal to the Python code when the user clicks on a tile.
 
