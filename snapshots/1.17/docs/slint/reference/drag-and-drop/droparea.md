@@ -35,8 +35,8 @@ action. Use this callback to read `event.data` and apply the drop. The returned
 to mirror what was negotiated during hover, or a different action to refine the choice at
 drop time. The runtime clamps the return value against the source's allowed set.
 
-### contains-drag
-<SlintProperty propName="contains-drag" typeName="bool" propertyVisibility="out">
+### has-drag
+<SlintProperty propName="has-drag" typeName="bool" propertyVisibility="out">
 `true` while an accepted drag hovers over the area, `false` otherwise.
 Bind it to a visual property to give the user feedback, for example a background color.
 </SlintProperty>

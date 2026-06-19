@@ -16,7 +16,49 @@ Slint has application templates you can use to create a project with dependencie
 ## Prerequisites
 
 <Tabs syncKey="dev-language">
-  <TabItem label="C++">
+<TabItem label="Rust" icon="seti:rust">
+
+We recommend using [rust-analyzer](https://rust-analyzer.github.io) and [our editor integrations for Slint](https://github.com/slint-ui/slint/tree/master/editors) for following this tutorial.
+
+1. Download and extract the [ZIP archive](https://github.com/slint-ui/slint-rust-template/archive/refs/heads/main.zip) of the [Rust Template](https://github.com/slint-ui/slint-rust-template).
+2. Rename the extracted directory and change into it:
+
+```sh
+mv slint-rust-template-main memory
+cd memory
+```
+
+### Configure the project
+
+Replace the contents of `src/main.rs` with the following:
+
+```rust
+slint::include_modules!();
+
+fn main() -> Result<(), slint::PlatformError> {
+    let main_window = MainWindow::new()?;
+
+    main_window.run()
+}
+```
+
+Replace the contents of `ui/app-window.slint` with the following:
+
+```slint title="memory.slint"
+export component MainWindow inherits Window {
+    Text {
+        text: "hello world";
+        color: green;
+    }
+}
+```
+
+
+### Run the application
+
+Run the example with `cargo run` and a window appears with the green "Hello World" greeting.
+</TabItem>
+  <TabItem label="C++" icon="seti:cpp">
 
 Before using the template, you need a C++ compiler that supports C++ 20 and to install [CMake](https://cmake.org/download/) 3.21 or newer.
 
@@ -102,7 +144,7 @@ my_application
 ```
 </TabItem>
 
-<TabItem label="NodeJS">
+<TabItem label="NodeJS" icon="node">
 
 1. Download and extract the [ZIP archive](https://github.com/slint-ui/slint-nodejs-template/archive/refs/heads/main.zip) of the [Node.js Template](https://github.com/slint-ui/slint-nodejs-template).
 2. Rename the extracted directory and change into it:
@@ -152,49 +194,7 @@ export component MainWindow inherits Window {
 Run the example with `npm start` and a window appears with the green "Hello World" greeting.
 
 </TabItem>
-<TabItem label="Rust">
-
-We recommend using [rust-analyzer](https://rust-analyzer.github.io) and [our editor integrations for Slint](https://github.com/slint-ui/slint/tree/master/editors) for following this tutorial.
-
-1. Download and extract the [ZIP archive](https://github.com/slint-ui/slint-rust-template/archive/refs/heads/main.zip) of the [Rust Template](https://github.com/slint-ui/slint-rust-template).
-2. Rename the extracted directory and change into it:
-
-```sh
-mv slint-rust-template-main memory
-cd memory
-```
-
-### Configure the project
-
-Replace the contents of `src/main.rs` with the following:
-
-```rust
-slint::include_modules!();
-
-fn main() -> Result<(), slint::PlatformError> {
-    let main_window = MainWindow::new()?;
-
-    main_window.run()
-}
-```
-
-Replace the contents of `ui/app-window.slint` with the following:
-
-```slint title="memory.slint"
-export component MainWindow inherits Window {
-    Text {
-        text: "hello world";
-        color: green;
-    }
-}
-```
-
-
-### Run the application
-
-Run the example with `cargo run` and a window appears with the green "Hello World" greeting.
-</TabItem>
-<TabItem label="Python">
+<TabItem label="Python" icon="seti:python">
 
 1. Download and extract the [ZIP archive](https://github.com/slint-ui/slint-python-template/archive/refs/heads/main.zip) of the [Python Template](https://github.com/slint-ui/slint-python-template).
 2. Rename the extracted directory and change into it:

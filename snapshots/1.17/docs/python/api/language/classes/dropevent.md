@@ -24,24 +24,6 @@ The payload set on the source `DragArea`.
 
 The cursor position in the `DropArea`'s local coordinates.
 
-### allow_copy
-
-<Signature symbol="slint.language.DropEvent.allow_copy">allow_copy: <XRef to="bool" plain /></Signature>
-
-Mirrors `DragArea.allow-copy`: true if the source allows the drop to copy the data.
-
-### allow_move
-
-<Signature symbol="slint.language.DropEvent.allow_move">allow_move: <XRef to="bool" plain /></Signature>
-
-Mirrors `DragArea.allow-move`: true if the source allows the drop to move the data.
-
-### allow_link
-
-<Signature symbol="slint.language.DropEvent.allow_link">allow_link: <XRef to="bool" plain /></Signature>
-
-Mirrors `DragArea.allow-link`: true if the source allows the drop to link to the data.
-
 ### proposed_action
 
 <Signature symbol="slint.language.DropEvent.proposed_action">proposed_action: <XRef to="slint.language.DragAction" plain /> | None</Signature>
