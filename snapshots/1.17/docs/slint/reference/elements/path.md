@@ -237,21 +237,6 @@ The target y position of the curve.
 The `Close` element closes the current sub-path and draws a straight line from the current
 position to the beginning of the path.
 
-## `LineTo`
-
-The `LineTo` sub-element describes a line from the path's current position to the
-location specified by the `x` and `y` properties.
-
-### x
-<SlintProperty propName="x" typeName="float">
-The target x position of the line.
-</SlintProperty>
-
-### y
-<SlintProperty propName="y" typeName="float">
-The target y position of the line.
-</SlintProperty>
-
 ## `ArcTo`
 
 The `ArcTo` sub-element describes the portion of an ellipse. The arc is drawn from the path's
@@ -283,6 +268,21 @@ If the property is `true`, the arc will be drawn as a clockwise turning arc; ant
 <SlintProperty propName="x-rotation" typeName="float">
 The x-axis of the ellipse will be rotated by the value of this properties, specified in as angle in degrees from 0 to 360.
 </SlintProperty>
+
+### x
+<SlintProperty propName="x" typeName="float">
+The target x position of the line.
+</SlintProperty>
+
+### y
+<SlintProperty propName="y" typeName="float">
+The target y position of the line.
+</SlintProperty>
+
+## `LineTo`
+
+The `LineTo` sub-element describes a line from the path's current position to the
+location specified by the `x` and `y` properties.
 
 ### x
 <SlintProperty propName="x" typeName="float">
