@@ -170,104 +170,6 @@ export component Example inherits Path {
 Note how the coordinates of the path elements don't use units - they operate within the imaginary
 coordinate system of the scalable path.
 
-## `MoveTo`
-
-The `MoveTo` sub-element closes the current sub-path, if present, and moves the current point
-to the location specified by the `x` and `y` properties. Subsequent elements such as `LineTo`
-will use this new position as their starting point, therefore this starts a new sub-path.
-
-### x
-<SlintProperty propName="x" typeName="float">
-The x position of the new current point.
-</SlintProperty>
-
-### y
-<SlintProperty propName="y" typeName="float">
-The y position of the new current point.
-</SlintProperty>
-
-## `LineTo`
-
-The `LineTo` sub-element describes a line from the path's current position to the
-location specified by the `x` and `y` properties.
-
-### x
-<SlintProperty propName="x" typeName="float">
-The target x position of the line.
-</SlintProperty>
-
-### y
-<SlintProperty propName="y" typeName="float">
-The target y position of the line.
-</SlintProperty>
-
-## `CubicTo`
-
-The `CubicTo` sub-element describes a smooth Bézier from the path's current position to the
-location specified by the `x` and `y` properties, using two control points specified by their
-respective properties.
-
-### control-1-x
-<SlintProperty propName="control-1-x" typeName="float">
-The x coordinate of the curve's first control point.
-</SlintProperty>
-
-### control-1-y
-<SlintProperty propName="control-1-y" typeName="float">
-The y coordinate of the curve's first control point.
-</SlintProperty>
-
-### control-2-x
-<SlintProperty propName="control-2-x" typeName="float">
-The x coordinate of the curve's second control point.
-</SlintProperty>
-
-### control-2-y
-<SlintProperty propName="control-2-y" typeName="float">
-The y coordinate of the curve's second control point.
-</SlintProperty>
-
-### x
-<SlintProperty propName="x" typeName="float">
-The target x position of the curve.
-</SlintProperty>
-
-### y
-<SlintProperty propName="y" typeName="float">
-The target y position of the curve.
-</SlintProperty>
-
-## `QuadraticTo`
-
-The QuadraticTo sub-element describes a smooth Bézier from the path's current position to the
-location specified by the `x` and `y` properties, using the control points specified by the
-`control-x` and `control-y` properties.
-
-### control-x
-<SlintProperty propName="control-x" typeName="float">
-The x coordinate of the curve's control point.
-</SlintProperty>
-
-### control-y
-<SlintProperty propName="control-y" typeName="float">
-The y coordinate of the curve's control point.
-</SlintProperty>
-
-### x
-<SlintProperty propName="x" typeName="float">
-The target x position of the curve.
-</SlintProperty>
-
-### y
-<SlintProperty propName="y" typeName="float">
-The target y position of the curve.
-</SlintProperty>
-
-## `Close`
-
-The `Close` element closes the current sub-path and draws a straight line from the current
-position to the beginning of the path.
-
 ## `ArcTo`
 
 The `ArcTo` sub-element describes the portion of an ellipse. The arc is drawn from the path's
@@ -308,4 +210,102 @@ The target x position of the line.
 ### y
 <SlintProperty propName="y" typeName="float">
 The target y position of the line.
+</SlintProperty>
+
+## `Close`
+
+The `Close` element closes the current sub-path and draws a straight line from the current
+position to the beginning of the path.
+
+## `LineTo`
+
+The `LineTo` sub-element describes a line from the path's current position to the
+location specified by the `x` and `y` properties.
+
+### x
+<SlintProperty propName="x" typeName="float">
+The target x position of the line.
+</SlintProperty>
+
+### y
+<SlintProperty propName="y" typeName="float">
+The target y position of the line.
+</SlintProperty>
+
+## `QuadraticTo`
+
+The QuadraticTo sub-element describes a smooth Bézier from the path's current position to the
+location specified by the `x` and `y` properties, using the control points specified by the
+`control-x` and `control-y` properties.
+
+### control-x
+<SlintProperty propName="control-x" typeName="float">
+The x coordinate of the curve's control point.
+</SlintProperty>
+
+### control-y
+<SlintProperty propName="control-y" typeName="float">
+The y coordinate of the curve's control point.
+</SlintProperty>
+
+### x
+<SlintProperty propName="x" typeName="float">
+The target x position of the curve.
+</SlintProperty>
+
+### y
+<SlintProperty propName="y" typeName="float">
+The target y position of the curve.
+</SlintProperty>
+
+## `MoveTo`
+
+The `MoveTo` sub-element closes the current sub-path, if present, and moves the current point
+to the location specified by the `x` and `y` properties. Subsequent elements such as `LineTo`
+will use this new position as their starting point, therefore this starts a new sub-path.
+
+### x
+<SlintProperty propName="x" typeName="float">
+The x position of the new current point.
+</SlintProperty>
+
+### y
+<SlintProperty propName="y" typeName="float">
+The y position of the new current point.
+</SlintProperty>
+
+## `CubicTo`
+
+The `CubicTo` sub-element describes a smooth Bézier from the path's current position to the
+location specified by the `x` and `y` properties, using two control points specified by their
+respective properties.
+
+### control-1-x
+<SlintProperty propName="control-1-x" typeName="float">
+The x coordinate of the curve's first control point.
+</SlintProperty>
+
+### control-1-y
+<SlintProperty propName="control-1-y" typeName="float">
+The y coordinate of the curve's first control point.
+</SlintProperty>
+
+### control-2-x
+<SlintProperty propName="control-2-x" typeName="float">
+The x coordinate of the curve's second control point.
+</SlintProperty>
+
+### control-2-y
+<SlintProperty propName="control-2-y" typeName="float">
+The y coordinate of the curve's second control point.
+</SlintProperty>
+
+### x
+<SlintProperty propName="x" typeName="float">
+The target x position of the curve.
+</SlintProperty>
+
+### y
+<SlintProperty propName="y" typeName="float">
+The target y position of the curve.
 </SlintProperty>
