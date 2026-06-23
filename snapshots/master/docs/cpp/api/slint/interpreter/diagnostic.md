@@ -13,32 +13,42 @@ struct Diagnostic;
 
 ## Public Attributes
 
-### <a id="message"></a> `message`
+### `message`
 
-<pre class="shiki shiki-themes light-plus dark-plus api-signature" style="--shiki-light:#000000;--shiki-dark:#D4D4D4;--shiki-light-bg:#FFFFFF;--shiki-dark-bg:#1E1E1E" tabindex="0"><code><span class="line"><a style="--shiki-light:#000000;--shiki-dark:#D4D4D4" href="../../sharedstring/" class="api-link">SharedString</a><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4"> </span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">slint</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">interpreter</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">Diagnostic</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::message</span></span></code></pre>
+```cpp
+SharedString slint::interpreter::Diagnostic::message
+```
 
 The message describing the warning or error.
 
-### <a id="source_file"></a> `source_file`
+### `source_file`
 
-<pre class="shiki shiki-themes light-plus dark-plus api-signature" style="--shiki-light:#000000;--shiki-dark:#D4D4D4;--shiki-light-bg:#FFFFFF;--shiki-dark-bg:#1E1E1E" tabindex="0"><code><span class="line"><a style="--shiki-light:#000000;--shiki-dark:#D4D4D4" href="../../sharedstring/" class="api-link">SharedString</a><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4"> </span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">slint</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">interpreter</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">Diagnostic</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::source_file</span></span></code></pre>
+```cpp
+SharedString slint::interpreter::Diagnostic::source_file
+```
 
 The path to the source file where the warning or error is located.
 
-### <a id="line"></a> `line`
+### `line`
 
-<pre class="shiki shiki-themes light-plus dark-plus api-signature" style="--shiki-light:#000000;--shiki-dark:#D4D4D4;--shiki-light-bg:#FFFFFF;--shiki-dark-bg:#1E1E1E" tabindex="0"><code><span class="line"><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6">uintptr_t</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0"> slint</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">interpreter</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">Diagnostic</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::line</span></span></code></pre>
+```cpp
+uintptr_t slint::interpreter::Diagnostic::line
+```
 
 The line within the source file. Line numbers start at 1.
 
-### <a id="column"></a> `column`
+### `column`
 
-<pre class="shiki shiki-themes light-plus dark-plus api-signature" style="--shiki-light:#000000;--shiki-dark:#D4D4D4;--shiki-light-bg:#FFFFFF;--shiki-dark-bg:#1E1E1E" tabindex="0"><code><span class="line"><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6">uintptr_t</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0"> slint</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">interpreter</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">Diagnostic</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::column</span></span></code></pre>
+```cpp
+uintptr_t slint::interpreter::Diagnostic::column
+```
 
 The column within the source file. Column numbers start at 1.
 
-### <a id="level"></a> `level`
+### `level`
 
-<pre class="shiki shiki-themes light-plus dark-plus api-signature" style="--shiki-light:#000000;--shiki-dark:#D4D4D4;--shiki-light-bg:#FFFFFF;--shiki-dark-bg:#1E1E1E" tabindex="0"><code><span class="line"><a style="--shiki-light:#000000;--shiki-dark:#D4D4D4" href="../diagnosticlevel/" class="api-link">DiagnosticLevel</a><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4"> </span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">slint</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">interpreter</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">Diagnostic</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::level</span></span></code></pre>
+```cpp
+DiagnosticLevel slint::interpreter::Diagnostic::level
+```
 
 The level of the diagnostic, such as a warning or an error.

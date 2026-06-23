@@ -17,26 +17,34 @@ On Windows, the Windows key is mapped to the meta modifier.
 
 ## Public Attributes
 
-### <a id="alt"></a> `alt`
+### `alt`
 
-<pre class="shiki shiki-themes light-plus dark-plus api-signature" style="--shiki-light:#000000;--shiki-dark:#D4D4D4;--shiki-light-bg:#FFFFFF;--shiki-dark-bg:#1E1E1E" tabindex="0"><code><span class="line"><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6">bool</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0"> slint</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">language</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">KeyboardModifiers</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::alt</span></span></code></pre>
+```cpp
+bool slint::language::KeyboardModifiers::alt
+```
 
 Indicates the Alt key on a keyboard.
 
-### <a id="control"></a> `control`
+### `control`
 
-<pre class="shiki shiki-themes light-plus dark-plus api-signature" style="--shiki-light:#000000;--shiki-dark:#D4D4D4;--shiki-light-bg:#FFFFFF;--shiki-dark-bg:#1E1E1E" tabindex="0"><code><span class="line"><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6">bool</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0"> slint</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">language</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">KeyboardModifiers</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::control</span></span></code></pre>
+```cpp
+bool slint::language::KeyboardModifiers::control
+```
 
 Indicates the Control key on a keyboard, except on macOS, where it is the Command key (⌘).
 
-### <a id="shift"></a> `shift`
+### `shift`
 
-<pre class="shiki shiki-themes light-plus dark-plus api-signature" style="--shiki-light:#000000;--shiki-dark:#D4D4D4;--shiki-light-bg:#FFFFFF;--shiki-dark-bg:#1E1E1E" tabindex="0"><code><span class="line"><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6">bool</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0"> slint</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">language</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">KeyboardModifiers</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::shift</span></span></code></pre>
+```cpp
+bool slint::language::KeyboardModifiers::shift
+```
 
 Indicates the Shift key on a keyboard.
 
-### <a id="meta"></a> `meta`
+### `meta`
 
-<pre class="shiki shiki-themes light-plus dark-plus api-signature" style="--shiki-light:#000000;--shiki-dark:#D4D4D4;--shiki-light-bg:#FFFFFF;--shiki-dark-bg:#1E1E1E" tabindex="0"><code><span class="line"><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6">bool</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0"> slint</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">language</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">KeyboardModifiers</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::meta</span></span></code></pre>
+```cpp
+bool slint::language::KeyboardModifiers::meta
+```
 
 Indicates the Control key on macos, and the Windows key on Windows.

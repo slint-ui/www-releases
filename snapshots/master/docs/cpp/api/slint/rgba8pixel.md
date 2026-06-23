@@ -14,26 +14,34 @@ Represents an RGBA pixel.
 
 ## Public Attributes
 
-### <a id="r"></a> `r`
+### `r`
 
-<pre class="shiki shiki-themes light-plus dark-plus api-signature" style="--shiki-light:#000000;--shiki-dark:#D4D4D4;--shiki-light-bg:#FFFFFF;--shiki-dark-bg:#1E1E1E" tabindex="0"><code><span class="line"><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6">uint8_t</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0"> slint</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">Rgba8Pixel</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::r</span></span></code></pre>
+```cpp
+uint8_t slint::Rgba8Pixel::r
+```
 
 red value (between 0 and 255)
 
-### <a id="g"></a> `g`
+### `g`
 
-<pre class="shiki shiki-themes light-plus dark-plus api-signature" style="--shiki-light:#000000;--shiki-dark:#D4D4D4;--shiki-light-bg:#FFFFFF;--shiki-dark-bg:#1E1E1E" tabindex="0"><code><span class="line"><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6">uint8_t</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0"> slint</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">Rgba8Pixel</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::g</span></span></code></pre>
+```cpp
+uint8_t slint::Rgba8Pixel::g
+```
 
 green value (between 0 and 255)
 
-### <a id="b"></a> `b`
+### `b`
 
-<pre class="shiki shiki-themes light-plus dark-plus api-signature" style="--shiki-light:#000000;--shiki-dark:#D4D4D4;--shiki-light-bg:#FFFFFF;--shiki-dark-bg:#1E1E1E" tabindex="0"><code><span class="line"><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6">uint8_t</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0"> slint</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">Rgba8Pixel</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::b</span></span></code></pre>
+```cpp
+uint8_t slint::Rgba8Pixel::b
+```
 
 blue value (between 0 and 255)
 
-### <a id="a"></a> `a`
+### `a`
 
-<pre class="shiki shiki-themes light-plus dark-plus api-signature" style="--shiki-light:#000000;--shiki-dark:#D4D4D4;--shiki-light-bg:#FFFFFF;--shiki-dark-bg:#1E1E1E" tabindex="0"><code><span class="line"><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6">uint8_t</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0"> slint</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">Rgba8Pixel</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::a</span></span></code></pre>
+```cpp
+uint8_t slint::Rgba8Pixel::a
+```
 
 alpha value (between 0 and 255)
