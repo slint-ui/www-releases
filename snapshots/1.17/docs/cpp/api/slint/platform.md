@@ -11,12 +11,12 @@ Examples of custom platform implementation can be found in the Slint repository:
 - [https://github.com/slint-ui/slint/tree/master/examples/cpp/platform\_qt](https://github.com/slint-ui/slint/tree/master/examples/cpp/platform_qt)
 - [https://github.com/slint-ui/slint/blob/master/api/cpp/esp-idf/slint/src/slint-esp.cpp](https://github.com/slint-ui/slint/blob/master/api/cpp/esp-idf/slint/src/slint-esp.cpp)
 
-The entry point to re-implement a platform is the [Platform](platform/) class. Derive from [slint::platform::Platform](platform/), and call [slint::platform::set\_platform](set-platform/) to set it as the Slint platform.
+The entry point to re-implement a platform is the [Platform](platform/) class. Derive from [slint::platform::Platform](platform/), and call [slint::platform::set\_platform](set_platform/) to set it as the Slint platform.
 
 Another important class to subclass is the [WindowAdapter](windowadapter/).
 
 ## Namespaces
-- [key_codes](key-codes/)
+- [key_codes](key_codes/)
 
 ## Types
 - [AbstractRenderer](abstractrenderer/)
@@ -28,6 +28,6 @@ Another important class to subclass is the [WindowAdapter](windowadapter/).
 - [WindowAdapter](windowadapter/)
 
 ## Functions
-- [set_platform](set-platform/)
-- [update_timers_and_animations](update-timers-and-animations/)
-- [duration_until_next_timer_update](duration-until-next-timer-update/)
+- [set_platform](set_platform/)
+- [update_timers_and_animations](update_timers_and_animations/)
+- [duration_until_next_timer_update](duration_until_next_timer_update/)

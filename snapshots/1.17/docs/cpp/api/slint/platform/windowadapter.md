@@ -61,19 +61,25 @@ void MyWindowAdapter::repaint_callback()
 
 ## Public Functions
 
-### <a id="windowadapter"></a> `WindowAdapter`
+### `WindowAdapter`
 
-<pre class="shiki shiki-themes light-plus dark-plus api-signature" style="--shiki-light:#000000;--shiki-dark:#D4D4D4;--shiki-light-bg:#FFFFFF;--shiki-dark-bg:#1E1E1E" tabindex="0"><code><span class="line"><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6">explicit</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0"> slint</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">platform</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">WindowAdapter</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#795E26;--shiki-dark:#DCDCAA">WindowAdapter</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">()</span></span></code></pre>
+```cpp
+explicit slint::platform::WindowAdapter::WindowAdapter()
+```
 
 Construct a [WindowAdapter](./).
 
-### <a id="windowadapter-2"></a> `~WindowAdapter` <small>(virtual)</small>
+### `~WindowAdapter` (virtual)
 
-<pre class="shiki shiki-themes light-plus dark-plus api-signature" style="--shiki-light:#000000;--shiki-dark:#D4D4D4;--shiki-light-bg:#FFFFFF;--shiki-dark-bg:#1E1E1E" tabindex="0"><code><span class="line"><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">slint</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">platform</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">WindowAdapter</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::~</span><span style="--shiki-light:#795E26;--shiki-dark:#DCDCAA">WindowAdapter</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">()=</span><span style="--shiki-light:#AF00DB;--shiki-dark:#C586C0">default</span></span></code></pre>
+```cpp
+slint::platform::WindowAdapter::~WindowAdapter()=default
+```
 
-### <a id="set_visible"></a> `set_visible` <small>(virtual)</small>
+### `set_visible` (virtual)
 
-<pre class="shiki shiki-themes light-plus dark-plus api-signature" style="--shiki-light:#000000;--shiki-dark:#D4D4D4;--shiki-light-bg:#FFFFFF;--shiki-dark-bg:#1E1E1E" tabindex="0"><code><span class="line"><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6">void</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0"> slint</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">platform</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">WindowAdapter</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#795E26;--shiki-dark:#DCDCAA">set_visible</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">(</span><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6">bool</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">)</span></span></code></pre>
+```cpp
+void slint::platform::WindowAdapter::set_visible(bool)
+```
 
 This function is called by Slint when the slint window is shown or hidden.
 
@@ -81,9 +87,11 @@ Re-implement this function to forward the call to show/hide the native window
 
 When the window becomes visible, this is a good time to call [slint::Window::dispatch\_scale\_factor\_change\_event](../../window/#dispatch_scale_factor_change_event) to initialise the scale factor.
 
-### <a id="request_redraw"></a> `request_redraw` <small>(virtual)</small>
+### `request_redraw` (virtual)
 
-<pre class="shiki shiki-themes light-plus dark-plus api-signature" style="--shiki-light:#000000;--shiki-dark:#D4D4D4;--shiki-light-bg:#FFFFFF;--shiki-dark-bg:#1E1E1E" tabindex="0"><code><span class="line"><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6">void</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0"> slint</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">platform</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">WindowAdapter</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#795E26;--shiki-dark:#DCDCAA">request_redraw</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">()</span></span></code></pre>
+```cpp
+void slint::platform::WindowAdapter::request_redraw()
+```
 
 This function is called when Slint detects that the window need to be repainted.
 
@@ -91,9 +99,11 @@ Reimplement this function to forward the call to the window manager.
 
 You should not render the window in the implementation of this call. Instead you should do that in the next iteration of the event loop, or in a callback from the window manager.
 
-### <a id="set_size"></a> `set_size` <small>(virtual)</small>
+### `set_size` (virtual)
 
-<pre class="shiki shiki-themes light-plus dark-plus api-signature" style="--shiki-light:#000000;--shiki-dark:#D4D4D4;--shiki-light-bg:#FFFFFF;--shiki-dark-bg:#1E1E1E" tabindex="0"><code><span class="line"><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6">void</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0"> slint</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">platform</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">WindowAdapter</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#795E26;--shiki-dark:#DCDCAA">set_size</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">(</span><a href="../../physicalsize/" class="api-link"><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">slint</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">PhysicalSize</span></a><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">)</span></span></code></pre>
+```cpp
+void slint::platform::WindowAdapter::set_size(slint::PhysicalSize)
+```
 
 Request a new size for the window to the specified size on the screen, in physical or logical pixels and excluding a window frame (if present).
 
@@ -103,15 +113,19 @@ The default implementation does nothing
 
 This function should send the size to the Windowing system. If the window size actually changes, you should call [slint::Window::dispatch\_resize\_event](../../window/#dispatch_resize_event) to propagate the new size to the slint view.
 
-### <a id="size"></a> `size` <small>(pure virtual)</small>
+### `size` (pure virtual)
 
-<pre class="shiki shiki-themes light-plus dark-plus api-signature" style="--shiki-light:#000000;--shiki-dark:#D4D4D4;--shiki-light-bg:#FFFFFF;--shiki-dark-bg:#1E1E1E" tabindex="0"><code><span class="line"><a href="../../physicalsize/" class="api-link"><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">slint</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">PhysicalSize</span></a><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0"> slint</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">platform</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">WindowAdapter</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#795E26;--shiki-dark:#DCDCAA">size</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">()=</span><span style="--shiki-light:#098658;--shiki-dark:#B5CEA8">0</span></span></code></pre>
+```cpp
+slint::PhysicalSize slint::platform::WindowAdapter::size()=0
+```
 
 Returns the actual physical size of the window.
 
-### <a id="set_position"></a> `set_position` <small>(virtual)</small>
+### `set_position` (virtual)
 
-<pre class="shiki shiki-themes light-plus dark-plus api-signature" style="--shiki-light:#000000;--shiki-dark:#D4D4D4;--shiki-light-bg:#FFFFFF;--shiki-dark-bg:#1E1E1E" tabindex="0"><code><span class="line"><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6">void</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0"> slint</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">platform</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">WindowAdapter</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#795E26;--shiki-dark:#DCDCAA">set_position</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">(</span><a href="../../physicalposition/" class="api-link"><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">slint</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">PhysicalPosition</span></a><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">)</span></span></code></pre>
+```cpp
+void slint::platform::WindowAdapter::set_position(slint::PhysicalPosition)
+```
 
 Sets the position of the window on the screen, in physical screen coordinates and including a window frame (if present).
 
@@ -119,9 +133,11 @@ The default implementation does nothing
 
 Called from [slint::Window::set\_position()](../../window/#set_position).
 
-### <a id="position"></a> `position` <small>(virtual)</small>
+### `position` (virtual)
 
-<pre class="shiki shiki-themes light-plus dark-plus api-signature" style="--shiki-light:#000000;--shiki-dark:#D4D4D4;--shiki-light-bg:#FFFFFF;--shiki-dark-bg:#1E1E1E" tabindex="0"><code><span class="line"><a href="https://en.cppreference.com/w/cpp/utility/optional" class="api-link"><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">std</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">optional</span></a><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">&#x3C; </span><a href="../../physicalposition/" class="api-link"><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">slint</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">PhysicalPosition</span></a><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4"> > </span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">slint</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">platform</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">WindowAdapter</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#795E26;--shiki-dark:#DCDCAA">position</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">()</span></span></code></pre>
+```cpp
+std::optional<slint::PhysicalPosition> slint::platform::WindowAdapter::position()
+```
 
 Returns the position of the window on the screen, in physical screen coordinates and including a window frame (if present).
 
@@ -129,32 +145,40 @@ The default implementation returns std::nullopt.
 
 Called from [slint::Window::position()](../../window/#position).
 
-### <a id="update_window_properties"></a> `update_window_properties` <small>(virtual)</small>
+### `update_window_properties` (virtual)
 
-<pre class="shiki shiki-themes light-plus dark-plus api-signature" style="--shiki-light:#000000;--shiki-dark:#D4D4D4;--shiki-light-bg:#FFFFFF;--shiki-dark-bg:#1E1E1E" tabindex="0"><code><span class="line"><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6">void</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0"> slint</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">platform</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">WindowAdapter</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#795E26;--shiki-dark:#DCDCAA">update_window_properties</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">(</span><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6">const</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0"> </span><a style="--shiki-light:#267F99;--shiki-dark:#4EC9B0" href="../windowadapter-windowproperties/" class="api-link">WindowProperties</a><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6"> &#x26;</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">)</span></span></code></pre>
+```cpp
+void slint::platform::WindowAdapter::update_window_properties(const WindowProperties &)
+```
 
 Re-implement this function to update the properties such as window title or layout constraints.
 
 This function is called before `set_visible(true)`, and will be called again when the properties that were queried on the last call are changed. If you do not query any properties, it may not be called again.
 
-### <a id="renderer"></a> `renderer` <small>(pure virtual)</small>
+### `renderer` (pure virtual)
 
-<pre class="shiki shiki-themes light-plus dark-plus api-signature" style="--shiki-light:#000000;--shiki-dark:#D4D4D4;--shiki-light-bg:#FFFFFF;--shiki-dark-bg:#1E1E1E" tabindex="0"><code><span class="line"><a style="--shiki-light:#267F99;--shiki-dark:#4EC9B0" href="../abstractrenderer/" class="api-link">AbstractRenderer</a><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6"> &#x26;</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0"> slint</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">platform</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">WindowAdapter</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#795E26;--shiki-dark:#DCDCAA">renderer</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">()=</span><span style="--shiki-light:#098658;--shiki-dark:#B5CEA8">0</span></span></code></pre>
+```cpp
+AbstractRenderer & slint::platform::WindowAdapter::renderer()=0
+```
 
 Re-implement this function to provide a reference to the renderer for use with the window adapter.
 
 Your re-implementation should contain a renderer such as [SoftwareRenderer](../softwarerenderer/) or [SkiaRenderer](../skiarenderer/) and you must return a reference to it.
 
-### <a id="window"></a> `window`
+### `window`
 
-<pre class="shiki shiki-themes light-plus dark-plus api-signature" style="--shiki-light:#000000;--shiki-dark:#D4D4D4;--shiki-light-bg:#FFFFFF;--shiki-dark-bg:#1E1E1E" tabindex="0"><code><span class="line"><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6">const</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0"> </span><a style="--shiki-light:#267F99;--shiki-dark:#4EC9B0" href="../../window/" class="api-link">Window</a><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6"> &#x26;</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0"> slint</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">platform</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">WindowAdapter</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#795E26;--shiki-dark:#DCDCAA">window</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">() </span><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6">const</span></span></code></pre>
+```cpp
+const Window & slint::platform::WindowAdapter::window() const
+```
 
 Return the [slint::Window](../../window/) associated with this window.
 
 Note that this function can only be called if the window was initialized, which is only the case after it has been returned from a call to [Platform::create\_window\_adapter](../platform/#create_window_adapter)
 
-### <a id="window-2"></a> `window`
+### `window`
 
-<pre class="shiki shiki-themes light-plus dark-plus api-signature" style="--shiki-light:#000000;--shiki-dark:#D4D4D4;--shiki-light-bg:#FFFFFF;--shiki-dark-bg:#1E1E1E" tabindex="0"><code><span class="line"><a style="--shiki-light:#267F99;--shiki-dark:#4EC9B0" href="../../window/" class="api-link">Window</a><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6"> &#x26;</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0"> slint</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">platform</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">WindowAdapter</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#795E26;--shiki-dark:#DCDCAA">window</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">()</span></span></code></pre>
+```cpp
+Window & slint::platform::WindowAdapter::window()
+```
 
 Overload.

@@ -43,13 +43,13 @@ See the Overview documentation for the C++ integration and how to load `.slint` 
 - [Window](window/)
 
 ## Functions
-- [update_all_translations](update-all-translations/)
-- [select_bundled_translation](select-bundled-translation/)
-- [run_event_loop](run-event-loop/)
-- [quit_event_loop](quit-event-loop/)
-- [invoke_from_event_loop](invoke-from-event-loop/)
-- [blocking_invoke_from_event_loop](blocking-invoke-from-event-loop/)
-- [set_xdg_app_id](set-xdg-app-id/)
+- [update_all_translations](update_all_translations/)
+- [select_bundled_translation](select_bundled_translation/)
+- [run_event_loop](run_event_loop/)
+- [quit_event_loop](quit_event_loop/)
+- [invoke_from_event_loop](invoke_from_event_loop/)
+- [blocking_invoke_from_event_loop](blocking_invoke_from_event_loop/)
+- [set_xdg_app_id](set_xdg_app_id/)
 
 ## Enumerations
 - [EventLoopMode](eventloopmode/)

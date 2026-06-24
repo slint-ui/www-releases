@@ -15,64 +15,86 @@ Note that this class does not provide any kind of ownership. The caller is respo
 
 ## Public Functions
 
-### <a id="nativewindowhandle"></a> `NativeWindowHandle`
+### `NativeWindowHandle`
 
-<pre class="shiki shiki-themes light-plus dark-plus api-signature" style="--shiki-light:#000000;--shiki-dark:#D4D4D4;--shiki-light-bg:#FFFFFF;--shiki-dark-bg:#1E1E1E" tabindex="0"><code><span class="line"><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">slint</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">platform</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">NativeWindowHandle</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#795E26;--shiki-dark:#DCDCAA">NativeWindowHandle</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">()=</span><span style="--shiki-light:#AF00DB;--shiki-dark:#C586C0">delete</span></span></code></pre>
+```cpp
+slint::platform::NativeWindowHandle::NativeWindowHandle()=delete
+```
 
-### <a id="nativewindowhandle-2"></a> `NativeWindowHandle`
+### `NativeWindowHandle`
 
-<pre class="shiki shiki-themes light-plus dark-plus api-signature" style="--shiki-light:#000000;--shiki-dark:#D4D4D4;--shiki-light-bg:#FFFFFF;--shiki-dark-bg:#1E1E1E" tabindex="0"><code><span class="line"><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">slint</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">platform</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">NativeWindowHandle</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#795E26;--shiki-dark:#DCDCAA">NativeWindowHandle</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">(</span><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6">const</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4"> </span><a style="--shiki-light:#000000;--shiki-dark:#D4D4D4" href="./" class="api-link">NativeWindowHandle</a><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4"> &#x26;)=</span><span style="--shiki-light:#AF00DB;--shiki-dark:#C586C0">delete</span></span></code></pre>
+```cpp
+slint::platform::NativeWindowHandle::NativeWindowHandle(const NativeWindowHandle &)=delete
+```
 
-### <a id="operator"></a> `operator=`
+### `operator=`
 
-<pre class="shiki shiki-themes light-plus dark-plus api-signature" style="--shiki-light:#000000;--shiki-dark:#D4D4D4;--shiki-light-bg:#FFFFFF;--shiki-dark-bg:#1E1E1E" tabindex="0"><code><span class="line"><a style="--shiki-light:#267F99;--shiki-dark:#4EC9B0" href="./" class="api-link">NativeWindowHandle</a><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6"> &#x26;</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0"> slint</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">platform</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">NativeWindowHandle</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#AF00DB;--shiki-dark:#C586C0">operator=</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">(</span><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6">const</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0"> </span><a style="--shiki-light:#267F99;--shiki-dark:#4EC9B0" href="./" class="api-link">NativeWindowHandle</a><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6"> &#x26;</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">)=</span><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6">delete</span></span></code></pre>
+```cpp
+NativeWindowHandle & slint::platform::NativeWindowHandle::operator=(const NativeWindowHandle &)=delete
+```
 
-### <a id="nativewindowhandle-3"></a> `NativeWindowHandle`
+### `NativeWindowHandle`
 
-<pre class="shiki shiki-themes light-plus dark-plus api-signature" style="--shiki-light:#000000;--shiki-dark:#D4D4D4;--shiki-light-bg:#FFFFFF;--shiki-dark-bg:#1E1E1E" tabindex="0"><code><span class="line"><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">slint</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">platform</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">NativeWindowHandle</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#795E26;--shiki-dark:#DCDCAA">NativeWindowHandle</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">(</span><a style="--shiki-light:#000000;--shiki-dark:#D4D4D4" href="./" class="api-link">NativeWindowHandle</a><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4"> &#x26;&#x26;other)</span></span></code></pre>
+```cpp
+slint::platform::NativeWindowHandle::NativeWindowHandle(NativeWindowHandle &&other)
+```
 
 Creates a new [NativeWindowHandle](./) by moving the handle data from *other* into this [NativeWindowHandle](./).
 
-### <a id="operator-2"></a> `operator=`
+### `operator=`
 
-<pre class="shiki shiki-themes light-plus dark-plus api-signature" style="--shiki-light:#000000;--shiki-dark:#D4D4D4;--shiki-light-bg:#FFFFFF;--shiki-dark-bg:#1E1E1E" tabindex="0"><code><span class="line"><a style="--shiki-light:#267F99;--shiki-dark:#4EC9B0" href="./" class="api-link">NativeWindowHandle</a><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6"> &#x26;</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0"> slint</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">platform</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">NativeWindowHandle</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#AF00DB;--shiki-dark:#C586C0">operator=</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">(</span><a style="--shiki-light:#267F99;--shiki-dark:#4EC9B0" href="./" class="api-link">NativeWindowHandle</a><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6"> &#x26;&#x26;</span><span style="--shiki-light:#001080;--shiki-dark:#9CDCFE">other</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">)</span></span></code></pre>
+```cpp
+NativeWindowHandle & slint::platform::NativeWindowHandle::operator=(NativeWindowHandle &&other)
+```
 
 Creates a new [NativeWindowHandle](./) by moving the handle data from *other* into this [NativeWindowHandle](./).
 
-### <a id="nativewindowhandle-4"></a> `~NativeWindowHandle`
+### `~NativeWindowHandle`
 
-<pre class="shiki shiki-themes light-plus dark-plus api-signature" style="--shiki-light:#000000;--shiki-dark:#D4D4D4;--shiki-light-bg:#FFFFFF;--shiki-dark-bg:#1E1E1E" tabindex="0"><code><span class="line"><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">slint</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">platform</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">NativeWindowHandle</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::~</span><span style="--shiki-light:#795E26;--shiki-dark:#DCDCAA">NativeWindowHandle</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">()</span></span></code></pre>
+```cpp
+slint::platform::NativeWindowHandle::~NativeWindowHandle()
+```
 
 Destroys the [NativeWindowHandle](./).
 
 ## Public Static Functions
 
-### <a id="from_x11_xcb"></a> `from_x11_xcb`
+### `from_x11_xcb`
 
-<pre class="shiki shiki-themes light-plus dark-plus api-signature" style="--shiki-light:#000000;--shiki-dark:#D4D4D4;--shiki-light-bg:#FFFFFF;--shiki-dark-bg:#1E1E1E" tabindex="0"><code><span class="line"><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6">static</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0"> </span><a style="--shiki-light:#267F99;--shiki-dark:#4EC9B0" href="./" class="api-link">NativeWindowHandle</a><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0"> slint</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">platform</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">NativeWindowHandle</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#795E26;--shiki-dark:#DCDCAA">from_x11_xcb</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">(</span><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6">uint32_t</span><span style="--shiki-light:#001080;--shiki-dark:#9CDCFE"> window</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">, </span><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6">uint32_t</span><span style="--shiki-light:#001080;--shiki-dark:#9CDCFE"> visual_id</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">, </span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">xcb_connection_t</span><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6"> *</span><span style="--shiki-light:#001080;--shiki-dark:#9CDCFE">connection</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">, </span><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6">int</span><span style="--shiki-light:#001080;--shiki-dark:#9CDCFE"> screen</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">)</span></span></code></pre>
+```cpp
+static NativeWindowHandle slint::platform::NativeWindowHandle::from_x11_xcb(uint32_t window, uint32_t visual_id, xcb_connection_t *connection, int screen)
+```
 
 Creates a new [NativeWindowHandle](./) from the given xcb\_window\_t *window*, xcb\_visualid\_t *visual\_id*, XCB *connection*, and *screen* number.
 
-### <a id="from_x11_xlib"></a> `from_x11_xlib`
+### `from_x11_xlib`
 
-<pre class="shiki shiki-themes light-plus dark-plus api-signature" style="--shiki-light:#000000;--shiki-dark:#D4D4D4;--shiki-light-bg:#FFFFFF;--shiki-dark-bg:#1E1E1E" tabindex="0"><code><span class="line"><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6">static</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0"> </span><a style="--shiki-light:#267F99;--shiki-dark:#4EC9B0" href="./" class="api-link">NativeWindowHandle</a><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0"> slint</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">platform</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">NativeWindowHandle</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#795E26;--shiki-dark:#DCDCAA">from_x11_xlib</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">(</span><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6">uint32_t</span><span style="--shiki-light:#001080;--shiki-dark:#9CDCFE"> window</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">, </span><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6">unsigned</span><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6"> long</span><span style="--shiki-light:#001080;--shiki-dark:#9CDCFE"> visual_id</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">, </span><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6">void</span><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6"> *</span><span style="--shiki-light:#001080;--shiki-dark:#9CDCFE">display</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">, </span><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6">int</span><span style="--shiki-light:#001080;--shiki-dark:#9CDCFE"> screen</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">)</span></span></code></pre>
+```cpp
+static NativeWindowHandle slint::platform::NativeWindowHandle::from_x11_xlib(uint32_t window, unsigned long visual_id, void *display, int screen)
+```
 
 Creates a new [NativeWindowHandle](./) from the given XLib *window*, VisualID *visual\_id*, Display *display*, and *screen* number.
 
-### <a id="from_wayland"></a> `from_wayland`
+### `from_wayland`
 
-<pre class="shiki shiki-themes light-plus dark-plus api-signature" style="--shiki-light:#000000;--shiki-dark:#D4D4D4;--shiki-light-bg:#FFFFFF;--shiki-dark-bg:#1E1E1E" tabindex="0"><code><span class="line"><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6">static</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0"> </span><a style="--shiki-light:#267F99;--shiki-dark:#4EC9B0" href="./" class="api-link">NativeWindowHandle</a><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0"> slint</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">platform</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">NativeWindowHandle</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#795E26;--shiki-dark:#DCDCAA">from_wayland</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">(</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">wl_surface</span><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6"> *</span><span style="--shiki-light:#001080;--shiki-dark:#9CDCFE">surface</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">, </span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">wl_display</span><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6"> *</span><span style="--shiki-light:#001080;--shiki-dark:#9CDCFE">display</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">)</span></span></code></pre>
+```cpp
+static NativeWindowHandle slint::platform::NativeWindowHandle::from_wayland(wl_surface *surface, wl_display *display)
+```
 
 Creates a new [NativeWindowHandle](./) from the given wayland *surface*, and *display*.
 
-### <a id="from_appkit"></a> `from_appkit`
+### `from_appkit`
 
-<pre class="shiki shiki-themes light-plus dark-plus api-signature" style="--shiki-light:#000000;--shiki-dark:#D4D4D4;--shiki-light-bg:#FFFFFF;--shiki-dark-bg:#1E1E1E" tabindex="0"><code><span class="line"><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6">static</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0"> </span><a style="--shiki-light:#267F99;--shiki-dark:#4EC9B0" href="./" class="api-link">NativeWindowHandle</a><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0"> slint</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">platform</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">NativeWindowHandle</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#795E26;--shiki-dark:#DCDCAA">from_appkit</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">(</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">NSView</span><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6"> *</span><span style="--shiki-light:#001080;--shiki-dark:#9CDCFE">nsview</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">, </span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">NSWindow</span><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6"> *</span><span style="--shiki-light:#001080;--shiki-dark:#9CDCFE">nswindow</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">)</span></span></code></pre>
+```cpp
+static NativeWindowHandle slint::platform::NativeWindowHandle::from_appkit(NSView *nsview, NSWindow *nswindow)
+```
 
 Creates a new [NativeWindowHandle](./) from the given *nsview*, and *nswindow*.
 
-### <a id="from_win32"></a> `from_win32`
+### `from_win32`
 
-<pre class="shiki shiki-themes light-plus dark-plus api-signature" style="--shiki-light:#000000;--shiki-dark:#D4D4D4;--shiki-light-bg:#FFFFFF;--shiki-dark-bg:#1E1E1E" tabindex="0"><code><span class="line"><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6">static</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0"> </span><a style="--shiki-light:#267F99;--shiki-dark:#4EC9B0" href="./" class="api-link">NativeWindowHandle</a><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0"> slint</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">platform</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#267F99;--shiki-dark:#4EC9B0">NativeWindowHandle</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">::</span><span style="--shiki-light:#795E26;--shiki-dark:#DCDCAA">from_win32</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">(</span><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6">void</span><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6"> *</span><span style="--shiki-light:#001080;--shiki-dark:#9CDCFE">hwnd</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">, </span><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6">void</span><span style="--shiki-light:#0000FF;--shiki-dark:#569CD6"> *</span><span style="--shiki-light:#001080;--shiki-dark:#9CDCFE">hinstance</span><span style="--shiki-light:#000000;--shiki-dark:#D4D4D4">)</span></span></code></pre>
+```cpp
+static NativeWindowHandle slint::platform::NativeWindowHandle::from_win32(void *hwnd, void *hinstance)
+```
 
 Creates a new [NativeWindowHandle](./) from the given HWND *hwnd*, and HINSTANCE *hinstance*.
