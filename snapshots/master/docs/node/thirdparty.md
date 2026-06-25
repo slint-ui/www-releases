@@ -367,8 +367,8 @@ Third-party crates linked into the program and distributed with it.
 | [simdutf8 0.1.5](https://crates.io/crates/simdutf8/0.1.5) | Hans Kratz <hans@appfour.com> | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [simplecss 0.2.2](https://crates.io/crates/simplecss/0.2.2) | Reizner Evgeniy | [Apache-2.0](#Apache-2.0) OR [MIT](#MIT) |
 | [siphasher 1.0.3](https://crates.io/crates/siphasher/1.0.3) | Frank Denis <github@pureftpd.org> | [MIT](#MIT)/[Apache-2.0](#Apache-2.0) |
-| [skia-bindings 0.97.2](https://crates.io/crates/skia-bindings/0.97.2) | LongYinan <lynweklm@gmail.com>, Armin Sander <armin@replicator.org> | [MIT](#MIT) |
-| [skia-safe 0.97.2](https://crates.io/crates/skia-safe/0.97.2) | Armin Sander <armin@replicator.org> | [MIT](#MIT) |
+| [skia-bindings 0.99.0](https://crates.io/crates/skia-bindings/0.99.0) | LongYinan <lynweklm@gmail.com>, Armin Sander <armin@replicator.org> | [MIT](#MIT) |
+| [skia-safe 0.99.0](https://crates.io/crates/skia-safe/0.99.0) | Armin Sander <armin@replicator.org> | [MIT](#MIT) |
 | [skrifa 0.42.1](https://crates.io/crates/skrifa/0.42.1) | Colin Rothfels | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [slab 0.4.12](https://crates.io/crates/slab/0.4.12) | Carl Lerche <me@carllerche.com> | [MIT](#MIT) |
 | [slotmap 1.1.1](https://crates.io/crates/slotmap/1.1.1) | Orson Peters <orsonpeters@gmail.com> | [Zlib](#Zlib) |

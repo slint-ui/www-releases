@@ -5,7 +5,9 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <meta name="author" content="SixtyFPS GmbH" />
+        <meta name="author" content="Slint" />
+        <meta property="og:site_name" content="Slint" />
+        <meta name="twitter:site" content="@slint_ui" />
 
         <!--====== Favicon Icon ======-->
         <link rel="shortcut icon" href="https://slint.dev/assets/img/favicon.ico">
@@ -20,6 +22,39 @@
         <title>404 page not found</title>
         <meta name="description" content="Error: 404 page not found." />
     
+        <meta name="robots" content="noindex, follow" />
+
+        <!-- ===== Structured data (site-wide) ===== -->
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Organization",
+              "@id": "https://slint.dev/#organization",
+              "name": "Slint",
+              "legalName": "SixtyFPS GmbH",
+              "alternateName": "SixtyFPS",
+              "url": "https://slint.dev/",
+              "logo": "https://slint.dev/assets/img/slint-logo.svg",
+              "sameAs": [
+                "https://github.com/slint-ui/slint",
+                "https://www.linkedin.com/company/slint-ui/",
+                "https://fosstodon.org/@slint",
+                "https://bsky.app/profile/slint.dev",
+                "https://twitter.com/slint_ui"
+              ]
+            },
+            {
+              "@type": "WebSite",
+              "@id": "https://slint.dev/#website",
+              "name": "Slint",
+              "url": "https://slint.dev/",
+              "publisher": { "@id": "https://slint.dev/#organization" }
+            }
+          ]
+        }
+        </script>
     </head>
 
     <body>
