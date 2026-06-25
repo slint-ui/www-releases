@@ -2,8 +2,6 @@
 title: "Manual Setup"
 description: "Manually set up Slint for your editor"
 ---
-{/* cSpell: ignore libx libxcb libxkbcommon libinput libgbm */}
-
 import Link from '@slint/common-files/src/components/Link.astro';
 
 We provide extensions or configuration files for different editors to better support .slint files.
@@ -88,14 +86,8 @@ If you have slint-lsp configured in your editor, you can launch the live preview
 
 ### Running `slint-viewer` from the terminal
 
-To open the live preview from a terminal, you can use the `slint-viewer` binary.
-
-To install it either:
-
-* [Download the binary](https://github.com/slint-ui/slint/releases/latest)
-* Run `cargo install slint-viewer` if you have a Rust installation
-
-Then run `slint-viewer --auto-reload <path/to/file.slint>`.
+To open the live preview from a terminal, run `slint-viewer --auto-reload <path/to/file.slint>`.
+See the [Slint Viewer](/master/docs/slint/guide/tooling/slint-viewer.md) page for installation, screenshots, and all command-line options.
 
 **Example on the [Printer Demo](https://github.com/slint-ui/slint/blob/master/demos/printerdemo/ui/printerdemo.slint)**
 
