@@ -206,21 +206,6 @@ The target x position of the curve.
 The target y position of the curve.
 </SlintProperty>
 
-## `LineTo`
-
-The `LineTo` sub-element describes a line from the path's current position to the
-location specified by the `x` and `y` properties.
-
-### x
-<SlintProperty propName="x" typeName="float">
-The target x position of the line.
-</SlintProperty>
-
-### y
-<SlintProperty propName="y" typeName="float">
-The target y position of the line.
-</SlintProperty>
-
 ## `ArcTo`
 
 The `ArcTo` sub-element describes the portion of an ellipse. The arc is drawn from the path's
@@ -287,6 +272,21 @@ The target x position of the curve.
 ### y
 <SlintProperty propName="y" typeName="float">
 The target y position of the curve.
+</SlintProperty>
+
+## `LineTo`
+
+The `LineTo` sub-element describes a line from the path's current position to the
+location specified by the `x` and `y` properties.
+
+### x
+<SlintProperty propName="x" typeName="float">
+The target x position of the line.
+</SlintProperty>
+
+### y
+<SlintProperty propName="y" typeName="float">
+The target y position of the line.
 </SlintProperty>
 
 ## `MoveTo`
