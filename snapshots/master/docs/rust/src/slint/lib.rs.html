@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `api/rs/slint/lib.rs`."><title>lib.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-1ed95124.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint" data-themes="" data-resource-suffix="" data-rustdoc-version="1.98.0-nightly (f46ec5218 2026-06-30)" data-channel="nightly" data-search-js="search-9944d736.js" data-stringdex-js="stringdex-2da4960a.js" data-settings-js="settings-170eb4bf.js" ><script src="../../static.files/storage-41dd4d93.js"></script><script defer src="../../static.files/src-script-813739b1.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-417ebf0a.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `api/rs/slint/lib.rs`."><title>lib.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-1ed95124.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint" data-themes="" data-resource-suffix="" data-rustdoc-version="1.98.0-nightly (c397dae80 2026-07-02)" data-channel="nightly" data-search-js="search-9944d736.js" data-stringdex-js="stringdex-2da4960a.js" data-settings-js="settings-170eb4bf.js" ><script src="../../static.files/storage-41dd4d93.js"></script><script defer src="../../static.files/src-script-813739b1.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-417ebf0a.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -827,9 +827,9 @@
 <a href=#705 id=705 data-nosnippet>705</a>    </span><span class="kw">pub type </span><a href="../../slint/winit_030/type.WinitWindowEventResult.html">WinitWindowEventResult</a> = <a href="../../slint/winit_030/enum.EventResult.html">EventResult</a>;
 <a href=#706 id=706 data-nosnippet>706</a>}
 <a href=#707 id=707 data-nosnippet>707</a>
-<a href=#708 id=708 data-nosnippet>708</a><span class="attr">#[cfg(feature = <span class="string">"unstable-fontique-010"</span>)]
-<a href=#709 id=709 data-nosnippet>709</a></span><span class="kw">pub mod </span><a href="../../slint/fontique_010/index.html">fontique_010</a> {
-<a href=#710 id=710 data-nosnippet>710</a>    <span class="doccomment">//! Fontique 0.10 specific types and re-exports.
+<a href=#708 id=708 data-nosnippet>708</a><span class="attr">#[cfg(feature = <span class="string">"unstable-fontique-011"</span>)]
+<a href=#709 id=709 data-nosnippet>709</a></span><span class="kw">pub mod </span><a href="../../slint/fontique_011/index.html">fontique_011</a> {
+<a href=#710 id=710 data-nosnippet>710</a>    <span class="doccomment">//! Fontique 0.11 specific types and re-exports.
 <a href=#711 id=711 data-nosnippet>711</a>    //!
 <a href=#712 id=712 data-nosnippet>712</a>    //! *Note*: This module is behind a feature flag and may be removed or changed in future minor releases,
 <a href=#713 id=713 data-nosnippet>713</a>    //!         as new major Fontique releases become available.
@@ -852,18 +852,18 @@
 <a href=#730 id=730 data-nosnippet>730</a>    ///
 <a href=#731 id=731 data-nosnippet>731</a>    /// `Cargo.toml`:
 <a href=#732 id=732 data-nosnippet>732</a>    /// ```toml
-<a href=#733 id=733 data-nosnippet>733</a>    /// slint = { version = "~1.17", features = ["unstable-fontique-010"] }
+<a href=#733 id=733 data-nosnippet>733</a>    /// slint = { version = "~1.17", features = ["unstable-fontique-011"] }
 <a href=#734 id=734 data-nosnippet>734</a>    /// ```
 <a href=#735 id=735 data-nosnippet>735</a>    ///
 <a href=#736 id=736 data-nosnippet>736</a>    /// `main.rs`:
 <a href=#737 id=737 data-nosnippet>737</a>    /// ```rust,no_run
-<a href=#738 id=738 data-nosnippet>738</a>    /// use slint::fontique_010::fontique;
+<a href=#738 id=738 data-nosnippet>738</a>    /// use slint::fontique_011::fontique;
 <a href=#739 id=739 data-nosnippet>739</a>    ///
 <a href=#740 id=740 data-nosnippet>740</a>    /// fn main() {
 <a href=#741 id=741 data-nosnippet>741</a>    ///     // ...
 <a href=#742 id=742 data-nosnippet>742</a>    ///     let downloaded_font: Vec&lt;u8&gt; = todo!("Download https://somewebsite.com/font.ttf");
 <a href=#743 id=743 data-nosnippet>743</a>    ///     let blob = fontique::Blob::new(std::sync::Arc::new(downloaded_font));
-<a href=#744 id=744 data-nosnippet>744</a>    ///     let mut collection = slint::fontique_010::shared_collection();
+<a href=#744 id=744 data-nosnippet>744</a>    ///     let mut collection = slint::fontique_011::shared_collection();
 <a href=#745 id=745 data-nosnippet>745</a>    ///     let fonts = collection.register_fonts(blob, None);
 <a href=#746 id=746 data-nosnippet>746</a>    ///     collection
 <a href=#747 id=747 data-nosnippet>747</a>    ///         .append_fallbacks(fontique::FallbackKey::new(fontique::Script::from_str_unchecked("Hira"), None), fonts.iter().map(|x| x.0));
@@ -874,7 +874,7 @@
 <a href=#752 id=752 data-nosnippet>752</a>    ///     // ...
 <a href=#753 id=753 data-nosnippet>753</a>    /// }
 <a href=#754 id=754 data-nosnippet>754</a>    /// ```
-<a href=#755 id=755 data-nosnippet>755</a>    </span><span class="kw">pub fn </span><a href="../../slint/fontique_010/fn.shared_collection.html">shared_collection</a>() -&gt; fontique::<a href="https://docs.rs/fontique/0.8/fontique/collection/struct.Collection.html">Collection</a> {
+<a href=#755 id=755 data-nosnippet>755</a>    </span><span class="kw">pub fn </span><a href="../../slint/fontique_011/fn.shared_collection.html">shared_collection</a>() -&gt; fontique::<a href="https://docs.rs/fontique/0.8/fontique/collection/struct.Collection.html">Collection</a> {
 <a href=#756 id=756 data-nosnippet>756</a>        i_slint_core::with_global_context(
 <a href=#757 id=757 data-nosnippet>757</a>            || <a href="https://doc.rust-lang.org/nightly/core/macro.panic.html">panic!</a>(<span class="string">"slint platform not initialized"</span>),
 <a href=#758 id=758 data-nosnippet>758</a>            |ctx| <a href="#758">ctx</a>.font_context().<a href="https://doc.rust-lang.org/nightly/core/cell/struct.RefCell.html#method.borrow">borrow</a>().collection.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>(),

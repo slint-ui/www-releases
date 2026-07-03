@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"enum":["FilterableTriggeringRule","Severity","StandardFilterableTriggeringRule"],"struct":["DiagnosticFilter","DiagnosticFilterNode"]};
