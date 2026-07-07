@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"constant":["MAX_I32_BINDING_SIZE"],"fn":["cap_limits_to_be_under_the_sum_limit","map_naga_stage"],"mod":["db"]};

@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"fn":["address_space_str"],"struct":["DisplayFilterableTriggeringRule"],"trait":["ToWgsl","TryToWgsl","TypeContext"]};

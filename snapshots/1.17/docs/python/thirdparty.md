@@ -245,7 +245,7 @@ Third-party crates linked into the program and distributed with it.
 | [miniz_oxide 0.8.9](https://crates.io/crates/miniz_oxide/0.8.9) | Frommi <daniil.liferenko@gmail.com>, oyvindln <oyvindln@users.noreply.github.com>, Rich Geldreich richgel99@gmail.com | [MIT](#MIT) OR [Zlib](#Zlib) OR [Apache-2.0](#Apache-2.0) |
 | [moxcms 0.8.1](https://crates.io/crates/moxcms/0.8.1) | Radzivon Bartoshyk | [BSD-3-Clause](#BSD-3-Clause) OR [Apache-2.0](#Apache-2.0) |
 | [muda 0.19.3](https://crates.io/crates/muda/0.19.3) | Tauri Programme within The Commons Conservancy | [Apache-2.0](#Apache-2.0) OR [MIT](#MIT) |
-| [naga 29.0.3](https://crates.io/crates/naga/29.0.3) | gfx-rs developers | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
+| [naga 29.0.4](https://crates.io/crates/naga/29.0.4) | gfx-rs developers | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [natord 1.0.9](https://crates.io/crates/natord/1.0.9) | Kang Seonghoon <public+rust@mearie.org> | [MIT](#MIT) |
 | [ndk 0.8.0](https://crates.io/crates/ndk/0.8.0) | The Rust Mobile contributors | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [ndk 0.9.0](https://crates.io/crates/ndk/0.9.0) | The Rust Mobile contributors | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
@@ -445,14 +445,14 @@ Third-party crates linked into the program and distributed with it.
 | [web-time 1.1.0](https://crates.io/crates/web-time/1.1.0) | dAxpeDDa | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [webbrowser 1.2.1](https://crates.io/crates/webbrowser/1.2.1) | Amod Malviya @amodm | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [weezl 0.1.12](https://crates.io/crates/weezl/0.1.12) | The image-rs Developers | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
-| [wgpu 29.0.3](https://crates.io/crates/wgpu/29.0.3) | gfx-rs developers | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
-| [wgpu-core 29.0.3](https://crates.io/crates/wgpu-core/29.0.3) | gfx-rs developers | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
-| [wgpu-core-deps-apple 29.0.3](https://crates.io/crates/wgpu-core-deps-apple/29.0.3) | gfx-rs developers | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
-| [wgpu-core-deps-emscripten 29.0.3](https://crates.io/crates/wgpu-core-deps-emscripten/29.0.3) | gfx-rs developers | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
-| [wgpu-core-deps-windows-linux-android 29.0.3](https://crates.io/crates/wgpu-core-deps-windows-linux-android/29.0.3) | gfx-rs developers | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
-| [wgpu-hal 29.0.3](https://crates.io/crates/wgpu-hal/29.0.3) | gfx-rs developers | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
-| [wgpu-naga-bridge 29.0.3](https://crates.io/crates/wgpu-naga-bridge/29.0.3) | gfx-rs developers | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
-| [wgpu-types 29.0.3](https://crates.io/crates/wgpu-types/29.0.3) | gfx-rs developers | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
+| [wgpu 29.0.4](https://crates.io/crates/wgpu/29.0.4) | gfx-rs developers | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
+| [wgpu-core 29.0.4](https://crates.io/crates/wgpu-core/29.0.4) | gfx-rs developers | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
+| [wgpu-core-deps-apple 29.0.4](https://crates.io/crates/wgpu-core-deps-apple/29.0.4) | gfx-rs developers | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
+| [wgpu-core-deps-emscripten 29.0.4](https://crates.io/crates/wgpu-core-deps-emscripten/29.0.4) | gfx-rs developers | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
+| [wgpu-core-deps-windows-linux-android 29.0.4](https://crates.io/crates/wgpu-core-deps-windows-linux-android/29.0.4) | gfx-rs developers | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
+| [wgpu-hal 29.0.4](https://crates.io/crates/wgpu-hal/29.0.4) | gfx-rs developers | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
+| [wgpu-naga-bridge 29.0.4](https://crates.io/crates/wgpu-naga-bridge/29.0.4) | gfx-rs developers | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
+| [wgpu-types 29.0.4](https://crates.io/crates/wgpu-types/29.0.4) | gfx-rs developers | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [winapi 0.3.9](https://crates.io/crates/winapi/0.3.9) | Peter Atashian <retep998@gmail.com> | [MIT](#MIT)/[Apache-2.0](#Apache-2.0) |
 | [winapi-i686-pc-windows-gnu 0.4.0](https://crates.io/crates/winapi-i686-pc-windows-gnu/0.4.0) | Peter Atashian <retep998@gmail.com> | [MIT](#MIT)/[Apache-2.0](#Apache-2.0) |
 | [winapi-util 0.1.11](https://crates.io/crates/winapi-util/0.1.11) | Andrew Gallant <jamslam@gmail.com> | [Unlicense](#Unlicense) OR [MIT](#MIT) |
