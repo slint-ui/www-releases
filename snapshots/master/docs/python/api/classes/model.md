@@ -33,6 +33,27 @@ Re-implement this method in a sub-class to handle the change.
 Returns the data for the given row.
 Re-implement this method in a sub-class to provide the data.
 
+### append
+
+<Signature symbol="slint.models.Model.append">append(value: T) -&gt; <XRef to="None" plain /></Signature>
+
+Add a new row to the model with the provided value.
+Re-implement this method in a sub-class to handle the change.
+
+### remove_row
+
+<Signature symbol="slint.models.Model.remove_row">remove_row(row: <XRef to="int" plain />) -&gt; <XRef to="None" plain /></Signature>
+
+Remove the row at the given index.
+Re-implement this method in a sub-class to handle the change.
+
+### insert_row
+
+<Signature symbol="slint.models.Model.insert_row">insert_row(row: <XRef to="int" plain />, value: T) -&gt; <XRef to="None" plain /></Signature>
+
+Insert a new row at the given index.
+Re-implement this method in a sub-class to handle the change.
+
 ### notify_row_changed
 
 <Signature symbol="slint.models.Model.notify_row_changed">notify_row_changed(row: <XRef to="int" plain />) -&gt; <XRef to="None" plain /></Signature>

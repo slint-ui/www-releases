@@ -64,6 +64,9 @@ Arrays define the following operations:
 
 -   **`array.length`**: One can query the length of an array and model using the builtin `.length` property.
 -   **`array[index]`**: The index operator retrieves individual elements of an array.
+-   **`array.push(value)`**: One can add an element to an array and model using the `.push(value)` method.
+-   **`array.remove(index)`**: One can remove an element from an array and model using the `.remove(index)` method. The accepted index range is `0 <= index < array.length`.
+-   **`array.insert(index, value)`**: One can insert an element at a specified index to an array and model using the `.insert(index, value)` method. The accepted index range is `0 <= index <= array.length`.
 
 Out of bound access into an array will return default-constructed values.
 
@@ -73,5 +76,18 @@ export component Example {
 
     out property <int> list-len: list-of-int.length;
     out property <int> first-int: list-of-int[0];
+}
+```
+
+Out of bound indexes in the remove and insert methods will result in the methods doing nothing.
+
+```slint
+export component Example {
+    in-out property<[int]> list-of-int: [1,2,3];
+	init => {
+		// Both operations will do nothing and the list-of-int property value will still be [1, 2, 3].
+		list-of-int.remove(4);
+		list-of-int.insert(4, 10);
+	}
 }
 ```

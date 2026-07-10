@@ -39,6 +39,14 @@ in UI they're used with.
 
 <Signature symbol="slint.models.ListModel.set_row_data">set_row_data(row: <XRef to="int" plain />, value: T) -&gt; <XRef to="None" plain /></Signature>
 
+### remove_row
+
+<Signature symbol="slint.models.ListModel.remove_row">remove_row(row: <XRef to="int" plain />) -&gt; <XRef to="None" plain /></Signature>
+
+### insert_row
+
+<Signature symbol="slint.models.ListModel.insert_row">insert_row(row: <XRef to="int" plain />, value: T) -&gt; <XRef to="None" plain /></Signature>
+
 ### append
 
 <Signature symbol="slint.models.ListModel.append">append(value: T) -&gt; <XRef to="None" plain /></Signature>

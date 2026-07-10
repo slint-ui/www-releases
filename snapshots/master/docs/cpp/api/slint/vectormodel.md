@@ -63,6 +63,42 @@ If the model cannot support data changes, then it is ok to do nothing. The defau
 
 If the model can update the data, it should also call `row_changed`
 
+### `push_row` (virtual)
+
+```cpp
+void slint::VectorModel<ModelData>::push_row(const ModelData &value) override
+```
+
+Adds a new row with the given *data* at the end of the model.
+
+If the model cannot support data changes, then it is ok to do nothing. The default implementation will print a warning to stderr.
+
+If the model can update the data, it should also call `notify_row_added`
+
+### `remove_row` (virtual)
+
+```cpp
+void slint::VectorModel<ModelData>::remove_row(std::ptrdiff_t index) override
+```
+
+Removes the row at the given *index* from the model.
+
+If the model cannot support data changes, then it is ok to do nothing. The default implementation will print a warning to stderr.
+
+If the model can update the data, it should also call `notify_row_removed`
+
+### `insert_row` (virtual)
+
+```cpp
+void slint::VectorModel<ModelData>::insert_row(std::ptrdiff_t index, const ModelData &value) override
+```
+
+Inserts a new row with the given *data* at the given *index*, shifting the following rows by one.
+
+If the model cannot support data changes, then it is ok to do nothing. The default implementation will print a warning to stderr.
+
+If the model can update the data, it should also call `notify_row_added`
+
 ### `push_back`
 
 ```cpp

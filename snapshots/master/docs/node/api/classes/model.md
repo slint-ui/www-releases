@@ -81,7 +81,7 @@ export class ArrayModel<T> extends Model<T> {
 
 > **\[iterator\]**(): `Iterator`\<`T`\>
 
-Defined in: [api/node/typescript/models.ts:138](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L138)
+Defined in: [api/node/typescript/models.ts:170](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L170)
 
 #### Returns
 
@@ -90,6 +90,79 @@ Defined in: [api/node/typescript/models.ts:138](https://github.com/slint-ui/slin
 #### Implementation of
 
 `Iterable.[iterator]`
+
+***
+
+### insertRow()
+
+> **insertRow**(`_index`, `_data`): `void`
+
+Defined in: [api/node/typescript/models.ts:164](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L164)
+
+Implementations of this function must add a row at the specified index, pushing all next
+rows to the right.
+
+#### Parameters
+
+##### \_index
+
+`number`
+
+index of the row to insert.
+
+##### \_data
+
+`T`
+
+new data item to store in a new row.
+
+#### Returns
+
+`void`
+
+***
+
+### pushRow()
+
+> **pushRow**(`_data`): `void`
+
+Defined in: [api/node/typescript/models.ts:142](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L142)
+
+Implementations of this function must add a line to the model with the provided data.
+
+#### Parameters
+
+##### \_data
+
+`T`
+
+new data item to store in a new row.
+
+#### Returns
+
+`void`
+
+***
+
+### removeRow()
+
+> **removeRow**(`_index`): `void`
+
+Defined in: [api/node/typescript/models.ts:152](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L152)
+
+Implementations of this function must remove the row at the specified index.
+
+#### Parameters
+
+##### \_index
+
+`number`
+
+index of the row to remove.
+
+#### Returns
+
+`void`
 
 ***
 
