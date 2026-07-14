@@ -95,12 +95,12 @@ Replace the contents of `ui/app-window.slint` with the following:
 
 
 ```slint title="app-window.slint"
-// ui/appwindow.slint
 export component MainWindow inherits Window {
     Text {
         text: "hello world";
         color: green;
     }
+}
 ```
 
 Configure with CMake:

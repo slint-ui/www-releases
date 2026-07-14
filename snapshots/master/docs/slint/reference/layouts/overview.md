@@ -10,7 +10,7 @@ import SlintProperty from '@slint/common-files/src/components/SlintProperty.astr
 These properties are valid on all visible items and can be used to specify constraints when used in layouts:
 
 ### col, row
-<SlintProperty propName="col, row" typeName="int" default="0">
+<SlintProperty propName="col, row" typeName="int" defaultValue="0">
 See [GridLayout](/master/docs/slint/reference/layouts/gridlayout.md).
 </SlintProperty>
 
