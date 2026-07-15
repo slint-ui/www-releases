@@ -49,7 +49,7 @@ Set to true when the switch has keyboard focus
 <SlintProperty typeName="string" propName="text" >
 The text written next to the switch.
 
-```slint 'text: "CheckBox with text";'
+```slint 'text: "Switch with text";'
 Switch {
     text: "Switch with text";
 }
@@ -65,7 +65,7 @@ The switch value changed
 Switch {
     text: "Switch";
     toggled() => {
-        debug("CheckBox checked: ", self.checked);
+        debug("Switch checked: ", self.checked);
     }
 }
 ```

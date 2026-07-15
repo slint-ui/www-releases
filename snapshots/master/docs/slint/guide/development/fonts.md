@@ -2,7 +2,9 @@
 title: "Font Handling"
 description: "Font Handling"
 ---
-<!-- cSpell:ignore Noto -->
+import LangRefLink from '@slint/common-files/src/components/LangRefLink.astro';
+
+{/* cSpell: ignore Noto sdf */}
 
 Elements such as `Text` and `TextInput` can render text and allow customizing the appearance of the text through
 different properties. The properties prefixed with `font-`, such as `font-family`, `font-size` and `font-weight`
@@ -28,3 +30,33 @@ export component Example inherits Window {
     }
 }
 ```
+
+## Fonts on embedded and bare-metal targets
+
+The fonts used for rendering are automatically picked up from the operating system running
+the application. On embedded or bare-metal targets that use the software renderer and have no
+operating system, no system fonts are available. On these targets you must embed every font
+your application uses by importing it as shown above.
+
+Embedding the fonts (and pre-rendering their glyphs) is enabled through the compiler's
+resource-embedding setting:
+
+- **Rust:** in your build script, pass <LangRefLink lang="rust-slint-build" relpath="enum.EmbedResourcesKind.html#variant.EmbedForSoftwareRenderer">`EmbedResourcesKind::EmbedForSoftwareRenderer`</LangRefLink> to <LangRefLink lang="rust-slint-build" relpath="struct.CompilerConfiguration.html#method.embed_resources">`CompilerConfiguration::embed_resources()`</LangRefLink>.
+- **C++:** set the `SLINT_EMBED_RESOURCES` CMake target property (or the `DEFAULT_SLINT_EMBED_RESOURCES`
+  cache variable) to `embed-for-software-renderer`.
+
+When embedding glyphs for the software renderer, the compiler pre-renders them at the pixel
+sizes your `.slint` files use. If some font sizes are only known at run time, set the
+`SLINT_FONT_SIZES` environment variable at compile time to a comma-separated list of pixel
+sizes (for example `SLINT_FONT_SIZES=12,16,24`) so glyphs are pre-rendered at those sizes as
+well.
+
+To reduce the binary size on systems with limited flash memory, glyphs can be embedded as
+[Signed Distance Fields (SDF)](https://en.wikipedia.org/wiki/Signed_distance_function) instead
+of pre-rendered bitmaps, trading some rendering quality for a smaller footprint. Enable it with
+<LangRefLink lang="rust-slint-build" relpath="struct.CompilerConfiguration.html#method.with_sdf_fonts">`CompilerConfiguration::with_sdf_fonts()`</LangRefLink> (Rust, requires the `sdf-fonts` Cargo
+feature), or by setting `SLINT_EMBED_RESOURCES` to `embed-for-software-renderer-with-sdf` (C++,
+requires the `SLINT_FEATURE_SDF_FONTS` feature).
+
+On targets that do have an operating system, enable the `software-renderer-systemfonts` cargo
+feature to let the software renderer also use fonts installed on the system.

@@ -6,11 +6,9 @@ import SlintProperty from '@slint/common-files/src/components/SlintProperty.astr
 import CodeSnippetMD from '@slint/common-files/src/components/CodeSnippetMD.astro';
 import Link from '@slint/common-files/src/components/Link.astro';
 
-The `StandardTableView` represents a table of data with columns and rows. Cells
-are organized in a model where each row is a model of
-<SlintProperty typeName="struct" structName="StandardListViewItem" propName="model" defaultValue="[]" >
-The model of items in each row.
-</SlintProperty>
+The `StandardTableView` represents a table of data with columns and rows. The
+columns are defined by the `columns` property, and each row is a model of
+`StandardListViewItem` set via the `rows` property.
 
 <CodeSnippetMD imagePath="/src/assets/generated/std-widgets-standardtableview.png"  imageWidth="200" imageHeight="200"  imageAlt='std-widgets standardtableview example'>
 ```slint playground
@@ -46,7 +44,7 @@ export component Example inherits Window {
 
 ## Properties
 
-Same as [ListView](/master/docs/slint/reference/std-widgets/views/listview.md), and in addition:
+Same scroll properties as [ScrollView](/master/docs/slint/reference/std-widgets/views/scrollview.md), and in addition:
 
 ### current-sort-column
 <SlintProperty typeName="int" propName="current-sort-column" propertyVisibility="out">
@@ -69,7 +67,7 @@ StandardTableView {
 <SlintProperty typeName="[[struct]]" structName="StandardListViewItem" propName="rows" defaultValue="[]" propertyVisibility="in-out">
 Defines the model of table rows.
 
-```slint 'rows: [{ text: "Item 1" }, { text: "Item 2" }];'
+```slint 'rows: [[{ text: "Item 1" }, { text: "Item 2" }]];'
 StandardTableView {
     columns: [{ title: "Header 1" }, { title: "Header 2" }];
     rows: [[{ text: "Item 1" }, { text: "Item 2" }]];

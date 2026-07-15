@@ -126,7 +126,7 @@ Add the following code inside the <span class="hljs-title">MainWindow</span> com
 ```
 
 This change adds a way for the <span class="hljs-title">MainWindow</span> to call to the C++ code that it should
-check if a player has solved a pair of tiles. The Rust code needs an additional property to toggle to disable further
+check if a player has solved a pair of tiles. The C++ code needs an additional property to toggle to disable further
 tile interaction, to prevent the player from opening more tiles than allowed. No cheating allowed!
 
 The last change to the code is to act when the <span class="hljs-title">MemoryTile</span> signals that a player clicked it.
@@ -212,7 +212,7 @@ instead of strong to avoid a memory leak.
 </TabItem>
 <TabItem label="NodeJS" icon="node">
 
-Change the contents of `memory.slint` to signal to the JavaScript code when the user clicks on a tile.
+Add the following code inside the <span class="hljs-title">MainWindow</span> component to signal to the JavaScript code when the user clicks on a tile.
 
 ```slint
     export component MainWindow inherits Window {
@@ -227,7 +227,7 @@ Change the contents of `memory.slint` to signal to the JavaScript code when the 
 ```
 
 This change adds a way for the <span class="hljs-title">MainWindow</span> to call to the JavaScript code that it should
-check if a player has solved a pair of tiles. The Rust code needs an additional property to toggle to disable further
+check if a player has solved a pair of tiles. The JavaScript code needs an additional property to toggle to disable further
 tile interaction, to prevent the player from opening more tiles than allowed. No cheating allowed!
 
 The last change to the code is to act when the <span class="hljs-title">MemoryTile</span> signals that a player clicked it.
@@ -302,7 +302,7 @@ mainWindow.check_if_pair_solved = function () {
 
 <TabItem label="Python" icon="seti:python">
 
-Change the contents of `memory.slint` to signal to the Python code when the user clicks on a tile.
+Add the following code inside the <span class="hljs-title">MainWindow</span> component to signal to the Python code when the user clicks on a tile.
 
 ```slint
     export component MainWindow inherits Window {
@@ -317,7 +317,7 @@ Change the contents of `memory.slint` to signal to the Python code when the user
 ```
 
 This change adds a way for the <span class="hljs-title">MainWindow</span> to call to the Python code that it should
-check if a player has solved a pair of tiles. The Rust code needs an additional property to toggle to disable further
+check if a player has solved a pair of tiles. The Python code needs an additional property to toggle to disable further
 tile interaction, to prevent the player from opening more tiles than allowed. No cheating allowed!
 
 The last change to the code is to act when the <span class="hljs-title">MemoryTile</span> signals that a player clicked it.

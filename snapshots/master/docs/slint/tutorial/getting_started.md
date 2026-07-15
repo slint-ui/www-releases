@@ -161,7 +161,7 @@ npm install
 
 ### Configure the project
 
-The `package.json` file references `src/main.js` as the entry point for the application and `src/main.js` references `memory.slint` as the UI file.
+The `package.json` file references `src/main.js` as the entry point for the application and `src/main.js` references `ui/app-window.slint` as the UI file.
 
 Replace the contents of `src/main.js` with the following:
 
@@ -230,7 +230,7 @@ main_window.show()
 main_window.run()
 ```
 
-The `slint.loadFile` method resolves files from the process's current working directory, so from the `package.json` file's location.
+The `slint.load_file` method resolves files from the process's current working directory, so from the `main.py` file's location.
 
 Replace the contents of `ui/app-window.slint` with the following:
 
