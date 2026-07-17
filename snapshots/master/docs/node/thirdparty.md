@@ -32,6 +32,7 @@ Third-party crates linked into the program and distributed with it.
 | [annotate-snippets 0.12.16](https://crates.io/crates/annotate-snippets/0.12.16) | Individual contributors | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [anstyle 1.0.14](https://crates.io/crates/anstyle/1.0.14) | Individual contributors | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [anyhow 1.0.102](https://crates.io/crates/anyhow/1.0.102) | David Tolnay <dtolnay@gmail.com> | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
+| [arboard 3.6.1](https://crates.io/crates/arboard/3.6.1) | The Arboard contributors | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [arrayref 0.3.9](https://crates.io/crates/arrayref/0.3.9) | David Roundy <roundyd@physics.oregonstate.edu> | [BSD-2-Clause](#BSD-2-Clause) |
 | [arrayvec 0.7.6](https://crates.io/crates/arrayvec/0.7.6) | bluss | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [as-raw-xcb-connection 1.0.1](https://crates.io/crates/as-raw-xcb-connection/1.0.1) | as-raw-xcb-connection Contributers | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
@@ -67,7 +68,6 @@ Third-party crates linked into the program and distributed with it.
 | [calloop 0.13.0](https://crates.io/crates/calloop/0.13.0) | Elinor Berger <elinor@safaradeg.net> | [MIT](#MIT) |
 | [calloop 0.14.4](https://crates.io/crates/calloop/0.14.4) | Elinor Berger <elinor@safaradeg.net> | [MIT](#MIT) |
 | [calloop-wayland-source 0.3.0](https://crates.io/crates/calloop-wayland-source/0.3.0) | Kirill Chibisov <contact@kchibisov.com> | [MIT](#MIT) |
-| [calloop-wayland-source 0.4.1](https://crates.io/crates/calloop-wayland-source/0.4.1) | Kirill Chibisov <contact@kchibisov.com> | [MIT](#MIT) |
 | [cesu8 1.1.0](https://crates.io/crates/cesu8/1.1.0) | Eric Kidd <git@randomhacks.net> | [Apache-2.0](#Apache-2.0)/[MIT](#MIT) |
 | [cfg-if 1.0.4](https://crates.io/crates/cfg-if/1.0.4) | Alex Crichton <alex@alexcrichton.com> | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [cgl 0.3.2](https://crates.io/crates/cgl/0.3.2) | The Servo Project Developers | [MIT](#MIT) / [Apache-2.0](#Apache-2.0) |
@@ -77,7 +77,6 @@ Third-party crates linked into the program and distributed with it.
 | [color_quant 1.1.0](https://crates.io/crates/color_quant/1.1.0) | nwin <nwin@users.noreply.github.com> | [MIT](#MIT) |
 | [combine 4.6.7](https://crates.io/crates/combine/4.6.7) | Markus Westerlind <marwes91@gmail.com> | [MIT](#MIT) |
 | [concurrent-queue 2.5.0](https://crates.io/crates/concurrent-queue/2.5.0) | Stjepan Glavina <stjepang@gmail.com>, Taiki Endo <te316e89@gmail.com>, John Nunley <dev@notgull.net> | [Apache-2.0](#Apache-2.0) OR [MIT](#MIT) |
-| [copypasta 0.10.2](https://crates.io/crates/copypasta/0.10.2) | Christian Duerr <contact@christianduerr.com> | [MIT](#MIT) / [Apache-2.0](#Apache-2.0) |
 | [core-foundation 0.10.1](https://crates.io/crates/core-foundation/0.10.1) | The Servo Project Developers | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [core-foundation 0.9.4](https://crates.io/crates/core-foundation/0.9.4) | The Servo Project Developers | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [core-foundation-sys 0.8.7](https://crates.io/crates/core-foundation-sys/0.8.7) | The Servo Project Developers | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
@@ -124,9 +123,11 @@ Third-party crates linked into the program and distributed with it.
 | [femtovg 0.25.1](https://crates.io/crates/femtovg/0.25.1) | Peter Todorov <ptodorov@cytec.bg>, Adam Nemecek <adamnemecek@gmail.com> | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [field-offset 0.3.6](https://crates.io/crates/field-offset/0.3.6) | Diggory Blake <diggsey@googlemail.com> | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [fixed_decimal 0.7.2](https://crates.io/crates/fixed_decimal/0.7.2) | The ICU4X Project Developers | [Unicode-3.0](#Unicode-3.0) |
+| [fixedbitset 0.5.7](https://crates.io/crates/fixedbitset/0.5.7) | bluss | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [flate2 1.1.9](https://crates.io/crates/flate2/1.1.9) | Alex Crichton <alex@alexcrichton.com>, Josh Triplett <josh@joshtriplett.org> | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [float-cmp 0.9.0](https://crates.io/crates/float-cmp/0.9.0) | Mike Dilger <mike@mikedilger.com> | [MIT](#MIT) |
 | [fnv 1.0.7](https://crates.io/crates/fnv/1.0.7) | Alex Crichton <alex@alexcrichton.com> | [Apache-2.0](#Apache-2.0) / [MIT](#MIT) |
+| [foldhash 0.1.5](https://crates.io/crates/foldhash/0.1.5) | Orson Peters <orsonpeters@gmail.com> | [Zlib](#Zlib) |
 | [foldhash 0.2.0](https://crates.io/crates/foldhash/0.2.0) | Orson Peters <orsonpeters@gmail.com> | [Zlib](#Zlib) |
 | [font-types 0.11.3](https://crates.io/crates/font-types/0.11.3) | Colin Rothfels | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [font-types 0.12.0](https://crates.io/crates/font-types/0.12.0) | Fontations Developers | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
@@ -163,6 +164,7 @@ Third-party crates linked into the program and distributed with it.
 | [half 2.7.1](https://crates.io/crates/half/2.7.1) | Kathryn Long <squeeself@gmail.com> | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [harfrust 0.10.0](https://crates.io/crates/harfrust/0.10.0) | HarfBuzz developers, Yevhenii Reizner | [MIT](#MIT) |
 | [hashbrown 0.14.5](https://crates.io/crates/hashbrown/0.14.5) | Amanieu d'Antras <amanieu@gmail.com> | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
+| [hashbrown 0.15.5](https://crates.io/crates/hashbrown/0.15.5) | Amanieu d'Antras <amanieu@gmail.com> | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [hashbrown 0.16.1](https://crates.io/crates/hashbrown/0.16.1) | Amanieu d'Antras <amanieu@gmail.com> | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [hashbrown 0.17.1](https://crates.io/crates/hashbrown/0.17.1) | Amanieu d'Antras | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [hermit-abi 0.3.9](https://crates.io/crates/hermit-abi/0.3.9) | Stefan Lankes | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
@@ -219,6 +221,7 @@ Third-party crates linked into the program and distributed with it.
 | [linux-raw-sys 0.9.4](https://crates.io/crates/linux-raw-sys/0.9.4) | Dan Gohman <dev@sunfishcode.online> | [Apache-2.0](#Apache-2.0) WITH LLVM-exception OR [Apache-2.0](#Apache-2.0) OR [MIT](#MIT) |
 | [litemap 0.8.2](https://crates.io/crates/litemap/0.8.2) | The ICU4X Project Developers | [Unicode-3.0](#Unicode-3.0) |
 | [locale_config 0.3.0](https://crates.io/crates/locale_config/0.3.0) | Jan Hudec <bulb@ucw.cz> | [MIT](#MIT) |
+| [lock_api 0.4.14](https://crates.io/crates/lock_api/0.4.14) | Amanieu d'Antras <amanieu@gmail.com> | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [log 0.4.32](https://crates.io/crates/log/0.4.32) | The Rust Project Developers | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [loop9 0.1.5](https://crates.io/crates/loop9/0.1.5) | Kornel <kornel@geekhood.net> | [MIT](#MIT) |
 | [lyon_algorithms 1.0.20](https://crates.io/crates/lyon_algorithms/1.0.20) | Nicolas Silva <nical@fastmail.com> | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
@@ -258,13 +261,9 @@ Third-party crates linked into the program and distributed with it.
 | [objc2 0.6.4](https://crates.io/crates/objc2/0.6.4) | Mads Marquart <mads@marquart.dk> | [MIT](#MIT) |
 | [objc2-app-kit 0.2.2](https://crates.io/crates/objc2-app-kit/0.2.2) | — | [MIT](#MIT) |
 | [objc2-app-kit 0.3.2](https://crates.io/crates/objc2-app-kit/0.3.2) | — | [Zlib](#Zlib) OR [Apache-2.0](#Apache-2.0) OR [MIT](#MIT) |
-| [objc2-cloud-kit 0.3.2](https://crates.io/crates/objc2-cloud-kit/0.3.2) | — | [Zlib](#Zlib) OR [Apache-2.0](#Apache-2.0) OR [MIT](#MIT) |
-| [objc2-core-data 0.3.2](https://crates.io/crates/objc2-core-data/0.3.2) | — | [Zlib](#Zlib) OR [Apache-2.0](#Apache-2.0) OR [MIT](#MIT) |
 | [objc2-core-foundation 0.3.2](https://crates.io/crates/objc2-core-foundation/0.3.2) | — | [Zlib](#Zlib) OR [Apache-2.0](#Apache-2.0) OR [MIT](#MIT) |
 | [objc2-core-graphics 0.3.2](https://crates.io/crates/objc2-core-graphics/0.3.2) | — | [Zlib](#Zlib) OR [Apache-2.0](#Apache-2.0) OR [MIT](#MIT) |
-| [objc2-core-image 0.3.2](https://crates.io/crates/objc2-core-image/0.3.2) | — | [Zlib](#Zlib) OR [Apache-2.0](#Apache-2.0) OR [MIT](#MIT) |
 | [objc2-core-text 0.3.2](https://crates.io/crates/objc2-core-text/0.3.2) | — | [Zlib](#Zlib) OR [Apache-2.0](#Apache-2.0) OR [MIT](#MIT) |
-| [objc2-core-video 0.3.2](https://crates.io/crates/objc2-core-video/0.3.2) | — | [Zlib](#Zlib) OR [Apache-2.0](#Apache-2.0) OR [MIT](#MIT) |
 | [objc2-encode 4.1.0](https://crates.io/crates/objc2-encode/4.1.0) | Mads Marquart <mads@marquart.dk> | [MIT](#MIT) |
 | [objc2-foundation 0.2.2](https://crates.io/crates/objc2-foundation/0.2.2) | — | [MIT](#MIT) |
 | [objc2-foundation 0.3.2](https://crates.io/crates/objc2-foundation/0.3.2) | — | [MIT](#MIT) |
@@ -276,13 +275,17 @@ Third-party crates linked into the program and distributed with it.
 | [once_cell 1.21.4](https://crates.io/crates/once_cell/1.21.4) | Aleksey Kladov <aleksey.kladov@gmail.com> | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [orbclient 0.3.55](https://crates.io/crates/orbclient/0.3.55) | Jeremy Soller <jackpot51@gmail.com> | [MIT](#MIT) |
 | [ordered-stream 0.2.0](https://crates.io/crates/ordered-stream/0.2.0) | Daniel De Graaf <code@danieldg.net>, Zeeshan Ali Khan <zeeshanak@gnome.org> | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
+| [os_pipe 1.2.3](https://crates.io/crates/os_pipe/1.2.3) | Jack O'Connor | [MIT](#MIT) |
 | [owned_ttf_parser 0.25.1](https://crates.io/crates/owned_ttf_parser/0.25.1) | Alex Butler <alexheretic@gmail.com> | [Apache-2.0](#Apache-2.0) |
 | [parking 2.2.1](https://crates.io/crates/parking/2.2.1) | Stjepan Glavina <stjepang@gmail.com>, The Rust Project Developers | [Apache-2.0](#Apache-2.0) OR [MIT](#MIT) |
+| [parking_lot 0.12.5](https://crates.io/crates/parking_lot/0.12.5) | Amanieu d'Antras <amanieu@gmail.com> | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
+| [parking_lot_core 0.9.12](https://crates.io/crates/parking_lot_core/0.9.12) | Amanieu d'Antras <amanieu@gmail.com> | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [parlance 0.1.0](https://crates.io/crates/parlance/0.1.0) | the Parley Authors | [Apache-2.0](#Apache-2.0) OR [MIT](#MIT) |
 | [parley 0.11.0](https://crates.io/crates/parley/0.11.0) | the Parley Authors | [Apache-2.0](#Apache-2.0) OR [MIT](#MIT) |
 | [parley_data 0.11.0](https://crates.io/crates/parley_data/0.11.0) | the Parley Authors | [Apache-2.0](#Apache-2.0) OR [MIT](#MIT) |
 | [pathdiff 0.2.3](https://crates.io/crates/pathdiff/0.2.3) | Manish Goregaokar <manishsmail@gmail.com> | [MIT](#MIT)/[Apache-2.0](#Apache-2.0) |
 | [percent-encoding 2.3.2](https://crates.io/crates/percent-encoding/2.3.2) | The rust-url developers | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
+| [petgraph 0.8.3](https://crates.io/crates/petgraph/0.8.3) | bluss, mitchmindtree | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [phf 0.13.1](https://crates.io/crates/phf/0.13.1) | Steven Fackler <sfackler@gmail.com> | [MIT](#MIT) |
 | [phf_shared 0.13.1](https://crates.io/crates/phf_shared/0.13.1) | Steven Fackler <sfackler@gmail.com> | [MIT](#MIT) |
 | [pico-args 0.5.0](https://crates.io/crates/pico-args/0.5.0) | Yevhenii Reizner <razrfalcon@gmail.com> | [MIT](#MIT) |
@@ -354,8 +357,6 @@ Third-party crates linked into the program and distributed with it.
 | [slotmap 1.1.1](https://crates.io/crates/slotmap/1.1.1) | Orson Peters <orsonpeters@gmail.com> | [Zlib](#Zlib) |
 | [smallvec 1.15.2](https://crates.io/crates/smallvec/1.15.2) | The Servo Project Developers | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [smithay-client-toolkit 0.19.2](https://crates.io/crates/smithay-client-toolkit/0.19.2) | Elinor Berger <elinor@safaradeg.net>, i509VCB <mail@i509.me>, Ashley Wulber <ashley@system76.com> | [MIT](#MIT) |
-| [smithay-client-toolkit 0.20.0](https://crates.io/crates/smithay-client-toolkit/0.20.0) | Elinor Berger <elinor@safaradeg.net>, i509VCB <mail@i509.me>, Ashley Wulber <ashley@system76.com> | [MIT](#MIT) |
-| [smithay-clipboard 0.7.3](https://crates.io/crates/smithay-clipboard/0.7.3) | Kirill Chibisov <contact@kchibisov.com>, Elinor Berger <elinor@safaradeg.net> | [MIT](#MIT) |
 | [smol_str 0.2.2](https://crates.io/crates/smol_str/0.2.2) | Aleksey Kladov <aleksey.kladov@gmail.com> | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [smol_str 0.3.2](https://crates.io/crates/smol_str/0.3.2) | Aleksey Kladov <aleksey.kladov@gmail.com>, Lukas Wirth <lukastw97@gmail.com> | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [snafu 0.8.9](https://crates.io/crates/snafu/0.8.9) | Jake Goulding <jake.goulding@gmail.com> | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
@@ -386,6 +387,7 @@ Third-party crates linked into the program and distributed with it.
 | [tr 0.1.11](https://crates.io/crates/tr/0.1.11) | Olivier Goffart <ogoffart@woboq.com> | [MIT](#MIT) |
 | [tracing 0.1.44](https://crates.io/crates/tracing/0.1.44) | Eliza Weisman <eliza@buoyant.io>, Tokio Contributors <team@tokio.rs> | [MIT](#MIT) |
 | [tracing-core 0.1.36](https://crates.io/crates/tracing-core/0.1.36) | Tokio Contributors <team@tokio.rs> | [MIT](#MIT) |
+| [tree_magic_mini 3.2.2](https://crates.io/crates/tree_magic_mini/3.2.2) | Matt Brubeck <mbrubeck@limpet.net>, Allison Hancock <aahancoc@umich.edu> | [MIT](#MIT) |
 | [ttf-parser 0.25.1](https://crates.io/crates/ttf-parser/0.25.1) | Caleb Maclennan <caleb@alerque.com>, Laurenz Stampfl <laurenz.stampfl@gmail.com>, Yevhenii Reizner <razrfalcon@gmail.com>, خالد حسني (Khaled Hosny) <khaled@aliftype.com> | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [typed-index-collections 3.3.0](https://crates.io/crates/typed-index-collections/3.3.0) | Andrey Zheleznov <zheland.net@gmail.com> | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [udev 0.9.3](https://crates.io/crates/udev/0.9.3) | David Cuddeback <david.cuddeback@gmail.com>, Victoria Brekenfeld <github@drakulix.de> | [MIT](#MIT) |
@@ -415,8 +417,6 @@ Third-party crates linked into the program and distributed with it.
 | [wayland-csd-frame 0.3.0](https://crates.io/crates/wayland-csd-frame/0.3.0) | Kirill Chibisov <contact@kchibisov.com> | [MIT](#MIT) |
 | [wayland-cursor 0.31.14](https://crates.io/crates/wayland-cursor/0.31.14) | Elinor Berger <elinor@safaradeg.net> | [MIT](#MIT) |
 | [wayland-protocols 0.32.13](https://crates.io/crates/wayland-protocols/0.32.13) | Elinor Berger <elinor@safaradeg.net> | [MIT](#MIT) |
-| [wayland-protocols-experimental 20250721.0.1](https://crates.io/crates/wayland-protocols-experimental/20250721.0.1) | Elinor Berger <elinor@safaradeg.net> | [MIT](#MIT) |
-| [wayland-protocols-misc 0.3.12](https://crates.io/crates/wayland-protocols-misc/0.3.12) | Elinor Berger <elinor@safaradeg.net> | [MIT](#MIT) |
 | [wayland-protocols-plasma 0.3.12](https://crates.io/crates/wayland-protocols-plasma/0.3.12) | Elinor Berger <elinor@safaradeg.net> | [MIT](#MIT) |
 | [wayland-protocols-wlr 0.3.12](https://crates.io/crates/wayland-protocols-wlr/0.3.12) | Elinor Berger <elinor@safaradeg.net> | [MIT](#MIT) |
 | [wayland-sys 0.31.11](https://crates.io/crates/wayland-sys/0.31.11) | Elinor Berger <elinor@safaradeg.net> | [MIT](#MIT) |
@@ -439,39 +439,49 @@ Third-party crates linked into the program and distributed with it.
 | [windows-sys 0.48.0](https://crates.io/crates/windows-sys/0.48.0) | Microsoft | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [windows-sys 0.52.0](https://crates.io/crates/windows-sys/0.52.0) | Microsoft | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [windows-sys 0.59.0](https://crates.io/crates/windows-sys/0.59.0) | Microsoft | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
+| [windows-sys 0.60.2](https://crates.io/crates/windows-sys/0.60.2) | Microsoft | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [windows-sys 0.61.2](https://crates.io/crates/windows-sys/0.61.2) | Microsoft Corporation | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [windows-targets 0.42.2](https://crates.io/crates/windows-targets/0.42.2) | Microsoft | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [windows-targets 0.48.5](https://crates.io/crates/windows-targets/0.48.5) | Microsoft | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [windows-targets 0.52.6](https://crates.io/crates/windows-targets/0.52.6) | Microsoft | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
+| [windows-targets 0.53.5](https://crates.io/crates/windows-targets/0.53.5) | Microsoft Corporation | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [windows-threading 0.2.1](https://crates.io/crates/windows-threading/0.2.1) | Microsoft Corporation | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [windows_aarch64_gnullvm 0.42.2](https://crates.io/crates/windows_aarch64_gnullvm/0.42.2) | Microsoft | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [windows_aarch64_gnullvm 0.48.5](https://crates.io/crates/windows_aarch64_gnullvm/0.48.5) | Microsoft | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [windows_aarch64_gnullvm 0.52.6](https://crates.io/crates/windows_aarch64_gnullvm/0.52.6) | Microsoft | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
+| [windows_aarch64_gnullvm 0.53.1](https://crates.io/crates/windows_aarch64_gnullvm/0.53.1) | Microsoft Corporation | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [windows_aarch64_msvc 0.42.2](https://crates.io/crates/windows_aarch64_msvc/0.42.2) | Microsoft | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [windows_aarch64_msvc 0.48.5](https://crates.io/crates/windows_aarch64_msvc/0.48.5) | Microsoft | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [windows_aarch64_msvc 0.52.6](https://crates.io/crates/windows_aarch64_msvc/0.52.6) | Microsoft | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
+| [windows_aarch64_msvc 0.53.1](https://crates.io/crates/windows_aarch64_msvc/0.53.1) | Microsoft Corporation | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [windows_i686_gnu 0.42.2](https://crates.io/crates/windows_i686_gnu/0.42.2) | Microsoft | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [windows_i686_gnu 0.48.5](https://crates.io/crates/windows_i686_gnu/0.48.5) | Microsoft | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [windows_i686_gnu 0.52.6](https://crates.io/crates/windows_i686_gnu/0.52.6) | Microsoft | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
+| [windows_i686_gnu 0.53.1](https://crates.io/crates/windows_i686_gnu/0.53.1) | Microsoft Corporation | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [windows_i686_gnullvm 0.52.6](https://crates.io/crates/windows_i686_gnullvm/0.52.6) | Microsoft | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
+| [windows_i686_gnullvm 0.53.1](https://crates.io/crates/windows_i686_gnullvm/0.53.1) | Microsoft Corporation | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [windows_i686_msvc 0.42.2](https://crates.io/crates/windows_i686_msvc/0.42.2) | Microsoft | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [windows_i686_msvc 0.48.5](https://crates.io/crates/windows_i686_msvc/0.48.5) | Microsoft | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [windows_i686_msvc 0.52.6](https://crates.io/crates/windows_i686_msvc/0.52.6) | Microsoft | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
+| [windows_i686_msvc 0.53.1](https://crates.io/crates/windows_i686_msvc/0.53.1) | Microsoft Corporation | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [windows_x86_64_gnu 0.42.2](https://crates.io/crates/windows_x86_64_gnu/0.42.2) | Microsoft | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [windows_x86_64_gnu 0.48.5](https://crates.io/crates/windows_x86_64_gnu/0.48.5) | Microsoft | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [windows_x86_64_gnu 0.52.6](https://crates.io/crates/windows_x86_64_gnu/0.52.6) | Microsoft | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
+| [windows_x86_64_gnu 0.53.1](https://crates.io/crates/windows_x86_64_gnu/0.53.1) | Microsoft Corporation | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [windows_x86_64_gnullvm 0.42.2](https://crates.io/crates/windows_x86_64_gnullvm/0.42.2) | Microsoft | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [windows_x86_64_gnullvm 0.48.5](https://crates.io/crates/windows_x86_64_gnullvm/0.48.5) | Microsoft | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [windows_x86_64_gnullvm 0.52.6](https://crates.io/crates/windows_x86_64_gnullvm/0.52.6) | Microsoft | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
+| [windows_x86_64_gnullvm 0.53.1](https://crates.io/crates/windows_x86_64_gnullvm/0.53.1) | Microsoft Corporation | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [windows_x86_64_msvc 0.42.2](https://crates.io/crates/windows_x86_64_msvc/0.42.2) | Microsoft | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [windows_x86_64_msvc 0.48.5](https://crates.io/crates/windows_x86_64_msvc/0.48.5) | Microsoft | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [windows_x86_64_msvc 0.52.6](https://crates.io/crates/windows_x86_64_msvc/0.52.6) | Microsoft | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
+| [windows_x86_64_msvc 0.53.1](https://crates.io/crates/windows_x86_64_msvc/0.53.1) | Microsoft Corporation | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [winit 0.30.13](https://crates.io/crates/winit/0.30.13) | The winit contributors, Pierre Krieger <pierre.krieger1708@gmail.com> | [Apache-2.0](#Apache-2.0) |
 | [winnow 1.0.3](https://crates.io/crates/winnow/1.0.3) | — | [MIT](#MIT) |
 | [wit-bindgen 0.57.1](https://crates.io/crates/wit-bindgen/0.57.1) | Alex Crichton <alex@alexcrichton.com> | [Apache-2.0](#Apache-2.0) WITH LLVM-exception OR [Apache-2.0](#Apache-2.0) OR [MIT](#MIT) |
+| [wl-clipboard-rs 0.9.3](https://crates.io/crates/wl-clipboard-rs/0.9.3) | Ivan Molodetskikh <yalterz@gmail.com> | [MIT](#MIT)/[Apache-2.0](#Apache-2.0) |
 | [write-fonts 0.49.2](https://crates.io/crates/write-fonts/0.49.2) | Fontations Developers | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [writeable 0.6.3](https://crates.io/crates/writeable/0.6.3) | The ICU4X Project Developers | [Unicode-3.0](#Unicode-3.0) |
-| [x11-clipboard 0.9.3](https://crates.io/crates/x11-clipboard/0.9.3) | quininer kel <quininer@live.com> | [MIT](#MIT) |
 | [x11-dl 2.21.0](https://crates.io/crates/x11-dl/2.21.0) | daggerbot <daggerbot@gmail.com>, Erle Pereira <erle@erlepereira.com>, AltF02 <contact@altf2.dev> | [MIT](#MIT) |
 | [x11rb 0.13.2](https://crates.io/crates/x11rb/0.13.2) | Uli Schlachter <psychon@znc.in>, Eduardo Sánchez Muñoz <eduardosm-dev@e64.io>, notgull <jtnunley01@gmail.com> | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [x11rb-protocol 0.13.2](https://crates.io/crates/x11rb-protocol/0.13.2) | Uli Schlachter <psychon@znc.in>, Eduardo Sánchez Muñoz <eduardosm-dev@e64.io>, notgull <jtnunley01@gmail.com> | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |

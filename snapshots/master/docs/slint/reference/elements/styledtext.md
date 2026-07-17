@@ -79,6 +79,12 @@ The horizontal alignment of the text.
 The color used for rendering links in the text.
 </SlintProperty>
 
+### max-lines
+<SlintProperty propName="max-lines" typeName="int" defaultValue="0">
+The maximum number of lines to display. Wrapped lines count towards the limit.
+Values less than or equal to zero don't limit the number of lines.
+</SlintProperty>
+
 ### text
 <SlintProperty propName="text" typeName="styled-text" defaultValue="&quot;&quot;">
 The styled text rendered, using CommonMark markup with additional HTML tags for styling.

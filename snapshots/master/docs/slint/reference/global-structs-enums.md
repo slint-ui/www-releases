@@ -37,7 +37,6 @@ import InputType from "/src/content/docs/reference/generated/enums/_InputType.md
 import LayoutAlignment from "/src/content/docs/reference/generated/enums/_LayoutAlignment.md"
 import LineCap from "/src/content/docs/reference/generated/enums/_LineCap.md"
 import LineJoin from "/src/content/docs/reference/generated/enums/_LineJoin.md"
-import MouseCursor from "/src/content/docs/reference/generated/enums/_MouseCursor.md"
 import OperatingSystemType from "/src/content/docs/reference/generated/enums/_OperatingSystemType.md"
 import Orientation from "/src/content/docs/reference/generated/enums/_Orientation.md"
 import PathEvent from "/src/content/docs/reference/generated/enums/_PathEvent.md"
@@ -158,9 +157,6 @@ import TextWrap from "/src/content/docs/reference/generated/enums/_TextWrap.md"
 
 ### LineJoin
 <LineJoin />
-
-### MouseCursor
-<MouseCursor />
 
 ### OperatingSystemType
 <OperatingSystemType />

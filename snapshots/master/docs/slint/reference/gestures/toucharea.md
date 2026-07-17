@@ -82,8 +82,8 @@ Set to true when the mouse is over the `TouchArea` area.
 </SlintProperty>
 
 ### mouse-cursor
-<SlintProperty propName="mouse-cursor" typeName="enum" enumName="MouseCursor">
-The mouse cursor type when the mouse is hovering the `TouchArea`.
+<SlintProperty propName="mouse-cursor" typeName="MouseCursor">
+The mouse cursor when the mouse is hovering the `TouchArea`.
 </SlintProperty>
 
 ### mouse-x
