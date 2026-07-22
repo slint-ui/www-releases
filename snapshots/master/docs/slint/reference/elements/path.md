@@ -170,57 +170,6 @@ export component Example inherits Path {
 Note how the coordinates of the path elements don't use units - they operate within the imaginary
 coordinate system of the scalable path.
 
-## `CubicTo`
-
-The `CubicTo` sub-element describes a smooth Bézier from the path's current position to the
-location specified by the `x` and `y` properties, using two control points specified by their
-respective properties.
-
-### control-1-x
-<SlintProperty propName="control-1-x" typeName="float">
-The x coordinate of the curve's first control point.
-</SlintProperty>
-
-### control-1-y
-<SlintProperty propName="control-1-y" typeName="float">
-The y coordinate of the curve's first control point.
-</SlintProperty>
-
-### control-2-x
-<SlintProperty propName="control-2-x" typeName="float">
-The x coordinate of the curve's second control point.
-</SlintProperty>
-
-### control-2-y
-<SlintProperty propName="control-2-y" typeName="float">
-The y coordinate of the curve's second control point.
-</SlintProperty>
-
-### x
-<SlintProperty propName="x" typeName="float">
-The target x position of the curve.
-</SlintProperty>
-
-### y
-<SlintProperty propName="y" typeName="float">
-The target y position of the curve.
-</SlintProperty>
-
-## `LineTo`
-
-The `LineTo` sub-element describes a line from the path's current position to the
-location specified by the `x` and `y` properties.
-
-### x
-<SlintProperty propName="x" typeName="float">
-The target x position of the line.
-</SlintProperty>
-
-### y
-<SlintProperty propName="y" typeName="float">
-The target y position of the line.
-</SlintProperty>
-
 ## `ArcTo`
 
 The `ArcTo` sub-element describes the portion of an ellipse. The arc is drawn from the path's
@@ -252,6 +201,21 @@ If the property is `true`, the arc will be drawn as a clockwise turning arc; ant
 <SlintProperty propName="x-rotation" typeName="float">
 The x-axis of the ellipse will be rotated by the value of this properties, specified in as angle in degrees from 0 to 360.
 </SlintProperty>
+
+### x
+<SlintProperty propName="x" typeName="float">
+The target x position of the line.
+</SlintProperty>
+
+### y
+<SlintProperty propName="y" typeName="float">
+The target y position of the line.
+</SlintProperty>
+
+## `LineTo`
+
+The `LineTo` sub-element describes a line from the path's current position to the
+location specified by the `x` and `y` properties.
 
 ### x
 <SlintProperty propName="x" typeName="float">
@@ -309,3 +273,39 @@ The y position of the new current point.
 
 The `Close` element closes the current sub-path and draws a straight line from the current
 position to the beginning of the path.
+
+## `CubicTo`
+
+The `CubicTo` sub-element describes a smooth Bézier from the path's current position to the
+location specified by the `x` and `y` properties, using two control points specified by their
+respective properties.
+
+### control-1-x
+<SlintProperty propName="control-1-x" typeName="float">
+The x coordinate of the curve's first control point.
+</SlintProperty>
+
+### control-1-y
+<SlintProperty propName="control-1-y" typeName="float">
+The y coordinate of the curve's first control point.
+</SlintProperty>
+
+### control-2-x
+<SlintProperty propName="control-2-x" typeName="float">
+The x coordinate of the curve's second control point.
+</SlintProperty>
+
+### control-2-y
+<SlintProperty propName="control-2-y" typeName="float">
+The y coordinate of the curve's second control point.
+</SlintProperty>
+
+### x
+<SlintProperty propName="x" typeName="float">
+The target x position of the curve.
+</SlintProperty>
+
+### y
+<SlintProperty propName="y" typeName="float">
+The target y position of the curve.
+</SlintProperty>

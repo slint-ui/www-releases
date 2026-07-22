@@ -3,6 +3,7 @@ title: "slint::language Namespace"
 ---
 ## Types
 - [DropEvent](dropevent/)
+- [InputMethodHints](inputmethodhints/)
 - [KeyboardModifiers](keyboardmodifiers/)
 - [KeyEvent](keyevent/)
 - [PointerEvent](pointerevent/)
@@ -11,6 +12,7 @@ title: "slint::language Namespace"
 - [TableColumn](tablecolumn/)
 
 ## Enumerations
+- [CapitalizationMode](capitalizationmode/)
 - [PointerEventKind](pointereventkind/)
 - [PointerEventButton](pointereventbutton/)
 - [AccessibleRole](accessiblerole/)

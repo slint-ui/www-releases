@@ -3,7 +3,7 @@ title: "AccessibleRole"
 ---
 > **AccessibleRole** = *typeof* [`AccessibleRole`](/master/docs/node/api/variables/language/#accessiblerole)\[keyof *typeof* [`AccessibleRole`](/master/docs/node/api/variables/language/#accessiblerole)\]
 
-Defined in: api/node/typescript/generated/language.ts:430
+Defined in: api/node/typescript/generated/language.ts:472
 
 This enum represents the different values for the `accessible-role` property, used to describe the
 role of an element in the context of assistive technology such as screen readers.

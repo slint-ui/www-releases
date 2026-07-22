@@ -5,6 +5,7 @@ description: "Global Structs and Enums"
 import DropEvent from "/src/content/docs/reference/generated/structs/_DropEvent.md"
 import Edges from "/src/content/docs/reference/generated/structs/_Edges.md"
 import FontMetrics from "/src/content/docs/reference/generated/structs/_FontMetrics.md"
+import InputMethodHints from "/src/content/docs/reference/generated/structs/_InputMethodHints.md"
 import KeyEvent from "/src/content/docs/reference/generated/structs/_KeyEvent.md"
 import KeyboardModifiers from "/src/content/docs/reference/generated/structs/_KeyboardModifiers.md"
 import Point from "/src/content/docs/reference/generated/structs/_Point.md"
@@ -17,6 +18,7 @@ import TableColumn from "/src/content/docs/reference/generated/structs/_TableCol
 import AccessibleLiveness from "/src/content/docs/reference/generated/enums/_AccessibleLiveness.md"
 import AccessibleRole from "/src/content/docs/reference/generated/enums/_AccessibleRole.md"
 import AnimationDirection from "/src/content/docs/reference/generated/enums/_AnimationDirection.md"
+import CapitalizationMode from "/src/content/docs/reference/generated/enums/_CapitalizationMode.md"
 import ColorScheme from "/src/content/docs/reference/generated/enums/_ColorScheme.md"
 import CrossAxisAlignment from "/src/content/docs/reference/generated/enums/_CrossAxisAlignment.md"
 import DialogButtonRole from "/src/content/docs/reference/generated/enums/_DialogButtonRole.md"
@@ -63,6 +65,9 @@ import TextWrap from "/src/content/docs/reference/generated/enums/_TextWrap.md"
 ### FontMetrics
 <FontMetrics />
 
+### InputMethodHints
+<InputMethodHints />
+
 ### KeyEvent
 <KeyEvent />
 
@@ -97,6 +102,9 @@ import TextWrap from "/src/content/docs/reference/generated/enums/_TextWrap.md"
 
 ### AnimationDirection
 <AnimationDirection />
+
+### CapitalizationMode
+<CapitalizationMode />
 
 ### ColorScheme
 <ColorScheme />

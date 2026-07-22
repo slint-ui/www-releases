@@ -3,7 +3,7 @@ title: "StandardListViewItem"
 ---
 > **StandardListViewItem** = `object`
 
-Defined in: api/node/typescript/generated/language.ts:595
+Defined in: api/node/typescript/generated/language.ts:637
 
 Represents an item in a StandardListView and a StandardTableView.
 
@@ -13,6 +13,6 @@ Represents an item in a StandardListView and a StandardTableView.
 
 > **text**: `string`
 
-Defined in: api/node/typescript/generated/language.ts:599
+Defined in: api/node/typescript/generated/language.ts:641
 
 The text content of the item

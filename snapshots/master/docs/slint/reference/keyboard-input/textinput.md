@@ -117,6 +117,12 @@ The width of the text cursor.
  Use this to configure `TextInput` for editing special input, such as password fields.
 </SlintProperty>
 
+### input-method-hints
+<SlintProperty propName="input-method-hints" typeName="struct" structName="InputMethodHints">
+Hints for the platform's input method (such as a soft keyboard), for example to configure auto-capitalization.
+The input method may take these hints into account, but might also ignore them.
+</SlintProperty>
+
 ### has-focus
 <SlintProperty propName="has-focus" typeName="bool" propertyVisibility="out">
 `TextInput` sets this to `true` when it's focused. Only then it receives [KeyEvent](/master/docs/slint/reference/keyboard-input/overview.md)s.

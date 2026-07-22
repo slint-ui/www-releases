@@ -120,7 +120,7 @@ Third-party crates linked into the program and distributed with it.
 | [fastrand 2.4.1](https://crates.io/crates/fastrand/2.4.1) | Stjepan Glavina <stjepang@gmail.com> | [Apache-2.0](#Apache-2.0) OR [MIT](#MIT) |
 | [fax 0.2.7](https://crates.io/crates/fax/0.2.7) | Sebastian K <s3bk@protonmail.com> | [MIT](#MIT) |
 | [fdeflate 0.3.7](https://crates.io/crates/fdeflate/0.3.7) | The image-rs Developers | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
-| [femtovg 0.25.1](https://crates.io/crates/femtovg/0.25.1) | Peter Todorov <ptodorov@cytec.bg>, Adam Nemecek <adamnemecek@gmail.com> | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
+| [femtovg 0.26.0](https://crates.io/crates/femtovg/0.26.0) | Peter Todorov <ptodorov@cytec.bg>, Adam Nemecek <adamnemecek@gmail.com> | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [field-offset 0.3.6](https://crates.io/crates/field-offset/0.3.6) | Diggory Blake <diggsey@googlemail.com> | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [fixed_decimal 0.7.2](https://crates.io/crates/fixed_decimal/0.7.2) | The ICU4X Project Developers | [Unicode-3.0](#Unicode-3.0) |
 | [fixedbitset 0.5.7](https://crates.io/crates/fixedbitset/0.5.7) | bluss | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
@@ -155,7 +155,7 @@ Third-party crates linked into the program and distributed with it.
 | [gettext-rs 0.7.7](https://crates.io/crates/gettext-rs/0.7.7) | Konstantin Salikhov <koka58@yandex.ru>, Alexander Batischev <eual.jp@gmail.com> | [MIT](#MIT) |
 | [gettext-sys 0.26.0](https://crates.io/crates/gettext-sys/0.26.0) | Brian Olsen <brian@maven-group.org>, Alexander Batischev <eual.jp@gmail.com> | [MIT](#MIT) |
 | [gif 0.14.2](https://crates.io/crates/gif/0.14.2) | The image-rs Developers | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
-| [glow 0.17.0](https://crates.io/crates/glow/0.17.0) | Joshua Groves <josh@joshgroves.com>, Dzmitry Malyshau <kvarkus@gmail.com> | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) OR [Zlib](#Zlib) |
+| [glow 0.18.0](https://crates.io/crates/glow/0.18.0) | Joshua Groves <josh@joshgroves.com>, Dzmitry Malyshau <kvarkus@gmail.com> | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) OR [Zlib](#Zlib) |
 | [glutin 0.32.3](https://crates.io/crates/glutin/0.32.3) | Kirill Chibisov <contact@kchibisov.com> | [Apache-2.0](#Apache-2.0) |
 | [glutin-winit 0.5.0](https://crates.io/crates/glutin-winit/0.5.0) | Kirill Chibisov <contact@kchibisov.com> | [MIT](#MIT) |
 | [glutin_egl_sys 0.7.1](https://crates.io/crates/glutin_egl_sys/0.7.1) | Kirill Chibisov <contact@kchibisov.com> | [Apache-2.0](#Apache-2.0) |
@@ -198,6 +198,7 @@ Third-party crates linked into the program and distributed with it.
 | [integer-sqrt 0.1.5](https://crates.io/crates/integer-sqrt/0.1.5) | Richard Dodd <richard.o.dodd@gmail.com>, Joseph Richey, Sergei Shulepov | [Apache-2.0](#Apache-2.0)/[MIT](#MIT) |
 | [io-lifetimes 1.0.11](https://crates.io/crates/io-lifetimes/1.0.11) | Dan Gohman <dev@sunfishcode.online> | [Apache-2.0](#Apache-2.0) WITH LLVM-exception OR [Apache-2.0](#Apache-2.0) OR [MIT](#MIT) |
 | [itertools 0.14.0](https://crates.io/crates/itertools/0.14.0) | bluss | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
+| [itertools 0.15.0](https://crates.io/crates/itertools/0.15.0) | bluss | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [itoa 1.0.18](https://crates.io/crates/itoa/1.0.18) | David Tolnay <dtolnay@gmail.com> | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [jni 0.21.1](https://crates.io/crates/jni/0.21.1) | Josh Chase <josh@prevoty.com> | [MIT](#MIT)/[Apache-2.0](#Apache-2.0) |
 | [jni 0.22.4](https://crates.io/crates/jni/0.22.4) | jni team | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |

@@ -15,13 +15,13 @@ Represents a Pointer event sent by the windowing system.
 
 ### button
 
-<Signature symbol="slint.language.PointerEvent.button">button: <XRef to="typing.Any" plain /></Signature>
+<Signature symbol="slint.language.PointerEvent.button">button: <XRef to="slint.language.PointerEventButton" plain /> | None</Signature>
 
 The button that was pressed or released
 
 ### kind
 
-<Signature symbol="slint.language.PointerEvent.kind">kind: <XRef to="typing.Any" plain /></Signature>
+<Signature symbol="slint.language.PointerEvent.kind">kind: <XRef to="slint.language.PointerEventKind" plain /> | None</Signature>
 
 The kind of the event
 

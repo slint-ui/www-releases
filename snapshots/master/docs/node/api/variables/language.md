@@ -3,7 +3,7 @@ title: "language"
 ---
 > `const` **language**: `object` = `_data`
 
-Defined in: api/node/typescript/generated/language.ts:360
+Defined in: api/node/typescript/generated/language.ts:391
 
 Built-in enums and structs from the Slint language.
 Enum values are accessed via `language.ColorScheme.Dark`; struct values via the
@@ -231,6 +231,37 @@ This is automatically applied to `TextInput` elements.
 
 The role for a TreeView or behaves like one. (Not provided yet)
 
+### CapitalizationMode
+
+> `readonly` **CapitalizationMode**: `object`
+
+This enum describes the auto-capitalization behavior that the input method
+(e.g. a soft keyboard) should apply while text is entered in a `TextInput`.
+
+#### CapitalizationMode.Characters
+
+> `readonly` **Characters**: `"characters"` = `"characters"`
+
+Capitalize all characters.
+
+#### CapitalizationMode.None
+
+> `readonly` **None**: `"none"` = `"none"`
+
+No auto-capitalization.
+
+#### CapitalizationMode.Sentences
+
+> `readonly` **Sentences**: `"sentences"` = `"sentences"`
+
+Capitalize the first character of each sentence.
+
+#### CapitalizationMode.Words
+
+> `readonly` **Words**: `"words"` = `"words"`
+
+Capitalize the first character of each word.
+
 ### ColorScheme
 
 > `readonly` **ColorScheme**: `object`
@@ -313,6 +344,27 @@ This structure is passed to the callbacks of the `DropArea` element
 #### Returns
 
 [`DropEvent`](/master/docs/node/api/slint-ui/namespaces/language/type-aliases/dropevent/)
+
+### InputMethodHints
+
+> `readonly` **InputMethodHints**: (`props?`) => [`InputMethodHints`](/master/docs/node/api/slint-ui/namespaces/language/type-aliases/inputmethodhints/)
+
+Build a value of this struct. Any field you omit takes a documented default,
+which lets Slint add fields later without breaking existing call-sites.
+
+This structure holds the hints that a `TextInput` gives to the platform's input method
+(e.g. a soft keyboard) about the expected input.
+The input method may take these hints into account, but might also ignore them.
+
+#### Parameters
+
+##### props?
+
+`Partial`\<[`InputMethodHints`](/master/docs/node/api/slint-ui/namespaces/language/type-aliases/inputmethodhints/)\>
+
+#### Returns
+
+[`InputMethodHints`](/master/docs/node/api/slint-ui/namespaces/language/type-aliases/inputmethodhints/)
 
 ### KeyboardModifiers
 

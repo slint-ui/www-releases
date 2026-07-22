@@ -32,7 +32,7 @@ The horizontal column stretch
 
 ### sort_order
 
-<Signature symbol="slint.language.TableColumn.sort_order">sort_order: <XRef to="typing.Any" plain /></Signature>
+<Signature symbol="slint.language.TableColumn.sort_order">sort_order: <XRef to="slint.language.SortOrder" plain /> | None</Signature>
 
 Sorts the column
 

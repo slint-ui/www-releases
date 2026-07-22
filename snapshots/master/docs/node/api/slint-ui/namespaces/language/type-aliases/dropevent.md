@@ -3,7 +3,7 @@ title: "DropEvent"
 ---
 > **DropEvent** = `object`
 
-Defined in: api/node/typescript/generated/language.ts:575
+Defined in: api/node/typescript/generated/language.ts:617
 
 This structure is passed to the callbacks of the `DropArea` element
 
@@ -13,7 +13,7 @@ This structure is passed to the callbacks of the `DropArea` element
 
 > **data**: [`DataTransfer`](/master/docs/node/api/classes/datatransfer/)
 
-Defined in: api/node/typescript/generated/language.ts:579
+Defined in: api/node/typescript/generated/language.ts:621
 
 The payload set on the source `DragArea`.
 
@@ -23,7 +23,7 @@ The payload set on the source `DragArea`.
 
 > **position**: `object`
 
-Defined in: api/node/typescript/generated/language.ts:583
+Defined in: api/node/typescript/generated/language.ts:625
 
 The cursor position in the `DropArea`'s local coordinates.
 
@@ -41,7 +41,7 @@ The cursor position in the `DropArea`'s local coordinates.
 
 > **proposed\_action**: [`DragAction`](/master/docs/node/api/slint-ui/namespaces/language/type-aliases/dragaction/)
 
-Defined in: api/node/typescript/generated/language.ts:590
+Defined in: api/node/typescript/generated/language.ts:632
 
 The action negotiated from current modifier state, clamped to the allowed set;
 when no modifier is pressed, the first allowed of move, copy, link.

@@ -3,7 +3,7 @@ title: "TableColumn"
 ---
 > **TableColumn** = `object`
 
-Defined in: api/node/typescript/generated/language.ts:604
+Defined in: api/node/typescript/generated/language.ts:646
 
 This is used to define the column and the column header of a TableView
 
@@ -13,7 +13,7 @@ This is used to define the column and the column header of a TableView
 
 > **horizontal\_stretch**: `number`
 
-Defined in: api/node/typescript/generated/language.ts:616
+Defined in: api/node/typescript/generated/language.ts:658
 
 The horizontal column stretch
 
@@ -23,7 +23,7 @@ The horizontal column stretch
 
 > **min\_width**: `number`
 
-Defined in: api/node/typescript/generated/language.ts:612
+Defined in: api/node/typescript/generated/language.ts:654
 
 The minimum column width (logical length)
 
@@ -33,7 +33,7 @@ The minimum column width (logical length)
 
 > **sort\_order**: [`SortOrder`](/master/docs/node/api/slint-ui/namespaces/language/type-aliases/sortorder/)
 
-Defined in: api/node/typescript/generated/language.ts:620
+Defined in: api/node/typescript/generated/language.ts:662
 
 Sorts the column
 
@@ -43,7 +43,7 @@ Sorts the column
 
 > **title**: `string`
 
-Defined in: api/node/typescript/generated/language.ts:608
+Defined in: api/node/typescript/generated/language.ts:650
 
 The title of the column header
 
@@ -53,6 +53,6 @@ The title of the column header
 
 > **width**: `number`
 
-Defined in: api/node/typescript/generated/language.ts:624
+Defined in: api/node/typescript/generated/language.ts:666
 
 the actual width of the column (logical length)
