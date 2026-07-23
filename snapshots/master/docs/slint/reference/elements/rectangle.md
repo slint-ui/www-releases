@@ -6,9 +6,9 @@ import SlintProperty from '@slint/common-files/src/components/SlintProperty.astr
 import CodeSnippetMD from '@slint/common-files/src/components/CodeSnippetMD.astro';
 
 By default, a `Rectangle` is just an empty item that shows nothing. By setting a color or configuring a border,
-it's then possible to draw a rectangle on the screen.
+it's then possible to draw a rectangle on the screen. \{#sls.meta.rectangle.purpose}
 
-When not part of a layout, its width and height default to 100% of the parent element.
+When not part of a layout, its width and height default to 100% of the parent element. \{#sls.ref.rectangle.default-size}
 
 <CodeSnippetMD imagePath="/src/assets/generated/rectangle-1.png" imageAlt="rectangle example">
 ```slint playground
@@ -60,7 +60,7 @@ export component ExampleRectangle inherits Window {
 
 ### background
 <SlintProperty propName="background" typeName="brush" defaultValue="transparent">
-The background brush of this `Rectangle`.
+The background brush of this `Rectangle`. \{#sls.ref.rectangle.background}
 
 <CodeSnippetMD imagePath="/src/assets/generated/rectangle-2.png" imageAlt="rectangle background" imageWidth="200" imageHeight="400">
 ```slint

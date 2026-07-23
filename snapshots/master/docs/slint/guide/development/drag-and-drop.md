@@ -8,7 +8,7 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
 Use [DragArea](/master/docs/slint/reference/drag-and-drop/dragarea.md) and [DropArea](/master/docs/slint/reference/drag-and-drop/droparea.md) to move data between parts of the UI with a drag-and-drop gesture.
 On platforms that support it, a [DropArea](/master/docs/slint/reference/drag-and-drop/droparea.md) also accepts drops from other applications.
 
-The payload is a `data-transfer` value, which abstracts over the file-type transfer mechanisms supported by each platform.
+The payload is a [data-transfer](/master/docs/slint/reference/primitive-types.md#data-transfer) value, which abstracts over the file-type transfer mechanisms supported by each platform.
 `data-transfer` values are opaque in Slint code:
 construct and read them via callbacks implemented in the host language.
 

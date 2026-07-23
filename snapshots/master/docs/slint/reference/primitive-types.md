@@ -8,7 +8,7 @@ import SlintProperty from '@slint/common-files/src/components/SlintProperty.astr
 import Link from '@slint/common-files/src/components/Link.astro';
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 import LangRefLink from '@slint/common-files/src/components/LangRefLink.astro';
-import BuiltInMouseCursor from '/src/content/docs/reference/generated/enums/_BuiltInMouseCursor.md';
+import BuiltInMouseCursor from '/src/content/docs/generated/reference/enums/_BuiltInMouseCursor.md';
 
 Slint is a statically typed language and offers a rich range of primitive types.
 
@@ -474,6 +474,7 @@ export component Example inherits Window {
 
 A `data-transfer` value is the payload carried by drag-and-drop and clipboard operations.
 It abstracts over the file-type transfer mechanisms supported by each platform.
+It can carry plain text, an image, and a list of local file paths simultaneously.
 
 The type is opaque in Slint code:
 construct a `data-transfer` value and read its content via callbacks implemented in the host language.

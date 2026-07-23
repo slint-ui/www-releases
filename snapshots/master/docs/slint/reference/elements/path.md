@@ -67,7 +67,32 @@ If non-zero, the path will be scaled to fit into the specified width.
 If non-zero, the path will be scaled to fit into the specified height.
 </SlintProperty>
 
+### fit
+<SlintProperty propName="fit" typeName="enum" enumName="ImageFit" defaultValue="contain">
+Defines how the path's view box is scaled to fit the element's width and height.
+If no view box is defined, the implicit bounding rectangle is used.
+</SlintProperty>
+
+### clip
+<SlintProperty propName="clip" typeName="bool" defaultValue="false">
+By default, when a path has a view box defined and the elements render
+outside of it, they are still rendered. When this property is set to `true`, then rendering will be
+clipped at the boundaries of the view box.
+</SlintProperty>
+
+### anti-alias
+<SlintProperty propName="anti-alias" typeName="bool" defaultValue="true">
+ By default, the fill and stroke of a path is rendered with anti-aliasing, for best quality. Some GPUs
+ have performance issues when rendering with anti-aliasing and animation. Setting the value to `false`
+ might improve the frame-rate at the expense of a smoother looking path.
+</SlintProperty>
+
 ## Viewbox Properties
+
+These four properties allow defining the position and size of the viewport of the path in path coordinates.
+
+If the `viewbox-width` or `viewbox-height` is less or equal than zero, the viewbox properties are
+ignored and instead the bounding rectangle of all path elements is used to define the view port.
 
 ### viewbox-x
 <SlintProperty propName="viewbox-x" typeName="float"/>
@@ -80,31 +105,6 @@ If non-zero, the path will be scaled to fit into the specified height.
 
 ### viewbox-height
 <SlintProperty propName="viewbox-height" typeName="float"/>
-
-These four properties allow defining the position and size of the viewport of the path in path coordinates.
-
-If the `viewbox-width` or `viewbox-height` is less or equal than zero, the viewbox properties are
-ignored and instead the bounding rectangle of all path elements is used to define the view port.
-
-### fit
-<SlintProperty propName="fit" typeName="enum" enumName="ImageFit" defaultValue="contain">
-Defines how the path's view box is scaled to fit the element's width and height.
-If no view box is defined, the implicit bounding rectangle is used.
-</SlintProperty>
-
-### clip
-<SlintProperty propName="clip" typeName="bool" defaultValue="false"/>
-
- By default, when a path has a view box defined and the elements render
-outside of it, they are still rendered. When this property is set to `true`, then rendering will be
-clipped at the boundaries of the view box.
-
-### anti-alias
-<SlintProperty propName="anti-alias" typeName="bool" defaultValue="true"/>
-
- By default, the fill and stroke of a path is rendered with anti-aliasing, for best quality. Some GPUs
- have performance issues when rendering with anti-aliasing and animation. Setting the value to `false`
- might improve the frame-rate at the expense of a smoother looking path.
 
 ## Path Using SVG Commands
 
@@ -227,32 +227,6 @@ The target x position of the line.
 The target y position of the line.
 </SlintProperty>
 
-## `QuadraticTo`
-
-The QuadraticTo sub-element describes a smooth Bézier from the path's current position to the
-location specified by the `x` and `y` properties, using the control points specified by the
-`control-x` and `control-y` properties.
-
-### control-x
-<SlintProperty propName="control-x" typeName="float">
-The x coordinate of the curve's control point.
-</SlintProperty>
-
-### control-y
-<SlintProperty propName="control-y" typeName="float">
-The y coordinate of the curve's control point.
-</SlintProperty>
-
-### x
-<SlintProperty propName="x" typeName="float">
-The target x position of the curve.
-</SlintProperty>
-
-### y
-<SlintProperty propName="y" typeName="float">
-The target y position of the curve.
-</SlintProperty>
-
 ## `MoveTo`
 
 The `MoveTo` sub-element closes the current sub-path, if present, and moves the current point
@@ -268,11 +242,6 @@ The x position of the new current point.
 <SlintProperty propName="y" typeName="float">
 The y position of the new current point.
 </SlintProperty>
-
-## `Close`
-
-The `Close` element closes the current sub-path and draws a straight line from the current
-position to the beginning of the path.
 
 ## `CubicTo`
 
@@ -309,3 +278,34 @@ The target x position of the curve.
 <SlintProperty propName="y" typeName="float">
 The target y position of the curve.
 </SlintProperty>
+
+## `QuadraticTo`
+
+The QuadraticTo sub-element describes a smooth Bézier from the path's current position to the
+location specified by the `x` and `y` properties, using the control points specified by the
+`control-x` and `control-y` properties.
+
+### control-x
+<SlintProperty propName="control-x" typeName="float">
+The x coordinate of the curve's control point.
+</SlintProperty>
+
+### control-y
+<SlintProperty propName="control-y" typeName="float">
+The y coordinate of the curve's control point.
+</SlintProperty>
+
+### x
+<SlintProperty propName="x" typeName="float">
+The target x position of the curve.
+</SlintProperty>
+
+### y
+<SlintProperty propName="y" typeName="float">
+The target y position of the curve.
+</SlintProperty>
+
+## `Close`
+
+The `Close` element closes the current sub-path and draws a straight line from the current
+position to the beginning of the path.

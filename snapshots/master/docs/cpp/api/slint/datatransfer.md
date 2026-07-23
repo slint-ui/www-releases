@@ -105,6 +105,14 @@ Sets the image representation of this `DataTransfer`. Each `DataTransfer` can on
 
 Passing a default-constructed `Image` clears the previously-set image instead of storing it.
 
+### `set_file_paths`
+
+```cpp
+void slint::DataTransfer::set_file_paths(std::span<const std::filesystem::path> paths)
+```
+
+Sets the list of local file paths transferred by this `DataTransfer`, overwriting any previously set list. An empty list clears the file paths.
+
 ### `has_plain_text`
 
 ```cpp
@@ -121,13 +129,21 @@ bool slint::DataTransfer::has_image() const
 
 Returns `true` if this data transfer advertises an image representation.
 
+### `has_file_paths`
+
+```cpp
+bool slint::DataTransfer::has_file_paths() const
+```
+
+Returns `true` if this data transfer advertises a list of file paths.
+
 ### `is_empty`
 
 ```cpp
 bool slint::DataTransfer::is_empty() const
 ```
 
-Returns `true` if this `DataTransfer` carries no data: no plain text, no image, and no user data.
+Returns `true` if this `DataTransfer` carries no data: no plain text, no image, no file paths, and no user data.
 
 ### `plain_text`
 
@@ -144,6 +160,14 @@ std::optional<Image> slint::DataTransfer::image() const
 ```
 
 Returns the image representation of this `DataTransfer`, or `std::nullopt` if no image representation is available.
+
+### `file_paths`
+
+```cpp
+std::optional<std::vector<std::filesystem::path>> slint::DataTransfer::file_paths() const
+```
+
+Returns the list of local file paths transferred by this `DataTransfer`, or `std::nullopt` if no file paths are available.
 
 ### `set_user_data`
 
