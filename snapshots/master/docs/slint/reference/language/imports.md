@@ -4,7 +4,7 @@ description: "Bringing components from other files into scope."
 ---
 Imports are not yet covered by this revision of the specification.
 
-<!--
+{/*
 Draft content; will be uncommented once imports come into scope.
 
 ## Placement
@@ -57,4 +57,4 @@ The referenced file shall exist and shall be a Slint source file. \{#sls.import.
 ## Name Clashes
 
 Two import items in the same source file shall not introduce the same name. \{#sls.import.no-clash}
--->
+*/}

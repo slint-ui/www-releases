@@ -3,7 +3,7 @@ title: "runEventLoop"
 ---
 > **runEventLoop**(`args?`): `Promise`\<`unknown`\>
 
-Defined in: [api/node/typescript/index.ts:795](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L795)
+Defined in: [api/node/typescript/index.ts:796](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L796)
 
 Spins the Slint event loop and returns a promise that resolves when the loop terminates.
 
@@ -38,13 +38,13 @@ if set to `true` the loop quits once the last window is closed
                          on its own under the default, so set this to `false` only when an
                          application must run without any visible UI. (default true).
 
-On Linux and macOS with Node.js,
-Slint uses an efficient event loop integration that watches libuv's backend
-file descriptor from a background thread.
+On Linux, macOS, and Windows with Node.js,
+Slint uses an efficient event loop integration that watches libuv's
+I/O source from a background thread.
 This provides zero idle CPU usage and near-instant response to both UI and
 JavaScript events.
 
-On Windows and other runtimes (Deno),
+On other runtimes (Deno),
 the integration falls back to polling at 16 millisecond intervals,
 which consumes a small amount of CPU when idle.
 

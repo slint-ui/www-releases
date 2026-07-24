@@ -3,7 +3,7 @@ title: "setXdgAppId"
 ---
 > **setXdgAppId**(`app_id`): `void`
 
-Defined in: [api/node/typescript/index.ts:1006](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L1006)
+Defined in: [api/node/typescript/index.ts:1007](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L1007)
 
 Sets the application id for use on Wayland or X11 with [xdg](https://specifications.freedesktop.org/desktop-entry-spec/latest/)
 compliant window managers. This must be set before the window is shown.
