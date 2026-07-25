@@ -27,19 +27,19 @@ image file on disk, using <XRef to="Image.load_from_path" />.
 
 ### path
 
-<Signature symbol="slint.slint.Image.path">path: <XRef to="typing.Optional" plain />[pathlib.<XRef to="pathlib.Path" plain />]</Signature>
+<Signature symbol="slint.slint.Image.path">path: pathlib.<XRef to="pathlib.Path" plain /> | None</Signature>
 
 ## Methods
 
 ### load_from_path
 
-<Signature symbol="slint.slint.Image.load_from_path">load_from_path(path: <XRef to="str" plain /> | os.<XRef to="os.PathLike" plain />[<XRef to="typing.Any" plain />] | pathlib.<XRef to="pathlib.Path" plain />) -&gt; <XRef to="Image" plain /></Signature>
+<Signature symbol="slint.slint.Image.load_from_path">load_from_path(path: <XRef to="str" plain /> | os.<XRef to="os.PathLike" plain />[<XRef to="typing.Any" plain />] | pathlib.<XRef to="pathlib.Path" plain />) -&gt; <XRef to="slint.slint.Image" plain /></Signature>
 
 Loads the image from the specified path. Returns None if the image can't be loaded.
 
 ### load_from_svg_data
 
-<Signature symbol="slint.slint.Image.load_from_svg_data">load_from_svg_data(data: <XRef to="typing.Sequence" plain />[<XRef to="int" plain />]) -&gt; <XRef to="Image" plain /></Signature>
+<Signature symbol="slint.slint.Image.load_from_svg_data">load_from_svg_data(data: <XRef to="typing.Sequence" plain />[<XRef to="int" plain />]) -&gt; <XRef to="slint.slint.Image" plain /></Signature>
 
 Creates a new image from a string that describes the image in SVG format.
 

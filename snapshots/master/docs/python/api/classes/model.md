@@ -28,7 +28,7 @@ Re-implement this method in a sub-class to handle the change.
 
 ### row_data
 
-<Signature symbol="slint.models.Model.row_data">row_data(row: <XRef to="int" plain />) -&gt; <XRef to="typing.Optional" plain />[T]</Signature>
+<Signature symbol="slint.models.Model.row_data">row_data(row: <XRef to="int" plain />) -&gt; T | None</Signature>
 
 Returns the data for the given row.
 Re-implement this method in a sub-class to provide the data.

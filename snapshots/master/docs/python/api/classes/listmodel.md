@@ -33,7 +33,7 @@ in UI they're used with.
 
 ### row_data
 
-<Signature symbol="slint.models.ListModel.row_data">row_data(row: <XRef to="int" plain />) -&gt; <XRef to="typing.Optional" plain />[T]</Signature>
+<Signature symbol="slint.models.ListModel.row_data">row_data(row: <XRef to="int" plain />) -&gt; T | None</Signature>
 
 ### set_row_data
 

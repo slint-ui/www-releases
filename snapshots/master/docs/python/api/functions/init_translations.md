@@ -8,7 +8,7 @@ import Signature from "../../../../components/Signature.astro";
 from slint import init_translations
 ```
 
-<Signature symbol="slint.init_translations">init_translations(translations: <XRef to="typing.Optional" plain />[gettext.<XRef to="gettext.GNUTranslations" plain />]) -&gt; <XRef to="None" plain /></Signature>
+<Signature symbol="slint.init_translations">init_translations(translations: gettext.<XRef to="gettext.GNUTranslations" plain /> | None) -&gt; <XRef to="None" plain /></Signature>
 
 Installs the specified translations object to handle translations originating from the Slint code.
 

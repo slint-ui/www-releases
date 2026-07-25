@@ -14,13 +14,13 @@ Python wrapper for Slint's `styled-text` type.
 
 ### from_plain_text
 
-<Signature symbol="slint.slint.StyledText.from_plain_text">from_plain_text(text: <XRef to="str" plain />) -&gt; <XRef to="StyledText" plain /></Signature>
+<Signature symbol="slint.slint.StyledText.from_plain_text">from_plain_text(text: <XRef to="str" plain />) -&gt; <XRef to="slint.slint.StyledText" plain /></Signature>
 
 Creates styled text from plain text.
 
 ### from_markdown
 
-<Signature symbol="slint.slint.StyledText.from_markdown">from_markdown(markdown: <XRef to="str" plain />) -&gt; <XRef to="StyledText" plain /></Signature>
+<Signature symbol="slint.slint.StyledText.from_markdown">from_markdown(markdown: <XRef to="str" plain />) -&gt; <XRef to="slint.slint.StyledText" plain /></Signature>
 
 Parses markdown and returns a StyledText object.
 

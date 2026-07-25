@@ -26,16 +26,16 @@ from slint import Brush
 
 ### brighter
 
-<Signature symbol="slint.slint.Brush.brighter">brighter(factor: <XRef to="float" plain />) -&gt; <XRef to="Brush" plain /></Signature>
+<Signature symbol="slint.slint.Brush.brighter">brighter(factor: <XRef to="float" plain />) -&gt; <XRef to="slint.slint.Brush" plain /></Signature>
 
 ### darker
 
-<Signature symbol="slint.slint.Brush.darker">darker(factor: <XRef to="float" plain />) -&gt; <XRef to="Brush" plain /></Signature>
+<Signature symbol="slint.slint.Brush.darker">darker(factor: <XRef to="float" plain />) -&gt; <XRef to="slint.slint.Brush" plain /></Signature>
 
 ### transparentize
 
-<Signature symbol="slint.slint.Brush.transparentize">transparentize(amount: <XRef to="float" plain />) -&gt; <XRef to="Brush" plain /></Signature>
+<Signature symbol="slint.slint.Brush.transparentize">transparentize(amount: <XRef to="float" plain />) -&gt; <XRef to="slint.slint.Brush" plain /></Signature>
 
 ### with_alpha
 
-<Signature symbol="slint.slint.Brush.with_alpha">with_alpha(alpha: <XRef to="float" plain />) -&gt; <XRef to="Brush" plain /></Signature>
+<Signature symbol="slint.slint.Brush.with_alpha">with_alpha(alpha: <XRef to="float" plain />) -&gt; <XRef to="slint.slint.Brush" plain /></Signature>

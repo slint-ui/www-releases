@@ -8,7 +8,7 @@ import Signature from "../../../../components/Signature.astro";
 from slint import run_event_loop
 ```
 
-<Signature symbol="slint.run_event_loop">run_event_loop(main_coro: <XRef to="typing.Optional" plain />[<XRef to="collections.abc.Coroutine" plain />[None, None, None]] = None) -&gt; <XRef to="None" plain /></Signature>
+<Signature symbol="slint.run_event_loop">run_event_loop(main_coro: <XRef to="collections.abc.Coroutine" plain />[None, None, None] | None = None) -&gt; <XRef to="None" plain /></Signature>
 
 Runs the main Slint event loop. If specified, the coroutine `main_coro` is run in parallel. The event loop doesn't
 terminate when the coroutine finishes, it terminates when calling <XRef to="quit_event_loop" />.

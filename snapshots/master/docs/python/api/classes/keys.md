@@ -17,4 +17,4 @@ of the key binding (e.g. "Ctrl+A" on Linux/Windows, "⌘A" on macOS).
 
 ### from_parts
 
-<Signature symbol="slint.slint.Keys.from_parts">from_parts(parts: <XRef to="list" plain />[<XRef to="str" plain />]) -&gt; <XRef to="Keys" plain /></Signature>
+<Signature symbol="slint.slint.Keys.from_parts">from_parts(parts: <XRef to="list" plain />[<XRef to="str" plain />]) -&gt; <XRef to="slint.slint.Keys" plain /></Signature>
