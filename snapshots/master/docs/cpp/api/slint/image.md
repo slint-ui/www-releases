@@ -158,6 +158,20 @@ static Image slint::Image::load_from_path(const SharedString &file_path)
 
 Load an image from an image file.
 
+### `load_from_data`
+
+```cpp
+static Image slint::Image::load_from_data(std::span<const uint8_t> data, std::string_view format={})
+```
+
+Load an image from a buffer in memory that holds an encoded image, such as the content of a PNG, JPEG, or SVG file.
+
+*format* is the lowercase file extension of the encoded data (for example "png", "jpg", or "svg"). When left empty, the format is guessed from the data. SVG data is only recognized by this guess when it begins with an `<?xml` or `<svg` tag; otherwise pass "svg" explicitly.
+
+The data only needs to remain valid for the duration of this call.
+
+Returns a default constructed (empty) [Image](./) if the data could not be decoded.
+
 ### `create_from_borrowed_gl_2d_rgba_texture`
 
 ```cpp

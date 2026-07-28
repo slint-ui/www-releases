@@ -12,7 +12,7 @@ export component Example inherits Window {
     height: 100px;
 
     Flickable {
-        viewport-height: 300px;
+        content-height: 300px;
         Text {
             x:0;
             y: 150px;
@@ -24,14 +24,14 @@ export component Example inherits Window {
 
 The `Flickable` is a low-level element that is the base for scrollable
 widgets, such as the [ScrollView](/master/docs/slint/reference/std-widgets/views/scrollview.md) or [ListView](/master/docs/slint/reference/std-widgets/views/listview.md).
-When the `viewport-width` or the `viewport-height` is greater than the parent's `width` or `height`
+When the `content-width` or the `content-height` is greater than the parent's `width` or `height`
 respectively, the element becomes scrollable.
 
-When unset, the `viewport-width` and `viewport-height` are
+When unset, the `content-width` and `content-height` are
 calculated automatically based on the `Flickable`'s children. This isn't the
 case when using a `for` loop to populate the elements. This is a bug tracked in
 issue [#407](https://github.com/slint-ui/slint/issues/407).
-The maximum and preferred size of the `Flickable` are based on the viewport.
+The maximum and preferred size of the `Flickable` are based on the content size.
 
 Note that the `Flickable` doesn't create a scrollbar.
 You can use a [ScrollView](/master/docs/slint/reference/std-widgets/views/scrollview.md) instead or add your own scroll bars.
@@ -83,37 +83,37 @@ Flickable {
 }
 ```
 </CodeSnippetMD>
-When false, the viewport can't be panned by the user, neither by dragging with the mouse
+When false, the content can't be panned by the user, neither by dragging with the mouse
 nor with touch.
 </SlintProperty>
 
 ### mouse-drag-pan-enabled
 <SlintProperty propName="mouse-drag-pan-enabled" typeName="bool" defaultValue="true">
-When true, the viewport can be scrolled by clicking on it and dragging it with the cursor.
+When true, the content can be scrolled by clicking on it and dragging it with the cursor.
 Panning with a touch screen is only affected by `interactive`.
 </SlintProperty>
 
-### viewport-width
-<SlintProperty propName="viewport-width" typeName="length">
-The total width of the scrollable element.
+### content-width
+<SlintProperty propName="content-width" typeName="length">
+The total width of the scrollable content.
 </SlintProperty>
 
-### viewport-height
-<SlintProperty propName="viewport-height" typeName="length">
-The total height of the scrollable element.
+### content-height
+<SlintProperty propName="content-height" typeName="length">
+The total height of the scrollable content.
 </SlintProperty>
 
-### viewport-x
-<SlintProperty propName="viewport-x" typeName="length" propertyVisibility="in-out">
-The position of the scrollable element relative to the `Flickable`. This is usually a negative value.
+### content-x
+<SlintProperty propName="content-x" typeName="length" propertyVisibility="in-out">
+The position of the scrollable content relative to the `Flickable`. This is usually a negative value.
 </SlintProperty>
 
-### viewport-y
-<SlintProperty propName="viewport-y" typeName="length" propertyVisibility="in-out">
-The position of the scrollable element relative to the `Flickable`. This is usually a negative value.
+### content-y
+<SlintProperty propName="content-y" typeName="length" propertyVisibility="in-out">
+The position of the scrollable content relative to the `Flickable`. This is usually a negative value.
 </SlintProperty>
 
 ## Callbacks
 
 ### flicked()
-Invoked when `viewport-x` or `viewport-y` is changed by a user action (dragging, scrolling).
+Invoked when `content-x` or `content-y` is changed by a user action (dragging, scrolling).

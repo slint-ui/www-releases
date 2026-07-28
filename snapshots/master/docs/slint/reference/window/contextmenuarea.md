@@ -52,6 +52,13 @@ When disabled, the `Menu` can be selected but not activated.
 The icon shown next to the title when in a parent menu.
 </SlintProperty>
 
+## `MenuSeparator`
+
+A `MenuSeparator` represents a separator in a menu.
+It cannot have children, and doesn't have properties or callbacks.
+MenuSeparator at the beginning or end of a menu will not be visible.
+Consecutive `MenuSeparator`s will be merged into one.
+
 ## `MenuItem`
 
 A `MenuItem` represents a single menu entry. It must be a child of a `Menu` element.
@@ -94,13 +101,6 @@ The icon shown next to the title.
 
 #### activated()
 Invoked when the menu entry is activated.
-
-## `MenuSeparator`
-
-A `MenuSeparator` represents a separator in a menu.
-It cannot have children, and doesn't have properties or callbacks.
-MenuSeparator at the beginning or end of a menu will not be visible.
-Consecutive `MenuSeparator`s will be merged into one.
 
 ## Example
 
