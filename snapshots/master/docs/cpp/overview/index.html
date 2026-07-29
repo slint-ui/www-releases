@@ -211,13 +211,13 @@ pointer that owns the actual instance and keeps it alive as long as at least one
 that can hold different kinds of values, such as numbers, strings or even data
 models.</p>
 <p>More complex user interfaces commonly consume data in the form of an abstract
-data model, that is used with <a href="https://snapshots.slint.dev/master/docs/slint/guide/language/coding/repetition-and-data-models/#models" target="_blank" rel="noopener"><code>for…in</code></a>
+data model, that is used with <a href="https://snapshots.slint.dev/master/docs/slint/reference/property-types/arrays-and-models/" target="_blank" rel="noopener"><code>for…in</code></a>
 repetitions or <a href="https://snapshots.slint.dev/master/docs/slint/reference/std-widgets/views/listview/" target="_blank" rel="noopener"><code>ListView</code></a> elements in the
 <code dir="auto">.slint</code> language. All models in C++ with the interpreter API are sub-classes
 of the <code dir="auto">slint::Model</code> where the template parameter is
 <code dir="auto">slint::interpreter::Value</code>. To provide your own data model, you can
 subclass <code dir="auto">slint::Model&#x3C;slint::interpreter::Value></code>.</p>
-<p>It’s possible to declare <a href="https://snapshots.slint.dev/master/docs/slint/guide/language/coding/globals/" target="_blank" rel="noopener"><span>singletons that are globally available</span></a>
+<p>It’s possible to declare <a href="https://snapshots.slint.dev/master/docs/slint/reference/language/globals/" target="_blank" rel="noopener"><span>singletons that are globally available</span></a>
 in <code dir="auto">.slint</code> files. You can access them from to your C++ code by exporting them
 and using the getter and setter functions on
 <code dir="auto">slint::interpreter::ComponentInstance</code> to change properties and

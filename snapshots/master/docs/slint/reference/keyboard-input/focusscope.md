@@ -126,7 +126,7 @@ See [Key Bindings](/master/docs/slint/reference/keyboard-input/overview.md#key-b
 
 #### keys
 <SlintProperty propName="keys" typeName="keys">
-The [keys](/master/docs/slint/reference/primitive-types.md#keys) to match against incoming key events.
+The [keys](/master/docs/slint/reference/property-types/builtin-types.md#keys) to match against incoming key events.
 </SlintProperty>
 
 #### enabled

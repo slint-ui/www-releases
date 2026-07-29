@@ -14,7 +14,7 @@ Image {
 ```
 </CodeSnippetMD>
 
-Use the `Image` element to display an [image](/master/docs/slint/reference/primitive-types.md#image).
+Use the `Image` element to display an [image](/master/docs/slint/reference/property-types/builtin-types.md#image).
 
 ## Properties
 
@@ -72,7 +72,7 @@ export component Example inherits Window {
 }
 ```
 
-Use the [`@image-url` macro](/master/docs/slint/reference/primitive-types.md#image) to specify the image's path.
+Use the [`@image-url` macro](/master/docs/slint/reference/property-types/builtin-types.md#image) to specify the image's path.
 </SlintProperty>
 
 ### image-fit

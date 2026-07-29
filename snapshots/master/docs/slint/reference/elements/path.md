@@ -170,37 +170,10 @@ export component Example inherits Path {
 Note how the coordinates of the path elements don't use units - they operate within the imaginary
 coordinate system of the scalable path.
 
-## `ArcTo`
+## `LineTo`
 
-The `ArcTo` sub-element describes the portion of an ellipse. The arc is drawn from the path's
-current position to the location specified by the `x` and `y` properties. The remaining properties
-are modelled after the SVG specification and allow tuning visual features such as the direction
-or angle.
-
-### large-arc
-<SlintProperty propName="large-arc" typeName="bool">
-Out of the two arcs of a closed ellipse, this flag selects that the larger arc is to be rendered. If the property is `false`, the shorter arc is rendered instead.
-</SlintProperty>
-
-### radius-x
-<SlintProperty propName="radius-x" typeName="float">
-The x-radius of the ellipse.
-</SlintProperty>
-
-### radius-y
-<SlintProperty propName="radius-y" typeName="float">
-The y-radius of the ellipse.
-</SlintProperty>
-
-### sweep
-<SlintProperty propName="sweep" typeName="bool">
-If the property is `true`, the arc will be drawn as a clockwise turning arc; anti-clockwise otherwise.
-</SlintProperty>
-
-### x-rotation
-<SlintProperty propName="x-rotation" typeName="float">
-The x-axis of the ellipse will be rotated by the value of this properties, specified in as angle in degrees from 0 to 360.
-</SlintProperty>
+The `LineTo` sub-element describes a line from the path's current position to the
+location specified by the `x` and `y` properties.
 
 ### x
 <SlintProperty propName="x" typeName="float">
@@ -211,6 +184,11 @@ The target x position of the line.
 <SlintProperty propName="y" typeName="float">
 The target y position of the line.
 </SlintProperty>
+
+## `Close`
+
+The `Close` element closes the current sub-path and draws a straight line from the current
+position to the beginning of the path.
 
 ## `MoveTo`
 
@@ -290,15 +268,37 @@ The target x position of the curve.
 The target y position of the curve.
 </SlintProperty>
 
-## `Close`
+## `ArcTo`
 
-The `Close` element closes the current sub-path and draws a straight line from the current
-position to the beginning of the path.
+The `ArcTo` sub-element describes the portion of an ellipse. The arc is drawn from the path's
+current position to the location specified by the `x` and `y` properties. The remaining properties
+are modelled after the SVG specification and allow tuning visual features such as the direction
+or angle.
 
-## `LineTo`
+### large-arc
+<SlintProperty propName="large-arc" typeName="bool">
+Out of the two arcs of a closed ellipse, this flag selects that the larger arc is to be rendered. If the property is `false`, the shorter arc is rendered instead.
+</SlintProperty>
 
-The `LineTo` sub-element describes a line from the path's current position to the
-location specified by the `x` and `y` properties.
+### radius-x
+<SlintProperty propName="radius-x" typeName="float">
+The x-radius of the ellipse.
+</SlintProperty>
+
+### radius-y
+<SlintProperty propName="radius-y" typeName="float">
+The y-radius of the ellipse.
+</SlintProperty>
+
+### sweep
+<SlintProperty propName="sweep" typeName="bool">
+If the property is `true`, the arc will be drawn as a clockwise turning arc; anti-clockwise otherwise.
+</SlintProperty>
+
+### x-rotation
+<SlintProperty propName="x-rotation" typeName="float">
+The x-axis of the ellipse will be rotated by the value of this properties, specified in as angle in degrees from 0 to 360.
+</SlintProperty>
 
 ### x
 <SlintProperty propName="x" typeName="float">

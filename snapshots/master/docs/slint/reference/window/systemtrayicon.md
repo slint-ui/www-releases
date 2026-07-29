@@ -35,7 +35,7 @@ the tray icon appears as soon as the instance is created and an event loop is ru
 and disappears when the instance is dropped.
 
 :::note{Note}
-A `SystemTrayIcon` exported alongside a `Window` doesn't share [globals](/master/docs/slint/guide/language/coding/globals.md) with that window — each instance gets its own copy.
+A `SystemTrayIcon` exported alongside a `Window` doesn't share [globals](/master/docs/slint/reference/language/globals.md) with that window — each instance gets its own copy.
 You may need to initialize the relevant globals on each instance, the same way you would across multiple windows.
 :::
 
