@@ -2,9 +2,10 @@
 title: "Geometry"
 description: "Position and size of elements."
 ---
-import NotInSC from '@slint/common-files/src/components/NotInSC.astro';
+import SC from '@slint/common-files/src/components/SC.astro';
 import OnlyInSC from '@slint/common-files/src/components/OnlyInSC.astro';
 
+<SC>
 ## Properties
 
 Every element has the four geometry properties `x`, `y`, `width`, and `height`, of type `length`. \{#sls.geom.properties}
@@ -17,12 +18,12 @@ The `x` and `y` properties of the root element are meaningless and shall not be 
 <OnlyInSC>
 Binding a geometry property of the root element is an error. \{#sls.geom.window}
 </OnlyInSC>
+</SC>
 
-<NotInSC>
 Binding `x` or `y` of the root element is deprecated.
 The window size can be set through `width` and `height`.
-</NotInSC>
 
+<SC>
 ## Defaults
 
 When `x` has no binding, it defaults to `(parent.width - self.width) / 2`,
@@ -31,11 +32,11 @@ the value that centers the element within its parent along that axis. \{#sls.geo
 
 When `width` or `height` has no binding, the default depends on the element type:
 a `Rectangle` has the same width or height as its parent. \{#sls.geom.default-size}
+</SC>
 
-<NotInSC>
 Elements inside a layout are positioned and sized by the layout instead of these defaults.
-</NotInSC>
 
+<SC>
 In this example, both rectangles cover the whole window: \{#sls.geom.example.intro}
 
 ```slint
@@ -47,9 +48,8 @@ export component Example inherits Window {
     }
 }
 ```
+</SC>
 
-<NotInSC>
-A binding of `width` or `height` that evaluates to a [percentage](../../property-types/builtin-types/#percent)
+A binding of `width` or `height` that evaluates to a [percentage](../../property-types/numeric-types/#percent)
 is relative to the parent's property of the same name:
 `width: 50%;` is short for `width: parent.width * 50%;`.
-</NotInSC>

@@ -2,6 +2,9 @@
 title: "File Structure"
 description: "Top-level structure of a Slint source file and the basic form of component definitions."
 ---
+import SC from '@slint/common-files/src/components/SC.astro';
+
+<SC>
 ## A Slint Source File
 
 A `.slint` source file is a sequence of zero or more *top-level items*, separated only by whitespace and comments. \{#sls.file.source-file}
@@ -30,7 +33,7 @@ The braces `{` and `}` delimit the *component body*. \{#sls.file.component.body-
 
 ## Component Bodies
 
-A component body is a sequence of zero or more *element instantiations*, [bindings](../bindings/), and [property declarations](../properties/), separated only by whitespace and comments. \{#sls.file.component.body}
+A component body is a sequence of zero or more *element instantiations*, [bindings](/language/bindings/), and [property declarations](/language/properties/), separated only by whitespace and comments. \{#sls.file.component.body}
 
 A component body that contains no element instantiations is well-formed. \{#sls.file.component.body.empty}
 
@@ -45,7 +48,7 @@ TypeName { /* element body */ }
 The identifier `TypeName` shall resolve to a built-in or user-defined component. \{#sls.file.element.instantiation-typename}
 
 The braces delimit the *element body*.
-An element body is a sequence of zero or more nested element instantiations and [bindings](../bindings/), separated only by whitespace and comments. \{#sls.file.element.body}
+An element body is a sequence of zero or more nested element instantiations and [bindings](/language/bindings/), separated only by whitespace and comments. \{#sls.file.element.body}
 
 A nested element instantiation is a *child* of the element instantiation in whose body it appears.
 The child relationship forms a tree rooted at the elements that appear directly in a component body. \{#sls.file.element.tree}
@@ -64,3 +67,4 @@ export component Hello inherits Window {
 ```
 
 It exports one component, `Hello`, which inherits from `Window` and whose body contains two top-level `Rectangle` instantiations. \{#sls.file.example.description}
+</SC>

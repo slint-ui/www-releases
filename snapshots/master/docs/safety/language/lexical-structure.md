@@ -2,9 +2,12 @@
 title: "Lexical Structure"
 description: "Identifiers, contextual keywords, and element type names in the Slint language."
 ---
+import SC from '@slint/common-files/src/components/SC.astro';
+
+<SC>
 ## Tokens
 
-After whitespace and comments are removed (see [Source Files](../source-files/)), the remaining input is a sequence of tokens. \{#sls.lex.tokens}
+After whitespace and comments are removed (see [Source Files](/language/source-files/)), the remaining input is a sequence of tokens. \{#sls.lex.tokens}
 
 ## Identifiers
 
@@ -32,3 +35,4 @@ The kebab-case form (with `U+002D`) is the canonical written form. \{#sls.lex.id
 
 Slint has no globally reserved words.
 Each language construct is introduced by a *contextual keyword*: an identifier that has a special meaning only when it appears in a position where the grammar expects that construct. \{#sls.lex.contextual-keywords}
+</SC>

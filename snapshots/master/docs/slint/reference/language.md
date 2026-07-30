@@ -2,6 +2,9 @@
 title: "Slint Language Specification"
 description: "Normative reference for the .slint markup language and the behavior it prescribes."
 ---
+import SC from '@slint/common-files/src/components/SC.astro';
+
+<SC>
 :::caution[Work in Progress]
 This specification is a work in progress and doesn't yet cover the whole Slint language.
 :::
@@ -25,3 +28,4 @@ Other prose is informative. \{#sls.meta.conventions.normative}
 ### Code Examples
 
 Code examples are formatted as `slint` fenced code blocks and are informative unless explicitly stated otherwise. \{#sls.meta.conventions.examples}
+</SC>

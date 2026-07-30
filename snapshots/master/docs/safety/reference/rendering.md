@@ -3,7 +3,7 @@ title: "Rendering"
 description: "How a window is rendered into a frame buffer."
 ---
 The application renders by calling the `render_rgb8` function of the
-[generated code](../generated-code/).
+[generated code](/reference/generated-code/). \{#sls.paint.invocation}
 
 ## Model
 

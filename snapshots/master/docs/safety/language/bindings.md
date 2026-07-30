@@ -2,9 +2,11 @@
 title: "Bindings"
 description: "Assigning expressions to properties."
 ---
-import NotInSC from '@slint/common-files/src/components/NotInSC.astro';
+import SC from '@slint/common-files/src/components/SC.astro';
+import OnlyInSC from '@slint/common-files/src/components/OnlyInSC.astro';
 
-A binding assigns an [expression](../expressions/) to a [property](../properties/) of the element in whose body it appears.
+<SC>
+A binding assigns an [expression](/language/expressions/) to a [property](/language/properties/) of the element in whose body it appears.
 It has the form of a property name, followed by `:`, an expression, and `;`. \{#sls.binding.form}
 
 ```slint
@@ -17,10 +19,11 @@ export component Example inherits Window {
 
 The name shall refer to a property of the enclosing element. \{#sls.binding.target-must-exist}
 
-The type of the expression shall be the type of the property, or
-[convert](../types/#sls.type.conversions) to it. \{#sls.binding.type}
+<OnlyInSC>
+Every property and every expression has a type: `color`, `length`, or `brush`. \{#sls.type.kinds}
+</OnlyInSC>
 
-<NotInSC>
-A binding can also hold a [code block](../statements/),
-and the [`<=>` operator](../two-way-bindings/) links two properties.
-</NotInSC>
+An expression whose type is not the type of the property binds to it only when a conversion applies. \{#sls.type.conversions}
+
+The type of the expression shall be the type of the property, or [convert](#sls.type.conversions) to it. \{#sls.binding.type}
+</SC>

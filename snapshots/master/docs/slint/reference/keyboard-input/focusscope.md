@@ -91,29 +91,29 @@ Call this function to remove keyboard focus from this `FocusScope` if it current
 ## Callbacks
 
 ### capture-key-pressed(event: KeyEvent) -> EventResult
-This function is called during key event handling, *before* `key-pressed` is called. Use this to intercept key press events. The returned [EventResult](/master/docs/slint/reference/global-structs-enums.md#eventresult)
+This function is called during key event handling, *before* `key-pressed` is called. Use this to intercept key press events. The returned [EventResult](/master/docs/slint/reference/property-types/builtin-enums.md#eventresult)
 indicates whether to accept or reject the event. Rejected events are forwarded to the parent element.
 
 ### capture-key-released(event: KeyEvent) -> EventResult
-This function is called during key event handling, *before* `key-released` is called. Use this to intercept key release events. The returned [EventResult](/master/docs/slint/reference/global-structs-enums.md#eventresult)
+This function is called during key event handling, *before* `key-released` is called. Use this to intercept key release events. The returned [EventResult](/master/docs/slint/reference/property-types/builtin-enums.md#eventresult)
 indicates whether to accept or reject the event. Rejected events are forwarded to the parent element.
 
 ### key-pressed(event: KeyEvent) -> EventResult
-Invoked when a key is pressed, the argument is a [KeyEvent](/master/docs/slint/reference/keyboard-input/overview.md) struct. The returned [EventResult](/master/docs/slint/reference/global-structs-enums.md#eventresult)
+Invoked when a key is pressed, the argument is a [KeyEvent](/master/docs/slint/reference/keyboard-input/overview.md) struct. The returned [EventResult](/master/docs/slint/reference/property-types/builtin-enums.md#eventresult)
 indicates whether to accept or reject the event. Rejected events are forwarded to the parent element.
 
 ### key-released(event: KeyEvent) -> EventResult
-Invoked when a key is released, the argument is a [KeyEvent](/master/docs/slint/reference/keyboard-input/overview.md) struct. The returned [EventResult](/master/docs/slint/reference/global-structs-enums.md#eventresult)
+Invoked when a key is released, the argument is a [KeyEvent](/master/docs/slint/reference/keyboard-input/overview.md) struct. The returned [EventResult](/master/docs/slint/reference/property-types/builtin-enums.md#eventresult)
 indicates whether to accept or reject the event. Rejected events are forwarded to the parent element.
 
 ### focus-changed-event(reason: FocusReason)
-Invoked when the focus on the `FocusScope` has changed. The argument is a a [FocusReason](/master/docs/slint/reference/global-structs-enums.md#focusreason) enum containing the reason for focus change.
+Invoked when the focus on the `FocusScope` has changed. The argument is a a [FocusReason](/master/docs/slint/reference/property-types/builtin-enums.md#focusreason) enum containing the reason for focus change.
 
 ### focus-gained(reason: FocusReason)
-Invoked when the `FocusScope` gains focus. The argument is a a [FocusReason](/master/docs/slint/reference/global-structs-enums.md#focusreason) enum containing the reason for focus gain.
+Invoked when the `FocusScope` gains focus. The argument is a a [FocusReason](/master/docs/slint/reference/property-types/builtin-enums.md#focusreason) enum containing the reason for focus gain.
 
 ### focus-lost(reason: FocusReason)
-Invoked when the `FocusScope` loses focus. The argument is a a [FocusReason](/master/docs/slint/reference/global-structs-enums.md#focusreason) enum containing the reason for focus loss.
+Invoked when the `FocusScope` loses focus. The argument is a a [FocusReason](/master/docs/slint/reference/property-types/builtin-enums.md#focusreason) enum containing the reason for focus loss.
 
 ## `KeyBinding`
 
@@ -126,7 +126,7 @@ See [Key Bindings](/master/docs/slint/reference/keyboard-input/overview.md#key-b
 
 #### keys
 <SlintProperty propName="keys" typeName="keys">
-The [keys](/master/docs/slint/reference/property-types/builtin-types.md#keys) to match against incoming key events.
+The [keys](/master/docs/slint/reference/property-types/other-types.md#keys) to match against incoming key events.
 </SlintProperty>
 
 #### enabled

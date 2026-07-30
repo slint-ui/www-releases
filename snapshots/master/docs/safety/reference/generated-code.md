@@ -3,7 +3,7 @@ title: "Generated Code"
 description: "The Rust API that the Slint SC compiler generates."
 ---
 The Slint SC compiler translates a `.slint` file into Rust code that depends
-only on the `slint-sc` runtime crate.
+only on the `slint-sc` runtime crate. \{#sls.gen.output}
 
 ## The Component Struct
 
@@ -27,7 +27,7 @@ pub fn render_rgb8(&self, width: u32, height: u32, frame_buffer: &mut [u8]) -> R
 ```
 
 Renders the window into `frame_buffer` as described in
-[Rendering](../rendering/):
+[Rendering](/reference/rendering/):
 `width * height` pixels in row-major order, each pixel three bytes — red,
 green, blue. \{#sls.gen.render-rgb8}
 
@@ -43,7 +43,7 @@ returns `Err(RenderError::InvalidFrameBufferSize)` and paints nothing.
 ## Properties
 
 The struct holds the value of each
-[property declared](../../language/properties/#sls.prop.decl.form) on the
+[property declared](/language/properties/#sls.prop.decl.form) on the
 root element in a private field. \{#sls.gen.prop.field}
 
 Kebab-case property names become snake_case in the generated names:

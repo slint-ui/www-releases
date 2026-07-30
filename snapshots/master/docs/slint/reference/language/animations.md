@@ -93,7 +93,7 @@ For a continuously running value independent of property changes, see [`animatio
 ### easing
 
 <SlintProperty propName="easing" typeName="easing">
-The [easing curve](/master/docs/slint/reference/property-types/builtin-types.md#easing) applied over the animation's duration.
+The [easing curve](/master/docs/slint/reference/property-types/other-types.md#easing) applied over the animation's duration.
 See [`easings.net`](https://easings.net/) for a visual reference.
 </SlintProperty>
 

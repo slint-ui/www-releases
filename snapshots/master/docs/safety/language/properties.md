@@ -2,16 +2,17 @@
 title: "Properties"
 description: "Declaring properties on elements."
 ---
-import NotInSC from '@slint/common-files/src/components/NotInSC.astro';
+import SC from '@slint/common-files/src/components/SC.astro';
 import OnlyInSC from '@slint/common-files/src/components/OnlyInSC.astro';
 
+<SC>
 An element has a set of named *properties*, determined by the type of the element.
 A property holds a value. \{#sls.prop.def}
 
 A *property declaration* adds a property to the element in whose body it appears.
 It consists of the keyword `property`, the type in angle brackets, and a name,
 optionally preceded by a visibility modifier,
-optionally followed by `:` and an expression that [binds](../bindings/) to the property,
+optionally followed by `:` and an expression that [binds](/language/bindings/) to the property,
 and ends with `;`. \{#sls.prop.decl.form}
 
 ```slint
@@ -38,23 +39,17 @@ Private is the default: a declaration without a modifier declares a private prop
 <OnlyInSC>
 Properties shall only be declared on the root element. \{#sls.prop.decl.root-only}
 </OnlyInSC>
+</SC>
 
-<NotInSC>
-Properties can be declared on any element.
-</NotInSC>
 
+<SC>
 <OnlyInSC>
 The declared type shall be `length` or `color`. \{#sls.prop.decl.types}
 </OnlyInSC>
+</SC>
 
-<NotInSC>
-Any [property type](../../property-types/) can be declared.
-</NotInSC>
 
+<SC>
 Without a binding, the property has the default value of its
-[type](../types/). \{#sls.prop.decl.default}
-
-<NotInSC>
-A [change callback](../callbacks/#change-callbacks) reacts to a property's value changing,
-and a declaration with a [two-way binding](../two-way-bindings/) links the new property to an existing one.
-</NotInSC>
+type. \{#sls.prop.decl.default}
+</SC>

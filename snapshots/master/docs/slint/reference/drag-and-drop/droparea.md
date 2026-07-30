@@ -26,7 +26,7 @@ Set to `false` to stop the `DropArea` from accepting any drops.
 Return the action this target wants to perform with the drag, or `DragAction.none` to reject.
 The runtime clamps the returned value to the source's allowed set: anything the source did not
 allow is treated as `none`.
-The argument is a [DropEvent](/master/docs/slint/reference/global-structs-enums.md#dropevent) describing the drag.
+The argument is a [DropEvent](/master/docs/slint/reference/property-types/builtin-structs.md#dropevent) describing the drag.
 
 ### dropped(event: DropEvent) -> DragAction
 Invoked when the user releases the mouse over the area after `can-drop` returned a non-`none`

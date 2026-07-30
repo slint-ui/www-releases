@@ -25,7 +25,7 @@ x: (-10).abs(); // sets x to 10
 ```
 
 **T type**
-Many of the math functions can be used with any [numeric type](/master/docs/slint/reference/property-types/builtin-types.md#numeric-types) such as `angle`, `duration`, `float`, `int`, `length`, and `percent`. These are represented on this page as `T`.
+Many of the math functions can be used with any [numeric type](/master/docs/slint/reference/property-types/numeric-types.md#numeric-types) such as `angle`, `duration`, `float`, `int`, `length`, and `percent`. These are represented on this page as `T`.
 
 ## General Math Functions
 ### abs(T) -> T

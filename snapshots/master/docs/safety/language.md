@@ -2,6 +2,9 @@
 title: "Slint Language Specification"
 description: "Normative reference for the .slint markup language and the behavior it prescribes."
 ---
+import SC from '@slint/common-files/src/components/SC.astro';
+
+<SC>
 :::caution[Work in Progress]
 This specification is a work in progress and doesn't yet cover the whole Slint language.
 :::
@@ -12,7 +15,7 @@ This document is the normative reference for the `.slint` markup language:
 what the Slint Compiler accepts, and the behavior the compiled result exhibits at runtime.
 It defines what a `.slint` source file is, how its parts fit together, and what constraints implementations and users have to honor. \{#sls.meta.purpose}
 
-The [Reference](../reference/) describes the individual elements, properties, and types that make up the Slint API surface.
+The [Reference](/reference/) describes the individual elements, properties, and types that make up the Slint API surface.
 This specification describes the surrounding language itself. \{#sls.meta.purpose-vs-reference}
 
 ## Conventions
@@ -25,3 +28,4 @@ Other prose is informative. \{#sls.meta.conventions.normative}
 ### Code Examples
 
 Code examples are formatted as `slint` fenced code blocks and are informative unless explicitly stated otherwise. \{#sls.meta.conventions.examples}
+</SC>

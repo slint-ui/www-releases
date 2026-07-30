@@ -8,7 +8,7 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
 Use [DragArea](/master/docs/slint/reference/drag-and-drop/dragarea.md) and [DropArea](/master/docs/slint/reference/drag-and-drop/droparea.md) to move data between parts of the UI with a drag-and-drop gesture.
 On platforms that support it, a [DropArea](/master/docs/slint/reference/drag-and-drop/droparea.md) also accepts drops from other applications.
 
-The payload is a [data-transfer](/master/docs/slint/reference/property-types/builtin-types.md#data-transfer) value, which abstracts over the file-type transfer mechanisms supported by each platform.
+The payload is a [data-transfer](/master/docs/slint/reference/property-types/other-types.md#data-transfer) value, which abstracts over the file-type transfer mechanisms supported by each platform.
 `data-transfer` values are opaque in Slint code:
 construct and read them via callbacks implemented in the host language.
 
@@ -55,7 +55,7 @@ export component Example inherits Window {
 }
 ```
 
-Both `can-drop` and `dropped` return a [DragAction](/master/docs/slint/reference/global-structs-enums.md#dragaction): `DragAction.copy`, `DragAction.move`, `DragAction.link` to accept with that action, or `DragAction.none` to reject. `can-drop` runs during hover (drives the cursor and `current-action`); `dropped` runs on release and the returned action is what gets reported back to the source via `drag-finished`.
+Both `can-drop` and `dropped` return a [DragAction](/master/docs/slint/reference/property-types/builtin-enums.md#dragaction): `DragAction.copy`, `DragAction.move`, `DragAction.link` to accept with that action, or `DragAction.none` to reject. `can-drop` runs during hover (drives the cursor and `current-action`); `dropped` runs on release and the returned action is what gets reported back to the source via `drag-finished`.
 
 ## Drag actions
 

@@ -2,6 +2,9 @@
 title: "Source Files"
 description: "Slint source file extension, encoding, line terminators, whitespace, and comments."
 ---
+import SC from '@slint/common-files/src/components/SC.astro';
+
+<SC>
 ## File Extension
 
 Slint source files use the file extension `.slint`. \{#sls.source.file-extension}
@@ -44,3 +47,4 @@ The token sequences `///` and `/**` are recognized as ordinary line and block co
 
 /* Block comments /* may be nested */ like this. */
 ```
+</SC>

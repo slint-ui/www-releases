@@ -2,8 +2,9 @@
 title: "Exports"
 description: "Making components in a file available to other files."
 ---
-import NotInSC from '@slint/common-files/src/components/NotInSC.astro';
+import SC from '@slint/common-files/src/components/SC.astro';
 
+<SC>
 ## Placement
 
 Export statements may appear at the top level of a `.slint` source file, interleaved with [component definitions](../file-structure/#sls.file.component.definition-forms). \{#sls.export.placement}
@@ -42,8 +43,7 @@ Each identifier on the left of `as`, and each bare identifier, shall refer to a 
 
 A source file shall not export the same external name more than once.
 This includes the combination of any declaration-site export and any export-list entry. \{#sls.export.no-duplicates}
+</SC>
 
-<NotInSC>
 An export statement with a `from` clause [re-exports](../imports/#re-exports) declarations from another file.
 Besides components, [structs, enums](../structs-and-enums/), and [globals](../globals/) can be exported.
-</NotInSC>
