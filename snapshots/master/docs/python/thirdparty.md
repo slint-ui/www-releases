@@ -107,7 +107,7 @@ Third-party crates linked into the program and distributed with it.
 | [drm-ffi 0.9.1](https://crates.io/crates/drm-ffi/0.9.1) | Tyler Slabinski <tslabinski@slabity.net> | [MIT](#MIT) |
 | [drm-fourcc 2.2.0](https://crates.io/crates/drm-fourcc/2.2.0) | Daniel Franklin <daniel@danielzfranklin.org> | [MIT](#MIT) |
 | [drm-sys 0.8.1](https://crates.io/crates/drm-sys/0.8.1) | Tyler Slabinski <tslabinski@slabity.net> | [MIT](#MIT) |
-| [either 1.16.0](https://crates.io/crates/either/1.16.0) | — | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
+| [either 1.17.0](https://crates.io/crates/either/1.17.0) | — | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [endi 1.1.1](https://crates.io/crates/endi/1.1.1) | Zeeshan Ali Khan <zeenix@gmail.com> | [MIT](#MIT) |
 | [enumflags2 0.7.12](https://crates.io/crates/enumflags2/0.7.12) | maik klein <maikklein@googlemail.com>, Maja Kądziołka <maya@compilercrim.es> | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [equator 0.4.2](https://crates.io/crates/equator/0.4.2) | sarah <> | [MIT](#MIT) |
@@ -115,7 +115,7 @@ Third-party crates linked into the program and distributed with it.
 | [errno 0.3.14](https://crates.io/crates/errno/0.3.14) | Chris Wong <lambda.fairy@gmail.com>, Dan Gohman <dev@sunfishcode.online> | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [error-code 3.3.2](https://crates.io/crates/error-code/3.3.2) | Douman <douman@gmx.se> | [BSL-1.0](#BSL-1.0) |
 | [euclid 0.22.14](https://crates.io/crates/euclid/0.22.14) | The Servo Project Developers | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
-| [event-listener 5.4.1](https://crates.io/crates/event-listener/5.4.1) | Stjepan Glavina <stjepang@gmail.com>, John Nunley <dev@notgull.net> | [Apache-2.0](#Apache-2.0) OR [MIT](#MIT) |
+| [event-listener 5.4.2](https://crates.io/crates/event-listener/5.4.2) | Stjepan Glavina <stjepang@gmail.com>, John Nunley <dev@notgull.net> | [Apache-2.0](#Apache-2.0) OR [MIT](#MIT) |
 | [event-listener-strategy 0.5.4](https://crates.io/crates/event-listener-strategy/0.5.4) | John Nunley <dev@notgull.net> | [Apache-2.0](#Apache-2.0) OR [MIT](#MIT) |
 | [exr 1.74.2](https://crates.io/crates/exr/1.74.2) | johannesvollmer <contact@johannesvollmer.com> | [BSD-3-Clause](#BSD-3-Clause) |
 | [fastrand 2.5.0](https://crates.io/crates/fastrand/2.5.0) | Stjepan Glavina <stjepang@gmail.com> | [Apache-2.0](#Apache-2.0) OR [MIT](#MIT) |

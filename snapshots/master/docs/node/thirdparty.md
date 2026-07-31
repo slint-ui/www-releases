@@ -93,7 +93,7 @@ Third-party crates linked into the program and distributed with it.
 | [crunchy 0.2.4](https://crates.io/crates/crunchy/0.2.4) | Eira Fransham <jackefransham@gmail.com> | [MIT](#MIT) |
 | [css-color-parser2 1.0.1](https://crates.io/crates/css-color-parser2/1.0.1) | Katkov Oleksandr <alexx.katkoff@gmail.com> | [MIT](#MIT) |
 | [ctor 0.10.1](https://crates.io/crates/ctor/0.10.1) | Matt Mastracci <matthew@mastracci.com> | [Apache-2.0](#Apache-2.0) OR [MIT](#MIT) |
-| [ctor 1.0.10](https://crates.io/crates/ctor/1.0.10) | Matt Mastracci <matthew@mastracci.com> | [Apache-2.0](#Apache-2.0) OR [MIT](#MIT) |
+| [ctor 1.0.11](https://crates.io/crates/ctor/1.0.11) | Matt Mastracci <matthew@mastracci.com> | [Apache-2.0](#Apache-2.0) OR [MIT](#MIT) |
 | [cursor-icon 1.2.0](https://crates.io/crates/cursor-icon/1.2.0) | Kirill Chibisov <contact@kchibisov.com> | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) OR [Zlib](#Zlib) |
 | [data-url 0.3.2](https://crates.io/crates/data-url/0.3.2) | Simon Sapin <simon.sapin@exyr.org> | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [derive_more 2.1.1](https://crates.io/crates/derive_more/2.1.1) | Jelte Fennema <github-tech@jeltef.nl> | [MIT](#MIT) |
@@ -106,7 +106,7 @@ Third-party crates linked into the program and distributed with it.
 | [drm-ffi 0.9.1](https://crates.io/crates/drm-ffi/0.9.1) | Tyler Slabinski <tslabinski@slabity.net> | [MIT](#MIT) |
 | [drm-fourcc 2.2.0](https://crates.io/crates/drm-fourcc/2.2.0) | Daniel Franklin <daniel@danielzfranklin.org> | [MIT](#MIT) |
 | [drm-sys 0.8.1](https://crates.io/crates/drm-sys/0.8.1) | Tyler Slabinski <tslabinski@slabity.net> | [MIT](#MIT) |
-| [either 1.16.0](https://crates.io/crates/either/1.16.0) | — | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
+| [either 1.17.0](https://crates.io/crates/either/1.17.0) | — | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [endi 1.1.1](https://crates.io/crates/endi/1.1.1) | Zeeshan Ali Khan <zeenix@gmail.com> | [MIT](#MIT) |
 | [enumflags2 0.7.12](https://crates.io/crates/enumflags2/0.7.12) | maik klein <maikklein@googlemail.com>, Maja Kądziołka <maya@compilercrim.es> | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [equator 0.4.2](https://crates.io/crates/equator/0.4.2) | sarah <> | [MIT](#MIT) |
@@ -114,7 +114,7 @@ Third-party crates linked into the program and distributed with it.
 | [errno 0.3.14](https://crates.io/crates/errno/0.3.14) | Chris Wong <lambda.fairy@gmail.com>, Dan Gohman <dev@sunfishcode.online> | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [error-code 3.3.2](https://crates.io/crates/error-code/3.3.2) | Douman <douman@gmx.se> | [BSL-1.0](#BSL-1.0) |
 | [euclid 0.22.14](https://crates.io/crates/euclid/0.22.14) | The Servo Project Developers | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
-| [event-listener 5.4.1](https://crates.io/crates/event-listener/5.4.1) | Stjepan Glavina <stjepang@gmail.com>, John Nunley <dev@notgull.net> | [Apache-2.0](#Apache-2.0) OR [MIT](#MIT) |
+| [event-listener 5.4.2](https://crates.io/crates/event-listener/5.4.2) | Stjepan Glavina <stjepang@gmail.com>, John Nunley <dev@notgull.net> | [Apache-2.0](#Apache-2.0) OR [MIT](#MIT) |
 | [event-listener-strategy 0.5.4](https://crates.io/crates/event-listener-strategy/0.5.4) | John Nunley <dev@notgull.net> | [Apache-2.0](#Apache-2.0) OR [MIT](#MIT) |
 | [exr 1.74.2](https://crates.io/crates/exr/1.74.2) | johannesvollmer <contact@johannesvollmer.com> | [BSD-3-Clause](#BSD-3-Clause) |
 | [fastrand 2.5.0](https://crates.io/crates/fastrand/2.5.0) | Stjepan Glavina <stjepang@gmail.com> | [Apache-2.0](#Apache-2.0) OR [MIT](#MIT) |
@@ -236,7 +236,7 @@ Third-party crates linked into the program and distributed with it.
 | [miniz_oxide 0.8.9](https://crates.io/crates/miniz_oxide/0.8.9) | Frommi <daniil.liferenko@gmail.com>, oyvindln <oyvindln@users.noreply.github.com>, Rich Geldreich richgel99@gmail.com | [MIT](#MIT) OR [Zlib](#Zlib) OR [Apache-2.0](#Apache-2.0) |
 | [moxcms 0.8.1](https://crates.io/crates/moxcms/0.8.1) | Radzivon Bartoshyk | [BSD-3-Clause](#BSD-3-Clause) OR [Apache-2.0](#Apache-2.0) |
 | [muda 0.19.3](https://crates.io/crates/muda/0.19.3) | Tauri Programme within The Commons Conservancy | [Apache-2.0](#Apache-2.0) OR [MIT](#MIT) |
-| [napi 3.11.0](https://crates.io/crates/napi/3.11.0) | Nathan Sobo <nathan@github.com>, Yinan Long <lynweklm@gmail.com> | [MIT](#MIT) |
+| [napi 3.12.0](https://crates.io/crates/napi/3.12.0) | Nathan Sobo <nathan@github.com>, Yinan Long <lynweklm@gmail.com> | [MIT](#MIT) |
 | [napi-sys 3.3.0](https://crates.io/crates/napi-sys/3.3.0) | LongYinan <lynweklm@gmail.com> | [MIT](#MIT) |
 | [natord 1.0.9](https://crates.io/crates/natord/1.0.9) | Kang Seonghoon <public+rust@mearie.org> | [MIT](#MIT) |
 | [ndk 0.8.0](https://crates.io/crates/ndk/0.8.0) | The Rust Mobile contributors | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |

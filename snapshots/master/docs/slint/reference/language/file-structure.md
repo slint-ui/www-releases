@@ -3,6 +3,7 @@ title: "File Structure"
 description: "Top-level structure of a Slint source file and the basic form of component definitions."
 ---
 import SC from '@slint/common-files/src/components/SC.astro';
+import OnlyInSC from '@slint/common-files/src/components/OnlyInSC.astro';
 
 <SC>
 ## A Slint Source File
@@ -26,9 +27,26 @@ component Name inherits Base { /* component body */ }
 
 The identifier following the `component` keyword is the *name* of the component. \{#sls.file.component.name}
 
-The first form defines a component with no explicit base; the second form defines a component that inherits from the element type named by `Base`.
-The identifier `Base` shall resolve to a built-in element or to a component previously defined. \{#sls.file.component.inherits}
+The first form defines a component with no explicit base;
+the second form defines a component that *inherits* from the element type named by `Base`. \{#sls.file.component.inherits}
 
+A component that inherits extends its base:
+an instance of the component is an element of type `Base`. \{#sls.file.component.inherits.meaning}
+
+The [bindings](../bindings/) of the component body apply to that element,
+and the elements instantiated in the component body become children of the element. \{#sls.file.component.inherits.body-applies}
+
+The component has the properties of `Base` in addition to those [declared](../properties/) in its body,
+and a binding in the component body may bind them. \{#sls.file.component.inherits.properties}
+
+<OnlyInSC>
+The identifier `Base` shall resolve to a built-in element or to a component defined earlier in the file. \{#sls.file.component.inherits.base}
+</OnlyInSC>
+</SC>
+
+The identifier `Base` resolves to a built-in element, to a component defined earlier in the file, or to an [imported](../imports/) component.
+
+<SC>
 The braces `{` and `}` delimit the *component body*. \{#sls.file.component.body-braces}
 
 ## Component Bodies
@@ -47,6 +65,15 @@ TypeName { /* element body */ }
 
 The identifier `TypeName` shall resolve to a built-in or user-defined component. \{#sls.file.element.instantiation-typename}
 
+<OnlyInSC>
+Neither `Window` nor a component that directly or indirectly inherits `Window` shall be instantiated as an element. \{#sls.file.element.no-window-instantiation}
+</OnlyInSC>
+</SC>
+
+Instantiating `Window`, or a component that inherits `Window`, as an element is deprecated:
+it does not create a separate window.
+
+<SC>
 The braces delimit the *element body*.
 An element body is a sequence of zero or more nested element instantiations and [bindings](../bindings/), separated only by whitespace and comments. \{#sls.file.element.body}
 
