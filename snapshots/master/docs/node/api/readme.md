@@ -4,10 +4,12 @@ title: "slint-ui"
 ## Namespaces
 
 - [language](/master/docs/node/api/slint-ui/namespaces/language/readme/)
+- [platform](/master/docs/node/api/slint-ui/namespaces/platform/readme/)
 
 ## Enumerations
 
 - [DiagnosticLevel](/master/docs/node/api/enumerations/diagnosticlevel/)
+- [WindowEventDispatchResult](/master/docs/node/api/enumerations/windoweventdispatchresult/)
 
 ## Classes
 
