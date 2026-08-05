@@ -124,7 +124,7 @@
 <a href=#2 id=2 data-nosnippet>2</a>// SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0
 <a href=#3 id=3 data-nosnippet>3</a>
 <a href=#4 id=4 data-nosnippet>4</a>// cSpell: ignore theproperty underscoresanddashespreserved xreadonly noregress
-<a href=#5 id=5 data-nosnippet>5</a></span><span class="kw">use </span><span class="kw">crate</span>::dynamic_item_tree::{<a href="dynamic_item_tree.rs.html#2068">ErasedItemTreeBox</a>, <a href="dynamic_item_tree.rs.html#550-558">WindowOptions</a>};
+<a href=#5 id=5 data-nosnippet>5</a></span><span class="kw">use </span><span class="kw">crate</span>::dynamic_item_tree::{<a href="dynamic_item_tree.rs.html#2069">ErasedItemTreeBox</a>, <a href="dynamic_item_tree.rs.html#550-558">WindowOptions</a>};
 <a href=#6 id=6 data-nosnippet>6</a><span class="kw">use </span>i_slint_compiler::langtype::Type <span class="kw">as </span>LangType;
 <a href=#7 id=7 data-nosnippet>7</a><span class="kw">use </span>i_slint_core::PathData;
 <a href=#8 id=8 data-nosnippet>8</a><span class="kw">use </span>i_slint_core::component_factory::ComponentFactory;
@@ -1528,12 +1528,12 @@
 <a href=#1406 id=1406 data-nosnippet>1406</a>    <span class="doccomment">/// Return the [`ComponentDefinition`] that was used to create this instance.
 <a href=#1407 id=1407 data-nosnippet>1407</a>    </span><span class="kw">pub fn </span>definition(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="#1120-1122">ComponentDefinition</a> {
 <a href=#1408 id=1408 data-nosnippet>1408</a>        <span class="macro">generativity::make_guard!</span>(guard);
-<a href=#1409 id=1409 data-nosnippet>1409</a>        <a href="#1120-1122">ComponentDefinition</a> { inner: <a class="self" href="#1407">self</a>.inner.<a href="dynamic_item_tree.rs.html#2070-2078">unerase</a>(<a href="#1408">guard</a>).<a href="dynamic_item_tree.rs.html#68-70">description</a>().<a href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html#tymethod.into">into</a>() }
+<a href=#1409 id=1409 data-nosnippet>1409</a>        <a href="#1120-1122">ComponentDefinition</a> { inner: <a class="self" href="#1407">self</a>.inner.<a href="dynamic_item_tree.rs.html#2071-2079">unerase</a>(<a href="#1408">guard</a>).<a href="dynamic_item_tree.rs.html#68-70">description</a>().<a href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html#tymethod.into">into</a>() }
 <a href=#1410 id=1410 data-nosnippet>1410</a>    }
 <a href=#1411 id=1411 data-nosnippet>1411</a>
 <a href=#1412 id=1412 data-nosnippet>1412</a>    <span class="kw">fn </span>is_system_tray_rooted(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a> {
 <a href=#1413 id=1413 data-nosnippet>1413</a>        <span class="kw">let </span>guard = <span class="kw">unsafe </span>{ generativity::Guard::new(generativity::Id::new()) };
-<a href=#1414 id=1414 data-nosnippet>1414</a>        <a class="self" href="#1412">self</a>.inner.<a href="dynamic_item_tree.rs.html#2070-2078">unerase</a>(<a href="#1413">guard</a>).<a href="dynamic_item_tree.rs.html#68-70">description</a>().original.inherits_system_tray_icon()
+<a href=#1414 id=1414 data-nosnippet>1414</a>        <a class="self" href="#1412">self</a>.inner.<a href="dynamic_item_tree.rs.html#2071-2079">unerase</a>(<a href="#1413">guard</a>).<a href="dynamic_item_tree.rs.html#68-70">description</a>().original.inherits_system_tray_icon()
 <a href=#1415 id=1415 data-nosnippet>1415</a>    }
 <a href=#1416 id=1416 data-nosnippet>1416</a>
 <a href=#1417 id=1417 data-nosnippet>1417</a>    <span class="doccomment">/// Set `visible` directly on the root SystemTrayIcon native item, mirroring
@@ -1541,7 +1541,7 @@
 <a href=#1419 id=1419 data-nosnippet>1419</a>    /// the change-tracker on the item dispatches the value to the platform handle.
 <a href=#1420 id=1420 data-nosnippet>1420</a>    </span><span class="kw">fn </span>set_tray_icon_visible(<span class="kw-2">&amp;</span><span class="self">self</span>, visible: <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>) {
 <a href=#1421 id=1421 data-nosnippet>1421</a>        <span class="macro">generativity::make_guard!</span>(guard);
-<a href=#1422 id=1422 data-nosnippet>1422</a>        <span class="kw">let </span>description = <a class="self" href="#1420">self</a>.inner.<a href="dynamic_item_tree.rs.html#2070-2078">unerase</a>(<a href="#1421">guard</a>).<a href="dynamic_item_tree.rs.html#68-70">description</a>();
+<a href=#1422 id=1422 data-nosnippet>1422</a>        <span class="kw">let </span>description = <a class="self" href="#1420">self</a>.inner.<a href="dynamic_item_tree.rs.html#2071-2079">unerase</a>(<a href="#1421">guard</a>).<a href="dynamic_item_tree.rs.html#68-70">description</a>();
 <a href=#1423 id=1423 data-nosnippet>1423</a>        <span class="kw">let </span>item_info = <span class="kw-2">&amp;</span><a href="#1422">description</a>.items[<a href="#1422">description</a>.original.root_element.<a href="https://doc.rust-lang.org/nightly/core/cell/struct.RefCell.html#method.borrow">borrow</a>().id.as_str()];
 <a href=#1424 id=1424 data-nosnippet>1424</a>        <span class="kw">let </span>item_rc =
 <a href=#1425 id=1425 data-nosnippet>1425</a>            ItemRc::new(vtable::VRc::into_dyn(<a class="self" href="#1420">self</a>.inner.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>()), <a href="#1423">item_info</a>.<a href="dynamic_item_tree.rs.html#109-111">item_index</a>());
@@ -1572,7 +1572,7 @@
 <a href=#1450 id=1450 data-nosnippet>1450</a>    /// ```
 <a href=#1451 id=1451 data-nosnippet>1451</a>    </span><span class="kw">pub fn </span>get_property(<span class="kw-2">&amp;</span><span class="self">self</span>, name: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="#100-146">Value</a>, <a href="#1803-1807">GetPropertyError</a>&gt; {
 <a href=#1452 id=1452 data-nosnippet>1452</a>        <span class="macro">generativity::make_guard!</span>(guard);
-<a href=#1453 id=1453 data-nosnippet>1453</a>        <span class="kw">let </span>comp = <a class="self" href="#1451">self</a>.inner.<a href="dynamic_item_tree.rs.html#2070-2078">unerase</a>(<a href="#1452">guard</a>);
+<a href=#1453 id=1453 data-nosnippet>1453</a>        <span class="kw">let </span>comp = <a class="self" href="#1451">self</a>.inner.<a href="dynamic_item_tree.rs.html#2071-2079">unerase</a>(<a href="#1452">guard</a>);
 <a href=#1454 id=1454 data-nosnippet>1454</a>        <span class="kw">let </span>name = <a href="#637-639">normalize_identifier</a>(<a href="#1451">name</a>);
 <a href=#1455 id=1455 data-nosnippet>1455</a>
 <a href=#1456 id=1456 data-nosnippet>1456</a>        <span class="kw">if </span><a href="#1453">comp</a>
@@ -1596,7 +1596,7 @@
 <a href=#1474 id=1474 data-nosnippet>1474</a>    </span><span class="kw">pub fn </span>set_property(<span class="kw-2">&amp;</span><span class="self">self</span>, name: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, value: <a href="#100-146">Value</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), <a href="#1812-1826">SetPropertyError</a>&gt; {
 <a href=#1475 id=1475 data-nosnippet>1475</a>        <span class="kw">let </span>name = <a href="#637-639">normalize_identifier</a>(<a href="#1474">name</a>);
 <a href=#1476 id=1476 data-nosnippet>1476</a>        <span class="macro">generativity::make_guard!</span>(guard);
-<a href=#1477 id=1477 data-nosnippet>1477</a>        <span class="kw">let </span>comp = <a class="self" href="#1474">self</a>.inner.<a href="dynamic_item_tree.rs.html#2070-2078">unerase</a>(<a href="#1476">guard</a>);
+<a href=#1477 id=1477 data-nosnippet>1477</a>        <span class="kw">let </span>comp = <a class="self" href="#1474">self</a>.inner.<a href="dynamic_item_tree.rs.html#2071-2079">unerase</a>(<a href="#1476">guard</a>);
 <a href=#1478 id=1478 data-nosnippet>1478</a>        <span class="kw">let </span>d = <a href="#1477">comp</a>.<a href="dynamic_item_tree.rs.html#68-70">description</a>();
 <a href=#1479 id=1479 data-nosnippet>1479</a>        <span class="kw">let </span>elem = <a href="#1478">d</a>.original.root_element.<a href="https://doc.rust-lang.org/nightly/core/cell/struct.RefCell.html#method.borrow">borrow</a>();
 <a href=#1480 id=1480 data-nosnippet>1480</a>        <span class="kw">let </span>decl = elem.property_declarations.get(<span class="kw-2">&amp;</span>name).ok_or(SetPropertyError::NoSuchProperty)<span class="question-mark">?</span>;
@@ -1650,7 +1650,7 @@
 <a href=#1528 id=1528 data-nosnippet>1528</a>        callback: <span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html">Fn</a>(<span class="kw-2">&amp;</span>[<a href="#100-146">Value</a>]) -&gt; <a href="#100-146">Value</a> + <span class="lifetime">'static</span>,
 <a href=#1529 id=1529 data-nosnippet>1529</a>    ) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), <a href="#1831-1835">SetCallbackError</a>&gt; {
 <a href=#1530 id=1530 data-nosnippet>1530</a>        <span class="macro">generativity::make_guard!</span>(guard);
-<a href=#1531 id=1531 data-nosnippet>1531</a>        <span class="kw">let </span>comp = <a class="self" href="#1526">self</a>.inner.<a href="dynamic_item_tree.rs.html#2070-2078">unerase</a>(<a href="#1530">guard</a>);
+<a href=#1531 id=1531 data-nosnippet>1531</a>        <span class="kw">let </span>comp = <a class="self" href="#1526">self</a>.inner.<a href="dynamic_item_tree.rs.html#2071-2079">unerase</a>(<a href="#1530">guard</a>);
 <a href=#1532 id=1532 data-nosnippet>1532</a>        <a href="#1531">comp</a>.<a href="dynamic_item_tree.rs.html#68-70">description</a>()
 <a href=#1533 id=1533 data-nosnippet>1533</a>            .<a href="dynamic_item_tree.rs.html#720-752">set_callback_handler</a>(<a href="#1531">comp</a>.<a href="dynamic_item_tree.rs.html#63-65">borrow</a>(), <span class="kw-2">&amp;</span><a href="#637-639">normalize_identifier</a>(<a href="#1527">name</a>), <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box</a>::<a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.new">new</a>(<a href="#1528">callback</a>))
 <a href=#1534 id=1534 data-nosnippet>1534</a>            .<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|()| SetCallbackError::<a href="#1834">NoSuchCallback</a>)
@@ -1662,7 +1662,7 @@
 <a href=#1540 id=1540 data-nosnippet>1540</a>    /// See the documentation of [`Self::set_callback`] for an example
 <a href=#1541 id=1541 data-nosnippet>1541</a>    </span><span class="kw">pub fn </span>invoke(<span class="kw-2">&amp;</span><span class="self">self</span>, name: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, args: <span class="kw-2">&amp;</span>[<a href="#100-146">Value</a>]) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="#100-146">Value</a>, <a href="#1840-1844">InvokeError</a>&gt; {
 <a href=#1542 id=1542 data-nosnippet>1542</a>        <span class="macro">generativity::make_guard!</span>(guard);
-<a href=#1543 id=1543 data-nosnippet>1543</a>        <span class="kw">let </span>comp = <a class="self" href="#1541">self</a>.inner.<a href="dynamic_item_tree.rs.html#2070-2078">unerase</a>(<a href="#1542">guard</a>);
+<a href=#1543 id=1543 data-nosnippet>1543</a>        <span class="kw">let </span>comp = <a class="self" href="#1541">self</a>.inner.<a href="dynamic_item_tree.rs.html#2071-2079">unerase</a>(<a href="#1542">guard</a>);
 <a href=#1544 id=1544 data-nosnippet>1544</a>        <a href="#1543">comp</a>.<a href="dynamic_item_tree.rs.html#68-70">description</a>()
 <a href=#1545 id=1545 data-nosnippet>1545</a>            .<a href="dynamic_item_tree.rs.html#758-786">invoke</a>(<a href="#1543">comp</a>.<a href="dynamic_item_tree.rs.html#63-65">borrow</a>(), <span class="kw-2">&amp;</span><a href="#637-639">normalize_identifier</a>(<a href="#1541">name</a>), <a href="#1541">args</a>)
 <a href=#1546 id=1546 data-nosnippet>1546</a>            .<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|()| InvokeError::<a href="#1843">NoSuchCallable</a>)
@@ -1698,7 +1698,7 @@
 <a href=#1576 id=1576 data-nosnippet>1576</a>        property: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>,
 <a href=#1577 id=1577 data-nosnippet>1577</a>    ) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="#100-146">Value</a>, <a href="#1803-1807">GetPropertyError</a>&gt; {
 <a href=#1578 id=1578 data-nosnippet>1578</a>        <span class="macro">generativity::make_guard!</span>(guard);
-<a href=#1579 id=1579 data-nosnippet>1579</a>        <span class="kw">let </span>comp = <a class="self" href="#1574">self</a>.inner.<a href="dynamic_item_tree.rs.html#2070-2078">unerase</a>(<a href="#1578">guard</a>);
+<a href=#1579 id=1579 data-nosnippet>1579</a>        <span class="kw">let </span>comp = <a class="self" href="#1574">self</a>.inner.<a href="dynamic_item_tree.rs.html#2071-2079">unerase</a>(<a href="#1578">guard</a>);
 <a href=#1580 id=1580 data-nosnippet>1580</a>        comp.description()
 <a href=#1581 id=1581 data-nosnippet>1581</a>            .get_global(comp.borrow(), <span class="kw-2">&amp;</span>normalize_identifier(global))
 <a href=#1582 id=1582 data-nosnippet>1582</a>            .map_err(|()| GetPropertyError::NoSuchProperty)<span class="question-mark">? </span><span class="comment">// FIXME: should there be a NoSuchGlobal error?
@@ -1715,7 +1715,7 @@
 <a href=#1593 id=1593 data-nosnippet>1593</a>        value: <a href="#100-146">Value</a>,
 <a href=#1594 id=1594 data-nosnippet>1594</a>    ) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), <a href="#1812-1826">SetPropertyError</a>&gt; {
 <a href=#1595 id=1595 data-nosnippet>1595</a>        <span class="macro">generativity::make_guard!</span>(guard);
-<a href=#1596 id=1596 data-nosnippet>1596</a>        <span class="kw">let </span>comp = <a class="self" href="#1590">self</a>.inner.<a href="dynamic_item_tree.rs.html#2070-2078">unerase</a>(<a href="#1595">guard</a>);
+<a href=#1596 id=1596 data-nosnippet>1596</a>        <span class="kw">let </span>comp = <a class="self" href="#1590">self</a>.inner.<a href="dynamic_item_tree.rs.html#2071-2079">unerase</a>(<a href="#1595">guard</a>);
 <a href=#1597 id=1597 data-nosnippet>1597</a>        comp.description()
 <a href=#1598 id=1598 data-nosnippet>1598</a>            .get_global(comp.borrow(), <span class="kw-2">&amp;</span>normalize_identifier(global))
 <a href=#1599 id=1599 data-nosnippet>1599</a>            .map_err(|()| SetPropertyError::NoSuchProperty)<span class="question-mark">? </span><span class="comment">// FIXME: should there be a NoSuchGlobal error?
@@ -1764,7 +1764,7 @@
 <a href=#1642 id=1642 data-nosnippet>1642</a>        callback: <span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html">Fn</a>(<span class="kw-2">&amp;</span>[<a href="#100-146">Value</a>]) -&gt; <a href="#100-146">Value</a> + <span class="lifetime">'static</span>,
 <a href=#1643 id=1643 data-nosnippet>1643</a>    ) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), <a href="#1831-1835">SetCallbackError</a>&gt; {
 <a href=#1644 id=1644 data-nosnippet>1644</a>        <span class="macro">generativity::make_guard!</span>(guard);
-<a href=#1645 id=1645 data-nosnippet>1645</a>        <span class="kw">let </span>comp = <a class="self" href="#1639">self</a>.inner.<a href="dynamic_item_tree.rs.html#2070-2078">unerase</a>(<a href="#1644">guard</a>);
+<a href=#1645 id=1645 data-nosnippet>1645</a>        <span class="kw">let </span>comp = <a class="self" href="#1639">self</a>.inner.<a href="dynamic_item_tree.rs.html#2071-2079">unerase</a>(<a href="#1644">guard</a>);
 <a href=#1646 id=1646 data-nosnippet>1646</a>        comp.description()
 <a href=#1647 id=1647 data-nosnippet>1647</a>            .get_global(comp.borrow(), <span class="kw-2">&amp;</span>normalize_identifier(global))
 <a href=#1648 id=1648 data-nosnippet>1648</a>            .map_err(|()| SetCallbackError::NoSuchCallback)<span class="question-mark">? </span><span class="comment">// FIXME: should there be a NoSuchGlobal error?
@@ -1784,7 +1784,7 @@
 <a href=#1662 id=1662 data-nosnippet>1662</a>        args: <span class="kw-2">&amp;</span>[<a href="#100-146">Value</a>],
 <a href=#1663 id=1663 data-nosnippet>1663</a>    ) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="#100-146">Value</a>, <a href="#1840-1844">InvokeError</a>&gt; {
 <a href=#1664 id=1664 data-nosnippet>1664</a>        <span class="macro">generativity::make_guard!</span>(guard);
-<a href=#1665 id=1665 data-nosnippet>1665</a>        <span class="kw">let </span>comp = <a class="self" href="#1659">self</a>.inner.<a href="dynamic_item_tree.rs.html#2070-2078">unerase</a>(<a href="#1664">guard</a>);
+<a href=#1665 id=1665 data-nosnippet>1665</a>        <span class="kw">let </span>comp = <a class="self" href="#1659">self</a>.inner.<a href="dynamic_item_tree.rs.html#2071-2079">unerase</a>(<a href="#1664">guard</a>);
 <a href=#1666 id=1666 data-nosnippet>1666</a>        <span class="kw">let </span>g = comp
 <a href=#1667 id=1667 data-nosnippet>1667</a>            .description()
 <a href=#1668 id=1668 data-nosnippet>1668</a>            .get_global(comp.borrow(), <span class="kw-2">&amp;</span>normalize_identifier(global))
@@ -1852,13 +1852,13 @@
 <a href=#1730 id=1730 data-nosnippet>1730</a>    </span><span class="attr">#[cfg(feature = <span class="string">"internal"</span>)]
 <a href=#1731 id=1731 data-nosnippet>1731</a>    </span><span class="kw">pub fn </span>set_debug_hook_callback(<span class="kw-2">&amp;</span><span class="self">self</span>, callback: <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<span class="kw">crate</span>::debug_hook::<a href="debug_hook.rs.html#10">DebugHookCallback</a>&gt;) {
 <a href=#1732 id=1732 data-nosnippet>1732</a>        <span class="macro">generativity::make_guard!</span>(guard);
-<a href=#1733 id=1733 data-nosnippet>1733</a>        <span class="kw">let </span>comp = <a class="self" href="#1731">self</a>.inner.<a href="dynamic_item_tree.rs.html#2070-2078">unerase</a>(<a href="#1732">guard</a>);
+<a href=#1733 id=1733 data-nosnippet>1733</a>        <span class="kw">let </span>comp = <a class="self" href="#1731">self</a>.inner.<a href="dynamic_item_tree.rs.html#2071-2079">unerase</a>(<a href="#1732">guard</a>);
 <a href=#1734 id=1734 data-nosnippet>1734</a>        <span class="kw">crate</span>::debug_hook::<a href="debug_hook.rs.html#12-20">set_debug_hook_callback</a>(<a href="#1733">comp</a>, <a href="#1731">callback</a>);
 <a href=#1735 id=1735 data-nosnippet>1735</a>    }
 <a href=#1736 id=1736 data-nosnippet>1736</a>}
 <a href=#1737 id=1737 data-nosnippet>1737</a>
 <a href=#1738 id=1738 data-nosnippet>1738</a><span class="kw">impl </span><a href="../../slint_interpreter/trait.StrongHandle.html">StrongHandle</a> <span class="kw">for </span><a href="#1401-1403">ComponentInstance</a> {
-<a href=#1739 id=1739 data-nosnippet>1739</a>    <span class="kw">type </span>WeakInner = vtable::VWeak&lt;ItemTreeVTable, <span class="kw">crate</span>::dynamic_item_tree::<a href="dynamic_item_tree.rs.html#2068">ErasedItemTreeBox</a>&gt;;
+<a href=#1739 id=1739 data-nosnippet>1739</a>    <span class="kw">type </span>WeakInner = vtable::VWeak&lt;ItemTreeVTable, <span class="kw">crate</span>::dynamic_item_tree::<a href="dynamic_item_tree.rs.html#2069">ErasedItemTreeBox</a>&gt;;
 <a href=#1740 id=1740 data-nosnippet>1740</a>
 <a href=#1741 id=1741 data-nosnippet>1741</a>    <span class="kw">fn </span>upgrade_from_weak_inner(inner: <span class="kw-2">&amp;</span><span class="self">Self</span>::WeakInner) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<span class="self">Self</span>&gt; {
 <a href=#1742 id=1742 data-nosnippet>1742</a>        <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(<span class="self">Self </span>{ inner: inner.upgrade()<span class="question-mark">? </span>})
@@ -1900,7 +1900,7 @@
 <a href=#1778 id=1778 data-nosnippet>1778</a>    }
 <a href=#1779 id=1779 data-nosnippet>1779</a>
 <a href=#1780 id=1780 data-nosnippet>1780</a>    <span class="kw">fn </span>window(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><a href="../../slint_interpreter/struct.Window.html">Window</a> {
-<a href=#1781 id=1781 data-nosnippet>1781</a>        <a class="self" href="#1780">self</a>.inner.<a href="dynamic_item_tree.rs.html#2085-2087">window_adapter_ref</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>().window()
+<a href=#1781 id=1781 data-nosnippet>1781</a>        <a class="self" href="#1780">self</a>.inner.<a href="dynamic_item_tree.rs.html#2086-2088">window_adapter_ref</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>().window()
 <a href=#1782 id=1782 data-nosnippet>1782</a>    }
 <a href=#1783 id=1783 data-nosnippet>1783</a>
 <a href=#1784 id=1784 data-nosnippet>1784</a>    <span class="kw">fn </span>global&lt;<span class="lifetime">'a</span>, T: <a href="../../slint_interpreter/trait.Global.html">Global</a>&lt;<span class="lifetime">'a</span>, <span class="self">Self</span>&gt;&gt;(<span class="kw-2">&amp;</span><span class="lifetime">'a </span><span class="self">self</span>) -&gt; T
@@ -1912,7 +1912,7 @@
 <a href=#1790 id=1790 data-nosnippet>1790</a>}
 <a href=#1791 id=1791 data-nosnippet>1791</a>
 <a href=#1792 id=1792 data-nosnippet>1792</a><span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html">From</a>&lt;<a href="#1401-1403">ComponentInstance</a>&gt;
-<a href=#1793 id=1793 data-nosnippet>1793</a>    <span class="kw">for </span>vtable::VRc&lt;i_slint_core::item_tree::ItemTreeVTable, <a href="dynamic_item_tree.rs.html#2068">ErasedItemTreeBox</a>&gt;
+<a href=#1793 id=1793 data-nosnippet>1793</a>    <span class="kw">for </span>vtable::VRc&lt;i_slint_core::item_tree::ItemTreeVTable, <a href="dynamic_item_tree.rs.html#2069">ErasedItemTreeBox</a>&gt;
 <a href=#1794 id=1794 data-nosnippet>1794</a>{
 <a href=#1795 id=1795 data-nosnippet>1795</a>    <span class="kw">fn </span>from(value: <a href="#1401-1403">ComponentInstance</a>) -&gt; <span class="self">Self </span>{
 <a href=#1796 id=1796 data-nosnippet>1796</a>        <a href="#1795">value</a>.inner

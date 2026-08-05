@@ -7,7 +7,7 @@ the unit tests, and the test driver that compiles the `.slint` test cases and ru
 This chapter reports the measured line, function, and region coverage per source file of the runtime, addressing [SR_TEST_COVERAGE](/requirements/test-coverage/).
 A function counts as fully tested when every code region in it was executed, as partially tested when it was executed but some of its code regions weren't, and as untested when it was never executed.
 
-Generated from commit [`03324f1499`](https://github.com/slint-ui/slint/tree/03324f1499ce53360fca6bad40fddb21e43e237d).
+Generated from commit [`d2636087be`](https://github.com/slint-ui/slint/tree/d2636087be4dd07ddd8f24167efd598bc810cb19).
 
 **Line coverage: 100.0% (71/71). Function coverage: 100.0% (12/12). Region coverage: 100.0% (136/136).**
 
@@ -23,8 +23,8 @@ Per-line execution counts are in the [detailed coverage report](/coverage/index.
 
 | File | Lines | Functions | Regions | Per-line |
 | --- | --- | --- | --- | --- |
-| [`lib.rs`](https://github.com/slint-ui/slint/blob/03324f1499ce53360fca6bad40fddb21e43e237d/api/slint-sc/lib.rs) | 100.0% (41/41) | 100.0% (10/10) | 100.0% (72/72) | [view](/coverage/coverage/api/slint-sc/lib.rs.html) |
-| [`private_unstable_api/renderer.rs`](https://github.com/slint-ui/slint/blob/03324f1499ce53360fca6bad40fddb21e43e237d/api/slint-sc/private_unstable_api/renderer.rs) | 100.0% (30/30) | 100.0% (2/2) | 100.0% (64/64) | [view](/coverage/coverage/api/slint-sc/private_unstable_api/renderer.rs.html) |
+| [`lib.rs`](https://github.com/slint-ui/slint/blob/d2636087be4dd07ddd8f24167efd598bc810cb19/api/slint-sc/lib.rs) | 100.0% (41/41) | 100.0% (10/10) | 100.0% (72/72) | [view](/coverage/coverage/api/slint-sc/lib.rs.html) |
+| [`private_unstable_api/renderer.rs`](https://github.com/slint-ui/slint/blob/d2636087be4dd07ddd8f24167efd598bc810cb19/api/slint-sc/private_unstable_api/renderer.rs) | 100.0% (30/30) | 100.0% (2/2) | 100.0% (64/64) | [view](/coverage/coverage/api/slint-sc/private_unstable_api/renderer.rs.html) |
 | **Sum** | **100.0% (71/71)** | **100.0% (12/12)** | **100.0% (136/136)** |  |
 
 Functions: 12 fully tested, 0 partially tested, 0 untested.
