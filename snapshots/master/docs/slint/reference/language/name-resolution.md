@@ -2,6 +2,9 @@
 title: "Name Resolution"
 description: "Element names, pre-defined names, and lookup rules."
 ---
+import SC from '@slint/common-files/src/components/SC.astro';
+import OnlyInSC from '@slint/common-files/src/components/OnlyInSC.astro';
+
 Name resolution decides which declaration an identifier in an expression refers to.
 Properties, callbacks, and functions share the same rules.
 
@@ -38,7 +41,17 @@ Some elements are reachable under pre-defined names:
 
 `true` and `false` are pre-defined names for the boolean literals and can't be redefined.
 
+<SC>
 ## Lookup Rules
+
+<OnlyInSC>
+An unqualified identifier refers to a declared property,
+found by searching from the current element outward to the root. \{#sls.name.lookup}
+
+A qualified name refers to the named member of the element reached by the qualifier,
+and does not fall back to ancestor elements. \{#sls.name.lookup.qualified}
+</OnlyInSC>
+</SC>
 
 When an identifier is used without a qualifier, it is resolved by trying the following, in order, and taking the first match:
 

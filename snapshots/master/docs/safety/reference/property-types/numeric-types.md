@@ -28,8 +28,14 @@ import NotInSC from '@slint/common-files/src/components/NotInSC.astro';
 
 
 
-
 <SC>
+
+### int
+<SlintProperty propName="int" typeName="int" defaultValue='0'>
+Signed integral number.
+</SlintProperty>
+
+The default `int` is zero. \{#sls.type.int}
 
 ### length
 <SlintProperty propName="length" typeName="length" defaultValue='0px'>

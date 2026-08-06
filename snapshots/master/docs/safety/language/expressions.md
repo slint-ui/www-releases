@@ -3,13 +3,16 @@ title: "Expressions"
 description: "The expression forms and what they evaluate to."
 ---
 import SC from '@slint/common-files/src/components/SC.astro';
+import OnlyInSC from '@slint/common-files/src/components/OnlyInSC.astro';
+
+<OnlyInSC>
+An expression is a color literal, a length literal, an integer literal, an arithmetic or unary expression, or a property reference. \{#sls.expr.forms}
+</OnlyInSC>
+
 
 <SC>
-An expression is a color literal or a length literal. \{#sls.expr.forms}
-</SC>
+Parentheses group a nested expression. \{#sls.expr.grouping}
 
-
-<SC>
 ## Color Literals
 
 A color literal consists of `#` followed by 3, 4, 6, or 8 hexadecimal digits:
@@ -39,13 +42,53 @@ export component Example inherits Window {
 }
 ```
 
+</SC>
+
+<OnlyInSC>
 The number shall be integral: `10.5px` is an error. \{#sls.expr.length.integral}
 
 `px` is the only unit.
-A number literal with another unit, or without a unit, is an error. \{#sls.expr.length.px-only}
-</SC>
+A number literal with another unit is an error. \{#sls.expr.length.px-only}
+</OnlyInSC>
 
 
 <SC>
 A length literal evaluates to a value of type `length`. \{#sls.expr.length.type}
+
+## Integer Literals
+
+An integer literal is a whole number written without a unit, for example `42`. \{#sls.expr.int.form}
+
+An integer literal evaluates to a value of type `int`. \{#sls.expr.int.type}
+
+<OnlyInSC>
+A number with a fractional part but no unit is an error. \{#sls.expr.int.fractional}
+</OnlyInSC>
+
+## References
+
+```slint
+export component Example inherits Window {
+    in property <color> tint;
+    background: root.tint;
+    Rectangle {
+        background: root.tint;
+        width: self.height;
+    }
+}
+```
+
+A property reference refers to a property.
+It is a property name, optionally preceded by an element reference and a `.`. \{#sls.expr.ref.form}
+
+The element reference is `self` for the enclosing element, `parent` for its parent,
+`root` for the component's root element, or an element `id`. \{#sls.expr.ref.element}
+</SC>
+
+
+<SC>
+The name shall refer to a property of the referenced element. \{#sls.expr.ref.target}
+
+When reading, a property reference evaluates to the value of the referenced property,
+and has that property's type. \{#sls.expr.ref.value}
 </SC>

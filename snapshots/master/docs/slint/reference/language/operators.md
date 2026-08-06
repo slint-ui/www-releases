@@ -2,6 +2,9 @@
 title: "Operators"
 description: "The operators of the Slint language."
 ---
+import SC from '@slint/common-files/src/components/SC.astro';
+import OnlyInSC from '@slint/common-files/src/components/OnlyInSC.astro';
+
 Slint has arithmetic, comparison, logical, and ternary operators, plus member access and indexing.
 Every operator requires operands of specific types; Slint applies no implicit coercions beyond the
 few listed here, and mismatched operand types are a compile error.
@@ -38,7 +41,29 @@ export component Example {
 }
 ```
 
+<SC>
 ## Arithmetic operators
+
+<OnlyInSC>
+An arithmetic expression combines two operands with `+`, `-`, or `*`. \{#sls.op.form}
+
+`+` and `-` require both operands to have the same type. \{#sls.op.additive}
+
+`*` multiplies a value by a number. \{#sls.op.multiplicative}
+
+`*` binds tighter than `+` and `-`. \{#sls.op.precedence}
+
+Arithmetic saturates at the bounds of the value's type. \{#sls.op.saturating}
+</OnlyInSC>
+
+```slint
+export component Example inherits Window {
+    in property <length> a;
+    in property <length> b;
+    out property <length> total: a + b * 2;
+}
+```
+</SC>
 
 The binary operators `+`, `-`, `*`, and `/` operate on numbers (`int`, `float`, `percent`) and on
 types that carry a unit (`length`, `physical-length`, `duration`, `angle`, `rem`).
@@ -88,7 +113,20 @@ The binary operators `&&` (and) and `||` (or) take two `bool` operands and produ
 The unary `!` operator negates a `bool`.
 Operands of these operators must be `bool`; no other type is coerced to `bool`.
 
+<SC>
 ## Unary operators
+
+<OnlyInSC>
+A unary `-` or `+` applies to a number or a length; `-` negates it. \{#sls.op.unary}
+</OnlyInSC>
+
+```slint
+export component Example inherits Window {
+    in property <length> w;
+    out property <length> negated: -w;
+}
+```
+</SC>
 
 The prefix operators are `+`, `-`, and `!`.
 
