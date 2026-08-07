@@ -14,8 +14,13 @@ A source file that contains only whitespace and comments is well-formed and defi
 
 ## Top-Level Items
 
-A *top-level item* is a *component definition*. \{#sls.file.top-level-item}
+<OnlyInSC>
+A *top-level item* is a *component definition*, an [import statement](/language/imports/), or an [export statement](/language/exports/). \{#sls.file.top-level-item}
+</OnlyInSC>
+</SC>
 
+
+<SC>
 ## Component Definitions
 
 A component definition has one of the following two forms: \{#sls.file.component.definition-forms}
@@ -39,13 +44,8 @@ and the elements instantiated in the component body become children of the eleme
 The component has the properties of `Base` in addition to those [declared](/language/properties/) in its body,
 and a binding in the component body may bind them. \{#sls.file.component.inherits.properties}
 
-<OnlyInSC>
-The identifier `Base` shall resolve to a built-in element or to a component defined earlier in the file. \{#sls.file.component.inherits.base}
-</OnlyInSC>
-</SC>
+The identifier `Base` shall resolve to a built-in element, to a component defined earlier in the file, or to an [imported](/language/imports/) component. \{#sls.file.component.inherits.base}
 
-
-<SC>
 The braces `{` and `}` delimit the *component body*. \{#sls.file.component.body-braces}
 
 ## Component Bodies

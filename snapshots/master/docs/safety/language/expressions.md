@@ -4,9 +4,11 @@ description: "The expression forms and what they evaluate to."
 ---
 import SC from '@slint/common-files/src/components/SC.astro';
 import OnlyInSC from '@slint/common-files/src/components/OnlyInSC.astro';
+import NotInSC from '@slint/common-files/src/components/NotInSC.astro';
 
 <OnlyInSC>
-An expression is a color literal, a length literal, an integer literal, an arithmetic or unary expression, or a property reference. \{#sls.expr.forms}
+An expression is a color literal, a length literal, an integer literal, a boolean value,
+an arithmetic, logical, unary, or conditional expression, or a property reference. \{#sls.expr.forms}
 </OnlyInSC>
 
 
@@ -83,10 +85,11 @@ It is a property name, optionally preceded by an element reference and a `.`. \{
 
 The element reference is `self` for the enclosing element, `parent` for its parent,
 `root` for the component's root element, or an element `id`. \{#sls.expr.ref.element}
-</SC>
 
+The predefined names `true` and `false` are references to the two values of type `bool`. \{#sls.expr.bool}
 
-<SC>
+A name without an element reference follows the [lookup rules](/language/name-resolution/#lookup-rules). \{#sls.expr.ref.lookup}
+
 The name shall refer to a property of the referenced element. \{#sls.expr.ref.target}
 
 When reading, a property reference evaluates to the value of the referenced property,

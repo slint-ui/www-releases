@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"struct":["SkiaWGPURenderer"]};
+window.SIDEBAR_ITEMS = {"type":["SkiaWGPU29Renderer","SkiaWGPU30Renderer","SkiaWGPURenderer"]};

@@ -7,9 +7,15 @@ import SlintProperty from '@slint/common-files/src/components/SlintProperty.astr
 import Link from '@slint/common-files/src/components/Link.astro';
 import NotInSC from '@slint/common-files/src/components/NotInSC.astro';
 
-
-
 <SC>
+## Primitive Types
+
+### bool
+<SlintProperty propName="bool" typeName="bool" defaultValue='false'>
+boolean whose value can be either `true` or `false`.
+</SlintProperty>
+
+The default `bool` is `false`. \{#sls.type.bool}
 
 ## Numeric Types
 

@@ -6,9 +6,7 @@ import Link from '@slint/common-files/src/components/Link.astro';
 
 ### Syntax Highlighting
 
-For the **syntax highlighting**, QtCreator supports the same format as Kate, with
-the [xml file][syntax-xml] at the same location.
-Refer to the instruction from the [Kate page](/master/docs/slint/guide/tooling/kate.md#syntax-highlighting) to enable syntax highlighting.
+Qt Creator supports the same format as Kate. Refer to the instructions for [Kate](/master/docs/slint/guide/tooling/kate.md#syntax-highlighting) to set up syntax highlighting.
 
 ### LSP
 
@@ -31,5 +29,3 @@ To setup the lsp:
 Once you have set up the LSP, in order to **preview a component**, when you have a .slint file open, place your cursor to
 the name of the component you would like to preview and press *Alt + Enter* to open
 the code action menu. Select *Show Preview* from that menu.
-
-[syntax-xml]: <https://github.com/slint-ui/slint/blob/master/editors/kate/slint.ksyntaxhighlighter.xml>
