@@ -9,11 +9,11 @@ import CapitalizationMode from "/src/content/docs/generated/reference/enums/_Cap
 import ColorScheme from "/src/content/docs/generated/reference/enums/_ColorScheme.md"
 import CrossAxisAlignment from "/src/content/docs/generated/reference/enums/_CrossAxisAlignment.md"
 import CrossAxisLineAlignment from "/src/content/docs/generated/reference/enums/_CrossAxisLineAlignment.md"
+import CrossAxisSelfAlignment from "/src/content/docs/generated/reference/enums/_CrossAxisSelfAlignment.md"
 import DialogButtonRole from "/src/content/docs/generated/reference/enums/_DialogButtonRole.md"
 import DragAction from "/src/content/docs/generated/reference/enums/_DragAction.md"
 import EventResult from "/src/content/docs/generated/reference/enums/_EventResult.md"
 import FillRule from "/src/content/docs/generated/reference/enums/_FillRule.md"
-import FlexboxLayoutAlignSelf from "/src/content/docs/generated/reference/enums/_FlexboxLayoutAlignSelf.md"
 import FlexboxLayoutDirection from "/src/content/docs/generated/reference/enums/_FlexboxLayoutDirection.md"
 import FlexboxLayoutWrap from "/src/content/docs/generated/reference/enums/_FlexboxLayoutWrap.md"
 import FocusReason from "/src/content/docs/generated/reference/enums/_FocusReason.md"
@@ -62,6 +62,9 @@ import TextWrap from "/src/content/docs/generated/reference/enums/_TextWrap.md"
 ## CrossAxisLineAlignment
 <CrossAxisLineAlignment />
 
+## CrossAxisSelfAlignment
+<CrossAxisSelfAlignment />
+
 ## DialogButtonRole
 <DialogButtonRole />
 
@@ -73,9 +76,6 @@ import TextWrap from "/src/content/docs/generated/reference/enums/_TextWrap.md"
 
 ## FillRule
 <FillRule />
-
-## FlexboxLayoutAlignSelf
-<FlexboxLayoutAlignSelf />
 
 ## FlexboxLayoutDirection
 <FlexboxLayoutDirection />

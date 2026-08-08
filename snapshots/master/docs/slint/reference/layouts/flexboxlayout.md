@@ -129,6 +129,15 @@ Controls whether flex items wrap onto multiple lines when they don't fit in the 
 The default value is `wrap`.
 </SlintProperty>
 
+## Cell elements
+Cell elements inside a `FlexboxLayout` obtain the following new property:
+
+### cross-axis-self-alignment
+<SlintProperty propName="cross-axis-self-alignment" typeName="enum" enumName="CrossAxisSelfAlignment" defaultValue="auto">
+Overrides the container's `cross-axis-alignment` for this element. CSS Flexbox calls this "align-self".
+The default value `auto` uses the container's `cross-axis-alignment`.
+</SlintProperty>
+
 ## Layout Behavior
 
 The layouting algorithm for FlexboxLayout is entirely implemented by <a href="https://github.com/DioxusLabs/taffy">taffy</a>

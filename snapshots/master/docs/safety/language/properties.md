@@ -51,7 +51,7 @@ Properties shall only be declared on the root element. \{#sls.prop.decl.root-onl
 
 <SC>
 <OnlyInSC>
-The declared type shall be `int`, `length`, `color`, or `bool`. \{#sls.prop.decl.types}
+The declared type can be any valid property type. \{#sls.prop.decl.types}
 </OnlyInSC>
 </SC>
 

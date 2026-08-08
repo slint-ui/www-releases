@@ -15,7 +15,8 @@ A source file that contains only whitespace and comments is well-formed and defi
 ## Top-Level Items
 
 <OnlyInSC>
-A *top-level item* is a *component definition*, an [import statement](/language/imports/), or an [export statement](/language/exports/). \{#sls.file.top-level-item}
+A *top-level item* is a *component definition*, a [struct or enum declaration](/language/structs-and-enums/),
+an [import statement](/language/imports/), or an [export statement](/language/exports/). \{#sls.file.top-level-item}
 </OnlyInSC>
 </SC>
 
