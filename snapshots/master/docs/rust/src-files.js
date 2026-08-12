@@ -1,2 +1,2 @@
-createSrcSidebar('[["slint",["",[],["android.rs","docs.rs","lib.rs","private_unstable_api.rs"]]],["slint_build",["",[],["lib.rs"]]],["slint_interpreter",["",[],["api.rs","debug_hook.rs","dynamic_item_tree.rs","dynamic_type.rs","eval.rs","eval_layout.rs","ffi.rs","global_component.rs","highlight.rs","json.rs","lib.rs","value_model.rs"]]]]');
-//{"start":19,"fragment_lengths":[77,35,207]}
+createSrcSidebar('[["slint",["",[],["android.rs","docs.rs","lib.rs","private_unstable_api.rs"]]],["slint_build",["",[],["lib.rs"]]],["slint_interpreter",["",[],["api.rs","bindings.rs","component.rs","debug_hook.rs","erased.rs","eval.rs","eval_layout.rs","ffi.rs","globals.rs","highlight.rs","instance.rs","item_holder.rs","item_registry.rs","item_tree_vtable.rs","json.rs","lib.rs","popup.rs","public_api.rs","value_model.rs"]]]]');
+//{"start":19,"fragment_lengths":[77,35,297]}

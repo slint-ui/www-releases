@@ -19,6 +19,12 @@ See [GridLayout](/master/docs/slint/reference/layouts/gridlayout.md).
 See [GridLayout](/master/docs/slint/reference/layouts/gridlayout.md).
 </SlintProperty>
 
+### cross-axis-self-alignment
+<SlintProperty propName="cross-axis-self-alignment" typeName="enum" enumName="CrossAxisSelfAlignment" defaultValue="auto">
+Overrides the container's `cross-axis-alignment` for this element.
+Valid on the children of a [HorizontalLayout](/master/docs/slint/reference/layouts/horizontallayout.md), [VerticalLayout](/master/docs/slint/reference/layouts/verticallayout.md), or `FlexboxLayout`.
+</SlintProperty>
+
 ### horizontal-stretch, vertical-stretch
 <SlintProperty propName="horizontal-stretch, vertical-stretch" typeName="float" propertyVisibility="in-out">
 Specify how much relative space these elements are stretching in a layout. When 0, this means that the

@@ -7,15 +7,15 @@ the unit tests, and the test driver that compiles the `.slint` test cases and ru
 This chapter reports the measured line, function, and region coverage per source file of the runtime, addressing [SR_TEST_COVERAGE](/requirements/test-coverage/).
 A function counts as fully tested when every code region in it was executed, as partially tested when it was executed but some of its code regions weren't, and as untested when it was never executed.
 
-Generated from commit [`15a5db5ddc`](https://github.com/slint-ui/slint/tree/15a5db5ddcf06f7b30cab2359f93eb4319ca80c5).
+Generated from commit [`7c91358368`](https://github.com/slint-ui/slint/tree/7c9135836853eccfa01be85aadae0056963e0d54).
 
-**Line coverage: 100.0% (71/71). Function coverage: 100.0% (12/12). Region coverage: 100.0% (136/136).**
+**Line coverage: 100.0% (157/157). Function coverage: 100.0% (18/18). Region coverage: 100.0% (320/320).**
 
 | Functions | Share |
 | --- | --- |
-| Fully tested | 100.0% (12/12) |
-| Partially tested | 0.0% (0/12) |
-| Untested | 0.0% (0/12) |
+| Fully tested | 100.0% (18/18) |
+| Partially tested | 0.0% (0/18) |
+| Untested | 0.0% (0/18) |
 
 Per-line execution counts are in the [detailed coverage report](/coverage/index.html), linked per file in the tables below.
 
@@ -23,8 +23,8 @@ Per-line execution counts are in the [detailed coverage report](/coverage/index.
 
 | File | Lines | Functions | Regions | Per-line |
 | --- | --- | --- | --- | --- |
-| [`lib.rs`](https://github.com/slint-ui/slint/blob/15a5db5ddcf06f7b30cab2359f93eb4319ca80c5/api/slint-sc/lib.rs) | 100.0% (41/41) | 100.0% (10/10) | 100.0% (72/72) | [view](/coverage/coverage/api/slint-sc/lib.rs.html) |
-| [`private_unstable_api/renderer.rs`](https://github.com/slint-ui/slint/blob/15a5db5ddcf06f7b30cab2359f93eb4319ca80c5/api/slint-sc/private_unstable_api/renderer.rs) | 100.0% (30/30) | 100.0% (2/2) | 100.0% (64/64) | [view](/coverage/coverage/api/slint-sc/private_unstable_api/renderer.rs.html) |
-| **Sum** | **100.0% (71/71)** | **100.0% (12/12)** | **100.0% (136/136)** |  |
+| [`lib.rs`](https://github.com/slint-ui/slint/blob/7c9135836853eccfa01be85aadae0056963e0d54/api/slint-sc/lib.rs) | 100.0% (89/89) | 100.0% (14/14) | 100.0% (159/159) | [view](/coverage/coverage/api/slint-sc/lib.rs.html) |
+| [`private_unstable_api/renderer.rs`](https://github.com/slint-ui/slint/blob/7c9135836853eccfa01be85aadae0056963e0d54/api/slint-sc/private_unstable_api/renderer.rs) | 100.0% (68/68) | 100.0% (4/4) | 100.0% (161/161) | [view](/coverage/coverage/api/slint-sc/private_unstable_api/renderer.rs.html) |
+| **Sum** | **100.0% (157/157)** | **100.0% (18/18)** | **100.0% (320/320)** |  |
 
-Functions: 12 fully tested, 0 partially tested, 0 untested.
+Functions: 18 fully tested, 0 partially tested, 0 untested.

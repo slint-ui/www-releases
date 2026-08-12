@@ -147,7 +147,6 @@ Third-party crates linked into the program and distributed with it.
 | [futures-util 0.3.33](https://crates.io/crates/futures-util/0.3.33) | Alex Crichton, The Tokio Authors | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [gbm 0.18.0](https://crates.io/crates/gbm/0.18.0) | Victoria Brekenfeld <github@drakulix.de> | [MIT](#MIT) |
 | [gbm-sys 0.4.0](https://crates.io/crates/gbm-sys/0.4.0) | Drakulix (Victor Brekenfeld) | [MIT](#MIT) |
-| [generativity 1.2.1](https://crates.io/crates/generativity/1.2.1) | Christopher Durham (CAD97) | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [gethostname 1.1.0](https://crates.io/crates/gethostname/1.1.0) | Sebastian Wiesner <sebastian@swsnr.de> | [Apache-2.0](#Apache-2.0) |
 | [getopts 0.2.24](https://crates.io/crates/getopts/0.2.24) | The Rust Project Developers | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [getrandom 0.3.4](https://crates.io/crates/getrandom/0.3.4) | The Rand Project Developers | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |

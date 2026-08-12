@@ -78,3 +78,12 @@ export component Example inherits Window {
 }
 ```
 </SlintProperty>
+
+## Cell elements
+Cell elements inside a `HorizontalLayout` obtain the following new property:
+
+### cross-axis-self-alignment
+<SlintProperty propName="cross-axis-self-alignment" typeName="enum" enumName="CrossAxisSelfAlignment" defaultValue="auto">
+Overrides the container's `cross-axis-alignment` for this element.
+The default value `auto` uses the container's `cross-axis-alignment`.
+</SlintProperty>
