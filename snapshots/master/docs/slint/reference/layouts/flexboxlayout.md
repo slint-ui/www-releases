@@ -99,7 +99,12 @@ To target specific sides with different values use the following properties:
 ### alignment
 <SlintProperty propName="alignment" typeName="enum" enumName="LayoutAlignment" defaultValue="start">
 Set the alignment of items along the main axis. CSS Flexbox calls this "justify-content".
-Note that the `stretch` value has no effect on FlexboxLayout (main-axis stretching in CSS Flexbox is controlled by `flex-grow`).
+With `stretch`, items grow along the main axis to fill each line,
+weighted by their `horizontal-stretch` (row) or `vertical-stretch` (column) factor.
+When every factor is 0, the free space is split evenly.
+Use `max-width`/`max-height` to cap an item's growth;
+space a capped item cannot take stays free at the end of the line.
+CSS Flexbox expresses this per item with `flex-grow` instead.
 </SlintProperty>
 
 ## Direction Properties
