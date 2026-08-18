@@ -21,6 +21,26 @@ Use the [MenuBar](/master/docs/slint/reference/window/window.md#menubar) element
 
 ## Properties
 
+### width
+<SlintProperty propName="width" typeName="length" propertyVisibility="in-out">
+The width of the window. \{#sls.ref.window.width}
+
+<OnlyInSC>
+The application gives the window its size when it creates the component, so this is a value the file reads,
+and binding it is an error. \{#sls.ref.window.width-out}
+</OnlyInSC>
+</SlintProperty>
+
+### height
+<SlintProperty propName="height" typeName="length" propertyVisibility="in-out">
+The height of the window. \{#sls.ref.window.height}
+
+<OnlyInSC>
+The application gives the window its size when it creates the component, so this is a value the file reads,
+and binding it is an error. \{#sls.ref.window.height-out}
+</OnlyInSC>
+</SlintProperty>
+
 ### always-on-top
 <SlintProperty propName="always-on-top" typeName="bool" defaultValue="false">
 Whether the window should be placed above all other windows on window managers supporting it.

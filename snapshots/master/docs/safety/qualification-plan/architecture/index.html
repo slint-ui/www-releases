@@ -82,7 +82,7 @@ It’s <code dir="auto">no_std</code>, uses no <code dir="auto">alloc</code>, an
 <li><strong>The generated code</strong>, produced by the compiler from the customer’s <code dir="auto">.slint</code> files.
 Its only dependency is the <code dir="auto">slint-sc</code> runtime crate; see <a href="/master/docs/safety/reference/generated-code/#sls.gen.output"><code dir="auto">sls.gen.output</code></a>.</li>
 </ul>
-<p>The qualified subset currently contains the <code dir="auto">Rectangle</code> and <code dir="auto">Window</code> elements, with basic properties.
+<p>The qualified subset currently contains the <code dir="auto">Rectangle</code>, <code dir="auto">Window</code>, and <code dir="auto">TouchArea</code> elements, with basic properties.
 The <a href="/master/docs/safety/reference/">API Reference</a> is generated from the <code dir="auto">\sc</code> markers in the compiler’s builtins, so it lists exactly what the subset contains.</p>
 <p>(TODO: <code dir="auto">slint_build</code> doesn’t support Slint SC yet, so there’s no build-script
 integration; the compiler binary is invoked directly. Decide whether

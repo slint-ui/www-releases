@@ -1,9 +1,9 @@
 (function() {
-    const implementors = Object.fromEntries([["slint_sc",[["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/1.97.1/core/fmt/trait.Debug.html\" title=\"trait core::fmt::Debug\">Debug</a> for <a class=\"enum\" href=\"slint_sc/enum.RenderError.html\" title=\"enum slint_sc::RenderError\">RenderError</a>",0],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/1.97.1/core/fmt/trait.Debug.html\" title=\"trait core::fmt::Debug\">Debug</a> for <a class=\"struct\" href=\"slint_sc/struct.Color.html\" title=\"struct slint_sc::Color\">Color</a>",0]]]]);
+    const implementors = Object.fromEntries([["slint_sc",[["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/1.97.1/core/fmt/trait.Debug.html\" title=\"trait core::fmt::Debug\">Debug</a> for <a class=\"enum\" href=\"slint_sc/enum.RenderError.html\" title=\"enum slint_sc::RenderError\">RenderError</a>",0],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/1.97.1/core/fmt/trait.Debug.html\" title=\"trait core::fmt::Debug\">Debug</a> for <a class=\"enum\" href=\"slint_sc/enum.TouchEvent.html\" title=\"enum slint_sc::TouchEvent\">TouchEvent</a>",0],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/1.97.1/core/fmt/trait.Debug.html\" title=\"trait core::fmt::Debug\">Debug</a> for <a class=\"struct\" href=\"slint_sc/struct.Color.html\" title=\"struct slint_sc::Color\">Color</a>",0],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/1.97.1/core/fmt/trait.Debug.html\" title=\"trait core::fmt::Debug\">Debug</a> for <a class=\"struct\" href=\"slint_sc/struct.Point.html\" title=\"struct slint_sc::Point\">Point</a>",0],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/1.97.1/core/fmt/trait.Debug.html\" title=\"trait core::fmt::Debug\">Debug</a> for <a class=\"struct\" href=\"slint_sc/struct.Size.html\" title=\"struct slint_sc::Size\">Size</a>",0]]]]);
     if (window.register_implementors) {
         window.register_implementors(implementors);
     } else {
         window.pending_implementors = implementors;
     }
 })()
-//{"start":59,"fragment_lengths":[514]}
+//{"start":59,"fragment_lengths":[1252]}

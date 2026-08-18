@@ -5,10 +5,10 @@
 <a href=#5 id=5 data-nosnippet>5</a>/// single color, composited over what the buffer already holds: a translucent
 <a href=#6 id=6 data-nosnippet>6</a>/// color lets the pixels underneath show through, and a fully transparent one
 <a href=#7 id=7 data-nosnippet>7</a>/// paints nothing. The rectangle is clipped to the buffer, whose length must
-<a href=#8 id=8 data-nosnippet>8</a>/// be `buffer_size[0] * buffer_size[1] * 3`.
+<a href=#8 id=8 data-nosnippet>8</a>/// be `buffer_size.width * buffer_size.height * 3`.
 <a href=#9 id=9 data-nosnippet>9</a></span><span class="kw">pub fn </span>fill_rect(
 <a href=#10 id=10 data-nosnippet>10</a>    frame_buffer: <span class="kw-2">&amp;mut </span>[u8],
-<a href=#11 id=11 data-nosnippet>11</a>    buffer_size: [u32; <span class="number">2</span>],
+<a href=#11 id=11 data-nosnippet>11</a>    buffer_size: <span class="kw">crate</span>::Size,
 <a href=#12 id=12 data-nosnippet>12</a>    position: [i32; <span class="number">2</span>],
 <a href=#13 id=13 data-nosnippet>13</a>    size: [i32; <span class="number">2</span>],
 <a href=#14 id=14 data-nosnippet>14</a>    color: <span class="kw">crate</span>::Color,
@@ -21,11 +21,11 @@
 <a href=#21 id=21 data-nosnippet>21</a>    <span class="comment">// The drawn span on each axis is the intersection of
 <a href=#22 id=22 data-nosnippet>22</a>    // [position, position + size) with [0, buffer_size): a rectangle sticking
 <a href=#23 id=23 data-nosnippet>23</a>    // out of the buffer, including one at a negative position, is shortened
-<a href=#24 id=24 data-nosnippet>24</a>    </span><span class="kw">let </span>x0 = position[<span class="number">0</span>].clamp(<span class="number">0</span>, buffer_size[<span class="number">0</span>] <span class="kw">as </span>i32) <span class="kw">as </span>usize;
-<a href=#25 id=25 data-nosnippet>25</a>    <span class="kw">let </span>x1 = position[<span class="number">0</span>].saturating_add(size[<span class="number">0</span>]).clamp(<span class="number">0</span>, buffer_size[<span class="number">0</span>] <span class="kw">as </span>i32) <span class="kw">as </span>usize;
-<a href=#26 id=26 data-nosnippet>26</a>    <span class="kw">let </span>y0 = position[<span class="number">1</span>].clamp(<span class="number">0</span>, buffer_size[<span class="number">1</span>] <span class="kw">as </span>i32) <span class="kw">as </span>usize;
-<a href=#27 id=27 data-nosnippet>27</a>    <span class="kw">let </span>y1 = position[<span class="number">1</span>].saturating_add(size[<span class="number">1</span>]).clamp(<span class="number">0</span>, buffer_size[<span class="number">1</span>] <span class="kw">as </span>i32) <span class="kw">as </span>usize;
-<a href=#28 id=28 data-nosnippet>28</a>    <span class="kw">let </span>stride = buffer_size[<span class="number">0</span>] <span class="kw">as </span>usize * <span class="number">3</span>;
+<a href=#24 id=24 data-nosnippet>24</a>    </span><span class="kw">let </span>x0 = position[<span class="number">0</span>].clamp(<span class="number">0</span>, buffer_size.width <span class="kw">as </span>i32) <span class="kw">as </span>usize;
+<a href=#25 id=25 data-nosnippet>25</a>    <span class="kw">let </span>x1 = position[<span class="number">0</span>].saturating_add(size[<span class="number">0</span>]).clamp(<span class="number">0</span>, buffer_size.width <span class="kw">as </span>i32) <span class="kw">as </span>usize;
+<a href=#26 id=26 data-nosnippet>26</a>    <span class="kw">let </span>y0 = position[<span class="number">1</span>].clamp(<span class="number">0</span>, buffer_size.height <span class="kw">as </span>i32) <span class="kw">as </span>usize;
+<a href=#27 id=27 data-nosnippet>27</a>    <span class="kw">let </span>y1 = position[<span class="number">1</span>].saturating_add(size[<span class="number">1</span>]).clamp(<span class="number">0</span>, buffer_size.height <span class="kw">as </span>i32) <span class="kw">as </span>usize;
+<a href=#28 id=28 data-nosnippet>28</a>    <span class="kw">let </span>stride = buffer_size.width <span class="kw">as </span>usize * <span class="number">3</span>;
 <a href=#29 id=29 data-nosnippet>29</a>    <span class="kw">let </span>rgb = [color.red(), color.green(), color.blue()];
 <a href=#30 id=30 data-nosnippet>30</a>    <span class="kw">for </span>row <span class="kw">in </span>y0..y1 {
 <a href=#31 id=31 data-nosnippet>31</a>        <span class="kw">let </span>row_range = row * stride + x0 * <span class="number">3</span>..row * stride + x1 * <span class="number">3</span>;
@@ -49,59 +49,89 @@
 <a href=#49 id=49 data-nosnippet>49</a>    <span class="comment">// A 3x2 rectangle at (-2, -1) intersects a 4x4 buffer in the single
 <a href=#50 id=50 data-nosnippet>50</a>    // pixel (0, 0)
 <a href=#51 id=51 data-nosnippet>51</a>    </span><span class="kw">let </span><span class="kw-2">mut </span>buffer = [<span class="number">0u8</span>; <span class="number">4 </span>* <span class="number">4 </span>* <span class="number">3</span>];
-<a href=#52 id=52 data-nosnippet>52</a>    fill_rect(<span class="kw-2">&amp;mut </span>buffer, [<span class="number">4</span>, <span class="number">4</span>], [-<span class="number">2</span>, -<span class="number">1</span>], [<span class="number">3</span>, <span class="number">2</span>], <span class="kw">crate</span>::Color::from_rgb_u8(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>));
-<a href=#53 id=53 data-nosnippet>53</a>    <span class="kw">for </span>y <span class="kw">in </span><span class="number">0</span>..<span class="number">4 </span>{
-<a href=#54 id=54 data-nosnippet>54</a>        <span class="kw">for </span>x <span class="kw">in </span><span class="number">0</span>..<span class="number">4 </span>{
-<a href=#55 id=55 data-nosnippet>55</a>            <span class="kw">let </span>expected = <span class="kw">if </span>(x, y) == (<span class="number">0</span>, <span class="number">0</span>) { [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>] } <span class="kw">else </span>{ [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>] };
-<a href=#56 id=56 data-nosnippet>56</a>            <span class="macro">assert_eq!</span>(buffer[(y * <span class="number">4 </span>+ x) * <span class="number">3</span>..][..<span class="number">3</span>], expected, <span class="string">"pixel ({x}, {y})"</span>);
-<a href=#57 id=57 data-nosnippet>57</a>        }
-<a href=#58 id=58 data-nosnippet>58</a>    }
-<a href=#59 id=59 data-nosnippet>59</a>
-<a href=#60 id=60 data-nosnippet>60</a>    <span class="comment">// A rectangle entirely outside the buffer paints nothing
-<a href=#61 id=61 data-nosnippet>61</a>    </span><span class="kw">let </span><span class="kw-2">mut </span>buffer = [<span class="number">7u8</span>; <span class="number">4 </span>* <span class="number">4 </span>* <span class="number">3</span>];
-<a href=#62 id=62 data-nosnippet>62</a>    fill_rect(<span class="kw-2">&amp;mut </span>buffer, [<span class="number">4</span>, <span class="number">4</span>], [-<span class="number">5</span>, -<span class="number">5</span>], [<span class="number">3</span>, <span class="number">2</span>], <span class="kw">crate</span>::Color::from_rgb_u8(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>));
-<a href=#63 id=63 data-nosnippet>63</a>    <span class="macro">assert_eq!</span>(buffer, [<span class="number">7u8</span>; <span class="number">4 </span>* <span class="number">4 </span>* <span class="number">3</span>]);
-<a href=#64 id=64 data-nosnippet>64</a>}
+<a href=#52 id=52 data-nosnippet>52</a>    fill_rect(
+<a href=#53 id=53 data-nosnippet>53</a>        <span class="kw-2">&amp;mut </span>buffer,
+<a href=#54 id=54 data-nosnippet>54</a>        <span class="kw">crate</span>::Size::new(<span class="number">4</span>, <span class="number">4</span>),
+<a href=#55 id=55 data-nosnippet>55</a>        [-<span class="number">2</span>, -<span class="number">1</span>],
+<a href=#56 id=56 data-nosnippet>56</a>        [<span class="number">3</span>, <span class="number">2</span>],
+<a href=#57 id=57 data-nosnippet>57</a>        <span class="kw">crate</span>::Color::from_rgb_u8(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>),
+<a href=#58 id=58 data-nosnippet>58</a>    );
+<a href=#59 id=59 data-nosnippet>59</a>    <span class="kw">for </span>y <span class="kw">in </span><span class="number">0</span>..<span class="number">4 </span>{
+<a href=#60 id=60 data-nosnippet>60</a>        <span class="kw">for </span>x <span class="kw">in </span><span class="number">0</span>..<span class="number">4 </span>{
+<a href=#61 id=61 data-nosnippet>61</a>            <span class="kw">let </span>expected = <span class="kw">if </span>(x, y) == (<span class="number">0</span>, <span class="number">0</span>) { [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>] } <span class="kw">else </span>{ [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>] };
+<a href=#62 id=62 data-nosnippet>62</a>            <span class="macro">assert_eq!</span>(buffer[(y * <span class="number">4 </span>+ x) * <span class="number">3</span>..][..<span class="number">3</span>], expected, <span class="string">"pixel ({x}, {y})"</span>);
+<a href=#63 id=63 data-nosnippet>63</a>        }
+<a href=#64 id=64 data-nosnippet>64</a>    }
 <a href=#65 id=65 data-nosnippet>65</a>
-<a href=#66 id=66 data-nosnippet>66</a><span class="attr">#[test]
-<a href=#67 id=67 data-nosnippet>67</a></span><span class="kw">fn </span>test_fill_rect_blends_with_the_destination() {
-<a href=#68 id=68 data-nosnippet>68</a>    <span class="comment">// A 2x2 rectangle of half-transparent red over a buffer of a single color
-<a href=#69 id=69 data-nosnippet>69</a>    </span><span class="kw">let </span>destination = [<span class="number">200</span>, <span class="number">100</span>, <span class="number">50</span>];
-<a href=#70 id=70 data-nosnippet>70</a>    <span class="kw">let </span><span class="kw-2">mut </span>buffer = [<span class="number">0u8</span>; <span class="number">4 </span>* <span class="number">4 </span>* <span class="number">3</span>];
-<a href=#71 id=71 data-nosnippet>71</a>    buffer.as_chunks_mut::&lt;<span class="number">3</span>&gt;().<span class="number">0</span>.fill(destination);
-<a href=#72 id=72 data-nosnippet>72</a>    fill_rect(<span class="kw-2">&amp;mut </span>buffer, [<span class="number">4</span>, <span class="number">4</span>], [<span class="number">1</span>, <span class="number">1</span>], [<span class="number">2</span>, <span class="number">2</span>], <span class="kw">crate</span>::Color::from_argb_encoded(<span class="number">0x80ff0000</span>));
-<a href=#73 id=73 data-nosnippet>73</a>    <span class="comment">// 255 * 128 + 200 * 127 + 127 == 58167, and 58167 / 255 == 228; the green
-<a href=#74 id=74 data-nosnippet>74</a>    // and blue channels keep 127/255 of the destination alone
-<a href=#75 id=75 data-nosnippet>75</a>    </span><span class="kw">let </span>blended = [<span class="number">228</span>, <span class="number">50</span>, <span class="number">25</span>];
-<a href=#76 id=76 data-nosnippet>76</a>    <span class="kw">for </span>y <span class="kw">in </span><span class="number">0</span>..<span class="number">4 </span>{
-<a href=#77 id=77 data-nosnippet>77</a>        <span class="kw">for </span>x <span class="kw">in </span><span class="number">0</span>..<span class="number">4 </span>{
-<a href=#78 id=78 data-nosnippet>78</a>            <span class="kw">let </span>expected =
-<a href=#79 id=79 data-nosnippet>79</a>                <span class="kw">if </span>(<span class="number">1</span>..<span class="number">3</span>).contains(<span class="kw-2">&amp;</span>x) &amp;&amp; (<span class="number">1</span>..<span class="number">3</span>).contains(<span class="kw-2">&amp;</span>y) { blended } <span class="kw">else </span>{ destination };
-<a href=#80 id=80 data-nosnippet>80</a>            <span class="macro">assert_eq!</span>(buffer[(y * <span class="number">4 </span>+ x) * <span class="number">3</span>..][..<span class="number">3</span>], expected, <span class="string">"pixel ({x}, {y})"</span>);
-<a href=#81 id=81 data-nosnippet>81</a>        }
-<a href=#82 id=82 data-nosnippet>82</a>    }
-<a href=#83 id=83 data-nosnippet>83</a>
-<a href=#84 id=84 data-nosnippet>84</a>    <span class="comment">// Blending is clipped like any other fill: at (-1, -1) only the pixel
-<a href=#85 id=85 data-nosnippet>85</a>    // (0, 0) is blended
-<a href=#86 id=86 data-nosnippet>86</a>    </span><span class="kw">let </span><span class="kw-2">mut </span>buffer = [<span class="number">0u8</span>; <span class="number">4 </span>* <span class="number">4 </span>* <span class="number">3</span>];
-<a href=#87 id=87 data-nosnippet>87</a>    buffer.as_chunks_mut::&lt;<span class="number">3</span>&gt;().<span class="number">0</span>.fill(destination);
-<a href=#88 id=88 data-nosnippet>88</a>    fill_rect(<span class="kw-2">&amp;mut </span>buffer, [<span class="number">4</span>, <span class="number">4</span>], [-<span class="number">1</span>, -<span class="number">1</span>], [<span class="number">2</span>, <span class="number">2</span>], <span class="kw">crate</span>::Color::from_argb_encoded(<span class="number">0x80ff0000</span>));
-<a href=#89 id=89 data-nosnippet>89</a>    <span class="kw">for </span>y <span class="kw">in </span><span class="number">0</span>..<span class="number">4 </span>{
-<a href=#90 id=90 data-nosnippet>90</a>        <span class="kw">for </span>x <span class="kw">in </span><span class="number">0</span>..<span class="number">4 </span>{
-<a href=#91 id=91 data-nosnippet>91</a>            <span class="kw">let </span>expected = <span class="kw">if </span>(x, y) == (<span class="number">0</span>, <span class="number">0</span>) { blended } <span class="kw">else </span>{ destination };
-<a href=#92 id=92 data-nosnippet>92</a>            <span class="macro">assert_eq!</span>(buffer[(y * <span class="number">4 </span>+ x) * <span class="number">3</span>..][..<span class="number">3</span>], expected, <span class="string">"pixel ({x}, {y})"</span>);
-<a href=#93 id=93 data-nosnippet>93</a>        }
-<a href=#94 id=94 data-nosnippet>94</a>    }
-<a href=#95 id=95 data-nosnippet>95</a>}
-<a href=#96 id=96 data-nosnippet>96</a>
-<a href=#97 id=97 data-nosnippet>97</a><span class="attr">#[test]
-<a href=#98 id=98 data-nosnippet>98</a></span><span class="kw">fn </span>test_fill_rect_transparent() {
-<a href=#99 id=99 data-nosnippet>99</a>    <span class="comment">// A fully transparent color paints nothing, whatever its other channels
-<a href=#100 id=100 data-nosnippet>100</a>    </span><span class="kw">let </span><span class="kw-2">mut </span>buffer = [<span class="number">7u8</span>; <span class="number">4 </span>* <span class="number">4 </span>* <span class="number">3</span>];
-<a href=#101 id=101 data-nosnippet>101</a>    fill_rect(<span class="kw-2">&amp;mut </span>buffer, [<span class="number">4</span>, <span class="number">4</span>], [<span class="number">0</span>, <span class="number">0</span>], [<span class="number">4</span>, <span class="number">4</span>], <span class="kw">crate</span>::Color::from_argb_encoded(<span class="number">0x00ff8040</span>));
-<a href=#102 id=102 data-nosnippet>102</a>    <span class="macro">assert_eq!</span>(buffer, [<span class="number">7u8</span>; <span class="number">4 </span>* <span class="number">4 </span>* <span class="number">3</span>]);
-<a href=#103 id=103 data-nosnippet>103</a>    <span class="comment">// The default color is transparent
-<a href=#104 id=104 data-nosnippet>104</a>    </span>fill_rect(<span class="kw-2">&amp;mut </span>buffer, [<span class="number">4</span>, <span class="number">4</span>], [<span class="number">0</span>, <span class="number">0</span>], [<span class="number">4</span>, <span class="number">4</span>], <span class="kw">crate</span>::Color::default());
-<a href=#105 id=105 data-nosnippet>105</a>    <span class="macro">assert_eq!</span>(buffer, [<span class="number">7u8</span>; <span class="number">4 </span>* <span class="number">4 </span>* <span class="number">3</span>]);
-<a href=#106 id=106 data-nosnippet>106</a>}
+<a href=#66 id=66 data-nosnippet>66</a>    <span class="comment">// A rectangle entirely outside the buffer paints nothing
+<a href=#67 id=67 data-nosnippet>67</a>    </span><span class="kw">let </span><span class="kw-2">mut </span>buffer = [<span class="number">7u8</span>; <span class="number">4 </span>* <span class="number">4 </span>* <span class="number">3</span>];
+<a href=#68 id=68 data-nosnippet>68</a>    fill_rect(
+<a href=#69 id=69 data-nosnippet>69</a>        <span class="kw-2">&amp;mut </span>buffer,
+<a href=#70 id=70 data-nosnippet>70</a>        <span class="kw">crate</span>::Size::new(<span class="number">4</span>, <span class="number">4</span>),
+<a href=#71 id=71 data-nosnippet>71</a>        [-<span class="number">5</span>, -<span class="number">5</span>],
+<a href=#72 id=72 data-nosnippet>72</a>        [<span class="number">3</span>, <span class="number">2</span>],
+<a href=#73 id=73 data-nosnippet>73</a>        <span class="kw">crate</span>::Color::from_rgb_u8(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>),
+<a href=#74 id=74 data-nosnippet>74</a>    );
+<a href=#75 id=75 data-nosnippet>75</a>    <span class="macro">assert_eq!</span>(buffer, [<span class="number">7u8</span>; <span class="number">4 </span>* <span class="number">4 </span>* <span class="number">3</span>]);
+<a href=#76 id=76 data-nosnippet>76</a>}
+<a href=#77 id=77 data-nosnippet>77</a>
+<a href=#78 id=78 data-nosnippet>78</a><span class="attr">#[test]
+<a href=#79 id=79 data-nosnippet>79</a></span><span class="kw">fn </span>test_fill_rect_blends_with_the_destination() {
+<a href=#80 id=80 data-nosnippet>80</a>    <span class="comment">// A 2x2 rectangle of half-transparent red over a buffer of a single color
+<a href=#81 id=81 data-nosnippet>81</a>    </span><span class="kw">let </span>destination = [<span class="number">200</span>, <span class="number">100</span>, <span class="number">50</span>];
+<a href=#82 id=82 data-nosnippet>82</a>    <span class="kw">let </span><span class="kw-2">mut </span>buffer = [<span class="number">0u8</span>; <span class="number">4 </span>* <span class="number">4 </span>* <span class="number">3</span>];
+<a href=#83 id=83 data-nosnippet>83</a>    buffer.as_chunks_mut::&lt;<span class="number">3</span>&gt;().<span class="number">0</span>.fill(destination);
+<a href=#84 id=84 data-nosnippet>84</a>    fill_rect(
+<a href=#85 id=85 data-nosnippet>85</a>        <span class="kw-2">&amp;mut </span>buffer,
+<a href=#86 id=86 data-nosnippet>86</a>        <span class="kw">crate</span>::Size::new(<span class="number">4</span>, <span class="number">4</span>),
+<a href=#87 id=87 data-nosnippet>87</a>        [<span class="number">1</span>, <span class="number">1</span>],
+<a href=#88 id=88 data-nosnippet>88</a>        [<span class="number">2</span>, <span class="number">2</span>],
+<a href=#89 id=89 data-nosnippet>89</a>        <span class="kw">crate</span>::Color::from_argb_encoded(<span class="number">0x80ff0000</span>),
+<a href=#90 id=90 data-nosnippet>90</a>    );
+<a href=#91 id=91 data-nosnippet>91</a>    <span class="comment">// 255 * 128 + 200 * 127 + 127 == 58167, and 58167 / 255 == 228; the green
+<a href=#92 id=92 data-nosnippet>92</a>    // and blue channels keep 127/255 of the destination alone
+<a href=#93 id=93 data-nosnippet>93</a>    </span><span class="kw">let </span>blended = [<span class="number">228</span>, <span class="number">50</span>, <span class="number">25</span>];
+<a href=#94 id=94 data-nosnippet>94</a>    <span class="kw">for </span>y <span class="kw">in </span><span class="number">0</span>..<span class="number">4 </span>{
+<a href=#95 id=95 data-nosnippet>95</a>        <span class="kw">for </span>x <span class="kw">in </span><span class="number">0</span>..<span class="number">4 </span>{
+<a href=#96 id=96 data-nosnippet>96</a>            <span class="kw">let </span>expected =
+<a href=#97 id=97 data-nosnippet>97</a>                <span class="kw">if </span>(<span class="number">1</span>..<span class="number">3</span>).contains(<span class="kw-2">&amp;</span>x) &amp;&amp; (<span class="number">1</span>..<span class="number">3</span>).contains(<span class="kw-2">&amp;</span>y) { blended } <span class="kw">else </span>{ destination };
+<a href=#98 id=98 data-nosnippet>98</a>            <span class="macro">assert_eq!</span>(buffer[(y * <span class="number">4 </span>+ x) * <span class="number">3</span>..][..<span class="number">3</span>], expected, <span class="string">"pixel ({x}, {y})"</span>);
+<a href=#99 id=99 data-nosnippet>99</a>        }
+<a href=#100 id=100 data-nosnippet>100</a>    }
+<a href=#101 id=101 data-nosnippet>101</a>
+<a href=#102 id=102 data-nosnippet>102</a>    <span class="comment">// Blending is clipped like any other fill: at (-1, -1) only the pixel
+<a href=#103 id=103 data-nosnippet>103</a>    // (0, 0) is blended
+<a href=#104 id=104 data-nosnippet>104</a>    </span><span class="kw">let </span><span class="kw-2">mut </span>buffer = [<span class="number">0u8</span>; <span class="number">4 </span>* <span class="number">4 </span>* <span class="number">3</span>];
+<a href=#105 id=105 data-nosnippet>105</a>    buffer.as_chunks_mut::&lt;<span class="number">3</span>&gt;().<span class="number">0</span>.fill(destination);
+<a href=#106 id=106 data-nosnippet>106</a>    fill_rect(
+<a href=#107 id=107 data-nosnippet>107</a>        <span class="kw-2">&amp;mut </span>buffer,
+<a href=#108 id=108 data-nosnippet>108</a>        <span class="kw">crate</span>::Size::new(<span class="number">4</span>, <span class="number">4</span>),
+<a href=#109 id=109 data-nosnippet>109</a>        [-<span class="number">1</span>, -<span class="number">1</span>],
+<a href=#110 id=110 data-nosnippet>110</a>        [<span class="number">2</span>, <span class="number">2</span>],
+<a href=#111 id=111 data-nosnippet>111</a>        <span class="kw">crate</span>::Color::from_argb_encoded(<span class="number">0x80ff0000</span>),
+<a href=#112 id=112 data-nosnippet>112</a>    );
+<a href=#113 id=113 data-nosnippet>113</a>    <span class="kw">for </span>y <span class="kw">in </span><span class="number">0</span>..<span class="number">4 </span>{
+<a href=#114 id=114 data-nosnippet>114</a>        <span class="kw">for </span>x <span class="kw">in </span><span class="number">0</span>..<span class="number">4 </span>{
+<a href=#115 id=115 data-nosnippet>115</a>            <span class="kw">let </span>expected = <span class="kw">if </span>(x, y) == (<span class="number">0</span>, <span class="number">0</span>) { blended } <span class="kw">else </span>{ destination };
+<a href=#116 id=116 data-nosnippet>116</a>            <span class="macro">assert_eq!</span>(buffer[(y * <span class="number">4 </span>+ x) * <span class="number">3</span>..][..<span class="number">3</span>], expected, <span class="string">"pixel ({x}, {y})"</span>);
+<a href=#117 id=117 data-nosnippet>117</a>        }
+<a href=#118 id=118 data-nosnippet>118</a>    }
+<a href=#119 id=119 data-nosnippet>119</a>}
+<a href=#120 id=120 data-nosnippet>120</a>
+<a href=#121 id=121 data-nosnippet>121</a><span class="attr">#[test]
+<a href=#122 id=122 data-nosnippet>122</a></span><span class="kw">fn </span>test_fill_rect_transparent() {
+<a href=#123 id=123 data-nosnippet>123</a>    <span class="comment">// A fully transparent color paints nothing, whatever its other channels
+<a href=#124 id=124 data-nosnippet>124</a>    </span><span class="kw">let </span><span class="kw-2">mut </span>buffer = [<span class="number">7u8</span>; <span class="number">4 </span>* <span class="number">4 </span>* <span class="number">3</span>];
+<a href=#125 id=125 data-nosnippet>125</a>    fill_rect(
+<a href=#126 id=126 data-nosnippet>126</a>        <span class="kw-2">&amp;mut </span>buffer,
+<a href=#127 id=127 data-nosnippet>127</a>        <span class="kw">crate</span>::Size::new(<span class="number">4</span>, <span class="number">4</span>),
+<a href=#128 id=128 data-nosnippet>128</a>        [<span class="number">0</span>, <span class="number">0</span>],
+<a href=#129 id=129 data-nosnippet>129</a>        [<span class="number">4</span>, <span class="number">4</span>],
+<a href=#130 id=130 data-nosnippet>130</a>        <span class="kw">crate</span>::Color::from_argb_encoded(<span class="number">0x00ff8040</span>),
+<a href=#131 id=131 data-nosnippet>131</a>    );
+<a href=#132 id=132 data-nosnippet>132</a>    <span class="macro">assert_eq!</span>(buffer, [<span class="number">7u8</span>; <span class="number">4 </span>* <span class="number">4 </span>* <span class="number">3</span>]);
+<a href=#133 id=133 data-nosnippet>133</a>    <span class="comment">// The default color is transparent
+<a href=#134 id=134 data-nosnippet>134</a>    </span>fill_rect(<span class="kw-2">&amp;mut </span>buffer, <span class="kw">crate</span>::Size::new(<span class="number">4</span>, <span class="number">4</span>), [<span class="number">0</span>, <span class="number">0</span>], [<span class="number">4</span>, <span class="number">4</span>], <span class="kw">crate</span>::Color::default());
+<a href=#135 id=135 data-nosnippet>135</a>    <span class="macro">assert_eq!</span>(buffer, [<span class="number">7u8</span>; <span class="number">4 </span>* <span class="number">4 </span>* <span class="number">3</span>]);
+<a href=#136 id=136 data-nosnippet>136</a>}
 </code></pre></div></section></main></body></html>
