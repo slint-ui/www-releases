@@ -186,6 +186,11 @@ export component Example inherits Path {
 Note how the coordinates of the path elements don't use units - they operate within the imaginary
 coordinate system of the scalable path.
 
+## `Close`
+
+The `Close` element closes the current sub-path and draws a straight line from the current
+position to the beginning of the path.
+
 ## `CubicTo`
 
 The `CubicTo` sub-element describes a smooth Bézier from the path's current position to the
@@ -247,11 +252,6 @@ The target x position of the curve.
 <SlintProperty propName="y" typeName="float">
 The target y position of the curve.
 </SlintProperty>
-
-## `Close`
-
-The `Close` element closes the current sub-path and draws a straight line from the current
-position to the beginning of the path.
 
 ## `LineTo`
 

@@ -22,6 +22,17 @@ When Slint is ported to new operating systems in the future, new enum values wil
 :::
 </SlintProperty>
 
+### is-app
+<SlintProperty propName="is-app" typeName="bool" propertyVisibility="out">
+`true` when the user interface is driven by a host application — your business logic written
+in Rust, C++, JavaScript or Python — and `false` when the `.slint` file is being interpreted on
+its own, with nothing behind it, such as when previewed with `slint-viewer` or the editor's preview.
+
+Use it to provide placeholder data and preview-only decorations that are removed from your
+compiled application. This property is a compile-time constant, so branches that depend on it
+are optimized away when the value is known to be `false` or `true`.
+</SlintProperty>
+
 ### style-name
 <SlintProperty propName="style-name" typeName="string" propertyVisibility="out">
 The name of the currently selected [widget style](/master/docs/slint/reference/std-widgets/style.md). Some widget
