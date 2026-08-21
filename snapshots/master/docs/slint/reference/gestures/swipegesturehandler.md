@@ -79,6 +79,7 @@ The current pointer position.
 
 ### Handle swipe directions properties
 
+
 ### handle-swipe-left
 <SlintProperty propName="handle-swipe-left" typeName="bool" defaultValue="false"/>
 

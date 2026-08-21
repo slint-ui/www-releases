@@ -187,10 +187,31 @@ Text {
 </CodeSnippetMD>
 </SlintProperty>
 
+### line-height-factor
+<SlintProperty propName="line-height-factor" typeName="float" defaultValue="1">
+The line height as a unitless factor (or a percentage: `150%` equals `1.5`) applied to
+the font's natural line height (ascent + descent + line gap). The default of `1` keeps
+the natural line height; larger values spread the lines apart, smaller values pull them
+together, and `0` collapses them onto each other. Negative or non-numeric values behave
+like `1`. Unlike CSS `line-height`, the factor is relative to the natural line height,
+not the font size, and keyword or length values aren't supported.
+
+<CodeSnippetMD imagePath="/src/assets/generated/text-9.png" imageAlt="text with increased line height" imageWidth="200" imageHeight="200" needsBackground="true">
+```slint "line-height-factor: 1.5;"
+Text {
+    text: "Two lines\nof text";
+    color: black;
+    font-size: 30pt;
+    line-height-factor: 1.5;
+}
+```
+</CodeSnippetMD>
+</SlintProperty>
+
 ### stroke
 <SlintProperty propName="stroke" typeName="brush">
 The brush used for the text outline.
-<CodeSnippetMD imagePath="/src/assets/generated/text-9.png" imageAlt="text stroke" imageWidth="300" imageHeight="200" needsBackground="true">
+<CodeSnippetMD imagePath="/src/assets/generated/text-10.png" imageAlt="text stroke" imageWidth="300" imageHeight="200" needsBackground="true">
 ```slint "stroke: darkblue;"
 Text {
     text: "Stroke";
@@ -211,7 +232,7 @@ The width of the text outline. If the width is zero, then a hairline stroke (1 p
 
 ### stroke-style
 <SlintProperty propName="stroke-style" typeName="enum" enumName="TextStrokeStyle">
-<CodeSnippetMD imagePath="/src/assets/generated/text-10.png" imageAlt="stroke-style" imageWidth="200" imageHeight="200" needsBackground="true">
+<CodeSnippetMD imagePath="/src/assets/generated/text-11.png" imageAlt="stroke-style" imageWidth="200" imageHeight="200" needsBackground="true">
 ```slint "stroke-style: center;"
 Text {
     text: "Style";
@@ -229,6 +250,7 @@ Text {
 <SlintProperty propName="font-metrics" typeName="struct" structName="FontMetrics" propertyVisibility="out">
 The design metrics of the font scaled to the font pixel size used by the element.
 </SlintProperty>
+
 
 ## Accessibility
 

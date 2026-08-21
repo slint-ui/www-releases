@@ -54,12 +54,14 @@ export component Foo inherits Window {
 
 ## Spacing Properties
 
+
 ### spacing
 <SlintProperty propName="spacing" typeName="length">
 The distance between the elements in the layout. This single value is applied to both horizontal and vertical spacing.
 </SlintProperty>
 
 To target specific axis with different values use the following properties:
+
 
 ### spacing-horizontal
 <SlintProperty propName="spacing-horizontal" typeName="length"/>
@@ -87,6 +89,7 @@ To target specific sides with different values use the following properties:
 
 ### padding-bottom
 <SlintProperty propName="padding-bottom" typeName="length"/>
+
 
 ## Cell elements
 Cell elements inside a `GridLayout` obtain the following new properties. Any bindings to these properties must be compile-time constants:

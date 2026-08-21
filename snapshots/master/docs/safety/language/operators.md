@@ -27,17 +27,6 @@ An arithmetic expression combines two operands with `+`, `-`, or `*`. \{#sls.op.
 
 Arithmetic saturates at the bounds of the value's type. \{#sls.op.saturating}
 </OnlyInSC>
-<NotInSC>
-The binary operators `+`, `-`, `*`, and `/` operate on numbers (`int`, `float`, `percent`) and on
-types that carry a unit (`length`, `physical-length`, `duration`, `angle`, `rem`).
-
-- `+` and `-` require both operands to be the same type, or one operand to be a plain number.
-  Values of two different units cannot be added or subtracted.
-- `*` multiplies a value by a number, or two values with units, producing a unit product
-  (for example `1px * 1px` has type `px²`).
-- `/` divides a value by a number, or by another value.
-  Dividing two values of the same unit yields a plain number, so `self.width / 1px` is the width as a `float`.
-</NotInSC>
 
 ```slint
 export component Example inherits Window {
@@ -63,10 +52,6 @@ produce a `bool`. \{#sls.op.comparison}
 <OnlyInSC>
 `<`, `>`, `<=`, and `>=` order two numbers or lengths. \{#sls.op.comparison.ordering}
 </OnlyInSC>
-<NotInSC>
-`<`, `>`, `<=`, and `>=` order numbers, unit-bearing types, and strings; ordering values of any
-other type is an error.
-</NotInSC>
 
 ```slint
 export component Example inherits Window {
@@ -110,9 +95,6 @@ The prefix operators are `+`, `-`, and `!`. \{#sls.op.prefix}
 <OnlyInSC>
 A unary `+` or `-` applies to a number or a length, and `-` negates it. \{#sls.op.unary}
 </OnlyInSC>
-<NotInSC>
-`+` and `-` apply to numbers and unit-bearing types, and `!` applies to `bool`.
-</NotInSC>
 
 ```slint
 export component Example inherits Window {

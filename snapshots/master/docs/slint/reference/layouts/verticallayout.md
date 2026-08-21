@@ -24,6 +24,7 @@ they will be computed by the layout respecting the minimum and maximum sizes and
 
 ## Spacing Properties
 
+
 ### spacing
 <SlintProperty propName="spacing" typeName="length">
 The distance between the elements in the layout.
@@ -51,6 +52,7 @@ To target specific sides with different values use the following properties:
 <SlintProperty propName="padding-bottom" typeName="length"/>
 
 ## Alignment Properties
+
 
 ### alignment
 <SlintProperty propName="alignment" typeName="enum" enumName="LayoutAlignment">

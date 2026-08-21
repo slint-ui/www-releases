@@ -67,6 +67,7 @@ If non-zero, the path will be scaled to fit into the specified width.
 If non-zero, the path will be scaled to fit into the specified height.
 </SlintProperty>
 
+
 ### fit
 <SlintProperty propName="fit" typeName="enum" enumName="ImageFit" defaultValue="contain">
 Defines how the path's view box is scaled to fit the element's width and height.
@@ -93,6 +94,7 @@ These four properties allow defining the position and size of the viewport of th
 
 If the `viewbox-width` or `viewbox-height` is less or equal than zero, the viewbox properties are
 ignored and instead the bounding rectangle of all path elements is used to define the view port.
+
 
 ### viewbox-x
 <SlintProperty propName="viewbox-x" typeName="float"/>
@@ -186,10 +188,6 @@ export component Example inherits Path {
 Note how the coordinates of the path elements don't use units - they operate within the imaginary
 coordinate system of the scalable path.
 
-## `Close`
-
-The `Close` element closes the current sub-path and draws a straight line from the current
-position to the beginning of the path.
 
 ## `CubicTo`
 
@@ -227,62 +225,10 @@ The target x position of the curve.
 The target y position of the curve.
 </SlintProperty>
 
-## `QuadraticTo`
+## `Close`
 
-The QuadraticTo sub-element describes a smooth Bézier from the path's current position to the
-location specified by the `x` and `y` properties, using the control points specified by the
-`control-x` and `control-y` properties.
-
-### control-x
-<SlintProperty propName="control-x" typeName="float">
-The x coordinate of the curve's control point.
-</SlintProperty>
-
-### control-y
-<SlintProperty propName="control-y" typeName="float">
-The y coordinate of the curve's control point.
-</SlintProperty>
-
-### x
-<SlintProperty propName="x" typeName="float">
-The target x position of the curve.
-</SlintProperty>
-
-### y
-<SlintProperty propName="y" typeName="float">
-The target y position of the curve.
-</SlintProperty>
-
-## `LineTo`
-
-The `LineTo` sub-element describes a line from the path's current position to the
-location specified by the `x` and `y` properties.
-
-### x
-<SlintProperty propName="x" typeName="float">
-The target x position of the line.
-</SlintProperty>
-
-### y
-<SlintProperty propName="y" typeName="float">
-The target y position of the line.
-</SlintProperty>
-
-## `MoveTo`
-
-The `MoveTo` sub-element closes the current sub-path, if present, and moves the current point
-to the location specified by the `x` and `y` properties. Subsequent elements such as `LineTo`
-will use this new position as their starting point, therefore this starts a new sub-path.
-
-### x
-<SlintProperty propName="x" typeName="float">
-The x position of the new current point.
-</SlintProperty>
-
-### y
-<SlintProperty propName="y" typeName="float">
-The y position of the new current point.
-</SlintProperty>
+The `Close` element closes the current sub-path and draws a straight line from the current
+position to the beginning of the path.
 
 ## `ArcTo`
 
@@ -324,4 +270,61 @@ The target x position of the line.
 ### y
 <SlintProperty propName="y" typeName="float">
 The target y position of the line.
+</SlintProperty>
+
+## `LineTo`
+
+The `LineTo` sub-element describes a line from the path's current position to the
+location specified by the `x` and `y` properties.
+
+### x
+<SlintProperty propName="x" typeName="float">
+The target x position of the line.
+</SlintProperty>
+
+### y
+<SlintProperty propName="y" typeName="float">
+The target y position of the line.
+</SlintProperty>
+
+## `MoveTo`
+
+The `MoveTo` sub-element closes the current sub-path, if present, and moves the current point
+to the location specified by the `x` and `y` properties. Subsequent elements such as `LineTo`
+will use this new position as their starting point, therefore this starts a new sub-path.
+
+### x
+<SlintProperty propName="x" typeName="float">
+The x position of the new current point.
+</SlintProperty>
+
+### y
+<SlintProperty propName="y" typeName="float">
+The y position of the new current point.
+</SlintProperty>
+
+## `QuadraticTo`
+
+The QuadraticTo sub-element describes a smooth Bézier from the path's current position to the
+location specified by the `x` and `y` properties, using the control points specified by the
+`control-x` and `control-y` properties.
+
+### control-x
+<SlintProperty propName="control-x" typeName="float">
+The x coordinate of the curve's control point.
+</SlintProperty>
+
+### control-y
+<SlintProperty propName="control-y" typeName="float">
+The y coordinate of the curve's control point.
+</SlintProperty>
+
+### x
+<SlintProperty propName="x" typeName="float">
+The target x position of the curve.
+</SlintProperty>
+
+### y
+<SlintProperty propName="y" typeName="float">
+The target y position of the curve.
 </SlintProperty>

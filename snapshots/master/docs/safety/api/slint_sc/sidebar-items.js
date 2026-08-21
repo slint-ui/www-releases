@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"enum":["RenderError","TouchEvent"],"struct":["Color","Point","Size"]};
+window.SIDEBAR_ITEMS = {"enum":["Image","RenderError","TouchEvent"],"struct":["Color","Point","Size"]};

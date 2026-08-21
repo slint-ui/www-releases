@@ -15,33 +15,6 @@ When not part of a layout, its width or height default to 100% of the parent ele
 Of the members of `TouchArea`, only `clicked` and the geometry properties are part of Slint SC. \{#sls.ref.toucharea.members}
 </OnlyInSC>
 
-<NotInSC>
-```slint playground
-export component Example inherits Window {
-    width: 200px;
-    height: 100px;
-    area := TouchArea {
-        width: parent.width;
-        height: parent.height;
-        clicked => {
-            rect2.background = #ff0;
-        }
-    }
-    Rectangle {
-        x:0;
-        width: parent.width / 2;
-        height: parent.height;
-        background: area.pressed ? blue: red;
-    }
-    rect2 := Rectangle {
-        x: parent.width / 2;
-        width: parent.width / 2;
-        height: parent.height;
-    }
-}
-```
-</NotInSC>
-
 ## Callbacks
 
 ### clicked()

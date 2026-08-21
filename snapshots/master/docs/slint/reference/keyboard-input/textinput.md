@@ -102,6 +102,16 @@ The way the text input wraps. Only makes sense when `single-line` is false.
 The letter spacing allows changing the spacing between the glyphs. A positive value increases the spacing and a negative value decreases the distance.
 </SlintProperty>
 
+### line-height-factor
+<SlintProperty propName="line-height-factor" typeName="float" defaultValue="1">
+The line height as a unitless factor (or a percentage: `150%` equals `1.5`) applied to
+the font's natural line height (ascent + descent + line gap). The default of `1` keeps
+the natural line height; larger values spread the lines apart, smaller values pull them
+together, and `0` collapses them onto each other. Negative or non-numeric values behave
+like `1`. Unlike CSS `line-height`, the factor is relative to the natural line height,
+not the font size, and keyword or length values aren't supported.
+</SlintProperty>
+
 ### page-height
 <SlintProperty propName="page-height" typeName="length">
 The height of the page used to compute how much to scroll when the user presses page up or page down.
@@ -164,6 +174,7 @@ When set to `true`, text editing via keyboard and mouse is disabled but selectin
 The design metrics of the font scaled to the font pixel size used by the element.
 </SlintProperty>
 
+
 ## Functions
 
 ### set-selection-offsets(start: int, end: int)
@@ -195,6 +206,7 @@ Call this function to focus the text input and make it receive future keyboard e
 
 ### clear-focus()
 Call this function to remove keyboard focus from this `TextInput` if it currently has the focus. See also [FocusHandling](/master/docs/slint/guide/development/focus.md).
+
 
 ## Accessibility
 

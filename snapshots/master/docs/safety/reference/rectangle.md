@@ -9,9 +9,6 @@ import NotInSC from '@slint/common-files/src/components/NotInSC.astro';
 By default, a `Rectangle` is just an empty item that shows nothing. By setting a color or configuring a border,
 it's then possible to draw a rectangle on the screen. \{#sls.meta.rectangle.purpose}
 
-<NotInSC>
-When not part of a layout, its width and height default to 100% of the parent element.
-</NotInSC>
 
 ```slint playground
 export component ExampleRectangle inherits Window {

@@ -4,7 +4,8 @@ description: "Image element api."
 ---
 import SlintProperty from '@slint/common-files/src/components/SlintProperty.astro';
 import CodeSnippetMD from '@slint/common-files/src/components/CodeSnippetMD.astro';
-import Link from '@slint/common-files/src/components/Link.astro';
+import NotInSC from '@slint/common-files/src/components/NotInSC.astro';
+import OnlyInSC from '@slint/common-files/src/components/OnlyInSC.astro';
 
 <CodeSnippetMD imagePath="/src/assets/generated/image-1.png" imageAlt="image example" imageWidth="300" imageHeight="200">
 ```slint
@@ -14,7 +15,8 @@ Image {
 ```
 </CodeSnippetMD>
 
-Use the `Image` element to display an [image](/master/docs/slint/reference/property-types/images.md#image).
+Use the `Image` element to display an
+[image](/reference/property-types/images/). \{#sls.meta.image.purpose}
 
 ## Properties
 
@@ -33,46 +35,22 @@ Image {
 
 ### source
 <SlintProperty propName="source" typeName="image">
-The `image` type is a reference to an image. It's defined using the `@image-url("...")` construct.
-The address within the `@image-url` function must be known at compile time.
+The [image](/reference/property-types/images/) to draw, created with
+[`@image-url()`](/reference/language/expressions/#sls.expr.image.form)
+or set by the application: by default no image, drawing
+nothing. \{#sls.ref.image.source}
 
-Slint looks for images in the following places:
-
-1. The absolute path or the path relative to the current `.slint` file.
-2. The include path used by the compiler to look up `.slint` files.
-
-Images can also be loaded from [`data:` URIs](https://developer.mozilla.org/en-US/docs/Web/URI/Reference/Schemes/data), with either base64 or URL-encoded content.
-For example: `@image-url("data:image/png;base64,iVBORw0KGgo...")`.
-
-Access an `image`'s source dimension using its `source.width` and `source.height` properties.
+Access an `image`'s source dimension using its `source.width` and
+`source.height` properties. \{#sls.ref.image.source.dimensions}
 
 ```slint
 export component Example inherits Window {
-    preferred-width: 150px;
-    preferred-height: 50px;
+    in property <image> some_image: @image-url("images/logo.png");
 
-    in property <image> some_image: @image-url("https://slint.dev/logo/slint-logo-full-light.svg");
-
-    Text {
-        text: "The image is " + some_image.width + "x" + some_image.height;
-    }
+    out property <int> image-width: some_image.width;
+    out property <int> image-height: some_image.height;
 }
 ```
-
-```slint
-// nine-slice scaling
-export component Example inherits Window {
-    width: 100px;
-    height: 150px;
-    VerticalLayout {
-        Image {
-            source: @image-url("https://interactive-examples.mdn.mozilla.net/media/examples/border-diamonds.png", nine-slice(30 30 30 30));
-        }
-    }
-}
-```
-
-Use the [`@image-url` macro](/master/docs/slint/reference/property-types/images.md#image) to specify the image's path.
 </SlintProperty>
 
 ### image-fit
@@ -153,6 +131,7 @@ The vertical alignment of the image within the element.
 
 ## Image Tiling
 
+
 ### horizontal-tiling
 <SlintProperty propName="horizontal-tiling" typeName="enum" enumName="ImageTiling" defaultValue="none">
 How the image is tiled horizontally.
@@ -218,6 +197,7 @@ Image {
 
 ## Source Clip
 
+
 ### source-clip-x
 <SlintProperty propName="source-clip-x" typeName="int"/>
 
@@ -233,6 +213,8 @@ Image {
 Properties in source image coordinates that define the region of the source image that is rendered.
 By default the entire source image is visible:
 
+
+<NotInSC>
 ## Accessibility
 
 ### Alternative text
@@ -260,3 +242,4 @@ Image {
     accessible-role: none;
 }
 ```
+</NotInSC>

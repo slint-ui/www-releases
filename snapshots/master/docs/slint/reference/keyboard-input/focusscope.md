@@ -88,6 +88,7 @@ Call this function to transfer keyboard focus to this `FocusScope`, to receive f
 ### clear-focus()
 Call this function to remove keyboard focus from this `FocusScope` if it currently has the focus. See also [FocusHandling](/master/docs/slint/guide/development/focus.md).
 
+
 ## Callbacks
 
 ### capture-key-pressed(event: KeyEvent) -> EventResult

@@ -178,12 +178,14 @@ of this `Rectangle` are clipped and only the contents inside the elements bounds
 
 ## Border Radius Properties
 
+
 ### border-radius
 <SlintProperty propName="border-radius" typeName="length" defaultValue="0">
 The size of the radius. This single value is applied to all four corners.
 </SlintProperty>
 
 To target specific corners with different values use the following properties:
+
 
 ### border-top-left-radius
 <SlintProperty propName="border-top-left-radius" typeName="length"/>

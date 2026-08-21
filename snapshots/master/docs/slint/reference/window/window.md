@@ -24,21 +24,11 @@ Use the [MenuBar](/master/docs/slint/reference/window/window.md#menubar) element
 ### width
 <SlintProperty propName="width" typeName="length" propertyVisibility="in-out">
 The width of the window. \{#sls.ref.window.width}
-
-<OnlyInSC>
-The application gives the window its size when it creates the component, so this is a value the file reads,
-and binding it is an error. \{#sls.ref.window.width-out}
-</OnlyInSC>
 </SlintProperty>
 
 ### height
 <SlintProperty propName="height" typeName="length" propertyVisibility="in-out">
 The height of the window. \{#sls.ref.window.height}
-
-<OnlyInSC>
-The application gives the window its size when it creates the component, so this is a value the file reads,
-and binding it is an error. \{#sls.ref.window.height-out}
-</OnlyInSC>
 </SlintProperty>
 
 ### always-on-top
@@ -64,12 +54,6 @@ Whether the window is maximized. Setting this to true maximizes the window.
 ### background
 <SlintProperty propName="background" typeName="brush" defaultValue="depends on the style">
 The background brush of the `Window`. It is painted first, covering the whole window. \{#sls.ref.window.background}
-
-<OnlyInSC>
-This background must be an opaque color literal.
-Rendering writes every pixel of the frame buffer, and there's nothing
-underneath the window for a translucent background to blend with. \{#sls.ref.window.opaque}
-</OnlyInSC>
 </SlintProperty>
 
 ### default-font-family

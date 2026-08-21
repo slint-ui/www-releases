@@ -26,11 +26,13 @@ Call this function to programmatically show the context menu at the given positi
 
 Close the context menu if it's currently open.
 
+
 ### enabled
 
 <SlintProperty propName="enabled" typeName="bool" defaultValue="true">
 When disabled, the `Menu` is not showing.
 </SlintProperty>
+
 
 ## `Menu`
 

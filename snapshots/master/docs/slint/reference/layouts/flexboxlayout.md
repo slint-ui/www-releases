@@ -55,6 +55,7 @@ In row direction, items are placed from left to right. When the available width 
 
 ## Spacing Properties
 
+
 ### spacing
 <SlintProperty propName="spacing" typeName="length">
 The distance between the elements in the layout. CSS Flexbox usually calls this "gap", but "spacing" is used in Slint for consistency with other layout types.
@@ -62,6 +63,7 @@ This single value is applied as both horizontal and vertical spacing between ite
 </SlintProperty>
 
 To target specific directions with different values use the following properties:
+
 
 ### spacing-horizontal
 <SlintProperty propName="spacing-horizontal" typeName="length">
@@ -96,6 +98,7 @@ To target specific sides with different values use the following properties:
 
 ## Alignment Properties
 
+
 ### alignment
 <SlintProperty propName="alignment" typeName="enum" enumName="LayoutAlignment" defaultValue="start">
 Set the alignment of items along the main axis. CSS Flexbox calls this "justify-content".
@@ -108,6 +111,7 @@ CSS Flexbox expresses this per item with `flex-grow` instead.
 </SlintProperty>
 
 ## Direction Properties
+
 
 ### flex-direction
 <SlintProperty propName="flex-direction" typeName="enum" enumName="FlexboxLayoutDirection">

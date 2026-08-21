@@ -15,9 +15,6 @@ using the mouse. \{#sls.meta.toucharea.purpose}
 
 When not part of a layout, its width or height default to 100% of the parent element. \{#sls.ref.toucharea.size}
 
-<OnlyInSC>
-Of the members of `TouchArea`, only `clicked` and the geometry properties are part of Slint SC. \{#sls.ref.toucharea.members}
-</OnlyInSC>
 
 <NotInSC>
 ```slint playground
@@ -123,10 +120,6 @@ Set to `true` by the `TouchArea` when the mouse is pressed over it.
 
 ### clicked()
 Invoked when clicked: A finger or the left mouse button is pressed, then released on this element. \{#sls.ref.toucharea.clicked}
-
-<OnlyInSC>
-The Touch Input chapter specifies when a press and a release count as a click. \{#sls.ref.toucharea.clicked.input}
-</OnlyInSC>
 
 ### double-clicked()
 Invoked when double-clicked. The left mouse button is pressed and released twice on this element in a short

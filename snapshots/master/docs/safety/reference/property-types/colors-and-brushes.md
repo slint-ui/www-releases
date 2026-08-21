@@ -34,45 +34,9 @@ A `color` converts to a `brush`: the brush that fills with that single color. \{
 
 ### brush
 <SlintProperty propName="brush" typeName="brush" defaultValue='transparent'>
-<NotInSC>
-A brush is a special type that can be either initialized from a `color` or a `gradient`.
-
-<Tabs syncKey="dev-language">
-<TabItem label="Rust" icon="seti:rust">
-In Rust, properties or struct fields of the brush type are mapped to <LangRefLink lang="rust-slint" relpath="enum.Brush.html">`slint::Brush`</LangRefLink>.
-</TabItem>
-<TabItem label="C++" icon="seti:cpp">
-In C++, properties or struct fields of the brush type are mapped to <LangRefLink lang="cpp" relpath="api/slint/brush/">`slint::Brush`</LangRefLink>.
-</TabItem>
-<TabItem label="NodeJS" icon="node">
-In JavaScript, properties or struct fields of the brush type are mapped to an object that implements the <LangRefLink lang="nodejs" relpath="api/interfaces/brush/">Brush interface</LangRefLink>.
-</TabItem>
-<TabItem label="Python" icon="seti:python">
-In Python, properties or struct fields of the brush type are mapped to <LangRefLink lang="python" relpath="api/classes/brush/">`Brush`</LangRefLink>.
-</TabItem>
-</Tabs>
-</NotInSC>
 </SlintProperty>
 
 ### color
 <SlintProperty propName="color" typeName="color" defaultValue='transparent'>
-<NotInSC>
-RGB color with an alpha channel, with 8 bit precision for each channel. CSS color names as well as the hexadecimal color encodings are supported, such as #RRGGBBAA or #RGB.
-
-<Tabs syncKey="dev-language">
-<TabItem label="Rust" icon="seti:rust">
-In Rust, properties or struct fields of the color type are mapped to <LangRefLink lang="rust-slint" relpath="struct.Color.html">`slint::Color`</LangRefLink>.
-</TabItem>
-<TabItem label="C++" icon="seti:cpp">
-In C++, properties or struct fields of the color type are mapped to <LangRefLink lang="cpp" relpath="api/slint/color/">`slint::Color`</LangRefLink>.
-</TabItem>
-<TabItem label="NodeJS" icon="node">
-In JavaScript, properties or struct fields of the color type are mapped to an object that implements the <LangRefLink lang="nodejs" relpath="api/interfaces/rgbacolor/">RgbaColor interface</LangRefLink>.
-</TabItem>
-<TabItem label="Python" icon="seti:python">
-In Python, properties or struct fields of the color type are mapped to <LangRefLink lang="python" relpath="api/classes/color/">`Color`</LangRefLink>.
-</TabItem>
-</Tabs>
-</NotInSC>
 </SlintProperty>
 </SC>
