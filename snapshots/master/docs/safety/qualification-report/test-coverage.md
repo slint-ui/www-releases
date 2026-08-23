@@ -7,7 +7,7 @@ the unit tests, and the test driver that compiles the `.slint` test cases and ru
 This chapter reports the measured line, function, and region coverage per source file of the runtime, addressing [the test coverage requirement](/qualification-plan/test-coverage/).
 A function counts as fully tested when every code region in it was executed, as partially tested when it was executed but some of its code regions weren't, and as untested when it was never executed.
 
-Generated from commit [`46ec64fcf0`](https://github.com/slint-ui/slint/tree/46ec64fcf0e90c8e36bbb70eaa03fbd653a1deeb).
+Generated from commit [`12d762c53b`](https://github.com/slint-ui/slint/tree/12d762c53b6d2022145dcb0cbf58eb91e31d76b9).
 
 **Line coverage: 100.0% (319/319). Function coverage: 100.0% (37/37). Region coverage: 100.0% (559/559).**
 
@@ -23,8 +23,8 @@ Per-line execution counts are in the [detailed coverage report](/coverage/index.
 
 | File | Lines | Functions | Regions | Per-line |
 | --- | --- | --- | --- | --- |
-| [`lib.rs`](https://github.com/slint-ui/slint/blob/46ec64fcf0e90c8e36bbb70eaa03fbd653a1deeb/api/slint-sc/lib.rs) | 100.0% (146/146) | 100.0% (25/25) | 100.0% (249/249) | [view](/coverage/coverage/api/slint-sc/lib.rs.html) |
-| [`private_unstable_api/renderer.rs`](https://github.com/slint-ui/slint/blob/46ec64fcf0e90c8e36bbb70eaa03fbd653a1deeb/api/slint-sc/private_unstable_api/renderer.rs) | 100.0% (173/173) | 100.0% (12/12) | 100.0% (310/310) | [view](/coverage/coverage/api/slint-sc/private_unstable_api/renderer.rs.html) |
+| [`lib.rs`](https://github.com/slint-ui/slint/blob/12d762c53b6d2022145dcb0cbf58eb91e31d76b9/api/slint-sc/lib.rs) | 100.0% (146/146) | 100.0% (25/25) | 100.0% (249/249) | [view](/coverage/coverage/api/slint-sc/lib.rs.html) |
+| [`private_unstable_api/renderer.rs`](https://github.com/slint-ui/slint/blob/12d762c53b6d2022145dcb0cbf58eb91e31d76b9/api/slint-sc/private_unstable_api/renderer.rs) | 100.0% (173/173) | 100.0% (12/12) | 100.0% (310/310) | [view](/coverage/coverage/api/slint-sc/private_unstable_api/renderer.rs.html) |
 | **Sum** | **100.0% (319/319)** | **100.0% (37/37)** | **100.0% (559/559)** |  |
 
 Functions: 37 fully tested, 0 partially tested, 0 untested.
