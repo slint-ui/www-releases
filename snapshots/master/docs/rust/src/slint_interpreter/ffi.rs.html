@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/ffi.rs`."><title>ffi.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-203241e4.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.100.0-nightly (c54751567 2026-08-22)" data-channel="nightly" data-search-js="search-b167f383.js" data-stringdex-js="stringdex-b5109af9.js" data-settings-js="settings-170eb4bf.js" ><script src="../../static.files/storage-41dd4d93.js"></script><script defer src="../../static.files/src-script-813739b1.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-1814ead3.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-9f56287d.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/ffi.rs`."><title>ffi.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-203241e4.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.100.0-nightly (fb6531d55 2026-08-23)" data-channel="nightly" data-search-js="search-b167f383.js" data-stringdex-js="stringdex-b5109af9.js" data-settings-js="settings-170eb4bf.js" ><script src="../../static.files/storage-41dd4d93.js"></script><script defer src="../../static.files/src-script-813739b1.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-1814ead3.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-9f56287d.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -136,13 +136,13 @@
 <a href=#14 id=14 data-nosnippet>14</a><span class="kw">use </span><a href="https://doc.rust-lang.org/nightly/alloc/rc/struct.Rc.html">std::rc::Rc</a>;
 <a href=#15 id=15 data-nosnippet>15</a><span class="kw">use </span>vtable::VRef;
 <a href=#16 id=16 data-nosnippet>16</a>
-<a href=#17 id=17 data-nosnippet>17</a><span class="kw">use </span><a href="instance.rs.html#194-247"><span class="kw">crate</span>::instance::Instance</a>;
+<a href=#17 id=17 data-nosnippet>17</a><span class="kw">use </span><a href="instance.rs.html#215-271"><span class="kw">crate</span>::instance::Instance</a>;
 <a href=#18 id=18 data-nosnippet>18</a>
 <a href=#19 id=19 data-nosnippet>19</a><span class="doccomment">/// Wrap a raw `&amp;Instance` from the C side into a `ComponentInstanceInner`
 <a href=#20 id=20 data-nosnippet>20</a>/// that exposes the name-based helpers. The underlying `VRc` is upgraded
 <a href=#21 id=21 data-nosnippet>21</a>/// from `self_weak`, so the returned wrapper holds its own strong reference
 <a href=#22 id=22 data-nosnippet>22</a>/// for the call's duration and releases it on drop.
-<a href=#23 id=23 data-nosnippet>23</a></span><span class="kw">fn </span>wrap_instance(inst: <span class="kw-2">&amp;</span><a href="instance.rs.html#194-247">Instance</a>) -&gt; <span class="kw">crate</span>::component::<a href="component.rs.html#220">ComponentInstanceInner</a> {
+<a href=#23 id=23 data-nosnippet>23</a></span><span class="kw">fn </span>wrap_instance(inst: <span class="kw-2">&amp;</span><a href="instance.rs.html#215-271">Instance</a>) -&gt; <span class="kw">crate</span>::component::<a href="component.rs.html#220">ComponentInstanceInner</a> {
 <a href=#24 id=24 data-nosnippet>24</a>    <span class="kw">let </span>weak = <a href="#23">inst</a>.self_weak.<a href="https://doc.rust-lang.org/nightly/core/cell/once/struct.OnceCell.html#method.get">get</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.expect">expect</a>(<span class="string">"instance self_weak not initialized"</span>);
 <a href=#25 id=25 data-nosnippet>25</a>    <span class="kw">let </span>vrc = <a href="#24">weak</a>.upgrade().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.expect">expect</a>(<span class="string">"dangling instance pointer"</span>);
 <a href=#26 id=26 data-nosnippet>26</a>    <span class="kw">crate</span>::component::<a href="component.rs.html#220">ComponentInstanceInner</a>(<a href="#25">vrc</a>)
@@ -521,7 +521,7 @@
 <a href=#399 id=399 data-nosnippet>399</a><span class="doccomment">/// Get a property. Returns a null pointer if the property does not exist.
 <a href=#400 id=400 data-nosnippet>400</a></span><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#401 id=401 data-nosnippet>401</a></span><span class="kw">pub extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_component_instance_get_property(
-<a href=#402 id=402 data-nosnippet>402</a>    inst: <span class="kw-2">&amp;</span><a href="instance.rs.html#194-247">Instance</a>,
+<a href=#402 id=402 data-nosnippet>402</a>    inst: <span class="kw-2">&amp;</span><a href="instance.rs.html#215-271">Instance</a>,
 <a href=#403 id=403 data-nosnippet>403</a>    name: Slice&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;,
 <a href=#404 id=404 data-nosnippet>404</a>) -&gt; <span class="kw-2">*mut </span><a href="api.rs.html#99-145">Value</a> {
 <a href=#405 id=405 data-nosnippet>405</a>    <span class="kw">let </span>name = std::str::<a href="https://doc.rust-lang.org/nightly/core/str/converts/fn.from_utf8.html">from_utf8</a>(<span class="kw-2">&amp;</span><a href="#403">name</a>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>();
@@ -534,7 +534,7 @@
 <a href=#412 id=412 data-nosnippet>412</a>
 <a href=#413 id=413 data-nosnippet>413</a><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#414 id=414 data-nosnippet>414</a></span><span class="kw">pub extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_component_instance_set_property(
-<a href=#415 id=415 data-nosnippet>415</a>    inst: <span class="kw-2">&amp;</span><a href="instance.rs.html#194-247">Instance</a>,
+<a href=#415 id=415 data-nosnippet>415</a>    inst: <span class="kw-2">&amp;</span><a href="instance.rs.html#215-271">Instance</a>,
 <a href=#416 id=416 data-nosnippet>416</a>    name: Slice&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;,
 <a href=#417 id=417 data-nosnippet>417</a>    val: <span class="kw-2">&amp;</span><a href="api.rs.html#99-145">Value</a>,
 <a href=#418 id=418 data-nosnippet>418</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a> {
@@ -545,7 +545,7 @@
 <a href=#423 id=423 data-nosnippet>423</a><span class="doccomment">/// Invoke a callback or function. Returns raw boxed value on success and null ptr on failure.
 <a href=#424 id=424 data-nosnippet>424</a></span><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#425 id=425 data-nosnippet>425</a></span><span class="kw">pub extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_component_instance_invoke(
-<a href=#426 id=426 data-nosnippet>426</a>    inst: <span class="kw-2">&amp;</span><a href="instance.rs.html#194-247">Instance</a>,
+<a href=#426 id=426 data-nosnippet>426</a>    inst: <span class="kw-2">&amp;</span><a href="instance.rs.html#215-271">Instance</a>,
 <a href=#427 id=427 data-nosnippet>427</a>    name: Slice&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;,
 <a href=#428 id=428 data-nosnippet>428</a>    args: Slice&lt;<a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box</a>&lt;<a href="api.rs.html#99-145">Value</a>&gt;&gt;,
 <a href=#429 id=429 data-nosnippet>429</a>) -&gt; <span class="kw-2">*mut </span><a href="api.rs.html#99-145">Value</a> {
@@ -594,7 +594,7 @@
 <a href=#472 id=472 data-nosnippet>472</a>/// The `callback` function must initialize the `ret` (the `ret` passed to the callback is initialized and is assumed initialized after the function)
 <a href=#473 id=473 data-nosnippet>473</a></span><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#474 id=474 data-nosnippet>474</a></span><span class="kw">pub unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_component_instance_set_callback(
-<a href=#475 id=475 data-nosnippet>475</a>    inst: <span class="kw-2">&amp;</span><a href="instance.rs.html#194-247">Instance</a>,
+<a href=#475 id=475 data-nosnippet>475</a>    inst: <span class="kw-2">&amp;</span><a href="instance.rs.html#215-271">Instance</a>,
 <a href=#476 id=476 data-nosnippet>476</a>    name: Slice&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;,
 <a href=#477 id=477 data-nosnippet>477</a>    callback: <span class="kw">extern </span><span class="string">"C" </span><span class="kw">fn</span>(user_data: <span class="kw-2">*mut </span><a href="https://doc.rust-lang.org/nightly/core/ffi/enum.c_void.html">c_void</a>, arg: Slice&lt;<a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box</a>&lt;<a href="api.rs.html#99-145">Value</a>&gt;&gt;) -&gt; <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box</a>&lt;<a href="api.rs.html#99-145">Value</a>&gt;,
 <a href=#478 id=478 data-nosnippet>478</a>    user_data: <span class="kw-2">*mut </span><a href="https://doc.rust-lang.org/nightly/core/ffi/enum.c_void.html">c_void</a>,
@@ -608,7 +608,7 @@
 <a href=#486 id=486 data-nosnippet>486</a><span class="doccomment">/// Get a global property. Returns a raw boxed value on success; nullptr otherwise.
 <a href=#487 id=487 data-nosnippet>487</a></span><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#488 id=488 data-nosnippet>488</a></span><span class="kw">pub unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_component_instance_get_global_property(
-<a href=#489 id=489 data-nosnippet>489</a>    inst: <span class="kw-2">&amp;</span><a href="instance.rs.html#194-247">Instance</a>,
+<a href=#489 id=489 data-nosnippet>489</a>    inst: <span class="kw-2">&amp;</span><a href="instance.rs.html#215-271">Instance</a>,
 <a href=#490 id=490 data-nosnippet>490</a>    global: Slice&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;,
 <a href=#491 id=491 data-nosnippet>491</a>    property_name: Slice&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;,
 <a href=#492 id=492 data-nosnippet>492</a>) -&gt; <span class="kw-2">*mut </span><a href="api.rs.html#99-145">Value</a> {
@@ -623,7 +623,7 @@
 <a href=#501 id=501 data-nosnippet>501</a>
 <a href=#502 id=502 data-nosnippet>502</a><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#503 id=503 data-nosnippet>503</a></span><span class="kw">pub extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_component_instance_set_global_property(
-<a href=#504 id=504 data-nosnippet>504</a>    inst: <span class="kw-2">&amp;</span><a href="instance.rs.html#194-247">Instance</a>,
+<a href=#504 id=504 data-nosnippet>504</a>    inst: <span class="kw-2">&amp;</span><a href="instance.rs.html#215-271">Instance</a>,
 <a href=#505 id=505 data-nosnippet>505</a>    global: Slice&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;,
 <a href=#506 id=506 data-nosnippet>506</a>    property_name: Slice&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;,
 <a href=#507 id=507 data-nosnippet>507</a>    val: <span class="kw-2">&amp;</span><a href="api.rs.html#99-145">Value</a>,
@@ -637,7 +637,7 @@
 <a href=#515 id=515 data-nosnippet>515</a><span class="doccomment">/// The `callback` function must initialize the `ret` (the `ret` passed to the callback is initialized and is assumed initialized after the function)
 <a href=#516 id=516 data-nosnippet>516</a></span><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#517 id=517 data-nosnippet>517</a></span><span class="kw">pub unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_component_instance_set_global_callback(
-<a href=#518 id=518 data-nosnippet>518</a>    inst: <span class="kw-2">&amp;</span><a href="instance.rs.html#194-247">Instance</a>,
+<a href=#518 id=518 data-nosnippet>518</a>    inst: <span class="kw-2">&amp;</span><a href="instance.rs.html#215-271">Instance</a>,
 <a href=#519 id=519 data-nosnippet>519</a>    global: Slice&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;,
 <a href=#520 id=520 data-nosnippet>520</a>    name: Slice&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;,
 <a href=#521 id=521 data-nosnippet>521</a>    callback: <span class="kw">extern </span><span class="string">"C" </span><span class="kw">fn</span>(user_data: <span class="kw-2">*mut </span><a href="https://doc.rust-lang.org/nightly/core/ffi/enum.c_void.html">c_void</a>, arg: Slice&lt;<a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box</a>&lt;<a href="api.rs.html#99-145">Value</a>&gt;&gt;) -&gt; <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box</a>&lt;<a href="api.rs.html#99-145">Value</a>&gt;,
@@ -654,7 +654,7 @@
 <a href=#532 id=532 data-nosnippet>532</a><span class="doccomment">/// Invoke a global callback or function. Returns raw boxed value on success; nullptr otherwise.
 <a href=#533 id=533 data-nosnippet>533</a></span><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#534 id=534 data-nosnippet>534</a></span><span class="kw">pub unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_component_instance_invoke_global(
-<a href=#535 id=535 data-nosnippet>535</a>    inst: <span class="kw-2">&amp;</span><a href="instance.rs.html#194-247">Instance</a>,
+<a href=#535 id=535 data-nosnippet>535</a>    inst: <span class="kw-2">&amp;</span><a href="instance.rs.html#215-271">Instance</a>,
 <a href=#536 id=536 data-nosnippet>536</a>    global: Slice&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;,
 <a href=#537 id=537 data-nosnippet>537</a>    callable_name: Slice&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;,
 <a href=#538 id=538 data-nosnippet>538</a>    args: Slice&lt;<a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box</a>&lt;<a href="api.rs.html#99-145">Value</a>&gt;&gt;,
@@ -671,7 +671,7 @@
 <a href=#549 id=549 data-nosnippet>549</a>
 <a href=#550 id=550 data-nosnippet>550</a><span class="doccomment">/// Show or hide
 <a href=#551 id=551 data-nosnippet>551</a></span><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
-<a href=#552 id=552 data-nosnippet>552</a></span><span class="kw">pub extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_component_instance_show(inst: <span class="kw-2">&amp;</span><a href="instance.rs.html#194-247">Instance</a>, is_visible: <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>) {
+<a href=#552 id=552 data-nosnippet>552</a></span><span class="kw">pub extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_component_instance_show(inst: <span class="kw-2">&amp;</span><a href="instance.rs.html#215-271">Instance</a>, is_visible: <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>) {
 <a href=#553 id=553 data-nosnippet>553</a>    <span class="kw">let </span>comp = <a href="#23-27">wrap_instance</a>(<a href="#552">inst</a>);
 <a href=#554 id=554 data-nosnippet>554</a>    <span class="kw">let </span>adapter = <a href="#553">comp</a>.<a href="component.rs.html#288-293">window_adapter_ref</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.expect">expect</a>(<span class="string">"instance has no window adapter"</span>);
 <a href=#555 id=555 data-nosnippet>555</a>    <span class="kw">let _ </span>= <span class="kw">match </span><a href="#552">is_visible</a> {
@@ -686,7 +686,7 @@
 <a href=#564 id=564 data-nosnippet>564</a>/// slint_windowrc_drop after usage
 <a href=#565 id=565 data-nosnippet>565</a></span><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#566 id=566 data-nosnippet>566</a></span><span class="kw">pub unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_component_instance_window(
-<a href=#567 id=567 data-nosnippet>567</a>    inst: <span class="kw-2">&amp;</span><a href="instance.rs.html#194-247">Instance</a>,
+<a href=#567 id=567 data-nosnippet>567</a>    inst: <span class="kw-2">&amp;</span><a href="instance.rs.html#215-271">Instance</a>,
 <a href=#568 id=568 data-nosnippet>568</a>    out: <span class="kw-2">*mut *const </span>i_slint_core::window::ffi::WindowAdapterRcOpaque,
 <a href=#569 id=569 data-nosnippet>569</a>) {
 <a href=#570 id=570 data-nosnippet>570</a>    <a href="https://doc.rust-lang.org/nightly/core/macro.assert_eq.html">assert_eq!</a>(
@@ -696,7 +696,7 @@
 <a href=#574 id=574 data-nosnippet>574</a>    <span class="comment">// Materialize the adapter on the instance (via the lazy backend-selector
 <a href=#575 id=575 data-nosnippet>575</a>    // fallback) and hand C++ a pointer into the instance-owned Rc, which
 <a href=#576 id=576 data-nosnippet>576</a>    // stays stable for the instance's lifetime.
-<a href=#577 id=577 data-nosnippet>577</a>    </span><span class="kw">let _ </span>= <a href="#567">inst</a>.<a href="instance.rs.html#323-325">window_adapter_or_default</a>();
+<a href=#577 id=577 data-nosnippet>577</a>    </span><span class="kw">let _ </span>= <a href="#567">inst</a>.<a href="instance.rs.html#347-349">window_adapter_or_default</a>();
 <a href=#578 id=578 data-nosnippet>578</a>    <span class="kw">let </span>adapter_ref = <a href="#567">inst</a>.window_adapter.<a href="https://doc.rust-lang.org/nightly/core/cell/once/struct.OnceCell.html#method.get">get</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.expect">expect</a>(<span class="string">"window_adapter was just initialized above"</span>);
 <a href=#579 id=579 data-nosnippet>579</a>    <span class="kw">unsafe </span>{
 <a href=#580 id=580 data-nosnippet>580</a>        core::ptr::<a href="https://doc.rust-lang.org/nightly/core/ptr/fn.write.html">write</a>(<a href="#568">out</a> <span class="kw">as </span><span class="kw-2">*mut *const </span><a href="https://doc.rust-lang.org/nightly/alloc/rc/struct.Rc.html">Rc</a>&lt;<span class="kw">dyn </span>WindowAdapter&gt;, <a href="#578">adapter_ref</a> <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>);
@@ -717,7 +717,7 @@
 <a href=#595 id=595 data-nosnippet>595</a>
 <a href=#596 id=596 data-nosnippet>596</a><span class="attr">#[<span class="kw">unsafe</span>(no_mangle)]
 <a href=#597 id=597 data-nosnippet>597</a></span><span class="kw">pub unsafe extern </span><span class="string">"C" </span><span class="kw">fn </span>slint_interpreter_component_instance_component_definition(
-<a href=#598 id=598 data-nosnippet>598</a>    inst: <span class="kw-2">&amp;</span><a href="instance.rs.html#194-247">Instance</a>,
+<a href=#598 id=598 data-nosnippet>598</a>    inst: <span class="kw-2">&amp;</span><a href="instance.rs.html#215-271">Instance</a>,
 <a href=#599 id=599 data-nosnippet>599</a>    component_definition_ptr: <span class="kw-2">*mut </span><a href="#920">ComponentDefinitionOpaque</a>,
 <a href=#600 id=600 data-nosnippet>600</a>) {
 <a href=#601 id=601 data-nosnippet>601</a>    <span class="kw">let </span>comp = <a href="#23-27">wrap_instance</a>(<a href="#598">inst</a>);
