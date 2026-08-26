@@ -219,10 +219,10 @@ the display. See also <strong>pointer-event(PointerEvent)</strong>.</p>
 <p>Represents a Pointer event sent by the windowing system.
 This structure is passed to the <code dir="auto">pointer-event</code> callback of the <code dir="auto">TouchArea</code> element.</p>
 <ul>
-<li><strong><code dir="auto">button</code></strong> (<em>PointerEventButton</em>):  The button that was pressed or released</li>
-<li><strong><code dir="auto">kind</code></strong> (<em>PointerEventKind</em>):  The kind of the event</li>
-<li><strong><code dir="auto">modifiers</code></strong> (<em>KeyboardModifiers</em>):  The keyboard modifiers pressed during the event</li>
-<li><strong><code dir="auto">touch_finger_id</code></strong> (<em>int</em>):  The unique ID of the touch point, indicating the finger ID. 0 means it’s not a touch event (e.g., mouse).</li>
+<li><strong><code dir="auto">button</code></strong> (<a href="/master/docs/slint/reference/property-types/builtin-enums/#pointereventbutton"><em>PointerEventButton</em></a>):  The button that was pressed or released</li>
+<li><strong><code dir="auto">kind</code></strong> (<a href="/master/docs/slint/reference/property-types/builtin-enums/#pointereventkind"><em>PointerEventKind</em></a>):  The kind of the event</li>
+<li><strong><code dir="auto">modifiers</code></strong> (<a href="/master/docs/slint/reference/property-types/builtin-structs/#keyboardmodifiers"><em>KeyboardModifiers</em></a>):  The keyboard modifiers pressed during the event</li>
+<li><strong><code dir="auto">touch-finger-id</code></strong> (<em>int</em>):  The unique ID of the touch point, indicating the finger ID. 0 means it’s not a touch event (e.g., mouse).</li>
 </ul>
 <div class="sl-heading-wrapper level-h3"><h3 id="scroll-eventevent-pointerscrollevent---eventresult">scroll-event(event: PointerScrollEvent) -> EventResult</h3><a class="sl-anchor-link" href="#scroll-eventevent-pointerscrollevent---eventresult"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “scroll-event(event: PointerScrollEvent) -> EventResult”</span></a></div>
 <p>Invoked when the mouse wheel was rotated or another scroll gesture was made.
@@ -232,9 +232,9 @@ The <code dir="auto">PointerScrollEvent</code> argument contains information abo
 <p>Represents a Pointer scroll (or wheel) event sent by the windowing system.
 This structure is passed to the <code dir="auto">scroll-event</code> callback of the <code dir="auto">TouchArea</code> element.</p>
 <ul>
-<li><strong><code dir="auto">delta_x</code></strong> (<em>length</em>):  The amount of pixel in the horizontal direction</li>
-<li><strong><code dir="auto">delta_y</code></strong> (<em>length</em>):  The amount of pixel in the vertical direction</li>
-<li><strong><code dir="auto">modifiers</code></strong> (<em>KeyboardModifiers</em>):  The keyboard modifiers pressed during the event</li>
+<li><strong><code dir="auto">delta-x</code></strong> (<em>length</em>):  The amount of pixel in the horizontal direction</li>
+<li><strong><code dir="auto">delta-y</code></strong> (<em>length</em>):  The amount of pixel in the vertical direction</li>
+<li><strong><code dir="auto">modifiers</code></strong> (<a href="/master/docs/slint/reference/property-types/builtin-structs/#keyboardmodifiers"><em>KeyboardModifiers</em></a>):  The keyboard modifiers pressed during the event</li>
 </ul>
 <p>The returned <code dir="auto">EventResult</code>indicates whether to accept or ignore the event. Ignored events are
 forwarded to the parent element.</p>

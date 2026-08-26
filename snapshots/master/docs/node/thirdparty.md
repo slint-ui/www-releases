@@ -147,7 +147,6 @@ Third-party crates linked into the program and distributed with it.
 | [gbm 0.18.0](https://crates.io/crates/gbm/0.18.0) | Victoria Brekenfeld <github@drakulix.de> | [MIT](#MIT) |
 | [gbm-sys 0.4.0](https://crates.io/crates/gbm-sys/0.4.0) | Drakulix (Victor Brekenfeld) | [MIT](#MIT) |
 | [gethostname 1.1.0](https://crates.io/crates/gethostname/1.1.0) | Sebastian Wiesner <sebastian@swsnr.de> | [Apache-2.0](#Apache-2.0) |
-| [getopts 0.2.24](https://crates.io/crates/getopts/0.2.24) | The Rust Project Developers | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [getrandom 0.3.4](https://crates.io/crates/getrandom/0.3.4) | The Rand Project Developers | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [getrandom 0.4.3](https://crates.io/crates/getrandom/0.4.3) | The Rand Project Developers | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [gettext-rs 0.7.7](https://crates.io/crates/gettext-rs/0.7.7) | Konstantin Salikhov <koka58@yandex.ru>, Alexander Batischev <eual.jp@gmail.com> | [MIT](#MIT) |
@@ -303,7 +302,6 @@ Third-party crates linked into the program and distributed with it.
 | [proc-macro2 1.0.107](https://crates.io/crates/proc-macro2/1.0.107) | David Tolnay <dtolnay@gmail.com>, Alex Crichton <alex@alexcrichton.com> | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [profiling 1.0.18](https://crates.io/crates/profiling/1.0.18) | Philip Degarmo <aclysma@gmail.com> | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [pulldown-cmark 0.13.4](https://crates.io/crates/pulldown-cmark/0.13.4) | Raph Levien <raph.levien@gmail.com>, Marcus Klaas de Vries <mail@marcusklaas.nl> | [MIT](#MIT) |
-| [pulldown-cmark-escape 0.11.0](https://crates.io/crates/pulldown-cmark-escape/0.11.0) | Raph Levien <raph.levien@gmail.com>, Marcus Klaas de Vries <mail@marcusklaas.nl> | [MIT](#MIT) |
 | [pulp 0.22.3](https://crates.io/crates/pulp/0.22.3) | sarah quiñones <sarah@veganb.tw> | [MIT](#MIT) |
 | [pulp-wasm-simd-flag 0.1.1](https://crates.io/crates/pulp-wasm-simd-flag/0.1.1) | sarah quiñones <sarah@veganb.tw> | [MIT](#MIT) |
 | [pxfm 0.1.30](https://crates.io/crates/pxfm/0.1.30) | Radzivon Bartoshyk | [BSD-3-Clause](#BSD-3-Clause) OR [Apache-2.0](#Apache-2.0) |

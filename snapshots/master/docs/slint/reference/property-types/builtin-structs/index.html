@@ -185,7 +185,7 @@ fetchVersions();
 <ul>
 <li><strong><code dir="auto">data</code></strong> (<em>data-transfer</em>):  The payload set on the source <code dir="auto">DragArea</code>.</li>
 <li><strong><code dir="auto">position</code></strong> (<em>LogicalPosition</em>):  The cursor position in the <code dir="auto">DropArea</code>’s local coordinates.</li>
-<li><strong><code dir="auto">proposed_action</code></strong> (<em>DragAction</em>):  The action negotiated from current modifier state, clamped to the allowed set; when no modifier is pressed, the first allowed of move, copy, link. Updated on every <code dir="auto">DragMove</code>. The target’s <code dir="auto">can-drop</code> callback can return this to honor the user’s modifier choice, or override with any other allowed action.</li>
+<li><strong><code dir="auto">proposed-action</code></strong> (<a href="/master/docs/slint/reference/property-types/builtin-enums/#dragaction"><em>DragAction</em></a>):  The action negotiated from current modifier state, clamped to the allowed set; when no modifier is pressed, the first allowed of move, copy, link. Updated on every <code dir="auto">DragMove</code>. The target’s <code dir="auto">can-drop</code> callback can return this to honor the user’s modifier choice, or override with any other allowed action.</li>
 </ul>
 <div class="sl-heading-wrapper level-h2"><h2 id="edges">Edges</h2><a class="sl-anchor-link" href="#edges"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Edges”</span></a></div>
 <!-- Generated with slint-doc-generator from internal/common/builtin_structs.rs -->
@@ -204,8 +204,8 @@ fetchVersions();
 <ul>
 <li><strong><code dir="auto">ascent</code></strong> (<em>length</em>):  The distance between the baseline and the top of the tallest glyph in the font.</li>
 <li><strong><code dir="auto">descent</code></strong> (<em>length</em>):  The distance between the baseline and the bottom of the tallest glyph in the font. This is usually negative.</li>
-<li><strong><code dir="auto">x_height</code></strong> (<em>length</em>):  The distance between the baseline and the horizontal midpoint of the tallest glyph in the font, or zero if not specified by the font.</li>
-<li><strong><code dir="auto">cap_height</code></strong> (<em>length</em>):  The distance between the baseline and the top of a regular upper-case glyph in the font, or zero if not specified by the font.</li>
+<li><strong><code dir="auto">x-height</code></strong> (<em>length</em>):  The distance between the baseline and the horizontal midpoint of the tallest glyph in the font, or zero if not specified by the font.</li>
+<li><strong><code dir="auto">cap-height</code></strong> (<em>length</em>):  The distance between the baseline and the top of a regular upper-case glyph in the font, or zero if not specified by the font.</li>
 </ul>
 <div class="sl-heading-wrapper level-h2"><h2 id="inputmethodhints">InputMethodHints</h2><a class="sl-anchor-link" href="#inputmethodhints"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “InputMethodHints”</span></a></div>
 <!-- Generated with slint-doc-generator from internal/common/builtin_structs.rs -->
@@ -214,9 +214,9 @@ fetchVersions();
 (e.g. a soft keyboard) about the expected input.
 The input method may take these hints into account, but might also ignore them.</p>
 <ul>
-<li><strong><code dir="auto">capitalization</code></strong> (<em>CapitalizationMode</em>):  The auto-capitalization behavior that the input method should apply. Defaults to sentences.</li>
-<li><strong><code dir="auto">auto_correct</code></strong> (<em>bool</em>):  Hint that the input method may automatically correct spelling mistakes as the user types. Defaults to true.</li>
-<li><strong><code dir="auto">auto_complete</code></strong> (<em>bool</em>):  Hint that the input method may offer auto-completion suggestions for the entered text. Defaults to true.</li>
+<li><strong><code dir="auto">capitalization</code></strong> (<a href="/master/docs/slint/reference/property-types/builtin-enums/#capitalizationmode"><em>CapitalizationMode</em></a>):  The auto-capitalization behavior that the input method should apply. Defaults to sentences.</li>
+<li><strong><code dir="auto">auto-correct</code></strong> (<em>bool</em>):  Hint that the input method may automatically correct spelling mistakes as the user types. Defaults to true.</li>
+<li><strong><code dir="auto">auto-complete</code></strong> (<em>bool</em>):  Hint that the input method may offer auto-completion suggestions for the entered text. Defaults to true.</li>
 </ul>
 <div class="sl-heading-wrapper level-h2"><h2 id="keyevent">KeyEvent</h2><a class="sl-anchor-link" href="#keyevent"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “KeyEvent”</span></a></div>
 <!-- Generated with slint-doc-generator from internal/common/builtin_structs.rs -->
@@ -224,7 +224,7 @@ The input method may take these hints into account, but might also ignore them.<
 <p>This structure is generated and passed to the key press and release callbacks of the <code dir="auto">FocusScope</code> element.</p>
 <ul>
 <li><strong><code dir="auto">text</code></strong> (<em>string</em>):  The unicode representation of the key pressed.</li>
-<li><strong><code dir="auto">modifiers</code></strong> (<em>KeyboardModifiers</em>):  The keyboard modifiers active at the time of the key press event.</li>
+<li><strong><code dir="auto">modifiers</code></strong> (<a href="/master/docs/slint/reference/property-types/builtin-structs/#keyboardmodifiers"><em>KeyboardModifiers</em></a>):  The keyboard modifiers active at the time of the key press event.</li>
 <li><strong><code dir="auto">repeat</code></strong> (<em>bool</em>):  This field is set to true for key press events that are repeated, i.e. the key is held down. It’s always false for key release events.</li>
 </ul>
 <div class="sl-heading-wrapper level-h2"><h2 id="keyboardmodifiers">KeyboardModifiers</h2><a class="sl-anchor-link" href="#keyboardmodifiers"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “KeyboardModifiers”</span></a></div>
@@ -256,10 +256,10 @@ Slint maps the Command key to the control modifier, and the Control key to the m
 <p>Represents a Pointer event sent by the windowing system.
 This structure is passed to the <code dir="auto">pointer-event</code> callback of the <code dir="auto">TouchArea</code> element.</p>
 <ul>
-<li><strong><code dir="auto">button</code></strong> (<em>PointerEventButton</em>):  The button that was pressed or released</li>
-<li><strong><code dir="auto">kind</code></strong> (<em>PointerEventKind</em>):  The kind of the event</li>
-<li><strong><code dir="auto">modifiers</code></strong> (<em>KeyboardModifiers</em>):  The keyboard modifiers pressed during the event</li>
-<li><strong><code dir="auto">touch_finger_id</code></strong> (<em>int</em>):  The unique ID of the touch point, indicating the finger ID. 0 means it’s not a touch event (e.g., mouse).</li>
+<li><strong><code dir="auto">button</code></strong> (<a href="/master/docs/slint/reference/property-types/builtin-enums/#pointereventbutton"><em>PointerEventButton</em></a>):  The button that was pressed or released</li>
+<li><strong><code dir="auto">kind</code></strong> (<a href="/master/docs/slint/reference/property-types/builtin-enums/#pointereventkind"><em>PointerEventKind</em></a>):  The kind of the event</li>
+<li><strong><code dir="auto">modifiers</code></strong> (<a href="/master/docs/slint/reference/property-types/builtin-structs/#keyboardmodifiers"><em>KeyboardModifiers</em></a>):  The keyboard modifiers pressed during the event</li>
+<li><strong><code dir="auto">touch-finger-id</code></strong> (<em>int</em>):  The unique ID of the touch point, indicating the finger ID. 0 means it’s not a touch event (e.g., mouse).</li>
 </ul>
 <div class="sl-heading-wrapper level-h2"><h2 id="pointerscrollevent">PointerScrollEvent</h2><a class="sl-anchor-link" href="#pointerscrollevent"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “PointerScrollEvent”</span></a></div>
 <!-- Generated with slint-doc-generator from internal/common/builtin_structs.rs -->
@@ -267,9 +267,9 @@ This structure is passed to the <code dir="auto">pointer-event</code> callback o
 <p>Represents a Pointer scroll (or wheel) event sent by the windowing system.
 This structure is passed to the <code dir="auto">scroll-event</code> callback of the <code dir="auto">TouchArea</code> element.</p>
 <ul>
-<li><strong><code dir="auto">delta_x</code></strong> (<em>length</em>):  The amount of pixel in the horizontal direction</li>
-<li><strong><code dir="auto">delta_y</code></strong> (<em>length</em>):  The amount of pixel in the vertical direction</li>
-<li><strong><code dir="auto">modifiers</code></strong> (<em>KeyboardModifiers</em>):  The keyboard modifiers pressed during the event</li>
+<li><strong><code dir="auto">delta-x</code></strong> (<em>length</em>):  The amount of pixel in the horizontal direction</li>
+<li><strong><code dir="auto">delta-y</code></strong> (<em>length</em>):  The amount of pixel in the vertical direction</li>
+<li><strong><code dir="auto">modifiers</code></strong> (<a href="/master/docs/slint/reference/property-types/builtin-structs/#keyboardmodifiers"><em>KeyboardModifiers</em></a>):  The keyboard modifiers pressed during the event</li>
 </ul>
 <div class="sl-heading-wrapper level-h2"><h2 id="size">Size</h2><a class="sl-anchor-link" href="#size"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Size”</span></a></div>
 <!-- Generated with slint-doc-generator from internal/common/builtin_structs.rs -->
@@ -292,8 +292,8 @@ This structure is passed to the <code dir="auto">scroll-event</code> callback of
 <p>This is used to define the column and the column header of a TableView</p>
 <ul>
 <li><strong><code dir="auto">title</code></strong> (<em>string</em>):  The title of the column header</li>
-<li><strong><code dir="auto">min_width</code></strong> (<em>length</em>):  The minimum column width (logical length)</li>
-<li><strong><code dir="auto">horizontal_stretch</code></strong> (<em>float</em>):  The horizontal column stretch</li>
-<li><strong><code dir="auto">sort_order</code></strong> (<em>SortOrder</em>):  Sorts the column</li>
+<li><strong><code dir="auto">min-width</code></strong> (<em>length</em>):  The minimum column width (logical length)</li>
+<li><strong><code dir="auto">horizontal-stretch</code></strong> (<em>float</em>):  The horizontal column stretch</li>
+<li><strong><code dir="auto">sort-order</code></strong> (<a href="/master/docs/slint/reference/property-types/builtin-enums/#sortorder"><em>SortOrder</em></a>):  Sorts the column</li>
 <li><strong><code dir="auto">width</code></strong> (<em>length</em>):  the actual width of the column (logical length)</li>
 </ul></div><footer class="sl-flex astro-nxhrfdin"><div class="meta sl-flex astro-nxhrfdin"></div><div class="pagination-links print:hidden astro-vvr465w4" dir="ltr"><a href="/master/docs/slint/reference/property-types/images/" rel="prev" class="astro-vvr465w4"><svg aria-hidden="true" class="astro-vvr465w4 astro-2m5s4lfv" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg><span class="astro-vvr465w4">Previous<br class="astro-vvr465w4"><span class="link-title astro-vvr465w4">Images</span></span></a><a href="/master/docs/slint/reference/property-types/builtin-enums/" rel="next" class="astro-vvr465w4"><svg aria-hidden="true" class="astro-vvr465w4 astro-2m5s4lfv" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17.92 11.62a1.001 1.001 0 0 0-.21-.33l-5-5a1.003 1.003 0 1 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1.002 1.002 0 0 0 .325 1.639 1 1 0 0 0 1.095-.219l5-5a1 1 0 0 0 .21-.33 1 1 0 0 0 0-.76Z"/></svg><span class="astro-vvr465w4">Next<br class="astro-vvr465w4"><span class="link-title astro-vvr465w4">Built-in Enums</span></span></a></div></footer><hr class="astro-iikz6icf"><p class="astro-iikz6icf">&copy; 2026 SixtyFPS GmbH</p></div></div></main></div></div></div></div></body></html>
