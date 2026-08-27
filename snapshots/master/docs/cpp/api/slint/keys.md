@@ -53,6 +53,20 @@ slint::Keys & slint::Keys::operator=(Keys &&)=default
 
 Move assignment operator.
 
+### `to_parts`
+
+```cpp
+SharedVector<SharedString> slint::Keys::to_parts() const
+```
+
+Decompose this `Keys` value into a list of string parts that `from_parts` accepts.
+
+A `Keys` value that is converted into parts and then re-created from those parts with `from_parts` will be equal to the input `Keys` value. Note that while the round-trip guarantees the resulting `Keys` are equal, the parts returned here can be different from the parts used to construct the `Keys`.
+
+A part is not necessarily printable, so a text format storing parts has to quote or escape them.
+
+An empty `Keys` returns an empty vector.
+
 ### `to_string`
 
 ```cpp
@@ -80,6 +94,8 @@ static std::optional<Keys> slint::Keys::from_parts(std::span<const std::string_v
 Create a `Keys` from a span of string parts, e.g. `{"Control", "Shift?", "Z"}`.
 
 Each element is either a modifier (`Control`, `Shift`, `Alt`, `Meta`, `Shift?`, `Alt?`) or a key name from the Key namespace (case-sensitive). If not found, it is treated as a string literal (must be a single lowercase grapheme cluster).
+
+Parts are taken verbatim — they are not trimmed — so whitespace is significant: `" "`, `"\t"` and `"\n"` are literal spellings of the `Space`, `Tab` and `Return` keys. A part must match a modifier or key exactly; `" Control "` is not the `Control` modifier. Empty parts are skipped.
 
 Returns `std::nullopt` on parse failure.
 

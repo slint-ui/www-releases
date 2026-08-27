@@ -4,8 +4,17 @@ description: "FlexboxLayout element api."
 ---
 import SlintProperty from '@slint/common-files/src/components/SlintProperty.astro';
 import CodeSnippetMD from '@slint/common-files/src/components/CodeSnippetMD.astro';
+import Link from '@slint/common-files/src/components/Link.astro';
 
-`FlexboxLayout` is a flexible box layout that arranges its children in rows or columns with automatic wrapping. It implements a CSS Flexbox-like layout model suitable for creating flexible, responsive UIs.
+`FlexboxLayout` is a flexible box layout that arranges its children in rows or columns with automatic wrapping.
+It implements a CSS Flexbox-like layout model suitable for creating flexible, responsive UIs.
+
+Use `FlexboxLayout` when the items should wrap: items that don't fit continue on the next line.
+That's why `flex-wrap` defaults to `wrap`, unlike CSS.
+For a single row or column, use the simpler and faster
+[HorizontalLayout](/master/docs/slint/reference/layouts/horizontallayout.md) or [VerticalLayout](/master/docs/slint/reference/layouts/verticallayout.md) instead,
+unless you need a `flex-direction` that changes at runtime,
+or the reversed directions (`row-reverse` / `column-reverse`).
 
 
 <CodeSnippetMD imagePath="/src/assets/generated/flexbox-layout-1.png" imageAlt="flexboxlayout example with row direction" imageWidth="300" imageHeight="150">
@@ -120,7 +129,7 @@ It also supports `row-reverse` and `column-reverse` which invert the flow: `row-
 </SlintProperty>
 
 ### cross-axis-line-alignment
-<SlintProperty propName="cross-axis-line-alignment" typeName="enum" enumName="CrossAxisLineAlignment">
+<SlintProperty propName="cross-axis-line-alignment" typeName="enum" enumName="LayoutAlignment">
 Set the distribution of flex lines along the cross axis. CSS Flexbox calls this "align-content";
 the name here pairs with `cross-axis-alignment`, which aligns the items within one line.
 The default value is `stretch`.
@@ -129,13 +138,13 @@ The default value is `stretch`.
 ### cross-axis-alignment
 <SlintProperty propName="cross-axis-alignment" typeName="enum" enumName="CrossAxisAlignment">
 Set the alignment of individual items along the cross axis within each flex line.
-The default value is `stretch`.
+CSS Flexbox calls this "align-items". The default value is `stretch`.
 </SlintProperty>
 
 ### flex-wrap
 <SlintProperty propName="flex-wrap" typeName="enum" enumName="FlexboxLayoutWrap">
 Controls whether flex items wrap onto multiple lines when they don't fit in the container.
-The default value is `wrap`.
+The default value is `wrap`, unlike CSS where it is `nowrap`.
 </SlintProperty>
 
 ## Cell elements
@@ -160,7 +169,23 @@ FlexboxLayout {
 ```
 </SlintProperty>
 
-The other CSS per-item flexbox properties are expressed with the properties the
+## CSS Mapping
+
+The container properties map to CSS Flexbox as follows:
+
+| CSS               | Slint                                                     |
+| ----------------- | --------------------------------------------------------- |
+| `flex-direction`  | `flex-direction`                                          |
+| `flex-wrap`       | `flex-wrap`, but the default is `wrap` (CSS: `nowrap`)    |
+| `justify-content` | `alignment`                                               |
+| `align-items`     | `cross-axis-alignment`                                    |
+| `align-content`   | `cross-axis-line-alignment`                               |
+| `gap`             | `spacing`                                                 |
+| `column-gap`      | `spacing-horizontal`                                      |
+| `row-gap`         | `spacing-vertical`                                        |
+| `padding`         | `padding`, `padding-left` / `-right` / `-top` / `-bottom` |
+
+The CSS per-item flexbox properties are expressed with the properties the
 other layouts already use:
 
 | CSS           | Slint                                                          |

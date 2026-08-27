@@ -193,7 +193,6 @@ Third-party crates linked into the program and distributed with it.
 | [indexmap 2.14.0](https://crates.io/crates/indexmap/2.14.0) | — | [Apache-2.0](#Apache-2.0) OR [MIT](#MIT) |
 | [input 0.10.0](https://crates.io/crates/input/0.10.0) | Drakulix (Victoria Brekenfeld) | [MIT](#MIT) |
 | [input-sys 1.19.0](https://crates.io/crates/input-sys/1.19.0) | Victoria Brekenfeld (Drakulix) <github@drakulix.de> | [MIT](#MIT) |
-| [integer-sqrt 0.1.5](https://crates.io/crates/integer-sqrt/0.1.5) | Richard Dodd <richard.o.dodd@gmail.com>, Joseph Richey, Sergei Shulepov | [Apache-2.0](#Apache-2.0)/[MIT](#MIT) |
 | [io-lifetimes 1.0.11](https://crates.io/crates/io-lifetimes/1.0.11) | Dan Gohman <dev@sunfishcode.online> | [Apache-2.0](#Apache-2.0) WITH LLVM-exception OR [Apache-2.0](#Apache-2.0) OR [MIT](#MIT) |
 | [itertools 0.14.0](https://crates.io/crates/itertools/0.14.0) | bluss | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [itertools 0.15.0](https://crates.io/crates/itertools/0.15.0) | bluss | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
@@ -214,8 +213,6 @@ Third-party crates linked into the program and distributed with it.
 | [libredox 0.1.18](https://crates.io/crates/libredox/0.1.18) | 4lDO2 <4lDO2@protonmail.com> | [MIT](#MIT) |
 | [libudev-sys 0.1.4](https://crates.io/crates/libudev-sys/0.1.4) | David Cuddeback <david.cuddeback@gmail.com> | [MIT](#MIT) |
 | [linebender_resource_handle 0.1.1](https://crates.io/crates/linebender_resource_handle/0.1.1) | — | [Apache-2.0](#Apache-2.0) OR [MIT](#MIT) |
-| [linked-hash-map 0.5.6](https://crates.io/crates/linked-hash-map/0.5.6) | Stepan Koltsov <stepan.koltsov@gmail.com>, Andrew Paseltiner <apaseltiner@gmail.com> | [MIT](#MIT)/[Apache-2.0](#Apache-2.0) |
-| [linked_hash_set 0.1.6](https://crates.io/crates/linked_hash_set/0.1.6) | Alex Butler <alexheretic@gmail.com> | [Apache-2.0](#Apache-2.0) |
 | [linux-raw-sys 0.9.4](https://crates.io/crates/linux-raw-sys/0.9.4) | Dan Gohman <dev@sunfishcode.online> | [Apache-2.0](#Apache-2.0) WITH LLVM-exception OR [Apache-2.0](#Apache-2.0) OR [MIT](#MIT) |
 | [litemap 0.8.2](https://crates.io/crates/litemap/0.8.2) | The ICU4X Project Developers | [Unicode-3.0](#Unicode-3.0) |
 | [locale_config 0.3.0](https://crates.io/crates/locale_config/0.3.0) | Jan Hudec <bulb@ucw.cz> | [MIT](#MIT) |

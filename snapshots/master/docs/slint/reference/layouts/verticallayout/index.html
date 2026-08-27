@@ -203,9 +203,12 @@ they will be computed by the layout respecting the minimum and maximum sizes and
 <p><code dir="auto">LayoutAlignment</code></p>
 <p>Enum representing the <code dir="auto">alignment</code> property of a
 <code dir="auto">HorizontalBox</code>, a <code dir="auto">VerticalBox</code>,
-a <code dir="auto">HorizontalLayout</code>, or <code dir="auto">VerticalLayout</code>.</p>
+a <code dir="auto">HorizontalLayout</code>, a <code dir="auto">VerticalLayout</code>, or a <code dir="auto">FlexboxLayout</code>,
+and the <code dir="auto">cross-axis-line-alignment</code> property of a <code dir="auto">FlexboxLayout</code>.</p>
+<p>For <code dir="auto">cross-axis-line-alignment</code>, the values below apply to the flex lines
+instead of the elements.</p>
 <ul>
-<li><strong><code dir="auto">stretch</code></strong>:  Use the minimum size of all elements in a layout, distribute remaining space based on <code dir="auto">*-stretch</code> among all elements.</li>
+<li><strong><code dir="auto">stretch</code></strong>:  For <code dir="auto">alignment</code>: use the minimum size of all elements in a layout, distribute remaining space based on <code dir="auto">*-stretch</code> among all elements. For <code dir="auto">cross-axis-line-alignment</code>: the flex lines have no stretch factor and share the remaining space equally.</li>
 <li><strong><code dir="auto">center</code></strong>:  Use the preferred size for all elements, distribute remaining space evenly before the first and after the last element.</li>
 <li><strong><code dir="auto">start</code></strong>:  Use the preferred size for all elements, put remaining space after the last element.</li>
 <li><strong><code dir="auto">end</code></strong>:  Use the preferred size for all elements, put remaining space before the first element.</li>

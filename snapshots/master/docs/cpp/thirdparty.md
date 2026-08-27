@@ -185,7 +185,6 @@ Third-party crates linked into the program and distributed with it.
 | [indexmap 2.14.0](https://crates.io/crates/indexmap/2.14.0) | — | [Apache-2.0](#Apache-2.0) OR [MIT](#MIT) |
 | [input 0.10.0](https://crates.io/crates/input/0.10.0) | Drakulix (Victoria Brekenfeld) | [MIT](#MIT) |
 | [input-sys 1.19.0](https://crates.io/crates/input-sys/1.19.0) | Victoria Brekenfeld (Drakulix) <github@drakulix.de> | [MIT](#MIT) |
-| [integer-sqrt 0.1.5](https://crates.io/crates/integer-sqrt/0.1.5) | Richard Dodd <richard.o.dodd@gmail.com>, Joseph Richey, Sergei Shulepov | [Apache-2.0](#Apache-2.0)/[MIT](#MIT) |
 | [io-lifetimes 1.0.11](https://crates.io/crates/io-lifetimes/1.0.11) | Dan Gohman <dev@sunfishcode.online> | [Apache-2.0](#Apache-2.0) WITH LLVM-exception OR [Apache-2.0](#Apache-2.0) OR [MIT](#MIT) |
 | [itertools 0.14.0](https://crates.io/crates/itertools/0.14.0) | bluss | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [itertools 0.15.0](https://crates.io/crates/itertools/0.15.0) | bluss | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
