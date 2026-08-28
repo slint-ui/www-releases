@@ -167,6 +167,7 @@ FlexboxLayout {
     Rectangle { layout-order: 1; }  // appears first
 }
 ```
+Only the visual order changes: keyboard focus still moves in declaration order.
 </SlintProperty>
 
 ## CSS Mapping

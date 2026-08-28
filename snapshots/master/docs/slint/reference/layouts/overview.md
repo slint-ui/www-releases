@@ -22,13 +22,21 @@ See [GridLayout](/master/docs/slint/reference/layouts/gridlayout.md).
 ### cross-axis-self-alignment
 <SlintProperty propName="cross-axis-self-alignment" typeName="enum" enumName="CrossAxisSelfAlignment" defaultValue="auto">
 Overrides the container's `cross-axis-alignment` for this element.
-Valid on the children of a [HorizontalLayout](/master/docs/slint/reference/layouts/horizontallayout.md), [VerticalLayout](/master/docs/slint/reference/layouts/verticallayout.md), or `FlexboxLayout`.
+Valid on the children of a [HorizontalLayout](/master/docs/slint/reference/layouts/horizontallayout.md), [VerticalLayout](/master/docs/slint/reference/layouts/verticallayout.md), or [FlexboxLayout](/master/docs/slint/reference/layouts/flexboxlayout.md).
 </SlintProperty>
 
 ### horizontal-stretch, vertical-stretch
 <SlintProperty propName="horizontal-stretch, vertical-stretch" typeName="float" propertyVisibility="in-out">
 Specify how much relative space these elements are stretching in a layout. When 0, this means that the
 elements won't be stretched unless all elements are 0. Builtin widgets have a value of either 0 or 1.
+</SlintProperty>
+
+### layout-order
+<SlintProperty propName="layout-order" typeName="int" defaultValue="0">
+Controls the visual order of the elements: they are laid out in ascending order value,
+and elements with the same value keep their declaration order.
+Valid on the children of a [HorizontalLayout](/master/docs/slint/reference/layouts/horizontallayout.md), [VerticalLayout](/master/docs/slint/reference/layouts/verticallayout.md), or [FlexboxLayout](/master/docs/slint/reference/layouts/flexboxlayout.md).
+Only the visual order changes: keyboard focus still moves in declaration order.
 </SlintProperty>
 
 ### max-width, max-height

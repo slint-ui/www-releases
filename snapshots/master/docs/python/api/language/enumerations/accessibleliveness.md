@@ -14,9 +14,9 @@ This enum represents the different values of the `accessible-live-region` proper
 
 ## Values
 
-- **`off`** — Use in regions that present information that is of low-importance to the user.
+- **<span id="off">`off`</span>** — Use in regions that present information that is of low-importance to the user.
  Assistive technologies are expected to not announce changes unless the user explicitly asks for it.
-- **`polite`** — Use in regions that present new information to users.
+- **<span id="polite">`polite`</span>** — Use in regions that present new information to users.
  Assistive technologies are expected to not interrupt the user to inform of changes to the live region.
-- **`assertive`** — Use in regions that present information that a user should know about right away.
+- **<span id="assertive">`assertive`</span>** — Use in regions that present information that a user should know about right away.
  Assistive technologies are expected to announce to the user as soon as possible.

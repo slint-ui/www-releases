@@ -13,10 +13,10 @@ This enum describes the different types of buttons for a pointer event,
 
 ## Values
 
-- **`other`** — A button that is none of left, right, middle, back or forward. For example,
+- **<span id="other">`other`</span>** — A button that is none of left, right, middle, back or forward. For example,
  this is used for the task button on a mouse with many buttons.
-- **`left`** — The left button.
-- **`right`** — The right button.
-- **`middle`** — The center button.
-- **`back`** — The back button.
-- **`forward`** — The forward button.
+- **<span id="left">`left`</span>** — The left button.
+- **<span id="right">`right`</span>** — The right button.
+- **<span id="middle">`middle`</span>** — The center button.
+- **<span id="back">`back`</span>** — The back button.
+- **<span id="forward">`forward`</span>** — The forward button.

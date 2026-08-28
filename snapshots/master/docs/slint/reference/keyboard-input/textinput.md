@@ -177,8 +177,10 @@ The design metrics of the font scaled to the font pixel size used by the element
 
 ## Functions
 
-### set-selection-offsets(start: int, end: int)
+### set-selection-offsets(anchor: int, focus: int)
 Selects the text between two UTF-8 offsets.
+`anchor` is the end of the selection that stays put and `focus` the end the cursor moves to,
+so `focus` may precede `anchor` to select backwards.
 
 ### select-all()
 Selects all text.

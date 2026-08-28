@@ -13,7 +13,7 @@ This enum describes the auto-capitalization behavior that the input method
 
 ## Values
 
-- **`none`** — No auto-capitalization.
-- **`sentences`** — Capitalize the first character of each sentence.
-- **`words`** — Capitalize the first character of each word.
-- **`characters`** — Capitalize all characters.
+- **<span id="none">`none`</span>** — No auto-capitalization.
+- **<span id="sentences">`sentences`</span>** — Capitalize the first character of each sentence.
+- **<span id="words">`words`</span>** — Capitalize the first character of each word.
+- **<span id="characters">`characters`</span>** — Capitalize all characters.

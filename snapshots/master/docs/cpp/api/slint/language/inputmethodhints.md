@@ -19,7 +19,7 @@ This structure holds the hints that a `TextInput` gives to the platform's input 
 CapitalizationMode slint::language::InputMethodHints::capitalization
 ```
 
-The auto-capitalization behavior that the input method should apply. Defaults to sentences.
+The auto-capitalization behavior that the input method should apply. Defaults to `CapitalizationMode::Sentences`.
 
 ### `auto_correct`
 
@@ -27,7 +27,7 @@ The auto-capitalization behavior that the input method should apply. Defaults to
 bool slint::language::InputMethodHints::auto_correct
 ```
 
-Hint that the input method may automatically correct spelling mistakes as the user types. Defaults to true.
+Hint that the input method may automatically correct spelling mistakes as the user types. Defaults to `true`.
 
 ### `auto_complete`
 
@@ -35,4 +35,4 @@ Hint that the input method may automatically correct spelling mistakes as the us
 bool slint::language::InputMethodHints::auto_complete
 ```
 
-Hint that the input method may offer auto-completion suggestions for the entered text. Defaults to true.
+Hint that the input method may offer auto-completion suggestions for the entered text. Defaults to `true`.

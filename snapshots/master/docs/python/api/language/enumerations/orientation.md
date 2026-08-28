@@ -12,5 +12,5 @@ Represents the orientation of an element or widget such as the `Slider`.
 
 ## Values
 
-- **`horizontal`** — Element is oriented horizontally.
-- **`vertical`** — Element is oriented vertically.
+- **<span id="horizontal">`horizontal`</span>** — Element is oriented horizontally.
+- **<span id="vertical">`vertical`</span>** — Element is oriented vertically.

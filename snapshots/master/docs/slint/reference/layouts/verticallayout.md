@@ -82,10 +82,23 @@ export component Example inherits Window {
 </SlintProperty>
 
 ## Cell elements
-Cell elements inside a `VerticalLayout` obtain the following new property:
+Cell elements inside a `VerticalLayout` obtain the following new properties:
 
 ### cross-axis-self-alignment
 <SlintProperty propName="cross-axis-self-alignment" typeName="enum" enumName="CrossAxisSelfAlignment" defaultValue="auto">
 Overrides the container's `cross-axis-alignment` for this element.
 The default value `auto` uses the container's `cross-axis-alignment`.
+</SlintProperty>
+
+### layout-order
+<SlintProperty propName="layout-order" typeName="int" defaultValue="0">
+Controls the visual order of the elements: they are laid out in ascending
+order value, and elements with the same value keep their declaration order.
+```slint no-test
+VerticalLayout {
+    Rectangle { layout-order: 2; }
+    Rectangle { layout-order: 1; }  // appears first
+}
+```
+Only the visual order changes: keyboard focus still moves in declaration order.
 </SlintProperty>

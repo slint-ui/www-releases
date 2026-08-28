@@ -12,7 +12,7 @@ The enum reports what happened to the <XRef to="PointerEventButton" /> in the ev
 
 ## Values
 
-- **`cancel`** — The action was cancelled.
-- **`down`** — The button was pressed.
-- **`up`** — The button was released.
-- **`move`** — The pointer has moved,
+- **<span id="cancel">`cancel`</span>** — The action was cancelled.
+- **<span id="down">`down`</span>** — The button was pressed.
+- **<span id="up">`up`</span>** — The button was released.
+- **<span id="move">`move`</span>** — The pointer has moved,

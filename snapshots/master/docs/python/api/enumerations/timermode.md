@@ -10,5 +10,5 @@ from slint import TimerMode
 
 ## Values
 
-- **`SingleShot`**
-- **`Repeated`**
+- **<span id="SingleShot">`SingleShot`</span>**
+- **<span id="Repeated">`Repeated`</span>**

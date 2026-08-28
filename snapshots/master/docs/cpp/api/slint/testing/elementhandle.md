@@ -314,7 +314,7 @@ void slint::testing::ElementHandle::set_accessible_selection(int anchor, int foc
 
 Selects the text between two UTF-8 offsets.
 
-This will invoke the `accessible-action-set-selection` callback.
+This will invoke the `accessible-action-set-selection-offsets` callback.
 
 ### `invoke_accessible_expand_action`
 

@@ -18,9 +18,9 @@ This enum describes the action negotiated between the source of a drag (`DragAre
 
 ## Values
 
-- **`none`** — No action: the drag is rejected, no drop will be delivered.
-- **`copy`** — The data is copied to the target; the source retains it.
-- **`move`** — The data is moved to the target; the source should remove it once the
+- **<span id="none">`none`</span>** — No action: the drag is rejected, no drop will be delivered.
+- **<span id="copy">`copy`</span>** — The data is copied to the target; the source retains it.
+- **<span id="move">`move`</span>** — The data is moved to the target; the source should remove it once the
  operation completes.
-- **`link`** — A link to the source data is created at the target; neither side gives
+- **<span id="link">`link`</span>** — A link to the source data is created at the target; neither side gives
  up ownership.

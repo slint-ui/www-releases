@@ -18,7 +18,7 @@ The input method may take these hints into account, but might also ignore them.
 Defined in: api/node/typescript/generated/language.ts:688
 
 Hint that the input method may offer auto-completion suggestions for the entered text.
-Defaults to true.
+Defaults to `true`.
 
 ***
 
@@ -29,7 +29,7 @@ Defaults to true.
 Defined in: api/node/typescript/generated/language.ts:683
 
 Hint that the input method may automatically correct spelling mistakes as the user types.
-Defaults to true.
+Defaults to `true`.
 
 ***
 
@@ -40,4 +40,4 @@ Defaults to true.
 Defined in: api/node/typescript/generated/language.ts:678
 
 The auto-capitalization behavior that the input method should apply.
-Defaults to sentences.
+Defaults to `"sentences"`.

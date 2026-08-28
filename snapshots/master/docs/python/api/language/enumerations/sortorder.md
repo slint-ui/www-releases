@@ -13,6 +13,6 @@ This enum represents the different values of the `sort-order` property.
 
 ## Values
 
-- **`unsorted`** — The column is unsorted.
-- **`ascending`** — The column is sorted in ascending order.
-- **`descending`** — The column is sorted in descending order.
+- **<span id="unsorted">`unsorted`</span>** — The column is unsorted.
+- **<span id="ascending">`ascending`</span>** — The column is sorted in ascending order.
+- **<span id="descending">`descending`</span>** — The column is sorted in descending order.
