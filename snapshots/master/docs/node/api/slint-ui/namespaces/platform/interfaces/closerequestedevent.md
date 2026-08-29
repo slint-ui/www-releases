@@ -1,7 +1,7 @@
 ---
 title: "CloseRequestedEvent"
 ---
-Defined in: [api/node/typescript/platform.ts:138](https://github.com/slint-ui/slint/blob/master/api/node/typescript/platform.ts#L138)
+Defined in: [api/node/typescript/platform.ts:140](https://github.com/slint-ui/slint/blob/master/api/node/typescript/platform.ts#L140)
 
 The user requested to close the window.
 
@@ -18,4 +18,4 @@ and hides the window unless that callback returns `reject`.
 
 > **type**: `"close-requested"`
 
-Defined in: [api/node/typescript/platform.ts:139](https://github.com/slint-ui/slint/blob/master/api/node/typescript/platform.ts#L139)
+Defined in: [api/node/typescript/platform.ts:141](https://github.com/slint-ui/slint/blob/master/api/node/typescript/platform.ts#L141)

@@ -1,7 +1,7 @@
 ---
 title: "Window"
 ---
-Defined in: [api/node/typescript/index.ts:65](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L65)
+Defined in: [api/node/typescript/index.ts:64](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L64)
 
 This type represents a window towards the windowing system, that's used to render the
 scene of a component. It provides API to control windowing system specific aspects such
@@ -13,7 +13,7 @@ as the position on the screen.
 
 > **fullscreen**: `boolean`
 
-Defined in: [api/node/typescript/index.ts:79](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L79)
+Defined in: [api/node/typescript/index.ts:78](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L78)
 
 Gets or sets the window's fullscreen state.
 
@@ -23,7 +23,7 @@ Gets or sets the window's fullscreen state.
 
 > **logicalPosition**: [`Point`](/master/docs/node/api/interfaces/point/)
 
-Defined in: [api/node/typescript/index.ts:67](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L67)
+Defined in: [api/node/typescript/index.ts:66](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L66)
 
 Gets or sets the logical position of the window on the screen.
 
@@ -33,7 +33,7 @@ Gets or sets the logical position of the window on the screen.
 
 > **logicalSize**: [`Size`](/master/docs/node/api/interfaces/size/)
 
-Defined in: [api/node/typescript/index.ts:73](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L73)
+Defined in: [api/node/typescript/index.ts:72](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L72)
 
 Gets or sets the logical size of the window on the screen,
 
@@ -43,7 +43,7 @@ Gets or sets the logical size of the window on the screen,
 
 > **maximized**: `boolean`
 
-Defined in: [api/node/typescript/index.ts:82](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L82)
+Defined in: [api/node/typescript/index.ts:81](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L81)
 
 Gets or sets the window's maximized state.
 
@@ -53,7 +53,7 @@ Gets or sets the window's maximized state.
 
 > **minimized**: `boolean`
 
-Defined in: [api/node/typescript/index.ts:85](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L85)
+Defined in: [api/node/typescript/index.ts:84](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L84)
 
 Gets or sets the window's minimized state.
 
@@ -63,7 +63,7 @@ Gets or sets the window's minimized state.
 
 > **physicalPosition**: [`Point`](/master/docs/node/api/interfaces/point/)
 
-Defined in: [api/node/typescript/index.ts:70](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L70)
+Defined in: [api/node/typescript/index.ts:69](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L69)
 
 Gets or sets the physical position of the window on the screen.
 
@@ -73,7 +73,7 @@ Gets or sets the physical position of the window on the screen.
 
 > **physicalSize**: [`Size`](/master/docs/node/api/interfaces/size/)
 
-Defined in: [api/node/typescript/index.ts:76](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L76)
+Defined in: [api/node/typescript/index.ts:75](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L75)
 
 Gets or sets the physical size of the window on the screen,
 
@@ -85,7 +85,7 @@ Gets or sets the physical size of the window on the screen,
 
 > **get** **visible**(): `boolean`
 
-Defined in: [api/node/typescript/index.ts:91](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L91)
+Defined in: [api/node/typescript/index.ts:90](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L90)
 
 Returns the visibility state of the window. This function can return false even if you previously called show()
 on it, for example if the user minimized the window.
@@ -98,13 +98,13 @@ on it, for example if the user minimized the window.
 
 ### dispatchEvent()
 
-> **dispatchEvent**(`event`): [`WindowEventDispatchResult`](/master/docs/node/api/enumerations/windoweventdispatchresult/)
+> **dispatchEvent**(`event`): [`WindowEventDispatchResult`](/master/docs/node/api/slint-ui/namespaces/platform/enumerations/windoweventdispatchresult/)
 
-Defined in: [api/node/typescript/index.ts:110](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L110)
+Defined in: [api/node/typescript/index.ts:109](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L109)
 
 Dispatches a window event to the scene.
 
-Returns whether the scene accepted the event, actively rejected it, or left it unhandled.
+Returns whether the scene accepted the event or rejected it.
 
 #### Parameters
 
@@ -114,7 +114,7 @@ Returns whether the scene accepted the event, actively rejected it, or left it u
 
 #### Returns
 
-[`WindowEventDispatchResult`](/master/docs/node/api/enumerations/windoweventdispatchresult/)
+[`WindowEventDispatchResult`](/master/docs/node/api/slint-ui/namespaces/platform/enumerations/windoweventdispatchresult/)
 
 ***
 
@@ -122,7 +122,7 @@ Returns whether the scene accepted the event, actively rejected it, or left it u
 
 > **hide**(): `void`
 
-Defined in: [api/node/typescript/index.ts:100](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L100)
+Defined in: [api/node/typescript/index.ts:99](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L99)
 
 Hides the window, so that it is not visible anymore.
 
@@ -136,7 +136,7 @@ Hides the window, so that it is not visible anymore.
 
 > **requestRedraw**(): `void`
 
-Defined in: [api/node/typescript/index.ts:103](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L103)
+Defined in: [api/node/typescript/index.ts:102](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L102)
 
 Issues a request to the windowing system to re-render the contents of the window.
 
@@ -150,7 +150,7 @@ Issues a request to the windowing system to re-render the contents of the window
 
 > **show**(): `void`
 
-Defined in: [api/node/typescript/index.ts:97](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L97)
+Defined in: [api/node/typescript/index.ts:96](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L96)
 
 Shows the window on the screen. An additional strong reference on the
 associated component is maintained while the window is visible.

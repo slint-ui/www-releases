@@ -3,7 +3,7 @@ title: "initTranslations"
 ---
 > **initTranslations**(`domain`, `path`): `void`
 
-Defined in: [api/node/typescript/index.ts:1027](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L1027)
+Defined in: [api/node/typescript/index.ts:1028](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L1028)
 
 Initialize translations.
 

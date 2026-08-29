@@ -3,7 +3,7 @@ title: "runEventLoop"
 ---
 > **runEventLoop**(`args?`): `Promise`\<`unknown`\>
 
-Defined in: [api/node/typescript/index.ts:825](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L825)
+Defined in: [api/node/typescript/index.ts:826](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L826)
 
 Spins the Slint event loop and returns a promise that resolves when the loop terminates.
 

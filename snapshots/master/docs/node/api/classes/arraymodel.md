@@ -1,7 +1,7 @@
 ---
 title: "ArrayModel"
 ---
-Defined in: [api/node/typescript/models.ts:213](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L213)
+Defined in: [api/node/typescript/models.ts:212](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L212)
 
 ArrayModel wraps a JavaScript array for use in `.slint` views. The underlying
 array can be modified with the [[ArrayModel.push]], [[ArrayModel.remove]], and
@@ -23,7 +23,7 @@ array can be modified with the [[ArrayModel.push]], [[ArrayModel.remove]], and
 
 > **new ArrayModel**\<`T`\>(`arr`): `ArrayModel`\<`T`\>
 
-Defined in: [api/node/typescript/models.ts:224](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L224)
+Defined in: [api/node/typescript/models.ts:223](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L223)
 
 Creates a new ArrayModel.
 
@@ -49,7 +49,7 @@ Creates a new ArrayModel.
 
 > **get** **length**(): `number`
 
-Defined in: [api/node/typescript/models.ts:232](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L232)
+Defined in: [api/node/typescript/models.ts:231](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L231)
 
 Returns the number of entries in the array model.
 
@@ -63,7 +63,7 @@ Returns the number of entries in the array model.
 
 > **\[iterator\]**(): `Iterator`\<`T`\>
 
-Defined in: [api/node/typescript/models.ts:170](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L170)
+Defined in: [api/node/typescript/models.ts:169](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L169)
 
 #### Returns
 
@@ -79,7 +79,7 @@ Defined in: [api/node/typescript/models.ts:170](https://github.com/slint-ui/slin
 
 > **entries**(): `IterableIterator`\<\[`number`, `T`\]\>
 
-Defined in: [api/node/typescript/models.ts:369](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L369)
+Defined in: [api/node/typescript/models.ts:360](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L360)
 
 Returns an iterable of key, value pairs for every entry in the array.
 
@@ -93,7 +93,7 @@ Returns an iterable of key, value pairs for every entry in the array.
 
 > **insertRow**(`_index`, `_data`): `void`
 
-Defined in: [api/node/typescript/models.ts:288](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L288)
+Defined in: [api/node/typescript/models.ts:279](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L279)
 
 Insert a new row into the array backing the model at the specified index and notifies run-time about the added row.
 
@@ -125,7 +125,7 @@ data item to store in the new row.
 
 > **pop**(): `T` \| `undefined`
 
-Defined in: [api/node/typescript/models.ts:311](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L311)
+Defined in: [api/node/typescript/models.ts:302](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L302)
 
 Removes the last element from the array and returns it.
 
@@ -141,7 +141,7 @@ The removed element or undefined if the array is empty.
 
 > **push**(...`values`): `void`
 
-Defined in: [api/node/typescript/models.ts:300](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L300)
+Defined in: [api/node/typescript/models.ts:291](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L291)
 
 Pushes new values to the array that's backing the model and notifies
 the run-time about the added rows.
@@ -164,9 +164,10 @@ list of values that will be pushed to the array.
 
 > **pushRow**(`data`): `void`
 
-Defined in: [api/node/typescript/models.ts:266](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L266)
+Defined in: [api/node/typescript/models.ts:143](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L143)
 
-Add a new row to the array backing the model and notifies run-time about the added row.
+Adds a line to the model with the provided data.
+The default implementation calls [Model.insertRow](/master/docs/node/api/classes/model/#insertrow) with the row count.
 
 #### Parameters
 
@@ -180,7 +181,7 @@ new data item to store in a new row.
 
 `void`
 
-#### Overrides
+#### Inherited from
 
 [`Model`](/master/docs/node/api/classes/model/).[`pushRow`](/master/docs/node/api/classes/model/#pushrow)
 
@@ -190,7 +191,7 @@ new data item to store in a new row.
 
 > **remove**(`index`, `size`): `void`
 
-Defined in: [api/node/typescript/models.ts:325](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L325)
+Defined in: [api/node/typescript/models.ts:316](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L316)
 
 Removes the specified number of element from the array that's backing
 the model, starting at the specified index.
@@ -219,7 +220,7 @@ number of rows to remove.
 
 > **removeRow**(`_index`): `void`
 
-Defined in: [api/node/typescript/models.ts:274](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L274)
+Defined in: [api/node/typescript/models.ts:265](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L265)
 
 Remove a row from the array backing the model and notifies run-time about the removed row.
 
@@ -245,7 +246,7 @@ index of the row to remove.
 
 > **rowCount**(): `number`
 
-Defined in: [api/node/typescript/models.ts:239](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L239)
+Defined in: [api/node/typescript/models.ts:238](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L238)
 
 Returns the number of entries in the array model.
 
@@ -263,7 +264,7 @@ Returns the number of entries in the array model.
 
 > **rowData**(`row`): `T`
 
-Defined in: [api/node/typescript/models.ts:248](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L248)
+Defined in: [api/node/typescript/models.ts:247](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L247)
 
 Returns the data at the specified row.
 
@@ -291,7 +292,7 @@ undefined if row is out of range otherwise the data.
 
 > **setRowData**(`row`, `data`): `void`
 
-Defined in: [api/node/typescript/models.ts:257](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L257)
+Defined in: [api/node/typescript/models.ts:256](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L256)
 
 Stores the given data on the given row index and notifies run-time about the changed row.
 
@@ -323,7 +324,7 @@ new data item to store on the given row index
 
 > **splice**(`start`, `deleteCount?`, ...`items`): `T`[]
 
-Defined in: [api/node/typescript/models.ts:340](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L340)
+Defined in: [api/node/typescript/models.ts:331](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L331)
 
 Removes elements from the array that's backing the model and, if
 necessary, inserts new elements in their place, following the semantics
@@ -362,7 +363,7 @@ an array containing the removed elements.
 
 > **values**(): `IterableIterator`\<`T`\>
 
-Defined in: [api/node/typescript/models.ts:362](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L362)
+Defined in: [api/node/typescript/models.ts:353](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L353)
 
 Returns an iterable of values in the array.
 

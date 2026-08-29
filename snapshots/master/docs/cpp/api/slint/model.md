@@ -79,19 +79,17 @@ If the model can update the data, it should also call `row_changed`
 ### `push_row` (virtual)
 
 ```cpp
-void slint::Model<ModelData>::push_row(const ModelData &)
+void slint::Model<ModelData>::push_row(const ModelData &data)
 ```
 
 Adds a new row with the given *data* at the end of the model.
 
-If the model cannot support data changes, then it is ok to do nothing. The default implementation will print a warning to stderr.
-
-If the model can update the data, it should also call `notify_row_added`
+The default implementation inserts the row after the last one with `insert_row`, so implementing `insert_row` is enough to support push.
 
 ### `remove_row` (virtual)
 
 ```cpp
-void slint::Model<ModelData>::remove_row(std::ptrdiff_t)
+void slint::Model<ModelData>::remove_row(size_t)
 ```
 
 Removes the row at the given *index* from the model.
@@ -103,7 +101,7 @@ If the model can update the data, it should also call `notify_row_removed`
 ### `insert_row` (virtual)
 
 ```cpp
-void slint::Model<ModelData>::insert_row(std::ptrdiff_t, const ModelData &)
+void slint::Model<ModelData>::insert_row(size_t, const ModelData &)
 ```
 
 Inserts a new row with the given *data* at the given *index*, shifting the following rows by one.

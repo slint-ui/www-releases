@@ -3,7 +3,7 @@ title: "quitEventLoop"
 ---
 > **quitEventLoop**(): `void`
 
-Defined in: [api/node/typescript/index.ts:848](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L848)
+Defined in: [api/node/typescript/index.ts:849](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L849)
 
 Stops a spinning event loop. This function returns immediately, and the promise returned
 from run_event_loop() will resolve in a later tick of the nodejs event loop.

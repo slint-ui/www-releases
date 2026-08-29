@@ -26,6 +26,13 @@ Call this method on mutable models to change the data for the given row.
 The UI will also call this method when modifying a model's data.
 Re-implement this method in a sub-class to handle the change.
 
+### row_count
+
+<Signature symbol="slint.models.Model.row_count">row_count() -&gt; <XRef to="int" plain /></Signature>
+
+Returns the number of rows in the model.
+Re-implement this method in a sub-class to provide the row count.
+
 ### row_data
 
 <Signature symbol="slint.models.Model.row_data">row_data(row: <XRef to="int" plain />) -&gt; T | None</Signature>
@@ -38,7 +45,7 @@ Re-implement this method in a sub-class to provide the data.
 <Signature symbol="slint.models.Model.append">append(value: T) -&gt; <XRef to="None" plain /></Signature>
 
 Add a new row to the model with the provided value.
-Re-implement this method in a sub-class to handle the change.
+The default implementation calls `insert_row` with the row count.
 
 ### remove_row
 
@@ -73,7 +80,3 @@ Call this method from a sub-class to notify the views that
 
 Call this method from a sub-class to notify the views that
 `count` rows have been added starting at `row`.
-
-### row_count
-
-<Signature symbol="slint.slint.PyModelBase.row_count">row_count() -&gt; <XRef to="int" plain /></Signature>

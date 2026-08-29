@@ -1,7 +1,7 @@
 ---
 title: "PointerPressedEvent"
 ---
-Defined in: [api/node/typescript/platform.ts:12](https://github.com/slint-ui/slint/blob/master/api/node/typescript/platform.ts#L12)
+Defined in: [api/node/typescript/platform.ts:14](https://github.com/slint-ui/slint/blob/master/api/node/typescript/platform.ts#L14)
 
 A pointer was pressed.
 
@@ -15,7 +15,7 @@ A pointer was pressed.
 
 > **button**: [`PointerEventButton`](/master/docs/node/api/slint-ui/namespaces/language/type-aliases/pointereventbutton/)
 
-Defined in: [api/node/typescript/platform.ts:17](https://github.com/slint-ui/slint/blob/master/api/node/typescript/platform.ts#L17)
+Defined in: [api/node/typescript/platform.ts:19](https://github.com/slint-ui/slint/blob/master/api/node/typescript/platform.ts#L19)
 
 The button that was pressed.
 
@@ -25,7 +25,7 @@ The button that was pressed.
 
 > **position**: [`Point`](/master/docs/node/api/interfaces/point/)
 
-Defined in: [api/node/typescript/platform.ts:15](https://github.com/slint-ui/slint/blob/master/api/node/typescript/platform.ts#L15)
+Defined in: [api/node/typescript/platform.ts:17](https://github.com/slint-ui/slint/blob/master/api/node/typescript/platform.ts#L17)
 
 The position of the pointer, in logical pixels relative to the top left corner of the window.
 
@@ -35,4 +35,4 @@ The position of the pointer, in logical pixels relative to the top left corner o
 
 > **type**: `"pointer-pressed"`
 
-Defined in: [api/node/typescript/platform.ts:13](https://github.com/slint-ui/slint/blob/master/api/node/typescript/platform.ts#L13)
+Defined in: [api/node/typescript/platform.ts:15](https://github.com/slint-ui/slint/blob/master/api/node/typescript/platform.ts#L15)

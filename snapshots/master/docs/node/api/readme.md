@@ -9,7 +9,6 @@ title: "slint-ui"
 ## Enumerations
 
 - [DiagnosticLevel](/master/docs/node/api/enumerations/diagnosticlevel/)
-- [WindowEventDispatchResult](/master/docs/node/api/enumerations/windoweventdispatchresult/)
 
 ## Classes
 

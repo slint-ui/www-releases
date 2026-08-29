@@ -1,7 +1,7 @@
 ---
 title: "ComponentHandle"
 ---
-Defined in: [api/node/typescript/index.ts:146](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L146)
+Defined in: [api/node/typescript/index.ts:147](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L147)
 
 This interface describes the public API of a Slint component that is common to all instances. Use this to
 show() the window on the screen, access the window and subsequent window properties, or start the
@@ -15,7 +15,7 @@ Slint event loop with run().
 
 > **get** **window**(): [`Window`](/master/docs/node/api/interfaces/window/)
 
-Defined in: [api/node/typescript/index.ts:173](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L173)
+Defined in: [api/node/typescript/index.ts:174](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L174)
 
 Returns the [Window](/master/docs/node/api/interfaces/window/) associated with this component instance.
 The window API can be used to control different aspects of the integration into the windowing system, such as the position on the screen.
@@ -32,7 +32,7 @@ Throws an error when accessed on non-windowed components such as ones inheriting
 
 > **hide**(): `void`
 
-Defined in: [api/node/typescript/index.ts:165](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L165)
+Defined in: [api/node/typescript/index.ts:166](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L166)
 
 Hides the component's window, so that it is not visible anymore.
 
@@ -46,7 +46,7 @@ Hides the component's window, so that it is not visible anymore.
 
 > **run**(): `Promise`\<`unknown`\>
 
-Defined in: [api/node/typescript/index.ts:155](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L155)
+Defined in: [api/node/typescript/index.ts:156](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L156)
 
 Shows the window and runs the event loop. The returned promise is resolved when the event loop
 is terminated, for example when the last window is closed and the last visible system tray
@@ -65,7 +65,7 @@ This function is a convenience for calling [show](/master/docs/node/api/interfac
 
 > **show**(): `void`
 
-Defined in: [api/node/typescript/index.ts:160](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L160)
+Defined in: [api/node/typescript/index.ts:161](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L161)
 
 Shows the component's window on the screen.
 

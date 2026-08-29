@@ -81,7 +81,7 @@ export class ArrayModel<T> extends Model<T> {
 
 > **\[iterator\]**(): `Iterator`\<`T`\>
 
-Defined in: [api/node/typescript/models.ts:170](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L170)
+Defined in: [api/node/typescript/models.ts:169](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L169)
 
 #### Returns
 
@@ -97,7 +97,7 @@ Defined in: [api/node/typescript/models.ts:170](https://github.com/slint-ui/slin
 
 > **insertRow**(`_index`, `_data`): `void`
 
-Defined in: [api/node/typescript/models.ts:164](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L164)
+Defined in: [api/node/typescript/models.ts:163](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L163)
 
 Implementations of this function must add a row at the specified index, pushing all next
 rows to the right.
@@ -124,15 +124,16 @@ new data item to store in a new row.
 
 ### pushRow()
 
-> **pushRow**(`_data`): `void`
+> **pushRow**(`data`): `void`
 
-Defined in: [api/node/typescript/models.ts:142](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L142)
+Defined in: [api/node/typescript/models.ts:143](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L143)
 
-Implementations of this function must add a line to the model with the provided data.
+Adds a line to the model with the provided data.
+The default implementation calls [Model.insertRow](/master/docs/node/api/classes/model/#insertrow) with the row count.
 
 #### Parameters
 
-##### \_data
+##### data
 
 `T`
 
@@ -148,7 +149,7 @@ new data item to store in a new row.
 
 > **removeRow**(`_index`): `void`
 
-Defined in: [api/node/typescript/models.ts:152](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L152)
+Defined in: [api/node/typescript/models.ts:151](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L151)
 
 Implementations of this function must remove the row at the specified index.
 

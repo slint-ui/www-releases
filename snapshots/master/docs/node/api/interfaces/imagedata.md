@@ -1,7 +1,7 @@
 ---
 title: "ImageData"
 ---
-Defined in: [api/node/typescript/index.ts:118](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L118)
+Defined in: [api/node/typescript/index.ts:119](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L119)
 
 An image data type that can be displayed by the Image element.
 
@@ -13,7 +13,7 @@ This interface is inspired by the web [ImageData](https://developer.mozilla.org/
 
 > `readonly` `optional` **path?**: `string`
 
-Defined in: [api/node/typescript/index.ts:123](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L123)
+Defined in: [api/node/typescript/index.ts:124](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L124)
 
 Returns the path of the image, if it was loaded from disk. Otherwise
 the property is undefined.
@@ -26,7 +26,7 @@ the property is undefined.
 
 > **get** **data**(): `Uint8Array`
 
-Defined in: [api/node/typescript/index.ts:128](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L128)
+Defined in: [api/node/typescript/index.ts:129](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L129)
 
 Returns the image as buffer.
 
@@ -42,7 +42,7 @@ Returns the image as buffer.
 
 > **get** **height**(): `number`
 
-Defined in: [api/node/typescript/index.ts:138](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L138)
+Defined in: [api/node/typescript/index.ts:139](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L139)
 
 Returns the height of the image in pixels.
 
@@ -58,7 +58,7 @@ Returns the height of the image in pixels.
 
 > **get** **width**(): `number`
 
-Defined in: [api/node/typescript/index.ts:133](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L133)
+Defined in: [api/node/typescript/index.ts:134](https://github.com/slint-ui/slint/blob/master/api/node/typescript/index.ts#L134)
 
 Returns the width of the image in pixels.
 
