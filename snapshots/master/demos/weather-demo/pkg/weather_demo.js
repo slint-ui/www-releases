@@ -1551,7 +1551,7 @@ function __wbg_get_imports() {
             return ret;
         },
         __wbindgen_cast_0000000000000013: function(arg0, arg1) {
-            // Cast intrinsic for `Closure(Closure { owned: true, function: Function { arguments: [], shim_idx: 2147, ret: Unit, inner_ret: Some(Unit) }, mutable: true }) -> Externref`.
+            // Cast intrinsic for `Closure(Closure { owned: true, function: Function { arguments: [], shim_idx: 2146, ret: Unit, inner_ret: Some(Unit) }, mutable: true }) -> Externref`.
             const ret = makeMutClosure(arg0, arg1, wasm_bindgen_a6aa492053261a6f___convert__closures_____invoke_______true__1_);
             return ret;
         },

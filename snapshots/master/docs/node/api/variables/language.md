@@ -3,7 +3,7 @@ title: "language"
 ---
 > `const` **language**: `object` = `_data`
 
-Defined in: api/node/typescript/generated/language.ts:391
+Defined in: api/node/typescript/generated/language.ts:396
 
 Built-in enums and structs from the Slint language.
 Enum values are accessed via `language.ColorScheme.Dark`; struct values via the
@@ -230,6 +230,13 @@ This is automatically applied to `TextInput` elements.
 > `readonly` **Tree**: `"tree"` = `"tree"`
 
 The role for a TreeView or behaves like one. (Not provided yet)
+
+#### AccessibleRole.WindowTitleBar
+
+> `readonly` **WindowTitleBar**: `"window-title-bar"` = `"window-title-bar"`
+
+The element is a window title bar, typically containing the window title and controls
+such as minimize, maximize, and close.
 
 ### CapitalizationMode
 

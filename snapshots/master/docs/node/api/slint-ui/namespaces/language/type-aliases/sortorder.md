@@ -3,7 +3,7 @@ title: "SortOrder"
 ---
 > **SortOrder** = *typeof* [`SortOrder`](/master/docs/node/api/variables/language/#sortorder)\[keyof *typeof* [`SortOrder`](/master/docs/node/api/variables/language/#sortorder)\]
 
-Defined in: api/node/typescript/generated/language.ts:493
+Defined in: api/node/typescript/generated/language.ts:499
 
 This enum represents the different values of the `sort-order` property.
 It's used to sort a `StandardTableView` by a column.

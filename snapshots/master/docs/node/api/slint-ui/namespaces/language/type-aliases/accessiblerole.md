@@ -3,7 +3,7 @@ title: "AccessibleRole"
 ---
 > **AccessibleRole** = *typeof* [`AccessibleRole`](/master/docs/node/api/variables/language/#accessiblerole)\[keyof *typeof* [`AccessibleRole`](/master/docs/node/api/variables/language/#accessiblerole)\]
 
-Defined in: api/node/typescript/generated/language.ts:472
+Defined in: api/node/typescript/generated/language.ts:478
 
 This enum represents the different values for the `accessible-role` property, used to describe the
 role of an element in the context of assistive technology such as screen readers.
@@ -37,6 +37,7 @@ Variants:
 - `language.AccessibleRole.ListItem` (`"list-item"`) — The element is an item in a `ListView`.
 - `language.AccessibleRole.RadioButton` (`"radio-button"`) — The element is a `RadioButton` or behaves like one.
 - `language.AccessibleRole.RadioGroup` (`"radio-group"`) — The element is a container grouping related `RadioButton`s.
+- `language.AccessibleRole.WindowTitleBar` (`"window-title-bar"`) — The element is a window title bar, typically containing the window title and controls such as minimize, maximize, and close.
 - `language.AccessibleRole.Banner` (`"banner"`) — Landmark: the header area of the application, typically containing a logo, title, or global navigation.
 - `language.AccessibleRole.Complementary` (`"complementary"`) — Landmark: a supporting section that complements the main content, such as a sidebar.
 - `language.AccessibleRole.ContentInfo` (`"content-info"`) — Landmark: information about the application or its content, typically at the bottom (e.g. status bar, copyright).

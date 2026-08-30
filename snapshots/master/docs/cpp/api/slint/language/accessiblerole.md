@@ -28,6 +28,7 @@ enum class AccessibleRole
 | `ListItem` | The element is an item in a `ListView`. |
 | `RadioButton` | The element is a `RadioButton` or behaves like one. |
 | `RadioGroup` | The element is a container grouping related `RadioButton`s. |
+| `WindowTitleBar` |  |
 | `Banner` | Landmark: the header area of the application, typically containing a logo, title, or global navigation. |
 | `Complementary` | Landmark: a supporting section that complements the main content, such as a sidebar. |
 | `ContentInfo` | Landmark: information about the application or its content, typically at the bottom (e.g. status bar, copyright). |

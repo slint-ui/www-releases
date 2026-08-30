@@ -325,7 +325,7 @@ Third-party crates linked into the program and distributed with it.
 | [regex-syntax 0.8.11](https://crates.io/crates/regex-syntax/0.8.11) | The Rust Project Developers, Andrew Gallant <jamslam@gmail.com> | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [resvg 0.48.1](https://crates.io/crates/resvg/0.48.1) | the Resvg Authors | [Apache-2.0](#Apache-2.0) OR [MIT](#MIT) |
 | [rgb 0.8.53](https://crates.io/crates/rgb/0.8.53) | Kornel Lesiński <kornel@geekhood.net>, James Forster <james.forsterer@gmail.com> | [MIT](#MIT) |
-| [rowan 0.16.1](https://crates.io/crates/rowan/0.16.1) | Aleksey Kladov <aleksey.kladov@gmail.com> | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
+| [rowan 0.17.0](https://crates.io/crates/rowan/0.17.0) | Aleksey Kladov <aleksey.kladov@gmail.com> | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [roxmltree 0.21.1](https://crates.io/crates/roxmltree/0.21.1) | Yevhenii Reizner <razrfalcon@gmail.com> | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [rspolib 0.1.2](https://crates.io/crates/rspolib/0.1.2) | — | [MIT](#MIT) |
 | [rustc-hash 1.1.0](https://crates.io/crates/rustc-hash/1.1.0) | The Rust Project Developers | [Apache-2.0](#Apache-2.0)/[MIT](#MIT) |

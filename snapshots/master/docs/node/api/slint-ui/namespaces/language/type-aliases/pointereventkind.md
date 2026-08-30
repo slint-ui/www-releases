@@ -3,7 +3,7 @@ title: "PointerEventKind"
 ---
 > **PointerEventKind** = *typeof* [`PointerEventKind`](/master/docs/node/api/variables/language/#pointereventkind)\[keyof *typeof* [`PointerEventKind`](/master/docs/node/api/variables/language/#pointereventkind)\]
 
-Defined in: api/node/typescript/generated/language.ts:416
+Defined in: api/node/typescript/generated/language.ts:421
 
 The enum reports what happened to the `PointerEventButton` in the event
 

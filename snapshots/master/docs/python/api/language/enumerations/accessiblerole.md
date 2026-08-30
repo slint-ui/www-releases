@@ -42,6 +42,8 @@ This enum represents the different values for the `accessible-role` property, us
 - **<span id="list_item">`list_item`</span>** — The element is an item in a `ListView`.
 - **<span id="radio_button">`radio_button`</span>** — The element is a `RadioButton` or behaves like one.
 - **<span id="radio_group">`radio_group`</span>** — The element is a container grouping related `RadioButton`s.
+- **<span id="window_title_bar">`window_title_bar`</span>** — The element is a window title bar, typically containing the window title and controls
+ such as minimize, maximize, and close.
 - **<span id="banner">`banner`</span>** — Landmark: the header area of the application, typically containing a logo, title, or global navigation.
 - **<span id="complementary">`complementary`</span>** — Landmark: a supporting section that complements the main content, such as a sidebar.
 - **<span id="content_info">`content_info`</span>** — Landmark: information about the application or its content, typically at the bottom (e.g. status bar, copyright).
