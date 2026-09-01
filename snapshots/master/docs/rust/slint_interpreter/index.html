@@ -168,8 +168,8 @@ diagnostics.print();
 instance.set_property(<span class="string">"my_name"</span>, Value::from(SharedString::from(<span class="string">"World"</span>))).unwrap();
 instance.run().unwrap();</code></pre></div><h3 id="feature-flags"><a class="doc-anchor" href="#feature-flags">§</a>Feature flags</h3>
 <ul>
-<li><strong><code>compat-1-2</code></strong> <em>(enabled by default)</em> —  Mandatory feature:
-This feature is required to keep the compatibility with Slint 1.2
+<li><strong><code>compat-1-18</code></strong> <em>(enabled by default)</em> —  Mandatory feature:
+This feature is required to keep the compatibility with Slint 1.18
 Newer patch version may put current functionality behind a new feature
 that would be enabled by default only if this feature was added</li>
 <li><strong><code>system-tray</code></strong> <em>(enabled by default)</em> —  Enable the <code>SystemTrayIcon</code> element (pulls <code>ksni</code> on Linux/BSD); on by
@@ -205,12 +205,22 @@ with support for the X Window System on Unix.</p>
 with support for the Wayland window system on Unix.</p>
 </li>
 <li>
-<p><strong><code>backend-linuxkms</code></strong> —  KMS with Vulkan or EGL and libinput on Linux are used to render the application in full screen mode, without any
-windowing system. Requires libseat. If you don’t have libseat, select <code>backend-linuxkms-noseat</code> instead.</p>
+<p><strong><code>backend-linuxkms</code></strong> —  KMS with Vulkan or EGL on Linux is used to render the application in full screen mode, without any
+windowing system.</p>
+<p>With <code>compat-1-2</code> this implies libseat and libinput support. With <code>compat-1-18</code> or newer it is
+the minimal feature set, without libseat and libinput; add <code>backend-linuxkms-libseat</code> and
+<code>backend-linuxkms-libinput</code> to opt back in.</p>
 </li>
 <li>
-<p><strong><code>backend-linuxkms-noseat</code></strong> —  KMS with Vulkan or EGL and libinput on Linux are used to render the application in full screen mode, without any
-windowing system. Requires libseat.</p>
+<p><strong><code>backend-linuxkms-libseat</code></strong> —  Add libseat to the LinuxKMS backend, for GPU and input device access without root privileges.</p>
+</li>
+<li>
+<p><strong><code>backend-linuxkms-libinput</code></strong> —  Add libinput to the LinuxKMS backend, to react to mouse, touch and keyboard input.</p>
+</li>
+<li>
+<p><strong><code>backend-linuxkms-noseat</code></strong> —  <strong>Deprecated</strong> Use <code>backend-linuxkms-libinput</code> instead, which selects the same
+combination of the LinuxKMS backend: libinput for mouse, touch and keyboard input,
+but no libseat.</p>
 </li>
 <li>
 <p><strong><code>backend-default</code></strong> <em>(enabled by default)</em> —  Alias to a backend and renderer that depends on the platform.</p>
@@ -231,6 +241,10 @@ Note: This is not supported on iOS. Use <code>renderer-skia</code> on iOS to ena
 </li>
 <li>
 <p><strong><code>renderer-skia-vulkan</code></strong> —  Same as <code>renderer-skia</code>, but Skia will prefer Vulkan when selecting a backend.</p>
+</li>
+<li>
+<p><strong><code>renderer-vello</code></strong> —  Render using <a href="https://crates.io/crates/vello">vello</a> on WGPU. Experimental: it is never
+selected automatically, use <code>SLINT_BACKEND=winit-vello</code> or <code>SLINT_BACKEND=linuxkms-vello</code>.</p>
 </li>
 <li>
 <p><strong><code>renderer-software</code></strong> <em>(enabled by default)</em> —  Make the winit backend capable of rendering using the software renderer.</p>

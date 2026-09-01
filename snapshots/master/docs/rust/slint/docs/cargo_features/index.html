@@ -124,8 +124,8 @@
 <p>Use the following feature flags in your Cargo.toml to enable additional features.</p>
 <ul>
 <li>
-<p><strong><code>compat-1-2</code></strong> <em>(enabled by default)</em> —  Mandatory feature:
-This feature is required to keep the compatibility with Slint 1.2
+<p><strong><code>compat-1-18</code></strong> <em>(enabled by default)</em> —  Mandatory feature:
+This feature is required to keep the compatibility with Slint 1.18
 Newer patch version may put current functionality behind a new feature
 that would be enabled by default only if this feature was added.
 <a href="https://slint.dev/blog/rust-adding-default-cargo-feature.html">More info in this blog post</a></p>
@@ -228,32 +228,79 @@ are enabled, using the <code>SLINT_BACKEND</code>  environment variable.</p>
 <p>If the selected backend is not available, the default will be used.</p>
 <p>Here are the cargo features controlling the backend:</p>
 <ul>
-<li><strong><code>backend-qt</code></strong> —  The Qt backend feature uses Qt for the windowing system integration and rendering.
+<li>
+<p><strong><code>backend-qt</code></strong> —  The Qt backend feature uses Qt for the windowing system integration and rendering.
 This backend also provides the <code>native</code> style.
 It requires Qt 5.15 or later to be installed. If Qt is not installed, the
-backend will not be operational</li>
-<li><strong><code>backend-winit</code></strong> —  The <a href="https://crates.io/crates/winit">winit</a> crate is used for the event loop and windowing system integration.
+backend will not be operational</p>
+</li>
+<li>
+<p><strong><code>backend-winit</code></strong> —  The <a href="https://crates.io/crates/winit">winit</a> crate is used for the event loop and windowing system integration.
 It supports Windows, macOS, web browsers, X11 and Wayland. X11 and wayland are only available when
 compiling for Linux or other Unix-like operating systems. With this feature, both X11 and Wayland are supported.
-For a smaller build, omit this feature and select one of the other specific <code>backend-winit-XX</code> features.</li>
-<li><strong><code>backend-winit-x11</code></strong> —  Similar to <code>backend-winit</code> this enables the winit based event loop but only
-with support for the X Window System on Unix.</li>
-<li><strong><code>backend-winit-wayland</code></strong> —  Similar to <code>backend-winit</code> this enables the winit based event loop but only
-with support for the Wayland window system on Unix.</li>
-<li><strong><code>backend-default</code></strong> <em>(enabled by default)</em> —  Alias to a backend and renderer that depends on the platform.</li>
-<li><strong><code>renderer-femtovg</code></strong> <em>(enabled by default)</em> —  Render using the <a href="https://crates.io/crates/femtovg">FemtoVG</a> crate.</li>
-<li><strong><code>renderer-femtovg-wgpu</code></strong> —  Render using the <a href="https://crates.io/crates/femtovg">FemtoVG</a> crate and <a href="https://crates.io/crates/wgpu">WGPU</a>.</li>
-<li><strong><code>renderer-skia</code></strong> —  Render using <a href="https://skia.org/">Skia</a>.</li>
-<li><strong><code>renderer-skia-opengl</code></strong> —  Same as <code>renderer-skia</code>, but Skia will always use OpenGL.
-Note: This is not supported on iOS. Use <code>renderer-skia</code> on iOS to enable Metal based rendering.</li>
-<li><strong><code>renderer-skia-vulkan</code></strong> —  Same as <code>renderer-skia</code>, but Skia will prefer Vulkan when selecting a backend.</li>
-<li><strong><code>renderer-software</code></strong> <em>(enabled by default)</em> —  Render using the software renderer.</li>
-<li><strong><code>backend-linuxkms</code></strong> —  KMS with Vulkan or EGL and libinput on Linux are used to render the application in full screen mode, without any
-windowing system. Requires libseat. If you don’t have libseat, select <code>backend-linuxkms-noseat</code> instead.</li>
-<li><strong><code>backend-linuxkms-noseat</code></strong> —  KMS with Vulkan or EGL and libinput on Linux are used to render the application in full screen mode, without any
-windowing system.</li>
-<li><strong><code>backend-android-activity-06</code></strong> —  Use the backend based on the <a href="https://docs.rs/android-activity">android-activity</a> crate. (Using it’s native activity feature)</li>
-<li><strong><code>backend-android-activity-05</code></strong> —  <strong>Deprecated</strong> Use previous version of android-activity. This is mutually exclusive with <code>backend-android-activity-06</code>.</li>
+For a smaller build, omit this feature and select one of the other specific <code>backend-winit-XX</code> features.</p>
+</li>
+<li>
+<p><strong><code>backend-winit-x11</code></strong> —  Similar to <code>backend-winit</code> this enables the winit based event loop but only
+with support for the X Window System on Unix.</p>
+</li>
+<li>
+<p><strong><code>backend-winit-wayland</code></strong> —  Similar to <code>backend-winit</code> this enables the winit based event loop but only
+with support for the Wayland window system on Unix.</p>
+</li>
+<li>
+<p><strong><code>backend-default</code></strong> <em>(enabled by default)</em> —  Alias to a backend and renderer that depends on the platform.</p>
+</li>
+<li>
+<p><strong><code>renderer-femtovg</code></strong> <em>(enabled by default)</em> —  Render using the <a href="https://crates.io/crates/femtovg">FemtoVG</a> crate.</p>
+</li>
+<li>
+<p><strong><code>renderer-femtovg-wgpu</code></strong> —  Render using the <a href="https://crates.io/crates/femtovg">FemtoVG</a> crate and <a href="https://crates.io/crates/wgpu">WGPU</a>.</p>
+</li>
+<li>
+<p><strong><code>renderer-skia</code></strong> —  Render using <a href="https://skia.org/">Skia</a>.</p>
+</li>
+<li>
+<p><strong><code>renderer-skia-opengl</code></strong> —  Same as <code>renderer-skia</code>, but Skia will always use OpenGL.
+Note: This is not supported on iOS. Use <code>renderer-skia</code> on iOS to enable Metal based rendering.</p>
+</li>
+<li>
+<p><strong><code>renderer-skia-vulkan</code></strong> —  Same as <code>renderer-skia</code>, but Skia will prefer Vulkan when selecting a backend.</p>
+</li>
+<li>
+<p><strong><code>renderer-software</code></strong> <em>(enabled by default)</em> —  Render using the software renderer.</p>
+</li>
+<li>
+<p><strong><code>renderer-vello</code></strong> —  Render using <a href="https://crates.io/crates/vello">vello</a> on <a href="http://wgpu.rs">WGPU</a>.</p>
+<p>Also available with the linuxkms backend, where it renders onto a DRM plane.</p>
+<p>This renderer is experimental: it is never selected automatically when another renderer is
+also enabled. Select it with <code>SLINT_BACKEND=winit-vello</code>, <code>SLINT_BACKEND=linuxkms-vello</code> or
+<a href="../../struct.BackendSelector.html#method.renderer_name" title="method slint::BackendSelector::renderer_name"><code>BackendSelector::renderer_name()</code></a>.</p>
+</li>
+<li>
+<p><strong><code>backend-linuxkms</code></strong> —  KMS with Vulkan or EGL on Linux is used to render the application in full screen mode, without any
+windowing system.</p>
+<p>With <code>compat-1-2</code> this implies libseat and libinput support. With <code>compat-1-18</code> or newer it is
+the minimal feature set, without libseat and libinput; add <code>backend-linuxkms-libseat</code> and
+<code>backend-linuxkms-libinput</code> to opt back in.</p>
+</li>
+<li>
+<p><strong><code>backend-linuxkms-libseat</code></strong> —  Add libseat to the LinuxKMS backend, for GPU and input device access without root privileges.</p>
+</li>
+<li>
+<p><strong><code>backend-linuxkms-libinput</code></strong> —  Add libinput to the LinuxKMS backend, to react to mouse, touch and keyboard input.</p>
+</li>
+<li>
+<p><strong><code>backend-linuxkms-noseat</code></strong> —  <strong>Deprecated</strong> Use <code>backend-linuxkms-libinput</code> instead, which selects the same
+combination of the LinuxKMS backend: libinput for mouse, touch and keyboard input,
+but no libseat.</p>
+</li>
+<li>
+<p><strong><code>backend-android-activity-06</code></strong> —  Use the backend based on the <a href="https://docs.rs/android-activity">android-activity</a> crate. (Using it’s native activity feature)</p>
+</li>
+<li>
+<p><strong><code>backend-android-activity-05</code></strong> —  <strong>Deprecated</strong> Use previous version of android-activity. This is mutually exclusive with <code>backend-android-activity-06</code>.</p>
+</li>
 </ul>
 <h4 id="unstable-features"><a class="doc-anchor" href="#unstable-features">§</a>Unstable features</h4>
 <p>The following features expose APIs built on top of third-party crates that release new major

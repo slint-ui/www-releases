@@ -131,8 +131,8 @@
 <a href=#9 id=9 data-nosnippet>9</a>
 <a href=#10 id=10 data-nosnippet>10</a></span><span class="kw">use </span><a href="erased.rs.html#63"><span class="kw">crate</span>::erased::ErasedItemRc</a>;
 <a href=#11 id=11 data-nosnippet>11</a><span class="kw">use </span><a href="item_holder.rs.html#101-106"><span class="kw">crate</span>::item_holder::make_item</a>;
-<a href=#12 id=12 data-nosnippet>12</a><span class="kw">use </span>i_slint_core::items::<span class="kw-2">*</span>;
-<a href=#13 id=13 data-nosnippet>13</a><span class="kw">use </span>i_slint_core::rtti::BuiltinItem;
+<a href=#12 id=12 data-nosnippet>12</a><span class="kw">use </span><a href="../../i_slint_core/items/index.html">i_slint_core::items</a>::<span class="kw-2">*</span>;
+<a href=#13 id=13 data-nosnippet>13</a><span class="kw">use </span><a href="../../i_slint_core/rtti/trait.BuiltinItem.html">i_slint_core::rtti::BuiltinItem</a>;
 <a href=#14 id=14 data-nosnippet>14</a><span class="kw">use </span><a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">std::collections::HashMap</a>;
 <a href=#15 id=15 data-nosnippet>15</a><span class="kw">use </span><a href="https://doc.rust-lang.org/nightly/std/sync/once_lock/struct.OnceLock.html">std::sync::OnceLock</a>;
 <a href=#16 id=16 data-nosnippet>16</a>
@@ -213,11 +213,11 @@
 <a href=#91 id=91 data-nosnippet>91</a>    <span class="kw">fn </span>push(<span class="kw">_</span>: <span class="kw-2">&amp;mut </span><a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">HashMap</a>&lt;<span class="kw-2">&amp;</span><span class="lifetime">'static </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, <a href="#17">ItemFactory</a>&gt;) {}
 <a href=#92 id=92 data-nosnippet>92</a>}
 <a href=#93 id=93 data-nosnippet>93</a>
-<a href=#94 id=94 data-nosnippet>94</a><span class="kw">impl</span>&lt;T: <span class="lifetime">'static </span>+ <a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html">Default</a> + BuiltinItem + vtable::HasStaticVTable&lt;ItemVTable&gt;, Next: <a href="#86-88">NativeHelper</a>&gt;
+<a href=#94 id=94 data-nosnippet>94</a><span class="kw">impl</span>&lt;T: <span class="lifetime">'static </span>+ <a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html">Default</a> + <a href="../../i_slint_core/rtti/trait.BuiltinItem.html">BuiltinItem</a> + <a href="../../vtable/trait.HasStaticVTable.html">vtable::HasStaticVTable</a>&lt;<a href="../../i_slint_core/items/Item_vtable_mod/struct.ItemVTable.html">ItemVTable</a>&gt;, Next: <a href="#86-88">NativeHelper</a>&gt;
 <a href=#95 id=95 data-nosnippet>95</a>    <a href="#86-88">NativeHelper</a> <span class="kw">for </span>(T, Next)
 <a href=#96 id=96 data-nosnippet>96</a>{
 <a href=#97 id=97 data-nosnippet>97</a>    <span class="kw">fn </span>push(factories: <span class="kw-2">&amp;mut </span><a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">HashMap</a>&lt;<span class="kw-2">&amp;</span><span class="lifetime">'static </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, <a href="#17">ItemFactory</a>&gt;) {
-<a href=#98 id=98 data-nosnippet>98</a>        <a href="#97">factories</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.insert">insert</a>(&lt;T <span class="kw">as </span>BuiltinItem&gt;::name(), <a href="item_holder.rs.html#101-106">make_item</a>::&lt;T&gt; <span class="kw">as </span><a href="#17">ItemFactory</a>);
+<a href=#98 id=98 data-nosnippet>98</a>        <a href="#97">factories</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.insert">insert</a>(&lt;T <span class="kw">as </span>BuiltinItem&gt;::<a href="../../i_slint_core/rtti/trait.BuiltinItem.html#tymethod.name">name</a>(), <a href="item_holder.rs.html#101-106">make_item</a>::&lt;T&gt; <span class="kw">as </span><a href="#17">ItemFactory</a>);
 <a href=#99 id=99 data-nosnippet>99</a>        Next::<a href="#87">push</a>(<a href="#97">factories</a>);
 <a href=#100 id=100 data-nosnippet>100</a>    }
 <a href=#101 id=101 data-nosnippet>101</a>}

@@ -124,7 +124,7 @@
 <a href=#2 id=2 data-nosnippet>2</a>// SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0
 <a href=#3 id=3 data-nosnippet>3</a>
 <a href=#4 id=4 data-nosnippet>4</a></span><span class="kw">use </span><a href="api.rs.html#99-145"><span class="kw">crate</span>::api::Value</a>;
-<a href=#5 id=5 data-nosnippet>5</a><span class="kw">use </span>i_slint_core::model::{Model, ModelError, ModelRc, ModelTracker};
+<a href=#5 id=5 data-nosnippet>5</a><span class="kw">use </span>i_slint_core::model::{<a href="../../i_slint_core/model/trait.Model.html">Model</a>, <a href="../../i_slint_core/model/struct.ModelError.html">ModelError</a>, <a href="../../i_slint_core/model/struct.ModelRc.html">ModelRc</a>, <a href="../../i_slint_core/model/trait.ModelTracker.html">ModelTracker</a>};
 <a href=#6 id=6 data-nosnippet>6</a>
 <a href=#7 id=7 data-nosnippet>7</a><span class="doccomment">/// A number used as a model (`for i in 42`): `n` rows whose data is the row
 <a href=#8 id=8 data-nosnippet>8</a>/// index. The type-erased equivalent of core's `impl Model for usize`; the
@@ -132,7 +132,7 @@
 <a href=#10 id=10 data-nosnippet>10</a>/// and produces a new `IntModel`, so the tracker has nothing to track.
 <a href=#11 id=11 data-nosnippet>11</a></span><span class="kw">pub struct </span>IntModel(<span class="kw">pub </span><a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>);
 <a href=#12 id=12 data-nosnippet>12</a>
-<a href=#13 id=13 data-nosnippet>13</a><span class="kw">impl </span>Model <span class="kw">for </span><a href="#11">IntModel</a> {
+<a href=#13 id=13 data-nosnippet>13</a><span class="kw">impl </span><a href="../../i_slint_core/model/trait.Model.html">Model</a> <span class="kw">for </span><a href="#11">IntModel</a> {
 <a href=#14 id=14 data-nosnippet>14</a>    <span class="kw">type </span>Data = <a href="api.rs.html#99-145">Value</a>;
 <a href=#15 id=15 data-nosnippet>15</a>
 <a href=#16 id=16 data-nosnippet>16</a>    <span class="kw">fn </span>row_count(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a> {
@@ -143,7 +143,7 @@
 <a href=#21 id=21 data-nosnippet>21</a>        (<a href="#20">row</a> &lt; <a class="self" href="#20">self</a>.<span class="number">0</span>).<a href="https://doc.rust-lang.org/nightly/core/primitive.bool.html#method.then">then</a>(|| Value::<a href="api.rs.html#105">Number</a>(<a href="#20">row</a> <span class="kw">as </span><a href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>))
 <a href=#22 id=22 data-nosnippet>22</a>    }
 <a href=#23 id=23 data-nosnippet>23</a>
-<a href=#24 id=24 data-nosnippet>24</a>    <span class="kw">fn </span>model_tracker(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="kw">dyn </span>ModelTracker {
+<a href=#24 id=24 data-nosnippet>24</a>    <span class="kw">fn </span>model_tracker(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="kw">dyn </span><a href="../../i_slint_core/model/trait.ModelTracker.html">ModelTracker</a> {
 <a href=#25 id=25 data-nosnippet>25</a>        <span class="kw-2">&amp;</span>()
 <a href=#26 id=26 data-nosnippet>26</a>    }
 <a href=#27 id=27 data-nosnippet>27</a>
@@ -153,21 +153,21 @@
 <a href=#31 id=31 data-nosnippet>31</a>}
 <a href=#32 id=32 data-nosnippet>32</a>
 <a href=#33 id=33 data-nosnippet>33</a><span class="comment">// A map model that wraps a Model
-<a href=#34 id=34 data-nosnippet>34</a></span><span class="kw">pub struct </span>ValueMapModel&lt;T&gt;(<span class="kw">pub </span>ModelRc&lt;T&gt;);
+<a href=#34 id=34 data-nosnippet>34</a></span><span class="kw">pub struct </span>ValueMapModel&lt;T&gt;(<span class="kw">pub </span><a href="../../i_slint_core/model/struct.ModelRc.html">ModelRc</a>&lt;T&gt;);
 <a href=#35 id=35 data-nosnippet>35</a>
-<a href=#36 id=36 data-nosnippet>36</a><span class="kw">impl</span>&lt;T: <a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html">TryFrom</a>&lt;<a href="api.rs.html#99-145">Value</a>&gt; + <a href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html">Into</a>&lt;<a href="api.rs.html#99-145">Value</a>&gt; + <span class="lifetime">'static</span>&gt; Model <span class="kw">for </span><a href="#34">ValueMapModel</a>&lt;T&gt; {
+<a href=#36 id=36 data-nosnippet>36</a><span class="kw">impl</span>&lt;T: <a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html">TryFrom</a>&lt;<a href="api.rs.html#99-145">Value</a>&gt; + <a href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html">Into</a>&lt;<a href="api.rs.html#99-145">Value</a>&gt; + <span class="lifetime">'static</span>&gt; <a href="../../i_slint_core/model/trait.Model.html">Model</a> <span class="kw">for </span><a href="#34">ValueMapModel</a>&lt;T&gt; {
 <a href=#37 id=37 data-nosnippet>37</a>    <span class="kw">type </span>Data = <a href="api.rs.html#99-145">Value</a>;
 <a href=#38 id=38 data-nosnippet>38</a>
 <a href=#39 id=39 data-nosnippet>39</a>    <span class="kw">fn </span>row_count(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a> {
-<a href=#40 id=40 data-nosnippet>40</a>        <a class="self" href="#39">self</a>.<span class="number">0</span>.row_count()
+<a href=#40 id=40 data-nosnippet>40</a>        <a class="self" href="#39">self</a>.<span class="number">0</span>.<a href="../../i_slint_core/model/trait.Model.html#tymethod.row_count">row_count</a>()
 <a href=#41 id=41 data-nosnippet>41</a>    }
 <a href=#42 id=42 data-nosnippet>42</a>
 <a href=#43 id=43 data-nosnippet>43</a>    <span class="kw">fn </span>row_data(<span class="kw-2">&amp;</span><span class="self">self</span>, row: <a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<span class="self">Self</span>::Data&gt; {
-<a href=#44 id=44 data-nosnippet>44</a>        <a class="self" href="#43">self</a>.<span class="number">0</span>.row_data(<a href="#43">row</a>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(|x| <a href="#44">x</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html#tymethod.into">into</a>())
+<a href=#44 id=44 data-nosnippet>44</a>        <a class="self" href="#43">self</a>.<span class="number">0</span>.<a href="../../i_slint_core/model/trait.Model.html#tymethod.row_data">row_data</a>(<a href="#43">row</a>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(|x| <a href="#44">x</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html#tymethod.into">into</a>())
 <a href=#45 id=45 data-nosnippet>45</a>    }
 <a href=#46 id=46 data-nosnippet>46</a>
-<a href=#47 id=47 data-nosnippet>47</a>    <span class="kw">fn </span>model_tracker(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="kw">dyn </span>ModelTracker {
-<a href=#48 id=48 data-nosnippet>48</a>        <a class="self" href="#47">self</a>.<span class="number">0</span>.model_tracker()
+<a href=#47 id=47 data-nosnippet>47</a>    <span class="kw">fn </span>model_tracker(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="kw">dyn </span><a href="../../i_slint_core/model/trait.ModelTracker.html">ModelTracker</a> {
+<a href=#48 id=48 data-nosnippet>48</a>        <a class="self" href="#47">self</a>.<span class="number">0</span>.<a href="../../i_slint_core/model/trait.Model.html#tymethod.model_tracker">model_tracker</a>()
 <a href=#49 id=49 data-nosnippet>49</a>    }
 <a href=#50 id=50 data-nosnippet>50</a>
 <a href=#51 id=51 data-nosnippet>51</a>    <span class="kw">fn </span>as_any(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="kw">dyn </span><a href="https://doc.rust-lang.org/nightly/core/any/trait.Any.html">core::any::Any</a> {
@@ -176,25 +176,25 @@
 <a href=#54 id=54 data-nosnippet>54</a>
 <a href=#55 id=55 data-nosnippet>55</a>    <span class="kw">fn </span>set_row_data(<span class="kw-2">&amp;</span><span class="self">self</span>, row: <a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>, data: <span class="self">Self</span>::Data) {
 <a href=#56 id=56 data-nosnippet>56</a>        <span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(data) = <a href="#55">data</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#tymethod.try_into">try_into</a>() {
-<a href=#57 id=57 data-nosnippet>57</a>            <a class="self" href="#55">self</a>.<span class="number">0</span>.set_row_data(<a href="#55">row</a>, <a href="#56">data</a>)
+<a href=#57 id=57 data-nosnippet>57</a>            <a class="self" href="#55">self</a>.<span class="number">0</span>.<a href="../../i_slint_core/model/trait.Model.html#method.set_row_data">set_row_data</a>(<a href="#55">row</a>, <a href="#56">data</a>)
 <a href=#58 id=58 data-nosnippet>58</a>        }
 <a href=#59 id=59 data-nosnippet>59</a>    }
 <a href=#60 id=60 data-nosnippet>60</a>
-<a href=#61 id=61 data-nosnippet>61</a>    <span class="kw">fn </span>push_row(<span class="kw-2">&amp;</span><span class="self">self</span>, data: <span class="self">Self</span>::Data) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), ModelError&gt; {
+<a href=#61 id=61 data-nosnippet>61</a>    <span class="kw">fn </span>push_row(<span class="kw-2">&amp;</span><span class="self">self</span>, data: <span class="self">Self</span>::Data) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), <a href="../../i_slint_core/model/struct.ModelError.html">ModelError</a>&gt; {
 <a href=#62 id=62 data-nosnippet>62</a>        <span class="kw">match </span><a href="#61">data</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#tymethod.try_into">try_into</a>() {
-<a href=#63 id=63 data-nosnippet>63</a>            <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(data) =&gt; <a class="self" href="#61">self</a>.<span class="number">0</span>.push_row(<a href="#63">data</a>),
-<a href=#64 id=64 data-nosnippet>64</a>            <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(<span class="kw">_</span>) =&gt; <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(ModelError::unsupported(<a class="self" href="#61">self</a>)),
+<a href=#63 id=63 data-nosnippet>63</a>            <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(data) =&gt; <a class="self" href="#61">self</a>.<span class="number">0</span>.<a href="../../i_slint_core/model/trait.Model.html#method.push_row">push_row</a>(<a href="#63">data</a>),
+<a href=#64 id=64 data-nosnippet>64</a>            <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(<span class="kw">_</span>) =&gt; <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(<a href="../../i_slint_core/model/struct.ModelError.html">ModelError</a>::<a href="../../i_slint_core/model/struct.ModelError.html#method.unsupported">unsupported</a>(<a class="self" href="#61">self</a>)),
 <a href=#65 id=65 data-nosnippet>65</a>        }
 <a href=#66 id=66 data-nosnippet>66</a>    }
 <a href=#67 id=67 data-nosnippet>67</a>
-<a href=#68 id=68 data-nosnippet>68</a>    <span class="kw">fn </span>remove_row(<span class="kw-2">&amp;</span><span class="self">self</span>, row: <a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), ModelError&gt; {
-<a href=#69 id=69 data-nosnippet>69</a>        <a class="self" href="#68">self</a>.<span class="number">0</span>.remove_row(<a href="#68">row</a>)
+<a href=#68 id=68 data-nosnippet>68</a>    <span class="kw">fn </span>remove_row(<span class="kw-2">&amp;</span><span class="self">self</span>, row: <a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), <a href="../../i_slint_core/model/struct.ModelError.html">ModelError</a>&gt; {
+<a href=#69 id=69 data-nosnippet>69</a>        <a class="self" href="#68">self</a>.<span class="number">0</span>.<a href="../../i_slint_core/model/trait.Model.html#method.remove_row">remove_row</a>(<a href="#68">row</a>)
 <a href=#70 id=70 data-nosnippet>70</a>    }
 <a href=#71 id=71 data-nosnippet>71</a>
-<a href=#72 id=72 data-nosnippet>72</a>    <span class="kw">fn </span>insert_row(<span class="kw-2">&amp;</span><span class="self">self</span>, row: <a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>, data: <span class="self">Self</span>::Data) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), ModelError&gt; {
+<a href=#72 id=72 data-nosnippet>72</a>    <span class="kw">fn </span>insert_row(<span class="kw-2">&amp;</span><span class="self">self</span>, row: <a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>, data: <span class="self">Self</span>::Data) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), <a href="../../i_slint_core/model/struct.ModelError.html">ModelError</a>&gt; {
 <a href=#73 id=73 data-nosnippet>73</a>        <span class="kw">match </span><a href="#72">data</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#tymethod.try_into">try_into</a>() {
-<a href=#74 id=74 data-nosnippet>74</a>            <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(data) =&gt; <a class="self" href="#72">self</a>.<span class="number">0</span>.insert_row(<a href="#72">row</a>, <a href="#74">data</a>),
-<a href=#75 id=75 data-nosnippet>75</a>            <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(<span class="kw">_</span>) =&gt; <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(ModelError::unsupported(<a class="self" href="#72">self</a>)),
+<a href=#74 id=74 data-nosnippet>74</a>            <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(data) =&gt; <a class="self" href="#72">self</a>.<span class="number">0</span>.<a href="../../i_slint_core/model/trait.Model.html#method.insert_row">insert_row</a>(<a href="#72">row</a>, <a href="#74">data</a>),
+<a href=#75 id=75 data-nosnippet>75</a>            <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(<span class="kw">_</span>) =&gt; <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(<a href="../../i_slint_core/model/struct.ModelError.html">ModelError</a>::<a href="../../i_slint_core/model/struct.ModelError.html#method.unsupported">unsupported</a>(<a class="self" href="#72">self</a>)),
 <a href=#76 id=76 data-nosnippet>76</a>        }
 <a href=#77 id=77 data-nosnippet>77</a>    }
 <a href=#78 id=78 data-nosnippet>78</a>}

@@ -95,6 +95,14 @@ The Qt renderer comes with the [Qt backend](/master/docs/slint/guide/backends-an
  - Available in the [Winit backend](/master/docs/slint/guide/backends-and-renderers/backend_winit.md) and [LinuxKMS backend](/master/docs/slint/guide/backends-and-renderers/backend_linuxkms.md).
  - Public <LangRefLink lang="rust-slint" relpath="platform/femtovg_renderer/">Rust</LangRefLink> API.
 
+### Vello Renderer
+
+ - GPU acceleration with Metal, Vulkan, and Direct3D, through [Vello](https://github.com/linebender/vello)'s compute pipelines on WGPU.
+ - Experimental: it's never selected automatically, not even when it's the only renderer compiled in.
+   Select it by setting `SLINT_BACKEND=winit-vello` or `SLINT_BACKEND=linuxkms-vello`.
+ - Requires a GPU that supports compute shaders. There's no software fallback.
+ - Available in the [Winit backend](/master/docs/slint/guide/backends-and-renderers/backend_winit.md) and [LinuxKMS backend](/master/docs/slint/guide/backends-and-renderers/backend_linuxkms.md).
+
 ### Skia Renderer
 
  - Sophisticated GPU acceleration with OpenGL, Metal, Vulkan, and Direct3D.
