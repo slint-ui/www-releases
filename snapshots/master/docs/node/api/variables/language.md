@@ -3,7 +3,7 @@ title: "language"
 ---
 > `const` **language**: `object` = `_data`
 
-Defined in: api/node/typescript/generated/language.ts:396
+Defined in: api/node/typescript/generated/language.ts:393
 
 Built-in enums and structs from the Slint language.
 Enum values are accessed via `language.ColorScheme.Dark`; struct values via the

@@ -66,26 +66,22 @@ If the model can update the data, it should also call `row_changed`
 ### `remove_row` (virtual)
 
 ```cpp
-void slint::VectorModel<ModelData>::remove_row(size_t index) override
+bool slint::VectorModel<ModelData>::remove_row(size_t index) override
 ```
 
-Removes the row at the given *index* from the model.
+Removes the row at the given *index* from the model. Returns true when the row was removed, false when the model rejected it.
 
-If the model cannot support data changes, then it is ok to do nothing. The default implementation will print a warning to stderr.
-
-If the model can update the data, it should also call `notify_row_removed`
+The default implementation does nothing and returns false. A model that supports removing rows should also call `notify_row_removed`.
 
 ### `insert_row` (virtual)
 
 ```cpp
-void slint::VectorModel<ModelData>::insert_row(size_t index, const ModelData &value) override
+bool slint::VectorModel<ModelData>::insert_row(size_t index, const ModelData &value) override
 ```
 
-Inserts a new row with the given *data* at the given *index*, shifting the following rows by one.
+Inserts a new row with the given *data* at the given *index*, shifting the following rows by one. Returns true when the row was inserted, false when the model rejected it.
 
-If the model cannot support data changes, then it is ok to do nothing. The default implementation will print a warning to stderr.
-
-If the model can update the data, it should also call `notify_row_added`
+The default implementation does nothing and returns false. A model that supports inserting rows should also call `notify_row_added`.
 
 ### `push_back`
 

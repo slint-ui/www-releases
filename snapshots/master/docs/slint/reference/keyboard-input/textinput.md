@@ -146,15 +146,15 @@ Invoked when the enter key is pressed.
 ### edited()
 Invoked when the text has changed because the user modified it.
 
-### cursor-position-changed(position: Point)
+### cursor-position-changed(position: [Point](/reference/property-types/builtin-structs/#point))
 The cursor was moved to the new (x, y) position described by the `Point` argument.
 
-### key-pressed(event: KeyEvent) -> EventResult
+### key-pressed(event: [KeyEvent](/reference/property-types/builtin-structs/#keyevent)) -> [EventResult](/reference/property-types/builtin-enums/#eventresult)
 Invoked when a key is pressed, the argument is a [KeyEvent](/master/docs/slint/reference/keyboard-input/overview.md) struct. Use this callback to
 handle keys before `TextInput` does. Return `accept` to indicate that you've handled the event, or return
 `reject` to let `TextInput` handle it.
 
-### key-released(event: KeyEvent) -> EventResult
+### key-released(event: [KeyEvent](/reference/property-types/builtin-structs/#keyevent)) -> [EventResult](/reference/property-types/builtin-enums/#eventresult)
 Invoked when a key is released, the argument is a [KeyEvent](/master/docs/slint/reference/keyboard-input/overview.md) struct. Use this callback to
 handle keys before `TextInput` does. Return `accept` to indicate that you've handled the event, or return
 `reject` to let `TextInput` handle it.
@@ -177,10 +177,11 @@ The design metrics of the font scaled to the font pixel size used by the element
 
 ## Functions
 
-### set-selection-offsets(anchor: int, focus: int)
+### set-selection-offsets(anchor: [int](/reference/property-types/numeric-types/#int), focus: [int](/reference/property-types/numeric-types/#int))
 Selects the text between two UTF-8 offsets.
 `anchor` is the end of the selection that stays put and `focus` the end the cursor moves to,
 so `focus` may precede `anchor` to select backwards.
+Pass the same value for both to place the text cursor at that offset without selecting anything.
 
 ### select-all()
 Selects all text.

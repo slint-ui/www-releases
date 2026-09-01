@@ -1,7 +1,7 @@
 ---
 title: "PointerMovedEvent"
 ---
-Defined in: [api/node/typescript/platform.ts:40](https://github.com/slint-ui/slint/blob/master/api/node/typescript/platform.ts#L40)
+Defined in: api/node/typescript/generated/window-event.ts:46
 
 The position of the pointer has changed.
 
@@ -15,7 +15,7 @@ The position of the pointer has changed.
 
 > **position**: [`Point`](/master/docs/node/api/interfaces/point/)
 
-Defined in: [api/node/typescript/platform.ts:43](https://github.com/slint-ui/slint/blob/master/api/node/typescript/platform.ts#L43)
+Defined in: api/node/typescript/generated/window-event.ts:51
 
 The new position of the pointer, in logical pixels relative to the top left corner of the window.
 
@@ -25,4 +25,4 @@ The new position of the pointer, in logical pixels relative to the top left corn
 
 > **type**: `"pointer-moved"`
 
-Defined in: [api/node/typescript/platform.ts:41](https://github.com/slint-ui/slint/blob/master/api/node/typescript/platform.ts#L41)
+Defined in: api/node/typescript/generated/window-event.ts:47

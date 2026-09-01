@@ -252,7 +252,7 @@ This property was formerly known as <code dir="auto">viewport-y</code>, which is
 <ul>
 <li><strong><code dir="auto">focus()</code></strong> Call this function to focus the TextEdit and make it receive future keyboard events.</li>
 <li><strong><code dir="auto">clear-focus()</code></strong> Call this function to remove keyboard focus from this <code dir="auto">TextEdit</code> if it currently has the focus. See also <a href="/master/docs/slint/guide/development/focus/"><span>focus handling</span></a>.</li>
-<li><strong><code dir="auto">set-selection-offsets(anchor: int, focus: int)</code></strong> Selects the text between two UTF-8 offsets: <code dir="auto">anchor</code> is the end of the selection that stays put and <code dir="auto">focus</code> the end the cursor moves to, so <code dir="auto">focus</code> may precede <code dir="auto">anchor</code> to select backwards.</li>
+<li><strong><code dir="auto">set-selection-offsets(anchor: int, focus: int)</code></strong> Selects the text between two UTF-8 offsets: <code dir="auto">anchor</code> is the end of the selection that stays put and <code dir="auto">focus</code> the end the cursor moves to, so <code dir="auto">focus</code> may precede <code dir="auto">anchor</code> to select backwards. Pass the same value for both to place the text cursor at that offset without selecting anything.</li>
 <li><strong><code dir="auto">select-all()</code></strong> Selects all text.</li>
 <li><strong><code dir="auto">clear-selection()</code></strong> Clears the selection. This function takes effect regardless of the <code dir="auto">read-only</code> and <code dir="auto">enabled</code> properties.</li>
 <li><strong><code dir="auto">copy()</code></strong> Copies the selected text to the clipboard.</li>

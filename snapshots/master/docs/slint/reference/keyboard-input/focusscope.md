@@ -91,29 +91,29 @@ Call this function to remove keyboard focus from this `FocusScope` if it current
 
 ## Callbacks
 
-### capture-key-pressed(event: KeyEvent) -> EventResult
+### capture-key-pressed(event: [KeyEvent](/reference/property-types/builtin-structs/#keyevent)) -> [EventResult](/reference/property-types/builtin-enums/#eventresult)
 This function is called during key event handling, *before* `key-pressed` is called. Use this to intercept key press events. The returned [EventResult](/master/docs/slint/reference/property-types/builtin-enums.md#eventresult)
 indicates whether to accept or reject the event. Rejected events are forwarded to the parent element.
 
-### capture-key-released(event: KeyEvent) -> EventResult
+### capture-key-released(event: [KeyEvent](/reference/property-types/builtin-structs/#keyevent)) -> [EventResult](/reference/property-types/builtin-enums/#eventresult)
 This function is called during key event handling, *before* `key-released` is called. Use this to intercept key release events. The returned [EventResult](/master/docs/slint/reference/property-types/builtin-enums.md#eventresult)
 indicates whether to accept or reject the event. Rejected events are forwarded to the parent element.
 
-### key-pressed(event: KeyEvent) -> EventResult
+### key-pressed(event: [KeyEvent](/reference/property-types/builtin-structs/#keyevent)) -> [EventResult](/reference/property-types/builtin-enums/#eventresult)
 Invoked when a key is pressed, the argument is a [KeyEvent](/master/docs/slint/reference/keyboard-input/overview.md) struct. The returned [EventResult](/master/docs/slint/reference/property-types/builtin-enums.md#eventresult)
 indicates whether to accept or reject the event. Rejected events are forwarded to the parent element.
 
-### key-released(event: KeyEvent) -> EventResult
+### key-released(event: [KeyEvent](/reference/property-types/builtin-structs/#keyevent)) -> [EventResult](/reference/property-types/builtin-enums/#eventresult)
 Invoked when a key is released, the argument is a [KeyEvent](/master/docs/slint/reference/keyboard-input/overview.md) struct. The returned [EventResult](/master/docs/slint/reference/property-types/builtin-enums.md#eventresult)
 indicates whether to accept or reject the event. Rejected events are forwarded to the parent element.
 
-### focus-changed-event(reason: FocusReason)
+### focus-changed-event(reason: [FocusReason](/reference/property-types/builtin-enums/#focusreason))
 Invoked when the focus on the `FocusScope` has changed. The argument is a a [FocusReason](/master/docs/slint/reference/property-types/builtin-enums.md#focusreason) enum containing the reason for focus change.
 
-### focus-gained(reason: FocusReason)
+### focus-gained(reason: [FocusReason](/reference/property-types/builtin-enums/#focusreason))
 Invoked when the `FocusScope` gains focus. The argument is a a [FocusReason](/master/docs/slint/reference/property-types/builtin-enums.md#focusreason) enum containing the reason for focus gain.
 
-### focus-lost(reason: FocusReason)
+### focus-lost(reason: [FocusReason](/reference/property-types/builtin-enums/#focusreason))
 Invoked when the `FocusScope` loses focus. The argument is a a [FocusReason](/master/docs/slint/reference/property-types/builtin-enums.md#focusreason) enum containing the reason for focus loss.
 
 ## `KeyBinding`

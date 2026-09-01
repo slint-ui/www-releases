@@ -22,13 +22,13 @@ Set to `false` to stop the `DropArea` from accepting any drops.
 
 ## Callbacks
 
-### can-drop(event: DropEvent) -> DragAction
+### can-drop(event: [DropEvent](/reference/property-types/builtin-structs/#dropevent)) -> [DragAction](/reference/property-types/builtin-enums/#dragaction)
 Return the action this target wants to perform with the drag, or `DragAction.none` to reject.
 The runtime clamps the returned value to the source's allowed set: anything the source did not
 allow is treated as `none`.
 The argument is a [DropEvent](/master/docs/slint/reference/property-types/builtin-structs.md#dropevent) describing the drag.
 
-### dropped(event: DropEvent) -> DragAction
+### dropped(event: [DropEvent](/reference/property-types/builtin-structs/#dropevent)) -> [DragAction](/reference/property-types/builtin-enums/#dragaction)
 Invoked when the user releases the mouse over the area after `can-drop` returned a non-`none`
 action. Use this callback to read `event.data` and apply the drop. The returned
 `DragAction` is reported to the source via `drag-finished`; return `event.proposed-action`

@@ -3,7 +3,7 @@ title: "CapitalizationMode"
 ---
 > **CapitalizationMode** = *typeof* [`CapitalizationMode`](/master/docs/node/api/variables/language/#capitalizationmode)\[keyof *typeof* [`CapitalizationMode`](/master/docs/node/api/variables/language/#capitalizationmode)\]
 
-Defined in: api/node/typescript/generated/language.ts:411
+Defined in: api/node/typescript/generated/language.ts:408
 
 This enum describes the auto-capitalization behavior that the input method
 (e.g. a soft keyboard) should apply while text is entered in a `TextInput`.

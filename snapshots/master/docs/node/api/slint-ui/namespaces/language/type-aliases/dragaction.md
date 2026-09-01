@@ -3,7 +3,7 @@ title: "DragAction"
 ---
 > **DragAction** = *typeof* [`DragAction`](/master/docs/node/api/variables/language/#dragaction)\[keyof *typeof* [`DragAction`](/master/docs/node/api/variables/language/#dragaction)\]
 
-Defined in: api/node/typescript/generated/language.ts:533
+Defined in: api/node/typescript/generated/language.ts:530
 
 This enum describes the action negotiated between the source of a drag (`DragArea`)
 and its target (`DropArea`) during a drag-and-drop operation. The source declares

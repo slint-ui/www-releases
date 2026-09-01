@@ -1,7 +1,7 @@
 ---
 title: "PointerScrolledEvent"
 ---
-Defined in: [api/node/typescript/platform.ts:51](https://github.com/slint-ui/slint/blob/master/api/node/typescript/platform.ts#L51)
+Defined in: api/node/typescript/generated/window-event.ts:59
 
 The wheel button of a mouse was rotated to initiate scrolling.
 
@@ -15,7 +15,7 @@ The wheel button of a mouse was rotated to initiate scrolling.
 
 > **deltaX**: `number`
 
-Defined in: [api/node/typescript/platform.ts:56](https://github.com/slint-ui/slint/blob/master/api/node/typescript/platform.ts#L56)
+Defined in: api/node/typescript/generated/window-event.ts:68
 
 The amount of logical pixels to scroll in the horizontal direction.
 
@@ -25,7 +25,7 @@ The amount of logical pixels to scroll in the horizontal direction.
 
 > **deltaY**: `number`
 
-Defined in: [api/node/typescript/platform.ts:58](https://github.com/slint-ui/slint/blob/master/api/node/typescript/platform.ts#L58)
+Defined in: api/node/typescript/generated/window-event.ts:72
 
 The amount of logical pixels to scroll in the vertical direction.
 
@@ -35,7 +35,7 @@ The amount of logical pixels to scroll in the vertical direction.
 
 > **position**: [`Point`](/master/docs/node/api/interfaces/point/)
 
-Defined in: [api/node/typescript/platform.ts:54](https://github.com/slint-ui/slint/blob/master/api/node/typescript/platform.ts#L54)
+Defined in: api/node/typescript/generated/window-event.ts:64
 
 The position of the pointer when the scroll occurred.
 
@@ -45,4 +45,4 @@ The position of the pointer when the scroll occurred.
 
 > **type**: `"pointer-scrolled"`
 
-Defined in: [api/node/typescript/platform.ts:52](https://github.com/slint-ui/slint/blob/master/api/node/typescript/platform.ts#L52)
+Defined in: api/node/typescript/generated/window-event.ts:60

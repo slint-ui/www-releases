@@ -108,10 +108,12 @@ Passing a default-constructed `Image` clears the previously-set image instead of
 ### `set_file_paths`
 
 ```cpp
-void slint::DataTransfer::set_file_paths(std::span<const std::filesystem::path> paths)
+void slint::DataTransfer::set_file_paths(R &&paths)
 ```
 
 Sets the list of local file paths transferred by this `DataTransfer`, overwriting any previously set list. An empty list clears the file paths.
+
+*paths* may be any range whose elements are convertible to `std::filesystem::path`, such as a `std::vector<std::filesystem::path>`.
 
 ### `has_plain_text`
 

@@ -11,8 +11,8 @@ from slint import ListModel
 ListModel is a <XRef to="Model" /> that stores its data in a Python list.
 
 Construct a ListMode from an iterable (such as a list itself).
-Use <XRef to="ListModel.append" /> to add items to the model, and use the
-`del` statement to remove items.
+Use <XRef to="ListModel.push_row" />, or its `append` alias, to add items to the
+model, and use the `del` statement to remove items.
 
 Any changes to the model are automatically reflected in the views
 in UI they're used with.
@@ -47,11 +47,17 @@ in UI they're used with.
 
 <Signature symbol="slint.models.ListModel.insert_row">insert_row(row: <XRef to="int" plain />, value: T) -&gt; <XRef to="None" plain /></Signature>
 
+### push_row
+
+<Signature symbol="slint.models.ListModel.push_row">push_row(value: T) -&gt; <XRef to="None" plain /></Signature>
+
+Appends the value to the end of the list.
+
 ### append
 
 <Signature symbol="slint.models.ListModel.append">append(value: T) -&gt; <XRef to="None" plain /></Signature>
 
-Appends the value to the end of the list.
+Appends the value to the end of the list, like `push_row`.
 
 ### insert
 

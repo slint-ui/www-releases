@@ -81,7 +81,7 @@ export class ArrayModel<T> extends Model<T> {
 
 > **\[iterator\]**(): `Iterator`\<`T`\>
 
-Defined in: [api/node/typescript/models.ts:169](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L169)
+Defined in: [api/node/typescript/models.ts:170](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L170)
 
 #### Returns
 
@@ -97,10 +97,12 @@ Defined in: [api/node/typescript/models.ts:169](https://github.com/slint-ui/slin
 
 > **insertRow**(`_index`, `_data`): `void`
 
-Defined in: [api/node/typescript/models.ts:163](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L163)
+Defined in: [api/node/typescript/models.ts:166](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L166)
 
 Implementations of this function must add a row at the specified index, pushing all next
 rows to the right.
+Throws when the model rejects the modification; the default implementation
+always throws.
 
 #### Parameters
 
@@ -126,9 +128,10 @@ new data item to store in a new row.
 
 > **pushRow**(`data`): `void`
 
-Defined in: [api/node/typescript/models.ts:143](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L143)
+Defined in: [api/node/typescript/models.ts:144](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L144)
 
 Adds a line to the model with the provided data.
+Throws when the model rejects the modification.
 The default implementation calls [Model.insertRow](/master/docs/node/api/classes/model/#insertrow) with the row count.
 
 #### Parameters
@@ -149,9 +152,11 @@ new data item to store in a new row.
 
 > **removeRow**(`_index`): `void`
 
-Defined in: [api/node/typescript/models.ts:151](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L151)
+Defined in: [api/node/typescript/models.ts:154](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L154)
 
 Implementations of this function must remove the row at the specified index.
+Throws when the model rejects the modification; the default implementation
+always throws.
 
 #### Parameters
 

@@ -97,5 +97,5 @@ The vertical alignment of the text.
 
 ## Callbacks
 
-### link-clicked(link: string)
+### link-clicked(link: [string](/reference/property-types/strings/#string))
 A callback that's invoked when a link in the text is clicked. The parameter contains the clicked link as a string.

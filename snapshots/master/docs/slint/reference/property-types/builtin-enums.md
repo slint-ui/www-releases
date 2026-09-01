@@ -8,7 +8,6 @@ import AnimationDirection from "/src/content/docs/generated/reference/enums/_Ani
 import CapitalizationMode from "/src/content/docs/generated/reference/enums/_CapitalizationMode.md"
 import ColorScheme from "/src/content/docs/generated/reference/enums/_ColorScheme.md"
 import CrossAxisAlignment from "/src/content/docs/generated/reference/enums/_CrossAxisAlignment.md"
-import CrossAxisSelfAlignment from "/src/content/docs/generated/reference/enums/_CrossAxisSelfAlignment.md"
 import DialogButtonRole from "/src/content/docs/generated/reference/enums/_DialogButtonRole.md"
 import DragAction from "/src/content/docs/generated/reference/enums/_DragAction.md"
 import EventResult from "/src/content/docs/generated/reference/enums/_EventResult.md"
@@ -57,9 +56,6 @@ import TextWrap from "/src/content/docs/generated/reference/enums/_TextWrap.md"
 
 ## CrossAxisAlignment
 <CrossAxisAlignment />
-
-## CrossAxisSelfAlignment
-<CrossAxisSelfAlignment />
 
 ## DialogButtonRole
 <DialogButtonRole />

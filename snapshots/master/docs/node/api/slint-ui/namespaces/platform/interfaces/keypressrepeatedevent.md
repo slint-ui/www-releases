@@ -1,7 +1,7 @@
 ---
 title: "KeyPressRepeatedEvent"
 ---
-Defined in: [api/node/typescript/platform.ts:88](https://github.com/slint-ui/slint/blob/master/api/node/typescript/platform.ts#L88)
+Defined in: api/node/typescript/generated/window-event.ts:104
 
 A key press was auto-repeated.
 
@@ -15,7 +15,7 @@ A key press was auto-repeated.
 
 > **text**: `string`
 
-Defined in: [api/node/typescript/platform.ts:91](https://github.com/slint-ui/slint/blob/master/api/node/typescript/platform.ts#L91)
+Defined in: api/node/typescript/generated/window-event.ts:109
 
 The unicode representation of the key pressed.
 
@@ -25,4 +25,4 @@ The unicode representation of the key pressed.
 
 > **type**: `"key-press-repeated"`
 
-Defined in: [api/node/typescript/platform.ts:89](https://github.com/slint-ui/slint/blob/master/api/node/typescript/platform.ts#L89)
+Defined in: api/node/typescript/generated/window-event.ts:105

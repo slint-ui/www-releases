@@ -78,6 +78,6 @@ Whether the source allows the drop to link to the data. Neither side gives up ow
 
 ## Callbacks
 
-### drag-finished(action: DragAction)
+### drag-finished(action: [DragAction](/reference/property-types/builtin-enums/#dragaction))
 Fires when the drag ends: with the chosen action on a successful drop, or with
 `DragAction.none` if the drag was cancelled.

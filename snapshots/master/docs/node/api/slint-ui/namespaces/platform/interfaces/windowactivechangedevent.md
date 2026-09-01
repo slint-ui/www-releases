@@ -1,7 +1,7 @@
 ---
 title: "WindowActiveChangedEvent"
 ---
-Defined in: [api/node/typescript/platform.ts:149](https://github.com/slint-ui/slint/blob/master/api/node/typescript/platform.ts#L149)
+Defined in: api/node/typescript/generated/window-event.ts:173
 
 The window was activated or de-activated.
 
@@ -15,7 +15,7 @@ The window was activated or de-activated.
 
 > **active**: `boolean`
 
-Defined in: [api/node/typescript/platform.ts:152](https://github.com/slint-ui/slint/blob/master/api/node/typescript/platform.ts#L152)
+Defined in: api/node/typescript/generated/window-event.ts:178
 
 True when the window gained focus, false when it lost focus.
 
@@ -25,4 +25,4 @@ True when the window gained focus, false when it lost focus.
 
 > **type**: `"window-active-changed"`
 
-Defined in: [api/node/typescript/platform.ts:150](https://github.com/slint-ui/slint/blob/master/api/node/typescript/platform.ts#L150)
+Defined in: api/node/typescript/generated/window-event.ts:174

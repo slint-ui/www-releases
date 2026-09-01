@@ -129,10 +129,10 @@ period of time, or the same is done with a finger. The `clicked()` callbacks wil
 The mouse or finger has been moved. This will only be called if the mouse is also pressed or the finger continues to touch
 the display. See also **pointer-event(PointerEvent)**.
 
-### pointer-event(event: PointerEvent)
+### pointer-event(event: [PointerEvent](/reference/property-types/builtin-structs/#pointerevent))
 <PointerEvent />
 
-### scroll-event(event: PointerScrollEvent) -> EventResult
+### scroll-event(event: [PointerScrollEvent](/reference/property-types/builtin-structs/#pointerscrollevent)) -> [EventResult](/reference/property-types/builtin-enums/#eventresult)
 Invoked when the mouse wheel was rotated or another scroll gesture was made.
 The `PointerScrollEvent` argument contains information about how much to scroll in what direction.
 <PointerScrollEvent />

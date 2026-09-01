@@ -151,7 +151,7 @@ The default value is `wrap`, unlike CSS where it is `nowrap`.
 Cell elements inside a `FlexboxLayout` obtain the following new properties:
 
 ### cross-axis-self-alignment
-<SlintProperty propName="cross-axis-self-alignment" typeName="enum" enumName="CrossAxisSelfAlignment" defaultValue="auto">
+<SlintProperty propName="cross-axis-self-alignment" typeName="enum" enumName="CrossAxisAlignment" defaultValue="auto">
 Overrides the container's `cross-axis-alignment` for this element. CSS Flexbox calls this "align-self".
 The default value `auto` uses the container's `cross-axis-alignment`.
 </SlintProperty>

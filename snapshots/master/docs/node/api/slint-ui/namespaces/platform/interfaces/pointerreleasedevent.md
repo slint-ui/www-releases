@@ -1,7 +1,7 @@
 ---
 title: "PointerReleasedEvent"
 ---
-Defined in: [api/node/typescript/platform.ts:27](https://github.com/slint-ui/slint/blob/master/api/node/typescript/platform.ts#L27)
+Defined in: api/node/typescript/generated/window-event.ts:29
 
 A pointer was released.
 
@@ -15,7 +15,7 @@ A pointer was released.
 
 > **button**: [`PointerEventButton`](/master/docs/node/api/slint-ui/namespaces/language/type-aliases/pointereventbutton/)
 
-Defined in: [api/node/typescript/platform.ts:32](https://github.com/slint-ui/slint/blob/master/api/node/typescript/platform.ts#L32)
+Defined in: api/node/typescript/generated/window-event.ts:38
 
 The button that was released.
 
@@ -25,7 +25,7 @@ The button that was released.
 
 > **position**: [`Point`](/master/docs/node/api/interfaces/point/)
 
-Defined in: [api/node/typescript/platform.ts:30](https://github.com/slint-ui/slint/blob/master/api/node/typescript/platform.ts#L30)
+Defined in: api/node/typescript/generated/window-event.ts:34
 
 The position of the pointer, in logical pixels relative to the top left corner of the window.
 
@@ -35,4 +35,4 @@ The position of the pointer, in logical pixels relative to the top left corner o
 
 > **type**: `"pointer-released"`
 
-Defined in: [api/node/typescript/platform.ts:28](https://github.com/slint-ui/slint/blob/master/api/node/typescript/platform.ts#L28)
+Defined in: api/node/typescript/generated/window-event.ts:30

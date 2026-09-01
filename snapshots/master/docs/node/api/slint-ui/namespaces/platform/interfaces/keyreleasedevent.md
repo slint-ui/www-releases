@@ -1,7 +1,7 @@
 ---
 title: "KeyReleasedEvent"
 ---
-Defined in: [api/node/typescript/platform.ts:99](https://github.com/slint-ui/slint/blob/master/api/node/typescript/platform.ts#L99)
+Defined in: api/node/typescript/generated/window-event.ts:117
 
 A key was released.
 
@@ -15,7 +15,7 @@ A key was released.
 
 > **text**: `string`
 
-Defined in: [api/node/typescript/platform.ts:102](https://github.com/slint-ui/slint/blob/master/api/node/typescript/platform.ts#L102)
+Defined in: api/node/typescript/generated/window-event.ts:122
 
 The unicode representation of the key released.
 
@@ -25,4 +25,4 @@ The unicode representation of the key released.
 
 > **type**: `"key-released"`
 
-Defined in: [api/node/typescript/platform.ts:100](https://github.com/slint-ui/slint/blob/master/api/node/typescript/platform.ts#L100)
+Defined in: api/node/typescript/generated/window-event.ts:118

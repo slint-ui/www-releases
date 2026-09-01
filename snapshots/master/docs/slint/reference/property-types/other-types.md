@@ -96,6 +96,7 @@ To specify an easing curve, use the values from the `Easing` namespace. For exam
     -   `ease-out-bounce`
     -   `ease-in-out-bounce`
     -   `cubic-bezier(a, b, c, d)` as in CSS
+    -   `spring(bounce)` as defined in [Spring Animations](/master/docs/slint/reference/language/animations.md#spring-animations)
 
 Additionally, in expressions of type `easing`, those names are available directly.
 

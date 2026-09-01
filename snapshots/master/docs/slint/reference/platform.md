@@ -50,7 +50,7 @@ See the [translations guide](/master/docs/slint/guide/development/translations.m
 
 ## Functions
 
-### open-url(url: string) -> bool
+### open-url(url: [string](/reference/property-types/strings/#string)) -> [bool](/reference/property-types/numeric-types/#bool)
 Opens the specified URL in an external browser. This function invokes the platform's URL opening mechanism.
 Returns `true` on success, or `false` if the platform doesn't support opening URLs or the operation failed.
 

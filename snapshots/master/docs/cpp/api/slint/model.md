@@ -79,36 +79,32 @@ If the model can update the data, it should also call `row_changed`
 ### `push_row` (virtual)
 
 ```cpp
-void slint::Model<ModelData>::push_row(const ModelData &data)
+bool slint::Model<ModelData>::push_row(const ModelData &data)
 ```
 
-Adds a new row with the given *data* at the end of the model.
+Adds a new row with the given *data* at the end of the model. Returns true when the row was added, false when the model rejected it.
 
 The default implementation inserts the row after the last one with `insert_row`, so implementing `insert_row` is enough to support push.
 
 ### `remove_row` (virtual)
 
 ```cpp
-void slint::Model<ModelData>::remove_row(size_t)
+bool slint::Model<ModelData>::remove_row(size_t)
 ```
 
-Removes the row at the given *index* from the model.
+Removes the row at the given *index* from the model. Returns true when the row was removed, false when the model rejected it.
 
-If the model cannot support data changes, then it is ok to do nothing. The default implementation will print a warning to stderr.
-
-If the model can update the data, it should also call `notify_row_removed`
+The default implementation does nothing and returns false. A model that supports removing rows should also call `notify_row_removed`.
 
 ### `insert_row` (virtual)
 
 ```cpp
-void slint::Model<ModelData>::insert_row(size_t, const ModelData &)
+bool slint::Model<ModelData>::insert_row(size_t, const ModelData &)
 ```
 
-Inserts a new row with the given *data* at the given *index*, shifting the following rows by one.
+Inserts a new row with the given *data* at the given *index*, shifting the following rows by one. Returns true when the row was inserted, false when the model rejected it.
 
-If the model cannot support data changes, then it is ok to do nothing. The default implementation will print a warning to stderr.
-
-If the model can update the data, it should also call `notify_row_added`
+The default implementation does nothing and returns false. A model that supports inserting rows should also call `notify_row_added`.
 
 ## Protected Functions
 

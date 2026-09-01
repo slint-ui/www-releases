@@ -88,10 +88,10 @@ Note that this functions output is best-effort and may be adjusted/improved at a
 ### `from_parts`
 
 ```cpp
-static std::optional<Keys> slint::Keys::from_parts(std::span<const std::string_view> parts)
+static std::optional<Keys> slint::Keys::from_parts(R &&parts)
 ```
 
-Create a `Keys` from a span of string parts, e.g. `{"Control", "Shift?", "Z"}`.
+Create a `Keys` from a range of string parts, e.g. `{"Control", "Shift?", "Z"}`.
 
 Each element is either a modifier (`Control`, `Shift`, `Alt`, `Meta`, `Shift?`, `Alt?`) or a key name from the Key namespace (case-sensitive). If not found, it is treated as a string literal (must be a single lowercase grapheme cluster).
 
@@ -99,13 +99,7 @@ Parts are taken verbatim — they are not trimmed — so whitespace is significa
 
 Returns `std::nullopt` on parse failure.
 
-### `from_parts`
-
-```cpp
-static std::optional<Keys> slint::Keys::from_parts(std::initializer_list<std::string_view> parts)
-```
-
-This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
+*parts* may be any range whose elements are convertible to `std::string_view`, such as a `std::vector<std::string>`.
 
 ## Friends
 

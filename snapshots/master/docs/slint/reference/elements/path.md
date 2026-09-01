@@ -110,7 +110,7 @@ ignored and instead the bounding rectangle of all path elements is used to defin
 
 ## Functions
 
-### point-at(t: float) -> Point
+### point-at(t: [float](/reference/property-types/numeric-types/#float)) -> [Point](/reference/property-types/builtin-structs/#point)
 Returns a point at the given percent along the path in the Path element's coordinate space.
 Returns (0, 0) if the path is empty.
 
@@ -118,7 +118,7 @@ If a `t` outside the bounds of 0 and 1 is passed, it will be converted to its de
 Ex: 1.5 -> 0.5 and 2.0 -> 1.0. This allows for N iterations of a loop
 by animating t from 0 to N. If `t` is animated from N to 0, it will loop N times backwards.
 
-### angle-at(t: float) -> angle
+### angle-at(t: [float](/reference/property-types/numeric-types/#float)) -> [angle](/reference/property-types/numeric-types/#angle)
 Returns the angle (in degrees) between the x-axis and the path's tangent vector at the given `t`.
 The tangent points in the direction the path was defined, so this reflects the path's shape and not
 the object's current direction of travel. Returns 0 if the path is empty.
@@ -189,6 +189,21 @@ Note how the coordinates of the path elements don't use units - they operate wit
 coordinate system of the scalable path.
 
 
+## `LineTo`
+
+The `LineTo` sub-element describes a line from the path's current position to the
+location specified by the `x` and `y` properties.
+
+### x
+<SlintProperty propName="x" typeName="float">
+The target x position of the line.
+</SlintProperty>
+
+### y
+<SlintProperty propName="y" typeName="float">
+The target y position of the line.
+</SlintProperty>
+
 ## `ArcTo`
 
 The `ArcTo` sub-element describes the portion of an ellipse. The arc is drawn from the path's
@@ -231,37 +246,6 @@ The target x position of the line.
 The target y position of the line.
 </SlintProperty>
 
-## `MoveTo`
-
-The `MoveTo` sub-element closes the current sub-path, if present, and moves the current point
-to the location specified by the `x` and `y` properties. Subsequent elements such as `LineTo`
-will use this new position as their starting point, therefore this starts a new sub-path.
-
-### x
-<SlintProperty propName="x" typeName="float">
-The x position of the new current point.
-</SlintProperty>
-
-### y
-<SlintProperty propName="y" typeName="float">
-The y position of the new current point.
-</SlintProperty>
-
-## `LineTo`
-
-The `LineTo` sub-element describes a line from the path's current position to the
-location specified by the `x` and `y` properties.
-
-### x
-<SlintProperty propName="x" typeName="float">
-The target x position of the line.
-</SlintProperty>
-
-### y
-<SlintProperty propName="y" typeName="float">
-The target y position of the line.
-</SlintProperty>
-
 ## `QuadraticTo`
 
 The QuadraticTo sub-element describes a smooth Bézier from the path's current position to the
@@ -286,6 +270,22 @@ The target x position of the curve.
 ### y
 <SlintProperty propName="y" typeName="float">
 The target y position of the curve.
+</SlintProperty>
+
+## `MoveTo`
+
+The `MoveTo` sub-element closes the current sub-path, if present, and moves the current point
+to the location specified by the `x` and `y` properties. Subsequent elements such as `LineTo`
+will use this new position as their starting point, therefore this starts a new sub-path.
+
+### x
+<SlintProperty propName="x" typeName="float">
+The x position of the new current point.
+</SlintProperty>
+
+### y
+<SlintProperty propName="y" typeName="float">
+The y position of the new current point.
 </SlintProperty>
 
 ## `Close`

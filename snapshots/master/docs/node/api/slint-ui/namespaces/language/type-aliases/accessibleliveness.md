@@ -3,7 +3,7 @@ title: "AccessibleLiveness"
 ---
 > **AccessibleLiveness** = *typeof* [`AccessibleLiveness`](/master/docs/node/api/variables/language/#accessibleliveness)\[keyof *typeof* [`AccessibleLiveness`](/master/docs/node/api/variables/language/#accessibleliveness)\]
 
-Defined in: api/node/typescript/generated/language.ts:489
+Defined in: api/node/typescript/generated/language.ts:486
 
 This enum represents the different values of the `accessible-live-region` property.
 It indicates that an element is a live region whose content changes should be

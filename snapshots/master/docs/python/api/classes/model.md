@@ -40,9 +40,9 @@ Re-implement this method in a sub-class to provide the row count.
 Returns the data for the given row.
 Re-implement this method in a sub-class to provide the data.
 
-### append
+### push_row
 
-<Signature symbol="slint.models.Model.append">append(value: T) -&gt; <XRef to="None" plain /></Signature>
+<Signature symbol="slint.models.Model.push_row">push_row(value: T) -&gt; <XRef to="None" plain /></Signature>
 
 Add a new row to the model with the provided value.
 The default implementation calls `insert_row` with the row count.
@@ -52,14 +52,18 @@ The default implementation calls `insert_row` with the row count.
 <Signature symbol="slint.models.Model.remove_row">remove_row(row: <XRef to="int" plain />) -&gt; <XRef to="None" plain /></Signature>
 
 Remove the row at the given index.
-Re-implement this method in a sub-class to handle the change.
+Raises an exception when the model rejects the modification.
+The default implementation raises NotImplementedError. A model that
+supports removing rows should also call `notify_row_removed`.
 
 ### insert_row
 
 <Signature symbol="slint.models.Model.insert_row">insert_row(row: <XRef to="int" plain />, value: T) -&gt; <XRef to="None" plain /></Signature>
 
 Insert a new row at the given index.
-Re-implement this method in a sub-class to handle the change.
+Raises an exception when the model rejects the modification.
+The default implementation raises NotImplementedError. A model that
+supports inserting rows should also call `notify_row_added`.
 
 ### notify_row_changed
 

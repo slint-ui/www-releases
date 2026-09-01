@@ -111,7 +111,7 @@ On mobile devices, virtual keyboards (aka software keyboards or onscreen keyboar
 
 ## Functions
 
-### close() -> bool
+### close() -> [bool](/reference/property-types/numeric-types/#bool)
 Request that the window be closed.
 This triggers the `close-requested` callback, giving the application a chance to cancel the close.
 Returns `true` if the application accepted the close request; false otherwise.

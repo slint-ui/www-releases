@@ -1,7 +1,7 @@
 ---
 title: "ScaleFactorChangedEvent"
 ---
-Defined in: [api/node/typescript/platform.ts:113](https://github.com/slint-ui/slint/blob/master/api/node/typescript/platform.ts#L113)
+Defined in: api/node/typescript/generated/window-event.ts:133
 
 The window's scale factor has changed.
 This can happen for example when the display's resolution changes,
@@ -18,7 +18,7 @@ or the window is moved to a different screen.
 
 > **scaleFactor**: `number`
 
-Defined in: [api/node/typescript/platform.ts:116](https://github.com/slint-ui/slint/blob/master/api/node/typescript/platform.ts#L116)
+Defined in: api/node/typescript/generated/window-event.ts:138
 
 The window system provided scale factor to map logical pixels to physical pixels.
 
@@ -28,4 +28,4 @@ The window system provided scale factor to map logical pixels to physical pixels
 
 > **type**: `"scale-factor-changed"`
 
-Defined in: [api/node/typescript/platform.ts:114](https://github.com/slint-ui/slint/blob/master/api/node/typescript/platform.ts#L114)
+Defined in: api/node/typescript/generated/window-event.ts:134

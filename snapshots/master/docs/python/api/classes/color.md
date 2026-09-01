@@ -42,7 +42,7 @@ from slint import Color
 
 ### mix
 
-<Signature symbol="slint.slint.Color.mix">mix(other: <XRef to="slint.slint.Image" plain />, factor: <XRef to="float" plain />) -&gt; <XRef to="slint.slint.Color" plain /></Signature>
+<Signature symbol="slint.slint.Color.mix">mix(other: <XRef to="slint.slint.Color" plain />, factor: <XRef to="float" plain />) -&gt; <XRef to="slint.slint.Color" plain /></Signature>
 
 ### with_alpha
 

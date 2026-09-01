@@ -1,7 +1,7 @@
 ---
 title: "PointerExitedEvent"
 ---
-Defined in: [api/node/typescript/platform.ts:68](https://github.com/slint-ui/slint/blob/master/api/node/typescript/platform.ts#L68)
+Defined in: api/node/typescript/generated/window-event.ts:82
 
 The pointer exited the window.
 
@@ -17,4 +17,4 @@ Dispatching this event always returns `Accepted`.
 
 > **type**: `"pointer-exited"`
 
-Defined in: [api/node/typescript/platform.ts:69](https://github.com/slint-ui/slint/blob/master/api/node/typescript/platform.ts#L69)
+Defined in: api/node/typescript/generated/window-event.ts:83
