@@ -1,0 +1,35 @@
+---
+title: "Animations"
+description: "Animating property changes."
+---
+Animate a property change by declaring an animation for it with the
+`animate` keyword: every change of that property then plays the animation —
+no matter whether it comes from a binding, a state change, or your business logic.
+
+```slint
+export component Example inherits Window {
+    preferred-width: 100px;
+    preferred-height: 100px;
+
+    background: area.pressed ? blue : red;
+    animate background {
+        duration: 250ms;
+    }
+
+    area := TouchArea {}
+}
+```
+
+This animates the color property for 250ms whenever it changes.
+
+Fine-tune the animation with `delay`, `duration`, `iteration-count`, `easing`,
+`direction`, and `enabled`, and animate several properties with the same animation:
+
+```slint no-test
+animate x, y { duration: 100ms; easing: ease-out-bounce; }
+```
+
+The [Animations](../../../../reference/language/animations/) chapter of the language
+reference describes every parameter, and the
+[`easing` type](../../../../reference/property-types/other-types/#easing) lists the
+available easing curves.

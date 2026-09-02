@@ -1,0 +1,157 @@
+/* tslint:disable */
+/* eslint-disable */
+
+type ImportCallbackFunction = (url: string) => Promise<string>;
+type CurrentElementInformationCallbackFunction = (url: string, start_line: number, start_column: number, end_line: number, end_column: number) => void;
+
+
+
+export class CompilationResult {
+    private constructor();
+    free(): void;
+    [Symbol.dispose](): void;
+    readonly component: WrappedCompiledComp | undefined;
+    readonly diagnostics: Array<any>;
+    readonly error_string: string;
+}
+
+export class WrappedCompiledComp {
+    private constructor();
+    free(): void;
+    [Symbol.dispose](): void;
+    /**
+     * Creates this compiled component in a canvas, wrapped in a promise.
+     * The HTML must contains a <canvas> element with the given `canvas_id`
+     * where the result is gonna be rendered.
+     * You need to call `show()` on the returned instance for rendering.
+     *
+     * Note that the promise will only be resolved after calling `slint.run_event_loop()`.
+     */
+    create(canvas_id: string): Promise<WrappedInstance>;
+    /**
+     * Creates this compiled component in the canvas of the provided instance, wrapped in a promise.
+     * For this to work, the provided instance needs to be visible (show() must've been
+     * called) and the event loop must be running (`slint.run_event_loop()`). After this
+     * call the provided instance is not rendered anymore and can be discarded.
+     *
+     * Note that the promise will only be resolved after calling `slint.run_event_loop()`.
+     */
+    create_with_existing_window(instance: WrappedInstance): Promise<WrappedInstance>;
+    /**
+     * Run this compiled component in a canvas.
+     * The HTML must contains a <canvas> element with the given `canvas_id`
+     * where the result is gonna be rendered
+     */
+    run(canvas_id: string): void;
+}
+
+export class WrappedInstance {
+    private constructor();
+    free(): void;
+    [Symbol.dispose](): void;
+    /**
+     * Hides this instance and prevents further updates of the canvas element.
+     *
+     * Note that the promise will only be resolved after calling `slint.run_event_loop()`.
+     */
+    hide(): Promise<any>;
+    /**
+     * Marks this instance for rendering and input handling.
+     *
+     * Note that the promise will only be resolved after calling `slint.run_event_loop()`.
+     */
+    show(): Promise<any>;
+}
+
+/**
+ * Compile the content of a string.
+ *
+ * Returns a promise to a compiled component which can be run with ".run()"
+ */
+export function compile_from_string(source: string, base_url: string, optional_import_callback?: ImportCallbackFunction | null): Promise<CompilationResult>;
+
+/**
+ * Same as [`compile_from_string`], but also takes a style parameter
+ */
+export function compile_from_string_with_style(source: string, base_url: string, style: string, optional_import_callback?: ImportCallbackFunction | null): Promise<CompilationResult>;
+
+export function init(): void;
+
+/**
+ * Register DOM event handlers on all instance and set up the event loop for that.
+ * You can call this function only once. It will throw an exception but that is safe
+ * to ignore.
+ */
+export function run_event_loop(): void;
+
+export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembly.Module;
+
+export interface InitOutput {
+    readonly memory: WebAssembly.Memory;
+    readonly __wbg_compilationresult_free: (a: number, b: number) => void;
+    readonly __wbg_wrappedcompiledcomp_free: (a: number, b: number) => void;
+    readonly __wbg_wrappedinstance_free: (a: number, b: number) => void;
+    readonly compilationresult_component: (a: number) => number;
+    readonly compilationresult_diagnostics: (a: number) => any;
+    readonly compilationresult_error_string: (a: number) => [number, number];
+    readonly compile_from_string: (a: number, b: number, c: number, d: number, e: number) => any;
+    readonly compile_from_string_with_style: (a: number, b: number, c: number, d: number, e: number, f: number, g: number) => any;
+    readonly init: () => void;
+    readonly run_event_loop: () => [number, number];
+    readonly wrappedcompiledcomp_create: (a: number, b: number, c: number) => [number, number, number];
+    readonly wrappedcompiledcomp_create_with_existing_window: (a: number, b: number) => [number, number, number];
+    readonly wrappedcompiledcomp_run: (a: number, b: number, c: number) => void;
+    readonly wrappedinstance_hide: (a: number) => [number, number, number];
+    readonly wrappedinstance_show: (a: number) => [number, number, number];
+    readonly wasm_bindgen_245d10a869f1bb22___convert__closures_____invoke___wasm_bindgen_245d10a869f1bb22___JsValue__core_f0fd674eaa06beef___result__Result_____wasm_bindgen_245d10a869f1bb22___JsError___true_: (a: number, b: number, c: any) => [number, number];
+    readonly wasm_bindgen_245d10a869f1bb22___convert__closures_____invoke___js_sys_9c1ef554de75067f___Function_fn_wasm_bindgen_245d10a869f1bb22___JsValue_____wasm_bindgen_245d10a869f1bb22___sys__Undefined___js_sys_9c1ef554de75067f___Function_fn_wasm_bindgen_245d10a869f1bb22___JsValue_____wasm_bindgen_245d10a869f1bb22___sys__Undefined_______true_: (a: number, b: number, c: any, d: any) => void;
+    readonly wasm_bindgen_245d10a869f1bb22___convert__closures_____invoke___js_sys_9c1ef554de75067f___Function_fn_wasm_bindgen_245d10a869f1bb22___JsValue_____wasm_bindgen_245d10a869f1bb22___sys__Undefined___js_sys_9c1ef554de75067f___Function_fn_wasm_bindgen_245d10a869f1bb22___JsValue_____wasm_bindgen_245d10a869f1bb22___sys__Undefined_______true__30: (a: number, b: number, c: any, d: any) => void;
+    readonly wasm_bindgen_245d10a869f1bb22___convert__closures_____invoke___js_sys_9c1ef554de75067f___Function_fn_wasm_bindgen_245d10a869f1bb22___JsValue_____wasm_bindgen_245d10a869f1bb22___sys__Undefined___js_sys_9c1ef554de75067f___Function_fn_wasm_bindgen_245d10a869f1bb22___JsValue_____wasm_bindgen_245d10a869f1bb22___sys__Undefined_______true__31: (a: number, b: number, c: any, d: any) => void;
+    readonly wasm_bindgen_245d10a869f1bb22___convert__closures_____invoke___wasm_bindgen_245d10a869f1bb22___JsValue______true_: (a: number, b: number, c: any) => void;
+    readonly wasm_bindgen_245d10a869f1bb22___convert__closures_____invoke___wasm_bindgen_245d10a869f1bb22___JsValue______true__3: (a: number, b: number, c: any) => void;
+    readonly wasm_bindgen_245d10a869f1bb22___convert__closures_____invoke___web_sys_bcc67e2ce3d8e5bc___features__gen_FocusEvent__FocusEvent______true_: (a: number, b: number, c: any) => void;
+    readonly wasm_bindgen_245d10a869f1bb22___convert__closures_____invoke___web_sys_bcc67e2ce3d8e5bc___features__gen_FocusEvent__FocusEvent______true__5: (a: number, b: number, c: any) => void;
+    readonly wasm_bindgen_245d10a869f1bb22___convert__closures_____invoke___wasm_bindgen_245d10a869f1bb22___JsValue______true__6: (a: number, b: number, c: any) => void;
+    readonly wasm_bindgen_245d10a869f1bb22___convert__closures_____invoke___web_sys_bcc67e2ce3d8e5bc___features__gen_FocusEvent__FocusEvent______true__7: (a: number, b: number, c: any) => void;
+    readonly wasm_bindgen_245d10a869f1bb22___convert__closures_____invoke___wasm_bindgen_245d10a869f1bb22___JsValue______true__8: (a: number, b: number, c: any) => void;
+    readonly wasm_bindgen_245d10a869f1bb22___convert__closures_____invoke___web_sys_bcc67e2ce3d8e5bc___features__gen_FocusEvent__FocusEvent______true__9: (a: number, b: number, c: any) => void;
+    readonly wasm_bindgen_245d10a869f1bb22___convert__closures_____invoke___web_sys_bcc67e2ce3d8e5bc___features__gen_FocusEvent__FocusEvent______true__10: (a: number, b: number, c: any) => void;
+    readonly wasm_bindgen_245d10a869f1bb22___convert__closures_____invoke___wasm_bindgen_245d10a869f1bb22___JsValue______true__11: (a: number, b: number, c: any) => void;
+    readonly wasm_bindgen_245d10a869f1bb22___convert__closures_____invoke___wasm_bindgen_245d10a869f1bb22___JsValue______true__12: (a: number, b: number, c: any) => void;
+    readonly wasm_bindgen_245d10a869f1bb22___convert__closures_____invoke___wasm_bindgen_245d10a869f1bb22___JsValue______true__13: (a: number, b: number, c: any) => void;
+    readonly wasm_bindgen_245d10a869f1bb22___convert__closures_____invoke___web_sys_bcc67e2ce3d8e5bc___features__gen_FocusEvent__FocusEvent______true__14: (a: number, b: number, c: any) => void;
+    readonly wasm_bindgen_245d10a869f1bb22___convert__closures_____invoke___wasm_bindgen_245d10a869f1bb22___JsValue______true__15: (a: number, b: number, c: any) => void;
+    readonly wasm_bindgen_245d10a869f1bb22___convert__closures_____invoke___core_f0fd674eaa06beef___option__Option_web_sys_bcc67e2ce3d8e5bc___features__gen_Blob__Blob_______true_: (a: number, b: number, c: number) => void;
+    readonly wasm_bindgen_245d10a869f1bb22___convert__closures_____invoke_______true_: (a: number, b: number) => void;
+    readonly __wbindgen_malloc: (a: number, b: number) => number;
+    readonly __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;
+    readonly __externref_table_alloc: () => number;
+    readonly __wbindgen_externrefs: WebAssembly.Table;
+    readonly __wbindgen_exn_store: (a: number) => void;
+    readonly __wbindgen_free: (a: number, b: number, c: number) => void;
+    readonly __wbindgen_destroy_closure: (a: number, b: number) => void;
+    readonly __externref_table_dealloc: (a: number) => void;
+    readonly __wbindgen_start: () => void;
+}
+
+export type SyncInitInput = BufferSource | WebAssembly.Module;
+
+/**
+ * Instantiates the given `module`, which can either be bytes or
+ * a precompiled `WebAssembly.Module`.
+ *
+ * @param {{ module: SyncInitInput }} module - Passing `SyncInitInput` directly is deprecated.
+ *
+ * @returns {InitOutput}
+ */
+export function initSync(module: { module: SyncInitInput } | SyncInitInput): InitOutput;
+
+/**
+ * If `module_or_path` is {RequestInfo} or {URL}, makes a request and
+ * for everything else, calls `WebAssembly.instantiate` directly.
+ *
+ * @param {{ module_or_path: InitInput | Promise<InitInput> }} module_or_path - Passing `InitInput` directly is deprecated.
+ *
+ * @returns {Promise<InitOutput>}
+ */
+export default function __wbg_init (module_or_path?: { module_or_path: InitInput | Promise<InitInput> } | InitInput | Promise<InitInput>): Promise<InitOutput>;

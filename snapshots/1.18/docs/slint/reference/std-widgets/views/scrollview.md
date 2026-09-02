@@ -1,0 +1,126 @@
+---
+title: "ScrollView"
+description: "ScrollView api."
+---
+import SlintProperty from '@slint/common-files/src/components/SlintProperty.astro';
+import CodeSnippetMD from '@slint/common-files/src/components/CodeSnippetMD.astro';
+import Link from '@slint/common-files/src/components/Link.astro';
+
+<CodeSnippetMD imagePath="/src/assets/generated/std-widgets-scrollview.png"  imageWidth="200" imageHeight="200"  imageAlt='scrollview example'>
+```slint playground
+import { ScrollView } from "std-widgets.slint";
+export component Example inherits Window {
+    width: 200px;
+    height: 200px;
+    ScrollView {
+        width: 200px;
+        height: 200px;
+        content-width: 300px;
+        content-height: 300px;
+        Rectangle { width: 30px; height: 30px; x: 275px; y: 50px; background: blue; }
+        Rectangle { width: 30px; height: 30px; x: 175px; y: 130px; background: red; }
+        Rectangle { width: 30px; height: 30px; x: 25px; y: 210px; background: yellow; }
+        Rectangle { width: 30px; height: 30px; x: 98px; y: 55px; background: orange; }
+    }
+}
+```
+</CodeSnippetMD>
+
+A ScrollView shows a view onto content that is bigger than the visible area and can be
+scrolled. Compared to a plain [Flickable](/master/docs/slint/reference/gestures/flickable.md) it has scrollbar to interact with.
+
+The ScrollView is scrollable if the `content-width` and `content-height` properties
+are bigger than the size of the visible area.
+
+If the ScrollView contains a layout, the default value for the `content-width` and
+`content-height` is the minimum size of that layout.
+
+:::note[Note]
+A ScrollView will always instantiate all of its children, so its performance may degrade with large number of children, even if they are not visible.
+If you want to display a long list of items, use a [ListView](/master/docs/slint/reference/std-widgets/views/listview.md) instead, which only instantiates visible children.
+:::
+
+## Properties
+
+### enabled
+<SlintProperty propName="enabled" typeName="bool" defaultValue="true">
+Used to render the frame as disabled or enabled, but doesn't change behavior of the widget.
+</SlintProperty>
+
+### mouse-drag-pan-enabled
+<SlintProperty propName="mouse-drag-pan-enabled" typeName="bool" defaultValue="false" propertyVisibility="in">
+When true, the view can be scrolled by dragging with the mouse.
+Panning with a touch screen and scrolling with the mouse wheel works regardless of this property.
+</SlintProperty>
+
+### has-focus
+<SlintProperty propName="has-focus" typeName="bool" defaultValue="false" propertyVisibility="in-out">
+Used to render the frame as focused or unfocused, but doesn't change the behavior of the widget.
+</SlintProperty>
+
+### content-width
+<SlintProperty propName="content-width" typeName="length" propertyVisibility="in-out">
+The width of the scrollable content of the scrollview.
+This property was formerly known as `viewport-width`, which is still available as a deprecated alias.
+</SlintProperty>
+
+### content-height
+<SlintProperty propName="content-height" typeName="length" propertyVisibility="in-out">
+The height of the scrollable content of the scrollview.
+This property was formerly known as `viewport-height`, which is still available as a deprecated alias.
+</SlintProperty>
+
+### content-x
+<SlintProperty propName="content-x" typeName="length" propertyVisibility="in-out">
+The `x` position of the scrollable content relative to the scrollview. This is usually a negative value.
+This property was formerly known as `viewport-x`, which is still available as a deprecated alias.
+</SlintProperty>
+
+### content-y
+<SlintProperty propName="content-y" typeName="length" propertyVisibility="in-out">
+The `y` position of the scrollable content relative to the scrollview. This is usually a negative value.
+This property was formerly known as `viewport-y`, which is still available as a deprecated alias.
+</SlintProperty>
+
+### visible-width
+<SlintProperty propName="visible-width" typeName="length" propertyVisibility="out">
+The width of the visible area of the ScrollView (not including the scrollbar)
+</SlintProperty>
+
+### visible-height
+<SlintProperty propName="visible-height" typeName="length" propertyVisibility="out">
+The height of the visible area of the ScrollView (not including the scrollbar)
+</SlintProperty>
+
+### vertical-scrollbar-policy
+<SlintProperty propName="vertical-scrollbar-policy" typeName="enum" enumName="ScrollBarPolicy" defaultValue="as-needed">
+The vertical scroll bar visibility policy.
+</SlintProperty>
+
+### horizontal-scrollbar-policy
+<SlintProperty propName="horizontal-scrollbar-policy" typeName="enum" enumName="ScrollBarPolicy" defaultValue="as-needed">
+The horizontal scroll bar visibility policy.
+</SlintProperty>
+
+## Callbacks
+
+### scrolled()
+Invoked when `content-x` or `content-y` is changed by a user action (dragging, scrolling).
+
+```slint {11-14}
+ScrollView {
+    width: 200px;
+    height: 200px;
+    content-width: 300px;
+    content-height: 300px;
+    Rectangle { width: 30px; height: 30px; x: 275px; y: 50px; background: blue; }
+    Rectangle { width: 30px; height: 30px; x: 175px; y: 130px; background: red; }
+    Rectangle { width: 30px; height: 30px; x: 25px; y: 210px; background: yellow; }
+    Rectangle { width: 30px; height: 30px; x: 98px; y: 55px; background: orange; }
+
+    scrolled() => {
+        debug("content-x: ", self.content-x);
+        debug("content-y: ", self.content-y);
+    }
+}
+```

@@ -1,0 +1,55 @@
+---
+title: "Common Properties"
+description: "Layout Common Properties"
+---
+import Link from '@slint/common-files/src/components/Link.astro';
+import SlintProperty from '@slint/common-files/src/components/SlintProperty.astro';
+
+
+## Properties
+These properties are valid on all visible items and can be used to specify constraints when used in layouts:
+
+### col, row
+<SlintProperty propName="col, row" typeName="int" defaultValue="0">
+See [GridLayout](/master/docs/slint/reference/layouts/gridlayout.md).
+</SlintProperty>
+
+### colspan, rowspan
+<SlintProperty propName="colspan, rowspan" typeName="int">
+See [GridLayout](/master/docs/slint/reference/layouts/gridlayout.md).
+</SlintProperty>
+
+### cross-axis-self-alignment
+<SlintProperty propName="cross-axis-self-alignment" typeName="enum" enumName="CrossAxisAlignment" defaultValue="auto">
+Overrides the container's `cross-axis-alignment` for this element.
+Valid on the children of a [HorizontalLayout](/master/docs/slint/reference/layouts/horizontallayout.md), [VerticalLayout](/master/docs/slint/reference/layouts/verticallayout.md), or [FlexboxLayout](/master/docs/slint/reference/layouts/flexboxlayout.md).
+</SlintProperty>
+
+### horizontal-stretch, vertical-stretch
+<SlintProperty propName="horizontal-stretch, vertical-stretch" typeName="float" propertyVisibility="in-out">
+Specify how much relative space these elements are stretching in a layout. When 0, this means that the
+elements won't be stretched unless all elements are 0. Builtin widgets have a value of either 0 or 1.
+</SlintProperty>
+
+### layout-order
+<SlintProperty propName="layout-order" typeName="int" defaultValue="0">
+Controls the visual order of the elements: they are laid out in ascending order value,
+and elements with the same value keep their declaration order.
+Valid on the children of a [HorizontalLayout](/master/docs/slint/reference/layouts/horizontallayout.md), [VerticalLayout](/master/docs/slint/reference/layouts/verticallayout.md), or [FlexboxLayout](/master/docs/slint/reference/layouts/flexboxlayout.md).
+Only the visual order changes: keyboard focus still moves in declaration order.
+</SlintProperty>
+
+### max-width, max-height
+<SlintProperty propName="`max-width, `max-height" typeName="length" >
+The maximum size of an element.
+</SlintProperty>
+
+### min-width, min-height
+<SlintProperty propName="`min-width, `min-height" typeName="length" >
+The minimum size of an element.
+</SlintProperty>
+
+### preferred-width, preferred-height
+<SlintProperty propName="`preferred-width, `preferred-height" typeName="length" >
+The preferred size of an element.
+</SlintProperty>

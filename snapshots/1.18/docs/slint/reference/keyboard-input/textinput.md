@@ -1,0 +1,221 @@
+---
+title: "TextInput"
+description: "TextInput element api."
+---
+import SlintProperty from '@slint/common-files/src/components/SlintProperty.astro';
+import Link from '@slint/common-files/src/components/Link.astro';
+
+The `TextInput` is a lower-level item that shows text and allows entering text.
+You should probably not use this directly, but instead use the [LineEdit](/master/docs/slint/reference/std-widgets/views/lineedit.md) or [TextEdit](/master/docs/slint/reference/std-widgets/views/textedit.md) component.
+
+When not part of a layout, its width and height defaults to 100% of the parent element.
+
+The `TextInput` does not scroll automatically when the cursor is outside of the visible area.
+This is the responsibility of the enclosing widget to ensure using the `cursor-position-changed` callback.
+
+## Example
+
+```slint playground
+export component Example inherits Window {
+    width: 270px;
+    height: 40px;
+    Rectangle {
+        clip: true;
+
+        TextInput {
+            text: "Edit me";
+            width: max(parent.width, self.preferred-width);
+            vertical-alignment: center;
+
+            private property <length> margin: 1rem;
+            cursor-position-changed(cursor-position) => {
+                if cursor-position.x + self.x < margin {
+                    self.x = - cursor-position.x + margin;
+                } else if cursor-position.x + self.x > parent.width - margin - self.text-cursor-width {
+                    self.x = parent.width - cursor-position.x - margin - self.text-cursor-width;
+                }
+            }
+        }
+    }
+}
+```
+
+## Properties
+
+### text
+<SlintProperty propName="text" typeName="string" propertyVisibility="in-out" defaultValue="&quot;&quot;">
+The text rendered and editable by the user.
+</SlintProperty>
+
+### font-family
+<SlintProperty propName="font-family" typeName="string">
+The name of the font family selected for rendering the text.
+</SlintProperty>
+
+### font-size
+<SlintProperty propName="font-size" typeName="length">
+The font size of the text.
+</SlintProperty>
+
+### font-italic
+<SlintProperty propName="font-italic" typeName="bool" defaultValue="false">
+Whether or not the font face should be drawn italicized or not.
+</SlintProperty>
+
+### font-weight
+<SlintProperty propName="font-weight" typeName="int">
+The weight of the font. The values range from 100 (lightest) to 900 (thickest). 400 is the normal weight.
+</SlintProperty>
+
+### color
+<SlintProperty propName="color" typeName="brush" defaultValue="depends on the style">
+The color of the text.
+</SlintProperty>
+
+### selection-foreground-color
+<SlintProperty propName="selection-foreground-color" typeName="color">
+The foreground color of the selection.
+</SlintProperty>
+
+### selection-background-color
+<SlintProperty propName="selection-background-color" typeName="color">
+The background color of the selection.
+</SlintProperty>
+
+### horizontal-alignment
+<SlintProperty propName="horizontal-alignment" typeName="enum" enumName="TextHorizontalAlignment">
+The horizontal alignment of the text.
+</SlintProperty>
+
+### vertical-alignment
+<SlintProperty propName="vertical-alignment" typeName="enum" enumName="TextVerticalAlignment">
+The vertical alignment of the text.
+</SlintProperty>
+
+### wrap
+<SlintProperty propName="wrap" typeName="enum" enumName="TextWrap" defaultValue="no-wrap">
+The way the text input wraps. Only makes sense when `single-line` is false.
+</SlintProperty>
+
+### letter-spacing
+<SlintProperty propName="letter-spacing" typeName="length" defaultValue="0">
+The letter spacing allows changing the spacing between the glyphs. A positive value increases the spacing and a negative value decreases the distance.
+</SlintProperty>
+
+### line-height-factor
+<SlintProperty propName="line-height-factor" typeName="float" defaultValue="1">
+The line height as a unitless factor (or a percentage: `150%` equals `1.5`) applied to
+the font's natural line height (ascent + descent + line gap). The default of `1` keeps
+the natural line height; larger values spread the lines apart, smaller values pull them
+together, and `0` collapses them onto each other. Negative or non-numeric values behave
+like `1`. Unlike CSS `line-height`, the factor is relative to the natural line height,
+not the font size, and keyword or length values aren't supported.
+</SlintProperty>
+
+### page-height
+<SlintProperty propName="page-height" typeName="length">
+The height of the page used to compute how much to scroll when the user presses page up or page down.
+</SlintProperty>
+
+### text-cursor-width
+<SlintProperty propName="text-cursor-width" typeName="length" defaultValue="provided at run-time by the selected widget style">
+The width of the text cursor.
+</SlintProperty>
+
+### input-type
+<SlintProperty propName="input-type" typeName="enum" enumName="InputType" defaultValue="text">
+ Use this to configure `TextInput` for editing special input, such as password fields.
+</SlintProperty>
+
+### input-method-hints
+<SlintProperty propName="input-method-hints" typeName="struct" structName="InputMethodHints">
+Hints for the platform's input method (such as a soft keyboard), for example to configure auto-capitalization.
+The input method may take these hints into account, but might also ignore them.
+</SlintProperty>
+
+### has-focus
+<SlintProperty propName="has-focus" typeName="bool" propertyVisibility="out">
+`TextInput` sets this to `true` when it's focused. Only then it receives [KeyEvent](/master/docs/slint/reference/keyboard-input/overview.md)s.
+</SlintProperty>
+
+## Callbacks
+
+### accepted()
+Invoked when the enter key is pressed.
+
+### edited()
+Invoked when the text has changed because the user modified it.
+
+### cursor-position-changed(position: [Point](/reference/property-types/builtin-structs/#point))
+The cursor was moved to the new (x, y) position described by the `Point` argument.
+
+### key-pressed(event: [KeyEvent](/reference/property-types/builtin-structs/#keyevent)) -> [EventResult](/reference/property-types/builtin-enums/#eventresult)
+Invoked when a key is pressed, the argument is a [KeyEvent](/master/docs/slint/reference/keyboard-input/overview.md) struct. Use this callback to
+handle keys before `TextInput` does. Return `accept` to indicate that you've handled the event, or return
+`reject` to let `TextInput` handle it.
+
+### key-released(event: [KeyEvent](/reference/property-types/builtin-structs/#keyevent)) -> [EventResult](/reference/property-types/builtin-enums/#eventresult)
+Invoked when a key is released, the argument is a [KeyEvent](/master/docs/slint/reference/keyboard-input/overview.md) struct. Use this callback to
+handle keys before `TextInput` does. Return `accept` to indicate that you've handled the event, or return
+`reject` to let `TextInput` handle it.
+
+### single-line
+<SlintProperty propName="single-line" typeName="bool" defaultValue="true">
+When set to `true`, the text is always rendered as a single line, regardless of new line separators in the text.
+</SlintProperty>
+
+### read-only
+<SlintProperty propName="read-only" typeName="bool" defaultValue="false">
+When set to `true`, text editing via keyboard and mouse is disabled but selecting text is still enabled as well as editing text programmatically.
+</SlintProperty>
+
+### font-metrics
+<SlintProperty propName="font-metrics" typeName="struct" structName="FontMetrics" propertyVisibility="out">
+The design metrics of the font scaled to the font pixel size used by the element.
+</SlintProperty>
+
+
+## Functions
+
+### set-selection-offsets(anchor: [int](/reference/property-types/numeric-types/#int), focus: [int](/reference/property-types/numeric-types/#int))
+Selects the text between two UTF-8 offsets.
+`anchor` is the end of the selection that stays put and `focus` the end the cursor moves to,
+so `focus` may precede `anchor` to select backwards.
+Pass the same value for both to place the text cursor at that offset without selecting anything.
+
+### select-all()
+Selects all text.
+
+### clear-selection()
+Clears the selection.
+
+### cut()
+Copies the selected text to the clipboard and removes it from the editable area.
+
+### copy()
+Copies the selected text to the clipboard.
+
+### paste()
+Pastes the text content of the clipboard at the cursor position.
+
+### undo()
+Undoes the last text operation.
+
+### redo()
+Redoes the last undone text operation.
+
+### focus()
+Call this function to focus the text input and make it receive future keyboard events.
+
+### clear-focus()
+Call this function to remove keyboard focus from this `TextInput` if it currently has the focus. See also [FocusHandling](/master/docs/slint/guide/development/focus.md).
+
+
+## Accessibility
+
+By default, `TextInput` elements have the following accessibility properties set:
+
+ - `accessible-role: text-input;`
+ - `accessible-value: text;`
+ - `accessible-enabled: enabled;`
+ - `accessible-read-only: read-only; `
