@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/eval_layout.rs`."><title>eval_layout.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-203241e4.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.100.0-nightly (0dfb098f3 2026-08-31)" data-channel="nightly" data-search-js="search-b167f383.js" data-stringdex-js="stringdex-b5109af9.js" data-settings-js="settings-170eb4bf.js" ><script src="../../static.files/storage-41dd4d93.js"></script><script defer src="../../static.files/src-script-813739b1.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-1814ead3.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-9f56287d.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `internal/interpreter/eval_layout.rs`."><title>eval_layout.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-203241e4.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.100.0-nightly (2e2b193f8 2026-09-02)" data-channel="nightly" data-search-js="search-b167f383.js" data-stringdex-js="stringdex-b5109af9.js" data-settings-js="settings-170eb4bf.js" ><script src="../../static.files/storage-41dd4d93.js"></script><script defer src="../../static.files/src-script-813739b1.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-1814ead3.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-9f56287d.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -128,20 +128,20 @@
 <a href=#6 id=6 data-nosnippet>6</a>
 <a href=#7 id=7 data-nosnippet>7</a></span><span class="kw">use </span><a href="api.rs.html#99-145"><span class="kw">crate</span>::Value</a>;
 <a href=#8 id=8 data-nosnippet>8</a><span class="kw">use </span><span class="kw">crate</span>::eval::{<a href="eval.rs.html#28-46">EvalContext</a>, <a href="eval.rs.html#724-1102">eval_expression</a>};
-<a href=#9 id=9 data-nosnippet>9</a><span class="kw">use </span><a href="../../i_slint_compiler/layout/enum.Orientation.html">i_slint_compiler::layout::Orientation</a>;
+<a href=#9 id=9 data-nosnippet>9</a><span class="kw">use </span>i_slint_compiler::layout::Orientation;
 <a href=#10 id=10 data-nosnippet>10</a><span class="kw">use </span>i_slint_compiler::llr::lower_layout_expression::{
-<a href=#11 id=11 data-nosnippet>11</a>    <a href="../../i_slint_compiler/llr/lower_layout_expression/constant.MEASURE_KNOWN_H_LOCAL.html">MEASURE_KNOWN_H_LOCAL</a>, <a href="../../i_slint_compiler/llr/lower_layout_expression/constant.MEASURE_KNOWN_W_LOCAL.html">MEASURE_KNOWN_W_LOCAL</a>,
+<a href=#11 id=11 data-nosnippet>11</a>    MEASURE_KNOWN_H_LOCAL, MEASURE_KNOWN_W_LOCAL,
 <a href=#12 id=12 data-nosnippet>12</a>};
 <a href=#13 id=13 data-nosnippet>13</a><span class="kw">use </span>i_slint_compiler::llr::{
-<a href=#14 id=14 data-nosnippet>14</a>    <a href="../../i_slint_compiler/llr/expression/enum.BoxMeasureCell.html">BoxMeasureCell</a>, <a href="../../i_slint_compiler/llr/expression/enum.Expression.html">Expression</a>, <a href="../../i_slint_compiler/llr/expression/struct.FlexboxMeasureCell.html">FlexboxMeasureCell</a>, <a href="../../i_slint_compiler/llr/expression/enum.FlexboxMeasureCellKind.html">FlexboxMeasureCellKind</a>,
+<a href=#14 id=14 data-nosnippet>14</a>    BoxMeasureCell, Expression, FlexboxMeasureCell, FlexboxMeasureCellKind,
 <a href=#15 id=15 data-nosnippet>15</a>};
 <a href=#16 id=16 data-nosnippet>16</a><span class="kw">use </span><a href="../../slint_interpreter/struct.SharedVector.html">i_slint_core::SharedVector</a>;
 <a href=#17 id=17 data-nosnippet>17</a><span class="kw">use </span>i_slint_core::layout::{
-<a href=#18 id=18 data-nosnippet>18</a>    <a href="../../i_slint_core/layout/struct.BoxLayoutData.html">BoxLayoutData</a>, <a href="../../i_slint_core/layout/struct.FlexboxLayoutData.html">FlexboxLayoutData</a>, <a href="../../i_slint_core/layout/struct.FlexboxLayoutItemInfo.html">FlexboxLayoutItemInfo</a>, <a href="../../i_slint_core/layout/struct.GridLayoutData.html">GridLayoutData</a>, <a href="../../i_slint_core/layout/struct.GridLayoutInputData.html">GridLayoutInputData</a>,
-<a href=#19 id=19 data-nosnippet>19</a>    <a href="../../i_slint_core/layout/struct.LayoutInfo.html">LayoutInfo</a>, <a href="../../i_slint_core/layout/struct.LayoutItemInfo.html">LayoutItemInfo</a>, <a href="../../i_slint_core/layout/struct.Padding.html">Padding</a>,
+<a href=#18 id=18 data-nosnippet>18</a>    BoxLayoutData, FlexboxLayoutData, FlexboxLayoutItemInfo, GridLayoutData, GridLayoutInputData,
+<a href=#19 id=19 data-nosnippet>19</a>    LayoutInfo, LayoutItemInfo, Padding,
 <a href=#20 id=20 data-nosnippet>20</a>};
-<a href=#21 id=21 data-nosnippet>21</a><span class="kw">use </span><a href="../../i_slint_core/model/trait.Model.html">i_slint_core::model::Model</a>;
-<a href=#22 id=22 data-nosnippet>22</a><span class="kw">use </span><a href="../../i_slint_core/slice/struct.Slice.html">i_slint_core::slice::Slice</a>;
+<a href=#21 id=21 data-nosnippet>21</a><span class="kw">use </span>i_slint_core::model::Model;
+<a href=#22 id=22 data-nosnippet>22</a><span class="kw">use </span>i_slint_core::slice::Slice;
 <a href=#23 id=23 data-nosnippet>23</a>
 <a href=#24 id=24 data-nosnippet>24</a><span class="comment">// ── Value → layout-type converters ──────────────────────────────────────────
 <a href=#25 id=25 data-nosnippet>25</a>
@@ -152,13 +152,13 @@
 <a href=#30 id=30 data-nosnippet>30</a>    }
 <a href=#31 id=31 data-nosnippet>31</a>}
 <a href=#32 id=32 data-nosnippet>32</a>
-<a href=#33 id=33 data-nosnippet>33</a><span class="kw">fn </span>to_padding(v: <span class="kw-2">&amp;</span><a href="api.rs.html#99-145">Value</a>) -&gt; <a href="../../i_slint_core/layout/struct.Padding.html">Padding</a> {
-<a href=#34 id=34 data-nosnippet>34</a>    <span class="kw">let </span>Value::<a href="api.rs.html#115">Struct</a>(s) = <a href="#33">v</a> <span class="kw">else </span>{ <span class="kw">return </span><a href="../../i_slint_core/layout/struct.Padding.html">Padding</a>::<a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default">default</a>() };
+<a href=#33 id=33 data-nosnippet>33</a><span class="kw">fn </span>to_padding(v: <span class="kw-2">&amp;</span><a href="api.rs.html#99-145">Value</a>) -&gt; Padding {
+<a href=#34 id=34 data-nosnippet>34</a>    <span class="kw">let </span>Value::<a href="api.rs.html#115">Struct</a>(s) = <a href="#33">v</a> <span class="kw">else </span>{ <span class="kw">return </span>Padding::<a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default">default</a>() };
 <a href=#35 id=35 data-nosnippet>35</a>    <span class="kw">let </span>f = |k| <span class="kw">match </span><a href="#34">s</a>.<a href="api.rs.html#667-673">get_field</a>(<a href="#35">k</a>) {
 <a href=#36 id=36 data-nosnippet>36</a>        <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(Value::<a href="api.rs.html#105">Number</a>(n)) =&gt; <span class="kw-2">*</span><a href="#36">n</a> <span class="kw">as </span><a href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>,
 <a href=#37 id=37 data-nosnippet>37</a>        <span class="kw">_ </span>=&gt; <span class="number">0.</span>,
 <a href=#38 id=38 data-nosnippet>38</a>    };
-<a href=#39 id=39 data-nosnippet>39</a>    <a href="../../i_slint_core/layout/struct.Padding.html">Padding</a> { begin: <a href="#35">f</a>(<span class="string">"begin"</span>), end: <a href="#35">f</a>(<span class="string">"end"</span>) }
+<a href=#39 id=39 data-nosnippet>39</a>    Padding { begin: <a href="#35">f</a>(<span class="string">"begin"</span>), end: <a href="#35">f</a>(<span class="string">"end"</span>) }
 <a href=#40 id=40 data-nosnippet>40</a>}
 <a href=#41 id=41 data-nosnippet>41</a>
 <a href=#42 id=42 data-nosnippet>42</a><span class="kw">fn </span>to_enum&lt;T: <a href="https://doc.rust-lang.org/nightly/core/str/traits/trait.FromStr.html">std::str::FromStr</a> + <a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html">Default</a>&gt;(v: <span class="kw-2">&amp;</span><a href="api.rs.html#99-145">Value</a>) -&gt; T {
@@ -168,13 +168,13 @@
 <a href=#46 id=46 data-nosnippet>46</a>    }
 <a href=#47 id=47 data-nosnippet>47</a>}
 <a href=#48 id=48 data-nosnippet>48</a>
-<a href=#49 id=49 data-nosnippet>49</a><span class="kw">fn </span>to_cells(v: <span class="kw-2">&amp;</span><a href="api.rs.html#99-145">Value</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="../../i_slint_core/layout/struct.LayoutItemInfo.html">LayoutItemInfo</a>&gt; {
+<a href=#49 id=49 data-nosnippet>49</a><span class="kw">fn </span>to_cells(v: <span class="kw-2">&amp;</span><a href="api.rs.html#99-145">Value</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;LayoutItemInfo&gt; {
 <a href=#50 id=50 data-nosnippet>50</a>    <span class="kw">let </span>Value::<a href="api.rs.html#113">Model</a>(m) = <a href="#49">v</a> <span class="kw">else </span>{ <span class="kw">return </span><a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>::<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.new">new</a>() };
 <a href=#51 id=51 data-nosnippet>51</a>    (<span class="number">0</span>..m.row_count())
 <a href=#52 id=52 data-nosnippet>52</a>        .<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.filter_map">filter_map</a>(|i| {
 <a href=#53 id=53 data-nosnippet>53</a>            <span class="kw">let </span>Value::<a href="api.rs.html#115">Struct</a>(s) = m.row_data(i)<span class="question-mark">? </span><span class="kw">else </span>{ <span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a> };
 <a href=#54 id=54 data-nosnippet>54</a>            <span class="kw">let </span>c = s.get_field(<span class="string">"constraint"</span>)<span class="question-mark">?</span>;
-<a href=#55 id=55 data-nosnippet>55</a>            <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(<a href="../../i_slint_core/layout/struct.LayoutItemInfo.html">LayoutItemInfo</a> {
+<a href=#55 id=55 data-nosnippet>55</a>            <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(LayoutItemInfo {
 <a href=#56 id=56 data-nosnippet>56</a>                constraint: <a href="#54">c</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>().<a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#tymethod.try_into">try_into</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap_or_default">unwrap_or_default</a>(),
 <a href=#57 id=57 data-nosnippet>57</a>                <span class="comment">// Only set for a box layout's cross-axis cells; absent means `auto`.
 <a href=#58 id=58 data-nosnippet>58</a>                </span>cross_axis_self_alignment: <a href="#53">s</a>
@@ -195,22 +195,22 @@
 <a href=#73 id=73 data-nosnippet>73</a>/// a `FlexboxLayoutItemInfo` with a `constraint` and a nested `props` field.
 <a href=#74 id=74 data-nosnippet>74</a>/// `Struct::get_field` normalizes identifiers, so the kebab-case keys the
 <a href=#75 id=75 data-nosnippet>75</a>/// lowering emits match regardless of spelling.
-<a href=#76 id=76 data-nosnippet>76</a></span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>flexbox_item_info_from_struct(s: <span class="kw-2">&amp;</span><span class="kw">crate</span>::api::<a href="api.rs.html#664">Struct</a>) -&gt; <a href="../../i_slint_core/layout/struct.FlexboxLayoutItemInfo.html">FlexboxLayoutItemInfo</a> {
-<a href=#77 id=77 data-nosnippet>77</a>    <span class="kw">let </span>constraint: <a href="../../i_slint_core/layout/struct.LayoutInfo.html">LayoutInfo</a> =
+<a href=#76 id=76 data-nosnippet>76</a></span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>flexbox_item_info_from_struct(s: <span class="kw-2">&amp;</span><span class="kw">crate</span>::api::<a href="api.rs.html#664">Struct</a>) -&gt; FlexboxLayoutItemInfo {
+<a href=#77 id=77 data-nosnippet>77</a>    <span class="kw">let </span>constraint: LayoutInfo =
 <a href=#78 id=78 data-nosnippet>78</a>        <a href="#76">s</a>.<a href="api.rs.html#667-673">get_field</a>(<span class="string">"constraint"</span>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.cloned">cloned</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(|v| <a href="#78">v</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#tymethod.try_into">try_into</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.ok">ok</a>()).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap_or_default">unwrap_or_default</a>();
 <a href=#79 id=79 data-nosnippet>79</a>    <span class="kw">let </span>props = <span class="kw">match </span><a href="#76">s</a>.<a href="api.rs.html#667-673">get_field</a>(<span class="string">"props"</span>) {
 <a href=#80 id=80 data-nosnippet>80</a>        <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(Value::<a href="api.rs.html#115">Struct</a>(p)) =&gt; <a href="#88-101">flex_props_from_struct</a>(<a href="#80">p</a>),
 <a href=#81 id=81 data-nosnippet>81</a>        <span class="kw">_ </span>=&gt; Default::<a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default">default</a>(),
 <a href=#82 id=82 data-nosnippet>82</a>    };
-<a href=#83 id=83 data-nosnippet>83</a>    <a href="../../i_slint_core/layout/struct.FlexboxLayoutItemInfo.html">FlexboxLayoutItemInfo</a> { <a href="#77">constraint</a>, <a href="#79">props</a> }
+<a href=#83 id=83 data-nosnippet>83</a>    FlexboxLayoutItemInfo { <a href="#77">constraint</a>, <a href="#79">props</a> }
 <a href=#84 id=84 data-nosnippet>84</a>}
 <a href=#85 id=85 data-nosnippet>85</a>
 <a href=#86 id=86 data-nosnippet>86</a><span class="doccomment">/// Convert one `Value::Struct` produced by the LLR's flexbox lowering for a
 <a href=#87 id=87 data-nosnippet>87</a>/// `FlexItemProps`.
 <a href=#88 id=88 data-nosnippet>88</a></span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>flex_props_from_struct(
 <a href=#89 id=89 data-nosnippet>89</a>    s: <span class="kw-2">&amp;</span><span class="kw">crate</span>::api::<a href="api.rs.html#664">Struct</a>,
-<a href=#90 id=90 data-nosnippet>90</a>) -&gt; i_slint_core::layout::<a href="../../i_slint_core/layout/struct.FlexItemProps.html">FlexItemProps</a> {
-<a href=#91 id=91 data-nosnippet>91</a>    i_slint_core::layout::<a href="../../i_slint_core/layout/struct.FlexItemProps.html">FlexItemProps</a> {
+<a href=#90 id=90 data-nosnippet>90</a>) -&gt; i_slint_core::layout::FlexItemProps {
+<a href=#91 id=91 data-nosnippet>91</a>    i_slint_core::layout::FlexItemProps {
 <a href=#92 id=92 data-nosnippet>92</a>        cross_axis_self_alignment: <a href="#89">s</a>
 <a href=#93 id=93 data-nosnippet>93</a>            .<a href="api.rs.html#667-673">get_field</a>(<span class="string">"cross-axis-self-alignment"</span>)
 <a href=#94 id=94 data-nosnippet>94</a>            .<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(<a href="#42-47">to_enum</a>)
@@ -222,7 +222,7 @@
 <a href=#100 id=100 data-nosnippet>100</a>    }
 <a href=#101 id=101 data-nosnippet>101</a>}
 <a href=#102 id=102 data-nosnippet>102</a>
-<a href=#103 id=103 data-nosnippet>103</a><span class="kw">fn </span>to_flex_props(v: <span class="kw-2">&amp;</span><a href="api.rs.html#99-145">Value</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;i_slint_core::layout::<a href="../../i_slint_core/layout/struct.FlexItemProps.html">FlexItemProps</a>&gt; {
+<a href=#103 id=103 data-nosnippet>103</a><span class="kw">fn </span>to_flex_props(v: <span class="kw-2">&amp;</span><a href="api.rs.html#99-145">Value</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;i_slint_core::layout::FlexItemProps&gt; {
 <a href=#104 id=104 data-nosnippet>104</a>    <span class="kw">let </span>Value::<a href="api.rs.html#113">Model</a>(m) = <a href="#103">v</a> <span class="kw">else </span>{ <span class="kw">return </span><a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>::<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.new">new</a>() };
 <a href=#105 id=105 data-nosnippet>105</a>    (<span class="number">0</span>..m.row_count())
 <a href=#106 id=106 data-nosnippet>106</a>        .<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.filter_map">filter_map</a>(|i| {
@@ -242,7 +242,7 @@
 <a href=#120 id=120 data-nosnippet>120</a>        .<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.collect">collect</a>()
 <a href=#121 id=121 data-nosnippet>121</a>}
 <a href=#122 id=122 data-nosnippet>122</a>
-<a href=#123 id=123 data-nosnippet>123</a><span class="kw">fn </span>to_grid_input_data(v: <span class="kw-2">&amp;</span><a href="api.rs.html#99-145">Value</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="../../i_slint_core/layout/struct.GridLayoutInputData.html">GridLayoutInputData</a>&gt; {
+<a href=#123 id=123 data-nosnippet>123</a><span class="kw">fn </span>to_grid_input_data(v: <span class="kw-2">&amp;</span><a href="api.rs.html#99-145">Value</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;GridLayoutInputData&gt; {
 <a href=#124 id=124 data-nosnippet>124</a>    <span class="kw">let </span>Value::<a href="api.rs.html#113">Model</a>(m) = <a href="#123">v</a> <span class="kw">else </span>{ <span class="kw">return </span><a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>::<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.new">new</a>() };
 <a href=#125 id=125 data-nosnippet>125</a>    (<span class="number">0</span>..m.row_count())
 <a href=#126 id=126 data-nosnippet>126</a>        .<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.filter_map">filter_map</a>(|i| {
@@ -251,7 +251,7 @@
 <a href=#129 id=129 data-nosnippet>129</a>                <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(Value::<a href="api.rs.html#105">Number</a>(n)) =&gt; <span class="kw-2">*</span><a href="#129">n</a> <span class="kw">as </span><a href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>,
 <a href=#130 id=130 data-nosnippet>130</a>                <span class="kw">_ </span>=&gt; <span class="number">0.</span>,
 <a href=#131 id=131 data-nosnippet>131</a>            };
-<a href=#132 id=132 data-nosnippet>132</a>            <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(<a href="../../i_slint_core/layout/struct.GridLayoutInputData.html">GridLayoutInputData</a> {
+<a href=#132 id=132 data-nosnippet>132</a>            <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(GridLayoutInputData {
 <a href=#133 id=133 data-nosnippet>133</a>                new_row: <a href="https://doc.rust-lang.org/nightly/core/macro.matches.html">matches!</a>(s.get_field(<span class="string">"new-row"</span>), <span class="prelude-val">Some</span>(Value::Bool(<span class="bool-val">true</span>))),
 <a href=#134 id=134 data-nosnippet>134</a>                col: <a href="#128">f</a>(<span class="string">"col"</span>),
 <a href=#135 id=135 data-nosnippet>135</a>                row: <a href="#128">f</a>(<span class="string">"row"</span>),
@@ -269,7 +269,7 @@
 <a href=#147 id=147 data-nosnippet>147</a>    }
 <a href=#148 id=148 data-nosnippet>148</a>}
 <a href=#149 id=149 data-nosnippet>149</a>
-<a href=#150 id=150 data-nosnippet>150</a><span class="kw">fn </span>to_dialog_roles(v: <span class="kw-2">&amp;</span><a href="api.rs.html#99-145">Value</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;i_slint_core::items::<a href="../../i_slint_core/items/enum.DialogButtonRole.html">DialogButtonRole</a>&gt; {
+<a href=#150 id=150 data-nosnippet>150</a><span class="kw">fn </span>to_dialog_roles(v: <span class="kw-2">&amp;</span><a href="api.rs.html#99-145">Value</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;i_slint_core::items::DialogButtonRole&gt; {
 <a href=#151 id=151 data-nosnippet>151</a>    <span class="kw">let </span>Value::<a href="api.rs.html#113">Model</a>(m) = <a href="#150">v</a> <span class="kw">else </span>{ <span class="kw">return </span><a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>::<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.new">new</a>() };
 <a href=#152 id=152 data-nosnippet>152</a>    (<span class="number">0</span>..m.row_count())
 <a href=#153 id=153 data-nosnippet>153</a>        .<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.filter_map">filter_map</a>(|i| <span class="kw">match </span>m.row_data(i)<span class="question-mark">? </span>{
@@ -291,15 +291,15 @@
 <a href=#169 id=169 data-nosnippet>169</a></span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>call_extra_builtin(
 <a href=#170 id=170 data-nosnippet>170</a>    ctx: <span class="kw-2">&amp;mut </span><a href="eval.rs.html#28-46">EvalContext</a>,
 <a href=#171 id=171 data-nosnippet>171</a>    name: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>,
-<a href=#172 id=172 data-nosnippet>172</a>    arguments: <span class="kw-2">&amp;</span>[<a href="../../i_slint_compiler/llr/expression/enum.Expression.html">Expression</a>],
+<a href=#172 id=172 data-nosnippet>172</a>    arguments: <span class="kw-2">&amp;</span>[Expression],
 <a href=#173 id=173 data-nosnippet>173</a>) -&gt; <a href="api.rs.html#99-145">Value</a> {
 <a href=#174 id=174 data-nosnippet>174</a>    <span class="kw">let </span>a: <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="api.rs.html#99-145">Value</a>&gt; = <a href="#172">arguments</a>.<a href="https://doc.rust-lang.org/nightly/core/primitive.slice.html#method.iter">iter</a>().<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.map">map</a>(|e| <a href="eval.rs.html#724-1102">eval_expression</a>(<a href="#170">ctx</a>, <a href="#174">e</a>)).<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.collect">collect</a>();
 <a href=#175 id=175 data-nosnippet>175</a>
 <a href=#176 id=176 data-nosnippet>176</a>    <span class="kw">match </span><a href="#171">name</a> {
 <a href=#177 id=177 data-nosnippet>177</a>        <span class="string">"box_layout_info" </span>=&gt; {
 <a href=#178 id=178 data-nosnippet>178</a>            <span class="kw">let </span>c = <a href="#49-70">to_cells</a>(<span class="kw-2">&amp;</span><a href="#174">a</a>[<span class="number">0</span>]);
-<a href=#179 id=179 data-nosnippet>179</a>            i_slint_core::layout::<a href="../../i_slint_core/layout/fn.box_layout_info.html">box_layout_info</a>(
-<a href=#180 id=180 data-nosnippet>180</a>                <a href="../../i_slint_core/slice/struct.Slice.html">Slice</a>::<a href="../../i_slint_core/slice/struct.Slice.html#method.from_slice">from_slice</a>(<span class="kw-2">&amp;</span><a href="#178">c</a>),
+<a href=#179 id=179 data-nosnippet>179</a>            i_slint_core::layout::box_layout_info(
+<a href=#180 id=180 data-nosnippet>180</a>                Slice::from_slice(<span class="kw-2">&amp;</span><a href="#178">c</a>),
 <a href=#181 id=181 data-nosnippet>181</a>                <a href="#26-31">to_f32</a>(<span class="kw-2">&amp;</span><a href="#174">a</a>[<span class="number">1</span>]),
 <a href=#182 id=182 data-nosnippet>182</a>                <span class="kw-2">&amp;</span><a href="#33-40">to_padding</a>(<span class="kw-2">&amp;</span><a href="#174">a</a>[<span class="number">2</span>]),
 <a href=#183 id=183 data-nosnippet>183</a>                <a href="#42-47">to_enum</a>(<span class="kw-2">&amp;</span><a href="#174">a</a>[<span class="number">3</span>]),
@@ -308,32 +308,32 @@
 <a href=#186 id=186 data-nosnippet>186</a>        }
 <a href=#187 id=187 data-nosnippet>187</a>        <span class="string">"box_layout_info_ortho" </span>=&gt; {
 <a href=#188 id=188 data-nosnippet>188</a>            <span class="kw">let </span>c = <a href="#49-70">to_cells</a>(<span class="kw-2">&amp;</span><a href="#174">a</a>[<span class="number">0</span>]);
-<a href=#189 id=189 data-nosnippet>189</a>            i_slint_core::layout::<a href="../../i_slint_core/layout/fn.box_layout_info_ortho.html">box_layout_info_ortho</a>(<a href="../../i_slint_core/slice/struct.Slice.html">Slice</a>::<a href="../../i_slint_core/slice/struct.Slice.html#method.from_slice">from_slice</a>(<span class="kw-2">&amp;</span><a href="#188">c</a>), <span class="kw-2">&amp;</span><a href="#33-40">to_padding</a>(<span class="kw-2">&amp;</span><a href="#174">a</a>[<span class="number">1</span>]))
+<a href=#189 id=189 data-nosnippet>189</a>            i_slint_core::layout::box_layout_info_ortho(Slice::from_slice(<span class="kw-2">&amp;</span><a href="#188">c</a>), <span class="kw-2">&amp;</span><a href="#33-40">to_padding</a>(<span class="kw-2">&amp;</span><a href="#174">a</a>[<span class="number">1</span>]))
 <a href=#190 id=190 data-nosnippet>190</a>                .<a href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html#tymethod.into">into</a>()
 <a href=#191 id=191 data-nosnippet>191</a>        }
 <a href=#192 id=192 data-nosnippet>192</a>        <span class="string">"organize_dialog_button_layout" </span>=&gt; {
 <a href=#193 id=193 data-nosnippet>193</a>            <span class="kw">let </span>input = <a href="#123-141">to_grid_input_data</a>(<span class="kw-2">&amp;</span><a href="#174">a</a>[<span class="number">0</span>]);
 <a href=#194 id=194 data-nosnippet>194</a>            <span class="kw">let </span>roles = <a href="#150-158">to_dialog_roles</a>(<span class="kw-2">&amp;</span><a href="#174">a</a>[<span class="number">1</span>]);
-<a href=#195 id=195 data-nosnippet>195</a>            Value::<a href="api.rs.html#137">ArrayOfU16</a>(i_slint_core::layout::<a href="../../i_slint_core/layout/fn.organize_dialog_button_layout.html">organize_dialog_button_layout</a>(
-<a href=#196 id=196 data-nosnippet>196</a>                <a href="../../i_slint_core/slice/struct.Slice.html">Slice</a>::<a href="../../i_slint_core/slice/struct.Slice.html#method.from_slice">from_slice</a>(<span class="kw-2">&amp;</span><a href="#193">input</a>),
-<a href=#197 id=197 data-nosnippet>197</a>                <a href="../../i_slint_core/slice/struct.Slice.html">Slice</a>::<a href="../../i_slint_core/slice/struct.Slice.html#method.from_slice">from_slice</a>(<span class="kw-2">&amp;</span><a href="#194">roles</a>),
+<a href=#195 id=195 data-nosnippet>195</a>            Value::<a href="api.rs.html#137">ArrayOfU16</a>(i_slint_core::layout::organize_dialog_button_layout(
+<a href=#196 id=196 data-nosnippet>196</a>                Slice::from_slice(<span class="kw-2">&amp;</span><a href="#193">input</a>),
+<a href=#197 id=197 data-nosnippet>197</a>                Slice::from_slice(<span class="kw-2">&amp;</span><a href="#194">roles</a>),
 <a href=#198 id=198 data-nosnippet>198</a>            ))
 <a href=#199 id=199 data-nosnippet>199</a>        }
 <a href=#200 id=200 data-nosnippet>200</a>        <span class="string">"organize_grid_layout" </span>=&gt; {
 <a href=#201 id=201 data-nosnippet>201</a>            <span class="kw">let </span>(input, ri, rs) = (<a href="#123-141">to_grid_input_data</a>(<span class="kw-2">&amp;</span><a href="#174">a</a>[<span class="number">0</span>]), <a href="#113-121">to_u32_vec</a>(<span class="kw-2">&amp;</span><a href="#174">a</a>[<span class="number">1</span>]), <a href="#113-121">to_u32_vec</a>(<span class="kw-2">&amp;</span><a href="#174">a</a>[<span class="number">2</span>]));
-<a href=#202 id=202 data-nosnippet>202</a>            Value::<a href="api.rs.html#137">ArrayOfU16</a>(i_slint_core::layout::<a href="../../i_slint_core/layout/fn.organize_grid_layout.html">organize_grid_layout</a>(
-<a href=#203 id=203 data-nosnippet>203</a>                <a href="../../i_slint_core/slice/struct.Slice.html">Slice</a>::<a href="../../i_slint_core/slice/struct.Slice.html#method.from_slice">from_slice</a>(<span class="kw-2">&amp;</span><a href="#201">input</a>),
-<a href=#204 id=204 data-nosnippet>204</a>                <a href="../../i_slint_core/slice/struct.Slice.html">Slice</a>::<a href="../../i_slint_core/slice/struct.Slice.html#method.from_slice">from_slice</a>(<span class="kw-2">&amp;</span><a href="#201">ri</a>),
-<a href=#205 id=205 data-nosnippet>205</a>                <a href="../../i_slint_core/slice/struct.Slice.html">Slice</a>::<a href="../../i_slint_core/slice/struct.Slice.html#method.from_slice">from_slice</a>(<span class="kw-2">&amp;</span><a href="#201">rs</a>),
+<a href=#202 id=202 data-nosnippet>202</a>            Value::<a href="api.rs.html#137">ArrayOfU16</a>(i_slint_core::layout::organize_grid_layout(
+<a href=#203 id=203 data-nosnippet>203</a>                Slice::from_slice(<span class="kw-2">&amp;</span><a href="#201">input</a>),
+<a href=#204 id=204 data-nosnippet>204</a>                Slice::from_slice(<span class="kw-2">&amp;</span><a href="#201">ri</a>),
+<a href=#205 id=205 data-nosnippet>205</a>                Slice::from_slice(<span class="kw-2">&amp;</span><a href="#201">rs</a>),
 <a href=#206 id=206 data-nosnippet>206</a>            ))
 <a href=#207 id=207 data-nosnippet>207</a>        }
 <a href=#208 id=208 data-nosnippet>208</a>        <span class="string">"grid_layout_info" </span>=&gt; {
 <a href=#209 id=209 data-nosnippet>209</a>            <span class="kw">let </span>(c, ri, rs) = (<a href="#49-70">to_cells</a>(<span class="kw-2">&amp;</span><a href="#174">a</a>[<span class="number">1</span>]), <a href="#113-121">to_u32_vec</a>(<span class="kw-2">&amp;</span><a href="#174">a</a>[<span class="number">2</span>]), <a href="#113-121">to_u32_vec</a>(<span class="kw-2">&amp;</span><a href="#174">a</a>[<span class="number">3</span>]));
-<a href=#210 id=210 data-nosnippet>210</a>            i_slint_core::layout::<a href="../../i_slint_core/layout/fn.grid_layout_info.html">grid_layout_info</a>(
+<a href=#210 id=210 data-nosnippet>210</a>            i_slint_core::layout::grid_layout_info(
 <a href=#211 id=211 data-nosnippet>211</a>                <a href="#143-148">to_array_of_u16</a>(<span class="kw-2">&amp;</span><a href="#174">a</a>[<span class="number">0</span>]),
-<a href=#212 id=212 data-nosnippet>212</a>                <a href="../../i_slint_core/slice/struct.Slice.html">Slice</a>::<a href="../../i_slint_core/slice/struct.Slice.html#method.from_slice">from_slice</a>(<span class="kw-2">&amp;</span><a href="#209">c</a>),
-<a href=#213 id=213 data-nosnippet>213</a>                <a href="../../i_slint_core/slice/struct.Slice.html">Slice</a>::<a href="../../i_slint_core/slice/struct.Slice.html#method.from_slice">from_slice</a>(<span class="kw-2">&amp;</span><a href="#209">ri</a>),
-<a href=#214 id=214 data-nosnippet>214</a>                <a href="../../i_slint_core/slice/struct.Slice.html">Slice</a>::<a href="../../i_slint_core/slice/struct.Slice.html#method.from_slice">from_slice</a>(<span class="kw-2">&amp;</span><a href="#209">rs</a>),
+<a href=#212 id=212 data-nosnippet>212</a>                Slice::from_slice(<span class="kw-2">&amp;</span><a href="#209">c</a>),
+<a href=#213 id=213 data-nosnippet>213</a>                Slice::from_slice(<span class="kw-2">&amp;</span><a href="#209">ri</a>),
+<a href=#214 id=214 data-nosnippet>214</a>                Slice::from_slice(<span class="kw-2">&amp;</span><a href="#209">rs</a>),
 <a href=#215 id=215 data-nosnippet>215</a>                <a href="#26-31">to_f32</a>(<span class="kw-2">&amp;</span><a href="#174">a</a>[<span class="number">4</span>]),
 <a href=#216 id=216 data-nosnippet>216</a>                <span class="kw-2">&amp;</span><a href="#33-40">to_padding</a>(<span class="kw-2">&amp;</span><a href="#174">a</a>[<span class="number">5</span>]),
 <a href=#217 id=217 data-nosnippet>217</a>                <a href="#42-47">to_enum</a>(<span class="kw-2">&amp;</span><a href="#174">a</a>[<span class="number">6</span>]),
@@ -343,8 +343,8 @@
 <a href=#221 id=221 data-nosnippet>221</a>        <span class="string">"solve_grid_layout" </span>=&gt; {
 <a href=#222 id=222 data-nosnippet>222</a>            <span class="kw">let </span>(c, ri, rs) = (<a href="#49-70">to_cells</a>(<span class="kw-2">&amp;</span><a href="#174">a</a>[<span class="number">1</span>]), <a href="#113-121">to_u32_vec</a>(<span class="kw-2">&amp;</span><a href="#174">a</a>[<span class="number">3</span>]), <a href="#113-121">to_u32_vec</a>(<span class="kw-2">&amp;</span><a href="#174">a</a>[<span class="number">4</span>]));
 <a href=#223 id=223 data-nosnippet>223</a>            <span class="kw">let </span>Value::<a href="api.rs.html#115">Struct</a>(s) = <span class="kw-2">&amp;</span><a href="#174">a</a>[<span class="number">0</span>] <span class="kw">else </span>{ <span class="kw">return </span>Value::<a href="api.rs.html#129">LayoutCache</a>(Default::<a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default">default</a>()) };
-<a href=#224 id=224 data-nosnippet>224</a>            Value::<a href="api.rs.html#129">LayoutCache</a>(i_slint_core::layout::<a href="../../i_slint_core/layout/fn.solve_grid_layout.html">solve_grid_layout</a>(
-<a href=#225 id=225 data-nosnippet>225</a>                <span class="kw-2">&amp;</span><a href="../../i_slint_core/layout/struct.GridLayoutData.html">GridLayoutData</a> {
+<a href=#224 id=224 data-nosnippet>224</a>            Value::<a href="api.rs.html#129">LayoutCache</a>(i_slint_core::layout::solve_grid_layout(
+<a href=#225 id=225 data-nosnippet>225</a>                <span class="kw-2">&amp;</span>GridLayoutData {
 <a href=#226 id=226 data-nosnippet>226</a>                    size: <a href="#160-165">sf32</a>(<a href="#223">s</a>, <span class="string">"size"</span>),
 <a href=#227 id=227 data-nosnippet>227</a>                    spacing: <a href="#160-165">sf32</a>(<a href="#223">s</a>, <span class="string">"spacing"</span>),
 <a href=#228 id=228 data-nosnippet>228</a>                    padding: <a href="#223">s</a>.<a href="api.rs.html#667-673">get_field</a>(<span class="string">"padding"</span>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(<a href="#33-40">to_padding</a>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap_or_default">unwrap_or_default</a>(),
@@ -353,42 +353,42 @@
 <a href=#231 id=231 data-nosnippet>231</a>                        .<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(<a href="#143-148">to_array_of_u16</a>)
 <a href=#232 id=232 data-nosnippet>232</a>                        .<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap_or_default">unwrap_or_default</a>(),
 <a href=#233 id=233 data-nosnippet>233</a>                },
-<a href=#234 id=234 data-nosnippet>234</a>                <a href="../../i_slint_core/slice/struct.Slice.html">Slice</a>::<a href="../../i_slint_core/slice/struct.Slice.html#method.from_slice">from_slice</a>(<span class="kw-2">&amp;</span><a href="#222">c</a>),
+<a href=#234 id=234 data-nosnippet>234</a>                Slice::from_slice(<span class="kw-2">&amp;</span><a href="#222">c</a>),
 <a href=#235 id=235 data-nosnippet>235</a>                <a href="#42-47">to_enum</a>(<span class="kw-2">&amp;</span><a href="#174">a</a>[<span class="number">2</span>]),
-<a href=#236 id=236 data-nosnippet>236</a>                <a href="../../i_slint_core/slice/struct.Slice.html">Slice</a>::<a href="../../i_slint_core/slice/struct.Slice.html#method.from_slice">from_slice</a>(<span class="kw-2">&amp;</span><a href="#222">ri</a>),
-<a href=#237 id=237 data-nosnippet>237</a>                <a href="../../i_slint_core/slice/struct.Slice.html">Slice</a>::<a href="../../i_slint_core/slice/struct.Slice.html#method.from_slice">from_slice</a>(<span class="kw-2">&amp;</span><a href="#222">rs</a>),
+<a href=#236 id=236 data-nosnippet>236</a>                Slice::from_slice(<span class="kw-2">&amp;</span><a href="#222">ri</a>),
+<a href=#237 id=237 data-nosnippet>237</a>                Slice::from_slice(<span class="kw-2">&amp;</span><a href="#222">rs</a>),
 <a href=#238 id=238 data-nosnippet>238</a>            ))
 <a href=#239 id=239 data-nosnippet>239</a>        }
 <a href=#240 id=240 data-nosnippet>240</a>        <span class="string">"solve_box_layout" </span>=&gt; {
 <a href=#241 id=241 data-nosnippet>241</a>            <span class="kw">let </span>ri = <a href="#113-121">to_u32_vec</a>(<span class="kw-2">&amp;</span><a href="#174">a</a>[<span class="number">1</span>]);
 <a href=#242 id=242 data-nosnippet>242</a>            <span class="kw">let </span>Value::<a href="api.rs.html#115">Struct</a>(s) = <span class="kw-2">&amp;</span><a href="#174">a</a>[<span class="number">0</span>] <span class="kw">else </span>{ <span class="kw">return </span>Value::<a href="api.rs.html#129">LayoutCache</a>(Default::<a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default">default</a>()) };
 <a href=#243 id=243 data-nosnippet>243</a>            <span class="kw">let </span>cells = <a href="#242">s</a>.<a href="api.rs.html#667-673">get_field</a>(<span class="string">"cells"</span>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(<a href="#49-70">to_cells</a>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap_or_default">unwrap_or_default</a>();
-<a href=#244 id=244 data-nosnippet>244</a>            Value::<a href="api.rs.html#129">LayoutCache</a>(i_slint_core::layout::<a href="../../i_slint_core/layout/fn.solve_box_layout.html">solve_box_layout</a>(
-<a href=#245 id=245 data-nosnippet>245</a>                <span class="kw-2">&amp;</span><a href="../../i_slint_core/layout/struct.BoxLayoutData.html">BoxLayoutData</a> {
+<a href=#244 id=244 data-nosnippet>244</a>            Value::<a href="api.rs.html#129">LayoutCache</a>(i_slint_core::layout::solve_box_layout(
+<a href=#245 id=245 data-nosnippet>245</a>                <span class="kw-2">&amp;</span>BoxLayoutData {
 <a href=#246 id=246 data-nosnippet>246</a>                    size: <a href="#160-165">sf32</a>(<a href="#242">s</a>, <span class="string">"size"</span>),
 <a href=#247 id=247 data-nosnippet>247</a>                    spacing: <a href="#160-165">sf32</a>(<a href="#242">s</a>, <span class="string">"spacing"</span>),
 <a href=#248 id=248 data-nosnippet>248</a>                    padding: <a href="#242">s</a>.<a href="api.rs.html#667-673">get_field</a>(<span class="string">"padding"</span>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(<a href="#33-40">to_padding</a>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap_or_default">unwrap_or_default</a>(),
 <a href=#249 id=249 data-nosnippet>249</a>                    alignment: <a href="#242">s</a>.<a href="api.rs.html#667-673">get_field</a>(<span class="string">"alignment"</span>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(<a href="#42-47">to_enum</a>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap_or_default">unwrap_or_default</a>(),
-<a href=#250 id=250 data-nosnippet>250</a>                    cells: <a href="../../i_slint_core/slice/struct.Slice.html">Slice</a>::<a href="../../i_slint_core/slice/struct.Slice.html#method.from_slice">from_slice</a>(<span class="kw-2">&amp;</span><a href="#243">cells</a>),
+<a href=#250 id=250 data-nosnippet>250</a>                    cells: Slice::from_slice(<span class="kw-2">&amp;</span><a href="#243">cells</a>),
 <a href=#251 id=251 data-nosnippet>251</a>                },
-<a href=#252 id=252 data-nosnippet>252</a>                <a href="../../i_slint_core/slice/struct.Slice.html">Slice</a>::<a href="../../i_slint_core/slice/struct.Slice.html#method.from_slice">from_slice</a>(<span class="kw-2">&amp;</span><a href="#241">ri</a>),
+<a href=#252 id=252 data-nosnippet>252</a>                Slice::from_slice(<span class="kw-2">&amp;</span><a href="#241">ri</a>),
 <a href=#253 id=253 data-nosnippet>253</a>            ))
 <a href=#254 id=254 data-nosnippet>254</a>        }
 <a href=#255 id=255 data-nosnippet>255</a>        <span class="string">"solve_box_layout_ortho" </span>=&gt; {
 <a href=#256 id=256 data-nosnippet>256</a>            <span class="kw">let </span>ri = <a href="#113-121">to_u32_vec</a>(<span class="kw-2">&amp;</span><a href="#174">a</a>[<span class="number">1</span>]);
 <a href=#257 id=257 data-nosnippet>257</a>            <span class="kw">let </span>Value::<a href="api.rs.html#115">Struct</a>(s) = <span class="kw-2">&amp;</span><a href="#174">a</a>[<span class="number">0</span>] <span class="kw">else </span>{ <span class="kw">return </span>Value::<a href="api.rs.html#129">LayoutCache</a>(Default::<a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default">default</a>()) };
 <a href=#258 id=258 data-nosnippet>258</a>            <span class="kw">let </span>cells = <a href="#257">s</a>.<a href="api.rs.html#667-673">get_field</a>(<span class="string">"cells"</span>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(<a href="#49-70">to_cells</a>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap_or_default">unwrap_or_default</a>();
-<a href=#259 id=259 data-nosnippet>259</a>            Value::<a href="api.rs.html#129">LayoutCache</a>(i_slint_core::layout::<a href="../../i_slint_core/layout/fn.solve_box_layout_ortho.html">solve_box_layout_ortho</a>(
-<a href=#260 id=260 data-nosnippet>260</a>                <span class="kw-2">&amp;</span>i_slint_core::layout::<a href="../../i_slint_core/layout/struct.BoxLayoutOrthoData.html">BoxLayoutOrthoData</a> {
+<a href=#259 id=259 data-nosnippet>259</a>            Value::<a href="api.rs.html#129">LayoutCache</a>(i_slint_core::layout::solve_box_layout_ortho(
+<a href=#260 id=260 data-nosnippet>260</a>                <span class="kw-2">&amp;</span>i_slint_core::layout::BoxLayoutOrthoData {
 <a href=#261 id=261 data-nosnippet>261</a>                    size: <a href="#160-165">sf32</a>(<a href="#257">s</a>, <span class="string">"size"</span>),
 <a href=#262 id=262 data-nosnippet>262</a>                    padding: <a href="#257">s</a>.<a href="api.rs.html#667-673">get_field</a>(<span class="string">"padding"</span>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(<a href="#33-40">to_padding</a>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap_or_default">unwrap_or_default</a>(),
 <a href=#263 id=263 data-nosnippet>263</a>                    cross_axis_alignment: <a href="#257">s</a>
 <a href=#264 id=264 data-nosnippet>264</a>                        .<a href="api.rs.html#667-673">get_field</a>(<span class="string">"cross-axis-alignment"</span>)
 <a href=#265 id=265 data-nosnippet>265</a>                        .<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(<a href="#42-47">to_enum</a>)
 <a href=#266 id=266 data-nosnippet>266</a>                        .<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap_or_default">unwrap_or_default</a>(),
-<a href=#267 id=267 data-nosnippet>267</a>                    cells: <a href="../../i_slint_core/slice/struct.Slice.html">Slice</a>::<a href="../../i_slint_core/slice/struct.Slice.html#method.from_slice">from_slice</a>(<span class="kw-2">&amp;</span><a href="#258">cells</a>),
+<a href=#267 id=267 data-nosnippet>267</a>                    cells: Slice::from_slice(<span class="kw-2">&amp;</span><a href="#258">cells</a>),
 <a href=#268 id=268 data-nosnippet>268</a>                },
-<a href=#269 id=269 data-nosnippet>269</a>                <a href="../../i_slint_core/slice/struct.Slice.html">Slice</a>::<a href="../../i_slint_core/slice/struct.Slice.html#method.from_slice">from_slice</a>(<span class="kw-2">&amp;</span><a href="#256">ri</a>),
+<a href=#269 id=269 data-nosnippet>269</a>                Slice::from_slice(<span class="kw-2">&amp;</span><a href="#256">ri</a>),
 <a href=#270 id=270 data-nosnippet>270</a>            ))
 <a href=#271 id=271 data-nosnippet>271</a>        }
 <a href=#272 id=272 data-nosnippet>272</a>        <span class="string">"solve_flexbox_layout" </span>=&gt; {
@@ -399,8 +399,8 @@
 <a href=#277 id=277 data-nosnippet>277</a>                <a href="#274">s</a>.<a href="api.rs.html#667-673">get_field</a>(<span class="string">"cells-v"</span>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(<a href="#49-70">to_cells</a>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap_or_default">unwrap_or_default</a>(),
 <a href=#278 id=278 data-nosnippet>278</a>            );
 <a href=#279 id=279 data-nosnippet>279</a>            <span class="kw">let </span>fp = <a href="#274">s</a>.<a href="api.rs.html#667-673">get_field</a>(<span class="string">"flex-props"</span>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(<a href="#103-111">to_flex_props</a>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap_or_default">unwrap_or_default</a>();
-<a href=#280 id=280 data-nosnippet>280</a>            Value::<a href="api.rs.html#129">LayoutCache</a>(i_slint_core::layout::<a href="../../i_slint_core/layout/fn.solve_flexbox_layout.html">solve_flexbox_layout</a>(
-<a href=#281 id=281 data-nosnippet>281</a>                <span class="kw-2">&amp;</span><a href="../../i_slint_core/layout/struct.FlexboxLayoutData.html">FlexboxLayoutData</a> {
+<a href=#280 id=280 data-nosnippet>280</a>            Value::<a href="api.rs.html#129">LayoutCache</a>(i_slint_core::layout::solve_flexbox_layout(
+<a href=#281 id=281 data-nosnippet>281</a>                <span class="kw-2">&amp;</span>FlexboxLayoutData {
 <a href=#282 id=282 data-nosnippet>282</a>                    width: <a href="#160-165">sf32</a>(<a href="#274">s</a>, <span class="string">"width"</span>),
 <a href=#283 id=283 data-nosnippet>283</a>                    height: <a href="#160-165">sf32</a>(<a href="#274">s</a>, <span class="string">"height"</span>),
 <a href=#284 id=284 data-nosnippet>284</a>                    spacing_h: <a href="#160-165">sf32</a>(<a href="#274">s</a>, <span class="string">"spacing_h"</span>),
@@ -418,17 +418,17 @@
 <a href=#296 id=296 data-nosnippet>296</a>                        .<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(<a href="#42-47">to_enum</a>)
 <a href=#297 id=297 data-nosnippet>297</a>                        .<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap_or_default">unwrap_or_default</a>(),
 <a href=#298 id=298 data-nosnippet>298</a>                    flex_wrap: <a href="#274">s</a>.<a href="api.rs.html#667-673">get_field</a>(<span class="string">"flex-wrap"</span>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(<a href="#42-47">to_enum</a>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap_or_default">unwrap_or_default</a>(),
-<a href=#299 id=299 data-nosnippet>299</a>                    cells_h: <a href="../../i_slint_core/slice/struct.Slice.html">Slice</a>::<a href="../../i_slint_core/slice/struct.Slice.html#method.from_slice">from_slice</a>(<span class="kw-2">&amp;</span><a href="#275">ch</a>),
-<a href=#300 id=300 data-nosnippet>300</a>                    cells_v: <a href="../../i_slint_core/slice/struct.Slice.html">Slice</a>::<a href="../../i_slint_core/slice/struct.Slice.html#method.from_slice">from_slice</a>(<span class="kw-2">&amp;</span><a href="#275">cv</a>),
-<a href=#301 id=301 data-nosnippet>301</a>                    flex_props: <a href="../../i_slint_core/slice/struct.Slice.html">Slice</a>::<a href="../../i_slint_core/slice/struct.Slice.html#method.from_slice">from_slice</a>(<span class="kw-2">&amp;</span><a href="#279">fp</a>),
+<a href=#299 id=299 data-nosnippet>299</a>                    cells_h: Slice::from_slice(<span class="kw-2">&amp;</span><a href="#275">ch</a>),
+<a href=#300 id=300 data-nosnippet>300</a>                    cells_v: Slice::from_slice(<span class="kw-2">&amp;</span><a href="#275">cv</a>),
+<a href=#301 id=301 data-nosnippet>301</a>                    flex_props: Slice::from_slice(<span class="kw-2">&amp;</span><a href="#279">fp</a>),
 <a href=#302 id=302 data-nosnippet>302</a>                },
-<a href=#303 id=303 data-nosnippet>303</a>                <a href="../../i_slint_core/slice/struct.Slice.html">Slice</a>::<a href="../../i_slint_core/slice/struct.Slice.html#method.from_slice">from_slice</a>(<span class="kw-2">&amp;</span><a href="#273">ri</a>),
+<a href=#303 id=303 data-nosnippet>303</a>                Slice::from_slice(<span class="kw-2">&amp;</span><a href="#273">ri</a>),
 <a href=#304 id=304 data-nosnippet>304</a>            ))
 <a href=#305 id=305 data-nosnippet>305</a>        }
 <a href=#306 id=306 data-nosnippet>306</a>        <span class="string">"flexbox_layout_info_main_axis" </span>=&gt; {
 <a href=#307 id=307 data-nosnippet>307</a>            <span class="kw">let </span>cells = <a href="#49-70">to_cells</a>(<span class="kw-2">&amp;</span><a href="#174">a</a>[<span class="number">0</span>]);
-<a href=#308 id=308 data-nosnippet>308</a>            i_slint_core::layout::<a href="../../i_slint_core/layout/fn.flexbox_layout_info_main_axis.html">flexbox_layout_info_main_axis</a>(
-<a href=#309 id=309 data-nosnippet>309</a>                <a href="../../i_slint_core/slice/struct.Slice.html">Slice</a>::<a href="../../i_slint_core/slice/struct.Slice.html#method.from_slice">from_slice</a>(<span class="kw-2">&amp;</span><a href="#307">cells</a>),
+<a href=#308 id=308 data-nosnippet>308</a>            i_slint_core::layout::flexbox_layout_info_main_axis(
+<a href=#309 id=309 data-nosnippet>309</a>                Slice::from_slice(<span class="kw-2">&amp;</span><a href="#307">cells</a>),
 <a href=#310 id=310 data-nosnippet>310</a>                <a href="#26-31">to_f32</a>(<span class="kw-2">&amp;</span><a href="#174">a</a>[<span class="number">1</span>]),
 <a href=#311 id=311 data-nosnippet>311</a>                <span class="kw-2">&amp;</span><a href="#33-40">to_padding</a>(<span class="kw-2">&amp;</span><a href="#174">a</a>[<span class="number">2</span>]),
 <a href=#312 id=312 data-nosnippet>312</a>                <a href="#42-47">to_enum</a>(<span class="kw-2">&amp;</span><a href="#174">a</a>[<span class="number">3</span>]),
@@ -437,8 +437,8 @@
 <a href=#315 id=315 data-nosnippet>315</a>        }
 <a href=#316 id=316 data-nosnippet>316</a>        <span class="string">"flexbox_layout_unwrapped_main" </span>=&gt; {
 <a href=#317 id=317 data-nosnippet>317</a>            <span class="kw">let </span>cells = <a href="#49-70">to_cells</a>(<span class="kw-2">&amp;</span><a href="#174">a</a>[<span class="number">0</span>]);
-<a href=#318 id=318 data-nosnippet>318</a>            Value::<a href="api.rs.html#105">Number</a>(i_slint_core::layout::<a href="../../i_slint_core/layout/fn.flexbox_layout_unwrapped_main.html">flexbox_layout_unwrapped_main</a>(
-<a href=#319 id=319 data-nosnippet>319</a>                <a href="../../i_slint_core/slice/struct.Slice.html">Slice</a>::<a href="../../i_slint_core/slice/struct.Slice.html#method.from_slice">from_slice</a>(<span class="kw-2">&amp;</span><a href="#317">cells</a>),
+<a href=#318 id=318 data-nosnippet>318</a>            Value::<a href="api.rs.html#105">Number</a>(i_slint_core::layout::flexbox_layout_unwrapped_main(
+<a href=#319 id=319 data-nosnippet>319</a>                Slice::from_slice(<span class="kw-2">&amp;</span><a href="#317">cells</a>),
 <a href=#320 id=320 data-nosnippet>320</a>                <a href="#26-31">to_f32</a>(<span class="kw-2">&amp;</span><a href="#174">a</a>[<span class="number">1</span>]),
 <a href=#321 id=321 data-nosnippet>321</a>                <span class="kw-2">&amp;</span><a href="#33-40">to_padding</a>(<span class="kw-2">&amp;</span><a href="#174">a</a>[<span class="number">2</span>]),
 <a href=#322 id=322 data-nosnippet>322</a>            ) <span class="kw">as </span><a href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>)
@@ -446,10 +446,10 @@
 <a href=#324 id=324 data-nosnippet>324</a>        <span class="string">"flexbox_layout_info_cross_axis" </span>=&gt; {
 <a href=#325 id=325 data-nosnippet>325</a>            <span class="kw">let </span>(ch, cv) = (<a href="#49-70">to_cells</a>(<span class="kw-2">&amp;</span><a href="#174">a</a>[<span class="number">0</span>]), <a href="#49-70">to_cells</a>(<span class="kw-2">&amp;</span><a href="#174">a</a>[<span class="number">1</span>]));
 <a href=#326 id=326 data-nosnippet>326</a>            <span class="kw">let </span>fp = <a href="#103-111">to_flex_props</a>(<span class="kw-2">&amp;</span><a href="#174">a</a>[<span class="number">2</span>]);
-<a href=#327 id=327 data-nosnippet>327</a>            i_slint_core::layout::<a href="../../i_slint_core/layout/fn.flexbox_layout_info_cross_axis.html">flexbox_layout_info_cross_axis</a>(
-<a href=#328 id=328 data-nosnippet>328</a>                <a href="../../i_slint_core/slice/struct.Slice.html">Slice</a>::<a href="../../i_slint_core/slice/struct.Slice.html#method.from_slice">from_slice</a>(<span class="kw-2">&amp;</span><a href="#325">ch</a>),
-<a href=#329 id=329 data-nosnippet>329</a>                <a href="../../i_slint_core/slice/struct.Slice.html">Slice</a>::<a href="../../i_slint_core/slice/struct.Slice.html#method.from_slice">from_slice</a>(<span class="kw-2">&amp;</span><a href="#325">cv</a>),
-<a href=#330 id=330 data-nosnippet>330</a>                <a href="../../i_slint_core/slice/struct.Slice.html">Slice</a>::<a href="../../i_slint_core/slice/struct.Slice.html#method.from_slice">from_slice</a>(<span class="kw-2">&amp;</span><a href="#326">fp</a>),
+<a href=#327 id=327 data-nosnippet>327</a>            i_slint_core::layout::flexbox_layout_info_cross_axis(
+<a href=#328 id=328 data-nosnippet>328</a>                Slice::from_slice(<span class="kw-2">&amp;</span><a href="#325">ch</a>),
+<a href=#329 id=329 data-nosnippet>329</a>                Slice::from_slice(<span class="kw-2">&amp;</span><a href="#325">cv</a>),
+<a href=#330 id=330 data-nosnippet>330</a>                Slice::from_slice(<span class="kw-2">&amp;</span><a href="#326">fp</a>),
 <a href=#331 id=331 data-nosnippet>331</a>                <a href="#26-31">to_f32</a>(<span class="kw-2">&amp;</span><a href="#174">a</a>[<span class="number">3</span>]),
 <a href=#332 id=332 data-nosnippet>332</a>                <a href="#26-31">to_f32</a>(<span class="kw-2">&amp;</span><a href="#174">a</a>[<span class="number">4</span>]),
 <a href=#333 id=333 data-nosnippet>333</a>                <span class="kw-2">&amp;</span><a href="#33-40">to_padding</a>(<span class="kw-2">&amp;</span><a href="#174">a</a>[<span class="number">5</span>]),
@@ -465,7 +465,7 @@
 <a href=#343 id=343 data-nosnippet>343</a>    }
 <a href=#344 id=344 data-nosnippet>344</a>}
 <a href=#345 id=345 data-nosnippet>345</a>
-<a href=#346 id=346 data-nosnippet>346</a><span class="kw">fn </span>eval_info(ctx: <span class="kw-2">&amp;mut </span><a href="eval.rs.html#28-46">EvalContext</a>, e: <span class="kw-2">&amp;</span><a href="../../i_slint_compiler/llr/expression/enum.Expression.html">Expression</a>) -&gt; <a href="../../i_slint_core/layout/struct.LayoutInfo.html">LayoutInfo</a> {
+<a href=#346 id=346 data-nosnippet>346</a><span class="kw">fn </span>eval_info(ctx: <span class="kw-2">&amp;mut </span><a href="eval.rs.html#28-46">EvalContext</a>, e: <span class="kw-2">&amp;</span>Expression) -&gt; LayoutInfo {
 <a href=#347 id=347 data-nosnippet>347</a>    <a href="eval.rs.html#724-1102">eval_expression</a>(<a href="#346">ctx</a>, <a href="#346">e</a>).<a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#tymethod.try_into">try_into</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap_or_default">unwrap_or_default</a>()
 <a href=#348 id=348 data-nosnippet>348</a>}
 <a href=#349 id=349 data-nosnippet>349</a>
@@ -478,10 +478,10 @@
 <a href=#356 id=356 data-nosnippet>356</a>
 <a href=#357 id=357 data-nosnippet>357</a><span class="kw">enum </span>FlatCellKind&lt;<span class="lifetime">'a</span>&gt; {
 <a href=#358 id=358 data-nosnippet>358</a>    Static {
-<a href=#359 id=359 data-nosnippet>359</a>        h_info: <span class="kw-2">&amp;</span><span class="lifetime">'a </span><a href="../../i_slint_compiler/llr/expression/enum.Expression.html">Expression</a>,
-<a href=#360 id=360 data-nosnippet>360</a>        v_info: <span class="kw-2">&amp;</span><span class="lifetime">'a </span><a href="../../i_slint_compiler/llr/expression/enum.Expression.html">Expression</a>,
+<a href=#359 id=359 data-nosnippet>359</a>        h_info: <span class="kw-2">&amp;</span><span class="lifetime">'a </span>Expression,
+<a href=#360 id=360 data-nosnippet>360</a>        v_info: <span class="kw-2">&amp;</span><span class="lifetime">'a </span>Expression,
 <a href=#361 id=361 data-nosnippet>361</a>    },
-<a href=#362 id=362 data-nosnippet>362</a>    Repeated(vtable::<a href="../../vtable/vrc/struct.VRc.html">VRc</a>&lt;i_slint_core::item_tree::<a href="../../i_slint_core/item_tree/ItemTree_vtable_mod/struct.ItemTreeVTable.html">ItemTreeVTable</a>, <span class="kw">crate</span>::instance::<a href="instance.rs.html#203-259">Instance</a>&gt;),
+<a href=#362 id=362 data-nosnippet>362</a>    Repeated(vtable::VRc&lt;i_slint_core::item_tree::ItemTreeVTable, <span class="kw">crate</span>::instance::<a href="instance.rs.html#203-259">Instance</a>&gt;),
 <a href=#363 id=363 data-nosnippet>363</a>    <span class="doccomment">/// No constrained layout info: the pre-resolved sizes are already correct.
 <a href=#364 id=364 data-nosnippet>364</a>    </span>Fixed,
 <a href=#365 id=365 data-nosnippet>365</a>}
@@ -491,7 +491,7 @@
 <a href=#369 id=369 data-nosnippet>369</a>/// per row (re-measured through its own item tree at the assigned cross size).
 <a href=#370 id=370 data-nosnippet>370</a></span><span class="kw">fn </span>flatten_measure_cells&lt;<span class="lifetime">'a</span>&gt;(
 <a href=#371 id=371 data-nosnippet>371</a>    ctx: <span class="kw-2">&amp;mut </span><a href="eval.rs.html#28-46">EvalContext</a>,
-<a href=#372 id=372 data-nosnippet>372</a>    measure_cells: <span class="kw-2">&amp;</span><span class="lifetime">'a </span>[<a href="../../i_slint_compiler/llr/expression/struct.FlexboxMeasureCell.html">FlexboxMeasureCell</a>],
+<a href=#372 id=372 data-nosnippet>372</a>    measure_cells: <span class="kw-2">&amp;</span><span class="lifetime">'a </span>[FlexboxMeasureCell],
 <a href=#373 id=373 data-nosnippet>373</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="#352-355">FlatCell</a>&lt;<span class="lifetime">'a</span>&gt;&gt; {
 <a href=#374 id=374 data-nosnippet>374</a>    <span class="kw">let </span><span class="kw-2">mut </span>flat: <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="#352-355">FlatCell</a>&gt; = <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>::<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.with_capacity">with_capacity</a>(<a href="#372">measure_cells</a>.<a href="https://doc.rust-lang.org/nightly/core/primitive.slice.html#method.len">len</a>());
 <a href=#375 id=375 data-nosnippet>375</a>    <span class="kw">for </span>item <span class="kw">in </span>measure_cells {
@@ -538,35 +538,35 @@
 <a href=#416 id=416 data-nosnippet>416</a>    <span class="comment">// measure the height at the width `w`
 <a href=#417 id=417 data-nosnippet>417</a>    </span><span class="kw">let </span>measure_height = |ctx: <span class="kw-2">&amp;mut </span><a href="eval.rs.html#28-46">EvalContext</a>| <span class="kw">match </span><span class="kw-2">&amp;</span><a href="#415">cell</a>.kind {
 <a href=#418 id=418 data-nosnippet>418</a>        FlatCellKind::<a href="#358-361">Static</a> { v_info, .. } =&gt; {
-<a href=#419 id=419 data-nosnippet>419</a>            <span class="kw">let </span>prev = <a href="#417">ctx</a>.locals.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.insert">insert</a>(<a href="../../i_slint_compiler/llr/lower_layout_expression/constant.MEASURE_KNOWN_W_LOCAL.html">MEASURE_KNOWN_W_LOCAL</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html#tymethod.into">into</a>(), Value::<a href="api.rs.html#105">Number</a>(<a href="#410">w</a> <span class="kw">as </span><a href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>));
+<a href=#419 id=419 data-nosnippet>419</a>            <span class="kw">let </span>prev = <a href="#417">ctx</a>.locals.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.insert">insert</a>(MEASURE_KNOWN_W_LOCAL.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html#tymethod.into">into</a>(), Value::<a href="api.rs.html#105">Number</a>(<a href="#410">w</a> <span class="kw">as </span><a href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>));
 <a href=#420 id=420 data-nosnippet>420</a>            <span class="kw">let </span>info = <a href="#346-348">eval_info</a>(<a href="#417">ctx</a>, <a href="#418">v_info</a>);
-<a href=#421 id=421 data-nosnippet>421</a>            <span class="kw">crate</span>::eval::<a href="eval.rs.html#1504-1510">restore_local</a>(<a href="#417">ctx</a>, <a href="../../i_slint_compiler/llr/lower_layout_expression/constant.MEASURE_KNOWN_W_LOCAL.html">MEASURE_KNOWN_W_LOCAL</a>, <a href="#419">prev</a>);
-<a href=#422 id=422 data-nosnippet>422</a>            (<a href="#410">w</a>, <a href="#420">info</a>.<a href="../../i_slint_core/layout/struct.LayoutInfo.html#method.preferred_bounded">preferred_bounded</a>())
+<a href=#421 id=421 data-nosnippet>421</a>            <span class="kw">crate</span>::eval::<a href="eval.rs.html#1504-1510">restore_local</a>(<a href="#417">ctx</a>, MEASURE_KNOWN_W_LOCAL, <a href="#419">prev</a>);
+<a href=#422 id=422 data-nosnippet>422</a>            (<a href="#410">w</a>, <a href="#420">info</a>.preferred_bounded())
 <a href=#423 id=423 data-nosnippet>423</a>        }
 <a href=#424 id=424 data-nosnippet>424</a>        FlatCellKind::<a href="#362">Repeated</a>(instance) =&gt; (
 <a href=#425 id=425 data-nosnippet>425</a>            <a href="#410">w</a>,
 <a href=#426 id=426 data-nosnippet>426</a>            <a href="#424">instance</a>
-<a href=#427 id=427 data-nosnippet>427</a>                .<a href="../../vtable/vrc/struct.VRc.html#method.as_pin_ref">as_pin_ref</a>()
+<a href=#427 id=427 data-nosnippet>427</a>                .as_pin_ref()
 <a href=#428 id=428 data-nosnippet>428</a>                .<a href="instance.rs.html#1346-1367">flexbox_layout_item_info_at_cross_width</a>(<a href="#410">w</a>)
 <a href=#429 id=429 data-nosnippet>429</a>                .constraint
-<a href=#430 id=430 data-nosnippet>430</a>                .<a href="../../i_slint_core/layout/struct.LayoutInfo.html#method.preferred_bounded">preferred_bounded</a>(),
+<a href=#430 id=430 data-nosnippet>430</a>                .preferred_bounded(),
 <a href=#431 id=431 data-nosnippet>431</a>        ),
 <a href=#432 id=432 data-nosnippet>432</a>        FlatCellKind::<a href="#364">Fixed</a> =&gt; (<a href="#410">w</a>, <a href="#411">h</a>),
 <a href=#433 id=433 data-nosnippet>433</a>    };
 <a href=#434 id=434 data-nosnippet>434</a>    <span class="comment">// measure the width at the height `h`
 <a href=#435 id=435 data-nosnippet>435</a>    </span><span class="kw">let </span>measure_width = |ctx: <span class="kw-2">&amp;mut </span><a href="eval.rs.html#28-46">EvalContext</a>| <span class="kw">match </span><span class="kw-2">&amp;</span><a href="#415">cell</a>.kind {
 <a href=#436 id=436 data-nosnippet>436</a>        FlatCellKind::<a href="#358-361">Static</a> { h_info, .. } =&gt; {
-<a href=#437 id=437 data-nosnippet>437</a>            <span class="kw">let </span>prev = <a href="#435">ctx</a>.locals.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.insert">insert</a>(<a href="../../i_slint_compiler/llr/lower_layout_expression/constant.MEASURE_KNOWN_H_LOCAL.html">MEASURE_KNOWN_H_LOCAL</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html#tymethod.into">into</a>(), Value::<a href="api.rs.html#105">Number</a>(<a href="#411">h</a> <span class="kw">as </span><a href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>));
+<a href=#437 id=437 data-nosnippet>437</a>            <span class="kw">let </span>prev = <a href="#435">ctx</a>.locals.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.insert">insert</a>(MEASURE_KNOWN_H_LOCAL.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html#tymethod.into">into</a>(), Value::<a href="api.rs.html#105">Number</a>(<a href="#411">h</a> <span class="kw">as </span><a href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>));
 <a href=#438 id=438 data-nosnippet>438</a>            <span class="kw">let </span>info = <a href="#346-348">eval_info</a>(<a href="#435">ctx</a>, <a href="#436">h_info</a>);
-<a href=#439 id=439 data-nosnippet>439</a>            <span class="kw">crate</span>::eval::<a href="eval.rs.html#1504-1510">restore_local</a>(<a href="#435">ctx</a>, <a href="../../i_slint_compiler/llr/lower_layout_expression/constant.MEASURE_KNOWN_H_LOCAL.html">MEASURE_KNOWN_H_LOCAL</a>, <a href="#437">prev</a>);
-<a href=#440 id=440 data-nosnippet>440</a>            (<a href="#438">info</a>.<a href="../../i_slint_core/layout/struct.LayoutInfo.html#method.preferred_bounded">preferred_bounded</a>(), <a href="#411">h</a>)
+<a href=#439 id=439 data-nosnippet>439</a>            <span class="kw">crate</span>::eval::<a href="eval.rs.html#1504-1510">restore_local</a>(<a href="#435">ctx</a>, MEASURE_KNOWN_H_LOCAL, <a href="#437">prev</a>);
+<a href=#440 id=440 data-nosnippet>440</a>            (<a href="#438">info</a>.preferred_bounded(), <a href="#411">h</a>)
 <a href=#441 id=441 data-nosnippet>441</a>        }
 <a href=#442 id=442 data-nosnippet>442</a>        FlatCellKind::<a href="#362">Repeated</a>(instance) =&gt; (
 <a href=#443 id=443 data-nosnippet>443</a>            <a href="#442">instance</a>
-<a href=#444 id=444 data-nosnippet>444</a>                .<a href="../../vtable/vrc/struct.VRc.html#method.as_pin_ref">as_pin_ref</a>()
+<a href=#444 id=444 data-nosnippet>444</a>                .as_pin_ref()
 <a href=#445 id=445 data-nosnippet>445</a>                .<a href="instance.rs.html#1372-1393">flexbox_layout_item_info_at_cross_height</a>(<a href="#411">h</a>)
 <a href=#446 id=446 data-nosnippet>446</a>                .constraint
-<a href=#447 id=447 data-nosnippet>447</a>                .<a href="../../i_slint_core/layout/struct.LayoutInfo.html#method.preferred_bounded">preferred_bounded</a>(),
+<a href=#447 id=447 data-nosnippet>447</a>                .preferred_bounded(),
 <a href=#448 id=448 data-nosnippet>448</a>            <a href="#411">h</a>,
 <a href=#449 id=449 data-nosnippet>449</a>        ),
 <a href=#450 id=450 data-nosnippet>450</a>        FlatCellKind::<a href="#364">Fixed</a> =&gt; (<a href="#410">w</a>, <a href="#411">h</a>),
@@ -586,8 +586,8 @@
 <a href=#464 id=464 data-nosnippet>464</a>}
 <a href=#465 id=465 data-nosnippet>465</a>
 <a href=#466 id=466 data-nosnippet>466</a><span class="doccomment">/// Interpret [`Expression::SolveFlexboxLayoutWithMeasure`].
-<a href=#467 id=467 data-nosnippet>467</a></span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>solve_flexbox_layout_with_measure(ctx: <span class="kw-2">&amp;mut </span><a href="eval.rs.html#28-46">EvalContext</a>, expr: <span class="kw-2">&amp;</span><a href="../../i_slint_compiler/llr/expression/enum.Expression.html">Expression</a>) -&gt; <a href="api.rs.html#99-145">Value</a> {
-<a href=#468 id=468 data-nosnippet>468</a>    <span class="kw">let </span>Expression::<a href="../../i_slint_compiler/llr/expression/enum.Expression.html#variant.SolveFlexboxLayoutWithMeasure">SolveFlexboxLayoutWithMeasure</a> { data, repeater_indices, measure_cells } = <a href="#467">expr</a>
+<a href=#467 id=467 data-nosnippet>467</a></span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>solve_flexbox_layout_with_measure(ctx: <span class="kw-2">&amp;mut </span><a href="eval.rs.html#28-46">EvalContext</a>, expr: <span class="kw-2">&amp;</span>Expression) -&gt; <a href="api.rs.html#99-145">Value</a> {
+<a href=#468 id=468 data-nosnippet>468</a>    <span class="kw">let </span>Expression::SolveFlexboxLayoutWithMeasure { data, repeater_indices, measure_cells } = <a href="#467">expr</a>
 <a href=#469 id=469 data-nosnippet>469</a>    <span class="kw">else </span>{
 <a href=#470 id=470 data-nosnippet>470</a>        <span class="kw">return </span>Value::<a href="api.rs.html#103">Void</a>;
 <a href=#471 id=471 data-nosnippet>471</a>    };
@@ -605,8 +605,8 @@
 <a href=#483 id=483 data-nosnippet>483</a>        <a href="#406-464">measure_flexbox_cell</a>(<a href="#467">ctx</a>, <span class="kw-2">&amp;</span><a href="#481">flat</a>, <a href="#482">index</a>, <a href="#482">w</a>, <a href="#482">h</a>, <a href="#482">known_w</a>, <a href="#482">known_h</a>)
 <a href=#484 id=484 data-nosnippet>484</a>    };
 <a href=#485 id=485 data-nosnippet>485</a>
-<a href=#486 id=486 data-nosnippet>486</a>    Value::<a href="api.rs.html#129">LayoutCache</a>(i_slint_core::layout::<a href="../../i_slint_core/layout/fn.solve_flexbox_layout_with_measure.html">solve_flexbox_layout_with_measure</a>(
-<a href=#487 id=487 data-nosnippet>487</a>        <span class="kw-2">&amp;</span><a href="../../i_slint_core/layout/struct.FlexboxLayoutData.html">FlexboxLayoutData</a> {
+<a href=#486 id=486 data-nosnippet>486</a>    Value::<a href="api.rs.html#129">LayoutCache</a>(i_slint_core::layout::solve_flexbox_layout_with_measure(
+<a href=#487 id=487 data-nosnippet>487</a>        <span class="kw-2">&amp;</span>FlexboxLayoutData {
 <a href=#488 id=488 data-nosnippet>488</a>            width: <a href="#160-165">sf32</a>(<a href="#474">s</a>, <span class="string">"width"</span>),
 <a href=#489 id=489 data-nosnippet>489</a>            height: <a href="#160-165">sf32</a>(<a href="#474">s</a>, <span class="string">"height"</span>),
 <a href=#490 id=490 data-nosnippet>490</a>            spacing_h: <a href="#160-165">sf32</a>(<a href="#474">s</a>, <span class="string">"spacing_h"</span>),
@@ -624,11 +624,11 @@
 <a href=#502 id=502 data-nosnippet>502</a>                .<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(<a href="#42-47">to_enum</a>)
 <a href=#503 id=503 data-nosnippet>503</a>                .<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap_or_default">unwrap_or_default</a>(),
 <a href=#504 id=504 data-nosnippet>504</a>            flex_wrap: <a href="#474">s</a>.<a href="api.rs.html#667-673">get_field</a>(<span class="string">"flex-wrap"</span>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(<a href="#42-47">to_enum</a>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap_or_default">unwrap_or_default</a>(),
-<a href=#505 id=505 data-nosnippet>505</a>            cells_h: <a href="../../i_slint_core/slice/struct.Slice.html">Slice</a>::<a href="../../i_slint_core/slice/struct.Slice.html#method.from_slice">from_slice</a>(<span class="kw-2">&amp;</span><a href="#475">ch</a>),
-<a href=#506 id=506 data-nosnippet>506</a>            cells_v: <a href="../../i_slint_core/slice/struct.Slice.html">Slice</a>::<a href="../../i_slint_core/slice/struct.Slice.html#method.from_slice">from_slice</a>(<span class="kw-2">&amp;</span><a href="#475">cv</a>),
-<a href=#507 id=507 data-nosnippet>507</a>            flex_props: <a href="../../i_slint_core/slice/struct.Slice.html">Slice</a>::<a href="../../i_slint_core/slice/struct.Slice.html#method.from_slice">from_slice</a>(<span class="kw-2">&amp;</span><a href="#479">fp</a>),
+<a href=#505 id=505 data-nosnippet>505</a>            cells_h: Slice::from_slice(<span class="kw-2">&amp;</span><a href="#475">ch</a>),
+<a href=#506 id=506 data-nosnippet>506</a>            cells_v: Slice::from_slice(<span class="kw-2">&amp;</span><a href="#475">cv</a>),
+<a href=#507 id=507 data-nosnippet>507</a>            flex_props: Slice::from_slice(<span class="kw-2">&amp;</span><a href="#479">fp</a>),
 <a href=#508 id=508 data-nosnippet>508</a>        },
-<a href=#509 id=509 data-nosnippet>509</a>        <a href="../../i_slint_core/slice/struct.Slice.html">Slice</a>::<a href="../../i_slint_core/slice/struct.Slice.html#method.from_slice">from_slice</a>(<span class="kw-2">&amp;</span><a href="#472">ri</a>),
+<a href=#509 id=509 data-nosnippet>509</a>        Slice::from_slice(<span class="kw-2">&amp;</span><a href="#472">ri</a>),
 <a href=#510 id=510 data-nosnippet>510</a>        <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(<span class="kw-2">&amp;mut </span><a href="#482">measure</a>),
 <a href=#511 id=511 data-nosnippet>511</a>    ))
 <a href=#512 id=512 data-nosnippet>512</a>}
@@ -639,10 +639,10 @@
 <a href=#517 id=517 data-nosnippet>517</a>/// height-for-width (resp. width-for-height) cell at its solved main size.
 <a href=#518 id=518 data-nosnippet>518</a></span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>box_layout_info_ortho_with_measure(
 <a href=#519 id=519 data-nosnippet>519</a>    ctx: <span class="kw-2">&amp;mut </span><a href="eval.rs.html#28-46">EvalContext</a>,
-<a href=#520 id=520 data-nosnippet>520</a>    expr: <span class="kw-2">&amp;</span><a href="../../i_slint_compiler/llr/expression/enum.Expression.html">Expression</a>,
+<a href=#520 id=520 data-nosnippet>520</a>    expr: <span class="kw-2">&amp;</span>Expression,
 <a href=#521 id=521 data-nosnippet>521</a>) -&gt; <a href="api.rs.html#99-145">Value</a> {
-<a href=#522 id=522 data-nosnippet>522</a>    <span class="kw">use </span><a href="../../i_slint_core/model/repeater/trait.RepeatedItemTree.html">i_slint_core::model::RepeatedItemTree</a>;
-<a href=#523 id=523 data-nosnippet>523</a>    <span class="kw">let </span>Expression::<a href="../../i_slint_compiler/llr/expression/enum.Expression.html#variant.BoxLayoutInfoOrthoWithMeasure">BoxLayoutInfoOrthoWithMeasure</a> {
+<a href=#522 id=522 data-nosnippet>522</a>    <span class="kw">use </span>i_slint_core::model::RepeatedItemTree;
+<a href=#523 id=523 data-nosnippet>523</a>    <span class="kw">let </span>Expression::BoxLayoutInfoOrthoWithMeasure {
 <a href=#524 id=524 data-nosnippet>524</a>        solve_data,
 <a href=#525 id=525 data-nosnippet>525</a>        padding_ortho,
 <a href=#526 id=526 data-nosnippet>526</a>        orientation,
@@ -652,24 +652,24 @@
 <a href=#530 id=530 data-nosnippet>530</a>        <span class="kw">return </span>Value::<a href="api.rs.html#103">Void</a>;
 <a href=#531 id=531 data-nosnippet>531</a>    };
 <a href=#532 id=532 data-nosnippet>532</a>    <span class="kw">let </span>known_size_local = <span class="kw">match </span><a href="#526">orientation</a> {
-<a href=#533 id=533 data-nosnippet>533</a>        Orientation::<a href="../../i_slint_compiler/layout/enum.Orientation.html#variant.Vertical">Vertical</a> =&gt; <a href="../../i_slint_compiler/llr/lower_layout_expression/constant.MEASURE_KNOWN_W_LOCAL.html">MEASURE_KNOWN_W_LOCAL</a>,
-<a href=#534 id=534 data-nosnippet>534</a>        Orientation::<a href="../../i_slint_compiler/layout/enum.Orientation.html#variant.Horizontal">Horizontal</a> =&gt; <a href="../../i_slint_compiler/llr/lower_layout_expression/constant.MEASURE_KNOWN_H_LOCAL.html">MEASURE_KNOWN_H_LOCAL</a>,
+<a href=#533 id=533 data-nosnippet>533</a>        Orientation::Vertical =&gt; MEASURE_KNOWN_W_LOCAL,
+<a href=#534 id=534 data-nosnippet>534</a>        Orientation::Horizontal =&gt; MEASURE_KNOWN_H_LOCAL,
 <a href=#535 id=535 data-nosnippet>535</a>    };
 <a href=#536 id=536 data-nosnippet>536</a>    <span class="kw">let </span>data = <a href="eval.rs.html#724-1102">eval_expression</a>(<a href="#519">ctx</a>, <a href="#524">solve_data</a>);
-<a href=#537 id=537 data-nosnippet>537</a>    <span class="kw">let </span>Value::<a href="api.rs.html#115">Struct</a>(s) = <span class="kw-2">&amp;</span><a href="#536">data</a> <span class="kw">else </span>{ <span class="kw">return </span><a href="../../i_slint_core/layout/struct.LayoutInfo.html">LayoutInfo</a>::<a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default">default</a>().<a href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html#tymethod.into">into</a>() };
+<a href=#537 id=537 data-nosnippet>537</a>    <span class="kw">let </span>Value::<a href="api.rs.html#115">Struct</a>(s) = <span class="kw-2">&amp;</span><a href="#536">data</a> <span class="kw">else </span>{ <span class="kw">return </span>LayoutInfo::<a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default">default</a>().<a href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html#tymethod.into">into</a>() };
 <a href=#538 id=538 data-nosnippet>538</a>    <span class="kw">let </span>cells = <a href="#537">s</a>.<a href="api.rs.html#667-673">get_field</a>(<span class="string">"cells"</span>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(<a href="#49-70">to_cells</a>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap_or_default">unwrap_or_default</a>();
-<a href=#539 id=539 data-nosnippet>539</a>    <span class="kw">let </span>solved = i_slint_core::layout::<a href="../../i_slint_core/layout/fn.solve_box_layout.html">solve_box_layout</a>(
-<a href=#540 id=540 data-nosnippet>540</a>        <span class="kw-2">&amp;</span><a href="../../i_slint_core/layout/struct.BoxLayoutData.html">BoxLayoutData</a> {
+<a href=#539 id=539 data-nosnippet>539</a>    <span class="kw">let </span>solved = i_slint_core::layout::solve_box_layout(
+<a href=#540 id=540 data-nosnippet>540</a>        <span class="kw-2">&amp;</span>BoxLayoutData {
 <a href=#541 id=541 data-nosnippet>541</a>            size: <a href="#160-165">sf32</a>(<a href="#537">s</a>, <span class="string">"size"</span>),
 <a href=#542 id=542 data-nosnippet>542</a>            spacing: <a href="#160-165">sf32</a>(<a href="#537">s</a>, <span class="string">"spacing"</span>),
 <a href=#543 id=543 data-nosnippet>543</a>            padding: <a href="#537">s</a>.<a href="api.rs.html#667-673">get_field</a>(<span class="string">"padding"</span>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(<a href="#33-40">to_padding</a>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap_or_default">unwrap_or_default</a>(),
 <a href=#544 id=544 data-nosnippet>544</a>            alignment: <a href="#537">s</a>.<a href="api.rs.html#667-673">get_field</a>(<span class="string">"alignment"</span>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(<a href="#42-47">to_enum</a>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap_or_default">unwrap_or_default</a>(),
-<a href=#545 id=545 data-nosnippet>545</a>            cells: <a href="../../i_slint_core/slice/struct.Slice.html">Slice</a>::<a href="../../i_slint_core/slice/struct.Slice.html#method.from_slice">from_slice</a>(<span class="kw-2">&amp;</span><a href="#538">cells</a>),
+<a href=#545 id=545 data-nosnippet>545</a>            cells: Slice::from_slice(<span class="kw-2">&amp;</span><a href="#538">cells</a>),
 <a href=#546 id=546 data-nosnippet>546</a>        },
-<a href=#547 id=547 data-nosnippet>547</a>        <a href="../../i_slint_core/slice/struct.Slice.html">Slice</a>::<a href="../../i_slint_core/slice/struct.Slice.html#method.from_slice">from_slice</a>(<span class="kw-2">&amp;</span>[]),
+<a href=#547 id=547 data-nosnippet>547</a>        Slice::from_slice(<span class="kw-2">&amp;</span>[]),
 <a href=#548 id=548 data-nosnippet>548</a>    );
-<a href=#549 id=549 data-nosnippet>549</a>    <span class="kw">let </span>solved_size = |cursor: <a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>| <a href="#539">solved</a>.<a href="../../i_slint_core/sharedvector/struct.SharedVector.html#method.as_slice">as_slice</a>().<a href="https://doc.rust-lang.org/nightly/core/primitive.slice.html#method.get">get</a>(<a href="#549">cursor</a> * <span class="number">2 </span>+ <span class="number">1</span>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.copied">copied</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap_or">unwrap_or</a>(<span class="number">0.</span>);
-<a href=#550 id=550 data-nosnippet>550</a>    <span class="kw">let </span><span class="kw-2">mut </span>out_cells: <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="../../i_slint_core/layout/struct.LayoutItemInfo.html">LayoutItemInfo</a>&gt; = <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>::<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.with_capacity">with_capacity</a>(<a href="#538">cells</a>.<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.len">len</a>());
+<a href=#549 id=549 data-nosnippet>549</a>    <span class="kw">let </span>solved_size = |cursor: <a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>| <a href="#539">solved</a>.as_slice().<a href="https://doc.rust-lang.org/nightly/core/primitive.slice.html#method.get">get</a>(<a href="#549">cursor</a> * <span class="number">2 </span>+ <span class="number">1</span>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.copied">copied</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap_or">unwrap_or</a>(<span class="number">0.</span>);
+<a href=#550 id=550 data-nosnippet>550</a>    <span class="kw">let </span><span class="kw-2">mut </span>out_cells: <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;LayoutItemInfo&gt; = <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>::<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.with_capacity">with_capacity</a>(<a href="#538">cells</a>.<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.len">len</a>());
 <a href=#551 id=551 data-nosnippet>551</a>    <span class="kw">let </span><span class="kw-2">mut </span>cursor = <span class="number">0usize</span>;
 <a href=#552 id=552 data-nosnippet>552</a>    <span class="kw">for </span>cell <span class="kw">in </span>measure_cells {
 <a href=#553 id=553 data-nosnippet>553</a>        <span class="kw">match </span>cell {
@@ -707,8 +707,8 @@
 <a href=#585 id=585 data-nosnippet>585</a>            }
 <a href=#586 id=586 data-nosnippet>586</a>        }
 <a href=#587 id=587 data-nosnippet>587</a>    }
-<a href=#588 id=588 data-nosnippet>588</a>    i_slint_core::layout::<a href="../../i_slint_core/layout/fn.box_layout_info_ortho.html">box_layout_info_ortho</a>(
-<a href=#589 id=589 data-nosnippet>589</a>        <a href="../../i_slint_core/slice/struct.Slice.html">Slice</a>::<a href="../../i_slint_core/slice/struct.Slice.html#method.from_slice">from_slice</a>(<span class="kw-2">&amp;</span><a href="#550">out_cells</a>),
+<a href=#588 id=588 data-nosnippet>588</a>    i_slint_core::layout::box_layout_info_ortho(
+<a href=#589 id=589 data-nosnippet>589</a>        Slice::from_slice(<span class="kw-2">&amp;</span><a href="#550">out_cells</a>),
 <a href=#590 id=590 data-nosnippet>590</a>        <span class="kw-2">&amp;</span><a href="#33-40">to_padding</a>(<span class="kw-2">&amp;</span><a href="eval.rs.html#724-1102">eval_expression</a>(<a href="#519">ctx</a>, <a href="#525">padding_ortho</a>)),
 <a href=#591 id=591 data-nosnippet>591</a>    )
 <a href=#592 id=592 data-nosnippet>592</a>    .<a href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html#tymethod.into">into</a>()
@@ -720,9 +720,9 @@
 <a href=#598 id=598 data-nosnippet>598</a>/// them rather than at the container size the cells were pre-measured at.
 <a href=#599 id=599 data-nosnippet>599</a></span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>flexbox_layout_info_cross_axis_with_measure(
 <a href=#600 id=600 data-nosnippet>600</a>    ctx: <span class="kw-2">&amp;mut </span><a href="eval.rs.html#28-46">EvalContext</a>,
-<a href=#601 id=601 data-nosnippet>601</a>    expr: <span class="kw-2">&amp;</span><a href="../../i_slint_compiler/llr/expression/enum.Expression.html">Expression</a>,
+<a href=#601 id=601 data-nosnippet>601</a>    expr: <span class="kw-2">&amp;</span>Expression,
 <a href=#602 id=602 data-nosnippet>602</a>) -&gt; <a href="api.rs.html#99-145">Value</a> {
-<a href=#603 id=603 data-nosnippet>603</a>    <span class="kw">let </span>Expression::<a href="../../i_slint_compiler/llr/expression/enum.Expression.html#variant.FlexboxLayoutInfoCrossAxisWithMeasure">FlexboxLayoutInfoCrossAxisWithMeasure</a> { arguments, measure_cells } = <a href="#601">expr</a>
+<a href=#603 id=603 data-nosnippet>603</a>    <span class="kw">let </span>Expression::FlexboxLayoutInfoCrossAxisWithMeasure { arguments, measure_cells } = <a href="#601">expr</a>
 <a href=#604 id=604 data-nosnippet>604</a>    <span class="kw">else </span>{
 <a href=#605 id=605 data-nosnippet>605</a>        <span class="kw">return </span>Value::<a href="api.rs.html#103">Void</a>;
 <a href=#606 id=606 data-nosnippet>606</a>    };
@@ -733,10 +733,10 @@
 <a href=#611 id=611 data-nosnippet>611</a>    <span class="kw">let </span><span class="kw-2">mut </span>measure = |index: <a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>, w: <a href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>, h: <a href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>, known_w: <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>, known_h: <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>| {
 <a href=#612 id=612 data-nosnippet>612</a>        <a href="#406-464">measure_flexbox_cell</a>(<a href="#600">ctx</a>, <span class="kw-2">&amp;</span><a href="#610">flat</a>, <a href="#611">index</a>, <a href="#611">w</a>, <a href="#611">h</a>, <a href="#611">known_w</a>, <a href="#611">known_h</a>)
 <a href=#613 id=613 data-nosnippet>613</a>    };
-<a href=#614 id=614 data-nosnippet>614</a>    i_slint_core::layout::<a href="../../i_slint_core/layout/fn.flexbox_layout_info_cross_axis_with_measure.html">flexbox_layout_info_cross_axis_with_measure</a>(
-<a href=#615 id=615 data-nosnippet>615</a>        <a href="../../i_slint_core/slice/struct.Slice.html">Slice</a>::<a href="../../i_slint_core/slice/struct.Slice.html#method.from_slice">from_slice</a>(<span class="kw-2">&amp;</span><a href="#608">ch</a>),
-<a href=#616 id=616 data-nosnippet>616</a>        <a href="../../i_slint_core/slice/struct.Slice.html">Slice</a>::<a href="../../i_slint_core/slice/struct.Slice.html#method.from_slice">from_slice</a>(<span class="kw-2">&amp;</span><a href="#608">cv</a>),
-<a href=#617 id=617 data-nosnippet>617</a>        <a href="../../i_slint_core/slice/struct.Slice.html">Slice</a>::<a href="../../i_slint_core/slice/struct.Slice.html#method.from_slice">from_slice</a>(<span class="kw-2">&amp;</span><a href="#609">fp</a>),
+<a href=#614 id=614 data-nosnippet>614</a>    i_slint_core::layout::flexbox_layout_info_cross_axis_with_measure(
+<a href=#615 id=615 data-nosnippet>615</a>        Slice::from_slice(<span class="kw-2">&amp;</span><a href="#608">ch</a>),
+<a href=#616 id=616 data-nosnippet>616</a>        Slice::from_slice(<span class="kw-2">&amp;</span><a href="#608">cv</a>),
+<a href=#617 id=617 data-nosnippet>617</a>        Slice::from_slice(<span class="kw-2">&amp;</span><a href="#609">fp</a>),
 <a href=#618 id=618 data-nosnippet>618</a>        <a href="#26-31">to_f32</a>(<span class="kw-2">&amp;</span><a href="#607">a</a>[<span class="number">3</span>]),
 <a href=#619 id=619 data-nosnippet>619</a>        <a href="#26-31">to_f32</a>(<span class="kw-2">&amp;</span><a href="#607">a</a>[<span class="number">4</span>]),
 <a href=#620 id=620 data-nosnippet>620</a>        <span class="kw-2">&amp;</span><a href="#33-40">to_padding</a>(<span class="kw-2">&amp;</span><a href="#607">a</a>[<span class="number">5</span>]),

@@ -306,10 +306,10 @@ std::optional<slint::language::AccessibleLiveness> slint::testing::ElementHandle
 
 Returns the accessible-live-region of that element, if any.
 
-### `set_accessible_selection`
+### `set_accessible_selection_offsets`
 
 ```cpp
-void slint::testing::ElementHandle::set_accessible_selection(int anchor, int focus) const
+void slint::testing::ElementHandle::set_accessible_selection_offsets(int anchor, int focus) const
 ```
 
 Selects the text between two UTF-8 offsets.

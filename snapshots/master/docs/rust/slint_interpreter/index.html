@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Slint interpreter library"><title>slint_interpreter - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../static.files/rustdoc-203241e4.css"><meta name="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.100.0-nightly (0dfb098f3 2026-08-31)" data-channel="nightly" data-search-js="search-b167f383.js" data-stringdex-js="stringdex-b5109af9.js" data-settings-js="settings-170eb4bf.js" ><script src="../static.files/storage-41dd4d93.js"></script><script defer src="../crates.js"></script><script defer src="../static.files/main-1814ead3.js"></script><noscript><link rel="stylesheet" href="../static.files/noscript-9f56287d.css"></noscript><link rel="alternate icon" type="image/png" href="../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../static.files/favicon-044be391.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Slint interpreter library"><title>slint_interpreter - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../static.files/rustdoc-203241e4.css"><meta name="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="slint_interpreter" data-themes="" data-resource-suffix="" data-rustdoc-version="1.100.0-nightly (2e2b193f8 2026-09-02)" data-channel="nightly" data-search-js="search-b167f383.js" data-stringdex-js="stringdex-b5109af9.js" data-settings-js="settings-170eb4bf.js" ><script src="../static.files/storage-41dd4d93.js"></script><script defer src="../crates.js"></script><script defer src="../static.files/main-1814ead3.js"></script><noscript><link rel="stylesheet" href="../static.files/noscript-9f56287d.css"></noscript><link rel="alternate icon" type="image/png" href="../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../static.files/favicon-044be391.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -168,19 +168,34 @@ diagnostics.print();
 instance.set_property(<span class="string">"my_name"</span>, Value::from(SharedString::from(<span class="string">"World"</span>))).unwrap();
 instance.run().unwrap();</code></pre></div><h3 id="feature-flags"><a class="doc-anchor" href="#feature-flags">§</a>Feature flags</h3>
 <ul>
-<li><strong><code>compat-1-18</code></strong> <em>(enabled by default)</em> —  Mandatory feature:
+<li>
+<p><strong><code>compat-1-18</code></strong> <em>(enabled by default)</em> —  Mandatory feature:
 This feature is required to keep the compatibility with Slint 1.18
 Newer patch version may put current functionality behind a new feature
-that would be enabled by default only if this feature was added</li>
-<li><strong><code>system-tray</code></strong> <em>(enabled by default)</em> —  Enable the <code>SystemTrayIcon</code> element (pulls <code>ksni</code> on Linux/BSD); on by
+that would be enabled by default only if this feature was added</p>
+</li>
+<li>
+<p><strong><code>system-tray</code></strong> <em>(enabled by default)</em> —  Enable the <code>SystemTrayIcon</code> element (pulls <code>ksni</code> on Linux/BSD); on by
 default. See the <a href="https://docs.rs/slint/latest/slint/"><code>slint</code> crate</a> feature
-of the same name.</li>
-<li><strong><code>display-diagnostics</code></strong> —  enable the <a href="fn.print_diagnostics.html" title="fn slint_interpreter::print_diagnostics"><code>print_diagnostics</code></a> function to show diagnostic in the console output</li>
-<li><strong><code>image-default-formats</code></strong> —  Enable the default image formats from the <code>image</code> crate, to support additional image formats in <a href="struct.Image.html#method.load_from_path" title="associated function slint_interpreter::Image::load_from_path"><code>Image::load_from_path</code></a>
+of the same name.</p>
+</li>
+<li>
+<p><strong><code>display-diagnostics</code></strong> —  enable the <a href="fn.print_diagnostics.html" title="fn slint_interpreter::print_diagnostics"><code>print_diagnostics</code></a> function to show diagnostic in the console output</p>
+</li>
+<li>
+<p><strong><code>mcp</code></strong> —  Enable the embedded MCP (Model Context Protocol) server.</p>
+<p>When this feature is enabled and the <code>SLINT_MCP_PORT</code> environment variable is set
+at runtime, the application starts an HTTP server implementing the MCP Streamable HTTP
+transport. This allows MCP clients to inspect and interact with the running UI.</p>
+<p>This is a developer/debug feature. It is not recommended to enable it in production builds.</p>
+</li>
+<li>
+<p><strong><code>image-default-formats</code></strong> —  Enable the default image formats from the <code>image</code> crate, to support additional image formats in <a href="struct.Image.html#method.load_from_path" title="associated function slint_interpreter::Image::load_from_path"><code>Image::load_from_path</code></a>
 and <code>@image-url</code>. When this feature is disabled, only PNG and JPEG are supported. When enabled,
 the following image formats are supported:
 AVIF, BMP, DDS, Farbfeld, GIF, HDR, ICO, JPEG, EXR, PNG, PNM, QOI, TGA, TIFF, WebP.
-This feature has no effect on the web, where the browser decodes images.</li>
+This feature has no effect on the web, where the browser decodes images.</p>
+</li>
 </ul>
 <h4 id="backends"><a class="doc-anchor" href="#backends">§</a>Backends</h4>
 <p>See the documentation of the <a href="https://docs.rs/slint/latest/slint/#backends"><code>slint</code> crate</a></p>

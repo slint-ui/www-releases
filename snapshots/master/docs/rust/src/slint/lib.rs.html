@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `api/rs/slint/lib.rs`."><title>lib.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-203241e4.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint" data-themes="" data-resource-suffix="" data-rustdoc-version="1.100.0-nightly (0dfb098f3 2026-08-31)" data-channel="nightly" data-search-js="search-b167f383.js" data-stringdex-js="stringdex-b5109af9.js" data-settings-js="settings-170eb4bf.js" ><script src="../../static.files/storage-41dd4d93.js"></script><script defer src="../../static.files/src-script-813739b1.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-1814ead3.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-9f56287d.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `api/rs/slint/lib.rs`."><title>lib.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-203241e4.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="slint" data-themes="" data-resource-suffix="" data-rustdoc-version="1.100.0-nightly (2e2b193f8 2026-09-02)" data-channel="nightly" data-search-js="search-b167f383.js" data-stringdex-js="stringdex-b5109af9.js" data-settings-js="settings-170eb4bf.js" ><script src="../../static.files/storage-41dd4d93.js"></script><script defer src="../../static.files/src-script-813739b1.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-1814ead3.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-9f56287d.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"><!--
     This file is used to add syntax highlighting of the `.slint` snippets in the generated rustdoc, sphinx and mdbook documentation.
     It can be injected via the `--html-in-header slint-docs-highlight.html` option of rustdoc, is included via _templates/layout.html
     in sphinx and via head.hbs in mdbook.
@@ -336,11 +336,11 @@
 <a href=#214 id=214 data-nosnippet>214</a>
 <a href=#215 id=215 data-nosnippet>215</a><span class="kw">pub use </span><a href="../../slint/macro.slint.html">slint_macros::slint</a>;
 <a href=#216 id=216 data-nosnippet>216</a>
-<a href=#217 id=217 data-nosnippet>217</a><span class="kw">pub use </span><a href="../../i_slint_backend_selector/api/index.html">i_slint_backend_selector::api</a>::<span class="kw-2">*</span>;
-<a href=#218 id=218 data-nosnippet>218</a><span class="kw">pub use </span><a href="../../i_slint_core/api/index.html">i_slint_core::api</a>::<span class="kw-2">*</span>;
+<a href=#217 id=217 data-nosnippet>217</a><span class="kw">pub use </span>i_slint_backend_selector::api::<span class="kw-2">*</span>;
+<a href=#218 id=218 data-nosnippet>218</a><span class="kw">pub use </span>i_slint_core::api::<span class="kw-2">*</span>;
 <a href=#219 id=219 data-nosnippet>219</a><span class="attr">#[doc(hidden)]
 <a href=#220 id=220 data-nosnippet>220</a>#[deprecated(note = <span class="string">"Experimental type was made public by mistake"</span>)]
-<a href=#221 id=221 data-nosnippet>221</a></span><span class="kw">pub use </span><a href="../../i_slint_core/component_factory/struct.ComponentFactory.html">i_slint_core::component_factory::ComponentFactory</a>;
+<a href=#221 id=221 data-nosnippet>221</a></span><span class="kw">pub use </span>i_slint_core::component_factory::ComponentFactory;
 <a href=#222 id=222 data-nosnippet>222</a><span class="attr">#[cfg(not(target_arch = <span class="string">"wasm32"</span>))]
 <a href=#223 id=223 data-nosnippet>223</a></span><span class="kw">pub use </span>i_slint_core::graphics::{<a href="../../slint/struct.BorrowedOpenGLTextureBuilder.html">BorrowedOpenGLTextureBuilder</a>, <a href="../../slint/enum.BorrowedOpenGLTextureOrigin.html">BorrowedOpenGLTextureOrigin</a>};
 <a href=#224 id=224 data-nosnippet>224</a><span class="kw">pub use </span>i_slint_core::input::{<a href="../../slint/struct.Keys.html">Keys</a>, <a href="../../slint/struct.KeysParseError.html">KeysParseError</a>};
@@ -374,7 +374,7 @@
 <a href=#252 id=252 data-nosnippet>252</a>/// See also [`run_event_loop_until_quit()`] to keep the loop running even
 <a href=#253 id=253 data-nosnippet>253</a>/// when nothing visible is left.
 <a href=#254 id=254 data-nosnippet>254</a></span><span class="kw">pub fn </span><a href="../../slint/fn.run_event_loop.html">run_event_loop</a>() -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), <a href="../../slint/enum.PlatformError.html">PlatformError</a>&gt; {
-<a href=#255 id=255 data-nosnippet>255</a>    i_slint_backend_selector::<a href="../../i_slint_backend_selector/fn.with_platform.html">with_platform</a>(|b| <a href="#255">b</a>.<a href="../../slint/platform/trait.Platform.html">run_event_loop</a>())
+<a href=#255 id=255 data-nosnippet>255</a>    i_slint_backend_selector::with_platform(|b| <a href="#255">b</a>.<a href="../../slint/platform/trait.Platform.html">run_event_loop</a>())
 <a href=#256 id=256 data-nosnippet>256</a>}
 <a href=#257 id=257 data-nosnippet>257</a>
 <a href=#258 id=258 data-nosnippet>258</a><span class="doccomment">/// Similar to [`run_event_loop()`], but this function continues to run even
@@ -385,7 +385,7 @@
 <a href=#263 id=263 data-nosnippet>263</a>/// visible UI. A program with at least one visible window or `SystemTrayIcon`
 <a href=#264 id=264 data-nosnippet>264</a>/// can use [`run_event_loop()`] instead, since either keeps the loop alive.
 <a href=#265 id=265 data-nosnippet>265</a></span><span class="kw">pub fn </span><a href="../../slint/fn.run_event_loop_until_quit.html">run_event_loop_until_quit</a>() -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), <a href="../../slint/enum.PlatformError.html">PlatformError</a>&gt; {
-<a href=#266 id=266 data-nosnippet>266</a>    i_slint_backend_selector::<a href="../../i_slint_backend_selector/fn.with_platform.html">with_platform</a>(|b| {
+<a href=#266 id=266 data-nosnippet>266</a>    i_slint_backend_selector::with_platform(|b| {
 <a href=#267 id=267 data-nosnippet>267</a>        <span class="attr">#[allow(deprecated)]
 <a href=#268 id=268 data-nosnippet>268</a>        </span><a href="#266">b</a>.set_event_loop_quit_on_last_window_closed(<span class="bool-val">false</span>);
 <a href=#269 id=269 data-nosnippet>269</a>        <a href="#266">b</a>.<a href="../../slint/platform/trait.Platform.html">run_event_loop</a>()
@@ -539,7 +539,7 @@
 <a href=#417 id=417 data-nosnippet>417</a>/// with either gettext or a custom translator. For bundled translations, there is no need
 <a href=#418 id=418 data-nosnippet>418</a>/// to call this function.
 <a href=#419 id=419 data-nosnippet>419</a></span><span class="kw">pub fn </span><a href="../../slint/fn.update_all_translations.html">update_all_translations</a>() {
-<a href=#420 id=420 data-nosnippet>420</a>    i_slint_core::translations::<a href="../../i_slint_core/translations/fn.mark_all_translations_dirty.html">mark_all_translations_dirty</a>();
+<a href=#420 id=420 data-nosnippet>420</a>    i_slint_core::translations::mark_all_translations_dirty();
 <a href=#421 id=421 data-nosnippet>421</a>}
 <a href=#422 id=422 data-nosnippet>422</a>
 <a href=#423 id=423 data-nosnippet>423</a><span class="doccomment">/// This module contains items that you need to use or implement if you want use Slint in an environment without
@@ -550,7 +550,7 @@
 <a href=#428 id=428 data-nosnippet>428</a>///
 <a href=#429 id=429 data-nosnippet>429</a>/// The [Slint on Microcontrollers](crate::docs::mcu) documentation has additional examples.
 <a href=#430 id=430 data-nosnippet>430</a></span><span class="kw">pub mod </span><a href="../../slint/platform/index.html">platform</a> {
-<a href=#431 id=431 data-nosnippet>431</a>    <span class="kw">pub use </span><a href="../../i_slint_core/platform/index.html">i_slint_core::platform</a>::<span class="kw-2">*</span>;
+<a href=#431 id=431 data-nosnippet>431</a>    <span class="kw">pub use </span>i_slint_core::platform::<span class="kw-2">*</span>;
 <a href=#432 id=432 data-nosnippet>432</a>
 <a href=#433 id=433 data-nosnippet>433</a>    <span class="doccomment">/// Set the Slint platform abstraction.
 <a href=#434 id=434 data-nosnippet>434</a>    ///
@@ -562,7 +562,7 @@
 <a href=#440 id=440 data-nosnippet>440</a>        <span class="comment">// Custom platforms bypass the backend selector, so start the embedded testing/MCP
 <a href=#441 id=441 data-nosnippet>441</a>        // backends here to match applications that go through it.
 <a href=#442 id=442 data-nosnippet>442</a>        </span><span class="attr">#[cfg(any(feature = <span class="string">"mcp"</span>, feature = <span class="string">"system-testing"</span>))]
-<a href=#443 id=443 data-nosnippet>443</a>        </span>i_slint_backend_selector::<a href="../../i_slint_backend_selector/fn.init_testing_backends.html">init_testing_backends</a>();
+<a href=#443 id=443 data-nosnippet>443</a>        </span>i_slint_backend_selector::init_testing_backends();
 <a href=#444 id=444 data-nosnippet>444</a>        <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
 <a href=#445 id=445 data-nosnippet>445</a>    }
 <a href=#446 id=446 data-nosnippet>446</a>
@@ -608,7 +608,7 @@
 <a href=#486 id=486 data-nosnippet>486</a>    ///
 <a href=#487 id=487 data-nosnippet>487</a>    /// It is only enabled when the `renderer-software` Slint feature is enabled.
 <a href=#488 id=488 data-nosnippet>488</a>    </span><span class="kw">pub mod </span><a href="../../slint/platform/software_renderer/index.html">software_renderer</a> {
-<a href=#489 id=489 data-nosnippet>489</a>        <span class="kw">pub use </span><a href="../../i_slint_renderer_software/index.html">i_slint_renderer_software</a>::<span class="kw-2">*</span>;
+<a href=#489 id=489 data-nosnippet>489</a>        <span class="kw">pub use </span>i_slint_renderer_software::<span class="kw-2">*</span>;
 <a href=#490 id=490 data-nosnippet>490</a>    }
 <a href=#491 id=491 data-nosnippet>491</a>}
 <a href=#492 id=492 data-nosnippet>492</a>
@@ -628,7 +628,7 @@
 <a href=#506 id=506 data-nosnippet>506</a>        };
 <a href=#507 id=507 data-nosnippet>507</a>    }
 <a href=#508 id=508 data-nosnippet>508</a>
-<a href=#509 id=509 data-nosnippet>509</a>    <a href="../../i_slint_common/macro.for_each_builtin_structs.html">i_slint_common::for_each_builtin_structs!</a>(export_builtin_structs);
+<a href=#509 id=509 data-nosnippet>509</a>    <span class="macro">i_slint_common::for_each_builtin_structs!</span>(export_builtin_structs);
 <a href=#510 id=510 data-nosnippet>510</a>
 <a href=#511 id=511 data-nosnippet>511</a>    <span class="comment">// `$vis use …;` propagates the enum's declared visibility: `pub enum Foo` becomes a
 <a href=#512 id=512 data-nosnippet>512</a>    // `pub use`, plain `enum Foo` becomes a private `use` (in-scope only, suppressed by
@@ -642,7 +642,7 @@
 <a href=#520 id=520 data-nosnippet>520</a>        };
 <a href=#521 id=521 data-nosnippet>521</a>    }
 <a href=#522 id=522 data-nosnippet>522</a>
-<a href=#523 id=523 data-nosnippet>523</a>    <a href="../../i_slint_common/macro.for_each_enums.html">i_slint_common::for_each_enums!</a>(export_builtin_enums);
+<a href=#523 id=523 data-nosnippet>523</a>    <span class="macro">i_slint_common::for_each_enums!</span>(export_builtin_enums);
 <a href=#524 id=524 data-nosnippet>524</a>}
 <a href=#525 id=525 data-nosnippet>525</a>
 <a href=#526 id=526 data-nosnippet>526</a><span class="attr">#[cfg(any(
@@ -682,7 +682,7 @@
 <a href=#560 id=560 data-nosnippet>560</a>    //! When rendering offscreen with the Skia renderer, use `slint::platform::skia_renderer::SkiaWGPU29Renderer`
 <a href=#561 id=561 data-nosnippet>561</a>    //! to select the wgpu 29 API explicitly, even if `unstable-wgpu-30` also ends up enabled through
 <a href=#562 id=562 data-nosnippet>562</a>    //! Cargo feature unification.
-<a href=#563 id=563 data-nosnippet>563</a>    </span><span class="kw">pub use </span><a href="../../i_slint_core/graphics/wgpu_29/api/index.html">i_slint_core::graphics::wgpu_29::api</a>::<span class="kw-2">*</span>;
+<a href=#563 id=563 data-nosnippet>563</a>    </span><span class="kw">pub use </span>i_slint_core::graphics::wgpu_29::api::<span class="kw-2">*</span>;
 <a href=#564 id=564 data-nosnippet>564</a>}
 <a href=#565 id=565 data-nosnippet>565</a>
 <a href=#566 id=566 data-nosnippet>566</a><span class="attr">#[cfg(feature = <span class="string">"unstable-wgpu-30"</span>)]
@@ -779,7 +779,7 @@
 <a href=#657 id=657 data-nosnippet>657</a>    //!}
 <a href=#658 id=658 data-nosnippet>658</a>    //!```
 <a href=#659 id=659 data-nosnippet>659</a>    //!
-<a href=#660 id=660 data-nosnippet>660</a>    </span><span class="kw">pub use </span><a href="../../i_slint_core/graphics/wgpu_30/api/index.html">i_slint_core::graphics::wgpu_30::api</a>::<span class="kw-2">*</span>;
+<a href=#660 id=660 data-nosnippet>660</a>    </span><span class="kw">pub use </span>i_slint_core::graphics::wgpu_30::api::<span class="kw-2">*</span>;
 <a href=#661 id=661 data-nosnippet>661</a>}
 <a href=#662 id=662 data-nosnippet>662</a>
 <a href=#663 id=663 data-nosnippet>663</a><span class="attr">#[cfg(feature = <span class="string">"unstable-winit-030"</span>)]
@@ -900,8 +900,8 @@
 <a href=#778 id=778 data-nosnippet>778</a>    /// }
 <a href=#779 id=779 data-nosnippet>779</a>    /// ```
 <a href=#780 id=780 data-nosnippet>780</a>    </span><span class="kw">pub fn </span><a href="../../slint/fontique_011/fn.shared_collection.html">shared_collection</a>() -&gt; fontique::<a href="https://docs.rs/fontique/0.8/fontique/collection/struct.Collection.html">Collection</a> {
-<a href=#781 id=781 data-nosnippet>781</a>        i_slint_backend_selector::<a href="../../i_slint_backend_selector/fn.with_global_context.html">with_global_context</a>(|ctx| {
-<a href=#782 id=782 data-nosnippet>782</a>            <a href="#781">ctx</a>.<a href="../../i_slint_core/context/struct.SlintContext.html#method.font_context">font_context</a>().<a href="https://doc.rust-lang.org/nightly/core/cell/struct.RefCell.html#method.borrow">borrow</a>().collection.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>()
+<a href=#781 id=781 data-nosnippet>781</a>        i_slint_backend_selector::with_global_context(|ctx| {
+<a href=#782 id=782 data-nosnippet>782</a>            <a href="#781">ctx</a>.font_context().<a href="https://doc.rust-lang.org/nightly/core/cell/struct.RefCell.html#method.borrow">borrow</a>().collection.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>()
 <a href=#783 id=783 data-nosnippet>783</a>        })
 <a href=#784 id=784 data-nosnippet>784</a>        .<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>()
 <a href=#785 id=785 data-nosnippet>785</a>    }
