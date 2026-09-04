@@ -12,7 +12,6 @@ import SC from '@slint/common-files/src/components/SC.astro';
 import NotInSC from '@slint/common-files/src/components/NotInSC.astro';
 
 <SC>
-## Images
 ### image
 <SlintProperty propName="image" typeName="image" defaultValue='empty image'>
 
@@ -28,7 +27,8 @@ application. \{#sls.type.image.sources}
 
 </SlintProperty>
 
-Images have the following properties: \{#sls.type.image.properties.meta}
+An image has the fields `width` and `height`, read with the `.` operator
+as in `logo.width`: \{#sls.type.image.properties}
 
 #### width
 
@@ -39,5 +39,12 @@ An image without pixels has a width of 0. \{#sls.type.image.width}
 
 The height of the image in pixels, as an `int`.
 An image without pixels has a height of 0. \{#sls.type.image.height}
+
+```slint
+export component Example inherits Window {
+    in property <image> logo;
+    out property <int> logo-width: logo.width;
+}
+```
 
 </SC>

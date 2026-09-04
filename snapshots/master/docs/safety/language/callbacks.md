@@ -19,10 +19,8 @@ export component Example inherits Window {
     }
 }
 ```
-</SC>
 
 
-<SC>
 ## Declaration
 
 A *callback declaration* adds a callback to the element in whose body it appears.
@@ -65,11 +63,8 @@ export component Example inherits Window {
     }
 }
 ```
-</SC>
 
 
-
-<SC>
 ## Handlers
 
 A *handler* reacts to a callback's invocation.

@@ -1,14 +1,9 @@
 ---
 title: "Name Resolution"
-description: "Element names, pre-defined names, and lookup rules."
+description: "Pre-defined names and the lookup rules for identifiers."
 ---
 import SC from '@slint/common-files/src/components/SC.astro';
 import OnlyInSC from '@slint/common-files/src/components/OnlyInSC.astro';
-
-
-
-
-
 
 
 

@@ -1,5 +1,5 @@
 (function() {
-    const implementors = Object.fromEntries([["slint_sc",[["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/1.98.0/core/fmt/trait.Display.html\" title=\"trait core::fmt::Display\">Display</a> for <a class=\"enum\" href=\"slint_sc/enum.RenderError.html\" title=\"enum slint_sc::RenderError\">RenderError</a>",0]]]]);
+    const implementors = Object.fromEntries([["slint_sc",[["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/1.98.1/core/fmt/trait.Display.html\" title=\"trait core::fmt::Display\">Display</a> for <a class=\"enum\" href=\"slint_sc/enum.RenderError.html\" title=\"enum slint_sc::RenderError\">RenderError</a>",0]]]]);
     if (window.register_implementors) {
         window.register_implementors(implementors);
     } else {
