@@ -78,6 +78,26 @@ export function compile_from_string_with_style(source: string, base_url: string,
 export function init(): void;
 
 /**
+ * Register a font for use by the `font-family` property.
+ *
+ * `data` is the content of a TrueType or OpenType file.
+ * The families it declares become available to the components compiled afterwards,
+ * under the names the font itself carries,
+ * so a page that registers JetBrains Mono can then use `font-family: "JetBrains Mono"`.
+ *
+ * The browser build has no system fonts to query,
+ * so this is the only way to draw a component in a font of the host page's choosing.
+ * A font the page loaded through `@font-face` doesn't count:
+ * the canvas renderer doesn't consult the CSS font database.
+ *
+ * Text that was already laid out keeps the font it was shaped with,
+ * so register the font before compiling the component that uses it.
+ *
+ * Throws if the platform isn't initialized yet, or if the data declares no font family.
+ */
+export function register_font_from_memory(data: Uint8Array): void;
+
+/**
  * Register DOM event handlers on all instance and set up the event loop for that.
  * You can call this function only once. It will throw an exception but that is safe
  * to ignore.
@@ -97,32 +117,33 @@ export interface InitOutput {
     readonly compile_from_string: (a: number, b: number, c: number, d: number, e: number) => any;
     readonly compile_from_string_with_style: (a: number, b: number, c: number, d: number, e: number, f: number, g: number) => any;
     readonly init: () => void;
+    readonly register_font_from_memory: (a: number, b: number) => [number, number];
     readonly run_event_loop: () => [number, number];
     readonly wrappedcompiledcomp_create: (a: number, b: number, c: number) => [number, number, number];
     readonly wrappedcompiledcomp_create_with_existing_window: (a: number, b: number) => [number, number, number];
     readonly wrappedcompiledcomp_run: (a: number, b: number, c: number) => void;
     readonly wrappedinstance_hide: (a: number) => [number, number, number];
     readonly wrappedinstance_show: (a: number) => [number, number, number];
-    readonly wasm_bindgen_6bcbc16f6944be5b___convert__closures_____invoke___wasm_bindgen_6bcbc16f6944be5b___JsValue__core_ed718c3d60ebd546___result__Result_____wasm_bindgen_6bcbc16f6944be5b___JsError___true_: (a: number, b: number, c: any) => [number, number];
-    readonly wasm_bindgen_6bcbc16f6944be5b___convert__closures_____invoke___js_sys_1947c0b78c84ec99___Function_fn_wasm_bindgen_6bcbc16f6944be5b___JsValue_____wasm_bindgen_6bcbc16f6944be5b___sys__Undefined___js_sys_1947c0b78c84ec99___Function_fn_wasm_bindgen_6bcbc16f6944be5b___JsValue_____wasm_bindgen_6bcbc16f6944be5b___sys__Undefined_______true_: (a: number, b: number, c: any, d: any) => void;
-    readonly wasm_bindgen_6bcbc16f6944be5b___convert__closures_____invoke___js_sys_1947c0b78c84ec99___Function_fn_wasm_bindgen_6bcbc16f6944be5b___JsValue_____wasm_bindgen_6bcbc16f6944be5b___sys__Undefined___js_sys_1947c0b78c84ec99___Function_fn_wasm_bindgen_6bcbc16f6944be5b___JsValue_____wasm_bindgen_6bcbc16f6944be5b___sys__Undefined_______true__30: (a: number, b: number, c: any, d: any) => void;
-    readonly wasm_bindgen_6bcbc16f6944be5b___convert__closures_____invoke___js_sys_1947c0b78c84ec99___Function_fn_wasm_bindgen_6bcbc16f6944be5b___JsValue_____wasm_bindgen_6bcbc16f6944be5b___sys__Undefined___js_sys_1947c0b78c84ec99___Function_fn_wasm_bindgen_6bcbc16f6944be5b___JsValue_____wasm_bindgen_6bcbc16f6944be5b___sys__Undefined_______true__31: (a: number, b: number, c: any, d: any) => void;
-    readonly wasm_bindgen_6bcbc16f6944be5b___convert__closures_____invoke___wasm_bindgen_6bcbc16f6944be5b___JsValue______true_: (a: number, b: number, c: any) => void;
-    readonly wasm_bindgen_6bcbc16f6944be5b___convert__closures_____invoke___wasm_bindgen_6bcbc16f6944be5b___JsValue______true__3: (a: number, b: number, c: any) => void;
-    readonly wasm_bindgen_6bcbc16f6944be5b___convert__closures_____invoke___web_sys_fcc8dbefafc19d5c___features__gen_FocusEvent__FocusEvent______true_: (a: number, b: number, c: any) => void;
-    readonly wasm_bindgen_6bcbc16f6944be5b___convert__closures_____invoke___web_sys_fcc8dbefafc19d5c___features__gen_FocusEvent__FocusEvent______true__5: (a: number, b: number, c: any) => void;
-    readonly wasm_bindgen_6bcbc16f6944be5b___convert__closures_____invoke___wasm_bindgen_6bcbc16f6944be5b___JsValue______true__6: (a: number, b: number, c: any) => void;
-    readonly wasm_bindgen_6bcbc16f6944be5b___convert__closures_____invoke___web_sys_fcc8dbefafc19d5c___features__gen_FocusEvent__FocusEvent______true__7: (a: number, b: number, c: any) => void;
-    readonly wasm_bindgen_6bcbc16f6944be5b___convert__closures_____invoke___wasm_bindgen_6bcbc16f6944be5b___JsValue______true__8: (a: number, b: number, c: any) => void;
-    readonly wasm_bindgen_6bcbc16f6944be5b___convert__closures_____invoke___web_sys_fcc8dbefafc19d5c___features__gen_FocusEvent__FocusEvent______true__9: (a: number, b: number, c: any) => void;
-    readonly wasm_bindgen_6bcbc16f6944be5b___convert__closures_____invoke___web_sys_fcc8dbefafc19d5c___features__gen_FocusEvent__FocusEvent______true__10: (a: number, b: number, c: any) => void;
-    readonly wasm_bindgen_6bcbc16f6944be5b___convert__closures_____invoke___wasm_bindgen_6bcbc16f6944be5b___JsValue______true__11: (a: number, b: number, c: any) => void;
-    readonly wasm_bindgen_6bcbc16f6944be5b___convert__closures_____invoke___wasm_bindgen_6bcbc16f6944be5b___JsValue______true__12: (a: number, b: number, c: any) => void;
-    readonly wasm_bindgen_6bcbc16f6944be5b___convert__closures_____invoke___wasm_bindgen_6bcbc16f6944be5b___JsValue______true__13: (a: number, b: number, c: any) => void;
-    readonly wasm_bindgen_6bcbc16f6944be5b___convert__closures_____invoke___web_sys_fcc8dbefafc19d5c___features__gen_FocusEvent__FocusEvent______true__14: (a: number, b: number, c: any) => void;
-    readonly wasm_bindgen_6bcbc16f6944be5b___convert__closures_____invoke___wasm_bindgen_6bcbc16f6944be5b___JsValue______true__15: (a: number, b: number, c: any) => void;
-    readonly wasm_bindgen_6bcbc16f6944be5b___convert__closures_____invoke___core_ed718c3d60ebd546___option__Option_web_sys_fcc8dbefafc19d5c___features__gen_Blob__Blob_______true_: (a: number, b: number, c: number) => void;
-    readonly wasm_bindgen_6bcbc16f6944be5b___convert__closures_____invoke_______true_: (a: number, b: number) => void;
+    readonly wasm_bindgen_3889894bc364a1d___convert__closures_____invoke___wasm_bindgen_3889894bc364a1d___JsValue__core_ed718c3d60ebd546___result__Result_____wasm_bindgen_3889894bc364a1d___JsError___true_: (a: number, b: number, c: any) => [number, number];
+    readonly wasm_bindgen_3889894bc364a1d___convert__closures_____invoke___js_sys_82c857a7ee50a803___Function_fn_wasm_bindgen_3889894bc364a1d___JsValue_____wasm_bindgen_3889894bc364a1d___sys__Undefined___js_sys_82c857a7ee50a803___Function_fn_wasm_bindgen_3889894bc364a1d___JsValue_____wasm_bindgen_3889894bc364a1d___sys__Undefined_______true_: (a: number, b: number, c: any, d: any) => void;
+    readonly wasm_bindgen_3889894bc364a1d___convert__closures_____invoke___js_sys_82c857a7ee50a803___Function_fn_wasm_bindgen_3889894bc364a1d___JsValue_____wasm_bindgen_3889894bc364a1d___sys__Undefined___js_sys_82c857a7ee50a803___Function_fn_wasm_bindgen_3889894bc364a1d___JsValue_____wasm_bindgen_3889894bc364a1d___sys__Undefined_______true__31: (a: number, b: number, c: any, d: any) => void;
+    readonly wasm_bindgen_3889894bc364a1d___convert__closures_____invoke___js_sys_82c857a7ee50a803___Function_fn_wasm_bindgen_3889894bc364a1d___JsValue_____wasm_bindgen_3889894bc364a1d___sys__Undefined___js_sys_82c857a7ee50a803___Function_fn_wasm_bindgen_3889894bc364a1d___JsValue_____wasm_bindgen_3889894bc364a1d___sys__Undefined_______true__32: (a: number, b: number, c: any, d: any) => void;
+    readonly wasm_bindgen_3889894bc364a1d___convert__closures_____invoke___wasm_bindgen_3889894bc364a1d___JsValue______true_: (a: number, b: number, c: any) => void;
+    readonly wasm_bindgen_3889894bc364a1d___convert__closures_____invoke___wasm_bindgen_3889894bc364a1d___JsValue______true__3: (a: number, b: number, c: any) => void;
+    readonly wasm_bindgen_3889894bc364a1d___convert__closures_____invoke___web_sys_995b85632a86f7dd___features__gen_FocusEvent__FocusEvent______true_: (a: number, b: number, c: any) => void;
+    readonly wasm_bindgen_3889894bc364a1d___convert__closures_____invoke___web_sys_995b85632a86f7dd___features__gen_FocusEvent__FocusEvent______true__5: (a: number, b: number, c: any) => void;
+    readonly wasm_bindgen_3889894bc364a1d___convert__closures_____invoke___wasm_bindgen_3889894bc364a1d___JsValue______true__6: (a: number, b: number, c: any) => void;
+    readonly wasm_bindgen_3889894bc364a1d___convert__closures_____invoke___web_sys_995b85632a86f7dd___features__gen_FocusEvent__FocusEvent______true__7: (a: number, b: number, c: any) => void;
+    readonly wasm_bindgen_3889894bc364a1d___convert__closures_____invoke___wasm_bindgen_3889894bc364a1d___JsValue______true__8: (a: number, b: number, c: any) => void;
+    readonly wasm_bindgen_3889894bc364a1d___convert__closures_____invoke___web_sys_995b85632a86f7dd___features__gen_FocusEvent__FocusEvent______true__9: (a: number, b: number, c: any) => void;
+    readonly wasm_bindgen_3889894bc364a1d___convert__closures_____invoke___web_sys_995b85632a86f7dd___features__gen_FocusEvent__FocusEvent______true__10: (a: number, b: number, c: any) => void;
+    readonly wasm_bindgen_3889894bc364a1d___convert__closures_____invoke___wasm_bindgen_3889894bc364a1d___JsValue______true__11: (a: number, b: number, c: any) => void;
+    readonly wasm_bindgen_3889894bc364a1d___convert__closures_____invoke___wasm_bindgen_3889894bc364a1d___JsValue______true__12: (a: number, b: number, c: any) => void;
+    readonly wasm_bindgen_3889894bc364a1d___convert__closures_____invoke___wasm_bindgen_3889894bc364a1d___JsValue______true__13: (a: number, b: number, c: any) => void;
+    readonly wasm_bindgen_3889894bc364a1d___convert__closures_____invoke___web_sys_995b85632a86f7dd___features__gen_FocusEvent__FocusEvent______true__14: (a: number, b: number, c: any) => void;
+    readonly wasm_bindgen_3889894bc364a1d___convert__closures_____invoke___wasm_bindgen_3889894bc364a1d___JsValue______true__15: (a: number, b: number, c: any) => void;
+    readonly wasm_bindgen_3889894bc364a1d___convert__closures_____invoke___core_ed718c3d60ebd546___option__Option_web_sys_995b85632a86f7dd___features__gen_Blob__Blob_______true_: (a: number, b: number, c: number) => void;
+    readonly wasm_bindgen_3889894bc364a1d___convert__closures_____invoke_______true_: (a: number, b: number) => void;
     readonly __wbindgen_malloc: (a: number, b: number) => number;
     readonly __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;
     readonly __externref_table_alloc: () => number;
