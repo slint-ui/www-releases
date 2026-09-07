@@ -1,103 +1,104 @@
-
-name: Deploy to releases.slint.dev
+name: Deploy releases.slint.dev
 
 on:
   workflow_call:
-    inputs:
-      new_release:
-        description: "Is this a new release? True means Cloudflare redirects will be updated and Docs will be scraped"
-        required: false
-        default: false
-        type: boolean
   workflow_dispatch:
-    inputs:
-      new_release:
-        description: "Is this a new release? True means Cloudflare redirects will be updated and Docs will be scraped"
-        required: true
-        default: false
-        type: boolean
+
+# One sync at a time. Two overlapping runs would race to make the bucket match
+# two different checkouts.
+concurrency:
+  group: deploy-releases
+  cancel-in-progress: false
 
 jobs:
-  build-and-deploy:
+  upload:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./releases
-    outputs:
-      version: ${{ steps.identify-version.outputs.VERSION }}
     steps:
-      - name: Repository Checkout
+      # The whole releases tree, because the upload is a sync: rclone compares
+      # it against the bucket and sends only what differs. That covers a new
+      # release, an edit to an old one, and a change to robots.txt alike, with
+      # no need to work out which happened.
+      #
+      # blob:none fetches file contents lazily, so the clone stays quick even
+      # though the checkout that follows is ~8.7 GB. snapshots/ and slintpad/
+      # are left out.
+      - name: Checkout
         uses: actions/checkout@v4
         with:
+          filter: blob:none
           sparse-checkout: |
             releases
+            scripts
 
-      - name: Identify Version
-        id: identify-version
-        run: |
-          version=$(sed -n '1p' versions.txt)
-          echo "VERSION=$version" >> "$GITHUB_OUTPUT"
-
-      - name: npm install
-        run: |
-          npm install
-
+      # index.html and 404.html are built from the website repo, not stored here.
       - name: Generate a token
         id: app-token
         uses: actions/create-github-app-token@v1
         with:
           app-id: ${{ vars.READ_WRITE_APP_ID }}
           private-key: ${{ secrets.READ_WRITE_PRIVATE_KEY }}
-          repositories: |
-            website
-            docs-site
-  
-      - name: Clone website directory
+          repositories: website
+
+      - name: Checkout website
         uses: actions/checkout@v4
         with:
           repository: slint-ui/website
           ref: prod
-          path: releases/website
+          path: website
           token: ${{ steps.app-token.outputs.token }}
 
-      - name: Generate docs.html and 404.html
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: website/go.mod
+          cache-dependency-path: website/go.sum
+
+      - name: Build the landing and error pages
         run: |
           mkdir -p website/output
-          cd website && go run generator/generator.go -skip-agreements
-
-      - name: Copy docs.html and 404.html
-        run: |
-          cp website/output/docs.html index.html
-          cp website/output/404.html 404.html
+          (cd website && go run generator/generator.go -skip-agreements)
+          cp website/output/docs.html releases/index.html
+          cp website/output/404.html  releases/404.html
           rm -rf website
 
-      - name: Install Netlify
+      - name: Install rclone
         run: |
-          npm install netlify-cli --save-dev
-    
-      - name: Deploy to Netlify
-        id: netlify_deploy
-        run: |
-          npx netlify deploy \
-            --dir . \
-            --site ${{ secrets.NETLIFY_RELEASES_SITE_ID }} \
-            --auth ${{ secrets.NETLIFY_API_TOKEN }} \
-            --prod
+          curl -fsSL https://rclone.org/install.sh | sudo bash
+          rclone version | head -1
 
-      # docs.slint.dev is now built and deployed from the slint-ui/docs-site repo
-      # (it checks this repo out for the release sources). A release here must
-      # rebuild docs.slint.dev, so trigger its production deploy. Requires the
-      # GitHub App (READ_WRITE_APP_ID) to be installed on docs-site with
-      # Actions: write — see the repositories list in the token step above.
-      - name: Trigger docs.slint.dev deploy (docs-site)
+      # --delete because the source is the whole site: anything in the bucket
+      # that is not in the repo should not be served.
+      # --in-place because this checkout dies with the runner, and copying
+      # 8.7 GB to lowercase it would need the disk twice over.
+      - name: Upload to R2
+        env:
+          RCLONE_CONFIG_R2_TYPE: s3
+          RCLONE_CONFIG_R2_PROVIDER: Cloudflare
+          RCLONE_CONFIG_R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          RCLONE_CONFIG_R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          RCLONE_CONFIG_R2_ENDPOINT: https://${{ secrets.CLOUDFLARE_ACCOUNT_ID }}.r2.cloudflarestorage.com
+        run: ./scripts/upload.sh releases slint-releases --delete --in-place
+
+  # The worker carries the current release number, so publishing one has to
+  # redeploy it. Its own job, so a failure here does not repeat the upload.
+  worker:
+    needs: upload
+    uses: ./.github/workflows/deploy-worker.yml
+    secrets: inherit
+
+  # docs.slint.dev is built from this repo, so a release has to rebuild it too.
+  docs-site:
+    needs: upload
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate a token
+        id: app-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ vars.READ_WRITE_APP_ID }}
+          private-key: ${{ secrets.READ_WRITE_PRIVATE_KEY }}
+          repositories: docs-site
+      - name: Trigger the docs.slint.dev deploy
         env:
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
         run: gh workflow run deploy.yml -R slint-ui/docs-site -f production=true
-
-  # scrape-docs:
-  #   if: ${{ github.event.inputs.new_release == 'true' }}
-  #   uses: ./.github/workflows/docsearch-scrape.yml
-  #   needs: build-and-deploy
-  #   secrets: inherit
-  #   with:
-  #     version: ${{ needs.build-and-deploy.outputs.version }}

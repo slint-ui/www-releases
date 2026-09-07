@@ -1,26 +1,29 @@
-
-name: Deploy to snapshots.slint.dev
+name: Deploy snapshots.slint.dev
 
 on:
   workflow_call:
   workflow_dispatch:
 
+concurrency:
+  group: deploy-snapshots
+  cancel-in-progress: false
+
 jobs:
-  build-and-deploy:
+  upload:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./snapshots
     steps:
-      - name: Repository Checkout
+      - name: Checkout
         uses: actions/checkout@v4
         with:
+          filter: blob:none
           sparse-checkout: |
             snapshots
+            scripts
 
-      - name: npm install
-        run: |
-          npm install
+      # The copy in this repo is empty: the file used to be fetched from
+      # releases.slint.dev at request time. Ship the real one instead.
+      - name: Take versions.txt from releases
+        run: git show HEAD:releases/versions.txt > snapshots/versions.txt
 
       - name: Generate a token
         id: app-token
@@ -30,41 +33,42 @@ jobs:
           private-key: ${{ secrets.READ_WRITE_PRIVATE_KEY }}
           repositories: website
 
-      - name: Clone website directory
+      - name: Checkout website
         uses: actions/checkout@v4
         with:
           repository: slint-ui/website
           ref: prod
-          path: snapshots/website
+          path: website
           token: ${{ steps.app-token.outputs.token }}
 
-      - name: Generate docs.html and 404.html
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: website/go.mod
+          cache-dependency-path: website/go.sum
+
+      - name: Build the landing and error pages
         run: |
           mkdir -p website/output
-          cd website && go run generator/generator.go -skip-agreements
-  
-      - name: Copy docs.html and 404.html
-        run: |
-          cp website/output/docs.html index.html
-          cp website/output/404.html 404.html
+          (cd website && go run generator/generator.go -skip-agreements)
+          cp website/output/docs.html snapshots/index.html
+          cp website/output/404.html  snapshots/404.html
           rm -rf website
 
-      - name: Install Netlify
+      - name: Install rclone
         run: |
-          npm install netlify-cli --save-dev
+          curl -fsSL https://rclone.org/install.sh | sudo bash
+          rclone version | head -1
 
-      - name: Deploy to Netlify
-        id: netlify_deploy
-        run: |
-          npx netlify deploy \
-            --dir . \
-            --site ${{ secrets.NETLIFY_SNAPSHOTS_SITE_ID }} \
-            --auth ${{ secrets.NETLIFY_API_TOKEN }} \
-            --prod
-
-  # scrape-docs:
-  #   uses: ./.github/workflows/docsearch-scrape.yml
-  #   needs: build-and-deploy
-  #   secrets: inherit
-  #   with:
-  #     version: master
+      # --delete matters more here than on releases. master is rebuilt daily and
+      # its search index files are named by content hash, so roughly a hundred
+      # of them are replaced each time. Without it the bucket fills with
+      # abandoned index files that nothing will ever ask for.
+      - name: Upload to R2
+        env:
+          RCLONE_CONFIG_R2_TYPE: s3
+          RCLONE_CONFIG_R2_PROVIDER: Cloudflare
+          RCLONE_CONFIG_R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          RCLONE_CONFIG_R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          RCLONE_CONFIG_R2_ENDPOINT: https://${{ secrets.CLOUDFLARE_ACCOUNT_ID }}.r2.cloudflarestorage.com
+        run: ./scripts/upload.sh snapshots slint-snapshots --delete --in-place

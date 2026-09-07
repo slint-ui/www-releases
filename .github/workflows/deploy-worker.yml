@@ -1,0 +1,56 @@
+name: Deploy the worker
+
+on:
+  workflow_call:
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-worker
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout: worker
+
+      # LATEST_RELEASE tells the worker which release to hand over to
+      # docs.slint.dev rather than serve itself. Reading it here means the
+      # number lives in one place. blob:none fetches just this one file.
+      - name: Read the current release
+        id: version
+        run: |
+          version=$(git show HEAD:releases/versions.txt | sed -n 1p)
+          echo "Current release: $version"
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.24.0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+          cache-dependency-path: worker/pnpm-lock.yaml
+
+      - name: Install
+        working-directory: worker
+        run: pnpm install --frozen-lockfile
+
+      # wrangler bundles with esbuild, which strips types without checking
+      # them, so this is what actually catches a type error before deploying.
+      - name: Type check
+        working-directory: worker
+        run: pnpm run typecheck
+
+      - name: Deploy
+        working-directory: worker
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: pnpm exec wrangler deploy --var LATEST_RELEASE:${{ steps.version.outputs.version }}
