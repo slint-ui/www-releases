@@ -20,11 +20,14 @@
 set -euo pipefail
 
 if [ $# -lt 2 ]; then
-    echo "usage: $0 <local-dir> <bucket> [prefix] [--delete]" >&2
+    echo "usage: $0 <local-dir> <bucket> [prefix] [--delete] [--in-place]" >&2
     echo >&2
-    echo "  --delete  make the target match the source exactly, removing" >&2
-    echo "            anything else under the prefix. Only safe when the" >&2
-    echo "            source is the whole of that prefix." >&2
+    echo "  --delete    make the target match the source exactly, removing" >&2
+    echo "              anything else under the prefix. Only safe when the" >&2
+    echo "              source is the whole of that prefix." >&2
+    echo "  --in-place  rename inside <local-dir> instead of copying it first." >&2
+    echo "              Saves a second copy of the tree, but rewrites the" >&2
+    echo "              directory given. For throwaway checkouts only." >&2
     exit 1
 fi
 
@@ -32,20 +35,27 @@ src=$1
 bucket=$2
 prefix=""
 mode=copy
+in_place=no
 
 for arg in "${@:3}"; do
     case "$arg" in
-        --delete) mode=sync ;;
-        *)        prefix=$arg ;;
+        --delete)   mode=sync ;;
+        --in-place) in_place=yes ;;
+        *)          prefix=$arg ;;
     esac
 done
 
 [ -d "$src" ] || { echo "no such directory: $src" >&2; exit 1; }
 
-stage=$(mktemp -d)
-trap 'rm -rf "$stage"' EXIT
-
-cp -a "$src"/. "$stage"/
+if [ "$in_place" = yes ]; then
+    stage=$src
+else
+    # A copy, so the tree given is left alone. Costs a second copy of it on
+    # disk; pass --in-place where that matters and the source is disposable.
+    stage=$(mktemp -d)
+    trap 'rm -rf "$stage"' EXIT
+    cp -a "$src"/. "$stage"/
+fi
 
 # Deepest first, so a folder is only renamed after everything inside it.
 #

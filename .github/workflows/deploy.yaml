@@ -1,4 +1,3 @@
-
 name: CI
 
 on:
@@ -11,6 +10,7 @@ jobs:
       releases: ${{ steps.filter.outputs.releases }}
       snapshots: ${{ steps.filter.outputs.snapshots }}
       slintpad: ${{ steps.filter.outputs.slintpad }}
+      worker: ${{ steps.filter.outputs.worker }}
     steps:
       - uses: actions/checkout@v4
       - uses: dorny/paths-filter@v4
@@ -19,10 +19,14 @@ jobs:
           filters: |
             releases:
               - 'releases/**'
+              - 'scripts/upload.sh'
             snapshots:
               - 'snapshots/**'
+              - 'scripts/upload.sh'
             slintpad:
               - 'slintpad/**'
+            worker:
+              - 'worker/**'
 
   deploy-releases:
     needs: files-changed
@@ -34,6 +38,14 @@ jobs:
     needs: files-changed
     if: needs.files-changed.outputs.snapshots == 'true'
     uses: ./.github/workflows/deploy-snapshots.yml
+    secrets: inherit
+
+  # A release also redeploys the worker, from within deploy-releases.yml. This
+  # covers a change to the worker on its own.
+  deploy-worker:
+    needs: files-changed
+    if: needs.files-changed.outputs.worker == 'true'
+    uses: ./.github/workflows/deploy-worker.yml
     secrets: inherit
 
   deploy-slintpad:
