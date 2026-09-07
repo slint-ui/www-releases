@@ -1,0 +1,52 @@
+name = "slint-releases"
+main = "src/index.ts"
+compatibility_date = "2026-09-01"
+
+# The content. Both buckets hold every name in lowercase; see scripts/upload.sh.
+[[r2_buckets]]
+binding     = "RELEASES"
+bucket_name = "slint-releases"
+
+[[r2_buckets]]
+binding     = "SNAPSHOTS"
+bucket_name = "slint-snapshots"
+
+# The current release, which docs.slint.dev serves instead. CI overrides this
+# with the first line of releases/versions.txt:
+#   wrangler deploy --var LATEST_RELEASE:$version
+[vars]
+LATEST_RELEASE = "1.17.1"
+
+# Both names already point at Cloudflare, so these attach the worker to them
+# rather than changing any DNS record.
+[[routes]]
+pattern       = "releases.slint.dev"
+custom_domain = true
+
+[[routes]]
+pattern       = "snapshots.slint.dev"
+custom_domain = true
+
+# A second copy on throwaway names, for checking a deploy before the real ones
+# are switched over. Deploy with: wrangler deploy --env staging
+[env.staging]
+name = "slint-releases-staging"
+
+[[env.staging.r2_buckets]]
+binding     = "RELEASES"
+bucket_name = "slint-releases"
+
+[[env.staging.r2_buckets]]
+binding     = "SNAPSHOTS"
+bucket_name = "slint-snapshots"
+
+[env.staging.vars]
+LATEST_RELEASE = "1.17.1"
+
+[[env.staging.routes]]
+pattern       = "releases-test.slint.dev"
+custom_domain = true
+
+[[env.staging.routes]]
+pattern       = "snapshots-test.slint.dev"
+custom_domain = true

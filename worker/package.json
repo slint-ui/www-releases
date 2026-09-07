@@ -1,0 +1,16 @@
+{
+  "name": "slint-releases-worker",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.24.0",
+  "scripts": {
+    "types": "wrangler types",
+    "typecheck": "tsc --noEmit",
+    "deploy": "wrangler deploy",
+    "deploy:staging": "wrangler deploy --env staging"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.2",
+    "wrangler": "^4.34.0"
+  }
+}
