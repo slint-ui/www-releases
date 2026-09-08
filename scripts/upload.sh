@@ -54,45 +54,14 @@ else
     # disk; pass --in-place where that matters and the source is disposable.
     stage=$(mktemp -d)
     trap 'rm -rf "$stage"' EXIT
+    echo "copying $(du -sh "$src" 2>/dev/null | cut -f1) to a staging directory..."
     cp -a "$src"/. "$stage"/
 fi
 
-# Deepest first, so a folder is only renamed after everything inside it.
-#
-# [[:upper:]] rather than [A-Z]: in most locales A-Z collates as AaBb..Zz and
-# so matches lowercase names too.
-#
-# Fed by process substitution rather than a pipe, so that a collision can stop
-# the whole script instead of only a subshell.
-while IFS= read -r -d '' path; do
-    dir=$(dirname "$path")
-    lower=$(basename "$path" | tr '[:upper:]' '[:lower:]')
-    target="$dir/$lower"
-
-    [ "$path" = "$target" ] && continue
-
-    # Two names differing only in capitals would silently overwrite each other.
-    # There are none in this repo, but do not find that out by losing a file.
-    #
-    # -ef asks whether both names point at the same file. On a filesystem that
-    # ignores case, -e alone is always true here because it finds the file
-    # under either spelling.
-    if [ "$path" -ef "$target" ] 2>/dev/null; then
-        # Same file under both spellings. Some systems refuse to rename it
-        # directly, so go via a temporary name to make the change stick.
-        tmp="$dir/.case-$$-$(basename "$path")"
-        mv "$path" "$tmp"
-        mv "$tmp" "$target"
-        continue
-    fi
-
-    if [ -e "$target" ]; then
-        echo "collision: $path would overwrite $target" >&2
-        exit 1
-    fi
-
-    mv "$path" "$target"
-done < <(find "$stage" -depth -name '*[[:upper:]]*' -print0)
+# Lowercase every name. Its own script, because doing it in shell meant forking
+# dirname, basename and tr for each of 65,000 names, and on macOS that is
+# minutes of process creation for seconds of work.
+"$(dirname "$0")/lowercase.py" "$stage"
 
 # Build files that the site does not need and that should not be downloadable.
 rm -f "$stage"/_redirects "$stage"/_headers "$stage"/netlify.toml \
@@ -106,7 +75,20 @@ rm -f "$stage"/_redirects "$stage"/_headers "$stage"/netlify.toml \
 # --checksum compares content, not timestamps. A git checkout stamps every file
 # with the time it ran, so the default size-and-modtime comparison would treat
 # the whole tree as changed and send it again on every run.
-rclone "$mode" "$stage"/ "r2:$bucket/$prefix" \
-    --checksum --transfers 32 --checkers 32 --fast-list --s3-no-check-bucket
+# A live display when someone is watching, a line every 30s when it is a log.
+# --progress repaints the terminal, which turns a CI log into noise.
+if [ -t 1 ]; then
+    reporting=(--progress)
+else
+    # --stats-log-level NOTICE makes the closing summary print even when
+    # nothing was transferred. In a log that line is the whole point: it is
+    # how you see that a run really was a no-op rather than silently skipped.
+    reporting=(--stats 30s --stats-one-line --stats-log-level NOTICE)
+fi
 
-echo "$mode: $(find "$stage" -type f | wc -l | tr -d ' ') files -> $bucket/$prefix"
+echo "$mode to $bucket/$prefix ..."
+rclone "$mode" "$stage"/ "r2:$bucket/$prefix" \
+    --checksum --transfers 32 --checkers 32 --fast-list --s3-no-check-bucket \
+    "${reporting[@]}"
+
+echo "done: $(find "$stage" -type f | wc -l | tr -d ' ') files considered -> $bucket/$prefix"
