@@ -17,15 +17,20 @@ bucket_name = "slint-snapshots"
 [vars]
 LATEST_RELEASE = "1.17.1"
 
-# Both names already point at Cloudflare, so these attach the worker to them
-# rather than changing any DNS record.
+# Routes, not custom domains. Both names already have DNS records pointing at
+# Netlify, and a custom domain would replace them -- and is refused outright on
+# a name that already has a CNAME. A route leaves DNS alone and puts the worker
+# in front of whatever the record points at, so backing out is deleting the
+# route: traffic falls through to Netlify again with nothing to rebuild.
+#
+# Requires both names to be proxied, which they are.
 [[routes]]
-pattern       = "releases.slint.dev"
-custom_domain = true
+pattern   = "releases.slint.dev/*"
+zone_name = "slint.dev"
 
 [[routes]]
-pattern       = "snapshots.slint.dev"
-custom_domain = true
+pattern   = "snapshots.slint.dev/*"
+zone_name = "slint.dev"
 
 # A second copy on throwaway names, for checking a deploy before the real ones
 # are switched over. Deploy with: wrangler deploy --env staging
