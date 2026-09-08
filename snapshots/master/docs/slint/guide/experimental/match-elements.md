@@ -28,7 +28,7 @@ If a wildcard case `*` is present, it renders when none of the explicit cases ma
 
 Every value an `int` can take cannot be listed, so a wildcard `*` case is required.
 
-```slint no-test
+```slint
 export component StatusIndicator {
     in property <int> status: 0;
 
@@ -45,7 +45,7 @@ export component StatusIndicator {
 
 `true` and `false` cover every value a `bool` can take, so no wildcard is needed.
 
-```slint no-test
+```slint
 export component Toggle {
     in-out property <bool> checked: false;
 
@@ -61,7 +61,7 @@ export component Toggle {
 When the subject's type is a known enum, case values may use the enum variant name directly, without qualifying it with the enum name.
 Listing every variant covers the enum exhaustively, so no wildcard is needed.
 
-```slint no-test
+```slint
 enum Mode { View, Edit, Preview }
 
 export component Editor {
@@ -77,7 +77,7 @@ export component Editor {
 
 ### Matching on a string
 
-```slint no-test
+```slint
 export component Greeting {
     in property <string> lang: "en";
 
