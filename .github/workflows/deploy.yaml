@@ -45,11 +45,15 @@ jobs:
     uses: ./.github/workflows/deploy-snapshots.yml
     secrets: inherit
 
-  # A release also redeploys the worker, from within deploy-releases.yml. This
-  # covers a change to the worker on its own.
+  # Only when the worker changed on its own. A release deploys it from inside
+  # deploy-releases.yml, and running both would queue two deploys against the
+  # same concurrency group: one cancels the other and the whole run is reported
+  # as cancelled, even though the worker went out fine.
   deploy-worker:
     needs: files-changed
-    if: needs.files-changed.outputs.worker == 'true'
+    if: >-
+      needs.files-changed.outputs.worker == 'true' &&
+      needs.files-changed.outputs.releases != 'true'
     uses: ./.github/workflows/deploy-worker.yml
     secrets: inherit
 
