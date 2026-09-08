@@ -1,7 +1,12 @@
 name: CI
 
 on:
+  # master only. Deploying attaches releases.slint.dev and snapshots.slint.dev
+  # to the worker, which rewrites those DNS records — so a push to any branch
+  # would put that branch live.
   push:
+    branches:
+      - master
 
 jobs:
   files-changed:
