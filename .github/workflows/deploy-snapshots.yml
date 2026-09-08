@@ -55,9 +55,12 @@ jobs:
           cp website/output/404.html  snapshots/404.html
           rm -rf website
 
+      # From the distribution, not a download. Ubuntu ships 1.60, which is old
+      # but has every flag used here.
       - name: Install rclone
         run: |
-          curl -fsSL https://rclone.org/install.sh | sudo bash
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq rclone
           rclone version | head -1
 
       # --delete matters more here than on releases. master is rebuilt daily and
