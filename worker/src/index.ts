@@ -66,6 +66,11 @@ const TYPES: Record<string, string> = {
 interface Found {
   object: R2ObjectBody;
   key: string;
+  // The address named a folder but had no trailing slash. Pages link to their
+  // assets relatively -- ../static.files/rustdoc.css and the like -- so served
+  // from the slash-less form every one of those resolves a level too high.
+  // Has to be a redirect; the browser must know the address it is on.
+  needsTrailingSlash: boolean;
 }
 
 export default {
@@ -88,6 +93,12 @@ export default {
 
     const found = await lookup(bucket, url.pathname);
     if (!found) return notFound(bucket);
+
+    if (found.needsTrailingSlash) {
+      const to = new URL(url.toString());
+      to.pathname = `${url.pathname}/`;
+      return Response.redirect(to.toString(), 301);
+    }
 
     return serve(found, url.pathname, site);
   },
@@ -127,12 +138,21 @@ function redirectFor(url: URL, site: Site, env: Env): Response | null {
 // only by capitals.
 async function lookup(bucket: R2Bucket, pathname: string): Promise<Found | null> {
   let key = decodeURIComponent(pathname).replace(/^\/+/, '').toLowerCase();
-  if (key === '' || key.endsWith('/')) key += 'index.html';
+  const endsWithSlash = key === '' || key.endsWith('/');
+  if (endsWithSlash) key += 'index.html';
   if (key.includes('..')) return null;
 
-  for (const candidate of [key, `${key}.html`, `${key}/index.html`]) {
+  const asFolderIndex = `${key}/index.html`;
+
+  for (const candidate of [key, `${key}.html`, asFolderIndex]) {
     const object = await bucket.get(candidate);
-    if (object) return { object, key: candidate };
+    if (object) {
+      return {
+        object,
+        key: candidate,
+        needsTrailingSlash: !endsWithSlash && candidate === asFolderIndex,
+      };
+    }
   }
   return null;
 }
