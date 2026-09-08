@@ -55,6 +55,15 @@ Specify the different swipe directions you'd like to handle by setting the `hand
 Pointer press events on the recognizer's area are forwarded to the children with a small delay.
 If the pointer moves by more than 8 logical pixels in one of the enabled swipe directions, the gesture is recognized, and events are no longer forwarded to the children.
 
+To keep the gesture-recognition area large enough to feel responsive, wrap the `SwipeGestureHandler` around the controls it should
+handle swipes for, rather than placing it as a sibling before them.
+
+:::note{Known issue}
+[#6781](https://github.com/slint-ui/slint/issues/6781): `SwipeGestureHandler` can interfere with other controls that also recognize swipe gestures, such as `Slider`.
+Work around it by disabling the relevant `handle-swipe-*` properties while the child is being interacted with, for example in a
+`Slider`'s `changed` and `released` callbacks.
+:::
+
 ## Properties
 
 ### enabled

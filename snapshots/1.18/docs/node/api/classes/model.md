@@ -81,7 +81,7 @@ export class ArrayModel<T> extends Model<T> {
 
 > **\[iterator\]**(): `Iterator`\<`T`\>
 
-Defined in: [api/node/typescript/models.ts:170](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L170)
+Defined in: [api/node/typescript/models.ts:169](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L169)
 
 #### Returns
 
@@ -97,7 +97,7 @@ Defined in: [api/node/typescript/models.ts:170](https://github.com/slint-ui/slin
 
 > **insertRow**(`_index`, `_data`): `void`
 
-Defined in: [api/node/typescript/models.ts:166](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L166)
+Defined in: [api/node/typescript/models.ts:165](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L165)
 
 Implementations of this function must add a row at the specified index, pushing all next
 rows to the right.
@@ -128,7 +128,7 @@ new data item to store in a new row.
 
 > **pushRow**(`data`): `void`
 
-Defined in: [api/node/typescript/models.ts:144](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L144)
+Defined in: [api/node/typescript/models.ts:143](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L143)
 
 Adds a line to the model with the provided data.
 Throws when the model rejects the modification.
@@ -152,7 +152,7 @@ new data item to store in a new row.
 
 > **removeRow**(`_index`): `void`
 
-Defined in: [api/node/typescript/models.ts:154](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L154)
+Defined in: [api/node/typescript/models.ts:153](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L153)
 
 Implementations of this function must remove the row at the specified index.
 Throws when the model rejects the modification; the default implementation
@@ -214,10 +214,11 @@ undefined if row is out of range otherwise the data.
 
 > **setRowData**(`_row`, `_data`): `void`
 
-Defined in: [api/node/typescript/models.ts:132](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L132)
+Defined in: [api/node/typescript/models.ts:133](https://github.com/slint-ui/slint/blob/master/api/node/typescript/models.ts#L133)
 
 Implementations of this function must store the provided data parameter
 in the model at the specified row.
+The default implementation throws, rejecting the modification.
 
 #### Parameters
 

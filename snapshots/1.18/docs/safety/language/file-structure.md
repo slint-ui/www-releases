@@ -4,6 +4,7 @@ description: "Top-level structure of a Slint source file and the basic form of c
 ---
 import SC from '@slint/common-files/src/components/SC.astro';
 import OnlyInSC from '@slint/common-files/src/components/OnlyInSC.astro';
+import NotInSC from '@slint/common-files/src/components/NotInSC.astro';
 
 <SC>
 ## A Slint Source File
@@ -69,7 +70,25 @@ An instantiation may be preceded by an *id* and `:=`, as in `foo := Rectangle { 
 naming the element within the component,
 so that a [reference](/language/expressions/#references) can reach its properties. \{#sls.file.element.id}
 
+```slint
+export component Example inherits Window {
+    frame := Rectangle {
+        background: #2a6e3f;
+        width: 120px;
+    }
+    Rectangle {
+        background: #1a4f2c;
+        width: frame.width;
+    }
+}
+```
+
+An id is an [identifier](/language/lexical-structure/#sls.lex.identifier.classes),
+so two ids are the same id when their
+[normalized forms](/language/lexical-structure/#sls.lex.identifier.normalization) are equal. \{#sls.file.element.id.identifier}
+
 An id shall be unique within the component. \{#sls.file.element.id.unique}
+
 
 The names `self`, `parent`, and `root` are reserved and shall not be used as an id. \{#sls.file.element.id.reserved}
 

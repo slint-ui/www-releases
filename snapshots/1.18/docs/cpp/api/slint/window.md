@@ -357,6 +357,8 @@ Takes a snapshot of the window contents and returns it as RGBA8 encoded pixel bu
 
 Note that this function may be slow to call as it may need to re-render the scene.
 
+This function is not available in freestanding environments.
+
 ### `wayland_surface`
 
 ```cpp

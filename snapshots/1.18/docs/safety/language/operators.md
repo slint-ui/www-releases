@@ -84,10 +84,8 @@ export component Example inherits Window {
     out property <bool> neither: !a && !b;
 }
 ```
-</SC>
 
 
-<SC>
 ## Unary operators
 
 The prefix operators are `+`, `-`, and `!`. \{#sls.op.prefix}
