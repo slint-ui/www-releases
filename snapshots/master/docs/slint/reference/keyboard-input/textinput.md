@@ -174,7 +174,6 @@ When set to `true`, text editing via keyboard and mouse is disabled but selectin
 The design metrics of the font scaled to the font pixel size used by the element.
 </SlintProperty>
 
-
 ## Functions
 
 ### set-selection-offsets(anchor: [int](/reference/property-types/numeric-types/#int), focus: [int](/reference/property-types/numeric-types/#int))
