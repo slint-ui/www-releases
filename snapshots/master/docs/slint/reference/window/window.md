@@ -90,7 +90,7 @@ Whether the window should be borderless/frameless or not.
 </SlintProperty>
 
 ### title
-<SlintProperty propName="title" typeName="string" defaultValue="&quot;Slint Window&quot;">
+<SlintProperty propName="title" typeName="string" defaultValue="the name of the running program">
 The window title that is shown in the title bar.
 </SlintProperty>
 
