@@ -251,7 +251,6 @@ Text {
 The design metrics of the font scaled to the font pixel size used by the element.
 </SlintProperty>
 
-
 ## Accessibility
 
 By default, `Text` elements have the following accessibility properties set:
