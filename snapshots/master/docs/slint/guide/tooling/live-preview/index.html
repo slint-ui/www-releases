@@ -185,16 +185,17 @@ This means every UI change requires recompiling and restarting the application.<
 <p>The <strong>live preview</strong> feature lets your running application watch <code dir="auto">.slint</code> files on disk
 and reload them automatically when they change.
 Your business logic stays connected, so you can iterate on the UI without restarting.</p>
-<aside aria-label="Note" class="starlight-aside starlight-aside--note"><p class="starlight-aside__title" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" class="starlight-aside__icon"><path d="M12 11a1 1 0 0 0-1 1v4a1 1 0 0 0 2 0v-4a1 1 0 0 0-1-1Zm.38-3.92a1 1 0 0 0-.76 0 1 1 0 0 0-.33.21 1.15 1.15 0 0 0-.21.33 1 1 0 0 0 .21 1.09c.097.088.209.16.33.21A1 1 0 0 0 13 8a1.05 1.05 0 0 0-.29-.71 1 1 0 0 0-.33-.21ZM12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 18a8 8 0 1 1 0-16.001A8 8 0 0 1 12 20Z"></path></svg>Note</p><div class="starlight-aside__content"><p>This is different from the live preview in <a href="/master/docs/slint/guide/tooling/vscode/"><span>VS Code</span></a>
-or the <a href="/master/docs/slint/guide/tooling/manual-setup/#slint-lsp"><span>Slint LSP</span></a>,
-which run standalone without your application’s business logic.
-The native live preview described here runs inside your actual application with your real data and callbacks.</p></div></aside>
+<p>It’s the same live preview as the one in <a href="/master/docs/slint/guide/tooling/vscode/"><span>VS Code</span></a>,
+the <a href="/master/docs/slint/guide/tooling/manual-setup/#slint-lsp"><span>Slint LSP</span></a>, and the <a href="/master/docs/slint/guide/tooling/slint-viewer/"><span>Slint Viewer</span></a>.
+The same interpreter loads and renders your <code dir="auto">.slint</code> files, so the UI looks and behaves the same.
+What differs is the surroundings:
+here the preview runs inside your application, wired up to your business logic.</p>
 <div class="sl-heading-wrapper level-h2"><h2 id="how-it-works">How It Works</h2><a class="sl-anchor-link" href="#how-it-works"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “How It Works”</span></a></div>
 <p>When live preview is enabled,
-Slint replaces the ahead-of-time compiled UI with an interpreter-based component
-that reloads <code dir="auto">.slint</code> files from disk whenever they change.
-The application keeps running during reloads —
-properties, callbacks, and models are preserved.
+The Slint compiler no longer compiles your components ahead-of-time, but generates an interface that uses the Slint interpreter at runtime.
+It reloads <code dir="auto">.slint</code> files from disk whenever they change.
+The application keeps running during reloads,
+and properties, callbacks, and models are preserved.
 If a <code dir="auto">.slint</code> file has a syntax error, the previous version stays on screen until the error is fixed.</p>
 <p>If you change the Slint API that the native code interacts with, for example renaming a property or callback used from Rust or C++, the application may terminate.
 Recompile and restart to pick up those changes.</p>
