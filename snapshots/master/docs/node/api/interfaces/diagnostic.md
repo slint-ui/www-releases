@@ -1,7 +1,7 @@
 ---
 title: "Diagnostic"
 ---
-Defined in: api/node/rust-module.d.cts:411
+Defined in: api/node/rust-module.d.cts:410
 
 This structure represent a diagnostic emitted while compiling .slint code.
 
@@ -14,7 +14,7 @@ position in the code.
 
 > **columnNumber**: `number`
 
-Defined in: api/node/rust-module.d.cts:418
+Defined in: api/node/rust-module.d.cts:417
 
 ***
 
@@ -22,7 +22,7 @@ Defined in: api/node/rust-module.d.cts:418
 
 > `optional` **fileName?**: `string`
 
-Defined in: api/node/rust-module.d.cts:420
+Defined in: api/node/rust-module.d.cts:419
 
 The path of the source file where this diagnostic occurred.
 
@@ -32,7 +32,7 @@ The path of the source file where this diagnostic occurred.
 
 > **level**: [`DiagnosticLevel`](/master/docs/node/api/enumerations/diagnosticlevel/)
 
-Defined in: api/node/rust-module.d.cts:413
+Defined in: api/node/rust-module.d.cts:412
 
 The level for this diagnostic.
 
@@ -42,7 +42,7 @@ The level for this diagnostic.
 
 > **lineNumber**: `number`
 
-Defined in: api/node/rust-module.d.cts:417
+Defined in: api/node/rust-module.d.cts:416
 
 The line number in the .slint source file. The line number starts with 1.
 
@@ -52,6 +52,6 @@ The line number in the .slint source file. The line number starts with 1.
 
 > **message**: `string`
 
-Defined in: api/node/rust-module.d.cts:415
+Defined in: api/node/rust-module.d.cts:414
 
 Message for this diagnostic.
