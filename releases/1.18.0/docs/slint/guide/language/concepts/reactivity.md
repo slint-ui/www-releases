@@ -1,0 +1,144 @@
+---
+title: "Reactivity"
+description: "Reactivity"
+---
+## Reactivity
+
+Reactivity is core concept within Slint. It allows the creation of complex dynamic user interfaces with a fraction of the code.
+The following examples will help you understand the basics of reactivity.
+
+```slint playground
+export component MyComponent {
+    width: 400px; height: 400px;
+
+    Rectangle {
+        background: #151515;
+    }
+
+    ta := TouchArea {}
+
+    myRect := Rectangle {
+        x: ta.mouse-x;
+        y: ta.mouse-y;
+        width: 60px;
+        height: 60px;
+        background: ta.pressed ? orange : skyblue;
+        Text {
+            x: 5px; y: 5px;
+            text: "x: " + myRect.x / 1px;
+            color: white;
+        }
+        Text {
+            x: 5px; y: 20px;
+            text: "y: " + myRect.y / 1px;
+            color: white;
+        }
+    }
+}
+```
+
+As the name suggests, Reactivity is all about parts of the user interface automatically updating or 'reacting'
+to changes. The above example looks simple, but when run it does several things:
+
+- The `Rectangle` will follow the mouse around as you move it.
+- If you `click` anywhere the `Rectangle` will change color.
+- The `Text` elements will update their text to show the current position of the `Rectangle`.
+
+The 'magic' here is built into the Slint language directly. There is no need to opt into this or define
+specific stateful items. The `Rectangle` will automatically update because its `x` and `y` properties
+are bound to the `mouse-x` and `mouse-y` properties of the `TouchArea` element. This was done by giving
+the `TouchArea` a name to identify it `ta` and then using the name in what Slint calls an `expression`
+to track values. It's as simple as `x: ta.mouse-x;` and `y: ta.mouse-y;`. The mouse-x and mouse-y properties
+are built into the `TouchArea` and automatically update as the cursor moves over them.
+
+The `TouchArea` also has a `pressed` property that is only `true` when the cursor is pressed or clicked down.
+So the ternary expression `background: ta.pressed ? orange : white;` will change the background color of the `Rectangle`
+to orange when `ta.pressed` is true, or white when it isn't.
+
+Similarly the 2 text items are updating by tracking the rectangle's `x` and `y` position.
+
+## Overwritten Bindings
+
+A binding stays active only as long as the property keeps it:
+assigning a value in code (`foo.bar = 42;`) breaks the binding, and the property stops reacting.
+The [Evaluation and Purity](../../../../reference/language/evaluation-and-purity/) chapter describes the exact rules.
+
+## Performance
+
+From a performance perspective, Slint works out what properties are changed. It then finds all the expressions
+that depend on that value. These dependencies are then re-evaluated based on the new values and the UI will update.
+
+The re-evaluation happens lazily when the property is queried.
+
+Internally, a dependency is registered for any property accessed while evaluating a binding.
+When a property changes, the dependencies are notified and all dependent bindings
+are marked as dirty.
+
+
+
+## Property Expressions
+
+Expressions can vary in complexity:
+
+```slint no-test
+// Tracks the `x` value of an element called foo
+x: foo.x;
+
+// Tracks the value, but sets it to 0px or 400px based on if
+// foo.x is greater than 400px
+x: foo.x > 100px ? 0px : 400px;
+
+// Tracks the value, but clamps it between 0px and 400px
+x: clamp(foo.x, 0px, 400px);
+```
+
+As the last example shows functions can be used as part of a property expression. This can be
+useful for when an expression is too complex to be readable or maintained as a single line.
+
+```slint playground
+export component MyComponent {
+    width: 400px; height: 400px;
+
+    pure function lengthToInt(n: length) -> int {
+        return (n / 1px);
+    }
+
+    Rectangle {
+        background: #151515;
+    }
+
+    ta := TouchArea {}
+
+    myRect := Rectangle {
+        x: ta.mouse-x;
+        y: ta.mouse-y;
+        width: 60px;
+        height: 60px;
+        background: ta.pressed ? orange : skyblue;
+        Text {
+            x: 5px; y: 5px;
+            text: "x: " + lengthToInt(myRect.x);
+            color: white;
+        }
+        Text {
+            x: 5px; y: 20px;
+            text: "y: " + lengthToInt(myRect.y);
+            color: white;
+        }
+    }
+}
+```
+
+Here the earlier example was updated to use a function to convert the length to an integer.
+This also truncates the x and y values to be more readable i.e. '4' instead of '4.124488'.
+
+## Purity
+
+Bindings must be free of side effects, and the compiler enforces this in pure contexts.
+Mark callbacks and public functions with the `pure` keyword to call them from bindings;
+see [Evaluation and Purity](../../../../reference/language/evaluation-and-purity/#purity).
+
+## Two-Way Bindings
+
+The `<=>` syntax links two properties so that they always contain the same value;
+see [Two-Way Bindings](../../../../reference/language/two-way-bindings/) in the language reference.

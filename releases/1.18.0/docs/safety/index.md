@@ -1,0 +1,24 @@
+---
+title: "Slint SC Safety Manual"
+description: "Safety Manual and Qualification Plan for Slint SC, the ISO 26262 compliant subset of Slint."
+---
+Slint SC is the "ISO 26262 compliant subset" of Slint.
+It doesn't exist yet, and these documents are a Work In Progress.
+
+## Purpose of These Documents
+
+Together they make up the qualification package for Slint SC.
+
+Read the [Safety Manual](/safety-manual/) if you build with Slint SC.
+It's the only one that changes what you do, and every rule in it is a condition of the qualification holding.
+
+The rest record how Slint SC is built and tested, so an assessor can check the work.
+
+## Documents
+
+* **[Safety Manual](/safety-manual/)**: what you must do, and not do, so your use of Slint SC stays covered by its qualification.
+* **[Qualification Plan](/qualification-plan/)**: how we organize, develop, test, and release Slint SC, and the architecture we do it to.
+* **[Evaluation Report](/evaluation-report/use-cases/)**: what can go wrong in the compiler and the runtime, and what we do about each.
+* **[Qualification Report](/qualification-report/traceability-matrix/)**: the traceability matrix, the measured coverage, and the test results.
+* **[Language Specification](/language/)**: the language Slint SC accepts, and the requirements the tests trace to.
+* **[API Reference](/reference/)**: the elements, property types, and the code the compiler generates.

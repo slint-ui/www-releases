@@ -1,0 +1,104 @@
+---
+title: "HorizontalLayout"
+description: "HorizontalLayout element api."
+---
+import SlintProperty from '@slint/common-files/src/components/SlintProperty.astro';
+
+```slint
+export component Foo inherits Window {
+    width: 200px;
+    height: 100px;
+    HorizontalLayout {
+        spacing: 5px;
+        Rectangle { background: red; width: 10px; }
+        Rectangle { background: blue; min-width: 10px; }
+        Rectangle { background: yellow; horizontal-stretch: 1; }
+        Rectangle { background: green; horizontal-stretch: 2; }
+    }
+}
+```
+
+Places its children next to each other horizontally.
+The size of elements can either be fixed with the `width` or `height` property, or if they aren't set
+they will be computed by the layout respecting the minimum and maximum sizes and the stretch factor.
+
+## Spacing Properties
+
+
+### spacing
+<SlintProperty propName="spacing" typeName="length">
+The distance between the elements in the layout.
+</SlintProperty>
+
+## Padding Properties
+
+### padding
+<SlintProperty propName="padding" typeName="length">
+The padding within the layout as a whole. This single value is applied to all sides.
+</SlintProperty>
+
+To target specific sides with different values use the following properties:
+
+### padding-left
+<SlintProperty propName="padding-left" typeName="length"/>
+
+### padding-right
+<SlintProperty propName="padding-right" typeName="length"/>
+
+### padding-top
+<SlintProperty propName="padding-top" typeName="length"/>
+
+### padding-bottom
+<SlintProperty propName="padding-bottom" typeName="length"/>
+
+## Alignment Properties
+
+
+### alignment
+<SlintProperty propName="alignment" typeName="enum" enumName="LayoutAlignment">
+Set the alignment along the main (horizontal) axis. Matches the CSS flex box.
+</SlintProperty>
+
+### cross-axis-alignment
+<SlintProperty propName="cross-axis-alignment" typeName="enum" enumName="CrossAxisAlignment">
+Set the alignment of items along the cross (vertical) axis.
+The default is `stretch`, meaning each item fills the full height of the layout.
+The other values (`start`, `end`, `center`) size each
+item to its preferred height, clamped to its min/max, and position it at the
+top, bottom, or center of the layout's content box.
+
+```slint
+export component Example inherits Window {
+    width: 200px;
+    height: 100px;
+    HorizontalLayout {
+        cross-axis-alignment: center;
+        Rectangle { background: red; preferred-width: 30px; preferred-height: 20px; }
+        Rectangle { background: blue; preferred-width: 30px; preferred-height: 40px; }
+        Rectangle { background: green; preferred-width: 30px; preferred-height: 60px; }
+    }
+}
+```
+</SlintProperty>
+
+## Cell elements
+Cell elements inside a `HorizontalLayout` obtain the following new properties:
+
+### cross-axis-self-alignment
+<SlintProperty propName="cross-axis-self-alignment" typeName="enum" enumName="CrossAxisAlignment" defaultValue="auto">
+Overrides the container's `cross-axis-alignment` for this element.
+The default value `auto` uses the container's `cross-axis-alignment`.
+</SlintProperty>
+
+### layout-order
+<SlintProperty propName="layout-order" typeName="int" defaultValue="0">
+Controls the visual order of the elements: they are laid out in ascending
+order value, and elements with the same value keep their declaration order.
+```slint no-test
+HorizontalLayout {
+    Rectangle { layout-order: 2; }
+    Rectangle { layout-order: 1; }  // appears first
+}
+```
+Only the visual order changes: keyboard focus still moves in declaration order.
+</SlintProperty>

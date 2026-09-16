@@ -1,0 +1,8 @@
+---
+title: "Reference Overview"
+description: "Reference Overview"
+---
+This section contains the API reference for all aspects of the Slint language. All the
+elements, properties, functions, callbacks and namespaces. It also contains the API
+reference for the `std-widgets` library. A set of cross platform components that can
+be used to build desktop applications.

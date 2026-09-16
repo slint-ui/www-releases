@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"struct":["FemtoVGWGPURenderer"],"trait":["OpenGLInterface"],"type":["FemtoVGRenderer"]};

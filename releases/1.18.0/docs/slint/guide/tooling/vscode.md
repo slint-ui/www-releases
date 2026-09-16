@@ -1,0 +1,49 @@
+---
+title: "Visual Studio Code"
+description: "Get going VS Code"
+---
+{/* cSpell: ignore Wwctiow */}
+
+import { Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+import { YouTube } from 'astro-embed';
+import Link from '@slint/common-files/src/components/Link.astro';
+
+<YouTube id="fWwctiowLnY" poster="https://github.com/user-attachments/assets/873f51b3-cb32-44f7-be8b-6e4c03c204ff" />
+
+The Slint extension for Visual Studio Code (VS Code) gives you syntax highlighting, completion, diagnostics,
+a live preview of the UI, and a command to create a new project from a template.
+This page shows how to install it and create a project from a template.
+
+:::note[Note]
+We support many other tools and editors, see [here](/1.18.0/docs/slint/guide/tooling/manual-setup.md).
+:::
+
+
+## Setting Up VS Code
+
+
+
+<Steps>
+
+1. **Install VS Code.**
+Download it [here](https://code.visualstudio.com).
+
+2. **Install the Slint extension.**
+Find it [here](https://marketplace.visualstudio.com/items?itemName=Slint.slint).
+
+3. **Create a new project based on a Slint template.**
+This is done via the command palette (CTRL+Shift+P) or on MacOS (CMD+Shift+P).
+![Command palette](../../../../assets/getting-started/macos-vscode-template-1.webp)
+Start typing 'slint' and from the options select 'Slint: Create New Project from Template'.
+4. **Choose your language.**
+![Command palette](../../../../assets/getting-started/macos-vscode-template-3.webp)
+Then select from the list of languages.
+
+5. **Choose a folder to save the project in.**
+![Project folder](../../../../assets/getting-started/macos-vscode-template-2.webp)
+
+6. **Name the project.**
+Give the project a name and now a new project will be created in the selected folder based
+on a simple template to get you started.
+
+</Steps>

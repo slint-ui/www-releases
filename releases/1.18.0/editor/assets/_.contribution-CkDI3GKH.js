@@ -1,0 +1,1 @@
+var e,t=class{get layoutInfos(){return this._layoutInfos}constructor(){this._layoutInfos=[]}registerKeyboardLayout(e){this._layoutInfos.push(e)}};e=t,e.INSTANCE=new e;export{t};
