@@ -145,7 +145,6 @@ Third-party crates linked into the program and distributed with it.
 | [gbm-sys 0.4.0](https://crates.io/crates/gbm-sys/0.4.0) | Drakulix (Victor Brekenfeld) | [MIT](#MIT) |
 | [gethostname 1.1.0](https://crates.io/crates/gethostname/1.1.0) | Sebastian Wiesner <sebastian@swsnr.de> | [Apache-2.0](#Apache-2.0) |
 | [getrandom 0.3.4](https://crates.io/crates/getrandom/0.3.4) | The Rand Project Developers | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
-| [getrandom 0.4.3](https://crates.io/crates/getrandom/0.4.3) | The Rand Project Developers | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [gettext-rs 0.7.7](https://crates.io/crates/gettext-rs/0.7.7) | Konstantin Salikhov <koka58@yandex.ru>, Alexander Batischev <eual.jp@gmail.com> | [MIT](#MIT) |
 | [gettext-sys 0.26.0](https://crates.io/crates/gettext-sys/0.26.0) | Brian Olsen <brian@maven-group.org>, Alexander Batischev <eual.jp@gmail.com> | [MIT](#MIT) |
 | [gif 0.14.2](https://crates.io/crates/gif/0.14.2) | The image-rs Developers | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
@@ -304,8 +303,6 @@ Third-party crates linked into the program and distributed with it.
 | [quick-error 2.0.1](https://crates.io/crates/quick-error/2.0.1) | Paul Colomiets <paul@colomiets.name>, Colin Kiegel <kiegel@gmx.de> | [MIT](#MIT)/[Apache-2.0](#Apache-2.0) |
 | [quote 1.0.47](https://crates.io/crates/quote/1.0.47) | David Tolnay <dtolnay@gmail.com> | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [r-efi 5.3.0](https://crates.io/crates/r-efi/5.3.0) | — | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) OR LGPL-2.1-or-later |
-| [r-efi 6.0.0](https://crates.io/crates/r-efi/6.0.0) | — | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) OR LGPL-2.1-or-later |
-| [rand_core 0.10.1](https://crates.io/crates/rand_core/0.10.1) | The Rand Project Developers | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [range-alloc 0.1.5](https://crates.io/crates/range-alloc/0.1.5) | the gfx-rs Developers | [MIT](#MIT) OR [Apache-2.0](#Apache-2.0) |
 | [rav1e 0.8.1](https://crates.io/crates/rav1e/0.8.1) | Thomas Daede <tdaede@xiph.org> | [BSD-2-Clause](#BSD-2-Clause) |
 | [ravif 0.13.0](https://crates.io/crates/ravif/0.13.0) | Kornel Lesiński <kornel@geekhood.net> | [BSD-3-Clause](#BSD-3-Clause) |
