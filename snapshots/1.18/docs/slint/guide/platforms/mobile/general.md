@@ -151,7 +151,6 @@ export component MyView {
 ```
 
 As you can see, the [ScrollView](/master/docs/slint/reference/std-widgets/views/scrollview.md) doesn't need to be the direct parent of the [LineEdit](/master/docs/slint/reference/std-widgets/views/lineedit.md).
-Note that having multiple nested `ScrollView`s is not supported.
 
 ## Application Layout Considerations
 
